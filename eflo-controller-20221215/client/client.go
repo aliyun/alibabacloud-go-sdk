@@ -10,10 +10,14 @@ import (
 )
 
 type ApproveOperationRequest struct {
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-zvp2tgykr08
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Operation Type
+	//
 	// example:
 	//
 	// RepairMachine
@@ -39,10 +43,14 @@ func (s *ApproveOperationRequest) SetOperationType(v string) *ApproveOperationRe
 }
 
 type ApproveOperationResponseBody struct {
+	// Error Message
+	//
 	// example:
 	//
 	// Resource not found
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8F065DDD-6996-5973-9691-9EC57BD0072E
@@ -97,18 +105,24 @@ func (s *ApproveOperationResponse) SetBody(v *ApproveOperationResponseBody) *App
 }
 
 type ChangeResourceGroupRequest struct {
+	// Target Resource Group
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-aekzyqdwnfabx6q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i118099391667548921125
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Region ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -141,7 +155,7 @@ func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResour
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -192,30 +206,58 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateClusterRequest struct {
+	// Cluster description
+	//
+	// example:
+	//
+	// Cluster description
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Cluster type
+	//
 	// example:
 	//
 	// Lite
-	ClusterType *string                           `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Components  []*CreateClusterRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	HpnZone     *string                           `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Components (software instances)
+	Components []*CreateClusterRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// Cluster number
+	//
+	// example:
+	//
+	// A1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Whether to allow skipping failed nodes, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool                             `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	Networks              *CreateClusterRequestNetworks     `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
-	NimizVSwitches        []*string                         `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty" type:"Repeated"`
-	NodeGroups            []*CreateClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	OpenEniJumboFrame     *bool                             `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// Network information
+	Networks *CreateClusterRequestNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
+	// Node VSwitches
+	NimizVSwitches []*string `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty" type:"Repeated"`
+	// Node group list
+	NodeGroups []*CreateClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	// Open Eni Jumbo Frame
+	//
+	// example:
+	//
+	// false
+	OpenEniJumboFrame *bool `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2xdkc6icwfha
-	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource tags
+	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -287,7 +329,10 @@ func (s *CreateClusterRequest) SetTag(v []*CreateClusterRequestTag) *CreateClust
 }
 
 type CreateClusterRequestComponents struct {
+	// Component configuration
 	ComponentConfig *CreateClusterRequestComponentsComponentConfig `json:"ComponentConfig,omitempty" xml:"ComponentConfig,omitempty" type:"Struct"`
+	// Component type
+	//
 	// example:
 	//
 	// ACKEdge
@@ -313,6 +358,8 @@ func (s *CreateClusterRequestComponents) SetComponentType(v string) *CreateClust
 }
 
 type CreateClusterRequestComponentsComponentConfig struct {
+	// Basic component parameters
+	//
 	// example:
 	//
 	// {
@@ -372,7 +419,8 @@ type CreateClusterRequestComponentsComponentConfig struct {
 	//       ]
 	//
 	// }
-	BasicArgs interface{}   `json:"BasicArgs,omitempty" xml:"BasicArgs,omitempty"`
+	BasicArgs interface{} `json:"BasicArgs,omitempty" xml:"BasicArgs,omitempty"`
+	// Node pool configuration, used to establish the correspondence between node groups and node pools. Required when ComponentType is "ACKEdge", otherwise it can be empty.
 	NodeUnits []interface{} `json:"NodeUnits,omitempty" xml:"NodeUnits,omitempty" type:"Repeated"`
 }
 
@@ -395,14 +443,41 @@ func (s *CreateClusterRequestComponentsComponentConfig) SetNodeUnits(v []interfa
 }
 
 type CreateClusterRequestNetworks struct {
+	// IP allocation policy
 	IpAllocationPolicy []*CreateClusterRequestNetworksIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
-	NewVpdInfo         *CreateClusterRequestNetworksNewVpdInfo           `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
-	SecurityGroupId    *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	TailIpVersion      *string                                           `json:"TailIpVersion,omitempty" xml:"TailIpVersion,omitempty"`
-	VSwitchId          *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchZoneId      *string                                           `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
-	VpcId              *string                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 复用VPD信息
+	// Vpd configuration information
+	NewVpdInfo *CreateClusterRequestNetworksNewVpdInfo `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
+	// Security group ID
+	//
+	// example:
+	//
+	// sg-bp1d3dvbh9by7j5rujax
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// IP version
+	//
+	// example:
+	//
+	// IPv4
+	TailIpVersion *string `json:"TailIpVersion,omitempty" xml:"TailIpVersion,omitempty"`
+	// VSwitch ID
+	//
+	// example:
+	//
+	// vsw-asjdfklj
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VSwitch Zone ID
+	//
+	// example:
+	//
+	// cn-shanghai-b
+	VSwitchZoneId *string `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-0jl36lqzmc06qogy0t5ll
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Reuse VPD information
 	VpdInfo *CreateClusterRequestNetworksVpdInfo `json:"VpdInfo,omitempty" xml:"VpdInfo,omitempty" type:"Struct"`
 }
 
@@ -455,9 +530,12 @@ func (s *CreateClusterRequestNetworks) SetVpdInfo(v *CreateClusterRequestNetwork
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicy struct {
-	BondPolicy        *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy          `json:"BondPolicy,omitempty" xml:"BondPolicy,omitempty" type:"Struct"`
+	// Bond policy
+	BondPolicy *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy `json:"BondPolicy,omitempty" xml:"BondPolicy,omitempty" type:"Struct"`
+	// Machine type allocation policy
 	MachineTypePolicy []*CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy `json:"MachineTypePolicy,omitempty" xml:"MachineTypePolicy,omitempty" type:"Repeated"`
-	NodePolicy        []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicy        `json:"NodePolicy,omitempty" xml:"NodePolicy,omitempty" type:"Repeated"`
+	// Node allocation policy
+	NodePolicy []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicy `json:"NodePolicy,omitempty" xml:"NodePolicy,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterRequestNetworksIpAllocationPolicy) String() string {
@@ -484,8 +562,14 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicy) SetNodePolicy(v []*Crea
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyBondPolicy struct {
-	BondDefaultSubnet *string                                                          `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
-	Bonds             []*CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// Default bond cluster subnet
+	//
+	// example:
+	//
+	// 172.168.0.0/24
+	BondDefaultSubnet *string `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
+	// Bond information
+	Bonds []*CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) String() string {
@@ -507,7 +591,17 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) SetBonds(v []
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Bond name
+	//
+	// example:
+	//
+	// bond0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// IP source cluster subnet
+	//
+	// example:
+	//
+	// 172.16.0.0/24
 	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
 }
 
@@ -530,8 +624,14 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds) SetSubne
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy struct {
-	Bonds       []*CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
-	MachineType *string                                                                 `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Bond information
+	Bonds []*CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// Machine type
+	//
+	// example:
+	//
+	// efg1.nvga8n
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 }
 
 func (s CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) String() string {
@@ -553,7 +653,17 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) SetMac
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Bond name
+	//
+	// example:
+	//
+	// bond0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// IP source cluster subnet
+	//
+	// example:
+	//
+	// 192.168.1.0/24
 	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
 }
 
@@ -576,8 +686,14 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds) S
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyNodePolicy struct {
-	Bonds  []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
-	NodeId *string                                                          `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Bond information
+	Bonds []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// Node ID
+	//
+	// example:
+	//
+	// e01-cn-2r42vq62001
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) String() string {
@@ -599,7 +715,17 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) SetNodeId(v s
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Bond name
+	//
+	// example:
+	//
+	// bond0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// IP source cluster subnet
+	//
+	// example:
+	//
+	// 10.0.0.0/24
 	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
 }
 
@@ -622,30 +748,43 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds) SetSubne
 }
 
 type CreateClusterRequestNetworksNewVpdInfo struct {
+	// Cloud Enterprise Network ID
+	//
 	// example:
 	//
 	// cen-1gb1eftc5qp2ao75fo
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// Cloud link CIDR
+	//
 	// example:
 	//
 	// 172.16.0.0/24
 	CloudLinkCidr *string `json:"CloudLinkCidr,omitempty" xml:"CloudLinkCidr,omitempty"`
+	// Cloud link ID
+	//
 	// example:
 	//
 	// vcc-cn-c4dtycm5i08
 	CloudLinkId *string `json:"CloudLinkId,omitempty" xml:"CloudLinkId,omitempty"`
+	// VPC
+	//
 	// example:
 	//
 	// vpc-0jl2x45apm6odc2c10h25
 	MonitorVpcId *string `json:"MonitorVpcId,omitempty" xml:"MonitorVpcId,omitempty"`
+	// VPC switch
+	//
 	// example:
 	//
 	// vsw-0jl2w3ffbghkss0x2foff
 	MonitorVswitchId *string `json:"MonitorVswitchId,omitempty" xml:"MonitorVswitchId,omitempty"`
+	// Cluster Network Segment
+	//
 	// example:
 	//
 	// 192.168.0.0/16
-	VpdCidr    *string                                             `json:"VpdCidr,omitempty" xml:"VpdCidr,omitempty"`
+	VpdCidr *string `json:"VpdCidr,omitempty" xml:"VpdCidr,omitempty"`
+	// Cluster subnets
 	VpdSubnets []*CreateClusterRequestNetworksNewVpdInfoVpdSubnets `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
@@ -693,9 +832,24 @@ func (s *CreateClusterRequestNetworksNewVpdInfo) SetVpdSubnets(v []*CreateCluste
 }
 
 type CreateClusterRequestNetworksNewVpdInfoVpdSubnets struct {
+	// Subnet CIDR
+	//
+	// example:
+	//
+	// 10.0.1.8/24
 	SubnetCidr *string `json:"SubnetCidr,omitempty" xml:"SubnetCidr,omitempty"`
+	// Subnet type
+	//
+	// example:
+	//
+	// 10.0.2.8/24
 	SubnetType *string `json:"SubnetType,omitempty" xml:"SubnetType,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Zone ID
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateClusterRequestNetworksNewVpdInfoVpdSubnets) String() string {
@@ -722,13 +876,13 @@ func (s *CreateClusterRequestNetworksNewVpdInfoVpdSubnets) SetZoneId(v string) *
 }
 
 type CreateClusterRequestNetworksVpdInfo struct {
-	// 专有网络 id
+	// VPC ID
 	//
 	// example:
 	//
 	// vpd-vfuz6ejv
 	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	// 集群子网id列表
+	// List of cluster subnet IDs
 	VpdSubnets []*string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
@@ -751,21 +905,40 @@ func (s *CreateClusterRequestNetworksVpdInfo) SetVpdSubnets(v []*string) *Create
 }
 
 type CreateClusterRequestNodeGroups struct {
+	// System image ID
+	//
 	// example:
 	//
 	// i190297201634099844192
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Machine type
+	//
 	// example:
 	//
 	// efg1.nvga1
-	MachineType          *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Node group description
+	//
+	// example:
+	//
+	// Node group description
 	NodeGroupDescription *string `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
+	// Node group name
+	//
 	// example:
 	//
 	// emr-default
-	NodeGroupName *string                                `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	Nodes         []*CreateClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	UserData      *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// Node list
+	Nodes []*CreateClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Instance custom data. It needs to be Base64 encoded, and the original data should not exceed 16 KB.
+	//
+	// example:
+	//
+	// ZWNobyBoZWxsbyBlY3Mh
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// Zone ID
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -816,20 +989,36 @@ func (s *CreateClusterRequestNodeGroups) SetZoneId(v string) *CreateClusterReque
 }
 
 type CreateClusterRequestNodeGroupsNodes struct {
+	// Hostname
+	//
 	// example:
 	//
 	// 8d13b784-17a9-11ed-bc7b-acde48001122
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Login password
+	//
 	// example:
 	//
 	// ***
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01poc-cn-i7m2wnivf0d
-	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Virtual switch ID
+	//
+	// example:
+	//
+	// vsw-bp169pi5fj151rrms4sia
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-0jlasms92fdxqd3wlf8ny
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateClusterRequestNodeGroupsNodes) String() string {
@@ -866,10 +1055,14 @@ func (s *CreateClusterRequestNodeGroupsNodes) SetVpcId(v string) *CreateClusterR
 }
 
 type CreateClusterRequestTag struct {
+	// Key
+	//
 	// example:
 	//
 	// env-name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Value
+	//
 	// example:
 	//
 	// dev
@@ -895,30 +1088,58 @@ func (s *CreateClusterRequestTag) SetValue(v string) *CreateClusterRequestTag {
 }
 
 type CreateClusterShrinkRequest struct {
+	// Cluster description
+	//
+	// example:
+	//
+	// Cluster description
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Cluster type
+	//
 	// example:
 	//
 	// Lite
-	ClusterType      *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Components (software instances)
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	HpnZone          *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Cluster number
+	//
+	// example:
+	//
+	// A1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Whether to allow skipping failed nodes, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NetworksShrink        *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
-	NimizVSwitchesShrink  *string `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty"`
-	NodeGroupsShrink      *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
-	OpenEniJumboFrame     *bool   `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// Network information
+	NetworksShrink *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
+	// Node VSwitches
+	NimizVSwitchesShrink *string `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty"`
+	// Node group list
+	NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
+	// Open Eni Jumbo Frame
+	//
+	// example:
+	//
+	// false
+	OpenEniJumboFrame *bool `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2xdkc6icwfha
-	ResourceGroupId *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource tags
+	Tag []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterShrinkRequest) String() string {
@@ -990,10 +1211,14 @@ func (s *CreateClusterShrinkRequest) SetTag(v []*CreateClusterShrinkRequestTag) 
 }
 
 type CreateClusterShrinkRequestTag struct {
+	// Key
+	//
 	// example:
 	//
 	// env-name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Value
+	//
 	// example:
 	//
 	// dev
@@ -1019,14 +1244,20 @@ func (s *CreateClusterShrinkRequestTag) SetValue(v string) *CreateClusterShrinkR
 }
 
 type CreateClusterResponseBody struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i116913051663373010974
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 3C683243-7915-57FB-9570-A2932C1C0F78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task Id
+	//
 	// example:
 	//
 	// i159809891662373011015
@@ -1086,6 +1317,8 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type DeleteClusterRequest struct {
+	// Cluster ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1108,6 +1341,8 @@ func (s *DeleteClusterRequest) SetClusterId(v string) *DeleteClusterRequest {
 }
 
 type DeleteClusterResponseBody struct {
+	// Request Id
+	//
 	// example:
 	//
 	// 0FC4A1C7-421C-5EAB-9361-4C0338EFA287
@@ -1157,6 +1392,8 @@ func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClu
 }
 
 type DescribeClusterRequest struct {
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1179,57 +1416,106 @@ func (s *DescribeClusterRequest) SetClusterId(v string) *DescribeClusterRequest 
 }
 
 type DescribeClusterResponseBody struct {
+	// Cluster Description
+	//
+	// example:
+	//
+	// Default cluster
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// i116913051662373010974
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster Name
+	//
 	// example:
 	//
 	// Eflo-YJ-Test-Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Cluster Type
+	//
 	// example:
 	//
-	// AckEdgPro
-	ClusterType        *string                                  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Components         []*DescribeClusterResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	ComputingIpVersion *string                                  `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
+	// AckEdgePro
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Component Information
+	Components []*DescribeClusterResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// Type of IP in the compute network
+	//
+	// example:
+	//
+	// IPv4
+	ComputingIpVersion *string `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2022-06-08T07:05:11Z
-	CreateTime *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HpnZone    *string                                `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	Networks   []*DescribeClusterResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Cluster Number
+	//
+	// example:
+	//
+	// A2
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Network Information
+	Networks []*DescribeClusterResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	// Number of Nodes
+	//
 	// example:
 	//
 	// 2
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Number of Node Groups
+	//
 	// example:
 	//
 	// 2
-	NodeGroupCount    *int64  `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
+	NodeGroupCount *int64 `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
+	// Open Eni Jumbo Frame
+	//
+	// example:
+	//
+	// close
 	OpenEniJumboFrame *string `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	// Cluster State
+	//
 	// example:
 	//
 	// running
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 887FA855-89F4-5DB3-B305-C5879EC480E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Resource Group ID
+	//
 	// example:
 	//
 	// rg-aek2k3rqlvv6ytq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// i152609221670466904596
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2022-08-23T06:36:17.000Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-0jlkqysom5dmcviymep3f
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeClusterResponseBody) String() string {
@@ -1331,10 +1617,14 @@ func (s *DescribeClusterResponseBody) SetVpcId(v string) *DescribeClusterRespons
 }
 
 type DescribeClusterResponseBodyComponents struct {
+	// Component ID
+	//
 	// example:
 	//
 	// i149549021660892626529
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// Component Type
+	//
 	// example:
 	//
 	// ACKEdge
@@ -1360,6 +1650,8 @@ func (s *DescribeClusterResponseBodyComponents) SetComponentType(v string) *Desc
 }
 
 type DescribeClusterResponseBodyNetworks struct {
+	// VPC Segment ID
+	//
 	// example:
 	//
 	// vpd-iqd7xunc
@@ -1409,20 +1701,40 @@ func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *Descr
 }
 
 type DescribeInvocationsRequest struct {
+	// Sets the encoding method for the `CommandContent` and `Output` fields in the returned data. Possible values:
+	//
+	// - PlainText: Returns the original command content and output information.
+	//
+	// - Base64: Returns the Base64-encoded command content and output information.
+	//
+	// Default value: Base64.
+	//
 	// example:
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// Indicates whether to return the output information of the command execution in the result.
+	//
+	// - true: Return. In this case, you must specify at least the `InvokeId` or `InstanceId` parameter.
+	//
+	// - false: Do not return.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// true
 	IncludeOutput *bool `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
+	// Command execution ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// t-cd03crwys0lrls0
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// e01-cn-zvp2tgykr08
@@ -1458,7 +1770,10 @@ func (s *DescribeInvocationsRequest) SetNodeId(v string) *DescribeInvocationsReq
 }
 
 type DescribeInvocationsResponseBody struct {
+	// Script execution record object.
 	Invocations *DescribeInvocationsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
@@ -1484,6 +1799,7 @@ func (s *DescribeInvocationsResponseBody) SetRequestId(v string) *DescribeInvoca
 }
 
 type DescribeInvocationsResponseBodyInvocations struct {
+	// File delivery record.
 	Invocation []*DescribeInvocationsResponseBodyInvocationsInvocation `json:"Invocation,omitempty" xml:"Invocation,omitempty" type:"Repeated"`
 }
 
@@ -1501,52 +1817,150 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetInvocation(v []*Describe
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocation struct {
+	// Command content.
+	//
+	// - If `ContentEncoding` is set to `PlainText`, the original script content is returned.
+	//
+	// - If `ContentEncoding` is set to `Base64`, the Base64-encoded script content is returned.
+	//
 	// example:
 	//
 	// cnBtIC1xYSB8IGdyZXAgdnNm****
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// Command description.
+	//
 	// example:
 	//
 	// testDescription
 	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
+	// Command name.
+	//
 	// example:
 	//
 	// CommandTestName
 	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+	// The creation time of the task.
+	//
 	// example:
 	//
 	// 2020-01-19T09:15:46Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Frequency    *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The execution time for scheduled commands.
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The overall execution status of the command, which depends on the common execution status of all instances involved in the call. Possible values:
+	//
+	// - Pending: The system is validating or sending the command. If at least one instance has a command execution status of Pending, the overall status is Pending.
+	//
+	// - Scheduled: The scheduled command has been sent and is waiting to run. If at least one instance has a command execution status of Scheduled, the overall status is Scheduled.
+	//
+	// - Running: The command is running on the instance. If at least one instance has a command execution status of Running, the overall status is Running.
+	//
+	// - Success: The command execution status of all instances is Stopped or Success, and at least one instance\\"s command execution status is Success. The overall status is Success.
+	//
+	//     - For immediately executed tasks: The command has completed with an exit code of 0.
+	//
+	//     - For periodically executed tasks: The most recent execution was successful with an exit code of 0, and the specified times have all been completed.
+	//
+	// - Failed: The command execution status of all instances is Stopped or Failed. The overall status is Failed if any of the following conditions apply to the instance\\"s command execution status:
+	//
+	//     - Command validation failed (Invalid).
+	//
+	//     - Command sending failed (Aborted).
+	//
+	//     - Command completed but the exit code is not 0 (Failed).
+	//
+	//     - Command execution timed out (Timeout).
+	//
+	//     - Command execution encountered an error (Error).
+	//
+	// - Stopping: The task is being stopped. If at least one instance has a command execution status of Stopping, the overall status is Stopping.
+	//
+	// - Stopped: The task has been stopped. If all instances\\" command execution statuses are Stopped, the overall status is Stopped. The overall status is Stopped if the instance\\"s command execution status is any of the following:
+	//
+	//     - The task was canceled (Cancelled).
+	//
+	//     - The task was terminated (Terminated).
+	//
+	// - PartialFailed: Some instances succeeded and some failed. If the command execution statuses of all instances are Success, Failed, or Stopped, the overall status is PartialFailed.
+	//
+	// > The `InvokeStatus` in the response parameters is similar in meaning to this parameter, but it is recommended that you check this return value.
+	//
 	// example:
 	//
 	// Success
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// Command execution ID.
+	//
 	// example:
 	//
 	// t-ind3k9ytvvduoe8
-	InvokeId    *string                                                          `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// Command execution records.
 	InvokeNodes *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
+	// The overall execution status of the command. The overall execution status depends on the common execution status of one or more instances in the execution. Possible values:
+	//
+	// - Running:
+	//
+	//     - For scheduled execution: The execution status remains ongoing until the scheduled command is manually stopped.
+	//
+	//     - For single execution: If there is any command process running, the overall execution status is ongoing.
+	//
+	// - Finished:
+	//
+	//     - For scheduled execution: The command process cannot be completed.
+	//
+	//     - For single execution: All instances have completed execution, or some instances\\" command processes are manually stopped and the rest have completed.
+	//
+	// - Failed:
+	//
+	//     - For scheduled execution: The command process cannot fail.
+	//
+	//     - For single execution: All instances have failed to execute.
+	//
+	// - Stopped: The command has been stopped.
+	//
+	// - Stopping: The command is being stopped.
+	//
+	// - PartialFailed: Partial failure; if the `InstanceId` parameter is set, this does not apply.
+	//
 	// example:
 	//
 	// Running
 	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
+	// Custom parameters in the command.
+	//
 	// example:
 	//
 	// {}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// 命令执行的方式。可能值：
+	//
+	// Once：立即执行命令。
+	//
+	// Period：定时执行命令。
+	//
+	// NextRebootOnly：当实例下一次启动时，自动执行命令。
+	//
+	// EveryReboot：实例每一次启动都将自动执行命令。
+	//
 	// example:
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// Timeout for executing the command, in seconds.
+	//
 	// example:
 	//
 	// 60
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Username for executing the command.
+	//
 	// example:
 	//
 	// root
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The working directory of the command on the instance.
+	//
 	// example:
 	//
 	// /home
@@ -1632,6 +2046,7 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetWorkingDir(v s
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes struct {
+	// Command execution records for nodes.
 	InvokeNode []*DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode `json:"InvokeNode,omitempty" xml:"InvokeNode,omitempty" type:"Repeated"`
 }
 
@@ -1649,62 +2064,216 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes) SetInv
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode struct {
+	// The start time of the command execution.
+	//
 	// example:
 	//
 	// 2023-02-06T07:12:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The length of the text that is truncated and discarded when the length of the `Output` field exceeds 24 KB.
+	//
 	// example:
 	//
 	// 0
 	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
+	// Reason code for file delivery failure. Possible values:
+	//
+	// - Empty: File delivery is normal.
+	//
+	// - NodeNotExists: The specified instance does not exist or has been released.
+	//
+	// - NodeReleased: The instance was released during the file delivery process.
+	//
+	// - NodeNotRunning: The instance was not running when the file delivery task was created.
+	//
+	// - AccountNotExists: The specified account does not exist.
+	//
+	// - ClientNotRunning: The Cloud Assistant Agent is not running.
+	//
+	// - ClientNotResponse: The Cloud Assistant Agent is not responding.
+	//
+	// - ClientIsUpgrading: The Cloud Assistant Agent is currently upgrading.
+	//
+	// - ClientNeedUpgrade: The Cloud Assistant Agent needs to be upgraded.
+	//
+	// - DeliveryTimeout: File sending timed out.
+	//
+	// - FileCreateFail: File creation failed.
+	//
+	// - FileAlreadyExists: A file with the same name already exists at the specified path.
+	//
+	// - FileContentInvalid: The file content is invalid. - FileNameInvalid: The file name is invalid.
+	//
+	// - FilePathInvalid: The file path is invalid.
+	//
+	// - FileAuthorityInvalid: The file permissions are invalid.
+	//
+	// - UserGroupNotExists: The user group specified for file sending does not exist.
+	//
 	// example:
 	//
 	// NodeNotExists：
-	ErrorCode *bool `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Details of the reason for command delivery failure or execution failure, possible values:
+	//
+	// - Empty: The command executed normally.
+	//
+	// - the specified node does not exist: The specified instance does not exist or has been released.
+	//
+	// - the node was released when creating the task: The instance was released during command execution.
+	//
+	// - the node is not running when creating the task: The instance was not in a running state when the command was executed.
+	//
+	// - the command is not applicable: The command is not applicable to the specified instance.
+	//
+	// - the specified account does not exist: The specified account does not exist.
+	//
+	// - the specified directory does not exist: The specified directory does not exist.
+	//
+	// - the cron job expression is invalid: The specified execution time expression is invalid.
+	//
+	// - the aliyun service is not running on the instance: The Cloud Assistant Agent is not running.
+	//
+	// - the aliyun service in the instance does not respond: The Cloud Assistant Agent is not responding.
+	//
+	// - the aliyun service in the node is upgrading now: The Cloud Assistant Agent is currently being upgraded.
+	//
+	// - the aliyun service in the node needs upgrade: The Cloud Assistant Agent needs an upgrade.
+	//
+	// - the command delivery has timed out: Command delivery has timed out.
+	//
+	// - the command execution has timed out: Command execution has timed out.
+	//
+	// - the command execution got an exception: An exception occurred during command execution.
+	//
+	// - the command execution was interrupted: Command execution was interrupted.
+	//
+	//  - the command execution exit code is not zero: Command execution completed with a non-zero exit code.
+	//
+	// - the specified node has been released: The instance was released during file delivery.
+	//
 	// example:
 	//
 	// the specified node does not exists
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The exit code of the command process. Possible values:
+	//
+	// - For Linux instances, it is the exit code of the Shell process. - For Windows instances, it is the exit code of the Bat or PowerShell process.
+	//
 	// example:
 	//
 	// 0
 	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// Completion time.
+	//
 	// example:
 	//
 	// 2023-02-06T07:12:50Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The command progress status for a single instance. Possible values:
+	//
+	// -  Pending: The system is validating or sending the command.
+	//
+	// -  Invalid: The specified command type or parameters are incorrect.
+	//
+	// -  Aborted: Failed to send the command to the instance. The instance must be running, and the command should be sent within 1 minute.
+	//
+	// -  Running: The command is running on the instance.
+	//
+	// -  Success:
+	//
+	//     -  For a one-time execution command: The command has completed with an exit code of 0.
+	//
+	//     -  For a periodic execution command: The last run was successful with an exit code of 0, and the specified period has ended.
+	//
+	// -  Failed:
+	//
+	//     -  For a one-time execution command: The command has completed with a non-zero exit code.
+	//
+	//     -  For a periodic execution command: The last run was successful with a non-zero exit code, and the specified period will be terminated.
+	//
+	// -  Error: An exception occurred during command execution, and it cannot continue.
+	//
+	// -  Timeout: The command execution timed out.
+	//
+	// -  Cancelled: The command execution action has been canceled, and the command was never started.
+	//
+	// -  Stopping: The task is being stopped.
+	//
+	// -  Terminated: The command was terminated while running.
+	//
+	// -  Scheduled:
+	//
+	//     -  For a one-time execution command: Not applicable, will not appear.
+	//
+	//     -  For a periodic execution command: Waiting to run.
+	//
 	// example:
 	//
 	// Pending
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-lbj36wkp70b
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The command progress status of a single instance.
+	//
 	// example:
 	//
 	// Finished
 	NodeInvokeStatus *string `json:"NodeInvokeStatus,omitempty" xml:"NodeInvokeStatus,omitempty"`
+	// The output information of the command.
+	//
+	// - If `ContentEncoding` is set to `PlainText`, the original output information is returned.
+	//
+	// - If `ContentEncoding` is set to `Base64`, the Base64-encoded output information is returned.
+	//
 	// example:
 	//
 	// OutPutTestmsg
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The number of times the command has been executed on this instance.
+	//
+	// -  If the execution mode is one-time, the value is 0 or 1.
+	//
+	// -  If the execution mode is periodic, the value is the number of times it has been executed.
+	//
 	// example:
 	//
 	// 0
 	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
+	// Start Time
+	//
 	// example:
 	//
 	// 2019-12-20T06:15:55Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when `StopInvocation` was called to stop the command execution.
+	//
 	// example:
 	//
 	// 2019-12-20T06:15:55Z
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// Whether the queried command will be automatically executed in the future. The value range is as follows:
+	//
+	// - true: The command, when executed by calling `RunCommand` or `InvokeCommand`, has the `RepeatMode` parameter set to `Period`, `NextRebootOnly`, or `EveryReboot`.
+	//
+	// - false: Queries commands in the following two states.
+	//
+	// - When executing a command via `RunCommand` or `InvokeCommand`, the `RepeatMode` parameter is set to `Once`.
+	//
+	// - Commands that have been canceled, stopped, or completed.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	Timed *string `json:"Timed,omitempty" xml:"Timed,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2023-02-06T07:12:50Z
@@ -1729,7 +2298,7 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNo
 	return s
 }
 
-func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetErrorCode(v bool) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetErrorCode(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
 	s.ErrorCode = &v
 	return s
 }
@@ -1824,6 +2393,8 @@ func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody
 }
 
 type DescribeNodeRequest struct {
+	// Node ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1846,64 +2417,106 @@ func (s *DescribeNodeRequest) SetNodeId(v string) *DescribeNodeRequest {
 }
 
 type DescribeNodeResponseBody struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i116913051662373010974
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2022-09-30T03:35:53Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Expiration time
+	//
 	// example:
 	//
 	// 2022-06-23T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// Hostname
+	//
 	// example:
 	//
 	// 31d38530-241e-11ed-bc63-acde48001122
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	HpnZone  *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Cluster number
+	//
+	// example:
+	//
+	// A1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Image ID
+	//
 	// example:
 	//
 	// i190297201634099844192
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// 镜像名称
+	// Image name
 	//
 	// example:
 	//
 	// Centos7.9_all_0811
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// Machine type
+	//
 	// example:
 	//
 	// efg1.nvga1
-	MachineType *string                             `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	Networks    []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Network information
+	Networks []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	// Node group ID
+	//
 	// example:
 	//
 	// ng-ec3c96ff0aa4c60d
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// Node group name
+	//
 	// example:
 	//
 	// emr-default
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-zvp2tgykr08
-	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Node status
+	//
+	// example:
+	//
+	// Using
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// AC4F0004-7BCE-52E0-891B-CAC7D64E3368
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 资源组ID
+	//
+	// example:
+	//
+	// rg-acfmywpvugkh7kq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Unique machine identifier
+	//
 	// example:
 	//
 	// sag42ckf4jx
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// Zone ID
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -2009,18 +2622,26 @@ func (s *DescribeNodeResponseBody) SetZoneId(v string) *DescribeNodeResponseBody
 }
 
 type DescribeNodeResponseBodyNetworks struct {
+	// Network interface port information
+	//
 	// example:
 	//
 	// Bond0
 	BondName *string `json:"BondName,omitempty" xml:"BondName,omitempty"`
+	// Machine IP
+	//
 	// example:
 	//
 	// 47.254.235.44
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Cluster subnet ID
+	//
 	// example:
 	//
 	// vsw-uf68v51fldm5egmui5a6k
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// Cluster network ID
+	//
 	// example:
 	//
 	// vpd-xcuhjyrj
@@ -2085,6 +2706,14 @@ func (s *DescribeNodeResponse) SetBody(v *DescribeNodeResponseBody) *DescribeNod
 }
 
 type DescribeRegionsRequest struct {
+	// Filter the returned results based on Chinese, English, and Japanese. For more information, see RFC7231. Valid values:
+	//
+	// zh-CN
+	//
+	// en-US
+	//
+	// Default value: zh-CN
+	//
 	// example:
 	//
 	// zh-CN
@@ -2105,7 +2734,10 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
+	// List of region information.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1D2FBB36-C39B-5EBB-9928-FCC1A236D65D
@@ -2131,7 +2763,14 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// Region name
+	//
+	// example:
+	//
+	// Hang Zhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// region id
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2186,12 +2825,16 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSendFileResultsRequest struct {
+	// Command execution ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// t-bj038i0d6r8zoqo
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-zvp2tgykr08
@@ -2217,13 +2860,16 @@ func (s *DescribeSendFileResultsRequest) SetNodeId(v string) *DescribeSendFileRe
 }
 
 type DescribeSendFileResultsResponseBody struct {
+	// Record of file distribution.
 	Invocations *DescribeSendFileResultsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Struct"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of commands.
+	//
 	// example:
 	//
 	// 1
@@ -2254,6 +2900,7 @@ func (s *DescribeSendFileResultsResponseBody) SetTotalCount(v string) *DescribeS
 }
 
 type DescribeSendFileResultsResponseBodyInvocations struct {
+	// Command execution ID.
 	Invocation []*DescribeSendFileResultsResponseBodyInvocationsInvocation `json:"Invocation,omitempty" xml:"Invocation,omitempty" type:"Repeated"`
 }
 
@@ -2271,48 +2918,112 @@ func (s *DescribeSendFileResultsResponseBodyInvocations) SetInvocation(v []*Desc
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocation struct {
+	// Output information after command execution.
+	//
+	// If ContentEncoding is specified as PlainText, the original output information is returned.
+	//
+	// If ContentEncoding is specified as Base64, the Base64 encoded output information is returned.
+	//
 	// example:
 	//
 	// Base64
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// File content type.
+	//
+	// PlainText: Plain text.
+	//
+	// Base64: Base64 encoding.
+	//
+	// The default value is PlainText.
+	//
 	// example:
 	//
 	// PlainText
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Creation time of the distribution.
+	//
 	// example:
 	//
 	// 2023-04-10T10:53:46.156+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Command description.
+	//
+	// example:
+	//
+	// 描述信息。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user group of the file.
+	//
 	// example:
 	//
 	// root
 	FileGroup *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	// File permissions.
+	//
 	// example:
 	//
 	// 0644
 	FileMode *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	// The owner of the file.
+	//
 	// example:
 	//
 	// root
 	FileOwner *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	// Overall status of the file distribution. The overall status depends on the common execution status of all instances involved in this distribution, possible values are:
+	//
+	// - Pending: The system is verifying or distributing the file. If at least one instance has a file distribution status of Pending, the overall execution status will be Pending.
+	//
+	// - Running: The file is being distributed on the instance. If at least one instance has a file distribution status of Running, the overall execution status will be Running.
+	//
+	// - Success: All instances have a file distribution status of Success, then the overall execution status will be Success.
+	//
+	// - Failed: All instances have a file distribution status of Failed, then the overall execution status will be Failed. If any of the following conditions occur for the file distribution status on an instance, the return value will be Failed:
+	//
+	//     - The specified file parameters are incorrect, verification failed (Invalid).
+	//
+	//     - Failed to distribute the file to the instance (Aborted).
+	//
+	//     - The file creation failed within the instance (Failed).
+	//
+	//     - The file distribution timed out (Timeout).
+	//
+	//     - An exception occurred during file distribution and could not continue (Error).
+	//
+	// - PartialFailed: Some instances successfully received the file while others failed. If the file distribution status of all instances is either Success or Failed, the overall execution status will be PartialFailed.
+	//
 	// example:
 	//
 	// Pending
-	InvocationStatus *string                                                              `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	InvokeNodes      *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
+	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// Record of file distribution.
+	InvokeNodes *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
+	// Name of the file distribution.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Number of nodes
+	//
 	// example:
 	//
 	// 3
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Whether to overwrite the file if a file with the same name already exists in the target directory.
+	//
+	// - true: Overwrite.
+	//
+	// - false: Do not overwrite.
+	//
+	// The default value is false.
+	//
 	// example:
 	//
 	// true
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// Target path.
+	//
 	// example:
 	//
 	// /home/user
@@ -2393,6 +3104,7 @@ func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetTargetDir(
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes struct {
+	// Record of file distribution for the node.
 	InvokeNode []*DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode `json:"InvokeNode,omitempty" xml:"InvokeNode,omitempty" type:"Repeated"`
 }
 
@@ -2410,34 +3122,136 @@ func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes) Se
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode struct {
+	// The creation time of the file distribution task.
+	//
 	// example:
 	//
 	// 2023-02-06T07:12:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The failure reason code for file distribution. Possible values:
+	//
+	// - Empty: The file was distributed normally.
+	//
+	// - NodeNotExists: The specified instance does not exist or has been released.
+	//
+	// - NodeReleased: The instance was released during the file distribution process.
+	//
+	// - NodeNotRunning: The instance was not running when the file distribution task was created.
+	//
+	// - AccountNotExists: The specified account does not exist.
+	//
+	// - ClientNotRunning: The Cloud Assistant Agent is not running.
+	//
+	// - ClientNotResponse: The Cloud Assistant Agent is not responding.
+	//
+	// - ClientIsUpgrading: The Cloud Assistant Agent is currently being upgraded.
+	//
+	// - ClientNeedUpgrade: The Cloud Assistant Agent needs to be upgraded.
+	//
+	// - DeliveryTimeout: File delivery timed out.
+	//
+	// - FileCreateFail: Failed to create the file.
+	//
+	// - FileAlreadyExists: A file with the same name already exists at the specified path.
+	//
+	// - FileContentInvalid: The file content is invalid.
+	//
+	// - FileNameInvalid: The file name is invalid.
+	//
+	// - FilePathInvalid: The file path is invalid.
+	//
+	// - FileAuthorityInvalid: The file permissions are invalid.
+	//
+	// - UserGroupNotExists: The user group specified for file delivery does not exist.
+	//
 	// example:
 	//
 	// AccountNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Details of the reason for command delivery failure or execution failure, possible values:
+	//
+	// - Empty: The command executed normally.
+	//
+	// - the specified instance does not exist: The specified instance does not exist or has been released.
+	//
+	// - the node has been released when creating task: The instance was released during the command execution.
+	//
+	// - the node is not running when creating task: The instance was not in a running state when the command was executed.
+	//
+	// - the command is not applicable: The command is not applicable to the specified instance.
+	//
+	// - the specified account does not exist: The specified account does not exist.
+	//
+	// - the specified directory does not exist: The specified directory does not exist.
+	//
+	// - the cron job expression is invalid: The specified execution time expression is invalid.
+	//
+	// - the aliyun service is not running on the instance: The Cloud Assistant Agent is not running.
+	//
+	// - the aliyun service in the instance does not respond: The Cloud Assistant Agent is not responding.
+	//
+	// - the aliyun service in the node is upgrading now: The Cloud Assistant Agent is currently being upgraded.
+	//
+	// - the aliyun service in the node needs upgrade: The Cloud Assistant Agent needs an upgrade.
+	//
+	// - the command delivery has timed out: Command delivery has timed out.
+	//
+	// - the command execution has timed out: Command execution has timed out.
+	//
+	// - the command execution got an exception: An exception occurred during command execution.
+	//
+	// - the command execution has been interrupted: The command execution was interrupted.
+	//
+	// - the command execution exit code is not zero: The command execution completed with a non-zero exit code.
+	//
+	// - the specified instance has been released: The instance was released during file delivery.
+	//
 	// example:
 	//
 	// the specified instance does not exists
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// Completion time, format: "2020-05-22T17:04:18".
+	//
 	// example:
 	//
 	// 2023-04-10T10:53:46.156+08:00
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Status of the task on a single instance. Possible values:
+	//
+	// - Pending: The system is validating or distributing the file.
+	//
+	// - Invalid: The specified file parameters are incorrect, and validation failed.
+	//
+	// - Running: The file is being distributed to the instance.
+	//
+	// - Aborted: Failed to distribute the file to the instance.
+	//
+	// - Success: The file distribution is complete.
+	//
+	// - Failed: The file creation failed within the instance.
+	//
+	// - Error: An exception occurred during file distribution and could not continue.
+	//
+	// - Timeout: The file distribution timed out.
+	//
 	// example:
 	//
 	// Success
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// e01-cn-9lb3c15m81j
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Start Time
+	//
 	// example:
 	//
 	// 2023-03-30T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2023-03-30T16:00:00Z
@@ -2522,6 +3336,8 @@ func (s *DescribeSendFileResultsResponse) SetBody(v *DescribeSendFileResultsResp
 }
 
 type DescribeTaskRequest struct {
+	// Task ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2544,36 +3360,54 @@ func (s *DescribeTaskRequest) SetTaskId(v string) *DescribeTaskRequest {
 }
 
 type DescribeTaskResponseBody struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i119982311660892626523
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster Name
+	//
 	// example:
 	//
 	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Start Time
+	//
 	// example:
 	//
 	// 2022-11-30T02:00:00.852Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Task Failure Message
+	//
 	// example:
 	//
 	// Releasing [prod_main_mid_26e234cf] in region [cn-beijing] with weight [0]
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of node IDs
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// A7FD7411-9395-52E8-AF42-EB3A4A55446D
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Steps     []*DescribeTaskResponseBodySteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Execution Steps
+	Steps []*DescribeTaskResponseBodySteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	// Task State
+	//
 	// example:
 	//
 	// running
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// Task Type
+	//
 	// example:
 	//
 	// cut_cluster
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2022-11-30T03:40:14.852Z
@@ -2639,28 +3473,46 @@ func (s *DescribeTaskResponseBody) SetUpdateTime(v string) *DescribeTaskResponse
 }
 
 type DescribeTaskResponseBodySteps struct {
+	// Step Failure Message
+	//
 	// example:
 	//
 	// get taskinfo failed
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Stage Tag
+	//
+	// example:
+	//
+	// Node scaling
 	StageTag *string `json:"StageTag,omitempty" xml:"StageTag,omitempty"`
+	// Start Time
+	//
 	// example:
 	//
 	// 2022-11-30T2:00:00.852Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Step Name
+	//
 	// example:
 	//
 	// create_vpd
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// Step Execution State
+	//
 	// example:
 	//
 	// execution_success
 	StepState *string `json:"StepState,omitempty" xml:"StepState,omitempty"`
+	// Step Type
+	//
 	// example:
 	//
 	// normal
-	StepType *string                                  `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	// Subtasks
 	SubTasks []*DescribeTaskResponseBodyStepsSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2022-11-30T02:20:14.852Z
@@ -2716,26 +3568,38 @@ func (s *DescribeTaskResponseBodySteps) SetUpdateTime(v string) *DescribeTaskRes
 }
 
 type DescribeTaskResponseBodyStepsSubTasks struct {
+	// Creation Time
+	//
 	// example:
 	//
 	// 2022-11-30T2:00:00.852Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Subtask Failure Message
+	//
 	// example:
 	//
 	// Releasing [prod_main_mid_26e234cf] in region [cn-beijing] with weight [0]
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// i158805051661047928377
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task Execution State
+	//
 	// example:
 	//
 	// running
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// Task Type
+	//
 	// example:
 	//
 	// cut_node_sub_task
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2022-11-30T02:20:14.852Z
@@ -2810,6 +3674,14 @@ func (s *DescribeTaskResponse) SetBody(v *DescribeTaskResponseBody) *DescribeTas
 }
 
 type DescribeZonesRequest struct {
+	// Filter the returned results based on Chinese or English. For more information, see RFC7231. Valid values:
+	//
+	// zh-CN
+	//
+	// en-US
+	//
+	// Default value: zh-CN
+	//
 	// example:
 	//
 	// zh-CN
@@ -2830,11 +3702,14 @@ func (s *DescribeZonesRequest) SetAcceptLanguage(v string) *DescribeZonesRequest
 }
 
 type DescribeZonesResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// E9116F2D-82F8-501E-9ADB-2BE0C02B6A84
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of available zones
+	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -2856,7 +3731,14 @@ func (s *DescribeZonesResponseBody) SetZones(v []*DescribeZonesResponseBodyZones
 }
 
 type DescribeZonesResponseBodyZones struct {
+	// Zone name
+	//
+	// example:
+	//
+	// Hang Zhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// Zone ID
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -2911,18 +3793,30 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type ExtendClusterRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15b480fbd2fcdbc2869cd80
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool                                     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	IpAllocationPolicy    []*ExtendClusterRequestIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
-	NodeGroups            []*ExtendClusterRequestNodeGroups         `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	VSwitchZoneId         *string                                   `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
-	VpdSubnets            []*string                                 `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// IP allocation policy combination: Each policy can only choose one type, and multiple policies can be combined
+	IpAllocationPolicy []*ExtendClusterRequestIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
+	// Node Group
+	NodeGroups []*ExtendClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	// VSwitch availability zone ID
+	//
+	// example:
+	//
+	// cn-shanghai-b
+	VSwitchZoneId *string `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
+	// List of cluster subnets
+	VpdSubnets []*string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
 func (s ExtendClusterRequest) String() string {
@@ -2964,9 +3858,12 @@ func (s *ExtendClusterRequest) SetVpdSubnets(v []*string) *ExtendClusterRequest 
 }
 
 type ExtendClusterRequestIpAllocationPolicy struct {
-	BondPolicy        *ExtendClusterRequestIpAllocationPolicyBondPolicy          `json:"BondPolicy,omitempty" xml:"BondPolicy,omitempty" type:"Struct"`
+	// Specify the cluster subnet ID based on the bond name
+	BondPolicy *ExtendClusterRequestIpAllocationPolicyBondPolicy `json:"BondPolicy,omitempty" xml:"BondPolicy,omitempty" type:"Struct"`
+	// Machine type allocation policy
 	MachineTypePolicy []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicy `json:"MachineTypePolicy,omitempty" xml:"MachineTypePolicy,omitempty" type:"Repeated"`
-	NodePolicy        []*ExtendClusterRequestIpAllocationPolicyNodePolicy        `json:"NodePolicy,omitempty" xml:"NodePolicy,omitempty" type:"Repeated"`
+	// Node allocation policy
+	NodePolicy []*ExtendClusterRequestIpAllocationPolicyNodePolicy `json:"NodePolicy,omitempty" xml:"NodePolicy,omitempty" type:"Repeated"`
 }
 
 func (s ExtendClusterRequestIpAllocationPolicy) String() string {
@@ -2993,11 +3890,14 @@ func (s *ExtendClusterRequestIpAllocationPolicy) SetNodePolicy(v []*ExtendCluste
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicy struct {
+	// Default bond cluster subnet
+	//
 	// example:
 	//
 	// subnet-3od2fe
-	BondDefaultSubnet *string                                                  `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
-	Bonds             []*ExtendClusterRequestIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	BondDefaultSubnet *string `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
+	// Bond information
+	Bonds []*ExtendClusterRequestIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
 }
 
 func (s ExtendClusterRequestIpAllocationPolicyBondPolicy) String() string {
@@ -3019,10 +3919,14 @@ func (s *ExtendClusterRequestIpAllocationPolicyBondPolicy) SetBonds(v []*ExtendC
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicyBonds struct {
+	// Bond name
+	//
 	// example:
 	//
 	// Bond0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// IP source cluster subnet
+	//
 	// example:
 	//
 	// subnet-3od2fe
@@ -3048,7 +3952,10 @@ func (s *ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) SetSubnet(v stri
 }
 
 type ExtendClusterRequestIpAllocationPolicyMachineTypePolicy struct {
+	// Bond information
 	Bonds []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// Machine Type
+	//
 	// example:
 	//
 	// efg1.nvga1
@@ -3074,10 +3981,14 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) SetMachineType
 }
 
 type ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds struct {
+	// Bond name
+	//
 	// example:
 	//
 	// Bond0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// IP source cluster subnet
+	//
 	// example:
 	//
 	// subnet-fdo3dv
@@ -3103,7 +4014,10 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) SetSubnet
 }
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicy struct {
+	// Bond information
 	Bonds []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// Node ID
+	//
 	// example:
 	//
 	// i-3fdodw2
@@ -3129,10 +4043,14 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) SetNodeId(v string) *
 }
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicyBonds struct {
+	// Bond name
+	//
 	// example:
 	//
 	// Bond0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// IP source cluster subnet
+	//
 	// example:
 	//
 	// subnet-fdo3dv
@@ -3158,13 +4076,28 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) SetSubnet(v stri
 }
 
 type ExtendClusterRequestNodeGroups struct {
+	// Node Group ID
+	//
 	// example:
 	//
 	// i16d4883a46cbadeb4bc9
-	NodeGroupId *string                                `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	Nodes       []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	UserData    *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	ZoneId      *string                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// List of Nodes
+	Nodes []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Custom Data
+	//
+	// example:
+	//
+	// #!/bin/sh
+	//
+	// echo "Hello World. The time is now $(date -R)!" | tee /root/userdata_test.txt
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// Zone ID
+	//
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ExtendClusterRequestNodeGroups) String() string {
@@ -3196,20 +4129,36 @@ func (s *ExtendClusterRequestNodeGroups) SetZoneId(v string) *ExtendClusterReque
 }
 
 type ExtendClusterRequestNodeGroupsNodes struct {
+	// Hostname
+	//
 	// example:
 	//
 	// d044d220-33fd-11ed-86a6
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Login Password
+	//
 	// example:
 	//
 	// ***
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-zvp2zdpy601
-	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// VSwitch ID
+	//
+	// example:
+	//
+	// vsw-bp169pi5fj151rrms4sia
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-0jlasms92fdxqd3wlf8ny
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ExtendClusterRequestNodeGroupsNodes) String() string {
@@ -3246,18 +4195,30 @@ func (s *ExtendClusterRequestNodeGroupsNodes) SetVpcId(v string) *ExtendClusterR
 }
 
 type ExtendClusterShrinkRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15b480fbd2fcdbc2869cd80
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks    *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// IP allocation policy combination: Each policy can only choose one type, and multiple policies can be combined
 	IpAllocationPolicyShrink *string `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty"`
-	NodeGroupsShrink         *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
-	VSwitchZoneId            *string `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
-	VpdSubnetsShrink         *string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty"`
+	// Node Group
+	NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
+	// VSwitch availability zone ID
+	//
+	// example:
+	//
+	// cn-shanghai-b
+	VSwitchZoneId *string `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
+	// List of cluster subnets
+	VpdSubnetsShrink *string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty"`
 }
 
 func (s ExtendClusterShrinkRequest) String() string {
@@ -3299,10 +4260,14 @@ func (s *ExtendClusterShrinkRequest) SetVpdSubnetsShrink(v string) *ExtendCluste
 }
 
 type ExtendClusterResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 03668372-18FF-5959-98D9-6B36A4643C7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// i158475611663639202234
@@ -3357,20 +4322,28 @@ func (s *ExtendClusterResponse) SetBody(v *ExtendClusterResponseBody) *ExtendClu
 }
 
 type ListClusterNodesRequest struct {
+	// Cluster ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i15b480fbd2fcdbc2869cd80
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Number of items per page in a paginated query, with a default value of 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Query token (Token), which is the value of the NextToken parameter returned by the previous API call.
+	//
 	// example:
 	//
 	// AAAAAdQ3Z+oPlg49gsr2y8jb6wY=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Node group ID
+	//
 	// example:
 	//
 	// ng-ec3c96ff0aa4c60d
@@ -3406,11 +4379,16 @@ func (s *ListClusterNodesRequest) SetNodeGroupId(v string) *ListClusterNodesRequ
 }
 
 type ListClusterNodesResponseBody struct {
+	// The query token value returned by this call.
+	//
 	// example:
 	//
 	// AAAAAXW/ZB9TBvH+0ZK0phtCibQgQmu1RbqplAI6Velo2OKR
-	NextToken *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Nodes     []*ListClusterNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// List of nodes
+	Nodes []*ListClusterNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 2BA76272-6608-5AEC-BBA8-B6F0D3D14CDB
@@ -3441,48 +4419,76 @@ func (s *ListClusterNodesResponseBody) SetRequestId(v string) *ListClusterNodesR
 }
 
 type ListClusterNodesResponseBodyNodes struct {
+	// Creation time
+	//
 	// example:
 	//
 	// 1642472468000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Machine expiration time
+	//
 	// example:
 	//
 	// 1762185600000
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// Hostname
+	//
 	// example:
 	//
 	// 72432f80-273e-11ed-b57a-acde48001122
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	HpnZone  *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Hpn Zone
+	//
+	// example:
+	//
+	// A1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// System image ID
+	//
 	// example:
 	//
 	// i190297201669099844192
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Machine type
+	//
 	// example:
 	//
 	// cn-wulanchabu-b11
-	MachineType *string                                      `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	Networks    []*ListClusterNodesResponseBodyNodesNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Network information
+	Networks []*ListClusterNodesResponseBodyNodesNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	// Node group ID
+	//
 	// example:
 	//
 	// ng-e9b74f4d450cf18d
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// Node group name
+	//
 	// example:
 	//
 	// emr_master
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-2r42tmj4z02
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Node status
+	//
 	// example:
 	//
 	// Extending
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// Machine SN
+	//
 	// example:
 	//
 	// sn_tOuUk
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// Zone ID
+	//
 	// example:
 	//
 	// cn-hangzhou-b
@@ -3563,10 +4569,30 @@ func (s *ListClusterNodesResponseBodyNodes) SetZoneId(v string) *ListClusterNode
 }
 
 type ListClusterNodesResponseBodyNodesNetworks struct {
+	// Machine network interface name
+	//
+	// example:
+	//
+	// bond0
 	BondName *string `json:"BondName,omitempty" xml:"BondName,omitempty"`
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// IP address within the VPC
+	//
+	// example:
+	//
+	// 192.168.22.2
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// VPC subnet ID
+	//
+	// example:
+	//
+	// subnet-fwekrvg9
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	VpdId    *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpd-eoiy88ju
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s ListClusterNodesResponseBodyNodesNetworks) String() string {
@@ -3627,14 +4653,20 @@ func (s *ListClusterNodesResponse) SetBody(v *ListClusterNodesResponseBody) *Lis
 }
 
 type ListClustersRequest struct {
+	// Number of items per page for paginated queries, with a default value of 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Query token, which is the value of the NextToken parameter returned by the previous API call.
+	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2bg6wyoox6jq
@@ -3665,11 +4697,16 @@ func (s *ListClustersRequest) SetResourceGroupId(v string) *ListClustersRequest 
 }
 
 type ListClustersResponseBody struct {
+	// Cluster information
 	Clusters []*ListClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The query token value returned by this call.
+	//
 	// example:
 	//
 	// f4f9a292c17072a2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 2FE2B22C-CF9D-59DE-BF63-DC9B9B33A9D1
@@ -3700,54 +4737,96 @@ func (s *ListClustersResponseBody) SetRequestId(v string) *ListClustersResponseB
 }
 
 type ListClustersResponseBodyClusters struct {
+	// Cluster description
+	//
+	// example:
+	//
+	// PPU-cluster2 bz
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// i137590131672134915401
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// cnp_test_cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Cluster type
+	//
 	// example:
 	//
-	// AckEdgPro
+	// AckEdgePro
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Component information
+	//
 	// example:
 	//
 	// {}
-	Components         interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
-	ComputingIpVersion *string     `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
+	Components interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
+	// IP version of the computing network
+	//
+	// example:
+	//
+	// IPv4
+	ComputingIpVersion *string `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1672134938
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HpnZone    *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Cluster number
+	//
+	// example:
+	//
+	// B1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Number of nodes
+	//
 	// example:
 	//
 	// 12
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Number of node groups
+	//
 	// example:
 	//
 	// 2
 	NodeGroupCount *int64 `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
+	// Cluster status
+	//
 	// example:
 	//
 	// initializing
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2ajbjoloa23q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// i156365121663149566024
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Update time
+	//
 	// example:
 	//
 	// 1672134968
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-0jlx4hol2bjboafzmffvd
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListClustersResponseBodyClusters) String() string {
@@ -3863,19 +4942,35 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListFreeNodesRequest struct {
+	// Cluster number
+	//
+	// example:
+	//
+	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Machine type
+	//
 	// example:
 	//
 	// mock-machine-type2
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Number of items per page for paginated queries, default is 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Query token (Token), the value should be the NextToken parameter value returned from the previous API call.
+	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Resource group ID
+	//
+	// example:
+	//
+	// rg-acfmxno4vh5muoq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3913,11 +5008,16 @@ func (s *ListFreeNodesRequest) SetResourceGroupId(v string) *ListFreeNodesReques
 }
 
 type ListFreeNodesResponseBody struct {
+	// The query token value returned by this call.
+	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
-	NextToken *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Nodes     []*ListFreeNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// List of nodes
+	Nodes []*ListFreeNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// AA14CB86-70C4-5CB7-9E7B-6CCA77F3512B
@@ -3948,28 +5048,50 @@ func (s *ListFreeNodesResponseBody) SetRequestId(v string) *ListFreeNodesRespons
 }
 
 type ListFreeNodesResponseBodyNodes struct {
+	// Creation time
+	//
 	// example:
 	//
 	// 1652321554
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Expiration time of the machine
+	//
 	// example:
 	//
 	// 1673107200
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Cluster number
+	//
+	// example:
+	//
+	// A1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Machine type
+	//
 	// example:
 	//
 	// efg1.nvga1
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-7pp2x193801
-	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Resource group ID
+	//
+	// example:
+	//
+	// rg-aekzkkbrpl4owgy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Machine SN
+	//
 	// example:
 	//
 	// sn_pozkHBgicd
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// Availability zone ID
+	//
 	// example:
 	//
 	// cn-hangzhou-j
@@ -4054,25 +5176,34 @@ func (s *ListFreeNodesResponse) SetBody(v *ListFreeNodesResponseBody) *ListFreeN
 }
 
 type ListTagResourcesRequest struct {
+	// Query token (Token), the value should be the NextToken returned from the previous API call
+	//
 	// example:
 	//
 	// AAAAAdQ3Z+oPlg49gsr2y8jb6wY=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Region ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of resource IDs
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Node
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tags
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -4109,10 +5240,14 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
+	// Tag key
+	//
 	// example:
 	//
 	// PodName
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value
+	//
 	// example:
 	//
 	// WFT-OTC
@@ -4138,14 +5273,19 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
+	// NextToken for the next page, include this returned value when requesting the next page
+	//
 	// example:
 	//
 	// AAAAAdQ3Z+oPlg49gsr2y8jb6wY=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8F208B6D-4C42-5FD3-B6BE-E826E92A44DD
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Tagged resources.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -4190,18 +5330,26 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	// Resource ID
+	//
 	// example:
 	//
 	// i15azeddnvf7uhw2oij57o0
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource type
+	//
 	// example:
 	//
 	// Cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Tag key
+	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// Tag value
+	//
 	// example:
 	//
 	// dev
@@ -4266,15 +5414,20 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type RebootNodesRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15b480fbd2fcdbc2869cd80
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	Nodes                 []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// List of nodes
+	Nodes []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
 func (s RebootNodesRequest) String() string {
@@ -4301,15 +5454,20 @@ func (s *RebootNodesRequest) SetNodes(v []*string) *RebootNodesRequest {
 }
 
 type RebootNodesShrinkRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15b480fbd2fcdbc2869cd80
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NodesShrink           *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// List of nodes
+	NodesShrink *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 }
 
 func (s RebootNodesShrinkRequest) String() string {
@@ -4336,10 +5494,14 @@ func (s *RebootNodesShrinkRequest) SetNodesShrink(v string) *RebootNodesShrinkRe
 }
 
 type RebootNodesResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task Id
+	//
 	// example:
 	//
 	// i158475611663639202234
@@ -4394,16 +5556,28 @@ func (s *RebootNodesResponse) SetBody(v *RebootNodesResponseBody) *RebootNodesRe
 }
 
 type ReimageNodesRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15dfa12e8f27c44f4a006c2c8bb
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool                       `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	Nodes                 []*ReimageNodesRequestNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	UserData              *string                     `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// Node list
+	Nodes []*ReimageNodesRequestNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Custom data
+	//
+	// example:
+	//
+	// #!/bin/sh
+	//
+	// echo "Hello World. The time is now $(date -R)!" | tee /root/userdata_test.txt
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ReimageNodesRequest) String() string {
@@ -4435,18 +5609,26 @@ func (s *ReimageNodesRequest) SetUserData(v string) *ReimageNodesRequest {
 }
 
 type ReimageNodesRequestNodes struct {
+	// Hostname
+	//
 	// example:
 	//
 	// 457db5ca-241d-11ed-9fd7-acde48001122
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// System image ID
+	//
 	// example:
 	//
 	// m-8vbf8rpv2nn14y7oybjy
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Login password
+	//
 	// example:
 	//
 	// ***
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-cn-zvp2tgykr0b
@@ -4482,16 +5664,28 @@ func (s *ReimageNodesRequestNodes) SetNodeId(v string) *ReimageNodesRequestNodes
 }
 
 type ReimageNodesShrinkRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15dfa12e8f27c44f4a006c2c8bb
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NodesShrink           *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	UserData              *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// Node list
+	NodesShrink *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	// Custom data
+	//
+	// example:
+	//
+	// #!/bin/sh
+	//
+	// echo "Hello World. The time is now $(date -R)!" | tee /root/userdata_test.txt
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ReimageNodesShrinkRequest) String() string {
@@ -4523,10 +5717,14 @@ func (s *ReimageNodesShrinkRequest) SetUserData(v string) *ReimageNodesShrinkReq
 }
 
 type ReimageNodesResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 15FBCD9B-C93F-54E8-A168-AADE7E66DAD2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// i158782151663841517926
@@ -4581,50 +5779,152 @@ func (s *ReimageNodesResponse) SetBody(v *ReimageNodesResponseBody) *ReimageNode
 }
 
 type RunCommandRequest struct {
+	// Ensures idempotence of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests.
+	//
+	// ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see How to Ensure Idempotence.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Command content. Please note the following:
+	//
+	// - Specify `EnableParameter=true` to enable custom parameters in the command content.
+	//
+	// - Define custom parameters using the {{}} format; spaces and newlines within `{{}}` will be ignored.
+	//
+	// - The number of custom parameters cannot exceed 20.
+	//
+	// - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
+	//
+	// - A single custom parameter name cannot exceed 64 bytes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// Encoding method for the script content. Valid values:
+	//
+	// - PlainText: No encoding, transmitted in plain text.
+	//
+	// - Base64: Base64 encoding.
+	//
+	// Default value: PlainText. If an invalid value is provided, it will be treated as PlainText.
+	//
 	// example:
 	//
 	// Base64
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// Command description.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the command contains custom parameters.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
-	EnableParameter *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	EnableParameter *bool `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	// Execution time for scheduled commands. Currently, three types of scheduling methods are supported: fixed interval (based on Rate expression), one-time execution at a specific time, and clock-based scheduling (based on Cron expression).
+	//
+	// Fixed interval execution: Based on the Rate expression, the command is executed at the set interval. The interval can be set in seconds (s), minutes (m), hours (h), and days (d), suitable for scenarios where tasks need to be executed at fixed intervals. The format is rate(<interval value><interval unit>), such as rate(5m) for every 5 minutes. The following restrictions apply to fixed interval execution:
+	//
+	// - The interval should not exceed 7 days and should be no less than 60 seconds, and it must be greater than the timeout of the scheduled task.
+	//
+	// - The interval is based on a fixed frequency and is independent of the actual execution time of the task. For example, if the command is set to execute every 5 minutes and the task takes 2 minutes to complete, the next round will start 3 minutes after the completion of the task.
+	//
+	// - The task will not be executed immediately upon creation. For example, if the command is set to execute every 5 minutes, it will not be executed immediately upon creation but will start 5 minutes after the task is created.
+	//
+	// One-time execution at a specific time: Executes the command once at the specified time and timezone. The format is at(yyyy-MM-dd HH:mm:ss <timezone>), which is at(year-month-day hour:minute:second <timezone>). If no timezone is specified, UTC is used by default. Timezones support the following three formats:
+	//
+	// - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
+	//
+	// - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
+	//
+	// - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+	//
+	// For example, to execute once at 13:15:30 on June 6, 2022, in Shanghai, China, the format would be: at(2022-06-06 13:15:30 Asia/Shanghai); to execute once at 13:15:30 on June 6, 2022, in the GMT-7:00 timezone, the format would be: at(2022-06-06 13:15:30 GMT-7:00).
+	//
+	// Clock-based scheduling (based on Cron expression): Based on the Cron expression, the command is executed according to the set schedule. The format is <second> <minute> <hour> <day> <month> <weekday> <year (optional)> <timezone>, i.e., <Cron expression> <timezone>. In the specified timezone, the scheduled task execution time is calculated based on the Cron expression and then executed. If no timezone is specified, the system\\"s internal timezone of the instance running the scheduled task is used by default. For more information about Cron expressions, see Cron Expressions. Timezones support the following three formats:
+	//
+	// - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
+	//
+	// - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
+	//
+	// - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+	//
+	// For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? 	- 	- 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 	- 	- ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 	- 10 ? 2022/2 UTC.
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// Command name.
+	//
 	// example:
 	//
 	// testName
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of nodes.
 	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	// When the command contains custom parameters, you need to pass in key-value pairs of these custom parameters when executing the command. For example, if the command content is `echo {{name}}`, you can pass in the key-value pair `{"name":"Jack"}` through the `Parameter` parameter. The custom parameter will automatically replace the variable value `name`, resulting in a new command, which actually executes as `echo Jack`.
+	//
+	// The number of custom parameters ranges from 0 to 10, and you should note:
+	//
+	// - Keys cannot be empty strings and support up to 64 characters at most.
+	//
+	// - Values can be empty strings.
+	//
+	// - When combined with the original command content and Base64 encoded, if the command is saved, the size after Base64 encoding must not exceed 18 KB; if the command is not saved, the size after Base64 encoding must not exceed 24 KB. You can set whether to keep the command via `KeepCommand`.
+	//
+	// - The set of custom parameter names must be a subset of the parameter set defined during command creation. For parameters that are not passed in, you can use an empty string as a substitute.
+	//
+	// The default value is empty, indicating that the parameter is not set, thus disabling custom parameters.
+	//
 	// example:
 	//
 	// {"name":"Jack", "accessKey":"LTAIdyvdIqaRY****"}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Set the command execution mode. Valid values:
+	//
+	// - Once: Execute the command immediately.
+	//
+	// - Period: Execute the command at a scheduled time. When this parameter is set to `Period`, you must also specify the `Frequency` parameter.
+	//
+	// - NextRebootOnly: Automatically execute the command when the instance starts next time.
+	//
+	// - EveryReboot: Automatically execute the command every time the instance starts.
+	//
+	// Default value:
+	//
+	// - If the `Frequency` parameter is not specified, the default value is `Once`.
+	//
+	// - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
+	//
 	// example:
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
+	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The username to execute the command in the instance. The length must not exceed 255 characters.
+	//
+	//     For Linux systems, the command is executed by the root user by default.
+	//
 	// example:
 	//
 	// root
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// You can customize the execution path of the command. The default paths are as follows:
+	//
+	// - Linux instances: The default execution path is under the /home directory of the root user.
+	//
 	// example:
 	//
 	// /home/user
@@ -4705,50 +6005,152 @@ func (s *RunCommandRequest) SetWorkingDir(v string) *RunCommandRequest {
 }
 
 type RunCommandShrinkRequest struct {
+	// Ensures idempotence of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests.
+	//
+	// ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see How to Ensure Idempotence.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Command content. Please note the following:
+	//
+	// - Specify `EnableParameter=true` to enable custom parameters in the command content.
+	//
+	// - Define custom parameters using the {{}} format; spaces and newlines within `{{}}` will be ignored.
+	//
+	// - The number of custom parameters cannot exceed 20.
+	//
+	// - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
+	//
+	// - A single custom parameter name cannot exceed 64 bytes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// Encoding method for the script content. Valid values:
+	//
+	// - PlainText: No encoding, transmitted in plain text.
+	//
+	// - Base64: Base64 encoding.
+	//
+	// Default value: PlainText. If an invalid value is provided, it will be treated as PlainText.
+	//
 	// example:
 	//
 	// Base64
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// Command description.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the command contains custom parameters.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
-	EnableParameter *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	EnableParameter *bool `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	// Execution time for scheduled commands. Currently, three types of scheduling methods are supported: fixed interval (based on Rate expression), one-time execution at a specific time, and clock-based scheduling (based on Cron expression).
+	//
+	// Fixed interval execution: Based on the Rate expression, the command is executed at the set interval. The interval can be set in seconds (s), minutes (m), hours (h), and days (d), suitable for scenarios where tasks need to be executed at fixed intervals. The format is rate(<interval value><interval unit>), such as rate(5m) for every 5 minutes. The following restrictions apply to fixed interval execution:
+	//
+	// - The interval should not exceed 7 days and should be no less than 60 seconds, and it must be greater than the timeout of the scheduled task.
+	//
+	// - The interval is based on a fixed frequency and is independent of the actual execution time of the task. For example, if the command is set to execute every 5 minutes and the task takes 2 minutes to complete, the next round will start 3 minutes after the completion of the task.
+	//
+	// - The task will not be executed immediately upon creation. For example, if the command is set to execute every 5 minutes, it will not be executed immediately upon creation but will start 5 minutes after the task is created.
+	//
+	// One-time execution at a specific time: Executes the command once at the specified time and timezone. The format is at(yyyy-MM-dd HH:mm:ss <timezone>), which is at(year-month-day hour:minute:second <timezone>). If no timezone is specified, UTC is used by default. Timezones support the following three formats:
+	//
+	// - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
+	//
+	// - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
+	//
+	// - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+	//
+	// For example, to execute once at 13:15:30 on June 6, 2022, in Shanghai, China, the format would be: at(2022-06-06 13:15:30 Asia/Shanghai); to execute once at 13:15:30 on June 6, 2022, in the GMT-7:00 timezone, the format would be: at(2022-06-06 13:15:30 GMT-7:00).
+	//
+	// Clock-based scheduling (based on Cron expression): Based on the Cron expression, the command is executed according to the set schedule. The format is <second> <minute> <hour> <day> <month> <weekday> <year (optional)> <timezone>, i.e., <Cron expression> <timezone>. In the specified timezone, the scheduled task execution time is calculated based on the Cron expression and then executed. If no timezone is specified, the system\\"s internal timezone of the instance running the scheduled task is used by default. For more information about Cron expressions, see Cron Expressions. Timezones support the following three formats:
+	//
+	// - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
+	//
+	// - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
+	//
+	// - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+	//
+	// For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? 	- 	- 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 	- 	- ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 	- 10 ? 2022/2 UTC.
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// Command name.
+	//
 	// example:
 	//
 	// testName
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of nodes.
 	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
+	// When the command contains custom parameters, you need to pass in key-value pairs of these custom parameters when executing the command. For example, if the command content is `echo {{name}}`, you can pass in the key-value pair `{"name":"Jack"}` through the `Parameter` parameter. The custom parameter will automatically replace the variable value `name`, resulting in a new command, which actually executes as `echo Jack`.
+	//
+	// The number of custom parameters ranges from 0 to 10, and you should note:
+	//
+	// - Keys cannot be empty strings and support up to 64 characters at most.
+	//
+	// - Values can be empty strings.
+	//
+	// - When combined with the original command content and Base64 encoded, if the command is saved, the size after Base64 encoding must not exceed 18 KB; if the command is not saved, the size after Base64 encoding must not exceed 24 KB. You can set whether to keep the command via `KeepCommand`.
+	//
+	// - The set of custom parameter names must be a subset of the parameter set defined during command creation. For parameters that are not passed in, you can use an empty string as a substitute.
+	//
+	// The default value is empty, indicating that the parameter is not set, thus disabling custom parameters.
+	//
 	// example:
 	//
 	// {"name":"Jack", "accessKey":"LTAIdyvdIqaRY****"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Set the command execution mode. Valid values:
+	//
+	// - Once: Execute the command immediately.
+	//
+	// - Period: Execute the command at a scheduled time. When this parameter is set to `Period`, you must also specify the `Frequency` parameter.
+	//
+	// - NextRebootOnly: Automatically execute the command when the instance starts next time.
+	//
+	// - EveryReboot: Automatically execute the command every time the instance starts.
+	//
+	// Default value:
+	//
+	// - If the `Frequency` parameter is not specified, the default value is `Once`.
+	//
+	// - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
+	//
 	// example:
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
+	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The username to execute the command in the instance. The length must not exceed 255 characters.
+	//
+	//     For Linux systems, the command is executed by the root user by default.
+	//
 	// example:
 	//
 	// root
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// You can customize the execution path of the command. The default paths are as follows:
+	//
+	// - Linux instances: The default execution path is under the /home directory of the root user.
+	//
 	// example:
 	//
 	// /home/user
@@ -4829,11 +6231,13 @@ func (s *RunCommandShrinkRequest) SetWorkingDir(v string) *RunCommandShrinkReque
 }
 
 type RunCommandResponseBody struct {
+	// ID of the command execution.
+	//
 	// example:
 	//
 	// t-7d2a745b412b4601b2d47f6a768d*
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -4889,50 +6293,100 @@ func (s *RunCommandResponse) SetBody(v *RunCommandResponseBody) *RunCommandRespo
 }
 
 type SendFileRequest struct {
+	// The content of the file. After Base64 encoding, the size cannot exceed 32 KB.
+	//
+	// - When the `ContentType` parameter is `PlainText`, this field is plain text.
+	//
+	// - When the `ContentType` parameter is `Base64`, this field is Base64 encoded text.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// #!/bin/bash echo "Current User is :" echo $(ps | grep "$$" | awk \\"{print $2}\\") -------- oss://bucketName/objectName
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content type of the file.
+	//
+	// PlainText: Plain text.
+	//
+	// Base64: Base64 encoded.
+	//
+	// The default value is PlainText.
+	//
 	// example:
 	//
 	// PlainText
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Description information. Supports all character sets, and the length must not exceed 512 characters.
+	//
 	// example:
 	//
 	// This is a test file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The group of the file. Applies only to Linux instances, and the default is root. The length must not exceed 64 characters.
+	//
+	// Note
+	//
+	// When using other groups, ensure that the group exists in the instance.
+	//
 	// example:
 	//
 	// test
 	FileGroup *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	// The permissions of the file. Applies only to Linux instances, and the setting method is the same as the chmod command.
+	//
+	// The default value is 0644, which means the user has read and write permissions, while the group and other users have read-only permissions.
+	//
 	// example:
 	//
 	// 0644
 	FileMode *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	// The owner of the file. Applies only to Linux instances, and the default is root.
+	//
 	// example:
 	//
 	// root
 	FileOwner *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	// The name of the file. Supports all character sets, and the length must not exceed 255 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// file.txt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of nodes.
+	//
 	// This parameter is required.
 	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	// Whether to overwrite the file if a file with the same name already exists in the target directory.
+	//
+	// - true: Overwrite.
+	//
+	// - false: Do not overwrite.
+	//
+	// The default value is false.
+	//
 	// example:
 	//
 	// True
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// The directory in the target Lingjun node where the file will be sent. If it does not exist, it will be automatically created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /home
 	TargetDir *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+	// The timeout for sending the file. Unit: seconds.
+	//
+	// - A timeout may occur due to process reasons, missing modules, or missing Cloud Assistant Agent.
+	//
+	// - If the set timeout is less than 10 seconds, to ensure successful delivery, the system will automatically set the timeout to 10 seconds.
+	//
+	// The default value is 60.
+	//
 	// example:
 	//
 	// 600
@@ -5003,50 +6457,100 @@ func (s *SendFileRequest) SetTimeout(v int32) *SendFileRequest {
 }
 
 type SendFileShrinkRequest struct {
+	// The content of the file. After Base64 encoding, the size cannot exceed 32 KB.
+	//
+	// - When the `ContentType` parameter is `PlainText`, this field is plain text.
+	//
+	// - When the `ContentType` parameter is `Base64`, this field is Base64 encoded text.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// #!/bin/bash echo "Current User is :" echo $(ps | grep "$$" | awk \\"{print $2}\\") -------- oss://bucketName/objectName
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content type of the file.
+	//
+	// PlainText: Plain text.
+	//
+	// Base64: Base64 encoded.
+	//
+	// The default value is PlainText.
+	//
 	// example:
 	//
 	// PlainText
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Description information. Supports all character sets, and the length must not exceed 512 characters.
+	//
 	// example:
 	//
 	// This is a test file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The group of the file. Applies only to Linux instances, and the default is root. The length must not exceed 64 characters.
+	//
+	// Note
+	//
+	// When using other groups, ensure that the group exists in the instance.
+	//
 	// example:
 	//
 	// test
 	FileGroup *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	// The permissions of the file. Applies only to Linux instances, and the setting method is the same as the chmod command.
+	//
+	// The default value is 0644, which means the user has read and write permissions, while the group and other users have read-only permissions.
+	//
 	// example:
 	//
 	// 0644
 	FileMode *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	// The owner of the file. Applies only to Linux instances, and the default is root.
+	//
 	// example:
 	//
 	// root
 	FileOwner *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	// The name of the file. Supports all character sets, and the length must not exceed 255 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// file.txt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of nodes.
+	//
 	// This parameter is required.
 	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
+	// Whether to overwrite the file if a file with the same name already exists in the target directory.
+	//
+	// - true: Overwrite.
+	//
+	// - false: Do not overwrite.
+	//
+	// The default value is false.
+	//
 	// example:
 	//
 	// True
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// The directory in the target Lingjun node where the file will be sent. If it does not exist, it will be automatically created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /home
 	TargetDir *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+	// The timeout for sending the file. Unit: seconds.
+	//
+	// - A timeout may occur due to process reasons, missing modules, or missing Cloud Assistant Agent.
+	//
+	// - If the set timeout is less than 10 seconds, to ensure successful delivery, the system will automatically set the timeout to 10 seconds.
+	//
+	// The default value is 60.
+	//
 	// example:
 	//
 	// 600
@@ -5117,11 +6621,13 @@ func (s *SendFileShrinkRequest) SetTimeout(v int32) *SendFileShrinkRequest {
 }
 
 type SendFileResponseBody struct {
+	// Command execution ID.
+	//
 	// example:
 	//
 	// t-hz03la52z1zkvls
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -5177,15 +6683,20 @@ func (s *SendFileResponse) SetBody(v *SendFileResponseBody) *SendFileResponse {
 }
 
 type ShrinkClusterRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15dfa12e8f27c44f4a006c2c8bb
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool                             `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NodeGroups            []*ShrinkClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// Node group information
+	NodeGroups []*ShrinkClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
 }
 
 func (s ShrinkClusterRequest) String() string {
@@ -5212,11 +6723,14 @@ func (s *ShrinkClusterRequest) SetNodeGroups(v []*ShrinkClusterRequestNodeGroups
 }
 
 type ShrinkClusterRequestNodeGroups struct {
+	// Node group ID
+	//
 	// example:
 	//
 	// ng-3b6fbd24b1b845a0
-	NodeGroupId *string                                `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	Nodes       []*ShrinkClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// List of nodes
+	Nodes []*ShrinkClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
 func (s ShrinkClusterRequestNodeGroups) String() string {
@@ -5238,6 +6752,8 @@ func (s *ShrinkClusterRequestNodeGroups) SetNodes(v []*ShrinkClusterRequestNodeG
 }
 
 type ShrinkClusterRequestNodeGroupsNodes struct {
+	// Node ID
+	//
 	// example:
 	//
 	// e01poc-cn-zmb2ypjdc01
@@ -5258,15 +6774,20 @@ func (s *ShrinkClusterRequestNodeGroupsNodes) SetNodeId(v string) *ShrinkCluster
 }
 
 type ShrinkClusterShrinkRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i15dfa12e8f27c44f4a006c2c8bb
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Whether to allow skipping failed node tasks, default value is False
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NodeGroupsShrink      *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// Node group information
+	NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
 }
 
 func (s ShrinkClusterShrinkRequest) String() string {
@@ -5293,10 +6814,14 @@ func (s *ShrinkClusterShrinkRequest) SetNodeGroupsShrink(v string) *ShrinkCluste
 }
 
 type ShrinkClusterResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// CC9FEF89-9BE5-5E03-845E-238B48D7599B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// task id
+	//
 	// example:
 	//
 	// i159136551662516768776
@@ -5351,12 +6876,15 @@ func (s *ShrinkClusterResponse) SetBody(v *ShrinkClusterResponseBody) *ShrinkClu
 }
 
 type StopInvocationRequest struct {
+	// Command execution ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-hz044748dzepds0
-	InvokeId   *string   `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// List of nodes.
 	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
 }
 
@@ -5379,12 +6907,15 @@ func (s *StopInvocationRequest) SetNodeIdList(v []*string) *StopInvocationReques
 }
 
 type StopInvocationShrinkRequest struct {
+	// Command execution ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-hz044748dzepds0
-	InvokeId         *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// List of nodes.
 	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
 }
 
@@ -5458,20 +6989,28 @@ func (s *StopInvocationResponse) SetBody(v *StopInvocationResponseBody) *StopInv
 }
 
 type TagResourcesRequest struct {
+	// Region ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of resource IDs
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Tags
+	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -5505,10 +7044,14 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// Tag key
+	//
 	// example:
 	//
 	// app
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value
+	//
 	// example:
 	//
 	// v3
@@ -5534,7 +7077,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -5585,25 +7128,40 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
+	// Whether to remove all, only effective when TagKey.N is empty. Valid values:
+	//
+	// - True, remove all
+	//
+	// - False, do not remove all
+	//
+	// Default is False
+	//
 	// example:
 	//
 	// False
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// Region ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of resource IDs
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cluster
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tag keys
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -5640,6 +7198,8 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// request id
+	//
 	// example:
 	//
 	// 81F648D0-5570-5351-AE98-6F501C7E957F
@@ -5737,7 +7297,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 审批运维操作
+// Approve Operation
 //
 // @param request - ApproveOperationRequest
 //
@@ -5783,7 +7343,7 @@ func (client *Client) ApproveOperationWithOptions(request *ApproveOperationReque
 
 // Summary:
 //
-// 审批运维操作
+// Approve Operation
 //
 // @param request - ApproveOperationRequest
 //
@@ -5801,7 +7361,7 @@ func (client *Client) ApproveOperation(request *ApproveOperationRequest) (_resul
 
 // Summary:
 //
-// 资源转组
+// Resource Group Change
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -5851,7 +7411,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Resource Group Change
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -5869,7 +7429,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 创建大计算集群
+// Create a large-scale computing cluster
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -5975,7 +7535,7 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 
 // Summary:
 //
-// 创建大计算集群
+// Create a large-scale computing cluster
 //
 // @param request - CreateClusterRequest
 //
@@ -5993,7 +7553,7 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
-// 删除集群实例
+// Delete cluster instance
 //
 // @param request - DeleteClusterRequest
 //
@@ -6035,7 +7595,7 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 
 // Summary:
 //
-// 删除集群实例
+// Delete cluster instance
 //
 // @param request - DeleteClusterRequest
 //
@@ -6053,7 +7613,7 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
-// 集群详情
+// Cluster Details
 //
 // @param request - DescribeClusterRequest
 //
@@ -6095,7 +7655,7 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 
 // Summary:
 //
-// 集群详情
+// Cluster Details
 //
 // @param request - DescribeClusterRequest
 //
@@ -6113,7 +7673,7 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
-// 查询运维助手命令的执行列表和状态
+// Query the list and status of operations assistant command executions
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -6167,7 +7727,7 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Summary:
 //
-// 查询运维助手命令的执行列表和状态
+// Query the list and status of operations assistant command executions
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -6185,7 +7745,7 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 
 // Summary:
 //
-// 查询节点列表
+// Query node list
 //
 // @param request - DescribeNodeRequest
 //
@@ -6227,7 +7787,7 @@ func (client *Client) DescribeNodeWithOptions(request *DescribeNodeRequest, runt
 
 // Summary:
 //
-// 查询节点列表
+// Query node list
 //
 // @param request - DescribeNodeRequest
 //
@@ -6245,7 +7805,7 @@ func (client *Client) DescribeNode(request *DescribeNodeRequest) (_result *Descr
 
 // Summary:
 //
-// 区域列表
+// Region List
 //
 // @param request - DescribeRegionsRequest
 //
@@ -6287,7 +7847,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 区域列表
+// Region List
 //
 // @param request - DescribeRegionsRequest
 //
@@ -6305,7 +7865,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// 查询运维助手下发文件列表及状态
+// Query the list and status of files sent by the operation assistant
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -6351,7 +7911,7 @@ func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFi
 
 // Summary:
 //
-// 查询运维助手下发文件列表及状态
+// Query the list and status of files sent by the operation assistant
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -6369,7 +7929,7 @@ func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRe
 
 // Summary:
 //
-// 查询任务详情
+// Query Task Details
 //
 // @param request - DescribeTaskRequest
 //
@@ -6411,7 +7971,7 @@ func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runt
 
 // Summary:
 //
-// 查询任务详情
+// Query Task Details
 //
 // @param request - DescribeTaskRequest
 //
@@ -6429,7 +7989,7 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 
 // Summary:
 //
-// 可用区列表
+// List of Available Zones
 //
 // @param request - DescribeZonesRequest
 //
@@ -6471,7 +8031,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 
 // Summary:
 //
-// 可用区列表
+// List of Available Zones
 //
 // @param request - DescribeZonesRequest
 //
@@ -6489,7 +8049,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 
 // Summary:
 //
-// 集群扩容
+// Cluster Scaling
 //
 // @param tmpReq - ExtendClusterRequest
 //
@@ -6565,7 +8125,7 @@ func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, run
 
 // Summary:
 //
-// 集群扩容
+// Cluster Scaling
 //
 // @param request - ExtendClusterRequest
 //
@@ -6583,7 +8143,7 @@ func (client *Client) ExtendCluster(request *ExtendClusterRequest) (_result *Ext
 
 // Summary:
 //
-// 集群下的主机分组列表，分组下的主机列表
+// List of host groups under the cluster, and list of hosts under each group
 //
 // @param request - ListClusterNodesRequest
 //
@@ -6637,7 +8197,7 @@ func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesReque
 
 // Summary:
 //
-// 集群下的主机分组列表，分组下的主机列表
+// List of host groups under the cluster, and list of hosts under each group
 //
 // @param request - ListClusterNodesRequest
 //
@@ -6655,7 +8215,7 @@ func (client *Client) ListClusterNodes(request *ListClusterNodesRequest) (_resul
 
 // Summary:
 //
-// 获取集群实例列表
+// Get the list of cluster instances
 //
 // @param request - ListClustersRequest
 //
@@ -6705,7 +8265,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// 获取集群实例列表
+// Get the list of cluster instances
 //
 // @param request - ListClustersRequest
 //
@@ -6723,7 +8283,7 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 
 // Summary:
 //
-// 可用物理机列表
+// List of Available Physical Machines
 //
 // @param request - ListFreeNodesRequest
 //
@@ -6781,7 +8341,7 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 
 // Summary:
 //
-// 可用物理机列表
+// List of Available Physical Machines
 //
 // @param request - ListFreeNodesRequest
 //
@@ -6799,7 +8359,7 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 
 // Summary:
 //
-// 查询资源标签
+// Query Resource Tags
 //
 // @param request - ListTagResourcesRequest
 //
@@ -6857,7 +8417,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 查询资源标签
+// Query Resource Tags
 //
 // @param request - ListTagResourcesRequest
 //
@@ -6875,7 +8435,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 重启机器
+// Reboot Machine
 //
 // @param tmpReq - RebootNodesRequest
 //
@@ -6931,7 +8491,7 @@ func (client *Client) RebootNodesWithOptions(tmpReq *RebootNodesRequest, runtime
 
 // Summary:
 //
-// 重启机器
+// Reboot Machine
 //
 // @param request - RebootNodesRequest
 //
@@ -6949,7 +8509,7 @@ func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootN
 
 // Summary:
 //
-// 机器重装
+// Machine Reinstallation
 //
 // @param tmpReq - ReimageNodesRequest
 //
@@ -7009,7 +8569,7 @@ func (client *Client) ReimageNodesWithOptions(tmpReq *ReimageNodesRequest, runti
 
 // Summary:
 //
-// 机器重装
+// Machine Reinstallation
 //
 // @param request - ReimageNodesRequest
 //
@@ -7027,7 +8587,7 @@ func (client *Client) ReimageNodes(request *ReimageNodesRequest) (_result *Reima
 
 // Summary:
 //
-// 一台或多台灵骏机器中执行一段Shell的脚本
+// Execute a Shell script on one or more Lingjun machines
 //
 // @param tmpReq - RunCommandRequest
 //
@@ -7127,7 +8687,7 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 
 // Summary:
 //
-// 一台或多台灵骏机器中执行一段Shell的脚本
+// Execute a Shell script on one or more Lingjun machines
 //
 // @param request - RunCommandRequest
 //
@@ -7145,7 +8705,7 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 
 // Summary:
 //
-// 一台或多台灵骏机器下发远程文件
+// Send a remote file to one or more Lingjun machines
 //
 // @param tmpReq - SendFileRequest
 //
@@ -7233,7 +8793,7 @@ func (client *Client) SendFileWithOptions(tmpReq *SendFileRequest, runtime *util
 
 // Summary:
 //
-// 一台或多台灵骏机器下发远程文件
+// Send a remote file to one or more Lingjun machines
 //
 // @param request - SendFileRequest
 //
@@ -7251,7 +8811,7 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 
 // Summary:
 //
-// 缩容
+// Shrink
 //
 // @param tmpReq - ShrinkClusterRequest
 //
@@ -7307,7 +8867,7 @@ func (client *Client) ShrinkClusterWithOptions(tmpReq *ShrinkClusterRequest, run
 
 // Summary:
 //
-// 缩容
+// Shrink
 //
 // @param request - ShrinkClusterRequest
 //
@@ -7325,7 +8885,7 @@ func (client *Client) ShrinkCluster(request *ShrinkClusterRequest) (_result *Shr
 
 // Summary:
 //
-// 停止运维助手命令进程
+// Stop the operation assistant command process
 //
 // @param tmpReq - StopInvocationRequest
 //
@@ -7377,7 +8937,7 @@ func (client *Client) StopInvocationWithOptions(tmpReq *StopInvocationRequest, r
 
 // Summary:
 //
-// 停止运维助手命令进程
+// Stop the operation assistant command process
 //
 // @param request - StopInvocationRequest
 //
@@ -7395,7 +8955,7 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 
 // Summary:
 //
-// 资源打用户标签
+// Tag User Resources
 //
 // @param request - TagResourcesRequest
 //
@@ -7449,7 +9009,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 资源打用户标签
+// Tag User Resources
 //
 // @param request - TagResourcesRequest
 //
@@ -7467,7 +9027,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 资源去除用户标签
+// Remove user tags from resources
 //
 // @param request - UntagResourcesRequest
 //
@@ -7525,7 +9085,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 资源去除用户标签
+// Remove user tags from resources
 //
 // @param request - UntagResourcesRequest
 //
