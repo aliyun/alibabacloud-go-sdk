@@ -3678,12 +3678,12 @@ func (s *GetAITeacherSyncDialogueSuggestionResponseBody) SetSuccess(v bool) *Get
 type GetAITeacherSyncDialogueSuggestionResponseBodyData struct {
 	// example:
 	//
-	// Thanks, Lily. Do you like meat, Lily?
-	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+	// 谢谢莉莉.你喜欢吃肉吗，莉莉？
+	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
 	// example:
 	//
-	// 谢谢莉莉.你喜欢吃肉吗，莉莉？
-	EnglishResult1 *string `json:"englishResult1,omitempty" xml:"englishResult1,omitempty"`
+	// Thanks, Lily. Do you like meat, Lily?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
 }
 
 func (s GetAITeacherSyncDialogueSuggestionResponseBodyData) String() string {
@@ -3694,13 +3694,13 @@ func (s GetAITeacherSyncDialogueSuggestionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetAITeacherSyncDialogueSuggestionResponseBodyData) SetEnglishResult(v string) *GetAITeacherSyncDialogueSuggestionResponseBodyData {
-	s.EnglishResult = &v
+func (s *GetAITeacherSyncDialogueSuggestionResponseBodyData) SetChineseResult(v string) *GetAITeacherSyncDialogueSuggestionResponseBodyData {
+	s.ChineseResult = &v
 	return s
 }
 
-func (s *GetAITeacherSyncDialogueSuggestionResponseBodyData) SetEnglishResult1(v string) *GetAITeacherSyncDialogueSuggestionResponseBodyData {
-	s.EnglishResult1 = &v
+func (s *GetAITeacherSyncDialogueSuggestionResponseBodyData) SetEnglishResult(v string) *GetAITeacherSyncDialogueSuggestionResponseBodyData {
+	s.EnglishResult = &v
 	return s
 }
 
