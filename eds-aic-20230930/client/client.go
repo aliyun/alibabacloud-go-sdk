@@ -6299,6 +6299,99 @@ func (s *ModifyPolicyGroupResponse) SetBody(v *ModifyPolicyGroupResponseBody) *M
 	return s
 }
 
+type OperateAppRequest struct {
+	// example:
+	//
+	// 1234
+	AppId          *int32    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// start
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+}
+
+func (s OperateAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OperateAppRequest) SetAppId(v int32) *OperateAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *OperateAppRequest) SetInstanceIdList(v []*string) *OperateAppRequest {
+	s.InstanceIdList = v
+	return s
+}
+
+func (s *OperateAppRequest) SetOperateType(v string) *OperateAppRequest {
+	s.OperateType = &v
+	return s
+}
+
+type OperateAppResponseBody struct {
+	// example:
+	//
+	// 425F351C-3F8E-5218-A520-B6311D0D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// t-imr0fufqgac2z****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s OperateAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OperateAppResponseBody) SetRequestId(v string) *OperateAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OperateAppResponseBody) SetTaskId(v string) *OperateAppResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type OperateAppResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OperateAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OperateAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OperateAppResponse) SetHeaders(v map[string]*string) *OperateAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OperateAppResponse) SetStatusCode(v int32) *OperateAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OperateAppResponse) SetBody(v *OperateAppResponseBody) *OperateAppResponse {
+	s.Body = v
+	return s
+}
+
 type RebootAndroidInstancesInGroupRequest struct {
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
 	ForceStop          *bool     `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
@@ -10234,6 +10327,74 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPolicyGroupResponse{}
 	_body, _err := client.ModifyPolicyGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 操作App
+//
+// @param request - OperateAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateAppResponse
+func (client *Client) OperateAppWithOptions(request *OperateAppRequest, runtime *util.RuntimeOptions) (_result *OperateAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdList)) {
+		query["InstanceIdList"] = request.InstanceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateApp"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OperateAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 操作App
+//
+// @param request - OperateAppRequest
+//
+// @return OperateAppResponse
+func (client *Client) OperateApp(request *OperateAppRequest) (_result *OperateAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OperateAppResponse{}
+	_body, _err := client.OperateAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
