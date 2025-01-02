@@ -1316,6 +1316,245 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 	return s
 }
 
+type CreateDiagnosticTaskRequest struct {
+	AiJobLogInfo *CreateDiagnosticTaskRequestAiJobLogInfo `json:"AiJobLogInfo,omitempty" xml:"AiJobLogInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// i118913031696573280136
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// CheckByAiJobLogs
+	DiagnosticType *string   `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	NodeIds        []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateDiagnosticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticTaskRequest) SetAiJobLogInfo(v *CreateDiagnosticTaskRequestAiJobLogInfo) *CreateDiagnosticTaskRequest {
+	s.AiJobLogInfo = v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequest) SetClusterId(v string) *CreateDiagnosticTaskRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequest) SetDiagnosticType(v string) *CreateDiagnosticTaskRequest {
+	s.DiagnosticType = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequest) SetNodeIds(v []*string) *CreateDiagnosticTaskRequest {
+	s.NodeIds = v
+	return s
+}
+
+type CreateDiagnosticTaskRequestAiJobLogInfo struct {
+	AiJobLogs []*CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs `json:"AiJobLogs,omitempty" xml:"AiJobLogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-08-05T10:10:01
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2024-10-11T00:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateDiagnosticTaskRequestAiJobLogInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticTaskRequestAiJobLogInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfo) SetAiJobLogs(v []*CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs) *CreateDiagnosticTaskRequestAiJobLogInfo {
+	s.AiJobLogs = v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfo) SetEndTime(v string) *CreateDiagnosticTaskRequestAiJobLogInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfo) SetStartTime(v string) *CreateDiagnosticTaskRequestAiJobLogInfo {
+	s.StartTime = &v
+	return s
+}
+
+type CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs struct {
+	// example:
+	//
+	// null
+	AiInstance *string                                                 `json:"AiInstance,omitempty" xml:"AiInstance,omitempty"`
+	Logs       []*CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// e01-tw-p2p2al5u1hn
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs) SetAiInstance(v string) *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs {
+	s.AiInstance = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs) SetLogs(v []*CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs) *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs {
+	s.Logs = v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs) SetNodeId(v string) *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs {
+	s.NodeId = &v
+	return s
+}
+
+type CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs struct {
+	// example:
+	//
+	// 2024-08-05T10:10:01
+	Datetime *string `json:"Datetime,omitempty" xml:"Datetime,omitempty"`
+	// example:
+	//
+	// success
+	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
+}
+
+func (s CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs) SetDatetime(v string) *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs {
+	s.Datetime = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs) SetLogContent(v string) *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs {
+	s.LogContent = &v
+	return s
+}
+
+type CreateDiagnosticTaskShrinkRequest struct {
+	AiJobLogInfoShrink *string `json:"AiJobLogInfo,omitempty" xml:"AiJobLogInfo,omitempty"`
+	// example:
+	//
+	// i118913031696573280136
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// CheckByAiJobLogs
+	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	NodeIdsShrink  *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+}
+
+func (s CreateDiagnosticTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticTaskShrinkRequest) SetAiJobLogInfoShrink(v string) *CreateDiagnosticTaskShrinkRequest {
+	s.AiJobLogInfoShrink = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskShrinkRequest) SetClusterId(v string) *CreateDiagnosticTaskShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskShrinkRequest) SetDiagnosticType(v string) *CreateDiagnosticTaskShrinkRequest {
+	s.DiagnosticType = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskShrinkRequest) SetNodeIdsShrink(v string) *CreateDiagnosticTaskShrinkRequest {
+	s.NodeIdsShrink = &v
+	return s
+}
+
+type CreateDiagnosticTaskResponseBody struct {
+	// example:
+	//
+	// diag-i150553931717380274931
+	DiagnosticId *string `json:"DiagnosticId,omitempty" xml:"DiagnosticId,omitempty"`
+	// example:
+	//
+	// A511C02A-0127-51AA-A9F9-966382C9A1B5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDiagnosticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticTaskResponseBody) SetDiagnosticId(v string) *CreateDiagnosticTaskResponseBody {
+	s.DiagnosticId = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskResponseBody) SetRequestId(v string) *CreateDiagnosticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDiagnosticTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDiagnosticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDiagnosticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticTaskResponse) SetHeaders(v map[string]*string) *CreateDiagnosticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDiagnosticTaskResponse) SetStatusCode(v int32) *CreateDiagnosticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDiagnosticTaskResponse) SetBody(v *CreateDiagnosticTaskResponseBody) *CreateDiagnosticTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteClusterRequest struct {
 	// Cluster ID
 	//
@@ -5799,12 +6038,14 @@ type RunCommandRequest struct {
 	//
 	// - A single custom parameter name cannot exceed 64 bytes.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// example:
+	//
+	// c-e996287206324975b5fbe1d***
+	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
 	// Encoding method for the script content. Valid values:
 	//
 	// - PlainText: No encoding, transmitted in plain text.
@@ -5861,6 +6102,10 @@ type RunCommandRequest struct {
 	//
 	// For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? 	- 	- 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 	- 	- ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 	- 10 ? 2022/2 UTC.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// example:
+	//
+	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
+	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
 	// Command name.
 	//
 	// example:
@@ -5907,6 +6152,10 @@ type RunCommandRequest struct {
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// example:
+	//
+	// ProcessTree
+	TerminationMode *string `json:"TerminationMode,omitempty" xml:"TerminationMode,omitempty"`
 	// Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
 	//
 	// example:
@@ -5949,6 +6198,11 @@ func (s *RunCommandRequest) SetCommandContent(v string) *RunCommandRequest {
 	return s
 }
 
+func (s *RunCommandRequest) SetCommandId(v string) *RunCommandRequest {
+	s.CommandId = &v
+	return s
+}
+
 func (s *RunCommandRequest) SetContentEncoding(v string) *RunCommandRequest {
 	s.ContentEncoding = &v
 	return s
@@ -5969,6 +6223,11 @@ func (s *RunCommandRequest) SetFrequency(v string) *RunCommandRequest {
 	return s
 }
 
+func (s *RunCommandRequest) SetLauncher(v string) *RunCommandRequest {
+	s.Launcher = &v
+	return s
+}
+
 func (s *RunCommandRequest) SetName(v string) *RunCommandRequest {
 	s.Name = &v
 	return s
@@ -5986,6 +6245,11 @@ func (s *RunCommandRequest) SetParameters(v map[string]interface{}) *RunCommandR
 
 func (s *RunCommandRequest) SetRepeatMode(v string) *RunCommandRequest {
 	s.RepeatMode = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetTerminationMode(v string) *RunCommandRequest {
+	s.TerminationMode = &v
 	return s
 }
 
@@ -6025,12 +6289,14 @@ type RunCommandShrinkRequest struct {
 	//
 	// - A single custom parameter name cannot exceed 64 bytes.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// example:
+	//
+	// c-e996287206324975b5fbe1d***
+	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
 	// Encoding method for the script content. Valid values:
 	//
 	// - PlainText: No encoding, transmitted in plain text.
@@ -6087,6 +6353,10 @@ type RunCommandShrinkRequest struct {
 	//
 	// For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? 	- 	- 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 	- 	- ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 	- 10 ? 2022/2 UTC.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// example:
+	//
+	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
+	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
 	// Command name.
 	//
 	// example:
@@ -6133,6 +6403,10 @@ type RunCommandShrinkRequest struct {
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// example:
+	//
+	// ProcessTree
+	TerminationMode *string `json:"TerminationMode,omitempty" xml:"TerminationMode,omitempty"`
 	// Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
 	//
 	// example:
@@ -6175,6 +6449,11 @@ func (s *RunCommandShrinkRequest) SetCommandContent(v string) *RunCommandShrinkR
 	return s
 }
 
+func (s *RunCommandShrinkRequest) SetCommandId(v string) *RunCommandShrinkRequest {
+	s.CommandId = &v
+	return s
+}
+
 func (s *RunCommandShrinkRequest) SetContentEncoding(v string) *RunCommandShrinkRequest {
 	s.ContentEncoding = &v
 	return s
@@ -6195,6 +6474,11 @@ func (s *RunCommandShrinkRequest) SetFrequency(v string) *RunCommandShrinkReques
 	return s
 }
 
+func (s *RunCommandShrinkRequest) SetLauncher(v string) *RunCommandShrinkRequest {
+	s.Launcher = &v
+	return s
+}
+
 func (s *RunCommandShrinkRequest) SetName(v string) *RunCommandShrinkRequest {
 	s.Name = &v
 	return s
@@ -6212,6 +6496,11 @@ func (s *RunCommandShrinkRequest) SetParametersShrink(v string) *RunCommandShrin
 
 func (s *RunCommandShrinkRequest) SetRepeatMode(v string) *RunCommandShrinkRequest {
 	s.RepeatMode = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetTerminationMode(v string) *RunCommandShrinkRequest {
+	s.TerminationMode = &v
 	return s
 }
 
@@ -7553,6 +7842,88 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
+// 诊断任务创建接口
+//
+// @param tmpReq - CreateDiagnosticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDiagnosticTaskResponse
+func (client *Client) CreateDiagnosticTaskWithOptions(tmpReq *CreateDiagnosticTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDiagnosticTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDiagnosticTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AiJobLogInfo)) {
+		request.AiJobLogInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AiJobLogInfo, tea.String("AiJobLogInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeIds)) {
+		request.NodeIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeIds, tea.String("NodeIds"), tea.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AiJobLogInfoShrink)) {
+		body["AiJobLogInfo"] = request.AiJobLogInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiagnosticType)) {
+		body["DiagnosticType"] = request.DiagnosticType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIdsShrink)) {
+		body["NodeIds"] = request.NodeIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDiagnosticTask"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDiagnosticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 诊断任务创建接口
+//
+// @param request - CreateDiagnosticTaskRequest
+//
+// @return CreateDiagnosticTaskResponse
+func (client *Client) CreateDiagnosticTask(request *CreateDiagnosticTaskRequest) (_result *CreateDiagnosticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDiagnosticTaskResponse{}
+	_body, _err := client.CreateDiagnosticTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Delete cluster instance
 //
 // @param request - DeleteClusterRequest
@@ -8618,6 +8989,10 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 		body["CommandContent"] = request.CommandContent
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+		body["CommandId"] = request.CommandId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ContentEncoding)) {
 		body["ContentEncoding"] = request.ContentEncoding
 	}
@@ -8634,6 +9009,10 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 		body["Frequency"] = request.Frequency
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Launcher)) {
+		body["Launcher"] = request.Launcher
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
 	}
@@ -8648,6 +9027,10 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.RepeatMode)) {
 		body["RepeatMode"] = request.RepeatMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminationMode)) {
+		body["TerminationMode"] = request.TerminationMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
