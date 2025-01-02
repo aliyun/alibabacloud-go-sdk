@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/cloudfw-20171207/v6
+module github.com/alibabacloud-go/cloudfw-20171207/v7
 
 go 1.14
 

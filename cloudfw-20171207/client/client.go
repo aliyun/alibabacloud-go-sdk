@@ -1105,6 +1105,12 @@ type CreateDownloadTaskRequest struct {
 	//
 	// {\\"SearchItem\\":\\"\\",\\"UserType\\":\\"buy\\",\\"IpVersion\\":\\"4\\"}
 	TaskData *string `json:"TaskData,omitempty" xml:"TaskData,omitempty"`
+	// The type of the task. For more information about task types, see the descriptions in the "DescribeDownloadTaskType" topic.
+	//
+	// example:
+	//
+	// InternetFirewallAsset
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The time zone of the time information in the downloaded file. The value must be an identifier of a time zone in the Internet Assigned Numbers Authority (IANA) database. The default value is Asia/Shanghai, which indicates UTC+8.
 	//
 	// example:
@@ -1128,6 +1134,11 @@ func (s *CreateDownloadTaskRequest) SetLang(v string) *CreateDownloadTaskRequest
 
 func (s *CreateDownloadTaskRequest) SetTaskData(v string) *CreateDownloadTaskRequest {
 	s.TaskData = &v
+	return s
+}
+
+func (s *CreateDownloadTaskRequest) SetTaskType(v string) *CreateDownloadTaskRequest {
+	s.TaskType = &v
 	return s
 }
 
@@ -4252,6 +4263,8 @@ func (s *DeleteNatFirewallControlPolicyResponse) SetBody(v *DeleteNatFirewallCon
 
 type DeleteNatFirewallControlPolicyBatchRequest struct {
 	// The UUIDs of access control policies.
+	//
+	// This parameter is required.
 	AclUuidList []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
 	// The direction of the traffic to which the access control policy applies. Valid values:
 	//
@@ -5223,7 +5236,8 @@ type DescribeAddressBookResponseBodyAcls struct {
 	// example:
 	//
 	// 2
-	AddressListCount *int32 `json:"AddressListCount,omitempty" xml:"AddressListCount,omitempty"`
+	AddressListCount *int32                                          `json:"AddressListCount,omitempty" xml:"AddressListCount,omitempty"`
+	Addresses        []*DescribeAddressBookResponseBodyAclsAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
 	//
 	// 	- **1**: yes
@@ -5308,6 +5322,11 @@ func (s *DescribeAddressBookResponseBodyAcls) SetAddressListCount(v int32) *Desc
 	return s
 }
 
+func (s *DescribeAddressBookResponseBodyAcls) SetAddresses(v []*DescribeAddressBookResponseBodyAclsAddresses) *DescribeAddressBookResponseBodyAcls {
+	s.Addresses = v
+	return s
+}
+
 func (s *DescribeAddressBookResponseBodyAcls) SetAutoAddTagEcs(v int32) *DescribeAddressBookResponseBodyAcls {
 	s.AutoAddTagEcs = &v
 	return s
@@ -5345,6 +5364,29 @@ func (s *DescribeAddressBookResponseBodyAcls) SetTagList(v []*DescribeAddressBoo
 
 func (s *DescribeAddressBookResponseBodyAcls) SetTagRelation(v string) *DescribeAddressBookResponseBodyAcls {
 	s.TagRelation = &v
+	return s
+}
+
+type DescribeAddressBookResponseBodyAclsAddresses struct {
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Note    *string `json:"Note,omitempty" xml:"Note,omitempty"`
+}
+
+func (s DescribeAddressBookResponseBodyAclsAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressBookResponseBodyAclsAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressBookResponseBodyAclsAddresses) SetAddress(v string) *DescribeAddressBookResponseBodyAclsAddresses {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeAddressBookResponseBodyAclsAddresses) SetNote(v string) *DescribeAddressBookResponseBodyAclsAddresses {
+	s.Note = &v
 	return s
 }
 
@@ -5457,7 +5499,12 @@ type DescribeAssetListRequest struct {
 	//
 	// discovered in 1 hour
 	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
-	OutStatistic   *string `json:"OutStatistic,omitempty" xml:"OutStatistic,omitempty"`
+	// Whether to query external traffic information.
+	//
+	// example:
+	//
+	// true
+	OutStatistic *string `json:"OutStatistic,omitempty" xml:"OutStatistic,omitempty"`
 	// The number of entries per page. Valid values: 1 to 50.
 	//
 	// This parameter is required.
@@ -5507,7 +5554,12 @@ type DescribeAssetListRequest struct {
 	// example:
 	//
 	// 192.0.XX.XX
-	SearchItem      *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
+	SearchItem *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
+	// Data leakage detection activation status.
+	//
+	// example:
+	//
+	// open
 	SensitiveStatus *string `json:"SensitiveStatus,omitempty" xml:"SensitiveStatus,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
@@ -5641,7 +5693,7 @@ func (s *DescribeAssetListRequest) SetUserType(v string) *DescribeAssetListReque
 }
 
 type DescribeAssetListResponseBody struct {
-	// The details about the assets that are protected by Cloud Firewall.
+	// The assets that are protected by Cloud Firewall.
 	Assets []*DescribeAssetListResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -5730,7 +5782,12 @@ type DescribeAssetListResponseBodyAssets struct {
 	// example:
 	//
 	// 4
-	IpVersion               *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// Outbound traffic in the last 7 days.
+	//
+	// example:
+	//
+	// 0
 	Last7DayOutTrafficBytes *int64 `json:"Last7DayOutTrafficBytes,omitempty" xml:"Last7DayOutTrafficBytes,omitempty"`
 	// The UID of the member.
 	//
@@ -5843,7 +5900,12 @@ type DescribeAssetListResponseBodyAssets struct {
 	// example:
 	//
 	// low
-	RiskLevel           *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Data leakage detection enabled status.
+	//
+	// example:
+	//
+	// open
 	SensitiveDataStatus *string `json:"SensitiveDataStatus,omitempty" xml:"SensitiveDataStatus,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
@@ -6239,10 +6301,21 @@ func (s *DescribeAssetRiskListResponse) SetBody(v *DescribeAssetRiskListResponse
 }
 
 type DescribeAssetStatisticRequest struct {
+	// The language of the content within the request. Valid values:
+	//
+	// 	- **zh*	- (default): Chinese
+	//
+	// 	- **en**: English
+	//
 	// example:
 	//
 	// zh
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request.
+	//
+	// example:
+	//
+	// 112.239.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -6265,10 +6338,13 @@ func (s *DescribeAssetStatisticRequest) SetSourceIp(v string) *DescribeAssetStat
 }
 
 type DescribeAssetStatisticResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 850A84******25g4d2
-	RequestId             *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics on specifications.
 	ResourceSpecStatistic *DescribeAssetStatisticResponseBodyResourceSpecStatistic `json:"ResourceSpecStatistic,omitempty" xml:"ResourceSpecStatistic,omitempty" type:"Struct"`
 }
 
@@ -6291,20 +6367,29 @@ func (s *DescribeAssetStatisticResponseBody) SetResourceSpecStatistic(v *Describ
 }
 
 type DescribeAssetStatisticResponseBodyResourceSpecStatistic struct {
+	// The number of public IP addresses that can be protected.
+	//
 	// example:
 	//
 	// 20
 	IpNumSpec *int32 `json:"IpNumSpec,omitempty" xml:"IpNumSpec,omitempty"`
+	// The number of public IP addresses that are protected.
+	//
 	// example:
 	//
 	// 10
-	IpNumUsed              *int32 `json:"IpNumUsed,omitempty" xml:"IpNumUsed,omitempty"`
-	IsIpNumEnough          *int32 `json:"IsIpNumEnough,omitempty" xml:"IsIpNumEnough,omitempty"`
-	IsRegionNumEnough      *int32 `json:"IsRegionNumEnough,omitempty" xml:"IsRegionNumEnough,omitempty"`
-	IsSuggestUpdate        *int32 `json:"IsSuggestUpdate,omitempty" xml:"IsSuggestUpdate,omitempty"`
-	RegionNumSpec          *int32 `json:"RegionNumSpec,omitempty" xml:"RegionNumSpec,omitempty"`
-	RegionNumUsed          *int32 `json:"RegionNumUsed,omitempty" xml:"RegionNumUsed,omitempty"`
+	IpNumUsed *int32 `json:"IpNumUsed,omitempty" xml:"IpNumUsed,omitempty"`
+	// The number of public IP addresses that can enable data leakage detection.
+	//
+	// example:
+	//
+	// 0
 	SensitiveDataIpNumSpec *int64 `json:"SensitiveDataIpNumSpec,omitempty" xml:"SensitiveDataIpNumSpec,omitempty"`
+	// The number of public IP addresses that enabled data leakage detection.
+	//
+	// example:
+	//
+	// 0
 	SensitiveDataIpNumUsed *int64 `json:"SensitiveDataIpNumUsed,omitempty" xml:"SensitiveDataIpNumUsed,omitempty"`
 }
 
@@ -6323,31 +6408,6 @@ func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIpNumSpec(v
 
 func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIpNumUsed(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
 	s.IpNumUsed = &v
-	return s
-}
-
-func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIsIpNumEnough(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
-	s.IsIpNumEnough = &v
-	return s
-}
-
-func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIsRegionNumEnough(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
-	s.IsRegionNumEnough = &v
-	return s
-}
-
-func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIsSuggestUpdate(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
-	s.IsSuggestUpdate = &v
-	return s
-}
-
-func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetRegionNumSpec(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
-	s.RegionNumSpec = &v
-	return s
-}
-
-func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetRegionNumUsed(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
-	s.RegionNumUsed = &v
 	return s
 }
 
@@ -8894,8 +8954,18 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
 	// The list of applications.
 	ServiceNameList []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`
-	SrcIpCnt        *int64    `json:"SrcIpCnt,omitempty" xml:"SrcIpCnt,omitempty"`
-	TotalReplyBytes *int64    `json:"TotalReplyBytes,omitempty" xml:"TotalReplyBytes,omitempty"`
+	// Number of source IPs.
+	//
+	// example:
+	//
+	// 22
+	SrcIpCnt *int64 `json:"SrcIpCnt,omitempty" xml:"SrcIpCnt,omitempty"`
+	// Outbound traffic in the last 7 days.
+	//
+	// example:
+	//
+	// 100000
+	TotalReplyBytes *int64 `json:"TotalReplyBytes,omitempty" xml:"TotalReplyBytes,omitempty"`
 	// The percentage of traffic of a day. Unit: percent (%).
 	//
 	// example:
@@ -11637,19 +11707,19 @@ type DescribeOutgoingDestinationIPRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// 	- **zh*	- (default)
 	//
-	// 	- **en**: English
+	// 	- **en**
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The method that is used to sort the results. Valid values:
+	// The method that you want to use to sort the query results. Valid values:
 	//
-	// 	- **asc**: the ascending order.
+	// 	- **asc**
 	//
-	// 	- **desc*	- (default): the descending order.
+	// 	- **desc*	- (default)
 	//
 	// example:
 	//
@@ -11929,8 +11999,15 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	// The information about the address book.
 	AddressGroupList []*DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList `json:"AddressGroupList,omitempty" xml:"AddressGroupList,omitempty" type:"Repeated"`
 	// The application ports.
+	//
+	// >  Only the first 100 application ports are displayed.
 	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
-	AssetCount          *int64                                                                   `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
+	// The outbound asset count.
+	//
+	// example:
+	//
+	// 20
+	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
 	// The type of the tag. Valid values:
 	//
 	// 	- **Suspicious**
@@ -12010,14 +12087,24 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	// example:
 	//
 	// true
-	IsMarkNormal *bool   `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	// Location name.
+	//
+	// example:
+	//
+	// 山东省青岛市
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
 	// The outbound traffic. Unit: bytes.
 	//
 	// example:
 	//
 	// 965
-	OutBytes          *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The outbound private asset count.
+	//
+	// example:
+	//
+	// 20
 	PrivateAssetCount *int64 `json:"PrivateAssetCount,omitempty" xml:"PrivateAssetCount,omitempty"`
 	// The UUID of the access control policy.
 	//
@@ -12311,11 +12398,11 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPListTagList struct {
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **1**: low
+	// 	- **1**: low.
 	//
-	// 	- **2**: medium
+	// 	- **2**: medium.
 	//
-	// 	- **3**: high
+	// 	- **3**: high.
 	//
 	// example:
 	//
@@ -12640,7 +12727,7 @@ func (s *DescribeOutgoingDomainRequest) SetTagIdNew(v string) *DescribeOutgoingD
 }
 
 type DescribeOutgoingDomainResponseBody struct {
-	// An array that consists of the domain names in outbound connections.
+	// The domain names in outbound connections.
 	DomainList []*DescribeOutgoingDomainResponseBodyDomainList `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -12717,9 +12804,15 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// example:
 	//
 	// fdad-fdafa-dafa-dfa****
-	AddressGroupUUID    *string   `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	AddressGroupUUID *string `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	// The application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	AssetCount          *int64    `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
+	// The outbound asset count.
+	//
+	// example:
+	//
+	// 20
+	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
 	// The website service.
 	//
 	// example:
@@ -12817,7 +12910,12 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// example:
 	//
 	// 4582
-	OutBytes          *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The outbound private asset count.
+	//
+	// example:
+	//
+	// 20
 	PrivateAssetCount *int64 `json:"PrivateAssetCount,omitempty" xml:"PrivateAssetCount,omitempty"`
 	// The ID of the access control policy.
 	//
@@ -13414,7 +13512,12 @@ type DescribePostpayTrafficDetailRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The instance ID or the IP address of the asset.
 	//
@@ -13563,9 +13666,19 @@ type DescribePostpayTrafficDetailResponseBodyTrafficList struct {
 	// example:
 	//
 	// 100000000
-	OutBytes           *int64  `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	ProtectionDuration *int64  `json:"ProtectionDuration,omitempty" xml:"ProtectionDuration,omitempty"`
-	RegionNo           *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// Protection duration. Unit: hours.
+	//
+	// example:
+	//
+	// 20
+	ProtectionDuration *int64 `json:"ProtectionDuration,omitempty" xml:"ProtectionDuration,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The resource ID. The resource ID for the Internet firewall is the public IP address that is protected the Internet firewall, and the resource ID for a NAT firewall is the instance ID of the NAT firewall.
 	//
 	// example:
@@ -13863,6 +13976,8 @@ func (s *DescribePostpayTrafficTotalResponse) SetBody(v *DescribePostpayTrafficT
 
 type DescribePrefixListsRequest struct {
 	// The region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14165,6 +14280,12 @@ type DescribeRiskEventGroupRequest struct {
 	//
 	// InternetFirewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	// Whether to query only the data that has completed private network tracing.
+	//
+	// example:
+	//
+	// true
+	IsOnlyPrivateAssoc *string `json:"IsOnlyPrivateAssoc,omitempty" xml:"IsOnlyPrivateAssoc,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// 	- **zh**: Chinese (default)
@@ -14337,6 +14458,11 @@ func (s *DescribeRiskEventGroupRequest) SetEventName(v string) *DescribeRiskEven
 
 func (s *DescribeRiskEventGroupRequest) SetFirewallType(v string) *DescribeRiskEventGroupRequest {
 	s.FirewallType = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetIsOnlyPrivateAssoc(v string) *DescribeRiskEventGroupRequest {
+	s.IsOnlyPrivateAssoc = &v
 	return s
 }
 
@@ -15152,10 +15278,25 @@ type DescribeRiskEventPayloadResponseBody struct {
 	// example:
 	//
 	// vpc-bp10w5nb30r4jzfyc****
-	DstVpcId       *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
-	HitContentType *int32  `json:"HitContentType,omitempty" xml:"HitContentType,omitempty"`
-	HitTo          *int32  `json:"HitTo,omitempty" xml:"HitTo,omitempty"`
-	ParsedContent  *string `json:"ParsedContent,omitempty" xml:"ParsedContent,omitempty"`
+	DstVpcId *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	// Type of the hit.
+	//
+	// example:
+	//
+	// 1
+	HitContentType *int32 `json:"HitContentType,omitempty" xml:"HitContentType,omitempty"`
+	// The position where the hit ends.
+	//
+	// example:
+	//
+	// 67
+	HitTo *int32 `json:"HitTo,omitempty" xml:"HitTo,omitempty"`
+	// Hit payload.
+	//
+	// example:
+	//
+	// 2f636f6d706f7365722f73656e645f656d61696c3f746f3d6d61667740776f66736f7961792675726c3d687474703a2f2f302e302e302e303a31323334352f692f6431366530312f313664622f673670772f
+	ParsedContent *string `json:"ParsedContent,omitempty" xml:"ParsedContent,omitempty"`
 	// The attack payload of the intrusion event.
 	//
 	// example:
@@ -16484,7 +16625,7 @@ type DescribeTrFirewallsV2ListResponseBody struct {
 	//
 	// 6
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The VPC firewalls.
+	// The information about the VPC firewalls.
 	VpcTrFirewalls []*DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls `json:"VpcTrFirewalls,omitempty" xml:"VpcTrFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -16523,7 +16664,16 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
 	// example:
 	//
 	// cen_swas
-	CenName                   *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	CenName *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	// The party responsible for the TR fees generated by the VPC firewall. Values:
+	//
+	// - **PayByCloudFirewall**: Fees are borne by the Cloud Firewall.
+	//
+	// - **PayByCenOwner**: Fees are borne by the account to which the CEN instance belongs.
+	//
+	// example:
+	//
+	// PayByCenOwner
 	CloudFirewallVpcOrderType *string `json:"CloudFirewallVpcOrderType,omitempty" xml:"CloudFirewallVpcOrderType,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
@@ -16553,7 +16703,7 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The information about the intrusion prevention system (IPS) configuration.
+	// The intrusion prevention system (IPS) configurations.
 	IpsConfig *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud account to which the VPC belongs.
 	//
@@ -16736,7 +16886,18 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig struct {
 	//
 	// 1
 	EnableAllPatch *int32 `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
-	RuleClass      *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
+	// The level of the rule group for the IPS. Valid values:
+	//
+	// 	- **1**: loose.
+	//
+	// 	- **2**: medium.
+	//
+	// 	- **3**: strict.
+	//
+	// example:
+	//
+	// 3
+	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The mode of the IPS. Valid values:
 	//
 	// 	- **1**: block mode
@@ -16783,7 +16944,8 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource struct
 	// example:
 	//
 	// 1
-	Count   *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The protected express connect routers.
 	EcrList []*string `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
 	// The protected peer transit routers.
 	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
@@ -16839,7 +17001,8 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource stru
 	// example:
 	//
 	// 1
-	Count   *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The unprotected express connect routers.
 	EcrList []*string `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
 	// The unprotected peer transit routers.
 	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
@@ -17293,6 +17456,11 @@ func (s *DescribeUserAssetIPTrafficInfoResponse) SetBody(v *DescribeUserAssetIPT
 }
 
 type DescribeUserBuyVersionRequest struct {
+	// Instance ID. If the Instance ID is provided, the query will be based on this ID. If not provided, the latest instance will be queried by default.
+	//
+	// example:
+	//
+	// cfw_elasticity_public_cn-*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -17310,54 +17478,126 @@ func (s *DescribeUserBuyVersionRequest) SetInstanceId(v string) *DescribeUserBuy
 }
 
 type DescribeUserBuyVersionResponseBody struct {
+	// The ID of the Alibaba Cloud account that is used to purchase Cloud Firewall.
+	//
 	// example:
 	//
 	// 119898001566xxxx
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The time when Cloud Firewall expires.
+	//
+	// >  The value is a timestamp in milliseconds.
+	//
+	// >  If you use Cloud Firewall that uses the pay-as-you-go billing method, ignore this parameter.
+	//
 	// example:
 	//
 	// 1726934400000
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// The instance ID of Cloud Firewall.
+	//
+	// >  If you use a trial of Cloud Firewall, ignore this parameter.
+	//
 	// example:
 	//
 	// vipcloudfw-cn-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of Cloud Firewall. Valid values:
+	//
+	// 	- **normal**: Cloud Firewall is running as expected.
+	//
+	// 	- **init**: Cloud Firewall is being initialized.
+	//
+	// 	- **deleting**: Cloud Firewall is being deleted.
+	//
+	// 	- **abnormal**: An exception occurs in Cloud Firewall.
+	//
+	// 	- **free**: Cloud Firewall is invalid.
+	//
 	// example:
 	//
 	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The number of public IP addresses that can be protected.
+	//
+	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	//
 	// example:
 	//
 	// 63
 	IpNumber *int64 `json:"IpNumber,omitempty" xml:"IpNumber,omitempty"`
+	// Indicates whether log delivery is enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	LogStatus *bool `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
+	// The log storage capacity.
+	//
+	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	//
 	// example:
 	//
 	// 3000
 	LogStorage *int64 `json:"LogStorage,omitempty" xml:"LogStorage,omitempty"`
+	// The status of the burstable protected traffic feature. Valid values:
+	//
+	// 	- **1000000**: enabled.
+	//
+	// 	- **0**: disabled.
+	//
+	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	//
 	// example:
 	//
 	// 0
 	MaxOverflow *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F71B03EE-xxxxx-91D79CC6AA1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when Cloud Firewall was activated.
+	//
+	// >  The value is a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1692504764000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Indicates whether Cloud Firewall is valid. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	UserStatus *bool `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+	// The edition of Cloud Firewall. Valid values:
+	//
+	// 	- **2**: Premium Edition.
+	//
+	// 	- **3**: Enterprise Edition.
+	//
+	// 	- **4**: Ultimate Edition.
+	//
+	// 	- **10**: Cloud Firewall that uses the pay-as-you-go billing method.
+	//
 	// example:
 	//
 	// 2
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The number of virtual private clouds (VPCs) that can be protected.
+	//
+	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	//
 	// example:
 	//
 	// 21
@@ -18591,7 +18831,7 @@ type DescribeVpcFirewallCenListResponseBody struct {
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// An array that consists of the details about the VPC firewall.
+	// The information about the VPC firewalls.
 	VpcFirewalls []*DescribeVpcFirewallCenListResponseBodyVpcFirewalls `json:"VpcFirewalls,omitempty" xml:"VpcFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -18649,7 +18889,7 @@ type DescribeVpcFirewallCenListResponseBodyVpcFirewalls struct {
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The information about the intrusion prevention system (IPS) configuration.
+	// The intrusion prevention system (IPS) configurations.
 	IpsConfig *DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
 	// The details about the VPC.
 	LocalVpc *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
@@ -18800,7 +19040,18 @@ type DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig struct {
 	//
 	// 1
 	EnableAllPatch *int32 `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
-	RuleClass      *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
+	// The level of the rule group for the IPS. Valid values:
+	//
+	// 	- **1**: loose.
+	//
+	// 	- **2**: medium.
+	//
+	// 	- **3**: strict.
+	//
+	// example:
+	//
+	// 1
+	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The mode of the IPS. Valid values:
 	//
 	// 	- **1**: block mode
@@ -19130,8 +19381,6 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// The number of the page to return.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
@@ -19171,8 +19420,6 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	// The number of entries to return on each page.
 	//
 	// Maximum value: 50.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -19927,7 +20174,18 @@ type DescribeVpcFirewallDefaultIPSConfigResponseBody struct {
 	//
 	// 850A84D6-0DE4-4797-A1E8-00090125adf1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleClass *int32  `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
+	// The level of the rule group for the IPS. Valid values:
+	//
+	// 	- **1**: loose.
+	//
+	// 	- **2**: medium.
+	//
+	// 	- **3**: strict.
+	//
+	// example:
+	//
+	// 1
+	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The mode of the intrusion prevention system (IPS). Valid values:
 	//
 	// 	- **1**: block mode
@@ -21719,6 +21977,8 @@ type DescribeVpcZoneRequest struct {
 	// 1415189284827022
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28171,6 +28431,10 @@ func (client *Client) CreateDownloadTaskWithOptions(request *CreateDownloadTaskR
 		query["TaskData"] = request.TaskData
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TimeZone)) {
 		query["TimeZone"] = request.TimeZone
 	}
@@ -30524,7 +30788,7 @@ func (client *Client) DescribeAssetRiskList(request *DescribeAssetRiskListReques
 
 // Summary:
 //
-// 获取资产统计信息
+// Queries statistics on the assets that are protected by Cloud Firewall.
 //
 // @param request - DescribeAssetStatisticRequest
 //
@@ -30574,7 +30838,7 @@ func (client *Client) DescribeAssetStatisticWithOptions(request *DescribeAssetSt
 
 // Summary:
 //
-// 获取资产统计信息
+// Queries statistics on the assets that are protected by Cloud Firewall.
 //
 // @param request - DescribeAssetStatisticRequest
 //
@@ -32599,6 +32863,10 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 		query["FirewallType"] = request.FirewallType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsOnlyPrivateAssoc)) {
+		query["IsOnlyPrivateAssoc"] = request.IsOnlyPrivateAssoc
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -33287,7 +33555,15 @@ func (client *Client) DescribeUserAssetIPTrafficInfo(request *DescribeUserAssetI
 
 // Summary:
 //
-// 获取用户版本信息
+// Queries the edition information about Cloud Firewall.
+//
+// Description:
+//
+// You can call this operation to query the edition information about Cloud Firewall.
+//
+// ## [](#qps-)Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeUserBuyVersionRequest
 //
@@ -33329,7 +33605,15 @@ func (client *Client) DescribeUserBuyVersionWithOptions(request *DescribeUserBuy
 
 // Summary:
 //
-// 获取用户版本信息
+// Queries the edition information about Cloud Firewall.
+//
+// Description:
+//
+// You can call this operation to query the edition information about Cloud Firewall.
+//
+// ## [](#qps-)Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeUserBuyVersionRequest
 //
