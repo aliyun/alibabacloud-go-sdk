@@ -9759,7 +9759,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// true
 	//
 	// example:
@@ -10093,6 +10094,11 @@ func (s *CreateApplicationRequest) SetCpu(v int32) *CreateApplicationRequest {
 
 func (s *CreateApplicationRequest) SetCustomHostAlias(v string) *CreateApplicationRequest {
 	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetCustomImageNetworkType(v string) *CreateApplicationRequest {
+	s.CustomImageNetworkType = &v
 	return s
 }
 
@@ -10441,7 +10447,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// true
 	//
 	// example:
@@ -10775,6 +10782,11 @@ func (s *CreateApplicationShrinkRequest) SetCpu(v int32) *CreateApplicationShrin
 
 func (s *CreateApplicationShrinkRequest) SetCustomHostAlias(v string) *CreateApplicationShrinkRequest {
 	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetCustomImageNetworkType(v string) *CreateApplicationShrinkRequest {
+	s.CustomImageNetworkType = &v
 	return s
 }
 
@@ -15785,7 +15797,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication*	- operation to manage a running application, the application is immediately redeployed.
 	//
 	// 	- **true*	- (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
@@ -16317,6 +16330,11 @@ func (s *DeployApplicationRequest) SetCustomHostAlias(v string) *DeployApplicati
 	return s
 }
 
+func (s *DeployApplicationRequest) SetCustomImageNetworkType(v string) *DeployApplicationRequest {
+	s.CustomImageNetworkType = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetDeploy(v string) *DeployApplicationRequest {
 	s.Deploy = &v
 	return s
@@ -16700,7 +16718,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication*	- operation to manage a running application, the application is immediately redeployed.
 	//
 	// 	- **true*	- (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
@@ -17229,6 +17248,11 @@ func (s *DeployApplicationShrinkRequest) SetCpu(v int32) *DeployApplicationShrin
 
 func (s *DeployApplicationShrinkRequest) SetCustomHostAlias(v string) *DeployApplicationShrinkRequest {
 	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetCustomImageNetworkType(v string) *DeployApplicationShrinkRequest {
+	s.CustomImageNetworkType = &v
 	return s
 }
 
@@ -18415,8 +18439,9 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// [{"hostName":"test.host.name","ip":"0.0.0.0"}]
-	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	Dotnet          *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
+	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
+	Dotnet                 *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
 	//
 	// example:
@@ -18446,6 +18471,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
 	EnableIdle         *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	EnableNewArms      *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	Enabledle          *bool `json:"Enabledle,omitempty" xml:"Enabledle,omitempty"`
 	// The environment variables. Variable description:
 	//
 	// 	- **name**: the name of the environment variable.
@@ -18980,6 +19006,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetCustomHostAlias(v string)
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetCustomImageNetworkType(v string) *DescribeApplicationConfigResponseBodyData {
+	s.CustomImageNetworkType = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetDotnet(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Dotnet = &v
 	return s
@@ -19012,6 +19043,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEnableIdle(v bool) *Descr
 
 func (s *DescribeApplicationConfigResponseBodyData) SetEnableNewArms(v bool) *DescribeApplicationConfigResponseBodyData {
 	s.EnableNewArms = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetEnabledle(v bool) *DescribeApplicationConfigResponseBodyData {
+	s.Enabledle = &v
 	return s
 }
 
@@ -20281,7 +20317,8 @@ type DescribeApplicationInstancesRequest struct {
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 10
 	//
 	// example:
@@ -20316,6 +20353,11 @@ func (s *DescribeApplicationInstancesRequest) SetCurrentPage(v int32) *DescribeA
 
 func (s *DescribeApplicationInstancesRequest) SetGroupId(v string) *DescribeApplicationInstancesRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApplicationInstancesRequest) SetInstanceId(v string) *DescribeApplicationInstancesRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -20577,7 +20619,8 @@ type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MainContainerStatus *string `json:"MainContainerStatus,omitempty" xml:"MainContainerStatus,omitempty"`
 	// The version of the package.
 	//
 	// example:
@@ -20585,6 +20628,7 @@ type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	// 1609939496200
 	PackageVersion          *string                                                                         `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
 	SidecarContainersStatus []*DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus `json:"SidecarContainersStatus,omitempty" xml:"SidecarContainersStatus,omitempty" type:"Repeated"`
+	UnhealthyMessage        *string                                                                         `json:"UnhealthyMessage,omitempty" xml:"UnhealthyMessage,omitempty"`
 	// The ID of the zone where the instance is deployed.
 	//
 	// example:
@@ -20656,6 +20700,11 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetInstanceId(v 
 	return s
 }
 
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetMainContainerStatus(v string) *DescribeApplicationInstancesResponseBodyDataInstances {
+	s.MainContainerStatus = &v
+	return s
+}
+
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetPackageVersion(v string) *DescribeApplicationInstancesResponseBodyDataInstances {
 	s.PackageVersion = &v
 	return s
@@ -20663,6 +20712,11 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetPackageVersio
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetSidecarContainersStatus(v []*DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus) *DescribeApplicationInstancesResponseBodyDataInstances {
 	s.SidecarContainersStatus = v
+	return s
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetUnhealthyMessage(v string) *DescribeApplicationInstancesResponseBodyDataInstances {
+	s.UnhealthyMessage = &v
 	return s
 }
 
@@ -33208,7 +33262,8 @@ type GetWebshellTokenRequest struct {
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -33227,6 +33282,11 @@ func (s GetWebshellTokenRequest) GoString() string {
 
 func (s *GetWebshellTokenRequest) SetAppId(v string) *GetWebshellTokenRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetWebshellTokenRequest) SetContainerName(v string) *GetWebshellTokenRequest {
+	s.ContainerName = &v
 	return s
 }
 
@@ -46612,6 +46672,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["CustomHostAlias"] = request.CustomHostAlias
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomImageNetworkType)) {
+		query["CustomImageNetworkType"] = request.CustomImageNetworkType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Deploy)) {
 		query["Deploy"] = request.Deploy
 	}
@@ -48694,6 +48758,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 		query["CustomHostAlias"] = request.CustomHostAlias
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomImageNetworkType)) {
+		query["CustomImageNetworkType"] = request.CustomImageNetworkType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Deploy)) {
 		query["Deploy"] = request.Deploy
 	}
@@ -49286,6 +49354,10 @@ func (client *Client) DescribeApplicationInstancesWithOptions(request *DescribeA
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
@@ -51980,6 +52052,10 @@ func (client *Client) GetWebshellTokenWithOptions(request *GetWebshellTokenReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerName)) {
+		query["ContainerName"] = request.ContainerName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PodName)) {
