@@ -318,9 +318,9 @@ type CreateAclRequest struct {
 	//
 	// 	- **IdempotentWrite**: idempotent data writes to clusters.
 	//
-	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
-	// 	- **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// This parameter is required.
 	//
@@ -340,11 +340,11 @@ type CreateAclRequest struct {
 	//
 	// 	- **IdempotentWrite**: idempotent data writes to clusters.
 	//
-	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
-	// 	- **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
-	// >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -356,7 +356,7 @@ type CreateAclRequest struct {
 	//
 	// 	- **ALLOW**
 	//
-	// >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -404,11 +404,13 @@ type CreateAclRequest struct {
 	//
 	// Group
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	// The source IP address.
+	// The IP address of the source.
 	//
-	// > -  You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+	// >
 	//
-	// > -  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	// 	- You can specify a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+	//
+	// 	- This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -787,6 +789,442 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 	return s
 }
 
+type CreatePostPayInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// example:
+	//
+	// 1500
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// 0
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// 3
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// example:
+	//
+	// alikafka.hw.2xlarge
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// example:
+	//
+	// 0
+	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// example:
+	//
+	// 100
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-ac***********7q
+	ResourceGroupId  *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerlessConfig *CreatePostPayInstanceRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// professional
+	SpecType *string                            `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Tag      []*CreatePostPayInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s CreatePostPayInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceRequest) SetDeployType(v int32) *CreatePostPayInstanceRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetDiskSize(v int32) *CreatePostPayInstanceRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetDiskType(v string) *CreatePostPayInstanceRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetEipMax(v int32) *CreatePostPayInstanceRequest {
+	s.EipMax = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetIoMaxSpec(v string) *CreatePostPayInstanceRequest {
+	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetPaidType(v int32) *CreatePostPayInstanceRequest {
+	s.PaidType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetPartitionNum(v int32) *CreatePostPayInstanceRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetRegionId(v string) *CreatePostPayInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetResourceGroupId(v string) *CreatePostPayInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetServerlessConfig(v *CreatePostPayInstanceRequestServerlessConfig) *CreatePostPayInstanceRequest {
+	s.ServerlessConfig = v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetSpecType(v string) *CreatePostPayInstanceRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequest) SetTag(v []*CreatePostPayInstanceRequestTag) *CreatePostPayInstanceRequest {
+	s.Tag = v
+	return s
+}
+
+type CreatePostPayInstanceRequestServerlessConfig struct {
+	// example:
+	//
+	// 60
+	ReservedPublishCapacity *int64 `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
+	// example:
+	//
+	// 50
+	ReservedSubscribeCapacity *int64 `json:"ReservedSubscribeCapacity,omitempty" xml:"ReservedSubscribeCapacity,omitempty"`
+}
+
+func (s CreatePostPayInstanceRequestServerlessConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceRequestServerlessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceRequestServerlessConfig) SetReservedPublishCapacity(v int64) *CreatePostPayInstanceRequestServerlessConfig {
+	s.ReservedPublishCapacity = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequestServerlessConfig) SetReservedSubscribeCapacity(v int64) *CreatePostPayInstanceRequestServerlessConfig {
+	s.ReservedSubscribeCapacity = &v
+	return s
+}
+
+type CreatePostPayInstanceRequestTag struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePostPayInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceRequestTag) SetKey(v string) *CreatePostPayInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceRequestTag) SetValue(v string) *CreatePostPayInstanceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreatePostPayInstanceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// example:
+	//
+	// 1500
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// 0
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// 3
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// example:
+	//
+	// alikafka.hw.2xlarge
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// example:
+	//
+	// 0
+	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// example:
+	//
+	// 100
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-ac***********7q
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
+	// example:
+	//
+	// professional
+	SpecType *string                                  `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Tag      []*CreatePostPayInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s CreatePostPayInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetDeployType(v int32) *CreatePostPayInstanceShrinkRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetDiskSize(v int32) *CreatePostPayInstanceShrinkRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetDiskType(v string) *CreatePostPayInstanceShrinkRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetEipMax(v int32) *CreatePostPayInstanceShrinkRequest {
+	s.EipMax = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetIoMaxSpec(v string) *CreatePostPayInstanceShrinkRequest {
+	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetPaidType(v int32) *CreatePostPayInstanceShrinkRequest {
+	s.PaidType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetPartitionNum(v int32) *CreatePostPayInstanceShrinkRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetRegionId(v string) *CreatePostPayInstanceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetResourceGroupId(v string) *CreatePostPayInstanceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetServerlessConfigShrink(v string) *CreatePostPayInstanceShrinkRequest {
+	s.ServerlessConfigShrink = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetSpecType(v string) *CreatePostPayInstanceShrinkRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequest) SetTag(v []*CreatePostPayInstanceShrinkRequestTag) *CreatePostPayInstanceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+type CreatePostPayInstanceShrinkRequestTag struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePostPayInstanceShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceShrinkRequestTag) SetKey(v string) *CreatePostPayInstanceShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceShrinkRequestTag) SetValue(v string) *CreatePostPayInstanceShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreatePostPayInstanceResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreatePostPayInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABA4A7FD-E10F-45C7-9774-A5236015A***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreatePostPayInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceResponseBody) SetCode(v int32) *CreatePostPayInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceResponseBody) SetData(v *CreatePostPayInstanceResponseBodyData) *CreatePostPayInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePostPayInstanceResponseBody) SetMessage(v string) *CreatePostPayInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceResponseBody) SetRequestId(v string) *CreatePostPayInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceResponseBody) SetSuccess(v bool) *CreatePostPayInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePostPayInstanceResponseBodyData struct {
+	// example:
+	//
+	// alikafka_pre-cn-pe333xxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 236972661580636
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s CreatePostPayInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceResponseBodyData) SetInstanceId(v string) *CreatePostPayInstanceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceResponseBodyData) SetOrderId(v int64) *CreatePostPayInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type CreatePostPayInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePostPayInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePostPayInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayInstanceResponse) SetHeaders(v map[string]*string) *CreatePostPayInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePostPayInstanceResponse) SetStatusCode(v int32) *CreatePostPayInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePostPayInstanceResponse) SetBody(v *CreatePostPayInstanceResponseBody) *CreatePostPayInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePostPayOrderRequest struct {
 	// The deployment mode of the instance. Valid values:
 	//
@@ -804,31 +1242,31 @@ type CreatePostPayOrderRequest struct {
 	//
 	// For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The disk type. Valid values:
+	// The disk type of the instance. Valid values:
 	//
 	// 	- **0**: ultra disk
 	//
 	// 	- **1**: standard SSD
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 0
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The maximum Internet traffic in the instance.
+	// The Internet traffic.
 	//
 	// 	- If you set **DeployType*	- to **4**, you must configure this parameter.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -840,7 +1278,7 @@ type CreatePostPayOrderRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -852,7 +1290,7 @@ type CreatePostPayOrderRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -860,9 +1298,9 @@ type CreatePostPayOrderRequest struct {
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- 1: the pay-as-you-go billing method for ApsaraMQ for Kafka V2 instances.
+	// 	- 1: pay-as-you-go (reserved capacity).
 	//
-	// 	- 3: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances.
+	// 	- 3: pay-as-you-go (reserved capacity) + pay-as-you-go (on-demand capacity)
 	//
 	// example:
 	//
@@ -876,7 +1314,7 @@ type CreatePostPayOrderRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -898,7 +1336,7 @@ type CreatePostPayOrderRequest struct {
 	//
 	// rg-ac***********7q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The parameters configured for the serverless ApsaraMQ for Kafka V3 instance. When you create a Serverless ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
+	// The parameters configured for the serverless ApsaraMQ for Kafka instance. These parameters are required only when you create a serverless instance.
 	ServerlessConfig *CreatePostPayOrderRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
 	// The instance edition.
 	//
@@ -932,7 +1370,7 @@ type CreatePostPayOrderRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -1119,31 +1557,31 @@ type CreatePostPayOrderShrinkRequest struct {
 	//
 	// For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The disk type. Valid values:
+	// The disk type of the instance. Valid values:
 	//
 	// 	- **0**: ultra disk
 	//
 	// 	- **1**: standard SSD
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 0
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The maximum Internet traffic in the instance.
+	// The Internet traffic.
 	//
 	// 	- If you set **DeployType*	- to **4**, you must configure this parameter.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -1155,7 +1593,7 @@ type CreatePostPayOrderShrinkRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -1167,7 +1605,7 @@ type CreatePostPayOrderShrinkRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -1175,9 +1613,9 @@ type CreatePostPayOrderShrinkRequest struct {
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- 1: the pay-as-you-go billing method for ApsaraMQ for Kafka V2 instances.
+	// 	- 1: pay-as-you-go (reserved capacity).
 	//
-	// 	- 3: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances.
+	// 	- 3: pay-as-you-go (reserved capacity) + pay-as-you-go (on-demand capacity)
 	//
 	// example:
 	//
@@ -1191,7 +1629,7 @@ type CreatePostPayOrderShrinkRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -1213,7 +1651,7 @@ type CreatePostPayOrderShrinkRequest struct {
 	//
 	// rg-ac***********7q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The parameters configured for the serverless ApsaraMQ for Kafka V3 instance. When you create a Serverless ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
+	// The parameters configured for the serverless ApsaraMQ for Kafka instance. These parameters are required only when you create a serverless instance.
 	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
 	// The instance edition.
 	//
@@ -1247,7 +1685,7 @@ type CreatePostPayOrderShrinkRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -1471,6 +1909,600 @@ func (s *CreatePostPayOrderResponse) SetStatusCode(v int32) *CreatePostPayOrderR
 }
 
 func (s *CreatePostPayOrderResponse) SetBody(v *CreatePostPayOrderResponseBody) *CreatePostPayOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePrePayInstanceRequest struct {
+	ConfluentConfig *CreatePrePayInstanceRequestConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// example:
+	//
+	// 500
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// 1
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 3
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// example:
+	//
+	// alikafka.hw.2xlarge
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// example:
+	//
+	// 1
+	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// example:
+	//
+	// 1000
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-ac***********7q
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// professional
+	SpecType *string                           `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Tag      []*CreatePrePayInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s CreatePrePayInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceRequest) SetConfluentConfig(v *CreatePrePayInstanceRequestConfluentConfig) *CreatePrePayInstanceRequest {
+	s.ConfluentConfig = v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetDeployType(v int32) *CreatePrePayInstanceRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetDiskSize(v int32) *CreatePrePayInstanceRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetDiskType(v string) *CreatePrePayInstanceRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetDuration(v int32) *CreatePrePayInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetEipMax(v int32) *CreatePrePayInstanceRequest {
+	s.EipMax = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetIoMaxSpec(v string) *CreatePrePayInstanceRequest {
+	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetPaidType(v int32) *CreatePrePayInstanceRequest {
+	s.PaidType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetPartitionNum(v int32) *CreatePrePayInstanceRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetRegionId(v string) *CreatePrePayInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetResourceGroupId(v string) *CreatePrePayInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetSpecType(v string) *CreatePrePayInstanceRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequest) SetTag(v []*CreatePrePayInstanceRequestTag) *CreatePrePayInstanceRequest {
+	s.Tag = v
+	return s
+}
+
+type CreatePrePayInstanceRequestConfluentConfig struct {
+	// example:
+	//
+	// 4
+	ConnectCU *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	// example:
+	//
+	// 2
+	ConnectReplica *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	// example:
+	//
+	// 4
+	ControlCenterCU *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	// example:
+	//
+	// 1
+	ControlCenterReplica *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	// example:
+	//
+	// 300
+	ControlCenterStorage *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	// example:
+	//
+	// 4
+	KafkaCU *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	// example:
+	//
+	// 3
+	KafkaReplica *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	// example:
+	//
+	// 4
+	KafkaRestProxyCU *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	// example:
+	//
+	// 2
+	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	// example:
+	//
+	// 800
+	KafkaStorage *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	// example:
+	//
+	// 4
+	KsqlCU *int32 `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	// example:
+	//
+	// 2
+	KsqlReplica *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	// example:
+	//
+	// 100
+	KsqlStorage *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	// example:
+	//
+	// 1
+	SchemaRegistryCU *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	// example:
+	//
+	// 2
+	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	// example:
+	//
+	// 2
+	ZooKeeperCU *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	// example:
+	//
+	// 3
+	ZooKeeperReplica *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	// example:
+	//
+	// 100
+	ZooKeeperStorage *int32 `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
+}
+
+func (s CreatePrePayInstanceRequestConfluentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceRequestConfluentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetConnectCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ConnectCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetConnectReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ConnectReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetControlCenterCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ControlCenterCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetControlCenterReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ControlCenterReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetControlCenterStorage(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ControlCenterStorage = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKafkaCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KafkaCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKafkaReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KafkaReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKafkaRestProxyCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KafkaRestProxyCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKafkaRestProxyReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KafkaRestProxyReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKafkaStorage(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KafkaStorage = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKsqlCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KsqlCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKsqlReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KsqlReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKsqlStorage(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KsqlStorage = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetSchemaRegistryCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.SchemaRegistryCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetSchemaRegistryReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.SchemaRegistryReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetZooKeeperCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ZooKeeperCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetZooKeeperReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ZooKeeperReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetZooKeeperStorage(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ZooKeeperStorage = &v
+	return s
+}
+
+type CreatePrePayInstanceRequestTag struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePrePayInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceRequestTag) SetKey(v string) *CreatePrePayInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestTag) SetValue(v string) *CreatePrePayInstanceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreatePrePayInstanceShrinkRequest struct {
+	ConfluentConfigShrink *string `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty"`
+	// example:
+	//
+	// 5
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// example:
+	//
+	// 500
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// 1
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 3
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// example:
+	//
+	// alikafka.hw.2xlarge
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// example:
+	//
+	// 1
+	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// example:
+	//
+	// 1000
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-ac***********7q
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// professional
+	SpecType *string                                 `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Tag      []*CreatePrePayInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s CreatePrePayInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetConfluentConfigShrink(v string) *CreatePrePayInstanceShrinkRequest {
+	s.ConfluentConfigShrink = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetDeployType(v int32) *CreatePrePayInstanceShrinkRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetDiskSize(v int32) *CreatePrePayInstanceShrinkRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetDiskType(v string) *CreatePrePayInstanceShrinkRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetDuration(v int32) *CreatePrePayInstanceShrinkRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetEipMax(v int32) *CreatePrePayInstanceShrinkRequest {
+	s.EipMax = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetIoMaxSpec(v string) *CreatePrePayInstanceShrinkRequest {
+	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetPaidType(v int32) *CreatePrePayInstanceShrinkRequest {
+	s.PaidType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetPartitionNum(v int32) *CreatePrePayInstanceShrinkRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetRegionId(v string) *CreatePrePayInstanceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetResourceGroupId(v string) *CreatePrePayInstanceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetSpecType(v string) *CreatePrePayInstanceShrinkRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequest) SetTag(v []*CreatePrePayInstanceShrinkRequestTag) *CreatePrePayInstanceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+type CreatePrePayInstanceShrinkRequestTag struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePrePayInstanceShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceShrinkRequestTag) SetKey(v string) *CreatePrePayInstanceShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceShrinkRequestTag) SetValue(v string) *CreatePrePayInstanceShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreatePrePayInstanceResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreatePrePayInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E57A8862-DF68-4055-8E55-B80CB4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreatePrePayInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceResponseBody) SetCode(v int32) *CreatePrePayInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceResponseBody) SetData(v *CreatePrePayInstanceResponseBodyData) *CreatePrePayInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePrePayInstanceResponseBody) SetMessage(v string) *CreatePrePayInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceResponseBody) SetRequestId(v string) *CreatePrePayInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceResponseBody) SetSuccess(v bool) *CreatePrePayInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePrePayInstanceResponseBodyData struct {
+	// example:
+	//
+	// alikafka_post-cn-xxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 236972661xxxx
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s CreatePrePayInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceResponseBodyData) SetInstanceId(v string) *CreatePrePayInstanceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceResponseBodyData) SetOrderId(v int64) *CreatePrePayInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type CreatePrePayInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePrePayInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePrePayInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceResponse) SetHeaders(v map[string]*string) *CreatePrePayInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePrePayInstanceResponse) SetStatusCode(v int32) *CreatePrePayInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceResponse) SetBody(v *CreatePrePayInstanceResponseBody) *CreatePrePayInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -2372,9 +3404,7 @@ type CreateSaslUserRequest struct {
 	//
 	// 	- SCRAM-SHA-256
 	//
-	// >
-	//
-	// 	- This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	// >  This parameter is available only for ApsaraMQ for Kafka serverless instances.
 	//
 	// example:
 	//
@@ -2459,7 +3489,7 @@ func (s *CreateSaslUserRequest) SetUsername(v string) *CreateSaslUserRequest {
 }
 
 type CreateSaslUserResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The HTTP status code. The HTTP status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -2471,13 +3501,13 @@ type CreateSaslUserResponseBody struct {
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C5CA600C-7D5A-45B5-B6DB-44FAC2C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -3003,7 +4033,7 @@ type CreateTopicRequest struct {
 	//
 	// false
 	CompactTopic *bool `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
-	// The additional configurations.
+	// The additional configuration.
 	//
 	// 	- The value must be in JSON format.
 	//
@@ -3313,19 +4343,19 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteAclRequest struct {
-	// The operation allowed by the access control list (ACL). Valid values:
+	// The type of the operation allowed by the access control list (ACL). Valid values:
 	//
-	// 	- **Write**
+	// 	- **Write**: data writes.
 	//
-	// 	- **Read**
+	// 	- **Read**: data reads.
 	//
-	// 	- **Describe**: reads of transactional IDs
+	// 	- **Describe**: reads of transaction IDs.
 	//
-	// 	- **IdempotentWrite**: idempotent data writes to clusters
+	// 	- **IdempotentWrite**: idempotent data writes to clusters.
 	//
-	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
-	// 	- **DESCRIBE_CONFIGS**: configuration queries. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// This parameter is required.
 	//
@@ -3333,23 +4363,23 @@ type DeleteAclRequest struct {
 	//
 	// Write
 	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
-	// The operations allowed by the ACL. Separate multiple operations with commas (,).
+	// The types of operations allowed by the ACL. Separate multiple operations with commas (,).
 	//
 	// Valid values:
 	//
-	// 	- **Write**: data writes
+	// 	- **Write**: data writes.
 	//
-	// 	- **Read**: data reads
+	// 	- **Read**: data reads.
 	//
-	// 	- **Describe**: reads of transactional IDs
+	// 	- **Describe**: reads of transaction IDs.
 	//
-	// 	- **IdempotentWrite**: idempotent data writes to clusters
+	// 	- **IdempotentWrite**: idempotent data writes to clusters.
 	//
-	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
-	// 	- **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+	// 	- **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
 	//
-	// >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -3361,7 +4391,7 @@ type DeleteAclRequest struct {
 	//
 	// 	- ALLOW
 	//
-	// >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -3409,9 +4439,11 @@ type DeleteAclRequest struct {
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
 	// The IP address of the source.
 	//
-	// > - You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+	// >
 	//
-	// >- This parameter is available only for serverless ApsaraMQ for Kafka V3 instances.
+	// 	- You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+	//
+	// 	- This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -3855,7 +4887,7 @@ type DeleteSaslUserRequest struct {
 	//
 	// 	- SCRAM-SHA-256
 	//
-	// >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -4793,7 +5825,7 @@ func (s *DescribeSaslUsersResponseBodySaslUserList) SetSaslUserVO(v []*DescribeS
 type DescribeSaslUsersResponseBodySaslUserListSaslUserVO struct {
 	// The encryption method.
 	//
-	// >  This field is available only for serverless ApsaraMQ for Kafka V3 instances.
+	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	//
 	// example:
 	//
@@ -5043,8 +6075,6 @@ type EnableAutoTopicCreationRequest struct {
 	//
 	// 	- updatePartition: changes the number of partitions in topics that are automatically created.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// enable
@@ -5064,7 +6094,8 @@ type EnableAutoTopicCreationRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpdatePartition *bool   `json:"UpdatePartition,omitempty" xml:"UpdatePartition,omitempty"`
 }
 
 func (s EnableAutoTopicCreationRequest) String() string {
@@ -5092,6 +6123,11 @@ func (s *EnableAutoTopicCreationRequest) SetPartitionNum(v int64) *EnableAutoTop
 
 func (s *EnableAutoTopicCreationRequest) SetRegionId(v string) *EnableAutoTopicCreationRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationRequest) SetUpdatePartition(v bool) *EnableAutoTopicCreationRequest {
+	s.UpdatePartition = &v
 	return s
 }
 
@@ -6068,6 +7104,10 @@ func (s *GetConsumerListResponseBodyConsumerList) SetConsumerVO(v []*GetConsumer
 
 type GetConsumerListResponseBodyConsumerListConsumerVO struct {
 	// Indicates that the consumer group was automatically created by the system.
+	//
+	// example:
+	//
+	// false
 	AutomaticallyCreatedGroup *bool `json:"AutomaticallyCreatedGroup,omitempty" xml:"AutomaticallyCreatedGroup,omitempty"`
 	// The consumer group ID.
 	//
@@ -6075,6 +7115,12 @@ type GetConsumerListResponseBodyConsumerListConsumerVO struct {
 	//
 	// kafka-test
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The timestamp that indicates when the consumer group was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1729736584002
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -6112,6 +7158,11 @@ func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetAutomaticallyCrea
 
 func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetConsumerId(v string) *GetConsumerListResponseBodyConsumerListConsumerVO {
 	s.ConsumerId = &v
+	return s
+}
+
+func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetCreateTime(v int64) *GetConsumerListResponseBodyConsumerListConsumerVO {
+	s.CreateTime = &v
 	return s
 }
 
@@ -6222,8 +7273,19 @@ type GetConsumerProgressRequest struct {
 	// example:
 	//
 	// kafka-test
-	ConsumerId        *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	HideLastTimestamp *bool   `json:"HideLastTimestamp,omitempty" xml:"HideLastTimestamp,omitempty"`
+	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// Specifies whether to hide LastTimestamp. Default value: false. We recommend that you set this parameter to true.
+	//
+	// >
+	//
+	// 	- If you set this parameter to true, -1 is returned for LastTimestamp. If you set this parameter to false, a specific value is returned for LastTimestamp. This parameter is supported only by topics that use cloud storage on reserved instances.
+	//
+	// 	- A large amount of data is processed by this operation, which causes performance loss. We recommend that you set this parameter to true to accelerate processing.
+	//
+	// example:
+	//
+	// true
+	HideLastTimestamp *bool `json:"HideLastTimestamp,omitempty" xml:"HideLastTimestamp,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -6565,6 +7627,18 @@ type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList
 	//
 	// 9
 	BrokerOffset *int64 `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
+	// Client ID of the application.
+	//
+	// example:
+	//
+	// client-id-KafkaConsumerDemo
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 172.16.11.3
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// The consumer offset in the partition of the topic.
 	//
 	// example:
@@ -6577,6 +7651,12 @@ type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList
 	//
 	// 1566874931649
 	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// Member ID.
+	//
+	// example:
+	//
+	// client-id-KafkaConsumerDemo-70b64883-a911-4882-8084-598b958848b4
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	// The partition ID.
 	//
 	// example:
@@ -6598,6 +7678,16 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 	return s
 }
 
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetClientId(v string) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetClientIp(v string) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
+	s.ClientIp = &v
+	return s
+}
+
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetConsumerOffset(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
 	s.ConsumerOffset = &v
 	return s
@@ -6605,6 +7695,11 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetLastTimestamp(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
 	s.LastTimestamp = &v
+	return s
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetMemberId(v string) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
+	s.MemberId = &v
 	return s
 }
 
@@ -6849,9 +7944,25 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// {\\"enable.vpc_sasl_ssl\\":\\"false\\",\\"kafka.log.retention.hours\\":\\"66\\",\\"enable.acl\\":\\"false\\",\\"kafka.message.max.bytes\\":\\"6291456\\"}
-	AllConfig             *string `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
-	AutoCreateGroupEnable *bool   `json:"AutoCreateGroupEnable,omitempty" xml:"AutoCreateGroupEnable,omitempty"`
-	AutoCreateTopicEnable *bool   `json:"AutoCreateTopicEnable,omitempty" xml:"AutoCreateTopicEnable,omitempty"`
+	AllConfig *string `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	// Indicates whether the flexible group creation feature is enabled.
+	//
+	// example:
+	//
+	// true
+	AutoCreateGroupEnable *bool `json:"AutoCreateGroupEnable,omitempty" xml:"AutoCreateGroupEnable,omitempty"`
+	// Indicates whether the automatic topic creation feature is enabled.
+	//
+	// example:
+	//
+	// true
+	AutoCreateTopicEnable *bool `json:"AutoCreateTopicEnable,omitempty" xml:"AutoCreateTopicEnable,omitempty"`
+	// The ID of the secondary zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
+	BackupZoneId *string `json:"BackupZoneId,omitempty" xml:"BackupZoneId,omitempty"`
 	// The parameters that are returned for the ApsaraMQ for Confluent instance.
 	ConfluentConfig *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
 	// The time when the instance was created. Unit: milliseconds.
@@ -6859,7 +7970,12 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// 1577961819000
-	CreateTime          *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of partitions in a topic that is automatically created.
+	//
+	// example:
+	//
+	// 12
 	DefaultPartitionNum *int32 `json:"DefaultPartitionNum,omitempty" xml:"DefaultPartitionNum,omitempty"`
 	// The type of the network in which the instance is deployed. Valid values:
 	//
@@ -7019,6 +8135,16 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	//
 	// alikafka-pre-cn-zv**********-1-vpc.alikafka.aliyuncs.com:9094,alikafka-pre-cn-zv**********-2-vpc.alikafka.aliyuncs.com:9094,alikafka-pre-cn-zv**********-3-vpc.alikafka.aliyuncs.com:9094
 	SaslDomainEndpoint *string `json:"SaslDomainEndpoint,omitempty" xml:"SaslDomainEndpoint,omitempty"`
+	// The Simple Authentication and Security Layer (SASL) endpoint of the instance in IP address mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
+	//
+	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
+	//
+	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
+	//
+	// example:
+	//
+	// 172.16.3.XX:9094,172.16.3.XX:9094,172.16.3.XX:9094
+	SaslEndPoint *string `json:"SaslEndPoint,omitempty" xml:"SaslEndPoint,omitempty"`
 	// The security group to which the instance belongs.
 	//
 	// 	- If the instance is deployed in the ApsaraMQ for Kafka console or by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation without a security group configured, no value is returned.
@@ -7140,7 +8266,8 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// vsw-bp1fvuw0ljd7vzmo3****
-	VSwitchId  *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The vSwitch IDs.
 	VSwitchIds *GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 	// The instance status. The valid values are consistent with the values displayed in the ApsaraMQ for Kafka console. This parameter is used in the new version of ApsaraMQ for Kafka.
 	//
@@ -7188,6 +8315,26 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	//
 	// vpc-bp1ojac7bv448nifj****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The SSL endpoint of the instance in domain name mode. You can use the endpoint to access the instance only in virtual private clouds (VPCs). ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
+	//
+	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
+	//
+	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
+	//
+	// example:
+	//
+	// alikafka-post-cn-******-1-vpc.alikafka.aliyuncs.com:9095,alikafka-post-cn-******-2-vpc.alikafka.aliyuncs.com:9095,alikafka-post-cn-******-3-vpc.alikafka.aliyuncs.com:9095
+	VpcSaslDomainEndpoint *string `json:"VpcSaslDomainEndpoint,omitempty" xml:"VpcSaslDomainEndpoint,omitempty"`
+	// The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode. You can use the endpoint to access the instance only in virtual private clouds (VPCs). ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
+	//
+	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
+	//
+	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
+	//
+	// example:
+	//
+	// 172.16.3.XX:9095,172.16.3.XX:9095,172.16.3.XX:9095
+	VpcSaslEndPoint *string `json:"VpcSaslEndPoint,omitempty" xml:"VpcSaslEndPoint,omitempty"`
 	// The zone ID.
 	//
 	// example:
@@ -7216,6 +8363,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetAutoCreateGroupEn
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetAutoCreateTopicEnable(v bool) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.AutoCreateTopicEnable = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetBackupZoneId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.BackupZoneId = &v
 	return s
 }
 
@@ -7339,6 +8491,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSaslDomainEndpoin
 	return s
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSaslEndPoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.SaslEndPoint = &v
+	return s
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSecurityGroup(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.SecurityGroup = &v
 	return s
@@ -7421,6 +8578,16 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetViewInstanceStatu
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVpcId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.VpcId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVpcSaslDomainEndpoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.VpcSaslDomainEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVpcSaslEndPoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.VpcSaslEndPoint = &v
 	return s
 }
 
@@ -7757,38 +8924,64 @@ func (s *GetInstanceListResponse) SetBody(v *GetInstanceListResponseBody) *GetIn
 }
 
 type GetKafkaClientIpRequest struct {
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1716343502000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the consumer group.
+	//
+	// >  This parameter is required only if you set Type to byGroup.
+	//
 	// example:
 	//
 	// group_name
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where the instance is deployed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1716343501000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The topic name.
+	//
+	// >
+	//
+	// 	- This parameter is required only if you set Type to byTopic.
+	//
 	// example:
 	//
 	// topic_name
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The query method that you want to use to query the client IP addresses. Valid values:
+	//
+	// 	- byInstance: queries the IP addresses of the clients that are connected to the instance within a specific period of time.
+	//
+	// 	- byTopic: queries the IP addresses of the clients that are connected to a specific topic on the instance within a specific period of time.
+	//
+	// 	- byGroup: queries the IP addresses of the clients that are connected to a specific group on the instance within a specific period of time.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7841,19 +9034,28 @@ func (s *GetKafkaClientIpRequest) SetType(v string) *GetKafkaClientIpRequest {
 }
 
 type GetKafkaClientIpResponseBody struct {
+	// The returned status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *GetKafkaClientIpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E57A8862-DF68-4055-8E55-B80CB4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -7894,23 +9096,40 @@ func (s *GetKafkaClientIpResponseBody) SetSuccess(v bool) *GetKafkaClientIpRespo
 }
 
 type GetKafkaClientIpResponseBodyData struct {
+	// The value true indicates that the broker is not of the latest minor version.
+	//
+	// >  If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
+	//
 	// example:
 	//
 	// true
-	Alert *bool                                 `json:"Alert,omitempty" xml:"Alert,omitempty"`
-	Data  *GetKafkaClientIpResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Alert *bool `json:"Alert,omitempty" xml:"Alert,omitempty"`
+	// The data returned.
+	Data *GetKafkaClientIpResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The end of the date range within which data is queried.
+	//
 	// example:
 	//
 	// 1716343502000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The time range within which the client IP addresses are queried.
+	//
+	// >  The valid value is 1 hour. If the beginning of the time range to query and the end of the time range to query exceeds 1 hour, only data within 1 hour is returned.
+	//
 	// example:
 	//
 	// 1
 	SearchTimeRange *int32 `json:"SearchTimeRange,omitempty" xml:"SearchTimeRange,omitempty"`
+	// The beginning of the date range within which data is queried.
+	//
 	// example:
 	//
 	// 1716343501000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The date range within which the client IP addresses are queried.
+	//
+	// >  The valid value is 7 days. If the beginning of the date range to query and the end of the date range to query exceeds 7 days, only data within 7 days is returned.
+	//
 	// example:
 	//
 	// 7
@@ -7973,7 +9192,12 @@ func (s *GetKafkaClientIpResponseBodyDataData) SetData(v []*GetKafkaClientIpResp
 }
 
 type GetKafkaClientIpResponseBodyDataDataData struct {
+	// The response parameters.
 	Data *GetKafkaClientIpResponseBodyDataDataDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request name.
+	//
+	// >  The value of this parameter indicates the type of request that the client sends to the broker within the specified period of time.
+	//
 	// example:
 	//
 	// OFFSET_COMMIT
@@ -8016,10 +9240,16 @@ func (s *GetKafkaClientIpResponseBodyDataDataDataData) SetData(v []*GetKafkaClie
 }
 
 type GetKafkaClientIpResponseBodyDataDataDataDataData struct {
+	// The IP address of the client.
+	//
 	// example:
 	//
 	// 58.210.117.154
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The statistics.
+	//
+	// >  The value of this parameter indicates the number of connections on different ports of the IP address within the specified period of time.
+	//
 	// example:
 	//
 	// 3
@@ -11280,7 +12510,7 @@ type TagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags that you want to add.
+	// The tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -11320,7 +12550,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the resource tag.
+	// The tag key.
 	//
 	// 	- You must specify this parameter.
 	//
@@ -11332,7 +12562,7 @@ type TagResourcesRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the resource tag.
+	// The tag value.
 	//
 	// 	- You can leave this parameter empty.
 	//
@@ -12240,13 +13470,13 @@ func (s *UpdateInstanceConfigResponse) SetBody(v *UpdateInstanceConfigResponseBo
 type UpdateTopicConfigRequest struct {
 	// The key of the topic configuration.
 	//
-	// 	- ApsaraMQ for Kafka V2 instances allow you to modify configurations only for topics that use local storage.
+	// 	- For reserved instances, you can modify only the configurations of the topics that use local storage.
 	//
-	// 	- ApsaraMQ for Kafka V3 instances allow you to modify configurations for all topics.
+	// 	- For serverless instances, you can modify the configurations of all topics.
 	//
-	// 	- The following keys are supported by `local topic` of ApsaraMQ for Kafka V2 instances: retention.ms, retention.bytes, and replications.
+	// 	- Reserved instances whose topics use local storage support the following keys: retention.ms, max.message.bytes, replications, message.timestamp.type, and message.timestamp.difference.max.ms.``
 	//
-	// 	- The following keys are supported by ApsaraMQ for Kafka V3 instances: retention.hours and max.message.bytes.
+	// 	- Serverless instances support the following keys: retention.hours, max.message.bytes, message.timestamp.type, message.timestamp.difference.max.ms.
 	//
 	// This parameter is required.
 	//
@@ -12278,11 +13508,29 @@ type UpdateTopicConfigRequest struct {
 	//
 	// dqc_test2
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The configuration item that you want to update for the topic. The following configuration items are supported by ApsaraMQ for Kafka V3 instances:
+	// The value of the topic configuration.
 	//
-	// 	- `retention.hours` specifies the message retention period. Value type: string. Valid values: 24 to 8760.
+	// 	- Serverless instances support the following values:
 	//
-	// 	- `max.message.bytes` specifies the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
+	//     	- `retention.hours`: the message retention period. Value type: string. Valid values: 24 to 8760.
+	//
+	//     	- `max.message.bytes`: the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
+	//
+	//     	- `message.timestamp.type`: the timestamp type of a message. Valid values: CreateTime and LogAppendTime. The value CreateTime specifies the timestamp that is specified by the producer when the message is sent. The value LogAppendTime specifies the time when the broker appends the message to its log. If you do not specify this parameter, the time when the message is created on the client is used.
+	//
+	//     	- `message.timestamp.difference.max.ms`: the maximum positive or negative difference allowed between the timestamp when the broker receives a message and the timestamp specified in the message. If you set message.timestamp.type to CreateTime, **a message is rejected*	- if the difference in timestamp exceeds the threshold. If you set message.timestamp.type to LogAppendTime, this configuration does not take effect.
+	//
+	// 	- Reserved instances support the following values:
+	//
+	//     	- `retention.ms`: the message retention period. Value type: string. Valid values: 3600000 to 31536000000.
+	//
+	//     	- `max.message.bytes`: the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
+	//
+	//     	- `replications`: the number of replicas. Value type: string. Valid values: 1 to 3.
+	//
+	//     	- `message.timestamp.type`: the timestamp type of a message. Valid values: CreateTime and LogAppendTime. The value CreateTime specifies the timestamp that is specified by the producer when the message is sent. The value LogAppendTime specifies the time when the broker appends the message to its log. If you do not specify this parameter, the time when the message is created on the client is used.
+	//
+	//     	- `message.timestamp.difference.max.ms`: the maximum positive or negative difference allowed between the timestamp when the broker receives a message and the timestamp specified in the message. If you set message.timestamp.type to CreateTime, **a message is rejected*	- if the difference in timestamp exceeds the threshold. If you set message.timestamp.type to LogAppendTime, this configuration does not take effect.
 	//
 	// This parameter is required.
 	//
@@ -12567,23 +13815,25 @@ type UpgradePostPayOrderRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The Internet traffic for the instance.
+	// The maximum Internet traffic of the instance.
 	//
 	// 	- The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// > -  If you set **EipModel*	- to **true**, set **EipMax*	- to a value that is greater than 0.
+	// >
 	//
-	// >- If you set **EipModel*	- to **false**, set **EipMax*	- to **0**.
+	// 	- If you set **EipModel*	- to **true**, set **EipMax*	- to a value that is greater than 0.
 	//
-	// >- When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// 	- If you set **EipModel*	- to **false**, set **EipMax*	- to **0**.
+	//
+	// 	- If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12607,7 +13857,7 @@ type UpgradePostPayOrderRequest struct {
 	//
 	// alikafka_post-cn-mp919o4v****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	// The maximum traffic of the instance. We recommend that you do not configure this parameter.
 	//
 	// 	- The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
 	//
@@ -12615,7 +13865,7 @@ type UpgradePostPayOrderRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12629,7 +13879,7 @@ type UpgradePostPayOrderRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12637,13 +13887,13 @@ type UpgradePostPayOrderRequest struct {
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
-	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
 	//
 	// 	- If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12657,7 +13907,7 @@ type UpgradePostPayOrderRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parameters that are configured for the ApsaraMQ for Kafka serverless instance. When you create a serverless ApsaraMQ for Kafka instance, you must configure these parameters.
+	// The parameters that are configured for the serverless instance. These parameters are required only when you create a serverless instance.
 	ServerlessConfig *UpgradePostPayOrderRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
 	// The instance edition.
 	//
@@ -12681,15 +13931,15 @@ type UpgradePostPayOrderRequest struct {
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The number of topics. We recommend that you do not configure this parameter.
 	//
-	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
 	//
 	// 	- If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
 	//
-	// 	- The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// 	- The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you use exceeds the default value, you are charged additional fees.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12761,7 +14011,7 @@ func (s *UpgradePostPayOrderRequest) SetTopicQuota(v int32) *UpgradePostPayOrder
 }
 
 type UpgradePostPayOrderRequestServerlessConfig struct {
-	// The reserved capacity for publishing messages. You can specify only integers for this parameter. Minimum value: 60.
+	// The reserved capacity for publishing messages. You can specify only an integer for this parameter. Minimum value: 60.
 	//
 	// >  The maximum capacity that you can reserve for an instance varies based on available resources in a region. The reserved capacity range displayed on the buy page shall prevail.
 	//
@@ -12769,7 +14019,7 @@ type UpgradePostPayOrderRequestServerlessConfig struct {
 	//
 	// 50
 	ReservedPublishCapacity *int64 `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
-	// The reserved capacity for subscribing to messages. You can specify only integers for this parameter. Minimum value: 50.
+	// The reserved capacity for subscribing to messages. You can specify only an integer for this parameter. Minimum value: 50.
 	//
 	// >  The maximum capacity that you can reserve for an instance varies based on available resources in a region. The reserved capacity range displayed on the buy page shall prevail.
 	//
@@ -12804,23 +14054,25 @@ type UpgradePostPayOrderShrinkRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The Internet traffic for the instance.
+	// The maximum Internet traffic of the instance.
 	//
 	// 	- The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// > -  If you set **EipModel*	- to **true**, set **EipMax*	- to a value that is greater than 0.
+	// >
 	//
-	// >- If you set **EipModel*	- to **false**, set **EipMax*	- to **0**.
+	// 	- If you set **EipModel*	- to **true**, set **EipMax*	- to a value that is greater than 0.
 	//
-	// >- When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// 	- If you set **EipModel*	- to **false**, set **EipMax*	- to **0**.
+	//
+	// 	- If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12844,7 +14096,7 @@ type UpgradePostPayOrderShrinkRequest struct {
 	//
 	// alikafka_post-cn-mp919o4v****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	// The maximum traffic of the instance. We recommend that you do not configure this parameter.
 	//
 	// 	- The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
 	//
@@ -12852,7 +14104,7 @@ type UpgradePostPayOrderShrinkRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12866,7 +14118,7 @@ type UpgradePostPayOrderShrinkRequest struct {
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12874,13 +14126,13 @@ type UpgradePostPayOrderShrinkRequest struct {
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
-	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
 	//
 	// 	- If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -12894,7 +14146,7 @@ type UpgradePostPayOrderShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parameters that are configured for the ApsaraMQ for Kafka serverless instance. When you create a serverless ApsaraMQ for Kafka instance, you must configure these parameters.
+	// The parameters that are configured for the serverless instance. These parameters are required only when you create a serverless instance.
 	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
 	// The instance edition.
 	//
@@ -12918,15 +14170,15 @@ type UpgradePostPayOrderShrinkRequest struct {
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The number of topics. We recommend that you do not configure this parameter.
 	//
-	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
 	//
 	// 	- If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
 	//
-	// 	- The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// 	- The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you use exceeds the default value, you are charged additional fees.
 	//
 	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+	// >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -14021,6 +15273,116 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 
 // Summary:
 //
+// 创建后付费实例。
+//
+// @param tmpReq - CreatePostPayInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePostPayInstanceResponse
+func (client *Client) CreatePostPayInstanceWithOptions(tmpReq *CreatePostPayInstanceRequest, runtime *util.RuntimeOptions) (_result *CreatePostPayInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePostPayInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServerlessConfig)) {
+		request.ServerlessConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerlessConfig, tea.String("ServerlessConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeployType)) {
+		query["DeployType"] = request.DeployType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		query["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipMax)) {
+		query["EipMax"] = request.EipMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoMaxSpec)) {
+		query["IoMaxSpec"] = request.IoMaxSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaidType)) {
+		query["PaidType"] = request.PaidType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
+		query["PartitionNum"] = request.PartitionNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessConfigShrink)) {
+		query["ServerlessConfig"] = request.ServerlessConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecType)) {
+		query["SpecType"] = request.SpecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePostPayInstance"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePostPayInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建后付费实例。
+//
+// @param request - CreatePostPayInstanceRequest
+//
+// @return CreatePostPayInstanceResponse
+func (client *Client) CreatePostPayInstance(request *CreatePostPayInstanceRequest) (_result *CreatePostPayInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePostPayInstanceResponse{}
+	_body, _err := client.CreatePostPayInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a pay-as-you-go ApsaraMQ for Kafka instance. Pay-as-you-go instances allow you to pay after you use the resources. You are charged for pay-as-you-go instances based on the actual resource usage. You can use pay-as-you-go instances in test scenarios or scenarios in which the peak traffic is uncertain.
 //
 // Description:
@@ -14138,6 +15500,120 @@ func (client *Client) CreatePostPayOrder(request *CreatePostPayOrderRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePostPayOrderResponse{}
 	_body, _err := client.CreatePostPayOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建预付费实例
+//
+// @param tmpReq - CreatePrePayInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrePayInstanceResponse
+func (client *Client) CreatePrePayInstanceWithOptions(tmpReq *CreatePrePayInstanceRequest, runtime *util.RuntimeOptions) (_result *CreatePrePayInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePrePayInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConfluentConfig)) {
+		request.ConfluentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfluentConfig, tea.String("ConfluentConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfluentConfigShrink)) {
+		query["ConfluentConfig"] = request.ConfluentConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeployType)) {
+		query["DeployType"] = request.DeployType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		query["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipMax)) {
+		query["EipMax"] = request.EipMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoMaxSpec)) {
+		query["IoMaxSpec"] = request.IoMaxSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaidType)) {
+		query["PaidType"] = request.PaidType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
+		query["PartitionNum"] = request.PartitionNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecType)) {
+		query["SpecType"] = request.SpecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePrePayInstance"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePrePayInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建预付费实例
+//
+// @param request - CreatePrePayInstanceRequest
+//
+// @return CreatePrePayInstanceResponse
+func (client *Client) CreatePrePayInstance(request *CreatePrePayInstanceRequest) (_result *CreatePrePayInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePrePayInstanceResponse{}
+	_body, _err := client.CreatePrePayInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14895,11 +16371,11 @@ func (client *Client) DeleteSaslUser(request *DeleteSaslUserRequest) (_result *D
 
 // Summary:
 //
-// Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+// Deletes the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
 //
 // Description:
 //
-// ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
+// ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
 //
 // @param request - DeleteScheduledScalingRuleRequest
 //
@@ -14949,11 +16425,11 @@ func (client *Client) DeleteScheduledScalingRuleWithOptions(request *DeleteSched
 
 // Summary:
 //
-// Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+// Deletes the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
 //
 // Description:
 //
-// ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
+// ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
 //
 // @param request - DeleteScheduledScalingRuleRequest
 //
@@ -15292,6 +16768,10 @@ func (client *Client) EnableAutoTopicCreationWithOptions(request *EnableAutoTopi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UpdatePartition)) {
+		query["UpdatePartition"] = request.UpdatePartition
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15459,11 +16939,11 @@ func (client *Client) GetAllowedIpList(request *GetAllowedIpListRequest) (_resul
 
 // Summary:
 //
-// Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+// Queries the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
 //
 // Description:
 //
-// ###### [](#-v3-serverless-)**This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+// ###### [](#-serverless-)**This operation is available only for serverless ApsaraMQ for Kafka instances.
 //
 // @param request - GetAutoScalingConfigurationRequest
 //
@@ -15509,11 +16989,11 @@ func (client *Client) GetAutoScalingConfigurationWithOptions(request *GetAutoSca
 
 // Summary:
 //
-// Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+// Queries the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
 //
 // Description:
 //
-// ###### [](#-v3-serverless-)**This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+// ###### [](#-serverless-)**This operation is available only for serverless ApsaraMQ for Kafka instances.
 //
 // @param request - GetAutoScalingConfigurationRequest
 //
@@ -15759,7 +17239,15 @@ func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result 
 
 // Summary:
 //
-// 获取kafka客户端ip
+// Queries the IP addresses of the clients that are connected to an ApsaraMQ for Kafka instance.
+//
+// Description:
+//
+//   The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+//
+// 	- Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+//
+// 	- If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
 //
 // @param request - GetKafkaClientIpRequest
 //
@@ -15825,7 +17313,15 @@ func (client *Client) GetKafkaClientIpWithOptions(request *GetKafkaClientIpReque
 
 // Summary:
 //
-// 获取kafka客户端ip
+// Queries the IP addresses of the clients that are connected to an ApsaraMQ for Kafka instance.
+//
+// Description:
+//
+//   The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+//
+// 	- Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+//
+// 	- If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
 //
 // @param request - GetKafkaClientIpRequest
 //
@@ -16335,11 +17831,11 @@ func (client *Client) ModifyPartitionNum(request *ModifyPartitionNumRequest) (_r
 
 // Summary:
 //
-// Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+// Modifies the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
 //
 // Description:
 //
-// ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+// ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
 //
 // @param request - ModifyScheduledScalingRuleRequest
 //
@@ -16393,11 +17889,11 @@ func (client *Client) ModifyScheduledScalingRuleWithOptions(request *ModifySched
 
 // Summary:
 //
-// Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+// Modifies the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
 //
 // Description:
 //
-// ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+// ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
 //
 // @param request - ModifyScheduledScalingRuleRequest
 //

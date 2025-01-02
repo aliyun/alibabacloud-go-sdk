@@ -1,3 +1,13 @@
+2025-01-02 Version: v3.10.0
+- Support API CreatePostPayInstance.
+- Support API CreatePrePayInstance.
+- Update API EnableAutoTopicCreation: add param UpdatePartition.
+- Update API EnableAutoTopicCreation: update param Operate.
+- Update API GetConsumerList: update response param.
+- Update API GetConsumerProgress: update response param.
+- Update API GetInstanceList: update response param.
+
+
 2024-11-15 Version: v3.9.0
 - Support API GetKafkaClientIp.
 - Update API GetInstanceList: update response param.
