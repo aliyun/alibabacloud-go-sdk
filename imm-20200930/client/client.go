@@ -4082,6 +4082,23 @@ func (s *Story) SetUpdateTime(v string) *Story {
 	return s
 }
 
+type StreamOptions struct {
+	IncrementalOutput *bool `json:"IncrementalOutput,omitempty" xml:"IncrementalOutput,omitempty"`
+}
+
+func (s StreamOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StreamOptions) GoString() string {
+	return s.String()
+}
+
+func (s *StreamOptions) SetIncrementalOutput(v bool) *StreamOptions {
+	s.IncrementalOutput = &v
+	return s
+}
+
 type SubtitleStream struct {
 	Bitrate        *int64   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	CodecLongName  *string  `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
@@ -7329,7 +7346,9 @@ func (s *ContextualAnswerShrinkRequest) SetProjectName(v string) *ContextualAnsw
 }
 
 type ContextualAnswerResponseBody struct {
-	Answer *Answer `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	Answer  *Answer `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// 22F081FB-90D7-525A-BFE4-D28DC906A28F
@@ -7346,6 +7365,16 @@ func (s ContextualAnswerResponseBody) GoString() string {
 
 func (s *ContextualAnswerResponseBody) SetAnswer(v *Answer) *ContextualAnswerResponseBody {
 	s.Answer = v
+	return s
+}
+
+func (s *ContextualAnswerResponseBody) SetCode(v string) *ContextualAnswerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ContextualAnswerResponseBody) SetMessage(v string) *ContextualAnswerResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -9019,17 +9048,17 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 }
 
 type CreateDecodeBlindWatermarkTaskRequest struct {
-	// The quality of the output image.
+	// The quality of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
 	//
-	// The higher the quality, the larger the image size and the higher the watermark resolution quality.
+	// Higher image quality indicates a larger image size and higher watermark resolution quality.
 	//
 	// example:
 	//
 	// 90
 	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
-	// The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+	// The watermark algorithm model. This parameter is also available in the earlier DecodeBlindWatermark operation. Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
 	//
-	// If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
+	// If this parameter is left empty, the CreateDecodeBlindWatermarkTask operation is called. Otherwise, the earlier DecodeBlindWatermark operation is called.
 	//
 	// example:
 	//
@@ -9037,7 +9066,7 @@ type CreateDecodeBlindWatermarkTaskRequest struct {
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The OSS URI of the image before the blind watermark is added.
+	// The OSS URI of the image before the blind watermark is added. This parameter is also available in the earlier DecodeBlindWatermark operation.
 	//
 	// Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
 	//
@@ -9048,6 +9077,8 @@ type CreateDecodeBlindWatermarkTaskRequest struct {
 	// oss://imm-test/testcases/watermarktestbefore.jpg
 	OriginalImageURI *string `json:"OriginalImageURI,omitempty" xml:"OriginalImageURI,omitempty"`
 	// The name of the project.[](~~478153~~)
+	//
+	// >  The project specified in the request must match the one in the EncodeBlindWatermark request to encode the blind watermark.
 	//
 	// This parameter is required.
 	//
@@ -9071,7 +9102,7 @@ type CreateDecodeBlindWatermarkTaskRequest struct {
 	//
 	// low
 	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
-	// The OSS URI of the output image.
+	// The OSS URI of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
 	//
 	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
 	//
@@ -9143,17 +9174,17 @@ func (s *CreateDecodeBlindWatermarkTaskRequest) SetWatermarkType(v string) *Crea
 }
 
 type CreateDecodeBlindWatermarkTaskShrinkRequest struct {
-	// The quality of the output image.
+	// The quality of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
 	//
-	// The higher the quality, the larger the image size and the higher the watermark resolution quality.
+	// Higher image quality indicates a larger image size and higher watermark resolution quality.
 	//
 	// example:
 	//
 	// 90
 	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
-	// The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+	// The watermark algorithm model. This parameter is also available in the earlier DecodeBlindWatermark operation. Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
 	//
-	// If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
+	// If this parameter is left empty, the CreateDecodeBlindWatermarkTask operation is called. Otherwise, the earlier DecodeBlindWatermark operation is called.
 	//
 	// example:
 	//
@@ -9161,7 +9192,7 @@ type CreateDecodeBlindWatermarkTaskShrinkRequest struct {
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The OSS URI of the image before the blind watermark is added.
+	// The OSS URI of the image before the blind watermark is added. This parameter is also available in the earlier DecodeBlindWatermark operation.
 	//
 	// Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
 	//
@@ -9172,6 +9203,8 @@ type CreateDecodeBlindWatermarkTaskShrinkRequest struct {
 	// oss://imm-test/testcases/watermarktestbefore.jpg
 	OriginalImageURI *string `json:"OriginalImageURI,omitempty" xml:"OriginalImageURI,omitempty"`
 	// The name of the project.[](~~478153~~)
+	//
+	// >  The project specified in the request must match the one in the EncodeBlindWatermark request to encode the blind watermark.
 	//
 	// This parameter is required.
 	//
@@ -9195,7 +9228,7 @@ type CreateDecodeBlindWatermarkTaskShrinkRequest struct {
 	//
 	// low
 	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
-	// The OSS URI of the output image.
+	// The OSS URI of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
 	//
 	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
 	//
@@ -30542,9 +30575,17 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 //
 //   Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
 //
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
 // 	- Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
 //
+// 	- The region and project specified in the request to decode a blind watermark must match those in the [EncodeBlindWatermark](https://help.aliyun.com/document_detail/2743655.html) request to encode the blind watermark.
+//
 // 	- A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//
+// 	- This operation is compatible with its earlier version DecodeBlindWatermark.
 //
 // 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
@@ -30632,9 +30673,17 @@ func (client *Client) CreateDecodeBlindWatermarkTaskWithOptions(tmpReq *CreateDe
 //
 //   Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
 //
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
 // 	- Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
 //
+// 	- The region and project specified in the request to decode a blind watermark must match those in the [EncodeBlindWatermark](https://help.aliyun.com/document_detail/2743655.html) request to encode the blind watermark.
+//
 // 	- A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//
+// 	- This operation is compatible with its earlier version DecodeBlindWatermark.
 //
 // 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
@@ -32052,7 +32101,7 @@ func (client *Client) CreateMediaConvertTask(request *CreateMediaConvertTaskRequ
 //
 // 	- Each input document can be up to 200 MB in size.
 //
-// 	- The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+// 	- The maximum conversion time is 120 seconds. If the document contains too much or complex content, the conversion may time out.
 //
 // 	- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
 //
@@ -32282,7 +32331,7 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 //
 // 	- Each input document can be up to 200 MB in size.
 //
-// 	- The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+// 	- The maximum conversion time is 120 seconds. If the document contains too much or complex content, the conversion may time out.
 //
 // 	- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
 //
