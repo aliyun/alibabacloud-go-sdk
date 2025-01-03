@@ -36924,6 +36924,7 @@ func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetBody(v *SubmitEnterpriseVoc
 
 type SubmitSmartClipTaskRequest struct {
 	EditingConfig *SubmitSmartClipTaskRequestEditingConfig `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty" type:"Struct"`
+	ExtendParam   *string                                  `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
 	// This parameter is required.
 	InputConfig  *SubmitSmartClipTaskRequestInputConfig  `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
 	OutputConfig *SubmitSmartClipTaskRequestOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
@@ -36944,6 +36945,11 @@ func (s *SubmitSmartClipTaskRequest) SetEditingConfig(v *SubmitSmartClipTaskRequ
 	return s
 }
 
+func (s *SubmitSmartClipTaskRequest) SetExtendParam(v string) *SubmitSmartClipTaskRequest {
+	s.ExtendParam = &v
+	return s
+}
+
 func (s *SubmitSmartClipTaskRequest) SetInputConfig(v *SubmitSmartClipTaskRequestInputConfig) *SubmitSmartClipTaskRequest {
 	s.InputConfig = v
 	return s
@@ -36960,7 +36966,10 @@ func (s *SubmitSmartClipTaskRequest) SetWorkspaceId(v string) *SubmitSmartClipTa
 }
 
 type SubmitSmartClipTaskRequestEditingConfig struct {
-	TitleConfig *SubmitSmartClipTaskRequestEditingConfigTitleConfig `json:"TitleConfig,omitempty" xml:"TitleConfig,omitempty" type:"Struct"`
+	BackgroundMusicConfig *SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig `json:"BackgroundMusicConfig,omitempty" xml:"BackgroundMusicConfig,omitempty" type:"Struct"`
+	MediaConfig           *SubmitSmartClipTaskRequestEditingConfigMediaConfig           `json:"MediaConfig,omitempty" xml:"MediaConfig,omitempty" type:"Struct"`
+	SpeechConfig          *SubmitSmartClipTaskRequestEditingConfigSpeechConfig          `json:"SpeechConfig,omitempty" xml:"SpeechConfig,omitempty" type:"Struct"`
+	TitleConfig           *SubmitSmartClipTaskRequestEditingConfigTitleConfig           `json:"TitleConfig,omitempty" xml:"TitleConfig,omitempty" type:"Struct"`
 }
 
 func (s SubmitSmartClipTaskRequestEditingConfig) String() string {
@@ -36971,8 +36980,178 @@ func (s SubmitSmartClipTaskRequestEditingConfig) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitSmartClipTaskRequestEditingConfig) SetBackgroundMusicConfig(v *SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig) *SubmitSmartClipTaskRequestEditingConfig {
+	s.BackgroundMusicConfig = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfig) SetMediaConfig(v *SubmitSmartClipTaskRequestEditingConfigMediaConfig) *SubmitSmartClipTaskRequestEditingConfig {
+	s.MediaConfig = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfig) SetSpeechConfig(v *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) *SubmitSmartClipTaskRequestEditingConfig {
+	s.SpeechConfig = v
+	return s
+}
+
 func (s *SubmitSmartClipTaskRequestEditingConfig) SetTitleConfig(v *SubmitSmartClipTaskRequestEditingConfigTitleConfig) *SubmitSmartClipTaskRequestEditingConfig {
 	s.TitleConfig = v
+	return s
+}
+
+type SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig struct {
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// example:
+	//
+	// 0.2
+	Volume *float64 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig) SetStyle(v string) *SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig {
+	s.Style = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig) SetVolume(v float64) *SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig {
+	s.Volume = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestEditingConfigMediaConfig struct {
+	Volume *float64 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigMediaConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigMediaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigMediaConfig) SetVolume(v float64) *SubmitSmartClipTaskRequestEditingConfigMediaConfig {
+	s.Volume = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestEditingConfigSpeechConfig struct {
+	AsrConfig *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	SpeechRate *float64 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Style      *string  `json:"Style,omitempty" xml:"Style,omitempty"`
+	Voice      *string  `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// example:
+	//
+	// 0.5
+	Volume *float64 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigSpeechConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigSpeechConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) SetAsrConfig(v *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) *SubmitSmartClipTaskRequestEditingConfigSpeechConfig {
+	s.AsrConfig = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) SetSpeechRate(v float64) *SubmitSmartClipTaskRequestEditingConfigSpeechConfig {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) SetStyle(v string) *SubmitSmartClipTaskRequestEditingConfigSpeechConfig {
+	s.Style = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) SetVoice(v string) *SubmitSmartClipTaskRequestEditingConfigSpeechConfig {
+	s.Voice = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) SetVolume(v float64) *SubmitSmartClipTaskRequestEditingConfigSpeechConfig {
+	s.Volume = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig struct {
+	Alignment *string `json:"Alignment,omitempty" xml:"Alignment,omitempty"`
+	// example:
+	//
+	// SimSun
+	Font *string `json:"Font,omitempty" xml:"Font,omitempty"`
+	// example:
+	//
+	// #ffffff
+	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 0
+	FontSize *string `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	Spacing *string  `json:"Spacing,omitempty" xml:"Spacing,omitempty"`
+	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) SetAlignment(v string) *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig {
+	s.Alignment = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) SetFont(v string) *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig {
+	s.Font = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) SetFontColor(v string) *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig {
+	s.FontColor = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) SetFontSize(v string) *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig {
+	s.FontSize = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) SetSpacing(v string) *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig {
+	s.Spacing = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) SetX(v float32) *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig {
+	s.X = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig) SetY(v float32) *SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig {
+	s.Y = &v
 	return s
 }
 
@@ -37302,6 +37481,7 @@ func (s *SubmitSmartClipTaskRequestOutputConfig) SetWidth(v int32) *SubmitSmartC
 
 type SubmitSmartClipTaskShrinkRequest struct {
 	EditingConfigShrink *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	ExtendParam         *string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
 	// This parameter is required.
 	InputConfigShrink  *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
 	OutputConfigShrink *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
@@ -37319,6 +37499,11 @@ func (s SubmitSmartClipTaskShrinkRequest) GoString() string {
 
 func (s *SubmitSmartClipTaskShrinkRequest) SetEditingConfigShrink(v string) *SubmitSmartClipTaskShrinkRequest {
 	s.EditingConfigShrink = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskShrinkRequest) SetExtendParam(v string) *SubmitSmartClipTaskShrinkRequest {
+	s.ExtendParam = &v
 	return s
 }
 
@@ -49042,6 +49227,10 @@ func (client *Client) SubmitSmartClipTaskWithOptions(tmpReq *SubmitSmartClipTask
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EditingConfigShrink)) {
 		body["EditingConfig"] = request.EditingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendParam)) {
+		body["ExtendParam"] = request.ExtendParam
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputConfigShrink)) {
