@@ -252,6 +252,7 @@ func (s *AuthorizeAndroidInstanceResponse) SetBody(v *AuthorizeAndroidInstanceRe
 type BackupFileRequest struct {
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	BackupAll             *bool     `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
 	BackupFileName        *string   `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
 	// This parameter is required.
 	BackupFilePath     *string   `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
@@ -278,6 +279,11 @@ func (s BackupFileRequest) GoString() string {
 
 func (s *BackupFileRequest) SetAndroidInstanceIdList(v []*string) *BackupFileRequest {
 	s.AndroidInstanceIdList = v
+	return s
+}
+
+func (s *BackupFileRequest) SetBackupAll(v bool) *BackupFileRequest {
+	s.BackupAll = &v
 	return s
 }
 
@@ -2680,6 +2686,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// 2023-05-06 10:42:10
 	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// example:
 	//
@@ -2696,6 +2703,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// p-0btrd5zj8epo****
 	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
 	PolicyGroupId           *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PublicIpAddress         *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
 	// example:
 	//
 	// 100
@@ -2796,6 +2804,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetGmtModified(v str
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetImageVersion(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.ImageVersion = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetInstanceType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.InstanceType = &v
 	return s
@@ -2828,6 +2841,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPersistentAppInst
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPolicyGroupId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPublicIpAddress(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.PublicIpAddress = &v
 	return s
 }
 
@@ -3198,6 +3216,7 @@ type DescribeBackupFilesRequest struct {
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
+	BackupAll           *bool   `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
 	// example:
 	//
 	// bf-dxrh5jrv0zpb8****
@@ -3246,6 +3265,11 @@ func (s *DescribeBackupFilesRequest) SetAndroidInstanceId(v string) *DescribeBac
 
 func (s *DescribeBackupFilesRequest) SetAndroidInstanceName(v string) *DescribeBackupFilesRequest {
 	s.AndroidInstanceName = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetBackupAll(v bool) *DescribeBackupFilesRequest {
+	s.BackupAll = &v
 	return s
 }
 
@@ -3358,6 +3382,7 @@ type DescribeBackupFilesResponseBodyData struct {
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId   *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
+	BackupAll           *bool   `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
 	// example:
 	//
 	// bf-b0qbg3pbpjkn7****
@@ -3424,6 +3449,11 @@ func (s *DescribeBackupFilesResponseBodyData) SetAndroidInstanceId(v string) *De
 
 func (s *DescribeBackupFilesResponseBodyData) SetAndroidInstanceName(v string) *DescribeBackupFilesResponseBodyData {
 	s.AndroidInstanceName = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyData) SetBackupAll(v bool) *DescribeBackupFilesResponseBodyData {
+	s.BackupAll = &v
 	return s
 }
 
@@ -4570,9 +4600,10 @@ type DescribeTasksResponseBodyData struct {
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	FinishTime     *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
@@ -4646,6 +4677,11 @@ func (s *DescribeTasksResponseBodyData) SetInstanceId(v string) *DescribeTasksRe
 
 func (s *DescribeTasksResponseBodyData) SetInstanceName(v string) *DescribeTasksResponseBodyData {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetInstanceStatus(v string) *DescribeTasksResponseBodyData {
+	s.InstanceStatus = &v
 	return s
 }
 
@@ -6467,6 +6503,7 @@ func (s *RebootAndroidInstancesInGroupResponse) SetBody(v *RebootAndroidInstance
 type RecoveryFileRequest struct {
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	BackupAll             *bool     `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
 	// example:
 	//
 	// bf-azhps4rdyi2th****
@@ -6492,6 +6529,11 @@ func (s RecoveryFileRequest) GoString() string {
 
 func (s *RecoveryFileRequest) SetAndroidInstanceIdList(v []*string) *RecoveryFileRequest {
 	s.AndroidInstanceIdList = v
+	return s
+}
+
+func (s *RecoveryFileRequest) SetBackupAll(v bool) *RecoveryFileRequest {
+	s.BackupAll = &v
 	return s
 }
 
@@ -7697,6 +7739,10 @@ func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIdList)) {
 		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupAll)) {
+		query["BackupAll"] = request.BackupAll
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BackupFileName)) {
@@ -8940,6 +8986,10 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询备份文件列表
+//
 // @param request - DescribeBackupFilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8957,6 +9007,10 @@ func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFile
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceName)) {
 		query["AndroidInstanceName"] = request.AndroidInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupAll)) {
+		query["BackupAll"] = request.BackupAll
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BackupFileId)) {
@@ -9022,6 +9076,10 @@ func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFile
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询备份文件列表
+//
 // @param request - DescribeBackupFilesRequest
 //
 // @return DescribeBackupFilesResponse
@@ -10483,6 +10541,10 @@ func (client *Client) RecoveryFileWithOptions(request *RecoveryFileRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIdList)) {
 		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupAll)) {
+		query["BackupAll"] = request.BackupAll
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BackupFileId)) {
