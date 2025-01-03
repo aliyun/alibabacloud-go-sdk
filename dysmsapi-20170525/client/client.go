@@ -3135,27 +3135,41 @@ func (s *DeleteSmsTemplateResponse) SetBody(v *DeleteSmsTemplateResponseBody) *D
 }
 
 type GetCardSmsDetailsRequest struct {
+	// Card SMS sending ID, which is the BizCardId field in the response when calling SendCardSms or SendBatchCardSms.
+	//
 	// example:
 	//
 	// 123456^0
 	BizCardId *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
+	// Digital SMS sending ID, which is the BizDigitalId field in the response when calling SendCardSms or SendBatchCardSms.
+	//
 	// example:
 	//
 	// 12346^0
 	BizDigitId *string `json:"BizDigitId,omitempty" xml:"BizDigitId,omitempty"`
+	// Text SMS sending ID, which is the BizSmsId field in the response when calling SendCardSms or SendBatchCardSms.
+	//
 	// example:
 	//
 	// 1234576^0
 	BizSmsId *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
+	// For paginated viewing of sending records, specify the current page number of the sending records.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// For paginated viewing of sending records, specify the number of card SMS records to display per page.
+	//
+	// The value range is 1~50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Domestic phone number that received the SMS. Format: 11-digit phone number, for example, 1390000****.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3164,6 +3178,10 @@ type GetCardSmsDetailsRequest struct {
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Card SMS sending date, supports querying records from the last 30 days.
+	//
+	// Format: yyyyMMdd, for example, 20240112.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3231,21 +3249,34 @@ func (s *GetCardSmsDetailsRequest) SetSendDate(v string) *GetCardSmsDetailsReque
 }
 
 type GetCardSmsDetailsResponseBody struct {
+	// Access denied detail; this field is returned only if the RAM check fails.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 卡片短信发送结果
+	// Card SMS sending result
 	CardSendDetailDTO *GetCardSmsDetailsResponseBodyCardSendDetailDTO `json:"CardSendDetailDTO,omitempty" xml:"CardSendDetailDTO,omitempty" type:"Struct"`
-	// 状态码
+	// Request status code.
+	//
+	// 	- OK indicates a successful request.
+	//
+	// 	- For other error codes, see [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 状态描述
+	// Description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the API call was successful. Values:
+	//
+	// - **true*	- - **false**
+	//
 	// example:
 	//
 	// true
@@ -3286,20 +3317,21 @@ func (s *GetCardSmsDetailsResponseBody) SetSuccess(v bool) *GetCardSmsDetailsRes
 }
 
 type GetCardSmsDetailsResponseBodyCardSendDetailDTO struct {
-	// 页码
+	// Current page number
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 页数
+	// Page size
 	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*GetCardSmsDetailsResponseBodyCardSendDetailDTORecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// 总量
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of card SMS sending records
+	Records []*GetCardSmsDetailsResponseBodyCardSendDetailDTORecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// Total count
 	//
 	// example:
 	//
@@ -3336,67 +3368,67 @@ func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) SetTotalCount(v int64) 
 }
 
 type GetCardSmsDetailsResponseBodyCardSendDetailDTORecords struct {
-	// 发送错误码
+	// Error code for sending
 	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// 客户传输outId
+	// Customer-transmitted outId
 	//
 	// example:
 	//
 	// 12345678
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// 接收短信手机号
+	// Phone number that received the SMS
 	//
 	// example:
 	//
 	// 156****9080
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// 接收时间
+	// Receive date
 	//
 	// example:
 	//
 	// 2024-09-27 11:26:35
 	ReceiveDate *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
-	// 接收短信类型
+	// Receive SMS type
 	//
 	// example:
 	//
 	// CARD_SMS
 	ReceiveType *string `json:"ReceiveType,omitempty" xml:"ReceiveType,omitempty"`
-	// 渲染时间
+	// Render date
 	//
 	// example:
 	//
 	// 2024-09-27 12:13:39
 	RenderDate *string `json:"RenderDate,omitempty" xml:"RenderDate,omitempty"`
-	// 解析状态.。0：未解析；1：解析成功；3：未解析
+	// Render status. 0: Not rendered; 1: Rendered successfully; 3: Not rendered
 	//
 	// example:
 	//
 	// 1
 	RenderStatus *int64 `json:"RenderStatus,omitempty" xml:"RenderStatus,omitempty"`
-	// 短信发送时间
+	// Time when the SMS was sent
 	//
 	// example:
 	//
 	// 2024-09-27 11:26:32
 	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	// 发送状态 1：发送中；2：发送失败；3：发送成功；4：寻址失败
+	// Sending status. 1: Sending; 2: Send failed; 3: Sent successfully; 4: Addressing failed
 	//
 	// example:
 	//
 	// 3
 	SendStatus *int64 `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
-	// 短信内容。只有文本短信有值
+	// SMS content. Only applicable for text messages.
 	//
 	// example:
 	//
 	// 您收到一条短信消息
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	// 模板code
+	// Template code
 	//
 	// example:
 	//
@@ -4519,6 +4551,7 @@ type GetSmsSignResponseBody struct {
 	//
 	// 2004393****
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	RegisterResult  *int32 `json:"RegisterResult,omitempty" xml:"RegisterResult,omitempty"`
 	// Explanation of the SMS signature scenario, with a maximum length of 200 characters.
 	//
 	// example:
@@ -4634,6 +4667,11 @@ func (s *GetSmsSignResponseBody) SetOrderId(v string) *GetSmsSignResponseBody {
 
 func (s *GetSmsSignResponseBody) SetQualificationId(v int64) *GetSmsSignResponseBody {
 	s.QualificationId = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetRegisterResult(v int32) *GetSmsSignResponseBody {
+	s.RegisterResult = &v
 	return s
 }
 
@@ -6136,8 +6174,6 @@ func (s *QueryCardSmsTemplateReportResponse) SetBody(v *QueryCardSmsTemplateRepo
 type QueryExtCodeSignRequest struct {
 	// 扩展码A3
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 01
@@ -6154,8 +6190,6 @@ type QueryExtCodeSignRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 签名
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -12990,7 +13024,7 @@ func (client *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (_res
 
 // Summary:
 //
-// 查询卡片发送详情
+// Query card sending details
 //
 // @param request - GetCardSmsDetailsRequest
 //
@@ -13068,7 +13102,7 @@ func (client *Client) GetCardSmsDetailsWithOptions(request *GetCardSmsDetailsReq
 
 // Summary:
 //
-// 查询卡片发送详情
+// Query card sending details
 //
 // @param request - GetCardSmsDetailsRequest
 //
