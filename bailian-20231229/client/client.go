@@ -1301,6 +1301,7 @@ type CreateIndexRequest struct {
 	//
 	// structured
 	StructureType      *string                                 `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	EnableHeaders      *bool                                   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
 	MetaExtractColumns []*CreateIndexRequestMetaExtractColumns `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty" type:"Repeated"`
 }
 
@@ -1394,6 +1395,11 @@ func (s *CreateIndexRequest) SetSourceType(v string) *CreateIndexRequest {
 
 func (s *CreateIndexRequest) SetStructureType(v string) *CreateIndexRequest {
 	s.StructureType = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetEnableHeaders(v bool) *CreateIndexRequest {
+	s.EnableHeaders = &v
 	return s
 }
 
@@ -1722,6 +1728,7 @@ type CreateIndexShrinkRequest struct {
 	//
 	// structured
 	StructureType            *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	EnableHeaders            *bool   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
 	MetaExtractColumnsShrink *string `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty"`
 }
 
@@ -1815,6 +1822,11 @@ func (s *CreateIndexShrinkRequest) SetSourceType(v string) *CreateIndexShrinkReq
 
 func (s *CreateIndexShrinkRequest) SetStructureType(v string) *CreateIndexShrinkRequest {
 	s.StructureType = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetEnableHeaders(v bool) *CreateIndexShrinkRequest {
+	s.EnableHeaders = &v
 	return s
 }
 
@@ -9174,6 +9186,10 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 
 	if !tea.BoolValue(util.IsUnset(request.StructureType)) {
 		query["StructureType"] = request.StructureType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableHeaders)) {
+		query["enableHeaders"] = request.EnableHeaders
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MetaExtractColumnsShrink)) {
