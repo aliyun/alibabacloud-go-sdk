@@ -8367,6 +8367,7 @@ func (s *GetInstanceResponseBody) SetResult(v *GetInstanceResponseBodyResult) *G
 }
 
 type GetInstanceResponseBodyResult struct {
+	BsVersion *string `json:"bsVersion,omitempty" xml:"bsVersion,omitempty"`
 	// The billing method.
 	//
 	// example:
@@ -8485,6 +8486,11 @@ func (s GetInstanceResponseBodyResult) String() string {
 
 func (s GetInstanceResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceResponseBodyResult) SetBsVersion(v string) *GetInstanceResponseBodyResult {
+	s.BsVersion = &v
+	return s
 }
 
 func (s *GetInstanceResponseBodyResult) SetChargeType(v string) *GetInstanceResponseBodyResult {
@@ -10094,7 +10100,9 @@ type ListAdvanceConfigsRequest struct {
 	// example:
 	//
 	// true
-	NewMode *bool `json:"newMode,omitempty" xml:"newMode,omitempty"`
+	NewMode    *bool   `json:"newMode,omitempty" xml:"newMode,omitempty"`
+	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The type of advanced configurations that you want to query. Valid values: - online -offline (default)
 	//
 	// example:
@@ -10123,6 +10131,16 @@ func (s *ListAdvanceConfigsRequest) SetIndexName(v string) *ListAdvanceConfigsRe
 
 func (s *ListAdvanceConfigsRequest) SetNewMode(v bool) *ListAdvanceConfigsRequest {
 	s.NewMode = &v
+	return s
+}
+
+func (s *ListAdvanceConfigsRequest) SetPageNumber(v string) *ListAdvanceConfigsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAdvanceConfigsRequest) SetPageSize(v string) *ListAdvanceConfigsRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -24244,6 +24262,14 @@ func (client *Client) ListAdvanceConfigsWithOptions(instanceId *string, request 
 
 	if !tea.BoolValue(util.IsUnset(request.NewMode)) {
 		query["newMode"] = request.NewMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
