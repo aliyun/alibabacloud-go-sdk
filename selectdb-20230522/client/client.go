@@ -2327,8 +2327,6 @@ func (s *DescribeDBClusterConfigResponse) SetBody(v *DescribeDBClusterConfigResp
 }
 
 type DescribeDBClusterConfigChangeLogsRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// be.conf
