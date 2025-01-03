@@ -6586,6 +6586,18 @@ type DescribeEventsRequest struct {
 	//
 	// 2023-06-01T04:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The severity level of the event. Valid values:
+	//
+	// 	- **INFO**
+	//
+	// 	- **WARN**
+	//
+	// 	- **CRITICAL**
+	//
+	// example:
+	//
+	// WARN
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	// The name of the event. Valid values:
 	//
 	// 	- NoSnapshot: indicates the event that is triggered because no snapshot is created for a disk to protect data on the disk.
@@ -6616,11 +6628,11 @@ type DescribeEventsRequest struct {
 	//
 	// DiskIOHang
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The maximum number of entries per page. If you specify MaxResults, `MaxResults` and `NextToken` are used for a paged query.
+	// The number of entries to return on each page. If you specify MaxResults, `MaxResults` and `NextToken` are used for a paged query.
 	//
 	// Valid values: 1 to 100.
 	//
-	// Default value: 10.
+	// Default value: 10
 	//
 	// example:
 	//
@@ -6692,6 +6704,11 @@ func (s DescribeEventsRequest) GoString() string {
 
 func (s *DescribeEventsRequest) SetEndTime(v string) *DescribeEventsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetEventLevel(v string) *DescribeEventsRequest {
+	s.EventLevel = &v
 	return s
 }
 
@@ -6853,6 +6870,16 @@ type DescribeEventsResponseBodyResourceEvents struct {
 	//
 	// Alert
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// Extra attributes of event, possible fields are:
+	//
+	// - EcsInstanceId: ECS instance ID where the cloud disk is mounted;
+	//
+	// - Adapter: cloud disk mount point.
+	//
+	// example:
+	//
+	// {\\"EcsInstanceId\\":\\"i-uf6dkn9qpcw6y94g7ag7\\",\\"Adapter\\":\\"hda\\"}
+	ExtraAttributes *string `json:"ExtraAttributes,omitempty" xml:"ExtraAttributes,omitempty"`
 	// The recommended action after the event occurred. Valid values:
 	//
 	// 	- ModifyDiskSpec
@@ -6946,6 +6973,11 @@ func (s *DescribeEventsResponseBodyResourceEvents) SetEventType(v string) *Descr
 	return s
 }
 
+func (s *DescribeEventsResponseBodyResourceEvents) SetExtraAttributes(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.ExtraAttributes = &v
+	return s
+}
+
 func (s *DescribeEventsResponseBodyResourceEvents) SetRecommendAction(v string) *DescribeEventsResponseBodyResourceEvents {
 	s.RecommendAction = &v
 	return s
@@ -7023,7 +7055,8 @@ type DescribeLensMonitorDisksRequest struct {
 	// example:
 	//
 	// cloud_auto
-	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskCategory  *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskIdPattern *string `json:"DiskIdPattern,omitempty" xml:"DiskIdPattern,omitempty"`
 	// The list of disks.
 	//
 	// example:
@@ -7092,6 +7125,11 @@ func (s DescribeLensMonitorDisksRequest) GoString() string {
 
 func (s *DescribeLensMonitorDisksRequest) SetDiskCategory(v string) *DescribeLensMonitorDisksRequest {
 	s.DiskCategory = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetDiskIdPattern(v string) *DescribeLensMonitorDisksRequest {
+	s.DiskIdPattern = &v
 	return s
 }
 
@@ -14900,6 +14938,10 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EventLevel)) {
+		query["EventLevel"] = request.EventLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EventName)) {
 		query["EventName"] = request.EventName
 	}
@@ -14990,6 +15032,10 @@ func (client *Client) DescribeLensMonitorDisksWithOptions(request *DescribeLensM
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DiskCategory)) {
 		query["DiskCategory"] = request.DiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskIdPattern)) {
+		query["DiskIdPattern"] = request.DiskIdPattern
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
