@@ -30300,6 +30300,190 @@ func (s *GetKubernetesSourceResponse) SetBody(v *GetKubernetesSourceResponseBody
 	return s
 }
 
+type GetLocalityRuleRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// hgxznfcvbe@be2c0228f******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// example-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// edasmsc
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s GetLocalityRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLocalityRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLocalityRuleRequest) SetAcceptLanguage(v string) *GetLocalityRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetLocalityRuleRequest) SetAppId(v string) *GetLocalityRuleRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetLocalityRuleRequest) SetAppName(v string) *GetLocalityRuleRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetLocalityRuleRequest) SetNamespace(v string) *GetLocalityRuleRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetLocalityRuleRequest) SetRegion(v string) *GetLocalityRuleRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetLocalityRuleRequest) SetSource(v string) *GetLocalityRuleRequest {
+	s.Source = &v
+	return s
+}
+
+type GetLocalityRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "pageNumber":0,
+	//
+	//   "namespaceId":"cn-hangzhou",
+	//
+	//   "enable":false,
+	//
+	//   "appId":"hkhon1po62@3aa3582********",
+	//
+	//   "pageSize":0,
+	//
+	//   "region":"cn-hangzhou",
+	//
+	//   "routeRules":[
+	//
+	//     {
+	//
+	//       "threshold":0.2,
+	//
+	//       "tags":[]
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D3971C60-3F07-58B0-8EA0-A194********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetLocalityRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLocalityRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLocalityRuleResponseBody) SetCode(v int32) *GetLocalityRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLocalityRuleResponseBody) SetData(v string) *GetLocalityRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetLocalityRuleResponseBody) SetHttpStatusCode(v int32) *GetLocalityRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetLocalityRuleResponseBody) SetMessage(v string) *GetLocalityRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLocalityRuleResponseBody) SetRequestId(v string) *GetLocalityRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLocalityRuleResponseBody) SetSuccess(v string) *GetLocalityRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLocalityRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLocalityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLocalityRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLocalityRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLocalityRuleResponse) SetHeaders(v map[string]*string) *GetLocalityRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLocalityRuleResponse) SetStatusCode(v int32) *GetLocalityRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLocalityRuleResponse) SetBody(v *GetLocalityRuleResponseBody) *GetLocalityRuleResponse {
+	s.Body = v
+	return s
+}
+
 type GetLosslessRuleByAppRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -48701,33 +48885,13 @@ func (s *ListGatewayRouteResponse) SetBody(v *ListGatewayRouteResponseBody) *Lis
 }
 
 type ListGatewayRouteOnAuthRequest struct {
-	// The language of the response. Valid values:
-	//
-	// 	- zh: Chinese
-	//
-	// 	- en: English
-	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The unique ID of the gateway.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// gw-c9bc5afd61014165bd58f621b491****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The authentication method. Valid values:
-	//
-	// 	- JWT
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// JWT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -48755,42 +48919,12 @@ func (s *ListGatewayRouteOnAuthRequest) SetType(v string) *ListGatewayRouteOnAut
 }
 
 type ListGatewayRouteOnAuthResponseBody struct {
-	// The response code.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
-	Data []*ListGatewayRouteOnAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code.
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// The request is successfully processed.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 58E06A0A-BD2C-47A0-99C2-B100F353****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- `true`
-	//
-	// 	- `false`
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ListGatewayRouteOnAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListGatewayRouteOnAuthResponseBody) String() string {
@@ -48832,47 +48966,14 @@ func (s *ListGatewayRouteOnAuthResponseBody) SetSuccess(v bool) *ListGatewayRout
 }
 
 type ListGatewayRouteOnAuthResponseBodyData struct {
-	// The domain ID.
-	//
-	// example:
-	//
-	// 235
-	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The domain IDs.
-	DomainIdList []*int64 `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
-	// The domain name.
-	//
-	// example:
-	//
-	// 123.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The domain names.
-	DomainNameList []*string `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
-	// The gateway ID.
-	//
-	// example:
-	//
-	// 399
-	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The unique ID of the gateway.
-	//
-	// example:
-	//
-	// gw-7ea3da97b96543e19f6c597c****
-	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The route ID.
-	//
-	// example:
-	//
-	// 12
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the route.
-	//
-	// example:
-	//
-	// ceshi
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The information about route matching.
+	DomainId        *int64                                                 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainIdList    []*int64                                               `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
+	DomainName      *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNameList  []*string                                              `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	GatewayId       *string                                                `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int32                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
 	RoutePredicates *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates `json:"RoutePredicates,omitempty" xml:"RoutePredicates,omitempty" type:"Struct"`
 }
 
@@ -48930,7 +49031,6 @@ func (s *ListGatewayRouteOnAuthResponseBodyData) SetRoutePredicates(v *ListGatew
 }
 
 type ListGatewayRouteOnAuthResponseBodyDataRoutePredicates struct {
-	// The information about route matching.
 	PathPredicates *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
 }
 
@@ -48948,17 +49048,7 @@ func (s *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) SetPathPredicate
 }
 
 type ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates struct {
-	// The path.
-	//
-	// example:
-	//
-	// /api
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The matching type.
-	//
-	// example:
-	//
-	// PRE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -57778,6 +57868,10 @@ func (s *QueryAllSwimmingLaneResponseBody) SetSuccess(v bool) *QueryAllSwimmingL
 }
 
 type QueryAllSwimmingLaneResponseBodyData struct {
+	// example:
+	//
+	// true
+	Enable                   *string                                                       `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	EntryRules               []*QueryAllSwimmingLaneResponseBodyDataEntryRules             `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
 	GatewaySwimmingLaneRoute *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute `json:"GatewaySwimmingLaneRoute,omitempty" xml:"GatewaySwimmingLaneRoute,omitempty" type:"Struct"`
 	GroupId                  *string                                                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -57820,6 +57914,11 @@ func (s QueryAllSwimmingLaneResponseBodyData) String() string {
 
 func (s QueryAllSwimmingLaneResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyData) SetEnable(v string) *QueryAllSwimmingLaneResponseBodyData {
+	s.Enable = &v
+	return s
 }
 
 func (s *QueryAllSwimmingLaneResponseBodyData) SetEntryRules(v []*QueryAllSwimmingLaneResponseBodyDataEntryRules) *QueryAllSwimmingLaneResponseBodyData {
@@ -75455,6 +75554,202 @@ func (s *UpdateIsolationRuleResponse) SetBody(v *UpdateIsolationRuleResponseBody
 	return s
 }
 
+type UpdateLocalityRuleRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// hkhon1po62@c3df23522******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// example-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// myNamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Rules  *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// example:
+	//
+	// edasmsc
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 0.2
+	Threshold *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateLocalityRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLocalityRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLocalityRuleRequest) SetAcceptLanguage(v string) *UpdateLocalityRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetAppId(v string) *UpdateLocalityRuleRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetAppName(v string) *UpdateLocalityRuleRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetEnable(v bool) *UpdateLocalityRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetNamespace(v string) *UpdateLocalityRuleRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetRegion(v string) *UpdateLocalityRuleRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetRules(v string) *UpdateLocalityRuleRequest {
+	s.Rules = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetSource(v string) *UpdateLocalityRuleRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleRequest) SetThreshold(v float64) *UpdateLocalityRuleRequest {
+	s.Threshold = &v
+	return s
+}
+
+type UpdateLocalityRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Message":"updateLocalityPolicy success",
+	//
+	//   "RequestId":"3B519913-7348-16AB-AD71-******",
+	//
+	//   "HttpStatusCode":200,
+	//
+	//   "Code":200,
+	//
+	//   "Success":true
+	//
+	// }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 78F05E89-D387-50CE-8186-2E27A8AB****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateLocalityRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLocalityRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLocalityRuleResponseBody) SetCode(v int32) *UpdateLocalityRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleResponseBody) SetData(v string) *UpdateLocalityRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleResponseBody) SetHttpStatusCode(v int32) *UpdateLocalityRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleResponseBody) SetMessage(v string) *UpdateLocalityRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleResponseBody) SetRequestId(v string) *UpdateLocalityRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleResponseBody) SetSuccess(v string) *UpdateLocalityRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateLocalityRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLocalityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLocalityRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLocalityRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLocalityRuleResponse) SetHeaders(v map[string]*string) *UpdateLocalityRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLocalityRuleResponse) SetStatusCode(v int32) *UpdateLocalityRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLocalityRuleResponse) SetBody(v *UpdateLocalityRuleResponseBody) *UpdateLocalityRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMessageQueueRouteRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -86532,6 +86827,86 @@ func (client *Client) GetKubernetesSource(request *GetKubernetesSourceRequest) (
 
 // Summary:
 //
+// 获取同AZ路由规则
+//
+// @param request - GetLocalityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLocalityRuleResponse
+func (client *Client) GetLocalityRuleWithOptions(request *GetLocalityRuleRequest, runtime *util.RuntimeOptions) (_result *GetLocalityRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLocalityRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLocalityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取同AZ路由规则
+//
+// @param request - GetLocalityRuleRequest
+//
+// @return GetLocalityRuleResponse
+func (client *Client) GetLocalityRule(request *GetLocalityRuleRequest) (_result *GetLocalityRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLocalityRuleResponse{}
+	_body, _err := client.GetLocalityRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the rules for graceful start and shutdown of an application.
 //
 // Description:
@@ -90146,7 +90521,7 @@ func (client *Client) ListGatewayRoute(request *ListGatewayRouteRequest) (_resul
 
 // Summary:
 //
-// Queries a list of routes for which authentication is enabled.
+// 获取网关开启鉴权的路由
 //
 // @param request - ListGatewayRouteOnAuthRequest
 //
@@ -90196,7 +90571,7 @@ func (client *Client) ListGatewayRouteOnAuthWithOptions(request *ListGatewayRout
 
 // Summary:
 //
-// Queries a list of routes for which authentication is enabled.
+// 获取网关开启鉴权的路由
 //
 // @param request - ListGatewayRouteOnAuthRequest
 //
@@ -97065,6 +97440,98 @@ func (client *Client) UpdateIsolationRule(request *UpdateIsolationRuleRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIsolationRuleResponse{}
 	_body, _err := client.UpdateIsolationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新同AZ路由规则
+//
+// @param request - UpdateLocalityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLocalityRuleResponse
+func (client *Client) UpdateLocalityRuleWithOptions(request *UpdateLocalityRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateLocalityRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		query["Rules"] = request.Rules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLocalityRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLocalityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新同AZ路由规则
+//
+// @param request - UpdateLocalityRuleRequest
+//
+// @return UpdateLocalityRuleResponse
+func (client *Client) UpdateLocalityRule(request *UpdateLocalityRuleRequest) (_result *UpdateLocalityRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLocalityRuleResponse{}
+	_body, _err := client.UpdateLocalityRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
