@@ -4781,7 +4781,8 @@ type GetClusterResponseBody struct {
 	// example:
 	//
 	// rg-acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SchedulerSpec   *GetClusterResponseBodySchedulerSpec `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty" type:"Struct"`
 	// The security group ID.
 	//
 	// example:
@@ -4910,6 +4911,11 @@ func (s *GetClusterResponseBody) SetRequestId(v string) *GetClusterResponseBody 
 
 func (s *GetClusterResponseBody) SetResourceGroupId(v string) *GetClusterResponseBody {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetClusterResponseBody) SetSchedulerSpec(v *GetClusterResponseBodySchedulerSpec) *GetClusterResponseBody {
+	s.SchedulerSpec = v
 	return s
 }
 
@@ -5247,6 +5253,23 @@ func (s GetClusterResponseBodyMonitorSpec) GoString() string {
 
 func (s *GetClusterResponseBodyMonitorSpec) SetEnableComputeLoadMonitor(v bool) *GetClusterResponseBodyMonitorSpec {
 	s.EnableComputeLoadMonitor = &v
+	return s
+}
+
+type GetClusterResponseBodySchedulerSpec struct {
+	EnableTopologyAwareness *bool `json:"EnableTopologyAwareness,omitempty" xml:"EnableTopologyAwareness,omitempty"`
+}
+
+func (s GetClusterResponseBodySchedulerSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterResponseBodySchedulerSpec) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterResponseBodySchedulerSpec) SetEnableTopologyAwareness(v bool) *GetClusterResponseBodySchedulerSpec {
+	s.EnableTopologyAwareness = &v
 	return s
 }
 
@@ -12875,8 +12898,9 @@ type UpdateClusterRequest struct {
 	// example:
 	//
 	// 500
-	MaxCount    *int32                           `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	MonitorSpec *UpdateClusterRequestMonitorSpec `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
+	MaxCount      *int32                             `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MonitorSpec   *UpdateClusterRequestMonitorSpec   `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
+	SchedulerSpec *UpdateClusterRequestSchedulerSpec `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty" type:"Struct"`
 }
 
 func (s UpdateClusterRequest) String() string {
@@ -12952,6 +12976,11 @@ func (s *UpdateClusterRequest) SetMonitorSpec(v *UpdateClusterRequestMonitorSpec
 	return s
 }
 
+func (s *UpdateClusterRequest) SetSchedulerSpec(v *UpdateClusterRequestSchedulerSpec) *UpdateClusterRequest {
+	s.SchedulerSpec = v
+	return s
+}
+
 type UpdateClusterRequestClusterCustomConfiguration struct {
 	// The arguments that are used to run the post-processing script.
 	//
@@ -12999,6 +13028,23 @@ func (s UpdateClusterRequestMonitorSpec) GoString() string {
 
 func (s *UpdateClusterRequestMonitorSpec) SetEnableComputeLoadMonitor(v bool) *UpdateClusterRequestMonitorSpec {
 	s.EnableComputeLoadMonitor = &v
+	return s
+}
+
+type UpdateClusterRequestSchedulerSpec struct {
+	EnableTopologyAwareness *bool `json:"EnableTopologyAwareness,omitempty" xml:"EnableTopologyAwareness,omitempty"`
+}
+
+func (s UpdateClusterRequestSchedulerSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterRequestSchedulerSpec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterRequestSchedulerSpec) SetEnableTopologyAwareness(v bool) *UpdateClusterRequestSchedulerSpec {
+	s.EnableTopologyAwareness = &v
 	return s
 }
 
@@ -13086,8 +13132,9 @@ type UpdateClusterShrinkRequest struct {
 	// example:
 	//
 	// 500
-	MaxCount          *int32  `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	MonitorSpecShrink *string `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty"`
+	MaxCount            *int32  `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MonitorSpecShrink   *string `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty"`
+	SchedulerSpecShrink *string `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty"`
 }
 
 func (s UpdateClusterShrinkRequest) String() string {
@@ -13160,6 +13207,11 @@ func (s *UpdateClusterShrinkRequest) SetMaxCount(v int32) *UpdateClusterShrinkRe
 
 func (s *UpdateClusterShrinkRequest) SetMonitorSpecShrink(v string) *UpdateClusterShrinkRequest {
 	s.MonitorSpecShrink = &v
+	return s
+}
+
+func (s *UpdateClusterShrinkRequest) SetSchedulerSpecShrink(v string) *UpdateClusterShrinkRequest {
+	s.SchedulerSpecShrink = &v
 	return s
 }
 
@@ -16734,6 +16786,10 @@ func (client *Client) UpdateClusterWithOptions(tmpReq *UpdateClusterRequest, run
 		request.MonitorSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MonitorSpec, tea.String("MonitorSpec"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SchedulerSpec)) {
+		request.SchedulerSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SchedulerSpec, tea.String("SchedulerSpec"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
 		query["ClientVersion"] = request.ClientVersion
@@ -16785,6 +16841,10 @@ func (client *Client) UpdateClusterWithOptions(tmpReq *UpdateClusterRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.MonitorSpecShrink)) {
 		query["MonitorSpec"] = request.MonitorSpecShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulerSpecShrink)) {
+		query["SchedulerSpec"] = request.SchedulerSpecShrink
 	}
 
 	req := &openapi.OpenApiRequest{
