@@ -666,6 +666,133 @@ func (s *DescribeEmrHiveTableResponse) SetBody(v *DescribeEmrHiveTableResponseBo
 	return s
 }
 
+type GetDataServiceApiAuthMapContextRequest struct {
+	// API ID
+	//
+	// example:
+	//
+	// 1
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// example:
+	//
+	// /apiPath
+	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	// example:
+	//
+	// 1
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s GetDataServiceApiAuthMapContextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceApiAuthMapContextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceApiAuthMapContextRequest) SetApiId(v int64) *GetDataServiceApiAuthMapContextRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextRequest) SetApiPath(v string) *GetDataServiceApiAuthMapContextRequest {
+	s.ApiPath = &v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextRequest) SetProjectId(v int64) *GetDataServiceApiAuthMapContextRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextRequest) SetVerbose(v bool) *GetDataServiceApiAuthMapContextRequest {
+	s.Verbose = &v
+	return s
+}
+
+type GetDataServiceApiAuthMapContextResponseBody struct {
+	// example:
+	//
+	// {}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 123-abc
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataServiceApiAuthMapContextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceApiAuthMapContextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceApiAuthMapContextResponseBody) SetData(v string) *GetDataServiceApiAuthMapContextResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextResponseBody) SetErrCode(v string) *GetDataServiceApiAuthMapContextResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextResponseBody) SetErrMsg(v string) *GetDataServiceApiAuthMapContextResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextResponseBody) SetRequestId(v string) *GetDataServiceApiAuthMapContextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataServiceApiAuthMapContextResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataServiceApiAuthMapContextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataServiceApiAuthMapContextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceApiAuthMapContextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceApiAuthMapContextResponse) SetHeaders(v map[string]*string) *GetDataServiceApiAuthMapContextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextResponse) SetStatusCode(v int32) *GetDataServiceApiAuthMapContextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataServiceApiAuthMapContextResponse) SetBody(v *GetDataServiceApiAuthMapContextResponseBody) *GetDataServiceApiAuthMapContextResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataServiceApiContextRequest struct {
 	// apiId
 	//
@@ -802,6 +929,113 @@ func (s *GetDataServiceApiContextResponse) SetBody(v *GetDataServiceApiContextRe
 	return s
 }
 
+type GetDataServiceConnectionRequest struct {
+	// example:
+	//
+	// 1
+	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// example:
+	//
+	// normal
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+}
+
+func (s GetDataServiceConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceConnectionRequest) SetConnectionId(v int64) *GetDataServiceConnectionRequest {
+	s.ConnectionId = &v
+	return s
+}
+
+func (s *GetDataServiceConnectionRequest) SetDataSourceType(v string) *GetDataServiceConnectionRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+type GetDataServiceConnectionResponseBody struct {
+	// example:
+	//
+	// {}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 123-abc
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataServiceConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceConnectionResponseBody) SetData(v string) *GetDataServiceConnectionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetDataServiceConnectionResponseBody) SetErrCode(v string) *GetDataServiceConnectionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetDataServiceConnectionResponseBody) SetErrMsg(v string) *GetDataServiceConnectionResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetDataServiceConnectionResponseBody) SetRequestId(v string) *GetDataServiceConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataServiceConnectionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataServiceConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataServiceConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceConnectionResponse) SetHeaders(v map[string]*string) *GetDataServiceConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataServiceConnectionResponse) SetStatusCode(v int32) *GetDataServiceConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataServiceConnectionResponse) SetBody(v *GetDataServiceConnectionResponseBody) *GetDataServiceConnectionResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataServiceContextUpdateEventResponseBody struct {
 	// example:
 	//
@@ -874,6 +1108,88 @@ func (s *GetDataServiceContextUpdateEventResponse) SetStatusCode(v int32) *GetDa
 }
 
 func (s *GetDataServiceContextUpdateEventResponse) SetBody(v *GetDataServiceContextUpdateEventResponseBody) *GetDataServiceContextUpdateEventResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataServiceFunctionRequest struct {
+	FunctionId *int64 `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
+}
+
+func (s GetDataServiceFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceFunctionRequest) SetFunctionId(v int64) *GetDataServiceFunctionRequest {
+	s.FunctionId = &v
+	return s
+}
+
+type GetDataServiceFunctionResponseBody struct {
+	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMsg    *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataServiceFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceFunctionResponseBody) SetData(v string) *GetDataServiceFunctionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetDataServiceFunctionResponseBody) SetErrCode(v string) *GetDataServiceFunctionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetDataServiceFunctionResponseBody) SetErrMsg(v string) *GetDataServiceFunctionResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetDataServiceFunctionResponseBody) SetRequestId(v string) *GetDataServiceFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataServiceFunctionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataServiceFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataServiceFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceFunctionResponse) SetHeaders(v map[string]*string) *GetDataServiceFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataServiceFunctionResponse) SetStatusCode(v int32) *GetDataServiceFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataServiceFunctionResponse) SetBody(v *GetDataServiceFunctionResponseBody) *GetDataServiceFunctionResponse {
 	s.Body = v
 	return s
 }
@@ -5492,6 +5808,62 @@ func (client *Client) DescribeEmrHiveTable(request *DescribeEmrHiveTableRequest)
 
 // Summary:
 //
+// 新server独享资源组获取api context
+//
+// @param request - GetDataServiceApiAuthMapContextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataServiceApiAuthMapContextResponse
+func (client *Client) GetDataServiceApiAuthMapContextWithOptions(request *GetDataServiceApiAuthMapContextRequest, runtime *util.RuntimeOptions) (_result *GetDataServiceApiAuthMapContextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataServiceApiAuthMapContext"),
+		Version:     tea.String("2018-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataServiceApiAuthMapContextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新server独享资源组获取api context
+//
+// @param request - GetDataServiceApiAuthMapContextRequest
+//
+// @return GetDataServiceApiAuthMapContextResponse
+func (client *Client) GetDataServiceApiAuthMapContext(request *GetDataServiceApiAuthMapContextRequest) (_result *GetDataServiceApiAuthMapContextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataServiceApiAuthMapContextResponse{}
+	_body, _err := client.GetDataServiceApiAuthMapContextWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询apiContext接口
 //
 // @param request - GetDataServiceApiContextRequest
@@ -5548,6 +5920,62 @@ func (client *Client) GetDataServiceApiContext(request *GetDataServiceApiContext
 
 // Summary:
 //
+// 新server独享资源组获取数据源信息
+//
+// @param request - GetDataServiceConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataServiceConnectionResponse
+func (client *Client) GetDataServiceConnectionWithOptions(request *GetDataServiceConnectionRequest, runtime *util.RuntimeOptions) (_result *GetDataServiceConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataServiceConnection"),
+		Version:     tea.String("2018-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataServiceConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新server独享资源组获取数据源信息
+//
+// @param request - GetDataServiceConnectionRequest
+//
+// @return GetDataServiceConnectionResponse
+func (client *Client) GetDataServiceConnection(request *GetDataServiceConnectionRequest) (_result *GetDataServiceConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataServiceConnectionResponse{}
+	_body, _err := client.GetDataServiceConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询apiContext更新事件接口
 //
 // @param request - GetDataServiceContextUpdateEventRequest
@@ -5586,6 +6014,62 @@ func (client *Client) GetDataServiceContextUpdateEvent() (_result *GetDataServic
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataServiceContextUpdateEventResponse{}
 	_body, _err := client.GetDataServiceContextUpdateEventWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询函数信息
+//
+// @param request - GetDataServiceFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataServiceFunctionResponse
+func (client *Client) GetDataServiceFunctionWithOptions(request *GetDataServiceFunctionRequest, runtime *util.RuntimeOptions) (_result *GetDataServiceFunctionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataServiceFunction"),
+		Version:     tea.String("2018-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataServiceFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询函数信息
+//
+// @param request - GetDataServiceFunctionRequest
+//
+// @return GetDataServiceFunctionResponse
+func (client *Client) GetDataServiceFunction(request *GetDataServiceFunctionRequest) (_result *GetDataServiceFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataServiceFunctionResponse{}
+	_body, _err := client.GetDataServiceFunctionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
