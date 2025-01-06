@@ -14471,6 +14471,425 @@ func (s *DescribeDDoSAllEventListResponse) SetBody(v *DescribeDDoSAllEventListRe
 	return s
 }
 
+type DescribeDDoSBpsListRequest struct {
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// example:
+	//
+	// 2023-05-18T06:19:42Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 70966210986912
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-14T17:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDDoSBpsListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSBpsListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSBpsListRequest) SetCoverage(v string) *DescribeDDoSBpsListRequest {
+	s.Coverage = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListRequest) SetEndTime(v string) *DescribeDDoSBpsListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListRequest) SetSiteId(v int64) *DescribeDDoSBpsListRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListRequest) SetStartTime(v string) *DescribeDDoSBpsListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDDoSBpsListResponseBody struct {
+	// example:
+	//
+	// 300
+	DataInterval *int32                                       `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DataModule   []*DescribeDDoSBpsListResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-05-18T06:19:42Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2023-05-14T17:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDDoSBpsListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSBpsListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSBpsListResponseBody) SetDataInterval(v int32) *DescribeDDoSBpsListResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBody) SetDataModule(v []*DescribeDDoSBpsListResponseBodyDataModule) *DescribeDDoSBpsListResponseBody {
+	s.DataModule = v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBody) SetEndTime(v string) *DescribeDDoSBpsListResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBody) SetRequestId(v string) *DescribeDDoSBpsListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBody) SetStartTime(v string) *DescribeDDoSBpsListResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDDoSBpsListResponseBodyDataModule struct {
+	// example:
+	//
+	// 9000000000
+	AttackBps *int64 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
+	// example:
+	//
+	// 9000000
+	AttackPps *int64 `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
+	// example:
+	//
+	// 1000000000
+	NormalBps *int64 `json:"NormalBps,omitempty" xml:"NormalBps,omitempty"`
+	// example:
+	//
+	// 1000000
+	NormalPps *int64 `json:"NormalPps,omitempty" xml:"NormalPps,omitempty"`
+	// example:
+	//
+	// 2023-05-14T17:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// 10000000000
+	TotalBps *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
+	// example:
+	//
+	// 100000000
+	TotalPps *int64 `json:"TotalPps,omitempty" xml:"TotalPps,omitempty"`
+}
+
+func (s DescribeDDoSBpsListResponseBodyDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSBpsListResponseBodyDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSBpsListResponseBodyDataModule) SetAttackBps(v int64) *DescribeDDoSBpsListResponseBodyDataModule {
+	s.AttackBps = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBodyDataModule) SetAttackPps(v int64) *DescribeDDoSBpsListResponseBodyDataModule {
+	s.AttackPps = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBodyDataModule) SetNormalBps(v int64) *DescribeDDoSBpsListResponseBodyDataModule {
+	s.NormalBps = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBodyDataModule) SetNormalPps(v int64) *DescribeDDoSBpsListResponseBodyDataModule {
+	s.NormalPps = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBodyDataModule) SetTimeStamp(v string) *DescribeDDoSBpsListResponseBodyDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBodyDataModule) SetTotalBps(v int64) *DescribeDDoSBpsListResponseBodyDataModule {
+	s.TotalBps = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponseBodyDataModule) SetTotalPps(v int64) *DescribeDDoSBpsListResponseBodyDataModule {
+	s.TotalPps = &v
+	return s
+}
+
+type DescribeDDoSBpsListResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDDoSBpsListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDDoSBpsListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSBpsListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSBpsListResponse) SetHeaders(v map[string]*string) *DescribeDDoSBpsListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponse) SetStatusCode(v int32) *DescribeDDoSBpsListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDDoSBpsListResponse) SetBody(v *DescribeDDoSBpsListResponseBody) *DescribeDDoSBpsListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDDoSL7QpsListRequest struct {
+	// example:
+	//
+	// 2023-04-19T19:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 86510927836942****
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// A short description of struct
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-04-19T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDDoSL7QpsListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSL7QpsListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSL7QpsListRequest) SetEndTime(v string) *DescribeDDoSL7QpsListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListRequest) SetInterval(v int32) *DescribeDDoSL7QpsListRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListRequest) SetRecordId(v int64) *DescribeDDoSL7QpsListRequest {
+	s.RecordId = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListRequest) SetSiteId(v int64) *DescribeDDoSL7QpsListRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListRequest) SetStartTime(v string) *DescribeDDoSL7QpsListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDDoSL7QpsListResponseBody struct {
+	// example:
+	//
+	// 300
+	DataInterval *int32                                         `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DataModule   []*DescribeDDoSL7QpsListResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-04-19T19:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 86510927836942****
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 2023-04-19T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDDoSL7QpsListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSL7QpsListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSL7QpsListResponseBody) SetDataInterval(v int32) *DescribeDDoSL7QpsListResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBody) SetDataModule(v []*DescribeDDoSL7QpsListResponseBodyDataModule) *DescribeDDoSL7QpsListResponseBody {
+	s.DataModule = v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBody) SetEndTime(v string) *DescribeDDoSL7QpsListResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBody) SetRecordId(v int64) *DescribeDDoSL7QpsListResponseBody {
+	s.RecordId = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBody) SetRequestId(v string) *DescribeDDoSL7QpsListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBody) SetSiteId(v int64) *DescribeDDoSL7QpsListResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBody) SetStartTime(v string) *DescribeDDoSL7QpsListResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDDoSL7QpsListResponseBodyDataModule struct {
+	// example:
+	//
+	// 5
+	Attack *int64 `json:"Attack,omitempty" xml:"Attack,omitempty"`
+	// example:
+	//
+	// 4
+	Normal *int64 `json:"Normal,omitempty" xml:"Normal,omitempty"`
+	// example:
+	//
+	// 2023-04-19T16:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// 9
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeDDoSL7QpsListResponseBodyDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSL7QpsListResponseBodyDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSL7QpsListResponseBodyDataModule) SetAttack(v int64) *DescribeDDoSL7QpsListResponseBodyDataModule {
+	s.Attack = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBodyDataModule) SetNormal(v int64) *DescribeDDoSL7QpsListResponseBodyDataModule {
+	s.Normal = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBodyDataModule) SetTimeStamp(v string) *DescribeDDoSL7QpsListResponseBodyDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponseBodyDataModule) SetTotal(v int64) *DescribeDDoSL7QpsListResponseBodyDataModule {
+	s.Total = &v
+	return s
+}
+
+type DescribeDDoSL7QpsListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDDoSL7QpsListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDDoSL7QpsListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSL7QpsListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSL7QpsListResponse) SetHeaders(v map[string]*string) *DescribeDDoSL7QpsListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponse) SetStatusCode(v int32) *DescribeDDoSL7QpsListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDDoSL7QpsListResponse) SetBody(v *DescribeDDoSL7QpsListResponseBody) *DescribeDDoSL7QpsListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHttpDDoSAttackIntelligentProtectionRequest struct {
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -16150,7 +16569,7 @@ func (s *GetCertificateResponseBodyResult) SetUpdateTime(v string) *GetCertifica
 }
 
 type GetCertificateResponseBodyResultDCV struct {
-	// DCV ID。
+	// DCV ID.
 	//
 	// example:
 	//
@@ -47377,6 +47796,138 @@ func (client *Client) DescribeDDoSAllEventList(request *DescribeDDoSAllEventList
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDoSAllEventListResponse{}
 	_body, _err := client.DescribeDDoSAllEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DCDN DDoS用户bps、pps数据
+//
+// @param request - DescribeDDoSBpsListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSBpsListResponse
+func (client *Client) DescribeDDoSBpsListWithOptions(request *DescribeDDoSBpsListRequest, runtime *util.RuntimeOptions) (_result *DescribeDDoSBpsListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDDoSBpsList"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDDoSBpsListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DCDN DDoS用户bps、pps数据
+//
+// @param request - DescribeDDoSBpsListRequest
+//
+// @return DescribeDDoSBpsListResponse
+func (client *Client) DescribeDDoSBpsList(request *DescribeDDoSBpsListRequest) (_result *DescribeDDoSBpsListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDDoSBpsListResponse{}
+	_body, _err := client.DescribeDDoSBpsListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ddos分析七层qps走势图接口
+//
+// @param request - DescribeDDoSL7QpsListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSL7QpsListResponse
+func (client *Client) DescribeDDoSL7QpsListWithOptions(request *DescribeDDoSL7QpsListRequest, runtime *util.RuntimeOptions) (_result *DescribeDDoSL7QpsListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDDoSL7QpsList"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDDoSL7QpsListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ddos分析七层qps走势图接口
+//
+// @param request - DescribeDDoSL7QpsListRequest
+//
+// @return DescribeDDoSL7QpsListResponse
+func (client *Client) DescribeDDoSL7QpsList(request *DescribeDDoSL7QpsListRequest) (_result *DescribeDDoSL7QpsListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDDoSL7QpsListResponse{}
+	_body, _err := client.DescribeDDoSL7QpsListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
