@@ -3578,6 +3578,8 @@ type GetAsrConfigResponseBodyData struct {
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+	Engine          *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineXufei     *string `json:"EngineXufei,omitempty" xml:"EngineXufei,omitempty"`
 }
 
 func (s GetAsrConfigResponseBodyData) String() string {
@@ -3605,6 +3607,16 @@ func (s *GetAsrConfigResponseBodyData) SetAsrCustomizationId(v string) *GetAsrCo
 
 func (s *GetAsrConfigResponseBodyData) SetAsrVocabularyId(v string) *GetAsrConfigResponseBodyData {
 	s.AsrVocabularyId = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBodyData) SetEngine(v string) *GetAsrConfigResponseBodyData {
+	s.Engine = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBodyData) SetEngineXufei(v string) *GetAsrConfigResponseBodyData {
+	s.EngineXufei = &v
 	return s
 }
 
@@ -4956,7 +4968,8 @@ type ModifyAsrConfigRequest struct {
 	// example:
 	//
 	// 0
-	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	ConfigLevel *int32  `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
@@ -4993,6 +5006,11 @@ func (s *ModifyAsrConfigRequest) SetAsrVocabularyId(v string) *ModifyAsrConfigRe
 
 func (s *ModifyAsrConfigRequest) SetConfigLevel(v int32) *ModifyAsrConfigRequest {
 	s.ConfigLevel = &v
+	return s
+}
+
+func (s *ModifyAsrConfigRequest) SetEngine(v string) *ModifyAsrConfigRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -8218,6 +8236,10 @@ func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigLevel)) {
 		query["ConfigLevel"] = request.ConfigLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EntryId)) {
