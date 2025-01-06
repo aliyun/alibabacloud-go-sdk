@@ -1164,6 +1164,75 @@ func (s *GetImageAnalyzeTaskStatusResponse) SetBody(v *GetImageAnalyzeTaskStatus
 	return s
 }
 
+type GetPredictionHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Token         *string            `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetPredictionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPredictionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetPredictionHeaders) SetCommonHeaders(v map[string]*string) *GetPredictionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetPredictionHeaders) SetToken(v string) *GetPredictionHeaders {
+	s.Token = &v
+	return s
+}
+
+type GetPredictionRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPredictionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPredictionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPredictionRequest) SetBody(v string) *GetPredictionRequest {
+	s.Body = &v
+	return s
+}
+
+type GetPredictionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPredictionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPredictionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPredictionResponse) SetHeaders(v map[string]*string) *GetPredictionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPredictionResponse) SetStatusCode(v int32) *GetPredictionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPredictionResponse) SetBody(v string) *GetPredictionResponse {
+	s.Body = &v
+	return s
+}
+
 type GetQueryAnalysisRequest struct {
 	Functions []*GetQueryAnalysisRequestFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
 	History   []*GetQueryAnalysisRequestHistory   `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
@@ -2350,6 +2419,74 @@ func (client *Client) GetImageAnalyzeTaskStatus(workspaceName *string, serviceId
 	headers := make(map[string]*string)
 	_result = &GetImageAnalyzeTaskStatusResponse{}
 	_body, _err := client.GetImageAnalyzeTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取推理结果
+//
+// @param request - GetPredictionRequest
+//
+// @param headers - GetPredictionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPredictionResponse
+func (client *Client) GetPredictionWithOptions(deploymentId *string, request *GetPredictionRequest, headers *GetPredictionHeaders, runtime *util.RuntimeOptions) (_result *GetPredictionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Token)) {
+		realHeaders["Token"] = util.ToJSONString(headers.Token)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPrediction"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/deployments/" + tea.StringValue(deploymentId) + "/predict"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("string"),
+	}
+	_result = &GetPredictionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取推理结果
+//
+// @param request - GetPredictionRequest
+//
+// @return GetPredictionResponse
+func (client *Client) GetPrediction(deploymentId *string, request *GetPredictionRequest) (_result *GetPredictionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetPredictionHeaders{}
+	_result = &GetPredictionResponse{}
+	_body, _err := client.GetPredictionWithOptions(deploymentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
