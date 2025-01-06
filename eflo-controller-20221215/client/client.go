@@ -1317,16 +1317,22 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type CreateDiagnosticTaskRequest struct {
+	// Log information
 	AiJobLogInfo *CreateDiagnosticTaskRequestAiJobLogInfo `json:"AiJobLogInfo,omitempty" xml:"AiJobLogInfo,omitempty" type:"Struct"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// i118913031696573280136
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Diagnostic type.
+	//
 	// example:
 	//
 	// CheckByAiJobLogs
-	DiagnosticType *string   `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
-	NodeIds        []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	// List of node IDs
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateDiagnosticTaskRequest) String() string {
@@ -1358,11 +1364,20 @@ func (s *CreateDiagnosticTaskRequest) SetNodeIds(v []*string) *CreateDiagnosticT
 }
 
 type CreateDiagnosticTaskRequestAiJobLogInfo struct {
+	// Task logs
 	AiJobLogs []*CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs `json:"AiJobLogs,omitempty" xml:"AiJobLogs,omitempty" type:"Repeated"`
+	// End time. In timestamp format, unit: seconds.
+	//
+	// > Must be on the hour or half-hour mark.
+	//
 	// example:
 	//
 	// 2024-08-05T10:10:01
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Start time. In timestamp format, unit: seconds.
+	//
+	// > Must be on the hour or half-hour mark.
+	//
 	// example:
 	//
 	// 2024-10-11T00:00:00Z
@@ -1393,11 +1408,16 @@ func (s *CreateDiagnosticTaskRequestAiJobLogInfo) SetStartTime(v string) *Create
 }
 
 type CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// null
-	AiInstance *string                                                 `json:"AiInstance,omitempty" xml:"AiInstance,omitempty"`
-	Logs       []*CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	AiInstance *string `json:"AiInstance,omitempty" xml:"AiInstance,omitempty"`
+	// Log object
+	Logs []*CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-tw-p2p2al5u1hn
@@ -1428,10 +1448,14 @@ func (s *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs) SetNodeId(v string) *
 }
 
 type CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs struct {
+	// Sent date, in the format yyyymmdd.
+	//
 	// example:
 	//
 	// 2024-08-05T10:10:01
 	Datetime *string `json:"Datetime,omitempty" xml:"Datetime,omitempty"`
+	// Log content
+	//
 	// example:
 	//
 	// success
@@ -1457,16 +1481,22 @@ func (s *CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs) SetLogContent(v s
 }
 
 type CreateDiagnosticTaskShrinkRequest struct {
+	// Log information
 	AiJobLogInfoShrink *string `json:"AiJobLogInfo,omitempty" xml:"AiJobLogInfo,omitempty"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// i118913031696573280136
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Diagnostic type.
+	//
 	// example:
 	//
 	// CheckByAiJobLogs
 	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
-	NodeIdsShrink  *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// List of node IDs
+	NodeIdsShrink *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 }
 
 func (s CreateDiagnosticTaskShrinkRequest) String() string {
@@ -1498,10 +1528,14 @@ func (s *CreateDiagnosticTaskShrinkRequest) SetNodeIdsShrink(v string) *CreateDi
 }
 
 type CreateDiagnosticTaskResponseBody struct {
+	// Diagnosis ID
+	//
 	// example:
 	//
 	// diag-i150553931717380274931
 	DiagnosticId *string `json:"DiagnosticId,omitempty" xml:"DiagnosticId,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// A511C02A-0127-51AA-A9F9-966382C9A1B5
@@ -5414,6 +5448,463 @@ func (s *ListFreeNodesResponse) SetBody(v *ListFreeNodesResponseBody) *ListFreeN
 	return s
 }
 
+type ListMachineTypesRequest struct {
+	// example:
+	//
+	// efg1.nvga1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListMachineTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineTypesRequest) SetName(v string) *ListMachineTypesRequest {
+	s.Name = &v
+	return s
+}
+
+type ListMachineTypesResponseBody struct {
+	MachineTypes []*ListMachineTypesResponseBodyMachineTypes `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a3f2224a5ec7224116c4f5246120abe4
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F16BA4D8-FF50-53B6-A026-F443FE31006C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMachineTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineTypesResponseBody) SetMachineTypes(v []*ListMachineTypesResponseBodyMachineTypes) *ListMachineTypesResponseBody {
+	s.MachineTypes = v
+	return s
+}
+
+func (s *ListMachineTypesResponseBody) SetNextToken(v string) *ListMachineTypesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBody) SetRequestId(v string) *ListMachineTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMachineTypesResponseBodyMachineTypes struct {
+	// example:
+	//
+	// 2
+	BondNum *int32 `json:"BondNum,omitempty" xml:"BondNum,omitempty"`
+	// example:
+	//
+	// 2x Intel Icelake 8369B 32C CPU
+	CpuInfo *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	// example:
+	//
+	// 2x 480GB SATA SSD
+	DiskInfo *string `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
+	// example:
+	//
+	// 8x NVIDIA SXM4 80GB A100 GPU
+	GpuInfo *string `json:"GpuInfo,omitempty" xml:"GpuInfo,omitempty"`
+	// example:
+	//
+	// 32x 64GB DDR4 3200 Memory
+	MemoryInfo *string `json:"MemoryInfo,omitempty" xml:"MemoryInfo,omitempty"`
+	// example:
+	//
+	// efg1.nvga1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2x 100Gbps DP NIC
+	NetworkInfo *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
+	// example:
+	//
+	// 10
+	NodeCount    *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	TotalCpuCore *int32  `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
+	// example:
+	//
+	// Public
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListMachineTypesResponseBodyMachineTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineTypesResponseBodyMachineTypes) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetBondNum(v int32) *ListMachineTypesResponseBodyMachineTypes {
+	s.BondNum = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetCpuInfo(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.CpuInfo = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetDiskInfo(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.DiskInfo = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetGpuInfo(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.GpuInfo = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetMemoryInfo(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.MemoryInfo = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetName(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetNetworkInfo(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.NetworkInfo = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetNodeCount(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetTotalCpuCore(v int32) *ListMachineTypesResponseBodyMachineTypes {
+	s.TotalCpuCore = &v
+	return s
+}
+
+func (s *ListMachineTypesResponseBodyMachineTypes) SetType(v string) *ListMachineTypesResponseBodyMachineTypes {
+	s.Type = &v
+	return s
+}
+
+type ListMachineTypesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMachineTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMachineTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineTypesResponse) SetHeaders(v map[string]*string) *ListMachineTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMachineTypesResponse) SetStatusCode(v int32) *ListMachineTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMachineTypesResponse) SetBody(v *ListMachineTypesResponseBody) *ListMachineTypesResponse {
+	s.Body = v
+	return s
+}
+
+type ListNodeGroupsRequest struct {
+	// Cluster ID
+	//
+	// example:
+	//
+	// i119982311660892626523
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Number of items per page in a paginated query. The maximum value is 100.
+	//
+	// Default value:
+	//
+	// - If no value is set or the set value is less than 20, the default value is 20.
+	//
+	// - If the set value is greater than 100, the default value is 100.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// NextToken for the next page, include this value when requesting the next page
+	//
+	// example:
+	//
+	// a3f2224a5ec7224116c4f5246120abe4
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Node group ID
+	//
+	// example:
+	//
+	// ng-ec3c96ff0aa4c60d
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+}
+
+func (s ListNodeGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeGroupsRequest) SetClusterId(v string) *ListNodeGroupsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetMaxResults(v int32) *ListNodeGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetNextToken(v string) *ListNodeGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetNodeGroupId(v string) *ListNodeGroupsRequest {
+	s.NodeGroupId = &v
+	return s
+}
+
+type ListNodeGroupsResponseBody struct {
+	// Cluster group information
+	Groups []*ListNodeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// NextToken for the next page, include this value when requesting the next page
+	//
+	// example:
+	//
+	// 563d42ae0b17572449ec8c97f7f66069
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// ID of the request
+	//
+	// example:
+	//
+	// 887FA855-89F4-5DB3-B305-C5879EC480E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListNodeGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeGroupsResponseBody) SetGroups(v []*ListNodeGroupsResponseBodyGroups) *ListNodeGroupsResponseBody {
+	s.Groups = v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBody) SetNextToken(v string) *ListNodeGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBody) SetRequestId(v string) *ListNodeGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListNodeGroupsResponseBodyGroups struct {
+	// Cluster ID
+	//
+	// example:
+	//
+	// i113952461729854708648
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name
+	//
+	// example:
+	//
+	// wzq-exclusivelite-71
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Creation time
+	//
+	// example:
+	//
+	// 2024-02-27T13:16:31.599
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// created by ga2_prepare
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Group ID.
+	//
+	// example:
+	//
+	// 238276221
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Group name.
+	//
+	// example:
+	//
+	// backend-group
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Image ID
+	//
+	// example:
+	//
+	// i194015071707321240258
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Image name
+	//
+	// example:
+	//
+	// CentOS_7.9_x86_64_FULL_20221110
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// Machine type
+	//
+	// example:
+	//
+	// efg1.nvga1n
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Number of nodes
+	//
+	// example:
+	//
+	// 2
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Update time
+	//
+	// example:
+	//
+	// 2023-09-22T00:03:05.114
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// 可用区id
+	//
+	// example:
+	//
+	// cn-shenzhen-c
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListNodeGroupsResponseBodyGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeGroupsResponseBodyGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetClusterId(v string) *ListNodeGroupsResponseBodyGroups {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetClusterName(v string) *ListNodeGroupsResponseBodyGroups {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetCreateTime(v string) *ListNodeGroupsResponseBodyGroups {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetDescription(v string) *ListNodeGroupsResponseBodyGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetGroupId(v string) *ListNodeGroupsResponseBodyGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetGroupName(v string) *ListNodeGroupsResponseBodyGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetImageId(v string) *ListNodeGroupsResponseBodyGroups {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetImageName(v string) *ListNodeGroupsResponseBodyGroups {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetMachineType(v string) *ListNodeGroupsResponseBodyGroups {
+	s.MachineType = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetNodeCount(v int64) *ListNodeGroupsResponseBodyGroups {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetUpdateTime(v string) *ListNodeGroupsResponseBodyGroups {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetZoneId(v string) *ListNodeGroupsResponseBodyGroups {
+	s.ZoneId = &v
+	return s
+}
+
+type ListNodeGroupsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNodeGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeGroupsResponse) SetHeaders(v map[string]*string) *ListNodeGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNodeGroupsResponse) SetStatusCode(v int32) *ListNodeGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponse) SetBody(v *ListNodeGroupsResponseBody) *ListNodeGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// Query token (Token), the value should be the NextToken returned from the previous API call
 	//
@@ -7842,7 +8333,7 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
-// 诊断任务创建接口
+// Diagnostic Task Creation Interface
 //
 // @param tmpReq - CreateDiagnosticTaskRequest
 //
@@ -7906,7 +8397,7 @@ func (client *Client) CreateDiagnosticTaskWithOptions(tmpReq *CreateDiagnosticTa
 
 // Summary:
 //
-// 诊断任务创建接口
+// Diagnostic Task Creation Interface
 //
 // @param request - CreateDiagnosticTaskRequest
 //
@@ -8721,6 +9212,138 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFreeNodesResponse{}
 	_body, _err := client.ListFreeNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户可用的机型列表
+//
+// @param request - ListMachineTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMachineTypesResponse
+func (client *Client) ListMachineTypesWithOptions(request *ListMachineTypesRequest, runtime *util.RuntimeOptions) (_result *ListMachineTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMachineTypes"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMachineTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户可用的机型列表
+//
+// @param request - ListMachineTypesRequest
+//
+// @return ListMachineTypesResponse
+func (client *Client) ListMachineTypes(request *ListMachineTypesRequest) (_result *ListMachineTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMachineTypesResponse{}
+	_body, _err := client.ListMachineTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query Node Group Information Under the Cluster
+//
+// @param request - ListNodeGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodeGroupsResponse
+func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, runtime *util.RuntimeOptions) (_result *ListNodeGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		body["NodeGroupId"] = request.NodeGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNodeGroups"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNodeGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query Node Group Information Under the Cluster
+//
+// @param request - ListNodeGroupsRequest
+//
+// @return ListNodeGroupsResponse
+func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *ListNodeGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNodeGroupsResponse{}
+	_body, _err := client.ListNodeGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
