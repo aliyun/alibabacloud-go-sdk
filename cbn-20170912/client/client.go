@@ -1687,8 +1687,6 @@ type CreateCenBandwidthPackageRequest struct {
 	//
 	// 	- **Europe**: Europe
 	//
-	// 	- **Australia**: Australia
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -1704,8 +1702,6 @@ type CreateCenBandwidthPackageRequest struct {
 	// 	- **Asia-Pacific**: Asia Pacific
 	//
 	// 	- **Europe**: Europe
-	//
-	// 	- **Australia**: Australia
 	//
 	// This parameter is required.
 	//
@@ -2316,6 +2312,15 @@ func (s *CreateCenChildInstanceRouteEntryToCenResponse) SetBody(v *CreateCenChil
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequest struct {
+	// The allocation mode of the guaranteed bandwidth. You can specify an absolute bandwidth value or a bandwidth percentage. Valid values:
+	//
+	// 	- **byBandwidth**: allocates an absolute bandwidth value for the QoS queue.
+	//
+	// 	- **byBandwidthPercent*	- (default): allocates a bandwidth percentage for the OoS queue.
+	//
+	// example:
+	//
+	// byBandwidthPercent
 	BandwidthGuaranteeMode *string `json:"BandwidthGuaranteeMode,omitempty" xml:"BandwidthGuaranteeMode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -2446,6 +2451,17 @@ func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetTransitRouterId(v strin
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {
+	// The absolute bandwidth that can be consumed by the QoS queue. Unit: Mbit/s.
+	//
+	// Each QoS policy supports at most 10 queues. You can specify a valid bandwidth value for each queue.
+	//
+	// For example, a value of 1 specifies that the queue can consume 1 Mbit/s of the inter-region bandwidth.
+	//
+	// >  The sum of the absolute bandwidth values of all the queues in a QoS policy cannot exceed the total bandwidth of the inter-region connection.
+	//
+	// example:
+	//
+	// 1
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The Differentiated Services Code Point (DSCP) value that matches the current queue.
 	//
@@ -2453,7 +2469,7 @@ type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {
 	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
 	// The description of the current queue.
 	//
-	// Each QoS policy supports at most three queues. You can specify a description for each queue.
+	// Each QoS policy supports at most 10 queues. You can specify a description for each queue.
 	//
 	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
 	//
@@ -2473,7 +2489,7 @@ type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
 	// The percentage of the inter-region bandwidth that can be used by the queue.
 	//
-	// Each QoS policy supports at most three queues. You can specify a valid percentage for each queue.
+	// Each QoS policy supports at most 10 queues. You can specify a valid percentage for each queue.
 	//
 	// For example, a value of **1*	- specifies that the queue can consume 1% of the inter-region bandwidth.
 	//
@@ -2581,33 +2597,74 @@ func (s *CreateCenInterRegionTrafficQosPolicyResponse) SetBody(v *CreateCenInter
 }
 
 type CreateCenInterRegionTrafficQosQueueRequest struct {
+	// The maximum absolute bandwidth value that can be allocated to the queue. Unit: Mbit/s.
+	//
+	// - The value specifies an absolute bandwidth. For example, a value of 20 specifies that the queue can consume at most 20 Mbit/s of bandwidth.
+	//
+	// - The sum of the bandwidth values specified for all queues that belong to the same inter-region connection cannot exceed the maximum bandwidth of the inter-region connection.
+	//
+	// example:
+	//
+	// 20
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - **true**: performs a dry run. The system checks the required parameters, the request format, and the service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// - **false*	- (default): performs a dry run and sends the request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The differentiated services code point (DSCP) value that matches the current queue.
+	//
+	// You can specify at most 20 DSCP values for a queue in each call. Separate DSCP values with commas (,).
+	//
 	// This parameter is required.
 	Dscps        []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
 	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The description of the queue.
+	//
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// desctest
 	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
+	// The name of the queue.
+	//
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// nametest
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
+	// The maximum percentage of inter-region bandwidth that can be allocated to the queue.
+	//
+	// - Unit: percentage. For example, a value of 20 specifies that the queue can consume at most 20% of inter-region bandwidth.
+	//
+	// - The sum of the percentage values specified for all queues that belong to the same inter-region connection cannot exceed 100%.
+	//
 	// example:
 	//
 	// 20
 	RemainBandwidthPercent *string `json:"RemainBandwidthPercent,omitempty" xml:"RemainBandwidthPercent,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the QoS policy.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2685,10 +2742,14 @@ func (s *CreateCenInterRegionTrafficQosQueueRequest) SetTrafficQosPolicyId(v str
 }
 
 type CreateCenInterRegionTrafficQosQueueResponseBody struct {
+	// The ID of the queue.
+	//
 	// example:
 	//
 	// qos-queue-irqhi8k5fdyuu5****
 	QosQueueId *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 845F66F6-5C27-53A1-9428-B859086237B2
@@ -3356,15 +3417,15 @@ type CreateFlowlogRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the flow log.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// myFlowlog
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the flow log.
+	// The flow log name.
 	//
-	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -3375,9 +3436,20 @@ type CreateFlowlogRequest struct {
 	// example:
 	//
 	// 600
-	Interval        *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The strings that define the fields in the flow log.
+	//
+	// Format: `${Field 1}${Field 2}${Field 3}...{Field n}`
+	//
+	// 	- If you do not configure this parameter, all fields are included in the flow log.
+	//
+	// 	- If you configure this parameter, start the string with `${srcaddr}${dstaddr}${bytes}` because `${srcaddr}${dstaddr}${bytes}` are required variables. For more information about the fields supported by flow logs, see [Configure a flow log](https://help.aliyun.com/document_detail/339822.html).
+	//
+	// example:
+	//
+	// ${srcaddr}${dstaddr}${bytes}
 	LogFormatString *string `json:"LogFormatString,omitempty" xml:"LogFormatString,omitempty"`
-	// The Logstore where the flow log is stored.
+	// The Logstore that stores the captured traffic data.
 	//
 	// 	- If a Logstore is already created in the selected region, enter the name of the Logstore.
 	//
@@ -3389,7 +3461,7 @@ type CreateFlowlogRequest struct {
 	//
 	//     	- The name must start and end with a lowercase letter or a digit.
 	//
-	//     	- The name must be 3 to 63 characters in length.
+	//     	- The name must be 3 to 63 characters in length,
 	//
 	// This parameter is required.
 	//
@@ -3399,13 +3471,13 @@ type CreateFlowlogRequest struct {
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Log Service project where the flow log is stored.
+	// The project that stores the captured traffic data.
 	//
 	// 	- If a project is already created in the selected region, enter the name of the project.
 	//
 	// 	- If no projects are created in the selected region, enter a name and the system automatically creates a project.
 	//
-	//     The project name must be unique in a region. You cannot change the name after you create the project. The naming conventions are:
+	//     The project name must be unique in a region. You cannot change the name after the project is created. The name must meet the following requirements:
 	//
 	//     	- The name must be globally unique.
 	//
@@ -3413,7 +3485,7 @@ type CreateFlowlogRequest struct {
 	//
 	//     	- The name must start and end with a lowercase letter or a digit.
 	//
-	//     	- The name must be 3 to 63 characters in length.
+	//     	- The name must be 3 to 63 characters in length,
 	//
 	// This parameter is required.
 	//
@@ -3433,19 +3505,24 @@ type CreateFlowlogRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the tags.
+	// The tags.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can specify at most 20 tags.
 	Tag []*CreateFlowlogRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the inter-region connection or the VBR connection.
+	// The ID of the VPC connection, VPN connection, VBR connection, ECR connection, or inter-region connection.
 	//
-	// > This parameter is required.
+	// If you create the flow log for a transfer router, skip this parameter.
 	//
 	// example:
 	//
 	// tr-attach-r6g0m3epjehw57****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	TransitRouterId           *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the transit router.
+	//
+	// example:
+	//
+	// tr-bp1rmwxnk221e3fas****
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s CreateFlowlogRequest) String() string {
@@ -3537,21 +3614,21 @@ func (s *CreateFlowlogRequest) SetTransitRouterId(v string) *CreateFlowlogReques
 }
 
 type CreateFlowlogRequestTag struct {
-	// The tag key.
+	// The tag keys.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify at most 20 tag keys in each call.
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag values.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
 	//
 	// example:
 	//
@@ -5242,9 +5319,10 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	// example:
 	//
 	// false
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DryRun       *bool                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Options      *CreateTransitRouterMulticastDomainRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	OwnerAccount *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the transit router.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
@@ -5306,6 +5384,11 @@ func (s *CreateTransitRouterMulticastDomainRequest) SetDryRun(v bool) *CreateTra
 	return s
 }
 
+func (s *CreateTransitRouterMulticastDomainRequest) SetOptions(v *CreateTransitRouterMulticastDomainRequestOptions) *CreateTransitRouterMulticastDomainRequest {
+	s.Options = v
+	return s
+}
+
 func (s *CreateTransitRouterMulticastDomainRequest) SetOwnerAccount(v string) *CreateTransitRouterMulticastDomainRequest {
 	s.OwnerAccount = &v
 	return s
@@ -5348,6 +5431,23 @@ func (s *CreateTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDom
 
 func (s *CreateTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainName(v string) *CreateTransitRouterMulticastDomainRequest {
 	s.TransitRouterMulticastDomainName = &v
+	return s
+}
+
+type CreateTransitRouterMulticastDomainRequestOptions struct {
+	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
+}
+
+func (s CreateTransitRouterMulticastDomainRequestOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterMulticastDomainRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterMulticastDomainRequestOptions) SetIgmpv2Support(v string) *CreateTransitRouterMulticastDomainRequestOptions {
+	s.Igmpv2Support = &v
 	return s
 }
 
@@ -6823,7 +6923,8 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
-	TransitRouterId                   *string            `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// Feature configurations of the VPC connection.
 	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 	// The VPC ID.
 	//
@@ -7111,7 +7212,8 @@ type CreateTransitRouterVpcAttachmentShrinkRequest struct {
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
-	TransitRouterId                         *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// Feature configurations of the VPC connection.
 	TransitRouterVPCAttachmentOptionsShrink *string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 	// The VPC ID.
 	//
@@ -12351,8 +12453,6 @@ type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPac
 	//
 	// 	- **europe**: Europe
 	//
-	// 	- **australia**: Australia
-	//
 	// 	- **north-america**: North America
 	//
 	// example:
@@ -12366,8 +12466,6 @@ type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPac
 	// 	- **asia-pacific**: Asia Pacific
 	//
 	// 	- **europe**: Europe
-	//
-	// 	- **australia**: Australia
 	//
 	// 	- **north-america**: North America
 	//
@@ -12783,6 +12881,8 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	// 	- **VBR**: virtual border router (VBR)
 	//
 	// 	- **CCN**: Cloud Connect Network (CCN) instance
+	//
+	// 	- **ECR**: Express Connect Router (ECR)
 	//
 	// This parameter is required.
 	//
@@ -13291,11 +13391,13 @@ type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the peer network instance on which the overlapping routes are found. Valid values:
 	//
-	// 	- **VPC**
+	// 	- **VPC**: VPC
 	//
-	// 	- **VBR**
+	// 	- **VBR**: VBR
 	//
-	// 	- **CCN**
+	// 	- **CCN**: CCN instance
+	//
+	// 	- **ECR**: ECR
 	//
 	// example:
 	//
@@ -13400,8 +13502,6 @@ type DescribeCenGeographicSpanRemainingBandwidthRequest struct {
 	//
 	// 	- **Europe**: Europe
 	//
-	// 	- **Australia**: Australia
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -13417,8 +13517,6 @@ type DescribeCenGeographicSpanRemainingBandwidthRequest struct {
 	// 	- **Asia-Pacific**: Asia Pacific
 	//
 	// 	- **Europe**: Europe
-	//
-	// 	- **Australia**: Australia
 	//
 	// This parameter is required.
 	//
@@ -16728,9 +16826,21 @@ type DescribeFlowlogsRequest struct {
 	// example:
 	//
 	// myFlowlog
-	FlowLogName    *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// The flow log version.
+	//
+	// Flow logs are automatically created in the latest version, which is **3**.
+	//
+	// example:
+	//
+	// 3
 	FlowLogVersion *string `json:"FlowLogVersion,omitempty" xml:"FlowLogVersion,omitempty"`
-	Interval       *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The time window for collecting log data. Unit: seconds Valid values: **60*	- or **600*	- Default value: **600**.
+	//
+	// example:
+	//
+	// 600
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The name of the Logstore where the flow log is stored.
 	//
 	// The name must be 3 to 63 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). It must start or end with a lowercase letter or a digit.
@@ -16741,7 +16851,7 @@ type DescribeFlowlogsRequest struct {
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
@@ -16791,7 +16901,12 @@ type DescribeFlowlogsRequest struct {
 	//
 	// tr-attach-qieks13jnt1cchy****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	TransitRouterId           *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the transit router.
+	//
+	// example:
+	//
+	// tr-uf654ttymmljlvh2x****
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeFlowlogsRequest) String() string {
@@ -17069,14 +17184,28 @@ type DescribeFlowlogsResponseBodyFlowLogsFlowLog struct {
 	// example:
 	//
 	// myFlowlog
-	FlowLogName    *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// The flow log version.
+	//
+	// Flow logs are automatically created in the latest version, which is **3**.
+	//
+	// example:
+	//
+	// 3
 	FlowLogVersion *string `json:"FlowLogVersion,omitempty" xml:"FlowLogVersion,omitempty"`
 	// The time window for collecting log data. Unit: seconds. Valid values: **60*	- or **600*	- Default value: **600**.
 	//
 	// example:
 	//
 	// 60
-	Interval        *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The string that defines the format of the flow log. Format:
+	//
+	// `${Field 1}${Field 2}${Field 3}`
+	//
+	// example:
+	//
+	// ${srcaddr}${dstaddr}${bytes}
 	LogFormatString *string `json:"LogFormatString,omitempty" xml:"LogFormatString,omitempty"`
 	// The Logstore that stores the captured traffic data.
 	//
@@ -17106,7 +17235,7 @@ type DescribeFlowlogsResponseBodyFlowLogsFlowLog struct {
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of tags.
+	// The tags.
 	Tags *DescribeFlowlogsResponseBodyFlowLogsFlowLogTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the network instance connection
 	//
@@ -17114,7 +17243,12 @@ type DescribeFlowlogsResponseBodyFlowLogsFlowLog struct {
 	//
 	// tr-attach-5x4o4ynzuqbv6g****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	TransitRouterId           *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the transit router.
+	//
+	// example:
+	//
+	// tr-bp1g9313sx675zr1lajmj
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeFlowlogsResponseBodyFlowLogsFlowLog) String() string {
@@ -17280,6 +17414,16 @@ func (s *DescribeFlowlogsResponse) SetBody(v *DescribeFlowlogsResponseBody) *Des
 }
 
 type DescribeGeographicRegionMembershipRequest struct {
+	// The ID of the area that you want to query. Valid values:
+	//
+	// 	- **china**: the Chinese mainland
+	//
+	// 	- **asia-pacific**: Asia Pacific
+	//
+	// 	- **europe**: Europe
+	//
+	// 	- **north-america**: North America
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17288,10 +17432,14 @@ type DescribeGeographicRegionMembershipRequest struct {
 	GeographicRegionId *string `json:"GeographicRegionId,omitempty" xml:"GeographicRegionId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Default value: **10**. Valid values: **1*	- to **50**.
+	//
 	// example:
 	//
 	// 10
@@ -17344,19 +17492,28 @@ func (s *DescribeGeographicRegionMembershipRequest) SetResourceOwnerId(v int64) 
 }
 
 type DescribeGeographicRegionMembershipResponseBody struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 2
-	PageSize  *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of regions.
 	RegionIds *DescribeGeographicRegionMembershipResponseBodyRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// DC9EB0C9-60AF-4A09-A36C-608F70130274
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -17414,6 +17571,10 @@ func (s *DescribeGeographicRegionMembershipResponseBodyRegionIds) SetRegionId(v 
 }
 
 type DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId struct {
+	// The ID of the region.
+	//
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// us-west-1
@@ -21517,11 +21678,11 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBody) SetTrafficQosPolicies
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
-	// 带宽保障类型。
+	// The guaranteed bandwidth mode.
 	//
-	// - **byBandwidth**：按带宽绝对值模式配置QoS队列。
+	// 	- **byBandwidth**: allocates absolute bandwidth values to QoS queues.
 	//
-	// - **byBandwidthPercent**：按带宽百分比模式配置QoS队列。
+	// 	- **byBandwidthPercent**: assigns bandwidth percentages to QoS queues.
 	//
 	// example:
 	//
@@ -21624,7 +21785,7 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) Set
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues struct {
-	// 带宽保障类型为按绝对值模式时，当前队列分配的跨地域带宽的值。
+	// If the QoS queues are assigned absolute bandwidth values, this parameter indicates the absolute bandwidth value that is allocated to the queue.
 	//
 	// example:
 	//
@@ -21632,7 +21793,7 @@ type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQo
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The differentiated services code point (DSCP) value that is used to match packets.
 	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
-	// 当前队列实际生效的带宽值。
+	// The actual bandwidth value of the current queue.
 	//
 	// example:
 	//
@@ -21656,7 +21817,7 @@ type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQo
 	//
 	// namtest
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
-	// The percentage of the inter-region bandwidth that can be used by the queue.
+	// If the QoS queues are assigned bandwidth percentages, this parameter indicates the percentage of bandwidth that is allocated to the queue.
 	//
 	// example:
 	//
@@ -21737,7 +21898,7 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponse) SetBody(v *ListCenInterRe
 }
 
 type ListCenInterRegionTrafficQosQueuesRequest struct {
-	// 按照实际的生效带宽值进行过滤，只允许输入正整数，单位Mbps。
+	// The filter works based on the actual bandwidth. Enter a positive integer. Unit: Mbit/s.
 	EffectiveBandwidthFilter *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter `json:"EffectiveBandwidthFilter,omitempty" xml:"EffectiveBandwidthFilter,omitempty" type:"Struct"`
 	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
@@ -21875,13 +22036,13 @@ func (s *ListCenInterRegionTrafficQosQueuesRequest) SetTransitRouterId(v string)
 }
 
 type ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter struct {
-	// 实际生效带宽大于或等于指定带宽值。
+	// The actual bandwidth is equal to or larger than the specified value.
 	//
 	// example:
 	//
 	// 50
 	Gte *int64 `json:"Gte,omitempty" xml:"Gte,omitempty"`
-	// 实际生效带宽小于或等于指定带宽值。
+	// The actual bandwidth is equal to or smaller than the specified value.
 	//
 	// example:
 	//
@@ -21952,9 +22113,9 @@ func (s *ListCenInterRegionTrafficQosQueuesResponseBody) SetTrafficQosQueues(v [
 }
 
 type ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues struct {
-	// 带宽保障类型为按绝对值模式时，当前队列分配跨地域带宽的值。
+	// The absolute bandwidth value that can be allocated to the current queue.
 	//
-	// 例如，**1**表示符合当前队列的流量报文最多只能使用1Mbps的跨地域带宽。
+	// A value of **1*	- indicates that the QoS queue can consume at most 1 Mbit/s of inter-region bandwidth.
 	//
 	// example:
 	//
@@ -21962,13 +22123,13 @@ type ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues struct {
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The Differentiated Services Code Point (DSCP) value that matches the current QoS queue.
 	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
-	// 当前队列实际生效的带宽值。
+	// The actual bandwidth of the current queue.
 	//
 	// example:
 	//
 	// 1.35
 	EffectiveBandwidth *string `json:"EffectiveBandwidth,omitempty" xml:"EffectiveBandwidth,omitempty"`
-	// The percentage of the inter-region bandwidth that can be consumed by the QoS queue.
+	// The percentage of bandwidth that can be allocated to the current queue.
 	//
 	// A value of **1*	- indicates that the QoS queue can consume at most 1% of the inter-region bandwidth.
 	//
@@ -23324,8 +23485,13 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTransi
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules struct {
+	// The address family. You can set the value to IPv4 or IPv6, or leave the value empty.
+	//
+	// example:
+	//
+	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The destination CIDR block that is used to match packets.
+	// The destination CIDR block of packets. IPv4 and IPv6 addresses are supported.
 	//
 	// example:
 	//
@@ -23349,7 +23515,7 @@ type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRul
 	//
 	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block that is used to match packets.
+	// The source CIDR block of packets. IPv6 and IPv4 addresses are supported.
 	//
 	// example:
 	//
@@ -25436,7 +25602,8 @@ type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains 
 	// example:
 	//
 	// cen-a7syd349kne38g****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenId   *string                                                                            `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	Options *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	// The region ID of the transit router.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
@@ -25494,6 +25661,11 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 	return s
 }
 
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetOptions(v *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.Options = v
+	return s
+}
+
 func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetRegionId(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
 	s.RegionId = &v
 	return s
@@ -25526,6 +25698,23 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 
 func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetTransitRouterMulticastDomainName(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
 	s.TransitRouterMulticastDomainName = &v
+	return s
+}
+
+type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions struct {
+	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
+}
+
+func (s ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) SetIgmpv2Support(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions {
+	s.Igmpv2Support = &v
 	return s
 }
 
@@ -29611,7 +29800,7 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// Attached
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag key.
+	// The tags.
 	Tags []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the VPC connection.
 	//
@@ -29636,7 +29825,8 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
-	TransitRouterId                   *string            `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The features of the VPC connection.
 	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 	// The VPC ID.
 	//
@@ -31333,11 +31523,11 @@ func (s *ModifyCenBandwidthPackageSpecResponse) SetBody(v *ModifyCenBandwidthPac
 }
 
 type ModifyCenRouteMapRequest struct {
-	// The match method that is used to match routes against the AS paths. Valid values:
+	// The match method that is used to match routes based on the AS path. Valid values:
 	//
-	// 	- **Include**: fuzzy match. A route meets the match condition if the AS path of the route overlaps with the AS paths specified in the match condition.
+	// 	- **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path in the match conditions.
 	//
-	// 	- **Complete**: exact match. A route is a match only if the AS path of the route is the same as an AS path specified in the match condition.
+	// 	- **Complete**: exact match. A route is a match only if the AS path of the route matches the AS path in the match conditions.
 	//
 	// example:
 	//
@@ -31365,27 +31555,27 @@ type ModifyCenRouteMapRequest struct {
 	//
 	// 	- **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
 	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is enabled, the route whose prefix is 10.10.1.0/24 is a match.
+	// For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
 	//
 	// 	- **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
 	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
+	// For example, if you set the match condition to 10.10.0.0/16 and exact match is applied, only the route whose prefix is 10.10.0.0/16 meets the match condition.
 	//
 	// example:
 	//
 	// Include
 	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
-	// The match method that is sed to match routes based on the community. Valid values:
+	// The match method that is used to match routes based on the community. Valid values:
 	//
-	// 	- **Include**: fuzzy match. A route meets the match condition if the community of the route overlaps with the community specified in the match condition.
+	// 	- **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community in the match conditions.
 	//
-	// 	- **Complete**: exact match. A route meets the match condition only if the community of the route is the same as the community specified in the match condition.
+	// 	- **Complete**: exact match. A route is a match only if the community of the route matches the community in the match conditions.
 	//
 	// example:
 	//
 	// Include
 	CommunityMatchMode *string `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
-	// The action that is performed on the community. Valid values:
+	// The action to be performed on the community. Valid values:
 	//
 	// 	- **Additive**: adds the community to the route.
 	//
@@ -31399,7 +31589,7 @@ type ModifyCenRouteMapRequest struct {
 	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
 	// The description of the routing policy.
 	//
-	// The description cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, hyphens (-), periods (.), and underscores (_).
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -31451,17 +31641,18 @@ type ModifyCenRouteMapRequest struct {
 	//
 	// vpc-avcdsg34ds****
 	DestinationInstanceIds []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to exclude the destination network instance IDs. Valid values:
+	// Specifies whether to exclude destination instance IDs. Valid values:
 	//
-	// 	- **false*	- (default value): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
+	// 	- **false*	- (default): A route is a match if the destination instance ID is included in the list specified by **SourceInstanceIds.N**.
 	//
-	// 	- **true**: A route meets the match condition if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
+	// 	- **true**: A route is a match if the destination network instance ID is not in the list specified by **SourceInstanceIds.N**.
 	//
 	// example:
 	//
 	// false
-	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	DestinationRegionIds               []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
+	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	// The destination region IDs of the route. You can specify at most 32 region IDs.
+	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
 	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
 	//
 	// > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
@@ -31470,7 +31661,7 @@ type ModifyCenRouteMapRequest struct {
 	//
 	// vtb-adfg53c322v****
 	DestinationRouteTableIds []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
-	// The action to be performed on a route that meets all match conditions. Valid values:
+	// The action to be performed on a route that meets all the match conditions. Valid values:
 	//
 	// 	- **Permit**: the route is permitted.
 	//
@@ -31632,11 +31823,11 @@ type ModifyCenRouteMapRequest struct {
 	//
 	// vpc-afsfdf5435vcvc****
 	SourceInstanceIds []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to exclude the source network instance IDs. Valid values:
+	// Specifies whether to exclude source instance IDs. Valid values:
 	//
-	// 	- **false*	- (default value): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
+	// 	- **false*	- (default): A route is a match if the source instance ID is included in the list specified by **SourceInstanceIds.N**.
 	//
-	// 	- **true**: A route is a match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
+	// 	- **true**: A route is a match if the source network instance ID is not in the list specified by **SourceInstanceIds.N**.
 	//
 	// example:
 	//
@@ -31883,7 +32074,7 @@ func (s *ModifyCenRouteMapResponse) SetBody(v *ModifyCenRouteMapResponseBody) *M
 }
 
 type ModifyFlowLogAttributeRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
@@ -31922,7 +32113,12 @@ type ModifyFlowLogAttributeRequest struct {
 	// example:
 	//
 	// myFlowlog
-	FlowLogName  *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// The time window for collecting log data. Unit: seconds. Valid values: **60*	- or **600*	- Default value: **600**.
+	//
+	// example:
+	//
+	// 600
 	Interval     *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -32070,10 +32266,22 @@ func (s *ModifyFlowLogAttributeResponse) SetBody(v *ModifyFlowLogAttributeRespon
 }
 
 type ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request.
+	//
 	// example:
 	//
 	// false
@@ -32082,22 +32290,34 @@ type ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the traffic marking policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tm-u9nxup5kww5po8****
 	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	// The description of the traffic classification rule.
+	//
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// descriptiontest
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
+	// The ID of the traffic classification rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tm-rule-fa9kgq1e90rmhc****
 	TrafficMatchRuleId *string `json:"TrafficMatchRuleId,omitempty" xml:"TrafficMatchRuleId,omitempty"`
+	// The name of the traffic classification rule.
+	//
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// nametest
@@ -32163,6 +32383,8 @@ func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRul
 }
 
 type ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 13526224-5780-4426-8ADF-BC8B08700F23
@@ -32442,11 +32664,12 @@ type ModifyTransitRouterMulticastDomainRequest struct {
 	// example:
 	//
 	// false
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DryRun               *bool                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Options              *ModifyTransitRouterMulticastDomainRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	OwnerAccount         *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new description of the multicast domain.
 	//
 	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
@@ -32491,6 +32714,11 @@ func (s *ModifyTransitRouterMulticastDomainRequest) SetDryRun(v bool) *ModifyTra
 	return s
 }
 
+func (s *ModifyTransitRouterMulticastDomainRequest) SetOptions(v *ModifyTransitRouterMulticastDomainRequestOptions) *ModifyTransitRouterMulticastDomainRequest {
+	s.Options = v
+	return s
+}
+
 func (s *ModifyTransitRouterMulticastDomainRequest) SetOwnerAccount(v string) *ModifyTransitRouterMulticastDomainRequest {
 	s.OwnerAccount = &v
 	return s
@@ -32523,6 +32751,23 @@ func (s *ModifyTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDom
 
 func (s *ModifyTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainName(v string) *ModifyTransitRouterMulticastDomainRequest {
 	s.TransitRouterMulticastDomainName = &v
+	return s
+}
+
+type ModifyTransitRouterMulticastDomainRequestOptions struct {
+	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
+}
+
+func (s ModifyTransitRouterMulticastDomainRequestOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTransitRouterMulticastDomainRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequestOptions) SetIgmpv2Support(v string) *ModifyTransitRouterMulticastDomainRequestOptions {
+	s.Igmpv2Support = &v
 	return s
 }
 
@@ -35304,9 +35549,9 @@ func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponse) SetBody(v *Updat
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
-	// 按带宽绝对值模式分配时，当前队列可使用的跨地域带宽的绝对值，单位Mbps。
+	// The absolute bandwidth value that can be allocated to the current queue. Unit: Mbit/s.
 	//
-	// 输入数字即可，无需输入单位。
+	// Enter a number. You do not need to enter a unit.
 	//
 	// example:
 	//
@@ -35358,7 +35603,7 @@ type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
 	//
 	// nametest
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
-	// The percentage of the inter-region bandwidth that can be used by the queue.
+	// The percentage of bandwidth that can be allocated to the current queue.
 	//
 	// Enter a number. You do not need to enter a percent sign (%).
 	//
@@ -37071,9 +37316,7 @@ type UpdateTransitRouterVpcAttachmentAttributeRequest struct {
 	//
 	// testname
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// Feature configurations of the VPC connection.
-	//
-	// 	- ipv6Support: specifies whether to enable IPv6. Valid values: true and false. The default value is the status of the VPC connection.
+	// The features of the VPC connection.
 	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 }
 
@@ -37199,9 +37442,7 @@ type UpdateTransitRouterVpcAttachmentAttributeShrinkRequest struct {
 	//
 	// testname
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// Feature configurations of the VPC connection.
-	//
-	// 	- ipv6Support: specifies whether to enable IPv6. Valid values: true and false. The default value is the status of the VPC connection.
+	// The features of the VPC connection.
 	TransitRouterVPCAttachmentOptionsShrink *string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 }
 
@@ -39245,7 +39486,7 @@ func (client *Client) CreateCenChildInstanceRouteEntryToCen(request *CreateCenCh
 //
 //     	- If the QoS policy is in the **Active*	- state, the QoS policy is created.
 //
-// ## [](#)Prerequisite
+// ### [](#)Prerequisites
 //
 // Before you call the **CreateCenInterRegionTrafficQosPolicy*	- operation, make sure that the following requirements are met:
 //
@@ -39353,7 +39594,7 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicyWithOptions(request *C
 //
 //     	- If the QoS policy is in the **Active*	- state, the QoS policy is created.
 //
-// ## [](#)Prerequisite
+// ### [](#)Prerequisites
 //
 // Before you call the **CreateCenInterRegionTrafficQosPolicy*	- operation, make sure that the following requirements are met:
 //
@@ -39377,11 +39618,15 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicy(request *CreateCenInt
 
 // Summary:
 //
-// The ID of the queue.
+// Creates queues in a quality of service (QoS) policy to manage network traffic based on finer granularities, improve service performance, and meet service-level agreements (SLAs).
 //
 // Description:
 //
-// The ID of the request.
+// The **CreateCenInterRegionTrafficQosQueue*	- operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies*	- operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId*	- parameter.
+//
+// - If a QoS policy is in the **Modifying*	- state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
+//
+// - If a QoS policy is in the **Active*	- state, the queue is created.
 //
 // @param request - CreateCenInterRegionTrafficQosQueueRequest
 //
@@ -39467,11 +39712,15 @@ func (client *Client) CreateCenInterRegionTrafficQosQueueWithOptions(request *Cr
 
 // Summary:
 //
-// The ID of the queue.
+// Creates queues in a quality of service (QoS) policy to manage network traffic based on finer granularities, improve service performance, and meet service-level agreements (SLAs).
 //
 // Description:
 //
-// The ID of the request.
+// The **CreateCenInterRegionTrafficQosQueue*	- operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies*	- operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId*	- parameter.
+//
+// - If a QoS policy is in the **Modifying*	- state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
+//
+// - If a QoS policy is in the **Active*	- state, the queue is created.
 //
 // @param request - CreateCenInterRegionTrafficQosQueueRequest
 //
@@ -39705,25 +39954,37 @@ func (client *Client) CreateCenRouteMap(request *CreateCenRouteMapRequest) (_res
 //
 // Description:
 //
-// Flow logs are used to capture the information about network traffic between transit routers and between virtual border routers (VBRs). Before you create a flow log, take note of the following items:
+// Flow logs can be used to capture traffic information about transit routers and network instance connections, including inter-region connections, virtual private cloud (VPC) connections, VPN connections, Express Connect Router (ECR) connections, and virtual border router (VBR) connections. Before you create a flow log, take note of the following items:
 //
 // 	- Flow logs are supported only by Enterprise Edition transit routers.
 //
-// 	- Only flow logs in some regions can capture the information about network traffic over VBR connections. For more information, see [Limits](https://help.aliyun.com/document_detail/339822.html).
+// 	- Flow logs are used to capture information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
 //
-// 	- Flow logs are used to capture the information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
+//     For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN). After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
 //
-//     For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through CEN. After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
+// 	- If you use a flow log to capture traffic information about VPC connections, the flow log captures information only about traffic on the elastic network interface (ENI) of the transit router. For more information about how to view traffic information about other ENIs in the VPC, see [VPC flow log overview](https://help.aliyun.com/document_detail/127150.html).
 //
-// 	- `CreateFlowLog` is an asynchronous operation. After you send a request, the system returns a flow log ID and runs the task in the background. You can call the `DescribeFlowLogs` operation to query the status of a flow log.
+// 	- `CreateFlowLog` is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
 //
-//     	- If a flow log is in the **Creating*	- state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
+//     	- If the flow log is in the **Creating*	- state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
 //
-//     	- If a flow log is in the **Active*	- state, the flow log is created.
+//     	- If the flow log is in the **Active*	- state, the flow log is created.
 //
-// # Prerequisites
+// ### [](#)Prerequisites
 //
-// An inter-region connection or a VBR connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html) or [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261361.html).
+// Required resources are created. For more information about how to create resources, see the following topics:
+//
+// 	- [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html)
+//
+// 	- [CreateTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/2715446.html)
+//
+// 	- [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html)
+//
+// 	- [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/468243.html)
+//
+// 	- [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/468270.html)
+//
+// 	- [CreateTransitRouter](https://help.aliyun.com/document_detail/468222.html)
 //
 // @param request - CreateFlowlogRequest
 //
@@ -39829,25 +40090,37 @@ func (client *Client) CreateFlowlogWithOptions(request *CreateFlowlogRequest, ru
 //
 // Description:
 //
-// Flow logs are used to capture the information about network traffic between transit routers and between virtual border routers (VBRs). Before you create a flow log, take note of the following items:
+// Flow logs can be used to capture traffic information about transit routers and network instance connections, including inter-region connections, virtual private cloud (VPC) connections, VPN connections, Express Connect Router (ECR) connections, and virtual border router (VBR) connections. Before you create a flow log, take note of the following items:
 //
 // 	- Flow logs are supported only by Enterprise Edition transit routers.
 //
-// 	- Only flow logs in some regions can capture the information about network traffic over VBR connections. For more information, see [Limits](https://help.aliyun.com/document_detail/339822.html).
+// 	- Flow logs are used to capture information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
 //
-// 	- Flow logs are used to capture the information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
+//     For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN). After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
 //
-//     For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through CEN. After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
+// 	- If you use a flow log to capture traffic information about VPC connections, the flow log captures information only about traffic on the elastic network interface (ENI) of the transit router. For more information about how to view traffic information about other ENIs in the VPC, see [VPC flow log overview](https://help.aliyun.com/document_detail/127150.html).
 //
-// 	- `CreateFlowLog` is an asynchronous operation. After you send a request, the system returns a flow log ID and runs the task in the background. You can call the `DescribeFlowLogs` operation to query the status of a flow log.
+// 	- `CreateFlowLog` is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
 //
-//     	- If a flow log is in the **Creating*	- state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
+//     	- If the flow log is in the **Creating*	- state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
 //
-//     	- If a flow log is in the **Active*	- state, the flow log is created.
+//     	- If the flow log is in the **Active*	- state, the flow log is created.
 //
-// # Prerequisites
+// ### [](#)Prerequisites
 //
-// An inter-region connection or a VBR connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html) or [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261361.html).
+// Required resources are created. For more information about how to create resources, see the following topics:
+//
+// 	- [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html)
+//
+// 	- [CreateTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/2715446.html)
+//
+// 	- [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html)
+//
+// 	- [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/468243.html)
+//
+// 	- [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/468270.html)
+//
+// 	- [CreateTransitRouter](https://help.aliyun.com/document_detail/468222.html)
 //
 // @param request - CreateFlowlogRequest
 //
@@ -40604,6 +40877,10 @@ func (client *Client) CreateTransitRouterMulticastDomainWithOptions(request *Cre
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		query["Options"] = request.Options
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -41395,29 +41672,29 @@ func (client *Client) CreateTransitRouterVbrAttachment(request *CreateTransitRou
 //
 // Description:
 //
-//   You can use the following methods to attach a VPC to an Enterprise Edition transit router:
+//   You can use the following methods to create a VPC connection from an Enterprise Edition transit router:
 //
-//     	- If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
+//     	- If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId*	- parameters.
 //
-//     	- If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+//     	- If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId*	- parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
 //
-// 	- **CreateTransitRouterVpcAttachment*	- is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
+// 	- **CreateTransitRouterVpcAttachment*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
 //
-//     	- If a VPC connection is in the **Attaching*	- state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+//     	- If the VPC connection is in the **Attaching*	- state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
 //
-//     	- If a VPC connection is in the **Attached*	- state, the VPC connection is created.
+//     	- If the VPC connection is in the **Attached*	- state, the VPC connection is created.
 //
 // 	- By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
 //
-// ## Prerequisites
+// ### [](#)Prerequisites
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
+// 	- The VPC in the zones of the Enterprise Edition transit router contains at least one vSwitch. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
 //
-// 	- To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+// 	- To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
 //
-// 	- VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+// 	- VPC connections incur fees. Make sure that you understand the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
 //
 // @param tmpReq - CreateTransitRouterVpcAttachmentRequest
 //
@@ -41537,29 +41814,29 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(tmpReq *Create
 //
 // Description:
 //
-//   You can use the following methods to attach a VPC to an Enterprise Edition transit router:
+//   You can use the following methods to create a VPC connection from an Enterprise Edition transit router:
 //
-//     	- If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
+//     	- If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId*	- parameters.
 //
-//     	- If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+//     	- If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId*	- parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
 //
-// 	- **CreateTransitRouterVpcAttachment*	- is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
+// 	- **CreateTransitRouterVpcAttachment*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
 //
-//     	- If a VPC connection is in the **Attaching*	- state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+//     	- If the VPC connection is in the **Attaching*	- state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
 //
-//     	- If a VPC connection is in the **Attached*	- state, the VPC connection is created.
+//     	- If the VPC connection is in the **Attached*	- state, the VPC connection is created.
 //
 // 	- By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
 //
-// ## Prerequisites
+// ### [](#)Prerequisites
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
+// 	- The VPC in the zones of the Enterprise Edition transit router contains at least one vSwitch. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
 //
-// 	- To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+// 	- To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
 //
-// 	- VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+// 	- VPC connections incur fees. Make sure that you understand the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
 //
 // @param request - CreateTransitRouterVpcAttachmentRequest
 //
@@ -45857,7 +46134,7 @@ func (client *Client) DescribeFlowlogs(request *DescribeFlowlogsRequest) (_resul
 
 // Summary:
 //
-// 查询指定区域内的地域信息
+// Queries regions in an area.
 //
 // @param request - DescribeGeographicRegionMembershipRequest
 //
@@ -45923,7 +46200,7 @@ func (client *Client) DescribeGeographicRegionMembershipWithOptions(request *Des
 
 // Summary:
 //
-// 查询指定区域内的地域信息
+// Queries regions in an area.
 //
 // @param request - DescribeGeographicRegionMembershipRequest
 //
@@ -50961,7 +51238,7 @@ func (client *Client) ModifyCenRouteMap(request *ModifyCenRouteMapRequest) (_res
 
 // Summary:
 //
-// Modifies the name and description of a flow log.
+// Modifies the name, description, and capture window of a flow log.
 //
 // Description:
 //
@@ -51051,7 +51328,7 @@ func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAt
 
 // Summary:
 //
-// Modifies the name and description of a flow log.
+// Modifies the name, description, and capture window of a flow log.
 //
 // Description:
 //
@@ -51077,7 +51354,7 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 
 // Summary:
 //
-// 编辑流分类规则的名称和描述
+// Modifies the name and description of a traffic classification rule.
 //
 // @param request - ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
 //
@@ -51155,7 +51432,7 @@ func (client *Client) ModifyTrafficMatchRuleToTrafficMarkingPolicyWithOptions(re
 
 // Summary:
 //
-// 编辑流分类规则的名称和描述
+// Modifies the name and description of a traffic classification rule.
 //
 // @param request - ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
 //
@@ -51328,6 +51605,10 @@ func (client *Client) ModifyTransitRouterMulticastDomainWithOptions(request *Mod
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		query["Options"] = request.Options
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
