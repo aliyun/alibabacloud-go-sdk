@@ -2027,7 +2027,8 @@ func (s *GeoCodeResponse) SetBody(v *GeoCodeResponseBody) *GeoCodeResponse {
 }
 
 type NearbySearchNovaRequest struct {
-	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
+	CityLimit *bool   `json:"cityLimit,omitempty" xml:"cityLimit,omitempty"`
+	Keywords  *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
 	// example:
 	//
 	// 39.992873
@@ -2060,6 +2061,11 @@ func (s NearbySearchNovaRequest) String() string {
 
 func (s NearbySearchNovaRequest) GoString() string {
 	return s.String()
+}
+
+func (s *NearbySearchNovaRequest) SetCityLimit(v bool) *NearbySearchNovaRequest {
+	s.CityLimit = &v
+	return s
 }
 
 func (s *NearbySearchNovaRequest) SetKeywords(v string) *NearbySearchNovaRequest {
@@ -2405,7 +2411,8 @@ func (s *NearbySearchNovaResponse) SetBody(v *NearbySearchNovaResponseBody) *Nea
 }
 
 type PlaceSearchNovaRequest struct {
-	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
+	CityLimit *bool   `json:"cityLimit,omitempty" xml:"cityLimit,omitempty"`
+	Keywords  *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
 	// example:
 	//
 	// 1
@@ -2427,6 +2434,11 @@ func (s PlaceSearchNovaRequest) String() string {
 
 func (s PlaceSearchNovaRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PlaceSearchNovaRequest) SetCityLimit(v bool) *PlaceSearchNovaRequest {
+	s.CityLimit = &v
+	return s
 }
 
 func (s *PlaceSearchNovaRequest) SetKeywords(v string) *PlaceSearchNovaRequest {
@@ -5395,6 +5407,10 @@ func (client *Client) NearbySearchNovaWithOptions(request *NearbySearchNovaReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CityLimit)) {
+		query["cityLimit"] = request.CityLimit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Keywords)) {
 		query["keywords"] = request.Keywords
 	}
@@ -5483,6 +5499,10 @@ func (client *Client) PlaceSearchNovaWithOptions(request *PlaceSearchNovaRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CityLimit)) {
+		query["cityLimit"] = request.CityLimit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Keywords)) {
 		query["keywords"] = request.Keywords
 	}
