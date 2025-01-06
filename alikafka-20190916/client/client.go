@@ -179,6 +179,7 @@ type ConvertPostPayOrderRequest struct {
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PaidType   *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The region ID of the instance.
 	//
 	// This parameter is required.
@@ -204,6 +205,11 @@ func (s *ConvertPostPayOrderRequest) SetDuration(v int32) *ConvertPostPayOrderRe
 
 func (s *ConvertPostPayOrderRequest) SetInstanceId(v string) *ConvertPostPayOrderRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ConvertPostPayOrderRequest) SetPaidType(v int32) *ConvertPostPayOrderRequest {
+	s.PaidType = &v
 	return s
 }
 
@@ -15052,6 +15058,10 @@ func (client *Client) ConvertPostPayOrderWithOptions(request *ConvertPostPayOrde
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaidType)) {
+		query["PaidType"] = request.PaidType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
