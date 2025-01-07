@@ -33887,6 +33887,10 @@ type GetOrgOrWebOpenDocContentTaskIdRequest struct {
 	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
 	// example:
 	//
+	// 0
+	ScopeType *int32 `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// example:
+	//
 	// markdown
 	TargetFormat  *string                                              `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContext *GetOrgOrWebOpenDocContentTaskIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
@@ -33907,6 +33911,11 @@ func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetDentryUuid(v string) *GetOrg
 
 func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetGenerateCp(v bool) *GetOrgOrWebOpenDocContentTaskIdRequest {
 	s.GenerateCp = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetScopeType(v int32) *GetOrgOrWebOpenDocContentTaskIdRequest {
+	s.ScopeType = &v
 	return s
 }
 
@@ -33950,6 +33959,10 @@ type GetOrgOrWebOpenDocContentTaskIdShrinkRequest struct {
 	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
 	// example:
 	//
+	// 0
+	ScopeType *int32 `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// example:
+	//
 	// markdown
 	TargetFormat        *string `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
@@ -33970,6 +33983,11 @@ func (s *GetOrgOrWebOpenDocContentTaskIdShrinkRequest) SetDentryUuid(v string) *
 
 func (s *GetOrgOrWebOpenDocContentTaskIdShrinkRequest) SetGenerateCp(v bool) *GetOrgOrWebOpenDocContentTaskIdShrinkRequest {
 	s.GenerateCp = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdShrinkRequest) SetScopeType(v int32) *GetOrgOrWebOpenDocContentTaskIdShrinkRequest {
+	s.ScopeType = &v
 	return s
 }
 
@@ -86228,6 +86246,10 @@ func (client *Client) GetOrgOrWebOpenDocContentTaskIdWithOptions(tmpReq *GetOrgO
 
 	if !tea.BoolValue(util.IsUnset(request.GenerateCp)) {
 		body["GenerateCp"] = request.GenerateCp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		body["ScopeType"] = request.ScopeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetFormat)) {
