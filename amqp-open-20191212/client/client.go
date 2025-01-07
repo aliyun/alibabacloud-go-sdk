@@ -393,8 +393,6 @@ type CreateBindingRequest struct {
 	//
 	//     	- The binding key must be 1 to 255 characters in length.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// .test
@@ -719,72 +717,192 @@ func (s *CreateExchangeResponse) SetBody(v *CreateExchangeResponseBody) *CreateE
 }
 
 type CreateInstanceRequest struct {
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// 	- true: enables auto-renewal.
+	//
+	// 	- false: disables auto-renewal. If you select this value, you must manually renew the instance.
+	//
 	// example:
 	//
 	// AutoRenewal
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal duration. Unit: months.
+	//
+	// >  This parameter takes effect only if you set AutoRenew to true. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// The client token.
+	//
 	// example:
 	//
 	// c2c5d1274axxxxxxxx
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	// The instance name. We recommend that you specify a name that does not exceed 64 characters in length.
+	//
+	// example:
+	//
+	// amqp-xxxxx
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance edition. Valid values:
+	//
+	// 	- professional: Professional Edition
+	//
+	// 	- enterprise: Enterprise Edition
+	//
+	// 	- vip: Enterprise Platinum Edition
+	//
 	// example:
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// example:
 	//
+	// key-xxx
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum number of connections that can be established to the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	//
+	// example:
+	//
 	// 50000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// The maximum number of EIP-based TPS on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	//
 	// example:
 	//
 	// 128
 	MaxEipTps *int64 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	// The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	//
 	// example:
 	//
 	// 1000
 	MaxPrivateTps *int64 `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
+	// The billing method. Valid value:
+	//
+	// 	- Subscription
+	//
+	// >  API operations provided by ApsaraMQ for RabbitMQ are supported only by subscription instances. You can set this parameter only to Subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Subscription
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The subscription period. The unit of the subscription period is specified by periodCycle.
+	//
+	// >  This parameter takes effect only if you set PaymentType to Subscription. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription period. Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// >  This parameter takes effect only if you set PaymentType to Subscription. Default value: Month.
+	//
 	// example:
 	//
 	// Month
 	PeriodCycle *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
+	// The number of queues. Valid values:
+	//
+	// 	- Professional Edition: 50 to 1000. The number of queues must increase in increments of 5.
+	//
+	// 	- Enterprise Edition: 200 to 6000. The number of queues must increase in increments of 100.
+	//
+	// 	- Enterprise Platinum Edition: 10000 to 80000. The number of queues must increase in increments of 100.
+	//
 	// example:
 	//
 	// 1000
 	QueueCapacity *int32 `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
-	// autoRenew和renewStatus都是续费方式，当两个同时填写时，以renewStatus为准
-	RenewStatus         *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
+	// The renewal status. This parameter is the same as AutoRenew. You can configure one of these parameters. Valid value:
+	//
+	// - AutoRenewal
+	//
+	// > If you configure both this parameter and AutoRenew, the value of this parameter is used.
+	//
+	// example:
+	//
+	// false
+	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
+	// The unit of the auto-renewal period. Valid values:
+	//
+	// - Month
+	//
+	// - Year
+	//
+	// example:
+	//
+	// Month
 	RenewalDurationUnit *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
+	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The billing method of the pay-as-you-go instance. Valid values:
+	//
+	// - onDemand: You are charged based on your actual usage
+	//
 	// example:
 	//
 	// onDemand
 	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
+	// The storage capacity. Unit: GB. Valid values:
+	//
+	// 	- Professional Edition and Enterprise Edition instances: Set this parameter to 0.
+	//
+	// >  The value 0 specifies that storage space is available for Professional Edition and Enterprise Edition instances, but no storage fees are generated.
+	//
+	// 	- Platinum Edition instances: Set the value to m × 100, where m ranges from 7 to 28.
+	//
 	// example:
 	//
 	// 7
 	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// Specifies whether elastic IP addresses (EIPs) are supported. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// true
 	SupportEip *bool `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
+	// Specifies whether to enable the message trace feature. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >
+	//
+	// 	- Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you use an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
+	//
+	// 	- For instances of other editions, you can set this parameter to true or false.
+	//
 	// example:
 	//
 	// true
 	SupportTracing *bool `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	// The retention period of messages. Unit: days. Valid values:
+	//
+	// 	- 3
+	//
+	// 	- 7
+	//
+	// 	- 15
+	//
+	// >  This parameter takes effect only if you set SupportTracing to true.
+	//
 	// example:
 	//
 	// 3
@@ -814,6 +932,11 @@ func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest 
 	return s
 }
 
+func (s *CreateInstanceRequest) SetEncryptedInstance(v bool) *CreateInstanceRequest {
+	s.EncryptedInstance = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
 	s.InstanceName = &v
 	return s
@@ -821,6 +944,11 @@ func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest
 
 func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetKmsKeyId(v string) *CreateInstanceRequest {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -869,6 +997,11 @@ func (s *CreateInstanceRequest) SetRenewalDurationUnit(v string) *CreateInstance
 	return s
 }
 
+func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetServerlessChargeType(v string) *CreateInstanceRequest {
 	s.ServerlessChargeType = &v
 	return s
@@ -895,22 +1028,32 @@ func (s *CreateInstanceRequest) SetTracingStorageTime(v int32) *CreateInstanceRe
 }
 
 type CreateInstanceResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the created instance.
+	//
 	// example:
 	//
 	// amqp-cn-xxxxx
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// xxx failed,xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. You can use the ID to troubleshoot issues. This parameter is a common parameter.
+	//
 	// example:
 	//
 	// CCBB1225-C392-480E-8C7F-D09AB2CD2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -1423,8 +1566,6 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 type DeleteBindingRequest struct {
 	// The binding key.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// .test.
@@ -1850,6 +1991,321 @@ func (s *DeleteVirtualHostResponse) SetStatusCode(v int32) *DeleteVirtualHostRes
 }
 
 func (s *DeleteVirtualHostResponse) SetBody(v *DeleteVirtualHostResponseBody) *DeleteVirtualHostResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amqp-cn-v0h1kb9nu***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceRequest) SetInstanceId(v string) *GetInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetInstanceResponseBody struct {
+	Data *GetInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 92385FD2-624A-48C9-8FB5-753F2AFA***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBody) SetData(v *GetInstanceResponseBodyData) *GetInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetInstanceResponseBodyData struct {
+	// example:
+	//
+	// false
+	AutoRenewInstance *bool `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
+	// example:
+	//
+	// amqp-cn-st21x7kv****.not-support
+	ClassicEndpoint   *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	// example:
+	//
+	// 1651507200000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// amqp-cn-*********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// yunQi-instance
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// enterprise
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	KmsKeyId     *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// example:
+	//
+	// 1500
+	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxEipTps *int32 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxQueue *int32 `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxTps *int32 `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
+	// example:
+	//
+	// 50
+	MaxVhost *int32 `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
+	// example:
+	//
+	// 1651507200000
+	OrderCreateTime *int64 `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
+	// example:
+	//
+	// PRE_PAID
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// amqp-cn-st21x7kv****.mq-amqp.cn-hangzhou-a.aliyuncs.com
+	PrivateEndpoint *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
+	// example:
+	//
+	// xxx.cn-hangzhou.xxx.net.mq.amqp.aliyuncs.com
+	PublicEndpoint  *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// SERVING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 200
+	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// example:
+	//
+	// true
+	SupportEIP *bool `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
+	// example:
+	//
+	// True
+	SupportTracing *bool                              `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	Tags           []*GetInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15
+	TracingStorageTime *int32 `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+}
+
+func (s GetInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyData) SetAutoRenewInstance(v bool) *GetInstanceResponseBodyData {
+	s.AutoRenewInstance = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetClassicEndpoint(v string) *GetInstanceResponseBodyData {
+	s.ClassicEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetEncryptedInstance(v bool) *GetInstanceResponseBodyData {
+	s.EncryptedInstance = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetExpireTime(v int64) *GetInstanceResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetInstanceId(v string) *GetInstanceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetInstanceName(v string) *GetInstanceResponseBodyData {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetInstanceType(v string) *GetInstanceResponseBodyData {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetKmsKeyId(v string) *GetInstanceResponseBodyData {
+	s.KmsKeyId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetMaxConnections(v int32) *GetInstanceResponseBodyData {
+	s.MaxConnections = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetMaxEipTps(v int32) *GetInstanceResponseBodyData {
+	s.MaxEipTps = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetMaxQueue(v int32) *GetInstanceResponseBodyData {
+	s.MaxQueue = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetMaxTps(v int32) *GetInstanceResponseBodyData {
+	s.MaxTps = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetMaxVhost(v int32) *GetInstanceResponseBodyData {
+	s.MaxVhost = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetOrderCreateTime(v int64) *GetInstanceResponseBodyData {
+	s.OrderCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetOrderType(v string) *GetInstanceResponseBodyData {
+	s.OrderType = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetPrivateEndpoint(v string) *GetInstanceResponseBodyData {
+	s.PrivateEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetPublicEndpoint(v string) *GetInstanceResponseBodyData {
+	s.PublicEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetResourceGroupId(v string) *GetInstanceResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetStatus(v string) *GetInstanceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetStorageSize(v int32) *GetInstanceResponseBodyData {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetSupportEIP(v bool) *GetInstanceResponseBodyData {
+	s.SupportEIP = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetSupportTracing(v bool) *GetInstanceResponseBodyData {
+	s.SupportTracing = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetTags(v []*GetInstanceResponseBodyDataTags) *GetInstanceResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetTracingStorageTime(v int32) *GetInstanceResponseBodyData {
+	s.TracingStorageTime = &v
+	return s
+}
+
+type GetInstanceResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetInstanceResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataTags) SetKey(v string) *GetInstanceResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataTags) SetValue(v string) *GetInstanceResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
+type GetInstanceResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponse) SetHeaders(v map[string]*string) *GetInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -3217,7 +3673,8 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -3235,6 +3692,11 @@ func (s *ListInstancesRequest) SetMaxResults(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetNextToken(v string) *ListInstancesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3319,7 +3781,8 @@ type ListInstancesResponseBodyDataInstances struct {
 	// example:
 	//
 	// amqp-cn-st21x7kv****.not-support
-	ClassicEndpoint *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	ClassicEndpoint   *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
 	// The timestamp that indicates when the instance expires. Unit: milliseconds.
 	//
 	// example:
@@ -3350,6 +3813,7 @@ type ListInstancesResponseBodyDataInstances struct {
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	KmsKeyId     *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// The maximum number of Internet-based transactions per second (TPS) for the instance.
 	//
 	// example:
@@ -3401,7 +3865,8 @@ type ListInstancesResponseBodyDataInstances struct {
 	// example:
 	//
 	// amqp-cn-st21x7kv****.mq-amqp.cn-hangzhou-a.aliyuncs.com
-	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	PublicEndpoint  *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The instance status. Valid values:
 	//
 	// 	- DEPLOYING: The instance is being deployed.
@@ -3452,6 +3917,11 @@ func (s *ListInstancesResponseBodyDataInstances) SetClassicEndpoint(v string) *L
 	return s
 }
 
+func (s *ListInstancesResponseBodyDataInstances) SetEncryptedInstance(v bool) *ListInstancesResponseBodyDataInstances {
+	s.EncryptedInstance = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyDataInstances) SetExpireTime(v int64) *ListInstancesResponseBodyDataInstances {
 	s.ExpireTime = &v
 	return s
@@ -3469,6 +3939,11 @@ func (s *ListInstancesResponseBodyDataInstances) SetInstanceName(v string) *List
 
 func (s *ListInstancesResponseBodyDataInstances) SetInstanceType(v string) *ListInstancesResponseBodyDataInstances {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetKmsKeyId(v string) *ListInstancesResponseBodyDataInstances {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -3509,6 +3984,11 @@ func (s *ListInstancesResponseBodyDataInstances) SetPrivateEndpoint(v string) *L
 
 func (s *ListInstancesResponseBodyDataInstances) SetPublicEndpoint(v string) *ListInstancesResponseBodyDataInstances {
 	s.PublicEndpoint = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetResourceGroupId(v string) *ListInstancesResponseBodyDataInstances {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4478,7 +4958,8 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// c2c5d1274axxxxxxxx
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -4489,6 +4970,10 @@ type UpdateInstanceRequest struct {
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// key-xxx
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// example:
 	//
 	// 1000
@@ -4546,6 +5031,11 @@ func (s *UpdateInstanceRequest) SetClientToken(v string) *UpdateInstanceRequest 
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetEncryptedInstance(v bool) *UpdateInstanceRequest {
+	s.EncryptedInstance = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetInstanceId(v string) *UpdateInstanceRequest {
 	s.InstanceId = &v
 	return s
@@ -4553,6 +5043,11 @@ func (s *UpdateInstanceRequest) SetInstanceId(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetInstanceType(v string) *UpdateInstanceRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetKmsKeyId(v string) *UpdateInstanceRequest {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -5133,7 +5628,11 @@ func (client *Client) CreateExchange(request *CreateExchangeRequest) (_result *C
 
 // Summary:
 //
-// 创建实例-基于 openAPI 构建南天门购买工单信息数据
+// Creates an ApsaraMQ for RabbitMQ instance.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
 //
 // @param request - CreateInstanceRequest
 //
@@ -5158,12 +5657,20 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EncryptedInstance)) {
+		query["EncryptedInstance"] = request.EncryptedInstance
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		query["InstanceName"] = request.InstanceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
 		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsKeyId)) {
+		query["KmsKeyId"] = request.KmsKeyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxConnections)) {
@@ -5200,6 +5707,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RenewalDurationUnit)) {
 		query["RenewalDurationUnit"] = request.RenewalDurationUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServerlessChargeType)) {
@@ -5247,7 +5758,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// 创建实例-基于 openAPI 构建南天门购买工单信息数据
+// Creates an ApsaraMQ for RabbitMQ instance.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
 //
 // @param request - CreateInstanceRequest
 //
@@ -5788,6 +6303,62 @@ func (client *Client) DeleteVirtualHost(request *DeleteVirtualHostRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVirtualHostResponse{}
 	_body, _err := client.DeleteVirtualHostWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - GetInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
+func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstance"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - GetInstanceRequest
+//
+// @return GetInstanceResponse
+func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInstanceResponse{}
+	_body, _err := client.GetInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6442,12 +7013,20 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EncryptedInstance)) {
+		query["EncryptedInstance"] = request.EncryptedInstance
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
 		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsKeyId)) {
+		query["KmsKeyId"] = request.KmsKeyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxConnections)) {
