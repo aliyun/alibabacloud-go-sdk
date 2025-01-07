@@ -9,6 +9,854 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ChangeResourceGroupRequest struct {
+	// The ID of the resource group into which you want to change.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aek2i6wee****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp17j28j2y7pm****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResourceGroupRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// FAED4C02-AF99-5015-A075-692DE9C99630
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetAccessDeniedDetail(v string) *ChangeResourceGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CheckLdpsColumnarIndexStatusRequest struct {
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CheckLdpsColumnarIndexStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckLdpsColumnarIndexStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckLdpsColumnarIndexStatusRequest) SetInstanceId(v string) *CheckLdpsColumnarIndexStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusRequest) SetOwnerAccount(v string) *CheckLdpsColumnarIndexStatusRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusRequest) SetOwnerId(v int64) *CheckLdpsColumnarIndexStatusRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusRequest) SetResourceOwnerAccount(v string) *CheckLdpsColumnarIndexStatusRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusRequest) SetResourceOwnerId(v int64) *CheckLdpsColumnarIndexStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusRequest) SetSecurityToken(v string) *CheckLdpsColumnarIndexStatusRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CheckLdpsColumnarIndexStatusResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Opened             *bool   `json:"Opened,omitempty" xml:"Opened,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckLdpsColumnarIndexStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckLdpsColumnarIndexStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckLdpsColumnarIndexStatusResponseBody) SetAccessDeniedDetail(v string) *CheckLdpsColumnarIndexStatusResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusResponseBody) SetOpened(v bool) *CheckLdpsColumnarIndexStatusResponseBody {
+	s.Opened = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusResponseBody) SetRequestId(v string) *CheckLdpsColumnarIndexStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckLdpsColumnarIndexStatusResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckLdpsColumnarIndexStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckLdpsColumnarIndexStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckLdpsColumnarIndexStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckLdpsColumnarIndexStatusResponse) SetHeaders(v map[string]*string) *CheckLdpsColumnarIndexStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusResponse) SetStatusCode(v int32) *CheckLdpsColumnarIndexStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckLdpsColumnarIndexStatusResponse) SetBody(v *CheckLdpsColumnarIndexStatusResponseBody) *CheckLdpsColumnarIndexStatusResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAutoScalingConfigRequest struct {
+	// This parameter is required.
+	ConfigName         *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	EffectiveTimeEnd   *string `json:"EffectiveTimeEnd,omitempty" xml:"EffectiveTimeEnd,omitempty"`
+	EffectiveTimeStart *string `json:"EffectiveTimeStart,omitempty" xml:"EffectiveTimeStart,omitempty"`
+	Enabled            *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	InstanceId           *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodesMax             *int32                                         `json:"NodesMax,omitempty" xml:"NodesMax,omitempty"`
+	NodesMin             *int32                                         `json:"NodesMin,omitempty" xml:"NodesMin,omitempty"`
+	OwnerAccount         *string                                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleRuleList        []*CreateAutoScalingConfigRequestScaleRuleList `json:"ScaleRuleList,omitempty" xml:"ScaleRuleList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ScaleType     *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+}
+
+func (s CreateAutoScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingConfigRequest) SetConfigName(v string) *CreateAutoScalingConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetEffectiveTimeEnd(v string) *CreateAutoScalingConfigRequest {
+	s.EffectiveTimeEnd = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetEffectiveTimeStart(v string) *CreateAutoScalingConfigRequest {
+	s.EffectiveTimeStart = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetEnabled(v bool) *CreateAutoScalingConfigRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetEngine(v string) *CreateAutoScalingConfigRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetInstanceId(v string) *CreateAutoScalingConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetNodesMax(v int32) *CreateAutoScalingConfigRequest {
+	s.NodesMax = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetNodesMin(v int32) *CreateAutoScalingConfigRequest {
+	s.NodesMin = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetOwnerAccount(v string) *CreateAutoScalingConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetOwnerId(v int64) *CreateAutoScalingConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetResourceOwnerAccount(v string) *CreateAutoScalingConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetResourceOwnerId(v int64) *CreateAutoScalingConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetScaleRuleList(v []*CreateAutoScalingConfigRequestScaleRuleList) *CreateAutoScalingConfigRequest {
+	s.ScaleRuleList = v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetScaleType(v string) *CreateAutoScalingConfigRequest {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetSecurityToken(v string) *CreateAutoScalingConfigRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetSpecId(v string) *CreateAutoScalingConfigRequest {
+	s.SpecId = &v
+	return s
+}
+
+type CreateAutoScalingConfigRequestScaleRuleList struct {
+	ConfigId          *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObservationWindow *int32  `json:"ObservationWindow,omitempty" xml:"ObservationWindow,omitempty"`
+	OperationType     *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType          *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	ScaleInStep       *int32  `json:"ScaleInStep,omitempty" xml:"ScaleInStep,omitempty"`
+	ScaleOutStep      *int32  `json:"ScaleOutStep,omitempty" xml:"ScaleOutStep,omitempty"`
+	SilenceTime       *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetMetric      *string `json:"TargetMetric,omitempty" xml:"TargetMetric,omitempty"`
+	TargetNodes       *int32  `json:"TargetNodes,omitempty" xml:"TargetNodes,omitempty"`
+	ThresholdLower    *int32  `json:"ThresholdLower,omitempty" xml:"ThresholdLower,omitempty"`
+	ThresholdUpper    *int32  `json:"ThresholdUpper,omitempty" xml:"ThresholdUpper,omitempty"`
+	TriggerCronExpr   *string `json:"TriggerCronExpr,omitempty" xml:"TriggerCronExpr,omitempty"`
+}
+
+func (s CreateAutoScalingConfigRequestScaleRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingConfigRequestScaleRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetConfigId(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetEnabled(v bool) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetEndTime(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetInstanceId(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetObservationWindow(v int32) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.ObservationWindow = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetOperationType(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.OperationType = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetRuleId(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetRuleName(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetRuleType(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.RuleType = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetScaleInStep(v int32) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.ScaleInStep = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetScaleOutStep(v int32) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.ScaleOutStep = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetSilenceTime(v int32) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetStartTime(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetTargetMetric(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.TargetMetric = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetTargetNodes(v int32) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.TargetNodes = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetThresholdLower(v int32) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.ThresholdLower = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetThresholdUpper(v int32) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.ThresholdUpper = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequestScaleRuleList) SetTriggerCronExpr(v string) *CreateAutoScalingConfigRequestScaleRuleList {
+	s.TriggerCronExpr = &v
+	return s
+}
+
+type CreateAutoScalingConfigShrinkRequest struct {
+	// This parameter is required.
+	ConfigName         *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	EffectiveTimeEnd   *string `json:"EffectiveTimeEnd,omitempty" xml:"EffectiveTimeEnd,omitempty"`
+	EffectiveTimeStart *string `json:"EffectiveTimeStart,omitempty" xml:"EffectiveTimeStart,omitempty"`
+	Enabled            *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodesMax             *int32  `json:"NodesMax,omitempty" xml:"NodesMax,omitempty"`
+	NodesMin             *int32  `json:"NodesMin,omitempty" xml:"NodesMin,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleRuleListShrink  *string `json:"ScaleRuleList,omitempty" xml:"ScaleRuleList,omitempty"`
+	// This parameter is required.
+	ScaleType     *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+}
+
+func (s CreateAutoScalingConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetConfigName(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetEffectiveTimeEnd(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.EffectiveTimeEnd = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetEffectiveTimeStart(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.EffectiveTimeStart = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetEnabled(v bool) *CreateAutoScalingConfigShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetEngine(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetInstanceId(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetNodesMax(v int32) *CreateAutoScalingConfigShrinkRequest {
+	s.NodesMax = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetNodesMin(v int32) *CreateAutoScalingConfigShrinkRequest {
+	s.NodesMin = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetOwnerAccount(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetOwnerId(v int64) *CreateAutoScalingConfigShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetResourceOwnerAccount(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetResourceOwnerId(v int64) *CreateAutoScalingConfigShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetScaleRuleListShrink(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.ScaleRuleListShrink = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetScaleType(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetSecurityToken(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigShrinkRequest) SetSpecId(v string) *CreateAutoScalingConfigShrinkRequest {
+	s.SpecId = &v
+	return s
+}
+
+type CreateAutoScalingConfigResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAutoScalingConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingConfigResponseBody) SetCode(v string) *CreateAutoScalingConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigResponseBody) SetHttpStatusCode(v int32) *CreateAutoScalingConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigResponseBody) SetMessage(v string) *CreateAutoScalingConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigResponseBody) SetRequestId(v string) *CreateAutoScalingConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigResponseBody) SetSuccess(v bool) *CreateAutoScalingConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAutoScalingConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAutoScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingConfigResponse) SetHeaders(v map[string]*string) *CreateAutoScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAutoScalingConfigResponse) SetStatusCode(v int32) *CreateAutoScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigResponse) SetBody(v *CreateAutoScalingConfigResponseBody) *CreateAutoScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAutoScalingRuleRequest struct {
+	// This parameter is required.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enabled  *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObservationWindow    *int32  `json:"ObservationWindow,omitempty" xml:"ObservationWindow,omitempty"`
+	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	RuleType        *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	ScaleInStep     *int32  `json:"ScaleInStep,omitempty" xml:"ScaleInStep,omitempty"`
+	ScaleOutStep    *int32  `json:"ScaleOutStep,omitempty" xml:"ScaleOutStep,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SilenceTime     *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetMetric    *string `json:"TargetMetric,omitempty" xml:"TargetMetric,omitempty"`
+	TargetNodes     *int32  `json:"TargetNodes,omitempty" xml:"TargetNodes,omitempty"`
+	ThresholdLower  *int32  `json:"ThresholdLower,omitempty" xml:"ThresholdLower,omitempty"`
+	ThresholdUpper  *int32  `json:"ThresholdUpper,omitempty" xml:"ThresholdUpper,omitempty"`
+	TriggerCronExpr *string `json:"TriggerCronExpr,omitempty" xml:"TriggerCronExpr,omitempty"`
+}
+
+func (s CreateAutoScalingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingRuleRequest) SetConfigId(v string) *CreateAutoScalingRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetEnabled(v bool) *CreateAutoScalingRuleRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetEndTime(v string) *CreateAutoScalingRuleRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetInstanceId(v string) *CreateAutoScalingRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetObservationWindow(v int32) *CreateAutoScalingRuleRequest {
+	s.ObservationWindow = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetOperationType(v string) *CreateAutoScalingRuleRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetOwnerAccount(v string) *CreateAutoScalingRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetOwnerId(v int64) *CreateAutoScalingRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetResourceOwnerAccount(v string) *CreateAutoScalingRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetResourceOwnerId(v int64) *CreateAutoScalingRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetRuleName(v string) *CreateAutoScalingRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetRuleType(v string) *CreateAutoScalingRuleRequest {
+	s.RuleType = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetScaleInStep(v int32) *CreateAutoScalingRuleRequest {
+	s.ScaleInStep = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetScaleOutStep(v int32) *CreateAutoScalingRuleRequest {
+	s.ScaleOutStep = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetSecurityToken(v string) *CreateAutoScalingRuleRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetSilenceTime(v int32) *CreateAutoScalingRuleRequest {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetStartTime(v string) *CreateAutoScalingRuleRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetTargetMetric(v string) *CreateAutoScalingRuleRequest {
+	s.TargetMetric = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetTargetNodes(v int32) *CreateAutoScalingRuleRequest {
+	s.TargetNodes = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetThresholdLower(v int32) *CreateAutoScalingRuleRequest {
+	s.ThresholdLower = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetThresholdUpper(v int32) *CreateAutoScalingRuleRequest {
+	s.ThresholdUpper = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleRequest) SetTriggerCronExpr(v string) *CreateAutoScalingRuleRequest {
+	s.TriggerCronExpr = &v
+	return s
+}
+
+type CreateAutoScalingRuleResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAutoScalingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingRuleResponseBody) SetCode(v string) *CreateAutoScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleResponseBody) SetHttpStatusCode(v int32) *CreateAutoScalingRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleResponseBody) SetMessage(v string) *CreateAutoScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleResponseBody) SetRequestId(v string) *CreateAutoScalingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleResponseBody) SetSuccess(v bool) *CreateAutoScalingRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAutoScalingRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAutoScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAutoScalingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoScalingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoScalingRuleResponse) SetHeaders(v map[string]*string) *CreateAutoScalingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAutoScalingRuleResponse) SetStatusCode(v int32) *CreateAutoScalingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAutoScalingRuleResponse) SetBody(v *CreateAutoScalingRuleResponseBody) *CreateAutoScalingRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateLdpsComputeGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// This parameter is required.
@@ -123,112 +971,6 @@ func (s *CreateLdpsComputeGroupResponse) SetStatusCode(v int32) *CreateLdpsCompu
 }
 
 func (s *CreateLdpsComputeGroupResponse) SetBody(v *CreateLdpsComputeGroupResponseBody) *CreateLdpsComputeGroupResponse {
-	s.Body = v
-	return s
-}
-
-type CreateLdpsNamespaceRequest struct {
-	// This parameter is required.
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s CreateLdpsNamespaceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLdpsNamespaceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLdpsNamespaceRequest) SetInstanceId(v string) *CreateLdpsNamespaceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceRequest) SetNamespace(v string) *CreateLdpsNamespaceRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceRequest) SetOwnerAccount(v string) *CreateLdpsNamespaceRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceRequest) SetOwnerId(v int64) *CreateLdpsNamespaceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceRequest) SetRegionId(v string) *CreateLdpsNamespaceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceRequest) SetResourceOwnerAccount(v string) *CreateLdpsNamespaceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceRequest) SetResourceOwnerId(v int64) *CreateLdpsNamespaceRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceRequest) SetSecurityToken(v string) *CreateLdpsNamespaceRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type CreateLdpsNamespaceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateLdpsNamespaceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLdpsNamespaceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLdpsNamespaceResponseBody) SetRequestId(v string) *CreateLdpsNamespaceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateLdpsNamespaceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateLdpsNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateLdpsNamespaceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLdpsNamespaceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLdpsNamespaceResponse) SetHeaders(v map[string]*string) *CreateLdpsNamespaceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateLdpsNamespaceResponse) SetStatusCode(v int32) *CreateLdpsNamespaceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateLdpsNamespaceResponse) SetBody(v *CreateLdpsNamespaceResponseBody) *CreateLdpsNamespaceResponse {
 	s.Body = v
 	return s
 }
@@ -438,15 +1180,29 @@ type CreateLindormInstanceRequest struct {
 	//
 	// lindorm.sn1.large
 	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	// The number of LTS engine nodes for the instance, with values ranging from **0*	- to **60**.
+	// The number of LTS nodes in the instance. Valid values: **0*	- to **60**.
 	//
 	// example:
 	//
 	// 2
 	LtsNum *string `json:"LtsNum,omitempty" xml:"LtsNum,omitempty"`
-	// Specification of the LTS engine nodes for the instance. Values:
+	// The specification of LTS nodes in the instance. Valid values:
 	//
-	// - **lindorm.c.xlarge**: Represents 4 cores and 8GB (dedicated specification). - **lindorm.g.xlarge**: Represents 4 cores and 16GB (dedicated specification). - **lindorm.c.2xlarge**: Represents 8 cores and 16GB (dedicated specification). - **lindorm.g.2xlarge**: Represents 8 cores and 32GB (dedicated specification). - **lindorm.c.4xlarge**: Represents 16 cores and 32GB (dedicated specification). - **lindorm.g.4xlarge**: Represents 16 cores and 64GB (dedicated specification). - **lindorm.c.8xlarge**: Represents 32 cores and 64GB (dedicated specification). - **lindorm.g.8xlarge**: Represents 32 cores and 128GB (dedicated specification).
+	// 	- **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
 	//
 	// example:
 	//
@@ -873,6 +1629,11 @@ func (s *CreateLindormInstanceRequest) SetZoneId(v string) *CreateLindormInstanc
 }
 
 type CreateLindormInstanceResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the Lindorm instance that is created.
 	//
@@ -947,6 +1708,590 @@ func (s *CreateLindormInstanceResponse) SetStatusCode(v int32) *CreateLindormIns
 }
 
 func (s *CreateLindormInstanceResponse) SetBody(v *CreateLindormInstanceResponseBody) *CreateLindormInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLindormV2InstanceRequest struct {
+	ArbiterVSwitchId      *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ArbiterZoneId         *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	ArchVersion           *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	AutoRenewDuration     *string `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	AutoRenewal           *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	CapacityStorageSize   *int32  `json:"CapacityStorageSize,omitempty" xml:"CapacityStorageSize,omitempty"`
+	CloudStorageSize      *int32  `json:"CloudStorageSize,omitempty" xml:"CloudStorageSize,omitempty"`
+	CloudStorageType      *string `json:"CloudStorageType,omitempty" xml:"CloudStorageType,omitempty"`
+	ClusterMode           *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterPattern        *string `json:"ClusterPattern,omitempty" xml:"ClusterPattern,omitempty"`
+	Duration              *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnableCapacityStorage *bool   `json:"EnableCapacityStorage,omitempty" xml:"EnableCapacityStorage,omitempty"`
+	// This parameter is required.
+	EngineList    []*CreateLindormV2InstanceRequestEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	InstanceAlias *string                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	OwnerAccount  *string                                     `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64                                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PricingCycle     *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId    *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// This parameter is required.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// This parameter is required.
+	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// This parameter is required.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateLindormV2InstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLindormV2InstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLindormV2InstanceRequest) SetArbiterVSwitchId(v string) *CreateLindormV2InstanceRequest {
+	s.ArbiterVSwitchId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetArbiterZoneId(v string) *CreateLindormV2InstanceRequest {
+	s.ArbiterZoneId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetArchVersion(v string) *CreateLindormV2InstanceRequest {
+	s.ArchVersion = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetAutoRenewDuration(v string) *CreateLindormV2InstanceRequest {
+	s.AutoRenewDuration = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetAutoRenewal(v bool) *CreateLindormV2InstanceRequest {
+	s.AutoRenewal = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetCapacityStorageSize(v int32) *CreateLindormV2InstanceRequest {
+	s.CapacityStorageSize = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetCloudStorageSize(v int32) *CreateLindormV2InstanceRequest {
+	s.CloudStorageSize = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetCloudStorageType(v string) *CreateLindormV2InstanceRequest {
+	s.CloudStorageType = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetClusterMode(v string) *CreateLindormV2InstanceRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetClusterPattern(v string) *CreateLindormV2InstanceRequest {
+	s.ClusterPattern = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetDuration(v int32) *CreateLindormV2InstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetEnableCapacityStorage(v bool) *CreateLindormV2InstanceRequest {
+	s.EnableCapacityStorage = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetEngineList(v []*CreateLindormV2InstanceRequestEngineList) *CreateLindormV2InstanceRequest {
+	s.EngineList = v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetInstanceAlias(v string) *CreateLindormV2InstanceRequest {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetOwnerAccount(v string) *CreateLindormV2InstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetOwnerId(v int64) *CreateLindormV2InstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetPayType(v string) *CreateLindormV2InstanceRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetPricingCycle(v string) *CreateLindormV2InstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetPrimaryVSwitchId(v string) *CreateLindormV2InstanceRequest {
+	s.PrimaryVSwitchId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetPrimaryZoneId(v string) *CreateLindormV2InstanceRequest {
+	s.PrimaryZoneId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetRegionId(v string) *CreateLindormV2InstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetResourceGroupId(v string) *CreateLindormV2InstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetResourceOwnerAccount(v string) *CreateLindormV2InstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetResourceOwnerId(v int64) *CreateLindormV2InstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetSecurityToken(v string) *CreateLindormV2InstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetStandbyVSwitchId(v string) *CreateLindormV2InstanceRequest {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetStandbyZoneId(v string) *CreateLindormV2InstanceRequest {
+	s.StandbyZoneId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetVPCId(v string) *CreateLindormV2InstanceRequest {
+	s.VPCId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetVSwitchId(v string) *CreateLindormV2InstanceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequest) SetZoneId(v string) *CreateLindormV2InstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateLindormV2InstanceRequestEngineList struct {
+	// This parameter is required.
+	EngineType    *string                                                  `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	NodeGroupList []*CreateLindormV2InstanceRequestEngineListNodeGroupList `json:"NodeGroupList,omitempty" xml:"NodeGroupList,omitempty" type:"Repeated"`
+}
+
+func (s CreateLindormV2InstanceRequestEngineList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLindormV2InstanceRequestEngineList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLindormV2InstanceRequestEngineList) SetEngineType(v string) *CreateLindormV2InstanceRequestEngineList {
+	s.EngineType = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequestEngineList) SetNodeGroupList(v []*CreateLindormV2InstanceRequestEngineListNodeGroupList) *CreateLindormV2InstanceRequestEngineList {
+	s.NodeGroupList = v
+	return s
+}
+
+type CreateLindormV2InstanceRequestEngineListNodeGroupList struct {
+	// This parameter is required.
+	NodeCount    *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	NodeDiskSize *int32  `json:"NodeDiskSize,omitempty" xml:"NodeDiskSize,omitempty"`
+	NodeDiskType *string `json:"NodeDiskType,omitempty" xml:"NodeDiskType,omitempty"`
+	// This parameter is required.
+	NodeSpec          *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s CreateLindormV2InstanceRequestEngineListNodeGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLindormV2InstanceRequestEngineListNodeGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLindormV2InstanceRequestEngineListNodeGroupList) SetNodeCount(v int32) *CreateLindormV2InstanceRequestEngineListNodeGroupList {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequestEngineListNodeGroupList) SetNodeDiskSize(v int32) *CreateLindormV2InstanceRequestEngineListNodeGroupList {
+	s.NodeDiskSize = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequestEngineListNodeGroupList) SetNodeDiskType(v string) *CreateLindormV2InstanceRequestEngineListNodeGroupList {
+	s.NodeDiskType = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequestEngineListNodeGroupList) SetNodeSpec(v string) *CreateLindormV2InstanceRequestEngineListNodeGroupList {
+	s.NodeSpec = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceRequestEngineListNodeGroupList) SetResourceGroupName(v string) *CreateLindormV2InstanceRequestEngineListNodeGroupList {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type CreateLindormV2InstanceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLindormV2InstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLindormV2InstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLindormV2InstanceResponseBody) SetAccessDeniedDetail(v string) *CreateLindormV2InstanceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceResponseBody) SetInstanceId(v string) *CreateLindormV2InstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceResponseBody) SetOrderId(v int64) *CreateLindormV2InstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceResponseBody) SetRequestId(v string) *CreateLindormV2InstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLindormV2InstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLindormV2InstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLindormV2InstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLindormV2InstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLindormV2InstanceResponse) SetHeaders(v map[string]*string) *CreateLindormV2InstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLindormV2InstanceResponse) SetStatusCode(v int32) *CreateLindormV2InstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLindormV2InstanceResponse) SetBody(v *CreateLindormV2InstanceResponseBody) *CreateLindormV2InstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAutoScalingConfigRequest struct {
+	// This parameter is required.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteAutoScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoScalingConfigRequest) SetConfigId(v string) *DeleteAutoScalingConfigRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigRequest) SetInstanceId(v string) *DeleteAutoScalingConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigRequest) SetOwnerAccount(v string) *DeleteAutoScalingConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigRequest) SetOwnerId(v int64) *DeleteAutoScalingConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigRequest) SetResourceOwnerAccount(v string) *DeleteAutoScalingConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigRequest) SetResourceOwnerId(v int64) *DeleteAutoScalingConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigRequest) SetSecurityToken(v string) *DeleteAutoScalingConfigRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteAutoScalingConfigResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAutoScalingConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoScalingConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoScalingConfigResponseBody) SetCode(v string) *DeleteAutoScalingConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigResponseBody) SetHttpStatusCode(v int32) *DeleteAutoScalingConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigResponseBody) SetMessage(v string) *DeleteAutoScalingConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigResponseBody) SetRequestId(v string) *DeleteAutoScalingConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigResponseBody) SetSuccess(v bool) *DeleteAutoScalingConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAutoScalingConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAutoScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoScalingConfigResponse) SetHeaders(v map[string]*string) *DeleteAutoScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigResponse) SetStatusCode(v int32) *DeleteAutoScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAutoScalingConfigResponse) SetBody(v *DeleteAutoScalingConfigResponseBody) *DeleteAutoScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAutoScalingRuleRequest struct {
+	// This parameter is required.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	RuleId        *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteAutoScalingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoScalingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetConfigId(v string) *DeleteAutoScalingRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetInstanceId(v string) *DeleteAutoScalingRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetOwnerAccount(v string) *DeleteAutoScalingRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetOwnerId(v int64) *DeleteAutoScalingRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetResourceOwnerAccount(v string) *DeleteAutoScalingRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetResourceOwnerId(v int64) *DeleteAutoScalingRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetRuleId(v string) *DeleteAutoScalingRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleRequest) SetSecurityToken(v string) *DeleteAutoScalingRuleRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteAutoScalingRuleResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAutoScalingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoScalingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoScalingRuleResponseBody) SetCode(v string) *DeleteAutoScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleResponseBody) SetHttpStatusCode(v int32) *DeleteAutoScalingRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleResponseBody) SetMessage(v string) *DeleteAutoScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleResponseBody) SetRequestId(v string) *DeleteAutoScalingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleResponseBody) SetSuccess(v bool) *DeleteAutoScalingRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAutoScalingRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAutoScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAutoScalingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoScalingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoScalingRuleResponse) SetHeaders(v map[string]*string) *DeleteAutoScalingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleResponse) SetStatusCode(v int32) *DeleteAutoScalingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAutoScalingRuleResponse) SetBody(v *DeleteAutoScalingRuleResponseBody) *DeleteAutoScalingRuleResponse {
 	s.Body = v
 	return s
 }
@@ -1431,6 +2776,632 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 	return s
 }
 
+type GetAutoScalingConfigRequest struct {
+	// This parameter is required.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetAutoScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingConfigRequest) SetConfigId(v string) *GetAutoScalingConfigRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigRequest) SetInstanceId(v string) *GetAutoScalingConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigRequest) SetOwnerAccount(v string) *GetAutoScalingConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigRequest) SetOwnerId(v int64) *GetAutoScalingConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigRequest) SetResourceOwnerAccount(v string) *GetAutoScalingConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigRequest) SetResourceOwnerId(v int64) *GetAutoScalingConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigRequest) SetSecurityToken(v string) *GetAutoScalingConfigRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetAutoScalingConfigResponseBody struct {
+	AccessDeniedDetail *string                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *GetAutoScalingConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode        *string                               `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage     *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAutoScalingConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetAccessDeniedDetail(v string) *GetAutoScalingConfigResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetCode(v string) *GetAutoScalingConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetData(v *GetAutoScalingConfigResponseBodyData) *GetAutoScalingConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetDynamicCode(v string) *GetAutoScalingConfigResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetDynamicMessage(v string) *GetAutoScalingConfigResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetHttpStatusCode(v int32) *GetAutoScalingConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetMessage(v string) *GetAutoScalingConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetRequestId(v string) *GetAutoScalingConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBody) SetSuccess(v bool) *GetAutoScalingConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAutoScalingConfigResponseBodyData struct {
+	ConfigId           *string                                              `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigName         *string                                              `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	EffectiveTimeEnd   *string                                              `json:"EffectiveTimeEnd,omitempty" xml:"EffectiveTimeEnd,omitempty"`
+	EffectiveTimeStart *string                                              `json:"EffectiveTimeStart,omitempty" xml:"EffectiveTimeStart,omitempty"`
+	Enabled            *bool                                                `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Engine             *string                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	InstanceId         *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodesMax           *int32                                               `json:"NodesMax,omitempty" xml:"NodesMax,omitempty"`
+	NodesMin           *int32                                               `json:"NodesMin,omitempty" xml:"NodesMin,omitempty"`
+	ScaleRuleList      []*GetAutoScalingConfigResponseBodyDataScaleRuleList `json:"ScaleRuleList,omitempty" xml:"ScaleRuleList,omitempty" type:"Repeated"`
+	ScaleType          *string                                              `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SpecId             *string                                              `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+}
+
+func (s GetAutoScalingConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetConfigId(v string) *GetAutoScalingConfigResponseBodyData {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetConfigName(v string) *GetAutoScalingConfigResponseBodyData {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetEffectiveTimeEnd(v string) *GetAutoScalingConfigResponseBodyData {
+	s.EffectiveTimeEnd = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetEffectiveTimeStart(v string) *GetAutoScalingConfigResponseBodyData {
+	s.EffectiveTimeStart = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetEnabled(v bool) *GetAutoScalingConfigResponseBodyData {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetEngine(v string) *GetAutoScalingConfigResponseBodyData {
+	s.Engine = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetInstanceId(v string) *GetAutoScalingConfigResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetNodesMax(v int32) *GetAutoScalingConfigResponseBodyData {
+	s.NodesMax = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetNodesMin(v int32) *GetAutoScalingConfigResponseBodyData {
+	s.NodesMin = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetScaleRuleList(v []*GetAutoScalingConfigResponseBodyDataScaleRuleList) *GetAutoScalingConfigResponseBodyData {
+	s.ScaleRuleList = v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetScaleType(v string) *GetAutoScalingConfigResponseBodyData {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyData) SetSpecId(v string) *GetAutoScalingConfigResponseBodyData {
+	s.SpecId = &v
+	return s
+}
+
+type GetAutoScalingConfigResponseBodyDataScaleRuleList struct {
+	ConfigId          *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObservationWindow *int32  `json:"ObservationWindow,omitempty" xml:"ObservationWindow,omitempty"`
+	OperationType     *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType          *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	ScaleInStep       *int32  `json:"ScaleInStep,omitempty" xml:"ScaleInStep,omitempty"`
+	ScaleOutStep      *int32  `json:"ScaleOutStep,omitempty" xml:"ScaleOutStep,omitempty"`
+	SilenceTime       *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetMetric      *string `json:"TargetMetric,omitempty" xml:"TargetMetric,omitempty"`
+	TargetNodes       *int32  `json:"TargetNodes,omitempty" xml:"TargetNodes,omitempty"`
+	ThresholdLower    *int32  `json:"ThresholdLower,omitempty" xml:"ThresholdLower,omitempty"`
+	ThresholdUpper    *int32  `json:"ThresholdUpper,omitempty" xml:"ThresholdUpper,omitempty"`
+	TriggerCronExpr   *string `json:"TriggerCronExpr,omitempty" xml:"TriggerCronExpr,omitempty"`
+}
+
+func (s GetAutoScalingConfigResponseBodyDataScaleRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingConfigResponseBodyDataScaleRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetConfigId(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetEnabled(v bool) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetEndTime(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetInstanceId(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetObservationWindow(v int32) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.ObservationWindow = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetOperationType(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.OperationType = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetRuleId(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetRuleName(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetRuleType(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.RuleType = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetScaleInStep(v int32) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.ScaleInStep = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetScaleOutStep(v int32) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.ScaleOutStep = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetSilenceTime(v int32) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetStartTime(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetTargetMetric(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.TargetMetric = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetTargetNodes(v int32) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.TargetNodes = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetThresholdLower(v int32) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.ThresholdLower = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetThresholdUpper(v int32) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.ThresholdUpper = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponseBodyDataScaleRuleList) SetTriggerCronExpr(v string) *GetAutoScalingConfigResponseBodyDataScaleRuleList {
+	s.TriggerCronExpr = &v
+	return s
+}
+
+type GetAutoScalingConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAutoScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingConfigResponse) SetHeaders(v map[string]*string) *GetAutoScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponse) SetStatusCode(v int32) *GetAutoScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutoScalingConfigResponse) SetBody(v *GetAutoScalingConfigResponseBody) *GetAutoScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetAutoScalingRuleRequest struct {
+	// This parameter is required.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	RuleId        *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetAutoScalingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingRuleRequest) SetConfigId(v string) *GetAutoScalingRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleRequest) SetInstanceId(v string) *GetAutoScalingRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleRequest) SetOwnerAccount(v string) *GetAutoScalingRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleRequest) SetOwnerId(v int64) *GetAutoScalingRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleRequest) SetResourceOwnerAccount(v string) *GetAutoScalingRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleRequest) SetResourceOwnerId(v int64) *GetAutoScalingRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleRequest) SetRuleId(v string) *GetAutoScalingRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleRequest) SetSecurityToken(v string) *GetAutoScalingRuleRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetAutoScalingRuleResponseBody struct {
+	AccessDeniedDetail *string                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *GetAutoScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode        *string                             `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage     *string                             `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	HttpStatusCode     *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAutoScalingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetAccessDeniedDetail(v string) *GetAutoScalingRuleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetCode(v string) *GetAutoScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetData(v *GetAutoScalingRuleResponseBodyData) *GetAutoScalingRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetDynamicCode(v string) *GetAutoScalingRuleResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetDynamicMessage(v string) *GetAutoScalingRuleResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetHttpStatusCode(v int32) *GetAutoScalingRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetMessage(v string) *GetAutoScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetRequestId(v string) *GetAutoScalingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBody) SetSuccess(v bool) *GetAutoScalingRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAutoScalingRuleResponseBodyData struct {
+	ConfigId          *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObservationWindow *int32  `json:"ObservationWindow,omitempty" xml:"ObservationWindow,omitempty"`
+	OperationType     *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType          *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	ScaleInStep       *int32  `json:"ScaleInStep,omitempty" xml:"ScaleInStep,omitempty"`
+	ScaleOutStep      *int32  `json:"ScaleOutStep,omitempty" xml:"ScaleOutStep,omitempty"`
+	SilenceTime       *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetMetric      *string `json:"TargetMetric,omitempty" xml:"TargetMetric,omitempty"`
+	TargetNodes       *int32  `json:"TargetNodes,omitempty" xml:"TargetNodes,omitempty"`
+	ThresholdLower    *int32  `json:"ThresholdLower,omitempty" xml:"ThresholdLower,omitempty"`
+	ThresholdUpper    *int32  `json:"ThresholdUpper,omitempty" xml:"ThresholdUpper,omitempty"`
+	TriggerCronExpr   *string `json:"TriggerCronExpr,omitempty" xml:"TriggerCronExpr,omitempty"`
+}
+
+func (s GetAutoScalingRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetConfigId(v string) *GetAutoScalingRuleResponseBodyData {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetEnabled(v bool) *GetAutoScalingRuleResponseBodyData {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetEndTime(v string) *GetAutoScalingRuleResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetInstanceId(v string) *GetAutoScalingRuleResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetObservationWindow(v int32) *GetAutoScalingRuleResponseBodyData {
+	s.ObservationWindow = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetOperationType(v string) *GetAutoScalingRuleResponseBodyData {
+	s.OperationType = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetRuleId(v string) *GetAutoScalingRuleResponseBodyData {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetRuleName(v string) *GetAutoScalingRuleResponseBodyData {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetRuleType(v string) *GetAutoScalingRuleResponseBodyData {
+	s.RuleType = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetScaleInStep(v int32) *GetAutoScalingRuleResponseBodyData {
+	s.ScaleInStep = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetScaleOutStep(v int32) *GetAutoScalingRuleResponseBodyData {
+	s.ScaleOutStep = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetSilenceTime(v int32) *GetAutoScalingRuleResponseBodyData {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetStartTime(v string) *GetAutoScalingRuleResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetTargetMetric(v string) *GetAutoScalingRuleResponseBodyData {
+	s.TargetMetric = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetTargetNodes(v int32) *GetAutoScalingRuleResponseBodyData {
+	s.TargetNodes = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetThresholdLower(v int32) *GetAutoScalingRuleResponseBodyData {
+	s.ThresholdLower = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetThresholdUpper(v int32) *GetAutoScalingRuleResponseBodyData {
+	s.ThresholdUpper = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponseBodyData) SetTriggerCronExpr(v string) *GetAutoScalingRuleResponseBodyData {
+	s.TriggerCronExpr = &v
+	return s
+}
+
+type GetAutoScalingRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAutoScalingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScalingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScalingRuleResponse) SetHeaders(v map[string]*string) *GetAutoScalingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponse) SetStatusCode(v int32) *GetAutoScalingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutoScalingRuleResponse) SetBody(v *GetAutoScalingRuleResponseBody) *GetAutoScalingRuleResponse {
+	s.Body = v
+	return s
+}
+
 type GetClientSourceIpRequest struct {
 	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -1745,6 +3716,11 @@ func (s *GetInstanceIpWhiteListRequest) SetSecurityToken(v string) *GetInstanceI
 }
 
 type GetInstanceIpWhiteListResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The details about the IP address whitelists.
 	GroupList []*GetInstanceIpWhiteListResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
@@ -1753,8 +3729,9 @@ type GetInstanceIpWhiteListResponseBody struct {
 	// example:
 	//
 	// ld-bp1z3506imz2f****
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpList     []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of IP addresses in the whitelist of the instance.
+	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
@@ -2389,6 +4366,367 @@ func (s *GetLdpsResourceCostResponse) SetBody(v *GetLdpsResourceCostResponseBody
 	return s
 }
 
+type GetLindormFsUsedDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-xxxx
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLindormFsUsedDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormFsUsedDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormFsUsedDetailRequest) SetInstanceId(v string) *GetLindormFsUsedDetailRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailRequest) SetOwnerAccount(v string) *GetLindormFsUsedDetailRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailRequest) SetOwnerId(v int64) *GetLindormFsUsedDetailRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailRequest) SetRegionId(v string) *GetLindormFsUsedDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailRequest) SetResourceOwnerAccount(v string) *GetLindormFsUsedDetailRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailRequest) SetResourceOwnerId(v int64) *GetLindormFsUsedDetailRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailRequest) SetSecurityToken(v string) *GetLindormFsUsedDetailRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLindormFsUsedDetailResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 85899345920
+	FsCapacity *string `json:"FsCapacity,omitempty" xml:"FsCapacity,omitempty"`
+	// example:
+	//
+	// 85899345920
+	FsCapacityCold *string `json:"FsCapacityCold,omitempty" xml:"FsCapacityCold,omitempty"`
+	// example:
+	//
+	// 85899345920
+	FsCapacityHot *string `json:"FsCapacityHot,omitempty" xml:"FsCapacityHot,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedCold *string `json:"FsUsedCold,omitempty" xml:"FsUsedCold,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedColdOnLindormSearch *string `json:"FsUsedColdOnLindormSearch,omitempty" xml:"FsUsedColdOnLindormSearch,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedColdOnLindormTSDB *string `json:"FsUsedColdOnLindormTSDB,omitempty" xml:"FsUsedColdOnLindormTSDB,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedColdOnLindormTable *string `json:"FsUsedColdOnLindormTable,omitempty" xml:"FsUsedColdOnLindormTable,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedHot *string `json:"FsUsedHot,omitempty" xml:"FsUsedHot,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedHotOnLindormSearch *string `json:"FsUsedHotOnLindormSearch,omitempty" xml:"FsUsedHotOnLindormSearch,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedHotOnLindormTSDB *string `json:"FsUsedHotOnLindormTSDB,omitempty" xml:"FsUsedHotOnLindormTSDB,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedHotOnLindormTable *string `json:"FsUsedHotOnLindormTable,omitempty" xml:"FsUsedHotOnLindormTable,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedOnLindormSearch *string `json:"FsUsedOnLindormSearch,omitempty" xml:"FsUsedOnLindormSearch,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedOnLindormTSDB *string `json:"FsUsedOnLindormTSDB,omitempty" xml:"FsUsedOnLindormTSDB,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedOnLindormTable *string `json:"FsUsedOnLindormTable,omitempty" xml:"FsUsedOnLindormTable,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedOnLindormTableData *string `json:"FsUsedOnLindormTableData,omitempty" xml:"FsUsedOnLindormTableData,omitempty"`
+	// example:
+	//
+	// 33269
+	FsUsedOnLindormTableWAL *string                                                `json:"FsUsedOnLindormTableWAL,omitempty" xml:"FsUsedOnLindormTableWAL,omitempty"`
+	LStorageUsageList       []*GetLindormFsUsedDetailResponseBodyLStorageUsageList `json:"LStorageUsageList,omitempty" xml:"LStorageUsageList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4F23D50C-400C-592C-9486-9D1E10179065
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Valid *string `json:"Valid,omitempty" xml:"Valid,omitempty"`
+}
+
+func (s GetLindormFsUsedDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormFsUsedDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetAccessDeniedDetail(v string) *GetLindormFsUsedDetailResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsCapacity(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsCapacity = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsCapacityCold(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsCapacityCold = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsCapacityHot(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsCapacityHot = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedCold(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedCold = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedColdOnLindormSearch(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedColdOnLindormSearch = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedColdOnLindormTSDB(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedColdOnLindormTSDB = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedColdOnLindormTable(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedColdOnLindormTable = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedHot(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedHot = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedHotOnLindormSearch(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedHotOnLindormSearch = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedHotOnLindormTSDB(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedHotOnLindormTSDB = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedHotOnLindormTable(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedHotOnLindormTable = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedOnLindormSearch(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedOnLindormSearch = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedOnLindormTSDB(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedOnLindormTSDB = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedOnLindormTable(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedOnLindormTable = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedOnLindormTableData(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedOnLindormTableData = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetFsUsedOnLindormTableWAL(v string) *GetLindormFsUsedDetailResponseBody {
+	s.FsUsedOnLindormTableWAL = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetLStorageUsageList(v []*GetLindormFsUsedDetailResponseBodyLStorageUsageList) *GetLindormFsUsedDetailResponseBody {
+	s.LStorageUsageList = v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetRequestId(v string) *GetLindormFsUsedDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBody) SetValid(v string) *GetLindormFsUsedDetailResponseBody {
+	s.Valid = &v
+	return s
+}
+
+type GetLindormFsUsedDetailResponseBodyLStorageUsageList struct {
+	// example:
+	//
+	// 85899345920
+	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// StandardCloudStorage
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// 33269
+	Used *string `json:"Used,omitempty" xml:"Used,omitempty"`
+	// example:
+	//
+	// 33269
+	UsedLindormSearch *string `json:"UsedLindormSearch,omitempty" xml:"UsedLindormSearch,omitempty"`
+	// example:
+	//
+	// 33269
+	UsedLindormSpark *string `json:"UsedLindormSpark,omitempty" xml:"UsedLindormSpark,omitempty"`
+	// example:
+	//
+	// 33269
+	UsedLindormTable *string `json:"UsedLindormTable,omitempty" xml:"UsedLindormTable,omitempty"`
+	// example:
+	//
+	// 33269
+	UsedLindormTsdb *string `json:"UsedLindormTsdb,omitempty" xml:"UsedLindormTsdb,omitempty"`
+	// example:
+	//
+	// 33269
+	UsedOther *string `json:"UsedOther,omitempty" xml:"UsedOther,omitempty"`
+}
+
+func (s GetLindormFsUsedDetailResponseBodyLStorageUsageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormFsUsedDetailResponseBodyLStorageUsageList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetCapacity(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.Capacity = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetDiskType(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.DiskType = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsed(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.Used = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormSearch(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedLindormSearch = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormSpark(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedLindormSpark = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormTable(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedLindormTable = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormTsdb(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedLindormTsdb = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedOther(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedOther = &v
+	return s
+}
+
+type GetLindormFsUsedDetailResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLindormFsUsedDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLindormFsUsedDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormFsUsedDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormFsUsedDetailResponse) SetHeaders(v map[string]*string) *GetLindormFsUsedDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponse) SetStatusCode(v int32) *GetLindormFsUsedDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponse) SetBody(v *GetLindormFsUsedDetailResponseBody) *GetLindormFsUsedDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetLindormInstanceRequest struct {
 	// The disk type of the log nodes. This parameter is returned only for multi-zone instances. Valid values:
 	//
@@ -2476,6 +4814,12 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// 1.0
 	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	// The Archive storage size of the instance.
+	//
+	// example:
+	//
+	// 0GB
+	ArchiveStorage *int32 `json:"ArchiveStorage,omitempty" xml:"ArchiveStorage,omitempty"`
 	// Indicates whether auto-renewal is enabled, with the following returns:
 	//
 	// - **true**: Enabled. - **false**: Disabled.
@@ -2662,6 +5006,14 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// true
 	EnableShs *bool `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
+	// Indicates whether the Transparent Data Encryption (TDE) is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Disabled.
+	//
+	// example:
+	//
+	// false
+	EnableStoreTDE *bool `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
 	// Indicates whether the instance has the stream engine enabled. Return values:
 	//
 	// - **true**: Stream engine is enabled. - **false**: Stream engine is not enabled.
@@ -2918,6 +5270,11 @@ func (s *GetLindormInstanceResponseBody) SetArchVersion(v string) *GetLindormIns
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetArchiveStorage(v int32) *GetLindormInstanceResponseBody {
+	s.ArchiveStorage = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetAutoRenew(v bool) *GetLindormInstanceResponseBody {
 	s.AutoRenew = &v
 	return s
@@ -3025,6 +5382,11 @@ func (s *GetLindormInstanceResponseBody) SetEnableSSL(v bool) *GetLindormInstanc
 
 func (s *GetLindormInstanceResponseBody) SetEnableShs(v bool) *GetLindormInstanceResponseBody {
 	s.EnableShs = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetEnableStoreTDE(v bool) *GetLindormInstanceResponseBody {
+	s.EnableStoreTDE = &v
 	return s
 }
 
@@ -3307,6 +5669,8 @@ func (s *GetLindormInstanceResponse) SetBody(v *GetLindormInstanceResponseBody) 
 }
 
 type GetLindormInstanceEngineListRequest struct {
+	// Instance ID, which can be obtained by calling the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3315,6 +5679,8 @@ type GetLindormInstanceEngineListRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3368,13 +5734,22 @@ func (s *GetLindormInstanceEngineListRequest) SetSecurityToken(v string) *GetLin
 }
 
 type GetLindormInstanceEngineListResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The list of engines that can run on the specified instance.
 	EngineList []*GetLindormInstanceEngineListResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ld-bp1nq34mv3smk****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B496BA0E-520C-59FC-BA04-196D8F3B07EF
@@ -4207,6 +6582,1687 @@ func (s *GetLindormInstanceListResponse) SetBody(v *GetLindormInstanceListRespon
 	return s
 }
 
+type GetLindormV2InstanceRequest struct {
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLindormV2InstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceRequest) SetInstanceId(v string) *GetLindormV2InstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceRequest) SetOwnerAccount(v string) *GetLindormV2InstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceRequest) SetOwnerId(v int64) *GetLindormV2InstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceRequest) SetResourceOwnerAccount(v string) *GetLindormV2InstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceRequest) SetResourceOwnerId(v int64) *GetLindormV2InstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceRequest) SetSecurityToken(v string) *GetLindormV2InstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLindormV2InstanceResponseBody struct {
+	AliUid              *int64                                         `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AutoRenew           *bool                                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ColdStorage         *int32                                         `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	CreateMilliseconds  *int64                                         `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	DeletionProtection  *string                                        `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DiskCategory        *string                                        `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskThreshold       *string                                        `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
+	DiskUsage           *string                                        `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	EnableCompute       *bool                                          `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EngineList          []*GetLindormV2InstanceResponseBodyEngineList  `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	ExpiredMilliseconds *int64                                         `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	InitialRootPassword *string                                        `json:"InitialRootPassword,omitempty" xml:"InitialRootPassword,omitempty"`
+	InstanceAlias       *string                                        `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId          *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceStatus      *string                                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType        *string                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaintainEndTime     *string                                        `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime   *string                                        `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	NetworkType         *string                                        `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PayType             *string                                        `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId            *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId           *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId     *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceType         *string                                        `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	StorageUsage        *GetLindormV2InstanceResponseBodyStorageUsage  `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
+	VpcId               *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId           *string                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	WhiteIpList         []*GetLindormV2InstanceResponseBodyWhiteIpList `json:"WhiteIpList,omitempty" xml:"WhiteIpList,omitempty" type:"Repeated"`
+	ZoneEngineInfoMap   map[string]interface{}                         `json:"ZoneEngineInfoMap,omitempty" xml:"ZoneEngineInfoMap,omitempty"`
+	ZoneId              *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetAliUid(v int64) *GetLindormV2InstanceResponseBody {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetAutoRenew(v bool) *GetLindormV2InstanceResponseBody {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetColdStorage(v int32) *GetLindormV2InstanceResponseBody {
+	s.ColdStorage = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetCreateMilliseconds(v int64) *GetLindormV2InstanceResponseBody {
+	s.CreateMilliseconds = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetDeletionProtection(v string) *GetLindormV2InstanceResponseBody {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetDiskCategory(v string) *GetLindormV2InstanceResponseBody {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetDiskThreshold(v string) *GetLindormV2InstanceResponseBody {
+	s.DiskThreshold = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetDiskUsage(v string) *GetLindormV2InstanceResponseBody {
+	s.DiskUsage = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetEnableCompute(v bool) *GetLindormV2InstanceResponseBody {
+	s.EnableCompute = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetEngineList(v []*GetLindormV2InstanceResponseBodyEngineList) *GetLindormV2InstanceResponseBody {
+	s.EngineList = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetExpiredMilliseconds(v int64) *GetLindormV2InstanceResponseBody {
+	s.ExpiredMilliseconds = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetInitialRootPassword(v string) *GetLindormV2InstanceResponseBody {
+	s.InitialRootPassword = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetInstanceAlias(v string) *GetLindormV2InstanceResponseBody {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetInstanceId(v string) *GetLindormV2InstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetInstanceStatus(v string) *GetLindormV2InstanceResponseBody {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetInstanceType(v string) *GetLindormV2InstanceResponseBody {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetMaintainEndTime(v string) *GetLindormV2InstanceResponseBody {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetMaintainStartTime(v string) *GetLindormV2InstanceResponseBody {
+	s.MaintainStartTime = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetNetworkType(v string) *GetLindormV2InstanceResponseBody {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetPayType(v string) *GetLindormV2InstanceResponseBody {
+	s.PayType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetRegionId(v string) *GetLindormV2InstanceResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetRequestId(v string) *GetLindormV2InstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetResourceGroupId(v string) *GetLindormV2InstanceResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetServiceType(v string) *GetLindormV2InstanceResponseBody {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetStorageUsage(v *GetLindormV2InstanceResponseBodyStorageUsage) *GetLindormV2InstanceResponseBody {
+	s.StorageUsage = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetVpcId(v string) *GetLindormV2InstanceResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetVswitchId(v string) *GetLindormV2InstanceResponseBody {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetWhiteIpList(v []*GetLindormV2InstanceResponseBodyWhiteIpList) *GetLindormV2InstanceResponseBody {
+	s.WhiteIpList = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetZoneEngineInfoMap(v map[string]interface{}) *GetLindormV2InstanceResponseBody {
+	s.ZoneEngineInfoMap = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetZoneId(v string) *GetLindormV2InstanceResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type GetLindormV2InstanceResponseBodyEngineList struct {
+	ConnectAddressList []*GetLindormV2InstanceResponseBodyEngineListConnectAddressList `json:"ConnectAddressList,omitempty" xml:"ConnectAddressList,omitempty" type:"Repeated"`
+	Engine             *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	IsLastVersion      *bool                                                           `json:"IsLastVersion,omitempty" xml:"IsLastVersion,omitempty"`
+	LatestVersion      *string                                                         `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	NodeGroup          []*GetLindormV2InstanceResponseBodyEngineListNodeGroup          `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty" type:"Repeated"`
+	Version            *string                                                         `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponseBodyEngineList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponseBodyEngineList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) SetConnectAddressList(v []*GetLindormV2InstanceResponseBodyEngineListConnectAddressList) *GetLindormV2InstanceResponseBodyEngineList {
+	s.ConnectAddressList = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) SetEngine(v string) *GetLindormV2InstanceResponseBodyEngineList {
+	s.Engine = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) SetIsLastVersion(v bool) *GetLindormV2InstanceResponseBodyEngineList {
+	s.IsLastVersion = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) SetLatestVersion(v string) *GetLindormV2InstanceResponseBodyEngineList {
+	s.LatestVersion = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) SetNodeGroup(v []*GetLindormV2InstanceResponseBodyEngineListNodeGroup) *GetLindormV2InstanceResponseBodyEngineList {
+	s.NodeGroup = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) SetVersion(v string) *GetLindormV2InstanceResponseBodyEngineList {
+	s.Version = &v
+	return s
+}
+
+type GetLindormV2InstanceResponseBodyEngineListConnectAddressList struct {
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Port    *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponseBodyEngineListConnectAddressList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponseBodyEngineListConnectAddressList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListConnectAddressList) SetAddress(v string) *GetLindormV2InstanceResponseBodyEngineListConnectAddressList {
+	s.Address = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListConnectAddressList) SetPort(v string) *GetLindormV2InstanceResponseBodyEngineListConnectAddressList {
+	s.Port = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListConnectAddressList) SetType(v string) *GetLindormV2InstanceResponseBodyEngineListConnectAddressList {
+	s.Type = &v
+	return s
+}
+
+type GetLindormV2InstanceResponseBodyEngineListNodeGroup struct {
+	Category              *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CpuCoreCount          *int32  `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	EnableAttachLocalDisk *bool   `json:"EnableAttachLocalDisk,omitempty" xml:"EnableAttachLocalDisk,omitempty"`
+	LocalDiskCapacity     *int64  `json:"LocalDiskCapacity,omitempty" xml:"LocalDiskCapacity,omitempty"`
+	LocalDiskCategory     *string `json:"LocalDiskCategory,omitempty" xml:"LocalDiskCategory,omitempty"`
+	MemorySizeGiB         *int32  `json:"MemorySizeGiB,omitempty" xml:"MemorySizeGiB,omitempty"`
+	NodeSpec              *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
+	Quantity              *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ResourceGroupName     *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	SpecId                *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponseBodyEngineListNodeGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponseBodyEngineListNodeGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetCategory(v string) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.Category = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetCpuCoreCount(v int32) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.CpuCoreCount = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetEnableAttachLocalDisk(v bool) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.EnableAttachLocalDisk = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetLocalDiskCapacity(v int64) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.LocalDiskCapacity = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetLocalDiskCategory(v string) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.LocalDiskCategory = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetMemorySizeGiB(v int32) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.MemorySizeGiB = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetNodeSpec(v string) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.NodeSpec = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetQuantity(v int32) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetResourceGroupName(v string) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetSpecId(v string) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.SpecId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetStatus(v string) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.Status = &v
+	return s
+}
+
+type GetLindormV2InstanceResponseBodyStorageUsage struct {
+	CapacityByDiskCategory []map[string]interface{} `json:"CapacityByDiskCategory,omitempty" xml:"CapacityByDiskCategory,omitempty" type:"Repeated"`
+	EngineUsage            map[string]interface{}   `json:"EngineUsage,omitempty" xml:"EngineUsage,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponseBodyStorageUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponseBodyStorageUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponseBodyStorageUsage) SetCapacityByDiskCategory(v []map[string]interface{}) *GetLindormV2InstanceResponseBodyStorageUsage {
+	s.CapacityByDiskCategory = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyStorageUsage) SetEngineUsage(v map[string]interface{}) *GetLindormV2InstanceResponseBodyStorageUsage {
+	s.EngineUsage = v
+	return s
+}
+
+type GetLindormV2InstanceResponseBodyWhiteIpList struct {
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IpList    *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponseBodyWhiteIpList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponseBodyWhiteIpList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponseBodyWhiteIpList) SetGroupName(v string) *GetLindormV2InstanceResponseBodyWhiteIpList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyWhiteIpList) SetIpList(v string) *GetLindormV2InstanceResponseBodyWhiteIpList {
+	s.IpList = &v
+	return s
+}
+
+type GetLindormV2InstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLindormV2InstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponse) SetHeaders(v map[string]*string) *GetLindormV2InstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponse) SetStatusCode(v int32) *GetLindormV2InstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponse) SetBody(v *GetLindormV2InstanceResponseBody) *GetLindormV2InstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetLindormV2InstanceEngineListRequest struct {
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLindormV2InstanceEngineListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceEngineListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceEngineListRequest) SetInstanceId(v string) *GetLindormV2InstanceEngineListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListRequest) SetOwnerAccount(v string) *GetLindormV2InstanceEngineListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListRequest) SetOwnerId(v int64) *GetLindormV2InstanceEngineListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListRequest) SetRegionId(v string) *GetLindormV2InstanceEngineListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListRequest) SetResourceOwnerAccount(v string) *GetLindormV2InstanceEngineListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListRequest) SetResourceOwnerId(v int64) *GetLindormV2InstanceEngineListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListRequest) SetSecurityToken(v string) *GetLindormV2InstanceEngineListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLindormV2InstanceEngineListResponseBody struct {
+	AccessDeniedDetail *string                                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	EngineList         []*GetLindormV2InstanceEngineListResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	InstanceId         *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLindormV2InstanceEngineListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceEngineListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBody) SetAccessDeniedDetail(v string) *GetLindormV2InstanceEngineListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBody) SetEngineList(v []*GetLindormV2InstanceEngineListResponseBodyEngineList) *GetLindormV2InstanceEngineListResponseBody {
+	s.EngineList = v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBody) SetInstanceId(v string) *GetLindormV2InstanceEngineListResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBody) SetRequestId(v string) *GetLindormV2InstanceEngineListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLindormV2InstanceEngineListResponseBodyEngineList struct {
+	EngineType  *string                                                            `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	NetInfoList []*GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList `json:"NetInfoList,omitempty" xml:"NetInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetLindormV2InstanceEngineListResponseBodyEngineList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceEngineListResponseBodyEngineList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBodyEngineList) SetEngineType(v string) *GetLindormV2InstanceEngineListResponseBodyEngineList {
+	s.EngineType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBodyEngineList) SetNetInfoList(v []*GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList) *GetLindormV2InstanceEngineListResponseBodyEngineList {
+	s.NetInfoList = v
+	return s
+}
+
+type GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList struct {
+	AccessType       *int32  `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList) SetAccessType(v int32) *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList {
+	s.AccessType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList) SetConnectionString(v string) *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList {
+	s.ConnectionString = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList) SetNetType(v string) *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList {
+	s.NetType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList) SetPort(v int32) *GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList {
+	s.Port = &v
+	return s
+}
+
+type GetLindormV2InstanceEngineListResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLindormV2InstanceEngineListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLindormV2InstanceEngineListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2InstanceEngineListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceEngineListResponse) SetHeaders(v map[string]*string) *GetLindormV2InstanceEngineListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponse) SetStatusCode(v int32) *GetLindormV2InstanceEngineListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceEngineListResponse) SetBody(v *GetLindormV2InstanceEngineListResponseBody) *GetLindormV2InstanceEngineListResponse {
+	s.Body = v
+	return s
+}
+
+type GetLindormV2StorageUsageRequest struct {
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLindormV2StorageUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2StorageUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2StorageUsageRequest) SetInstanceId(v string) *GetLindormV2StorageUsageRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageRequest) SetOwnerAccount(v string) *GetLindormV2StorageUsageRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageRequest) SetOwnerId(v int64) *GetLindormV2StorageUsageRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageRequest) SetResourceOwnerAccount(v string) *GetLindormV2StorageUsageRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageRequest) SetResourceOwnerId(v int64) *GetLindormV2StorageUsageRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageRequest) SetSecurityToken(v string) *GetLindormV2StorageUsageRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLindormV2StorageUsageResponseBody struct {
+	AccessDeniedDetail     *string                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	CapacityByDiskCategory []map[string]interface{} `json:"CapacityByDiskCategory,omitempty" xml:"CapacityByDiskCategory,omitempty" type:"Repeated"`
+	InstanceStorageZoneMap map[string]interface{}   `json:"InstanceStorageZoneMap,omitempty" xml:"InstanceStorageZoneMap,omitempty"`
+	RequestId              *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UsageByDiskCategory    []map[string]interface{} `json:"UsageByDiskCategory,omitempty" xml:"UsageByDiskCategory,omitempty" type:"Repeated"`
+}
+
+func (s GetLindormV2StorageUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2StorageUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2StorageUsageResponseBody) SetAccessDeniedDetail(v string) *GetLindormV2StorageUsageResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageResponseBody) SetCapacityByDiskCategory(v []map[string]interface{}) *GetLindormV2StorageUsageResponseBody {
+	s.CapacityByDiskCategory = v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageResponseBody) SetInstanceStorageZoneMap(v map[string]interface{}) *GetLindormV2StorageUsageResponseBody {
+	s.InstanceStorageZoneMap = v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageResponseBody) SetRequestId(v string) *GetLindormV2StorageUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageResponseBody) SetUsageByDiskCategory(v []map[string]interface{}) *GetLindormV2StorageUsageResponseBody {
+	s.UsageByDiskCategory = v
+	return s
+}
+
+type GetLindormV2StorageUsageResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLindormV2StorageUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLindormV2StorageUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2StorageUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2StorageUsageResponse) SetHeaders(v map[string]*string) *GetLindormV2StorageUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageResponse) SetStatusCode(v int32) *GetLindormV2StorageUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLindormV2StorageUsageResponse) SetBody(v *GetLindormV2StorageUsageResponseBody) *GetLindormV2StorageUsageResponse {
+	s.Body = v
+	return s
+}
+
+type ListAutoScalingConfigsRequest struct {
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ListAutoScalingConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingConfigsRequest) SetInstanceId(v string) *ListAutoScalingConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsRequest) SetOwnerAccount(v string) *ListAutoScalingConfigsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsRequest) SetOwnerId(v int64) *ListAutoScalingConfigsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsRequest) SetResourceOwnerAccount(v string) *ListAutoScalingConfigsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsRequest) SetResourceOwnerId(v int64) *ListAutoScalingConfigsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsRequest) SetSecurityToken(v string) *ListAutoScalingConfigsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ListAutoScalingConfigsResponseBody struct {
+	AccessDeniedDetail *string                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *ListAutoScalingConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode        *string                                 `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage     *string                                 `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAutoScalingConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetAccessDeniedDetail(v string) *ListAutoScalingConfigsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetCode(v string) *ListAutoScalingConfigsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetData(v *ListAutoScalingConfigsResponseBodyData) *ListAutoScalingConfigsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetDynamicCode(v string) *ListAutoScalingConfigsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetDynamicMessage(v string) *ListAutoScalingConfigsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetHttpStatusCode(v int32) *ListAutoScalingConfigsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetMessage(v string) *ListAutoScalingConfigsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetRequestId(v string) *ListAutoScalingConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBody) SetSuccess(v bool) *ListAutoScalingConfigsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAutoScalingConfigsResponseBodyData struct {
+	ScaleConfigs []*ListAutoScalingConfigsResponseBodyDataScaleConfigs `json:"ScaleConfigs,omitempty" xml:"ScaleConfigs,omitempty" type:"Repeated"`
+}
+
+func (s ListAutoScalingConfigsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingConfigsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingConfigsResponseBodyData) SetScaleConfigs(v []*ListAutoScalingConfigsResponseBodyDataScaleConfigs) *ListAutoScalingConfigsResponseBodyData {
+	s.ScaleConfigs = v
+	return s
+}
+
+type ListAutoScalingConfigsResponseBodyDataScaleConfigs struct {
+	ConfigId           *string                                                            `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigName         *string                                                            `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	EffectiveTimeEnd   *string                                                            `json:"EffectiveTimeEnd,omitempty" xml:"EffectiveTimeEnd,omitempty"`
+	EffectiveTimeStart *string                                                            `json:"EffectiveTimeStart,omitempty" xml:"EffectiveTimeStart,omitempty"`
+	Enabled            *bool                                                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Engine             *string                                                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	InstanceId         *string                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodesMax           *int32                                                             `json:"NodesMax,omitempty" xml:"NodesMax,omitempty"`
+	NodesMin           *int32                                                             `json:"NodesMin,omitempty" xml:"NodesMin,omitempty"`
+	ScaleRuleList      []*ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList `json:"ScaleRuleList,omitempty" xml:"ScaleRuleList,omitempty" type:"Repeated"`
+	ScaleType          *string                                                            `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SpecId             *string                                                            `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+}
+
+func (s ListAutoScalingConfigsResponseBodyDataScaleConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingConfigsResponseBodyDataScaleConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetConfigId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetConfigName(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetEffectiveTimeEnd(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.EffectiveTimeEnd = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetEffectiveTimeStart(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.EffectiveTimeStart = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetEnabled(v bool) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetEngine(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.Engine = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetInstanceId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetNodesMax(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.NodesMax = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetNodesMin(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.NodesMin = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetScaleRuleList(v []*ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.ScaleRuleList = v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetScaleType(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetSpecId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.SpecId = &v
+	return s
+}
+
+type ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList struct {
+	ConfigId          *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObservationWindow *int32  `json:"ObservationWindow,omitempty" xml:"ObservationWindow,omitempty"`
+	OperationType     *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType          *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	ScaleInStep       *int32  `json:"ScaleInStep,omitempty" xml:"ScaleInStep,omitempty"`
+	ScaleOutStep      *int32  `json:"ScaleOutStep,omitempty" xml:"ScaleOutStep,omitempty"`
+	SilenceTime       *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetMetric      *string `json:"TargetMetric,omitempty" xml:"TargetMetric,omitempty"`
+	TargetNodes       *int32  `json:"TargetNodes,omitempty" xml:"TargetNodes,omitempty"`
+	ThresholdLower    *int32  `json:"ThresholdLower,omitempty" xml:"ThresholdLower,omitempty"`
+	ThresholdUpper    *int32  `json:"ThresholdUpper,omitempty" xml:"ThresholdUpper,omitempty"`
+	TriggerCronExpr   *string `json:"TriggerCronExpr,omitempty" xml:"TriggerCronExpr,omitempty"`
+}
+
+func (s ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetConfigId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetEnabled(v bool) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetEndTime(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetInstanceId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetObservationWindow(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.ObservationWindow = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetOperationType(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetRuleId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetRuleName(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetRuleType(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.RuleType = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetScaleInStep(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.ScaleInStep = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetScaleOutStep(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.ScaleOutStep = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetSilenceTime(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetStartTime(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetTargetMetric(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.TargetMetric = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetTargetNodes(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.TargetNodes = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetThresholdLower(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.ThresholdLower = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetThresholdUpper(v int32) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.ThresholdUpper = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList) SetTriggerCronExpr(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList {
+	s.TriggerCronExpr = &v
+	return s
+}
+
+type ListAutoScalingConfigsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAutoScalingConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAutoScalingConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingConfigsResponse) SetHeaders(v map[string]*string) *ListAutoScalingConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponse) SetStatusCode(v int32) *ListAutoScalingConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponse) SetBody(v *ListAutoScalingConfigsResponseBody) *ListAutoScalingConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAutoScalingRecordsRequest struct {
+	// This parameter is required.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ListAutoScalingRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRecordsRequest) SetInstanceId(v string) *ListAutoScalingRecordsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetOwnerAccount(v string) *ListAutoScalingRecordsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetOwnerId(v int64) *ListAutoScalingRecordsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetPageNum(v int32) *ListAutoScalingRecordsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetPageSize(v int32) *ListAutoScalingRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetResourceOwnerAccount(v string) *ListAutoScalingRecordsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetResourceOwnerId(v int64) *ListAutoScalingRecordsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetSecurityToken(v string) *ListAutoScalingRecordsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ListAutoScalingRecordsResponseBody struct {
+	AccessDeniedDetail *string                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *ListAutoScalingRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode        *string                                 `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage     *string                                 `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAutoScalingRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetAccessDeniedDetail(v string) *ListAutoScalingRecordsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetCode(v string) *ListAutoScalingRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetData(v *ListAutoScalingRecordsResponseBodyData) *ListAutoScalingRecordsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetDynamicCode(v string) *ListAutoScalingRecordsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetDynamicMessage(v string) *ListAutoScalingRecordsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetHttpStatusCode(v int32) *ListAutoScalingRecordsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetMessage(v string) *ListAutoScalingRecordsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetRequestId(v string) *ListAutoScalingRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBody) SetSuccess(v bool) *ListAutoScalingRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAutoScalingRecordsResponseBodyData struct {
+	PageNum      *int32                                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize     *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScaleRecords []*ListAutoScalingRecordsResponseBodyDataScaleRecords `json:"ScaleRecords,omitempty" xml:"ScaleRecords,omitempty" type:"Repeated"`
+	TotalNum     *int32                                                `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPage    *int32                                                `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListAutoScalingRecordsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRecordsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRecordsResponseBodyData) SetPageNum(v int32) *ListAutoScalingRecordsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyData) SetPageSize(v int32) *ListAutoScalingRecordsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyData) SetScaleRecords(v []*ListAutoScalingRecordsResponseBodyDataScaleRecords) *ListAutoScalingRecordsResponseBodyData {
+	s.ScaleRecords = v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyData) SetTotalNum(v int32) *ListAutoScalingRecordsResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyData) SetTotalPage(v int32) *ListAutoScalingRecordsResponseBodyData {
+	s.TotalPage = &v
+	return s
+}
+
+type ListAutoScalingRecordsResponseBodyDataScaleRecords struct {
+	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OldValue     *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SpecGroupId  *string `json:"SpecGroupId,omitempty" xml:"SpecGroupId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Strategy     *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TargetValue  *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+}
+
+func (s ListAutoScalingRecordsResponseBodyDataScaleRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRecordsResponseBodyDataScaleRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetDetail(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetEndTime(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetId(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetInstanceId(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetOldValue(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.OldValue = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetResourceType(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetSpecGroupId(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.SpecGroupId = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetStartTime(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetStatus(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetStrategy(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.Strategy = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponseBodyDataScaleRecords) SetTargetValue(v string) *ListAutoScalingRecordsResponseBodyDataScaleRecords {
+	s.TargetValue = &v
+	return s
+}
+
+type ListAutoScalingRecordsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAutoScalingRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAutoScalingRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRecordsResponse) SetHeaders(v map[string]*string) *ListAutoScalingRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponse) SetStatusCode(v int32) *ListAutoScalingRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsResponse) SetBody(v *ListAutoScalingRecordsResponseBody) *ListAutoScalingRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAutoScalingRulesRequest struct {
+	// This parameter is required.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ListAutoScalingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRulesRequest) SetConfigId(v string) *ListAutoScalingRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesRequest) SetInstanceId(v string) *ListAutoScalingRulesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesRequest) SetOwnerAccount(v string) *ListAutoScalingRulesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesRequest) SetOwnerId(v int64) *ListAutoScalingRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesRequest) SetResourceOwnerAccount(v string) *ListAutoScalingRulesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesRequest) SetResourceOwnerId(v int64) *ListAutoScalingRulesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesRequest) SetSecurityToken(v string) *ListAutoScalingRulesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ListAutoScalingRulesResponseBody struct {
+	AccessDeniedDetail *string                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *ListAutoScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode        *string                               `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage     *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAutoScalingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetAccessDeniedDetail(v string) *ListAutoScalingRulesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetCode(v string) *ListAutoScalingRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetData(v *ListAutoScalingRulesResponseBodyData) *ListAutoScalingRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetDynamicCode(v string) *ListAutoScalingRulesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetDynamicMessage(v string) *ListAutoScalingRulesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetHttpStatusCode(v int32) *ListAutoScalingRulesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetMessage(v string) *ListAutoScalingRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetRequestId(v string) *ListAutoScalingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBody) SetSuccess(v bool) *ListAutoScalingRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAutoScalingRulesResponseBodyData struct {
+	ScaleRules []*ListAutoScalingRulesResponseBodyDataScaleRules `json:"ScaleRules,omitempty" xml:"ScaleRules,omitempty" type:"Repeated"`
+}
+
+func (s ListAutoScalingRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRulesResponseBodyData) SetScaleRules(v []*ListAutoScalingRulesResponseBodyDataScaleRules) *ListAutoScalingRulesResponseBodyData {
+	s.ScaleRules = v
+	return s
+}
+
+type ListAutoScalingRulesResponseBodyDataScaleRules struct {
+	ConfigId          *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObservationWindow *int32  `json:"ObservationWindow,omitempty" xml:"ObservationWindow,omitempty"`
+	OperationType     *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType          *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	ScaleInStep       *int32  `json:"ScaleInStep,omitempty" xml:"ScaleInStep,omitempty"`
+	ScaleOutStep      *int32  `json:"ScaleOutStep,omitempty" xml:"ScaleOutStep,omitempty"`
+	SilenceTime       *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetMetric      *string `json:"TargetMetric,omitempty" xml:"TargetMetric,omitempty"`
+	TargetNodes       *int32  `json:"TargetNodes,omitempty" xml:"TargetNodes,omitempty"`
+	ThresholdLower    *int32  `json:"ThresholdLower,omitempty" xml:"ThresholdLower,omitempty"`
+	ThresholdUpper    *int32  `json:"ThresholdUpper,omitempty" xml:"ThresholdUpper,omitempty"`
+	TriggerCronExpr   *string `json:"TriggerCronExpr,omitempty" xml:"TriggerCronExpr,omitempty"`
+}
+
+func (s ListAutoScalingRulesResponseBodyDataScaleRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRulesResponseBodyDataScaleRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetConfigId(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetEnabled(v bool) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetEndTime(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetInstanceId(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetObservationWindow(v int32) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.ObservationWindow = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetOperationType(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetRuleId(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetRuleName(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetRuleType(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.RuleType = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetScaleInStep(v int32) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.ScaleInStep = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetScaleOutStep(v int32) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.ScaleOutStep = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetSilenceTime(v int32) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetStartTime(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetTargetMetric(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.TargetMetric = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetTargetNodes(v int32) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.TargetNodes = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetThresholdLower(v int32) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.ThresholdLower = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetThresholdUpper(v int32) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.ThresholdUpper = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponseBodyDataScaleRules) SetTriggerCronExpr(v string) *ListAutoScalingRulesResponseBodyDataScaleRules {
+	s.TriggerCronExpr = &v
+	return s
+}
+
+type ListAutoScalingRulesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAutoScalingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAutoScalingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoScalingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingRulesResponse) SetHeaders(v map[string]*string) *ListAutoScalingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponse) SetStatusCode(v int32) *ListAutoScalingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAutoScalingRulesResponse) SetBody(v *ListAutoScalingRulesResponseBody) *ListAutoScalingRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListLdpsComputeGroupsRequest struct {
 	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4291,9 +8347,12 @@ func (s *ListLdpsComputeGroupsResponseBody) SetRequestId(v string) *ListLdpsComp
 }
 
 type ListLdpsComputeGroupsResponseBodyGroupList struct {
-	GroupName  *string                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsDefault  *bool                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	ExceptionInfo *string                `json:"ExceptionInfo,omitempty" xml:"ExceptionInfo,omitempty"`
+	GroupName     *string                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IsDefault     *bool                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Properties    map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	State         *string                `json:"State,omitempty" xml:"State,omitempty"`
+	WebUI         *string                `json:"WebUI,omitempty" xml:"WebUI,omitempty"`
 }
 
 func (s ListLdpsComputeGroupsResponseBodyGroupList) String() string {
@@ -4302,6 +8361,11 @@ func (s ListLdpsComputeGroupsResponseBodyGroupList) String() string {
 
 func (s ListLdpsComputeGroupsResponseBodyGroupList) GoString() string {
 	return s.String()
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetExceptionInfo(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.ExceptionInfo = &v
+	return s
 }
 
 func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetGroupName(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
@@ -4316,6 +8380,16 @@ func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetIsDefault(v bool) *ListL
 
 func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetProperties(v map[string]interface{}) *ListLdpsComputeGroupsResponseBodyGroupList {
 	s.Properties = v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetState(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.State = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetWebUI(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.WebUI = &v
 	return s
 }
 
@@ -4605,6 +8679,407 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ModifyAutoScalingConfigRequest struct {
+	// This parameter is required.
+	ConfigId           *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigName         *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	EffectiveTimeEnd   *string `json:"EffectiveTimeEnd,omitempty" xml:"EffectiveTimeEnd,omitempty"`
+	EffectiveTimeStart *string `json:"EffectiveTimeStart,omitempty" xml:"EffectiveTimeStart,omitempty"`
+	Enabled            *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodesMax             *int32  `json:"NodesMax,omitempty" xml:"NodesMax,omitempty"`
+	NodesMin             *int32  `json:"NodesMin,omitempty" xml:"NodesMin,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleType            *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SpecId               *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetConfigId(v string) *ModifyAutoScalingConfigRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetConfigName(v string) *ModifyAutoScalingConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetEffectiveTimeEnd(v string) *ModifyAutoScalingConfigRequest {
+	s.EffectiveTimeEnd = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetEffectiveTimeStart(v string) *ModifyAutoScalingConfigRequest {
+	s.EffectiveTimeStart = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetEnabled(v bool) *ModifyAutoScalingConfigRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetEngine(v string) *ModifyAutoScalingConfigRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetInstanceId(v string) *ModifyAutoScalingConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetNodesMax(v int32) *ModifyAutoScalingConfigRequest {
+	s.NodesMax = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetNodesMin(v int32) *ModifyAutoScalingConfigRequest {
+	s.NodesMin = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetOwnerAccount(v string) *ModifyAutoScalingConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetOwnerId(v int64) *ModifyAutoScalingConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetResourceOwnerAccount(v string) *ModifyAutoScalingConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetResourceOwnerId(v int64) *ModifyAutoScalingConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetScaleType(v string) *ModifyAutoScalingConfigRequest {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetSecurityToken(v string) *ModifyAutoScalingConfigRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetSpecId(v string) *ModifyAutoScalingConfigRequest {
+	s.SpecId = &v
+	return s
+}
+
+type ModifyAutoScalingConfigResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetCode(v string) *ModifyAutoScalingConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetHttpStatusCode(v int32) *ModifyAutoScalingConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetMessage(v string) *ModifyAutoScalingConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetRequestId(v string) *ModifyAutoScalingConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetSuccess(v bool) *ModifyAutoScalingConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyAutoScalingConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigResponse) SetHeaders(v map[string]*string) *ModifyAutoScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponse) SetStatusCode(v int32) *ModifyAutoScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponse) SetBody(v *ModifyAutoScalingConfigResponseBody) *ModifyAutoScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAutoScalingRuleRequest struct {
+	// This parameter is required.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enabled  *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObservationWindow    *int32  `json:"ObservationWindow,omitempty" xml:"ObservationWindow,omitempty"`
+	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	RuleId          *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType        *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	ScaleInStep     *int32  `json:"ScaleInStep,omitempty" xml:"ScaleInStep,omitempty"`
+	ScaleOutStep    *int32  `json:"ScaleOutStep,omitempty" xml:"ScaleOutStep,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SilenceTime     *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetMetric    *string `json:"TargetMetric,omitempty" xml:"TargetMetric,omitempty"`
+	TargetNodes     *int32  `json:"TargetNodes,omitempty" xml:"TargetNodes,omitempty"`
+	ThresholdLower  *int32  `json:"ThresholdLower,omitempty" xml:"ThresholdLower,omitempty"`
+	ThresholdUpper  *int32  `json:"ThresholdUpper,omitempty" xml:"ThresholdUpper,omitempty"`
+	TriggerCronExpr *string `json:"TriggerCronExpr,omitempty" xml:"TriggerCronExpr,omitempty"`
+}
+
+func (s ModifyAutoScalingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetConfigId(v string) *ModifyAutoScalingRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetEnabled(v bool) *ModifyAutoScalingRuleRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetEndTime(v string) *ModifyAutoScalingRuleRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetInstanceId(v string) *ModifyAutoScalingRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetObservationWindow(v int32) *ModifyAutoScalingRuleRequest {
+	s.ObservationWindow = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetOperationType(v string) *ModifyAutoScalingRuleRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetOwnerAccount(v string) *ModifyAutoScalingRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetOwnerId(v int64) *ModifyAutoScalingRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetResourceOwnerAccount(v string) *ModifyAutoScalingRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetResourceOwnerId(v int64) *ModifyAutoScalingRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetRuleId(v string) *ModifyAutoScalingRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetRuleName(v string) *ModifyAutoScalingRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetRuleType(v string) *ModifyAutoScalingRuleRequest {
+	s.RuleType = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetScaleInStep(v int32) *ModifyAutoScalingRuleRequest {
+	s.ScaleInStep = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetScaleOutStep(v int32) *ModifyAutoScalingRuleRequest {
+	s.ScaleOutStep = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetSecurityToken(v string) *ModifyAutoScalingRuleRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetSilenceTime(v int32) *ModifyAutoScalingRuleRequest {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetStartTime(v string) *ModifyAutoScalingRuleRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetTargetMetric(v string) *ModifyAutoScalingRuleRequest {
+	s.TargetMetric = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetTargetNodes(v int32) *ModifyAutoScalingRuleRequest {
+	s.TargetNodes = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetThresholdLower(v int32) *ModifyAutoScalingRuleRequest {
+	s.ThresholdLower = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetThresholdUpper(v int32) *ModifyAutoScalingRuleRequest {
+	s.ThresholdUpper = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleRequest) SetTriggerCronExpr(v string) *ModifyAutoScalingRuleRequest {
+	s.TriggerCronExpr = &v
+	return s
+}
+
+type ModifyAutoScalingRuleResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyAutoScalingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingRuleResponseBody) SetCode(v string) *ModifyAutoScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleResponseBody) SetHttpStatusCode(v int32) *ModifyAutoScalingRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleResponseBody) SetMessage(v string) *ModifyAutoScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleResponseBody) SetRequestId(v string) *ModifyAutoScalingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleResponseBody) SetSuccess(v bool) *ModifyAutoScalingRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyAutoScalingRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAutoScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAutoScalingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingRuleResponse) SetHeaders(v map[string]*string) *ModifyAutoScalingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleResponse) SetStatusCode(v int32) *ModifyAutoScalingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAutoScalingRuleResponse) SetBody(v *ModifyAutoScalingRuleResponseBody) *ModifyAutoScalingRuleResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyInstancePayTypeRequest struct {
 	// The subscription duration of the instance. The parameter is required if the instance is an subscription instance.
 	//
@@ -4707,6 +9182,11 @@ func (s *ModifyInstancePayTypeRequest) SetSecurityToken(v string) *ModifyInstanc
 }
 
 type ModifyInstancePayTypeResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the instance.
 	//
@@ -4781,6 +9261,328 @@ func (s *ModifyInstancePayTypeResponse) SetStatusCode(v int32) *ModifyInstancePa
 }
 
 func (s *ModifyInstancePayTypeResponse) SetBody(v *ModifyInstancePayTypeResponseBody) *ModifyInstancePayTypeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyLindormV2InstanceRequest struct {
+	CloudStorageSize *int64  `json:"CloudStorageSize,omitempty" xml:"CloudStorageSize,omitempty"`
+	CloudStorageType *string `json:"CloudStorageType,omitempty" xml:"CloudStorageType,omitempty"`
+	EngineType       *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// This parameter is required.
+	InstanceId    *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeGroupList []*ModifyLindormV2InstanceRequestNodeGroupList `json:"NodeGroupList,omitempty" xml:"NodeGroupList,omitempty" type:"Repeated"`
+	OwnerAccount  *string                                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
+}
+
+func (s ModifyLindormV2InstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLindormV2InstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetCloudStorageSize(v int64) *ModifyLindormV2InstanceRequest {
+	s.CloudStorageSize = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetCloudStorageType(v string) *ModifyLindormV2InstanceRequest {
+	s.CloudStorageType = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetEngineType(v string) *ModifyLindormV2InstanceRequest {
+	s.EngineType = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetInstanceId(v string) *ModifyLindormV2InstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetNodeGroupList(v []*ModifyLindormV2InstanceRequestNodeGroupList) *ModifyLindormV2InstanceRequest {
+	s.NodeGroupList = v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetOwnerAccount(v string) *ModifyLindormV2InstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetOwnerId(v int64) *ModifyLindormV2InstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetRegionId(v string) *ModifyLindormV2InstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetResourceOwnerAccount(v string) *ModifyLindormV2InstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetResourceOwnerId(v int64) *ModifyLindormV2InstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetSecurityToken(v string) *ModifyLindormV2InstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequest) SetUpgradeType(v string) *ModifyLindormV2InstanceRequest {
+	s.UpgradeType = &v
+	return s
+}
+
+type ModifyLindormV2InstanceRequestNodeGroupList struct {
+	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	NodeCount         *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	NodeDiskSize      *int64  `json:"NodeDiskSize,omitempty" xml:"NodeDiskSize,omitempty"`
+	NodeDiskType      *string `json:"NodeDiskType,omitempty" xml:"NodeDiskType,omitempty"`
+	NodeSpec          *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s ModifyLindormV2InstanceRequestNodeGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLindormV2InstanceRequestNodeGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLindormV2InstanceRequestNodeGroupList) SetGroupId(v string) *ModifyLindormV2InstanceRequestNodeGroupList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequestNodeGroupList) SetNodeCount(v string) *ModifyLindormV2InstanceRequestNodeGroupList {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequestNodeGroupList) SetNodeDiskSize(v int64) *ModifyLindormV2InstanceRequestNodeGroupList {
+	s.NodeDiskSize = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequestNodeGroupList) SetNodeDiskType(v string) *ModifyLindormV2InstanceRequestNodeGroupList {
+	s.NodeDiskType = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequestNodeGroupList) SetNodeSpec(v string) *ModifyLindormV2InstanceRequestNodeGroupList {
+	s.NodeSpec = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceRequestNodeGroupList) SetResourceGroupName(v string) *ModifyLindormV2InstanceRequestNodeGroupList {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type ModifyLindormV2InstanceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyLindormV2InstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLindormV2InstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLindormV2InstanceResponseBody) SetAccessDeniedDetail(v string) *ModifyLindormV2InstanceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceResponseBody) SetInstanceId(v string) *ModifyLindormV2InstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceResponseBody) SetOrderId(v int64) *ModifyLindormV2InstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceResponseBody) SetRequestId(v string) *ModifyLindormV2InstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyLindormV2InstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyLindormV2InstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyLindormV2InstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLindormV2InstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLindormV2InstanceResponse) SetHeaders(v map[string]*string) *ModifyLindormV2InstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceResponse) SetStatusCode(v int32) *ModifyLindormV2InstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyLindormV2InstanceResponse) SetBody(v *ModifyLindormV2InstanceResponseBody) *ModifyLindormV2InstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyLindormV2WhiteIpListRequest struct {
+	DeleteGroup *bool `json:"DeleteGroup,omitempty" xml:"DeleteGroup,omitempty"`
+	// This parameter is required.
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	WhiteIpList *string `json:"WhiteIpList,omitempty" xml:"WhiteIpList,omitempty"`
+}
+
+func (s ModifyLindormV2WhiteIpListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLindormV2WhiteIpListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetDeleteGroup(v bool) *ModifyLindormV2WhiteIpListRequest {
+	s.DeleteGroup = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetGroupName(v string) *ModifyLindormV2WhiteIpListRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetInstanceId(v string) *ModifyLindormV2WhiteIpListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetOwnerAccount(v string) *ModifyLindormV2WhiteIpListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetOwnerId(v int64) *ModifyLindormV2WhiteIpListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetRegionId(v string) *ModifyLindormV2WhiteIpListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetResourceOwnerAccount(v string) *ModifyLindormV2WhiteIpListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetResourceOwnerId(v int64) *ModifyLindormV2WhiteIpListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetSecurityToken(v string) *ModifyLindormV2WhiteIpListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListRequest) SetWhiteIpList(v string) *ModifyLindormV2WhiteIpListRequest {
+	s.WhiteIpList = &v
+	return s
+}
+
+type ModifyLindormV2WhiteIpListResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyLindormV2WhiteIpListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLindormV2WhiteIpListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLindormV2WhiteIpListResponseBody) SetAccessDeniedDetail(v string) *ModifyLindormV2WhiteIpListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListResponseBody) SetRequestId(v string) *ModifyLindormV2WhiteIpListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyLindormV2WhiteIpListResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyLindormV2WhiteIpListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyLindormV2WhiteIpListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLindormV2WhiteIpListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLindormV2WhiteIpListResponse) SetHeaders(v map[string]*string) *ModifyLindormV2WhiteIpListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListResponse) SetStatusCode(v int32) *ModifyLindormV2WhiteIpListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyLindormV2WhiteIpListResponse) SetBody(v *ModifyLindormV2WhiteIpListResponseBody) *ModifyLindormV2WhiteIpListResponse {
 	s.Body = v
 	return s
 }
@@ -5125,6 +9927,112 @@ func (s *ReleaseLindormInstanceResponse) SetBody(v *ReleaseLindormInstanceRespon
 	return s
 }
 
+type ReleaseLindormV2InstanceRequest struct {
+	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ReleaseLindormV2InstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseLindormV2InstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseLindormV2InstanceRequest) SetImmediately(v bool) *ReleaseLindormV2InstanceRequest {
+	s.Immediately = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceRequest) SetInstanceId(v string) *ReleaseLindormV2InstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceRequest) SetOwnerAccount(v string) *ReleaseLindormV2InstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceRequest) SetOwnerId(v int64) *ReleaseLindormV2InstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceRequest) SetResourceOwnerAccount(v string) *ReleaseLindormV2InstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceRequest) SetResourceOwnerId(v int64) *ReleaseLindormV2InstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceRequest) SetSecurityToken(v string) *ReleaseLindormV2InstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ReleaseLindormV2InstanceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseLindormV2InstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseLindormV2InstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseLindormV2InstanceResponseBody) SetAccessDeniedDetail(v string) *ReleaseLindormV2InstanceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceResponseBody) SetRequestId(v string) *ReleaseLindormV2InstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseLindormV2InstanceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseLindormV2InstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReleaseLindormV2InstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseLindormV2InstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseLindormV2InstanceResponse) SetHeaders(v map[string]*string) *ReleaseLindormV2InstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceResponse) SetStatusCode(v int32) *ReleaseLindormV2InstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseLindormV2InstanceResponse) SetBody(v *ReleaseLindormV2InstanceResponseBody) *ReleaseLindormV2InstanceResponse {
+	s.Body = v
+	return s
+}
+
 type RenewLindormInstanceRequest struct {
 	// The subscription duration of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
 	//
@@ -5227,6 +10135,11 @@ func (s *RenewLindormInstanceRequest) SetSecurityToken(v string) *RenewLindormIn
 }
 
 type RenewLindormInstanceResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the instance.
 	//
@@ -5603,6 +10516,11 @@ func (s *SwitchLSQLV3MySQLServiceRequest) SetSecurityToken(v string) *SwitchLSQL
 }
 
 type SwitchLSQLV3MySQLServiceResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the request.
 	//
@@ -6068,6 +10986,11 @@ func (s *UpdateInstanceIpWhiteListRequest) SetSecurityToken(v string) *UpdateIns
 }
 
 type UpdateInstanceIpWhiteListResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the request.
 	//
@@ -6340,6 +11263,126 @@ func (s *UpdateLdpsComputeGroupResponse) SetStatusCode(v int32) *UpdateLdpsCompu
 }
 
 func (s *UpdateLdpsComputeGroupResponse) SetBody(v *UpdateLdpsComputeGroupResponseBody) *UpdateLdpsComputeGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateLindormV2InstanceParameterRequest struct {
+	// This parameter is required.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	// This parameter is required.
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	UpdateType           *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
+}
+
+func (s UpdateLindormV2InstanceParameterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLindormV2InstanceParameterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetInstanceId(v string) *UpdateLindormV2InstanceParameterRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetOwnerAccount(v string) *UpdateLindormV2InstanceParameterRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetOwnerId(v int64) *UpdateLindormV2InstanceParameterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetParameterKey(v string) *UpdateLindormV2InstanceParameterRequest {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetParameterValue(v string) *UpdateLindormV2InstanceParameterRequest {
+	s.ParameterValue = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetResourceOwnerAccount(v string) *UpdateLindormV2InstanceParameterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetResourceOwnerId(v int64) *UpdateLindormV2InstanceParameterRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetSecurityToken(v string) *UpdateLindormV2InstanceParameterRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterRequest) SetUpdateType(v string) *UpdateLindormV2InstanceParameterRequest {
+	s.UpdateType = &v
+	return s
+}
+
+type UpdateLindormV2InstanceParameterResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLindormV2InstanceParameterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLindormV2InstanceParameterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLindormV2InstanceParameterResponseBody) SetAccessDeniedDetail(v string) *UpdateLindormV2InstanceParameterResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterResponseBody) SetRequestId(v string) *UpdateLindormV2InstanceParameterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLindormV2InstanceParameterResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLindormV2InstanceParameterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLindormV2InstanceParameterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLindormV2InstanceParameterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLindormV2InstanceParameterResponse) SetHeaders(v map[string]*string) *UpdateLindormV2InstanceParameterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterResponse) SetStatusCode(v int32) *UpdateLindormV2InstanceParameterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLindormV2InstanceParameterResponse) SetBody(v *UpdateLindormV2InstanceParameterResponseBody) *UpdateLindormV2InstanceParameterResponse {
 	s.Body = v
 	return s
 }
@@ -6930,6 +11973,400 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes a resource group to another.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes a resource group to another.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CheckLdpsColumnarIndexStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckLdpsColumnarIndexStatusResponse
+func (client *Client) CheckLdpsColumnarIndexStatusWithOptions(request *CheckLdpsColumnarIndexStatusRequest, runtime *util.RuntimeOptions) (_result *CheckLdpsColumnarIndexStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckLdpsColumnarIndexStatus"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckLdpsColumnarIndexStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CheckLdpsColumnarIndexStatusRequest
+//
+// @return CheckLdpsColumnarIndexStatusResponse
+func (client *Client) CheckLdpsColumnarIndexStatus(request *CheckLdpsColumnarIndexStatusRequest) (_result *CheckLdpsColumnarIndexStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckLdpsColumnarIndexStatusResponse{}
+	_body, _err := client.CheckLdpsColumnarIndexStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - CreateAutoScalingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAutoScalingConfigResponse
+func (client *Client) CreateAutoScalingConfigWithOptions(tmpReq *CreateAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *CreateAutoScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAutoScalingConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScaleRuleList)) {
+		request.ScaleRuleListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScaleRuleList, tea.String("ScaleRuleList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		query["ConfigName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTimeEnd)) {
+		query["EffectiveTimeEnd"] = request.EffectiveTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTimeStart)) {
+		query["EffectiveTimeStart"] = request.EffectiveTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodesMax)) {
+		query["NodesMax"] = request.NodesMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodesMin)) {
+		query["NodesMin"] = request.NodesMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleRuleListShrink)) {
+		query["ScaleRuleList"] = request.ScaleRuleListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
+		query["ScaleType"] = request.ScaleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecId)) {
+		query["SpecId"] = request.SpecId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAutoScalingConfig"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateAutoScalingConfigRequest
+//
+// @return CreateAutoScalingConfigResponse
+func (client *Client) CreateAutoScalingConfig(request *CreateAutoScalingConfigRequest) (_result *CreateAutoScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAutoScalingConfigResponse{}
+	_body, _err := client.CreateAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateAutoScalingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAutoScalingRuleResponse
+func (client *Client) CreateAutoScalingRuleWithOptions(request *CreateAutoScalingRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAutoScalingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObservationWindow)) {
+		query["ObservationWindow"] = request.ObservationWindow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleInStep)) {
+		query["ScaleInStep"] = request.ScaleInStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleOutStep)) {
+		query["ScaleOutStep"] = request.ScaleOutStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SilenceTime)) {
+		query["SilenceTime"] = request.SilenceTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetMetric)) {
+		query["TargetMetric"] = request.TargetMetric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNodes)) {
+		query["TargetNodes"] = request.TargetNodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThresholdLower)) {
+		query["ThresholdLower"] = request.ThresholdLower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThresholdUpper)) {
+		query["ThresholdUpper"] = request.ThresholdUpper
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerCronExpr)) {
+		query["TriggerCronExpr"] = request.TriggerCronExpr
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAutoScalingRule"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateAutoScalingRuleRequest
+//
+// @return CreateAutoScalingRuleResponse
+func (client *Client) CreateAutoScalingRule(request *CreateAutoScalingRuleRequest) (_result *CreateAutoScalingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAutoScalingRuleResponse{}
+	_body, _err := client.CreateAutoScalingRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateLdpsComputeGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7007,86 +12444,6 @@ func (client *Client) CreateLdpsComputeGroup(request *CreateLdpsComputeGroupRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLdpsComputeGroupResponse{}
 	_body, _err := client.CreateLdpsComputeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - CreateLdpsNamespaceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateLdpsNamespaceResponse
-func (client *Client) CreateLdpsNamespaceWithOptions(request *CreateLdpsNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateLdpsNamespaceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		query["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateLdpsNamespace"),
-		Version:     tea.String("2020-06-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateLdpsNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateLdpsNamespaceRequest
-//
-// @return CreateLdpsNamespaceResponse
-func (client *Client) CreateLdpsNamespace(request *CreateLdpsNamespaceRequest) (_result *CreateLdpsNamespaceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateLdpsNamespaceResponse{}
-	_body, _err := client.CreateLdpsNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7331,6 +12688,330 @@ func (client *Client) CreateLindormInstance(request *CreateLindormInstanceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLindormInstanceResponse{}
 	_body, _err := client.CreateLindormInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateLindormV2InstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLindormV2InstanceResponse
+func (client *Client) CreateLindormV2InstanceWithOptions(request *CreateLindormV2InstanceRequest, runtime *util.RuntimeOptions) (_result *CreateLindormV2InstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArbiterVSwitchId)) {
+		query["ArbiterVSwitchId"] = request.ArbiterVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArbiterZoneId)) {
+		query["ArbiterZoneId"] = request.ArbiterZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchVersion)) {
+		query["ArchVersion"] = request.ArchVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewDuration)) {
+		query["AutoRenewDuration"] = request.AutoRenewDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewal)) {
+		query["AutoRenewal"] = request.AutoRenewal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CapacityStorageSize)) {
+		query["CapacityStorageSize"] = request.CapacityStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudStorageSize)) {
+		query["CloudStorageSize"] = request.CloudStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudStorageType)) {
+		query["CloudStorageType"] = request.CloudStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
+		query["ClusterMode"] = request.ClusterMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterPattern)) {
+		query["ClusterPattern"] = request.ClusterPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableCapacityStorage)) {
+		query["EnableCapacityStorage"] = request.EnableCapacityStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineList)) {
+		query["EngineList"] = request.EngineList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceAlias)) {
+		query["InstanceAlias"] = request.InstanceAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryVSwitchId)) {
+		query["PrimaryVSwitchId"] = request.PrimaryVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryZoneId)) {
+		query["PrimaryZoneId"] = request.PrimaryZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyVSwitchId)) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyZoneId)) {
+		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VPCId)) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLindormV2Instance"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateLindormV2InstanceRequest
+//
+// @return CreateLindormV2InstanceResponse
+func (client *Client) CreateLindormV2Instance(request *CreateLindormV2InstanceRequest) (_result *CreateLindormV2InstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLindormV2InstanceResponse{}
+	_body, _err := client.CreateLindormV2InstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteAutoScalingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutoScalingConfigResponse
+func (client *Client) DeleteAutoScalingConfigWithOptions(request *DeleteAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAutoScalingConfig"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteAutoScalingConfigRequest
+//
+// @return DeleteAutoScalingConfigResponse
+func (client *Client) DeleteAutoScalingConfig(request *DeleteAutoScalingConfigRequest) (_result *DeleteAutoScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAutoScalingConfigResponse{}
+	_body, _err := client.DeleteAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteAutoScalingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutoScalingRuleResponse
+func (client *Client) DeleteAutoScalingRuleWithOptions(request *DeleteAutoScalingRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoScalingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAutoScalingRule"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteAutoScalingRuleRequest
+//
+// @return DeleteAutoScalingRuleResponse
+func (client *Client) DeleteAutoScalingRule(request *DeleteAutoScalingRuleRequest) (_result *DeleteAutoScalingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAutoScalingRuleResponse{}
+	_body, _err := client.DeleteAutoScalingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7651,6 +13332,162 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetAutoScalingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoScalingConfigResponse
+func (client *Client) GetAutoScalingConfigWithOptions(request *GetAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *GetAutoScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoScalingConfig"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetAutoScalingConfigRequest
+//
+// @return GetAutoScalingConfigResponse
+func (client *Client) GetAutoScalingConfig(request *GetAutoScalingConfigRequest) (_result *GetAutoScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoScalingConfigResponse{}
+	_body, _err := client.GetAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetAutoScalingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoScalingRuleResponse
+func (client *Client) GetAutoScalingRuleWithOptions(request *GetAutoScalingRuleRequest, runtime *util.RuntimeOptions) (_result *GetAutoScalingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoScalingRule"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetAutoScalingRuleRequest
+//
+// @return GetAutoScalingRuleResponse
+func (client *Client) GetAutoScalingRule(request *GetAutoScalingRuleRequest) (_result *GetAutoScalingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoScalingRuleResponse{}
+	_body, _err := client.GetAutoScalingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8210,6 +14047,82 @@ func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (
 	return _result, _err
 }
 
+// @param request - GetLindormFsUsedDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormFsUsedDetailResponse
+func (client *Client) GetLindormFsUsedDetailWithOptions(request *GetLindormFsUsedDetailRequest, runtime *util.RuntimeOptions) (_result *GetLindormFsUsedDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLindormFsUsedDetail"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLindormFsUsedDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetLindormFsUsedDetailRequest
+//
+// @return GetLindormFsUsedDetailResponse
+func (client *Client) GetLindormFsUsedDetail(request *GetLindormFsUsedDetailRequest) (_result *GetLindormFsUsedDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLindormFsUsedDetailResponse{}
+	_body, _err := client.GetLindormFsUsedDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
@@ -8290,6 +14203,10 @@ func (client *Client) GetLindormInstance(request *GetLindormInstanceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the engine types supported by the specified Lindorm instance.
+//
 // @param request - GetLindormInstanceEngineListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8352,6 +14269,10 @@ func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindor
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the engine types supported by the specified Lindorm instance.
+//
 // @param request - GetLindormInstanceEngineListRequest
 //
 // @return GetLindormInstanceEngineListResponse
@@ -8467,6 +14388,454 @@ func (client *Client) GetLindormInstanceList(request *GetLindormInstanceListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLindormInstanceListResponse{}
 	_body, _err := client.GetLindormInstanceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetLindormV2InstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormV2InstanceResponse
+func (client *Client) GetLindormV2InstanceWithOptions(request *GetLindormV2InstanceRequest, runtime *util.RuntimeOptions) (_result *GetLindormV2InstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLindormV2Instance"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetLindormV2InstanceRequest
+//
+// @return GetLindormV2InstanceResponse
+func (client *Client) GetLindormV2Instance(request *GetLindormV2InstanceRequest) (_result *GetLindormV2InstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLindormV2InstanceResponse{}
+	_body, _err := client.GetLindormV2InstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetLindormV2InstanceEngineListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormV2InstanceEngineListResponse
+func (client *Client) GetLindormV2InstanceEngineListWithOptions(request *GetLindormV2InstanceEngineListRequest, runtime *util.RuntimeOptions) (_result *GetLindormV2InstanceEngineListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLindormV2InstanceEngineList"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLindormV2InstanceEngineListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetLindormV2InstanceEngineListRequest
+//
+// @return GetLindormV2InstanceEngineListResponse
+func (client *Client) GetLindormV2InstanceEngineList(request *GetLindormV2InstanceEngineListRequest) (_result *GetLindormV2InstanceEngineListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLindormV2InstanceEngineListResponse{}
+	_body, _err := client.GetLindormV2InstanceEngineListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetLindormV2StorageUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormV2StorageUsageResponse
+func (client *Client) GetLindormV2StorageUsageWithOptions(request *GetLindormV2StorageUsageRequest, runtime *util.RuntimeOptions) (_result *GetLindormV2StorageUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLindormV2StorageUsage"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLindormV2StorageUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetLindormV2StorageUsageRequest
+//
+// @return GetLindormV2StorageUsageResponse
+func (client *Client) GetLindormV2StorageUsage(request *GetLindormV2StorageUsageRequest) (_result *GetLindormV2StorageUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLindormV2StorageUsageResponse{}
+	_body, _err := client.GetLindormV2StorageUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListAutoScalingConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoScalingConfigsResponse
+func (client *Client) ListAutoScalingConfigsWithOptions(request *ListAutoScalingConfigsRequest, runtime *util.RuntimeOptions) (_result *ListAutoScalingConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAutoScalingConfigs"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAutoScalingConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListAutoScalingConfigsRequest
+//
+// @return ListAutoScalingConfigsResponse
+func (client *Client) ListAutoScalingConfigs(request *ListAutoScalingConfigsRequest) (_result *ListAutoScalingConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAutoScalingConfigsResponse{}
+	_body, _err := client.ListAutoScalingConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListAutoScalingRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoScalingRecordsResponse
+func (client *Client) ListAutoScalingRecordsWithOptions(request *ListAutoScalingRecordsRequest, runtime *util.RuntimeOptions) (_result *ListAutoScalingRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAutoScalingRecords"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAutoScalingRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListAutoScalingRecordsRequest
+//
+// @return ListAutoScalingRecordsResponse
+func (client *Client) ListAutoScalingRecords(request *ListAutoScalingRecordsRequest) (_result *ListAutoScalingRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAutoScalingRecordsResponse{}
+	_body, _err := client.ListAutoScalingRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListAutoScalingRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoScalingRulesResponse
+func (client *Client) ListAutoScalingRulesWithOptions(request *ListAutoScalingRulesRequest, runtime *util.RuntimeOptions) (_result *ListAutoScalingRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAutoScalingRules"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAutoScalingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListAutoScalingRulesRequest
+//
+// @return ListAutoScalingRulesResponse
+func (client *Client) ListAutoScalingRules(request *ListAutoScalingRulesRequest) (_result *ListAutoScalingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAutoScalingRulesResponse{}
+	_body, _err := client.ListAutoScalingRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8646,6 +15015,258 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyAutoScalingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAutoScalingConfigResponse
+func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		query["ConfigName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTimeEnd)) {
+		query["EffectiveTimeEnd"] = request.EffectiveTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTimeStart)) {
+		query["EffectiveTimeStart"] = request.EffectiveTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodesMax)) {
+		query["NodesMax"] = request.NodesMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodesMin)) {
+		query["NodesMin"] = request.NodesMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
+		query["ScaleType"] = request.ScaleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecId)) {
+		query["SpecId"] = request.SpecId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAutoScalingConfig"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyAutoScalingConfigRequest
+//
+// @return ModifyAutoScalingConfigResponse
+func (client *Client) ModifyAutoScalingConfig(request *ModifyAutoScalingConfigRequest) (_result *ModifyAutoScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAutoScalingConfigResponse{}
+	_body, _err := client.ModifyAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyAutoScalingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAutoScalingRuleResponse
+func (client *Client) ModifyAutoScalingRuleWithOptions(request *ModifyAutoScalingRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoScalingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObservationWindow)) {
+		query["ObservationWindow"] = request.ObservationWindow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleInStep)) {
+		query["ScaleInStep"] = request.ScaleInStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleOutStep)) {
+		query["ScaleOutStep"] = request.ScaleOutStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SilenceTime)) {
+		query["SilenceTime"] = request.SilenceTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetMetric)) {
+		query["TargetMetric"] = request.TargetMetric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNodes)) {
+		query["TargetNodes"] = request.TargetNodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThresholdLower)) {
+		query["ThresholdLower"] = request.ThresholdLower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThresholdUpper)) {
+		query["ThresholdUpper"] = request.ThresholdUpper
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerCronExpr)) {
+		query["TriggerCronExpr"] = request.TriggerCronExpr
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAutoScalingRule"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyAutoScalingRuleRequest
+//
+// @return ModifyAutoScalingRuleResponse
+func (client *Client) ModifyAutoScalingRule(request *ModifyAutoScalingRuleRequest) (_result *ModifyAutoScalingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAutoScalingRuleResponse{}
+	_body, _err := client.ModifyAutoScalingRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Changes the billing method of the specified Lindorm instance.
@@ -8654,7 +15275,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7396b91aC5VjZ7#/commodity/vm_intl) of Lindorm.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?spm=a2c63.p38356.0.0.2b024c2adcHeXL&_p_lc=1#/commodity/hitsdb_lindormpre_public_intl) of Lindorm. Published on only international site (alibabacloud.com).
 //
 // @param request - ModifyInstancePayTypeRequest
 //
@@ -8734,7 +15355,7 @@ func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePa
 //
 // You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7396b91aC5VjZ7#/commodity/vm_intl) of Lindorm.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?spm=a2c63.p38356.0.0.2b024c2adcHeXL&_p_lc=1#/commodity/hitsdb_lindormpre_public_intl) of Lindorm. Published on only international site (alibabacloud.com).
 //
 // @param request - ModifyInstancePayTypeRequest
 //
@@ -8743,6 +15364,190 @@ func (client *Client) ModifyInstancePayType(request *ModifyInstancePayTypeReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstancePayTypeResponse{}
 	_body, _err := client.ModifyInstancePayTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyLindormV2InstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLindormV2InstanceResponse
+func (client *Client) ModifyLindormV2InstanceWithOptions(request *ModifyLindormV2InstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyLindormV2InstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudStorageSize)) {
+		query["CloudStorageSize"] = request.CloudStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudStorageType)) {
+		query["CloudStorageType"] = request.CloudStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupList)) {
+		query["NodeGroupList"] = request.NodeGroupList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeType)) {
+		query["UpgradeType"] = request.UpgradeType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyLindormV2Instance"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyLindormV2InstanceRequest
+//
+// @return ModifyLindormV2InstanceResponse
+func (client *Client) ModifyLindormV2Instance(request *ModifyLindormV2InstanceRequest) (_result *ModifyLindormV2InstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyLindormV2InstanceResponse{}
+	_body, _err := client.ModifyLindormV2InstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyLindormV2WhiteIpListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLindormV2WhiteIpListResponse
+func (client *Client) ModifyLindormV2WhiteIpListWithOptions(request *ModifyLindormV2WhiteIpListRequest, runtime *util.RuntimeOptions) (_result *ModifyLindormV2WhiteIpListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeleteGroup)) {
+		query["DeleteGroup"] = request.DeleteGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhiteIpList)) {
+		query["WhiteIpList"] = request.WhiteIpList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyLindormV2WhiteIpList"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyLindormV2WhiteIpListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyLindormV2WhiteIpListRequest
+//
+// @return ModifyLindormV2WhiteIpListResponse
+func (client *Client) ModifyLindormV2WhiteIpList(request *ModifyLindormV2WhiteIpListRequest) (_result *ModifyLindormV2WhiteIpListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyLindormV2WhiteIpListResponse{}
+	_body, _err := client.ModifyLindormV2WhiteIpListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8987,6 +15792,82 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseLindormInstanceResponse{}
 	_body, _err := client.ReleaseLindormInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ReleaseLindormV2InstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseLindormV2InstanceResponse
+func (client *Client) ReleaseLindormV2InstanceWithOptions(request *ReleaseLindormV2InstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseLindormV2InstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Immediately)) {
+		query["Immediately"] = request.Immediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseLindormV2Instance"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ReleaseLindormV2InstanceRequest
+//
+// @return ReleaseLindormV2InstanceResponse
+func (client *Client) ReleaseLindormV2Instance(request *ReleaseLindormV2InstanceRequest) (_result *ReleaseLindormV2InstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseLindormV2InstanceResponse{}
+	_body, _err := client.ReleaseLindormV2InstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9803,6 +16684,90 @@ func (client *Client) UpdateLdpsComputeGroup(request *UpdateLdpsComputeGroupRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLdpsComputeGroupResponse{}
 	_body, _err := client.UpdateLdpsComputeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateLindormV2InstanceParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLindormV2InstanceParameterResponse
+func (client *Client) UpdateLindormV2InstanceParameterWithOptions(request *UpdateLindormV2InstanceParameterRequest, runtime *util.RuntimeOptions) (_result *UpdateLindormV2InstanceParameterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterKey)) {
+		query["ParameterKey"] = request.ParameterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterValue)) {
+		query["ParameterValue"] = request.ParameterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateType)) {
+		query["UpdateType"] = request.UpdateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLindormV2InstanceParameter"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLindormV2InstanceParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateLindormV2InstanceParameterRequest
+//
+// @return UpdateLindormV2InstanceParameterResponse
+func (client *Client) UpdateLindormV2InstanceParameter(request *UpdateLindormV2InstanceParameterRequest) (_result *UpdateLindormV2InstanceParameterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLindormV2InstanceParameterResponse{}
+	_body, _err := client.UpdateLindormV2InstanceParameterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

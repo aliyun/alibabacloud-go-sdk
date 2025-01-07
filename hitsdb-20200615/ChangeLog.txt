@@ -1,3 +1,31 @@
+2025-01-07 Version: v6.0.0
+- Support API ChangeResourceGroup.
+- Support API CheckLdpsColumnarIndexStatus.
+- Support API CreateAutoScalingConfig.
+- Support API CreateAutoScalingRule.
+- Support API CreateLindormV2Instance.
+- Support API DeleteAutoScalingConfig.
+- Support API DeleteAutoScalingRule.
+- Support API GetAutoScalingConfig.
+- Support API GetAutoScalingRule.
+- Support API GetLindormFsUsedDetail.
+- Support API GetLindormV2Instance.
+- Support API GetLindormV2InstanceEngineList.
+- Support API GetLindormV2StorageUsage.
+- Support API ListAutoScalingConfigs.
+- Support API ListAutoScalingRecords.
+- Support API ListAutoScalingRules.
+- Support API ModifyAutoScalingConfig.
+- Support API ModifyAutoScalingRule.
+- Support API ModifyLindormV2Instance.
+- Support API ModifyLindormV2WhiteIpList.
+- Support API ReleaseLindormV2Instance.
+- Support API UpdateLindormV2InstanceParameter.
+- Delete API CreateLdpsNamespace.
+- Update API GetLindormInstance: update response param.
+- Update API ListLdpsComputeGroups: update response param.
+
+
 2024-09-18 Version: v5.7.0
 - Support API DeleteCustomResource.
 - Support API DeployLdpsSemiManagedComponent.
