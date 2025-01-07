@@ -3464,7 +3464,7 @@ type DescribeAppRecordTemplatesResponseBodyTemplates struct {
 	// example:
 	//
 	// 2020-09-04T06:22:15Z
-	CreateTime []byte `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
 	//
 	// 180
@@ -3478,7 +3478,7 @@ type DescribeAppRecordTemplatesResponseBodyTemplates struct {
 	// 1800
 	FileSplitInterval *int64    `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
 	Formats           []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	LayoutIds         []*int64  `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	LayoutIds         []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -3501,8 +3501,8 @@ func (s DescribeAppRecordTemplatesResponseBodyTemplates) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetCreateTime(v []byte) *DescribeAppRecordTemplatesResponseBodyTemplates {
-	s.CreateTime = v
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetCreateTime(v string) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.CreateTime = &v
 	return s
 }
 
@@ -3526,7 +3526,7 @@ func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetFormats(v []*string
 	return s
 }
 
-func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetLayoutIds(v []*int64) *DescribeAppRecordTemplatesResponseBodyTemplates {
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetLayoutIds(v []*string) *DescribeAppRecordTemplatesResponseBodyTemplates {
 	s.LayoutIds = v
 	return s
 }
