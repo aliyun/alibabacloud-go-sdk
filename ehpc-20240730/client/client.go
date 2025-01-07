@@ -387,6 +387,10 @@ type NodeTemplateDataDisks struct {
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
 	// example:
 	//
+	// /dev/xvdb
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// example:
+	//
 	// PL0
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// example:
@@ -397,6 +401,10 @@ type NodeTemplateDataDisks struct {
 	//
 	// 40
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// s-bp1ei2b44ripxuo46hym
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s NodeTemplateDataDisks) String() string {
@@ -417,6 +425,11 @@ func (s *NodeTemplateDataDisks) SetDeleteWithInstance(v bool) *NodeTemplateDataD
 	return s
 }
 
+func (s *NodeTemplateDataDisks) SetDevice(v string) *NodeTemplateDataDisks {
+	s.Device = &v
+	return s
+}
+
 func (s *NodeTemplateDataDisks) SetLevel(v string) *NodeTemplateDataDisks {
 	s.Level = &v
 	return s
@@ -429,6 +442,11 @@ func (s *NodeTemplateDataDisks) SetMountDir(v string) *NodeTemplateDataDisks {
 
 func (s *NodeTemplateDataDisks) SetSize(v int32) *NodeTemplateDataDisks {
 	s.Size = &v
+	return s
+}
+
+func (s *NodeTemplateDataDisks) SetSnapshotId(v string) *NodeTemplateDataDisks {
+	s.SnapshotId = &v
 	return s
 }
 
