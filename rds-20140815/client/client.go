@@ -744,9 +744,18 @@ func (s *AllocateReadWriteSplittingConnectionResponse) SetBody(v *AllocateReadWr
 }
 
 type AssociateEipAddressWithRCInstanceRequest struct {
+	// example:
+	//
+	// eip-bp166out2x4bpcf******
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rc-i322y2t562oh7o******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AssociateEipAddressWithRCInstanceRequest) String() string {
@@ -773,6 +782,9 @@ func (s *AssociateEipAddressWithRCInstanceRequest) SetRegionId(v string) *Associ
 }
 
 type AssociateEipAddressWithRCInstanceResponseBody struct {
+	// example:
+	//
+	// EFFC7565-B3CF-5CFA-9E1F-164DD1E1F498
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -825,18 +837,24 @@ type AttachRCDiskRequest struct {
 	//
 	// false
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// The disk ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rcd-wz98hnpj2sjo85zc7t2w
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -874,6 +892,8 @@ func (s *AttachRCDiskRequest) SetRegionId(v string) *AttachRCDiskRequest {
 }
 
 type AttachRCDiskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C19D1668-70CB-5421-AA91-D6D8EE3AB664
@@ -5419,11 +5439,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// >
 	//
-	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	//
+	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -5441,7 +5463,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 0
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	// Specifies whether to enable the write optimization feature.
+	// Specifies whether to enable the write optimization feature. Valid values:
 	//
 	// 	- **optimized**: enables the feature.
 	//
@@ -6091,9 +6113,11 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
+	// >
 	//
-	// > 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+	// 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
+	//
+	// 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
 	//
 	// example:
 	//
@@ -6572,11 +6596,13 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// >
 	//
-	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	//
+	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -6594,7 +6620,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 0
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	// Specifies whether to enable the write optimization feature.
+	// Specifies whether to enable the write optimization feature. Valid values:
 	//
 	// 	- **optimized**: enables the feature.
 	//
@@ -12848,6 +12874,7 @@ type CreateRCNodePoolRequest struct {
 	SecurityEnhancementStrategy *string                            `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
 	SecurityGroupId             *string                            `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SpotStrategy                *string                            `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SupportCase                 *string                            `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	SystemDisk                  *CreateRCNodePoolRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Tag                         []*CreateRCNodePoolRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -13003,6 +13030,11 @@ func (s *CreateRCNodePoolRequest) SetSpotStrategy(v string) *CreateRCNodePoolReq
 	return s
 }
 
+func (s *CreateRCNodePoolRequest) SetSupportCase(v string) *CreateRCNodePoolRequest {
+	s.SupportCase = &v
+	return s
+}
+
 func (s *CreateRCNodePoolRequest) SetSystemDisk(v *CreateRCNodePoolRequestSystemDisk) *CreateRCNodePoolRequest {
 	s.SystemDisk = v
 	return s
@@ -13142,6 +13174,7 @@ type CreateRCNodePoolShrinkRequest struct {
 	SecurityEnhancementStrategy *string                             `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
 	SecurityGroupId             *string                             `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SpotStrategy                *string                             `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SupportCase                 *string                             `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	SystemDiskShrink            *string                             `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	Tag                         []*CreateRCNodePoolShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -13294,6 +13327,11 @@ func (s *CreateRCNodePoolShrinkRequest) SetSecurityGroupId(v string) *CreateRCNo
 
 func (s *CreateRCNodePoolShrinkRequest) SetSpotStrategy(v string) *CreateRCNodePoolShrinkRequest {
 	s.SpotStrategy = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetSupportCase(v string) *CreateRCNodePoolShrinkRequest {
+	s.SupportCase = &v
 	return s
 }
 
@@ -28050,8 +28088,18 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// Chinese_PRC_CI_AS
-	Collation        *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
-	CompressionMode  *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
+	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
+	// The storage compression mode.
+	//
+	// example:
+	//
+	// on, off
+	CompressionMode *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
+	// The storage compression ratio.
+	//
+	// example:
+	//
+	// 1.25
 	CompressionRatio *string `json:"CompressionRatio,omitempty" xml:"CompressionRatio,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
@@ -28481,7 +28529,12 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// Disabled
 	SuperPermissionMode *string `json:"SuperPermissionMode,omitempty" xml:"SuperPermissionMode,omitempty"`
-	SupportCompression  *bool   `json:"SupportCompression,omitempty" xml:"SupportCompression,omitempty"`
+	// Indicates whether the storage compression mode can be enabled for the instance.
+	//
+	// example:
+	//
+	// true, false
+	SupportCompression *bool `json:"SupportCompression,omitempty" xml:"SupportCompression,omitempty"`
 	// The ID of the temporary instance that is attached to the primary instance.
 	//
 	// example:
@@ -41807,176 +41860,6 @@ func (s *DescribeDetachedBackupsResponse) SetBody(v *DescribeDetachedBackupsResp
 	return s
 }
 
-type DescribeDiagnosticReportListRequest struct {
-	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy*****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s DescribeDiagnosticReportListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiagnosticReportListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiagnosticReportListRequest) SetDBInstanceId(v string) *DescribeDiagnosticReportListRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListRequest) SetResourceGroupId(v string) *DescribeDiagnosticReportListRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type DescribeDiagnosticReportListResponseBody struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The details of a diagnostic report.
-	ReportList []*DescribeDiagnosticReportListResponseBodyReportList `json:"ReportList,omitempty" xml:"ReportList,omitempty" type:"Repeated"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// B7E9A79C-DE1B-4398-845F-D654FC0958BD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeDiagnosticReportListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiagnosticReportListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiagnosticReportListResponseBody) SetDBInstanceId(v string) *DescribeDiagnosticReportListResponseBody {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponseBody) SetReportList(v []*DescribeDiagnosticReportListResponseBodyReportList) *DescribeDiagnosticReportListResponseBody {
-	s.ReportList = v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponseBody) SetRequestId(v string) *DescribeDiagnosticReportListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeDiagnosticReportListResponseBodyReportList struct {
-	// The time when the diagnosis was performed.
-	//
-	// example:
-	//
-	// 2018-01-17T12:46:09Z
-	DiagnosticTime *string `json:"DiagnosticTime,omitempty" xml:"DiagnosticTime,omitempty"`
-	// The URL that is used to download the backup set over the Internet. If the backup set cannot be downloaded, an empty string is returned.
-	//
-	// example:
-	//
-	// http://rdsreport-hz-v3.oss-cn-hangzhou.aliyuncs.com/xxxxx
-	DownloadURL *string `json:"DownloadURL,omitempty" xml:"DownloadURL,omitempty"`
-	// The end time of the monitoring data.
-	//
-	// example:
-	//
-	// 2018-01-10T15:31:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The diagnostic score.
-	//
-	// example:
-	//
-	// 100
-	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The start time of the monitoring data.
-	//
-	// example:
-	//
-	// 2018-01-10T15:30:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeDiagnosticReportListResponseBodyReportList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiagnosticReportListResponseBodyReportList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiagnosticReportListResponseBodyReportList) SetDiagnosticTime(v string) *DescribeDiagnosticReportListResponseBodyReportList {
-	s.DiagnosticTime = &v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponseBodyReportList) SetDownloadURL(v string) *DescribeDiagnosticReportListResponseBodyReportList {
-	s.DownloadURL = &v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponseBodyReportList) SetEndTime(v string) *DescribeDiagnosticReportListResponseBodyReportList {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponseBodyReportList) SetScore(v int32) *DescribeDiagnosticReportListResponseBodyReportList {
-	s.Score = &v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponseBodyReportList) SetStartTime(v string) *DescribeDiagnosticReportListResponseBodyReportList {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeDiagnosticReportListResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeDiagnosticReportListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeDiagnosticReportListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiagnosticReportListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiagnosticReportListResponse) SetHeaders(v map[string]*string) *DescribeDiagnosticReportListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponse) SetStatusCode(v int32) *DescribeDiagnosticReportListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDiagnosticReportListResponse) SetBody(v *DescribeDiagnosticReportListResponseBody) *DescribeDiagnosticReportListResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeErrorLogsRequest struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
@@ -54452,7 +54335,7 @@ type DescribeRCDisksResponseBodyDisks struct {
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// The billing method of the disk.
 	//
-	// PostPaid: pay-as-you-go
+	// Only **PostPaid*	- (pay-as-you-go) is supported.
 	//
 	// example:
 	//
@@ -54486,7 +54369,7 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// none
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Storage capacity - Baseline performance}. Baseline performance = min{1,800 + 50 × Storage capacity, 50,000}.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × *Capacity - Baseline performance}. Baseline performance = min{1,800 + 50 × *Capacity, 50,000}
 	//
 	// This parameter is available only when the `Category` parameter is set to `cloud_auto`.
 	//
@@ -57404,6 +57287,10 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	// rcds-hc1zg51xobdg4****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The snapshot name.
+	//
+	// example:
+	//
+	// s-2ze8klip00xcogcwer76
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 	// The snapshot type. Valid values:
 	//
@@ -63711,7 +63598,7 @@ type DescribeTasksRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any non-zero positive integer. Default value: **1**.
+	// The page number. Pages start from page 1. Default value: **1**.
 	//
 	// example:
 	//
@@ -73682,6 +73569,116 @@ func (s *ModifyDBInstancePayTypeResponse) SetBody(v *ModifyDBInstancePayTypeResp
 	return s
 }
 
+type ModifyDBInstanceReplicationSwitchRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ON
+	ExternalReplication *string `json:"ExternalReplication,omitempty" xml:"ExternalReplication,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmy****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyDBInstanceReplicationSwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceReplicationSwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceReplicationSwitchRequest) SetDBInstanceId(v string) *ModifyDBInstanceReplicationSwitchRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceReplicationSwitchRequest) SetExternalReplication(v string) *ModifyDBInstanceReplicationSwitchRequest {
+	s.ExternalReplication = &v
+	return s
+}
+
+func (s *ModifyDBInstanceReplicationSwitchRequest) SetRegionId(v string) *ModifyDBInstanceReplicationSwitchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceReplicationSwitchRequest) SetResourceGroupId(v string) *ModifyDBInstanceReplicationSwitchRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceReplicationSwitchRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceReplicationSwitchRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyDBInstanceReplicationSwitchResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceReplicationSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceReplicationSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceReplicationSwitchResponseBody) SetRequestId(v string) *ModifyDBInstanceReplicationSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceReplicationSwitchResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceReplicationSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBInstanceReplicationSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceReplicationSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceReplicationSwitchResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceReplicationSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceReplicationSwitchResponse) SetStatusCode(v int32) *ModifyDBInstanceReplicationSwitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceReplicationSwitchResponse) SetBody(v *ModifyDBInstanceReplicationSwitchResponseBody) *ModifyDBInstanceReplicationSwitchResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceSSLRequest struct {
 	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	//
@@ -74242,7 +74239,16 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// true
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	// Whether to enable storage compression.
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
 	CompressionMode *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
 	// The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
 	//
@@ -74796,7 +74802,16 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// true
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	// Whether to enable storage compression.
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
 	CompressionMode *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
 	// The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
 	//
@@ -84667,26 +84682,42 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type ReplaceRCInstanceSystemDiskRequest struct {
+	// The image ID that is used when you reinstall the OS.
+	//
 	// example:
 	//
 	// m-2zec4lvlhcdkyd13****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rc-m5ei7b1w38w2l91x****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// None
 	IsLocalDisk *bool `json:"IsLocalDisk,omitempty" xml:"IsLocalDisk,omitempty"`
+	// The name of the new key pair. If you do not specify this parameter, you must reset the key pair after the OS is reinstalled.
+	//
 	// example:
 	//
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The new logon password of the RDS Custom instance. If you do not specify this parameter, you must reset the logon password after the OS is reinstalled.
+	//
+	// 	- The value must be 8 to 30 characters in length.
+	//
+	// 	- The value must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ( ) \\` ~ ! @ # $ % ^ & \\	- - _ + =
+	//
 	// example:
 	//
 	// testPassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -84732,6 +84763,8 @@ func (s *ReplaceRCInstanceSystemDiskRequest) SetRegionId(v string) *ReplaceRCIns
 }
 
 type ReplaceRCInstanceSystemDiskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
@@ -85977,9 +86010,10 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateExtraParam *string `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
-	CreateMode       *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	ClientToken        *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateAckEdgeParam *RunRCInstancesRequestCreateAckEdgeParam `json:"CreateAckEdgeParam,omitempty" xml:"CreateAckEdgeParam,omitempty" type:"Struct"`
+	CreateExtraParam   *string                                  `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
+	CreateMode         *string                                  `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The information about the data disks.
 	DataDisk []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	// The deployment set ID.
@@ -86153,6 +86187,11 @@ func (s *RunRCInstancesRequest) SetClientToken(v string) *RunRCInstancesRequest 
 	return s
 }
 
+func (s *RunRCInstancesRequest) SetCreateAckEdgeParam(v *RunRCInstancesRequestCreateAckEdgeParam) *RunRCInstancesRequest {
+	s.CreateAckEdgeParam = v
+	return s
+}
+
 func (s *RunRCInstancesRequest) SetCreateExtraParam(v string) *RunRCInstancesRequest {
 	s.CreateExtraParam = &v
 	return s
@@ -86290,6 +86329,29 @@ func (s *RunRCInstancesRequest) SetVSwitchId(v string) *RunRCInstancesRequest {
 
 func (s *RunRCInstancesRequest) SetZoneId(v string) *RunRCInstancesRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type RunRCInstancesRequestCreateAckEdgeParam struct {
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+}
+
+func (s RunRCInstancesRequestCreateAckEdgeParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesRequestCreateAckEdgeParam) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesRequestCreateAckEdgeParam) SetClusterId(v string) *RunRCInstancesRequestCreateAckEdgeParam {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestCreateAckEdgeParam) SetNodePoolId(v string) *RunRCInstancesRequestCreateAckEdgeParam {
+	s.NodePoolId = &v
 	return s
 }
 
@@ -86463,9 +86525,10 @@ type RunRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateExtraParam *string `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
-	CreateMode       *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateAckEdgeParamShrink *string `json:"CreateAckEdgeParam,omitempty" xml:"CreateAckEdgeParam,omitempty"`
+	CreateExtraParam         *string `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
+	CreateMode               *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The information about the data disks.
 	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
 	// The deployment set ID.
@@ -86636,6 +86699,11 @@ func (s *RunRCInstancesShrinkRequest) SetAutoRenew(v bool) *RunRCInstancesShrink
 
 func (s *RunRCInstancesShrinkRequest) SetClientToken(v string) *RunRCInstancesShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetCreateAckEdgeParamShrink(v string) *RunRCInstancesShrinkRequest {
+	s.CreateAckEdgeParamShrink = &v
 	return s
 }
 
@@ -88026,8 +88094,23 @@ func (s *SyncRCKeyPairResponse) SetBody(v *SyncRCKeyPairResponseBody) *SyncRCKey
 }
 
 type SyncRCSecurityGroupRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rc-i322y2t562oh7o******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-bp196e4d2ndjgy******
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -88055,6 +88138,11 @@ func (s *SyncRCSecurityGroupRequest) SetSecurityGroupId(v string) *SyncRCSecurit
 }
 
 type SyncRCSecurityGroupResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 300333A0-68E5-59CE-94AD-75153D17639E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -88635,9 +88723,24 @@ func (s *TransformDBInstancePayTypeResponse) SetBody(v *TransformDBInstancePayTy
 }
 
 type UnassociateEipAddressWithRCInstanceRequest struct {
+	// The EIP ID.
+	//
+	// example:
+	//
+	// eip-bp166out2x4bpcf******
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rc-i322y2t562oh7o******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UnassociateEipAddressWithRCInstanceRequest) String() string {
@@ -88664,6 +88767,11 @@ func (s *UnassociateEipAddressWithRCInstanceRequest) SetRegionId(v string) *Unas
 }
 
 type UnassociateEipAddressWithRCInstanceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// CDEAC7BF-D64B-54A1-9051-BE9AC0990E68
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -91029,7 +91137,7 @@ func (client *Client) AssociateEipAddressWithRCInstance(request *AssociateEipAdd
 
 // Summary:
 //
-// 挂载RC云盘
+// Attaches a pay-as-you-go data disk or a system disk to an RDS Custom instance. The instance and the disk must reside in the same zone.
 //
 // @param request - AttachRCDiskRequest
 //
@@ -91083,7 +91191,7 @@ func (client *Client) AttachRCDiskWithOptions(request *AttachRCDiskRequest, runt
 
 // Summary:
 //
-// 挂载RC云盘
+// Attaches a pay-as-you-go data disk or a system disk to an RDS Custom instance. The instance and the disk must reside in the same zone.
 //
 // @param request - AttachRCDiskRequest
 //
@@ -96246,6 +96354,10 @@ func (client *Client) CreateRCNodePoolWithOptions(tmpReq *CreateRCNodePoolReques
 
 	if !tea.BoolValue(util.IsUnset(request.SpotStrategy)) {
 		query["SpotStrategy"] = request.SpotStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportCase)) {
+		query["SupportCase"] = request.SupportCase
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskShrink)) {
@@ -106574,84 +106686,6 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDetachedBackupsResponse{}
 	_body, _err := client.DescribeDetachedBackupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeDiagnosticReportList is deprecated
-//
-// Summary:
-//
-// Queries the information about diagnostics reports.
-//
-// Description:
-//
-// >  This operation is phased out.
-//
-// @param request - DescribeDiagnosticReportListRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeDiagnosticReportListResponse
-// Deprecated
-func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeDiagnosticReportListRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticReportListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDiagnosticReportList"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDiagnosticReportListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeDiagnosticReportList is deprecated
-//
-// Summary:
-//
-// Queries the information about diagnostics reports.
-//
-// Description:
-//
-// >  This operation is phased out.
-//
-// @param request - DescribeDiagnosticReportListRequest
-//
-// @return DescribeDiagnosticReportListResponse
-// Deprecated
-func (client *Client) DescribeDiagnosticReportList(request *DescribeDiagnosticReportListRequest) (_result *DescribeDiagnosticReportListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDiagnosticReportListResponse{}
-	_body, _err := client.DescribeDiagnosticReportListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -119001,6 +119035,82 @@ func (client *Client) ModifyDBInstancePayType(request *ModifyDBInstancePayTypeRe
 
 // Summary:
 //
+// 修改数据库复制
+//
+// @param request - ModifyDBInstanceReplicationSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceReplicationSwitchResponse
+func (client *Client) ModifyDBInstanceReplicationSwitchWithOptions(request *ModifyDBInstanceReplicationSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceReplicationSwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalReplication)) {
+		query["ExternalReplication"] = request.ExternalReplication
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceReplicationSwitch"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceReplicationSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改数据库复制
+//
+// @param request - ModifyDBInstanceReplicationSwitchRequest
+//
+// @return ModifyDBInstanceReplicationSwitchResponse
+func (client *Client) ModifyDBInstanceReplicationSwitch(request *ModifyDBInstanceReplicationSwitchRequest) (_result *ModifyDBInstanceReplicationSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceReplicationSwitchResponse{}
+	_body, _err := client.ModifyDBInstanceReplicationSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the SSL encryption settings of an instance.
 //
 // Description:
@@ -122755,19 +122865,13 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Note:
 //
-// 	- MySQL
-//
-// 	- PostgreSQL
-//
-// 	- SQL Server
-//
-// >  If DAS Enterprise Edition is supported in the region in which the instance resides, the most recent version of DAS Enterprise Edition is enabled when you call the operation to enable the SQL Audit feature for the instance. For more information about the database engines and regions supported by each version of DAS Enterprise Edition, see [Supported databases and regions](https://help.aliyun.com/document_detail/156204.html).
+// This operation is no longer maintained. We recommend that you enable or configure Database Autonomy Service (DAS) Enterprise Edition. For more information, see [Enable or configure DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778835.html).
 //
 // ### [](#)References
 //
-// >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
 // 	- [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
 //
@@ -122843,19 +122947,13 @@ func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLColl
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Note:
 //
-// 	- MySQL
-//
-// 	- PostgreSQL
-//
-// 	- SQL Server
-//
-// >  If DAS Enterprise Edition is supported in the region in which the instance resides, the most recent version of DAS Enterprise Edition is enabled when you call the operation to enable the SQL Audit feature for the instance. For more information about the database engines and regions supported by each version of DAS Enterprise Edition, see [Supported databases and regions](https://help.aliyun.com/document_detail/156204.html).
+// This operation is no longer maintained. We recommend that you enable or configure Database Autonomy Service (DAS) Enterprise Edition. For more information, see [Enable or configure DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778835.html).
 //
 // ### [](#)References
 //
-// >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
 // 	- [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
 //
@@ -125017,7 +125115,13 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 
 // Summary:
 //
-// 更换rds custom实例系统盘
+// Reinstalls the operating system (OS) of an RDS Custom instance.
+//
+// Description:
+//
+//   The instance must be in the Stopped state.
+//
+// 	- If you reinstall the system, the data on the original system disk is lost. Exercise caution when you perform this operation.
 //
 // @param request - ReplaceRCInstanceSystemDiskRequest
 //
@@ -125079,7 +125183,13 @@ func (client *Client) ReplaceRCInstanceSystemDiskWithOptions(request *ReplaceRCI
 
 // Summary:
 //
-// 更换rds custom实例系统盘
+// Reinstalls the operating system (OS) of an RDS Custom instance.
+//
+// Description:
+//
+//   The instance must be in the Stopped state.
+//
+// 	- If you reinstall the system, the data on the original system disk is lost. Exercise caution when you perform this operation.
 //
 // @param request - ReplaceRCInstanceSystemDiskRequest
 //
@@ -126087,6 +126197,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 	}
 	request := &RunRCInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CreateAckEdgeParam)) {
+		request.CreateAckEdgeParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateAckEdgeParam, tea.String("CreateAckEdgeParam"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.DataDisk)) {
 		request.DataDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataDisk, tea.String("DataDisk"), tea.String("json"))
 	}
@@ -126110,6 +126224,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateAckEdgeParamShrink)) {
+		query["CreateAckEdgeParam"] = request.CreateAckEdgeParamShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CreateExtraParam)) {
@@ -127127,7 +127245,17 @@ func (client *Client) SyncRCKeyPair(request *SyncRCKeyPairRequest) (_result *Syn
 
 // Summary:
 //
-// 同步RDS Custom的安全组
+// Adds security group rules to an RDS Custom for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
 //
 // @param request - SyncRCSecurityGroupRequest
 //
@@ -127177,7 +127305,17 @@ func (client *Client) SyncRCSecurityGroupWithOptions(request *SyncRCSecurityGrou
 
 // Summary:
 //
-// 同步RDS Custom的安全组
+// Adds security group rules to an RDS Custom for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
 //
 // @param request - SyncRCSecurityGroupRequest
 //
@@ -127571,7 +127709,17 @@ func (client *Client) TransformDBInstancePayType(request *TransformDBInstancePay
 
 // Summary:
 //
-// 解绑RDS Custom实例的弹性公网
+// Unbinds a elastic IP address (EIP) from an RDS Custom for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
 //
 // @param request - UnassociateEipAddressWithRCInstanceRequest
 //
@@ -127621,7 +127769,17 @@ func (client *Client) UnassociateEipAddressWithRCInstanceWithOptions(request *Un
 
 // Summary:
 //
-// 解绑RDS Custom实例的弹性公网
+// Unbinds a elastic IP address (EIP) from an RDS Custom for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
 //
 // @param request - UnassociateEipAddressWithRCInstanceRequest
 //
