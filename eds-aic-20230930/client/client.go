@@ -807,8 +807,6 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// pg-b7bxrrwxkijjh****
