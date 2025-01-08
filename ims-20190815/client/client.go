@@ -6124,7 +6124,8 @@ type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	// example:
 	//
 	// true
-	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Indicates whether RAM users can remember the multi-factor authentication (MFA) devices for seven days. Valid values:
 	//
 	// 	- true
@@ -6181,6 +6182,11 @@ func (s GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferenc
 
 func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToChangePassword(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
 	s.AllowUserToChangePassword = &v
+	return s
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToLoginWithPasskey(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.AllowUserToLoginWithPasskey = &v
 	return s
 }
 
@@ -10963,7 +10969,8 @@ type SetSecurityPreferenceRequest struct {
 	// example:
 	//
 	// true
-	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
 	//
 	// 	- true
@@ -11067,6 +11074,11 @@ func (s *SetSecurityPreferenceRequest) SetAllowUserToChangePassword(v bool) *Set
 	return s
 }
 
+func (s *SetSecurityPreferenceRequest) SetAllowUserToLoginWithPasskey(v bool) *SetSecurityPreferenceRequest {
+	s.AllowUserToLoginWithPasskey = &v
+	return s
+}
+
 func (s *SetSecurityPreferenceRequest) SetAllowUserToManageAccessKeys(v bool) *SetSecurityPreferenceRequest {
 	s.AllowUserToManageAccessKeys = &v
 	return s
@@ -11122,7 +11134,8 @@ type SetSecurityPreferenceShrinkRequest struct {
 	// example:
 	//
 	// true
-	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
 	//
 	// 	- true
@@ -11223,6 +11236,11 @@ func (s SetSecurityPreferenceShrinkRequest) GoString() string {
 
 func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToChangePassword(v bool) *SetSecurityPreferenceShrinkRequest {
 	s.AllowUserToChangePassword = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToLoginWithPasskey(v bool) *SetSecurityPreferenceShrinkRequest {
+	s.AllowUserToLoginWithPasskey = &v
 	return s
 }
 
@@ -11380,7 +11398,8 @@ type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	// example:
 	//
 	// true
-	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Indicates whether RAM users can remember the MFA devices for seven days.
 	//
 	// example:
@@ -11423,6 +11442,11 @@ func (s SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferenc
 
 func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToChangePassword(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
 	s.AllowUserToChangePassword = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToLoginWithPasskey(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.AllowUserToLoginWithPasskey = &v
 	return s
 }
 
@@ -17919,6 +17943,10 @@ func (client *Client) SetSecurityPreferenceWithOptions(tmpReq *SetSecurityPrefer
 		query["AllowUserToChangePassword"] = request.AllowUserToChangePassword
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToLoginWithPasskey)) {
+		query["AllowUserToLoginWithPasskey"] = request.AllowUserToLoginWithPasskey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AllowUserToManageAccessKeys)) {
 		query["AllowUserToManageAccessKeys"] = request.AllowUserToManageAccessKeys
 	}
@@ -18002,6 +18030,10 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置用户SSO身份提供商信息
+//
 // @param request - SetUserSsoSettingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -18052,6 +18084,10 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置用户SSO身份提供商信息
+//
 // @param request - SetUserSsoSettingsRequest
 //
 // @return SetUserSsoSettingsResponse
