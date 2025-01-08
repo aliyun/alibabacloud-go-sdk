@@ -7985,12 +7985,12 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	//
 	// -1
 	AlertGroup *int64 `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The ID of the alert rule.
+	// The alert rule ID.
 	//
 	// example:
 	//
 	// 5510445
-	AlertId *float32 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	// The name of the alert rule.
 	//
 	// example:
@@ -8153,7 +8153,7 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetAlertGroup(v int64) *C
 	return s
 }
 
-func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetAlertId(v float32) *CreateOrUpdateAlertRuleResponseBodyAlertRule {
+func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetAlertId(v int64) *CreateOrUpdateAlertRuleResponseBodyAlertRule {
 	s.AlertId = &v
 	return s
 }
@@ -11665,7 +11665,8 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// grafana-bp1*****
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	PaymentType       *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The billing mode. Valid values: POSTPAY: charges fees based on the amount of reported metric data. POSTPAY_GB: charges fees based on the amount of written metric data. Empty value: The user-defined default billing mode is used. If no such a billing mode is available, you are charged based on the amount of reported metric data.
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The ID of the region. If you use a Prometheus instance to monitor an Alibaba Cloud service in China, this parameter must be set to cn-shanghai.
 	//
 	// This parameter is required.
@@ -26688,7 +26689,8 @@ type DoInsightsActionRequest struct {
 	// example:
 	//
 	// QueryTopo
-	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	Module   *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DoInsightsActionRequest) String() string {
@@ -26706,6 +26708,11 @@ func (s *DoInsightsActionRequest) SetData(v string) *DoInsightsActionRequest {
 
 func (s *DoInsightsActionRequest) SetModule(v string) *DoInsightsActionRequest {
 	s.Module = &v
+	return s
+}
+
+func (s *DoInsightsActionRequest) SetRegionId(v string) *DoInsightsActionRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -31469,7 +31476,7 @@ type GetPrometheusInstanceResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response parameters.
 	Data *GetPrometheusInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	//
@@ -31625,7 +31632,8 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// PREPAY
-	PaymentType           *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The time when the billing method was modified.
 	PaymentTypeUpdateTime *string `json:"PaymentTypeUpdateTime,omitempty" xml:"PaymentTypeUpdateTime,omitempty"`
 	// The product to which the Prometheus instance belongs. Valid values: arms and cms.
 	//
@@ -48576,6 +48584,7 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetPolicies(v 
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies struct {
+	// The cluster type.
 	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
 	// The feature that can be installed in the environment.
 	Features map[string]*bool `json:"Features,omitempty" xml:"Features,omitempty"`
@@ -48618,10 +48627,21 @@ type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies struct {
 	// example:
 	//
 	// false
-	DefaultInstall              *bool                                                                           `json:"DefaultInstall,omitempty" xml:"DefaultInstall,omitempty"`
-	EnableServiceAccount        *bool                                                                           `json:"EnableServiceAccount,omitempty" xml:"EnableServiceAccount,omitempty"`
-	MetricCheckRule             *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule `json:"MetricCheckRule,omitempty" xml:"MetricCheckRule,omitempty" type:"Struct"`
-	NeedRestartAfterIntegration *bool                                                                           `json:"NeedRestartAfterIntegration,omitempty" xml:"NeedRestartAfterIntegration,omitempty"`
+	DefaultInstall *bool `json:"DefaultInstall,omitempty" xml:"DefaultInstall,omitempty"`
+	// Indicates whether a service account is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableServiceAccount *bool `json:"EnableServiceAccount,omitempty" xml:"EnableServiceAccount,omitempty"`
+	// The metric check rule.
+	MetricCheckRule *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule `json:"MetricCheckRule,omitempty" xml:"MetricCheckRule,omitempty" type:"Struct"`
+	// Indicates whether a restart is required after the installation.
+	//
+	// example:
+	//
+	// true
+	NeedRestartAfterIntegration *bool `json:"NeedRestartAfterIntegration,omitempty" xml:"NeedRestartAfterIntegration,omitempty"`
 	// The supported protocols.
 	Protocols []*ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
 	// The target name of the add-on.
@@ -48676,6 +48696,7 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetTar
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule struct {
+	// The PromQL statements.
 	PromQL []*string `json:"PromQL,omitempty" xml:"PromQL,omitempty" type:"Repeated"`
 }
 
@@ -48777,20 +48798,28 @@ func (s *ListEnvironmentAddonsResponse) SetBody(v *ListEnvironmentAddonsResponse
 }
 
 type ListEnvironmentAlertRulesRequest struct {
+	// The name of the add-on. You must specify AddonName or Scene.
+	//
 	// example:
 	//
 	// mysql
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The scenario of the add-on. You must specify AddonName or Scene.
+	//
 	// example:
 	//
 	// database
@@ -48826,21 +48855,32 @@ func (s *ListEnvironmentAlertRulesRequest) SetScene(v string) *ListEnvironmentAl
 }
 
 type ListEnvironmentAlertRulesResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
 	Data *ListEnvironmentAlertRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 4C518054-852F-4023-ABC1-4AF95FF7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -48881,8 +48921,12 @@ func (s *ListEnvironmentAlertRulesResponseBody) SetSuccess(v bool) *ListEnvironm
 }
 
 type ListEnvironmentAlertRulesResponseBodyData struct {
-	Groups []*string                                         `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	Rules  []*ListEnvironmentAlertRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The queried alert groups.
+	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The queried rules.
+	Rules []*ListEnvironmentAlertRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 26
@@ -48913,10 +48957,14 @@ func (s *ListEnvironmentAlertRulesResponseBodyData) SetTotal(v int64) *ListEnvir
 }
 
 type ListEnvironmentAlertRulesResponseBodyDataRules struct {
+	// The ID of the alert rule.
+	//
 	// example:
 	//
 	// 9502571
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The name of the alert rule.
+	//
 	// example:
 	//
 	// mysql-CS-MySQLInnoDBLogWaits_lu
@@ -49516,23 +49564,32 @@ func (s *ListEnvironmentFeaturesResponse) SetBody(v *ListEnvironmentFeaturesResp
 }
 
 type ListEnvironmentKubeResourcesRequest struct {
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The resource type. Valid values: Pod, Deployment, and Service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Pod
-	Kind           *string            `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The tags.
 	LabelSelectors map[string]*string `json:"LabelSelectors,omitempty" xml:"LabelSelectors,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -49573,23 +49630,32 @@ func (s *ListEnvironmentKubeResourcesRequest) SetRegionId(v string) *ListEnviron
 }
 
 type ListEnvironmentKubeResourcesShrinkRequest struct {
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The resource type. Valid values: Pod, Deployment, and Service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Pod
-	Kind                 *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The tags.
 	LabelSelectorsShrink *string `json:"LabelSelectors,omitempty" xml:"LabelSelectors,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -49630,21 +49696,32 @@ func (s *ListEnvironmentKubeResourcesShrinkRequest) SetRegionId(v string) *ListE
 }
 
 type ListEnvironmentKubeResourcesResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
 	Data []*ListEnvironmentKubeResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	//
 	// example:
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C21AB7CF-B7AF-410F-BD61-82D1567F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
@@ -49685,15 +49762,22 @@ func (s *ListEnvironmentKubeResourcesResponseBody) SetSuccess(v bool) *ListEnvir
 }
 
 type ListEnvironmentKubeResourcesResponseBodyData struct {
+	// The version number of the API.
+	//
 	// example:
 	//
 	// v1
 	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Pod
-	Kind     *string                                               `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The metadata.
 	Metadata *ListEnvironmentKubeResourcesResponseBodyDataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// The resource specifications.
+	//
 	// example:
 	//
 	// {
@@ -49724,6 +49808,8 @@ type ListEnvironmentKubeResourcesResponseBodyData struct {
 	//
 	//           }
 	Spec interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The status of the resource.
+	//
 	// example:
 	//
 	// run
@@ -49764,12 +49850,18 @@ func (s *ListEnvironmentKubeResourcesResponseBodyData) SetStatus(v interface{}) 
 }
 
 type ListEnvironmentKubeResourcesResponseBodyDataMetadata struct {
+	// The annotations.
 	Annotations map[string]*string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	Labels      map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The tags.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The resource name.
+	//
 	// example:
 	//
 	// arms-prometheus-ack-arms-prometheus-c577b6cc8-mvdwd
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// arms-prom
@@ -49834,16 +49926,22 @@ func (s *ListEnvironmentKubeResourcesResponse) SetBody(v *ListEnvironmentKubeRes
 }
 
 type ListEnvironmentMetricTargetsRequest struct {
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// blackbox
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -49874,21 +49972,32 @@ func (s *ListEnvironmentMetricTargetsRequest) SetRegionId(v string) *ListEnviron
 }
 
 type ListEnvironmentMetricTargetsResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
 	Data *ListEnvironmentMetricTargetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 16AF921B-8187-489F-9913-43C808B4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
@@ -49929,7 +50038,9 @@ func (s *ListEnvironmentMetricTargetsResponseBody) SetSuccess(v bool) *ListEnvir
 }
 
 type ListEnvironmentMetricTargetsResponseBodyData struct {
-	ActiveTargets  []*ListEnvironmentMetricTargetsResponseBodyDataActiveTargets  `json:"ActiveTargets,omitempty" xml:"ActiveTargets,omitempty" type:"Repeated"`
+	// The active targets.
+	ActiveTargets []*ListEnvironmentMetricTargetsResponseBodyDataActiveTargets `json:"ActiveTargets,omitempty" xml:"ActiveTargets,omitempty" type:"Repeated"`
+	// The deleted targets.
 	DroppedTargets []*ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets `json:"DroppedTargets,omitempty" xml:"DroppedTargets,omitempty" type:"Repeated"`
 }
 
@@ -49952,36 +50063,54 @@ func (s *ListEnvironmentMetricTargetsResponseBodyData) SetDroppedTargets(v []*Li
 }
 
 type ListEnvironmentMetricTargetsResponseBodyDataActiveTargets struct {
+	// The tags used for service discovery.
 	DiscoveredLabels map[string]*string `json:"DiscoveredLabels,omitempty" xml:"DiscoveredLabels,omitempty"`
+	// The URL of the target.
+	//
 	// example:
 	//
 	// http://xxx
 	GlobalUrl *string `json:"GlobalUrl,omitempty" xml:"GlobalUrl,omitempty"`
+	// The health status.
+	//
 	// example:
 	//
 	// up
-	Health *string            `json:"Health,omitempty" xml:"Health,omitempty"`
+	Health *string `json:"Health,omitempty" xml:"Health,omitempty"`
+	// The tags.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The last error message.
+	//
 	// example:
 	//
 	// Get \\"http://172.16.0.86:9104/metrics\\": dial tcp 172.16.0.86:9104: connect: connection refused
 	LastError *string `json:"LastError,omitempty" xml:"LastError,omitempty"`
+	// The last collection time.
+	//
 	// example:
 	//
 	// 2023-10-12T07:15:47.306691514Z
 	LastScrape *string `json:"LastScrape,omitempty" xml:"LastScrape,omitempty"`
+	// The duration of the last collection.
+	//
 	// example:
 	//
 	// 0.00127593
 	LastScrapeDuration *float64 `json:"LastScrapeDuration,omitempty" xml:"LastScrapeDuration,omitempty"`
+	// The amount of metrics in the last collection.
+	//
 	// example:
 	//
 	// 122
 	LastScrapeSeries *int64 `json:"LastScrapeSeries,omitempty" xml:"LastScrapeSeries,omitempty"`
+	// The name of the collection.
+	//
 	// example:
 	//
 	// arms-prom/mysql-exporter-mysql-1694429267986-sm/0"
 	ScrapePool *string `json:"ScrapePool,omitempty" xml:"ScrapePool,omitempty"`
+	// The URL of the collection.
+	//
 	// example:
 	//
 	// http://xxxx
@@ -50047,36 +50176,54 @@ func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetScrapeUrl
 }
 
 type ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets struct {
+	// The tags used for service discovery.
 	DiscoveredLabels map[string]*string `json:"DiscoveredLabels,omitempty" xml:"DiscoveredLabels,omitempty"`
+	// The URL of the target.
+	//
 	// example:
 	//
 	// http://xxx
 	GlobalUrl *string `json:"GlobalUrl,omitempty" xml:"GlobalUrl,omitempty"`
+	// The health status.
+	//
 	// example:
 	//
 	// up
-	Health *string            `json:"Health,omitempty" xml:"Health,omitempty"`
+	Health *string `json:"Health,omitempty" xml:"Health,omitempty"`
+	// The tags.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The last error message.
+	//
 	// example:
 	//
 	// Get \\"http://172.16.0.86:9104/metrics\\": dial tcp 172.16.0.86:9104: connect: connection refused
 	LastError *string `json:"LastError,omitempty" xml:"LastError,omitempty"`
+	// The last collection time.
+	//
 	// example:
 	//
 	// 2023-10-12T07:15:47.306691514Z
 	LastScrape *string `json:"LastScrape,omitempty" xml:"LastScrape,omitempty"`
+	// The duration of the last collection.
+	//
 	// example:
 	//
 	// 0.00127593
 	LastScrapeDuration *float64 `json:"LastScrapeDuration,omitempty" xml:"LastScrapeDuration,omitempty"`
+	// The amount of metrics in the last collection.
+	//
 	// example:
 	//
 	// 122
 	LastScrapeSeries *int64 `json:"LastScrapeSeries,omitempty" xml:"LastScrapeSeries,omitempty"`
+	// The name of the collection.
+	//
 	// example:
 	//
 	// arms-prom/mysql-exporter-mysql-1694429267986-sm/0"
 	ScrapePool *string `json:"ScrapePool,omitempty" xml:"ScrapePool,omitempty"`
+	// The URL of the collection.
+	//
 	// example:
 	//
 	// http://xxxx
@@ -59556,7 +59703,7 @@ type QueryMetricByPageRequest struct {
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The dimension from which metrics are sorted. You can set this parameter to a supported dimension.
+	// The dimension for arranging metrics in sequence. For more information, see the supplementary metrics.
 	//
 	// example:
 	//
@@ -69779,8 +69926,9 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// if can be null:
 	// true
-	EnableAuthToken *bool   `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
-	PaymentType     *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	EnableAuthToken *bool `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
+	// The billing mode. Valid values: POSTPAY: charges fees based on the amount of reported metric data. POSTPAY_GB: charges fees based on the amount of written metric data.
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -81063,6 +81211,11 @@ func (client *Client) DoInsightsActionWithOptions(request *DoInsightsActionReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Data)) {
 		body["Data"] = request.Data
@@ -81073,7 +81226,8 @@ func (client *Client) DoInsightsActionWithOptions(request *DoInsightsActionReque
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DoInsightsAction"),
@@ -85723,7 +85877,7 @@ func (client *Client) ListEnvironmentAddons(request *ListEnvironmentAddonsReques
 
 // Summary:
 //
-// 环境的告警组列表
+// Queries the alert groups of an environment instance.
 //
 // @param request - ListEnvironmentAlertRulesRequest
 //
@@ -85777,7 +85931,7 @@ func (client *Client) ListEnvironmentAlertRulesWithOptions(request *ListEnvironm
 
 // Summary:
 //
-// 环境的告警组列表
+// Queries the alert groups of an environment instance.
 //
 // @param request - ListEnvironmentAlertRulesRequest
 //
@@ -85935,7 +86089,7 @@ func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRe
 
 // Summary:
 //
-// 环境中的kube资源列表
+// Queries the Kubernetes resources of an environment.
 //
 // @param tmpReq - ListEnvironmentKubeResourcesRequest
 //
@@ -85999,7 +86153,7 @@ func (client *Client) ListEnvironmentKubeResourcesWithOptions(tmpReq *ListEnviro
 
 // Summary:
 //
-// 环境中的kube资源列表
+// Queries the Kubernetes resources of an environment.
 //
 // @param request - ListEnvironmentKubeResourcesRequest
 //
@@ -86017,7 +86171,7 @@ func (client *Client) ListEnvironmentKubeResources(request *ListEnvironmentKubeR
 
 // Summary:
 //
-// 环境指标target列表
+// Queries the targets of an environment.
 //
 // @param request - ListEnvironmentMetricTargetsRequest
 //
@@ -86067,7 +86221,7 @@ func (client *Client) ListEnvironmentMetricTargetsWithOptions(request *ListEnvir
 
 // Summary:
 //
-// 环境指标target列表
+// Queries the targets of an environment.
 //
 // @param request - ListEnvironmentMetricTargetsRequest
 //
