@@ -6451,7 +6451,8 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	// example:
 	//
 	// 0
-	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	AdjustAmount        *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	AfterDiscountAmount *string  `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
 	//
 	// example:
@@ -6752,6 +6753,11 @@ func (s DescribeInstanceBillResponseBodyDataItems) GoString() string {
 
 func (s *DescribeInstanceBillResponseBodyDataItems) SetAdjustAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
 	s.AdjustAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetAfterDiscountAmount(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.AfterDiscountAmount = &v
 	return s
 }
 
@@ -13070,7 +13076,8 @@ type DescribeSplitItemBillResponseBodyDataItems struct {
 	// example:
 	//
 	// 0
-	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	AdjustAmount        *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	AfterDiscountAmount *string  `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
 	//
 	// example:
@@ -13401,6 +13408,11 @@ func (s DescribeSplitItemBillResponseBodyDataItems) GoString() string {
 
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetAdjustAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
 	s.AdjustAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetAfterDiscountAmount(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.AfterDiscountAmount = &v
 	return s
 }
 
@@ -34861,6 +34873,180 @@ func (s *SetResellerUserStatusResponse) SetBody(v *SetResellerUserStatusResponse
 	return s
 }
 
+type SetSavingPlanUserDeductRuleRequest struct {
+	EcIdAccountIds  []*SetSavingPlanUserDeductRuleRequestEcIdAccountIds  `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid            *string                                              `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	SpnInstanceCode *string                                              `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+	UserDeductRules []*SetSavingPlanUserDeductRuleRequestUserDeductRules `json:"UserDeductRules,omitempty" xml:"UserDeductRules,omitempty" type:"Repeated"`
+}
+
+func (s SetSavingPlanUserDeductRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetEcIdAccountIds(v []*SetSavingPlanUserDeductRuleRequestEcIdAccountIds) *SetSavingPlanUserDeductRuleRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetNbid(v string) *SetSavingPlanUserDeductRuleRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetSpnInstanceCode(v string) *SetSavingPlanUserDeductRuleRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetUserDeductRules(v []*SetSavingPlanUserDeductRuleRequestUserDeductRules) *SetSavingPlanUserDeductRuleRequest {
+	s.UserDeductRules = v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	EcId       *string  `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestEcIdAccountIds) SetAccountIds(v []*int64) *SetSavingPlanUserDeductRuleRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestEcIdAccountIds) SetEcId(v string) *SetSavingPlanUserDeductRuleRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleRequestUserDeductRules struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	SkipDeduct    *bool   `json:"SkipDeduct,omitempty" xml:"SkipDeduct,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleRequestUserDeductRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleRequestUserDeductRules) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestUserDeductRules) SetCommodityCode(v string) *SetSavingPlanUserDeductRuleRequestUserDeductRules {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestUserDeductRules) SetModuleCode(v string) *SetSavingPlanUserDeductRuleRequestUserDeductRules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestUserDeductRules) SetSkipDeduct(v bool) *SetSavingPlanUserDeductRuleRequestUserDeductRules {
+	s.SkipDeduct = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleShrinkRequest struct {
+	EcIdAccountIdsShrink  *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                  *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	SpnInstanceCode       *string `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+	UserDeductRulesShrink *string `json:"UserDeductRules,omitempty" xml:"UserDeductRules,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetEcIdAccountIdsShrink(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetNbid(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetSpnInstanceCode(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetUserDeductRulesShrink(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.UserDeductRulesShrink = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleResponseBody) SetData(v bool) *SetSavingPlanUserDeductRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleResponseBody) SetRequestId(v string) *SetSavingPlanUserDeductRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSavingPlanUserDeductRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleResponse) SetHeaders(v map[string]*string) *SetSavingPlanUserDeductRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleResponse) SetStatusCode(v int32) *SetSavingPlanUserDeductRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleResponse) SetBody(v *SetSavingPlanUserDeductRuleResponseBody) *SetSavingPlanUserDeductRuleResponse {
+	s.Body = v
+	return s
+}
+
 type SubscribeBillToOSSRequest struct {
 	// The initial billing cycle from which bills start to be pushed. After you subscribe to the bills, the system automatically pushes the data that is generated from the initial billing cycle to the current time. If the SubscribeType parameter is set to MonthBill, this parameter is invalid. Historical data is not pushed again. The data generated within the last year can be pushed.
 	//
@@ -43459,6 +43645,90 @@ func (client *Client) SetResellerUserStatus(request *SetResellerUserStatusReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SetResellerUserStatusResponse{}
 	_body, _err := client.SetResellerUserStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置节省计划用户级抵扣规则
+//
+// @param tmpReq - SetSavingPlanUserDeductRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSavingPlanUserDeductRuleResponse
+func (client *Client) SetSavingPlanUserDeductRuleWithOptions(tmpReq *SetSavingPlanUserDeductRuleRequest, runtime *util.RuntimeOptions) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetSavingPlanUserDeductRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserDeductRules)) {
+		request.UserDeductRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserDeductRules, tea.String("UserDeductRules"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpnInstanceCode)) {
+		body["SpnInstanceCode"] = request.SpnInstanceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDeductRulesShrink)) {
+		body["UserDeductRules"] = request.UserDeductRulesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetSavingPlanUserDeductRule"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetSavingPlanUserDeductRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置节省计划用户级抵扣规则
+//
+// @param request - SetSavingPlanUserDeductRuleRequest
+//
+// @return SetSavingPlanUserDeductRuleResponse
+func (client *Client) SetSavingPlanUserDeductRule(request *SetSavingPlanUserDeductRuleRequest) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetSavingPlanUserDeductRuleResponse{}
+	_body, _err := client.SetSavingPlanUserDeductRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
