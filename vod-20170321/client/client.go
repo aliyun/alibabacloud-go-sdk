@@ -2078,9 +2078,10 @@ type BatchGetMediaInfosResponseBodyMediaInfos struct {
 	// example:
 	//
 	// 10a5fa364a5b71ef89246733a78e****
-	MediaId       *string                                                `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaInfo     *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo     `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	MezzanineInfo *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo `json:"MezzanineInfo,omitempty" xml:"MezzanineInfo,omitempty" type:"Struct"`
+	MediaId       *string                                                 `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaInfo     *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo      `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	MezzanineInfo *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo  `json:"MezzanineInfo,omitempty" xml:"MezzanineInfo,omitempty" type:"Struct"`
+	PlayInfoList  []*BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetMediaInfosResponseBodyMediaInfos) String() string {
@@ -2103,6 +2104,11 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaInfo(v *BatchGetMedia
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMezzanineInfo(v *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) *BatchGetMediaInfosResponseBodyMediaInfos {
 	s.MezzanineInfo = v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetPlayInfoList(v []*BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) *BatchGetMediaInfosResponseBodyMediaInfos {
+	s.PlayInfoList = v
 	return s
 }
 
@@ -2773,6 +2779,179 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList) S
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList) SetWidth(v string) *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList {
+	s.Width = &v
+	return s
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
+	BitDepth         *int32  `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
+	Bitrate          *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecName        *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Duration         *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Encrypt          *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	EncryptMode      *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
+	EncryptType      *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps              *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HDRType          *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	Height           *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	JobExt           *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
+	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType          *int32  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	NarrowBandType   *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
+	PlayURL          *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
+	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Specification    *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamType       *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	TemplateGroupId  *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
+	TemplateId       *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WatermarkId      *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
+	Width            *int64  `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetBitDepth(v int32) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.BitDepth = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetBitrate(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetCodecName(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetCreationTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetDefinition(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Definition = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetDuration(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetEncrypt(v int64) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Encrypt = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetEncryptMode(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.EncryptMode = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetEncryptType(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.EncryptType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetFormat(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Format = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetFps(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Fps = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetHDRType(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.HDRType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetHeight(v int64) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Height = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetJobExt(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.JobExt = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetJobId(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.JobId = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetJobType(v int32) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.JobType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetModificationTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.ModificationTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetNarrowBandType(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.NarrowBandType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetPlayURL(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.PlayURL = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetSize(v int64) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Size = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetSpecification(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Specification = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetStatus(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetStreamType(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.StreamType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetTemplateGroupId(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.TemplateGroupId = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetTemplateId(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetWatermarkId(v string) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
+	s.WatermarkId = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) SetWidth(v int64) *BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList {
 	s.Width = &v
 	return s
 }
