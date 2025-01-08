@@ -2626,6 +2626,7 @@ func (s *DeleteLoginProfileResponse) SetBody(v *DeleteLoginProfileResponseBody) 
 }
 
 type DeletePolicyRequest struct {
+	CascadingDelete *bool `json:"CascadingDelete,omitempty" xml:"CascadingDelete,omitempty"`
 	// The name of the policy.
 	//
 	// example:
@@ -2640,6 +2641,11 @@ func (s DeletePolicyRequest) String() string {
 
 func (s DeletePolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeletePolicyRequest) SetCascadingDelete(v bool) *DeletePolicyRequest {
+	s.CascadingDelete = &v
+	return s
 }
 
 func (s *DeletePolicyRequest) SetPolicyName(v string) *DeletePolicyRequest {
@@ -8156,7 +8162,7 @@ type SetSecurityPreferenceRequest struct {
 	//
 	// If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
 	//
-	// You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+	// You can specify up to 40 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
 	//
 	// example:
 	//
@@ -8436,11 +8442,6 @@ func (s *SetSecurityPreferenceResponse) SetBody(v *SetSecurityPreferenceResponse
 }
 
 type UnbindMFADeviceRequest struct {
-	// The name of the RAM user.
-	//
-	// example:
-	//
-	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -8458,14 +8459,8 @@ func (s *UnbindMFADeviceRequest) SetUserName(v string) *UnbindMFADeviceRequest {
 }
 
 type UnbindMFADeviceResponseBody struct {
-	// The information of the MFA device.
 	MFADevice *UnbindMFADeviceResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnbindMFADeviceResponseBody) String() string {
@@ -8487,11 +8482,6 @@ func (s *UnbindMFADeviceResponseBody) SetRequestId(v string) *UnbindMFADeviceRes
 }
 
 type UnbindMFADeviceResponseBodyMFADevice struct {
-	// The serial number of the MFA device.
-	//
-	// example:
-	//
-	// acs:ram::123456789012****:mfa/device002
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -10827,6 +10817,10 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CascadingDelete)) {
+		query["CascadingDelete"] = request.CascadingDelete
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
 		query["PolicyName"] = request.PolicyName
 	}
@@ -12964,6 +12958,10 @@ func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the security preferences.
+//
 // @param request - SetSecurityPreferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13026,6 +13024,10 @@ func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPrefe
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the security preferences.
+//
 // @param request - SetSecurityPreferenceRequest
 //
 // @return SetSecurityPreferenceResponse
@@ -13040,6 +13042,10 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a multi-factor authentication (MFA) device from a RAM user.
+//
 // @param request - UnbindMFADeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13078,6 +13084,10 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a multi-factor authentication (MFA) device from a RAM user.
+//
 // @param request - UnbindMFADeviceRequest
 //
 // @return UnbindMFADeviceResponse
