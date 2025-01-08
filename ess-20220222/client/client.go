@@ -748,7 +748,8 @@ type AttachInstancesRequest struct {
 	// example:
 	//
 	// false
-	Entrusted *bool `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
+	Entrusted             *bool `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
+	IgnoreInvalidInstance *bool `json:"IgnoreInvalidInstance,omitempty" xml:"IgnoreInvalidInstance,omitempty"`
 	// The IDs of the ECS instances, elastic container instances, non-Alibaba Cloud instances, or instances in Economical Mode.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// Specifies whether to trigger the lifecycle hook for scale-outs when you call this operation. Valid values:
@@ -802,6 +803,11 @@ func (s *AttachInstancesRequest) SetClientToken(v string) *AttachInstancesReques
 
 func (s *AttachInstancesRequest) SetEntrusted(v bool) *AttachInstancesRequest {
 	s.Entrusted = &v
+	return s
+}
+
+func (s *AttachInstancesRequest) SetIgnoreInvalidInstance(v bool) *AttachInstancesRequest {
+	s.IgnoreInvalidInstance = &v
 	return s
 }
 
@@ -17748,30 +17754,55 @@ func (s *DescribeEciScalingConfigurationsResponse) SetBody(v *DescribeEciScaling
 }
 
 type DescribeElasticStrengthRequest struct {
+	// The disk categories of the data disks. The disk categories that do not match the specified criteria are returned after you call this operation.
+	//
+	// >  If you do not specify the scaling group ID, you must specify this parameter.
 	DataDiskCategories []*string `json:"DataDiskCategories,omitempty" xml:"DataDiskCategories,omitempty" type:"Repeated"`
+	// The name of the image family. You can specify the ImageFamily request parameter to obtain the most recent available images in the current image family for instance creation. If you specify ImageId, you cannot specify ImageFamily.
+	//
+	// >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
+	//
 	// example:
 	//
 	// CentOS7
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
+	// The ID of the image file that provides the image resource for Auto Scaling to create instances.
+	//
+	// >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
+	//
 	// example:
 	//
 	// centos6u5_64_20G_aliaegis****.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image. Each image name must be unique in a region. If you specify ImageId, ImageName is ignored.
+	//
+	// You cannot use ImageName to specify an Alibaba Cloud Marketplace image.
+	//
+	// >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
+	//
 	// example:
 	//
 	// ubuntu_18_04_x64_20G_alibase_20231225.vhd
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// The number of IPv6 addresses. If the instance type that you specified does meet the requirement for the number of IPv6 addresses, the scaling strength is weak.
+	//
+	// >  If you do not specify the scaling group ID, you must specify this parameter.
+	//
 	// example:
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	// **
+	//
+	// **Warning*	- This parameter is deprecated. We recommend that you use SpotStrategy.
+	//
 	// The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
 	//
 	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
 	//
-	// 	- SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
+	// 	- SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
 	//
 	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
 	//
@@ -17797,6 +17828,16 @@ type DescribeElasticStrengthRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The IDs of the scaling groups that you want to query.
 	ScalingGroupIds []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
+	// The instance bidding policy. Valid values:
+	//
+	// 	- NoSpot: The instances are created as pay-as-you-go instances.
+	//
+	// 	- SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
+	//
+	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is used as the bid price.
+	//
+	// Default value: NoSpot.
+	//
 	// example:
 	//
 	// NoSpot
@@ -17810,8 +17851,13 @@ type DescribeElasticStrengthRequest struct {
 	// 	- cloud_ssd: standard SSD.
 	//
 	// 	- cloud_essd: Enterprise SSD (ESSD).
+	//
+	// >  If you do not specify the scaling group ID, you must specify this parameter.
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
-	VSwitchIds           []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The vSwitch IDs.
+	//
+	// >  If you do not specify the scaling group ID, you must specify this parameter.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeElasticStrengthRequest) String() string {
@@ -17888,7 +17934,7 @@ func (s *DescribeElasticStrengthRequest) SetVSwitchIds(v []*string) *DescribeEla
 }
 
 type DescribeElasticStrengthResponseBody struct {
-	// The scaling strengths of scaling configurations that are queried at the same time.
+	// The scaling strength models.
 	ElasticStrengthModels []*DescribeElasticStrengthResponseBodyElasticStrengthModels `json:"ElasticStrengthModels,omitempty" xml:"ElasticStrengthModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -17898,7 +17944,11 @@ type DescribeElasticStrengthResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resource pools.
 	ResourcePools []*DescribeElasticStrengthResponseBodyResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
-	// The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+	// The scaling strength score of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength score of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+	//
+	// **
+	//
+	// **Warning*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -17935,6 +17985,17 @@ func (s *DescribeElasticStrengthResponseBody) SetTotalStrength(v float64) *Descr
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModels struct {
+	// The scaling strength level of the scaling group. Valid values:
+	//
+	// 	- Strong
+	//
+	// 	- Medium
+	//
+	// 	- Weak
+	//
+	// example:
+	//
+	// Strong
 	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
 	// The resource pools.
 	ResourcePools []*DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
@@ -17944,7 +18005,11 @@ type DescribeElasticStrengthResponseBodyElasticStrengthModels struct {
 	//
 	// asg-wz98mnj7nblv9gc****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+	// The scaling strength score of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength score of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+	//
+	// **
+	//
+	// **Warning*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -17992,16 +18057,30 @@ type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools struc
 	// example:
 	//
 	// ecs.r7.large
-	InstanceType    *string                                                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The inventory health.
 	InventoryHealth *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth `json:"InventoryHealth,omitempty" xml:"InventoryHealth,omitempty" type:"Struct"`
 	// The error message returned when the scaling strength is the weakest.
 	//
 	// example:
 	//
 	// The instanceTypes or diskTypes are not supported.
-	Msg    *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Indicates whether the resource pool is available. Valid values:
+	//
+	// 	- Available
+	//
+	// 	- Unavailable (If a constraint is not provided, the instance type is not deployed, or the instance type is out of stock, the resource pool becomes unavailable.)
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The scaling strength of the resource pool.
+	//
+	// **
+	//
+	// **Warning*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -18066,10 +18145,44 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) 
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth struct {
+	// The adequacy score.
+	//
+	// Valid values: 0 to 3.
+	//
+	// example:
+	//
+	// 3
 	AdequacyScore *int32 `json:"AdequacyScore,omitempty" xml:"AdequacyScore,omitempty"`
-	HealthScore   *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
-	HotScore      *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
-	SupplyScore   *int32 `json:"SupplyScore,omitempty" xml:"SupplyScore,omitempty"`
+	// The score of the inventory health.
+	//
+	// 	- A score between 5 and 6 indicates a sufficient inventory.
+	//
+	// 	- A score between 1 and 4 indicates that there is no guarantee of a sufficient inventory. Select a reservation as necessary.
+	//
+	// 	- A score between -3 and 0 indicates that the inventory is sufficient, and an alert is triggered. Select another instance type.
+	//
+	// Calculation formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
+	//
+	// example:
+	//
+	// 3
+	HealthScore *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
+	// The popularity score.
+	//
+	// Valid values: 0 to 3.
+	//
+	// example:
+	//
+	// 0
+	HotScore *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	// The score of the replenishment capability.
+	//
+	// Valid values: 0 to 3.
+	//
+	// example:
+	//
+	// 2
+	SupplyScore *int32 `json:"SupplyScore,omitempty" xml:"SupplyScore,omitempty"`
 }
 
 func (s DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth) String() string {
@@ -38225,7 +38338,12 @@ type ModifyScheduledTaskRequest struct {
 	// example:
 	//
 	// 2
-	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
+	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -41732,6 +41850,10 @@ func (client *Client) AttachInstancesWithOptions(request *AttachInstancesRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Entrusted)) {
 		query["Entrusted"] = request.Entrusted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreInvalidInstance)) {
+		query["IgnoreInvalidInstance"] = request.IgnoreInvalidInstance
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
