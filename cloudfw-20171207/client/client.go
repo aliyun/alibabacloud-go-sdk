@@ -7511,7 +7511,9 @@ type DescribeDefaultIPSConfigResponseBody struct {
 	// example:
 	//
 	// 0
-	CtiRules *int32 `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
+	CtiRules        *int32  `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
+	FreeTrailStatus *string `json:"FreeTrailStatus,omitempty" xml:"FreeTrailStatus,omitempty"`
+	MaxSdl          *int64  `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
 	// Indicates whether virtual patching is enabled. Valid values:
 	//
 	// 	- **1**: yes
@@ -7567,6 +7569,16 @@ func (s *DescribeDefaultIPSConfigResponseBody) SetBasicRules(v int32) *DescribeD
 
 func (s *DescribeDefaultIPSConfigResponseBody) SetCtiRules(v int32) *DescribeDefaultIPSConfigResponseBody {
 	s.CtiRules = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetFreeTrailStatus(v string) *DescribeDefaultIPSConfigResponseBody {
+	s.FreeTrailStatus = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetMaxSdl(v int64) *DescribeDefaultIPSConfigResponseBody {
+	s.MaxSdl = &v
 	return s
 }
 
@@ -17517,7 +17529,8 @@ type DescribeUserBuyVersionResponseBody struct {
 	// example:
 	//
 	// normal
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceStatus    *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InternetBandwidth *int64  `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
 	// The number of public IP addresses that can be protected.
 	//
 	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
@@ -17555,7 +17568,8 @@ type DescribeUserBuyVersionResponseBody struct {
 	// example:
 	//
 	// 0
-	MaxOverflow *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
+	MaxOverflow  *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
+	NatBandwidth *int64 `json:"NatBandwidth,omitempty" xml:"NatBandwidth,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -17593,7 +17607,8 @@ type DescribeUserBuyVersionResponseBody struct {
 	// example:
 	//
 	// 2
-	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version      *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	VpcBandwidth *int64 `json:"VpcBandwidth,omitempty" xml:"VpcBandwidth,omitempty"`
 	// The number of virtual private clouds (VPCs) that can be protected.
 	//
 	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
@@ -17632,6 +17647,11 @@ func (s *DescribeUserBuyVersionResponseBody) SetInstanceStatus(v string) *Descri
 	return s
 }
 
+func (s *DescribeUserBuyVersionResponseBody) SetInternetBandwidth(v int64) *DescribeUserBuyVersionResponseBody {
+	s.InternetBandwidth = &v
+	return s
+}
+
 func (s *DescribeUserBuyVersionResponseBody) SetIpNumber(v int64) *DescribeUserBuyVersionResponseBody {
 	s.IpNumber = &v
 	return s
@@ -17652,6 +17672,11 @@ func (s *DescribeUserBuyVersionResponseBody) SetMaxOverflow(v int64) *DescribeUs
 	return s
 }
 
+func (s *DescribeUserBuyVersionResponseBody) SetNatBandwidth(v int64) *DescribeUserBuyVersionResponseBody {
+	s.NatBandwidth = &v
+	return s
+}
+
 func (s *DescribeUserBuyVersionResponseBody) SetRequestId(v string) *DescribeUserBuyVersionResponseBody {
 	s.RequestId = &v
 	return s
@@ -17669,6 +17694,11 @@ func (s *DescribeUserBuyVersionResponseBody) SetUserStatus(v bool) *DescribeUser
 
 func (s *DescribeUserBuyVersionResponseBody) SetVersion(v int32) *DescribeUserBuyVersionResponseBody {
 	s.Version = &v
+	return s
+}
+
+func (s *DescribeUserBuyVersionResponseBody) SetVpcBandwidth(v int64) *DescribeUserBuyVersionResponseBody {
+	s.VpcBandwidth = &v
 	return s
 }
 
@@ -23751,7 +23781,8 @@ type ModifyDefaultIPSConfigRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MaxSdl *int64  `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
 	// Specifies whether to enable virtual patching. Valid values:
 	//
 	// 	- **1**: yes
@@ -23808,6 +23839,11 @@ func (s *ModifyDefaultIPSConfigRequest) SetCtiRules(v string) *ModifyDefaultIPSC
 
 func (s *ModifyDefaultIPSConfigRequest) SetLang(v string) *ModifyDefaultIPSConfigRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetMaxSdl(v int64) *ModifyDefaultIPSConfigRequest {
+	s.MaxSdl = &v
 	return s
 }
 
@@ -35238,6 +35274,10 @@ func (client *Client) ModifyDefaultIPSConfigWithOptions(request *ModifyDefaultIP
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSdl)) {
+		query["MaxSdl"] = request.MaxSdl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PatchRules)) {
