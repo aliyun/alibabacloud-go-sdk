@@ -8541,6 +8541,440 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 	return s
 }
 
+type DescribeGdnInstancesRequest struct {
+	// example:
+	//
+	// gdn_id、
+	//
+	// polarx_id
+	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// example:
+	//
+	// gdn-***、
+	//
+	// pxc-***
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	// GDN ID。
+	//
+	// example:
+	//
+	// gdn-***
+	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	// example:
+	//
+	// 50
+	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeGdnInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGdnInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGdnInstancesRequest) SetFilterType(v string) *DescribeGdnInstancesRequest {
+	s.FilterType = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesRequest) SetFilterValue(v string) *DescribeGdnInstancesRequest {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesRequest) SetGDNId(v string) *DescribeGdnInstancesRequest {
+	s.GDNId = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesRequest) SetPageNum(v string) *DescribeGdnInstancesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesRequest) SetPageSize(v string) *DescribeGdnInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesRequest) SetRegionId(v string) *DescribeGdnInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeGdnInstancesResponseBody struct {
+	Data *DescribeGdnInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7B044BD1-6402-5DE9-9AED-63D15A994E37
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeGdnInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGdnInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGdnInstancesResponseBody) SetData(v *DescribeGdnInstancesResponseBodyData) *DescribeGdnInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBody) SetMessage(v string) *DescribeGdnInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBody) SetRequestId(v string) *DescribeGdnInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBody) SetSuccess(v bool) *DescribeGdnInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeGdnInstancesResponseBodyData struct {
+	GdnInstanceList []*DescribeGdnInstancesResponseBodyDataGdnInstanceList `json:"GdnInstanceList,omitempty" xml:"GdnInstanceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 130
+	TotalNumber *string `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+}
+
+func (s DescribeGdnInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGdnInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGdnInstancesResponseBodyData) SetGdnInstanceList(v []*DescribeGdnInstancesResponseBodyDataGdnInstanceList) *DescribeGdnInstancesResponseBodyData {
+	s.GdnInstanceList = v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyData) SetPageNumber(v string) *DescribeGdnInstancesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyData) SetPageSize(v string) *DescribeGdnInstancesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyData) SetTotalNumber(v string) *DescribeGdnInstancesResponseBodyData {
+	s.TotalNumber = &v
+	return s
+}
+
+type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// gdn-***
+	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
+	// example:
+	//
+	// 2025-01-02T13:11:10.000+0000
+	GmtCreated *string                                                          `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	MemberList []*DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5.7
+	MysqlVersion *string `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
+	// example:
+	//
+	// Creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ""
+	SwitchHistory *string `json:"SwitchHistory,omitempty" xml:"SwitchHistory,omitempty"`
+}
+
+func (s DescribeGdnInstancesResponseBodyDataGdnInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGdnInstancesResponseBodyDataGdnInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetDescription(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetGdnInstanceName(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.GdnInstanceName = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetGmtCreated(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetMemberList(v []*DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.MemberList = v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetMysqlVersion(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.MysqlVersion = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetStatus(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetSwitchHistory(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.SwitchHistory = &v
+	return s
+}
+
+type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
+	// example:
+	//
+	// polarx.x4.medium.2e
+	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// example:
+	//
+	// polarx.x4.medium.2e
+	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	CnNodeCount *string `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	// example:
+	//
+	// drds_polarxpre_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// mysql.n4.medium.25
+	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	DnNodeCount *string `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	// example:
+	//
+	// 2025-01-02T13:11:10.000+0000
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2025-01-02T13:11:10.000+0000
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// pxc-***
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou-a
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// primary、
+	//
+	// standby
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou-a
+	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	// example:
+	//
+	// 1s
+	SecondsBehindMaster *string `json:"SecondsBehindMaster,omitempty" xml:"SecondsBehindMaster,omitempty"`
+	// example:
+	//
+	// Creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou-a
+	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetClassCode(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.ClassCode = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetCnNodeClassCode(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.CnNodeClassCode = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetCnNodeCount(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.CnNodeCount = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetCommodityCode(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetDnNodeClassCode(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.DnNodeClassCode = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetDnNodeCount(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.DnNodeCount = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetExpireTime(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetGmtCreated(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetMemberName(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.MemberName = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetPayType(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetPrimaryZone(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.PrimaryZone = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetRegionId(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetRole(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetSecondaryZone(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.SecondaryZone = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetSecondsBehindMaster(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.SecondsBehindMaster = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetStatus(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetTertiaryZone(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.TertiaryZone = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetZoneId(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeGdnInstancesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGdnInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeGdnInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGdnInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGdnInstancesResponse) SetHeaders(v map[string]*string) *DescribeGdnInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponse) SetStatusCode(v int32) *DescribeGdnInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponse) SetBody(v *DescribeGdnInstancesResponseBody) *DescribeGdnInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeOpenBackupSetRequest struct {
 	// This parameter is required.
 	//
@@ -12871,6 +13305,141 @@ func (s *SwitchDBInstanceHAResponse) SetBody(v *SwitchDBInstanceHAResponseBody) 
 	return s
 }
 
+type SwitchGdnMemberRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
+}
+
+func (s SwitchGdnMemberRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchGdnMemberRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchGdnMemberRoleRequest) SetDBInstanceName(v string) *SwitchGdnMemberRoleRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *SwitchGdnMemberRoleRequest) SetRegionId(v string) *SwitchGdnMemberRoleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SwitchGdnMemberRoleRequest) SetSwitchMode(v string) *SwitchGdnMemberRoleRequest {
+	s.SwitchMode = &v
+	return s
+}
+
+type SwitchGdnMemberRoleResponseBody struct {
+	Data *SwitchGdnMemberRoleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SwitchGdnMemberRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchGdnMemberRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchGdnMemberRoleResponseBody) SetData(v *SwitchGdnMemberRoleResponseBodyData) *SwitchGdnMemberRoleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SwitchGdnMemberRoleResponseBody) SetMessage(v string) *SwitchGdnMemberRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SwitchGdnMemberRoleResponseBody) SetRequestId(v string) *SwitchGdnMemberRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SwitchGdnMemberRoleResponseBody) SetSuccess(v bool) *SwitchGdnMemberRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SwitchGdnMemberRoleResponseBodyData struct {
+	// example:
+	//
+	// 2209883
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SwitchGdnMemberRoleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchGdnMemberRoleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchGdnMemberRoleResponseBodyData) SetTaskId(v int32) *SwitchGdnMemberRoleResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SwitchGdnMemberRoleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SwitchGdnMemberRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SwitchGdnMemberRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchGdnMemberRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchGdnMemberRoleResponse) SetHeaders(v map[string]*string) *SwitchGdnMemberRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SwitchGdnMemberRoleResponse) SetStatusCode(v int32) *SwitchGdnMemberRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SwitchGdnMemberRoleResponse) SetBody(v *SwitchGdnMemberRoleResponseBody) *SwitchGdnMemberRoleResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	// This parameter is required.
 	//
@@ -16605,6 +17174,86 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 
 // Summary:
 //
+// 获取GDN实例列表
+//
+// @param request - DescribeGdnInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGdnInstancesResponse
+func (client *Client) DescribeGdnInstancesWithOptions(request *DescribeGdnInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeGdnInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterType)) {
+		query["FilterType"] = request.FilterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GDNId)) {
+		query["GDNId"] = request.GDNId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGdnInstances"),
+		Version:     tea.String("2020-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGdnInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取GDN实例列表
+//
+// @param request - DescribeGdnInstancesRequest
+//
+// @return DescribeGdnInstancesResponse
+func (client *Client) DescribeGdnInstances(request *DescribeGdnInstancesRequest) (_result *DescribeGdnInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGdnInstancesResponse{}
+	_body, _err := client.DescribeGdnInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 开放商业备份集
 //
 // @param request - DescribeOpenBackupSetRequest
@@ -18583,6 +19232,74 @@ func (client *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchDBInstanceHAResponse{}
 	_body, _err := client.SwitchDBInstanceHAWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// GDN主备切换
+//
+// @param request - SwitchGdnMemberRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchGdnMemberRoleResponse
+func (client *Client) SwitchGdnMemberRoleWithOptions(request *SwitchGdnMemberRoleRequest, runtime *util.RuntimeOptions) (_result *SwitchGdnMemberRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchMode)) {
+		query["SwitchMode"] = request.SwitchMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchGdnMemberRole"),
+		Version:     tea.String("2020-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SwitchGdnMemberRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GDN主备切换
+//
+// @param request - SwitchGdnMemberRoleRequest
+//
+// @return SwitchGdnMemberRoleResponse
+func (client *Client) SwitchGdnMemberRole(request *SwitchGdnMemberRoleRequest) (_result *SwitchGdnMemberRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SwitchGdnMemberRoleResponse{}
+	_body, _err := client.SwitchGdnMemberRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
