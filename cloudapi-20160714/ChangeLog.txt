@@ -1,3 +1,6 @@
+2025-01-09 Version: v5.6.1
+- Generated golang 2016-07-14 for CloudAPI.
+
 2025-01-09 Version: v5.6.0
 - Support API ModifyInstanceVpcAttributeForConsole.
 - Update API CreateLogConfig: add param CreateSlr.
