@@ -205,6 +205,7 @@ type BatchSendMailRequest struct {
 	//
 	// 0
 	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	Headers    *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
@@ -250,6 +251,11 @@ func (s *BatchSendMailRequest) SetAddressType(v int32) *BatchSendMailRequest {
 
 func (s *BatchSendMailRequest) SetClickTrace(v string) *BatchSendMailRequest {
 	s.ClickTrace = &v
+	return s
+}
+
+func (s *BatchSendMailRequest) SetHeaders(v string) *BatchSendMailRequest {
+	s.Headers = &v
 	return s
 }
 
@@ -1011,6 +1017,11 @@ func (s *CreateTagResponse) SetBody(v *CreateTagResponseBody) *CreateTagResponse
 }
 
 type CreateUserSuppressionRequest struct {
+	// Email address or domain name
+	//
+	// example:
+	//
+	// test@example.net
 	Address              *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1046,10 +1057,14 @@ func (s *CreateUserSuppressionRequest) SetResourceOwnerId(v int64) *CreateUserSu
 }
 
 type CreateUserSuppressionResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 1A846D66-5EC7-551B-9687-5BF1963DCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Invalid address number
+	//
 	// example:
 	//
 	// 59511
@@ -1772,68 +1787,118 @@ func (s *DescAccountSummaryRequest) SetResourceOwnerId(v int64) *DescAccountSumm
 }
 
 type DescAccountSummaryResponseBody struct {
+	// Daily quota
+	//
 	// example:
 	//
 	// 2000
-	DailyQuota           *int32 `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
+	DailyQuota *int32 `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
+	// remaining amount of daily free quota
+	//
+	// example:
+	//
+	// 100
 	DailyRemainFreeQuota *int32 `json:"DailyRemainFreeQuota,omitempty" xml:"DailyRemainFreeQuota,omitempty"`
+	// Dayu status (deprecated, retained for compatibility reasons.)
+	//
 	// example:
 	//
 	// 0
 	DayuStatus *int32 `json:"DayuStatus,omitempty" xml:"DayuStatus,omitempty"`
+	// Number of domains
+	//
 	// example:
 	//
 	// 1
 	Domains *int32 `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// Effective time
+	//
 	// example:
 	//
 	// 0
 	EnableTimes *int32 `json:"EnableTimes,omitempty" xml:"EnableTimes,omitempty"`
+	// Number of sending addresses
+	//
 	// example:
 	//
 	// 0
 	MailAddresses *int32 `json:"MailAddresses,omitempty" xml:"MailAddresses,omitempty"`
+	// Maximum level
+	//
 	// example:
 	//
 	// 10
 	MaxQuotaLevel *int32 `json:"MaxQuotaLevel,omitempty" xml:"MaxQuotaLevel,omitempty"`
+	// Monthly quota
+	//
 	// example:
 	//
 	// 60000
 	MonthQuota *int32 `json:"MonthQuota,omitempty" xml:"MonthQuota,omitempty"`
+	// Credit level
+	//
 	// example:
 	//
 	// 2
 	QuotaLevel *int32 `json:"QuotaLevel,omitempty" xml:"QuotaLevel,omitempty"`
+	// Number of recipients
+	//
 	// example:
 	//
 	// 0
-	Receivers       *int32 `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
+	Receivers *int32 `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
+	// Remaining amount of total free quota
+	//
+	// example:
+	//
+	// 1910
 	RemainFreeQuota *int32 `json:"RemainFreeQuota,omitempty" xml:"RemainFreeQuota,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 82B295BB-7E69-491F-9896-ECEAFF09E1A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Deprecated, retained for compatibility reasons.
+	//
 	// example:
 	//
 	// 0
 	SmsRecord *int32 `json:"SmsRecord,omitempty" xml:"SmsRecord,omitempty"`
+	// Deprecated, retained for compatibility reasons.
+	//
 	// example:
 	//
 	// 0
 	SmsSign *int32 `json:"SmsSign,omitempty" xml:"SmsSign,omitempty"`
+	// Deprecated, retained for compatibility reasons.
+	//
 	// example:
 	//
 	// 0
 	SmsTemplates *int32 `json:"SmsTemplates,omitempty" xml:"SmsTemplates,omitempty"`
+	// Number of tags
+	//
 	// example:
 	//
 	// 0
 	Tags *int32 `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Number of templates
+	//
 	// example:
 	//
 	// 1
 	Templates *int32 `json:"Templates,omitempty" xml:"Templates,omitempty"`
+	// User status:
+	//
+	// 1 Frozen
+	//
+	// 2 In arrears
+	//
+	// 4 Restricted from sending
+	//
+	// 8 Logically deleted
+	//
 	// example:
 	//
 	// 0
@@ -1968,13 +2033,20 @@ func (s *DescAccountSummaryResponse) SetBody(v *DescAccountSummaryResponseBody) 
 }
 
 type DescDomainRequest struct {
+	// The ID of the domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 13464
-	DomainId                  *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainId *int32 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Determine whether to perform real-time DNS resolution
+	//
+	// example:
+	//
+	// true
 	RequireRealTimeDnsRecords *bool   `json:"RequireRealTimeDnsRecords,omitempty" xml:"RequireRealTimeDnsRecords,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2014,91 +2086,186 @@ func (s *DescDomainRequest) SetResourceOwnerId(v int64) *DescDomainRequest {
 }
 
 type DescDomainResponseBody struct {
+	// Track verification
+	//
 	// example:
 	//
 	// 1
 	CnameAuthStatus *string `json:"CnameAuthStatus,omitempty" xml:"CnameAuthStatus,omitempty"`
+	// CName verification flag, success: 0, failure: 1.
+	//
 	// example:
 	//
 	// 0
 	CnameConfirmStatus *string `json:"CnameConfirmStatus,omitempty" xml:"CnameConfirmStatus,omitempty"`
+	// CNAME records
+	//
 	// example:
 	//
 	// dmtrace
 	CnameRecord *string `json:"CnameRecord,omitempty" xml:"CnameRecord,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2019-09-29T12:49Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Default domain name
+	//
 	// example:
 	//
 	// 0
-	DefaultDomain   *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
-	DkimAuthStatus  *string `json:"DkimAuthStatus,omitempty" xml:"DkimAuthStatus,omitempty"`
-	DkimPublicKey   *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
-	DkimRR          *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
-	DmarcAuthStatus *int32  `json:"DmarcAuthStatus,omitempty" xml:"DmarcAuthStatus,omitempty"`
+	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
+	// DKIM validation flag, success: 0, failure: 1.
+	//
+	// example:
+	//
+	// 0
+	DkimAuthStatus *string `json:"DkimAuthStatus,omitempty" xml:"DkimAuthStatus,omitempty"`
+	// DKIM public key
+	//
+	// example:
+	//
+	// v=DKIM1; k=rsa; p=MIGfMA0GCSqGSI...
+	DkimPublicKey *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
+	// DKIM HostRecord
+	//
+	// example:
+	//
+	// aliyun-cn-hangzhou._domainkey.hangzhou26
+	DkimRR *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
+	// DMARC validation flag, success: 0, failure: 1.
+	//
+	// example:
+	//
+	// 1
+	DmarcAuthStatus *int32 `json:"DmarcAuthStatus,omitempty" xml:"DmarcAuthStatus,omitempty"`
+	// DMARC host record
+	//
+	// example:
+	//
+	// _dmarc.xxx
 	DmarcHostRecord *string `json:"DmarcHostRecord,omitempty" xml:"DmarcHostRecord,omitempty"`
-	DmarcRecord     *string `json:"DmarcRecord,omitempty" xml:"DmarcRecord,omitempty"`
-	DnsDmarc        *string `json:"DnsDmarc,omitempty" xml:"DnsDmarc,omitempty"`
+	// DMARC record
+	//
+	// example:
+	//
+	// v=DMARC1;p=none;rua=mailto:dmarc_report@service.aliyun.com
+	DmarcRecord *string `json:"DmarcRecord,omitempty" xml:"DmarcRecord,omitempty"`
+	// dmarc record value resolved through public DNS
+	//
+	// example:
+	//
+	// v=DMARC1;p=none;rua=mailto:dmarc_report@service.aliyun.com
+	DnsDmarc *string `json:"DnsDmarc,omitempty" xml:"DnsDmarc,omitempty"`
+	// MX record value resolved through public DNS
+	//
 	// example:
 	//
 	// abc-com.xxxx.com
 	DnsMx *string `json:"DnsMx,omitempty" xml:"DnsMx,omitempty"`
+	// SPF record value resolved through public DNS
+	//
 	// example:
 	//
 	// v=xxxx
 	DnsSpf *string `json:"DnsSpf,omitempty" xml:"DnsSpf,omitempty"`
+	// TXT record value resolved through public DNS.
+	//
 	// example:
 	//
 	// 121309ohdsa
 	DnsTxt *string `json:"DnsTxt,omitempty" xml:"DnsTxt,omitempty"`
+	// The ID of the domain name.
+	//
 	// example:
 	//
 	// 158910
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// domain
+	//
 	// example:
 	//
-	// abc.com
+	// example.net
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The status of the domain name. Indicates whether the domain name is verified and available. Valid values:
+	//
+	// 0: indicates that the domain name is verified and available.
+	//
+	// 1: indicates that the domain name fails to be verified and is unavailable.
+	//
+	// 2: indicates that the domain name is available, but not filed or configured with a CNAME record.
+	//
+	// 3: indicates that the domain name is available but not filed.
+	//
+	// 4: indicates that the domain name is available but not configured with a CNAME record.
+	//
 	// example:
 	//
 	// 1
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// TXT records provided by the Direct Mail console.
+	//
 	// example:
 	//
 	// 0c40d5f125af4e42892a
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// host record
+	//
+	// example:
+	//
+	// xxx
 	HostRecord *string `json:"HostRecord,omitempty" xml:"HostRecord,omitempty"`
+	// Filing status. 1 indicates that it has been filed, and 0 indicates that it has not been filed.
+	//
 	// example:
 	//
 	// 1
 	IcpStatus *string `json:"IcpStatus,omitempty" xml:"IcpStatus,omitempty"`
+	// MX validation flag, success: 0, failure: 1.
+	//
 	// example:
 	//
 	// 1
 	MxAuthStatus *string `json:"MxAuthStatus,omitempty" xml:"MxAuthStatus,omitempty"`
+	// MX record
+	//
 	// example:
 	//
 	// mx01.dm.aliyun.com
 	MxRecord *string `json:"MxRecord,omitempty" xml:"MxRecord,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 51B74264-46B4-43C8-A9A0-6B8E8BC04F34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// SPF validation flag, success: 0, failure: 1.
+	//
 	// example:
 	//
 	// 1
 	SpfAuthStatus *string `json:"SpfAuthStatus,omitempty" xml:"SpfAuthStatus,omitempty"`
+	// Spf record
+	//
 	// example:
 	//
 	// include:spf1.dm.aliyun.com
-	SpfRecord   *string `json:"SpfRecord,omitempty" xml:"SpfRecord,omitempty"`
-	SpfRecordV2 *string `json:"SpfRecordV2,omitempty" xml:"SpfRecordV2,omitempty"`
+	SpfRecord *string `json:"SpfRecord,omitempty" xml:"SpfRecord,omitempty"`
+	// SpfRecord
+	//
 	// example:
 	//
-	// abc.com
+	// v=spf1 include:spf1.dm.aliyun.com -all
+	SpfRecordV2 *string `json:"SpfRecordV2,omitempty" xml:"SpfRecordV2,omitempty"`
+	// The primary domain name.
+	//
+	// example:
+	//
+	// example.net
 	TlDomainName *string `json:"TlDomainName,omitempty" xml:"TlDomainName,omitempty"`
+	// The CNAME verification record provided by the Direct Mail console.
+	//
 	// example:
 	//
 	// tracedm.aliyuncs.com
@@ -3259,7 +3426,10 @@ func (s *GetTrackListByMailFromAndTagNameResponse) SetBody(v *GetTrackListByMail
 }
 
 type GetUserResponseBody struct {
+	// Returned Content
 	Data *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
@@ -3285,6 +3455,8 @@ func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
 }
 
 type GetUserResponseBodyData struct {
+	// Whether EventBridge is enabled
+	//
 	// example:
 	//
 	// true
@@ -3334,33 +3506,47 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type ListUserSuppressionRequest struct {
+	// Email address or domain name
+	//
 	// example:
 	//
 	// test@example.net
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// End time of the last bounce hit, timestamp, accurate to the second. The span between start and end times cannot exceed 7 days.
+	//
 	// example:
 	//
 	// 1715669077
 	EndBounceTime *int32 `json:"EndBounceTime,omitempty" xml:"EndBounceTime,omitempty"`
+	// End creation time, timestamp, accurate to the second. The span between start and end times cannot exceed 7 days.
+	//
 	// example:
 	//
 	// 1715669077
 	EndCreateTime *int32 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Start time of the last bounce hit, timestamp, accurate to the second.
+	//
 	// example:
 	//
 	// 1715668852
 	StartBounceTime *int32 `json:"StartBounceTime,omitempty" xml:"StartBounceTime,omitempty"`
+	// Start creation time, timestamp, accurate to the second.
+	//
 	// example:
 	//
 	// 1715668852
@@ -3426,19 +3612,28 @@ func (s *ListUserSuppressionRequest) SetStartCreateTime(v int32) *ListUserSuppre
 }
 
 type ListUserSuppressionResponseBody struct {
+	// Returned results.
 	Data *ListUserSuppressionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1A846D66-5EC7-551B-9687-5BF1963DCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 2
@@ -3496,27 +3691,39 @@ func (s *ListUserSuppressionResponseBodyData) SetUserSuppressions(v []*ListUserS
 }
 
 type ListUserSuppressionResponseBodyDataUserSuppressions struct {
+	// Email address or domain name
+	//
 	// example:
 	//
 	// test@example.net
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Creation time, timestamp, accurate to the second.
+	//
 	// example:
 	//
 	// 1715667435
 	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Last bounce hit time, timestamp, accurate to the second.
+	//
 	// example:
 	//
 	// 1715667451
 	LastBounceTime *int32 `json:"LastBounceTime,omitempty" xml:"LastBounceTime,omitempty"`
+	// Invalid address ID
+	//
 	// example:
 	//
 	// 59511
 	SuppressionId *int32 `json:"SuppressionId,omitempty" xml:"SuppressionId,omitempty"`
-	// example:
+	// Source of entry, invalid address type
 	//
 	// - system
 	//
 	// - user
+	//
+	// example:
+	//
+	// user
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -5579,7 +5786,10 @@ type RemoveUserSuppressionRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SuppressionIds       *string `json:"SuppressionIds,omitempty" xml:"SuppressionIds,omitempty"`
+	// example:
+	//
+	// 59511
+	SuppressionIds *string `json:"SuppressionIds,omitempty" xml:"SuppressionIds,omitempty"`
 }
 
 func (s RemoveUserSuppressionRequest) String() string {
@@ -5611,6 +5821,9 @@ func (s *RemoveUserSuppressionRequest) SetSuppressionIds(v string) *RemoveUserSu
 }
 
 type RemoveUserSuppressionResponseBody struct {
+	// example:
+	//
+	// 1A846D66-5EC7-551B-9687-5BF1963DCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6181,18 +6394,26 @@ func (s *SenderStatisticsByTagNameAndBatchIDResponse) SetBody(v *SenderStatistic
 }
 
 type SenderStatisticsDetailByParamRequest struct {
+	// Sending address. Not filled in represents all addresses.
+	//
 	// example:
 	//
 	// s***@example.net
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The end time. The difference between the start time and the end time cannot exceed 30 days. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2021-04-29 00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of entries to return in the request. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 5
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The start position of the next page. The offset for the request. If you want to obtain more records, specify the return value of the NextStart parameter for this parameter.
+	//
 	// example:
 	//
 	// 90f0243616#203#a***@example.net-1658817837#a***@example.net.247475288187
@@ -6200,18 +6421,26 @@ type SenderStatisticsDetailByParamRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start time. The start time can be up to 30 days earlier than the current time. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2021-04-28 00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The delivery status. If you leave this parameter empty, all states are included. Valid values: 0: successful, 2 invalid email address, 3: spam, and 4: failed.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The email tag. If you leave this parameter empty, all email tags are included.
+	//
 	// example:
 	//
 	// EmailQuestionnaireHelioscam
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The recipient address. If you leave this parameter empty, all recipient addresses are included.
+	//
 	// example:
 	//
 	// b***@example.net
@@ -6282,15 +6511,20 @@ func (s *SenderStatisticsDetailByParamRequest) SetToAddress(v string) *SenderSta
 }
 
 type SenderStatisticsDetailByParamResponseBody struct {
+	// The start position of the next page. The return value of the NextStart parameter indicates the start position of the next page. If you want to obtain more records, specify the return value in the next request.
+	//
 	// example:
 	//
 	// 90f0243616#203#a***@example.net-1658817689#a***@example.net.247141122178
 	NextStart *string `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B5AB8EBB-EE64-4BB2-B085-B92CC5DEDC41
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *SenderStatisticsDetailByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response parameters.
+	Data *SenderStatisticsDetailByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s SenderStatisticsDetailByParamResponseBody) String() string {
@@ -6334,28 +6568,56 @@ func (s *SenderStatisticsDetailByParamResponseBodyData) SetMailDetail(v []*Sende
 }
 
 type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {
+	// The sender address.
+	//
 	// example:
 	//
 	// s***@example.net
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Detailed classification of error causes:
+	//
+	// - SendOk
+	//
+	// - SmtpNxBox
+	//
+	// etc.
+	//
+	// example:
+	//
+	// SendOk
 	ErrorClassification *string `json:"ErrorClassification,omitempty" xml:"ErrorClassification,omitempty"`
+	// The most recent update time.
+	//
 	// example:
 	//
 	// 2021-04-28T17:11Z
 	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	// The details of the email.
+	//
 	// example:
 	//
 	// 250 Send Mail OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The delivery status. Valid values: 0: successful, 2 invalid email address, 3: spam, and 4: failed.
+	//
 	// example:
 	//
 	// 0
-	Status  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// the subject of email.
+	//
+	// example:
+	//
+	// test subject
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// The recipient address.
+	//
 	// example:
 	//
 	// b***@example.net
 	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	// The most recent update time (timestamp format)
+	//
 	// example:
 	//
 	// 1619601108
@@ -6544,6 +6806,7 @@ type SingleSendMailRequest struct {
 	// 0
 	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
 	FromAlias  *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	Headers    *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
 	// example:
 	//
 	// body
@@ -6611,6 +6874,11 @@ func (s *SingleSendMailRequest) SetClickTrace(v string) *SingleSendMailRequest {
 
 func (s *SingleSendMailRequest) SetFromAlias(v string) *SingleSendMailRequest {
 	s.FromAlias = &v
+	return s
+}
+
+func (s *SingleSendMailRequest) SetHeaders(v string) *SingleSendMailRequest {
+	s.Headers = &v
 	return s
 }
 
@@ -6825,6 +7093,7 @@ func (s *UpdateIpProtectionResponse) SetBody(v *UpdateIpProtectionResponseBody) 
 }
 
 type UpdateUserRequest struct {
+	// User Information
 	User *UpdateUserRequestUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -6842,6 +7111,8 @@ func (s *UpdateUserRequest) SetUser(v *UpdateUserRequestUser) *UpdateUserRequest
 }
 
 type UpdateUserRequestUser struct {
+	// Whether EventBridge is enabled
+	//
 	// example:
 	//
 	// true
@@ -6862,6 +7133,7 @@ func (s *UpdateUserRequestUser) SetEnableEventbridge(v bool) *UpdateUserRequestU
 }
 
 type UpdateUserShrinkRequest struct {
+	// User Information
 	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -7145,6 +7417,10 @@ func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ClickTrace)) {
 		query["ClickTrace"] = request.ClickTrace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Headers)) {
+		query["Headers"] = request.Headers
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -7682,7 +7958,7 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 
 // Summary:
 //
-// 创建用户无效地址
+// Create User\\"s Invalid Address
 //
 // @param request - CreateUserSuppressionRequest
 //
@@ -7736,7 +8012,7 @@ func (client *Client) CreateUserSuppressionWithOptions(request *CreateUserSuppre
 
 // Summary:
 //
-// 创建用户无效地址
+// Create User\\"s Invalid Address
 //
 // @param request - CreateUserSuppressionRequest
 //
@@ -8264,6 +8540,10 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve account information.
+//
 // @param request - DescAccountSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8310,6 +8590,10 @@ func (client *Client) DescAccountSummaryWithOptions(request *DescAccountSummaryR
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve account information.
+//
 // @param request - DescAccountSummaryRequest
 //
 // @return DescAccountSummaryResponse
@@ -8822,7 +9106,7 @@ func (client *Client) GetTrackListByMailFromAndTagName(request *GetTrackListByMa
 
 // Summary:
 //
-// 获取账号详情
+// Get Account Details
 //
 // @param request - GetUserRequest
 //
@@ -8853,7 +9137,7 @@ func (client *Client) GetUserWithOptions(runtime *util.RuntimeOptions) (_result 
 
 // Summary:
 //
-// 获取账号详情
+// Get Account Details
 //
 // @return GetUserResponse
 func (client *Client) GetUser() (_result *GetUserResponse, _err error) {
@@ -8869,7 +9153,7 @@ func (client *Client) GetUser() (_result *GetUserResponse, _err error) {
 
 // Summary:
 //
-// 列出用户无效地址
+// List User Invalid Addresses.
 //
 // @param request - ListUserSuppressionRequest
 //
@@ -8947,7 +9231,7 @@ func (client *Client) ListUserSuppressionWithOptions(request *ListUserSuppressio
 
 // Summary:
 //
-// 列出用户无效地址
+// List User Invalid Addresses.
 //
 // @param request - ListUserSuppressionRequest
 //
@@ -10298,6 +10582,10 @@ func (client *Client) SingleSendMailWithOptions(request *SingleSendMailRequest, 
 		query["FromAlias"] = request.FromAlias
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Headers)) {
+		query["Headers"] = request.Headers
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HtmlBody)) {
 		query["HtmlBody"] = request.HtmlBody
 	}
@@ -10465,7 +10753,7 @@ func (client *Client) UpdateIpProtection(request *UpdateIpProtectionRequest) (_r
 
 // Summary:
 //
-// 更新帐号信息
+// Update account information
 //
 // @param tmpReq - UpdateUserRequest
 //
@@ -10513,7 +10801,7 @@ func (client *Client) UpdateUserWithOptions(tmpReq *UpdateUserRequest, runtime *
 
 // Summary:
 //
-// 更新帐号信息
+// Update account information
 //
 // @param request - UpdateUserRequest
 //
