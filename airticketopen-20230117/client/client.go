@@ -14630,6 +14630,10 @@ type SearchRequestSearchControlOptions struct {
 	AirlineExcludedList []*string `json:"airline_excluded_list,omitempty" xml:"airline_excluded_list,omitempty" type:"Repeated"`
 	// preferred airlines list
 	AirlinePreferList []*string `json:"airline_prefer_list,omitempty" xml:"airline_prefer_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A1
+	ServiceQuality *string `json:"service_quality,omitempty" xml:"service_quality,omitempty"`
 }
 
 func (s SearchRequestSearchControlOptions) String() string {
@@ -14647,6 +14651,11 @@ func (s *SearchRequestSearchControlOptions) SetAirlineExcludedList(v []*string) 
 
 func (s *SearchRequestSearchControlOptions) SetAirlinePreferList(v []*string) *SearchRequestSearchControlOptions {
 	s.AirlinePreferList = v
+	return s
+}
+
+func (s *SearchRequestSearchControlOptions) SetServiceQuality(v string) *SearchRequestSearchControlOptions {
+	s.ServiceQuality = &v
 	return s
 }
 
