@@ -342,6 +342,7 @@ type CheckResultResponseBodyResult struct {
 	//
 	// **
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	ExtInfo   *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 	// example:
 	//
 	// **
@@ -381,6 +382,11 @@ func (s *CheckResultResponseBodyResult) SetExtFaceInfo(v string) *CheckResultRes
 
 func (s *CheckResultResponseBodyResult) SetExtIdInfo(v string) *CheckResultResponseBodyResult {
 	s.ExtIdInfo = &v
+	return s
+}
+
+func (s *CheckResultResponseBodyResult) SetExtInfo(v string) *CheckResultResponseBodyResult {
+	s.ExtInfo = &v
 	return s
 }
 
@@ -568,2275 +574,8 @@ func (s *DeleteVerifyResultResponse) SetBody(v *DeleteVerifyResultResponseBody) 
 	return s
 }
 
-type DescribeAddressLabelsRequest struct {
-	// example:
-	//
-	// 0xabds8292***dskkds
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// ETH
-	Coin *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
-	// example:
-	//
-	// dso9322***dsjsd22
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-}
-
-func (s DescribeAddressLabelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressLabelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressLabelsRequest) SetAddress(v string) *DescribeAddressLabelsRequest {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeAddressLabelsRequest) SetCoin(v string) *DescribeAddressLabelsRequest {
-	s.Coin = &v
-	return s
-}
-
-func (s *DescribeAddressLabelsRequest) SetMerchantBizId(v string) *DescribeAddressLabelsRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-type DescribeAddressLabelsResponseBody struct {
-	// example:
-	//
-	// Success
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *DescribeAddressLabelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4EB35****87EBA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeAddressLabelsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressLabelsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressLabelsResponseBody) SetCode(v string) *DescribeAddressLabelsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeAddressLabelsResponseBody) SetData(v *DescribeAddressLabelsResponseBodyData) *DescribeAddressLabelsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeAddressLabelsResponseBody) SetMessage(v string) *DescribeAddressLabelsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeAddressLabelsResponseBody) SetRequestId(v string) *DescribeAddressLabelsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAddressLabelsResponseBody) SetSuccess(v bool) *DescribeAddressLabelsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeAddressLabelsResponseBodyData struct {
-	LabelList []*string `json:"LabelList,omitempty" xml:"LabelList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAddressLabelsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressLabelsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressLabelsResponseBodyData) SetLabelList(v []*string) *DescribeAddressLabelsResponseBodyData {
-	s.LabelList = v
-	return s
-}
-
-type DescribeAddressLabelsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeAddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeAddressLabelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressLabelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressLabelsResponse) SetHeaders(v map[string]*string) *DescribeAddressLabelsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAddressLabelsResponse) SetStatusCode(v int32) *DescribeAddressLabelsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAddressLabelsResponse) SetBody(v *DescribeAddressLabelsResponseBody) *DescribeAddressLabelsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAddressOverviewRequest struct {
-	// example:
-	//
-	// 0xabds***djskjds
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// ETH
-	Coin *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
-	// example:
-	//
-	// e0c34a***353888
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-}
-
-func (s DescribeAddressOverviewRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressOverviewRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressOverviewRequest) SetAddress(v string) *DescribeAddressOverviewRequest {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewRequest) SetCoin(v string) *DescribeAddressOverviewRequest {
-	s.Coin = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewRequest) SetMerchantBizId(v string) *DescribeAddressOverviewRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-type DescribeAddressOverviewResponseBody struct {
-	// example:
-	//
-	// Success
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *DescribeAddressOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4EB35****87EBA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeAddressOverviewResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressOverviewResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressOverviewResponseBody) SetCode(v string) *DescribeAddressOverviewResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBody) SetData(v *DescribeAddressOverviewResponseBodyData) *DescribeAddressOverviewResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBody) SetMessage(v string) *DescribeAddressOverviewResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBody) SetRequestId(v string) *DescribeAddressOverviewResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBody) SetSuccess(v bool) *DescribeAddressOverviewResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeAddressOverviewResponseBodyData struct {
-	// example:
-	//
-	// 54.4216
-	Balance *float32 `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// example:
-	//
-	// 1441800674
-	FirstSeen *int64 `json:"FirstSeen,omitempty" xml:"FirstSeen,omitempty"`
-	// example:
-	//
-	// 1682056727
-	LastSeen *int64 `json:"LastSeen,omitempty" xml:"LastSeen,omitempty"`
-	// example:
-	//
-	// 1470
-	ReceivedTxsCount *int32 `json:"ReceivedTxsCount,omitempty" xml:"ReceivedTxsCount,omitempty"`
-	// example:
-	//
-	// 227
-	SpentTxsCount *int32 `json:"SpentTxsCount,omitempty" xml:"SpentTxsCount,omitempty"`
-	// example:
-	//
-	// 916263.8
-	TotalReceived *float32 `json:"TotalReceived,omitempty" xml:"TotalReceived,omitempty"`
-	// example:
-	//
-	// 916205.4
-	TotalSpent *float32 `json:"TotalSpent,omitempty" xml:"TotalSpent,omitempty"`
-	// example:
-	//
-	// 1697
-	TxsCount *int64 `json:"TxsCount,omitempty" xml:"TxsCount,omitempty"`
-}
-
-func (s DescribeAddressOverviewResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressOverviewResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetBalance(v float32) *DescribeAddressOverviewResponseBodyData {
-	s.Balance = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetFirstSeen(v int64) *DescribeAddressOverviewResponseBodyData {
-	s.FirstSeen = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetLastSeen(v int64) *DescribeAddressOverviewResponseBodyData {
-	s.LastSeen = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetReceivedTxsCount(v int32) *DescribeAddressOverviewResponseBodyData {
-	s.ReceivedTxsCount = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetSpentTxsCount(v int32) *DescribeAddressOverviewResponseBodyData {
-	s.SpentTxsCount = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetTotalReceived(v float32) *DescribeAddressOverviewResponseBodyData {
-	s.TotalReceived = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetTotalSpent(v float32) *DescribeAddressOverviewResponseBodyData {
-	s.TotalSpent = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponseBodyData) SetTxsCount(v int64) *DescribeAddressOverviewResponseBodyData {
-	s.TxsCount = &v
-	return s
-}
-
-type DescribeAddressOverviewResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeAddressOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeAddressOverviewResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddressOverviewResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddressOverviewResponse) SetHeaders(v map[string]*string) *DescribeAddressOverviewResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponse) SetStatusCode(v int32) *DescribeAddressOverviewResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAddressOverviewResponse) SetBody(v *DescribeAddressOverviewResponseBody) *DescribeAddressOverviewResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMaliciousAddressRequest struct {
-	// example:
-	//
-	// BTC
-	Coin *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
-	// example:
-	//
-	// 2017-08-20
-	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// example:
-	//
-	// djs20dsjk2-dsjd29-dsskc
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// example:
-	//
-	// 2017-07-20
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
-}
-
-func (s DescribeMaliciousAddressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMaliciousAddressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMaliciousAddressRequest) SetCoin(v string) *DescribeMaliciousAddressRequest {
-	s.Coin = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressRequest) SetEnd(v string) *DescribeMaliciousAddressRequest {
-	s.End = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressRequest) SetMerchantBizId(v string) *DescribeMaliciousAddressRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressRequest) SetStart(v string) *DescribeMaliciousAddressRequest {
-	s.Start = &v
-	return s
-}
-
-type DescribeMaliciousAddressResponseBody struct {
-	// example:
-	//
-	// Success
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data []*DescribeMaliciousAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4EB35****87EBA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeMaliciousAddressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMaliciousAddressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMaliciousAddressResponseBody) SetCode(v string) *DescribeMaliciousAddressResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBody) SetData(v []*DescribeMaliciousAddressResponseBodyData) *DescribeMaliciousAddressResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBody) SetMessage(v string) *DescribeMaliciousAddressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBody) SetRequestId(v string) *DescribeMaliciousAddressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBody) SetSuccess(v bool) *DescribeMaliciousAddressResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeMaliciousAddressResponseBodyData struct {
-	// example:
-	//
-	// 2017-07-18 00:00:00
-	AddTime *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// example:
-	//
-	// f6d239ff***df816
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// ETH
-	Coin *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
-	// example:
-	//
-	// FAKE_Coindash_2
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s DescribeMaliciousAddressResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMaliciousAddressResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMaliciousAddressResponseBodyData) SetAddTime(v string) *DescribeMaliciousAddressResponseBodyData {
-	s.AddTime = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBodyData) SetAddress(v string) *DescribeMaliciousAddressResponseBodyData {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBodyData) SetCoin(v string) *DescribeMaliciousAddressResponseBodyData {
-	s.Coin = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBodyData) SetDetail(v string) *DescribeMaliciousAddressResponseBodyData {
-	s.Detail = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponseBodyData) SetTag(v string) *DescribeMaliciousAddressResponseBodyData {
-	s.Tag = &v
-	return s
-}
-
-type DescribeMaliciousAddressResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeMaliciousAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeMaliciousAddressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMaliciousAddressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMaliciousAddressResponse) SetHeaders(v map[string]*string) *DescribeMaliciousAddressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponse) SetStatusCode(v int32) *DescribeMaliciousAddressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMaliciousAddressResponse) SetBody(v *DescribeMaliciousAddressResponseBody) *DescribeMaliciousAddressResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRiskScoreRequest struct {
-	// example:
-	//
-	// 0xabds***djskjds
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// ETH
-	Coin *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
-	// example:
-	//
-	// e0c34a***353888
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-}
-
-func (s DescribeRiskScoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRiskScoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRiskScoreRequest) SetAddress(v string) *DescribeRiskScoreRequest {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeRiskScoreRequest) SetCoin(v string) *DescribeRiskScoreRequest {
-	s.Coin = &v
-	return s
-}
-
-func (s *DescribeRiskScoreRequest) SetMerchantBizId(v string) *DescribeRiskScoreRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-type DescribeRiskScoreResponseBody struct {
-	// example:
-	//
-	// Success
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *DescribeRiskScoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4EB35****87EBA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeRiskScoreResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRiskScoreResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRiskScoreResponseBody) SetCode(v string) *DescribeRiskScoreResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeRiskScoreResponseBody) SetData(v *DescribeRiskScoreResponseBodyData) *DescribeRiskScoreResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeRiskScoreResponseBody) SetMessage(v string) *DescribeRiskScoreResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeRiskScoreResponseBody) SetRequestId(v string) *DescribeRiskScoreResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRiskScoreResponseBody) SetSuccess(v bool) *DescribeRiskScoreResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeRiskScoreResponseBodyData struct {
-	DetailList []*string `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// MMFinance Exploiter
-	HackingEvent *string `json:"HackingEvent,omitempty" xml:"HackingEvent,omitempty"`
-	// example:
-	//
-	// Severe
-	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// example:
-	//
-	// 100
-	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
-}
-
-func (s DescribeRiskScoreResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRiskScoreResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRiskScoreResponseBodyData) SetDetailList(v []*string) *DescribeRiskScoreResponseBodyData {
-	s.DetailList = v
-	return s
-}
-
-func (s *DescribeRiskScoreResponseBodyData) SetHackingEvent(v string) *DescribeRiskScoreResponseBodyData {
-	s.HackingEvent = &v
-	return s
-}
-
-func (s *DescribeRiskScoreResponseBodyData) SetRiskLevel(v string) *DescribeRiskScoreResponseBodyData {
-	s.RiskLevel = &v
-	return s
-}
-
-func (s *DescribeRiskScoreResponseBodyData) SetScore(v int32) *DescribeRiskScoreResponseBodyData {
-	s.Score = &v
-	return s
-}
-
-type DescribeRiskScoreResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeRiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeRiskScoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRiskScoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRiskScoreResponse) SetHeaders(v map[string]*string) *DescribeRiskScoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRiskScoreResponse) SetStatusCode(v int32) *DescribeRiskScoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRiskScoreResponse) SetBody(v *DescribeRiskScoreResponseBody) *DescribeRiskScoreResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeTransactionsListRequest struct {
-	// example:
-	//
-	// 0xabds***djskjds
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// ETH
-	Coin *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
-	// example:
-	//
-	// 1682235649
-	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// example:
-	//
-	// e0c34a***353888
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// example:
-	//
-	// 1
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// example:
-	//
-	// 1682232649
-	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// example:
-	//
-	// in
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeTransactionsListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTransactionsListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTransactionsListRequest) SetAddress(v string) *DescribeTransactionsListRequest {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeTransactionsListRequest) SetCoin(v string) *DescribeTransactionsListRequest {
-	s.Coin = &v
-	return s
-}
-
-func (s *DescribeTransactionsListRequest) SetEndTimestamp(v int64) *DescribeTransactionsListRequest {
-	s.EndTimestamp = &v
-	return s
-}
-
-func (s *DescribeTransactionsListRequest) SetMerchantBizId(v string) *DescribeTransactionsListRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-func (s *DescribeTransactionsListRequest) SetPage(v int64) *DescribeTransactionsListRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *DescribeTransactionsListRequest) SetStartTimestamp(v int64) *DescribeTransactionsListRequest {
-	s.StartTimestamp = &v
-	return s
-}
-
-func (s *DescribeTransactionsListRequest) SetType(v string) *DescribeTransactionsListRequest {
-	s.Type = &v
-	return s
-}
-
-type DescribeTransactionsListResponseBody struct {
-	// example:
-	//
-	// Success
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *DescribeTransactionsListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4EB35****87EBA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeTransactionsListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTransactionsListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTransactionsListResponseBody) SetCode(v string) *DescribeTransactionsListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBody) SetData(v *DescribeTransactionsListResponseBodyData) *DescribeTransactionsListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBody) SetMessage(v string) *DescribeTransactionsListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBody) SetRequestId(v string) *DescribeTransactionsListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBody) SetSuccess(v bool) *DescribeTransactionsListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeTransactionsListResponseBodyData struct {
-	In  []*DescribeTransactionsListResponseBodyDataIn  `json:"In,omitempty" xml:"In,omitempty" type:"Repeated"`
-	Out []*DescribeTransactionsListResponseBodyDataOut `json:"Out,omitempty" xml:"Out,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// example:
-	//
-	// 6
-	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	// example:
-	//
-	// 300
-	TransactionsOnPage *int64 `json:"TransactionsOnPage,omitempty" xml:"TransactionsOnPage,omitempty"`
-}
-
-func (s DescribeTransactionsListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTransactionsListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTransactionsListResponseBodyData) SetIn(v []*DescribeTransactionsListResponseBodyDataIn) *DescribeTransactionsListResponseBodyData {
-	s.In = v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyData) SetOut(v []*DescribeTransactionsListResponseBodyDataOut) *DescribeTransactionsListResponseBodyData {
-	s.Out = v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyData) SetPage(v int64) *DescribeTransactionsListResponseBodyData {
-	s.Page = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyData) SetTotalPages(v int64) *DescribeTransactionsListResponseBodyData {
-	s.TotalPages = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyData) SetTransactionsOnPage(v int64) *DescribeTransactionsListResponseBodyData {
-	s.TransactionsOnPage = &v
-	return s
-}
-
-type DescribeTransactionsListResponseBodyDataIn struct {
-	// example:
-	//
-	// 0xd90e2***b90ad053324f31b
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// 0.0845
-	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// example:
-	//
-	// bi***ce
-	Label      *string   `json:"Label,omitempty" xml:"Label,omitempty"`
-	TxHashList []*string `json:"TxHashList,omitempty" xml:"TxHashList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeTransactionsListResponseBodyDataIn) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTransactionsListResponseBodyDataIn) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTransactionsListResponseBodyDataIn) SetAddress(v string) *DescribeTransactionsListResponseBodyDataIn {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataIn) SetAmount(v float32) *DescribeTransactionsListResponseBodyDataIn {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataIn) SetLabel(v string) *DescribeTransactionsListResponseBodyDataIn {
-	s.Label = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataIn) SetTxHashList(v []*string) *DescribeTransactionsListResponseBodyDataIn {
-	s.TxHashList = v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataIn) SetType(v int32) *DescribeTransactionsListResponseBodyDataIn {
-	s.Type = &v
-	return s
-}
-
-type DescribeTransactionsListResponseBodyDataOut struct {
-	// example:
-	//
-	// 0xd90e2***b90ad053324f31b
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// 743
-	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// example:
-	//
-	// Tor***uter
-	Label      *string   `json:"Label,omitempty" xml:"Label,omitempty"`
-	TxHashList []*string `json:"TxHashList,omitempty" xml:"TxHashList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeTransactionsListResponseBodyDataOut) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTransactionsListResponseBodyDataOut) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTransactionsListResponseBodyDataOut) SetAddress(v string) *DescribeTransactionsListResponseBodyDataOut {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataOut) SetAmount(v float32) *DescribeTransactionsListResponseBodyDataOut {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataOut) SetLabel(v string) *DescribeTransactionsListResponseBodyDataOut {
-	s.Label = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataOut) SetTxHashList(v []*string) *DescribeTransactionsListResponseBodyDataOut {
-	s.TxHashList = v
-	return s
-}
-
-func (s *DescribeTransactionsListResponseBodyDataOut) SetType(v int32) *DescribeTransactionsListResponseBodyDataOut {
-	s.Type = &v
-	return s
-}
-
-type DescribeTransactionsListResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeTransactionsListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeTransactionsListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTransactionsListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTransactionsListResponse) SetHeaders(v map[string]*string) *DescribeTransactionsListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeTransactionsListResponse) SetStatusCode(v int32) *DescribeTransactionsListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeTransactionsListResponse) SetBody(v *DescribeTransactionsListResponseBody) *DescribeTransactionsListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeWeb3AddressLabelsRequest struct {
-	// The address hash.
-	//
-	// example:
-	//
-	// 0000980145045a5c5acad3d2df0cf3b2afxxxxxx
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// This is the short name of blockchain。
-	//
-	// [ ETH, MATIC, BNB ]
-	//
-	// example:
-	//
-	// ETH
-	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
-	// A unique business ID for tracing purpose. For example，the sequence ID from the merchant\\"s business-related database.
-	//
-	// example:
-	//
-	// dso932dsjsd22
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-}
-
-func (s DescribeWeb3AddressLabelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3AddressLabelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3AddressLabelsRequest) SetAddress(v string) *DescribeWeb3AddressLabelsRequest {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsRequest) SetChainShortName(v string) *DescribeWeb3AddressLabelsRequest {
-	s.ChainShortName = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsRequest) SetMerchantBizId(v string) *DescribeWeb3AddressLabelsRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-type DescribeWeb3AddressLabelsResponseBody struct {
-	// Return code. For the full list of codes, see Codes and Messages.
-	//
-	// example:
-	//
-	// Success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
-	Data *DescribeWeb3AddressLabelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response detailed message.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request, which can be used to locate issues.
-	//
-	// example:
-	//
-	// 7F971622-38C0-5F56-B2EC-315367979B4F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeWeb3AddressLabelsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3AddressLabelsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBody) SetCode(v string) *DescribeWeb3AddressLabelsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBody) SetData(v *DescribeWeb3AddressLabelsResponseBodyData) *DescribeWeb3AddressLabelsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBody) SetHttpStatusCode(v int32) *DescribeWeb3AddressLabelsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBody) SetMessage(v string) *DescribeWeb3AddressLabelsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBody) SetRequestId(v string) *DescribeWeb3AddressLabelsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeWeb3AddressLabelsResponseBodyData struct {
-	// address
-	//
-	// example:
-	//
-	// 2341980145045A5c5acad3d2Df0cF3B2Afxxxxxx
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// amount of native currency
-	//
-	// example:
-	//
-	// 0
-	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// native currency of the chain
-	//
-	// example:
-	//
-	// ETH
-	BalanceSymbol *string `json:"BalanceSymbol,omitempty" xml:"BalanceSymbol,omitempty"`
-	// ChainNameEnumstring name of blockchain
-	//
-	// example:
-	//
-	// Ethereum Mainnet
-	ChainName *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
-	// ChainShortName
-	//
-	// example:
-	//
-	// eth
-	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
-	// 0: EOA; 1: Contract
-	//
-	// example:
-	//
-	// 0
-	ContractAddress *string `json:"ContractAddress,omitempty" xml:"ContractAddress,omitempty"`
-	// the address of deployer if the current address is a contract, null if the current address is an EOA
-	//
-	// example:
-	//
-	// dAC17F958D2ee523a2206206994597C13Dxxxxxx
-	CreateContractAddress *string `json:"CreateContractAddress,omitempty" xml:"CreateContractAddress,omitempty"`
-	// contract creation hash if the current address is a contract, null if the current address is an EOA
-	//
-	// example:
-	//
-	// dAC17F958D2ee523a2206206994597C13Dxxxxxx
-	CreateContractTransactionHash *string `json:"CreateContractTransactionHash,omitempty" xml:"CreateContractTransactionHash,omitempty"`
-	// customized assessment detail
-	//
-	// example:
-	//
-	// ""
-	CustomRiskAssessment *string `json:"CustomRiskAssessment,omitempty" xml:"CustomRiskAssessment,omitempty"`
-	// the first transaction hash sent by the address
-	//
-	// example:
-	//
-	// 20230304
-	FirstTransactionTime *string `json:"FirstTransactionTime,omitempty" xml:"FirstTransactionTime,omitempty"`
-	// 0: Not validator; 1: validator
-	//
-	// example:
-	//
-	// 0
-	IsProducerAddress *string `json:"IsProducerAddress,omitempty" xml:"IsProducerAddress,omitempty"`
-	// the latest transaction hash sent by the address
-	//
-	// example:
-	//
-	// 20230304
-	LastTransactionTime *string `json:"LastTransactionTime,omitempty" xml:"LastTransactionTime,omitempty"`
-	// the amount of native currency received in 180 days
-	//
-	// example:
-	//
-	// 0
-	ReceiveAmount *string `json:"ReceiveAmount,omitempty" xml:"ReceiveAmount,omitempty"`
-	// the amount of native currency sent in 180 days
-	//
-	// example:
-	//
-	// 0
-	SendAmount *string `json:"SendAmount,omitempty" xml:"SendAmount,omitempty"`
-	// tag
-	//
-	// example:
-	//
-	// contracts:Tether: Tether_USD,token_standard:erc20
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// if the address is an erc20 token, returns the token name
-	//
-	// example:
-	//
-	// Tether USD
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// the number of erc20 tokens involved with current address in 180 days
-	//
-	// example:
-	//
-	// 1
-	TokenAmount *int32 `json:"TokenAmount,omitempty" xml:"TokenAmount,omitempty"`
-	// address of erc20 tokens involved with current address in 180 days
-	//
-	// example:
-	//
-	// ["{"ERC721":[]"]}"]
-	TokenList *string `json:"TokenList,omitempty" xml:"TokenList,omitempty"`
-	// the number of transactions
-	//
-	// example:
-	//
-	// 2
-	TransactionCount *int32 `json:"TransactionCount,omitempty" xml:"TransactionCount,omitempty"`
-}
-
-func (s DescribeWeb3AddressLabelsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3AddressLabelsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetBalance(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.Balance = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetBalanceSymbol(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.BalanceSymbol = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetChainName(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.ChainName = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetChainShortName(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.ChainShortName = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetContractAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.ContractAddress = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetCreateContractAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.CreateContractAddress = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetCreateContractTransactionHash(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.CreateContractTransactionHash = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetCustomRiskAssessment(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.CustomRiskAssessment = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetFirstTransactionTime(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.FirstTransactionTime = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetIsProducerAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.IsProducerAddress = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetLastTransactionTime(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.LastTransactionTime = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetReceiveAmount(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.ReceiveAmount = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetSendAmount(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.SendAmount = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTag(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetToken(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.Token = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTokenAmount(v int32) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.TokenAmount = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTokenList(v string) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.TokenList = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTransactionCount(v int32) *DescribeWeb3AddressLabelsResponseBodyData {
-	s.TransactionCount = &v
-	return s
-}
-
-type DescribeWeb3AddressLabelsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeWeb3AddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeWeb3AddressLabelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3AddressLabelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3AddressLabelsResponse) SetHeaders(v map[string]*string) *DescribeWeb3AddressLabelsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponse) SetStatusCode(v int32) *DescribeWeb3AddressLabelsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeWeb3AddressLabelsResponse) SetBody(v *DescribeWeb3AddressLabelsResponseBody) *DescribeWeb3AddressLabelsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeWeb3RiskScoreRequest struct {
-	// This is the short name of blockchain。
-	//
-	// [ ETH, MATIC, BNB ]
-	//
-	// example:
-	//
-	// ETH
-	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
-	// minimum: 1
-	//
-	// maximum: 100
-	//
-	// the maximum depth for risk analysis. For UTXO-based blockchains, default and maximum is enforced at 100.
-	//
-	// For account-based blockchains, default and maximum is enforced at 6
-	//
-	// example:
-	//
-	// 2
-	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
-	// A unique business ID for tracing purpose. For example，the sequence ID from the merchant\\"s business-related database.
-	//
-	// example:
-	//
-	// e0c34a353888
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// For TRANSACTION objects, you need to provide the transaction hash。
-	//
-	// For ADDRESS objects, you need to provide the address or reference address hash。
-	//
-	// example:
-	//
-	// 0000980145045a5c5acad3d2df0cf3b2afxxxxxx
-	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The object of the analysis.
-	//
-	// [ TRANSACTION, ADDRESS ]
-	//
-	// example:
-	//
-	// TRANSACTION
-	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-}
-
-func (s DescribeWeb3RiskScoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3RiskScoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3RiskScoreRequest) SetChainShortName(v string) *DescribeWeb3RiskScoreRequest {
-	s.ChainShortName = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreRequest) SetDepth(v int32) *DescribeWeb3RiskScoreRequest {
-	s.Depth = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreRequest) SetMerchantBizId(v string) *DescribeWeb3RiskScoreRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreRequest) SetObjectId(v string) *DescribeWeb3RiskScoreRequest {
-	s.ObjectId = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreRequest) SetObjectType(v string) *DescribeWeb3RiskScoreRequest {
-	s.ObjectType = &v
-	return s
-}
-
-type DescribeWeb3RiskScoreResponseBody struct {
-	// Return code. For the full list of codes, see Codes and Messages.
-	//
-	// example:
-	//
-	// Success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
-	Data *DescribeWeb3RiskScoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code.
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response detailed message.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request, which can be used to locate issues.
-	//
-	// example:
-	//
-	// 5E63B760-0ECB-5C07-8503-A65C27876968
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeWeb3RiskScoreResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3RiskScoreResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3RiskScoreResponseBody) SetCode(v string) *DescribeWeb3RiskScoreResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponseBody) SetData(v *DescribeWeb3RiskScoreResponseBodyData) *DescribeWeb3RiskScoreResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponseBody) SetHttpStatusCode(v int32) *DescribeWeb3RiskScoreResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponseBody) SetMessage(v string) *DescribeWeb3RiskScoreResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponseBody) SetRequestId(v string) *DescribeWeb3RiskScoreResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeWeb3RiskScoreResponseBodyData struct {
-	// risk results
-	RiskResults []*DescribeWeb3RiskScoreResponseBodyDataRiskResults `json:"RiskResults,omitempty" xml:"RiskResults,omitempty" type:"Repeated"`
-	// Risk score
-	//
-	// example:
-	//
-	// 80
-	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-}
-
-func (s DescribeWeb3RiskScoreResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3RiskScoreResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3RiskScoreResponseBodyData) SetRiskResults(v []*DescribeWeb3RiskScoreResponseBodyDataRiskResults) *DescribeWeb3RiskScoreResponseBodyData {
-	s.RiskResults = v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponseBodyData) SetScore(v string) *DescribeWeb3RiskScoreResponseBodyData {
-	s.Score = &v
-	return s
-}
-
-type DescribeWeb3RiskScoreResponseBodyDataRiskResults struct {
-	// description
-	//
-	// example:
-	//
-	// incoming address risk critical xxxxxx
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// [ CRITICAL, HIGH, MEDIUM, LOW, NO ]
-	//
-	// 100: Critical
-	//
-	// 67-99: High risk
-	//
-	// 34-66: Medium risk
-	//
-	// 1-33: Low risk
-	//
-	// 0: No risk
-	//
-	// example:
-	//
-	// HIGH
-	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// Address
-	//
-	// Transaction
-	//
-	// example:
-	//
-	// Address
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeWeb3RiskScoreResponseBodyDataRiskResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3RiskScoreResponseBodyDataRiskResults) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3RiskScoreResponseBodyDataRiskResults) SetDescription(v string) *DescribeWeb3RiskScoreResponseBodyDataRiskResults {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponseBodyDataRiskResults) SetSeverity(v string) *DescribeWeb3RiskScoreResponseBodyDataRiskResults {
-	s.Severity = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponseBodyDataRiskResults) SetType(v string) *DescribeWeb3RiskScoreResponseBodyDataRiskResults {
-	s.Type = &v
-	return s
-}
-
-type DescribeWeb3RiskScoreResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeWeb3RiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeWeb3RiskScoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3RiskScoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3RiskScoreResponse) SetHeaders(v map[string]*string) *DescribeWeb3RiskScoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponse) SetStatusCode(v int32) *DescribeWeb3RiskScoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeWeb3RiskScoreResponse) SetBody(v *DescribeWeb3RiskScoreResponseBody) *DescribeWeb3RiskScoreResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsRequest struct {
-	// This is the short name of blockchain。
-	//
-	// [ ETH, MATIC, BNB ]
-	//
-	// example:
-	//
-	// ETH
-	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
-	// A unique business ID for tracing purpose. For example，the sequence ID from the merchant\\"s business-related database.
-	//
-	// example:
-	//
-	// e0c34a353888
-	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The Transaction hash.
-	//
-	// example:
-	//
-	// c92880148d4896d8a2093a891a8f08916fe141fba474ede4101f81fb2bxxxxxx
-	Transaction *string `json:"Transaction,omitempty" xml:"Transaction,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsRequest) SetChainShortName(v string) *DescribeWeb3TransactionLabelsRequest {
-	s.ChainShortName = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsRequest) SetMerchantBizId(v string) *DescribeWeb3TransactionLabelsRequest {
-	s.MerchantBizId = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsRequest) SetTransaction(v string) *DescribeWeb3TransactionLabelsRequest {
-	s.Transaction = &v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsResponseBody struct {
-	// Return code. For the full list of codes, see Codes and Messages.
-	//
-	// example:
-	//
-	// Success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
-	Data *DescribeWeb3TransactionLabelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code.
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response detailed message.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request, which can be used to locate issues.
-	//
-	// example:
-	//
-	// 7A0D192A-CC0C-5DE5-A3B6-A14CF45508F2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBody) SetCode(v string) *DescribeWeb3TransactionLabelsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBody) SetData(v *DescribeWeb3TransactionLabelsResponseBodyData) *DescribeWeb3TransactionLabelsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBody) SetHttpStatusCode(v int32) *DescribeWeb3TransactionLabelsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBody) SetMessage(v string) *DescribeWeb3TransactionLabelsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBody) SetRequestId(v string) *DescribeWeb3TransactionLabelsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsResponseBodyData struct {
-	// the amount of native currency
-	//
-	// example:
-	//
-	// 27
-	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// chainName
-	//
-	// example:
-	//
-	// ETH
-	ChainName *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
-	// short name of blockchain
-	//
-	// example:
-	//
-	// eth
-	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
-	// contract details
-	ContractDetails []*DescribeWeb3TransactionLabelsResponseBodyDataContractDetails `json:"ContractDetails,omitempty" xml:"ContractDetails,omitempty" type:"Repeated"`
-	// error log
-	//
-	// example:
-	//
-	// “”
-	ErrorLog *string `json:"ErrorLog,omitempty" xml:"ErrorLog,omitempty"`
-	// gasLimit
-	//
-	// example:
-	//
-	// 1232
-	GasLimit *int32 `json:"GasLimit,omitempty" xml:"GasLimit,omitempty"`
-	// gasPrice
-	//
-	// example:
-	//
-	// 5034
-	GasPrice *string `json:"GasPrice,omitempty" xml:"GasPrice,omitempty"`
-	// gasUsed
-	//
-	// example:
-	//
-	// 234
-	GasUsed *int32 `json:"GasUsed,omitempty" xml:"GasUsed,omitempty"`
-	// height
-	//
-	// example:
-	//
-	// 17087552
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// the position of the transaction in the block
-	//
-	// example:
-	//
-	// 94
-	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// input data
-	//
-	// example:
-	//
-	// a9059cbb000000000000000000000000c7019579cb9bdb9204e61c7179ba2f88f9d2990b000000000xxxxxx
-	InputData *string `json:"InputData,omitempty" xml:"InputData,omitempty"`
-	// input details
-	InputDetails []*DescribeWeb3TransactionLabelsResponseBodyDataInputDetails `json:"InputDetails,omitempty" xml:"InputDetails,omitempty" type:"Repeated"`
-	// the method name of contract call. For external transaction method: [\\"CALL\\",\\"CALLCODE\\",\\"DELEGATECALL\\",\\"STATICCALL\\"]; for internal transaction method: the first 4 bytes of the hash of the method name
-	//
-	// example:
-	//
-	// a9059cbb
-	MethodId *string `json:"MethodId,omitempty" xml:"MethodId,omitempty"`
-	// nonce
-	//
-	// example:
-	//
-	// 6242724
-	Nonce *string `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
-	// output details
-	OutputDetails []*DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
-	// the transaction state. 1: success 0: fail
-	//
-	// example:
-	//
-	// 1
-	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
-	// token transfer details
-	TokenTransferDetails []*DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails `json:"TokenTransferDetails,omitempty" xml:"TokenTransferDetails,omitempty" type:"Repeated"`
-	// the symbol of native currency
-	//
-	// example:
-	//
-	// ETH
-	TransactionSymbol *string `json:"TransactionSymbol,omitempty" xml:"TransactionSymbol,omitempty"`
-	// the block timestamp
-	//
-	// example:
-	//
-	// 1681991807
-	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
-	// Integer	0: legacy; 1: eip 2930; 2: eip 1559
-	//
-	// example:
-	//
-	// 1
-	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
-	// the transaction fee in eth
-	//
-	// example:
-	//
-	// 0.002321489548255059
-	Txfee *string `json:"Txfee,omitempty" xml:"Txfee,omitempty"`
-	// Txid
-	//
-	// example:
-	//
-	// c92880148d4896d8a2093a891a8f08916fe141fba474ede410xxxxxx
-	Txid *string `json:"Txid,omitempty" xml:"Txid,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetAmount(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetChainName(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.ChainName = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetChainShortName(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.ChainShortName = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetContractDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.ContractDetails = v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetErrorLog(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.ErrorLog = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetGasLimit(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.GasLimit = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetGasPrice(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.GasPrice = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetGasUsed(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.GasUsed = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetHeight(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.Height = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetIndex(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.Index = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetInputData(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.InputData = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetInputDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.InputDetails = v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetMethodId(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.MethodId = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetNonce(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.Nonce = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetOutputDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.OutputDetails = v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetState(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTokenTransferDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.TokenTransferDetails = v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTransactionSymbol(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.TransactionSymbol = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTransactionTime(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.TransactionTime = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTransactionType(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.TransactionType = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTxfee(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.Txfee = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTxid(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
-	s.Txid = &v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsResponseBodyDataContractDetails struct {
-	// the value of internal transaction
-	//
-	// example:
-	//
-	// 945.5
-	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// the sender of internal transaction
-	//
-	// example:
-	//
-	// C7019579cB9bdb9204e61C7179ba2F88F9dxxxxxx
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// the gaslimit of internal transaction
-	//
-	// example:
-	//
-	// 20712
-	GasLimit *int32 `json:"GasLimit,omitempty" xml:"GasLimit,omitempty"`
-	// the call layer of internal transaction
-	//
-	// example:
-	//
-	// 1
-	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// the receiver of internal transaction
-	//
-	// example:
-	//
-	// C7019579cB9bdb9204e61C7179ba2F88F9dxxxxxx
-	To *string `json:"To,omitempty" xml:"To,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetAmount(v string) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetFrom(v string) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
-	s.From = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetGasLimit(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
-	s.GasLimit = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetIndex(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
-	s.Index = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetTo(v string) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
-	s.To = &v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsResponseBodyDataInputDetails struct {
-	// example: 15. the amount of transation sent by the address
-	//
-	// example:
-	//
-	// 3234
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// the address hash
-	//
-	// example:
-	//
-	// 21a31Ee1afC51d94C2eFcCAa2xxxxxx
-	InputHash *string `json:"InputHash,omitempty" xml:"InputHash,omitempty"`
-	// example: true. is it a contract
-	//
-	// example:
-	//
-	// true
-	IsContract *string `json:"IsContract,omitempty" xml:"IsContract,omitempty"`
-	// example: Dex . the tag of the address
-	//
-	// example:
-	//
-	// contracts:Tether: Tether_USD,token_standard:xxxxxx
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetAmount(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetInputHash(v string) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
-	s.InputHash = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetIsContract(v string) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
-	s.IsContract = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetTag(v string) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
-	s.Tag = &v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails struct {
-	// example: 15. the amount of transation sent by the address
-	//
-	// example:
-	//
-	// 1500
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// the address hash
-	//
-	// example:
-	//
-	// 21a31Ee1afC51d94C2eFcCAa2xxxxxx
-	InputHash *string `json:"InputHash,omitempty" xml:"InputHash,omitempty"`
-	// example: true. is it a contract
-	//
-	// example:
-	//
-	// true
-	IsContract *string `json:"IsContract,omitempty" xml:"IsContract,omitempty"`
-	// example: Dex. the tag of the address
-	//
-	// example:
-	//
-	// contracts:Tether: Tether_USD,token_standard:xxxxxx
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetAmount(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetInputHash(v string) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
-	s.InputHash = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetIsContract(v string) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
-	s.IsContract = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetTag(v string) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
-	s.Tag = &v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails struct {
-	// the token amount
-	//
-	// example:
-	//
-	// 945.5
-	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// the sender of the token
-	//
-	// example:
-	//
-	// 21a31Ee1afC51d94C2eFcCAa2092aD1028xxxxxx
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// the call layer of to token transfer
-	//
-	// example:
-	//
-	// 0
-	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// the token symbol
-	//
-	// example:
-	//
-	// USDT
-	Symbol *string `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
-	// the receiver of the token
-	//
-	// example:
-	//
-	// C7019579cB9bdb9204e61C7179ba2F88F9dxxxxxx
-	To *string `json:"To,omitempty" xml:"To,omitempty"`
-	// the token name
-	//
-	// example:
-	//
-	// Tether USD
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// the token address
-	//
-	// example:
-	//
-	// dAC17F958D2ee523a2206206994597C13Dxxxxxx
-	TokenContractAddress *string `json:"TokenContractAddress,omitempty" xml:"TokenContractAddress,omitempty"`
-	// NFT ID, if the token is erc721
-	//
-	// example:
-	//
-	// -1
-	TokenId *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetAmount(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetFrom(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.From = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetIndex(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.Index = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetSymbol(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.Symbol = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetTo(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.To = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetToken(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.Token = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetTokenContractAddress(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.TokenContractAddress = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetTokenId(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
-	s.TokenId = &v
-	return s
-}
-
-type DescribeWeb3TransactionLabelsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeWeb3TransactionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeWeb3TransactionLabelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWeb3TransactionLabelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWeb3TransactionLabelsResponse) SetHeaders(v map[string]*string) *DescribeWeb3TransactionLabelsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponse) SetStatusCode(v int32) *DescribeWeb3TransactionLabelsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeWeb3TransactionLabelsResponse) SetBody(v *DescribeWeb3TransactionLabelsResponseBody) *DescribeWeb3TransactionLabelsResponse {
-	s.Body = v
-	return s
-}
-
 type DocOcrRequest struct {
+	CardSide *string `json:"CardSide,omitempty" xml:"CardSide,omitempty"`
 	// example:
 	//
 	// 00000006
@@ -2876,6 +615,11 @@ func (s DocOcrRequest) String() string {
 
 func (s DocOcrRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DocOcrRequest) SetCardSide(v string) *DocOcrRequest {
+	s.CardSide = &v
+	return s
 }
 
 func (s *DocOcrRequest) SetDocType(v string) *DocOcrRequest {
@@ -3464,6 +1208,163 @@ func (s *FaceCompareResponse) SetBody(v *FaceCompareResponseBody) *FaceCompareRe
 	return s
 }
 
+type FaceGuardRiskRequest struct {
+	// example:
+	//
+	// LMALL20******001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// Tk9SSUQuMS*****************ZDNmNWY5NzQxOW1o
+	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	// example:
+	//
+	// 0c83ce0101d34eff886b1f7d1cdef67f
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// example:
+	//
+	// FACE_GUARD
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s FaceGuardRiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceGuardRiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FaceGuardRiskRequest) SetBizId(v string) *FaceGuardRiskRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *FaceGuardRiskRequest) SetDeviceToken(v string) *FaceGuardRiskRequest {
+	s.DeviceToken = &v
+	return s
+}
+
+func (s *FaceGuardRiskRequest) SetMerchantBizId(v string) *FaceGuardRiskRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *FaceGuardRiskRequest) SetProductCode(v string) *FaceGuardRiskRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type FaceGuardRiskResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 595E387B-3F0E-5C52-BD02-8EFE63D41FD5
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *FaceGuardRiskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s FaceGuardRiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceGuardRiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FaceGuardRiskResponseBody) SetCode(v string) *FaceGuardRiskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FaceGuardRiskResponseBody) SetMessage(v string) *FaceGuardRiskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FaceGuardRiskResponseBody) SetRequestId(v string) *FaceGuardRiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FaceGuardRiskResponseBody) SetResult(v *FaceGuardRiskResponseBodyResult) *FaceGuardRiskResponseBody {
+	s.Result = v
+	return s
+}
+
+type FaceGuardRiskResponseBodyResult struct {
+	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
+	// example:
+	//
+	// ROOT,VPN,HOOK
+	RiskTags *string `json:"RiskTags,omitempty" xml:"RiskTags,omitempty"`
+	// example:
+	//
+	// hk573be80f944d95ac812e019e3655a8
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s FaceGuardRiskResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceGuardRiskResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *FaceGuardRiskResponseBodyResult) SetRiskExtends(v string) *FaceGuardRiskResponseBodyResult {
+	s.RiskExtends = &v
+	return s
+}
+
+func (s *FaceGuardRiskResponseBodyResult) SetRiskTags(v string) *FaceGuardRiskResponseBodyResult {
+	s.RiskTags = &v
+	return s
+}
+
+func (s *FaceGuardRiskResponseBodyResult) SetTransactionId(v string) *FaceGuardRiskResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type FaceGuardRiskResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FaceGuardRiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FaceGuardRiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceGuardRiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FaceGuardRiskResponse) SetHeaders(v map[string]*string) *FaceGuardRiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FaceGuardRiskResponse) SetStatusCode(v int32) *FaceGuardRiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FaceGuardRiskResponse) SetBody(v *FaceGuardRiskResponseBody) *FaceGuardRiskResponse {
+	s.Body = v
+	return s
+}
+
 type FaceLivenessRequest struct {
 	// example:
 	//
@@ -3969,9 +1870,10 @@ func (s *Id2MetaVerifyIntlResponse) SetBody(v *Id2MetaVerifyIntlResponseBody) *I
 }
 
 type InitializeRequest struct {
-	Authorize     *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
-	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	CallbackUrl   *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
+	Authorize       *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	CallbackToken   *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl     *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// example:
 	//
 	// *
@@ -4016,7 +1918,8 @@ type InitializeRequest struct {
 	// example:
 	//
 	// *
-	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	Ocr               *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	// example:
 	//
 	// eKYC
@@ -4043,6 +1946,11 @@ func (s InitializeRequest) String() string {
 
 func (s InitializeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InitializeRequest) SetAppQualityCheck(v string) *InitializeRequest {
+	s.AppQualityCheck = &v
+	return s
 }
 
 func (s *InitializeRequest) SetAuthorize(v string) *InitializeRequest {
@@ -4137,6 +2045,11 @@ func (s *InitializeRequest) SetModel(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetOcr(v string) *InitializeRequest {
 	s.Ocr = &v
+	return s
+}
+
+func (s *InitializeRequest) SetProcedurePriority(v string) *InitializeRequest {
+	s.ProcedurePriority = &v
 	return s
 }
 
@@ -4755,578 +2668,6 @@ func (client *Client) DeleteVerifyResult(request *DeleteVerifyResultRequest) (_r
 
 // Summary:
 //
-// 查询地址标签接口
-//
-// @param request - DescribeAddressLabelsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeAddressLabelsResponse
-func (client *Client) DescribeAddressLabelsWithOptions(request *DescribeAddressLabelsRequest, runtime *util.RuntimeOptions) (_result *DescribeAddressLabelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Address)) {
-		query["Address"] = request.Address
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Coin)) {
-		query["Coin"] = request.Coin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAddressLabels"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAddressLabelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询地址标签接口
-//
-// @param request - DescribeAddressLabelsRequest
-//
-// @return DescribeAddressLabelsResponse
-func (client *Client) DescribeAddressLabels(request *DescribeAddressLabelsRequest) (_result *DescribeAddressLabelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAddressLabelsResponse{}
-	_body, _err := client.DescribeAddressLabelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询地址详情接口
-//
-// @param request - DescribeAddressOverviewRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeAddressOverviewResponse
-func (client *Client) DescribeAddressOverviewWithOptions(request *DescribeAddressOverviewRequest, runtime *util.RuntimeOptions) (_result *DescribeAddressOverviewResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Address)) {
-		query["Address"] = request.Address
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Coin)) {
-		query["Coin"] = request.Coin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAddressOverview"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAddressOverviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询地址详情接口
-//
-// @param request - DescribeAddressOverviewRequest
-//
-// @return DescribeAddressOverviewResponse
-func (client *Client) DescribeAddressOverview(request *DescribeAddressOverviewRequest) (_result *DescribeAddressOverviewResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAddressOverviewResponse{}
-	_body, _err := client.DescribeAddressOverviewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 恶意地址查询
-//
-// @param request - DescribeMaliciousAddressRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeMaliciousAddressResponse
-func (client *Client) DescribeMaliciousAddressWithOptions(request *DescribeMaliciousAddressRequest, runtime *util.RuntimeOptions) (_result *DescribeMaliciousAddressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Coin)) {
-		query["Coin"] = request.Coin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.End)) {
-		query["End"] = request.End
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Start)) {
-		query["Start"] = request.Start
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMaliciousAddress"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMaliciousAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 恶意地址查询
-//
-// @param request - DescribeMaliciousAddressRequest
-//
-// @return DescribeMaliciousAddressResponse
-func (client *Client) DescribeMaliciousAddress(request *DescribeMaliciousAddressRequest) (_result *DescribeMaliciousAddressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMaliciousAddressResponse{}
-	_body, _err := client.DescribeMaliciousAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询地址风险接口
-//
-// @param request - DescribeRiskScoreRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeRiskScoreResponse
-func (client *Client) DescribeRiskScoreWithOptions(request *DescribeRiskScoreRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskScoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Address)) {
-		query["Address"] = request.Address
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Coin)) {
-		query["Coin"] = request.Coin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRiskScore"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRiskScoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询地址风险接口
-//
-// @param request - DescribeRiskScoreRequest
-//
-// @return DescribeRiskScoreResponse
-func (client *Client) DescribeRiskScore(request *DescribeRiskScoreRequest) (_result *DescribeRiskScoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRiskScoreResponse{}
-	_body, _err := client.DescribeRiskScoreWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询交易接口
-//
-// @param request - DescribeTransactionsListRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeTransactionsListResponse
-func (client *Client) DescribeTransactionsListWithOptions(request *DescribeTransactionsListRequest, runtime *util.RuntimeOptions) (_result *DescribeTransactionsListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Address)) {
-		query["Address"] = request.Address
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Coin)) {
-		query["Coin"] = request.Coin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTimestamp)) {
-		query["EndTimestamp"] = request.EndTimestamp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		query["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
-		query["StartTimestamp"] = request.StartTimestamp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeTransactionsList"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeTransactionsListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询交易接口
-//
-// @param request - DescribeTransactionsListRequest
-//
-// @return DescribeTransactionsListResponse
-func (client *Client) DescribeTransactionsList(request *DescribeTransactionsListRequest) (_result *DescribeTransactionsListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeTransactionsListResponse{}
-	_body, _err := client.DescribeTransactionsListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the Information of address.
-//
-// @param request - DescribeWeb3AddressLabelsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeWeb3AddressLabelsResponse
-func (client *Client) DescribeWeb3AddressLabelsWithOptions(request *DescribeWeb3AddressLabelsRequest, runtime *util.RuntimeOptions) (_result *DescribeWeb3AddressLabelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Address)) {
-		query["Address"] = request.Address
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChainShortName)) {
-		query["ChainShortName"] = request.ChainShortName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeWeb3AddressLabels"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeWeb3AddressLabelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the Information of address.
-//
-// @param request - DescribeWeb3AddressLabelsRequest
-//
-// @return DescribeWeb3AddressLabelsResponse
-func (client *Client) DescribeWeb3AddressLabels(request *DescribeWeb3AddressLabelsRequest) (_result *DescribeWeb3AddressLabelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeWeb3AddressLabelsResponse{}
-	_body, _err := client.DescribeWeb3AddressLabelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Query risk score, risk detail list for a given address
-//
-// @param request - DescribeWeb3RiskScoreRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeWeb3RiskScoreResponse
-func (client *Client) DescribeWeb3RiskScoreWithOptions(request *DescribeWeb3RiskScoreRequest, runtime *util.RuntimeOptions) (_result *DescribeWeb3RiskScoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChainShortName)) {
-		query["ChainShortName"] = request.ChainShortName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Depth)) {
-		query["Depth"] = request.Depth
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
-		query["ObjectId"] = request.ObjectId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
-		query["ObjectType"] = request.ObjectType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeWeb3RiskScore"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeWeb3RiskScoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query risk score, risk detail list for a given address
-//
-// @param request - DescribeWeb3RiskScoreRequest
-//
-// @return DescribeWeb3RiskScoreResponse
-func (client *Client) DescribeWeb3RiskScore(request *DescribeWeb3RiskScoreRequest) (_result *DescribeWeb3RiskScoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeWeb3RiskScoreResponse{}
-	_body, _err := client.DescribeWeb3RiskScoreWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the Information of transaction.
-//
-// @param request - DescribeWeb3TransactionLabelsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeWeb3TransactionLabelsResponse
-func (client *Client) DescribeWeb3TransactionLabelsWithOptions(request *DescribeWeb3TransactionLabelsRequest, runtime *util.RuntimeOptions) (_result *DescribeWeb3TransactionLabelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChainShortName)) {
-		query["ChainShortName"] = request.ChainShortName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
-		query["MerchantBizId"] = request.MerchantBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Transaction)) {
-		query["Transaction"] = request.Transaction
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeWeb3TransactionLabels"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeWeb3TransactionLabelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the Information of transaction.
-//
-// @param request - DescribeWeb3TransactionLabelsRequest
-//
-// @return DescribeWeb3TransactionLabelsResponse
-func (client *Client) DescribeWeb3TransactionLabels(request *DescribeWeb3TransactionLabelsRequest) (_result *DescribeWeb3TransactionLabelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeWeb3TransactionLabelsResponse{}
-	_body, _err := client.DescribeWeb3TransactionLabelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 卡证ocr纯服务端
 //
 // @param request - DocOcrRequest
@@ -5340,6 +2681,10 @@ func (client *Client) DocOcrWithOptions(request *DocOcrRequest, runtime *util.Ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CardSide)) {
+		query["CardSide"] = request.CardSide
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DocType)) {
 		query["DocType"] = request.DocType
 	}
@@ -5613,6 +2958,78 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 
 // Summary:
 //
+// 国际人脸保镖纯服务端接口
+//
+// @param request - FaceGuardRiskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FaceGuardRiskResponse
+func (client *Client) FaceGuardRiskWithOptions(request *FaceGuardRiskRequest, runtime *util.RuntimeOptions) (_result *FaceGuardRiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceToken)) {
+		query["DeviceToken"] = request.DeviceToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FaceGuardRisk"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FaceGuardRiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 国际人脸保镖纯服务端接口
+//
+// @param request - FaceGuardRiskRequest
+//
+// @return FaceGuardRiskResponse
+func (client *Client) FaceGuardRisk(request *FaceGuardRiskRequest) (_result *FaceGuardRiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FaceGuardRiskResponse{}
+	_body, _err := client.FaceGuardRiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 静默活体API 纯服务端
 //
 // @param request - FaceLivenessRequest
@@ -5860,6 +3277,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppQualityCheck)) {
+		query["AppQualityCheck"] = request.AppQualityCheck
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Authorize)) {
 		query["Authorize"] = request.Authorize
 	}
@@ -5930,6 +3351,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Ocr)) {
 		query["Ocr"] = request.Ocr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcedurePriority)) {
+		query["ProcedurePriority"] = request.ProcedurePriority
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {

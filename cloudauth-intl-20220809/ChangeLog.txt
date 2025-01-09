@@ -1,3 +1,20 @@
+2025-01-09 Version: v3.0.0
+- Support API FaceGuardRisk.
+- Delete API DescribeAddressLabels.
+- Delete API DescribeAddressOverview.
+- Delete API DescribeMaliciousAddress.
+- Delete API DescribeRiskScore.
+- Delete API DescribeTransactionsList.
+- Delete API DescribeWeb3AddressLabels.
+- Delete API DescribeWeb3RiskScore.
+- Delete API DescribeWeb3TransactionLabels.
+- Update API CheckResult: update response param.
+- Update API DocOcr: add param CardSide.
+- Update API Initialize: add param AppQualityCheck.
+- Update API Initialize: add param ProcedurePriority.
+- Update API Initialize: add param ShowGuidePage.
+
+
 2024-09-18 Version: v2.0.5
 - Update API Initialize: add param ShowGuidePage.
 
