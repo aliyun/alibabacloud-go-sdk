@@ -2838,7 +2838,9 @@ type ListSpecReviewTasksRequest struct {
 	// example:
 	//
 	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	Page       *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// example:
 	//
 	// 10
@@ -2859,6 +2861,16 @@ func (s ListSpecReviewTasksRequest) GoString() string {
 
 func (s *ListSpecReviewTasksRequest) SetPage(v int32) *ListSpecReviewTasksRequest {
 	s.Page = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksRequest) SetPageNumber(v int32) *ListSpecReviewTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksRequest) SetPageSize(v int32) *ListSpecReviewTasksRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -5029,6 +5041,14 @@ func (client *Client) ListSpecReviewTasksWithOptions(appName *string, request *L
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
