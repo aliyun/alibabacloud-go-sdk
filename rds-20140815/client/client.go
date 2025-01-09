@@ -744,14 +744,22 @@ func (s *AllocateReadWriteSplittingConnectionResponse) SetBody(v *AllocateReadWr
 }
 
 type AssociateEipAddressWithRCInstanceRequest struct {
+	// The EIP ID.
+	//
+	// >  If no EIP is available, create an EIP. For more information, see [Create an EIP](https://help.aliyun.com/document_detail/292841.html).
+	//
 	// example:
 	//
 	// eip-bp166out2x4bpcf******
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rc-i322y2t562oh7o******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -782,6 +790,8 @@ func (s *AssociateEipAddressWithRCInstanceRequest) SetRegionId(v string) *Associ
 }
 
 type AssociateEipAddressWithRCInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EFFC7565-B3CF-5CFA-9E1F-164DD1E1F498
@@ -13097,8 +13107,9 @@ func (s *CreateRCNodePoolRequestDataDisk) SetSize(v int32) *CreateRCNodePoolRequ
 }
 
 type CreateRCNodePoolRequestSystemDisk struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Size     *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s CreateRCNodePoolRequestSystemDisk) String() string {
@@ -13111,6 +13122,11 @@ func (s CreateRCNodePoolRequestSystemDisk) GoString() string {
 
 func (s *CreateRCNodePoolRequestSystemDisk) SetCategory(v string) *CreateRCNodePoolRequestSystemDisk {
 	s.Category = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequestSystemDisk) SetPerformanceLevel(v string) *CreateRCNodePoolRequestSystemDisk {
+	s.PerformanceLevel = &v
 	return s
 }
 
@@ -54658,6 +54674,7 @@ type DescribeRCImageListRequest struct {
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -54706,6 +54723,11 @@ func (s *DescribeRCImageListRequest) SetImageId(v string) *DescribeRCImageListRe
 
 func (s *DescribeRCImageListRequest) SetImageName(v string) *DescribeRCImageListRequest {
 	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeRCImageListRequest) SetInstanceType(v string) *DescribeRCImageListRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -54871,7 +54893,8 @@ type DescribeRCImageListResponseBodyImages struct {
 	// example:
 	//
 	// linux
-	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	OSType   *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The image size. Unit: GiB.
 	//
 	// example:
@@ -54964,6 +54987,11 @@ func (s *DescribeRCImageListResponseBodyImages) SetOSNameEn(v string) *DescribeR
 
 func (s *DescribeRCImageListResponseBodyImages) SetOSType(v string) *DescribeRCImageListResponseBodyImages {
 	s.OSType = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetPlatform(v string) *DescribeRCImageListResponseBodyImages {
+	s.Platform = &v
 	return s
 }
 
@@ -55279,8 +55307,9 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// Not-applicable
-	StoppedMode *string                                      `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
-	Tags        *DescribeRCInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	StoppedMode *string                                            `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	SystemDisk  *DescribeRCInstanceAttributeResponseBodySystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Tags        *DescribeRCInstanceAttributeResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The virtual LAN (VLAN) ID of the instance.
 	//
 	// >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
@@ -55502,6 +55531,11 @@ func (s *DescribeRCInstanceAttributeResponseBody) SetStatus(v string) *DescribeR
 
 func (s *DescribeRCInstanceAttributeResponseBody) SetStoppedMode(v string) *DescribeRCInstanceAttributeResponseBody {
 	s.StoppedMode = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetSystemDisk(v *DescribeRCInstanceAttributeResponseBodySystemDisk) *DescribeRCInstanceAttributeResponseBody {
+	s.SystemDisk = v
 	return s
 }
 
@@ -55807,6 +55841,47 @@ func (s DescribeRCInstanceAttributeResponseBodySecurityGroupIds) GoString() stri
 
 func (s *DescribeRCInstanceAttributeResponseBodySecurityGroupIds) SetSecurityGroupId(v []*string) *DescribeRCInstanceAttributeResponseBodySecurityGroupIds {
 	s.SecurityGroupId = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodySystemDisk struct {
+	DeleteWithInstance         *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Encrypted                  *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	SystemDiskCategory         *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	SystemDiskSize             *int64  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodySystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodySystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodySystemDisk) SetDeleteWithInstance(v bool) *DescribeRCInstanceAttributeResponseBodySystemDisk {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodySystemDisk) SetEncrypted(v string) *DescribeRCInstanceAttributeResponseBodySystemDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodySystemDisk) SetSystemDiskCategory(v string) *DescribeRCInstanceAttributeResponseBodySystemDisk {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodySystemDisk) SetSystemDiskPerformanceLevel(v string) *DescribeRCInstanceAttributeResponseBodySystemDisk {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodySystemDisk) SetSystemDiskSize(v int64) *DescribeRCInstanceAttributeResponseBodySystemDisk {
+	s.SystemDiskSize = &v
 	return s
 }
 
@@ -57011,8 +57086,9 @@ func (s *DescribeRCNodePoolResponseBodyNodePoolListDataDisk) SetSize(v int32) *D
 }
 
 type DescribeRCNodePoolResponseBodyNodePoolListSystemDisk struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Size     *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) String() string {
@@ -57025,6 +57101,11 @@ func (s DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) GoString() string 
 
 func (s *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) SetCategory(v string) *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk {
 	s.Category = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) SetPerformanceLevel(v string) *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk {
+	s.PerformanceLevel = &v
 	return s
 }
 
@@ -57326,7 +57407,7 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	//
 	// data
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The type of the original disk.
+	// The type of the source disk.
 	//
 	// >  This parameter will be removed in the future. To ensure future compatibility, we recommend that you use other parameters.
 	//
@@ -59629,7 +59710,8 @@ type DescribeResourceUsageResponseBody struct {
 	// example:
 	//
 	// 94324736
-	BackupDataSize *int64 `json:"BackupDataSize,omitempty" xml:"BackupDataSize,omitempty"`
+	BackupDataSize        *int64  `json:"BackupDataSize,omitempty" xml:"BackupDataSize,omitempty"`
+	BackupEcsSnapshotSize *string `json:"BackupEcsSnapshotSize,omitempty" xml:"BackupEcsSnapshotSize,omitempty"`
 	// The storage that is occupied by log backup files, excluding archived backup files, on the instance. Unit: bytes.
 	//
 	// example:
@@ -59725,6 +59807,11 @@ func (s *DescribeResourceUsageResponseBody) SetArchiveBackupSize(v int64) *Descr
 
 func (s *DescribeResourceUsageResponseBody) SetBackupDataSize(v int64) *DescribeResourceUsageResponseBody {
 	s.BackupDataSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetBackupEcsSnapshotSize(v string) *DescribeResourceUsageResponseBody {
+	s.BackupEcsSnapshotSize = &v
 	return s
 }
 
@@ -73570,24 +73657,32 @@ func (s *ModifyDBInstancePayTypeResponse) SetBody(v *ModifyDBInstancePayTypeResp
 }
 
 type ModifyDBInstanceReplicationSwitchRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-bp*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to enable native replication mode. Valid values: ON and OFF.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ON
 	ExternalReplication *string `json:"ExternalReplication,omitempty" xml:"ExternalReplication,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. You can leave this parameter empty.
+	//
 	// example:
 	//
 	// rg-acfmy****
@@ -91069,7 +91164,21 @@ func (client *Client) AllocateReadWriteSplittingConnection(request *AllocateRead
 
 // Summary:
 //
-// 绑定弹性网卡到RDS Custom实例
+// Associates an elastic IP address (EIP) with an RDS Custom for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+//
+// ### [](#)Precautions
+//
+// If the RDS Custom instance uses a public IP address, the public IP address is automatically released after you associate an EIP with the instance.
 //
 // @param request - AssociateEipAddressWithRCInstanceRequest
 //
@@ -91119,7 +91228,21 @@ func (client *Client) AssociateEipAddressWithRCInstanceWithOptions(request *Asso
 
 // Summary:
 //
-// 绑定弹性网卡到RDS Custom实例
+// Associates an elastic IP address (EIP) with an RDS Custom for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+//
+// ### [](#)Precautions
+//
+// If the RDS Custom instance uses a public IP address, the public IP address is automatically released after you associate an EIP with the instance.
 //
 // @param request - AssociateEipAddressWithRCInstanceRequest
 //
@@ -119035,7 +119158,7 @@ func (client *Client) ModifyDBInstancePayType(request *ModifyDBInstancePayTypeRe
 
 // Summary:
 //
-// 修改数据库复制
+// Enables or disables native replication mode for ApsaraDB RDS.
 //
 // @param request - ModifyDBInstanceReplicationSwitchRequest
 //
@@ -119093,7 +119216,7 @@ func (client *Client) ModifyDBInstanceReplicationSwitchWithOptions(request *Modi
 
 // Summary:
 //
-// 修改数据库复制
+// Enables or disables native replication mode for ApsaraDB RDS.
 //
 // @param request - ModifyDBInstanceReplicationSwitchRequest
 //
