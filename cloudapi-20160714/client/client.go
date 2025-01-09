@@ -477,12 +477,16 @@ func (s *AddTrafficSpecialControlResponse) SetBody(v *AddTrafficSpecialControlRe
 }
 
 type AssociateInstanceWithPrivateDNSRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apigateway-hz-ead4f4b0bac8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The internal domain names included in the resolution.
+	//
 	// This parameter is required.
 	IntranetDomains []*string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty" type:"Repeated"`
 	SecurityToken   *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -512,12 +516,16 @@ func (s *AssociateInstanceWithPrivateDNSRequest) SetSecurityToken(v string) *Ass
 }
 
 type AssociateInstanceWithPrivateDNSShrinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apigateway-hz-ead4f4b0bac8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The internal domain names included in the resolution.
+	//
 	// This parameter is required.
 	IntranetDomainsShrink *string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty"`
 	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -547,6 +555,8 @@ func (s *AssociateInstanceWithPrivateDNSShrinkRequest) SetSecurityToken(v string
 }
 
 type AssociateInstanceWithPrivateDNSResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 03442A3D-3B7D-434C-8A95-A5FEB999B529
@@ -3641,6 +3651,18 @@ func (s *CreateIpControlResponse) SetBody(v *CreateIpControlResponseBody) *Creat
 }
 
 type CreateLogConfigRequest struct {
+	// Specifies to create a service-linked role.
+	//
+	// example:
+	//
+	// true
+	CreateSlr *bool `json:"CreateSlr,omitempty" xml:"CreateSlr,omitempty"`
+	// The log type.
+	//
+	// Valid values:
+	//
+	// 	- PROVIDER
+	//
 	// example:
 	//
 	// PROVIDER
@@ -3654,6 +3676,8 @@ type CreateLogConfigRequest struct {
 	//
 	// api-gateway
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
+	// The name of the Log Service project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3668,6 +3692,11 @@ func (s CreateLogConfigRequest) String() string {
 
 func (s CreateLogConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLogConfigRequest) SetCreateSlr(v bool) *CreateLogConfigRequest {
+	s.CreateSlr = &v
+	return s
 }
 
 func (s *CreateLogConfigRequest) SetLogType(v string) *CreateLogConfigRequest {
@@ -3691,6 +3720,8 @@ func (s *CreateLogConfigRequest) SetSlsProject(v string) *CreateLogConfigRequest
 }
 
 type CreateLogConfigResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
@@ -4311,14 +4342,23 @@ func (s *CreatePluginResponse) SetBody(v *CreatePluginResponseBody) *CreatePlugi
 }
 
 type CreatePrivateDNSRequest struct {
+	// The internal domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api.demo.com
-	IntranetDomain *string                           `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	Records        []*CreatePrivateDNSRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	SecurityToken  *string                           `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// The resolution records. This parameter is valid only when Type is set to A.
+	Records       []*CreatePrivateDNSRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	SecurityToken *string                           `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The internal domain name resolution type. Valid values:
+	//
+	// 	- VPC: resolution for VPC access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+	//
+	// 	- A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4356,10 +4396,14 @@ func (s *CreatePrivateDNSRequest) SetType(v string) *CreatePrivateDNSRequest {
 }
 
 type CreatePrivateDNSRequestRecords struct {
+	// The resolution record.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
+	// The weight of the record.
+	//
 	// example:
 	//
 	// 100
@@ -4385,14 +4429,23 @@ func (s *CreatePrivateDNSRequestRecords) SetWeight(v int32) *CreatePrivateDNSReq
 }
 
 type CreatePrivateDNSShrinkRequest struct {
+	// The internal domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api.demo.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	RecordsShrink  *string `json:"Records,omitempty" xml:"Records,omitempty"`
-	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The resolution records. This parameter is valid only when Type is set to A.
+	RecordsShrink *string `json:"Records,omitempty" xml:"Records,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The internal domain name resolution type. Valid values:
+	//
+	// 	- VPC: resolution for VPC access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+	//
+	// 	- A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4430,6 +4483,8 @@ func (s *CreatePrivateDNSShrinkRequest) SetType(v string) *CreatePrivateDNSShrin
 }
 
 type CreatePrivateDNSResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ015
@@ -6819,10 +6874,18 @@ func (s *DeletePluginResponse) SetBody(v *DeletePluginResponseBody) *DeletePlugi
 }
 
 type DeletePrivateDNSRequest struct {
+	// Specifies whether to force delete the resolution.
+	//
+	// 	- true: force deletes the resolution if the resolution is associated with an instance.
+	//
+	// 	- false: does not force delete the resolution if the resolution is associated with an instance.
+	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The internal domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6830,6 +6893,12 @@ type DeletePrivateDNSRequest struct {
 	// api.demo.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The internal domain name resolution type. Valid values:
+	//
+	// 	- VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+	//
+	// 	- A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6867,6 +6936,8 @@ func (s *DeletePrivateDNSRequest) SetType(v string) *DeletePrivateDNSRequest {
 }
 
 type DeletePrivateDNSResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
@@ -9389,6 +9460,7 @@ type DescribeApiResponseBodyServiceConfigFunctionComputeConfig struct {
 	//
 	// fcservicename
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 }
 
 func (s DescribeApiResponseBodyServiceConfigFunctionComputeConfig) String() string {
@@ -9456,6 +9528,11 @@ func (s *DescribeApiResponseBodyServiceConfigFunctionComputeConfig) SetRoleArn(v
 
 func (s *DescribeApiResponseBodyServiceConfigFunctionComputeConfig) SetServiceName(v string) *DescribeApiResponseBodyServiceConfigFunctionComputeConfig {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyServiceConfigFunctionComputeConfig) SetTriggerName(v string) *DescribeApiResponseBodyServiceConfigFunctionComputeConfig {
+	s.TriggerName = &v
 	return s
 }
 
@@ -10707,6 +10784,12 @@ type DescribeApiGroupResponseBody struct {
 	//
 	// 2016-08-01T06:53:02Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The custom appcode configuration.
+	//
+	// example:
+	//
+	// {"location":"HEADER","name":"myAppCodeHeader"}
+	CustomAppCodeConfig *string `json:"CustomAppCodeConfig,omitempty" xml:"CustomAppCodeConfig,omitempty"`
 	// The details about the custom domain name.
 	CustomDomains *DescribeApiGroupResponseBodyCustomDomains `json:"CustomDomains,omitempty" xml:"CustomDomains,omitempty" type:"Struct"`
 	// The custom trace configuration.
@@ -10926,6 +11009,11 @@ func (s *DescribeApiGroupResponseBody) SetCompatibleFlags(v string) *DescribeApi
 
 func (s *DescribeApiGroupResponseBody) SetCreatedTime(v string) *DescribeApiGroupResponseBody {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBody) SetCustomAppCodeConfig(v string) *DescribeApiGroupResponseBody {
+	s.CustomAppCodeConfig = &v
 	return s
 }
 
@@ -11452,6 +11540,7 @@ func (s *DescribeApiGroupVpcWhitelistResponse) SetBody(v *DescribeApiGroupVpcWhi
 }
 
 type DescribeApiGroupsRequest struct {
+	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
 	// Specifies whether to enable tag verification.
 	//
 	// example:
@@ -11509,6 +11598,11 @@ func (s DescribeApiGroupsRequest) String() string {
 
 func (s DescribeApiGroupsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApiGroupsRequest) SetBasePath(v string) *DescribeApiGroupsRequest {
+	s.BasePath = &v
+	return s
 }
 
 func (s *DescribeApiGroupsRequest) SetEnableTagAuth(v bool) *DescribeApiGroupsRequest {
@@ -16897,36 +16991,52 @@ func (s *DescribeApisResponse) SetBody(v *DescribeApisResponseBody) *DescribeApi
 }
 
 type DescribeApisByAppRequest struct {
+	// The name of the API. The name is used for fuzzy match.
+	//
 	// example:
 	//
 	// getPersonInfo
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The API ID.
+	//
 	// example:
 	//
 	// b19240592b1b4e74961fb8438ed7550c
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 333486644
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The description of the API.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The request HTTP method of the API.
+	//
 	// example:
 	//
 	// POST
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The number of the current page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request path of the API.
+	//
 	// example:
 	//
 	// /tt
@@ -16990,18 +17100,26 @@ func (s *DescribeApisByAppRequest) SetSecurityToken(v string) *DescribeApisByApp
 type DescribeApisByAppResponseBody struct {
 	// The API authorizations.
 	AppApiRelationInfos *DescribeApisByAppResponseBodyAppApiRelationInfos `json:"AppApiRelationInfos,omitempty" xml:"AppApiRelationInfos,omitempty" type:"Struct"`
+	// The number of pages to return the results on.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ015
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	//
 	// example:
 	//
 	// 2
@@ -20340,6 +20458,10 @@ type DescribeAppsByApiProductResponseBodyAuthorizedAppsAuthorizedApp struct {
 	// 2016-07-21T06:17:20Z
 	AuthorizedTime *string `json:"AuthorizedTime,omitempty" xml:"AuthorizedTime,omitempty"`
 	// The authorization description.
+	//
+	// example:
+	//
+	// Test share with nsc qiming
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extended information.
 	//
@@ -21359,20 +21481,21 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageName(v
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct {
-	// The information about the backend service whose type is Service Discovery.
+	// The information about the backend service when the backend service is of the Service Discovery type.
 	DiscoveryConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig `json:"DiscoveryConfig,omitempty" xml:"DiscoveryConfig,omitempty" type:"Struct"`
-	EdasConfig      *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEdasConfig      `json:"EdasConfig,omitempty" xml:"EdasConfig,omitempty" type:"Struct"`
+	// The EDAS configuration.
+	EdasConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEdasConfig `json:"EdasConfig,omitempty" xml:"EdasConfig,omitempty" type:"Struct"`
 	// The information about the backend service whose type is EventBridge.
 	EventBridgeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
 	// The information about the backend service whose type is Function Compute.
 	FunctionComputeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
-	// The host of the backend service.
+	// The host of the HTTP backend service.
 	//
 	// example:
 	//
 	// www.host.com
 	HttpTargetHostName *string `json:"HttpTargetHostName,omitempty" xml:"HttpTargetHostName,omitempty"`
-	// The information about the backend service whose type is Mock.
+	// The information about the backend service when the backend service is of the Mock type.
 	MockConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig `json:"MockConfig,omitempty" xml:"MockConfig,omitempty" type:"Struct"`
 	// The information about the backend service whose type is Object Storage Service (OSS).
 	OssConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
@@ -21382,6 +21505,8 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct
 	//
 	// 10.0.0.1
 	ServiceAddress *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
+	// The timeout period of the backend service, in millisecond.
+	//
 	// example:
 	//
 	// 10000
@@ -21392,7 +21517,7 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct
 	//
 	// VPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The information about the virtual private cloud (VPC). This parameter is available only for backend services whose type is VPC.
+	// The information about the backend service when the backend service is of the VPC type.
 	VpcConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty" type:"Struct"`
 }
 
@@ -21467,7 +21592,8 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscove
 	// example:
 	//
 	// NACOS
-	RcType          *string                                                                                             `json:"RcType,omitempty" xml:"RcType,omitempty"`
+	RcType *string `json:"RcType,omitempty" xml:"RcType,omitempty"`
+	// The ZooKeeper configuration.
 	ZookeeperConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigZookeeperConfig `json:"ZookeeperConfig,omitempty" xml:"ZookeeperConfig,omitempty" type:"Struct"`
 }
 
@@ -21616,14 +21742,20 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDis
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigZookeeperConfig struct {
+	// The connection URL of the ZooKeeper server.
+	//
 	// example:
 	//
 	// http://192.168.1.xxx:2181
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// provider
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Service name
+	//
 	// example:
 	//
 	// service
@@ -21654,30 +21786,44 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDis
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEdasConfig struct {
+	// The EDAS application ID.
+	//
 	// example:
 	//
 	// 6cd0c599-dxxx-496d-b3d5-6a71c657xxxxx
 	EdasAppId *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
+	// The ID of the microservices namespace in EDAS.
+	//
 	// example:
 	//
 	// cn-hangzhou:edasNacos
 	MicroserviceNamespace *string `json:"MicroserviceNamespace,omitempty" xml:"MicroserviceNamespace,omitempty"`
+	// The ID of the microservices namespace in EDAS.
+	//
 	// example:
 	//
 	// cn-hangzhou:edasNacos
 	MicroserviceNamespaceId *string `json:"MicroserviceNamespaceId,omitempty" xml:"MicroserviceNamespaceId,omitempty"`
+	// The name of the microservices namespace in EDAS.
+	//
 	// example:
 	//
 	// Edas-Nacos
 	MicroserviceNamespaceName *string `json:"MicroserviceNamespaceName,omitempty" xml:"MicroserviceNamespaceName,omitempty"`
+	// The MSE instance ID.
+	//
 	// example:
 	//
 	// mse-cn-jia3n1rxxxx
 	MseInstanceId *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
+	// The registration type.
+	//
 	// example:
 	//
 	// EDAS
 	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// service
@@ -21831,6 +21977,7 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctio
 	//
 	// myservice
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) String() string {
@@ -21881,16 +22028,21 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFun
 	return s
 }
 
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetTriggerName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.TriggerName = &v
+	return s
+}
+
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig struct {
-	// The header returned for service mocking.
+	// The header in the mocked response.
 	MockHeaders []*DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Repeated"`
-	// The result returned for service mocking.
+	// The mocked response.
 	//
 	// example:
 	//
 	// test
 	MockResult *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
-	// The status code that is returned for service mocking.
+	// The status code in the mocked response.
 	//
 	// example:
 	//
@@ -21922,13 +22074,13 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMoc
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders struct {
-	// The name of the header parameter.
+	// The header name.
 	//
 	// example:
 	//
 	// test
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// The value of the header parameter.
+	// The header value.
 	//
 	// example:
 	//
@@ -22024,7 +22176,7 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConf
 	//
 	// http
 	VpcScheme *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
-	// The host of the backend service.
+	// The host of the VPC backend service.
 	//
 	// example:
 	//
@@ -22444,6 +22596,7 @@ func (s *DescribeDatasetInfoRequest) SetSecurityToken(v string) *DescribeDataset
 }
 
 type DescribeDatasetInfoResponseBody struct {
+	// The dataset info.
 	DatasetInfo *DescribeDatasetInfoResponseBodyDatasetInfo `json:"DatasetInfo,omitempty" xml:"DatasetInfo,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -23032,7 +23185,7 @@ type DescribeDatasetListRequest struct {
 	// 10
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// 指定规则所适用的对象标签，可设置多个
+	// Specify the object labels to which the rule applies, and multiple labels can be set
 	Tag []*DescribeDatasetListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -23070,13 +23223,13 @@ func (s *DescribeDatasetListRequest) SetTag(v []*DescribeDatasetListRequestTag) 
 }
 
 type DescribeDatasetListRequestTag struct {
-	// 标签键
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -23201,7 +23354,7 @@ type DescribeDatasetListResponseBodyDatasetInfoList struct {
 	//
 	// 2022-09-21T12:58:43Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 标签
+	// The tags.
 	Tags []*DescribeDatasetListResponseBodyDatasetInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -23244,13 +23397,13 @@ func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetTags(v []*DescribeDa
 }
 
 type DescribeDatasetListResponseBodyDatasetInfoListTags struct {
-	// 标签的键
+	// The tag key.
 	//
 	// example:
 	//
 	// ENV
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -25198,6 +25351,8 @@ type DescribeDeployedApisRequest struct {
 	//
 	// c076144d7878437b8f82fb85890ce6a0
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The HTTP method of the API request.
+	//
 	// example:
 	//
 	// POST
@@ -25208,6 +25363,8 @@ type DescribeDeployedApisRequest struct {
 	//
 	// weather
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The request path of the API.
+	//
 	// example:
 	//
 	// /st4
@@ -25433,6 +25590,8 @@ type DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem struct {
 	//
 	// c076144d7878437b8f82fb85890ce6a0
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The HTTP method of the API request.
+	//
 	// example:
 	//
 	// POST
@@ -25443,6 +25602,8 @@ type DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem struct {
 	//
 	// DescribeObjects
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The request path of the API.
+	//
 	// example:
 	//
 	// /trademark/search
@@ -27703,6 +27864,7 @@ func (s *DescribeInstanceClusterListRequest) SetSecurityToken(v string) *Describ
 }
 
 type DescribeInstanceClusterListResponseBody struct {
+	// The instance cluster list.
 	InstanceClusters *DescribeInstanceClusterListResponseBodyInstanceClusters `json:"InstanceClusters,omitempty" xml:"InstanceClusters,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -30012,7 +30174,14 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The network information of the user\\"s VPC if the instance is a VPC integration instance.
 	NetworkInterfaceAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes `json:"NetworkInterfaceAttributes,omitempty" xml:"NetworkInterfaceAttributes,omitempty" type:"Struct"`
-	PrivateDnsList             *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList             `json:"PrivateDnsList,omitempty" xml:"PrivateDnsList,omitempty" type:"Struct"`
+	// The new VPC egress CIDR block.
+	//
+	// example:
+	//
+	// 100.104.253.0/26
+	NewVpcEgressAddress *string `json:"NewVpcEgressAddress,omitempty" xml:"NewVpcEgressAddress,omitempty"`
+	// The private DNS list.
+	PrivateDnsList *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList `json:"PrivateDnsList,omitempty" xml:"PrivateDnsList,omitempty" type:"Struct"`
 	// The region ID.
 	//
 	// example:
@@ -30030,8 +30199,9 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	// example:
 	//
 	// true
-	SupportIpv6 *bool                                                        `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
-	Tags        *DescribeInstancesResponseBodyInstancesInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SupportIpv6 *bool `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	// The tags of the instance.
+	Tags *DescribeInstancesResponseBodyInstancesInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The user VPC ID.
 	//
 	// example:
@@ -30075,6 +30245,10 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	// cn-hangzhou-MAZ5(g,h)
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The zone.
+	//
+	// example:
+	//
+	// Multi-Availability Zone 3(b,c,a)
 	ZoneLocalName *string `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
 }
 
@@ -30236,6 +30410,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetNetworkInte
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetNewVpcEgressAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.NewVpcEgressAddress = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetPrivateDnsList(v *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.PrivateDnsList = v
 	return s
@@ -30320,12 +30499,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttr
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute struct {
 	// The variable name.
+	//
+	// example:
+	//
+	// SLA
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The variable value.
 	//
 	// example:
 	//
-	// 2500
+	// 99.95%
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -30454,7 +30637,17 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeTags) SetTagInfo
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the instance.
+	//
+	// example:
+	//
+	// Cookie
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the instance.
+	//
+	// example:
+	//
+	// 240
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -31013,6 +31206,12 @@ func (s *DescribeIpControlsResponse) SetBody(v *DescribeIpControlsResponseBody) 
 }
 
 type DescribeLogConfigRequest struct {
+	// The log type.
+	//
+	// Valid values:
+	//
+	// 	- PROVIDER
+	//
 	// example:
 	//
 	// PROVIDER
@@ -31039,7 +31238,10 @@ func (s *DescribeLogConfigRequest) SetSecurityToken(v string) *DescribeLogConfig
 }
 
 type DescribeLogConfigResponseBody struct {
+	// Info of the log config.
 	LogInfos *DescribeLogConfigResponseBodyLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E3BC2706-ABDB-5B64-A12F-08DFD9E3F339
@@ -31082,18 +31284,26 @@ func (s *DescribeLogConfigResponseBodyLogInfos) SetLogInfo(v []*DescribeLogConfi
 }
 
 type DescribeLogConfigResponseBodyLogInfosLogInfo struct {
+	// The log type.
+	//
 	// example:
 	//
 	// PROVIDER
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The region ID of the Logstore.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the Logstore in Log Service.
+	//
 	// example:
 	//
 	// slsstore
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// slsproject
@@ -36581,12 +36791,16 @@ func (s *DisableInstanceAccessControlResponse) SetBody(v *DisableInstanceAccessC
 }
 
 type DissociateInstanceWithPrivateDNSRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apigateway-hz-ead4f4b0bac8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The internal domain names included in the resolution.
+	//
 	// This parameter is required.
 	IntranetDomains []*string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty" type:"Repeated"`
 	SecurityToken   *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -36616,12 +36830,16 @@ func (s *DissociateInstanceWithPrivateDNSRequest) SetSecurityToken(v string) *Di
 }
 
 type DissociateInstanceWithPrivateDNSShrinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apigateway-hz-ead4f4b0bac8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The internal domain names included in the resolution.
+	//
 	// This parameter is required.
 	IntranetDomainsShrink *string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty"`
 	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -36651,6 +36869,8 @@ func (s *DissociateInstanceWithPrivateDNSShrinkRequest) SetSecurityToken(v strin
 }
 
 type DissociateInstanceWithPrivateDNSResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6C87A26A-6A18-4B8E-8099-705278381A2C
@@ -37239,19 +37459,34 @@ func (s *DryRunSwaggerResponse) SetBody(v *DryRunSwaggerResponseBody) *DryRunSwa
 }
 
 type EnableInstanceAccessControlRequest struct {
+	// The ID of the access control policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acl-bp11escro2et2tioscy52
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The ACL type. Valid values:
+	//
+	// 	- black: blacklist
+	//
+	// 	- white: whitelist
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// black
-	AclType          *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The IP version. Valid values: **ipv4*	- and **ipv6**.
+	//
+	// example:
+	//
+	// ipv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37295,6 +37530,8 @@ func (s *EnableInstanceAccessControlRequest) SetSecurityToken(v string) *EnableI
 }
 
 type EnableInstanceAccessControlResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CE5722A6-AE78-4741-A9B0-6C817D360510
@@ -38512,9 +38749,9 @@ func (s *ImportSwaggerShrinkRequest) SetSecurityToken(v string) *ImportSwaggerSh
 type ImportSwaggerResponseBody struct {
 	// The APIs that failed to be created based on the Swagger-compliant data imported this time.
 	Failed *ImportSwaggerResponseBodyFailed `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
-	// The models that failed to be imported based on the Swagger-compliant data imported this time.
+	// The models that failed to be imported through the Swagger-compliant data this time.
 	ModelFailed *ImportSwaggerResponseBodyModelFailed `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
-	// The models that were imported based on the Swagger-compliant data imported this time.
+	// The models that were imported through the Swagger-compliant data this time.
 	ModelSuccess *ImportSwaggerResponseBodyModelSuccess `json:"ModelSuccess,omitempty" xml:"ModelSuccess,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -38522,7 +38759,7 @@ type ImportSwaggerResponseBody struct {
 	//
 	// 647CEF05-404C-4125-B3D7-44792EB77392
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The APIs that were created based on the Swagger-compliant data imported this time.
+	// The APIs that are created based on the Swagger-compliant data imported this time.
 	Success *ImportSwaggerResponseBodySuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
 }
 
@@ -38577,19 +38814,19 @@ func (s *ImportSwaggerResponseBodyFailed) SetApiImportSwaggerFailed(v []*ImportS
 }
 
 type ImportSwaggerResponseBodyFailedApiImportSwaggerFailed struct {
-	// The error message returned.
+	// The error message returned when the API is created.
 	//
 	// example:
 	//
 	// api already exists : apiUid ===> 8e274ec61cf6468e83b68371956831cb
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The HTTP method of the API.
+	// The HTTP method configured when the API is created.
 	//
 	// example:
 	//
 	// post
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path of the API.
+	// The request path configured when the API is created.
 	//
 	// example:
 	//
@@ -38711,7 +38948,11 @@ type ImportSwaggerResponseBodyModelSuccessApiImportModelSuccess struct {
 	//
 	// NewInstance
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model operation.
+	// The model operation
+	//
+	// example:
+	//
+	// CREATE
 	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
 	// The UID of the model.
 	//
@@ -38767,25 +39008,25 @@ func (s *ImportSwaggerResponseBodySuccess) SetApiImportSwaggerSuccess(v []*Impor
 }
 
 type ImportSwaggerResponseBodySuccessApiImportSwaggerSuccess struct {
-	// Specifies that the operation is CREATE or MODIFY.
+	// Specifies whether the operation is CREATE or MODIFY.
 	//
 	// example:
 	//
 	// CREATE
 	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
-	// The UID of the imported API.
+	// The UID of the successfully imported API.
 	//
 	// example:
 	//
 	// 8e274ec61cf6468e83b68371956831cb
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The HTTP method of the API.
+	// The HTTP method configured when the API is created.
 	//
 	// example:
 	//
 	// get
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path of the API.
+	// The request path configured when the API is created.
 	//
 	// example:
 	//
@@ -38851,11 +39092,19 @@ func (s *ImportSwaggerResponse) SetBody(v *ImportSwaggerResponseBody) *ImportSwa
 }
 
 type ListPrivateDNSRequest struct {
+	// The internal domain name.
+	//
 	// example:
 	//
 	// api.demo.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The internal domain name resolution type. Valid values:
+	//
+	// 	- VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+	//
+	// 	- A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+	//
 	// example:
 	//
 	// A
@@ -38886,19 +39135,28 @@ func (s *ListPrivateDNSRequest) SetType(v string) *ListPrivateDNSRequest {
 }
 
 type ListPrivateDNSResponseBody struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize       *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The internal domain name resolutions.
 	PrivateDNSList []*ListPrivateDNSResponseBodyPrivateDNSList `json:"PrivateDNSList,omitempty" xml:"PrivateDNSList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ016
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -38939,16 +39197,28 @@ func (s *ListPrivateDNSResponseBody) SetTotalCount(v int32) *ListPrivateDNSRespo
 }
 
 type ListPrivateDNSResponseBodyPrivateDNSList struct {
+	// The instances that are associated with the resolution.
 	BindInstances []*string `json:"BindInstances,omitempty" xml:"BindInstances,omitempty" type:"Repeated"`
+	// The time when the resolution was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-05-10T08:17:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The internal domain name.
+	//
 	// example:
 	//
 	// api.demo.com
-	IntranetDomain *string                                            `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	Records        []*ListPrivateDNSResponseBodyPrivateDNSListRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// The resolution records.
+	Records []*ListPrivateDNSResponseBodyPrivateDNSListRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The internal domain name resolution type. Valid values:
+	//
+	// 	- VPC: resolution for VPC access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+	//
+	// 	- A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+	//
 	// example:
 	//
 	// A
@@ -38989,10 +39259,14 @@ func (s *ListPrivateDNSResponseBodyPrivateDNSList) SetType(v string) *ListPrivat
 }
 
 type ListPrivateDNSResponseBodyPrivateDNSListRecords struct {
+	// The resolution record.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
+	// The weight of the record.
+	//
 	// example:
 	//
 	// 100
@@ -40185,6 +40459,12 @@ type ModifyApiGroupRequest struct {
 	//
 	// depart:dep1
 	CompatibleFlags *string `json:"CompatibleFlags,omitempty" xml:"CompatibleFlags,omitempty"`
+	// The custom appcode configuration.
+	//
+	// example:
+	//
+	// {"location":"HEADER","name":"myAppCodeHeader"}
+	CustomAppCodeConfig *string `json:"CustomAppCodeConfig,omitempty" xml:"CustomAppCodeConfig,omitempty"`
 	// The custom trace configuration.
 	//
 	// example:
@@ -40208,7 +40488,12 @@ type ModifyApiGroupRequest struct {
 	// example:
 	//
 	// New weather informations.
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// If filter AppCode for backend.
+	//
+	// example:
+	//
+	// false
 	FilterAppCodeForBackend *string `json:"FilterAppCodeForBackend,omitempty" xml:"FilterAppCodeForBackend,omitempty"`
 	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
@@ -40231,9 +40516,19 @@ type ModifyApiGroupRequest struct {
 	// eagleeye-rpcid,x-b3-traceid,host
 	PassthroughHeaders *string `json:"PassthroughHeaders,omitempty" xml:"PassthroughHeaders,omitempty"`
 	// The RPC mode.
+	//
+	// example:
+	//
+	// {}
 	RpcPattern    *string `json:"RpcPattern,omitempty" xml:"RpcPattern,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// If support SSE.
+	//
 	// if can be null:
+	// true
+	//
+	// example:
+	//
 	// true
 	SupportSSE *string `json:"SupportSSE,omitempty" xml:"SupportSSE,omitempty"`
 	// The object tags that match the lifecycle rule. You can specify multiple tags.
@@ -40265,6 +40560,11 @@ func (s *ModifyApiGroupRequest) SetBasePath(v string) *ModifyApiGroupRequest {
 
 func (s *ModifyApiGroupRequest) SetCompatibleFlags(v string) *ModifyApiGroupRequest {
 	s.CompatibleFlags = &v
+	return s
+}
+
+func (s *ModifyApiGroupRequest) SetCustomAppCodeConfig(v string) *ModifyApiGroupRequest {
+	s.CustomAppCodeConfig = &v
 	return s
 }
 
@@ -40477,18 +40777,25 @@ func (s *ModifyApiGroupResponse) SetBody(v *ModifyApiGroupResponseBody) *ModifyA
 }
 
 type ModifyApiGroupInstanceRequest struct {
+	// The ID of the API group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 01c97ed08a614118849b00079753d1e2
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// migrate
-	Remark        *string                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SecurityToken *string                             `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag           []*ModifyApiGroupInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The tag of objects that match the rule. You can specify multiple tags.
+	Tag []*ModifyApiGroupInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the instance to which you want to migrate the API group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40531,12 +40838,16 @@ func (s *ModifyApiGroupInstanceRequest) SetTargetInstanceId(v string) *ModifyApi
 }
 
 type ModifyApiGroupInstanceRequestTag struct {
+	// The tag key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40564,6 +40875,8 @@ func (s *ModifyApiGroupInstanceRequestTag) SetValue(v string) *ModifyApiGroupIns
 }
 
 type ModifyApiGroupInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E07AEFF0-9FB0-599E-8F12-B418D8AE1F3D
@@ -40858,7 +41171,7 @@ func (s *ModifyApiGroupVpcWhitelistResponse) SetBody(v *ModifyApiGroupVpcWhiteli
 }
 
 type ModifyAppRequest struct {
-	// The ID of the application.
+	// The ID of the app.
 	//
 	// This parameter is required.
 	//
@@ -40866,22 +41179,27 @@ type ModifyAppRequest struct {
 	//
 	// 20112314518278
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID must be 4 to 26 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
+	// The value must be 4 to 26 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
 	//
-	// If you do not want to modify the existing value, do not specify this parameter.
+	// This parameter is required only when you want to modify the value.
 	//
 	// example:
 	//
 	// jiedian_pord
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The description of the application. The description can be up to 180 characters in length.
+	// The description of the app. The description can contain a maximum of 180 characters in length.
 	//
-	// If you do not want to modify the existing value, do not specify this parameter.
+	// This parameter is required only when you want to modify the value.
 	//
 	// example:
 	//
 	// modidyTest
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 扩展信息
+	//
+	// example:
+	//
+	// 110461946884
 	Extend        *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The tag of objects that match the rule. You can specify multiple tags.
@@ -40931,9 +41249,9 @@ func (s *ModifyAppRequest) SetTag(v []*ModifyAppRequestTag) *ModifyAppRequest {
 }
 
 type ModifyAppRequestTag struct {
-	// The key of the tag.
+	// The value of the tag.
 	//
-	// Valid values of n: `[1, 20]`.
+	// N can be an integer from 1 to 20.``
 	//
 	// This parameter is required.
 	//
@@ -40943,7 +41261,7 @@ type ModifyAppRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
 	//
-	// Valid values of n: `[1, 20]`.
+	// N can be an integer from 1 to 20.``
 	//
 	// example:
 	//
@@ -41468,50 +41786,72 @@ func (s *ModifyDatasetItemResponse) SetBody(v *ModifyDatasetItemResponseBody) *M
 }
 
 type ModifyInstanceAttributeRequest struct {
+	// If delete VPC Ip block.
+	//
 	// example:
 	//
 	// true
 	DeleteVpcIpBlock *string `json:"DeleteVpcIpBlock,omitempty" xml:"DeleteVpcIpBlock,omitempty"`
+	// If enable outbound IPv6 Traffic.
+	//
 	// example:
 	//
 	// true
 	EgressIpv6Enable *string `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	// The HTTPS policy.
+	//
 	// example:
 	//
 	// HTTPS2_TLS1_0
 	HttpsPolicy *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	// If enable inbound IPv6 Traffic.
+	//
 	// example:
 	//
 	// true
 	IPV6Enabled *string `json:"IPV6Enabled,omitempty" xml:"IPV6Enabled,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apigateway-ht-8xxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance Name
+	//
 	// example:
 	//
 	// apigatewayInstance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Custom private CIDR block.
+	//
 	// example:
 	//
 	// 172.0.0.1/24
 	IntranetSegments *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	// Maintainable end time.
+	//
 	// example:
 	//
 	// 23:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// Maintainable start time.
+	//
 	// example:
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The information about the CIDR block that API Gateway can use to access the virtual private cloud (VPC) of the backend service.
 	ToConnectVpcIpBlock *ModifyInstanceAttributeRequestToConnectVpcIpBlock `json:"ToConnectVpcIpBlock,omitempty" xml:"ToConnectVpcIpBlock,omitempty" type:"Struct"`
+	// The token of the request.
+	//
 	// example:
 	//
 	// c20d86c4-1eb3-4d0b-afe9-c586df1e2136
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// Specifies whether to enable the self-calling domain name.
+	//
 	// example:
 	//
 	// false
@@ -41642,50 +41982,72 @@ func (s *ModifyInstanceAttributeRequestToConnectVpcIpBlock) SetZoneId(v string) 
 }
 
 type ModifyInstanceAttributeShrinkRequest struct {
+	// If delete VPC Ip block.
+	//
 	// example:
 	//
 	// true
 	DeleteVpcIpBlock *string `json:"DeleteVpcIpBlock,omitempty" xml:"DeleteVpcIpBlock,omitempty"`
+	// If enable outbound IPv6 Traffic.
+	//
 	// example:
 	//
 	// true
 	EgressIpv6Enable *string `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	// The HTTPS policy.
+	//
 	// example:
 	//
 	// HTTPS2_TLS1_0
 	HttpsPolicy *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	// If enable inbound IPv6 Traffic.
+	//
 	// example:
 	//
 	// true
 	IPV6Enabled *string `json:"IPV6Enabled,omitempty" xml:"IPV6Enabled,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apigateway-ht-8xxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance Name
+	//
 	// example:
 	//
 	// apigatewayInstance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Custom private CIDR block.
+	//
 	// example:
 	//
 	// 172.0.0.1/24
 	IntranetSegments *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	// Maintainable end time.
+	//
 	// example:
 	//
 	// 23:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// Maintainable start time.
+	//
 	// example:
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The information about the CIDR block that API Gateway can use to access the virtual private cloud (VPC) of the backend service.
 	ToConnectVpcIpBlockShrink *string `json:"ToConnectVpcIpBlock,omitempty" xml:"ToConnectVpcIpBlock,omitempty"`
+	// The token of the request.
+	//
 	// example:
 	//
 	// c20d86c4-1eb3-4d0b-afe9-c586df1e2136
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// Specifies whether to enable the self-calling domain name.
+	//
 	// example:
 	//
 	// false
@@ -41761,6 +42123,8 @@ func (s *ModifyInstanceAttributeShrinkRequest) SetVpcSlbIntranetEnable(v string)
 }
 
 type ModifyInstanceAttributeResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F3186326-2C57-58E1-B6E9-XXXXXXXXXXXX
@@ -41951,6 +42315,142 @@ func (s *ModifyInstanceSpecResponse) SetStatusCode(v int32) *ModifyInstanceSpecR
 }
 
 func (s *ModifyInstanceSpecResponse) SetBody(v *ModifyInstanceSpecResponseBody) *ModifyInstanceSpecResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyInstanceVpcAttributeForConsoleRequest struct {
+	// Whether delete instance client VPC.
+	//
+	// - FALSE: set or modify instance client VPC
+	//
+	// - TRUE: delete instance client VPC
+	//
+	// example:
+	//
+	// false
+	DeleteVpcAccess *bool `json:"DeleteVpcAccess,omitempty" xml:"DeleteVpcAccess,omitempty"`
+	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apigateway-bj-f28baxxxxb51
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The token of the request.
+	//
+	// example:
+	//
+	// 505959c38776d9324945dbff709582
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The ID of the VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-8vbnnd66xxxx2xb5oig4f
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	//
+	// example:
+	//
+	// 1121011712128923
+	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bj9e2i8w3wz7shkvnuj9a
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s ModifyInstanceVpcAttributeForConsoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVpcAttributeForConsoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleRequest) SetDeleteVpcAccess(v bool) *ModifyInstanceVpcAttributeForConsoleRequest {
+	s.DeleteVpcAccess = &v
+	return s
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleRequest) SetInstanceId(v string) *ModifyInstanceVpcAttributeForConsoleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleRequest) SetToken(v string) *ModifyInstanceVpcAttributeForConsoleRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleRequest) SetVpcId(v string) *ModifyInstanceVpcAttributeForConsoleRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleRequest) SetVpcOwnerId(v int64) *ModifyInstanceVpcAttributeForConsoleRequest {
+	s.VpcOwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleRequest) SetVswitchId(v string) *ModifyInstanceVpcAttributeForConsoleRequest {
+	s.VswitchId = &v
+	return s
+}
+
+type ModifyInstanceVpcAttributeForConsoleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D08741CF-BE59-5DA6-B06F-BB65173110C0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceVpcAttributeForConsoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVpcAttributeForConsoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleResponseBody) SetRequestId(v string) *ModifyInstanceVpcAttributeForConsoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceVpcAttributeForConsoleResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceVpcAttributeForConsoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstanceVpcAttributeForConsoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVpcAttributeForConsoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleResponse) SetHeaders(v map[string]*string) *ModifyInstanceVpcAttributeForConsoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleResponse) SetStatusCode(v int32) *ModifyInstanceVpcAttributeForConsoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceVpcAttributeForConsoleResponse) SetBody(v *ModifyInstanceVpcAttributeForConsoleResponseBody) *ModifyInstanceVpcAttributeForConsoleResponse {
 	s.Body = v
 	return s
 }
@@ -42285,17 +42785,31 @@ func (s *ModifyIpControlPolicyItemResponse) SetBody(v *ModifyIpControlPolicyItem
 }
 
 type ModifyLogConfigRequest struct {
+	// The log type. Valid values:
+	//
+	// 	- **log**: other logs
+	//
+	// 	- **survey**: inspection logs
+	//
+	// Enumeration value:
+	//
+	// 	- PROVIDER
+	//
 	// example:
 	//
 	// PROVIDER
 	LogType       *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The name of the Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// logs-gateway
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
+	// The name of the Log Service project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42333,6 +42847,8 @@ func (s *ModifyLogConfigRequest) SetSlsProject(v string) *ModifyLogConfigRequest
 }
 
 type ModifyLogConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 75A4ADCB-AA26-51FB-94D4-AB3240040974
@@ -43310,12 +43826,28 @@ type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
 	// VIPROOM_VIPROOM
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The time when API Gateway finished forwarding the request to the backend service.
+	//
+	// example:
+	//
+	// 1731487224969
 	BackendRequestEnd *int64 `json:"BackendRequestEnd,omitempty" xml:"BackendRequestEnd,omitempty"`
 	// The time when API Gateway started to forward the request to the backend service.
+	//
+	// example:
+	//
+	// 1731487224969
 	BackendRequestStart *int64 `json:"BackendRequestStart,omitempty" xml:"BackendRequestStart,omitempty"`
 	// The time when API Gateway finished receiving the response from the backend service.
+	//
+	// example:
+	//
+	// 1731487224989
 	BackendResponseEnd *int64 `json:"BackendResponseEnd,omitempty" xml:"BackendResponseEnd,omitempty"`
 	// The time when API Gateway started to receive the response from the backend service.
+	//
+	// example:
+	//
+	// 1731487224989
 	BackendResponseStart *int64 `json:"BackendResponseStart,omitempty" xml:"BackendResponseStart,omitempty"`
 	// The IP address of the client that sends the request.
 	//
@@ -43372,12 +43904,28 @@ type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
 	// error msg
 	Exception *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
 	// The time when API Gateway finished receiving the request.
+	//
+	// example:
+	//
+	// 1731487224968
 	FrontRequestEnd *int64 `json:"FrontRequestEnd,omitempty" xml:"FrontRequestEnd,omitempty"`
 	// The time when API Gateway started to receive the request.
+	//
+	// example:
+	//
+	// 1731487224968
 	FrontRequestStart *int64 `json:"FrontRequestStart,omitempty" xml:"FrontRequestStart,omitempty"`
 	// The time when API Gateway finished forwarding the response to the client.
+	//
+	// example:
+	//
+	// 1731487224989
 	FrontResponseEnd *int64 `json:"FrontResponseEnd,omitempty" xml:"FrontResponseEnd,omitempty"`
 	// The time when API Gateway started to forward the response to the client.
+	//
+	// example:
+	//
+	// 1731487224989
 	FrontResponseStart *int64 `json:"FrontResponseStart,omitempty" xml:"FrontResponseStart,omitempty"`
 	// The ID of the API group to which the API belongs.
 	//
@@ -45419,12 +45967,16 @@ func (s *SdkGenerateByAppResponse) SetBody(v *SdkGenerateByAppResponseBody) *Sdk
 }
 
 type SdkGenerateByAppForRegionRequest struct {
+	// The ID of the app. This ID is generated by the system and globally unique.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 110906109
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The programming language in which the SDK is generated.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45458,10 +46010,14 @@ func (s *SdkGenerateByAppForRegionRequest) SetSecurityToken(v string) *SdkGenera
 }
 
 type SdkGenerateByAppForRegionResponseBody struct {
+	// The code of the SDK by using the Base64 scheme. You can obtain the file by using the Base64 decoding scheme.
+	//
 	// example:
 	//
 	// UEsDBBQACAAIADdwnFQAAAAAAAAAAAAAAAA2AAAAQ0FTREtfSkFWQV8xMjI3NDY2NjY0MzM0MTMzXzE2NTExMjU3MD......
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CE5722A6-AE78-4741-A9B0-6C817D360510
@@ -45701,15 +46257,29 @@ func (s *SetAccessControlListAttributeResponse) SetBody(v *SetAccessControlListA
 }
 
 type SetApiProductsAuthoritiesRequest struct {
+	// The API products.
+	//
 	// This parameter is required.
 	ApiProductIds []*string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty" type:"Repeated"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 111385984
-	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 授权有效时间的截止时间，请设置格林尼治标准时间(GMT), 如果为空，即为授权永久有效。
+	//
+	// example:
+	//
+	// 2023-06-12T03:07:37Z
 	AuthValidTime *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
+	// The authorization description.
+	//
+	// example:
+	//
+	// test
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -45748,15 +46318,29 @@ func (s *SetApiProductsAuthoritiesRequest) SetSecurityToken(v string) *SetApiPro
 }
 
 type SetApiProductsAuthoritiesShrinkRequest struct {
+	// The API products.
+	//
 	// This parameter is required.
 	ApiProductIdsShrink *string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 111385984
-	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 授权有效时间的截止时间，请设置格林尼治标准时间(GMT), 如果为空，即为授权永久有效。
+	//
+	// example:
+	//
+	// 2023-06-12T03:07:37Z
 	AuthValidTime *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
+	// The authorization description.
+	//
+	// example:
+	//
+	// test
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -45795,6 +46379,8 @@ func (s *SetApiProductsAuthoritiesShrinkRequest) SetSecurityToken(v string) *Set
 }
 
 type SetApiProductsAuthoritiesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2603F41E-77FC-59A3-840E-296578A9BDE0
@@ -45986,18 +46572,29 @@ func (s *SetApisAuthoritiesResponse) SetBody(v *SetApisAuthoritiesResponseBody) 
 }
 
 type SetAppsAuthToApiProductRequest struct {
+	// The ID of the API product.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 117b7a64a8b3f064eaa4a47ac62aac5e
 	ApiProductId *string `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
+	// The IDs of the applications that you want to authorize.
+	//
 	// This parameter is required.
 	AppIds []*int64 `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
+	// The time (UTC) when the authorization expires. If this parameter is empty, the authorization does not expire.
+	//
 	// example:
 	//
 	// 2023-05-31T08:15:39Z
 	AuthValidTime *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
+	// The description of the authorization.
+	//
+	// example:
+	//
+	// Test
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -46036,6 +46633,8 @@ func (s *SetAppsAuthToApiProductRequest) SetSecurityToken(v string) *SetAppsAuth
 }
 
 type SetAppsAuthToApiProductResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
@@ -46486,6 +47085,12 @@ type SetDomainCertificateRequest struct {
 	//
 	// For more information, see the following request examples
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
+	// If pass ssl_client_s_dn of the cert to backend header \\"X-Client-S-Dn\\".
+	//
+	// example:
+	//
+	// True
+	ClientCertSDnPassThrough *bool `json:"ClientCertSDnPassThrough,omitempty" xml:"ClientCertSDnPassThrough,omitempty"`
 	// The custom domain name.
 	//
 	// This parameter is required.
@@ -46503,6 +47108,12 @@ type SetDomainCertificateRequest struct {
 	// 927d50c0f2e54b359919923d908bb015
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// If enable ssl OCSP.
+	//
+	// example:
+	//
+	// True
+	SslOcspEnable *bool `json:"SslOcspEnable,omitempty" xml:"SslOcspEnable,omitempty"`
 	// The certificate verification depth.
 	//
 	// example:
@@ -46539,6 +47150,11 @@ func (s *SetDomainCertificateRequest) SetCertificatePrivateKey(v string) *SetDom
 	return s
 }
 
+func (s *SetDomainCertificateRequest) SetClientCertSDnPassThrough(v bool) *SetDomainCertificateRequest {
+	s.ClientCertSDnPassThrough = &v
+	return s
+}
+
 func (s *SetDomainCertificateRequest) SetDomainName(v string) *SetDomainCertificateRequest {
 	s.DomainName = &v
 	return s
@@ -46551,6 +47167,11 @@ func (s *SetDomainCertificateRequest) SetGroupId(v string) *SetDomainCertificate
 
 func (s *SetDomainCertificateRequest) SetSecurityToken(v string) *SetDomainCertificateRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *SetDomainCertificateRequest) SetSslOcspEnable(v bool) *SetDomainCertificateRequest {
+	s.SslOcspEnable = &v
 	return s
 }
 
@@ -46636,7 +47257,12 @@ type SetDomainWebSocketStatusRequest struct {
 	// cf976e63b70c4993807e7bb9345d4695
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	WSSEnable     *string `json:"WSSEnable,omitempty" xml:"WSSEnable,omitempty"`
+	// If enable WSS.
+	//
+	// example:
+	//
+	// false
+	WSSEnable *string `json:"WSSEnable,omitempty" xml:"WSSEnable,omitempty"`
 }
 
 func (s SetDomainWebSocketStatusRequest) String() string {
@@ -47898,15 +48524,25 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdatePrivateDNSRequest struct {
+	// The internal domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api.demo.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// The resolution records. This parameter is valid only when Type is set to A.
+	//
 	// This parameter is required.
 	Records       []*UpdatePrivateDNSRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	SecurityToken *string                           `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The internal domain name resolution type. Valid values:
+	//
+	// 	- VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+	//
+	// 	- A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47944,10 +48580,14 @@ func (s *UpdatePrivateDNSRequest) SetType(v string) *UpdatePrivateDNSRequest {
 }
 
 type UpdatePrivateDNSRequestRecords struct {
+	// The resolution record.
+	//
 	// example:
 	//
 	// 192.168.0.2
 	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
+	// The weight of the record.
+	//
 	// example:
 	//
 	// 100
@@ -47973,15 +48613,25 @@ func (s *UpdatePrivateDNSRequestRecords) SetWeight(v int32) *UpdatePrivateDNSReq
 }
 
 type UpdatePrivateDNSShrinkRequest struct {
+	// The internal domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api.demo.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// The resolution records. This parameter is valid only when Type is set to A.
+	//
 	// This parameter is required.
 	RecordsShrink *string `json:"Records,omitempty" xml:"Records,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The internal domain name resolution type. Valid values:
+	//
+	// 	- VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+	//
+	// 	- A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -48019,6 +48669,8 @@ func (s *UpdatePrivateDNSShrinkRequest) SetType(v string) *UpdatePrivateDNSShrin
 }
 
 type UpdatePrivateDNSResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
@@ -48646,7 +49298,11 @@ func (client *Client) AddTrafficSpecialControl(request *AddTrafficSpecialControl
 
 // Summary:
 //
-// 专享实例关联内网域名解析记录
+// Associates an internal domain name resolution with a dedicated instance.
+//
+// Description:
+//
+// An internal domain name resolution can be associated only with a dedicated instance, not with a shared instance or shared instance cluster.
 //
 // @param tmpReq - AssociateInstanceWithPrivateDNSRequest
 //
@@ -48704,7 +49360,11 @@ func (client *Client) AssociateInstanceWithPrivateDNSWithOptions(tmpReq *Associa
 
 // Summary:
 //
-// 专享实例关联内网域名解析记录
+// Associates an internal domain name resolution with a dedicated instance.
+//
+// Description:
+//
+// An internal domain name resolution can be associated only with a dedicated instance, not with a shared instance or shared instance cluster.
 //
 // @param request - AssociateInstanceWithPrivateDNSRequest
 //
@@ -49282,6 +49942,10 @@ func (client *Client) CreateApi(request *CreateApiRequest) (_result *CreateApiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建API分组
+//
 // @param request - CreateApiGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49340,6 +50004,10 @@ func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建API分组
+//
 // @param request - CreateApiGroupRequest
 //
 // @return CreateApiGroupResponse
@@ -50118,6 +50786,10 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网域名
+//
 // @param request - CreateIntranetDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50160,6 +50832,10 @@ func (client *Client) CreateIntranetDomainWithOptions(request *CreateIntranetDom
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网域名
+//
 // @param request - CreateIntranetDomainRequest
 //
 // @return CreateIntranetDomainResponse
@@ -50270,6 +50946,10 @@ func (client *Client) CreateIpControl(request *CreateIpControlRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Simple Log Service configuration for an API.
+//
 // @param request - CreateLogConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50281,6 +50961,10 @@ func (client *Client) CreateLogConfigWithOptions(request *CreateLogConfigRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateSlr)) {
+		query["CreateSlr"] = request.CreateSlr
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LogType)) {
 		query["LogType"] = request.LogType
 	}
@@ -50320,6 +51004,10 @@ func (client *Client) CreateLogConfigWithOptions(request *CreateLogConfigRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Simple Log Service configuration for an API.
+//
 // @param request - CreateLogConfigRequest
 //
 // @return CreateLogConfigResponse
@@ -50596,7 +51284,11 @@ func (client *Client) CreatePlugin(request *CreatePluginRequest) (_result *Creat
 
 // Summary:
 //
-// 创建内网域名解析
+// Creates an internal domain name resolution and adds a resolution record.
+//
+// Description:
+//
+// An internal domain name resolution of the virtual private cloud (VPC) type can be bound only to traditional dedicated instances. An internal domain name resolution of the A type can be bound only to VPC integration dedicated instances.
 //
 // @param tmpReq - CreatePrivateDNSRequest
 //
@@ -50658,7 +51350,11 @@ func (client *Client) CreatePrivateDNSWithOptions(tmpReq *CreatePrivateDNSReques
 
 // Summary:
 //
-// 创建内网域名解析
+// Creates an internal domain name resolution and adds a resolution record.
+//
+// Description:
+//
+// An internal domain name resolution of the virtual private cloud (VPC) type can be bound only to traditional dedicated instances. An internal domain name resolution of the A type can be bound only to VPC integration dedicated instances.
 //
 // @param request - CreatePrivateDNSRequest
 //
@@ -52380,7 +53076,7 @@ func (client *Client) DeletePlugin(request *DeletePluginRequest) (_result *Delet
 
 // Summary:
 //
-// 删除内网域名解析
+// Deletes an internal domain name resolution.
 //
 // @param request - DeletePrivateDNSRequest
 //
@@ -52434,7 +53130,7 @@ func (client *Client) DeletePrivateDNSWithOptions(request *DeletePrivateDNSReque
 
 // Summary:
 //
-// 删除内网域名解析
+// Deletes an internal domain name resolution.
 //
 // @param request - DeletePrivateDNSRequest
 //
@@ -52790,6 +53486,10 @@ func (client *Client) DeployApi(request *DeployApiRequest) (_result *DeployApiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询批量下线API任务
+//
 // @param request - DescribeAbolishApiTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -52832,6 +53532,10 @@ func (client *Client) DescribeAbolishApiTaskWithOptions(request *DescribeAbolish
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询批量下线API任务
+//
 // @param request - DescribeAbolishApiTaskRequest
 //
 // @return DescribeAbolishApiTaskResponse
@@ -53313,6 +54017,10 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BasePath)) {
+		query["BasePath"] = request.BasePath
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableTagAuth)) {
 		query["EnableTagAuth"] = request.EnableTagAuth
 	}
@@ -57946,6 +58654,10 @@ func (client *Client) DescribeIpControls(request *DescribeIpControlsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日志配置
+//
 // @param request - DescribeLogConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57988,6 +58700,10 @@ func (client *Client) DescribeLogConfigWithOptions(request *DescribeLogConfigReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日志配置
+//
 // @param request - DescribeLogConfigRequest
 //
 // @return DescribeLogConfigResponse
@@ -58250,6 +58966,10 @@ func (client *Client) DescribePluginApis(request *DescribePluginApisRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询插件列表
+//
 // @param request - DescribePluginSchemasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58292,6 +59012,10 @@ func (client *Client) DescribePluginSchemasWithOptions(request *DescribePluginSc
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询插件列表
+//
 // @param request - DescribePluginSchemasRequest
 //
 // @return DescribePluginSchemasResponse
@@ -58306,6 +59030,10 @@ func (client *Client) DescribePluginSchemas(request *DescribePluginSchemasReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询插件模板
+//
 // @param request - DescribePluginTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58352,6 +59080,10 @@ func (client *Client) DescribePluginTemplatesWithOptions(request *DescribePlugin
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询插件模板
+//
 // @param request - DescribePluginTemplatesRequest
 //
 // @return DescribePluginTemplatesResponse
@@ -59406,6 +60138,10 @@ func (client *Client) DescribeUpdateBackendTask(request *DescribeUpdateBackendTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询更新VPC授权的任务
+//
 // @param request - DescribeUpdateVpcInfoTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59448,6 +60184,10 @@ func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpda
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询更新VPC授权的任务
+//
 // @param request - DescribeUpdateVpcInfoTaskRequest
 //
 // @return DescribeUpdateVpcInfoTaskResponse
@@ -59840,7 +60580,7 @@ func (client *Client) DisableInstanceAccessControl(request *DisableInstanceAcces
 
 // Summary:
 //
-// 专享实例解除的关联内网域名解析记录
+// Disassociates an internal domain name resolution from a dedicated instance.
 //
 // @param tmpReq - DissociateInstanceWithPrivateDNSRequest
 //
@@ -59898,7 +60638,7 @@ func (client *Client) DissociateInstanceWithPrivateDNSWithOptions(tmpReq *Dissoc
 
 // Summary:
 //
-// 专享实例解除的关联内网域名解析记录
+// Disassociates an internal domain name resolution from a dedicated instance.
 //
 // @param request - DissociateInstanceWithPrivateDNSRequest
 //
@@ -60004,7 +60744,7 @@ func (client *Client) DryRunSwagger(request *DryRunSwaggerRequest) (_result *Dry
 
 // Summary:
 //
-// 开启实例的访问控制
+// This feature provides instance-level access control capabilities for dedicated API Gateway instances. Specifies the access control policy of an instance.
 //
 // @param request - EnableInstanceAccessControlRequest
 //
@@ -60062,7 +60802,7 @@ func (client *Client) EnableInstanceAccessControlWithOptions(request *EnableInst
 
 // Summary:
 //
-// 开启实例的访问控制
+// This feature provides instance-level access control capabilities for dedicated API Gateway instances. Specifies the access control policy of an instance.
 //
 // @param request - EnableInstanceAccessControlRequest
 //
@@ -60376,7 +61116,7 @@ func (client *Client) ImportSwagger(request *ImportSwaggerRequest) (_result *Imp
 
 // Summary:
 //
-// 查询内网域名解析
+// Queries internal domain name resolutions by domain name or resolution type.
 //
 // @param request - ListPrivateDNSRequest
 //
@@ -60426,7 +61166,7 @@ func (client *Client) ListPrivateDNSWithOptions(request *ListPrivateDNSRequest, 
 
 // Summary:
 //
-// 查询内网域名解析
+// Queries internal domain name resolutions by domain name or resolution type.
 //
 // @param request - ListPrivateDNSRequest
 //
@@ -60977,6 +61717,10 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 		query["CompatibleFlags"] = request.CompatibleFlags
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomAppCodeConfig)) {
+		query["CustomAppCodeConfig"] = request.CustomAppCodeConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomTraceConfig)) {
 		query["CustomTraceConfig"] = request.CustomTraceConfig
 	}
@@ -61076,6 +61820,10 @@ func (client *Client) ModifyApiGroup(request *ModifyApiGroupRequest) (_result *M
 	return _result, _err
 }
 
+// Summary:
+//
+// 变更分组实例
+//
 // @param request - ModifyApiGroupInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -61130,6 +61878,10 @@ func (client *Client) ModifyApiGroupInstanceWithOptions(request *ModifyApiGroupI
 	return _result, _err
 }
 
+// Summary:
+//
+// 变更分组实例
+//
 // @param request - ModifyApiGroupInstanceRequest
 //
 // @return ModifyApiGroupInstanceResponse
@@ -61302,15 +62054,15 @@ func (client *Client) ModifyApiGroupVpcWhitelist(request *ModifyApiGroupVpcWhite
 
 // Summary:
 //
-// Modifies a specified application.
+// Modifies a specified app.
 //
 // Description:
 //
 //   This operation is intended for API callers.
 //
-// 	- **AppName*	- or **Description*	- can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
+// 	- AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
 //
-// 	- You can call this operation up to 50 times per second per account.
+// 	- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyAppRequest
 //
@@ -61372,15 +62124,15 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 
 // Summary:
 //
-// Modifies a specified application.
+// Modifies a specified app.
 //
 // Description:
 //
 //   This operation is intended for API callers.
 //
-// 	- **AppName*	- or **Description*	- can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
+// 	- AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
 //
-// 	- You can call this operation up to 50 times per second per account.
+// 	- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyAppRequest
 //
@@ -61702,7 +62454,7 @@ func (client *Client) ModifyDatasetItem(request *ModifyDatasetItemRequest) (_res
 
 // Summary:
 //
-// 修改API网关实例属性
+// Modifies the properties of an API Gateway instance.
 //
 // @param tmpReq - ModifyInstanceAttributeRequest
 //
@@ -61794,7 +62546,7 @@ func (client *Client) ModifyInstanceAttributeWithOptions(tmpReq *ModifyInstanceA
 
 // Summary:
 //
-// 修改API网关实例属性
+// Modifies the properties of an API Gateway instance.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -61883,6 +62635,86 @@ func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceSpecResponse{}
 	_body, _err := client.ModifyInstanceSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify instance client VPC config.
+//
+// @param request - ModifyInstanceVpcAttributeForConsoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceVpcAttributeForConsoleResponse
+func (client *Client) ModifyInstanceVpcAttributeForConsoleWithOptions(request *ModifyInstanceVpcAttributeForConsoleRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceVpcAttributeForConsoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeleteVpcAccess)) {
+		query["DeleteVpcAccess"] = request.DeleteVpcAccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcOwnerId)) {
+		query["VpcOwnerId"] = request.VpcOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchId)) {
+		query["VswitchId"] = request.VswitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceVpcAttributeForConsole"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceVpcAttributeForConsoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify instance client VPC config.
+//
+// @param request - ModifyInstanceVpcAttributeForConsoleRequest
+//
+// @return ModifyInstanceVpcAttributeForConsoleResponse
+func (client *Client) ModifyInstanceVpcAttributeForConsole(request *ModifyInstanceVpcAttributeForConsoleRequest) (_result *ModifyInstanceVpcAttributeForConsoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceVpcAttributeForConsoleResponse{}
+	_body, _err := client.ModifyInstanceVpcAttributeForConsoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62134,6 +62966,10 @@ func (client *Client) ModifyIpControlPolicyItem(request *ModifyIpControlPolicyIt
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改日志配置
+//
 // @param request - ModifyLogConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62184,6 +63020,10 @@ func (client *Client) ModifyLogConfigWithOptions(request *ModifyLogConfigRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改日志配置
+//
 // @param request - ModifyLogConfigRequest
 //
 // @return ModifyLogConfigResponse
@@ -62658,6 +63498,10 @@ func (client *Client) ModifyVpcAccessAndUpdateApis(request *ModifyVpcAccessAndUp
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通API网关服务
+//
 // @param request - OpenApiGatewayServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62685,6 +63529,10 @@ func (client *Client) OpenApiGatewayServiceWithOptions(runtime *util.RuntimeOpti
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通API网关服务
+//
 // @return OpenApiGatewayServiceResponse
 func (client *Client) OpenApiGatewayService() (_result *OpenApiGatewayServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -63603,6 +64451,10 @@ func (client *Client) RemoveVpcAccess(request *RemoveVpcAccessRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除VPC授权并下线关联API
+//
 // @param request - RemoveVpcAccessAndAbolishApisRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -63657,6 +64509,10 @@ func (client *Client) RemoveVpcAccessAndAbolishApisWithOptions(request *RemoveVp
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除VPC授权并下线关联API
+//
 // @param request - RemoveVpcAccessAndAbolishApisRequest
 //
 // @return RemoveVpcAccessAndAbolishApisResponse
@@ -63827,6 +64683,10 @@ func (client *Client) ResetAppSecret(request *ResetAppSecretRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据APP生成SDK
+//
 // @param request - SdkGenerateByAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -63873,6 +64733,10 @@ func (client *Client) SdkGenerateByAppWithOptions(request *SdkGenerateByAppReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据APP生成SDK
+//
 // @param request - SdkGenerateByAppRequest
 //
 // @return SdkGenerateByAppResponse
@@ -63955,6 +64819,10 @@ func (client *Client) SdkGenerateByAppForRegion(request *SdkGenerateByAppForRegi
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据分组生成SDK
+//
 // @param request - SdkGenerateByGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -64001,6 +64869,10 @@ func (client *Client) SdkGenerateByGroupWithOptions(request *SdkGenerateByGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据分组生成SDK
+//
 // @param request - SdkGenerateByGroupRequest
 //
 // @return SdkGenerateByGroupResponse
@@ -64085,7 +64957,7 @@ func (client *Client) SetAccessControlListAttribute(request *SetAccessControlLis
 
 // Summary:
 //
-// 给多个API产品添加APP授权
+// Grants permissions on API products to an application.
 //
 // @param tmpReq - SetApiProductsAuthoritiesRequest
 //
@@ -64149,7 +65021,7 @@ func (client *Client) SetApiProductsAuthoritiesWithOptions(tmpReq *SetApiProduct
 
 // Summary:
 //
-// 给多个API产品添加APP授权
+// Grants permissions on API products to an application.
 //
 // @param request - SetApiProductsAuthoritiesRequest
 //
@@ -64267,7 +65139,7 @@ func (client *Client) SetApisAuthorities(request *SetApisAuthoritiesRequest) (_r
 
 // Summary:
 //
-// 将多个APP授权给API产品
+// Authorizes multiple applications to call APIs in an API product.
 //
 // @param request - SetAppsAuthToApiProductRequest
 //
@@ -64325,7 +65197,7 @@ func (client *Client) SetAppsAuthToApiProductWithOptions(request *SetAppsAuthToA
 
 // Summary:
 //
-// 将多个APP授权给API产品
+// Authorizes multiple applications to call APIs in an API product.
 //
 // @param request - SetAppsAuthToApiProductRequest
 //
@@ -64560,6 +65432,10 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 		query["CertificatePrivateKey"] = request.CertificatePrivateKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientCertSDnPassThrough)) {
+		query["ClientCertSDnPassThrough"] = request.ClientCertSDnPassThrough
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
 	}
@@ -64570,6 +65446,10 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SslOcspEnable)) {
+		query["SslOcspEnable"] = request.SslOcspEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SslVerifyDepth)) {
@@ -64701,6 +65581,10 @@ func (client *Client) SetDomainWebSocketStatus(request *SetDomainWebSocketStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置分组授权AppCode
+//
 // @param request - SetGroupAuthAppCodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -64747,6 +65631,10 @@ func (client *Client) SetGroupAuthAppCodeWithOptions(request *SetGroupAuthAppCod
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置分组授权AppCode
+//
 // @param request - SetGroupAuthAppCodeRequest
 //
 // @return SetGroupAuthAppCodeResponse
@@ -65463,7 +66351,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新内网域名解析
+// Modifies an internal domain name resolution.
 //
 // @param tmpReq - UpdatePrivateDNSRequest
 //
@@ -65525,7 +66413,7 @@ func (client *Client) UpdatePrivateDNSWithOptions(tmpReq *UpdatePrivateDNSReques
 
 // Summary:
 //
-// 更新内网域名解析
+// Modifies an internal domain name resolution.
 //
 // @param request - UpdatePrivateDNSRequest
 //
