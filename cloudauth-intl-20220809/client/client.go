@@ -1732,6 +1732,210 @@ func (s *FraudResultCallBackResponse) SetBody(v *FraudResultCallBackResponseBody
 	return s
 }
 
+type Id2MetaPeriodVerifyIntlRequest struct {
+	// This parameter is required.
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 411xxxxxxxxxxx0001
+	DocNo *string `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ​00000001
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c35****
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// example:
+	//
+	// 1234567890
+	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKYC_Date_MIN
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 1234567890
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20301001
+	ValidityEndDate *string `json:"ValidityEndDate,omitempty" xml:"ValidityEndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20201001
+	ValidityStartDate *string `json:"ValidityStartDate,omitempty" xml:"ValidityStartDate,omitempty"`
+}
+
+func (s Id2MetaPeriodVerifyIntlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaPeriodVerifyIntlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetDocName(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetDocNo(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.DocNo = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetDocType(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetMerchantBizId(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetMerchantUserId(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetProductCode(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetSceneCode(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetValidityEndDate(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.ValidityEndDate = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlRequest) SetValidityStartDate(v string) *Id2MetaPeriodVerifyIntlRequest {
+	s.ValidityStartDate = &v
+	return s
+}
+
+type Id2MetaPeriodVerifyIntlResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7B97D932-7FF5-517D-BF39-7CA1BEE3CDD9
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *Id2MetaPeriodVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s Id2MetaPeriodVerifyIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaPeriodVerifyIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponseBody) SetCode(v string) *Id2MetaPeriodVerifyIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponseBody) SetMessage(v string) *Id2MetaPeriodVerifyIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponseBody) SetRequestId(v string) *Id2MetaPeriodVerifyIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponseBody) SetResult(v *Id2MetaPeriodVerifyIntlResponseBodyResult) *Id2MetaPeriodVerifyIntlResponseBody {
+	s.Result = v
+	return s
+}
+
+type Id2MetaPeriodVerifyIntlResponseBodyResult struct {
+	// example:
+	//
+	// Y
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// example:
+	//
+	// 200
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+}
+
+func (s Id2MetaPeriodVerifyIntlResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaPeriodVerifyIntlResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponseBodyResult) SetPassed(v string) *Id2MetaPeriodVerifyIntlResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponseBodyResult) SetSubCode(v string) *Id2MetaPeriodVerifyIntlResponseBodyResult {
+	s.SubCode = &v
+	return s
+}
+
+type Id2MetaPeriodVerifyIntlResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Id2MetaPeriodVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s Id2MetaPeriodVerifyIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaPeriodVerifyIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponse) SetHeaders(v map[string]*string) *Id2MetaPeriodVerifyIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponse) SetStatusCode(v int32) *Id2MetaPeriodVerifyIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Id2MetaPeriodVerifyIntlResponse) SetBody(v *Id2MetaPeriodVerifyIntlResponseBody) *Id2MetaPeriodVerifyIntlResponse {
+	s.Body = v
+	return s
+}
+
 type Id2MetaVerifyIntlRequest struct {
 	// example:
 	//
@@ -3183,6 +3387,98 @@ func (client *Client) FraudResultCallBack(request *FraudResultCallBackRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &FraudResultCallBackResponse{}
 	_body, _err := client.FraudResultCallBackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份二要素有效期核验
+//
+// @param request - Id2MetaPeriodVerifyIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id2MetaPeriodVerifyIntlResponse
+func (client *Client) Id2MetaPeriodVerifyIntlWithOptions(request *Id2MetaPeriodVerifyIntlRequest, runtime *util.RuntimeOptions) (_result *Id2MetaPeriodVerifyIntlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		body["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocNo)) {
+		body["DocNo"] = request.DocNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocType)) {
+		body["DocType"] = request.DocType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		body["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantUserId)) {
+		body["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidityEndDate)) {
+		body["ValidityEndDate"] = request.ValidityEndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidityStartDate)) {
+		body["ValidityStartDate"] = request.ValidityStartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Id2MetaPeriodVerifyIntl"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Id2MetaPeriodVerifyIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份二要素有效期核验
+//
+// @param request - Id2MetaPeriodVerifyIntlRequest
+//
+// @return Id2MetaPeriodVerifyIntlResponse
+func (client *Client) Id2MetaPeriodVerifyIntl(request *Id2MetaPeriodVerifyIntlRequest) (_result *Id2MetaPeriodVerifyIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Id2MetaPeriodVerifyIntlResponse{}
+	_body, _err := client.Id2MetaPeriodVerifyIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
