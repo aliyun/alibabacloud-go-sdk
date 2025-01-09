@@ -10,6 +10,7 @@ import (
 )
 
 type CommodityValue struct {
+	// Result模型。
 	Result *CommodityValueResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -27,10 +28,22 @@ func (s *CommodityValue) SetResult(v *CommodityValueResult) *CommodityValue {
 }
 
 type CommodityValueResult struct {
-	Order       *CommodityValueResultOrder     `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	InquiryType *string                        `json:"InquiryType,omitempty" xml:"InquiryType,omitempty"`
-	SubOrders   *CommodityValueResultSubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
-	Coupons     []*CommodityValueResultCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Repeated"`
+	// 订单信息。
+	Order *CommodityValueResultOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// 询价类型，可选值：
+	//
+	// 1. Buy：新购询价。
+	//
+	// 2. ModificationBuy：变配询价。
+	//
+	// example:
+	//
+	// Buy
+	InquiryType *string `json:"InquiryType,omitempty" xml:"InquiryType,omitempty"`
+	// 订单子项。
+	SubOrders *CommodityValueResultSubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
+	// 优惠券。
+	Coupons []*CommodityValueResultCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Repeated"`
 }
 
 func (s CommodityValueResult) String() string {
@@ -62,9 +75,29 @@ func (s *CommodityValueResult) SetCoupons(v []*CommodityValueResultCoupons) *Com
 }
 
 type CommodityValueResultOrder struct {
-	Currency       *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	TradeAmount    *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	// 货币代码。
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// 优惠后。
+	//
+	// example:
+	//
+	// 9.99
+	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	// 抵扣金额。
+	//
+	// example:
+	//
+	// 1.99
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// 优惠前。
+	//
+	// example:
+	//
+	// 11.98
 	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 }
 
@@ -97,6 +130,7 @@ func (s *CommodityValueResultOrder) SetOriginalAmount(v string) *CommodityValueR
 }
 
 type CommodityValueResultSubOrders struct {
+	// 订单子项。
 	SubOrder []*CommodityValueResultSubOrdersSubOrder `json:"SubOrder,omitempty" xml:"SubOrder,omitempty" type:"Repeated"`
 }
 
@@ -114,6 +148,7 @@ func (s *CommodityValueResultSubOrders) SetSubOrder(v []*CommodityValueResultSub
 }
 
 type CommodityValueResultSubOrdersSubOrder struct {
+	// 模块（实例）信息。
 	ModuleInstance []*CommodityValueResultSubOrdersSubOrderModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
 }
 
@@ -131,17 +166,68 @@ func (s *CommodityValueResultSubOrdersSubOrder) SetModuleInstance(v []*Commodity
 }
 
 type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
-	ModuleId        *int64                                                            `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	ModuleName      *string                                                           `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	ModuleCode      *string                                                           `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	TotalProductFee *float64                                                          `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
-	DiscountFee     *float64                                                          `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
-	PayFee          *float64                                                          `json:"PayFee,omitempty" xml:"PayFee,omitempty"`
-	PriceUnit       *string                                                           `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
-	IsPricingModule *bool                                                             `json:"IsPricingModule,omitempty" xml:"IsPricingModule,omitempty"`
-	NeedOrderPay    *bool                                                             `json:"NeedOrderPay,omitempty" xml:"NeedOrderPay,omitempty"`
-	PriceType       *string                                                           `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
-	ModuleAttrs     []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
+	// 模块ID。
+	//
+	// example:
+	//
+	// 1234
+	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// 模块名称。
+	//
+	// example:
+	//
+	// Rds
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// 模块代码。
+	//
+	// example:
+	//
+	// rds_dbtype
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	// 产品原价（元）。
+	//
+	// example:
+	//
+	// 10.00
+	TotalProductFee *float64 `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
+	// 折扣费用（元）。
+	//
+	// example:
+	//
+	// 1.99
+	DiscountFee *float64 `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
+	// 实付金额（元）。
+	//
+	// example:
+	//
+	// 8.01
+	PayFee *float64 `json:"PayFee,omitempty" xml:"PayFee,omitempty"`
+	// 价格单位。
+	//
+	// example:
+	//
+	// 元/GB/小时
+	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	// 是否计价项。
+	//
+	// example:
+	//
+	// true
+	IsPricingModule *bool `json:"IsPricingModule,omitempty" xml:"IsPricingModule,omitempty"`
+	// 在订单中是否需要支付。
+	//
+	// example:
+	//
+	// true
+	NeedOrderPay *bool `json:"NeedOrderPay,omitempty" xml:"NeedOrderPay,omitempty"`
+	// 定价类型。
+	//
+	// example:
+	//
+	// hourPrice
+	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+	// 模块属性。
+	ModuleAttrs []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
 }
 
 func (s CommodityValueResultSubOrdersSubOrderModuleInstance) String() string {
@@ -208,11 +294,44 @@ func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleAttrs(v [
 }
 
 type CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs struct {
-	Type  *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 属性类型，可选值：
+	//
+	// 1. 1：商品属性
+	//
+	// 2. 2：规格属性
+	//
+	// 3. 3：模块属性
+	//
+	// 4. 4：外部参数（备用）
+	//
+	// example:
+	//
+	// 3
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Name
+	//
+	// example:
+	//
+	// 20GB
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Module attr code
+	//
+	// example:
+	//
+	// rds_storage
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Value
+	//
+	// example:
+	//
+	// 20
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Unit  *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// Unit
+	//
+	// example:
+	//
+	// GB
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) String() string {
@@ -249,11 +368,36 @@ func (s *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) SetUnit
 }
 
 type CommodityValueResultCoupons struct {
-	CanPromFee     *float64 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
-	CouponDesc     *string  `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
-	CouponName     *string  `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
-	CouponOptionNo *string  `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
-	Selected       *bool    `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// 可支付金额。
+	//
+	// example:
+	//
+	// 9.99
+	CanPromFee *float64 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	// Coupon Description
+	//
+	// example:
+	//
+	// 10元优惠券（有效期至2024年9月8日）
+	CouponDesc *string `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
+	// Coupon Name
+	//
+	// example:
+	//
+	// 10元优惠券
+	CouponName *string `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
+	// Coupon OptionNo
+	//
+	// example:
+	//
+	// 50008800000xxxx
+	CouponOptionNo *string `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
+	// 是否选中。
+	//
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s CommodityValueResultCoupons) String() string {
@@ -290,14 +434,22 @@ func (s *CommodityValueResultCoupons) SetSelected(v bool) *CommodityValueResultC
 }
 
 type CancelServiceUsageRequest struct {
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to delete the application.
+	//
+	// >  After you delete the application, you must re-enter the application information the next time you submit an application.
+	//
 	// example:
 	//
 	// true
 	NeedDelete *bool `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -330,6 +482,8 @@ func (s *CancelServiceUsageRequest) SetServiceId(v string) *CancelServiceUsageRe
 }
 
 type CancelServiceUsageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -491,28 +645,44 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CheckServiceDeployableRequest struct {
+	// Total amount of postpaid.
+	//
 	// example:
 	//
 	// 1.29
 	PostPaidAmount *string `json:"PostPaidAmount,omitempty" xml:"PostPaidAmount,omitempty"`
+	// Total amount of prepayment.
+	//
 	// example:
 	//
 	// 0.0
 	PrePaidAmount *string `json:"PrePaidAmount,omitempty" xml:"PrePaidAmount,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-0e6fca6a51a544xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The trial type of the service instance. Valid values:
+	//
+	// 	- **Trial**: Trials are supported.
+	//
+	// 	- **NotTrial**: Trials are not supported.
+	//
 	// example:
 	//
 	// NotTrial
@@ -558,6 +728,7 @@ func (s *CheckServiceDeployableRequest) SetTrialType(v string) *CheckServiceDepl
 }
 
 type CheckServiceDeployableResponseBody struct {
+	// Inspection result.
 	CheckResults []*CheckServiceDeployableResponseBodyCheckResults `json:"CheckResults,omitempty" xml:"CheckResults,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -586,14 +757,24 @@ func (s *CheckServiceDeployableResponseBody) SetRequestId(v string) *CheckServic
 }
 
 type CheckServiceDeployableResponseBodyCheckResults struct {
+	// Returns a hint message for the result.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Check type, invalid values:
+	//
+	// - Balance ：Account balance.
+	//
+	// - Quota:  Account quota.
+	//
 	// example:
 	//
 	// Balance
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Inspection result.
+	//
 	// example:
 	//
 	// true
@@ -1830,16 +2011,21 @@ func (s *CreateServiceInstanceResponse) SetBody(v *CreateServiceInstanceResponse
 }
 
 type CreateServiceUsageRequest struct {
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-d6fc5f949a9246xxxxxx
-	ServiceId       *string            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The application information.
 	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 
@@ -1867,16 +2053,21 @@ func (s *CreateServiceUsageRequest) SetUserInformation(v map[string]*string) *Cr
 }
 
 type CreateServiceUsageShrinkRequest struct {
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-d6fc5f949a9246xxxxxx
-	ServiceId             *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The application information.
 	UserInformationShrink *string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 
@@ -1904,6 +2095,8 @@ func (s *CreateServiceUsageShrinkRequest) SetUserInformationShrink(v string) *Cr
 }
 
 type CreateServiceUsageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -2043,6 +2236,119 @@ func (s *DeleteServiceInstancesResponse) SetStatusCode(v int32) *DeleteServiceIn
 }
 
 func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesResponseBody) *DeleteServiceInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRegionsRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionsResponseBody struct {
+	// The available regions.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegions struct {
+	// The region endpoint.
+	//
+	// example:
+	//
+	// computenest.cn-hangzhou.aliyuncs.com
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionEndpoint = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -2327,7 +2633,7 @@ type GetServiceResponseBody struct {
 	//
 	// example:
 	//
-	// { "TemplateUrl": "http://template.file.url", // 应用分组级别告警元数据 "ApplicationGroups": [ { "Name": "applicationGroup1", "TemplateUrl": "url1" }, { "Name": "applicationGroup2", "TemplateUrl": "url2" } ] }
+	// { "TemplateUrl": "http://template.file.url", "ApplicationGroups": [ { "Name": "applicationGroup1", "TemplateUrl": "url1" }, { "Name": "applicationGroup2", "TemplateUrl": "url2" } ] }
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
 	// The categories of the Flow.
 	//
@@ -2389,7 +2695,7 @@ type GetServiceResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"PayType\\":\\"CustomFixTime\\",\\"DefaultLicenseDays\\":7,\\"CustomMetadata\\":[{\\"TemplateName\\":\\"模板1\\",\\"SpecificationName\\":\\"bandwith-0\\",\\"CustomData\\":\\"1\\"}]}
+	// {\\"PayType\\":\\"CustomFixTime\\",\\"DefaultLicenseDays\\":7,\\"CustomMetadata\\":[{\\"TemplateName\\":\\"ECS\\",\\"SpecificationName\\":\\"bandwith-0\\",\\"CustomData\\":\\"1\\"}]}
 	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
 	// The logging configurations.
 	//
@@ -3307,17 +3613,15 @@ type GetServiceEstimateCostRequest struct {
 	//
 	// qwertyuiop
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The commodity details.
+	// The information about the subscription duration.
 	Commodity *GetServiceEstimateCostRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
-	// The name of the configuration update operation.
+	// The name of the configuration change operation.
 	//
 	// example:
 	//
-	// 修改游戏参数
+	// Parameter change
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The parameters that are specified for service instance deployment.
-	//
-	// >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
+	// The parameters that are specified to deploy the service instance.
 	//
 	// example:
 	//
@@ -3349,21 +3653,17 @@ type GetServiceEstimateCostRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The package name.
+	// The name of the package specification.
 	//
 	// example:
 	//
-	// 自定义套餐
+	// Package 1
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// The name of the template. This parameter is returned only if you specify TemplateId.
-	//
-	// > -   If you specify TemplateVersion, the name of the template whose version is specified by TemplateVersion is returned.
-	//
-	// > -  If you not specify TemplateVersion, the name of the template whose version is the default version is returned.
+	// The template name.
 	//
 	// example:
 	//
-	// 模板1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The trial policy. Valid values:
 	//
@@ -3441,6 +3741,11 @@ func (s *GetServiceEstimateCostRequest) SetTrialType(v string) *GetServiceEstima
 }
 
 type GetServiceEstimateCostRequestCommodity struct {
+	// 优惠券ID
+	//
+	// example:
+	//
+	// 302070970220
 	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	// The subscription duration.
 	//
@@ -3492,17 +3797,15 @@ type GetServiceEstimateCostShrinkRequest struct {
 	//
 	// qwertyuiop
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The commodity details.
+	// The information about the subscription duration.
 	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	// The name of the configuration update operation.
+	// The name of the configuration change operation.
 	//
 	// example:
 	//
-	// 修改游戏参数
+	// Parameter change
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The parameters that are specified for service instance deployment.
-	//
-	// >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
+	// The parameters that are specified to deploy the service instance.
 	//
 	// example:
 	//
@@ -3534,21 +3837,17 @@ type GetServiceEstimateCostShrinkRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The package name.
+	// The name of the package specification.
 	//
 	// example:
 	//
-	// 自定义套餐
+	// Package 1
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// The name of the template. This parameter is returned only if you specify TemplateId.
-	//
-	// > -   If you specify TemplateVersion, the name of the template whose version is specified by TemplateVersion is returned.
-	//
-	// > -  If you not specify TemplateVersion, the name of the template whose version is the default version is returned.
+	// The template name.
 	//
 	// example:
 	//
-	// 模板1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The trial policy. Valid values:
 	//
@@ -3626,7 +3925,7 @@ func (s *GetServiceEstimateCostShrinkRequest) SetTrialType(v string) *GetService
 }
 
 type GetServiceEstimateCostResponseBody struct {
-	// Estimated commodity cost.
+	// The estimated price.
 	//
 	// example:
 	//
@@ -3638,139 +3937,11 @@ type GetServiceEstimateCostResponseBody struct {
 	//
 	// 08ABBB67-39C9-5EE7-98E5-80486F75CE8D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Estimated resource cost.
+	// The resources.
 	//
 	// example:
 	//
-	// {
-	//
-	//     "EcsInstance" : {
-	//
-	//       "Type" : "ALIYUN::ECS::Instance",
-	//
-	//       "Success" : true,
-	//
-	//       "Result" : {
-	//
-	//         "Order" : {
-	//
-	//           "Currency" : "CNY",
-	//
-	//           "RuleIds" : [ "102111101338****" ],
-	//
-	//           "DetailInfos" : {
-	//
-	//             "ResourcePriceModel" : [ {
-	//
-	//               "OriginalPrice" : 0,
-	//
-	//               "DiscountPrice" : 0,
-	//
-	//               "SubRules" : {
-	//
-	//                 "Rule" : [ ]
-	//
-	//               },
-	//
-	//               "Resource" : "bandwidth",
-	//
-	//               "TradePrice" : 0
-	//
-	//             }, {
-	//
-	//               "OriginalPrice" : 0,
-	//
-	//               "DiscountPrice" : 0,
-	//
-	//               "SubRules" : {
-	//
-	//                 "Rule" : [ ]
-	//
-	//               },
-	//
-	//               "Resource" : "image",
-	//
-	//               "TradePrice" : 0
-	//
-	//             }, {
-	//
-	//               "OriginalPrice" : 0.366666,
-	//
-	//               "DiscountPrice" : 0.249012,
-	//
-	//               "SubRules" : {
-	//
-	//                 "Rule" : [ ]
-	//
-	//               },
-	//
-	//               "Resource" : "instanceType",
-	//
-	//               "TradePrice" : 0.117654
-	//
-	//             }, {
-	//
-	//               "OriginalPrice" : 0.055555,
-	//
-	//               "DiscountPrice" : 0.037729,
-	//
-	//               "SubRules" : {
-	//
-	//                 "Rule" : [ ]
-	//
-	//               },
-	//
-	//               "Resource" : "systemDisk",
-	//
-	//               "TradePrice" : 0.017826
-	//
-	//             } ]
-	//
-	//           },
-	//
-	//           "TradeAmount" : 0.135,
-	//
-	//           "OriginalAmount" : 0.422,
-	//
-	//           "Coupons" : {
-	//
-	//             "Coupon" : [ ]
-	//
-	//           },
-	//
-	//           "DiscountAmount" : 0.287
-	//
-	//         },
-	//
-	//         "OrderSupplement" : {
-	//
-	//           "PriceUnit" : "/Hour",
-	//
-	//           "ChargeType" : "PostPaid",
-	//
-	//           "Quantity" : 1,
-	//
-	//           "PriceType" : "Total"
-	//
-	//         },
-	//
-	//         "Rules" : {
-	//
-	//           "Rule" : [ {
-	//
-	//             "RuleDescId" : "102111101338****",
-	//
-	//             "Name" : "合同优惠_多计费项优惠_3.208750折"
-	//
-	//           } ]
-	//
-	//         }
-	//
-	//       }
-	//
-	//     }
-	//
-	//   }
+	// { "EcsInstance" : { "Type" : "ALIYUN::ECS::Instance", "Success" : true, "Result" : { "Order" : { "Currency" : "CNY", "RuleIds" : [ "102111101338\\*\\*\\*\\*" ], "DetailInfos" : { "ResourcePriceModel" : [ { "OriginalPrice" : 0, "DiscountPrice" : 0, "SubRules" : { "Rule" : [ ] }, "Resource" : "bandwidth", "TradePrice" : 0 }, { "OriginalPrice" : 0, "DiscountPrice" : 0, "SubRules" : { "Rule" : [ ] }, "Resource" : "image", "TradePrice" : 0 }, { "OriginalPrice" : 0.366666, "DiscountPrice" : 0.249012, "SubRules" : { "Rule" : [ ] }, "Resource" : "instanceType", "TradePrice" : 0.117654 }, { "OriginalPrice" : 0.055555, "DiscountPrice" : 0.037729, "SubRules" : { "Rule" : [ ] }, "Resource" : "systemDisk", "TradePrice" : 0.017826 } ] }, "TradeAmount" : 0.135, "OriginalAmount" : 0.422, "Coupons" : { "Coupon" : [ ] }, "DiscountAmount" : 0.287 }, "OrderSupplement" : { "PriceUnit" : "/Hour", "ChargeType" : "PostPaid", "Quantity" : 1, "PriceType" : "Total" }, "Rules" : { "Rule" : [ { "RuleDescId" : "102111101338\\*\\*\\*\\*", "Name" : "contract discount_multi-billing item discount_3.208750 discount" } ] } } } }
 	Resources map[string]interface{} `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
@@ -5854,6 +6025,8 @@ func (s *GetServiceTemplateParameterConstraintsResponse) SetBody(v *GetServiceTe
 }
 
 type GetUserInformationRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5876,7 +6049,10 @@ func (s *GetUserInformationRequest) SetRegionId(v string) *GetUserInformationReq
 }
 
 type GetUserInformationResponseBody struct {
+	// The delivery settings.
 	DeliverySettings *GetUserInformationResponseBodyDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 52EBAF16-22F6-53DB-AE1E-44764FC62AF0
@@ -5902,22 +6078,40 @@ func (s *GetUserInformationResponseBody) SetRequestId(v string) *GetUserInformat
 }
 
 type GetUserInformationResponseBodyDeliverySettings struct {
+	// Indicates whether screencast delivery to OSS is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	ActiontrailDeliveryToOssEnabled *bool `json:"ActiontrailDeliveryToOssEnabled,omitempty" xml:"ActiontrailDeliveryToOssEnabled,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// 0101data
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// Indicates whether screencast delivery to Object Storage Service (OSS) is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
+	// The number of days for which the screencasts are saved.
+	//
 	// example:
 	//
 	// 7
 	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
+	// The OSS path.
+	//
 	// example:
 	//
 	// /test
@@ -6861,20 +7055,28 @@ func (s *ListServiceInstanceResourcesResponse) SetBody(v *ListServiceInstanceRes
 }
 
 type ListServiceInstanceUpgradeHistoryRequest struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6912,22 +7114,31 @@ func (s *ListServiceInstanceUpgradeHistoryRequest) SetServiceInstanceId(v string
 }
 
 type ListServiceInstanceUpgradeHistoryResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI41
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE3EDF4E-B3B1-19B6-BD01-30D4D00F6E5D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
-	TotalCount     *int64                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The upgrade history.
 	UpgradeHistory []*ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory `json:"UpgradeHistory,omitempty" xml:"UpgradeHistory,omitempty" type:"Repeated"`
 }
 
@@ -6965,34 +7176,56 @@ func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetUpgradeHistory(v []*L
 }
 
 type ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory struct {
+	// The time when the update ended.
+	//
 	// example:
 	//
 	// 2022-04-26T09:09:51Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The version before the upgrade.
+	//
 	// example:
 	//
 	// 1
 	FromVersion *string `json:"FromVersion,omitempty" xml:"FromVersion,omitempty"`
+	// The upgrade result.
+	//
 	// example:
 	//
 	// {\\"PreUpgradeExecutionId\\":\\"exec-123\\"}
 	Results *string `json:"Results,omitempty" xml:"Results,omitempty"`
+	// The time when the update started.
+	//
 	// example:
 	//
 	// 2022-04-26T08:09:51Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the update. Valid values:
+	//
+	// 	- upgrading: The service instance is being upgraded.
+	//
+	// 	- UpgradeSuccessful: The service instance is upgraded.
+	//
+	// 	- UpgradeFailed: The service instance failed to be upgraded.
+	//
 	// example:
 	//
 	// UpgradeFailed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version after the upgrade.
+	//
 	// example:
 	//
 	// 3
 	ToVersion *string `json:"ToVersion,omitempty" xml:"ToVersion,omitempty"`
+	// The update type.
+	//
 	// example:
 	//
 	// Upgrade
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the upgrade record.
+	//
 	// example:
 	//
 	// exec-123
@@ -7906,11 +8139,16 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 }
 
 type ListServiceUsagesRequest struct {
+	// The filters.
 	Filter []*ListServiceUsagesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
@@ -7941,10 +8179,21 @@ func (s *ListServiceUsagesRequest) SetNextToken(v string) *ListServiceUsagesRequ
 }
 
 type ListServiceUsagesRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// 	- ServiceId: the ID of the service.
+	//
+	// 	- ServiceName: the service name.
+	//
+	// 	- Status: the state of the service.
+	//
+	// 	- SupplierName: the name of the service provider.
+	//
 	// example:
 	//
 	// ServiceId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter values of the filter.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -7967,18 +8216,25 @@ func (s *ListServiceUsagesRequestFilter) SetValue(v []*string) *ListServiceUsage
 }
 
 type ListServiceUsagesResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAYChudnQUoBH+mGWFpb6oP0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 18AD0960-A9FE-1AC8-ADF8-22131Fxxxxxx
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service applications.
 	ServiceUsages []*ListServiceUsagesResponseBodyServiceUsages `json:"ServiceUsages,omitempty" xml:"ServiceUsages,omitempty" type:"Repeated"`
 }
 
@@ -8011,29 +8267,63 @@ func (s *ListServiceUsagesResponseBody) SetServiceUsages(v []*ListServiceUsagesR
 }
 
 type ListServiceUsagesResponseBodyServiceUsages struct {
+	// The review comment.
+	//
+	// example:
+	//
+	// Approved
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the application was created.
+	//
 	// example:
 	//
 	// 2022-05-25T02:02:02Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-c9f36ec6d19b4exxxxxx
-	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// LobeChat社区版
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The state of the service application. Valid values:
+	//
+	// 	- Submitted: The application is submitted for review.
+	//
+	// 	- Approved: The application is approved.
+	//
+	// 	- Rejected: The application is rejected.
+	//
+	// 	- Canceled: The application is canceled.
+	//
 	// example:
 	//
 	// Submitted
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// TestSupplier
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The time when the application was updated.
+	//
 	// example:
 	//
 	// 2022-05-25T02:02:02Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 127383705958xxxx
-	UserAliUid      *int64             `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+	// The information about the applicant.
 	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 
@@ -8939,24 +9229,38 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// 	- service: service
+	//
+	// 	- serviceinstance: service instance
+	//
+	// 	- artifact: artifact
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -8993,10 +9297,14 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -9022,14 +9330,19 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAVz7BQqj2xtiNSC3d3RAD38=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of resources that have tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -9057,18 +9370,32 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// si-44b9923be2d048eb8f5f
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- service: service
+	//
+	// 	- serviceinstance: service instance
+	//
+	// 	- artifact: artifact
+	//
 	// example:
 	//
 	// serviceinstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key of the tag.
+	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The values of the tags.
+	//
 	// example:
 	//
 	// major
@@ -9374,14 +9701,20 @@ func (s *RestartServiceInstanceResponse) SetBody(v *RestartServiceInstanceRespon
 }
 
 type RollbackServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service instance ID.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4bxxxxxx
@@ -9412,6 +9745,8 @@ func (s *RollbackServiceInstanceRequest) SetServiceInstanceId(v string) *Rollbac
 }
 
 type RollbackServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -9941,16 +10276,24 @@ func (s *UnTagResourcesResponse) SetBody(v *UnTagResourcesResponseBody) *UnTagRe
 }
 
 type UpdateServiceInstanceAttributesRequest struct {
+	// Specifies whether to authorize the service provider to perform O\\&M operations on the service instance.
+	//
 	// example:
 	//
 	// true
 	EnableOperation *bool `json:"EnableOperation,omitempty" xml:"EnableOperation,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
+	// You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9983,6 +10326,8 @@ func (s *UpdateServiceInstanceAttributesRequest) SetServiceInstanceId(v string) 
 }
 
 type UpdateServiceInstanceAttributesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
@@ -10040,33 +10385,49 @@ type UpdateServiceInstanceSpecRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The information about the order placed in Alibaba Cloud Marketplace. You do not need to specify this parameter if the service is not published in Alibaba Cloud Marketplace or uses the pay-as-you-go billing method.
 	Commodity *UpdateServiceInstanceSpecRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
-	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. A dry run includes checks on the permissions and instance state.
 	//
-	// 	- **true: performs a dry run for the request, but does not create a service instance.**
+	// Valid values:
 	//
-	// 	- **false: performs a dry run for the request, and creates a service instance if the request passes the dry run.**
+	// 	- true: performs a dry run but does not create a service instance.
+	//
+	// 	- false: performs a dry run and creates a service instance if the request passes the dry run.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to enable Prometheus on the customer side. Valid values:
+	// Specifies whether to enable Prometheus monitoring on the user side.
 	//
-	// 	- **true**
+	// Valid values:
 	//
-	// 	- **false**
+	// true
+	//
+	// false
 	//
 	// example:
 	//
 	// true
 	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
-	// The name of the configuration update operation.
+	// The name of the configuration change operation.
+	//
+	// To obtain the names and content of the configuration change operations of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig*	- in the value of **OperationMetadata**.
 	//
 	// example:
 	//
 	// package modify
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The configuration parameters of the service instance.
+	// The configuration parameter.
+	//
+	// This parameter is available if the service provider set **Method*	- to **Change Parameter*	- when configuring configuration change operations.
+	//
+	// >
+	//
+	// 	- To obtain the parameters of the service that support configuration change, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig*	- in the value of **OperationMetadata**.
+	//
+	// 	- You can also view the parameters of the service that support configuration change in the **configuration change*	- dialog box in the [Compute Nest console](https://computenest.console.aliyun.com/service/instance/cn-hangzhou).
+	//
+	// For example, if the service supports Elastic Compute Service (ECS) instance type upgrade, you must specify an instance type that has higher specifications than the current one.
 	//
 	// example:
 	//
@@ -10076,13 +10437,19 @@ type UpdateServiceInstanceSpecRequest struct {
 	//
 	// }
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The name of the specification package.
+	// The name of the configuration plan.
+	//
+	// This parameter is available if the service provider set **Method*	- to **Change Plan*	- when configuring configuration change operations.
+	//
+	// To obtain the configuration plan names of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **PredefinedParameters*	- in the value of **DeployMetadata**.
 	//
 	// example:
 	//
 	// package One
 	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
-	// The service instance ID.
+	// The ID of the service instance.
+	//
+	// You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
 	//
 	// This parameter is required.
 	//
@@ -10141,11 +10508,13 @@ func (s *UpdateServiceInstanceSpecRequest) SetServiceInstanceId(v string) *Updat
 }
 
 type UpdateServiceInstanceSpecRequestCommodity struct {
-	// Specifies whether to automatically complete the payment. Valid values:
+	// Specifies whether to enable automatic payment.
 	//
-	// 	- **true**
+	// Valid values:
 	//
-	// 	- **false**
+	// 	- **true (default)**: automatically completes the payment. You must make sure that your account balance is sufficient.
+	//
+	// 	- **false**: does not automatically complete the payment. An unpaid order is generated. If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.[](https://rdsnext.console.aliyun.com/dashboard/cn-beijing)
 	//
 	// example:
 	//
@@ -10175,33 +10544,49 @@ type UpdateServiceInstanceSpecShrinkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The information about the order placed in Alibaba Cloud Marketplace. You do not need to specify this parameter if the service is not published in Alibaba Cloud Marketplace or uses the pay-as-you-go billing method.
 	Commodity *UpdateServiceInstanceSpecShrinkRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
-	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. A dry run includes checks on the permissions and instance state.
 	//
-	// 	- **true: performs a dry run for the request, but does not create a service instance.**
+	// Valid values:
 	//
-	// 	- **false: performs a dry run for the request, and creates a service instance if the request passes the dry run.**
+	// 	- true: performs a dry run but does not create a service instance.
+	//
+	// 	- false: performs a dry run and creates a service instance if the request passes the dry run.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to enable Prometheus on the customer side. Valid values:
+	// Specifies whether to enable Prometheus monitoring on the user side.
 	//
-	// 	- **true**
+	// Valid values:
 	//
-	// 	- **false**
+	// true
+	//
+	// false
 	//
 	// example:
 	//
 	// true
 	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
-	// The name of the configuration update operation.
+	// The name of the configuration change operation.
+	//
+	// To obtain the names and content of the configuration change operations of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig*	- in the value of **OperationMetadata**.
 	//
 	// example:
 	//
 	// package modify
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The configuration parameters of the service instance.
+	// The configuration parameter.
+	//
+	// This parameter is available if the service provider set **Method*	- to **Change Parameter*	- when configuring configuration change operations.
+	//
+	// >
+	//
+	// 	- To obtain the parameters of the service that support configuration change, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig*	- in the value of **OperationMetadata**.
+	//
+	// 	- You can also view the parameters of the service that support configuration change in the **configuration change*	- dialog box in the [Compute Nest console](https://computenest.console.aliyun.com/service/instance/cn-hangzhou).
+	//
+	// For example, if the service supports Elastic Compute Service (ECS) instance type upgrade, you must specify an instance type that has higher specifications than the current one.
 	//
 	// example:
 	//
@@ -10211,13 +10596,19 @@ type UpdateServiceInstanceSpecShrinkRequest struct {
 	//
 	// }
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The name of the specification package.
+	// The name of the configuration plan.
+	//
+	// This parameter is available if the service provider set **Method*	- to **Change Plan*	- when configuring configuration change operations.
+	//
+	// To obtain the configuration plan names of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **PredefinedParameters*	- in the value of **DeployMetadata**.
 	//
 	// example:
 	//
 	// package One
 	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
-	// The service instance ID.
+	// The ID of the service instance.
+	//
+	// You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
 	//
 	// This parameter is required.
 	//
@@ -10276,11 +10667,13 @@ func (s *UpdateServiceInstanceSpecShrinkRequest) SetServiceInstanceId(v string) 
 }
 
 type UpdateServiceInstanceSpecShrinkRequestCommodity struct {
-	// Specifies whether to automatically complete the payment. Valid values:
+	// Specifies whether to enable automatic payment.
 	//
-	// 	- **true**
+	// Valid values:
 	//
-	// 	- **false**
+	// 	- **true (default)**: automatically completes the payment. You must make sure that your account balance is sufficient.
+	//
+	// 	- **false**: does not automatically complete the payment. An unpaid order is generated. If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.[](https://rdsnext.console.aliyun.com/dashboard/cn-beijing)
 	//
 	// example:
 	//
@@ -10364,16 +10757,21 @@ func (s *UpdateServiceInstanceSpecResponse) SetBody(v *UpdateServiceInstanceSpec
 }
 
 type UpdateServiceUsageRequest struct {
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// AAAAAYChudnQUoBH+mGWFpb6oP0=
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-39f4f251e94843xxxxxx
-	ServiceId       *string            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the applicant.
 	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 
@@ -10401,16 +10799,21 @@ func (s *UpdateServiceUsageRequest) SetUserInformation(v map[string]*string) *Up
 }
 
 type UpdateServiceUsageShrinkRequest struct {
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// AAAAAYChudnQUoBH+mGWFpb6oP0=
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-39f4f251e94843xxxxxx
-	ServiceId             *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the applicant.
 	UserInformationShrink *string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 
@@ -10438,6 +10841,8 @@ func (s *UpdateServiceUsageShrinkRequest) SetUserInformationShrink(v string) *Up
 }
 
 type UpdateServiceUsageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -10487,7 +10892,10 @@ func (s *UpdateServiceUsageResponse) SetBody(v *UpdateServiceUsageResponseBody) 
 }
 
 type UpdateUserInformationRequest struct {
+	// The modified delivery settings.
 	DeliverySettings *UpdateUserInformationRequestDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10515,22 +10923,40 @@ func (s *UpdateUserInformationRequest) SetRegionId(v string) *UpdateUserInformat
 }
 
 type UpdateUserInformationRequestDeliverySettings struct {
+	// Specifies whether to enable screencast delivery to OSS. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	ActiontrailDeliveryToOssEnabled *bool `json:"ActiontrailDeliveryToOssEnabled,omitempty" xml:"ActiontrailDeliveryToOssEnabled,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// "mybucket"
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// Specifies whether to enable screencast delivery to Object Storage Service (OSS). Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
+	// The number of days for which the screencasts are saved.
+	//
 	// example:
 	//
 	// 7
 	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
+	// The OSS path.
+	//
 	// example:
 	//
 	// "path1/path2/"
@@ -10571,6 +10997,8 @@ func (s *UpdateUserInformationRequestDeliverySettings) SetOssPath(v string) *Upd
 }
 
 type UpdateUserInformationResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
@@ -10620,26 +11048,42 @@ func (s *UpdateUserInformationResponse) SetBody(v *UpdateUserInformationResponse
 }
 
 type UpgradeServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- **true**: performs a dry run for the request, but does not upgrade service instance.
+	//
+	// 	- **false**: performs a dry run for the request, and upgrade service instance if the request passes the dry run.
+	//
 	// example:
 	//
 	// true
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The parameters required for the upgrade. This parameter is required if the destination version of the service has new parameters.
+	//
 	// example:
 	//
 	// { \\"RegionId\\": \\"cn-hangzhou\\", \\"InstanceType\\": \\"ecs.g5.large\\"}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4bxxxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The destination version.
+	//
 	// example:
 	//
 	// 2
@@ -10685,26 +11129,42 @@ func (s *UpgradeServiceInstanceRequest) SetServiceVersion(v string) *UpgradeServ
 }
 
 type UpgradeServiceInstanceShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- **true**: performs a dry run for the request, but does not upgrade service instance.
+	//
+	// 	- **false**: performs a dry run for the request, and upgrade service instance if the request passes the dry run.
+	//
 	// example:
 	//
 	// true
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The parameters required for the upgrade. This parameter is required if the destination version of the service has new parameters.
+	//
 	// example:
 	//
 	// { \\"RegionId\\": \\"cn-hangzhou\\", \\"InstanceType\\": \\"ecs.g5.large\\"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4bxxxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The destination version.
+	//
 	// example:
 	//
 	// 2
@@ -10750,10 +11210,13 @@ func (s *UpgradeServiceInstanceShrinkRequest) SetServiceVersion(v string) *Upgra
 }
 
 type UpgradeServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
-	RequestId                 *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The parameters required for the upgrade. This parameter is returned only if DryRun is set to true in the request. You can specify the required parameters based on the returned value when you perform an actual request.
 	UpgradeRequiredParameters []*string `json:"UpgradeRequiredParameters,omitempty" xml:"UpgradeRequiredParameters,omitempty" type:"Repeated"`
 }
 
@@ -10853,7 +11316,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 用户取消服务使用请求
+// Cancels the application for using a service.
 //
 // @param request - CancelServiceUsageRequest
 //
@@ -10903,7 +11366,7 @@ func (client *Client) CancelServiceUsageWithOptions(request *CancelServiceUsageR
 
 // Summary:
 //
-// 用户取消服务使用请求
+// Cancels the application for using a service.
 //
 // @param request - CancelServiceUsageRequest
 //
@@ -11299,7 +11762,7 @@ func (client *Client) CreateServiceInstance(request *CreateServiceInstanceReques
 
 // Summary:
 //
-// 用户创建服务使用请求
+// Creates an application for using a service.
 //
 // @param tmpReq - CreateServiceUsageRequest
 //
@@ -11355,7 +11818,7 @@ func (client *Client) CreateServiceUsageWithOptions(tmpReq *CreateServiceUsageRe
 
 // Summary:
 //
-// 用户创建服务使用请求
+// Creates an application for using a service.
 //
 // @param request - CreateServiceUsageRequest
 //
@@ -11432,6 +11895,66 @@ func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServiceInstancesResponse{}
 	_body, _err := client.DeleteServiceInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// List available regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// List available regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11601,7 +12124,7 @@ func (client *Client) GetService(request *GetServiceRequest) (_result *GetServic
 
 // Summary:
 //
-// 计算巢服务部署询价
+// Queries the estimated price for creating a service instance.
 //
 // @param tmpReq - GetServiceEstimateCostRequest
 //
@@ -11693,7 +12216,7 @@ func (client *Client) GetServiceEstimateCostWithOptions(tmpReq *GetServiceEstima
 
 // Summary:
 //
-// 计算巢服务部署询价
+// Queries the estimated price for creating a service instance.
 //
 // @param request - GetServiceEstimateCostRequest
 //
@@ -11965,9 +12488,9 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 
 // Summary:
 //
+// Queries the information about a customer.
 //
-//
-//  	- @param request GetUserInformationRequest
+// @param request - GetUserInformationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -12007,9 +12530,9 @@ func (client *Client) GetUserInformationWithOptions(request *GetUserInformationR
 
 // Summary:
 //
+// Queries the information about a customer.
 //
-//
-//  	- @param request GetUserInformationRequest
+// @param request - GetUserInformationRequest
 //
 // @return GetUserInformationResponse
 func (client *Client) GetUserInformation(request *GetUserInformationRequest) (_result *GetUserInformationResponse, _err error) {
@@ -12256,7 +12779,7 @@ func (client *Client) ListServiceInstanceResources(request *ListServiceInstanceR
 
 // Summary:
 //
-// 查看服务实例升级历史
+// Queries the upgrade history of a service instance.
 //
 // @param request - ListServiceInstanceUpgradeHistoryRequest
 //
@@ -12310,7 +12833,7 @@ func (client *Client) ListServiceInstanceUpgradeHistoryWithOptions(request *List
 
 // Summary:
 //
-// 查看服务实例升级历史
+// Queries the upgrade history of a service instance.
 //
 // @param request - ListServiceInstanceUpgradeHistoryRequest
 //
@@ -12408,7 +12931,7 @@ func (client *Client) ListServiceInstances(request *ListServiceInstancesRequest)
 
 // Summary:
 //
-// 用户查询服务使用申请接口
+// Queries the applications for using a service.
 //
 // @param request - ListServiceUsagesRequest
 //
@@ -12458,7 +12981,7 @@ func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesReq
 
 // Summary:
 //
-// 用户查询服务使用申请接口
+// Queries the applications for using a service.
 //
 // @param request - ListServiceUsagesRequest
 //
@@ -12566,6 +13089,10 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签键列表
+//
 // @param request - ListTagKeysRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12612,6 +13139,10 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签键列表
+//
 // @param request - ListTagKeysRequest
 //
 // @return ListTagKeysResponse
@@ -12626,6 +13157,10 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签资源列表
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12680,6 +13215,10 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签资源列表
+//
 // @param request - ListTagResourcesRequest
 //
 // @return ListTagResourcesResponse
@@ -12694,6 +13233,10 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签值列表
+//
 // @param request - ListTagValuesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12744,6 +13287,10 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签值列表
+//
 // @param request - ListTagValuesRequest
 //
 // @return ListTagValuesResponse
@@ -12828,7 +13375,7 @@ func (client *Client) RestartServiceInstance(request *RestartServiceInstanceRequ
 
 // Summary:
 //
-// 回滚服务实例
+// Rolls back an upgraded service instance to the previous version.
 //
 // @param request - RollbackServiceInstanceRequest
 //
@@ -12878,7 +13425,7 @@ func (client *Client) RollbackServiceInstanceWithOptions(request *RollbackServic
 
 // Summary:
 //
-// 回滚服务实例
+// Rolls back an upgraded service instance to the previous version.
 //
 // @param request - RollbackServiceInstanceRequest
 //
@@ -13030,6 +13577,10 @@ func (client *Client) StopServiceInstance(request *StopServiceInstanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 给资源打标签
+//
 // @param request - TagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13080,6 +13631,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 给资源打标签
+//
 // @param request - TagResourcesRequest
 //
 // @return TagResourcesResponse
@@ -13094,6 +13649,10 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 给资源解除标签
+//
 // @param request - UnTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13148,6 +13707,10 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 给资源解除标签
+//
 // @param request - UnTagResourcesRequest
 //
 // @return UnTagResourcesResponse
@@ -13164,7 +13727,7 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新服务实例属性
+// Updates the attributes of a service instance.
 //
 // @param request - UpdateServiceInstanceAttributesRequest
 //
@@ -13214,7 +13777,7 @@ func (client *Client) UpdateServiceInstanceAttributesWithOptions(request *Update
 
 // Summary:
 //
-// 更新服务实例属性
+// Updates the attributes of a service instance.
 //
 // @param request - UpdateServiceInstanceAttributesRequest
 //
@@ -13230,6 +13793,16 @@ func (client *Client) UpdateServiceInstanceAttributes(request *UpdateServiceInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the configurations of a service instance.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Configuration change is enabled and the related parameters are configured for the service by the service provider.
+//
 // @param tmpReq - UpdateServiceInstanceSpecRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13302,6 +13875,16 @@ func (client *Client) UpdateServiceInstanceSpecWithOptions(tmpReq *UpdateService
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the configurations of a service instance.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Configuration change is enabled and the related parameters are configured for the service by the service provider.
+//
 // @param request - UpdateServiceInstanceSpecRequest
 //
 // @return UpdateServiceInstanceSpecResponse
@@ -13318,7 +13901,7 @@ func (client *Client) UpdateServiceInstanceSpec(request *UpdateServiceInstanceSp
 
 // Summary:
 //
-// 用户更新服务使用请求
+// Updates the application for using a service.
 //
 // @param tmpReq - UpdateServiceUsageRequest
 //
@@ -13374,7 +13957,7 @@ func (client *Client) UpdateServiceUsageWithOptions(tmpReq *UpdateServiceUsageRe
 
 // Summary:
 //
-// 用户更新服务使用请求
+// Updates the application for using a service.
 //
 // @param request - UpdateServiceUsageRequest
 //
@@ -13392,7 +13975,7 @@ func (client *Client) UpdateServiceUsage(request *UpdateServiceUsageRequest) (_r
 
 // Summary:
 //
-// 更新用户全局信息
+// Updates the information about a customer.
 //
 // @param request - UpdateUserInformationRequest
 //
@@ -13438,7 +14021,7 @@ func (client *Client) UpdateUserInformationWithOptions(request *UpdateUserInform
 
 // Summary:
 //
-// 更新用户全局信息
+// Updates the information about a customer.
 //
 // @param request - UpdateUserInformationRequest
 //
@@ -13456,7 +14039,7 @@ func (client *Client) UpdateUserInformation(request *UpdateUserInformationReques
 
 // Summary:
 //
-// 升级服务实例
+// Upgrades the version of a service instance.
 //
 // @param tmpReq - UpgradeServiceInstanceRequest
 //
@@ -13524,7 +14107,7 @@ func (client *Client) UpgradeServiceInstanceWithOptions(tmpReq *UpgradeServiceIn
 
 // Summary:
 //
-// 升级服务实例
+// Upgrades the version of a service instance.
 //
 // @param request - UpgradeServiceInstanceRequest
 //

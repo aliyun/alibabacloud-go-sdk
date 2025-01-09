@@ -1,3 +1,8 @@
+2025-01-09 Version: v4.6.0
+- Support API DescribeRegions.
+- Update API GetService: update param ServiceVersion.
+
+
 2024-12-09 Version: v4.5.0
 - Support API CheckServiceDeployable.
 - Support API GetService.
