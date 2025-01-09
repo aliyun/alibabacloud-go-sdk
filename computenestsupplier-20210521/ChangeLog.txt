@@ -11,6 +11,19 @@
 - Update API UpdateArtifact: update param VersionName.
 
 
+2025-01-09 Version: v6.1.0
+- Support API GenerateServicePolicy.
+- Support API GetServiceProvisions.
+- Support API ListTagKeys.
+- Support API ListTagValues.
+- Support API TagResources.
+- Support API UnTagResources.
+- Update API GetArtifact: update response param.
+- Update API UpdateArtifact: add param PermissionType.
+- Update API UpdateArtifact: update param ArtifactProperty.
+- Update API UpdateArtifact: update param VersionName.
+
+
 2024-12-17 Version: v6.0.0
 - Update API CreateArtifact: add param ClientToken.
 - Update API CreateArtifact: update param ArtifactProperty.
