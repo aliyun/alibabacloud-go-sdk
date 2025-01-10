@@ -1,3 +1,10 @@
+2025-01-10 Version: v1.3.1
+- Update API GetScanResult: update response param.
+- Update API GetServiceConf: update response param.
+- Update API GetTextScanResult: update response param.
+- Update API GetUserBuyStatus: update response param.
+
+
 2024-11-15 Version: v1.3.0
 - Support API AddAnswerSample.
 - Support API CreateAnswerLib.

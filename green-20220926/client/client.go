@@ -6598,6 +6598,7 @@ type GetScanResultResponseBodyDataItems struct {
 	// 2023-08-11 09:00:19
 	RequestTime *string                                     `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
 	Result      []*GetScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RiskLevel   *string                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	RiskTips    *string                                     `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
 	RiskWords   *string                                     `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
 	// example:
@@ -6741,6 +6742,11 @@ func (s *GetScanResultResponseBodyDataItems) SetResult(v []*GetScanResultRespons
 	return s
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetRiskLevel(v string) *GetScanResultResponseBodyDataItems {
+	s.RiskLevel = &v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetRiskTips(v string) *GetScanResultResponseBodyDataItems {
 	s.RiskTips = &v
 	return s
@@ -6820,7 +6826,8 @@ type GetScanResultResponseBodyDataItemsResult struct {
 	// example:
 	//
 	// 50.0
-	Confidence *string `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Confidence  *string `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// politics
@@ -6837,6 +6844,11 @@ func (s GetScanResultResponseBodyDataItemsResult) GoString() string {
 
 func (s *GetScanResultResponseBodyDataItemsResult) SetConfidence(v string) *GetScanResultResponseBodyDataItemsResult {
 	s.Confidence = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItemsResult) SetDescription(v string) *GetScanResultResponseBodyDataItemsResult {
+	s.Description = &v
 	return s
 }
 
@@ -6931,6 +6943,7 @@ func (s *GetServiceConfRequest) SetServiceCode(v string) *GetServiceConfRequest 
 }
 
 type GetServiceConfResponseBody struct {
+	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
 	// example:
 	//
 	// 200
@@ -6981,6 +6994,11 @@ func (s GetServiceConfResponseBody) String() string {
 
 func (s GetServiceConfResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetServiceConfResponseBody) SetClassify(v string) *GetServiceConfResponseBody {
+	s.Classify = &v
+	return s
 }
 
 func (s *GetServiceConfResponseBody) SetCode(v int32) *GetServiceConfResponseBody {
@@ -8207,7 +8225,8 @@ func (s *GetTextScanResultResponseBodyData) SetTotalCount(v int64) *GetTextScanR
 }
 
 type GetTextScanResultResponseBodyDataItems struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	BailianRequestId *string `json:"BailianRequestId,omitempty" xml:"BailianRequestId,omitempty"`
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
 	// miss
@@ -8233,6 +8252,7 @@ type GetTextScanResultResponseBodyDataItems struct {
 	// 2023-07-11 14:21:36
 	RequestTime *string                                         `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
 	Result      []*GetTextScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RiskLevel   *string                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// example:
 	//
 	// {}
@@ -8261,6 +8281,11 @@ func (s GetTextScanResultResponseBodyDataItems) String() string {
 
 func (s GetTextScanResultResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *GetTextScanResultResponseBodyDataItems) SetBailianRequestId(v string) *GetTextScanResultResponseBodyDataItems {
+	s.BailianRequestId = &v
+	return s
 }
 
 func (s *GetTextScanResultResponseBodyDataItems) SetContent(v string) *GetTextScanResultResponseBodyDataItems {
@@ -8303,6 +8328,11 @@ func (s *GetTextScanResultResponseBodyDataItems) SetResult(v []*GetTextScanResul
 	return s
 }
 
+func (s *GetTextScanResultResponseBodyDataItems) SetRiskLevel(v string) *GetTextScanResultResponseBodyDataItems {
+	s.RiskLevel = &v
+	return s
+}
+
 func (s *GetTextScanResultResponseBodyDataItems) SetScanResult(v string) *GetTextScanResultResponseBodyDataItems {
 	s.ScanResult = &v
 	return s
@@ -8332,7 +8362,8 @@ type GetTextScanResultResponseBodyDataItemsResult struct {
 	// example:
 	//
 	// 25.0
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// political_n
@@ -8349,6 +8380,11 @@ func (s GetTextScanResultResponseBodyDataItemsResult) GoString() string {
 
 func (s *GetTextScanResultResponseBodyDataItemsResult) SetConfidence(v float32) *GetTextScanResultResponseBodyDataItemsResult {
 	s.Confidence = &v
+	return s
+}
+
+func (s *GetTextScanResultResponseBodyDataItemsResult) SetDescription(v string) *GetTextScanResultResponseBodyDataItemsResult {
+	s.Description = &v
 	return s
 }
 
@@ -8662,7 +8698,8 @@ type GetUserBuyStatusResponseBodyData struct {
 	// example:
 	//
 	// False
-	Indebt *bool `json:"Indebt,omitempty" xml:"Indebt,omitempty"`
+	Indebt *bool   `json:"Indebt,omitempty" xml:"Indebt,omitempty"`
+	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetUserBuyStatusResponseBodyData) String() string {
@@ -8685,6 +8722,11 @@ func (s *GetUserBuyStatusResponseBodyData) SetBuy(v bool) *GetUserBuyStatusRespo
 
 func (s *GetUserBuyStatusResponseBodyData) SetIndebt(v bool) *GetUserBuyStatusResponseBodyData {
 	s.Indebt = &v
+	return s
+}
+
+func (s *GetUserBuyStatusResponseBodyData) SetTag(v string) *GetUserBuyStatusResponseBodyData {
+	s.Tag = &v
 	return s
 }
 
