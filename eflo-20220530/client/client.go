@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -12,13 +9,246 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AssignLeniPrivateIpAddressRequest struct {
+	// The idempotent identifier.
+	//
+	// example:
+	//
+	// 3fd79d62-ab1d-11ec-9a53-0242ac110004
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the response code.
+	//
+	// example:
+	//
+	// wuhuaiyu
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private network IP (automatically assigned by default).
+	//
+	// example:
+	//
+	// 10.0.****
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AssignLeniPrivateIpAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignLeniPrivateIpAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssignLeniPrivateIpAddressRequest) SetClientToken(v string) *AssignLeniPrivateIpAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressRequest) SetDescription(v string) *AssignLeniPrivateIpAddressRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressRequest) SetElasticNetworkInterfaceId(v string) *AssignLeniPrivateIpAddressRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressRequest) SetPrivateIpAddress(v string) *AssignLeniPrivateIpAddressRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressRequest) SetRegionId(v string) *AssignLeniPrivateIpAddressRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AssignLeniPrivateIpAddressResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *AssignLeniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssignLeniPrivateIpAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignLeniPrivateIpAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssignLeniPrivateIpAddressResponseBody) SetCode(v int32) *AssignLeniPrivateIpAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressResponseBody) SetContent(v *AssignLeniPrivateIpAddressResponseBodyContent) *AssignLeniPrivateIpAddressResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressResponseBody) SetMessage(v string) *AssignLeniPrivateIpAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressResponseBody) SetRequestId(v string) *AssignLeniPrivateIpAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssignLeniPrivateIpAddressResponseBodyContent struct {
+	// Lingjun Elastic Network Interface ID.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// example:
+	//
+	// sip-lzwx****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+}
+
+func (s AssignLeniPrivateIpAddressResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignLeniPrivateIpAddressResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *AssignLeniPrivateIpAddressResponseBodyContent) SetElasticNetworkInterfaceId(v string) *AssignLeniPrivateIpAddressResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressResponseBodyContent) SetIpName(v string) *AssignLeniPrivateIpAddressResponseBodyContent {
+	s.IpName = &v
+	return s
+}
+
+type AssignLeniPrivateIpAddressResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssignLeniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AssignLeniPrivateIpAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignLeniPrivateIpAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssignLeniPrivateIpAddressResponse) SetHeaders(v map[string]*string) *AssignLeniPrivateIpAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressResponse) SetStatusCode(v int32) *AssignLeniPrivateIpAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssignLeniPrivateIpAddressResponse) SetBody(v *AssignLeniPrivateIpAddressResponseBody) *AssignLeniPrivateIpAddressResponse {
+	s.Body = v
+	return s
+}
+
 type AssignPrivateIpAddressRequest struct {
-	AssignMac          *bool   `json:"AssignMac,omitempty" xml:"AssignMac,omitempty"`
+	// Specifies whether to assign a mac address.
+	//
+	// example:
+	//
+	// true
+	AssignMac *bool `json:"AssignMac,omitempty" xml:"AssignMac,omitempty"`
+	// By default, popApi is not ignored and idempotent
+	//
+	// example:
+	//
+	// 3fd79d62-ab1d-11ec-9a53-0242ac110004
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the variable.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the network interface controller.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni-bp18exxqa2rvfn45e5pz
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrivateIpAddress   *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SkipConfig         *bool   `json:"SkipConfig,omitempty" xml:"SkipConfig,omitempty"`
-	SubnetId           *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The secondary private IP address.
+	//
+	// example:
+	//
+	// 10.0.6.194
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The default value is false. If you set the value to true, the secondary private IP address application process can be accelerated.
+	//
+	// >  For more information, submit a ticket.
+	//
+	// example:
+	//
+	// false
+	SkipConfig *bool `json:"SkipConfig,omitempty" xml:"SkipConfig,omitempty"`
+	// It belongs to the Lingjun subnet.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subnet-f3zfzmnc
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 }
 
 func (s AssignPrivateIpAddressRequest) String() string {
@@ -31,6 +261,16 @@ func (s AssignPrivateIpAddressRequest) GoString() string {
 
 func (s *AssignPrivateIpAddressRequest) SetAssignMac(v bool) *AssignPrivateIpAddressRequest {
 	s.AssignMac = &v
+	return s
+}
+
+func (s *AssignPrivateIpAddressRequest) SetClientToken(v string) *AssignPrivateIpAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AssignPrivateIpAddressRequest) SetDescription(v string) *AssignPrivateIpAddressRequest {
+	s.Description = &v
 	return s
 }
 
@@ -60,10 +300,26 @@ func (s *AssignPrivateIpAddressRequest) SetSubnetId(v string) *AssignPrivateIpAd
 }
 
 type AssignPrivateIpAddressResponseBody struct {
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *AssignPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *AssignPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssignPrivateIpAddressResponseBody) String() string {
@@ -95,7 +351,17 @@ func (s *AssignPrivateIpAddressResponseBody) SetRequestId(v string) *AssignPriva
 }
 
 type AssignPrivateIpAddressResponseBodyContent struct {
-	IpName             *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The unique IP identifier.
+	//
+	// example:
+	//
+	// sip-8exxqa2r
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// Lingjun network interface controller ID.
+	//
+	// example:
+	//
+	// lni-bp18exxqa2rvfn45e5pz
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 }
 
@@ -118,9 +384,9 @@ func (s *AssignPrivateIpAddressResponseBodyContent) SetNetworkInterfaceId(v stri
 }
 
 type AssignPrivateIpAddressResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssignPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssignPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssignPrivateIpAddressResponse) String() string {
@@ -146,11 +412,558 @@ func (s *AssignPrivateIpAddressResponse) SetBody(v *AssignPrivateIpAddressRespon
 	return s
 }
 
+type AssociateVpdCidrBlockRequest struct {
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The additional CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 172.16.0.0/12
+	SecondaryCidrBlock *string `json:"SecondaryCidrBlock,omitempty" xml:"SecondaryCidrBlock,omitempty"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-omqutbff
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+}
+
+func (s AssociateVpdCidrBlockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateVpdCidrBlockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateVpdCidrBlockRequest) SetRegionId(v string) *AssociateVpdCidrBlockRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AssociateVpdCidrBlockRequest) SetSecondaryCidrBlock(v string) *AssociateVpdCidrBlockRequest {
+	s.SecondaryCidrBlock = &v
+	return s
+}
+
+func (s *AssociateVpdCidrBlockRequest) SetVpdId(v string) *AssociateVpdCidrBlockRequest {
+	s.VpdId = &v
+	return s
+}
+
+type AssociateVpdCidrBlockResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *AssociateVpdCidrBlockResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssociateVpdCidrBlockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateVpdCidrBlockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateVpdCidrBlockResponseBody) SetCode(v int32) *AssociateVpdCidrBlockResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AssociateVpdCidrBlockResponseBody) SetContent(v *AssociateVpdCidrBlockResponseBodyContent) *AssociateVpdCidrBlockResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *AssociateVpdCidrBlockResponseBody) SetMessage(v string) *AssociateVpdCidrBlockResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AssociateVpdCidrBlockResponseBody) SetRequestId(v string) *AssociateVpdCidrBlockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssociateVpdCidrBlockResponseBodyContent struct {
+	// The ID of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-eoiy88ju
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+}
+
+func (s AssociateVpdCidrBlockResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateVpdCidrBlockResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateVpdCidrBlockResponseBodyContent) SetVpdId(v string) *AssociateVpdCidrBlockResponseBodyContent {
+	s.VpdId = &v
+	return s
+}
+
+type AssociateVpdCidrBlockResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateVpdCidrBlockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AssociateVpdCidrBlockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateVpdCidrBlockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateVpdCidrBlockResponse) SetHeaders(v map[string]*string) *AssociateVpdCidrBlockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateVpdCidrBlockResponse) SetStatusCode(v int32) *AssociateVpdCidrBlockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssociateVpdCidrBlockResponse) SetBody(v *AssociateVpdCidrBlockResponseBody) *AssociateVpdCidrBlockResponse {
+	s.Body = v
+	return s
+}
+
+type AttachElasticNetworkInterfaceRequest struct {
+	// The ID of the ENI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The ID of the node.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e01-cn-lbj3aej****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID of the disk.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AttachElasticNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachElasticNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachElasticNetworkInterfaceRequest) SetElasticNetworkInterfaceId(v string) *AttachElasticNetworkInterfaceRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *AttachElasticNetworkInterfaceRequest) SetNodeId(v string) *AttachElasticNetworkInterfaceRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *AttachElasticNetworkInterfaceRequest) SetRegionId(v string) *AttachElasticNetworkInterfaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AttachElasticNetworkInterfaceResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
+	//
+	// example:
+	//
+	// []
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 039C3C3A-3C37-5672-80D5-D8CD48C676D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachElasticNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachElasticNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachElasticNetworkInterfaceResponseBody) SetCode(v int32) *AttachElasticNetworkInterfaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachElasticNetworkInterfaceResponseBody) SetContent(v interface{}) *AttachElasticNetworkInterfaceResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *AttachElasticNetworkInterfaceResponseBody) SetMessage(v string) *AttachElasticNetworkInterfaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AttachElasticNetworkInterfaceResponseBody) SetRequestId(v string) *AttachElasticNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachElasticNetworkInterfaceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachElasticNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachElasticNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachElasticNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachElasticNetworkInterfaceResponse) SetHeaders(v map[string]*string) *AttachElasticNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachElasticNetworkInterfaceResponse) SetStatusCode(v int32) *AttachElasticNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachElasticNetworkInterfaceResponse) SetBody(v *AttachElasticNetworkInterfaceResponseBody) *AttachElasticNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateElasticNetworkInterfaceRequest struct {
+	// The POP API is not ignored by default and is used for idempotence.
+	//
+	// example:
+	//
+	// 3fd79d62-ab1d-11ec-9a53-0242ac110004
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the response code.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether to enable the jumbo frame capability
+	//
+	// example:
+	//
+	// True
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// The ID of the Lingjun node.
+	//
+	// example:
+	//
+	// e01-cn-lbj3aej****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// sg-wz9fj2s3o21nw2****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-t4nahb0pxck****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC.
+	//
+	// >  If the NodeId parameter is empty, the VpcId parameter is required. If the NodeId parameter is not empty, the VpcId parameter is optional.
+	//
+	// example:
+	//
+	// vpc-uf6aa4ddo97fr****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateElasticNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetClientToken(v string) *CreateElasticNetworkInterfaceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetDescription(v string) *CreateElasticNetworkInterfaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetEnableJumboFrame(v bool) *CreateElasticNetworkInterfaceRequest {
+	s.EnableJumboFrame = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetNodeId(v string) *CreateElasticNetworkInterfaceRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetRegionId(v string) *CreateElasticNetworkInterfaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetSecurityGroupId(v string) *CreateElasticNetworkInterfaceRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetVSwitchId(v string) *CreateElasticNetworkInterfaceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetVpcId(v string) *CreateElasticNetworkInterfaceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequest) SetZoneId(v string) *CreateElasticNetworkInterfaceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateElasticNetworkInterfaceResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *CreateElasticNetworkInterfaceResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateElasticNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticNetworkInterfaceResponseBody) SetCode(v int32) *CreateElasticNetworkInterfaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceResponseBody) SetContent(v *CreateElasticNetworkInterfaceResponseBodyContent) *CreateElasticNetworkInterfaceResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceResponseBody) SetMessage(v string) *CreateElasticNetworkInterfaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceResponseBody) SetRequestId(v string) *CreateElasticNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateElasticNetworkInterfaceResponseBodyContent struct {
+	// Lingjun Elastic Network Interface ID.
+	//
+	// example:
+	//
+	// leni-1fejojjo****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The ID of the Lingjun node.
+	//
+	// example:
+	//
+	// e01-cn-lbj3aej****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s CreateElasticNetworkInterfaceResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticNetworkInterfaceResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticNetworkInterfaceResponseBodyContent) SetElasticNetworkInterfaceId(v string) *CreateElasticNetworkInterfaceResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceResponseBodyContent) SetNodeId(v string) *CreateElasticNetworkInterfaceResponseBodyContent {
+	s.NodeId = &v
+	return s
+}
+
+type CreateElasticNetworkInterfaceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateElasticNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateElasticNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticNetworkInterfaceResponse) SetHeaders(v map[string]*string) *CreateElasticNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceResponse) SetStatusCode(v int32) *CreateElasticNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceResponse) SetBody(v *CreateElasticNetworkInterfaceResponseBody) *CreateElasticNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateErRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErName       *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The description of the document.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun HUB Name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-wulanchabu-main
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// Primary Zone
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmyuzlx2iihcy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateErRequest) String() string {
@@ -181,11 +994,32 @@ func (s *CreateErRequest) SetRegionId(v string) *CreateErRequest {
 	return s
 }
 
+func (s *CreateErRequest) SetResourceGroupId(v string) *CreateErRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type CreateErResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateErResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *CreateErResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateErResponseBody) String() string {
@@ -217,6 +1051,11 @@ func (s *CreateErResponseBody) SetRequestId(v string) *CreateErResponseBody {
 }
 
 type CreateErResponseBodyContent struct {
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-aueyxxsy
 	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
 }
 
@@ -234,9 +1073,9 @@ func (s *CreateErResponseBodyContent) SetErId(v string) *CreateErResponseBodyCon
 }
 
 type CreateErResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateErResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateErResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateErResponse) String() string {
@@ -263,13 +1102,72 @@ func (s *CreateErResponse) SetBody(v *CreateErResponseBody) *CreateErResponse {
 }
 
 type CreateErAttachmentRequest struct {
-	AutoReceiveAllRoute *bool   `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
-	ErAttachmentName    *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
-	ErId                *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId    *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// Indicates whether to automatically receive all routes from all instances under the Lingjun HUB. Valid values:
+	//
+	// 	- **true**: received automatically.
+	//
+	// 	- **false**: Not received.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	AutoReceiveAllRoute *bool `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
+	// The name of the network instance connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-attachemnt-vpd-xksd2obl
+	ErAttachmentName *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
+	// Lingjun HUB ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The ID of the network instance. Valid values: **VPD*	- and **VCC**.
+	//
+	// For more information, see [What is Lingjun?](https://help.aliyun.com/document_detail/444430.html)
+	//
+	// You can query **Lingjun CIDR Block*	- and **Lingjun Connection*	- by [ListVpds](https://help.aliyun.com/document_detail/2331077.html) and [ListVccs](https://help.aliyun.com/document_detail/2399526.html?) respectively.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-xksd2obl
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The category of the instance. Valid values:
+	//
+	// 	- **VPD**: indicates the Lingjun CIDR block.
+	//
+	// 	- **VCC**: indicates a Lingjun connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VPD
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the tenant to which the resource belongs. This parameter is required for cross-account resources.
+	//
+	// example:
+	//
+	// 1620939556166277
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
 }
 
 func (s CreateErAttachmentRequest) String() string {
@@ -316,10 +1214,26 @@ func (s *CreateErAttachmentRequest) SetResourceTenantId(v string) *CreateErAttac
 }
 
 type CreateErAttachmentResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateErAttachmentResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *CreateErAttachmentResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is displayed.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// DBAD15D6-3F47-5B36-8A92-57C2919D13D0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateErAttachmentResponseBody) String() string {
@@ -351,6 +1265,11 @@ func (s *CreateErAttachmentResponseBody) SetRequestId(v string) *CreateErAttachm
 }
 
 type CreateErAttachmentResponseBodyContent struct {
+	// The ID of the network connection instance.
+	//
+	// example:
+	//
+	// er-attachment-ggjbfhqv
 	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
 }
 
@@ -368,9 +1287,9 @@ func (s *CreateErAttachmentResponseBodyContent) SetErAttachmentId(v string) *Cre
 }
 
 type CreateErAttachmentResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateErAttachmentResponse) String() string {
@@ -397,18 +1316,110 @@ func (s *CreateErAttachmentResponse) SetBody(v *CreateErAttachmentResponseBody) 
 }
 
 type CreateErRouteMapRequest struct {
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationCidrBlock      *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ErId                      *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ReceptionInstanceId       *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
-	ReceptionInstanceOwner    *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
-	ReceptionInstanceType     *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMapAction            *string `json:"RouteMapAction,omitempty" xml:"RouteMapAction,omitempty"`
-	RouteMapNum               *int32  `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
-	TransmissionInstanceId    *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
+	// Policy description
+	//
+	// example:
+	//
+	// terraform-example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-aueyxxsy
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The ID of the destination instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-xlhsvdvt
+	ReceptionInstanceId *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
+	// The tenant to which the route receiving instance belongs.
+	//
+	// example:
+	//
+	// 1620939556166277
+	ReceptionInstanceOwner *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
+	// The type of the destination instance. Valid values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VPD
+	ReceptionInstanceType *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Policy behavior; optional values:
+	//
+	// 	- **permit**: Allow
+	//
+	// 	- **deny**: Rejected
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// permit
+	RouteMapAction *string `json:"RouteMapAction,omitempty" xml:"RouteMapAction,omitempty"`
+	// The ID of the policy.
+	//
+	// A smaller sequence number indicates a lower priority. When a route is matched, a policy with a higher priority is preferentially matched.
+	//
+	// **Valid values: 1001 to 2000**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1001
+	RouteMapNum *int32 `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
+	// The ID of the source instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-xlsjsdvt
+	TransmissionInstanceId *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
+	// The tenant to which the route publish instance belongs
+	//
+	// example:
+	//
+	// 1620939556166277
 	TransmissionInstanceOwner *string `json:"TransmissionInstanceOwner,omitempty" xml:"TransmissionInstanceOwner,omitempty"`
-	TransmissionInstanceType  *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
+	// The type of the source instance. Valid values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VPD
+	TransmissionInstanceType *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
 }
 
 func (s CreateErRouteMapRequest) String() string {
@@ -480,10 +1491,26 @@ func (s *CreateErRouteMapRequest) SetTransmissionInstanceType(v string) *CreateE
 }
 
 type CreateErRouteMapResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateErRouteMapResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *CreateErRouteMapResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 039C3C3A-3C37-5672-80D5-D8CD48C676D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateErRouteMapResponseBody) String() string {
@@ -515,6 +1542,11 @@ func (s *CreateErRouteMapResponseBody) SetRequestId(v string) *CreateErRouteMapR
 }
 
 type CreateErRouteMapResponseBodyContent struct {
+	// routing policy ID
+	//
+	// example:
+	//
+	// er-rmap-uwglhzom
 	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
 }
 
@@ -532,9 +1564,9 @@ func (s *CreateErRouteMapResponseBodyContent) SetErRouteMapId(v string) *CreateE
 }
 
 type CreateErRouteMapResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateErRouteMapResponse) String() string {
@@ -561,13 +1593,66 @@ func (s *CreateErRouteMapResponse) SetBody(v *CreateErRouteMapResponseBody) *Cre
 }
 
 type CreateSubnetRequest struct {
-	Cidr       *string                   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	RegionId   *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubnetName *string                   `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
-	Tag        []*CreateSubnetRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Type       *string                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpdId      *string                   `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId     *string                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The CIDR block of the Subnet.
+	//
+	// 	- The network segment of the subnet must be a proper subset of the network segment of Lingjun to which it belongs, and the mask must be between 16 bits and 29 bits, which can provide 8 to 65536 addresses. For example, the CIDR block of the Lingjun CIDR block is 192.168.0.0/16, and the CIDR blocks of the subnets under the Lingjun CIDR block are 192.168.0.0/17 to 192.168.0.0/29.
+	//
+	// 	- The first and last three IP addresses of each subnet segment are reserved by the system. For example, the CIDR blocks of the subnet are 192.168.1.0/24,192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10.0.0.0/16
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun subnet instance name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subnet-1
+	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tag []*CreateSubnetRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Lingjun Subnet Usage Type; optional; optional. Valid values:
+	//
+	// 	- **If you do not set this field for a common type**
+	//
+	// 	- **OOB*	- :OOB type
+	//
+	// 	- **LB**: LB type
+	//
+	// example:
+	//
+	// OOB
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-xcuhjyrj
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateSubnetRequest) String() string {
@@ -614,7 +1699,25 @@ func (s *CreateSubnetRequest) SetZoneId(v string) *CreateSubnetRequest {
 }
 
 type CreateSubnetRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the VPN attachment.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-subnet
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the VPN connection.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// subnet-tag-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -637,10 +1740,26 @@ func (s *CreateSubnetRequestTag) SetValue(v string) *CreateSubnetRequestTag {
 }
 
 type CreateSubnetResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateSubnetResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *CreateSubnetResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSubnetResponseBody) String() string {
@@ -672,6 +1791,11 @@ func (s *CreateSubnetResponseBody) SetRequestId(v string) *CreateSubnetResponseB
 }
 
 type CreateSubnetResponseBodyContent struct {
+	// Lingjun subnet instance ID
+	//
+	// example:
+	//
+	// subnet-yuvn29bn
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 }
 
@@ -689,9 +1813,9 @@ func (s *CreateSubnetResponseBodyContent) SetSubnetId(v string) *CreateSubnetRes
 }
 
 type CreateSubnetResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSubnetResponse) String() string {
@@ -718,21 +1842,122 @@ func (s *CreateSubnetResponse) SetBody(v *CreateSubnetResponseBody) *CreateSubne
 }
 
 type CreateVccRequest struct {
-	AccessCouldService *bool                  `json:"AccessCouldService,omitempty" xml:"AccessCouldService,omitempty"`
-	Bandwidth          *int32                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BgpCidr            *string                `json:"BgpCidr,omitempty" xml:"BgpCidr,omitempty"`
-	CenId              *string                `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ConnectionType     *string                `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	Description        *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId           *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId    *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                []*CreateVccRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId          *string                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VccId              *string                `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VccName            *string                `json:"VccName,omitempty" xml:"VccName,omitempty"`
-	VpcId              *string                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpdId              *string                `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId             *string                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Enabled access to cloud services. Optional values:
+	//
+	// 	- **true**: Enable access to cloud services
+	//
+	// 	- **false**: Do not enable access to cloud services
+	//
+	// example:
+	//
+	// true
+	AccessCouldService *bool `json:"AccessCouldService,omitempty" xml:"AccessCouldService,omitempty"`
+	// The bandwidth. Unit: Mbit /s. The minimum value is 1000, representing 1Gbps bandwidth; the maximum value is 400000, representing 400Gbps bandwidth.
+	//
+	// >  1Gbps = 1000Mbps
+	//
+	// example:
+	//
+	// 1000
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// bgp as number
+	//
+	// example:
+	//
+	// bgpAsn
+	BgpAsn *int64 `json:"BgpAsn,omitempty" xml:"BgpAsn,omitempty"`
+	// Internet segment, on-premises input, off-premises default
+	//
+	// example:
+	//
+	// 10.0.0.0/24
+	BgpCidr *string `json:"BgpCidr,omitempty" xml:"BgpCidr,omitempty"`
+	// CEN Instance ID
+	//
+	// example:
+	//
+	// cen-bkiw0x1347roekr7f2
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// Account to which cen belongs
+	//
+	// example:
+	//
+	// 1511928242963727
+	CenOwnerId *string `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// The connection mode. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **CEN (CENTR)**
+	//
+	// example:
+	//
+	// CENTR
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// The description of the document.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aeky5f3qx6ceapq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tag []*CreateVccRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch. [Virtual Private Cloud VSwitch](https://help.aliyun.com/document_detail/100380.html).
+	//
+	// You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query created vSwitches.
+	//
+	// example:
+	//
+	// vsw-t4nahb0pxckgktx1kot8q
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// Lingjun Connection Name
+	//
+	// example:
+	//
+	// test
+	VccName *string `json:"VccName,omitempty" xml:"VccName,omitempty"`
+	// Virtual Private Cloud IDs; [What is Virtual Private Cloud](https://help.aliyun.com/document_detail/34217.html)
+	//
+	// You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html#demo-0) operation to query the specified VPC.
+	//
+	// example:
+	//
+	// vpc-uf6aa4ddo97frj22tgp52
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-t2jseldp
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID of the disk.
+	//
+	// example:
+	//
+	// cn-wulanchabu-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateVccRequest) String() string {
@@ -753,6 +1978,11 @@ func (s *CreateVccRequest) SetBandwidth(v int32) *CreateVccRequest {
 	return s
 }
 
+func (s *CreateVccRequest) SetBgpAsn(v int64) *CreateVccRequest {
+	s.BgpAsn = &v
+	return s
+}
+
 func (s *CreateVccRequest) SetBgpCidr(v string) *CreateVccRequest {
 	s.BgpCidr = &v
 	return s
@@ -760,6 +1990,11 @@ func (s *CreateVccRequest) SetBgpCidr(v string) *CreateVccRequest {
 
 func (s *CreateVccRequest) SetCenId(v string) *CreateVccRequest {
 	s.CenId = &v
+	return s
+}
+
+func (s *CreateVccRequest) SetCenOwnerId(v string) *CreateVccRequest {
+	s.CenOwnerId = &v
 	return s
 }
 
@@ -819,7 +2054,25 @@ func (s *CreateVccRequest) SetZoneId(v string) *CreateVccRequest {
 }
 
 type CreateVccRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the VPN attachment.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-vcc
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the VPN connection.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// vcc-group-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -842,10 +2095,26 @@ func (s *CreateVccRequestTag) SetValue(v string) *CreateVccRequestTag {
 }
 
 type CreateVccResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Content *CreateVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// response message, if the success request is
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 039C3C3A-3C37-5672-80D5-D8CD48C676D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateVccResponseBody) String() string {
@@ -877,6 +2146,11 @@ func (s *CreateVccResponseBody) SetRequestId(v string) *CreateVccResponseBody {
 }
 
 type CreateVccResponseBodyContent struct {
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
 	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
 }
 
@@ -894,9 +2168,9 @@ func (s *CreateVccResponseBodyContent) SetVccId(v string) *CreateVccResponseBody
 }
 
 type CreateVccResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVccResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVccResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVccResponse) String() string {
@@ -923,10 +2197,38 @@ func (s *CreateVccResponse) SetBody(v *CreateVccResponseBody) *CreateVccResponse
 }
 
 type CreateVccGrantRuleRequest struct {
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1620939556166277
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Network Instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vcc-8rgvqazb
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateVccGrantRuleRequest) String() string {
@@ -958,10 +2260,30 @@ func (s *CreateVccGrantRuleRequest) SetRegionId(v string) *CreateVccGrantRuleReq
 }
 
 type CreateVccGrantRuleResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateVccGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// {}
+	Content *CreateVccGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateVccGrantRuleResponseBody) String() string {
@@ -993,6 +2315,11 @@ func (s *CreateVccGrantRuleResponseBody) SetRequestId(v string) *CreateVccGrantR
 }
 
 type CreateVccGrantRuleResponseBodyContent struct {
+	// Authorized resource primary key ID
+	//
+	// example:
+	//
+	// grant-rule-8rgvqazb
 	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
 }
 
@@ -1010,9 +2337,9 @@ func (s *CreateVccGrantRuleResponseBodyContent) SetGrantRuleId(v string) *Create
 }
 
 type CreateVccGrantRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVccGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVccGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVccGrantRuleResponse) String() string {
@@ -1039,9 +2366,24 @@ func (s *CreateVccGrantRuleResponse) SetBody(v *CreateVccGrantRuleResponseBody) 
 }
 
 type CreateVccRouteEntryRequest struct {
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 192.168.98.112/28
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VccId                *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
 }
 
 func (s CreateVccRouteEntryRequest) String() string {
@@ -1068,10 +2410,26 @@ func (s *CreateVccRouteEntryRequest) SetVccId(v string) *CreateVccRouteEntryRequ
 }
 
 type CreateVccRouteEntryResponseBody struct {
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateVccRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Content *CreateVccRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 039C3C3A-3C37-5672-80D5-D8CD48C676D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateVccRouteEntryResponseBody) String() string {
@@ -1103,6 +2461,11 @@ func (s *CreateVccRouteEntryResponseBody) SetRequestId(v string) *CreateVccRoute
 }
 
 type CreateVccRouteEntryResponseBodyContent struct {
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// vcc-rte-5cey1sap
 	VccRouteEntryId *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
 }
 
@@ -1120,9 +2483,9 @@ func (s *CreateVccRouteEntryResponseBodyContent) SetVccRouteEntryId(v string) *C
 }
 
 type CreateVccRouteEntryResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVccRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVccRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVccRouteEntryResponse) String() string {
@@ -1149,12 +2512,46 @@ func (s *CreateVccRouteEntryResponse) SetBody(v *CreateVccRouteEntryResponseBody
 }
 
 type CreateVpdRequest struct {
-	Cidr            *string                    `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	RegionId        *string                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Subnets         []*CreateVpdRequestSubnets `json:"Subnets,omitempty" xml:"Subnets,omitempty" type:"Repeated"`
-	Tag             []*CreateVpdRequestTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VpdName         *string                    `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// The CIDR block of the VPD.
+	//
+	// 	- We recommend that you use an RFC private endpoint as the Lingjun CIDR block, such as 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16. In scenarios where the Doringjun CIDR block is connected to each other or where the Lingjun CIDR block is connected to a VPC, make sure that the addresses do not conflict with each other.
+	//
+	// 	- You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 and their subnets as the primary IPv4 CIDR block of the VPD.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The region ID of the disk.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Lingjun subnet information list
+	Subnets []*CreateVpdRequestSubnets `json:"Subnets,omitempty" xml:"Subnets,omitempty" type:"Repeated"`
+	// A tag.
+	Tag []*CreateVpdRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Lingjun CIDR block instance name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-1
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s CreateVpdRequest) String() string {
@@ -1196,11 +2593,46 @@ func (s *CreateVpdRequest) SetVpdName(v string) *CreateVpdRequest {
 }
 
 type CreateVpdRequestSubnets struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The CIDR block of the Subnet.
+	//
+	// 	- The network segment of the subnet must be a proper subset of the network segment of Lingjun to which it belongs, and the mask must be between 16 bits and 29 bits, which can provide 8 to 65536 addresses. For example, the CIDR block of the Lingjun CIDR block is 192.168.0.0/16, and the CIDR blocks of the subnets under the Lingjun CIDR block are 192.168.0.0/17 to 192.168.0.0/29.
+	//
+	// 	- The first and last three IP addresses of each subnet segment are reserved by the system. For example, the CIDR blocks of the subnet are 192.168.1.0/24,192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+	//
+	// example:
+	//
+	// 10.1.0.0/16
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun subnet instance name
+	//
+	// example:
+	//
+	// subnet-1
 	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Lingjun Subnet Usage Type; optional; optional. Valid values:
+	//
+	// 	- **Generic type is not specified**.
+	//
+	// 	- **OOB*	- :OOB type
+	//
+	// 	- **LB**: LB type
+	//
+	// example:
+	//
+	// OOB
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The zone ID of the disk.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateVpdRequestSubnets) String() string {
@@ -1237,7 +2669,25 @@ func (s *CreateVpdRequestSubnets) SetZoneId(v string) *CreateVpdRequestSubnets {
 }
 
 type CreateVpdRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the VPN attachment.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// vpd-wulanchabu
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the VPN connection.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each tag key corresponds to a tag value. You can enter a maximum of 20 tag values at a time.
+	//
+	// example:
+	//
+	// wulanchabu-a
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1260,10 +2710,26 @@ func (s *CreateVpdRequestTag) SetValue(v string) *CreateVpdRequestTag {
 }
 
 type CreateVpdResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateVpdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *CreateVpdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// DBAD15D6-3F47-5B36-8A92-57C2919D13D0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateVpdResponseBody) String() string {
@@ -1295,8 +2761,14 @@ func (s *CreateVpdResponseBody) SetRequestId(v string) *CreateVpdResponseBody {
 }
 
 type CreateVpdResponseBodyContent struct {
+	// Lingjun subnet ID list
 	SubnetIds []*string `json:"SubnetIds,omitempty" xml:"SubnetIds,omitempty" type:"Repeated"`
-	VpdId     *string   `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-eoiy88ju
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s CreateVpdResponseBodyContent) String() string {
@@ -1318,9 +2790,9 @@ func (s *CreateVpdResponseBodyContent) SetVpdId(v string) *CreateVpdResponseBody
 }
 
 type CreateVpdResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVpdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVpdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVpdResponse) String() string {
@@ -1347,10 +2819,38 @@ func (s *CreateVpdResponse) SetBody(v *CreateVpdResponseBody) *CreateVpdResponse
 }
 
 type CreateVpdGrantRuleRequest struct {
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1013666993027780
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Network Instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-8rgvqazb
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateVpdGrantRuleRequest) String() string {
@@ -1382,10 +2882,30 @@ func (s *CreateVpdGrantRuleRequest) SetRegionId(v string) *CreateVpdGrantRuleReq
 }
 
 type CreateVpdGrantRuleResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *CreateVpdGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// {}
+	Content *CreateVpdGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// DBAD15D6-3F47-5B36-8A92-57C2919D13D0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateVpdGrantRuleResponseBody) String() string {
@@ -1417,6 +2937,11 @@ func (s *CreateVpdGrantRuleResponseBody) SetRequestId(v string) *CreateVpdGrantR
 }
 
 type CreateVpdGrantRuleResponseBodyContent struct {
+	// Authorized resource primary key ID
+	//
+	// example:
+	//
+	// grant-rule-hnevjkmw
 	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
 }
 
@@ -1434,9 +2959,9 @@ func (s *CreateVpdGrantRuleResponseBodyContent) SetGrantRuleId(v string) *Create
 }
 
 type CreateVpdGrantRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVpdGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVpdGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVpdGrantRuleResponse) String() string {
@@ -1462,8 +2987,183 @@ func (s *CreateVpdGrantRuleResponse) SetBody(v *CreateVpdGrantRuleResponseBody) 
 	return s
 }
 
+type DeleteElasticNetworkInterfaceRequest struct {
+	// By default, popApi is not ignored and idempotent
+	//
+	// example:
+	//
+	// 141cccd6-dfbd-11ec-b8e8-0242ac110003
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Lingjun Elastic Network Interface ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteElasticNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticNetworkInterfaceRequest) SetClientToken(v string) *DeleteElasticNetworkInterfaceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceRequest) SetElasticNetworkInterfaceId(v string) *DeleteElasticNetworkInterfaceRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceRequest) SetRegionId(v string) *DeleteElasticNetworkInterfaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteElasticNetworkInterfaceResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *DeleteElasticNetworkInterfaceResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// BDBCC783-84CA-5733-8EEA-645C88B9009C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteElasticNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticNetworkInterfaceResponseBody) SetCode(v int32) *DeleteElasticNetworkInterfaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceResponseBody) SetContent(v *DeleteElasticNetworkInterfaceResponseBodyContent) *DeleteElasticNetworkInterfaceResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceResponseBody) SetMessage(v string) *DeleteElasticNetworkInterfaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceResponseBody) SetRequestId(v string) *DeleteElasticNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteElasticNetworkInterfaceResponseBodyContent struct {
+	// Lingjun Elastic Network Interface ID
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Node ID
+	//
+	// example:
+	//
+	// e01-cn-lbj3aej****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s DeleteElasticNetworkInterfaceResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticNetworkInterfaceResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticNetworkInterfaceResponseBodyContent) SetElasticNetworkInterfaceId(v string) *DeleteElasticNetworkInterfaceResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceResponseBodyContent) SetNodeId(v string) *DeleteElasticNetworkInterfaceResponseBodyContent {
+	s.NodeId = &v
+	return s
+}
+
+type DeleteElasticNetworkInterfaceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteElasticNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteElasticNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticNetworkInterfaceResponse) SetHeaders(v map[string]*string) *DeleteElasticNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceResponse) SetStatusCode(v int32) *DeleteElasticNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteElasticNetworkInterfaceResponse) SetBody(v *DeleteElasticNetworkInterfaceResponseBody) *DeleteElasticNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteErRequest struct {
-	ErId     *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1486,10 +3186,30 @@ func (s *DeleteErRequest) SetRegionId(v string) *DeleteErRequest {
 }
 
 type DeleteErResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
+	//
+	// example:
+	//
+	// {}
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteErResponseBody) String() string {
@@ -1521,9 +3241,9 @@ func (s *DeleteErResponseBody) SetRequestId(v string) *DeleteErResponseBody {
 }
 
 type DeleteErResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteErResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteErResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteErResponse) String() string {
@@ -1550,9 +3270,30 @@ func (s *DeleteErResponse) SetBody(v *DeleteErResponseBody) *DeleteErResponse {
 }
 
 type DeleteErAttachmentRequest struct {
+	// The ID of the network connection instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-attachment-5n3nsmvl
 	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
-	ErId           *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun HUB Id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-opy1wrfv
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteErAttachmentRequest) String() string {
@@ -1579,10 +3320,72 @@ func (s *DeleteErAttachmentRequest) SetRegionId(v string) *DeleteErAttachmentReq
 }
 
 type DeleteErAttachmentResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response content. If a resource has dependent resources, the existing dependent resources are returned.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "ER_RMAP": [
+	//
+	//         {
+	//
+	//             "erId": "er-opy1wrfv",
+	//
+	//             "destinationCidrBlock": "0.0.0.0/0",
+	//
+	//             "regionId": "cn-wulanchabu",
+	//
+	//             "routeMapNum": 3000,
+	//
+	//             "erRouteMapId": "er-rmap-v5lfhmvm",
+	//
+	//             "action": "permit",
+	//
+	//             "status": "Available"
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "erId": "er-opy1wrfv",
+	//
+	//             "destinationCidrBlock": "0.0.0.0/0",
+	//
+	//             "regionId": "cn-wulanchabu",
+	//
+	//             "routeMapNum": 3000,
+	//
+	//             "erRouteMapId": "er-rmap-of3r0ndh",
+	//
+	//             "action": "permit",
+	//
+	//             "status": "Available"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// response message, if the success request is
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteErAttachmentResponseBody) String() string {
@@ -1614,9 +3417,9 @@ func (s *DeleteErAttachmentResponseBody) SetRequestId(v string) *DeleteErAttachm
 }
 
 type DeleteErAttachmentResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteErAttachmentResponse) String() string {
@@ -1643,9 +3446,26 @@ func (s *DeleteErAttachmentResponse) SetBody(v *DeleteErAttachmentResponseBody) 
 }
 
 type DeleteErRouteMapRequest struct {
-	ErId          *string   `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// routing policy Instance ID List
+	//
+	// This parameter is required.
 	ErRouteMapIds []*string `json:"ErRouteMapIds,omitempty" xml:"ErRouteMapIds,omitempty" type:"Repeated"`
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteErRouteMapRequest) String() string {
@@ -1672,10 +3492,30 @@ func (s *DeleteErRouteMapRequest) SetRegionId(v string) *DeleteErRouteMapRequest
 }
 
 type DeleteErRouteMapResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
+	//
+	// example:
+	//
+	// {}
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteErRouteMapResponseBody) String() string {
@@ -1707,9 +3547,9 @@ func (s *DeleteErRouteMapResponseBody) SetRequestId(v string) *DeleteErRouteMapR
 }
 
 type DeleteErRouteMapResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteErRouteMapResponse) String() string {
@@ -1736,10 +3576,38 @@ func (s *DeleteErRouteMapResponse) SetBody(v *DeleteErRouteMapResponseBody) *Del
 }
 
 type DeleteSubnetRequest struct {
+	// The region ID of the disk.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun subnet ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subnet-f3zfzmnc
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	VpdId    *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Lingjun CIDR block ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-iv2zm1qf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// Zone
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DeleteSubnetRequest) String() string {
@@ -1771,10 +3639,38 @@ func (s *DeleteSubnetRequest) SetZoneId(v string) *DeleteSubnetRequest {
 }
 
 type DeleteSubnetResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response content (if the resource has dependent resources, the existing dependent resources will be returned)
+	//
+	// example:
+	//
+	// {
+	//
+	//       "nc": [
+	//
+	//             {}
+	//
+	//       ]
+	//
+	// }
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// A56F7D3C-8850-5AF4-A342-2D71C9A9D1CC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteSubnetResponseBody) String() string {
@@ -1806,9 +3702,9 @@ func (s *DeleteSubnetResponseBody) SetRequestId(v string) *DeleteSubnetResponseB
 }
 
 type DeleteSubnetResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSubnetResponse) String() string {
@@ -1835,10 +3731,34 @@ func (s *DeleteSubnetResponse) SetBody(v *DeleteSubnetResponseBody) *DeleteSubne
 }
 
 type DeleteVccGrantRuleRequest struct {
-	ErId        *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorization Entry ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// grant-rule-jaj34d75h01
 	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Network Instance ID
+	//
+	// example:
+	//
+	// vcc-cn-jaj34d75h01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteVccGrantRuleRequest) String() string {
@@ -1870,10 +3790,30 @@ func (s *DeleteVccGrantRuleRequest) SetRegionId(v string) *DeleteVccGrantRuleReq
 }
 
 type DeleteVccGrantRuleResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
+	//
+	// example:
+	//
+	// {}
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// BDBCC783-84CA-5733-8EEA-645C88B9009C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteVccGrantRuleResponseBody) String() string {
@@ -1905,9 +3845,9 @@ func (s *DeleteVccGrantRuleResponseBody) SetRequestId(v string) *DeleteVccGrantR
 }
 
 type DeleteVccGrantRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVccGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVccGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVccGrantRuleResponse) String() string {
@@ -1934,10 +3874,30 @@ func (s *DeleteVccGrantRuleResponse) SetBody(v *DeleteVccGrantRuleResponseBody) 
 }
 
 type DeleteVccRouteEntryRequest struct {
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 172.16.199.128/25
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VccId                *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VccRouteEntryId      *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// vcc-rte-5cey1sap
+	VccRouteEntryId *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
 }
 
 func (s DeleteVccRouteEntryRequest) String() string {
@@ -1969,10 +3929,30 @@ func (s *DeleteVccRouteEntryRequest) SetVccRouteEntryId(v string) *DeleteVccRout
 }
 
 type DeleteVccRouteEntryResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
+	//
+	// example:
+	//
+	// {}
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 0901F411-28FA-5B9C-BAEE-7776463FF0DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteVccRouteEntryResponseBody) String() string {
@@ -2004,9 +3984,9 @@ func (s *DeleteVccRouteEntryResponseBody) SetRequestId(v string) *DeleteVccRoute
 }
 
 type DeleteVccRouteEntryResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVccRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVccRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVccRouteEntryResponse) String() string {
@@ -2033,8 +4013,22 @@ func (s *DeleteVccRouteEntryResponse) SetBody(v *DeleteVccRouteEntryResponseBody
 }
 
 type DeleteVpdRequest struct {
+	// The ID of the region in which the instance resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpdId    *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-zr0farea
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s DeleteVpdRequest) String() string {
@@ -2056,10 +4050,58 @@ func (s *DeleteVpdRequest) SetVpdId(v string) *DeleteVpdRequest {
 }
 
 type DeleteVpdResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters. (If a dependent resource exists, the existing dependent resource is returned.)
+	//
+	// example:
+	//
+	// {
+	//
+	//       "subnet": [
+	//
+	//             {
+	//
+	//                   "tenantId": "1620939556166277",
+	//
+	//                   "regionId": "cn-wulanchabu",
+	//
+	//                   "zoneId": "cn",
+	//
+	//                   "type": null,
+	//
+	//                   "subnetId": "subnet-zqebaxa0",
+	//
+	//                   "name": "lql_testVPD"
+	//
+	//             }
+	//
+	//       ],
+	//
+	//       "nc": [
+	//
+	//             {}
+	//
+	//       ]
+	//
+	// }
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// BDBCC783-84CA-5733-8EEA-645C88B9009C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteVpdResponseBody) String() string {
@@ -2091,9 +4133,9 @@ func (s *DeleteVpdResponseBody) SetRequestId(v string) *DeleteVpdResponseBody {
 }
 
 type DeleteVpdResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVpdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVpdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVpdResponse) String() string {
@@ -2120,11 +4162,40 @@ func (s *DeleteVpdResponse) SetBody(v *DeleteVpdResponseBody) *DeleteVpdResponse
 }
 
 type DeleteVpdGrantRuleRequest struct {
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorization Entry ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// grant-rule-9rgxqazb
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1013666993027780
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Network Instance ID
+	//
+	// example:
+	//
+	// vpd-8rgvqazb
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteVpdGrantRuleRequest) String() string {
@@ -2161,10 +4232,30 @@ func (s *DeleteVpdGrantRuleRequest) SetRegionId(v string) *DeleteVpdGrantRuleReq
 }
 
 type DeleteVpdGrantRuleResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
+	//
+	// example:
+	//
+	// {}
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 0901F411-28FA-5B9C-BAEE-7776463FF0DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteVpdGrantRuleResponseBody) String() string {
@@ -2196,9 +4287,9 @@ func (s *DeleteVpdGrantRuleResponseBody) SetRequestId(v string) *DeleteVpdGrantR
 }
 
 type DeleteVpdGrantRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVpdGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVpdGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVpdGrantRuleResponse) String() string {
@@ -2225,6 +4316,11 @@ func (s *DeleteVpdGrantRuleResponse) SetBody(v *DeleteVpdGrantRuleResponseBody) 
 }
 
 type DescribeSlrRequest struct {
+	// The ID of the resource group to which the RAM instance belongs.
+	//
+	// example:
+	//
+	// rg-aeky5f3qx6ceapq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2242,10 +4338,26 @@ func (s *DescribeSlrRequest) SetResourceGroupId(v string) *DescribeSlrRequest {
 }
 
 type DescribeSlrResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *DescribeSlrResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Content *DescribeSlrResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSlrResponseBody) String() string {
@@ -2277,6 +4389,11 @@ func (s *DescribeSlrResponseBody) SetRequestId(v string) *DescribeSlrResponseBod
 }
 
 type DescribeSlrResponseBodyContent struct {
+	// Whether the role exists
+	//
+	// example:
+	//
+	// true
 	HasRole *bool `json:"HasRole,omitempty" xml:"HasRole,omitempty"`
 }
 
@@ -2294,9 +4411,9 @@ func (s *DescribeSlrResponseBodyContent) SetHasRole(v bool) *DescribeSlrResponse
 }
 
 type DescribeSlrResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSlrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSlrResponse) String() string {
@@ -2322,8 +4439,858 @@ func (s *DescribeSlrResponse) SetBody(v *DescribeSlrResponseBody) *DescribeSlrRe
 	return s
 }
 
+type DetachElasticNetworkInterfaceRequest struct {
+	// The ID of the ENI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The ID of the node.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e01-cn-zxu2zp3****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID of the disk.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DetachElasticNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachElasticNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachElasticNetworkInterfaceRequest) SetElasticNetworkInterfaceId(v string) *DetachElasticNetworkInterfaceRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *DetachElasticNetworkInterfaceRequest) SetNodeId(v string) *DetachElasticNetworkInterfaceRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DetachElasticNetworkInterfaceRequest) SetRegionId(v string) *DetachElasticNetworkInterfaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DetachElasticNetworkInterfaceResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response
+	//
+	// example:
+	//
+	// You don\\"t have the permission to do this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF8****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachElasticNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachElasticNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachElasticNetworkInterfaceResponseBody) SetCode(v int32) *DetachElasticNetworkInterfaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachElasticNetworkInterfaceResponseBody) SetMessage(v string) *DetachElasticNetworkInterfaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DetachElasticNetworkInterfaceResponseBody) SetRequestId(v string) *DetachElasticNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachElasticNetworkInterfaceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachElasticNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachElasticNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachElasticNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachElasticNetworkInterfaceResponse) SetHeaders(v map[string]*string) *DetachElasticNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachElasticNetworkInterfaceResponse) SetStatusCode(v int32) *DetachElasticNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachElasticNetworkInterfaceResponse) SetBody(v *DetachElasticNetworkInterfaceResponseBody) *DetachElasticNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
+type GetDestinationCidrBlockRequest struct {
+	// Instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-xxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Region ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetDestinationCidrBlockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationCidrBlockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationCidrBlockRequest) SetInstanceId(v string) *GetDestinationCidrBlockRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDestinationCidrBlockRequest) SetRegionId(v string) *GetDestinationCidrBlockRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetDestinationCidrBlockResponseBody struct {
+	// The response status code
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response content
+	Content *GetDestinationCidrBlockResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Error message. (Indicates the reason for the anomaly when the instance status is abnormal.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ID of this request
+	//
+	// example:
+	//
+	// D349EE86-AF3F-5F6C-87E2-2A08D3618350
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDestinationCidrBlockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationCidrBlockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationCidrBlockResponseBody) SetCode(v int32) *GetDestinationCidrBlockResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDestinationCidrBlockResponseBody) SetContent(v *GetDestinationCidrBlockResponseBodyContent) *GetDestinationCidrBlockResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *GetDestinationCidrBlockResponseBody) SetMessage(v string) *GetDestinationCidrBlockResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDestinationCidrBlockResponseBody) SetRequestId(v string) *GetDestinationCidrBlockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDestinationCidrBlockResponseBodyContent struct {
+	// List of destination CIDR block information for the current network instance
+	DestinationCidrBlock []*string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s GetDestinationCidrBlockResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationCidrBlockResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationCidrBlockResponseBodyContent) SetDestinationCidrBlock(v []*string) *GetDestinationCidrBlockResponseBodyContent {
+	s.DestinationCidrBlock = v
+	return s
+}
+
+type GetDestinationCidrBlockResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDestinationCidrBlockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDestinationCidrBlockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationCidrBlockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationCidrBlockResponse) SetHeaders(v map[string]*string) *GetDestinationCidrBlockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDestinationCidrBlockResponse) SetStatusCode(v int32) *GetDestinationCidrBlockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDestinationCidrBlockResponse) SetBody(v *GetDestinationCidrBlockResponseBody) *GetDestinationCidrBlockResponse {
+	s.Body = v
+	return s
+}
+
+type GetElasticNetworkInterfaceRequest struct {
+	// Lingjun Elastic Network Interface ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetElasticNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceRequest) SetElasticNetworkInterfaceId(v string) *GetElasticNetworkInterfaceRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceRequest) SetRegionId(v string) *GetElasticNetworkInterfaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetElasticNetworkInterfaceResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetElasticNetworkInterfaceResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0901F411-28FA-5B9C-BAEE-7776463FF0DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetElasticNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceResponseBody) SetCode(v int32) *GetElasticNetworkInterfaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBody) SetContent(v *GetElasticNetworkInterfaceResponseBodyContent) *GetElasticNetworkInterfaceResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBody) SetMessage(v string) *GetElasticNetworkInterfaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBody) SetRequestId(v string) *GetElasticNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetElasticNetworkInterfaceResponseBodyContent struct {
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 2022-01-13 12:51:41
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// terraform-example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Whether to enable the jumboFrame capability
+	//
+	// example:
+	//
+	// True
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// vswitch gateway address
+	//
+	// example:
+	//
+	// 172.16.****
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 2022-01-13 12:51:41
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Elastic Network Interface IP
+	//
+	// example:
+	//
+	// 203.107.****
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// IPV6 address
+	Ipv6Addresses []*GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses `json:"Ipv6Addresses,omitempty" xml:"Ipv6Addresses,omitempty" type:"Repeated"`
+	// mac address
+	//
+	// example:
+	//
+	// 00:22:6D:97:**:**
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// vswitch mask bits
+	//
+	// example:
+	//
+	// 24
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun Node ID
+	//
+	// example:
+	//
+	// e01-cn-lbj3aej****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Secondary private IP address
+	PrivateIpAddresses []*GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty" type:"Repeated"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// sg-0jl5s4p4laalruk7****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The state of the private gateway.
+	//
+	// Valid value:
+	//
+	// 	- Create Failed: the creation failure.
+	//
+	// 	- Delete Failed: the that failed to be deleted.
+	//
+	// 	- Executing
+	//
+	// 	- Available
+	//
+	// 	- Deleting
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// NIC Type
+	//
+	// Valid value:
+	//
+	// 	- CUSTOM: custom type.
+	//
+	// 	- DEFAULT: system type.
+	//
+	// example:
+	//
+	// DEFAULT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-uf6u8473r84e9****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-j6ctp4n75306****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetCreateTime(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetDescription(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Description = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetElasticNetworkInterfaceId(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetEnableJumboFrame(v bool) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.EnableJumboFrame = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetGateway(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Gateway = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetGmtModified(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetIp(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetIpv6Addresses(v []*GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Ipv6Addresses = v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetMac(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Mac = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetMask(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Mask = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetMessage(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Message = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetNodeId(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetPrivateIpAddresses(v []*GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.PrivateIpAddresses = v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetRegionId(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetSecurityGroupId(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetStatus(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Status = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetType(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Type = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetVSwitchId(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetVpcId(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetZoneId(v string) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.ZoneId = &v
+	return s
+}
+
+type GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses struct {
+	// The instance description.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1585816811000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1549012834000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// IPV6 unique identifier
+	//
+	// example:
+	//
+	// sip-sg3xabeq
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// IPV6 address
+	//
+	// example:
+	//
+	// 2408:4005:3aa:1000:470d:66fb:56a5:****
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetDescription(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.Description = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetElasticNetworkInterfaceId(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetGmtCreate(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetGmtModified(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetIpName(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.IpName = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetIpv6Address(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.Ipv6Address = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetMessage(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.Message = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetRegionId(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses) SetStatus(v string) *GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses {
+	s.Status = &v
+	return s
+}
+
+type GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses struct {
+	// The instance description.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1672971789000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1672971789000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Lingjun Elastic Network Interface Secondary Private IP Unique Identifier
+	//
+	// example:
+	//
+	// sip-ywz****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP address
+	//
+	// example:
+	//
+	// 172.16.****
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetDescription(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.Description = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetElasticNetworkInterfaceId(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetGmtCreate(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetGmtModified(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetIpName(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.IpName = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetMessage(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.Message = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetPrivateIpAddress(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetRegionId(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetStatus(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
+	s.Status = &v
+	return s
+}
+
+type GetElasticNetworkInterfaceResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetElasticNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetElasticNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceResponse) SetHeaders(v map[string]*string) *GetElasticNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponse) SetStatusCode(v int32) *GetElasticNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponse) SetBody(v *GetElasticNetworkInterfaceResponseBody) *GetElasticNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
 type GetErRequest struct {
-	ErId     *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2346,10 +5313,26 @@ func (s *GetErRequest) SetRegionId(v string) *GetErRequest {
 }
 
 type GetErResponseBody struct {
-	Code      *int32                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetErResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetErResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Information returned when the call fails
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 308DE9D2-03A6-5B44-A369-67B75D1EE091
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetErResponseBody) String() string {
@@ -2381,19 +5364,78 @@ func (s *GetErResponseBody) SetRequestId(v string) *GetErResponseBody {
 }
 
 type GetErResponseBodyContent struct {
-	CreateTime    *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1644283112720
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Network instance information list
 	ErAttachments []*GetErResponseBodyContentErAttachments `json:"ErAttachments,omitempty" xml:"ErAttachments,omitempty" type:"Repeated"`
-	ErId          *string                                  `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName        *string                                  `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-aueyxxsy
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB Instance Name
+	//
+	// example:
+	//
+	// er-heyuan-main
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The list of route entry information.
 	ErRouteEntrys []*GetErResponseBodyContentErRouteEntrys `json:"ErRouteEntrys,omitempty" xml:"ErRouteEntrys,omitempty" type:"Repeated"`
-	ErRouteMaps   []*GetErResponseBodyContentErRouteMaps   `json:"ErRouteMaps,omitempty" xml:"ErRouteMaps,omitempty" type:"Repeated"`
-	GmtModified   *string                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	MasterZoneId  *string                                  `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	Message       *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId      *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status        *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId      *string                                  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// routing policy information list
+	ErRouteMaps []*GetErResponseBodyContentErRouteMaps `json:"ErRouteMaps,omitempty" xml:"ErRouteMaps,omitempty" type:"Repeated"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1627545952000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Primary Zone
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzlki4ehfse4y
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166277
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetErResponseBodyContent) String() string {
@@ -2459,6 +5501,11 @@ func (s *GetErResponseBodyContent) SetRegionId(v string) *GetErResponseBodyConte
 	return s
 }
 
+func (s *GetErResponseBodyContent) SetResourceGroupId(v string) *GetErResponseBodyContent {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetErResponseBodyContent) SetStatus(v string) *GetErResponseBodyContent {
 	s.Status = &v
 	return s
@@ -2470,21 +5517,108 @@ func (s *GetErResponseBodyContent) SetTenantId(v string) *GetErResponseBodyConte
 }
 
 type GetErResponseBodyContentErAttachments struct {
-	Across              *bool   `json:"Across,omitempty" xml:"Across,omitempty"`
-	AutoReceiveAllRoute *bool   `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErAttachmentId      *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
-	ErAttachmentName    *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
-	ErId                *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId    *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Cross-account
+	//
+	// example:
+	//
+	// false
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// Receive all routes automatically
+	//
+	// example:
+	//
+	// true
+	AutoReceiveAllRoute *bool `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1644283112720
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The connection ID of the Lingjun HUB network instance.
+	//
+	// example:
+	//
+	// er-attachment-f32hxfsu
+	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
+	// Network Instance Name
+	//
+	// example:
+	//
+	// fudan-egpu
+	ErAttachmentName *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1649303733000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// vpd-kkopgtne
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the ECU.
+	//
+	// example:
+	//
+	// zhijiao
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Instance type: VPD and VCC
+	//
+	// Valid value:
+	//
+	// 	- VCC: Lingjun Connection.
+	//
+	// 	- VPD: Lingjun network segment.
+	//
+	// example:
+	//
+	// VPD
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The synchronized region where the ECS instances are deployed.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzzka6bnjvbi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the resource belongs.
+	//
+	// example:
+	//
+	// xxxxxxxx
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166277
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetErResponseBodyContentErAttachments) String() string {
@@ -2555,6 +5689,11 @@ func (s *GetErResponseBodyContentErAttachments) SetRegionId(v string) *GetErResp
 	return s
 }
 
+func (s *GetErResponseBodyContentErAttachments) SetResourceGroupId(v string) *GetErResponseBodyContentErAttachments {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetErResponseBodyContentErAttachments) SetResourceTenantId(v string) *GetErResponseBodyContentErAttachments {
 	s.ResourceTenantId = &v
 	return s
@@ -2571,17 +5710,78 @@ func (s *GetErResponseBodyContentErAttachments) SetTenantId(v string) *GetErResp
 }
 
 type GetErResponseBodyContentErRouteEntrys struct {
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 10.0.0.0/9
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ErId                 *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErRouteEntryId       *string `json:"ErRouteEntryId,omitempty" xml:"ErRouteEntryId,omitempty"`
-	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId     *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// er-rte-xnmsd2kl
+	ErRouteEntryId *string `json:"ErRouteEntryId,omitempty" xml:"ErRouteEntryId,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1623317089000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// vcc-xxkmggkw
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmyoj5mg3w54y
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the resource belongs.
+	//
+	// example:
+	//
+	// 1620939556166277
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// System
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166277
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetErResponseBodyContentErRouteEntrys) String() string {
@@ -2627,6 +5827,11 @@ func (s *GetErResponseBodyContentErRouteEntrys) SetRegionId(v string) *GetErResp
 	return s
 }
 
+func (s *GetErResponseBodyContentErRouteEntrys) SetResourceGroupId(v string) *GetErResponseBodyContentErRouteEntrys {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetErResponseBodyContentErRouteEntrys) SetResourceTenantId(v string) *GetErResponseBodyContentErRouteEntrys {
 	s.ResourceTenantId = &v
 	return s
@@ -2648,27 +5853,144 @@ func (s *GetErResponseBodyContentErRouteEntrys) SetTenantId(v string) *GetErResp
 }
 
 type GetErResponseBodyContentErRouteMaps struct {
-	Action                    *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	CreateTime                *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationCidrBlock      *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ErId                      *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErRouteMapId              *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
-	ErRouteMapName            *string `json:"ErRouteMapName,omitempty" xml:"ErRouteMapName,omitempty"`
-	GmtModified               *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Message                   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ReceptionInstanceId       *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
-	ReceptionInstanceName     *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
-	ReceptionInstanceOwner    *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
-	ReceptionInstanceType     *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMapNum               *int32  `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId                  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TransmissionInstanceId    *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
-	TransmissionInstanceName  *string `json:"TransmissionInstanceName,omitempty" xml:"TransmissionInstanceName,omitempty"`
+	// Policy behavior
+	//
+	// Valid value:
+	//
+	// 	- deny: rejects the.
+	//
+	// 	- permit: The allows.
+	//
+	// example:
+	//
+	// permit
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1645766599809
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Policy description
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// routing policy ID
+	//
+	// example:
+	//
+	// er-rmap-xkslnmsr
+	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
+	// The name of the routing policy.
+	//
+	// example:
+	//
+	// route-map-name
+	ErRouteMapName *string `json:"ErRouteMapName,omitempty" xml:"ErRouteMapName,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1623899444000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the destination instance.
+	//
+	// example:
+	//
+	// vpd-sdkd2gkx
+	ReceptionInstanceId *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
+	// The name of the destination instance.
+	//
+	// example:
+	//
+	// Reception-name
+	ReceptionInstanceName *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
+	// The tenant to which the destination instance belongs.
+	//
+	// example:
+	//
+	// 1620939556166277
+	ReceptionInstanceOwner *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
+	// The type of the destination instance.
+	//
+	// example:
+	//
+	// VPD
+	ReceptionInstanceType *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzaq3ypaqkdy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Policy sequence number (1001-2000)
+	//
+	// example:
+	//
+	// 1001
+	RouteMapNum *int32 `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// XXQGPROD-zh_CN
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the source instance.
+	//
+	// example:
+	//
+	// vpd-xmglsymg
+	TransmissionInstanceId *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
+	// Source instance name
+	//
+	// example:
+	//
+	// test-transmission
+	TransmissionInstanceName *string `json:"TransmissionInstanceName,omitempty" xml:"TransmissionInstanceName,omitempty"`
+	// The tenant to which the source instance belongs.
+	//
+	// example:
+	//
+	// 1620939556166277
 	TransmissionInstanceOwner *string `json:"TransmissionInstanceOwner,omitempty" xml:"TransmissionInstanceOwner,omitempty"`
-	TransmissionInstanceType  *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
+	// The type of the source instance.
+	//
+	// example:
+	//
+	// VPD
+	TransmissionInstanceType *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
 }
 
 func (s GetErResponseBodyContentErRouteMaps) String() string {
@@ -2749,6 +6071,11 @@ func (s *GetErResponseBodyContentErRouteMaps) SetRegionId(v string) *GetErRespon
 	return s
 }
 
+func (s *GetErResponseBodyContentErRouteMaps) SetResourceGroupId(v string) *GetErResponseBodyContentErRouteMaps {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetErResponseBodyContentErRouteMaps) SetRouteMapNum(v int32) *GetErResponseBodyContentErRouteMaps {
 	s.RouteMapNum = &v
 	return s
@@ -2785,9 +6112,9 @@ func (s *GetErResponseBodyContentErRouteMaps) SetTransmissionInstanceType(v stri
 }
 
 type GetErResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetErResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetErResponse) String() string {
@@ -2814,9 +6141,30 @@ func (s *GetErResponse) SetBody(v *GetErResponseBody) *GetErResponse {
 }
 
 type GetErAttachmentRequest struct {
+	// The ID of the Lingjun HUB network connection instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-attachment-i1ioibyf
 	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
-	ErId           *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun HUB ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetErAttachmentRequest) String() string {
@@ -2843,10 +6191,26 @@ func (s *GetErAttachmentRequest) SetRegionId(v string) *GetErAttachmentRequest {
 }
 
 type GetErAttachmentResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetErAttachmentResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *GetErAttachmentResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is displayed.)
+	//
+	// example:
+	//
+	// You don\\"t have the permission to do this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7F0D9440-1F97-5613-87CD-D3047172A93C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetErAttachmentResponseBody) String() string {
@@ -2878,21 +6242,126 @@ func (s *GetErAttachmentResponseBody) SetRequestId(v string) *GetErAttachmentRes
 }
 
 type GetErAttachmentResponseBodyContent struct {
-	Across              *bool   `json:"Across,omitempty" xml:"Across,omitempty"`
-	AutoReceiveAllRoute *bool   `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErAttachmentId      *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
-	ErAttachmentName    *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
-	ErId                *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId    *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Whether cross-account. Valid values:
+	//
+	// 	- **true**: The network instance is a cross-account resource.
+	//
+	// 	- **false**: The current network instance is a resource of the current account.
+	//
+	// example:
+	//
+	// fasle
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// Indicates whether to automatically receive all routes from all instances under the Lingjun HUB. Valid values:
+	//
+	// 	- **true**: received automatically.
+	//
+	// 	- **false**: Not received.
+	//
+	// example:
+	//
+	// true
+	AutoReceiveAllRoute *bool `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1648085472000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the Lingjun HUB network instance.
+	//
+	// example:
+	//
+	// er-attachment-i1ioibyf
+	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
+	// The name of the Lingjun HUB network instance.
+	//
+	// example:
+	//
+	// vpd-lxnsj2cx
+	ErAttachmentName *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
+	// The ID of the Lingjun HUB instance.
+	//
+	// example:
+	//
+	// er-aueyxxsy
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 1648085472000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the network instance. Valid values: **VPD*	- and **VCC**.
+	//
+	// For more information, see [What is Lingjun?](https://help.aliyun.com/document_detail/444430.html)
+	//
+	// You can query **Lingjun CIDR blocks*	- and **Lingjun connections*	- by [ListVpds](https://help.aliyun.com/document_detail/2331077.html) and [ListVccs](https://help.aliyun.com/document_detail/2399526.html?) respectively.
+	//
+	// example:
+	//
+	// vpd-lxnsj2cx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// vpd-wulanchabu-main
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The database type. Valid values:
+	//
+	// 	- **VPD**: indicates the Lingjun CIDR block.
+	//
+	// 	- **VCC**: indicates a Lingjun connection.
+	//
+	// example:
+	//
+	// VPD
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// test
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzb3n5lgk2ieq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the resource belongs.
+	//
+	// example:
+	//
+	// 1620939556166277
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- **Available**: Normal.
+	//
+	// 	- **Not Available**: Not available.
+	//
+	// 	- **Executing**: The task is being executed.
+	//
+	// 	- **Deleting**: The account is being deleted
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetErAttachmentResponseBodyContent) String() string {
@@ -2963,6 +6432,11 @@ func (s *GetErAttachmentResponseBodyContent) SetRegionId(v string) *GetErAttachm
 	return s
 }
 
+func (s *GetErAttachmentResponseBodyContent) SetResourceGroupId(v string) *GetErAttachmentResponseBodyContent {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetErAttachmentResponseBodyContent) SetResourceTenantId(v string) *GetErAttachmentResponseBodyContent {
 	s.ResourceTenantId = &v
 	return s
@@ -2979,9 +6453,9 @@ func (s *GetErAttachmentResponseBodyContent) SetTenantId(v string) *GetErAttachm
 }
 
 type GetErAttachmentResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetErAttachmentResponse) String() string {
@@ -3008,9 +6482,30 @@ func (s *GetErAttachmentResponse) SetBody(v *GetErAttachmentResponseBody) *GetEr
 }
 
 type GetErRouteEntryRequest struct {
-	ErId           *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The ID of the route entry.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-rte-4q0jbylz
 	ErRouteEntryId *string `json:"ErRouteEntryId,omitempty" xml:"ErRouteEntryId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetErRouteEntryRequest) String() string {
@@ -3037,10 +6532,26 @@ func (s *GetErRouteEntryRequest) SetRegionId(v string) *GetErRouteEntryRequest {
 }
 
 type GetErRouteEntryResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetErRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Content *GetErRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// code: 400, Request was denied due to request throttling. request id: 7D177459-C1CF-5690-BB23-321D208B37D5
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 1F38A2E6-CB47-5369-95D2-96D0C287B4A5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetErRouteEntryResponseBody) String() string {
@@ -3072,16 +6583,72 @@ func (s *GetErRouteEntryResponseBody) SetRequestId(v string) *GetErRouteEntryRes
 }
 
 type GetErRouteEntryResponseBodyContent struct {
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 11.0.0.0/16
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ErId                 *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErRouteEntryId       *string `json:"ErRouteEntryId,omitempty" xml:"ErRouteEntryId,omitempty"`
-	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-aueyxxsy
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// er-rte-4q0jbylz
+	ErRouteEntryId *string `json:"ErRouteEntryId,omitempty" xml:"ErRouteEntryId,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1666677783000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzb3n5lgk2ieq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// System
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetErRouteEntryResponseBodyContent) String() string {
@@ -3127,6 +6694,11 @@ func (s *GetErRouteEntryResponseBodyContent) SetRegionId(v string) *GetErRouteEn
 	return s
 }
 
+func (s *GetErRouteEntryResponseBodyContent) SetResourceGroupId(v string) *GetErRouteEntryResponseBodyContent {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetErRouteEntryResponseBodyContent) SetRouteType(v string) *GetErRouteEntryResponseBodyContent {
 	s.RouteType = &v
 	return s
@@ -3143,9 +6715,9 @@ func (s *GetErRouteEntryResponseBodyContent) SetTenantId(v string) *GetErRouteEn
 }
 
 type GetErRouteEntryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetErRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetErRouteEntryResponse) String() string {
@@ -3172,9 +6744,28 @@ func (s *GetErRouteEntryResponse) SetBody(v *GetErRouteEntryResponseBody) *GetEr
 }
 
 type GetErRouteMapRequest struct {
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// routing policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-rmap-uwglhzom
 	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetErRouteMapRequest) String() string {
@@ -3201,10 +6792,26 @@ func (s *GetErRouteMapRequest) SetRegionId(v string) *GetErRouteMapRequest {
 }
 
 type GetErRouteMapResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetErRouteMapResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Content *GetErRouteMapResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetErRouteMapResponseBody) String() string {
@@ -3236,27 +6843,162 @@ func (s *GetErRouteMapResponseBody) SetRequestId(v string) *GetErRouteMapRespons
 }
 
 type GetErRouteMapResponseBodyContent struct {
-	Action                    *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationCidrBlock      *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ErId                      *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErRouteMapId              *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
-	ErRouteMapName            *string `json:"ErRouteMapName,omitempty" xml:"ErRouteMapName,omitempty"`
-	GmtCreate                 *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified               *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Message                   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ReceptionInstanceId       *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
-	ReceptionInstanceName     *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
-	ReceptionInstanceOwner    *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
-	ReceptionInstanceType     *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMapNum               *int32  `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId                  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TransmissionInstanceId    *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
-	TransmissionInstanceName  *string `json:"TransmissionInstanceName,omitempty" xml:"TransmissionInstanceName,omitempty"`
+	// Policy behavior; optional values:
+	//
+	// 	- **permit**: Allow
+	//
+	// 	- **deny**: Rejected
+	//
+	// example:
+	//
+	// permit
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Policy description
+	//
+	// example:
+	//
+	// ssss
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB routing policy ID
+	//
+	// example:
+	//
+	// er-rmap-uwglhzom
+	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
+	// Lingjun HUB routing policy Name
+	//
+	// example:
+	//
+	// er-rmap-wulanchabu
+	ErRouteMapName *string `json:"ErRouteMapName,omitempty" xml:"ErRouteMapName,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1648085472000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1648085472000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Receive Instance ID
+	//
+	// example:
+	//
+	// vpd-x25vxrb2
+	ReceptionInstanceId *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
+	// Receive Instance Name
+	//
+	// example:
+	//
+	// vpd-receprion
+	ReceptionInstanceName *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
+	// The tenant to which the receiving instance belongs
+	//
+	// example:
+	//
+	// 1620939556166277
+	ReceptionInstanceOwner *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
+	// The type of the received instance. Optional values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// example:
+	//
+	// VPD
+	ReceptionInstanceType *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzlki4ehfse4y
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the policy.
+	//
+	// A smaller sequence number indicates a lower priority. When a route is matched, a policy with a higher priority is preferentially matched.
+	//
+	// **Valid values: 1001 to 2000**
+	//
+	// example:
+	//
+	// 1001
+	RouteMapNum *int32 `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- **Available**
+	//
+	// 	- **Not Available**: Unavailable
+	//
+	// 	- **Executing**: Executing
+	//
+	// 	- **Deleting**: The node is being deleted.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Release Instance ID
+	//
+	// example:
+	//
+	// vpd-xgkb2kl
+	TransmissionInstanceId *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
+	// Release Instance Name
+	//
+	// example:
+	//
+	// vpd-transimit
+	TransmissionInstanceName *string `json:"TransmissionInstanceName,omitempty" xml:"TransmissionInstanceName,omitempty"`
+	// The tenant to which the published instance belongs
+	//
+	// example:
+	//
+	// 1620939556166277
 	TransmissionInstanceOwner *string `json:"TransmissionInstanceOwner,omitempty" xml:"TransmissionInstanceOwner,omitempty"`
-	TransmissionInstanceType  *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
+	// Publish instance type; optional values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// example:
+	//
+	// VPD
+	TransmissionInstanceType *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
 }
 
 func (s GetErRouteMapResponseBodyContent) String() string {
@@ -3337,6 +7079,11 @@ func (s *GetErRouteMapResponseBodyContent) SetRegionId(v string) *GetErRouteMapR
 	return s
 }
 
+func (s *GetErRouteMapResponseBodyContent) SetResourceGroupId(v string) *GetErRouteMapResponseBodyContent {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetErRouteMapResponseBodyContent) SetRouteMapNum(v int32) *GetErRouteMapResponseBodyContent {
 	s.RouteMapNum = &v
 	return s
@@ -3373,9 +7120,9 @@ func (s *GetErRouteMapResponseBodyContent) SetTransmissionInstanceType(v string)
 }
 
 type GetErRouteMapResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetErRouteMapResponse) String() string {
@@ -3401,10 +7148,536 @@ func (s *GetErRouteMapResponse) SetBody(v *GetErRouteMapResponseBody) *GetErRout
 	return s
 }
 
+type GetFabricTopologyRequest struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// i-169263721924****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Lingjun network interface controller ID List
+	LniIds []*string `json:"LniIds,omitempty" xml:"LniIds,omitempty" type:"Repeated"`
+	// Node ID list
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-k8i0g9fk68t7u0u2w****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Lingjun CIDR block ID
+	//
+	// example:
+	//
+	// vpd-aof7****
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+}
+
+func (s GetFabricTopologyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFabricTopologyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFabricTopologyRequest) SetClusterId(v string) *GetFabricTopologyRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetFabricTopologyRequest) SetLniIds(v []*string) *GetFabricTopologyRequest {
+	s.LniIds = v
+	return s
+}
+
+func (s *GetFabricTopologyRequest) SetNodeIds(v []*string) *GetFabricTopologyRequest {
+	s.NodeIds = v
+	return s
+}
+
+func (s *GetFabricTopologyRequest) SetRegionId(v string) *GetFabricTopologyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetFabricTopologyRequest) SetVpcId(v string) *GetFabricTopologyRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetFabricTopologyRequest) SetVpdId(v string) *GetFabricTopologyRequest {
+	s.VpdId = &v
+	return s
+}
+
+type GetFabricTopologyResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetFabricTopologyResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFabricTopologyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFabricTopologyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFabricTopologyResponseBody) SetCode(v int32) *GetFabricTopologyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBody) SetContent(v *GetFabricTopologyResponseBodyContent) *GetFabricTopologyResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBody) SetMessage(v string) *GetFabricTopologyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBody) SetRequestId(v string) *GetFabricTopologyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFabricTopologyResponseBodyContent struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cluster-****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// network interface controller Topology Information
+	TopoInfo []*GetFabricTopologyResponseBodyContentTopoInfo `json:"TopoInfo,omitempty" xml:"TopoInfo,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-j6ctp4n75306****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Lingjun CIDR block ID
+	//
+	// example:
+	//
+	// vpd-fuli****
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+}
+
+func (s GetFabricTopologyResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFabricTopologyResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetFabricTopologyResponseBodyContent) SetClusterId(v string) *GetFabricTopologyResponseBodyContent {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBodyContent) SetRegionId(v string) *GetFabricTopologyResponseBodyContent {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBodyContent) SetTopoInfo(v []*GetFabricTopologyResponseBodyContentTopoInfo) *GetFabricTopologyResponseBodyContent {
+	s.TopoInfo = v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBodyContent) SetVpcId(v string) *GetFabricTopologyResponseBodyContent {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBodyContent) SetVpdId(v string) *GetFabricTopologyResponseBodyContent {
+	s.VpdId = &v
+	return s
+}
+
+type GetFabricTopologyResponseBodyContentTopoInfo struct {
+	// The resource name.
+	//
+	// example:
+	//
+	// core-1
+	LayerName *string `json:"LayerName,omitempty" xml:"LayerName,omitempty"`
+	// Hierarchical resource types
+	//
+	// Valid value:
+	//
+	// 	- core: core layer.
+	//
+	// 	- node: Lingjun node.
+	//
+	// 	- lni: lingjun network interface controller.
+	//
+	// 	- spine: backbone layer.
+	//
+	// 	- leaf: access layer
+	//
+	// example:
+	//
+	// core
+	LayerType *string `json:"LayerType,omitempty" xml:"LayerType,omitempty"`
+	// Next Level
+	NextLayer []interface{} `json:"NextLayer,omitempty" xml:"NextLayer,omitempty" type:"Repeated"`
+}
+
+func (s GetFabricTopologyResponseBodyContentTopoInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFabricTopologyResponseBodyContentTopoInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetFabricTopologyResponseBodyContentTopoInfo) SetLayerName(v string) *GetFabricTopologyResponseBodyContentTopoInfo {
+	s.LayerName = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBodyContentTopoInfo) SetLayerType(v string) *GetFabricTopologyResponseBodyContentTopoInfo {
+	s.LayerType = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponseBodyContentTopoInfo) SetNextLayer(v []interface{}) *GetFabricTopologyResponseBodyContentTopoInfo {
+	s.NextLayer = v
+	return s
+}
+
+type GetFabricTopologyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFabricTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFabricTopologyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFabricTopologyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFabricTopologyResponse) SetHeaders(v map[string]*string) *GetFabricTopologyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFabricTopologyResponse) SetStatusCode(v int32) *GetFabricTopologyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFabricTopologyResponse) SetBody(v *GetFabricTopologyResponseBody) *GetFabricTopologyResponse {
+	s.Body = v
+	return s
+}
+
+type GetLeniPrivateIpAddressRequest struct {
+	// Lingjun Elastic Network Interface ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sip-8ylg****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetLeniPrivateIpAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLeniPrivateIpAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLeniPrivateIpAddressRequest) SetElasticNetworkInterfaceId(v string) *GetLeniPrivateIpAddressRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressRequest) SetIpName(v string) *GetLeniPrivateIpAddressRequest {
+	s.IpName = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressRequest) SetRegionId(v string) *GetLeniPrivateIpAddressRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetLeniPrivateIpAddressResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *GetLeniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLeniPrivateIpAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLeniPrivateIpAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLeniPrivateIpAddressResponseBody) SetCode(v int32) *GetLeniPrivateIpAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBody) SetContent(v *GetLeniPrivateIpAddressResponseBodyContent) *GetLeniPrivateIpAddressResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBody) SetMessage(v string) *GetLeniPrivateIpAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBody) SetRequestId(v string) *GetLeniPrivateIpAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLeniPrivateIpAddressResponseBodyContent struct {
+	// The description.
+	//
+	// example:
+	//
+	// zhenyuan wdl workflow
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1663722356000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 1635231890000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// example:
+	//
+	// sip-8ylg****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP address.
+	//
+	// example:
+	//
+	// 10.42.****
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetLeniPrivateIpAddressResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLeniPrivateIpAddressResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetDescription(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.Description = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetElasticNetworkInterfaceId(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetGmtCreate(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetGmtModified(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetIpName(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.IpName = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetMessage(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetPrivateIpAddress(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetRegionId(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponseBodyContent) SetStatus(v string) *GetLeniPrivateIpAddressResponseBodyContent {
+	s.Status = &v
+	return s
+}
+
+type GetLeniPrivateIpAddressResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLeniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLeniPrivateIpAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLeniPrivateIpAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLeniPrivateIpAddressResponse) SetHeaders(v map[string]*string) *GetLeniPrivateIpAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponse) SetStatusCode(v int32) *GetLeniPrivateIpAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLeniPrivateIpAddressResponse) SetBody(v *GetLeniPrivateIpAddressResponseBody) *GetLeniPrivateIpAddressResponse {
+	s.Body = v
+	return s
+}
+
 type GetLniPrivateIpAddressRequest struct {
-	IpName             *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// IP unique identifier
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sip-xxxxx
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// Lingjun network interface controller ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni-bp18exxqa2rvfn45e5pz
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLniPrivateIpAddressRequest) String() string {
@@ -3431,10 +7704,26 @@ func (s *GetLniPrivateIpAddressRequest) SetRegionId(v string) *GetLniPrivateIpAd
 }
 
 type GetLniPrivateIpAddressResponseBody struct {
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetLniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetLniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// You don\\"t have the permission of this operation, action=eflo:GetLniPrivateIpAddress, arn=acs:eflo:cn-wulanchabu:1382782317087063:networkinterface/00
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// DBAD15D6-3F47-5B36-8A92-57C2919D13D0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLniPrivateIpAddressResponseBody) String() string {
@@ -3466,14 +7755,60 @@ func (s *GetLniPrivateIpAddressResponseBody) SetRequestId(v string) *GetLniPriva
 }
 
 type GetLniPrivateIpAddressResponseBodyContent struct {
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	IpAddressMac       *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
-	IpName             *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 2022-12-26 20:16:36
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// MAC address of the secondary private network
+	//
+	// example:
+	//
+	// 00-ff-84-15-ba-67
+	IpAddressMac *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
+	// IP unique identifier
+	//
+	// example:
+	//
+	// sip-xxxxx
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// You don\\"t have the permission of this operation, action=eflo:ListVpdRouteEntries, arn=acs:eflo:cn-wulanchabu:1263399219805497:vpd_rte/*, resourceGroup=null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun network interface controller ID
+	//
+	// example:
+	//
+	// lni-2ze4uww7n6hsfzrwq77y
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrivateIpAddress   *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The secondary private IP address of the Lingjun network interface controller.
+	//
+	// example:
+	//
+	// 10.42.5.92
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The state of the rule.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetLniPrivateIpAddressResponseBodyContent) String() string {
@@ -3482,6 +7817,11 @@ func (s GetLniPrivateIpAddressResponseBodyContent) String() string {
 
 func (s GetLniPrivateIpAddressResponseBodyContent) GoString() string {
 	return s.String()
+}
+
+func (s *GetLniPrivateIpAddressResponseBodyContent) SetDescription(v string) *GetLniPrivateIpAddressResponseBodyContent {
+	s.Description = &v
+	return s
 }
 
 func (s *GetLniPrivateIpAddressResponseBodyContent) SetGmtCreate(v string) *GetLniPrivateIpAddressResponseBodyContent {
@@ -3525,9 +7865,9 @@ func (s *GetLniPrivateIpAddressResponseBodyContent) SetStatus(v string) *GetLniP
 }
 
 type GetLniPrivateIpAddressResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLniPrivateIpAddressResponse) String() string {
@@ -3554,9 +7894,30 @@ func (s *GetLniPrivateIpAddressResponse) SetBody(v *GetLniPrivateIpAddressRespon
 }
 
 type GetNetworkInterfaceRequest struct {
+	// Lingjun network interface controller ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni-bp18exxqa2rvfn45e5pz
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubnetId           *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Subnet of Lingjun
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subnet-f3zfzmnc
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 }
 
 func (s GetNetworkInterfaceRequest) String() string {
@@ -3583,10 +7944,26 @@ func (s *GetNetworkInterfaceRequest) SetSubnetId(v string) *GetNetworkInterfaceR
 }
 
 type GetNetworkInterfaceResponseBody struct {
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetNetworkInterfaceResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data. (If a resource has dependent resources, the existing dependent resources are returned.)
+	Content *GetNetworkInterfaceResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetNetworkInterfaceResponseBody) String() string {
@@ -3618,23 +7995,106 @@ func (s *GetNetworkInterfaceResponseBody) SetRequestId(v string) *GetNetworkInte
 }
 
 type GetNetworkInterfaceResponseBodyContent struct {
-	CreateTime               *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Ethernet                 []*string                                                         `json:"Ethernet,omitempty" xml:"Ethernet,omitempty" type:"Repeated"`
-	Gateway                  *string                                                           `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	Ip                       *string                                                           `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	NcType                   *string                                                           `json:"NcType,omitempty" xml:"NcType,omitempty"`
-	NetworkInterfaceId       *string                                                           `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	NetworkInterfaceName     *string                                                           `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	NodeId                   *string                                                           `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Port
+	Ethernet []*string `json:"Ethernet,omitempty" xml:"Ethernet,omitempty" type:"Repeated"`
+	// Gateway
+	//
+	// example:
+	//
+	// 172.24.20.254
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The IP address of the BE cluster.
+	//
+	// example:
+	//
+	// 203.107.60.69
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// NC Type
+	//
+	// Valid value:
+	//
+	// 	- CUSTOM_LNI_INTEGRATION: two-network one-in-one architecture Lingjun hosting network interface controller.
+	//
+	// 	- CPU: CPU machine.
+	//
+	// 	- ELASTIC_6.2: Machine
+	//
+	// 	- GPU: GPU machine.
+	//
+	// 	- DEFAULT: the old CPU machine.
+	//
+	// 	- CUSTOM_LNI: two network separation architecture Lingjun hosting network interface controller.
+	//
+	// example:
+	//
+	// DEFAULT
+	NcType *string `json:"NcType,omitempty" xml:"NcType,omitempty"`
+	// Lingjun network interface controller ID
+	//
+	// example:
+	//
+	// lni-f8z4scmfh0u4ewv6vdd8
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// ENI Name
+	//
+	// example:
+	//
+	// bond0
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+	// The ID of the host.
+	//
+	// example:
+	//
+	// masterintranett2fdth5fkoocg
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Secondary Private IP\\&MAC Address Collection
 	PrivateIpAddressMacGroup []*GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup `json:"PrivateIpAddressMacGroup,omitempty" xml:"PrivateIpAddressMacGroup,omitempty" type:"Repeated"`
-	Quota                    *int32                                                            `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	RegionId                 *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceMac               *string                                                           `json:"ServiceMac,omitempty" xml:"ServiceMac,omitempty"`
-	Status                   *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetBaseInfo           *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo             `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
-	TenantId                 *string                                                           `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VpdBaseInfo              *GetNetworkInterfaceResponseBodyContentVpdBaseInfo                `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
-	ZoneId                   *string                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// network interface controller private secondary IP limit
+	//
+	// example:
+	//
+	// 0
+	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service network interface controller address
+	//
+	// example:
+	//
+	// 01-00-5e-00-00-16
+	ServiceMac *string `json:"ServiceMac,omitempty" xml:"ServiceMac,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Lingjun subnet (Subnet) basic information
+	SubnetBaseInfo *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Basic information of Lingjun network segment (VPD)
+	VpdBaseInfo *GetNetworkInterfaceResponseBodyContentVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetNetworkInterfaceResponseBodyContent) String() string {
@@ -3731,11 +8191,42 @@ func (s *GetNetworkInterfaceResponseBodyContent) SetZoneId(v string) *GetNetwork
 }
 
 type GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup struct {
-	IpAddressMac     *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
-	IpName           *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Secondary private MAC address
+	//
+	// example:
+	//
+	// 01-00-5e-00-00-16
+	IpAddressMac *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
+	// IP unique identifier
+	//
+	// example:
+	//
+	// sip-xxxx
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Secondary private IP address
+	//
+	// example:
+	//
+	// 172.23.161.57
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The state of the rule.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup) String() string {
@@ -3744,6 +8235,11 @@ func (s GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup) String()
 
 func (s GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup) GoString() string {
 	return s.String()
+}
+
+func (s *GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup) SetDescription(v string) *GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup {
+	s.Description = &v
+	return s
 }
 
 func (s *GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup) SetIpAddressMac(v string) *GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup {
@@ -3772,9 +8268,29 @@ func (s *GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup) SetStat
 }
 
 type GetNetworkInterfaceResponseBodyContentSubnetBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// Network address segment
+	//
+	// example:
+	//
+	// 116.233.21.57/32
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SubnetId   *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The ID of the Subnet instance.
+	//
+	// example:
+	//
+	// subnet-urb01blo
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The name of the Subnet instance.
+	//
+	// example:
+	//
+	// subnet-1
 	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
 }
 
@@ -3807,10 +8323,38 @@ func (s *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo) SetSubnetName(v s
 }
 
 type GetNetworkInterfaceResponseBodyContentVpdBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The network segment of the Lingjun subnet.
+	//
+	// 	- The network segment of the subnet must be a proper subset of the network segment of Lingjun to which it belongs, and the mask must be between 16 bits and 29 bits, which can provide 8 to 65536 addresses. For example, the CIDR block of the Lingjun CIDR block is 192.168.0.0/16, and the CIDR blocks of the subnets under the Lingjun CIDR block are 192.168.0.0/17 to 192.168.0.0/29.
+	//
+	// 	- The first and last three IP addresses of each subnet segment are reserved by the system. For example, the CIDR blocks of the subnet are 192.168.1.0/24,192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+	//
+	// For more information about CIDR blocks, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#title-gu4-uzk-12r) section in the "Network FAQ" topic.
+	//
+	// This parameter is left empty by default.
+	//
+	// example:
+	//
+	// 172.18.0.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	VpdId      *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName    *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// The ID of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-ppdunxzc
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The name of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-1
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s GetNetworkInterfaceResponseBodyContentVpdBaseInfo) String() string {
@@ -3842,9 +8386,9 @@ func (s *GetNetworkInterfaceResponseBodyContentVpdBaseInfo) SetVpdName(v string)
 }
 
 type GetNetworkInterfaceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNetworkInterfaceResponse) String() string {
@@ -3870,10 +8414,261 @@ func (s *GetNetworkInterfaceResponse) SetBody(v *GetNetworkInterfaceResponseBody
 	return s
 }
 
-type GetSubnetRequest struct {
+type GetNodeInfoForPodRequest struct {
+	// The ID of the node for this operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// node-be70****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetNodeInfoForPodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNodeInfoForPodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNodeInfoForPodRequest) SetNodeId(v string) *GetNodeInfoForPodRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodRequest) SetRegionId(v string) *GetNodeInfoForPodRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetNodeInfoForPodResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetNodeInfoForPodResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// You don\\"t have the permission of this operation, action=eflo:GetNodeInfoForPod, arn=acs:eflo:cn-wulanchabu:1111156667137893:networkinterface/*, resourceGroup=null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetNodeInfoForPodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNodeInfoForPodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNodeInfoForPodResponseBody) SetCode(v int32) *GetNodeInfoForPodResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBody) SetContent(v *GetNodeInfoForPodResponseBodyContent) *GetNodeInfoForPodResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBody) SetMessage(v string) *GetNodeInfoForPodResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBody) SetRequestId(v string) *GetNodeInfoForPodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetNodeInfoForPodResponseBodyContent struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cluster-****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Lingjun Gaomi network interface controller quota
+	//
+	// example:
+	//
+	// 10
+	HdeniQuota *int32 `json:"HdeniQuota,omitempty" xml:"HdeniQuota,omitempty"`
+	// Lingjun Elastic Network Interface quota, including system type
+	//
+	// example:
+	//
+	// 10
+	LeniQuota *int32 `json:"LeniQuota,omitempty" xml:"LeniQuota,omitempty"`
+	// Lingjun Elastic Network Interface Secondary Private IP Quota
+	//
+	// example:
+	//
+	// 10
+	LeniSipQuota *int32 `json:"LeniSipQuota,omitempty" xml:"LeniSipQuota,omitempty"`
+	// Lingjun network interface controller Secondary Private IP Quota
+	//
+	// example:
+	//
+	// 10
+	LniSipQuota *int32 `json:"LniSipQuota,omitempty" xml:"LniSipQuota,omitempty"`
+	// The ID of the node for this operation.
+	//
+	// example:
+	//
+	// node-be70****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of VSwitches that can apply for IP addresses on this node
+	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The ID of the Virtual Private Cloud to which the current node belongs.
+	//
+	// example:
+	//
+	// vpc-j6ctp4n75306****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetNodeInfoForPodResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNodeInfoForPodResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetClusterId(v string) *GetNodeInfoForPodResponseBodyContent {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.HdeniQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetLeniQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.LeniQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetLeniSipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.LeniSipQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetLniSipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.LniSipQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetNodeId(v string) *GetNodeInfoForPodResponseBodyContent {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetRegionId(v string) *GetNodeInfoForPodResponseBodyContent {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetVSwitches(v []*string) *GetNodeInfoForPodResponseBodyContent {
+	s.VSwitches = v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetVpcId(v string) *GetNodeInfoForPodResponseBodyContent {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetZoneId(v string) *GetNodeInfoForPodResponseBodyContent {
+	s.ZoneId = &v
+	return s
+}
+
+type GetNodeInfoForPodResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNodeInfoForPodResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetNodeInfoForPodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNodeInfoForPodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNodeInfoForPodResponse) SetHeaders(v map[string]*string) *GetNodeInfoForPodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponse) SetStatusCode(v int32) *GetNodeInfoForPodResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponse) SetBody(v *GetNodeInfoForPodResponseBody) *GetNodeInfoForPodResponse {
+	s.Body = v
+	return s
+}
+
+type GetSubnetRequest struct {
+	// The region ID of the data center.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Lingjun subnet instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subnet-2avf0itf
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	VpdId    *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The ID of the CIDR block to which Lingjun belongs.
+	//
+	// example:
+	//
+	// vpd-cxcmdk1m
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s GetSubnetRequest) String() string {
@@ -3900,10 +8695,26 @@ func (s *GetSubnetRequest) SetVpdId(v string) *GetSubnetRequest {
 }
 
 type GetSubnetResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetSubnetResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *GetSubnetResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0901F411-28FA-5B9C-BAEE-7776463FF0DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSubnetResponseBody) String() string {
@@ -3935,24 +8746,130 @@ func (s *GetSubnetResponseBody) SetRequestId(v string) *GetSubnetResponseBody {
 }
 
 type GetSubnetResponseBodyContent struct {
-	AvailableIps    *int32                                   `json:"AvailableIps,omitempty" xml:"AvailableIps,omitempty"`
-	Cidr            *string                                  `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	CreateTime      *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	GmtModified     *string                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LbCount         *int64                                   `json:"LbCount,omitempty" xml:"LbCount,omitempty"`
-	Message         *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	NcCount         *int64                                   `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
-	RegionId        *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetId        *string                                  `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	SubnetName      *string                                  `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
-	Tags            []*GetSubnetResponseBodyContentTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantId        *string                                  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Type            *string                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpdBaseInfo     *GetSubnetResponseBodyContentVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
-	VpdId           *string                                  `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId          *string                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of available IP addresses.
+	//
+	// example:
+	//
+	// 1024
+	AvailableIps *int32 `json:"AvailableIps,omitempty" xml:"AvailableIps,omitempty"`
+	// The CIDR block of the Subnet.
+	//
+	// 	- The network segment of the subnet must be a proper subset of the network segment of Lingjun to which it belongs, and the mask must be between 16 bits and 29 bits, which can provide 8 to 65536 addresses. For example, the CIDR block of the Lingjun CIDR block is 192.168.0.0/16, and the CIDR blocks of the subnets under the Lingjun CIDR block are 192.168.0.0/17 to 192.168.0.0/29.
+	//
+	// 	- The first and last three IP addresses of each subnet segment are reserved by the system. For example, the CIDR blocks of the subnet are 192.168.1.0/24,192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+	//
+	// example:
+	//
+	// 10.10.10.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1648085472000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The number of SLB.
+	//
+	// example:
+	//
+	// 0
+	LbCount *int64 `json:"LbCount,omitempty" xml:"LbCount,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// test example
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of NCs.
+	//
+	// example:
+	//
+	// 16
+	NcCount *int32 `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
+	// Number of Lingjun network interface controller
+	//
+	// example:
+	//
+	// 4
+	NetworkInterfaceCount *int32 `json:"NetworkInterfaceCount,omitempty" xml:"NetworkInterfaceCount,omitempty"`
+	// The total number of secondary private IP addresses.
+	//
+	// example:
+	//
+	// 20
+	PrivateIpCount *int64 `json:"PrivateIpCount,omitempty" xml:"PrivateIpCount,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the cache reserve instance.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the Lingjun subnet instance.
+	//
+	// example:
+	//
+	// subnet-aj93mko8
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The name of the Lingjun subnet instance.
+	//
+	// example:
+	//
+	// subnet-1
+	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tags []*GetSubnetResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun Subnet Usage Type; optional; optional. Valid values:
+	//
+	// 	- **Empty for common data types**
+	//
+	// 	- **OOB*	- :OOB type
+	//
+	// 	- **LB**: LB type
+	//
+	// example:
+	//
+	// OOB
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The information about the network segment of Lingjun.
+	VpdBaseInfo *GetSubnetResponseBodyContentVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-ze3na0wf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetSubnetResponseBodyContent) String() string {
@@ -3993,8 +8910,18 @@ func (s *GetSubnetResponseBodyContent) SetMessage(v string) *GetSubnetResponseBo
 	return s
 }
 
-func (s *GetSubnetResponseBodyContent) SetNcCount(v int64) *GetSubnetResponseBodyContent {
+func (s *GetSubnetResponseBodyContent) SetNcCount(v int32) *GetSubnetResponseBodyContent {
 	s.NcCount = &v
+	return s
+}
+
+func (s *GetSubnetResponseBodyContent) SetNetworkInterfaceCount(v int32) *GetSubnetResponseBodyContent {
+	s.NetworkInterfaceCount = &v
+	return s
+}
+
+func (s *GetSubnetResponseBodyContent) SetPrivateIpCount(v int64) *GetSubnetResponseBodyContent {
+	s.PrivateIpCount = &v
 	return s
 }
 
@@ -4054,7 +8981,25 @@ func (s *GetSubnetResponseBodyContent) SetZoneId(v string) *GetSubnetResponseBod
 }
 
 type GetSubnetResponseBodyContentTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-subnet
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag that is added to the resource.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// subnet-group-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -4077,10 +9022,34 @@ func (s *GetSubnetResponseBodyContentTags) SetTagValue(v string) *GetSubnetRespo
 }
 
 type GetSubnetResponseBodyContentVpdBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The CIDR block of the VPD.
+	//
+	// 	- We recommend that you use an RFC private endpoint as the Lingjun CIDR block, such as 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16. In scenarios where the Doringjun CIDR block is connected to each other or where the Lingjun CIDR block is connected to a VPC, make sure that the addresses do not conflict with each other.
+	//
+	// 	- You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 and their subnets as the primary IPv4 CIDR block of the VPD.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1678273219000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	VpdId      *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName    *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-iv2zm1qf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The name of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-1
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s GetSubnetResponseBodyContentVpdBaseInfo) String() string {
@@ -4112,9 +9081,9 @@ func (s *GetSubnetResponseBodyContentVpdBaseInfo) SetVpdName(v string) *GetSubne
 }
 
 type GetSubnetResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSubnetResponse) String() string {
@@ -4141,11 +9110,44 @@ func (s *GetSubnetResponse) SetBody(v *GetSubnetResponseBody) *GetSubnetResponse
 }
 
 type GetVccRequest struct {
-	EnablePage *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VccId      *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// By default, popApi is not ignored and idempotent
+	//
+	// example:
+	//
+	// c5e3130a-d02f-11ec-a7d3-0242ac110005
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Paging Parameters: The current parameters are obsolete.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Paging Parameters: The current parameters are obsolete.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Paging Parameters: The current parameters are obsolete.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
 }
 
 func (s GetVccRequest) String() string {
@@ -4154,6 +9156,11 @@ func (s GetVccRequest) String() string {
 
 func (s GetVccRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetVccRequest) SetClientToken(v string) *GetVccRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *GetVccRequest) SetEnablePage(v bool) *GetVccRequest {
@@ -4182,10 +9189,26 @@ func (s *GetVccRequest) SetVccId(v string) *GetVccRequest {
 }
 
 type GetVccResponseBody struct {
-	Code      *int32                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// CAD09E47-B651-5206-B2DC-3AB78C8EB446
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetVccResponseBody) String() string {
@@ -4217,40 +9240,252 @@ func (s *GetVccResponseBody) SetRequestId(v string) *GetVccResponseBody {
 }
 
 type GetVccResponseBodyContent struct {
-	AccessPointId      *string                                      `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	AliyunRouterInfo   []*GetVccResponseBodyContentAliyunRouterInfo `json:"AliyunRouterInfo,omitempty" xml:"AliyunRouterInfo,omitempty" type:"Repeated"`
-	AttachErStatus     *bool                                        `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
-	BandwidthStr       *string                                      `json:"BandwidthStr,omitempty" xml:"BandwidthStr,omitempty"`
-	BgpCidr            *string                                      `json:"BgpCidr,omitempty" xml:"BgpCidr,omitempty"`
-	CenId              *string                                      `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CisRouterInfo      []*GetVccResponseBodyContentCisRouterInfo    `json:"CisRouterInfo,omitempty" xml:"CisRouterInfo,omitempty" type:"Repeated"`
-	CommodityCode      *string                                      `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ConnectionType     *string                                      `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	CreateTime         *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CurrentNode        *string                                      `json:"CurrentNode,omitempty" xml:"CurrentNode,omitempty"`
-	Duration           *string                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ErInfos            []*GetVccResponseBodyContentErInfos          `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
-	ExpirationDate     *string                                      `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	GmtModified        *string                                      `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InternetChargeType *string                                      `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	LineOperator       *string                                      `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
-	Message            *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	PayType            *string                                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PortType           *string                                      `json:"PortType,omitempty" xml:"PortType,omitempty"`
-	PricingCycle       *string                                      `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionId           *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId    *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Spec               *string                                      `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Status             *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags               []*GetVccResponseBodyContentTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantId           *string                                      `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VSwitchId          *string                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VccId              *string                                      `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VccName            *string                                      `json:"VccName,omitempty" xml:"VccName,omitempty"`
-	VpcId              *string                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpdBaseInfo        *GetVccResponseBodyContentVpdBaseInfo        `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
-	VpdId              *string                                      `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId             *string                                      `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Express Connect circuit access point ID:
+	//
+	// 	- **ap-cn-wulanchabu-jn-ts-A**: Ulanqab-Jining-A
+	//
+	// 	- **ap-cn-heyuan-yc-ts-SA127**: Heyuan-Yuancheng-A
+	//
+	// example:
+	//
+	// ap-cn-wulanchabu-jn-ts-A
+	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// Alibaba Cloud route information list
+	AliyunRouterInfo []*GetVccResponseBodyContentAliyunRouterInfo `json:"AliyunRouterInfo,omitempty" xml:"AliyunRouterInfo,omitempty" type:"Repeated"`
+	// Whether Lingjun HUB has been bound to a network instance
+	//
+	// 	- **true**: Bound
+	//
+	// 	- **false**: unbound
+	//
+	// example:
+	//
+	// true
+	AttachErStatus *bool `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
+	// The bandwidth of the port.
+	//
+	// example:
+	//
+	// 1G
+	BandwidthStr *string `json:"BandwidthStr,omitempty" xml:"BandwidthStr,omitempty"`
+	// BGP AS number
+	//
+	// example:
+	//
+	// 45644
+	BgpAsn *string `json:"BgpAsn,omitempty" xml:"BgpAsn,omitempty"`
+	// BGP CIDR block
+	//
+	// example:
+	//
+	// 10.4.0.0/24
+	BgpCidr *string `json:"BgpCidr,omitempty" xml:"BgpCidr,omitempty"`
+	// The ID of the CEN instance; [What is the CEN?](https://help.aliyun.com/document_detail/181681.html)
+	//
+	// You can call the [DescribeCens](https://help.aliyun.com/document_detail/468215.htm) to query the information of CEN instances under the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// cen-m2iskbojlvda5w65fp
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// Account to which the CEN belongs
+	//
+	// example:
+	//
+	// 1620939556166279
+	CenOwnerId *string `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// Lingjun Network Routing Information List
+	CisRouterInfo []*GetVccResponseBodyContentCisRouterInfo `json:"CisRouterInfo,omitempty" xml:"CisRouterInfo,omitempty" type:"Repeated"`
+	// Commodity code
+	//
+	// example:
+	//
+	// bccluster_cloudconnectionpre_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The connection mode. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **CENTR**
+	//
+	// example:
+	//
+	// CENTR
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1648085472000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Current Node
+	//
+	// example:
+	//
+	// task-xxx-node-x
+	CurrentNode *string `json:"CurrentNode,omitempty" xml:"CurrentNode,omitempty"`
+	// Cycle
+	//
+	// example:
+	//
+	// 1
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// List of bound Lingjun HUB information
+	ErInfos []*GetVccResponseBodyContentErInfos `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
+	// The time when the application expired.
+	//
+	// example:
+	//
+	// 1678379917000
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1648085472000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The billing method for network usage.
+	//
+	// 	- **PayByTraffic**: pay-by-traffic
+	//
+	// 	- **PayByBandwidth**: pay-by-bandwidth
+	//
+	// example:
+	//
+	// PayByBandwidth
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The connectivity provider of the Express Connect circuit. Valid values:
+	//
+	// 	- **CO**: other connectivity providers in the Chinese mainland
+	//
+	// example:
+	//
+	// CO
+	LineOperator *string `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// You don\\"t have the permission of this operation, action=eflo:GetVcc, arn=acs:eflo:cn-heyuan:1263399219805497:vcc/vcc-cn-fhh3yxjwe01, resourceGroup=null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **PREPAY**: subscription
+	//
+	// 	- **POSTPAY**: pay-as-you-go
+	//
+	// example:
+	//
+	// PrePay
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The port type of the Express Connect circuit. Valid values:
+	//
+	// 	- **100GBase-LR**: 100,000 megabytes of single-mode optical port (10 km)
+	//
+	// example:
+	//
+	// 100GBase-LR
+	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	// The billing cycle. Valid values:
+	//
+	// 	- **Month**: Billed on a monthly basis
+	//
+	// 	- **Year**: Billed on an annual basis
+	//
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm).
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specification; value:
+	//
+	// 	- **Large**: Large
+	//
+	// example:
+	//
+	// Large
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- **Available**: Normal.
+	//
+	// 	- **Not Available**: Not available.
+	//
+	// 	- **Executing**: The task is being executed.
+	//
+	// 	- **Deleting**: The account is being deleted
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tags []*GetVccResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166279
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the vSwitch. [Virtual Private Cloud VSwitch](https://help.aliyun.com/document_detail/100380.html).
+	//
+	// You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query created vSwitches.
+	//
+	// example:
+	//
+	// vsw-uf6u8473r84e6n1n19he5
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Information list of border routers
+	VbrInfos []*GetVccResponseBodyContentVbrInfos `json:"VbrInfos,omitempty" xml:"VbrInfos,omitempty" type:"Repeated"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-cqf2xh40101
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The name of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-heyuan-backup
+	VccName *string `json:"VccName,omitempty" xml:"VccName,omitempty"`
+	// Virtual Private Cloud IDs; [What is Virtual Private Cloud](https://help.aliyun.com/document_detail/34217.html)
+	//
+	// You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html#demo-0) operation to query the specified VPC.
+	//
+	// example:
+	//
+	// vpc-j6ctp4n75306phv5tmpsm
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Lingjun network segment information (applicable to the scene where the old version of Lingjun connection is directly bound to Lingjun network segment)
+	VpdBaseInfo *GetVccResponseBodyContentVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-d3isyds4
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetVccResponseBodyContent) String() string {
@@ -4281,6 +9516,11 @@ func (s *GetVccResponseBodyContent) SetBandwidthStr(v string) *GetVccResponseBod
 	return s
 }
 
+func (s *GetVccResponseBodyContent) SetBgpAsn(v string) *GetVccResponseBodyContent {
+	s.BgpAsn = &v
+	return s
+}
+
 func (s *GetVccResponseBodyContent) SetBgpCidr(v string) *GetVccResponseBodyContent {
 	s.BgpCidr = &v
 	return s
@@ -4288,6 +9528,11 @@ func (s *GetVccResponseBodyContent) SetBgpCidr(v string) *GetVccResponseBodyCont
 
 func (s *GetVccResponseBodyContent) SetCenId(v string) *GetVccResponseBodyContent {
 	s.CenId = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContent) SetCenOwnerId(v string) *GetVccResponseBodyContent {
+	s.CenOwnerId = &v
 	return s
 }
 
@@ -4401,6 +9646,11 @@ func (s *GetVccResponseBodyContent) SetVSwitchId(v string) *GetVccResponseBodyCo
 	return s
 }
 
+func (s *GetVccResponseBodyContent) SetVbrInfos(v []*GetVccResponseBodyContentVbrInfos) *GetVccResponseBodyContent {
+	s.VbrInfos = v
+	return s
+}
+
 func (s *GetVccResponseBodyContent) SetVccId(v string) *GetVccResponseBodyContent {
 	s.VccId = &v
 	return s
@@ -4432,12 +9682,42 @@ func (s *GetVccResponseBodyContent) SetZoneId(v string) *GetVccResponseBodyConte
 }
 
 type GetVccResponseBodyContentAliyunRouterInfo struct {
+	// IPv4 address of Alibaba Cloud-side interconnection
+	//
+	// example:
+	//
+	// 169.254.248.30
 	LocalGatewayIp *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
-	Mask           *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	PcId           *string `json:"PcId,omitempty" xml:"PcId,omitempty"`
-	PeerGatewayIp  *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
-	VbrId          *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
-	VlanId         *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	// Masking
+	//
+	// example:
+	//
+	// 255.255.255.248
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// Express Connect circuit ID
+	//
+	// example:
+	//
+	// pc-0jlof4bphlsnxbdztkvad
+	PcId *string `json:"PcId,omitempty" xml:"PcId,omitempty"`
+	// Lingjun Side Interconnection IPv4 Address
+	//
+	// example:
+	//
+	// 169.254.248.28
+	PeerGatewayIp *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
+	// The ID of the VBR.
+	//
+	// example:
+	//
+	// vbr-2ze4i85p6vb9nwcan5xt0
+	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
+	// VLAN ID of the VBR
+	//
+	// example:
+	//
+	// 1042
+	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
 }
 
 func (s GetVccResponseBodyContentAliyunRouterInfo) String() string {
@@ -4479,8 +9759,14 @@ func (s *GetVccResponseBodyContentAliyunRouterInfo) SetVlanId(v string) *GetVccR
 }
 
 type GetVccResponseBodyContentCisRouterInfo struct {
+	// Leased Line Information List
 	CcInfos []*GetVccResponseBodyContentCisRouterInfoCcInfos `json:"CcInfos,omitempty" xml:"CcInfos,omitempty" type:"Repeated"`
-	CcrId   *string                                          `json:"CcrId,omitempty" xml:"CcrId,omitempty"`
+	// The ID of the on-cloud router instance.
+	//
+	// example:
+	//
+	// ccr-1ms84am0
+	CcrId *string `json:"CcrId,omitempty" xml:"CcrId,omitempty"`
 }
 
 func (s GetVccResponseBodyContentCisRouterInfo) String() string {
@@ -4502,12 +9788,41 @@ func (s *GetVccResponseBodyContentCisRouterInfo) SetCcrId(v string) *GetVccRespo
 }
 
 type GetVccResponseBodyContentCisRouterInfoCcInfos struct {
-	CcId            *string `json:"CcId,omitempty" xml:"CcId,omitempty"`
-	LocalGatewayIp  *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
+	// Leased Line ID
+	//
+	// example:
+	//
+	// cc-73aeex5o
+	CcId *string `json:"CcId,omitempty" xml:"CcId,omitempty"`
+	// Lingjun Side Interconnection IPv4 Address
+	//
+	// example:
+	//
+	// 169.254.248.26
+	LocalGatewayIp *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
+	// Lingjun Side Interconnection IPv4 Address
+	//
+	// example:
+	//
+	// 169.254.248.30
 	RemoteGatewayIp *string `json:"RemoteGatewayIp,omitempty" xml:"RemoteGatewayIp,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetMask      *string `json:"SubnetMask,omitempty" xml:"SubnetMask,omitempty"`
-	// vlanid
+	// The state of the rule.
+	//
+	// example:
+	//
+	// Established
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Subnet mask
+	//
+	// example:
+	//
+	// 255.255.255.248
+	SubnetMask *string `json:"SubnetMask,omitempty" xml:"SubnetMask,omitempty"`
+	// Vlan ID of the leased line
+	//
+	// example:
+	//
+	// Ethernet1042
 	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
 }
 
@@ -4550,18 +9865,78 @@ func (s *GetVccResponseBodyContentCisRouterInfoCcInfos) SetVlanId(v string) *Get
 }
 
 type GetVccResponseBodyContentErInfos struct {
-	Connections  *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName       *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Connections
+	//
+	// example:
+	//
+	// 2
+	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678379917000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// this is test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-p68b0jwn
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB Instance Name
+	//
+	// example:
+	//
+	// er-1
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1678379917000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Primary Zone
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMaps    *int64  `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// test message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun HUB Region Information
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Number of routing policy
+	//
+	// example:
+	//
+	// 2
+	RouteMaps *int64 `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166277
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetVccResponseBodyContentErInfos) String() string {
@@ -4633,7 +10008,25 @@ func (s *GetVccResponseBodyContentErInfos) SetTenantId(v string) *GetVccResponse
 }
 
 type GetVccResponseBodyContentTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-vcc
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag that is added to the resource.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// vcc-group-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -4655,11 +10048,196 @@ func (s *GetVccResponseBodyContentTags) SetTagValue(v string) *GetVccResponseBod
 	return s
 }
 
+type GetVccResponseBodyContentVbrInfos struct {
+	// CEN ID
+	//
+	// example:
+	//
+	// cen-cx0qua8q6cm4z9****
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1683250981000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1673578603000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The status of the VBR. Valid values:
+	//
+	// 	- unconfirmed
+	//
+	// 	- active: The VPN gateway is in a normal state.
+	//
+	// 	- terminating: The connection is being terminated.
+	//
+	// 	- terminated: The connection is terminated.
+	//
+	// 	- recovering: The task is being recovered.
+	//
+	// 	- deleting: The GDN is being deleted.
+	//
+	// 	- Available: The service is available.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// BGP neighbor information list
+	VbrBgpPeers []*GetVccResponseBodyContentVbrInfosVbrBgpPeers `json:"VbrBgpPeers,omitempty" xml:"VbrBgpPeers,omitempty" type:"Repeated"`
+	// The ID of the border router.
+	//
+	// example:
+	//
+	// vbr-wz96agu9h3d50z****
+	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
+}
+
+func (s GetVccResponseBodyContentVbrInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVccResponseBodyContentVbrInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetVccResponseBodyContentVbrInfos) SetCenId(v string) *GetVccResponseBodyContentVbrInfos {
+	s.CenId = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfos) SetGmtCreate(v string) *GetVccResponseBodyContentVbrInfos {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfos) SetGmtModified(v string) *GetVccResponseBodyContentVbrInfos {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfos) SetStatus(v string) *GetVccResponseBodyContentVbrInfos {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfos) SetVbrBgpPeers(v []*GetVccResponseBodyContentVbrInfosVbrBgpPeers) *GetVccResponseBodyContentVbrInfos {
+	s.VbrBgpPeers = v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfos) SetVbrId(v string) *GetVccResponseBodyContentVbrInfos {
+	s.VbrId = &v
+	return s
+}
+
+type GetVccResponseBodyContentVbrInfosVbrBgpPeers struct {
+	// BGP Group ID
+	//
+	// example:
+	//
+	// bgpg-2ze2sit2vakrkapvy****
+	BgpGroupId *string `json:"BgpGroupId,omitempty" xml:"BgpGroupId,omitempty"`
+	// BGP peer ID
+	//
+	// example:
+	//
+	// bgp-uf6heugif9enu48rj****
+	BgpPeerId *string `json:"BgpPeerId,omitempty" xml:"BgpPeerId,omitempty"`
+	// Peer AS No.
+	//
+	// example:
+	//
+	// 98765****
+	PeerAsn *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	// BGP peer IP address
+	//
+	// example:
+	//
+	// 169.254.****
+	PeerIpAddress *string `json:"PeerIpAddress,omitempty" xml:"PeerIpAddress,omitempty"`
+	// The status of the BGP peer. Valid values:
+	//
+	// 	- Pending: pending
+	//
+	// 	- Available: The route is available.
+	//
+	// 	- Modifying: being modified
+	//
+	// 	- Deleting: The IPv4 gateway is being deleted.
+	//
+	// 	- Deleted
+	//
+	// 	- Not Available
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetVccResponseBodyContentVbrInfosVbrBgpPeers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVccResponseBodyContentVbrInfosVbrBgpPeers) GoString() string {
+	return s.String()
+}
+
+func (s *GetVccResponseBodyContentVbrInfosVbrBgpPeers) SetBgpGroupId(v string) *GetVccResponseBodyContentVbrInfosVbrBgpPeers {
+	s.BgpGroupId = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfosVbrBgpPeers) SetBgpPeerId(v string) *GetVccResponseBodyContentVbrInfosVbrBgpPeers {
+	s.BgpPeerId = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfosVbrBgpPeers) SetPeerAsn(v string) *GetVccResponseBodyContentVbrInfosVbrBgpPeers {
+	s.PeerAsn = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfosVbrBgpPeers) SetPeerIpAddress(v string) *GetVccResponseBodyContentVbrInfosVbrBgpPeers {
+	s.PeerIpAddress = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContentVbrInfosVbrBgpPeers) SetStatus(v string) *GetVccResponseBodyContentVbrInfosVbrBgpPeers {
+	s.Status = &v
+	return s
+}
+
 type GetVccResponseBodyContentVpdBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// Network address segment
+	//
+	// example:
+	//
+	// 172.18.0.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678379917000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	VpdId      *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName    *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-ppdunxzc
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// Lingjun CIDR block instance name
+	//
+	// example:
+	//
+	// yzp-rg-test3
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s GetVccResponseBodyContentVpdBaseInfo) String() string {
@@ -4691,9 +10269,9 @@ func (s *GetVccResponseBodyContentVpdBaseInfo) SetVpdName(v string) *GetVccRespo
 }
 
 type GetVccResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVccResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVccResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVccResponse) String() string {
@@ -4720,11 +10298,40 @@ func (s *GetVccResponse) SetBody(v *GetVccResponseBody) *GetVccResponse {
 }
 
 type GetVccGrantRuleRequest struct {
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-aueyxxsy
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorized Resource Instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// grant-rule-jaj34d75h01
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1620939556166277
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Authorized Instance ID
+	//
+	// example:
+	//
+	// vcc-cn-jaj34d75h01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region. This parameter is required.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetVccGrantRuleRequest) String() string {
@@ -4761,10 +10368,26 @@ func (s *GetVccGrantRuleRequest) SetRegionId(v string) *GetVccGrantRuleRequest {
 }
 
 type GetVccGrantRuleResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetVccGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Content *GetVccGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 0901F411-28FA-5B9C-BAEE-7776463FF0DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetVccGrantRuleResponseBody) String() string {
@@ -4796,16 +10419,80 @@ func (s *GetVccGrantRuleResponseBody) SetRequestId(v string) *GetVccGrantRuleRes
 }
 
 type GetVccGrantRuleResponseBodyContent struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1648085472000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-aueyxxsy
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorized Resource ID
+	//
+	// example:
+	//
+	// grant-rule-jaj34d75h01
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1620939556166277
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Product       *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Used          *bool   `json:"Used,omitempty" xml:"Used,omitempty"`
+	// Network Instance ID
+	//
+	// example:
+	//
+	// vcc-cn-jaj34d75h01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Network Instance Name
+	//
+	// example:
+	//
+	// vcc-1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Network Product Code:
+	//
+	// 	- **VPD**: Lingjun CIDR block
+	//
+	// 	- **VCC**: Lingjun Connection
+	//
+	// example:
+	//
+	// VCC
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166279
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Whether the current authorization information has been used; optional values:
+	//
+	// 	- **true**: Used
+	//
+	// 	- **false**: Not used
+	//
+	// example:
+	//
+	// false
+	Used *bool `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s GetVccGrantRuleResponseBodyContent) String() string {
@@ -4856,6 +10543,11 @@ func (s *GetVccGrantRuleResponseBodyContent) SetRegionId(v string) *GetVccGrantR
 	return s
 }
 
+func (s *GetVccGrantRuleResponseBodyContent) SetResourceGroupId(v string) *GetVccGrantRuleResponseBodyContent {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetVccGrantRuleResponseBodyContent) SetTenantId(v string) *GetVccGrantRuleResponseBodyContent {
 	s.TenantId = &v
 	return s
@@ -4867,9 +10559,9 @@ func (s *GetVccGrantRuleResponseBodyContent) SetUsed(v bool) *GetVccGrantRuleRes
 }
 
 type GetVccGrantRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVccGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVccGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVccGrantRuleResponse) String() string {
@@ -4896,8 +10588,29 @@ func (s *GetVccGrantRuleResponse) SetBody(v *GetVccGrantRuleResponseBody) *GetVc
 }
 
 type GetVccRouteEntryRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VccId           *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun Connection ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The ID of the route entry.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vcc-rte-31ocvdhq
 	VccRouteEntryId *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
 }
 
@@ -4925,10 +10638,26 @@ func (s *GetVccRouteEntryRequest) SetVccRouteEntryId(v string) *GetVccRouteEntry
 }
 
 type GetVccRouteEntryResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetVccRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetVccRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// BDBCC783-84CA-5733-8EEA-645C88B9009C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetVccRouteEntryResponseBody) String() string {
@@ -4960,16 +10689,78 @@ func (s *GetVccRouteEntryResponseBody) SetRequestId(v string) *GetVccRouteEntryR
 }
 
 type GetVccRouteEntryResponseBodyContent struct {
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VccId                *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VccRouteEntryId      *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1648085472000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// local
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7u***
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// System
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// vcc-rte-31ocvdhq
+	VccRouteEntryId *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
 }
 
 func (s GetVccRouteEntryResponseBodyContent) String() string {
@@ -4990,6 +10781,11 @@ func (s *GetVccRouteEntryResponseBodyContent) SetGmtModified(v string) *GetVccRo
 	return s
 }
 
+func (s *GetVccRouteEntryResponseBodyContent) SetMessage(v string) *GetVccRouteEntryResponseBodyContent {
+	s.Message = &v
+	return s
+}
+
 func (s *GetVccRouteEntryResponseBodyContent) SetNextHopId(v string) *GetVccRouteEntryResponseBodyContent {
 	s.NextHopId = &v
 	return s
@@ -5002,6 +10798,11 @@ func (s *GetVccRouteEntryResponseBodyContent) SetNextHopType(v string) *GetVccRo
 
 func (s *GetVccRouteEntryResponseBodyContent) SetRegionId(v string) *GetVccRouteEntryResponseBodyContent {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetVccRouteEntryResponseBodyContent) SetResourceGroupId(v string) *GetVccRouteEntryResponseBodyContent {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5031,9 +10832,9 @@ func (s *GetVccRouteEntryResponseBodyContent) SetVccRouteEntryId(v string) *GetV
 }
 
 type GetVccRouteEntryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVccRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVccRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVccRouteEntryResponse) String() string {
@@ -5060,8 +10861,22 @@ func (s *GetVccRouteEntryResponse) SetBody(v *GetVccRouteEntryResponseBody) *Get
 }
 
 type GetVpdRequest struct {
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpdId    *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The ID of the VPD instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-ze3na0wf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s GetVpdRequest) String() string {
@@ -5083,10 +10898,26 @@ func (s *GetVpdRequest) SetVpdId(v string) *GetVpdRequest {
 }
 
 type GetVpdResponseBody struct {
-	Code      *int32                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetVpdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Content *GetVpdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetVpdResponseBody) String() string {
@@ -5118,22 +10949,132 @@ func (s *GetVpdResponseBody) SetRequestId(v string) *GetVpdResponseBody {
 }
 
 type GetVpdResponseBodyContent struct {
-	AttachErStatus  *bool                               `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
-	Cidr            *string                             `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	CreateTime      *string                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErInfos         []*GetVpdResponseBodyContentErInfos `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
-	GmtModified     *string                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Message         *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	NcCount         *int64                              `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
-	RegionId        *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceCidr     *string                             `json:"ServiceCidr,omitempty" xml:"ServiceCidr,omitempty"`
-	Status          *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetCount     *int64                              `json:"SubnetCount,omitempty" xml:"SubnetCount,omitempty"`
-	Tags            []*GetVpdResponseBodyContentTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantId        *string                             `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VpdId           *string                             `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName         *string                             `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// Whether the Lingjun HUB(ER) has been bound.
+	//
+	// 	- **true**: ER is bound.
+	//
+	// 	- **false**: No ER is bound.
+	//
+	// example:
+	//
+	// true
+	AttachErStatus *bool `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
+	// The CIDR block.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The information of the bound Lingjun HUB(ER).
+	ErInfos []*GetVpdResponseBodyContentErInfos `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 2023-10-25 15:57:16
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of NCs.
+	//
+	// example:
+	//
+	// 16
+	NcCount *int32 `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
+	// Number of Lingjun network interface controller.
+	//
+	// example:
+	//
+	// 1
+	NetworkInterfaceCount *int32 `json:"NetworkInterfaceCount,omitempty" xml:"NetworkInterfaceCount,omitempty"`
+	// The total number of secondary private IP addresses.
+	//
+	// example:
+	//
+	// 10
+	PrivateIpCount *int64 `json:"PrivateIpCount,omitempty" xml:"PrivateIpCount,omitempty"`
+	// The total quota information.
+	//
+	// example:
+	//
+	// 10
+	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of additional CIDR blocks.
+	SecondaryCidrBlocks []*string `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Repeated"`
+	// Internal Service CIDR block.
+	//
+	// example:
+	//
+	// 169.254.252.0/23
+	ServiceCidr *string `json:"ServiceCidr,omitempty" xml:"ServiceCidr,omitempty"`
+	// The current state of the instance.
+	//
+	// Valid value:
+	//
+	// 	- Not Available: Not Available.
+	//
+	// 	- Available: Normal: Available: Normal.
+	//
+	// 	- Deleting: Deleting: Deleting: Deleting.
+	//
+	// 	- Executing: executing: Executing: executing.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of subnets.
+	//
+	// example:
+	//
+	// 1
+	SubnetCount *int64 `json:"SubnetCount,omitempty" xml:"SubnetCount,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tags []*GetVpdResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1620939556166279
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-fuliephf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The name of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-1
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s GetVpdResponseBodyContent) String() string {
@@ -5174,8 +11115,23 @@ func (s *GetVpdResponseBodyContent) SetMessage(v string) *GetVpdResponseBodyCont
 	return s
 }
 
-func (s *GetVpdResponseBodyContent) SetNcCount(v int64) *GetVpdResponseBodyContent {
+func (s *GetVpdResponseBodyContent) SetNcCount(v int32) *GetVpdResponseBodyContent {
 	s.NcCount = &v
+	return s
+}
+
+func (s *GetVpdResponseBodyContent) SetNetworkInterfaceCount(v int32) *GetVpdResponseBodyContent {
+	s.NetworkInterfaceCount = &v
+	return s
+}
+
+func (s *GetVpdResponseBodyContent) SetPrivateIpCount(v int64) *GetVpdResponseBodyContent {
+	s.PrivateIpCount = &v
+	return s
+}
+
+func (s *GetVpdResponseBodyContent) SetQuota(v int32) *GetVpdResponseBodyContent {
+	s.Quota = &v
 	return s
 }
 
@@ -5186,6 +11142,11 @@ func (s *GetVpdResponseBodyContent) SetRegionId(v string) *GetVpdResponseBodyCon
 
 func (s *GetVpdResponseBodyContent) SetResourceGroupId(v string) *GetVpdResponseBodyContent {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetVpdResponseBodyContent) SetSecondaryCidrBlocks(v []*string) *GetVpdResponseBodyContent {
+	s.SecondaryCidrBlocks = v
 	return s
 }
 
@@ -5225,18 +11186,78 @@ func (s *GetVpdResponseBodyContent) SetVpdName(v string) *GetVpdResponseBodyCont
 }
 
 type GetVpdResponseBodyContentErInfos struct {
-	Connections  *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName       *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The number of connections.
+	//
+	// example:
+	//
+	// 2
+	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the synchronization task.
+	//
+	// example:
+	//
+	// Restore verifying
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Elastic Router (ER) instance.
+	//
+	// example:
+	//
+	// er-a7rqv1rq
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Elastic Router (ER) Instance Name
+	//
+	// example:
+	//
+	// er-1
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The primary zone.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMaps    *int64  `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the region to which the Elastic Router (ER) belongs.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of routing policy.
+	//
+	// example:
+	//
+	// 2
+	RouteMaps *int64 `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// t464p4fql1bog
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetVpdResponseBodyContentErInfos) String() string {
@@ -5308,7 +11329,25 @@ func (s *GetVpdResponseBodyContentErInfos) SetTenantId(v string) *GetVpdResponse
 }
 
 type GetVpdResponseBodyContentTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-subent-region
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag that is added to the resource.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -5331,9 +11370,9 @@ func (s *GetVpdResponseBodyContentTags) SetTagValue(v string) *GetVpdResponseBod
 }
 
 type GetVpdResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVpdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVpdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVpdResponse) String() string {
@@ -5360,11 +11399,40 @@ func (s *GetVpdResponse) SetBody(v *GetVpdResponseBody) *GetVpdResponse {
 }
 
 type GetVpdGrantRuleRequest struct {
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Lingjun HUB Instance Id
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorized Resource Instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// grant-rule-xrgvqazb
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1620939556166277
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Authorized Instance ID
+	//
+	// example:
+	//
+	// vpd-xxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region. This parameter is required.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetVpdGrantRuleRequest) String() string {
@@ -5401,10 +11469,26 @@ func (s *GetVpdGrantRuleRequest) SetRegionId(v string) *GetVpdGrantRuleRequest {
 }
 
 type GetVpdGrantRuleResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetVpdGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetVpdGrantRuleResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetVpdGrantRuleResponseBody) String() string {
@@ -5436,16 +11520,76 @@ func (s *GetVpdGrantRuleResponseBody) SetRequestId(v string) *GetVpdGrantRuleRes
 }
 
 type GetVpdGrantRuleResponseBodyContent struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1648085472000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorized Resource ID
+	//
+	// example:
+	//
+	// grant-rule-xxxxxx
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1620939556166277
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Product       *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Used          *bool   `json:"Used,omitempty" xml:"Used,omitempty"`
+	// Network Instance ID
+	//
+	// example:
+	//
+	// vpd-xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Network Instance Name
+	//
+	// example:
+	//
+	// vpd-lingjun
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Network Product Code:
+	//
+	// 	- **VPD**: Lingjun CIDR block
+	//
+	// 	- **VCC**: Lingjun Connection
+	//
+	// example:
+	//
+	// VPD
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7u***
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Whether the current authorization information has been used; default is false
+	//
+	// example:
+	//
+	// 0
+	Used *bool `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s GetVpdGrantRuleResponseBodyContent) String() string {
@@ -5496,6 +11640,11 @@ func (s *GetVpdGrantRuleResponseBodyContent) SetRegionId(v string) *GetVpdGrantR
 	return s
 }
 
+func (s *GetVpdGrantRuleResponseBodyContent) SetResourceGroupId(v string) *GetVpdGrantRuleResponseBodyContent {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetVpdGrantRuleResponseBodyContent) SetTenantId(v string) *GetVpdGrantRuleResponseBodyContent {
 	s.TenantId = &v
 	return s
@@ -5507,9 +11656,9 @@ func (s *GetVpdGrantRuleResponseBodyContent) SetUsed(v bool) *GetVpdGrantRuleRes
 }
 
 type GetVpdGrantRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVpdGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVpdGrantRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVpdGrantRuleResponse) String() string {
@@ -5536,8 +11685,29 @@ func (s *GetVpdGrantRuleResponse) SetBody(v *GetVpdGrantRuleResponseBody) *GetVp
 }
 
 type GetVpdRouteEntryRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpdId           *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-iv2zm1qf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The ID of the route entry instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-rte-toekyqel
 	VpdRouteEntryId *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
 }
 
@@ -5565,10 +11735,26 @@ func (s *GetVpdRouteEntryRequest) SetVpdRouteEntryId(v string) *GetVpdRouteEntry
 }
 
 type GetVpdRouteEntryResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *GetVpdRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *GetVpdRouteEntryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetVpdRouteEntryResponseBody) String() string {
@@ -5600,16 +11786,72 @@ func (s *GetVpdRouteEntryResponseBody) SetRequestId(v string) *GetVpdRouteEntryR
 }
 
 type GetVpdRouteEntryResponseBodyContent struct {
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VpdId                *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdRouteEntryId      *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// er-bmlqiym1
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// ER
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmv7mcq63uyhq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// BGP
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-ze3na0wf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// Lingjun CIDR block route entry ID
+	//
+	// example:
+	//
+	// vpd-rte-toekyqel
+	VpdRouteEntryId *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
 }
 
 func (s GetVpdRouteEntryResponseBodyContent) String() string {
@@ -5645,6 +11887,11 @@ func (s *GetVpdRouteEntryResponseBodyContent) SetRegionId(v string) *GetVpdRoute
 	return s
 }
 
+func (s *GetVpdRouteEntryResponseBodyContent) SetResourceGroupId(v string) *GetVpdRouteEntryResponseBodyContent {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetVpdRouteEntryResponseBodyContent) SetRouteType(v string) *GetVpdRouteEntryResponseBodyContent {
 	s.RouteType = &v
 	return s
@@ -5671,9 +11918,9 @@ func (s *GetVpdRouteEntryResponseBodyContent) SetVpdRouteEntryId(v string) *GetV
 }
 
 type GetVpdRouteEntryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVpdRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVpdRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVpdRouteEntryResponse) String() string {
@@ -5700,6 +11947,13 @@ func (s *GetVpdRouteEntryResponse) SetBody(v *GetVpdRouteEntryResponseBody) *Get
 }
 
 type InitializeVccRequest struct {
+	// The resource group ID.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-acfmxhucx5ewuwy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -5717,10 +11971,26 @@ func (s *InitializeVccRequest) SetResourceGroupId(v string) *InitializeVccReques
 }
 
 type InitializeVccResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *InitializeVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *InitializeVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E30DA7CB-03D0-51EB-8F18-856B99987E18
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InitializeVccResponseBody) String() string {
@@ -5752,8 +12022,18 @@ func (s *InitializeVccResponseBody) SetRequestId(v string) *InitializeVccRespons
 }
 
 type InitializeVccResponseBodyContent struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// E30DA7CB-03D0-51EB-8F18-856B99987E18
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// Linked Role of Lingjun Connection Instance (AliyunServiceRoleForEfloVcc)
+	//
+	// example:
+	//
+	// CloudConnectionOperationRole
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s InitializeVccResponseBodyContent) String() string {
@@ -5775,9 +12055,9 @@ func (s *InitializeVccResponseBodyContent) SetRoleName(v string) *InitializeVccR
 }
 
 type InitializeVccResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitializeVccResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitializeVccResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitializeVccResponse) String() string {
@@ -5803,19 +12083,595 @@ func (s *InitializeVccResponse) SetBody(v *InitializeVccResponseBody) *Initializ
 	return s
 }
 
+type ListElasticNetworkInterfacesRequest struct {
+	// Lingjun Elastic Network Interface ID
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The IP address of the BE cluster.
+	//
+	// example:
+	//
+	// 10.0.0.1
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The network type.
+	//
+	// Valid value:
+	//
+	// 	- Tenant: Tenant.
+	//
+	// 	- VPC
+	//
+	// example:
+	//
+	// tenant
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The ID of the node.
+	//
+	// example:
+	//
+	// e01-cn-lbj3aej****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the enterprise-level snapshot policy.
+	//
+	// Valid value:
+	//
+	// 	- Create Failed: the creation failure.
+	//
+	// 	- Delete Failed: the that failed to be deleted.
+	//
+	// 	- Executing
+	//
+	// 	- Available: The template is available.
+	//
+	// 	- Deleting
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the variable.
+	//
+	// Valid value:
+	//
+	// 	- CUSTOM: custom type.
+	//
+	// 	- DEFAULT: system type.
+	//
+	// example:
+	//
+	// DEFAULT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-uf6u8473r84e9****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-uf6aa4ddo97fr****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListElasticNetworkInterfacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticNetworkInterfacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetElasticNetworkInterfaceId(v string) *ListElasticNetworkInterfacesRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetIp(v string) *ListElasticNetworkInterfacesRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetNetworkType(v string) *ListElasticNetworkInterfacesRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetNodeId(v string) *ListElasticNetworkInterfacesRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetPageNumber(v int32) *ListElasticNetworkInterfacesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetPageSize(v int32) *ListElasticNetworkInterfacesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetRegionId(v string) *ListElasticNetworkInterfacesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetStatus(v string) *ListElasticNetworkInterfacesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetType(v string) *ListElasticNetworkInterfacesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetVSwitchId(v string) *ListElasticNetworkInterfacesRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetVpcId(v string) *ListElasticNetworkInterfacesRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequest) SetZoneId(v string) *ListElasticNetworkInterfacesRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type ListElasticNetworkInterfacesResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListElasticNetworkInterfacesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListElasticNetworkInterfacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticNetworkInterfacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesResponseBody) SetCode(v int32) *ListElasticNetworkInterfacesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBody) SetContent(v *ListElasticNetworkInterfacesResponseBodyContent) *ListElasticNetworkInterfacesResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBody) SetMessage(v string) *ListElasticNetworkInterfacesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBody) SetRequestId(v string) *ListElasticNetworkInterfacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListElasticNetworkInterfacesResponseBodyContent struct {
+	// lingjun Elastic Network Interface information list
+	Data []*ListElasticNetworkInterfacesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListElasticNetworkInterfacesResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticNetworkInterfacesResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContent) SetData(v []*ListElasticNetworkInterfacesResponseBodyContentData) *ListElasticNetworkInterfacesResponseBodyContent {
+	s.Data = v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContent) SetTotal(v int64) *ListElasticNetworkInterfacesResponseBodyContent {
+	s.Total = &v
+	return s
+}
+
+type ListElasticNetworkInterfacesResponseBodyContentData struct {
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1601176751000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// No description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// vswitch gateway address
+	//
+	// example:
+	//
+	// 172.16.****
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1640187007000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The IP address of the BE cluster.
+	//
+	// example:
+	//
+	// 10.0.0.13
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// mac address
+	//
+	// example:
+	//
+	// E0:01:A6:4A:6A:D0
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// vswitch mask bits
+	//
+	// example:
+	//
+	// 24
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the node.
+	//
+	// example:
+	//
+	// e01-cn-uax37m1****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// sg-f8z4wr1b41x3qsc9****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// network interface controller type, the default type DEFAULT cannot be manually released
+	//
+	// Valid value:
+	//
+	// 	- CUSTOM: custom type.
+	//
+	// 	- DEFAULT: system type.
+	//
+	// example:
+	//
+	// DEFAULT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-uf6u8473r84e9****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-f8ziirfl9k25h2qn7****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListElasticNetworkInterfacesResponseBodyContentData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticNetworkInterfacesResponseBodyContentData) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetCreateTime(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetDescription(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetElasticNetworkInterfaceId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetGateway(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Gateway = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetGmtModified(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetIp(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetMac(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Mac = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetMask(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Mask = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetMessage(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Message = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetNodeId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetRegionId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetSecurityGroupId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetStatus(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetType(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Type = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetVSwitchId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetVpcId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetZoneId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.ZoneId = &v
+	return s
+}
+
+type ListElasticNetworkInterfacesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListElasticNetworkInterfacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListElasticNetworkInterfacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticNetworkInterfacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesResponse) SetHeaders(v map[string]*string) *ListElasticNetworkInterfacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponse) SetStatusCode(v int32) *ListElasticNetworkInterfacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponse) SetBody(v *ListElasticNetworkInterfacesResponseBody) *ListElasticNetworkInterfacesResponse {
+	s.Body = v
+	return s
+}
+
 type ListErAttachmentsRequest struct {
-	AutoReceiveAllRoute *bool   `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
-	EnablePage          *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	ErAttachmentId      *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
-	ErAttachmentName    *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
-	ErId                *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId    *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Whether to automatically receive all routes from all instances under this Lingjun HUB. Valid values:
+	//
+	// 	- **true**: received automatically.
+	//
+	// 	- **false**: Not received.
+	//
+	// example:
+	//
+	// true
+	AutoReceiveAllRoute *bool `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
+	// Specifies whether to enable paged query. Valid values:
+	//
+	// 	- **true**: enables paged query.
+	//
+	// 	- **false**: Paged query is not enabled.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// The ID of the network instance connection
+	//
+	// example:
+	//
+	// er-attachment-i1ioibyf
+	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
+	// The name of the network instance connection.
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	ErAttachmentName *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
+	// The ID of the Lingjun HUB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The ID of the network instance. Valid values: **VPD*	- and **VCC**.
+	//
+	// For more information, see [What is Lingjun?](https://help.aliyun.com/document_detail/444430.html)
+	//
+	// You can query **Lingjun CIDR blocks*	- and **Lingjun connections*	- by [ListVpds](https://help.aliyun.com/document_detail/2331077.html) and [ListVccs](https://help.aliyun.com/document_detail/2399526.html?) respectively.
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The mitigation plan of the instance. Valid values:
+	//
+	// 	- **VPD**: indicates the Lingjun CIDR block.
+	//
+	// 	- **VCC**: indicates a Lingjun connection.
+	//
+	// example:
+	//
+	// VCC
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The page number to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzb3n5lgk2ieq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the instance belongs.
+	//
+	// example:
+	//
+	// 1111156667137893
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// The status of the CLB instance. Valid values:
+	//
+	// 	- **Available**: Normal.
+	//
+	// 	- **Not Available**: Not available.
+	//
+	// 	- **Executing**: The task is being executed.
+	//
+	// 	- **Deleting**: The account is being deleted
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListErAttachmentsRequest) String() string {
@@ -5876,6 +12732,11 @@ func (s *ListErAttachmentsRequest) SetRegionId(v string) *ListErAttachmentsReque
 	return s
 }
 
+func (s *ListErAttachmentsRequest) SetResourceGroupId(v string) *ListErAttachmentsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListErAttachmentsRequest) SetResourceTenantId(v string) *ListErAttachmentsRequest {
 	s.ResourceTenantId = &v
 	return s
@@ -5887,10 +12748,26 @@ func (s *ListErAttachmentsRequest) SetStatus(v string) *ListErAttachmentsRequest
 }
 
 type ListErAttachmentsResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListErAttachmentsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Content *ListErAttachmentsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is displayed.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3D9D6E7B-365B-5200-BFA6-9B79E269058C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListErAttachmentsResponseBody) String() string {
@@ -5922,8 +12799,14 @@ func (s *ListErAttachmentsResponseBody) SetRequestId(v string) *ListErAttachment
 }
 
 type ListErAttachmentsResponseBodyContent struct {
-	Data  []*ListErAttachmentsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The list of Lingjun HUB network instances.
+	Data []*ListErAttachmentsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries that are returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListErAttachmentsResponseBodyContent) String() string {
@@ -5945,21 +12828,126 @@ func (s *ListErAttachmentsResponseBodyContent) SetTotal(v int64) *ListErAttachme
 }
 
 type ListErAttachmentsResponseBodyContentData struct {
-	Across              *bool   `json:"Across,omitempty" xml:"Across,omitempty"`
-	AutoReceiveAllRoute *bool   `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErAttachmentId      *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
-	ErAttachmentName    *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
-	ErId                *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId    *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Whether to cross accounts. Valid values:
+	//
+	// 	- **true**: The network instance is a cross-account resource.
+	//
+	// 	- **false**: The current network instance is a resource of the current account.
+	//
+	// example:
+	//
+	// false
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// Whether to automatically receive all routes from all instances under this Lingjun HUB. Valid values:
+	//
+	// 	- **true**: received automatically.
+	//
+	// 	- **false**: Not received.
+	//
+	// example:
+	//
+	// true
+	AutoReceiveAllRoute *bool `json:"AutoReceiveAllRoute,omitempty" xml:"AutoReceiveAllRoute,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1669734207000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the Lingjun HUB network instance.
+	//
+	// example:
+	//
+	// er-attachment-i1ioibyf
+	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
+	// The name of the Lingjun HUB network instance.
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	ErAttachmentName *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
+	// The ID of the Lingjun HUB instance.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 1640187007000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the network instance. Valid values: **VPD*	- and **VCC**.
+	//
+	// For more information, see [What is Lingjun?](https://help.aliyun.com/document_detail/444430.html)
+	//
+	// You can query **Lingjun CIDR blocks*	- and **Lingjun connections*	- by [ListVpds](https://help.aliyun.com/document_detail/2331077.html) and [ListVccs](https://help.aliyun.com/document_detail/2399526.html) respectively.
+	//
+	// example:
+	//
+	// vcc-cn-209300qha02
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// vcc-wulanchabu-main
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The database type. Valid values:
+	//
+	// 	- **VPD**: indicates the Lingjun CIDR block.
+	//
+	// 	- **VCC**: indicates a Lingjun connection.
+	//
+	// example:
+	//
+	// VCC
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// test
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun HUB region information.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzlki4ehfse4y
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the resource belongs.
+	//
+	// example:
+	//
+	// 1111156667137893
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- **Available**: Normal.
+	//
+	// 	- **Not Available**: Not available.
+	//
+	// 	- **Executing**: The task is being executed.
+	//
+	// 	- **Deleting**: The account is being deleted
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListErAttachmentsResponseBodyContentData) String() string {
@@ -6030,6 +13018,11 @@ func (s *ListErAttachmentsResponseBodyContentData) SetRegionId(v string) *ListEr
 	return s
 }
 
+func (s *ListErAttachmentsResponseBodyContentData) SetResourceGroupId(v string) *ListErAttachmentsResponseBodyContentData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListErAttachmentsResponseBodyContentData) SetResourceTenantId(v string) *ListErAttachmentsResponseBodyContentData {
 	s.ResourceTenantId = &v
 	return s
@@ -6046,9 +13039,9 @@ func (s *ListErAttachmentsResponseBodyContentData) SetTenantId(v string) *ListEr
 }
 
 type ListErAttachmentsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListErAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListErAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListErAttachmentsResponse) String() string {
@@ -6075,17 +13068,88 @@ func (s *ListErAttachmentsResponse) SetBody(v *ListErAttachmentsResponseBody) *L
 }
 
 type ListErRouteEntriesRequest struct {
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	EnablePage           *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	ErId                 *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether to enable pagination query.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Filter 32 detailed CIDR blocks. Default value: true
+	//
+	// example:
+	//
+	// true
+	IgnoreDetailedRouteEntry *bool `json:"IgnoreDetailedRouteEntry,omitempty" xml:"IgnoreDetailedRouteEntry,omitempty"`
+	// Network Instance ID
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmyuzlx2iihcy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// VCC
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the enterprise-level snapshot policy.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListErRouteEntriesRequest) String() string {
@@ -6108,6 +13172,11 @@ func (s *ListErRouteEntriesRequest) SetEnablePage(v bool) *ListErRouteEntriesReq
 
 func (s *ListErRouteEntriesRequest) SetErId(v string) *ListErRouteEntriesRequest {
 	s.ErId = &v
+	return s
+}
+
+func (s *ListErRouteEntriesRequest) SetIgnoreDetailedRouteEntry(v bool) *ListErRouteEntriesRequest {
+	s.IgnoreDetailedRouteEntry = &v
 	return s
 }
 
@@ -6141,6 +13210,11 @@ func (s *ListErRouteEntriesRequest) SetRegionId(v string) *ListErRouteEntriesReq
 	return s
 }
 
+func (s *ListErRouteEntriesRequest) SetResourceGroupId(v string) *ListErRouteEntriesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListErRouteEntriesRequest) SetRouteType(v string) *ListErRouteEntriesRequest {
 	s.RouteType = &v
 	return s
@@ -6152,10 +13226,26 @@ func (s *ListErRouteEntriesRequest) SetStatus(v string) *ListErRouteEntriesReque
 }
 
 type ListErRouteEntriesResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListErRouteEntriesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListErRouteEntriesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListErRouteEntriesResponseBody) String() string {
@@ -6187,8 +13277,14 @@ func (s *ListErRouteEntriesResponseBody) SetRequestId(v string) *ListErRouteEntr
 }
 
 type ListErRouteEntriesResponseBodyContent struct {
-	Data  []*ListErRouteEntriesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Lingjun HUB Route Entry Information List
+	Data []*ListErRouteEntriesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListErRouteEntriesResponseBodyContent) String() string {
@@ -6210,17 +13306,82 @@ func (s *ListErRouteEntriesResponseBodyContent) SetTotal(v int64) *ListErRouteEn
 }
 
 type ListErRouteEntriesResponseBodyContentData struct {
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 100.64.1.100/32
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ErId                 *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErRouteEntryId       *string `json:"ErRouteEntryId,omitempty" xml:"ErRouteEntryId,omitempty"`
-	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId     *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// er-rte-maysfadg
+	ErRouteEntryId *string `json:"ErRouteEntryId,omitempty" xml:"ErRouteEntryId,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1640930901000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzb3n5lgk2ieq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the resource belongs.
+	//
+	// example:
+	//
+	// 1111156667137893
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// VCC
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- Synchronizing
+	//
+	// 	- Available
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1111156667137893
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListErRouteEntriesResponseBodyContentData) String() string {
@@ -6266,6 +13427,11 @@ func (s *ListErRouteEntriesResponseBodyContentData) SetRegionId(v string) *ListE
 	return s
 }
 
+func (s *ListErRouteEntriesResponseBodyContentData) SetResourceGroupId(v string) *ListErRouteEntriesResponseBodyContentData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListErRouteEntriesResponseBodyContentData) SetResourceTenantId(v string) *ListErRouteEntriesResponseBodyContentData {
 	s.ResourceTenantId = &v
 	return s
@@ -6287,9 +13453,9 @@ func (s *ListErRouteEntriesResponseBodyContentData) SetTenantId(v string) *ListE
 }
 
 type ListErRouteEntriesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListErRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListErRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListErRouteEntriesResponse) String() string {
@@ -6316,20 +13482,117 @@ func (s *ListErRouteEntriesResponse) SetBody(v *ListErRouteEntriesResponseBody) 
 }
 
 type ListErRouteMapsRequest struct {
-	DestinationCidrBlock     *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	EnablePage               *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	ErId                     *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErRouteMapId             *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
-	ErRouteMapNum            *int32  `json:"ErRouteMapNum,omitempty" xml:"ErRouteMapNum,omitempty"`
-	PageNumber               *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                 *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ReceptionInstanceId      *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
-	ReceptionInstanceName    *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
-	ReceptionInstanceType    *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMapAction           *string `json:"RouteMapAction,omitempty" xml:"RouteMapAction,omitempty"`
-	TransmissionInstanceId   *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Specifies whether to enable paged query.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Elastic Router ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// routing policy ID
+	//
+	// example:
+	//
+	// er-rmap-uwglhzom
+	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
+	// Policy number (default for automatic creation is 3000; The value range of the policy number manually created by the user is 1001-2000)
+	//
+	// example:
+	//
+	// 1001
+	ErRouteMapNum *int32 `json:"ErRouteMapNum,omitempty" xml:"ErRouteMapNum,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Receive Instance ID
+	//
+	// example:
+	//
+	// vpd-x2lohgpv
+	ReceptionInstanceId *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
+	// Receive Instance Name
+	//
+	// example:
+	//
+	// vpd2
+	ReceptionInstanceName *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
+	// The type of the received instance. Optional values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// example:
+	//
+	// VPD
+	ReceptionInstanceType *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzaq3ypaqkdy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Policy behavior; optional values:
+	//
+	// 	- **permit**: Allow
+	//
+	// 	- **deny**: Rejected
+	//
+	// example:
+	//
+	// deny
+	RouteMapAction *string `json:"RouteMapAction,omitempty" xml:"RouteMapAction,omitempty"`
+	// Release Instance ID
+	//
+	// example:
+	//
+	// vpd-xsdlg2xb
+	TransmissionInstanceId *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
+	// Release Instance Name
+	//
+	// example:
+	//
+	// vpd1
 	TransmissionInstanceName *string `json:"TransmissionInstanceName,omitempty" xml:"TransmissionInstanceName,omitempty"`
+	// The type of the published instance. Optional values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// example:
+	//
+	// VPD
 	TransmissionInstanceType *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
 }
 
@@ -6396,6 +13659,11 @@ func (s *ListErRouteMapsRequest) SetRegionId(v string) *ListErRouteMapsRequest {
 	return s
 }
 
+func (s *ListErRouteMapsRequest) SetResourceGroupId(v string) *ListErRouteMapsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListErRouteMapsRequest) SetRouteMapAction(v string) *ListErRouteMapsRequest {
 	s.RouteMapAction = &v
 	return s
@@ -6417,10 +13685,26 @@ func (s *ListErRouteMapsRequest) SetTransmissionInstanceType(v string) *ListErRo
 }
 
 type ListErRouteMapsResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListErRouteMapsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListErRouteMapsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0901F411-28FA-5B9C-BAEE-7776463FF0DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListErRouteMapsResponseBody) String() string {
@@ -6452,8 +13736,14 @@ func (s *ListErRouteMapsResponseBody) SetRequestId(v string) *ListErRouteMapsRes
 }
 
 type ListErRouteMapsResponseBodyContent struct {
-	Data  []*ListErRouteMapsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                    `json:"Total,omitempty" xml:"Total,omitempty"`
+	// routing policy information list
+	Data []*ListErRouteMapsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListErRouteMapsResponseBodyContent) String() string {
@@ -6475,26 +13765,156 @@ func (s *ListErRouteMapsResponseBodyContent) SetTotal(v int64) *ListErRouteMapsR
 }
 
 type ListErRouteMapsResponseBodyContentData struct {
-	Action                    *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	CreateTime                *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationCidrBlock      *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ErId                      *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErRouteMapId              *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
-	GmtModified               *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Message                   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ReceptionInstanceId       *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
-	ReceptionInstanceName     *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
-	ReceptionInstanceOwner    *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
-	ReceptionInstanceType     *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMapNum               *int32  `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId                  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TransmissionInstanceId    *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
-	TransmissionInstanceName  *string `json:"TransmissionInstanceName,omitempty" xml:"TransmissionInstanceName,omitempty"`
+	// Policy behavior; optional values:
+	//
+	// 	- **permit**: Allow
+	//
+	// 	- **deny**: Prohibited
+	//
+	// example:
+	//
+	// permit
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1601176751000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Policy description
+	//
+	// example:
+	//
+	// No description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Destination CIDR Block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// routing policy ID
+	//
+	// example:
+	//
+	// er-rmap-uwglhzom
+	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1601176751000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Receive Instance ID
+	//
+	// example:
+	//
+	// vpd-9rgxqazc
+	ReceptionInstanceId *string `json:"ReceptionInstanceId,omitempty" xml:"ReceptionInstanceId,omitempty"`
+	// Receive Instance Name
+	//
+	// example:
+	//
+	// vpd-reception
+	ReceptionInstanceName *string `json:"ReceptionInstanceName,omitempty" xml:"ReceptionInstanceName,omitempty"`
+	// The tenant to which the receiving instance belongs
+	//
+	// example:
+	//
+	// 1620939556166277
+	ReceptionInstanceOwner *string `json:"ReceptionInstanceOwner,omitempty" xml:"ReceptionInstanceOwner,omitempty"`
+	// The type of the received instance. Possible values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// example:
+	//
+	// VPD
+	ReceptionInstanceType *string `json:"ReceptionInstanceType,omitempty" xml:"ReceptionInstanceType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the policy.
+	//
+	// A smaller sequence number indicates a lower priority. When a route is matched, a policy with a higher priority is preferentially matched.
+	//
+	// **Valid values: 1001 to 2000**
+	//
+	// example:
+	//
+	// 1001
+	RouteMapNum *int32 `json:"RouteMapNum,omitempty" xml:"RouteMapNum,omitempty"`
+	// Status The status of the instance. Valid values:
+	//
+	// 	- **Available**
+	//
+	// 	- **Not Available**: Unavailable
+	//
+	// 	- **Executing**: Executing
+	//
+	// 	- **Deleting**: The node is being deleted.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Release Instance ID
+	//
+	// example:
+	//
+	// vpd-8rgvqazb
+	TransmissionInstanceId *string `json:"TransmissionInstanceId,omitempty" xml:"TransmissionInstanceId,omitempty"`
+	// Release Instance Name
+	//
+	// example:
+	//
+	// vpd-transmit
+	TransmissionInstanceName *string `json:"TransmissionInstanceName,omitempty" xml:"TransmissionInstanceName,omitempty"`
+	// The tenant to which the published instance belongs
+	//
+	// example:
+	//
+	// 1620939556166277
 	TransmissionInstanceOwner *string `json:"TransmissionInstanceOwner,omitempty" xml:"TransmissionInstanceOwner,omitempty"`
-	TransmissionInstanceType  *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
+	// The type of the published instance. Possible values:
+	//
+	// 	- **VPD**: Lingjun network segment.
+	//
+	// 	- **VCC**: Lingjun Connection.
+	//
+	// example:
+	//
+	// VPD
+	TransmissionInstanceType *string `json:"TransmissionInstanceType,omitempty" xml:"TransmissionInstanceType,omitempty"`
 }
 
 func (s ListErRouteMapsResponseBodyContentData) String() string {
@@ -6570,6 +13990,11 @@ func (s *ListErRouteMapsResponseBodyContentData) SetRegionId(v string) *ListErRo
 	return s
 }
 
+func (s *ListErRouteMapsResponseBodyContentData) SetResourceGroupId(v string) *ListErRouteMapsResponseBodyContentData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListErRouteMapsResponseBodyContentData) SetRouteMapNum(v int32) *ListErRouteMapsResponseBodyContentData {
 	s.RouteMapNum = &v
 	return s
@@ -6606,9 +14031,9 @@ func (s *ListErRouteMapsResponseBodyContentData) SetTransmissionInstanceType(v s
 }
 
 type ListErRouteMapsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListErRouteMapsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListErRouteMapsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListErRouteMapsResponse) String() string {
@@ -6635,15 +14060,76 @@ func (s *ListErRouteMapsResponse) SetBody(v *ListErRouteMapsResponseBody) *ListE
 }
 
 type ListErsRequest struct {
-	EnablePage   *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName       *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable paged query. Valid values:
+	//
+	// 	- true: enables paged query.
+	//
+	// 	- false: Paged query is disabled.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// The ID of the Lingjun HUB instance.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Lingjun HUB name.
+	//
+	// example:
+	//
+	// er-heyuan-main
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The ID of the network instance.
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the attached network instance. Valid values:
+	//
+	// 	- **VPD**
+	//
+	// 	- **VCC**
+	//
+	// example:
+	//
+	// VCC
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The primary zone.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The page number to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmwfm33rlt6zi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListErsRequest) String() string {
@@ -6699,11 +14185,32 @@ func (s *ListErsRequest) SetRegionId(v string) *ListErsRequest {
 	return s
 }
 
+func (s *ListErsRequest) SetResourceGroupId(v string) *ListErsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ListErsResponseBody struct {
-	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListErsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *ListErsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is displayed.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListErsResponseBody) String() string {
@@ -6735,8 +14242,14 @@ func (s *ListErsResponseBody) SetRequestId(v string) *ListErsResponseBody {
 }
 
 type ListErsResponseBodyContent struct {
-	Data  []*ListErsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// lingjun hub information list.
+	Data []*ListErsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListErsResponseBodyContent) String() string {
@@ -6758,18 +14271,84 @@ func (s *ListErsResponseBodyContent) SetTotal(v int64) *ListErsResponseBodyConte
 }
 
 type ListErsResponseBodyContentData struct {
-	Connections  *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName       *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The number of connections to the Lingjun HUB network instance.
+	//
+	// example:
+	//
+	// 2
+	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1640930671000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the synchronization task.
+	//
+	// example:
+	//
+	// No description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Lingjun HUB instance.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The name of the Lingjun HUB instance.
+	//
+	// example:
+	//
+	// er-wulanchabu-main
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 1640930671000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The primary zone.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMaps    *int64  `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// test
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmv2m2w43japa
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Number of Lingjun HUB routing policy.
+	//
+	// example:
+	//
+	// 2
+	RouteMaps *int64 `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListErsResponseBodyContentData) String() string {
@@ -6825,6 +14404,11 @@ func (s *ListErsResponseBodyContentData) SetRegionId(v string) *ListErsResponseB
 	return s
 }
 
+func (s *ListErsResponseBodyContentData) SetResourceGroupId(v string) *ListErsResponseBodyContentData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListErsResponseBodyContentData) SetRouteMaps(v int64) *ListErsResponseBodyContentData {
 	s.RouteMaps = &v
 	return s
@@ -6841,9 +14425,9 @@ func (s *ListErsResponseBodyContentData) SetTenantId(v string) *ListErsResponseB
 }
 
 type ListErsResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListErsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListErsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListErsResponse) String() string {
@@ -6869,14 +14453,605 @@ func (s *ListErsResponse) SetBody(v *ListErsResponseBody) *ListErsResponse {
 	return s
 }
 
+type ListInstancesByNcdRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni-1234****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter that specifies the instance type.
+	//
+	// Valid value:
+	//
+	// 	- node: Lingjun node.
+	//
+	// 	- lni: lingjun network interface controller.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Maximum network communication distance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	MaxNcd *int32 `json:"MaxNcd,omitempty" xml:"MaxNcd,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListInstancesByNcdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesByNcdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesByNcdRequest) SetInstanceId(v string) *ListInstancesByNcdRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesByNcdRequest) SetInstanceType(v string) *ListInstancesByNcdRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListInstancesByNcdRequest) SetMaxNcd(v int32) *ListInstancesByNcdRequest {
+	s.MaxNcd = &v
+	return s
+}
+
+func (s *ListInstancesByNcdRequest) SetRegionId(v string) *ListInstancesByNcdRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListInstancesByNcdResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListInstancesByNcdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// You don\\"t have the permission of this operation, action=eflo:ListInstancesByNcd, arn=acs:eflo:cn-heyuan:1263399219805497:networkinterface/*, resourceGroup=null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListInstancesByNcdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesByNcdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesByNcdResponseBody) SetCode(v int32) *ListInstancesByNcdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstancesByNcdResponseBody) SetContent(v *ListInstancesByNcdResponseBodyContent) *ListInstancesByNcdResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ListInstancesByNcdResponseBody) SetMessage(v string) *ListInstancesByNcdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInstancesByNcdResponseBody) SetRequestId(v string) *ListInstancesByNcdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListInstancesByNcdResponseBodyContent struct {
+	// A collection of instances whose network communication distance from the source instance ID does not exceed maxNcd
+	InstanceInfos []*ListInstancesByNcdResponseBodyContentInstanceInfos `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty" type:"Repeated"`
+	// Instance Type
+	//
+	// Valid value:
+	//
+	// 	- node: Lingjun node.
+	//
+	// 	- lni: lingjun network interface controller.
+	//
+	// example:
+	//
+	// lni
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Maximum communication distance between nodes
+	//
+	// example:
+	//
+	// 3
+	MaxNcd *int32 `json:"MaxNcd,omitempty" xml:"MaxNcd,omitempty"`
+	// The ID of the source instance.
+	//
+	// example:
+	//
+	// lni-1234****
+	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+}
+
+func (s ListInstancesByNcdResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesByNcdResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesByNcdResponseBodyContent) SetInstanceInfos(v []*ListInstancesByNcdResponseBodyContentInstanceInfos) *ListInstancesByNcdResponseBodyContent {
+	s.InstanceInfos = v
+	return s
+}
+
+func (s *ListInstancesByNcdResponseBodyContent) SetInstanceType(v string) *ListInstancesByNcdResponseBodyContent {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListInstancesByNcdResponseBodyContent) SetMaxNcd(v int32) *ListInstancesByNcdResponseBodyContent {
+	s.MaxNcd = &v
+	return s
+}
+
+func (s *ListInstancesByNcdResponseBodyContent) SetSourceInstanceId(v string) *ListInstancesByNcdResponseBodyContent {
+	s.SourceInstanceId = &v
+	return s
+}
+
+type ListInstancesByNcdResponseBodyContentInstanceInfos struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// lni-1235****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// network communication distance
+	//
+	// example:
+	//
+	// 2
+	Ncd *int32 `json:"Ncd,omitempty" xml:"Ncd,omitempty"`
+}
+
+func (s ListInstancesByNcdResponseBodyContentInstanceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesByNcdResponseBodyContentInstanceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesByNcdResponseBodyContentInstanceInfos) SetInstanceId(v string) *ListInstancesByNcdResponseBodyContentInstanceInfos {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesByNcdResponseBodyContentInstanceInfos) SetNcd(v int32) *ListInstancesByNcdResponseBodyContentInstanceInfos {
+	s.Ncd = &v
+	return s
+}
+
+type ListInstancesByNcdResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesByNcdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstancesByNcdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesByNcdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesByNcdResponse) SetHeaders(v map[string]*string) *ListInstancesByNcdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesByNcdResponse) SetStatusCode(v int32) *ListInstancesByNcdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstancesByNcdResponse) SetBody(v *ListInstancesByNcdResponseBody) *ListInstancesByNcdResponse {
+	s.Body = v
+	return s
+}
+
+type ListLeniPrivateIpAddressesRequest struct {
+	// Lingjun Elastic Network Interface ID.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// example:
+	//
+	// sip-8ylg****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The page number returned.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP.
+	//
+	// example:
+	//
+	// 10.0.****
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the image build command risk.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLeniPrivateIpAddressesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLeniPrivateIpAddressesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLeniPrivateIpAddressesRequest) SetElasticNetworkInterfaceId(v string) *ListLeniPrivateIpAddressesRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesRequest) SetIpName(v string) *ListLeniPrivateIpAddressesRequest {
+	s.IpName = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesRequest) SetPageNumber(v int32) *ListLeniPrivateIpAddressesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesRequest) SetPageSize(v int32) *ListLeniPrivateIpAddressesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesRequest) SetPrivateIpAddress(v string) *ListLeniPrivateIpAddressesRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesRequest) SetRegionId(v string) *ListLeniPrivateIpAddressesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesRequest) SetStatus(v string) *ListLeniPrivateIpAddressesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListLeniPrivateIpAddressesResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *ListLeniPrivateIpAddressesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListLeniPrivateIpAddressesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLeniPrivateIpAddressesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBody) SetCode(v int32) *ListLeniPrivateIpAddressesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBody) SetContent(v *ListLeniPrivateIpAddressesResponseBodyContent) *ListLeniPrivateIpAddressesResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBody) SetMessage(v string) *ListLeniPrivateIpAddressesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBody) SetRequestId(v string) *ListLeniPrivateIpAddressesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListLeniPrivateIpAddressesResponseBodyContent struct {
+	// The response parameters.
+	Data []*ListLeniPrivateIpAddressesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListLeniPrivateIpAddressesResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLeniPrivateIpAddressesResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContent) SetData(v []*ListLeniPrivateIpAddressesResponseBodyContentData) *ListLeniPrivateIpAddressesResponseBodyContent {
+	s.Data = v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContent) SetTotal(v int64) *ListLeniPrivateIpAddressesResponseBodyContent {
+	s.Total = &v
+	return s
+}
+
+type ListLeniPrivateIpAddressesResponseBodyContentData struct {
+	// The description.
+	//
+	// example:
+	//
+	// test_vpn1_pbr_route_54
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1675929918000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 1675929918000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// example:
+	//
+	// sip-8ylg****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP address.
+	//
+	// example:
+	//
+	// 10.0.****
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLeniPrivateIpAddressesResponseBodyContentData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLeniPrivateIpAddressesResponseBodyContentData) GoString() string {
+	return s.String()
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetDescription(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetElasticNetworkInterfaceId(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetGmtCreate(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetGmtModified(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetIpName(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.IpName = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetMessage(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.Message = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetPrivateIpAddress(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetRegionId(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetStatus(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.Status = &v
+	return s
+}
+
+type ListLeniPrivateIpAddressesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLeniPrivateIpAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLeniPrivateIpAddressesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLeniPrivateIpAddressesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLeniPrivateIpAddressesResponse) SetHeaders(v map[string]*string) *ListLeniPrivateIpAddressesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponse) SetStatusCode(v int32) *ListLeniPrivateIpAddressesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponse) SetBody(v *ListLeniPrivateIpAddressesResponseBody) *ListLeniPrivateIpAddressesResponse {
+	s.Body = v
+	return s
+}
+
 type ListLniPrivateIpAddressRequest struct {
-	EnablePage         *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	Ip                 *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	IpName             *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The description of the variable.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether pagination is required
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// network interface controller IP address
+	//
+	// example:
+	//
+	// 10.0.98.10
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// IP unique identifier
+	//
+	// example:
+	//
+	// sip-tynhdh2s
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// Lingjun network interface controller ID
+	//
+	// example:
+	//
+	// lni-2ze4uww7n6hsfzrwq77y
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Obtain the index number of the current mouse click for an animation
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListLniPrivateIpAddressRequest) String() string {
@@ -6885,6 +15060,11 @@ func (s ListLniPrivateIpAddressRequest) String() string {
 
 func (s ListLniPrivateIpAddressRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListLniPrivateIpAddressRequest) SetDescription(v string) *ListLniPrivateIpAddressRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *ListLniPrivateIpAddressRequest) SetEnablePage(v bool) *ListLniPrivateIpAddressRequest {
@@ -6923,10 +15103,26 @@ func (s *ListLniPrivateIpAddressRequest) SetRegionId(v string) *ListLniPrivateIp
 }
 
 type ListLniPrivateIpAddressResponseBody struct {
-	Code      *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListLniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListLniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// You don\\"t have the permission to do this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListLniPrivateIpAddressResponseBody) String() string {
@@ -6958,8 +15154,14 @@ func (s *ListLniPrivateIpAddressResponseBody) SetRequestId(v string) *ListLniPri
 }
 
 type ListLniPrivateIpAddressResponseBodyContent struct {
-	Data  []*ListLniPrivateIpAddressResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The returned result.
+	Data []*ListLniPrivateIpAddressResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListLniPrivateIpAddressResponseBodyContent) String() string {
@@ -6981,14 +15183,60 @@ func (s *ListLniPrivateIpAddressResponseBodyContent) SetTotal(v int64) *ListLniP
 }
 
 type ListLniPrivateIpAddressResponseBodyContentData struct {
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	IpAddressMac       *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
-	IpName             *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1651734291000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// MAC address of the secondary private network
+	//
+	// example:
+	//
+	// 00-ff-84-15-ba-67
+	IpAddressMac *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
+	// IP unique identifier
+	//
+	// example:
+	//
+	// sip-1hq1ql7vz
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Lingjun network interface controller ID
+	//
+	// example:
+	//
+	// lni-bp11hq1ql7vza3k4xz7q
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrivateIpAddress   *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Secondary private IP address of Lingjun network interface controller
+	//
+	// example:
+	//
+	// 10.42.5.92
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLniPrivateIpAddressResponseBodyContentData) String() string {
@@ -6997,6 +15245,11 @@ func (s ListLniPrivateIpAddressResponseBodyContentData) String() string {
 
 func (s ListLniPrivateIpAddressResponseBodyContentData) GoString() string {
 	return s.String()
+}
+
+func (s *ListLniPrivateIpAddressResponseBodyContentData) SetDescription(v string) *ListLniPrivateIpAddressResponseBodyContentData {
+	s.Description = &v
+	return s
 }
 
 func (s *ListLniPrivateIpAddressResponseBodyContentData) SetGmtCreate(v string) *ListLniPrivateIpAddressResponseBodyContentData {
@@ -7040,9 +15293,9 @@ func (s *ListLniPrivateIpAddressResponseBodyContentData) SetStatus(v string) *Li
 }
 
 type ListLniPrivateIpAddressResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLniPrivateIpAddressResponse) String() string {
@@ -7069,15 +15322,62 @@ func (s *ListLniPrivateIpAddressResponse) SetBody(v *ListLniPrivateIpAddressResp
 }
 
 type ListNetworkInterfacesRequest struct {
-	EnablePage         *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	Ip                 *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Specifies whether pagination is required.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// network interface controller the IP address.
+	//
+	// example:
+	//
+	// 203.107.46.227
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Lingjun network interface controller ID.
+	//
+	// example:
+	//
+	// lni-bp18exxqa2rvfn45e5pz
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	NodeId             *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubnetId           *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	VpdId              *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The ID of the machine to which the instance belongs.
+	//
+	// example:
+	//
+	// r-2ze121o4uhr4np3r5t-db-5
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The current number of pages.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance to which the Lingjun subnet belongs.
+	//
+	// example:
+	//
+	// subnet-anhtskts
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The ID of the VPD.
+	//
+	// example:
+	//
+	// vpd-iv2zm1qf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s ListNetworkInterfacesRequest) String() string {
@@ -7134,10 +15434,26 @@ func (s *ListNetworkInterfacesRequest) SetVpdId(v string) *ListNetworkInterfaces
 }
 
 type ListNetworkInterfacesResponseBody struct {
-	Code      *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListNetworkInterfacesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *ListNetworkInterfacesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 039C3C3A-3C37-5672-80D5-D8CD48C676D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListNetworkInterfacesResponseBody) String() string {
@@ -7169,8 +15485,14 @@ func (s *ListNetworkInterfacesResponseBody) SetRequestId(v string) *ListNetworkI
 }
 
 type ListNetworkInterfacesResponseBodyContent struct {
-	Data  []*ListNetworkInterfacesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The response parameters.
+	Data []*ListNetworkInterfacesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries that are returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListNetworkInterfacesResponseBodyContent) String() string {
@@ -7192,23 +15514,106 @@ func (s *ListNetworkInterfacesResponseBodyContent) SetTotal(v int64) *ListNetwor
 }
 
 type ListNetworkInterfacesResponseBodyContentData struct {
-	CreateTime               *string                                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Ethernet                 []*string                                                               `json:"Ethernet,omitempty" xml:"Ethernet,omitempty" type:"Repeated"`
-	Gateway                  *string                                                                 `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	Ip                       *string                                                                 `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	NcType                   *string                                                                 `json:"NcType,omitempty" xml:"NcType,omitempty"`
-	NetworkInterfaceId       *string                                                                 `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	NetworkInterfaceName     *string                                                                 `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	NodeId                   *string                                                                 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1669734207000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The port number of the AD server.
+	Ethernet []*string `json:"Ethernet,omitempty" xml:"Ethernet,omitempty" type:"Repeated"`
+	// The gateway.
+	//
+	// example:
+	//
+	// 10.0.0.253
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 10.0.0.13
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The NC type.
+	//
+	// Valid value:
+	//
+	// 	- CUSTOM_LNI_INTEGRATION: two-network one-in-one architecture Lingjun hosting network interface controller.
+	//
+	// 	- CPU: CPU machine.
+	//
+	// 	- ELASTIC_6.2: Machine
+	//
+	// 	- GPU: GPU machine.
+	//
+	// 	- DEFAULT: the old CPU machine.
+	//
+	// 	- CUSTOM_LNI: two network separation architecture Lingjun hosting network interface controller.
+	//
+	// example:
+	//
+	// GPU
+	NcType *string `json:"NcType,omitempty" xml:"NcType,omitempty"`
+	// Lingjun network interface controller ID.
+	//
+	// example:
+	//
+	// lni-2ze50voovmtswn328ogm
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The port name.
+	//
+	// example:
+	//
+	// bond0
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+	// The ID of the machine to which the instance belongs.
+	//
+	// example:
+	//
+	// 2d53f5c204e7476dae69177e7fa6f19c
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Secondary Private IP\\&MAC Address Collection
 	PrivateIpAddressMacGroup []*ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup `json:"PrivateIpAddressMacGroup,omitempty" xml:"PrivateIpAddressMacGroup,omitempty" type:"Repeated"`
-	Quota                    *int32                                                                  `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	RegionId                 *string                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceMac               *string                                                                 `json:"ServiceMac,omitempty" xml:"ServiceMac,omitempty"`
-	Status                   *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetBaseInfo           *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo             `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
-	TenantId                 *string                                                                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VpdBaseInfo              *ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo                `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
-	ZoneId                   *string                                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// network interface controller private secondary IP quota.
+	//
+	// example:
+	//
+	// 6
+	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The address of the service network interface controller.
+	//
+	// example:
+	//
+	// 00-ff-84-15-ba-67
+	ServiceMac *string `json:"ServiceMac,omitempty" xml:"ServiceMac,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Lingjun subnet (Subnet) basic information.
+	SubnetBaseInfo *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1620939556166279
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun network segment (VPD) basic information.
+	VpdBaseInfo *ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListNetworkInterfacesResponseBodyContentData) String() string {
@@ -7305,11 +15710,42 @@ func (s *ListNetworkInterfacesResponseBodyContentData) SetZoneId(v string) *List
 }
 
 type ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup struct {
-	IpAddressMac     *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
-	IpName           *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Secondary private MAC address.
+	//
+	// example:
+	//
+	// 00:25:9d:00:20:20
+	IpAddressMac *string `json:"IpAddressMac,omitempty" xml:"IpAddressMac,omitempty"`
+	// The unique IP identifier.
+	//
+	// example:
+	//
+	// sip-1asjd3xg
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The secondary private IP address.
+	//
+	// example:
+	//
+	// 10.0.0.14
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the cache reserve instance.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup) String() string {
@@ -7318,6 +15754,11 @@ func (s ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup) St
 
 func (s ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup) GoString() string {
 	return s.String()
+}
+
+func (s *ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup) SetDescription(v string) *ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup {
+	s.Description = &v
+	return s
 }
 
 func (s *ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup) SetIpAddressMac(v string) *ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup {
@@ -7346,9 +15787,37 @@ func (s *ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup) S
 }
 
 type ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The network segment of the Subnet.
+	//
+	// 	- The network segment of the subnet must be a proper subset of the network segment of Lingjun to which it belongs, and the mask must be between 16 bits and 29 bits, which can provide 8 to 65536 addresses. For example, the CIDR block of the Lingjun CIDR block is 192.168.0.0/16, and the CIDR blocks of the subnets under the Lingjun CIDR block are 192.168.0.0/17 to 192.168.0.0/29.
+	//
+	// 	- The first and last three IP addresses of each subnet segment are reserved by the system. For example, the CIDR blocks of the subnet are 192.168.1.0/24,192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+	//
+	// For more information about CIDR blocks, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#title-gu4-uzk-12r) section in the "Network FAQ" topic.
+	//
+	// This parameter is left empty by default.
+	//
+	// example:
+	//
+	// 10.0.0.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1623656472000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SubnetId   *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The ID of the Subnet instance.
+	//
+	// example:
+	//
+	// subnet-yjnqn5ef
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The name of the Subnet instance.
+	//
+	// example:
+	//
+	// subnet-1
 	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
 }
 
@@ -7381,10 +15850,34 @@ func (s *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo) SetSubnetNa
 }
 
 type ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The network segment of Lingjun network segment (VPD).
+	//
+	// 	- We recommend that you use an RFC private endpoint as the Lingjun CIDR block, such as 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16. In scenarios where the Doringjun CIDR block is connected to each other or where the Lingjun CIDR block is connected to a VPC, make sure that the addresses do not conflict with each other.
+	//
+	// 	- You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 and their subnets as the primary IPv4 CIDR block of the VPD. This parameter is left empty by default.
+	//
+	// example:
+	//
+	// 10.0.0.0/16
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1668158213000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	VpdId      *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName    *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// The ID of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-d3isyds4
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The name of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-1
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo) String() string {
@@ -7416,9 +15909,9 @@ func (s *ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo) SetVpdName(v s
 }
 
 type ListNetworkInterfacesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNetworkInterfacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNetworkInterfacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNetworkInterfacesResponse) String() string {
@@ -7444,19 +15937,353 @@ func (s *ListNetworkInterfacesResponse) SetBody(v *ListNetworkInterfacesResponse
 	return s
 }
 
+type ListNodeInfosForPodRequest struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cluster-***
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the node for this operation.
+	//
+	// example:
+	//
+	// node-be70****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListNodeInfosForPodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeInfosForPodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeInfosForPodRequest) SetClusterId(v string) *ListNodeInfosForPodRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodRequest) SetNodeId(v string) *ListNodeInfosForPodRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodRequest) SetRegionId(v string) *ListNodeInfosForPodRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodRequest) SetZoneId(v string) *ListNodeInfosForPodRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type ListNodeInfosForPodResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
+	Content []*ListNodeInfosForPodResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The returned message.
+	//
+	// example:
+	//
+	// You don\\"t have the permission of this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 0901F411-28FA-5B9C-BAEE-7776463FF0DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListNodeInfosForPodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeInfosForPodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeInfosForPodResponseBody) SetCode(v int32) *ListNodeInfosForPodResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBody) SetContent(v []*ListNodeInfosForPodResponseBodyContent) *ListNodeInfosForPodResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBody) SetMessage(v string) *ListNodeInfosForPodResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBody) SetRequestId(v string) *ListNodeInfosForPodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListNodeInfosForPodResponseBodyContent struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cluster-****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Lingjun Gaomi network interface controller quota
+	//
+	// example:
+	//
+	// 10
+	HdeniQuota *int32 `json:"HdeniQuota,omitempty" xml:"HdeniQuota,omitempty"`
+	// Lingjun Elastic Network Interface quota, excluding system type
+	//
+	// example:
+	//
+	// 10
+	LeniQuota *int32 `json:"LeniQuota,omitempty" xml:"LeniQuota,omitempty"`
+	// Lingjun Elastic Network Interface Secondary Private IP Quota
+	//
+	// example:
+	//
+	// 10
+	LeniSipQuota *int32 `json:"LeniSipQuota,omitempty" xml:"LeniSipQuota,omitempty"`
+	// Lingjun network interface controller Secondary Private IP Quota
+	//
+	// example:
+	//
+	// 10
+	LniSipQuota *int32 `json:"LniSipQuota,omitempty" xml:"LniSipQuota,omitempty"`
+	// The ID of the node for this operation.
+	//
+	// example:
+	//
+	// node-be70****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of VSwitches to which IP addresses can be applied for this node
+	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The ID of the Virtual Private Cloud to which the current node belongs.
+	//
+	// example:
+	//
+	// vpc-j6ctp4n75306****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListNodeInfosForPodResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeInfosForPodResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetClusterId(v string) *ListNodeInfosForPodResponseBodyContent {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetHdeniQuota(v int32) *ListNodeInfosForPodResponseBodyContent {
+	s.HdeniQuota = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetLeniQuota(v int32) *ListNodeInfosForPodResponseBodyContent {
+	s.LeniQuota = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetLeniSipQuota(v int32) *ListNodeInfosForPodResponseBodyContent {
+	s.LeniSipQuota = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetLniSipQuota(v int32) *ListNodeInfosForPodResponseBodyContent {
+	s.LniSipQuota = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetNodeId(v string) *ListNodeInfosForPodResponseBodyContent {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetRegionId(v string) *ListNodeInfosForPodResponseBodyContent {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetVSwitches(v []*string) *ListNodeInfosForPodResponseBodyContent {
+	s.VSwitches = v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetVpcId(v string) *ListNodeInfosForPodResponseBodyContent {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponseBodyContent) SetZoneId(v string) *ListNodeInfosForPodResponseBodyContent {
+	s.ZoneId = &v
+	return s
+}
+
+type ListNodeInfosForPodResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodeInfosForPodResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNodeInfosForPodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeInfosForPodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeInfosForPodResponse) SetHeaders(v map[string]*string) *ListNodeInfosForPodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponse) SetStatusCode(v int32) *ListNodeInfosForPodResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNodeInfosForPodResponse) SetBody(v *ListNodeInfosForPodResponseBody) *ListNodeInfosForPodResponse {
+	s.Body = v
+	return s
+}
+
 type ListSubnetsRequest struct {
-	EnablePage      *bool                    `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	PageNumber      *int32                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetId        *string                  `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	SubnetName      *string                  `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
-	Tag             []*ListSubnetsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Type            *string                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpdId           *string                  `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId          *string                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Specifies whether to query by page. Optional values:
+	//
+	// 	- **true**: Enable pagination query
+	//
+	// 	- **false**: Pagination query is disabled
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// The number of the page to return. The value must be greater than 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the disk.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aeky5f3qx6ceapq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the CLB instance. Valid values:
+	//
+	// 	- **Available**: Normal
+	//
+	// 	- **Not Available**: Unavailable
+	//
+	// 	- **Executing**: Executing
+	//
+	// 	- **Deleting**: The node is being deleted.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Lingjun subnet instance ID
+	//
+	// example:
+	//
+	// subnet-anhtskts
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// Lingjun subnet instance name
+	//
+	// example:
+	//
+	// subnet-1
+	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tag []*ListSubnetsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Lingjun Subnet Usage Type; optional; optional. Valid values:
+	//
+	// 	- **If you do not set this field for a common type**
+	//
+	// 	- **OOB*	- :OOB type
+	//
+	// 	- **LB**: LB type
+	//
+	// example:
+	//
+	// Null
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-fuliephf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID of the disk.
+	//
+	// example:
+	//
+	// cn-wulanchabu-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListSubnetsRequest) String() string {
@@ -7528,7 +16355,25 @@ func (s *ListSubnetsRequest) SetZoneId(v string) *ListSubnetsRequest {
 }
 
 type ListSubnetsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the VPN attachment.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// rg-subnet
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the VPN connection.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// subnet-group-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7551,10 +16396,26 @@ func (s *ListSubnetsRequestTag) SetValue(v string) *ListSubnetsRequestTag {
 }
 
 type ListSubnetsResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListSubnetsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListSubnetsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 7F9082CC-3D94-560F-A575-8E8EF6CE2CB8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSubnetsResponseBody) String() string {
@@ -7586,8 +16447,14 @@ func (s *ListSubnetsResponseBody) SetRequestId(v string) *ListSubnetsResponseBod
 }
 
 type ListSubnetsResponseBodyContent struct {
-	Data  []*ListSubnetsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Lingjun subnet information list
+	Data []*ListSubnetsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListSubnetsResponseBodyContent) String() string {
@@ -7609,22 +16476,122 @@ func (s *ListSubnetsResponseBodyContent) SetTotal(v int64) *ListSubnetsResponseB
 }
 
 type ListSubnetsResponseBodyContentData struct {
-	Cidr            *string                                        `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	CreateTime      *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	GmtModified     *string                                        `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Message         *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	NcCount         *int64                                         `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
-	RegionId        *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetId        *string                                        `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	SubnetName      *string                                        `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
-	Tags            []*ListSubnetsResponseBodyContentDataTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantId        *string                                        `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Type            *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpdBaseInfo     *ListSubnetsResponseBodyContentDataVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
-	VpdId           *string                                        `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId          *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The CIDR block of the Subnet.
+	//
+	// 	- The network segment of the subnet must be a proper subset of the network segment of Lingjun to which it belongs, and the mask must be between 16 bits and 29 bits, which can provide 8 to 65536 addresses. For example, the CIDR block of the Lingjun CIDR block is 192.168.0.0/16, and the CIDR blocks of the subnets under the Lingjun CIDR block are 192.168.0.0/17 to 192.168.0.0/29.
+	//
+	// 	- The first and last three IP addresses of each subnet segment are reserved by the system. For example, the CIDR blocks of the subnet are 192.168.1.0/24,192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+	//
+	// example:
+	//
+	// 172.18.0.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Number of NCs
+	//
+	// example:
+	//
+	// 16
+	NcCount *int32 `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
+	// Number of Lingjun network interface controller
+	//
+	// example:
+	//
+	// 1
+	NetworkInterfaceCount *int32 `json:"NetworkInterfaceCount,omitempty" xml:"NetworkInterfaceCount,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- **Available**: Normal
+	//
+	// 	- **Not Available**: Unavailable
+	//
+	// 	- **Executing**: Executing
+	//
+	// 	- **Deleting**: The node is being deleted.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Lingjun subnet instance ID
+	//
+	// example:
+	//
+	// subnet-c6wci55i
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// Lingjun subnet instance name
+	//
+	// example:
+	//
+	// yzp-rg-test3
+	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tags []*ListSubnetsResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun Subnet Usage Type; optional; optional. Valid values:
+	//
+	// 	- **If you do not set this field for a common type**
+	//
+	// 	- **OOB*	- :OOB type
+	//
+	// 	- **LB**: LB type
+	//
+	// example:
+	//
+	// OOB
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// vpd basic information
+	VpdBaseInfo *ListSubnetsResponseBodyContentDataVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-ze3na0wf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListSubnetsResponseBodyContentData) String() string {
@@ -7655,8 +16622,13 @@ func (s *ListSubnetsResponseBodyContentData) SetMessage(v string) *ListSubnetsRe
 	return s
 }
 
-func (s *ListSubnetsResponseBodyContentData) SetNcCount(v int64) *ListSubnetsResponseBodyContentData {
+func (s *ListSubnetsResponseBodyContentData) SetNcCount(v int32) *ListSubnetsResponseBodyContentData {
 	s.NcCount = &v
+	return s
+}
+
+func (s *ListSubnetsResponseBodyContentData) SetNetworkInterfaceCount(v int32) *ListSubnetsResponseBodyContentData {
+	s.NetworkInterfaceCount = &v
 	return s
 }
 
@@ -7716,7 +16688,25 @@ func (s *ListSubnetsResponseBodyContentData) SetZoneId(v string) *ListSubnetsRes
 }
 
 type ListSubnetsResponseBodyContentDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-subnet
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag that is added to the resource.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// subnet-group-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -7739,10 +16729,34 @@ func (s *ListSubnetsResponseBodyContentDataTags) SetTagValue(v string) *ListSubn
 }
 
 type ListSubnetsResponseBodyContentDataVpdBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The CIDR block of the VPD.
+	//
+	// 	- We recommend that you use an RFC private endpoint as the Lingjun CIDR block, such as 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16. In scenarios where the Doringjun CIDR block is connected to each other or where the Lingjun CIDR block is connected to a VPC, make sure that the addresses do not conflict with each other.
+	//
+	// 	- You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 and their subnets as the primary IPv4 CIDR block of the VPD.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	VpdId      *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName    *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-d3isyds4
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// Lingjun CIDR block instance name
+	//
+	// example:
+	//
+	// yzp-rg-test3
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s ListSubnetsResponseBodyContentDataVpdBaseInfo) String() string {
@@ -7774,9 +16788,9 @@ func (s *ListSubnetsResponseBodyContentDataVpdBaseInfo) SetVpdName(v string) *Li
 }
 
 type ListSubnetsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSubnetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSubnetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSubnetsResponse) String() string {
@@ -7802,17 +16816,362 @@ func (s *ListSubnetsResponse) SetBody(v *ListSubnetsResponseBody) *ListSubnetsRe
 	return s
 }
 
+type ListVccFlowInfosRequest struct {
+	// Direction
+	//
+	// Valid value:
+	//
+	// 	- IN: inbound.
+	//
+	// 	- OUT: the outbound.
+	//
+	// example:
+	//
+	// OUT
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The start time. The default value is 5 minutes ago.
+	//
+	// example:
+	//
+	// 1667727514000
+	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Metric
+	//
+	// Valid value:
+	//
+	// 	- totalPacketsRate: Total Packet Rate.
+	//
+	// 	- dropBytesRate: the of the stream drop rate.
+	//
+	// 	- dropPacketsRate: Dropped Packet Rate.
+	//
+	// 	- totalBytesRate: the total streaming rate.
+	//
+	// 	- passBytesRate: by stream rate.
+	//
+	// 	- passPacketsRate: by packet rate.
+	//
+	// example:
+	//
+	// passBytesRate
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The end time. The default time is the current time.
+	//
+	// example:
+	//
+	// 1689749749000
+	To *int64 `json:"To,omitempty" xml:"To,omitempty"`
+	// Lingjun Connection ID
+	//
+	// example:
+	//
+	// vcc-cn-zvp2******
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+}
+
+func (s ListVccFlowInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVccFlowInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVccFlowInfosRequest) SetDirection(v string) *ListVccFlowInfosRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *ListVccFlowInfosRequest) SetFrom(v int64) *ListVccFlowInfosRequest {
+	s.From = &v
+	return s
+}
+
+func (s *ListVccFlowInfosRequest) SetMetricName(v string) *ListVccFlowInfosRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *ListVccFlowInfosRequest) SetRegionId(v string) *ListVccFlowInfosRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListVccFlowInfosRequest) SetTo(v int64) *ListVccFlowInfosRequest {
+	s.To = &v
+	return s
+}
+
+func (s *ListVccFlowInfosRequest) SetVccId(v string) *ListVccFlowInfosRequest {
+	s.VccId = &v
+	return s
+}
+
+type ListVccFlowInfosResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Content *ListVccFlowInfosResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Response
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// BDBCC783-84CA-5733-8EEA-************
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListVccFlowInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVccFlowInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVccFlowInfosResponseBody) SetCode(v int32) *ListVccFlowInfosResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBody) SetContent(v *ListVccFlowInfosResponseBodyContent) *ListVccFlowInfosResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBody) SetMessage(v string) *ListVccFlowInfosResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBody) SetRequestId(v string) *ListVccFlowInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListVccFlowInfosResponseBodyContent struct {
+	// Lingjun Connection Traffic Information
+	Data []*ListVccFlowInfosResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListVccFlowInfosResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVccFlowInfosResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListVccFlowInfosResponseBodyContent) SetData(v []*ListVccFlowInfosResponseBodyContentData) *ListVccFlowInfosResponseBodyContent {
+	s.Data = v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBodyContent) SetTotal(v int64) *ListVccFlowInfosResponseBodyContent {
+	s.Total = &v
+	return s
+}
+
+type ListVccFlowInfosResponseBodyContentData struct {
+	// The direction.
+	//
+	// example:
+	//
+	// OUT
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The metric. Valid values:
+	//
+	// example:
+	//
+	// passBytesRate
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Time
+	//
+	// example:
+	//
+	// 1689749749000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// Value
+	//
+	// example:
+	//
+	// 123
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Lingjun Connection ID
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w******
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+}
+
+func (s ListVccFlowInfosResponseBodyContentData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVccFlowInfosResponseBodyContentData) GoString() string {
+	return s.String()
+}
+
+func (s *ListVccFlowInfosResponseBodyContentData) SetDirection(v string) *ListVccFlowInfosResponseBodyContentData {
+	s.Direction = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBodyContentData) SetMetricName(v string) *ListVccFlowInfosResponseBodyContentData {
+	s.MetricName = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBodyContentData) SetRegionId(v string) *ListVccFlowInfosResponseBodyContentData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBodyContentData) SetTimestamp(v int64) *ListVccFlowInfosResponseBodyContentData {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBodyContentData) SetValue(v float64) *ListVccFlowInfosResponseBodyContentData {
+	s.Value = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponseBodyContentData) SetVccId(v string) *ListVccFlowInfosResponseBodyContentData {
+	s.VccId = &v
+	return s
+}
+
+type ListVccFlowInfosResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVccFlowInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVccFlowInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVccFlowInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVccFlowInfosResponse) SetHeaders(v map[string]*string) *ListVccFlowInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVccFlowInfosResponse) SetStatusCode(v int32) *ListVccFlowInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVccFlowInfosResponse) SetBody(v *ListVccFlowInfosResponseBody) *ListVccFlowInfosResponse {
+	s.Body = v
+	return s
+}
+
 type ListVccGrantRulesRequest struct {
-	EnablePage    *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ForSelect     *bool   `json:"ForSelect,omitempty" xml:"ForSelect,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Specifies whether to enable paged query. Optional values:
+	//
+	// 	- **true**: Enable pagination query
+	//
+	// 	- **false**: Pagination query is disabled
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Use the drop-down box
+	//
+	// example:
+	//
+	// true
+	ForSelect *bool `json:"ForSelect,omitempty" xml:"ForSelect,omitempty"`
+	// Authorization Entry ID
+	//
+	// example:
+	//
+	// grant-rule-jaj33d1b804
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1620939556166277
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Network Instance ID
+	//
+	// example:
+	//
+	// vcc-cn-jaj33d1b804
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name
+	//
+	// example:
+	//
+	// vcc-1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aekzb3n5lgk2ieq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListVccGrantRulesRequest) String() string {
@@ -7873,11 +17232,32 @@ func (s *ListVccGrantRulesRequest) SetRegionId(v string) *ListVccGrantRulesReque
 	return s
 }
 
+func (s *ListVccGrantRulesRequest) SetResourceGroupId(v string) *ListVccGrantRulesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ListVccGrantRulesResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListVccGrantRulesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListVccGrantRulesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// A56F7D3C-8850-5AF4-A342-2D71C9A9D1CC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVccGrantRulesResponseBody) String() string {
@@ -7909,8 +17289,14 @@ func (s *ListVccGrantRulesResponseBody) SetRequestId(v string) *ListVccGrantRule
 }
 
 type ListVccGrantRulesResponseBodyContent struct {
-	Data  []*ListVccGrantRulesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// List of cross-account authorization information of Lingjun connection
+	Data []*ListVccGrantRulesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListVccGrantRulesResponseBodyContent) String() string {
@@ -7932,16 +17318,80 @@ func (s *ListVccGrantRulesResponseBodyContent) SetTotal(v int64) *ListVccGrantRu
 }
 
 type ListVccGrantRulesResponseBodyContentData struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Lingjun HUB ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Cross-account authorization information Instance ID
+	//
+	// example:
+	//
+	// grant-rule-jpumgwvp
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1013666993027780
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Product       *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Used          *bool   `json:"Used,omitempty" xml:"Used,omitempty"`
+	// Network Instance ID
+	//
+	// example:
+	//
+	// vcc-cn-jaj33d1kb05
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the ECU.
+	//
+	// example:
+	//
+	// vcc-1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The type of the authorized product. Valid values:
+	//
+	// 	- **VPD**: indicates a VPD instance of the Lingjun network segment.
+	//
+	// 	- **VCC**: indicates that Lingjun connects to the VCC instance.
+	//
+	// example:
+	//
+	// VCC
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Whether the current cross-account resource has been bound to the cross-account Lingjun HUB. Valid values:
+	//
+	// 	- **true**: Used
+	//
+	// 	- **false**: Not used
+	//
+	// example:
+	//
+	// true
+	Used *bool `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s ListVccGrantRulesResponseBodyContentData) String() string {
@@ -7992,6 +17442,11 @@ func (s *ListVccGrantRulesResponseBodyContentData) SetRegionId(v string) *ListVc
 	return s
 }
 
+func (s *ListVccGrantRulesResponseBodyContentData) SetResourceGroupId(v string) *ListVccGrantRulesResponseBodyContentData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListVccGrantRulesResponseBodyContentData) SetTenantId(v string) *ListVccGrantRulesResponseBodyContentData {
 	s.TenantId = &v
 	return s
@@ -8003,9 +17458,9 @@ func (s *ListVccGrantRulesResponseBodyContentData) SetUsed(v bool) *ListVccGrant
 }
 
 type ListVccGrantRulesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVccGrantRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVccGrantRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVccGrantRulesResponse) String() string {
@@ -8032,17 +17487,88 @@ func (s *ListVccGrantRulesResponse) SetBody(v *ListVccGrantRulesResponseBody) *L
 }
 
 type ListVccRouteEntriesRequest struct {
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	EnablePage           *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VccId                *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VpdRouteEntryId      *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
+	// Specifies whether to enable pagination query.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Filter 32 detailed CIDR blocks. Default value: true
+	//
+	// example:
+	//
+	// true
+	IgnoreDetailedRouteEntry *bool `json:"IgnoreDetailedRouteEntry,omitempty" xml:"IgnoreDetailedRouteEntry,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// vcc-cn-jaj34d75h01
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// BGP
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the enterprise-level snapshot policy.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// Lingjun CIDR block route entry instance ID
+	//
+	// example:
+	//
+	// vpd-rte-toekyqel
+	VpdRouteEntryId *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
 }
 
 func (s ListVccRouteEntriesRequest) String() string {
@@ -8060,6 +17586,11 @@ func (s *ListVccRouteEntriesRequest) SetDestinationCidrBlock(v string) *ListVccR
 
 func (s *ListVccRouteEntriesRequest) SetEnablePage(v bool) *ListVccRouteEntriesRequest {
 	s.EnablePage = &v
+	return s
+}
+
+func (s *ListVccRouteEntriesRequest) SetIgnoreDetailedRouteEntry(v bool) *ListVccRouteEntriesRequest {
+	s.IgnoreDetailedRouteEntry = &v
 	return s
 }
 
@@ -8088,6 +17619,11 @@ func (s *ListVccRouteEntriesRequest) SetRegionId(v string) *ListVccRouteEntriesR
 	return s
 }
 
+func (s *ListVccRouteEntriesRequest) SetResourceGroupId(v string) *ListVccRouteEntriesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListVccRouteEntriesRequest) SetRouteType(v string) *ListVccRouteEntriesRequest {
 	s.RouteType = &v
 	return s
@@ -8109,10 +17645,26 @@ func (s *ListVccRouteEntriesRequest) SetVpdRouteEntryId(v string) *ListVccRouteE
 }
 
 type ListVccRouteEntriesResponseBody struct {
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListVccRouteEntriesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListVccRouteEntriesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// response message, if the success request is
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVccRouteEntriesResponseBody) String() string {
@@ -8144,8 +17696,14 @@ func (s *ListVccRouteEntriesResponseBody) SetRequestId(v string) *ListVccRouteEn
 }
 
 type ListVccRouteEntriesResponseBodyContent struct {
-	Data  []*ListVccRouteEntriesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+	// List of Lingjun Connection Route Entries
+	Data []*ListVccRouteEntriesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListVccRouteEntriesResponseBodyContent) String() string {
@@ -8167,17 +17725,84 @@ func (s *ListVccRouteEntriesResponseBodyContent) SetTotal(v int64) *ListVccRoute
 }
 
 type ListVccRouteEntriesResponseBodyContentData struct {
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 10.192.32.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId     *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VccId                *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VccRouteEntryId      *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1642745758000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the resource belongs.
+	//
+	// example:
+	//
+	// 1655449505171
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// BGP
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// vcc-rte-maysfadg
+	VccRouteEntryId *string `json:"VccRouteEntryId,omitempty" xml:"VccRouteEntryId,omitempty"`
 }
 
 func (s ListVccRouteEntriesResponseBodyContentData) String() string {
@@ -8198,6 +17823,11 @@ func (s *ListVccRouteEntriesResponseBodyContentData) SetGmtModified(v string) *L
 	return s
 }
 
+func (s *ListVccRouteEntriesResponseBodyContentData) SetMessage(v string) *ListVccRouteEntriesResponseBodyContentData {
+	s.Message = &v
+	return s
+}
+
 func (s *ListVccRouteEntriesResponseBodyContentData) SetNextHopId(v string) *ListVccRouteEntriesResponseBodyContentData {
 	s.NextHopId = &v
 	return s
@@ -8210,6 +17840,11 @@ func (s *ListVccRouteEntriesResponseBodyContentData) SetNextHopType(v string) *L
 
 func (s *ListVccRouteEntriesResponseBodyContentData) SetRegionId(v string) *ListVccRouteEntriesResponseBodyContentData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVccRouteEntriesResponseBodyContentData) SetResourceGroupId(v string) *ListVccRouteEntriesResponseBodyContentData {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8244,9 +17879,9 @@ func (s *ListVccRouteEntriesResponseBodyContentData) SetVccRouteEntryId(v string
 }
 
 type ListVccRouteEntriesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVccRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVccRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVccRouteEntriesResponse) String() string {
@@ -8273,20 +17908,98 @@ func (s *ListVccRouteEntriesResponse) SetBody(v *ListVccRouteEntriesResponseBody
 }
 
 type ListVccsRequest struct {
-	Bandwidth       *int32                `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	CenId           *string               `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	EnablePage      *bool                 `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	ExStatus        *string               `json:"ExStatus,omitempty" xml:"ExStatus,omitempty"`
-	FilterErId      *string               `json:"FilterErId,omitempty" xml:"FilterErId,omitempty"`
-	PageNumber      *int32                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag             []*ListVccsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VccId           *string               `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VpcId           *string               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpdId           *string               `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The peak bandwidth of the Lingjun connection instance. Unit: Mbit/s. Valid values: 1000 to 400000
+	//
+	// example:
+	//
+	// 5000
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the CEN instance; [What is the CEN?](https://help.aliyun.com/document_detail/181681.html)
+	//
+	// You can call the [DescribeCens](https://help.aliyun.com/document_detail/468215.htm) to query the information of CEN instances under the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// cen-95iwtpyvj3kk1v0ao0
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// Specifies whether to enable paged query. Optional values:
+	//
+	// 	- **true**: Enable pagination query
+	//
+	// 	- **false**: Pagination query is disabled
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Excludes all data in the specified status. If the status parameter exists, ExStatus does not take effect.
+	//
+	// example:
+	//
+	// Prepaid
+	ExStatus *string `json:"ExStatus,omitempty" xml:"ExStatus,omitempty"`
+	// Filter queries by Lingjun HUB instance ID
+	//
+	// example:
+	//
+	// er-a7rqv1rq
+	FilterErId *string `json:"FilterErId,omitempty" xml:"FilterErId,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aeky5f3qx6ceapq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The instance status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tag []*ListVccsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// Virtual Private Cloud IDs; [What is Virtual Private Cloud](https://help.aliyun.com/document_detail/34217.html)
+	//
+	// You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html#demo-0) operation to query the specified VPC.
+	//
+	// example:
+	//
+	// vpc-bp1nrtkmamy329u6a1z0i
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-omqutbff
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s ListVccsRequest) String() string {
@@ -8368,7 +18081,25 @@ func (s *ListVccsRequest) SetVpdId(v string) *ListVccsRequest {
 }
 
 type ListVccsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the VPN attachment.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-vcc
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the VPN connection.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// vcc-group-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8391,10 +18122,26 @@ func (s *ListVccsRequestTag) SetValue(v string) *ListVccsRequestTag {
 }
 
 type ListVccsResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListVccsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListVccsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 28451248-7038-5184-B5D3-80F104654BE8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVccsResponseBody) String() string {
@@ -8426,8 +18173,14 @@ func (s *ListVccsResponseBody) SetRequestId(v string) *ListVccsResponseBody {
 }
 
 type ListVccsResponseBodyContent struct {
-	Data  []*ListVccsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Lingjun Connection Information List
+	Data []*ListVccsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListVccsResponseBodyContent) String() string {
@@ -8449,34 +18202,194 @@ func (s *ListVccsResponseBodyContent) SetTotal(v int64) *ListVccsResponseBodyCon
 }
 
 type ListVccsResponseBodyContentData struct {
-	AccessPointId   *string                                     `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	BandwidthStr    *string                                     `json:"BandwidthStr,omitempty" xml:"BandwidthStr,omitempty"`
-	BgpCidr         *string                                     `json:"BgpCidr,omitempty" xml:"BgpCidr,omitempty"`
-	CenId           *string                                     `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CommodityCode   *string                                     `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ConnectionType  *string                                     `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	CreateTime      *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CurrentNode     *string                                     `json:"CurrentNode,omitempty" xml:"CurrentNode,omitempty"`
-	ErInfos         []*ListVccsResponseBodyContentDataErInfos   `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
-	ExpirationDate  *string                                     `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	GmtModified     *string                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LineOperator    *string                                     `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
-	Message         *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	PortType        *string                                     `json:"PortType,omitempty" xml:"PortType,omitempty"`
-	Rate            *float64                                    `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	RegionId        *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Spec            *string                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Status          *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            []*ListVccsResponseBodyContentDataTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskId          *string                                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TenantId        *string                                     `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VccId           *string                                     `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VccName         *string                                     `json:"VccName,omitempty" xml:"VccName,omitempty"`
-	VpcId           *string                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpdBaseInfo     *ListVccsResponseBodyContentDataVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
-	VpdId           *string                                     `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId          *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Express Connect circuit access point ID:
+	//
+	// 	- **ap-cn-wulanchabu-jn-ts-A**: Ulanqab-Jining-A
+	//
+	// 	- **ap-cn-heyuan-yc-ts-SA127**: Heyuan-Yuancheng-A
+	//
+	// example:
+	//
+	// ap-cn-wulanchabu-jn-ts-A
+	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The bandwidth of the port.
+	//
+	// example:
+	//
+	// 1000
+	BandwidthStr *string `json:"BandwidthStr,omitempty" xml:"BandwidthStr,omitempty"`
+	// bgp as number
+	//
+	// example:
+	//
+	// bgpAsn
+	BgpAsn *string `json:"BgpAsn,omitempty" xml:"BgpAsn,omitempty"`
+	// bgp network segment
+	//
+	// example:
+	//
+	// 172.16.128.0/24
+	BgpCidr *string `json:"BgpCidr,omitempty" xml:"BgpCidr,omitempty"`
+	// The ID of the CEN instance; [What is the CEN?](https://help.aliyun.com/document_detail/181681.html)
+	//
+	// You can call the [DescribeCens](https://help.aliyun.com/document_detail/468215.htm) to query the information of CEN instances under the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// cen-w15qot0pfvs83pkckj
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// Account to which cen belongs
+	//
+	// example:
+	//
+	// 1238685214107736
+	CenOwnerId *string `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// Commodity code
+	//
+	// example:
+	//
+	// bccluster_cloudconnectionpre_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The connection mode. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **CENTR**
+	//
+	// example:
+	//
+	// CENTR
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Current process node
+	//
+	// example:
+	//
+	// test-xxxx-node-x
+	CurrentNode *string `json:"CurrentNode,omitempty" xml:"CurrentNode,omitempty"`
+	// List of bound Lingjun HUB information
+	ErInfos []*ListVccsResponseBodyContentDataErInfos `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
+	// The time when the application expired.
+	//
+	// example:
+	//
+	// 1678273219000
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The connectivity provider of the Express Connect circuit. Valid values:
+	//
+	// 	- **CO**: other connectivity providers in the Chinese mainland
+	//
+	// example:
+	//
+	// CO
+	LineOperator *string `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// some message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The port type of the Express Connect circuit. Valid values:
+	//
+	// 	- **100GBase-LR**: 100,000 megabytes of single-mode optical port (10 km)
+	//
+	// example:
+	//
+	// 100GBase-LR
+	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	// Process progress; value returns 0 to 1; not started is null
+	//
+	// example:
+	//
+	// 1
+	Rate *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The compute specification.
+	//
+	// example:
+	//
+	// Large
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The state of the rule.
+	//
+	// example:
+	//
+	// Init
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tags []*ListVccsResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The job ID.
+	//
+	// example:
+	//
+	// task-cd544092-ed0a-49e9-83eb-e8c94770dccf
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166279
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The name of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-heyuan-backup
+	VccName *string `json:"VccName,omitempty" xml:"VccName,omitempty"`
+	// Virtual Private Cloud IDs; [What is Virtual Private Cloud](https://help.aliyun.com/document_detail/34217.html)
+	//
+	// You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html#demo-0) operation to query the specified VPC.
+	//
+	// example:
+	//
+	// vpc-f8ziirfl9k25h2qn7y4f8
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Lingjun network segment information (applicable to the scene where the old version of Lingjun connection is directly bound to Lingjun network segment)
+	VpdBaseInfo *ListVccsResponseBodyContentDataVpdBaseInfo `json:"VpdBaseInfo,omitempty" xml:"VpdBaseInfo,omitempty" type:"Struct"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-eoiy88ju
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListVccsResponseBodyContentData) String() string {
@@ -8497,6 +18410,11 @@ func (s *ListVccsResponseBodyContentData) SetBandwidthStr(v string) *ListVccsRes
 	return s
 }
 
+func (s *ListVccsResponseBodyContentData) SetBgpAsn(v string) *ListVccsResponseBodyContentData {
+	s.BgpAsn = &v
+	return s
+}
+
 func (s *ListVccsResponseBodyContentData) SetBgpCidr(v string) *ListVccsResponseBodyContentData {
 	s.BgpCidr = &v
 	return s
@@ -8504,6 +18422,11 @@ func (s *ListVccsResponseBodyContentData) SetBgpCidr(v string) *ListVccsResponse
 
 func (s *ListVccsResponseBodyContentData) SetCenId(v string) *ListVccsResponseBodyContentData {
 	s.CenId = &v
+	return s
+}
+
+func (s *ListVccsResponseBodyContentData) SetCenOwnerId(v string) *ListVccsResponseBodyContentData {
+	s.CenOwnerId = &v
 	return s
 }
 
@@ -8628,18 +18551,78 @@ func (s *ListVccsResponseBodyContentData) SetZoneId(v string) *ListVccsResponseB
 }
 
 type ListVccsResponseBodyContentDataErInfos struct {
-	Connections  *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName       *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Connections
+	//
+	// example:
+	//
+	// 2
+	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// test_api_coverage
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Elastic Router ID
+	//
+	// example:
+	//
+	// er-a7rqv1rq
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// ER instance name
+	//
+	// example:
+	//
+	// er-1
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The time when the agent was last modified.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Primary Zone
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMaps    *int64  `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ER region information
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Number of routing policy
+	//
+	// example:
+	//
+	// 2
+	RouteMaps *int64 `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1620939556166277
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListVccsResponseBodyContentDataErInfos) String() string {
@@ -8711,7 +18694,25 @@ func (s *ListVccsResponseBodyContentDataErInfos) SetTenantId(v string) *ListVccs
 }
 
 type ListVccsResponseBodyContentDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-vcc
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag that is added to the resource.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// vcc-group-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -8734,10 +18735,34 @@ func (s *ListVccsResponseBodyContentDataTags) SetTagValue(v string) *ListVccsRes
 }
 
 type ListVccsResponseBodyContentDataVpdBaseInfo struct {
-	Cidr       *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The CIDR block of the VPD.
+	//
+	// 	- We recommend that you use an RFC private endpoint as the Lingjun CIDR block, such as 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16. In scenarios where the Doringjun CIDR block is connected to each other or where the Lingjun CIDR block is connected to a VPC, make sure that the addresses do not conflict with each other.
+	//
+	// 	- You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 and their subnets as the primary IPv4 CIDR block of the VPD.
+	//
+	// example:
+	//
+	// 10.0.0.0/13
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1668158213000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	VpdId      *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName    *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-9n7ioqrp
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// Lingjun CIDR block instance name
+	//
+	// example:
+	//
+	// yzp-rg-test3
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s ListVccsResponseBodyContentDataVpdBaseInfo) String() string {
@@ -8769,9 +18794,9 @@ func (s *ListVccsResponseBodyContentDataVpdBaseInfo) SetVpdName(v string) *ListV
 }
 
 type ListVccsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVccsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVccsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVccsResponse) String() string {
@@ -8798,16 +18823,74 @@ func (s *ListVccsResponse) SetBody(v *ListVccsResponseBody) *ListVccsResponse {
 }
 
 type ListVpdGrantRulesRequest struct {
-	EnablePage    *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ForSelect     *bool   `json:"ForSelect,omitempty" xml:"ForSelect,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Specifies whether to enable pagination query.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Use the drop-down box
+	//
+	// example:
+	//
+	// true
+	ForSelect *bool `json:"ForSelect,omitempty" xml:"ForSelect,omitempty"`
+	// Authorization Entry ID
+	//
+	// example:
+	//
+	// grant-rule-8rgvqazb
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// Authorized Tenant ID
+	//
+	// example:
+	//
+	// 1620939556166279
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the network instance that you want to query.
+	//
+	// example:
+	//
+	// vpd-8rgvqazb
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name
+	//
+	// example:
+	//
+	// vpd-1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListVpdGrantRulesRequest) String() string {
@@ -8868,11 +18951,32 @@ func (s *ListVpdGrantRulesRequest) SetRegionId(v string) *ListVpdGrantRulesReque
 	return s
 }
 
+func (s *ListVpdGrantRulesRequest) SetResourceGroupId(v string) *ListVpdGrantRulesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ListVpdGrantRulesResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListVpdGrantRulesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListVpdGrantRulesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// A56F7D3C-8850-5AF4-A342-2D71C9A9D1CC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVpdGrantRulesResponseBody) String() string {
@@ -8904,8 +19008,14 @@ func (s *ListVpdGrantRulesResponseBody) SetRequestId(v string) *ListVpdGrantRule
 }
 
 type ListVpdGrantRulesResponseBodyContent struct {
-	Data  []*ListVpdGrantRulesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Lingjun CIDR block authorization information list
+	Data []*ListVpdGrantRulesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListVpdGrantRulesResponseBodyContent) String() string {
@@ -8927,16 +19037,78 @@ func (s *ListVpdGrantRulesResponseBodyContent) SetTotal(v int64) *ListVpdGrantRu
 }
 
 type ListVpdGrantRulesResponseBodyContentData struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErId          *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	GrantRuleId   *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// The time when the data address was created.
+	//
+	// example:
+	//
+	// 1643013506000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The current network sample is authorized to the specified Lingjun HUB sample ID.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Authorization Entry ID
+	//
+	// example:
+	//
+	// grant-rule-8rgvqazb
+	GrantRuleId *string `json:"GrantRuleId,omitempty" xml:"GrantRuleId,omitempty"`
+	// The ID of the tenant to which the current instance is authorized.
+	//
+	// example:
+	//
+	// 1672372231790
 	GrantTenantId *string `json:"GrantTenantId,omitempty" xml:"GrantTenantId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Product       *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Used          *bool   `json:"Used,omitempty" xml:"Used,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-8rgvqazb
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the ECU.
+	//
+	// example:
+	//
+	// vpd-1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The type of the authorized product. Valid values:
+	//
+	// 	- **VPD**: indicates a VPD instance of the Lingjun network segment.
+	//
+	// 	- **VCC**: indicates that Lingjun connects to the VCC instance.
+	//
+	// The caller does not need to specify.
+	//
+	// example:
+	//
+	// VPD
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Whether the current authorized instance has been bound
+	//
+	// example:
+	//
+	// true
+	Used *bool `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s ListVpdGrantRulesResponseBodyContentData) String() string {
@@ -8987,6 +19159,11 @@ func (s *ListVpdGrantRulesResponseBodyContentData) SetRegionId(v string) *ListVp
 	return s
 }
 
+func (s *ListVpdGrantRulesResponseBodyContentData) SetResourceGroupId(v string) *ListVpdGrantRulesResponseBodyContentData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListVpdGrantRulesResponseBodyContentData) SetTenantId(v string) *ListVpdGrantRulesResponseBodyContentData {
 	s.TenantId = &v
 	return s
@@ -8998,9 +19175,9 @@ func (s *ListVpdGrantRulesResponseBodyContentData) SetUsed(v bool) *ListVpdGrant
 }
 
 type ListVpdGrantRulesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVpdGrantRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVpdGrantRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVpdGrantRulesResponse) String() string {
@@ -9027,17 +19204,92 @@ func (s *ListVpdGrantRulesResponse) SetBody(v *ListVpdGrantRulesResponseBody) *L
 }
 
 type ListVpdRouteEntriesRequest struct {
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	EnablePage           *bool   `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpdId                *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdRouteEntryId      *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
+	// Specifies whether to enable paged query. Optional values:
+	//
+	// 	- **true**: Enable pagination query
+	//
+	// 	- **false**: Pagination query is disabled
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Filter 32 detailed CIDR blocks. Default value: true
+	//
+	// example:
+	//
+	// true
+	IgnoreDetailedRouteEntry *bool `json:"IgnoreDetailedRouteEntry,omitempty" xml:"IgnoreDetailedRouteEntry,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// vcc-cn-209300qha01
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// VCC
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfm4mlwqjalz7a
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// BGP
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the enterprise-level snapshot policy.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-fuliephf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// Lingjun CIDR block route entry instance ID
+	//
+	// example:
+	//
+	// vpd-rte-4r1zbhoh
+	VpdRouteEntryId *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
 }
 
 func (s ListVpdRouteEntriesRequest) String() string {
@@ -9055,6 +19307,11 @@ func (s *ListVpdRouteEntriesRequest) SetDestinationCidrBlock(v string) *ListVpdR
 
 func (s *ListVpdRouteEntriesRequest) SetEnablePage(v bool) *ListVpdRouteEntriesRequest {
 	s.EnablePage = &v
+	return s
+}
+
+func (s *ListVpdRouteEntriesRequest) SetIgnoreDetailedRouteEntry(v bool) *ListVpdRouteEntriesRequest {
+	s.IgnoreDetailedRouteEntry = &v
 	return s
 }
 
@@ -9083,6 +19340,11 @@ func (s *ListVpdRouteEntriesRequest) SetRegionId(v string) *ListVpdRouteEntriesR
 	return s
 }
 
+func (s *ListVpdRouteEntriesRequest) SetResourceGroupId(v string) *ListVpdRouteEntriesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListVpdRouteEntriesRequest) SetRouteType(v string) *ListVpdRouteEntriesRequest {
 	s.RouteType = &v
 	return s
@@ -9104,10 +19366,26 @@ func (s *ListVpdRouteEntriesRequest) SetVpdRouteEntryId(v string) *ListVpdRouteE
 }
 
 type ListVpdRouteEntriesResponseBody struct {
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListVpdRouteEntriesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *ListVpdRouteEntriesResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 039C3C3A-3C37-5672-80D5-D8CD48C676D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVpdRouteEntriesResponseBody) String() string {
@@ -9139,8 +19417,14 @@ func (s *ListVpdRouteEntriesResponseBody) SetRequestId(v string) *ListVpdRouteEn
 }
 
 type ListVpdRouteEntriesResponseBodyContent struct {
-	Data  []*ListVpdRouteEntriesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Lingjun CIDR block route entry list
+	Data []*ListVpdRouteEntriesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListVpdRouteEntriesResponseBodyContent) String() string {
@@ -9162,17 +19446,78 @@ func (s *ListVpdRouteEntriesResponseBodyContent) SetTotal(v int64) *ListVpdRoute
 }
 
 type ListVpdRouteEntriesResponseBodyContentData struct {
+	// Destination CIDR block
+	//
+	// example:
+	//
+	// 0.0.0.0/0
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTenantId     *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
-	RouteType            *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	VpdId                *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdRouteEntryId      *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Next Hop Instance
+	//
+	// example:
+	//
+	// er-bmlqiym1
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// Next Hop Instance Type
+	//
+	// example:
+	//
+	// ER
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmxhucx5ewuwy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the tenant to which the resource belongs.
+	//
+	// example:
+	//
+	// 1655449505171
+	ResourceTenantId *string `json:"ResourceTenantId,omitempty" xml:"ResourceTenantId,omitempty"`
+	// Route type
+	//
+	// example:
+	//
+	// BGP
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The status of the intervention entry. Valid value:
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Lingjun CIDR block instance ID
+	//
+	// example:
+	//
+	// vpd-eoiy88ju
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The ID of the route entry.
+	//
+	// example:
+	//
+	// vpd-rte-toekyqel
+	VpdRouteEntryId *string `json:"VpdRouteEntryId,omitempty" xml:"VpdRouteEntryId,omitempty"`
 }
 
 func (s ListVpdRouteEntriesResponseBodyContentData) String() string {
@@ -9208,6 +19553,11 @@ func (s *ListVpdRouteEntriesResponseBodyContentData) SetRegionId(v string) *List
 	return s
 }
 
+func (s *ListVpdRouteEntriesResponseBodyContentData) SetResourceGroupId(v string) *ListVpdRouteEntriesResponseBodyContentData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListVpdRouteEntriesResponseBodyContentData) SetResourceTenantId(v string) *ListVpdRouteEntriesResponseBodyContentData {
 	s.ResourceTenantId = &v
 	return s
@@ -9239,9 +19589,9 @@ func (s *ListVpdRouteEntriesResponseBodyContentData) SetVpdRouteEntryId(v string
 }
 
 type ListVpdRouteEntriesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVpdRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVpdRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVpdRouteEntriesResponse) String() string {
@@ -9268,19 +19618,106 @@ func (s *ListVpdRouteEntriesResponse) SetBody(v *ListVpdRouteEntriesResponseBody
 }
 
 type ListVpdsRequest struct {
-	EnablePage      *bool                 `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
-	FilterErId      *string               `json:"FilterErId,omitempty" xml:"FilterErId,omitempty"`
-	ForSelect       *bool                 `json:"ForSelect,omitempty" xml:"ForSelect,omitempty"`
-	PageNumber      *int32                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag             []*ListVpdsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VpdId           *string               `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName         *string               `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
-	WithDependence  *bool                 `json:"WithDependence,omitempty" xml:"WithDependence,omitempty"`
-	WithoutVcc      *bool                 `json:"WithoutVcc,omitempty" xml:"WithoutVcc,omitempty"`
+	// Specifies whether to enable paged query.
+	//
+	// example:
+	//
+	// false
+	EnablePage *bool `json:"EnablePage,omitempty" xml:"EnablePage,omitempty"`
+	// Queries the network segments of Lingjun that are not bound to a specified Lingjun HUB.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	FilterErId *string `json:"FilterErId,omitempty" xml:"FilterErId,omitempty"`
+	// If you select a drop-down list, only the basic information (including the instance ID and instance name) is returned. Possible values:
+	//
+	// 	- **true**: Select Query Use from the drop-down list.
+	//
+	// 	- **false**: Normal queries are used.
+	//
+	// example:
+	//
+	// true
+	ForSelect *bool `json:"ForSelect,omitempty" xml:"ForSelect,omitempty"`
+	// The page number of the page to return. Start value: 1 Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aeky5f3qx6ceapq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the CLB instance. Valid values:
+	//
+	// 	- **Available**: Normal.
+	//
+	// 	- **Not Available**: Not available.
+	//
+	// 	- **Executing**: The task is being executed.
+	//
+	// 	- **Deleting**: The account is being deleted
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tag []*ListVpdsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-fuliephf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The name of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-1
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// Specifies whether to include the dependent resource information. We recommend that you do not query the dependent resource information when you query by page. You can query the dependent resource information separately when you delete it. Possible values:
+	//
+	// 	- **true**: with dependency information.
+	//
+	// 	- **false**: does not include dependency information.
+	//
+	// example:
+	//
+	// false
+	WithDependence *bool `json:"WithDependence,omitempty" xml:"WithDependence,omitempty"`
+	// Queries the information about a Lingjun CIDR block that is not bound to a Lingjun connection. Possible values:
+	//
+	// 	- **true**: filters out VPDs that have been bound to VCC
+	//
+	// 	- **false**: does not filter VPD that has been bound to VCC
+	//
+	// example:
+	//
+	// true
+	WithoutVcc *bool `json:"WithoutVcc,omitempty" xml:"WithoutVcc,omitempty"`
 }
 
 func (s ListVpdsRequest) String() string {
@@ -9357,7 +19794,25 @@ func (s *ListVpdsRequest) SetWithoutVcc(v bool) *ListVpdsRequest {
 }
 
 type ListVpdsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the VPN attachment.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-vpd-region
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the VPN connection.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// wulanchabu
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9380,10 +19835,26 @@ func (s *ListVpdsRequestTag) SetValue(v string) *ListVpdsRequestTag {
 }
 
 type ListVpdsResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *ListVpdsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *ListVpdsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVpdsResponseBody) String() string {
@@ -9415,8 +19886,14 @@ func (s *ListVpdsResponseBody) SetRequestId(v string) *ListVpdsResponseBody {
 }
 
 type ListVpdsResponseBodyContent struct {
-	Data  []*ListVpdsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Total *int64                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The returned data.
+	Data []*ListVpdsResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries that are returned.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListVpdsResponseBodyContent) String() string {
@@ -9438,22 +19915,105 @@ func (s *ListVpdsResponseBodyContent) SetTotal(v int64) *ListVpdsResponseBodyCon
 }
 
 type ListVpdsResponseBodyContentData struct {
-	Cidr            *string                                   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	CreateTime      *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Dependence      map[string]interface{}                    `json:"Dependence,omitempty" xml:"Dependence,omitempty"`
-	ErInfos         []*ListVpdsResponseBodyContentDataErInfos `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
-	GmtModified     *string                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Message         *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	NcCount         *int32                                    `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
-	RegionId        *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceCidr     *string                                   `json:"ServiceCidr,omitempty" xml:"ServiceCidr,omitempty"`
-	Status          *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubnetCount     *int32                                    `json:"SubnetCount,omitempty" xml:"SubnetCount,omitempty"`
-	Tags            []*ListVpdsResponseBodyContentDataTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantId        *string                                   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// vpd id
-	VpdId   *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The CIDR block of the VPD.
+	//
+	// 	- We recommend that you use an RFC private endpoint as the Lingjun CIDR block, such as 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16. In scenarios where the Doringjun CIDR block is connected to each other or where the Lingjun CIDR block is connected to a VPC, make sure that the addresses do not conflict with each other.
+	//
+	// 	- You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 and their subnets as the primary IPv4 CIDR block of the VPD.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 1678273219000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Dependencies.
+	Dependence map[string]interface{} `json:"Dependence,omitempty" xml:"Dependence,omitempty"`
+	// The information list of the bound Lingjun HUB(ER).
+	ErInfos []*ListVpdsResponseBodyContentDataErInfos `json:"ErInfos,omitempty" xml:"ErInfos,omitempty" type:"Repeated"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 1678273219000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// nc quantity.
+	//
+	// example:
+	//
+	// 16
+	NcCount *int32 `json:"NcCount,omitempty" xml:"NcCount,omitempty"`
+	// Number of Lingjun network interface controller
+	//
+	// example:
+	//
+	// 1
+	NetworkInterfaceCount *int32 `json:"NetworkInterfaceCount,omitempty" xml:"NetworkInterfaceCount,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.htm?spm=a2c4g.11186623.0.0.29e15d7akXhpuu).
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of additional CIDR blocks.
+	SecondaryCidrBlocks []*string `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Repeated"`
+	// The Service CIDR block.
+	//
+	// example:
+	//
+	// 169.254.252.0/23
+	ServiceCidr *string `json:"ServiceCidr,omitempty" xml:"ServiceCidr,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of subnets.
+	//
+	// example:
+	//
+	// 1
+	SubnetCount *int32 `json:"SubnetCount,omitempty" xml:"SubnetCount,omitempty"`
+	// The tag information.
+	//
+	// You can specify up to 20 tags.
+	Tags []*ListVpdsResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1655449505171
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-lg4dppgi
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The name of the VPD.
+	//
+	// example:
+	//
+	// vpd-1
 	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
@@ -9500,6 +20060,11 @@ func (s *ListVpdsResponseBodyContentData) SetNcCount(v int32) *ListVpdsResponseB
 	return s
 }
 
+func (s *ListVpdsResponseBodyContentData) SetNetworkInterfaceCount(v int32) *ListVpdsResponseBodyContentData {
+	s.NetworkInterfaceCount = &v
+	return s
+}
+
 func (s *ListVpdsResponseBodyContentData) SetRegionId(v string) *ListVpdsResponseBodyContentData {
 	s.RegionId = &v
 	return s
@@ -9507,6 +20072,11 @@ func (s *ListVpdsResponseBodyContentData) SetRegionId(v string) *ListVpdsRespons
 
 func (s *ListVpdsResponseBodyContentData) SetResourceGroupId(v string) *ListVpdsResponseBodyContentData {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListVpdsResponseBodyContentData) SetSecondaryCidrBlocks(v []*string) *ListVpdsResponseBodyContentData {
+	s.SecondaryCidrBlocks = v
 	return s
 }
 
@@ -9546,18 +20116,78 @@ func (s *ListVpdsResponseBodyContentData) SetVpdName(v string) *ListVpdsResponse
 }
 
 type ListVpdsResponseBodyContentDataErInfos struct {
-	Connections  *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName       *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The number of connections.
+	//
+	// example:
+	//
+	// 2
+	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	// The time when the activation code was created.
+	//
+	// example:
+	//
+	// 2023-12-26 20:16:36
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the synchronization task.
+	//
+	// example:
+	//
+	// No description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Elastic Router (ER) instance.
+	//
+	// example:
+	//
+	// er-63vzm0fw
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The name of the Lingjun HUB(ER) instance.
+	//
+	// example:
+	//
+	// er-1
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The time when the O\\&M task was modified.
+	//
+	// example:
+	//
+	// 2023-12-26 20:16:36
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The primary zone.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RouteMaps    *int64  `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The supported region.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of routing policy.
+	//
+	// example:
+	//
+	// 2
+	RouteMaps *int64 `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1620939556166277
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListVpdsResponseBodyContentDataErInfos) String() string {
@@ -9629,7 +20259,25 @@ func (s *ListVpdsResponseBodyContentDataErInfos) SetTenantId(v string) *ListVpds
 }
 
 type ListVpdsResponseBodyContentDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// You cannot specify an empty string as a tag key. It can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// tag-vpd-region
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag that is added to the resource.
+	//
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -9652,9 +20300,9 @@ func (s *ListVpdsResponseBodyContentDataTags) SetTagValue(v string) *ListVpdsRes
 }
 
 type ListVpdsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVpdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVpdsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVpdsResponse) String() string {
@@ -9680,12 +20328,495 @@ func (s *ListVpdsResponse) SetBody(v *ListVpdsResponseBody) *ListVpdsResponse {
 	return s
 }
 
+type QueryInstanceNcdRequest struct {
+	// Instance 1ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni-1235****
+	InstanceId1 *string `json:"InstanceId1,omitempty" xml:"InstanceId1,omitempty"`
+	// Instance 2ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni-1234****
+	InstanceId2 *string `json:"InstanceId2,omitempty" xml:"InstanceId2,omitempty"`
+	// The parameter that specifies the instance type.
+	//
+	// Valid value:
+	//
+	// 	- node: Lingjun node.
+	//
+	// 	- lni: lingjun network interface controller.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s QueryInstanceNcdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceNcdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceNcdRequest) SetInstanceId1(v string) *QueryInstanceNcdRequest {
+	s.InstanceId1 = &v
+	return s
+}
+
+func (s *QueryInstanceNcdRequest) SetInstanceId2(v string) *QueryInstanceNcdRequest {
+	s.InstanceId2 = &v
+	return s
+}
+
+func (s *QueryInstanceNcdRequest) SetInstanceType(v string) *QueryInstanceNcdRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *QueryInstanceNcdRequest) SetRegionId(v string) *QueryInstanceNcdRequest {
+	s.RegionId = &v
+	return s
+}
+
+type QueryInstanceNcdResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *QueryInstanceNcdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// You don\\"t have the permission of this operation, action=eflo:QueryInstanceNcd, arn=acs:eflo:cn-shenzhen:1263399219805497:networkinterface/*, resourceGroup=null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// BDBCC783-84CA-5733-8EEA-645C88B9009C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryInstanceNcdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceNcdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceNcdResponseBody) SetCode(v int32) *QueryInstanceNcdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryInstanceNcdResponseBody) SetContent(v *QueryInstanceNcdResponseBodyContent) *QueryInstanceNcdResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *QueryInstanceNcdResponseBody) SetMessage(v string) *QueryInstanceNcdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryInstanceNcdResponseBody) SetRequestId(v string) *QueryInstanceNcdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryInstanceNcdResponseBodyContent struct {
+	// Instance 1ID
+	//
+	// example:
+	//
+	// lni-1235****
+	InstanceId1 *string `json:"InstanceId1,omitempty" xml:"InstanceId1,omitempty"`
+	// Instance 2ID
+	//
+	// example:
+	//
+	// lni-1234****
+	InstanceId2 *string `json:"InstanceId2,omitempty" xml:"InstanceId2,omitempty"`
+	// Instance Type
+	//
+	// Valid value:
+	//
+	// 	- node: Lingjun node.
+	//
+	// 	- lni: lingjun network interface controller.
+	//
+	// example:
+	//
+	// lni
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// network communication distance between instances
+	//
+	// example:
+	//
+	// 1
+	Ncd *int32 `json:"Ncd,omitempty" xml:"Ncd,omitempty"`
+}
+
+func (s QueryInstanceNcdResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceNcdResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceNcdResponseBodyContent) SetInstanceId1(v string) *QueryInstanceNcdResponseBodyContent {
+	s.InstanceId1 = &v
+	return s
+}
+
+func (s *QueryInstanceNcdResponseBodyContent) SetInstanceId2(v string) *QueryInstanceNcdResponseBodyContent {
+	s.InstanceId2 = &v
+	return s
+}
+
+func (s *QueryInstanceNcdResponseBodyContent) SetInstanceType(v string) *QueryInstanceNcdResponseBodyContent {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *QueryInstanceNcdResponseBodyContent) SetNcd(v int32) *QueryInstanceNcdResponseBodyContent {
+	s.Ncd = &v
+	return s
+}
+
+type QueryInstanceNcdResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryInstanceNcdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryInstanceNcdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceNcdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceNcdResponse) SetHeaders(v map[string]*string) *QueryInstanceNcdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInstanceNcdResponse) SetStatusCode(v int32) *QueryInstanceNcdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryInstanceNcdResponse) SetBody(v *QueryInstanceNcdResponseBody) *QueryInstanceNcdResponse {
+	s.Body = v
+	return s
+}
+
+type RefundVccRequest struct {
+	// Region
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun Connection ID
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+}
+
+func (s RefundVccRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundVccRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefundVccRequest) SetRegionId(v string) *RefundVccRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RefundVccRequest) SetVccId(v string) *RefundVccRequest {
+	s.VccId = &v
+	return s
+}
+
+type RefundVccResponseBody struct {
+	// The response status code
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response content
+	//
+	// example:
+	//
+	// {}
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Response message, which is \\"success\\" if the request succeeds
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RefundVccResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundVccResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefundVccResponseBody) SetCode(v int32) *RefundVccResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RefundVccResponseBody) SetContent(v interface{}) *RefundVccResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *RefundVccResponseBody) SetMessage(v string) *RefundVccResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RefundVccResponseBody) SetRequestId(v string) *RefundVccResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefundVccResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefundVccResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefundVccResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundVccResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefundVccResponse) SetHeaders(v map[string]*string) *RefundVccResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefundVccResponse) SetStatusCode(v int32) *RefundVccResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefundVccResponse) SetBody(v *RefundVccResponseBody) *RefundVccResponse {
+	s.Body = v
+	return s
+}
+
+type RetryVccRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun Connection ID
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+}
+
+func (s RetryVccRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryVccRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryVccRequest) SetRegionId(v string) *RetryVccRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RetryVccRequest) SetVccId(v string) *RetryVccRequest {
+	s.VccId = &v
+	return s
+}
+
+type RetryVccResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// {}
+	Content interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 7F9082CC-3D94-560F-A575-8E8EF6CE2CB8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RetryVccResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryVccResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryVccResponseBody) SetCode(v int32) *RetryVccResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RetryVccResponseBody) SetContent(v interface{}) *RetryVccResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *RetryVccResponseBody) SetMessage(v string) *RetryVccResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RetryVccResponseBody) SetRequestId(v string) *RetryVccResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RetryVccResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RetryVccResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RetryVccResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryVccResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryVccResponse) SetHeaders(v map[string]*string) *RetryVccResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryVccResponse) SetStatusCode(v int32) *RetryVccResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryVccResponse) SetBody(v *RetryVccResponseBody) *RetryVccResponse {
+	s.Body = v
+	return s
+}
+
 type UnAssignPrivateIpAddressRequest struct {
-	IpName             *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// By default, popApi is not ignored and idempotent
+	//
+	// example:
+	//
+	// 141cccd6-dfbd-11ec-b8e8-0242ac110003
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// IP unique identifier
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sip-xxxx
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// Lingjun network interface controller ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lni-bp18exxqa2rvfn45e5pz
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrivateIpAddress   *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubnetId           *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The private IP address of the instance.
+	//
+	// example:
+	//
+	// 10.209.75.242
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// Region
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Subnet
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subnet-f3zfzmnc
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 }
 
 func (s UnAssignPrivateIpAddressRequest) String() string {
@@ -9694,6 +20825,11 @@ func (s UnAssignPrivateIpAddressRequest) String() string {
 
 func (s UnAssignPrivateIpAddressRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UnAssignPrivateIpAddressRequest) SetClientToken(v string) *UnAssignPrivateIpAddressRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *UnAssignPrivateIpAddressRequest) SetIpName(v string) *UnAssignPrivateIpAddressRequest {
@@ -9722,10 +20858,26 @@ func (s *UnAssignPrivateIpAddressRequest) SetSubnetId(v string) *UnAssignPrivate
 }
 
 type UnAssignPrivateIpAddressResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *UnAssignPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *UnAssignPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// You don\\"t have the permission to do this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnAssignPrivateIpAddressResponseBody) String() string {
@@ -9757,7 +20909,17 @@ func (s *UnAssignPrivateIpAddressResponseBody) SetRequestId(v string) *UnAssignP
 }
 
 type UnAssignPrivateIpAddressResponseBodyContent struct {
-	IpName             *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// IP unique identifier
+	//
+	// example:
+	//
+	// sip-xxxxx
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// Lingjun network interface controller ID
+	//
+	// example:
+	//
+	// lni-bp164jwjpdq4lnsy83s5
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 }
 
@@ -9780,9 +20942,9 @@ func (s *UnAssignPrivateIpAddressResponseBodyContent) SetNetworkInterfaceId(v st
 }
 
 type UnAssignPrivateIpAddressResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnAssignPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnAssignPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnAssignPrivateIpAddressResponse) String() string {
@@ -9808,11 +20970,548 @@ func (s *UnAssignPrivateIpAddressResponse) SetBody(v *UnAssignPrivateIpAddressRe
 	return s
 }
 
-type UpdateErRequest struct {
+type UnAssociateVpdCidrBlockRequest struct {
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The additional CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.168.0.0/16
+	SecondaryCidrBlock *string `json:"SecondaryCidrBlock,omitempty" xml:"SecondaryCidrBlock,omitempty"`
+	// The ID of the Lingjun CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-aof7dat1
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+}
+
+func (s UnAssociateVpdCidrBlockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnAssociateVpdCidrBlockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnAssociateVpdCidrBlockRequest) SetRegionId(v string) *UnAssociateVpdCidrBlockRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UnAssociateVpdCidrBlockRequest) SetSecondaryCidrBlock(v string) *UnAssociateVpdCidrBlockRequest {
+	s.SecondaryCidrBlock = &v
+	return s
+}
+
+func (s *UnAssociateVpdCidrBlockRequest) SetVpdId(v string) *UnAssociateVpdCidrBlockRequest {
+	s.VpdId = &v
+	return s
+}
+
+type UnAssociateVpdCidrBlockResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *UnAssociateVpdCidrBlockResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 9C50C9CD-E799-54DA-BA7A-1FAF3DF80857
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnAssociateVpdCidrBlockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnAssociateVpdCidrBlockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnAssociateVpdCidrBlockResponseBody) SetCode(v int32) *UnAssociateVpdCidrBlockResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnAssociateVpdCidrBlockResponseBody) SetContent(v *UnAssociateVpdCidrBlockResponseBodyContent) *UnAssociateVpdCidrBlockResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *UnAssociateVpdCidrBlockResponseBody) SetMessage(v string) *UnAssociateVpdCidrBlockResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UnAssociateVpdCidrBlockResponseBody) SetRequestId(v string) *UnAssociateVpdCidrBlockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnAssociateVpdCidrBlockResponseBodyContent struct {
+	// The ID of the Lingjun CIDR block.
+	//
+	// example:
+	//
+	// vpd-ze3na0wf
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+}
+
+func (s UnAssociateVpdCidrBlockResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnAssociateVpdCidrBlockResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *UnAssociateVpdCidrBlockResponseBodyContent) SetVpdId(v string) *UnAssociateVpdCidrBlockResponseBodyContent {
+	s.VpdId = &v
+	return s
+}
+
+type UnAssociateVpdCidrBlockResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnAssociateVpdCidrBlockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnAssociateVpdCidrBlockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnAssociateVpdCidrBlockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnAssociateVpdCidrBlockResponse) SetHeaders(v map[string]*string) *UnAssociateVpdCidrBlockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnAssociateVpdCidrBlockResponse) SetStatusCode(v int32) *UnAssociateVpdCidrBlockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnAssociateVpdCidrBlockResponse) SetBody(v *UnAssociateVpdCidrBlockResponseBody) *UnAssociateVpdCidrBlockResponse {
+	s.Body = v
+	return s
+}
+
+type UnassignLeniPrivateIpAddressRequest struct {
+	// The idempotent identifier.
+	//
+	// example:
+	//
+	// 967e77a2-b61d-11ec-a147-0242c0a80504
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Lingjun Elastic Network Interface ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sip-8ylg****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UnassignLeniPrivateIpAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassignLeniPrivateIpAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnassignLeniPrivateIpAddressRequest) SetClientToken(v string) *UnassignLeniPrivateIpAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressRequest) SetElasticNetworkInterfaceId(v string) *UnassignLeniPrivateIpAddressRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressRequest) SetIpName(v string) *UnassignLeniPrivateIpAddressRequest {
+	s.IpName = &v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressRequest) SetRegionId(v string) *UnassignLeniPrivateIpAddressRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UnassignLeniPrivateIpAddressResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	//
+	// example:
+	//
+	// {}
+	Content *UnassignLeniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnassignLeniPrivateIpAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassignLeniPrivateIpAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnassignLeniPrivateIpAddressResponseBody) SetCode(v int32) *UnassignLeniPrivateIpAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressResponseBody) SetContent(v *UnassignLeniPrivateIpAddressResponseBodyContent) *UnassignLeniPrivateIpAddressResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressResponseBody) SetMessage(v string) *UnassignLeniPrivateIpAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressResponseBody) SetRequestId(v string) *UnassignLeniPrivateIpAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnassignLeniPrivateIpAddressResponseBodyContent struct {
+	// Lingjun Elastic Network Interface ID.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// example:
+	//
+	// sip-dqvs****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+}
+
+func (s UnassignLeniPrivateIpAddressResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassignLeniPrivateIpAddressResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *UnassignLeniPrivateIpAddressResponseBodyContent) SetElasticNetworkInterfaceId(v string) *UnassignLeniPrivateIpAddressResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressResponseBodyContent) SetIpName(v string) *UnassignLeniPrivateIpAddressResponseBodyContent {
+	s.IpName = &v
+	return s
+}
+
+type UnassignLeniPrivateIpAddressResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnassignLeniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnassignLeniPrivateIpAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassignLeniPrivateIpAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnassignLeniPrivateIpAddressResponse) SetHeaders(v map[string]*string) *UnassignLeniPrivateIpAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressResponse) SetStatusCode(v int32) *UnassignLeniPrivateIpAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnassignLeniPrivateIpAddressResponse) SetBody(v *UnassignLeniPrivateIpAddressResponseBody) *UnassignLeniPrivateIpAddressResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateElasticNetworkInterfaceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 3fd79d62-ab1d-11ec-9a53-0242ac110004
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the variable.
+	//
+	// example:
+	//
+	// LHICDOSEExternaluserinquiryP
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErId        *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	ErName      *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun Elastic Network Interface ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// sg-wz9fj2s3o21nw2****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+}
+
+func (s UpdateElasticNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateElasticNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateElasticNetworkInterfaceRequest) SetClientToken(v string) *UpdateElasticNetworkInterfaceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceRequest) SetDescription(v string) *UpdateElasticNetworkInterfaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceRequest) SetElasticNetworkInterfaceId(v string) *UpdateElasticNetworkInterfaceRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceRequest) SetRegionId(v string) *UpdateElasticNetworkInterfaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceRequest) SetSecurityGroupId(v string) *UpdateElasticNetworkInterfaceRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+type UpdateElasticNetworkInterfaceResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *UpdateElasticNetworkInterfaceResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateElasticNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateElasticNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateElasticNetworkInterfaceResponseBody) SetCode(v int32) *UpdateElasticNetworkInterfaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceResponseBody) SetContent(v *UpdateElasticNetworkInterfaceResponseBodyContent) *UpdateElasticNetworkInterfaceResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceResponseBody) SetMessage(v string) *UpdateElasticNetworkInterfaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceResponseBody) SetRequestId(v string) *UpdateElasticNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateElasticNetworkInterfaceResponseBodyContent struct {
+	// Lingjun Elastic Network Interface ID
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Node ID
+	//
+	// example:
+	//
+	// e01-cn-lbj3aej****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s UpdateElasticNetworkInterfaceResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateElasticNetworkInterfaceResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateElasticNetworkInterfaceResponseBodyContent) SetElasticNetworkInterfaceId(v string) *UpdateElasticNetworkInterfaceResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceResponseBodyContent) SetNodeId(v string) *UpdateElasticNetworkInterfaceResponseBodyContent {
+	s.NodeId = &v
+	return s
+}
+
+type UpdateElasticNetworkInterfaceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateElasticNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateElasticNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateElasticNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateElasticNetworkInterfaceResponse) SetHeaders(v map[string]*string) *UpdateElasticNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceResponse) SetStatusCode(v int32) *UpdateElasticNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateElasticNetworkInterfaceResponse) SetBody(v *UpdateElasticNetworkInterfaceResponseBody) *UpdateElasticNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateErRequest struct {
+	// The description of the document.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun HUB Instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// Parameter
+	//
+	// example:
+	//
+	// er-wulanchabu-main
+	ErName *string `json:"ErName,omitempty" xml:"ErName,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateErRequest) String() string {
@@ -9844,10 +21543,30 @@ func (s *UpdateErRequest) SetRegionId(v string) *UpdateErRequest {
 }
 
 type UpdateErResponseBody struct {
-	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// {}
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 3D9D6E7B-365B-5200-BFA6-9B79E269058C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateErResponseBody) String() string {
@@ -9879,9 +21598,9 @@ func (s *UpdateErResponseBody) SetRequestId(v string) *UpdateErResponseBody {
 }
 
 type UpdateErResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateErResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateErResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateErResponse) String() string {
@@ -9908,10 +21627,36 @@ func (s *UpdateErResponse) SetBody(v *UpdateErResponseBody) *UpdateErResponse {
 }
 
 type UpdateErAttachmentRequest struct {
-	ErAttachmentId   *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
+	// The connection ID of the Lingjun HUB network instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-attachment-i1ioibyf
+	ErAttachmentId *string `json:"ErAttachmentId,omitempty" xml:"ErAttachmentId,omitempty"`
+	// Lingjun HUB Network Instance Connection Name
+	//
+	// example:
+	//
+	// er-attachment-wulanchabu-main
 	ErAttachmentName *string `json:"ErAttachmentName,omitempty" xml:"ErAttachmentName,omitempty"`
-	ErId             *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateErAttachmentRequest) String() string {
@@ -9943,10 +21688,30 @@ func (s *UpdateErAttachmentRequest) SetRegionId(v string) *UpdateErAttachmentReq
 }
 
 type UpdateErAttachmentResponseBody struct {
-	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// {}
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request
+	//
+	// example:
+	//
+	// 7F9082CC-3D94-560F-A575-8E8EF6CE2CB8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateErAttachmentResponseBody) String() string {
@@ -9978,9 +21743,9 @@ func (s *UpdateErAttachmentResponseBody) SetRequestId(v string) *UpdateErAttachm
 }
 
 type UpdateErAttachmentResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateErAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateErAttachmentResponse) String() string {
@@ -10007,10 +21772,36 @@ func (s *UpdateErAttachmentResponse) SetBody(v *UpdateErAttachmentResponseBody) 
 }
 
 type UpdateErRouteMapRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// The description of the document.
+	//
+	// example:
+	//
+	// test-example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun HUB ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-kkopgtne
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// routing policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// er-rmap-uwglhzom
 	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateErRouteMapRequest) String() string {
@@ -10042,10 +21833,30 @@ func (s *UpdateErRouteMapRequest) SetRegionId(v string) *UpdateErRouteMapRequest
 }
 
 type UpdateErRouteMapResponseBody struct {
-	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// {}
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// BDBCC783-84CA-5733-8EEA-645C88B9009C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateErRouteMapResponseBody) String() string {
@@ -10077,9 +21888,9 @@ func (s *UpdateErRouteMapResponseBody) SetRequestId(v string) *UpdateErRouteMapR
 }
 
 type UpdateErRouteMapResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateErRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateErRouteMapResponse) String() string {
@@ -10105,12 +21916,221 @@ func (s *UpdateErRouteMapResponse) SetBody(v *UpdateErRouteMapResponseBody) *Upd
 	return s
 }
 
+type UpdateLeniPrivateIpAddressRequest struct {
+	// The description of the ECS instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Lingjun Elastic Network Interface ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sip-8ylg****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateLeniPrivateIpAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLeniPrivateIpAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLeniPrivateIpAddressRequest) SetDescription(v string) *UpdateLeniPrivateIpAddressRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressRequest) SetElasticNetworkInterfaceId(v string) *UpdateLeniPrivateIpAddressRequest {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressRequest) SetIpName(v string) *UpdateLeniPrivateIpAddressRequest {
+	s.IpName = &v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressRequest) SetRegionId(v string) *UpdateLeniPrivateIpAddressRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateLeniPrivateIpAddressResponseBody struct {
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *UpdateLeniPrivateIpAddressResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A88DFED5-24B7-5A3E-87DE-380BF06F3C90
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLeniPrivateIpAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLeniPrivateIpAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLeniPrivateIpAddressResponseBody) SetCode(v int32) *UpdateLeniPrivateIpAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressResponseBody) SetContent(v *UpdateLeniPrivateIpAddressResponseBodyContent) *UpdateLeniPrivateIpAddressResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressResponseBody) SetMessage(v string) *UpdateLeniPrivateIpAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressResponseBody) SetRequestId(v string) *UpdateLeniPrivateIpAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLeniPrivateIpAddressResponseBodyContent struct {
+	// Lingjun Elastic Network Interface ID.
+	//
+	// example:
+	//
+	// leni-1234****
+	ElasticNetworkInterfaceId *string `json:"ElasticNetworkInterfaceId,omitempty" xml:"ElasticNetworkInterfaceId,omitempty"`
+	// Lingjun Elastic Network Interface secondary private IP unique identifier.
+	//
+	// example:
+	//
+	// sip-8ylg****
+	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
+}
+
+func (s UpdateLeniPrivateIpAddressResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLeniPrivateIpAddressResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLeniPrivateIpAddressResponseBodyContent) SetElasticNetworkInterfaceId(v string) *UpdateLeniPrivateIpAddressResponseBodyContent {
+	s.ElasticNetworkInterfaceId = &v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressResponseBodyContent) SetIpName(v string) *UpdateLeniPrivateIpAddressResponseBodyContent {
+	s.IpName = &v
+	return s
+}
+
+type UpdateLeniPrivateIpAddressResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLeniPrivateIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLeniPrivateIpAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLeniPrivateIpAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLeniPrivateIpAddressResponse) SetHeaders(v map[string]*string) *UpdateLeniPrivateIpAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressResponse) SetStatusCode(v int32) *UpdateLeniPrivateIpAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLeniPrivateIpAddressResponse) SetBody(v *UpdateLeniPrivateIpAddressResponseBody) *UpdateLeniPrivateIpAddressResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSubnetRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubnetId   *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The subnet instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subnet-f3zfzmnc
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The new name for the subnet instance.
+	//
+	// example:
+	//
+	// subnet-1
 	SubnetName *string `json:"SubnetName,omitempty" xml:"SubnetName,omitempty"`
-	VpdId      *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the VPD to which the subnet belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-aof7dat1
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpdateSubnetRequest) String() string {
@@ -10147,10 +22167,26 @@ func (s *UpdateSubnetRequest) SetZoneId(v string) *UpdateSubnetRequest {
 }
 
 type UpdateSubnetResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *UpdateSubnetResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response content.
+	Content *UpdateSubnetResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3D9D6E7B-365B-5200-BFA6-9B79E269058C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateSubnetResponseBody) String() string {
@@ -10182,6 +22218,11 @@ func (s *UpdateSubnetResponseBody) SetRequestId(v string) *UpdateSubnetResponseB
 }
 
 type UpdateSubnetResponseBodyContent struct {
+	// The subnet instance ID.
+	//
+	// example:
+	//
+	// subnet-yuvn29bn
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 }
 
@@ -10199,9 +22240,9 @@ func (s *UpdateSubnetResponseBodyContent) SetSubnetId(v string) *UpdateSubnetRes
 }
 
 type UpdateSubnetResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSubnetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSubnetResponse) String() string {
@@ -10228,11 +22269,38 @@ func (s *UpdateSubnetResponse) SetBody(v *UpdateSubnetResponseBody) *UpdateSubne
 }
 
 type UpdateVccRequest struct {
-	Bandwidth *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VccId     *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
-	VccName   *string `json:"VccName,omitempty" xml:"VccName,omitempty"`
+	// The peak bandwidth of the Lingjun connection instance. Unit: Mbit/s. Valid values: 1000 to 400000
+	//
+	// example:
+	//
+	// 1000
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the order placed on the instance.
+	//
+	// example:
+	//
+	// 20006627643
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Lingjun connection instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vcc-cn-zvp2w222001
+	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
+	// The name of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-heyuan-backup
+	VccName *string `json:"VccName,omitempty" xml:"VccName,omitempty"`
 }
 
 func (s UpdateVccRequest) String() string {
@@ -10269,10 +22337,26 @@ func (s *UpdateVccRequest) SetVccName(v string) *UpdateVccRequest {
 }
 
 type UpdateVccResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *UpdateVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Content *UpdateVccResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The error message. (If the instance is in the Exception state, the exception cause is prompted.)
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// F906C4D3-7444-58E2-9819-E3D8563571A3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateVccResponseBody) String() string {
@@ -10304,6 +22388,11 @@ func (s *UpdateVccResponseBody) SetRequestId(v string) *UpdateVccResponseBody {
 }
 
 type UpdateVccResponseBodyContent struct {
+	// The ID of the Lingjun connection instance.
+	//
+	// example:
+	//
+	// vcc-cn-2r42v22cn03
 	VccId *string `json:"VccId,omitempty" xml:"VccId,omitempty"`
 }
 
@@ -10321,9 +22410,9 @@ func (s *UpdateVccResponseBodyContent) SetVccId(v string) *UpdateVccResponseBody
 }
 
 type UpdateVccResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateVccResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVccResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateVccResponse) String() string {
@@ -10350,9 +22439,28 @@ func (s *UpdateVccResponse) SetBody(v *UpdateVccResponseBody) *UpdateVccResponse
 }
 
 type UpdateVpdRequest struct {
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpdId    *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
-	VpdName  *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
+	// The ID of the VPD instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpd-omqutbff
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// The name of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-lingjun
+	VpdName *string `json:"VpdName,omitempty" xml:"VpdName,omitempty"`
 }
 
 func (s UpdateVpdRequest) String() string {
@@ -10379,10 +22487,26 @@ func (s *UpdateVpdRequest) SetVpdName(v string) *UpdateVpdRequest {
 }
 
 type UpdateVpdResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *UpdateVpdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Content *UpdateVpdResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AC8C713A-A9F4-5984-A5E1-76496DF35153
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateVpdResponseBody) String() string {
@@ -10414,6 +22538,11 @@ func (s *UpdateVpdResponseBody) SetRequestId(v string) *UpdateVpdResponseBody {
 }
 
 type UpdateVpdResponseBodyContent struct {
+	// The ID of the VPD instance.
+	//
+	// example:
+	//
+	// vpd-lg4dppgi
 	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
@@ -10431,9 +22560,9 @@ func (s *UpdateVpdResponseBodyContent) SetVpdId(v string) *UpdateVpdResponseBody
 }
 
 type UpdateVpdResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateVpdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVpdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateVpdResponse) String() string {
@@ -10506,6 +22635,115 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Apply for a secondary private IP address for the current Lingjun Elastic Network Interface. You can automatically assign a secondary private IP address.
+//
+// Description:
+//
+// Apply for a secondary private IP address for the specified Lingjun Elastic Network Interface.
+//
+// 	- If the PrivateIp field is empty, a secondary private IP address is automatically assigned and the unique identifier of the IP address is returned.
+//
+// 	- You can use the GetLeniPrivateIpAddress or ListLeniPrivateIpAddresses interface to check whether the secondary private IP address is assigned.
+//
+// @param request - AssignLeniPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignLeniPrivateIpAddressResponse
+func (client *Client) AssignLeniPrivateIpAddressWithOptions(request *AssignLeniPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *AssignLeniPrivateIpAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		body["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssignLeniPrivateIpAddress"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssignLeniPrivateIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Apply for a secondary private IP address for the current Lingjun Elastic Network Interface. You can automatically assign a secondary private IP address.
+//
+// Description:
+//
+// Apply for a secondary private IP address for the specified Lingjun Elastic Network Interface.
+//
+// 	- If the PrivateIp field is empty, a secondary private IP address is automatically assigned and the unique identifier of the IP address is returned.
+//
+// 	- You can use the GetLeniPrivateIpAddress or ListLeniPrivateIpAddresses interface to check whether the secondary private IP address is assigned.
+//
+// @param request - AssignLeniPrivateIpAddressRequest
+//
+// @return AssignLeniPrivateIpAddressResponse
+func (client *Client) AssignLeniPrivateIpAddress(request *AssignLeniPrivateIpAddressRequest) (_result *AssignLeniPrivateIpAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssignLeniPrivateIpAddressResponse{}
+	_body, _err := client.AssignLeniPrivateIpAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Applies for a private secondary IP address for the current LNI. You can also call this operation to assign a secondary MAC address to the current LNI.
+//
+// Description:
+//
+// >  Apply for secondary private IP addresses
+//
+// 	- By default, each network interface controller can apply for three secondary private IP addresses. If the quota is exceeded, contact the administrator.
+//
+// 	- The secondary private IP address is allocated from the Lingjun subnet to which the current network interface controller belongs. The first address and the last two addresses belong to reserved addresses and do not participate in the allocation.
+//
+// @param request - AssignPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignPrivateIpAddressResponse
 func (client *Client) AssignPrivateIpAddressWithOptions(request *AssignPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *AssignPrivateIpAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10514,6 +22752,14 @@ func (client *Client) AssignPrivateIpAddressWithOptions(request *AssignPrivateIp
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AssignMac)) {
 		body["AssignMac"] = request.AssignMac
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
@@ -10559,6 +22805,21 @@ func (client *Client) AssignPrivateIpAddressWithOptions(request *AssignPrivateIp
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a private secondary IP address for the current LNI. You can also call this operation to assign a secondary MAC address to the current LNI.
+//
+// Description:
+//
+// >  Apply for secondary private IP addresses
+//
+// 	- By default, each network interface controller can apply for three secondary private IP addresses. If the quota is exceeded, contact the administrator.
+//
+// 	- The secondary private IP address is allocated from the Lingjun subnet to which the current network interface controller belongs. The first address and the last two addresses belong to reserved addresses and do not participate in the allocation.
+//
+// @param request - AssignPrivateIpAddressRequest
+//
+// @return AssignPrivateIpAddressResponse
 func (client *Client) AssignPrivateIpAddress(request *AssignPrivateIpAddressRequest) (_result *AssignPrivateIpAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssignPrivateIpAddressResponse{}
@@ -10570,6 +22831,287 @@ func (client *Client) AssignPrivateIpAddress(request *AssignPrivateIpAddressRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// When the VPD primary network segment address is not enough to allocate, you can choose to create an additional network segment as the additional network segment of the VPD primary network segment.
+//
+// Description:
+//
+// >  **Add a CIDR block**
+//
+// 	- The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
+//
+// 	- The secondary IPv4 CIDR block must not overlap with the primary IPv4 CIDR block of the Lingjun CIDR block and the added secondary IPv4 CIDR block.
+//
+// 	- You cannot use 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 as the CIDR block of Lingjun. Example: In the Lingjun CIDR block whose primary IPv4 CIDR block is 192.168.0.0/16, you cannot add the following CIDR blocks as additional IPv4 CIDR blocks. The CIDR block that is in the same range as 192.168.0.0/16. A CIDR block that is larger than 192.168.0.0/16. Example: 192.168.0.0/8. A CIDR block that is smaller than 192.168.0.0/16. Example: 192.168.0.0/24.
+//
+// 	- By default, each tenant can create three additional CIDR blocks in each region.
+//
+// @param request - AssociateVpdCidrBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateVpdCidrBlockResponse
+func (client *Client) AssociateVpdCidrBlockWithOptions(request *AssociateVpdCidrBlockRequest, runtime *util.RuntimeOptions) (_result *AssociateVpdCidrBlockResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryCidrBlock)) {
+		body["SecondaryCidrBlock"] = request.SecondaryCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpdId)) {
+		body["VpdId"] = request.VpdId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateVpdCidrBlock"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssociateVpdCidrBlockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// When the VPD primary network segment address is not enough to allocate, you can choose to create an additional network segment as the additional network segment of the VPD primary network segment.
+//
+// Description:
+//
+// >  **Add a CIDR block**
+//
+// 	- The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
+//
+// 	- The secondary IPv4 CIDR block must not overlap with the primary IPv4 CIDR block of the Lingjun CIDR block and the added secondary IPv4 CIDR block.
+//
+// 	- You cannot use 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 as the CIDR block of Lingjun. Example: In the Lingjun CIDR block whose primary IPv4 CIDR block is 192.168.0.0/16, you cannot add the following CIDR blocks as additional IPv4 CIDR blocks. The CIDR block that is in the same range as 192.168.0.0/16. A CIDR block that is larger than 192.168.0.0/16. Example: 192.168.0.0/8. A CIDR block that is smaller than 192.168.0.0/16. Example: 192.168.0.0/24.
+//
+// 	- By default, each tenant can create three additional CIDR blocks in each region.
+//
+// @param request - AssociateVpdCidrBlockRequest
+//
+// @return AssociateVpdCidrBlockResponse
+func (client *Client) AssociateVpdCidrBlock(request *AssociateVpdCidrBlockRequest) (_result *AssociateVpdCidrBlockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateVpdCidrBlockResponse{}
+	_body, _err := client.AssociateVpdCidrBlockWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lingjun ENI is bound to NC.
+//
+// Description:
+//
+// This interface is an asynchronous interface. You need to use the query interface to wait for the Lingjun Elastic Network Interface to reach the available state.
+//
+// @param request - AttachElasticNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachElasticNetworkInterfaceResponse
+func (client *Client) AttachElasticNetworkInterfaceWithOptions(request *AttachElasticNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *AttachElasticNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachElasticNetworkInterface"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachElasticNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lingjun ENI is bound to NC.
+//
+// Description:
+//
+// This interface is an asynchronous interface. You need to use the query interface to wait for the Lingjun Elastic Network Interface to reach the available state.
+//
+// @param request - AttachElasticNetworkInterfaceRequest
+//
+// @return AttachElasticNetworkInterfaceResponse
+func (client *Client) AttachElasticNetworkInterface(request *AttachElasticNetworkInterfaceRequest) (_result *AttachElasticNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachElasticNetworkInterfaceResponse{}
+	_body, _err := client.AttachElasticNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an LENI.
+//
+// @param request - CreateElasticNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateElasticNetworkInterfaceResponse
+func (client *Client) CreateElasticNetworkInterfaceWithOptions(request *CreateElasticNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *CreateElasticNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableJumboFrame)) {
+		body["EnableJumboFrame"] = request.EnableJumboFrame
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		body["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		body["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateElasticNetworkInterface"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateElasticNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an LENI.
+//
+// @param request - CreateElasticNetworkInterfaceRequest
+//
+// @return CreateElasticNetworkInterfaceResponse
+func (client *Client) CreateElasticNetworkInterface(request *CreateElasticNetworkInterfaceRequest) (_result *CreateElasticNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateElasticNetworkInterfaceResponse{}
+	_body, _err := client.CreateElasticNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Create a Lingjun HUB.
+//
+// Description:
+//
+// When you call this operation to create a Lingjun HUB, note that:
+//
+// 	- Make sure that you have sufficient Lingjun HUB quota.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the system will return the ID of a Lingjun HUB. At this time, the Lingjun HUB instance may not be created yet, and the system background creation task is still in progress. You can call the ListErs or GetEr operation to query the status of the Lingjun HUB.
+//
+//     	- If the status of the Lingjun HUB is Executing, it indicates that it is being created.
+//
+//     	- If the status of the Lingjun HUB is Available, the creation is successful.
+//
+// @param request - CreateErRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateErResponse
 func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *util.RuntimeOptions) (_result *CreateErResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10590,6 +23132,10 @@ func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10615,6 +23161,25 @@ func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a Lingjun HUB.
+//
+// Description:
+//
+// When you call this operation to create a Lingjun HUB, note that:
+//
+// 	- Make sure that you have sufficient Lingjun HUB quota.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the system will return the ID of a Lingjun HUB. At this time, the Lingjun HUB instance may not be created yet, and the system background creation task is still in progress. You can call the ListErs or GetEr operation to query the status of the Lingjun HUB.
+//
+//     	- If the status of the Lingjun HUB is Executing, it indicates that it is being created.
+//
+//     	- If the status of the Lingjun HUB is Available, the creation is successful.
+//
+// @param request - CreateErRequest
+//
+// @return CreateErResponse
 func (client *Client) CreateEr(request *CreateErRequest) (_result *CreateErResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateErResponse{}
@@ -10626,6 +23191,29 @@ func (client *Client) CreateEr(request *CreateErRequest) (_result *CreateErRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a network instance connection.
+//
+// Description:
+//
+// When you call this operation to create a network instance connection, note that:
+//
+// 	- Make sure that you have created a Lingjun HUB instance.
+//
+// 	- Make sure that you have sufficient quota for network instance connections.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the network instance connection. In this case, the network instance connection may not be created yet, and the system is still creating the network instance in the background. You can query the connection status of a network instance by ListErAttachments or GetErAttachment:
+//
+//     	- If the connection status of the network instance is Executing, the network instance is being created.
+//
+//     	- If the connection status of the network instance is Available, the network instance is created.
+//
+// @param request - CreateErAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateErAttachmentResponse
 func (client *Client) CreateErAttachmentWithOptions(request *CreateErAttachmentRequest, runtime *util.RuntimeOptions) (_result *CreateErAttachmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10683,6 +23271,27 @@ func (client *Client) CreateErAttachmentWithOptions(request *CreateErAttachmentR
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a network instance connection.
+//
+// Description:
+//
+// When you call this operation to create a network instance connection, note that:
+//
+// 	- Make sure that you have created a Lingjun HUB instance.
+//
+// 	- Make sure that you have sufficient quota for network instance connections.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the network instance connection. In this case, the network instance connection may not be created yet, and the system is still creating the network instance in the background. You can query the connection status of a network instance by ListErAttachments or GetErAttachment:
+//
+//     	- If the connection status of the network instance is Executing, the network instance is being created.
+//
+//     	- If the connection status of the network instance is Available, the network instance is created.
+//
+// @param request - CreateErAttachmentRequest
+//
+// @return CreateErAttachmentResponse
 func (client *Client) CreateErAttachment(request *CreateErAttachmentRequest) (_result *CreateErAttachmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateErAttachmentResponse{}
@@ -10694,6 +23303,29 @@ func (client *Client) CreateErAttachment(request *CreateErAttachmentRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to create routing policy by specifying the network instance connection under Lingjun HUB.
+//
+// Description:
+//
+// When you call this operation to create a routing policy, note that:
+//
+// 	- Make sure that you have created a Lingjun HUB instance.
+//
+// 	- Make sure that you have created a network instance connection.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the routing policy. In this case, the routing policy instance may not be created yet, and the system background creation task is still in progress. You can use ListErRouteMaps or GetErRouteMap to query the status of a routing policy.
+//
+//     	- If the status of the routing policy is Execute, the system is creating the instance.
+//
+//     	- If the status of the routing policy is Available, the creation is successful.
+//
+// @param request - CreateErRouteMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateErRouteMapResponse
 func (client *Client) CreateErRouteMapWithOptions(request *CreateErRouteMapRequest, runtime *util.RuntimeOptions) (_result *CreateErRouteMapResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10771,6 +23403,27 @@ func (client *Client) CreateErRouteMapWithOptions(request *CreateErRouteMapReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to create routing policy by specifying the network instance connection under Lingjun HUB.
+//
+// Description:
+//
+// When you call this operation to create a routing policy, note that:
+//
+// 	- Make sure that you have created a Lingjun HUB instance.
+//
+// 	- Make sure that you have created a network instance connection.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the routing policy. In this case, the routing policy instance may not be created yet, and the system background creation task is still in progress. You can use ListErRouteMaps or GetErRouteMap to query the status of a routing policy.
+//
+//     	- If the status of the routing policy is Execute, the system is creating the instance.
+//
+//     	- If the status of the routing policy is Available, the creation is successful.
+//
+// @param request - CreateErRouteMapRequest
+//
+// @return CreateErRouteMapResponse
 func (client *Client) CreateErRouteMap(request *CreateErRouteMapRequest) (_result *CreateErRouteMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateErRouteMapResponse{}
@@ -10782,6 +23435,33 @@ func (client *Client) CreateErRouteMap(request *CreateErRouteMapRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to create a Lingjun subnet under the Lingjun network segment.
+//
+// Description:
+//
+// When you call this operation to create a Lingjun subnet, note that:
+//
+// 	- You have created a Lingjun CIDR block.
+//
+// 	- Only one network segment can be specified for a Lingjun subnet.
+//
+// 	- The network segment cannot be modified after the Lingjun subnet is created.
+//
+// 	- Make sure that you have sufficient Lingjun subnet quota.
+//
+// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun subnet. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListSubnets or GetSubnet operation to query the status of the CIDR block of Lingjun.
+//
+//     	- If the status of the Lingjun subnet is Executed, it indicates that it is being created.
+//
+//     	- If the status of the Lingjun subnet is Available, the creation is successful.
+//
+// @param request - CreateSubnetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubnetResponse
 func (client *Client) CreateSubnetWithOptions(request *CreateSubnetRequest, runtime *util.RuntimeOptions) (_result *CreateSubnetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10839,6 +23519,31 @@ func (client *Client) CreateSubnetWithOptions(request *CreateSubnetRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to create a Lingjun subnet under the Lingjun network segment.
+//
+// Description:
+//
+// When you call this operation to create a Lingjun subnet, note that:
+//
+// 	- You have created a Lingjun CIDR block.
+//
+// 	- Only one network segment can be specified for a Lingjun subnet.
+//
+// 	- The network segment cannot be modified after the Lingjun subnet is created.
+//
+// 	- Make sure that you have sufficient Lingjun subnet quota.
+//
+// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun subnet. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListSubnets or GetSubnet operation to query the status of the CIDR block of Lingjun.
+//
+//     	- If the status of the Lingjun subnet is Executed, it indicates that it is being created.
+//
+//     	- If the status of the Lingjun subnet is Available, the creation is successful.
+//
+// @param request - CreateSubnetRequest
+//
+// @return CreateSubnetResponse
 func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *CreateSubnetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSubnetResponse{}
@@ -10850,6 +23555,29 @@ func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// You can create a Lingjun connection to connect Lingjun network environment and Alibaba Cloud network environment.
+//
+// Description:
+//
+// When you call this operation to create a Lingjun connection, note that:
+//
+// 	- When you specify the vccId parameter, the system will configure the purchased Lingjun connection for you. When the default vccId parameter is set, the system will automatically place an order and configure the Lingjun connection for you.
+//
+// 	- Make sure that you have called the InitializeVcc operation to grant permissions.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the system will return the Lingjun connection ID, but the Lingjun connection instance may not be created yet, and the system background creation task is still in progress. You can call the ListVccs or GetVcc operation to query the status of the Lingjun connection.
+//
+//     	- If the status of the Lingjun connection is Executed, the Lingjun connection is being created.
+//
+//     	- If the status of the Lingjun connection is Available, the Lingjun connection is created.
+//
+// @param request - CreateVccRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVccResponse
 func (client *Client) CreateVccWithOptions(request *CreateVccRequest, runtime *util.RuntimeOptions) (_result *CreateVccResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10864,12 +23592,20 @@ func (client *Client) CreateVccWithOptions(request *CreateVccRequest, runtime *u
 		body["Bandwidth"] = request.Bandwidth
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BgpAsn)) {
+		body["BgpAsn"] = request.BgpAsn
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BgpCidr)) {
 		body["BgpCidr"] = request.BgpCidr
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CenId)) {
 		body["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenOwnerId)) {
+		body["CenOwnerId"] = request.CenOwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ConnectionType)) {
@@ -10939,6 +23675,27 @@ func (client *Client) CreateVccWithOptions(request *CreateVccRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// You can create a Lingjun connection to connect Lingjun network environment and Alibaba Cloud network environment.
+//
+// Description:
+//
+// When you call this operation to create a Lingjun connection, note that:
+//
+// 	- When you specify the vccId parameter, the system will configure the purchased Lingjun connection for you. When the default vccId parameter is set, the system will automatically place an order and configure the Lingjun connection for you.
+//
+// 	- Make sure that you have called the InitializeVcc operation to grant permissions.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the system will return the Lingjun connection ID, but the Lingjun connection instance may not be created yet, and the system background creation task is still in progress. You can call the ListVccs or GetVcc operation to query the status of the Lingjun connection.
+//
+//     	- If the status of the Lingjun connection is Executed, the Lingjun connection is being created.
+//
+//     	- If the status of the Lingjun connection is Available, the Lingjun connection is created.
+//
+// @param request - CreateVccRequest
+//
+// @return CreateVccResponse
 func (client *Client) CreateVcc(request *CreateVccRequest) (_result *CreateVccResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVccResponse{}
@@ -10950,6 +23707,23 @@ func (client *Client) CreateVcc(request *CreateVccRequest) (_result *CreateVccRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to connect Lingjun instance to the Lingjun HUB instance of the target account. After authorization, the target account can be associated with your Lingjun connection by using the authorized Lingjun HUB instance.
+//
+// Description:
+//
+// When you call this operation to create cross-account authorization for Lingjun HUB, note that:
+//
+// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//
+// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//
+// @param request - CreateVccGrantRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVccGrantRuleResponse
 func (client *Client) CreateVccGrantRuleWithOptions(request *CreateVccGrantRuleRequest, runtime *util.RuntimeOptions) (_result *CreateVccGrantRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10995,6 +23769,21 @@ func (client *Client) CreateVccGrantRuleWithOptions(request *CreateVccGrantRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to connect Lingjun instance to the Lingjun HUB instance of the target account. After authorization, the target account can be associated with your Lingjun connection by using the authorized Lingjun HUB instance.
+//
+// Description:
+//
+// When you call this operation to create cross-account authorization for Lingjun HUB, note that:
+//
+// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//
+// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//
+// @param request - CreateVccGrantRuleRequest
+//
+// @return CreateVccGrantRuleResponse
 func (client *Client) CreateVccGrantRule(request *CreateVccGrantRuleRequest) (_result *CreateVccGrantRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVccGrantRuleResponse{}
@@ -11006,6 +23795,27 @@ func (client *Client) CreateVccGrantRule(request *CreateVccGrantRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a Lingjun connection route entry.
+//
+// Description:
+//
+// When you call this operation to create a VBR route entry, take note of the following items:
+//
+// 	- After you call this operation, static route entries and BGP network announcements are created on the VBR to which the Lingjun connection belongs.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entry may not be created yet, and the system still creates the static route entry in the background. You can query the status of VBR static route entries by ListVccRouteEntries or GetVccRouteEntry:
+//
+//     	- If the VBR static route entry is in the Executing state, it indicates that it is being created.
+//
+//     	- If the status of the VBR static route entry is Available, the VBR is created.
+//
+// @param request - CreateVccRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVccRouteEntryResponse
 func (client *Client) CreateVccRouteEntryWithOptions(request *CreateVccRouteEntryRequest, runtime *util.RuntimeOptions) (_result *CreateVccRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11047,6 +23857,25 @@ func (client *Client) CreateVccRouteEntryWithOptions(request *CreateVccRouteEntr
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a Lingjun connection route entry.
+//
+// Description:
+//
+// When you call this operation to create a VBR route entry, take note of the following items:
+//
+// 	- After you call this operation, static route entries and BGP network announcements are created on the VBR to which the Lingjun connection belongs.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entry may not be created yet, and the system still creates the static route entry in the background. You can query the status of VBR static route entries by ListVccRouteEntries or GetVccRouteEntry:
+//
+//     	- If the VBR static route entry is in the Executing state, it indicates that it is being created.
+//
+//     	- If the status of the VBR static route entry is Available, the VBR is created.
+//
+// @param request - CreateVccRouteEntryRequest
+//
+// @return CreateVccRouteEntryResponse
 func (client *Client) CreateVccRouteEntry(request *CreateVccRouteEntryRequest) (_result *CreateVccRouteEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVccRouteEntryResponse{}
@@ -11058,6 +23887,31 @@ func (client *Client) CreateVccRouteEntry(request *CreateVccRouteEntryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a private Lingjun CIDR block. This CIDR block has an independent network environment.
+//
+// Description:
+//
+// When you call this operation to create a CIDR block for Lingjun, take note of the following:
+//
+// 	- A Lingjun network segment can specify an additional network segment in addition to a main network segment.
+//
+// 	- After the Lingjun network segment is created, the network segment cannot be modified.
+//
+// 	- Make sure that you have a sufficient quota of Lingjun CIDR blocks.
+//
+// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun network segment. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListVpds or GetVpd operation to query the status of the CIDR block of Lingjun.
+//
+//     	- If the status of the Lingjun CIDR block is Executed, the CIDR block is being created.
+//
+//     	- If the status of the Lingjun CIDR block is Available, the creation is successful.
+//
+// @param request - CreateVpdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpdResponse
 func (client *Client) CreateVpdWithOptions(request *CreateVpdRequest, runtime *util.RuntimeOptions) (_result *CreateVpdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11111,6 +23965,29 @@ func (client *Client) CreateVpdWithOptions(request *CreateVpdRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a private Lingjun CIDR block. This CIDR block has an independent network environment.
+//
+// Description:
+//
+// When you call this operation to create a CIDR block for Lingjun, take note of the following:
+//
+// 	- A Lingjun network segment can specify an additional network segment in addition to a main network segment.
+//
+// 	- After the Lingjun network segment is created, the network segment cannot be modified.
+//
+// 	- Make sure that you have a sufficient quota of Lingjun CIDR blocks.
+//
+// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun network segment. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListVpds or GetVpd operation to query the status of the CIDR block of Lingjun.
+//
+//     	- If the status of the Lingjun CIDR block is Executed, the CIDR block is being created.
+//
+//     	- If the status of the Lingjun CIDR block is Available, the creation is successful.
+//
+// @param request - CreateVpdRequest
+//
+// @return CreateVpdResponse
 func (client *Client) CreateVpd(request *CreateVpdRequest) (_result *CreateVpdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVpdResponse{}
@@ -11122,6 +23999,23 @@ func (client *Client) CreateVpd(request *CreateVpdRequest) (_result *CreateVpdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to authorize Lingjun HUB instances of the target account. After authorization, the target account can be associated with your Lingjun CIDR block by using the authorized Lingjun HUB instance.
+//
+// Description:
+//
+// When you call this operation to create cross-account authorization for Lingjun HUB, note that:
+//
+// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//
+// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//
+// @param request - CreateVpdGrantRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpdGrantRuleResponse
 func (client *Client) CreateVpdGrantRuleWithOptions(request *CreateVpdGrantRuleRequest, runtime *util.RuntimeOptions) (_result *CreateVpdGrantRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11167,6 +24061,21 @@ func (client *Client) CreateVpdGrantRuleWithOptions(request *CreateVpdGrantRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// Users can use this API to authorize Lingjun HUB instances of the target account. After authorization, the target account can be associated with your Lingjun CIDR block by using the authorized Lingjun HUB instance.
+//
+// Description:
+//
+// When you call this operation to create cross-account authorization for Lingjun HUB, note that:
+//
+// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//
+// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//
+// @param request - CreateVpdGrantRuleRequest
+//
+// @return CreateVpdGrantRuleResponse
 func (client *Client) CreateVpdGrantRule(request *CreateVpdGrantRuleRequest) (_result *CreateVpdGrantRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVpdGrantRuleResponse{}
@@ -11178,6 +24087,97 @@ func (client *Client) CreateVpdGrantRule(request *CreateVpdGrantRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete Lingjun Elastic Network Interface. After deletion, all relevant data will be lost and cannot be recovered. Please operate with caution.
+//
+// @param request - DeleteElasticNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteElasticNetworkInterfaceResponse
+func (client *Client) DeleteElasticNetworkInterfaceWithOptions(request *DeleteElasticNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *DeleteElasticNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteElasticNetworkInterface"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteElasticNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete Lingjun Elastic Network Interface. After deletion, all relevant data will be lost and cannot be recovered. Please operate with caution.
+//
+// @param request - DeleteElasticNetworkInterfaceRequest
+//
+// @return DeleteElasticNetworkInterfaceResponse
+func (client *Client) DeleteElasticNetworkInterface(request *DeleteElasticNetworkInterfaceRequest) (_result *DeleteElasticNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteElasticNetworkInterfaceResponse{}
+	_body, _err := client.DeleteElasticNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// After you delete a Lingjun HUB instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete the Lingjun HUB, note that:
+//
+// 	- Before you delete the instance, make sure that no network instance is connected to the Lingjun HUB instance.
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun HUB instance may not be deleted, and the system background deletion task is still in progress. You can call the ListErs or GetEr operation to query the deletion status of the Lingjun HUB.
+//
+//     	- If the status of the Lingjun HUB is Deleting, the Lingjun HUB instance is being deleted.
+//
+//     	- If no Lingjun HUB instance is recorded, the Lingjun HUB instance has been deleted.
+//
+// @param request - DeleteErRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteErResponse
 func (client *Client) DeleteErWithOptions(request *DeleteErRequest, runtime *util.RuntimeOptions) (_result *DeleteErResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11215,6 +24215,27 @@ func (client *Client) DeleteErWithOptions(request *DeleteErRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// After you delete a Lingjun HUB instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete the Lingjun HUB, note that:
+//
+// 	- Before you delete the instance, make sure that no network instance is connected to the Lingjun HUB instance.
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun HUB instance may not be deleted, and the system background deletion task is still in progress. You can call the ListErs or GetEr operation to query the deletion status of the Lingjun HUB.
+//
+//     	- If the status of the Lingjun HUB is Deleting, the Lingjun HUB instance is being deleted.
+//
+//     	- If no Lingjun HUB instance is recorded, the Lingjun HUB instance has been deleted.
+//
+// @param request - DeleteErRequest
+//
+// @return DeleteErResponse
 func (client *Client) DeleteEr(request *DeleteErRequest) (_result *DeleteErResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteErResponse{}
@@ -11226,6 +24247,29 @@ func (client *Client) DeleteEr(request *DeleteErRequest) (_result *DeleteErRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a network instance that is connected to an instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a network instance connection, take note of the following:
+//
+// 	- Before you delete the instance, make sure that no routing policy exists under the network instance connection instance.
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the network instance that is connected to the instance may not be deleted. The system still deletes the instance in the background. You can call the ListErAttachments or GetErAttachment to query the deletion status of network instance connections:
+//
+//     	- If the status of the network instance connection is Deleting, the network instance connection is being deleted.
+//
+//     	- If there is no connection record for the network instance, the connection to the network instance has been deleted.
+//
+// @param request - DeleteErAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteErAttachmentResponse
 func (client *Client) DeleteErAttachmentWithOptions(request *DeleteErAttachmentRequest, runtime *util.RuntimeOptions) (_result *DeleteErAttachmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11267,6 +24311,27 @@ func (client *Client) DeleteErAttachmentWithOptions(request *DeleteErAttachmentR
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a network instance that is connected to an instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a network instance connection, take note of the following:
+//
+// 	- Before you delete the instance, make sure that no routing policy exists under the network instance connection instance.
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the network instance that is connected to the instance may not be deleted. The system still deletes the instance in the background. You can call the ListErAttachments or GetErAttachment to query the deletion status of network instance connections:
+//
+//     	- If the status of the network instance connection is Deleting, the network instance connection is being deleted.
+//
+//     	- If there is no connection record for the network instance, the connection to the network instance has been deleted.
+//
+// @param request - DeleteErAttachmentRequest
+//
+// @return DeleteErAttachmentResponse
 func (client *Client) DeleteErAttachment(request *DeleteErAttachmentRequest) (_result *DeleteErAttachmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteErAttachmentResponse{}
@@ -11278,6 +24343,27 @@ func (client *Client) DeleteErAttachment(request *DeleteErAttachmentRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a routing policy instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a routing policy, note that:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the routing policy instance may not be deleted yet, and the system background deletion task is still in progress. You can call the ListErRouteMaps or GetErRouteMap operation to query the deletion status of a routing policy.
+//
+//     	- If the routing policy is in the Deleting state, the routing policy instance is being deleted.
+//
+//     	- If no routing policy instance is recorded, the routing policy instance has been deleted.
+//
+// @param request - DeleteErRouteMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteErRouteMapResponse
 func (client *Client) DeleteErRouteMapWithOptions(request *DeleteErRouteMapRequest, runtime *util.RuntimeOptions) (_result *DeleteErRouteMapResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11319,6 +24405,25 @@ func (client *Client) DeleteErRouteMapWithOptions(request *DeleteErRouteMapReque
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a routing policy instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a routing policy, note that:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the routing policy instance may not be deleted yet, and the system background deletion task is still in progress. You can call the ListErRouteMaps or GetErRouteMap operation to query the deletion status of a routing policy.
+//
+//     	- If the routing policy is in the Deleting state, the routing policy instance is being deleted.
+//
+//     	- If no routing policy instance is recorded, the routing policy instance has been deleted.
+//
+// @param request - DeleteErRouteMapRequest
+//
+// @return DeleteErRouteMapResponse
 func (client *Client) DeleteErRouteMap(request *DeleteErRouteMapRequest) (_result *DeleteErRouteMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteErRouteMapResponse{}
@@ -11330,6 +24435,27 @@ func (client *Client) DeleteErRouteMap(request *DeleteErRouteMapRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a Lingjun subnet instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a Lingjun subnet, note that:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun subnet instance may not be deleted, and the system background deletion task is still in progress. You can call the ListSubnets or GetSubnet operation to query the deletion status of the subnet.
+//
+//     	- If the status of the Lingjun subnet is Deleting, the Lingjun subnet instance is being deleted.
+//
+//     	- If there is no record of the Lingjun subnet instance, the Lingjun subnet instance has been deleted.
+//
+// @param request - DeleteSubnetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubnetResponse
 func (client *Client) DeleteSubnetWithOptions(request *DeleteSubnetRequest, runtime *util.RuntimeOptions) (_result *DeleteSubnetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11375,6 +24501,25 @@ func (client *Client) DeleteSubnetWithOptions(request *DeleteSubnetRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a Lingjun subnet instance, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a Lingjun subnet, note that:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun subnet instance may not be deleted, and the system background deletion task is still in progress. You can call the ListSubnets or GetSubnet operation to query the deletion status of the subnet.
+//
+//     	- If the status of the Lingjun subnet is Deleting, the Lingjun subnet instance is being deleted.
+//
+//     	- If there is no record of the Lingjun subnet instance, the Lingjun subnet instance has been deleted.
+//
+// @param request - DeleteSubnetRequest
+//
+// @return DeleteSubnetResponse
 func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *DeleteSubnetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSubnetResponse{}
@@ -11386,6 +24531,15 @@ func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a Lingjun HUB cross-account authorization that is connected to Lingjun, the related data is lost and cannot be recovered.
+//
+// @param request - DeleteVccGrantRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVccGrantRuleResponse
 func (client *Client) DeleteVccGrantRuleWithOptions(request *DeleteVccGrantRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteVccGrantRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11431,6 +24585,13 @@ func (client *Client) DeleteVccGrantRuleWithOptions(request *DeleteVccGrantRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// If you delete a Lingjun HUB cross-account authorization that is connected to Lingjun, the related data is lost and cannot be recovered.
+//
+// @param request - DeleteVccGrantRuleRequest
+//
+// @return DeleteVccGrantRuleResponse
 func (client *Client) DeleteVccGrantRule(request *DeleteVccGrantRuleRequest) (_result *DeleteVccGrantRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVccGrantRuleResponse{}
@@ -11442,6 +24603,27 @@ func (client *Client) DeleteVccGrantRule(request *DeleteVccGrantRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a Lingjun connection route entry.
+//
+// Description:
+//
+// When you call this operation to delete a VBR static route entry, note that:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entries may not be deleted. The system still deletes the VBR static route entries in the background. You can call the ListVccRouteEntries or GetVccRouteEntry to query the deletion status of VBR static route entries:
+//
+//     	- If the VBR static route entry is in the Deleting state, the VBR static route entry is being deleted.
+//
+//     	- If no VBR static route entry instance is recorded, the VBR static route entry instance has been deleted.
+//
+// @param request - DeleteVccRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVccRouteEntryResponse
 func (client *Client) DeleteVccRouteEntryWithOptions(request *DeleteVccRouteEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteVccRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11487,6 +24669,25 @@ func (client *Client) DeleteVccRouteEntryWithOptions(request *DeleteVccRouteEntr
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a Lingjun connection route entry.
+//
+// Description:
+//
+// When you call this operation to delete a VBR static route entry, note that:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entries may not be deleted. The system still deletes the VBR static route entries in the background. You can call the ListVccRouteEntries or GetVccRouteEntry to query the deletion status of VBR static route entries:
+//
+//     	- If the VBR static route entry is in the Deleting state, the VBR static route entry is being deleted.
+//
+//     	- If no VBR static route entry instance is recorded, the VBR static route entry instance has been deleted.
+//
+// @param request - DeleteVccRouteEntryRequest
+//
+// @return DeleteVccRouteEntryResponse
 func (client *Client) DeleteVccRouteEntry(request *DeleteVccRouteEntryRequest) (_result *DeleteVccRouteEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVccRouteEntryResponse{}
@@ -11498,6 +24699,29 @@ func (client *Client) DeleteVccRouteEntry(request *DeleteVccRouteEntryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// After you delete a Lingjun CIDR block, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a Lingjun CIDR block, take note of the following items:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- Before deleting, make sure that all Lingjun subnet instances under the Lingjun CIDR block have been deleted.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun network segment instance may not be deleted, and the system background deletion task is still in progress. You can call the ListVpds or GetVpd operation to query the deletion status of the CIDR block.
+//
+//     	- If the status of the Lingjun CIDR block is Deleting, the Lingjun CIDR block is being deleted.
+//
+//     	- If there is no record of the Lingjun CIDR block instance, the Lingjun CIDR block instance has been deleted.
+//
+// @param request - DeleteVpdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVpdResponse
 func (client *Client) DeleteVpdWithOptions(request *DeleteVpdRequest, runtime *util.RuntimeOptions) (_result *DeleteVpdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11535,6 +24759,27 @@ func (client *Client) DeleteVpdWithOptions(request *DeleteVpdRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// After you delete a Lingjun CIDR block, the related data is lost and cannot be recovered.
+//
+// Description:
+//
+// When you call this operation to delete a Lingjun CIDR block, take note of the following items:
+//
+// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//
+// 	- Before deleting, make sure that all Lingjun subnet instances under the Lingjun CIDR block have been deleted.
+//
+// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun network segment instance may not be deleted, and the system background deletion task is still in progress. You can call the ListVpds or GetVpd operation to query the deletion status of the CIDR block.
+//
+//     	- If the status of the Lingjun CIDR block is Deleting, the Lingjun CIDR block is being deleted.
+//
+//     	- If there is no record of the Lingjun CIDR block instance, the Lingjun CIDR block instance has been deleted.
+//
+// @param request - DeleteVpdRequest
+//
+// @return DeleteVpdResponse
 func (client *Client) DeleteVpd(request *DeleteVpdRequest) (_result *DeleteVpdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVpdResponse{}
@@ -11546,6 +24791,15 @@ func (client *Client) DeleteVpd(request *DeleteVpdRequest) (_result *DeleteVpdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the Lingjun HUB cross-account authorization for a Lingjun CIDR block. After the deletion, the related data is lost and cannot be recovered.
+//
+// @param request - DeleteVpdGrantRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVpdGrantRuleResponse
 func (client *Client) DeleteVpdGrantRuleWithOptions(request *DeleteVpdGrantRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteVpdGrantRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11595,6 +24849,13 @@ func (client *Client) DeleteVpdGrantRuleWithOptions(request *DeleteVpdGrantRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the Lingjun HUB cross-account authorization for a Lingjun CIDR block. After the deletion, the related data is lost and cannot be recovered.
+//
+// @param request - DeleteVpdGrantRuleRequest
+//
+// @return DeleteVpdGrantRuleResponse
 func (client *Client) DeleteVpdGrantRule(request *DeleteVpdGrantRuleRequest) (_result *DeleteVpdGrantRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVpdGrantRuleResponse{}
@@ -11606,6 +24867,21 @@ func (client *Client) DeleteVpdGrantRule(request *DeleteVpdGrantRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Query whether the user has the SLR role-AliyunServiceRoleForEfloVcc required for Lingjun connection.
+//
+// Description:
+//
+// You can call this operation to query whether a user account has a **AliyunServiceRoleForEfloVcc*	- role.
+//
+// >  If you do not have a **AliyunServiceRoleForEfloVcc*	- role, you need to use the initializeVcc interface to complete authorization, otherwise users will not be able to use Lingjun to connect to the product.
+//
+// @param request - DescribeSlrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlrResponse
 func (client *Client) DescribeSlrWithOptions(request *DescribeSlrRequest, runtime *util.RuntimeOptions) (_result *DescribeSlrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11639,6 +24915,19 @@ func (client *Client) DescribeSlrWithOptions(request *DescribeSlrRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Query whether the user has the SLR role-AliyunServiceRoleForEfloVcc required for Lingjun connection.
+//
+// Description:
+//
+// You can call this operation to query whether a user account has a **AliyunServiceRoleForEfloVcc*	- role.
+//
+// >  If you do not have a **AliyunServiceRoleForEfloVcc*	- role, you need to use the initializeVcc interface to complete authorization, otherwise users will not be able to use Lingjun to connect to the product.
+//
+// @param request - DescribeSlrRequest
+//
+// @return DescribeSlrResponse
 func (client *Client) DescribeSlr(request *DescribeSlrRequest) (_result *DescribeSlrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlrResponse{}
@@ -11650,6 +24939,219 @@ func (client *Client) DescribeSlr(request *DescribeSlrRequest) (_result *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbind Lingjun ENI from NC.
+//
+// Description:
+//
+// This interface is an asynchronous interface, and you need to use the query interface to wait for the Lingjun Elastic Network Interface to reach the unbound state.
+//
+// @param request - DetachElasticNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachElasticNetworkInterfaceResponse
+func (client *Client) DetachElasticNetworkInterfaceWithOptions(request *DetachElasticNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *DetachElasticNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachElasticNetworkInterface"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachElasticNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbind Lingjun ENI from NC.
+//
+// Description:
+//
+// This interface is an asynchronous interface, and you need to use the query interface to wait for the Lingjun Elastic Network Interface to reach the unbound state.
+//
+// @param request - DetachElasticNetworkInterfaceRequest
+//
+// @return DetachElasticNetworkInterfaceResponse
+func (client *Client) DetachElasticNetworkInterface(request *DetachElasticNetworkInterfaceRequest) (_result *DetachElasticNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachElasticNetworkInterfaceResponse{}
+	_body, _err := client.DetachElasticNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Users can use this API to query the destination CIDR block of the source policy instance when creating a routing strategy.
+//
+// @param request - GetDestinationCidrBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDestinationCidrBlockResponse
+func (client *Client) GetDestinationCidrBlockWithOptions(request *GetDestinationCidrBlockRequest, runtime *util.RuntimeOptions) (_result *GetDestinationCidrBlockResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDestinationCidrBlock"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDestinationCidrBlockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Users can use this API to query the destination CIDR block of the source policy instance when creating a routing strategy.
+//
+// @param request - GetDestinationCidrBlockRequest
+//
+// @return GetDestinationCidrBlockResponse
+func (client *Client) GetDestinationCidrBlock(request *GetDestinationCidrBlockRequest) (_result *GetDestinationCidrBlockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDestinationCidrBlockResponse{}
+	_body, _err := client.GetDestinationCidrBlockWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an LENI.
+//
+// @param request - GetElasticNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetElasticNetworkInterfaceResponse
+func (client *Client) GetElasticNetworkInterfaceWithOptions(request *GetElasticNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *GetElasticNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetElasticNetworkInterface"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetElasticNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an LENI.
+//
+// @param request - GetElasticNetworkInterfaceRequest
+//
+// @return GetElasticNetworkInterfaceResponse
+func (client *Client) GetElasticNetworkInterface(request *GetElasticNetworkInterfaceRequest) (_result *GetElasticNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetElasticNetworkInterfaceResponse{}
+	_body, _err := client.GetElasticNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Lingjun HUB.
+//
+// @param request - GetErRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErResponse
 func (client *Client) GetErWithOptions(request *GetErRequest, runtime *util.RuntimeOptions) (_result *GetErResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11687,6 +25189,13 @@ func (client *Client) GetErWithOptions(request *GetErRequest, runtime *util.Runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Lingjun HUB.
+//
+// @param request - GetErRequest
+//
+// @return GetErResponse
 func (client *Client) GetEr(request *GetErRequest) (_result *GetErResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetErResponse{}
@@ -11698,6 +25207,15 @@ func (client *Client) GetEr(request *GetErRequest) (_result *GetErResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries network instance connections.
+//
+// @param request - GetErAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErAttachmentResponse
 func (client *Client) GetErAttachmentWithOptions(request *GetErAttachmentRequest, runtime *util.RuntimeOptions) (_result *GetErAttachmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11739,6 +25257,13 @@ func (client *Client) GetErAttachmentWithOptions(request *GetErAttachmentRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries network instance connections.
+//
+// @param request - GetErAttachmentRequest
+//
+// @return GetErAttachmentResponse
 func (client *Client) GetErAttachment(request *GetErAttachmentRequest) (_result *GetErAttachmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetErAttachmentResponse{}
@@ -11750,6 +25275,15 @@ func (client *Client) GetErAttachment(request *GetErAttachmentRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of Lingjun HUB route entries.
+//
+// @param request - GetErRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErRouteEntryResponse
 func (client *Client) GetErRouteEntryWithOptions(request *GetErRouteEntryRequest, runtime *util.RuntimeOptions) (_result *GetErRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11791,6 +25325,13 @@ func (client *Client) GetErRouteEntryWithOptions(request *GetErRouteEntryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of Lingjun HUB route entries.
+//
+// @param request - GetErRouteEntryRequest
+//
+// @return GetErRouteEntryResponse
 func (client *Client) GetErRouteEntry(request *GetErRouteEntryRequest) (_result *GetErRouteEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetErRouteEntryResponse{}
@@ -11802,6 +25343,15 @@ func (client *Client) GetErRouteEntry(request *GetErRouteEntryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// query lingjun hub routing policy details.
+//
+// @param request - GetErRouteMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErRouteMapResponse
 func (client *Client) GetErRouteMapWithOptions(request *GetErRouteMapRequest, runtime *util.RuntimeOptions) (_result *GetErRouteMapResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11843,6 +25393,13 @@ func (client *Client) GetErRouteMapWithOptions(request *GetErRouteMapRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// query lingjun hub routing policy details.
+//
+// @param request - GetErRouteMapRequest
+//
+// @return GetErRouteMapResponse
 func (client *Client) GetErRouteMap(request *GetErRouteMapRequest) (_result *GetErRouteMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetErRouteMapResponse{}
@@ -11854,6 +25411,163 @@ func (client *Client) GetErRouteMap(request *GetErRouteMapRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the physical topology information of Lingjun network interface controller and Lingjun nodes under VPD.
+//
+// @param request - GetFabricTopologyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFabricTopologyResponse
+func (client *Client) GetFabricTopologyWithOptions(request *GetFabricTopologyRequest, runtime *util.RuntimeOptions) (_result *GetFabricTopologyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LniIds)) {
+		body["LniIds"] = request.LniIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		body["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpdId)) {
+		body["VpdId"] = request.VpdId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFabricTopology"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFabricTopologyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the physical topology information of Lingjun network interface controller and Lingjun nodes under VPD.
+//
+// @param request - GetFabricTopologyRequest
+//
+// @return GetFabricTopologyResponse
+func (client *Client) GetFabricTopology(request *GetFabricTopologyRequest) (_result *GetFabricTopologyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFabricTopologyResponse{}
+	_body, _err := client.GetFabricTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the details of the secondary private IP address of a specified Lingjun Elastic Network Interface.
+//
+// @param request - GetLeniPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLeniPrivateIpAddressResponse
+func (client *Client) GetLeniPrivateIpAddressWithOptions(request *GetLeniPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *GetLeniPrivateIpAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpName)) {
+		body["IpName"] = request.IpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLeniPrivateIpAddress"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLeniPrivateIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the details of the secondary private IP address of a specified Lingjun Elastic Network Interface.
+//
+// @param request - GetLeniPrivateIpAddressRequest
+//
+// @return GetLeniPrivateIpAddressResponse
+func (client *Client) GetLeniPrivateIpAddress(request *GetLeniPrivateIpAddressRequest) (_result *GetLeniPrivateIpAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLeniPrivateIpAddressResponse{}
+	_body, _err := client.GetLeniPrivateIpAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the details about the secondary private IP address.
+//
+// @param request - GetLniPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLniPrivateIpAddressResponse
 func (client *Client) GetLniPrivateIpAddressWithOptions(request *GetLniPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *GetLniPrivateIpAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11895,6 +25609,13 @@ func (client *Client) GetLniPrivateIpAddressWithOptions(request *GetLniPrivateIp
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details about the secondary private IP address.
+//
+// @param request - GetLniPrivateIpAddressRequest
+//
+// @return GetLniPrivateIpAddressResponse
 func (client *Client) GetLniPrivateIpAddress(request *GetLniPrivateIpAddressRequest) (_result *GetLniPrivateIpAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLniPrivateIpAddressResponse{}
@@ -11906,6 +25627,15 @@ func (client *Client) GetLniPrivateIpAddress(request *GetLniPrivateIpAddressRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about an LNI.
+//
+// @param request - GetNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkInterfaceResponse
 func (client *Client) GetNetworkInterfaceWithOptions(request *GetNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *GetNetworkInterfaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11947,6 +25677,13 @@ func (client *Client) GetNetworkInterfaceWithOptions(request *GetNetworkInterfac
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about an LNI.
+//
+// @param request - GetNetworkInterfaceRequest
+//
+// @return GetNetworkInterfaceResponse
 func (client *Client) GetNetworkInterface(request *GetNetworkInterfaceRequest) (_result *GetNetworkInterfaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNetworkInterfaceResponse{}
@@ -11958,6 +25695,79 @@ func (client *Client) GetNetworkInterface(request *GetNetworkInterfaceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the network information of a node.
+//
+// @param request - GetNodeInfoForPodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNodeInfoForPodResponse
+func (client *Client) GetNodeInfoForPodWithOptions(request *GetNodeInfoForPodRequest, runtime *util.RuntimeOptions) (_result *GetNodeInfoForPodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNodeInfoForPod"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetNodeInfoForPodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the network information of a node.
+//
+// @param request - GetNodeInfoForPodRequest
+//
+// @return GetNodeInfoForPodResponse
+func (client *Client) GetNodeInfoForPod(request *GetNodeInfoForPodRequest) (_result *GetNodeInfoForPodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetNodeInfoForPodResponse{}
+	_body, _err := client.GetNodeInfoForPodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a Lingjun subnet, including the type, CIDR block, instance ID, instance status, and number of NCs.
+//
+// @param request - GetSubnetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubnetResponse
 func (client *Client) GetSubnetWithOptions(request *GetSubnetRequest, runtime *util.RuntimeOptions) (_result *GetSubnetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11999,6 +25809,13 @@ func (client *Client) GetSubnetWithOptions(request *GetSubnetRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Lingjun subnet, including the type, CIDR block, instance ID, instance status, and number of NCs.
+//
+// @param request - GetSubnetRequest
+//
+// @return GetSubnetResponse
 func (client *Client) GetSubnet(request *GetSubnetRequest) (_result *GetSubnetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSubnetResponse{}
@@ -12010,12 +25827,25 @@ func (client *Client) GetSubnet(request *GetSubnetRequest) (_result *GetSubnetRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Lingjun connection, including the specification, Express Connect circuit access port type, instance status, bandwidth, and BGP CIDR block.
+//
+// @param request - GetVccRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVccResponse
 func (client *Client) GetVccWithOptions(request *GetVccRequest, runtime *util.RuntimeOptions) (_result *GetVccResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnablePage)) {
 		body["EnablePage"] = request.EnablePage
 	}
@@ -12059,6 +25889,13 @@ func (client *Client) GetVccWithOptions(request *GetVccRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Lingjun connection, including the specification, Express Connect circuit access port type, instance status, bandwidth, and BGP CIDR block.
+//
+// @param request - GetVccRequest
+//
+// @return GetVccResponse
 func (client *Client) GetVcc(request *GetVccRequest) (_result *GetVccResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVccResponse{}
@@ -12070,6 +25907,15 @@ func (client *Client) GetVcc(request *GetVccRequest) (_result *GetVccResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of cross-account resource authorization for a Lingjun connection, including the authorized tenant ID, Lingjun HUB instance ID, and network instance ID.
+//
+// @param request - GetVccGrantRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVccGrantRuleResponse
 func (client *Client) GetVccGrantRuleWithOptions(request *GetVccGrantRuleRequest, runtime *util.RuntimeOptions) (_result *GetVccGrantRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12119,6 +25965,13 @@ func (client *Client) GetVccGrantRuleWithOptions(request *GetVccGrantRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of cross-account resource authorization for a Lingjun connection, including the authorized tenant ID, Lingjun HUB instance ID, and network instance ID.
+//
+// @param request - GetVccGrantRuleRequest
+//
+// @return GetVccGrantRuleResponse
 func (client *Client) GetVccGrantRule(request *GetVccGrantRuleRequest) (_result *GetVccGrantRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVccGrantRuleResponse{}
@@ -12130,6 +25983,15 @@ func (client *Client) GetVccGrantRule(request *GetVccGrantRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries route entries.
+//
+// @param request - GetVccRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVccRouteEntryResponse
 func (client *Client) GetVccRouteEntryWithOptions(request *GetVccRouteEntryRequest, runtime *util.RuntimeOptions) (_result *GetVccRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12171,6 +26033,13 @@ func (client *Client) GetVccRouteEntryWithOptions(request *GetVccRouteEntryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries route entries.
+//
+// @param request - GetVccRouteEntryRequest
+//
+// @return GetVccRouteEntryResponse
 func (client *Client) GetVccRouteEntry(request *GetVccRouteEntryRequest) (_result *GetVccRouteEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVccRouteEntryResponse{}
@@ -12182,6 +26051,15 @@ func (client *Client) GetVccRouteEntry(request *GetVccRouteEntryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Lingjun CIDR block, including the status of the Lingjun CIDR block, the CIDR block, the number of subnets and NCs.
+//
+// @param request - GetVpdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVpdResponse
 func (client *Client) GetVpdWithOptions(request *GetVpdRequest, runtime *util.RuntimeOptions) (_result *GetVpdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12219,6 +26097,13 @@ func (client *Client) GetVpdWithOptions(request *GetVpdRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Lingjun CIDR block, including the status of the Lingjun CIDR block, the CIDR block, the number of subnets and NCs.
+//
+// @param request - GetVpdRequest
+//
+// @return GetVpdResponse
 func (client *Client) GetVpd(request *GetVpdRequest) (_result *GetVpdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVpdResponse{}
@@ -12230,6 +26115,15 @@ func (client *Client) GetVpd(request *GetVpdRequest) (_result *GetVpdResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of cross-account resource authorization for a Lingjun CIDR block, including the authorized tenant ID, Lingjun HUB instance ID, and network instance ID.
+//
+// @param request - GetVpdGrantRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVpdGrantRuleResponse
 func (client *Client) GetVpdGrantRuleWithOptions(request *GetVpdGrantRuleRequest, runtime *util.RuntimeOptions) (_result *GetVpdGrantRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12279,6 +26173,13 @@ func (client *Client) GetVpdGrantRuleWithOptions(request *GetVpdGrantRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of cross-account resource authorization for a Lingjun CIDR block, including the authorized tenant ID, Lingjun HUB instance ID, and network instance ID.
+//
+// @param request - GetVpdGrantRuleRequest
+//
+// @return GetVpdGrantRuleResponse
 func (client *Client) GetVpdGrantRule(request *GetVpdGrantRuleRequest) (_result *GetVpdGrantRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVpdGrantRuleResponse{}
@@ -12290,6 +26191,15 @@ func (client *Client) GetVpdGrantRule(request *GetVpdGrantRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries route entries.
+//
+// @param request - GetVpdRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVpdRouteEntryResponse
 func (client *Client) GetVpdRouteEntryWithOptions(request *GetVpdRouteEntryRequest, runtime *util.RuntimeOptions) (_result *GetVpdRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12331,6 +26241,13 @@ func (client *Client) GetVpdRouteEntryWithOptions(request *GetVpdRouteEntryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries route entries.
+//
+// @param request - GetVpdRouteEntryRequest
+//
+// @return GetVpdRouteEntryResponse
 func (client *Client) GetVpdRouteEntry(request *GetVpdRouteEntryRequest) (_result *GetVpdRouteEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVpdRouteEntryResponse{}
@@ -12342,6 +26259,15 @@ func (client *Client) GetVpdRouteEntry(request *GetVpdRouteEntryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Initialize the Lingjun connection and authorize Intelligent Computing Lingjun to create an SLR in your account.
+//
+// @param request - InitializeVccRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitializeVccResponse
 func (client *Client) InitializeVccWithOptions(request *InitializeVccRequest, runtime *util.RuntimeOptions) (_result *InitializeVccResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12375,6 +26301,13 @@ func (client *Client) InitializeVccWithOptions(request *InitializeVccRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Initialize the Lingjun connection and authorize Intelligent Computing Lingjun to create an SLR in your account.
+//
+// @param request - InitializeVccRequest
+//
+// @return InitializeVccResponse
 func (client *Client) InitializeVcc(request *InitializeVccRequest) (_result *InitializeVccResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitializeVccResponse{}
@@ -12386,6 +26319,119 @@ func (client *Client) InitializeVcc(request *InitializeVccRequest) (_result *Ini
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the LENIs that are associated with a Lingjun node.
+//
+// @param request - ListElasticNetworkInterfacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListElasticNetworkInterfacesResponse
+func (client *Client) ListElasticNetworkInterfacesWithOptions(request *ListElasticNetworkInterfacesRequest, runtime *util.RuntimeOptions) (_result *ListElasticNetworkInterfacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		body["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		body["NetworkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		body["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		body["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListElasticNetworkInterfaces"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListElasticNetworkInterfacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the LENIs that are associated with a Lingjun node.
+//
+// @param request - ListElasticNetworkInterfacesRequest
+//
+// @return ListElasticNetworkInterfacesResponse
+func (client *Client) ListElasticNetworkInterfaces(request *ListElasticNetworkInterfacesRequest) (_result *ListElasticNetworkInterfacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListElasticNetworkInterfacesResponse{}
+	_body, _err := client.ListElasticNetworkInterfacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries network instance connections.
+//
+// @param request - ListErAttachmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListErAttachmentsResponse
 func (client *Client) ListErAttachmentsWithOptions(request *ListErAttachmentsRequest, runtime *util.RuntimeOptions) (_result *ListErAttachmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12432,6 +26478,10 @@ func (client *Client) ListErAttachmentsWithOptions(request *ListErAttachmentsReq
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceTenantId)) {
 		body["ResourceTenantId"] = request.ResourceTenantId
 	}
@@ -12463,6 +26513,13 @@ func (client *Client) ListErAttachmentsWithOptions(request *ListErAttachmentsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries network instance connections.
+//
+// @param request - ListErAttachmentsRequest
+//
+// @return ListErAttachmentsResponse
 func (client *Client) ListErAttachments(request *ListErAttachmentsRequest) (_result *ListErAttachmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListErAttachmentsResponse{}
@@ -12474,6 +26531,15 @@ func (client *Client) ListErAttachments(request *ListErAttachmentsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the route entries of the Lingjun HUB.
+//
+// @param request - ListErRouteEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListErRouteEntriesResponse
 func (client *Client) ListErRouteEntriesWithOptions(request *ListErRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *ListErRouteEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12490,6 +26556,10 @@ func (client *Client) ListErRouteEntriesWithOptions(request *ListErRouteEntriesR
 
 	if !tea.BoolValue(util.IsUnset(request.ErId)) {
 		body["ErId"] = request.ErId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreDetailedRouteEntry)) {
+		body["IgnoreDetailedRouteEntry"] = request.IgnoreDetailedRouteEntry
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -12514,6 +26584,10 @@ func (client *Client) ListErRouteEntriesWithOptions(request *ListErRouteEntriesR
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouteType)) {
@@ -12547,6 +26621,13 @@ func (client *Client) ListErRouteEntriesWithOptions(request *ListErRouteEntriesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the route entries of the Lingjun HUB.
+//
+// @param request - ListErRouteEntriesRequest
+//
+// @return ListErRouteEntriesResponse
 func (client *Client) ListErRouteEntries(request *ListErRouteEntriesRequest) (_result *ListErRouteEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListErRouteEntriesResponse{}
@@ -12558,6 +26639,15 @@ func (client *Client) ListErRouteEntries(request *ListErRouteEntriesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Routing policies are queried.
+//
+// @param request - ListErRouteMapsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListErRouteMapsResponse
 func (client *Client) ListErRouteMapsWithOptions(request *ListErRouteMapsRequest, runtime *util.RuntimeOptions) (_result *ListErRouteMapsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12608,6 +26698,10 @@ func (client *Client) ListErRouteMapsWithOptions(request *ListErRouteMapsRequest
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RouteMapAction)) {
 		body["RouteMapAction"] = request.RouteMapAction
 	}
@@ -12647,6 +26741,13 @@ func (client *Client) ListErRouteMapsWithOptions(request *ListErRouteMapsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Routing policies are queried.
+//
+// @param request - ListErRouteMapsRequest
+//
+// @return ListErRouteMapsResponse
 func (client *Client) ListErRouteMaps(request *ListErRouteMapsRequest) (_result *ListErRouteMapsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListErRouteMapsResponse{}
@@ -12658,6 +26759,15 @@ func (client *Client) ListErRouteMaps(request *ListErRouteMapsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Lingjun HUB.
+//
+// @param request - ListErsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListErsResponse
 func (client *Client) ListErsWithOptions(request *ListErsRequest, runtime *util.RuntimeOptions) (_result *ListErsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12700,6 +26810,10 @@ func (client *Client) ListErsWithOptions(request *ListErsRequest, runtime *util.
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -12723,6 +26837,13 @@ func (client *Client) ListErsWithOptions(request *ListErsRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Lingjun HUB.
+//
+// @param request - ListErsRequest
+//
+// @return ListErsResponse
 func (client *Client) ListErs(request *ListErsRequest) (_result *ListErsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListErsResponse{}
@@ -12734,12 +26855,181 @@ func (client *Client) ListErs(request *ListErsRequest) (_result *ListErsResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the GPU node list of a specified GPU node whose communication distance does not exceed the specified NCD.
+//
+// @param request - ListInstancesByNcdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesByNcdResponse
+func (client *Client) ListInstancesByNcdWithOptions(request *ListInstancesByNcdRequest, runtime *util.RuntimeOptions) (_result *ListInstancesByNcdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxNcd)) {
+		body["MaxNcd"] = request.MaxNcd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstancesByNcd"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstancesByNcdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the GPU node list of a specified GPU node whose communication distance does not exceed the specified NCD.
+//
+// @param request - ListInstancesByNcdRequest
+//
+// @return ListInstancesByNcdResponse
+func (client *Client) ListInstancesByNcd(request *ListInstancesByNcdRequest) (_result *ListInstancesByNcdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstancesByNcdResponse{}
+	_body, _err := client.ListInstancesByNcdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of secondary private IP addresses of Lingjun Elastic Network Interface.
+//
+// @param request - ListLeniPrivateIpAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLeniPrivateIpAddressesResponse
+func (client *Client) ListLeniPrivateIpAddressesWithOptions(request *ListLeniPrivateIpAddressesRequest, runtime *util.RuntimeOptions) (_result *ListLeniPrivateIpAddressesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpName)) {
+		body["IpName"] = request.IpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		body["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLeniPrivateIpAddresses"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLeniPrivateIpAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of secondary private IP addresses of Lingjun Elastic Network Interface.
+//
+// @param request - ListLeniPrivateIpAddressesRequest
+//
+// @return ListLeniPrivateIpAddressesResponse
+func (client *Client) ListLeniPrivateIpAddresses(request *ListLeniPrivateIpAddressesRequest) (_result *ListLeniPrivateIpAddressesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLeniPrivateIpAddressesResponse{}
+	_body, _err := client.ListLeniPrivateIpAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of secondary private IP addresses of Lingjun network interface controller.
+//
+// @param request - ListLniPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLniPrivateIpAddressResponse
 func (client *Client) ListLniPrivateIpAddressWithOptions(request *ListLniPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *ListLniPrivateIpAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnablePage)) {
 		body["EnablePage"] = request.EnablePage
 	}
@@ -12791,6 +27081,13 @@ func (client *Client) ListLniPrivateIpAddressWithOptions(request *ListLniPrivate
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of secondary private IP addresses of Lingjun network interface controller.
+//
+// @param request - ListLniPrivateIpAddressRequest
+//
+// @return ListLniPrivateIpAddressResponse
 func (client *Client) ListLniPrivateIpAddress(request *ListLniPrivateIpAddressRequest) (_result *ListLniPrivateIpAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLniPrivateIpAddressResponse{}
@@ -12802,6 +27099,15 @@ func (client *Client) ListLniPrivateIpAddress(request *ListLniPrivateIpAddressRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Lingjun network interfaces (LNIs).
+//
+// @param request - ListNetworkInterfacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkInterfacesResponse
 func (client *Client) ListNetworkInterfacesWithOptions(request *ListNetworkInterfacesRequest, runtime *util.RuntimeOptions) (_result *ListNetworkInterfacesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12867,6 +27173,13 @@ func (client *Client) ListNetworkInterfacesWithOptions(request *ListNetworkInter
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Lingjun network interfaces (LNIs).
+//
+// @param request - ListNetworkInterfacesRequest
+//
+// @return ListNetworkInterfacesResponse
 func (client *Client) ListNetworkInterfaces(request *ListNetworkInterfacesRequest) (_result *ListNetworkInterfacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNetworkInterfacesResponse{}
@@ -12878,6 +27191,87 @@ func (client *Client) ListNetworkInterfaces(request *ListNetworkInterfacesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries node network information.
+//
+// @param request - ListNodeInfosForPodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodeInfosForPodResponse
+func (client *Client) ListNodeInfosForPodWithOptions(request *ListNodeInfosForPodRequest, runtime *util.RuntimeOptions) (_result *ListNodeInfosForPodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		body["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNodeInfosForPod"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNodeInfosForPodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries node network information.
+//
+// @param request - ListNodeInfosForPodRequest
+//
+// @return ListNodeInfosForPodResponse
+func (client *Client) ListNodeInfosForPod(request *ListNodeInfosForPodRequest) (_result *ListNodeInfosForPodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNodeInfosForPodResponse{}
+	_body, _err := client.ListNodeInfosForPodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to query the details of one or more Lingjun subnets, including the Lingjun subnet type, network address segment, and instance ID of the Lingjun CIDR block.
+//
+// @param request - ListSubnetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubnetsResponse
 func (client *Client) ListSubnetsWithOptions(request *ListSubnetsRequest, runtime *util.RuntimeOptions) (_result *ListSubnetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12955,6 +27349,13 @@ func (client *Client) ListSubnetsWithOptions(request *ListSubnetsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to query the details of one or more Lingjun subnets, including the Lingjun subnet type, network address segment, and instance ID of the Lingjun CIDR block.
+//
+// @param request - ListSubnetsRequest
+//
+// @return ListSubnetsResponse
 func (client *Client) ListSubnets(request *ListSubnetsRequest) (_result *ListSubnetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSubnetsResponse{}
@@ -12966,6 +27367,95 @@ func (client *Client) ListSubnets(request *ListSubnetsRequest) (_result *ListSub
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the traffic rate of a Lingjun connection.
+//
+// @param request - ListVccFlowInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVccFlowInfosResponse
+func (client *Client) ListVccFlowInfosWithOptions(request *ListVccFlowInfosRequest, runtime *util.RuntimeOptions) (_result *ListVccFlowInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		body["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		body["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
+		body["MetricName"] = request.MetricName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		body["To"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VccId)) {
+		body["VccId"] = request.VccId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVccFlowInfos"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListVccFlowInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the traffic rate of a Lingjun connection.
+//
+// @param request - ListVccFlowInfosRequest
+//
+// @return ListVccFlowInfosResponse
+func (client *Client) ListVccFlowInfos(request *ListVccFlowInfosRequest) (_result *ListVccFlowInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVccFlowInfosResponse{}
+	_body, _err := client.ListVccFlowInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a Lingjun connection authorization, including the authorized tenant ID, region, and Lingjun HUB instance information.
+//
+// @param request - ListVccGrantRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVccGrantRulesResponse
 func (client *Client) ListVccGrantRulesWithOptions(request *ListVccGrantRulesRequest, runtime *util.RuntimeOptions) (_result *ListVccGrantRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13012,6 +27502,10 @@ func (client *Client) ListVccGrantRulesWithOptions(request *ListVccGrantRulesReq
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -13035,6 +27529,13 @@ func (client *Client) ListVccGrantRulesWithOptions(request *ListVccGrantRulesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Lingjun connection authorization, including the authorized tenant ID, region, and Lingjun HUB instance information.
+//
+// @param request - ListVccGrantRulesRequest
+//
+// @return ListVccGrantRulesResponse
 func (client *Client) ListVccGrantRules(request *ListVccGrantRulesRequest) (_result *ListVccGrantRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVccGrantRulesResponse{}
@@ -13046,6 +27547,15 @@ func (client *Client) ListVccGrantRules(request *ListVccGrantRulesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Lingjun connection route entries.
+//
+// @param request - ListVccRouteEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVccRouteEntriesResponse
 func (client *Client) ListVccRouteEntriesWithOptions(request *ListVccRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *ListVccRouteEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13058,6 +27568,10 @@ func (client *Client) ListVccRouteEntriesWithOptions(request *ListVccRouteEntrie
 
 	if !tea.BoolValue(util.IsUnset(request.EnablePage)) {
 		body["EnablePage"] = request.EnablePage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreDetailedRouteEntry)) {
+		body["IgnoreDetailedRouteEntry"] = request.IgnoreDetailedRouteEntry
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextHopId)) {
@@ -13078,6 +27592,10 @@ func (client *Client) ListVccRouteEntriesWithOptions(request *ListVccRouteEntrie
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouteType)) {
@@ -13119,6 +27637,13 @@ func (client *Client) ListVccRouteEntriesWithOptions(request *ListVccRouteEntrie
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Lingjun connection route entries.
+//
+// @param request - ListVccRouteEntriesRequest
+//
+// @return ListVccRouteEntriesResponse
 func (client *Client) ListVccRouteEntries(request *ListVccRouteEntriesRequest) (_result *ListVccRouteEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVccRouteEntriesResponse{}
@@ -13130,6 +27655,15 @@ func (client *Client) ListVccRouteEntries(request *ListVccRouteEntriesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// query the details of one or more lingjun connections, including the specification, Express Connect circuit access port type, instance status, bandwidth, and bgp network segment.
+//
+// @param request - ListVccsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVccsResponse
 func (client *Client) ListVccsWithOptions(request *ListVccsRequest, runtime *util.RuntimeOptions) (_result *ListVccsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13215,6 +27749,13 @@ func (client *Client) ListVccsWithOptions(request *ListVccsRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// query the details of one or more lingjun connections, including the specification, Express Connect circuit access port type, instance status, bandwidth, and bgp network segment.
+//
+// @param request - ListVccsRequest
+//
+// @return ListVccsResponse
 func (client *Client) ListVccs(request *ListVccsRequest) (_result *ListVccsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVccsResponse{}
@@ -13226,6 +27767,15 @@ func (client *Client) ListVccs(request *ListVccsRequest) (_result *ListVccsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of one or more route entries in the CIDR block of Lingjun, including the route type, route entry status, destination CIDR block, and instance information of the next route entry.
+//
+// @param request - ListVpdGrantRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpdGrantRulesResponse
 func (client *Client) ListVpdGrantRulesWithOptions(request *ListVpdGrantRulesRequest, runtime *util.RuntimeOptions) (_result *ListVpdGrantRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13272,6 +27822,10 @@ func (client *Client) ListVpdGrantRulesWithOptions(request *ListVpdGrantRulesReq
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -13295,6 +27849,13 @@ func (client *Client) ListVpdGrantRulesWithOptions(request *ListVpdGrantRulesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of one or more route entries in the CIDR block of Lingjun, including the route type, route entry status, destination CIDR block, and instance information of the next route entry.
+//
+// @param request - ListVpdGrantRulesRequest
+//
+// @return ListVpdGrantRulesResponse
 func (client *Client) ListVpdGrantRules(request *ListVpdGrantRulesRequest) (_result *ListVpdGrantRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpdGrantRulesResponse{}
@@ -13306,6 +27867,15 @@ func (client *Client) ListVpdGrantRules(request *ListVpdGrantRulesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the route entries of the Lingjun CIDR block.
+//
+// @param request - ListVpdRouteEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpdRouteEntriesResponse
 func (client *Client) ListVpdRouteEntriesWithOptions(request *ListVpdRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *ListVpdRouteEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13318,6 +27888,10 @@ func (client *Client) ListVpdRouteEntriesWithOptions(request *ListVpdRouteEntrie
 
 	if !tea.BoolValue(util.IsUnset(request.EnablePage)) {
 		body["EnablePage"] = request.EnablePage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreDetailedRouteEntry)) {
+		body["IgnoreDetailedRouteEntry"] = request.IgnoreDetailedRouteEntry
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextHopId)) {
@@ -13338,6 +27912,10 @@ func (client *Client) ListVpdRouteEntriesWithOptions(request *ListVpdRouteEntrie
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouteType)) {
@@ -13379,6 +27957,13 @@ func (client *Client) ListVpdRouteEntriesWithOptions(request *ListVpdRouteEntrie
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the route entries of the Lingjun CIDR block.
+//
+// @param request - ListVpdRouteEntriesRequest
+//
+// @return ListVpdRouteEntriesResponse
 func (client *Client) ListVpdRouteEntries(request *ListVpdRouteEntriesRequest) (_result *ListVpdRouteEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpdRouteEntriesResponse{}
@@ -13390,6 +27975,15 @@ func (client *Client) ListVpdRouteEntries(request *ListVpdRouteEntriesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of one or more Lingjun CIDR blocks, including the status of Lingjun CIDR blocks, Cidr addresses, service CIDR blocks, and Subnet.
+//
+// @param request - ListVpdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpdsResponse
 func (client *Client) ListVpdsWithOptions(request *ListVpdsRequest, runtime *util.RuntimeOptions) (_result *ListVpdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13471,6 +28065,13 @@ func (client *Client) ListVpdsWithOptions(request *ListVpdsRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of one or more Lingjun CIDR blocks, including the status of Lingjun CIDR blocks, Cidr addresses, service CIDR blocks, and Subnet.
+//
+// @param request - ListVpdsRequest
+//
+// @return ListVpdsResponse
 func (client *Client) ListVpds(request *ListVpdsRequest) (_result *ListVpdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpdsResponse{}
@@ -13482,12 +28083,241 @@ func (client *Client) ListVpds(request *ListVpdsRequest) (_result *ListVpdsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the network communication distance (Network Communication Distance,NCD) between instances (Lingjun node, Lingjun network interface controller).
+//
+// @param request - QueryInstanceNcdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceNcdResponse
+func (client *Client) QueryInstanceNcdWithOptions(request *QueryInstanceNcdRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceNcdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId1)) {
+		body["InstanceId1"] = request.InstanceId1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId2)) {
+		body["InstanceId2"] = request.InstanceId2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceNcd"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryInstanceNcdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the network communication distance (Network Communication Distance,NCD) between instances (Lingjun node, Lingjun network interface controller).
+//
+// @param request - QueryInstanceNcdRequest
+//
+// @return QueryInstanceNcdResponse
+func (client *Client) QueryInstanceNcd(request *QueryInstanceNcdRequest) (_result *QueryInstanceNcdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInstanceNcdResponse{}
+	_body, _err := client.QueryInstanceNcdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unsubscribe inactive Lingjun connection
+//
+// Description:
+//
+// Only unsubscribable for Lingjun connections in the prepayment status.
+//
+// @param request - RefundVccRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefundVccResponse
+func (client *Client) RefundVccWithOptions(request *RefundVccRequest, runtime *util.RuntimeOptions) (_result *RefundVccResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VccId)) {
+		body["VccId"] = request.VccId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefundVcc"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefundVccResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unsubscribe inactive Lingjun connection
+//
+// Description:
+//
+// Only unsubscribable for Lingjun connections in the prepayment status.
+//
+// @param request - RefundVccRequest
+//
+// @return RefundVccResponse
+func (client *Client) RefundVcc(request *RefundVccRequest) (_result *RefundVccResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefundVccResponse{}
+	_body, _err := client.RefundVccWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retry trying to create /delete a Lingjun connection.
+//
+// Description:
+//
+// This operation allows the user to retry the operation if the Lingjun connection creation and deletion processes fail. Only the Lingjun connection in the creation failure and deletion failure state can be retried
+//
+// @param request - RetryVccRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryVccResponse
+func (client *Client) RetryVccWithOptions(request *RetryVccRequest, runtime *util.RuntimeOptions) (_result *RetryVccResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VccId)) {
+		body["VccId"] = request.VccId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryVcc"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryVccResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retry trying to create /delete a Lingjun connection.
+//
+// Description:
+//
+// This operation allows the user to retry the operation if the Lingjun connection creation and deletion processes fail. Only the Lingjun connection in the creation failure and deletion failure state can be retried
+//
+// @param request - RetryVccRequest
+//
+// @return RetryVccResponse
+func (client *Client) RetryVcc(request *RetryVccRequest) (_result *RetryVccResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryVccResponse{}
+	_body, _err := client.RetryVccWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an assigned secondary private IP address.
+//
+// @param request - UnAssignPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnAssignPrivateIpAddressResponse
 func (client *Client) UnAssignPrivateIpAddressWithOptions(request *UnAssignPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *UnAssignPrivateIpAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IpName)) {
 		body["IpName"] = request.IpName
 	}
@@ -13531,6 +28361,13 @@ func (client *Client) UnAssignPrivateIpAddressWithOptions(request *UnAssignPriva
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an assigned secondary private IP address.
+//
+// @param request - UnAssignPrivateIpAddressRequest
+//
+// @return UnAssignPrivateIpAddressResponse
 func (client *Client) UnAssignPrivateIpAddress(request *UnAssignPrivateIpAddressRequest) (_result *UnAssignPrivateIpAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnAssignPrivateIpAddressResponse{}
@@ -13542,6 +28379,243 @@ func (client *Client) UnAssignPrivateIpAddress(request *UnAssignPrivateIpAddress
 	return _result, _err
 }
 
+// Summary:
+//
+// This function can be used to delete the additional network segment of VPD.
+//
+// Description:
+//
+// *
+//
+// **Warning*	- If the attached CIDR block has Lingjun subnet resources, you must delete the dependent resources before you can delete the attached CIDR block.
+//
+// @param request - UnAssociateVpdCidrBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnAssociateVpdCidrBlockResponse
+func (client *Client) UnAssociateVpdCidrBlockWithOptions(request *UnAssociateVpdCidrBlockRequest, runtime *util.RuntimeOptions) (_result *UnAssociateVpdCidrBlockResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryCidrBlock)) {
+		body["SecondaryCidrBlock"] = request.SecondaryCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpdId)) {
+		body["VpdId"] = request.VpdId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnAssociateVpdCidrBlock"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnAssociateVpdCidrBlockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// This function can be used to delete the additional network segment of VPD.
+//
+// Description:
+//
+// *
+//
+// **Warning*	- If the attached CIDR block has Lingjun subnet resources, you must delete the dependent resources before you can delete the attached CIDR block.
+//
+// @param request - UnAssociateVpdCidrBlockRequest
+//
+// @return UnAssociateVpdCidrBlockResponse
+func (client *Client) UnAssociateVpdCidrBlock(request *UnAssociateVpdCidrBlockRequest) (_result *UnAssociateVpdCidrBlockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnAssociateVpdCidrBlockResponse{}
+	_body, _err := client.UnAssociateVpdCidrBlockWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete the assigned secondary private IP address of Lingjun Elastic Network Interface.
+//
+// @param request - UnassignLeniPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnassignLeniPrivateIpAddressResponse
+func (client *Client) UnassignLeniPrivateIpAddressWithOptions(request *UnassignLeniPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *UnassignLeniPrivateIpAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpName)) {
+		body["IpName"] = request.IpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnassignLeniPrivateIpAddress"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnassignLeniPrivateIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete the assigned secondary private IP address of Lingjun Elastic Network Interface.
+//
+// @param request - UnassignLeniPrivateIpAddressRequest
+//
+// @return UnassignLeniPrivateIpAddressResponse
+func (client *Client) UnassignLeniPrivateIpAddress(request *UnassignLeniPrivateIpAddressRequest) (_result *UnassignLeniPrivateIpAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnassignLeniPrivateIpAddressResponse{}
+	_body, _err := client.UnassignLeniPrivateIpAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Update Lingjun Elastic Network Interface information.
+//
+// @param request - UpdateElasticNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateElasticNetworkInterfaceResponse
+func (client *Client) UpdateElasticNetworkInterfaceWithOptions(request *UpdateElasticNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *UpdateElasticNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateElasticNetworkInterface"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateElasticNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Update Lingjun Elastic Network Interface information.
+//
+// @param request - UpdateElasticNetworkInterfaceRequest
+//
+// @return UpdateElasticNetworkInterfaceResponse
+func (client *Client) UpdateElasticNetworkInterface(request *UpdateElasticNetworkInterfaceRequest) (_result *UpdateElasticNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateElasticNetworkInterfaceResponse{}
+	_body, _err := client.UpdateElasticNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updated Lingjun HUB.
+//
+// @param request - UpdateErRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateErResponse
 func (client *Client) UpdateErWithOptions(request *UpdateErRequest, runtime *util.RuntimeOptions) (_result *UpdateErResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13587,6 +28661,13 @@ func (client *Client) UpdateErWithOptions(request *UpdateErRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Updated Lingjun HUB.
+//
+// @param request - UpdateErRequest
+//
+// @return UpdateErResponse
 func (client *Client) UpdateEr(request *UpdateErRequest) (_result *UpdateErResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateErResponse{}
@@ -13598,6 +28679,15 @@ func (client *Client) UpdateEr(request *UpdateErRequest) (_result *UpdateErRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a network instance connection.
+//
+// @param request - UpdateErAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateErAttachmentResponse
 func (client *Client) UpdateErAttachmentWithOptions(request *UpdateErAttachmentRequest, runtime *util.RuntimeOptions) (_result *UpdateErAttachmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13643,6 +28733,13 @@ func (client *Client) UpdateErAttachmentWithOptions(request *UpdateErAttachmentR
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a network instance connection.
+//
+// @param request - UpdateErAttachmentRequest
+//
+// @return UpdateErAttachmentResponse
 func (client *Client) UpdateErAttachment(request *UpdateErAttachmentRequest) (_result *UpdateErAttachmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateErAttachmentResponse{}
@@ -13654,6 +28751,15 @@ func (client *Client) UpdateErAttachment(request *UpdateErAttachmentRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Update some information about the routing policy, including the description and name of the routing policy.
+//
+// @param request - UpdateErRouteMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateErRouteMapResponse
 func (client *Client) UpdateErRouteMapWithOptions(request *UpdateErRouteMapRequest, runtime *util.RuntimeOptions) (_result *UpdateErRouteMapResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13699,6 +28805,13 @@ func (client *Client) UpdateErRouteMapWithOptions(request *UpdateErRouteMapReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Update some information about the routing policy, including the description and name of the routing policy.
+//
+// @param request - UpdateErRouteMapRequest
+//
+// @return UpdateErRouteMapResponse
 func (client *Client) UpdateErRouteMap(request *UpdateErRouteMapRequest) (_result *UpdateErRouteMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateErRouteMapResponse{}
@@ -13710,6 +28823,87 @@ func (client *Client) UpdateErRouteMap(request *UpdateErRouteMapRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Updated the description of the secondary private network assigned by the Lingjun Elastic Network Interface.
+//
+// @param request - UpdateLeniPrivateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLeniPrivateIpAddressResponse
+func (client *Client) UpdateLeniPrivateIpAddressWithOptions(request *UpdateLeniPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *UpdateLeniPrivateIpAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElasticNetworkInterfaceId)) {
+		body["ElasticNetworkInterfaceId"] = request.ElasticNetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpName)) {
+		body["IpName"] = request.IpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLeniPrivateIpAddress"),
+		Version:     tea.String("2022-05-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLeniPrivateIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updated the description of the secondary private network assigned by the Lingjun Elastic Network Interface.
+//
+// @param request - UpdateLeniPrivateIpAddressRequest
+//
+// @return UpdateLeniPrivateIpAddressResponse
+func (client *Client) UpdateLeniPrivateIpAddress(request *UpdateLeniPrivateIpAddressRequest) (_result *UpdateLeniPrivateIpAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLeniPrivateIpAddressResponse{}
+	_body, _err := client.UpdateLeniPrivateIpAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates some information about a specified subnet instance, including the name of the subnet instance.
+//
+// @param request - UpdateSubnetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSubnetResponse
 func (client *Client) UpdateSubnetWithOptions(request *UpdateSubnetRequest, runtime *util.RuntimeOptions) (_result *UpdateSubnetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13759,6 +28953,13 @@ func (client *Client) UpdateSubnetWithOptions(request *UpdateSubnetRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates some information about a specified subnet instance, including the name of the subnet instance.
+//
+// @param request - UpdateSubnetRequest
+//
+// @return UpdateSubnetResponse
 func (client *Client) UpdateSubnet(request *UpdateSubnetRequest) (_result *UpdateSubnetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSubnetResponse{}
@@ -13770,6 +28971,15 @@ func (client *Client) UpdateSubnet(request *UpdateSubnetRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a Lingjun connection instance, including the peak bandwidth and name of the Lingjun connection instance.
+//
+// @param request - UpdateVccRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVccResponse
 func (client *Client) UpdateVccWithOptions(request *UpdateVccRequest, runtime *util.RuntimeOptions) (_result *UpdateVccResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13819,6 +29029,13 @@ func (client *Client) UpdateVccWithOptions(request *UpdateVccRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a Lingjun connection instance, including the peak bandwidth and name of the Lingjun connection instance.
+//
+// @param request - UpdateVccRequest
+//
+// @return UpdateVccResponse
 func (client *Client) UpdateVcc(request *UpdateVccRequest) (_result *UpdateVccResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVccResponse{}
@@ -13830,6 +29047,15 @@ func (client *Client) UpdateVcc(request *UpdateVccRequest) (_result *UpdateVccRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about the Lingjun CIDR block, including the name of the Lingjun CIDR block.
+//
+// @param request - UpdateVpdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVpdResponse
 func (client *Client) UpdateVpdWithOptions(request *UpdateVpdRequest, runtime *util.RuntimeOptions) (_result *UpdateVpdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13871,6 +29097,13 @@ func (client *Client) UpdateVpdWithOptions(request *UpdateVpdRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about the Lingjun CIDR block, including the name of the Lingjun CIDR block.
+//
+// @param request - UpdateVpdRequest
+//
+// @return UpdateVpdResponse
 func (client *Client) UpdateVpd(request *UpdateVpdRequest) (_result *UpdateVpdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpdResponse{}
