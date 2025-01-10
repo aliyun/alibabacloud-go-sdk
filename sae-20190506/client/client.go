@@ -12117,6 +12117,7 @@ func (s *CreateGreyTagRouteResponse) SetBody(v *CreateGreyTagRouteResponseBody) 
 }
 
 type CreateIngressRequest struct {
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The ID of the certificate that is associated with the **CLB*	- instance.
 	//
 	// 	- If you set **LoadBalanceType*	- to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
@@ -12195,7 +12196,8 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// clb
-	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	LoadBalanceType     *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
 	// The ID of the namespace where the application is located. Currently, cross-namespace applications are not supported.
 	//
 	// This parameter is required.
@@ -12244,12 +12246,11 @@ type CreateIngressRequest struct {
 	//
 	// >  The SLB instance can be a Classic Load Balancer (CLB) instance or an Application Load Balancer (ALB) instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// lb-uf6hucc7inlqrtcq5****
-	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbId        *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	ZoneMappings *string `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty"`
 }
 
 func (s CreateIngressRequest) String() string {
@@ -12258,6 +12259,11 @@ func (s CreateIngressRequest) String() string {
 
 func (s CreateIngressRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateIngressRequest) SetAddressType(v string) *CreateIngressRequest {
+	s.AddressType = &v
+	return s
 }
 
 func (s *CreateIngressRequest) SetCertId(v string) *CreateIngressRequest {
@@ -12325,6 +12331,11 @@ func (s *CreateIngressRequest) SetLoadBalanceType(v string) *CreateIngressReques
 	return s
 }
 
+func (s *CreateIngressRequest) SetLoadBalancerEdition(v string) *CreateIngressRequest {
+	s.LoadBalancerEdition = &v
+	return s
+}
+
 func (s *CreateIngressRequest) SetNamespaceId(v string) *CreateIngressRequest {
 	s.NamespaceId = &v
 	return s
@@ -12347,6 +12358,11 @@ func (s *CreateIngressRequest) SetSecurityPolicyId(v string) *CreateIngressReque
 
 func (s *CreateIngressRequest) SetSlbId(v string) *CreateIngressRequest {
 	s.SlbId = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetZoneMappings(v string) *CreateIngressRequest {
+	s.ZoneMappings = &v
 	return s
 }
 
@@ -25811,7 +25827,8 @@ type DescribeIngressResponseBodyData struct {
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
-	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CertIds      *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CreatedBySae *bool   `json:"CreatedBySae,omitempty" xml:"CreatedBySae,omitempty"`
 	// The forwarding rules.
 	DefaultRule *DescribeIngressResponseBodyDataDefaultRule `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty" type:"Struct"`
 	// The name of the routing rule.
@@ -25918,6 +25935,11 @@ func (s *DescribeIngressResponseBodyData) SetCertId(v string) *DescribeIngressRe
 
 func (s *DescribeIngressResponseBodyData) SetCertIds(v string) *DescribeIngressResponseBodyData {
 	s.CertIds = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetCreatedBySae(v bool) *DescribeIngressResponseBodyData {
+	s.CreatedBySae = &v
 	return s
 }
 
@@ -47260,6 +47282,10 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CertId)) {
 		query["CertId"] = request.CertId
 	}
@@ -47312,6 +47338,10 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 		query["LoadBalanceType"] = request.LoadBalanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerEdition)) {
+		query["LoadBalancerEdition"] = request.LoadBalancerEdition
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -47326,6 +47356,10 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.SlbId)) {
 		query["SlbId"] = request.SlbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
 	}
 
 	body := map[string]interface{}{}
