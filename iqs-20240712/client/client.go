@@ -2048,7 +2048,8 @@ type NearbySearchNovaRequest struct {
 	// example:
 	//
 	// 5
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	SortRule *string `json:"sortRule,omitempty" xml:"sortRule,omitempty"`
 	// example:
 	//
 	// GAS_STATION|RESTAURANT|HOTEL|ATTRACTION
@@ -2095,6 +2096,11 @@ func (s *NearbySearchNovaRequest) SetRadius(v int32) *NearbySearchNovaRequest {
 
 func (s *NearbySearchNovaRequest) SetSize(v int32) *NearbySearchNovaRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *NearbySearchNovaRequest) SetSortRule(v string) *NearbySearchNovaRequest {
+	s.SortRule = &v
 	return s
 }
 
@@ -5433,6 +5439,10 @@ func (client *Client) NearbySearchNovaWithOptions(request *NearbySearchNovaReque
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortRule)) {
+		query["sortRule"] = request.SortRule
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Types)) {
