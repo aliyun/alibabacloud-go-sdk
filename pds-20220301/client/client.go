@@ -7415,11 +7415,15 @@ type VideoPreviewPlayInfo struct {
 	// example:
 	//
 	// live_transcoding
-	Category                    *string                                            `json:"category,omitempty" xml:"category,omitempty"`
-	LiveTranscodingTaskList     []*VideoPreviewPlayInfoLiveTranscodingTaskList     `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
-	MasterUrl                   *string                                            `json:"master_url,omitempty" xml:"master_url,omitempty"`
-	Meta                        *VideoPreviewPlayInfoMeta                          `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	OfflineVideoTranscodingList []*VideoPreviewPlayInfoOfflineVideoTranscodingList `json:"offline_video_transcoding_list,omitempty" xml:"offline_video_transcoding_list,omitempty" type:"Repeated"`
+	Category                            *string                                            `json:"category,omitempty" xml:"category,omitempty"`
+	LiveTranscodingSubtitleTaskList     []*VideoPreviewSubtitleInfo                        `json:"live_transcoding_subtitle_task_list,omitempty" xml:"live_transcoding_subtitle_task_list,omitempty" type:"Repeated"`
+	LiveTranscodingTaskList             []*VideoPreviewPlayInfoLiveTranscodingTaskList     `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
+	MasterUrl                           *string                                            `json:"master_url,omitempty" xml:"master_url,omitempty"`
+	Meta                                *VideoPreviewPlayInfoMeta                          `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	OfflineVideoTranscodingList         []*VideoPreviewPlayInfoOfflineVideoTranscodingList `json:"offline_video_transcoding_list,omitempty" xml:"offline_video_transcoding_list,omitempty" type:"Repeated"`
+	OfflineVideoTranscodingSubtitleList []*VideoPreviewSubtitleInfo                        `json:"offline_video_transcoding_subtitle_list,omitempty" xml:"offline_video_transcoding_subtitle_list,omitempty" type:"Repeated"`
+	QuickVideoList                      []*VideoPreviewPlayInfoQuickVideoList              `json:"quick_video_list,omitempty" xml:"quick_video_list,omitempty" type:"Repeated"`
+	QuickVideoSubtitleList              []*VideoPreviewSubtitleInfo                        `json:"quick_video_subtitle_list,omitempty" xml:"quick_video_subtitle_list,omitempty" type:"Repeated"`
 }
 
 func (s VideoPreviewPlayInfo) String() string {
@@ -7432,6 +7436,11 @@ func (s VideoPreviewPlayInfo) GoString() string {
 
 func (s *VideoPreviewPlayInfo) SetCategory(v string) *VideoPreviewPlayInfo {
 	s.Category = &v
+	return s
+}
+
+func (s *VideoPreviewPlayInfo) SetLiveTranscodingSubtitleTaskList(v []*VideoPreviewSubtitleInfo) *VideoPreviewPlayInfo {
+	s.LiveTranscodingSubtitleTaskList = v
 	return s
 }
 
@@ -7452,6 +7461,21 @@ func (s *VideoPreviewPlayInfo) SetMeta(v *VideoPreviewPlayInfoMeta) *VideoPrevie
 
 func (s *VideoPreviewPlayInfo) SetOfflineVideoTranscodingList(v []*VideoPreviewPlayInfoOfflineVideoTranscodingList) *VideoPreviewPlayInfo {
 	s.OfflineVideoTranscodingList = v
+	return s
+}
+
+func (s *VideoPreviewPlayInfo) SetOfflineVideoTranscodingSubtitleList(v []*VideoPreviewSubtitleInfo) *VideoPreviewPlayInfo {
+	s.OfflineVideoTranscodingSubtitleList = v
+	return s
+}
+
+func (s *VideoPreviewPlayInfo) SetQuickVideoList(v []*VideoPreviewPlayInfoQuickVideoList) *VideoPreviewPlayInfo {
+	s.QuickVideoList = v
+	return s
+}
+
+func (s *VideoPreviewPlayInfo) SetQuickVideoSubtitleList(v []*VideoPreviewSubtitleInfo) *VideoPreviewPlayInfo {
+	s.QuickVideoSubtitleList = v
 	return s
 }
 
@@ -7554,13 +7578,44 @@ func (s *VideoPreviewPlayInfoOfflineVideoTranscodingList) SetUrl(v string) *Vide
 	return s
 }
 
+type VideoPreviewPlayInfoQuickVideoList struct {
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+	Url        *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s VideoPreviewPlayInfoQuickVideoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoPreviewPlayInfoQuickVideoList) GoString() string {
+	return s.String()
+}
+
+func (s *VideoPreviewPlayInfoQuickVideoList) SetStatus(v string) *VideoPreviewPlayInfoQuickVideoList {
+	s.Status = &v
+	return s
+}
+
+func (s *VideoPreviewPlayInfoQuickVideoList) SetTemplateId(v string) *VideoPreviewPlayInfoQuickVideoList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *VideoPreviewPlayInfoQuickVideoList) SetUrl(v string) *VideoPreviewPlayInfoQuickVideoList {
+	s.Url = &v
+	return s
+}
+
 type VideoPreviewPlayMeta struct {
 	// example:
 	//
 	// live_transcoding
-	Category                *string                                        `json:"category,omitempty" xml:"category,omitempty"`
-	LiveTranscodingTaskList []*VideoPreviewPlayMetaLiveTranscodingTaskList `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
-	Meta                    *VideoPreviewPlayMetaMeta                      `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	Category                    *string                                            `json:"category,omitempty" xml:"category,omitempty"`
+	LiveTranscodingTaskList     []*VideoPreviewPlayMetaLiveTranscodingTaskList     `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
+	Meta                        *VideoPreviewPlayMetaMeta                          `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	OfflineVideoTranscodingList []*VideoPreviewPlayMetaOfflineVideoTranscodingList `json:"offline_video_transcoding_list,omitempty" xml:"offline_video_transcoding_list,omitempty" type:"Repeated"`
+	QuickVideoList              []*VideoPreviewPlayMetaQuickVideoList              `json:"quick_video_list,omitempty" xml:"quick_video_list,omitempty" type:"Repeated"`
 }
 
 func (s VideoPreviewPlayMeta) String() string {
@@ -7586,9 +7641,25 @@ func (s *VideoPreviewPlayMeta) SetMeta(v *VideoPreviewPlayMetaMeta) *VideoPrevie
 	return s
 }
 
+func (s *VideoPreviewPlayMeta) SetOfflineVideoTranscodingList(v []*VideoPreviewPlayMetaOfflineVideoTranscodingList) *VideoPreviewPlayMeta {
+	s.OfflineVideoTranscodingList = v
+	return s
+}
+
+func (s *VideoPreviewPlayMeta) SetQuickVideoList(v []*VideoPreviewPlayMetaQuickVideoList) *VideoPreviewPlayMeta {
+	s.QuickVideoList = v
+	return s
+}
+
 type VideoPreviewPlayMetaLiveTranscodingTaskList struct {
-	KeepOriginalResolution *bool   `json:"keep_original_resolution,omitempty" xml:"keep_original_resolution,omitempty"`
-	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// true
+	KeepOriginalResolution *bool `json:"keep_original_resolution,omitempty" xml:"keep_original_resolution,omitempty"`
+	// example:
+	//
+	// finished
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
 	// 264_720p
@@ -7653,6 +7724,102 @@ func (s *VideoPreviewPlayMetaMeta) SetHeight(v int64) *VideoPreviewPlayMetaMeta 
 
 func (s *VideoPreviewPlayMetaMeta) SetWidth(v int64) *VideoPreviewPlayMetaMeta {
 	s.Width = &v
+	return s
+}
+
+type VideoPreviewPlayMetaOfflineVideoTranscodingList struct {
+	// example:
+	//
+	// true
+	KeepOriginalResolution *string `json:"keep_original_resolution,omitempty" xml:"keep_original_resolution,omitempty"`
+	// example:
+	//
+	// finished
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 264_720p
+	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+}
+
+func (s VideoPreviewPlayMetaOfflineVideoTranscodingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoPreviewPlayMetaOfflineVideoTranscodingList) GoString() string {
+	return s.String()
+}
+
+func (s *VideoPreviewPlayMetaOfflineVideoTranscodingList) SetKeepOriginalResolution(v string) *VideoPreviewPlayMetaOfflineVideoTranscodingList {
+	s.KeepOriginalResolution = &v
+	return s
+}
+
+func (s *VideoPreviewPlayMetaOfflineVideoTranscodingList) SetStatus(v string) *VideoPreviewPlayMetaOfflineVideoTranscodingList {
+	s.Status = &v
+	return s
+}
+
+func (s *VideoPreviewPlayMetaOfflineVideoTranscodingList) SetTemplateId(v string) *VideoPreviewPlayMetaOfflineVideoTranscodingList {
+	s.TemplateId = &v
+	return s
+}
+
+type VideoPreviewPlayMetaQuickVideoList struct {
+	// example:
+	//
+	// finished
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 264_720p
+	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+}
+
+func (s VideoPreviewPlayMetaQuickVideoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoPreviewPlayMetaQuickVideoList) GoString() string {
+	return s.String()
+}
+
+func (s *VideoPreviewPlayMetaQuickVideoList) SetStatus(v string) *VideoPreviewPlayMetaQuickVideoList {
+	s.Status = &v
+	return s
+}
+
+func (s *VideoPreviewPlayMetaQuickVideoList) SetTemplateId(v string) *VideoPreviewPlayMetaQuickVideoList {
+	s.TemplateId = &v
+	return s
+}
+
+type VideoPreviewSubtitleInfo struct {
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
+	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s VideoPreviewSubtitleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoPreviewSubtitleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *VideoPreviewSubtitleInfo) SetLanguage(v string) *VideoPreviewSubtitleInfo {
+	s.Language = &v
+	return s
+}
+
+func (s *VideoPreviewSubtitleInfo) SetStatus(v string) *VideoPreviewSubtitleInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *VideoPreviewSubtitleInfo) SetUrl(v string) *VideoPreviewSubtitleInfo {
+	s.Url = &v
 	return s
 }
 
@@ -13682,13 +13849,36 @@ func (s *GetIdentityToBenefitPkgMappingResponse) SetBody(v *IdentityToBenefitPkg
 }
 
 type GetLinkInfoRequest struct {
+	// The additional information about the unique identifier of the account. For example, if type is set to mobile, set the value of extra to a country code.
+	//
+	// example:
+	//
+	// 1
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// The unique identifier of the account, such as a mobile number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 130***
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	// The account type. Valid values:
+	//
+	// 	- mobile: a mobile number.
+	//
+	// 	- email: an email address.
+	//
+	// 	- ding: a DingTalk account.
+	//
+	// 	- ram: an Alibaba Cloud Resource Access Management (RAM) user.
+	//
+	// 	- wechat: a WeCom account.
+	//
+	// 	- ldap: a Lightweight Directory Access Protocol (LDAP) account.
+	//
+	// 	- custom: a custom account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25790,7 +25980,7 @@ func (client *Client) GetIdentityToBenefitPkgMapping(request *GetIdentityToBenef
 
 // Summary:
 //
-// 获取用户认证方式详情
+// Queries the information about an account.
 //
 // @param request - GetLinkInfoRequest
 //
@@ -25843,7 +26033,7 @@ func (client *Client) GetLinkInfoWithOptions(request *GetLinkInfoRequest, header
 
 // Summary:
 //
-// 获取用户认证方式详情
+// Queries the information about an account.
 //
 // @param request - GetLinkInfoRequest
 //
