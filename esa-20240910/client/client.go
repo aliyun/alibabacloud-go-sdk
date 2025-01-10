@@ -29837,7 +29837,8 @@ type ListPagesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryArgs *ListPagesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
 }
 
 func (s ListPagesRequest) String() string {
@@ -29855,6 +29856,67 @@ func (s *ListPagesRequest) SetPageNumber(v int32) *ListPagesRequest {
 
 func (s *ListPagesRequest) SetPageSize(v int32) *ListPagesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListPagesRequest) SetQueryArgs(v *ListPagesRequestQueryArgs) *ListPagesRequest {
+	s.QueryArgs = v
+	return s
+}
+
+type ListPagesRequestQueryArgs struct {
+	NameDescriptionLike *string `json:"NameDescriptionLike,omitempty" xml:"NameDescriptionLike,omitempty"`
+}
+
+func (s ListPagesRequestQueryArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPagesRequestQueryArgs) GoString() string {
+	return s.String()
+}
+
+func (s *ListPagesRequestQueryArgs) SetNameDescriptionLike(v string) *ListPagesRequestQueryArgs {
+	s.NameDescriptionLike = &v
+	return s
+}
+
+type ListPagesShrinkRequest struct {
+	// The page number. Valid values: **1 to 100000**. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+}
+
+func (s ListPagesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPagesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPagesShrinkRequest) SetPageNumber(v int32) *ListPagesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPagesShrinkRequest) SetPageSize(v int32) *ListPagesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPagesShrinkRequest) SetQueryArgsShrink(v string) *ListPagesShrinkRequest {
+	s.QueryArgsShrink = &v
 	return s
 }
 
@@ -31689,6 +31751,12 @@ type ListSitesRequest struct {
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	// null
+	//
+	// 	- null
+	//
+	// 	- null
+	//
 	// example:
 	//
 	// visitTime
@@ -31699,7 +31767,7 @@ type ListSitesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**.
+	// The number of entries per page. Default value: 500.
 	//
 	// example:
 	//
@@ -31737,7 +31805,7 @@ type ListSitesRequest struct {
 	//
 	// 	- **suffix**: match by suffix.
 	//
-	// 	- **exact**: exact match.
+	// 	- **null**
 	//
 	// 	- **fuzzy**: fuzzy match.
 	//
@@ -31885,6 +31953,12 @@ type ListSitesShrinkRequest struct {
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	// null
+	//
+	// 	- null
+	//
+	// 	- null
+	//
 	// example:
 	//
 	// visitTime
@@ -31895,7 +31969,7 @@ type ListSitesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**.
+	// The number of entries per page. Default value: 500.
 	//
 	// example:
 	//
@@ -31933,7 +32007,7 @@ type ListSitesShrinkRequest struct {
 	//
 	// 	- **suffix**: match by suffix.
 	//
-	// 	- **exact**: exact match.
+	// 	- **null**
 	//
 	// 	- **fuzzy**: fuzzy match.
 	//
@@ -32190,6 +32264,8 @@ type ListSitesResponseBodySites struct {
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
@@ -32337,7 +32413,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The website information. Valid values of he number of website IDs: **1*	- to **50**.
+	// The website ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type.
 	//
@@ -33214,6 +33290,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	// PREPAY
 	BillingMode      *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
 	BotInstanceLevel *string `json:"BotInstanceLevel,omitempty" xml:"BotInstanceLevel,omitempty"`
+	BotRequest       *string `json:"BotRequest,omitempty" xml:"BotRequest,omitempty"`
 	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	//
 	// 	- domestic: the Chinese mainland.
@@ -33314,6 +33391,11 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetBillingMode(v str
 
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetBotInstanceLevel(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
 	s.BotInstanceLevel = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetBotRequest(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.BotRequest = &v
 	return s
 }
 
@@ -37287,6 +37369,7 @@ func (s *SetCertificateRequest) SetUpdate(v bool) *SetCertificateRequest {
 }
 
 type SetCertificateResponseBody struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -37301,6 +37384,11 @@ func (s SetCertificateResponseBody) String() string {
 
 func (s SetCertificateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SetCertificateResponseBody) SetId(v string) *SetCertificateResponseBody {
+	s.Id = &v
+	return s
 }
 
 func (s *SetCertificateResponseBody) SetRequestId(v string) *SetCertificateResponseBody {
@@ -51712,16 +51800,22 @@ func (client *Client) ListOriginPools(request *ListOriginPoolsRequest) (_result 
 //
 // Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
 //
-// @param request - ListPagesRequest
+// @param tmpReq - ListPagesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPagesResponse
-func (client *Client) ListPagesWithOptions(request *ListPagesRequest, runtime *util.RuntimeOptions) (_result *ListPagesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListPagesWithOptions(tmpReq *ListPagesRequest, runtime *util.RuntimeOptions) (_result *ListPagesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListPagesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryArgs)) {
+		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, tea.String("QueryArgs"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -51729,6 +51823,10 @@ func (client *Client) ListPagesWithOptions(request *ListPagesRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
+		query["QueryArgs"] = request.QueryArgsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -55063,11 +55161,11 @@ func (client *Client) UpdateScheduledPreloadExecution(request *UpdateScheduledPr
 //
 // Description:
 //
-// When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+// When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
 //
-// 	- Make sure that the website has only proxied A/AAAA and CNAME records.
+// 	- The website only has proxied A/AAAA and CNAME records.
 //
-// 	- Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
+// 	- The DNS passthrough mode and custom nameserver features are not enabled for the website.
 //
 // @param request - UpdateSiteAccessTypeRequest
 //
@@ -55117,11 +55215,11 @@ func (client *Client) UpdateSiteAccessTypeWithOptions(request *UpdateSiteAccessT
 //
 // Description:
 //
-// When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+// When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
 //
-// 	- Make sure that the website has only proxied A/AAAA and CNAME records.
+// 	- The website only has proxied A/AAAA and CNAME records.
 //
-// 	- Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
+// 	- The DNS passthrough mode and custom nameserver features are not enabled for the website.
 //
 // @param request - UpdateSiteAccessTypeRequest
 //
