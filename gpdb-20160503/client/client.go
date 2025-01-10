@@ -1554,6 +1554,86 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 	return s
 }
 
+type CreateBackupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s CreateBackupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupRequest) SetDBInstanceId(v string) *CreateBackupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type CreateBackupResponseBody struct {
+	// example:
+	//
+	// 123
+	BackupJobId *int64 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBackupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupResponseBody) SetBackupJobId(v int64) *CreateBackupResponseBody {
+	s.BackupJobId = &v
+	return s
+}
+
+func (s *CreateBackupResponseBody) SetRequestId(v string) *CreateBackupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBackupResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBackupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBackupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupResponse) SetHeaders(v map[string]*string) *CreateBackupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBackupResponse) SetStatusCode(v int32) *CreateBackupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBackupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCollectionRequest struct {
 	// The name of the collection that you want to create.
 	//
@@ -1593,7 +1673,7 @@ type CreateCollectionRequest struct {
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
-	// Fields used for full-text search, separated by commas (,). These fields must be keys defined in Metadata.
+	// The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
 	//
 	// example:
 	//
@@ -1650,17 +1730,20 @@ type CreateCollectionRequest struct {
 	// example:
 	//
 	// {"title":"text","content":"text","response":"int"}
-	Metadata        *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The scalar index fields. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
+	//
+	// example:
+	//
+	// title
 	MetadataIndices *string `json:"MetadataIndices,omitempty" xml:"MetadataIndices,omitempty"`
-	// Method used when building the vector index.
+	// The method that is used to create vector indexes. Valid values:
 	//
-	// Value description:
+	// 	- l2: Euclidean distance.
 	//
-	// - **l2**: Euclidean distance.
+	// 	- ip: inner product distance.
 	//
-	// - **ip**: Inner product (dot product) distance.
-	//
-	// - **cosine*	- (default): Cosine similarity.
+	// 	- cosine: cosine similarity.
 	//
 	// example:
 	//
@@ -1801,7 +1884,7 @@ func (s *CreateCollectionRequest) SetWorkspaceId(v string) *CreateCollectionRequ
 }
 
 type CreateCollectionResponseBody struct {
-	// Return message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -3060,7 +3143,7 @@ func (s *CreateDBResourceGroupResponse) SetBody(v *CreateDBResourceGroupResponse
 }
 
 type CreateDocumentCollectionRequest struct {
-	// Name of the document library to be created.
+	// The name of the document collection that you want to create.
 	//
 	// > The name must comply with PostgreSQL object naming restrictions.
 	//
@@ -3070,7 +3153,7 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
 	//
@@ -3080,69 +3163,77 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Vectorization algorithm.
+	// The vectorization algorithm.
 	//
-	// > Supported algorithms:
+	// >  Supported algorithms:
 	//
-	// > - text-embedding-v1: 1536 dimensions
+	// 	- text-embedding-v1: the algorithm that produces 1536-dimensional vectors.
 	//
-	// > - text-embedding-v2: 1536 dimensions
+	// 	- text-embedding-v2: the algorithm that produces 1536-dimensional vectors.
 	//
-	// > - text2vec: 1024 dimensions
+	// 	- text2vec: the algorithm that produces 1024-dimensional vectors.
 	//
-	// > - m3e-base: 768 dimensions
+	// 	- m3e-base: the algorithm that produces 768-dimensional vectors.
 	//
-	// > - m3e-small: 512 dimensions
+	// 	- m3e-small: the algorithm that produces 512-dimensional vectors.
 	//
-	// > - clip-vit-b-32: CLIP ViT-B/32 model, 512 dimensions, image vectorization algorithm
+	// 	- clip-vit-b-32: the image vectorization algorithm that uses the Contrastive Language-Image Pre-Training (CLIP) ViT-B/32 model and produces 512-dimensional vectors.
 	//
-	// > - clip-vit-b-16: CLIP ViT-B/16 model, 512 dimensions, image vectorization algorithm
+	// 	- clip-vit-b-16: the image vectorization algorithm that uses the CLIP ViT-B/16 model and produces 512-dimensional vectors.
 	//
-	// > - clip-vit-l-14: CLIP ViT-L/14 model, 768 dimensions, image vectorization algorithm
+	// 	- clip-vit-l-14: the image vectorization algorithm that uses the CLIP ViT-L/14 model and produces 768-dimensional vectors.
 	//
-	// > - clip-vit-l-14-336px: CLIP ViT-L/14@336px model, 768 dimensions, image vectorization algorithm
+	// 	- clip-vit-l-14-336px: the image vectorization algorithm that uses the CLIP ViT-L/14@336px model and produces 768-dimensional vectors.
 	//
-	// > - clip-rn50: CLIP RN50 model, 1024 dimensions, image vectorization algorithm
+	// 	- clip-rn50: the image vectorization algorithm that uses the CLIP RN50 model and produces 1024-dimensional vectors.
 	//
-	// > - clip-rn101: CLIP RN101 model, 512 dimensions, image vectorization algorithm
+	// 	- clip-rn101: the image vectorization algorithm that uses the CLIP RN101 model and produces 512-dimensional vectors.
 	//
-	// > - clip-rn50x4: CLIP RN50x4 model, 640 dimensions, image vectorization algorithm
+	// 	- clip-rn50x4: the image vectorization algorithm that uses the CLIP RN50x4 model and produces 640-dimensional vectors.
 	//
-	// > - clip-rn50x16: CLIP RN50x16 model, 768 dimensions, image vectorization algorithm
+	// 	- clip-rn50x16: the image vectorization algorithm that uses the CLIP RN50x16 model and produces 768-dimensional vectors.
 	//
-	// > - clip-rn50x64: CLIP RN50x64 model, 1024 dimensions, image vectorization algorithm
+	// 	- clip-rn50x64: the image vectorization algorithm that uses the CLIP RN50x64 model and produces 1024-dimensional vectors.
 	//
 	// example:
 	//
 	// text-embedding-v1
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// Whether to use mmap to build HNSW index, default is 0. If the data does not need to be deleted and there are requirements for the speed of uploading data, it is recommended to set this to 1.
+	// Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
 	//
 	// >
 	//
-	// > - When set to 0, segment-page storage will be used by default to build the index. This mode can use PostgreSQL\\"s shared_buffer as a cache and supports operations such as deletion and updates.
+	// 	- 0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
 	//
-	// > - When set to 1, the index will be built using mmap. This mode does not support deletion or update operations.
+	// 	- 1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
 	//
 	// example:
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
-	// Fields used for full-text search, separated by commas (,). These fields must be keys defined in Metadata.
+	// The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
 	//
 	// example:
 	//
 	// title,page
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	// The maximum number of neighbors in the HNSW algorithm, ranging from 1 to 1000. The interface will automatically set this value based on the vector dimension, and it generally does not need to be manually configured.
+	// The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
 	//
-	// > It is recommended to set according to the vector dimension: >- For dimensions less than or equal to 384: 16 >- For dimensions greater than 384 but less than or equal to 768: 32 >- For dimensions greater than 768 but less than or equal to 1024: 64 >- For dimensions greater than 1024: 128
+	// >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+	//
+	// 	- If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+	//
+	// 	- If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+	//
+	// 	- If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+	//
+	// 	- If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
 	//
 	// example:
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
-	// Name of the management account with rds_superuser permissions.
+	// The name of the manager account that has the rds_superuser permission.
 	//
 	// > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
 	//
@@ -3152,7 +3243,7 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
-	// Management account password.
+	// The password of the management account.
 	//
 	// This parameter is required.
 	//
@@ -3160,61 +3251,64 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	// Metadata of vector data, in the form of a MAP JSON string. The key represents the field name, and the value represents the data type.
+	// The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
 	//
-	// > Supported data types
+	// > Supported data types:
 	//
-	// > - For a list of data types, see: [Data Types](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
+	// > - For information about data types, see: [Data Types](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
 	//
-	// > - The money type is not supported at this time.
+	// > - The money type is not supported.
 	//
 	// 	Warning: The fields id, vector, doc_name, content, loader_metadata, source, and to_tsvector are reserved and should not be used.
 	//
 	// example:
 	//
 	// {"title":"text","page":"int"}
-	Metadata        *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// title
 	MetadataIndices *string `json:"MetadataIndices,omitempty" xml:"MetadataIndices,omitempty"`
-	// Method used when building the vector index.
+	// The method that is used to create vector indexes.
 	//
-	// Value description:
+	// Valid values:
 	//
-	// - **l2**: Euclidean distance.
+	// 	- **l2**: Euclidean distance.
 	//
-	// - **ip**: Inner product (dot product) distance.
+	// 	- **ip**: inner product distance.
 	//
-	// - **cosine*	- (default): Cosine similarity.
+	// 	- **cosine*	- (default): cosine similarity.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// Namespace, default is public.
+	// The name of the namespace. Default value: public.
 	//
-	// > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
+	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Tokenizer used for full-text search, default is zh_cn.
+	// The analyzer that is used for full-text search. Default value: zh_cn.
 	//
 	// example:
 	//
 	// zh_cn
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// Whether to enable PQ (Product Quantization) algorithm for index acceleration. It is recommended to enable this when the data volume exceeds 500,000. Value description:
+	// Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
 	//
-	// - 0: Disabled.
+	// 	- 0: no.
 	//
-	// - 1: Enabled (default).
+	// 	- 1 (default): yes.
 	//
 	// example:
 	//
 	// 1
 	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
-	// ID of the region where the instance is located.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -3313,23 +3407,23 @@ func (s *CreateDocumentCollectionRequest) SetRegionId(v string) *CreateDocumentC
 }
 
 type CreateDocumentCollectionResponseBody struct {
-	// Return message.
+	// The returned message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API execution status, with the following values:
+	// The status of the operation. Valid values:
 	//
-	// - **success**: Execution succeeded.
+	// - **success**
 	//
-	// - **fail**: Execution failed.
+	// - **fail**
 	//
 	// example:
 	//
@@ -6770,6 +6864,88 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 	return s
 }
 
+type DeleteBackupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1111111111
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s DeleteBackupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupRequest) SetBackupId(v string) *DeleteBackupRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DeleteBackupRequest) SetDBInstanceId(v string) *DeleteBackupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type DeleteBackupResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupResponseBody) SetRequestId(v string) *DeleteBackupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBackupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupResponse) SetHeaders(v map[string]*string) *DeleteBackupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupResponse) SetStatusCode(v int32) *DeleteBackupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBackupResponse) SetBody(v *DeleteBackupResponseBody) *DeleteBackupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCollectionRequest struct {
 	// The name of the collection.
 	//
@@ -10076,6 +10252,142 @@ func (s *DescribeAvailableResourcesResponse) SetStatusCode(v int32) *DescribeAva
 }
 
 func (s *DescribeAvailableResourcesResponse) SetBody(v *DescribeAvailableResourcesResponseBody) *DescribeAvailableResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	BackupJobId *int64 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s DescribeBackupJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupJobRequest) SetBackupJobId(v int64) *DescribeBackupJobRequest {
+	s.BackupJobId = &v
+	return s
+}
+
+func (s *DescribeBackupJobRequest) SetDBInstanceId(v string) *DescribeBackupJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type DescribeBackupJobResponseBody struct {
+	// example:
+	//
+	// 1111111111
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// example:
+	//
+	// 123
+	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// example:
+	//
+	// Automated
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// example:
+	//
+	// backup
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// example:
+	//
+	// 50%
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2023-01-03T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeBackupJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupJobResponseBody) SetBackupId(v string) *DescribeBackupJobResponseBody {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeBackupJobResponseBody) SetBackupJobId(v string) *DescribeBackupJobResponseBody {
+	s.BackupJobId = &v
+	return s
+}
+
+func (s *DescribeBackupJobResponseBody) SetBackupMode(v string) *DescribeBackupJobResponseBody {
+	s.BackupMode = &v
+	return s
+}
+
+func (s *DescribeBackupJobResponseBody) SetBackupStatus(v string) *DescribeBackupJobResponseBody {
+	s.BackupStatus = &v
+	return s
+}
+
+func (s *DescribeBackupJobResponseBody) SetProcess(v string) *DescribeBackupJobResponseBody {
+	s.Process = &v
+	return s
+}
+
+func (s *DescribeBackupJobResponseBody) SetRequestId(v string) *DescribeBackupJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupJobResponseBody) SetStartTime(v string) *DescribeBackupJobResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeBackupJobResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBackupJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupJobResponse) SetHeaders(v map[string]*string) *DescribeBackupJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupJobResponse) SetStatusCode(v int32) *DescribeBackupJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupJobResponse) SetBody(v *DescribeBackupJobResponseBody) *DescribeBackupJobResponse {
 	s.Body = v
 	return s
 }
@@ -29255,6 +29567,165 @@ func (s *InitVectorDatabaseResponse) SetBody(v *InitVectorDatabaseResponseBody) 
 	return s
 }
 
+type ListBackupJobsRequest struct {
+	// example:
+	//
+	// Automated
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s ListBackupJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupJobsRequest) SetBackupMode(v string) *ListBackupJobsRequest {
+	s.BackupMode = &v
+	return s
+}
+
+func (s *ListBackupJobsRequest) SetDBInstanceId(v string) *ListBackupJobsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type ListBackupJobsResponseBody struct {
+	Items *ListBackupJobsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListBackupJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupJobsResponseBody) SetItems(v *ListBackupJobsResponseBodyItems) *ListBackupJobsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListBackupJobsResponseBody) SetRequestId(v string) *ListBackupJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListBackupJobsResponseBodyItems struct {
+	BackupJob []*ListBackupJobsResponseBodyItemsBackupJob `json:"BackupJob,omitempty" xml:"BackupJob,omitempty" type:"Repeated"`
+}
+
+func (s ListBackupJobsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupJobsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupJobsResponseBodyItems) SetBackupJob(v []*ListBackupJobsResponseBodyItemsBackupJob) *ListBackupJobsResponseBodyItems {
+	s.BackupJob = v
+	return s
+}
+
+type ListBackupJobsResponseBodyItemsBackupJob struct {
+	// example:
+	//
+	// 123
+	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// example:
+	//
+	// Automated
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// example:
+	//
+	// Success
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// example:
+	//
+	// 50%
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 2022-08-11T09:26:43Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListBackupJobsResponseBodyItemsBackupJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupJobsResponseBodyItemsBackupJob) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupJobsResponseBodyItemsBackupJob) SetBackupJobId(v string) *ListBackupJobsResponseBodyItemsBackupJob {
+	s.BackupJobId = &v
+	return s
+}
+
+func (s *ListBackupJobsResponseBodyItemsBackupJob) SetBackupMode(v string) *ListBackupJobsResponseBodyItemsBackupJob {
+	s.BackupMode = &v
+	return s
+}
+
+func (s *ListBackupJobsResponseBodyItemsBackupJob) SetBackupStatus(v string) *ListBackupJobsResponseBodyItemsBackupJob {
+	s.BackupStatus = &v
+	return s
+}
+
+func (s *ListBackupJobsResponseBodyItemsBackupJob) SetProcess(v string) *ListBackupJobsResponseBodyItemsBackupJob {
+	s.Process = &v
+	return s
+}
+
+func (s *ListBackupJobsResponseBodyItemsBackupJob) SetStartTime(v string) *ListBackupJobsResponseBodyItemsBackupJob {
+	s.StartTime = &v
+	return s
+}
+
+type ListBackupJobsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBackupJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBackupJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupJobsResponse) SetHeaders(v map[string]*string) *ListBackupJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBackupJobsResponse) SetStatusCode(v int32) *ListBackupJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBackupJobsResponse) SetBody(v *ListBackupJobsResponseBody) *ListBackupJobsResponse {
+	s.Body = v
+	return s
+}
+
 type ListCollectionsRequest struct {
 	// The instance ID.
 	//
@@ -46067,6 +46538,66 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
+// 创建备份
+//
+// @param request - CreateBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupResponse
+func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runtime *util.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建备份
+//
+// @param request - CreateBackupRequest
+//
+// @return CreateBackupResponse
+func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *CreateBackupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBackupResponse{}
+	_body, _err := client.CreateBackupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a vector collection.
 //
 // @param request - CreateCollectionRequest
@@ -46607,7 +47138,7 @@ func (client *Client) CreateDBResourceGroup(request *CreateDBResourceGroupReques
 
 // Summary:
 //
-// Create Knowledge Base
+// Creates a document collection.
 //
 // @param request - CreateDocumentCollectionRequest
 //
@@ -46709,7 +47240,7 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 
 // Summary:
 //
-// Create Knowledge Base
+// Creates a document collection.
 //
 // @param request - CreateDocumentCollectionRequest
 //
@@ -47964,6 +48495,70 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
 	_body, _err := client.DeleteAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除备份
+//
+// @param request - DeleteBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupResponse
+func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除备份
+//
+// @param request - DeleteBackupRequest
+//
+// @return DeleteBackupResponse
+func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *DeleteBackupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupResponse{}
+	_body, _err := client.DeleteBackupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49592,6 +50187,70 @@ func (client *Client) DescribeAvailableResources(request *DescribeAvailableResou
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourcesResponse{}
 	_body, _err := client.DescribeAvailableResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份任务详情
+//
+// @param request - DescribeBackupJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupJobResponse
+func (client *Client) DescribeBackupJobWithOptions(request *DescribeBackupJobRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupJobId)) {
+		query["BackupJobId"] = request.BackupJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份任务详情
+//
+// @param request - DescribeBackupJobRequest
+//
+// @return DescribeBackupJobResponse
+func (client *Client) DescribeBackupJob(request *DescribeBackupJobRequest) (_result *DescribeBackupJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupJobResponse{}
+	_body, _err := client.DescribeBackupJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55594,6 +56253,70 @@ func (client *Client) InitVectorDatabase(request *InitVectorDatabaseRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &InitVectorDatabaseResponse{}
 	_body, _err := client.InitVectorDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份任务列表
+//
+// @param request - ListBackupJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBackupJobsResponse
+func (client *Client) ListBackupJobsWithOptions(request *ListBackupJobsRequest, runtime *util.RuntimeOptions) (_result *ListBackupJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupMode)) {
+		query["BackupMode"] = request.BackupMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBackupJobs"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBackupJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份任务列表
+//
+// @param request - ListBackupJobsRequest
+//
+// @return ListBackupJobsResponse
+func (client *Client) ListBackupJobs(request *ListBackupJobsRequest) (_result *ListBackupJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBackupJobsResponse{}
+	_body, _err := client.ListBackupJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
