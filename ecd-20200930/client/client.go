@@ -15564,6 +15564,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// 1.0.4 202012021700
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The desktop group ID.
 	//
 	// example:
@@ -15719,6 +15720,11 @@ func (s *DescribeClientEventsResponseBodyEvents) SetClientOS(v string) *Describe
 
 func (s *DescribeClientEventsResponseBodyEvents) SetClientVersion(v string) *DescribeClientEventsResponseBodyEvents {
 	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeClientEventsResponseBodyEvents) SetDescription(v string) *DescribeClientEventsResponseBodyEvents {
+	s.Description = &v
 	return s
 }
 
@@ -27148,6 +27154,8 @@ func (s *DescribeNASFileSystemsResponseBody) SetRequestId(v string) *DescribeNAS
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystems struct {
+	AllowOperateUserDrive *bool                                                             `json:"AllowOperateUserDrive,omitempty" xml:"AllowOperateUserDrive,omitempty"`
+	AppInstanceGroups     []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups `json:"AppInstanceGroups,omitempty" xml:"AppInstanceGroups,omitempty" type:"Repeated"`
 	// The total capacity of the NAS file system. Unit: GiB.
 	//
 	// 	- The Capacity type has 10 PiB of storage, which is equal to 10,485,760 GiB.
@@ -27253,7 +27261,8 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	// example:
 	//
 	// test
-	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	OfficeSiteName *string                                                     `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	OfficeSites    []*DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
 	// Indicates whether the User Profile Management (UPM) feature is supported.
 	//
 	// example:
@@ -27266,6 +27275,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Scene    *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The storage type of the NAS file system. Valid values:
 	//
 	// 	- Capacity
@@ -27296,6 +27306,16 @@ func (s DescribeNASFileSystemsResponseBodyFileSystems) String() string {
 
 func (s DescribeNASFileSystemsResponseBodyFileSystems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetAllowOperateUserDrive(v bool) *DescribeNASFileSystemsResponseBodyFileSystems {
+	s.AllowOperateUserDrive = &v
+	return s
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetAppInstanceGroups(v []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) *DescribeNASFileSystemsResponseBodyFileSystems {
+	s.AppInstanceGroups = v
+	return s
 }
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetCapacity(v int64) *DescribeNASFileSystemsResponseBodyFileSystems {
@@ -27368,6 +27388,11 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetOfficeSiteName(v stri
 	return s
 }
 
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetOfficeSites(v []*DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites) *DescribeNASFileSystemsResponseBodyFileSystems {
+	s.OfficeSites = v
+	return s
+}
+
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetProfileCompatible(v bool) *DescribeNASFileSystemsResponseBodyFileSystems {
 	s.ProfileCompatible = &v
 	return s
@@ -27375,6 +27400,11 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetProfileCompatible(v b
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetRegionId(v string) *DescribeNASFileSystemsResponseBodyFileSystems {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetScene(v string) *DescribeNASFileSystemsResponseBodyFileSystems {
+	s.Scene = &v
 	return s
 }
 
@@ -27390,6 +27420,29 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetSupportAcl(v bool) *D
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetZoneId(v string) *DescribeNASFileSystemsResponseBodyFileSystems {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups struct {
+	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+}
+
+func (s DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) SetAppInstanceGroupId(v string) *DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) SetAppInstanceGroupName(v string) *DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups {
+	s.AppInstanceGroupName = &v
 	return s
 }
 
@@ -27423,6 +27476,29 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups) SetDesktopG
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups) SetDesktopGroupName(v string) *DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups {
 	s.DesktopGroupName = &v
+	return s
+}
+
+type DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites struct {
+	OfficeSiteId   *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+}
+
+func (s DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites) SetOfficeSiteId(v string) *DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites) SetOfficeSiteName(v string) *DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites {
+	s.OfficeSiteName = &v
 	return s
 }
 
@@ -29172,6 +29248,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// 70
 	CpuSingleRateLimit *int32                                                                 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	DesktopCount       *int32                                                                 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	DesktopGroupCount  *int32                                                                 `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
 	DeviceRedirects    []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
 	DeviceRules        []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules     `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
 	DisplayMode        *string                                                                `json:"DisplayMode,omitempty" xml:"DisplayMode,omitempty"`
@@ -29317,7 +29395,9 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 30
-	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
+	MemorySingleRateLimit *int32  `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
+	MobileRestart         *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	MobileShutdown        *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
 	// The policy name.
 	//
 	// example:
@@ -29496,8 +29576,9 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// fullControl
-	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
-	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	RemoteCoordinate   *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
+	ResourceGroupCount *int32  `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
+	ResourceRegionId   *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The effective scope of the policy. Valid values:
 	//
 	// 	- GLOBAL: The policy takes effect globally.
@@ -29511,6 +29592,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// This parameter is required when Scope is set to IP. This parameter takes effect when Scope is set to IP.
 	ScopeValue        []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
 	SmoothEnhancement *string   `json:"SmoothEnhancement,omitempty" xml:"SmoothEnhancement,omitempty"`
+	StatusMonitor     *string   `json:"StatusMonitor,omitempty" xml:"StatusMonitor,omitempty"`
 	StreamingMode     *string   `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
 	TargetFps         *int32    `json:"TargetFps,omitempty" xml:"TargetFps,omitempty"`
 	// Indicates whether the USB redirection feature is enabled.
@@ -29741,6 +29823,16 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpuSingleRateL
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDesktopCount(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.DesktopCount = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDesktopGroupCount(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.DesktopGroupCount = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDeviceRedirects(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.DeviceRedirects = v
 	return s
@@ -29843,6 +29935,16 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMemorySampleDu
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMemorySingleRateLimit(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.MemorySingleRateLimit = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileRestart(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.MobileRestart = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileShutdown(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.MobileShutdown = &v
 	return s
 }
 
@@ -29956,6 +30058,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRemoteCoordina
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetResourceGroupCount(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ResourceGroupCount = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetResourceRegionId(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ResourceRegionId = &v
 	return s
@@ -29973,6 +30080,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetScopeValue(v [
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetSmoothEnhancement(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.SmoothEnhancement = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetStatusMonitor(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.StatusMonitor = &v
 	return s
 }
 
