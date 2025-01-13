@@ -94,6 +94,7 @@ type Group struct {
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	QueueService     *string `json:"QueueService,omitempty" xml:"QueueService,omitempty"`
+	TrafficMode      *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
 	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -137,6 +138,11 @@ func (s *Group) SetName(v string) *Group {
 
 func (s *Group) SetQueueService(v string) *Group {
 	s.QueueService = &v
+	return s
+}
+
+func (s *Group) SetTrafficMode(v string) *Group {
+	s.TrafficMode = &v
 	return s
 }
 
@@ -723,6 +729,7 @@ type Service struct {
 	Source                    *string          `json:"Source,omitempty" xml:"Source,omitempty"`
 	Status                    *string          `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalInstance             *int32           `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
+	TrafficState              *string          `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
 	UpdateTime                *string          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	Weight                    *int32           `json:"Weight,omitempty" xml:"Weight,omitempty"`
 	WorkspaceId               *string          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -933,6 +940,11 @@ func (s *Service) SetStatus(v string) *Service {
 
 func (s *Service) SetTotalInstance(v int32) *Service {
 	s.TotalInstance = &v
+	return s
+}
+
+func (s *Service) SetTrafficState(v string) *Service {
+	s.TrafficState = &v
 	return s
 }
 
@@ -6323,12 +6335,18 @@ func (s *DescribeGroupResponse) SetBody(v *Group) *DescribeGroupResponse {
 }
 
 type DescribeGroupEndpointsResponseBody struct {
+	// The service token.
+	//
 	// example:
 	//
 	// Nzc5N2FhNTM4OTQ0YzBmYTIy****ZTUxN2NkYjg4MTJmMWQxZmY1****
-	AccessToken *string                                      `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	Endpoints   *DescribeGroupEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The endpoints of service groups.
+	Endpoints *DescribeGroupEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// The response message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 890772EF-3AD6-129A-8E15-8F349C944783
@@ -6364,20 +6382,50 @@ func (s *DescribeGroupEndpointsResponseBody) SetRequestId(v string) *DescribeGro
 }
 
 type DescribeGroupEndpointsResponseBodyEndpoints struct {
+	// The backend access ID, which varies based on the value of the EndpointType parameter.
+	//
+	// 	- If you set EndpointType to DefaultGateway, the value of this parameter is default.
+	//
+	// 	- If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
+	//
+	// 	- If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
+	//
+	// 	- If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
+	//
 	// example:
 	//
 	// gw-26340kjxjx8l3r****
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// The service endpoint type. Valid values:
+	//
+	// 	- DefaultGateway: the shared gateway.
+	//
+	// 	- PrivateGateway: the dedicated gateway.
+	//
+	// 	- Nlb: Associate the service with the Network Load Balancer (NLB) instance.
+	//
+	// 	- Nacos: Associate the service with the Nacos instance.
+	//
 	// example:
 	//
 	// PrivateGateway
-	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The public endpoints.
 	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
+	// The internal endpoints.
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
+	// The path type. Valid values:
+	//
+	// 	- Group: the path of the service group.
+	//
+	// 	- Service: the path of the service.
+	//
 	// example:
 	//
 	// Group
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
+	//
 	// example:
 	//
 	// 9090
@@ -7401,12 +7449,18 @@ func (s *DescribeServiceDiagnosisResponse) SetBody(v *DescribeServiceDiagnosisRe
 }
 
 type DescribeServiceEndpointsResponseBody struct {
+	// The service token.
+	//
 	// example:
 	//
 	// Nzc5N2FhN****TQ0YzBmYTIyN2MxZTUxN2NkYjg4MTJmMWQxZmY1****
-	AccessToken *string                                        `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	Endpoints   *DescribeServiceEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	Message     *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The service endpoints.
+	Endpoints *DescribeServiceEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 739998B5-FB39-12A3-8323-0FA340317298
@@ -7442,20 +7496,50 @@ func (s *DescribeServiceEndpointsResponseBody) SetRequestId(v string) *DescribeS
 }
 
 type DescribeServiceEndpointsResponseBodyEndpoints struct {
+	// The backend access ID, which varies based on the value of the EndpointType parameter.
+	//
+	// 	- If you set EndpointType to DefaultGateway, the value of this parameter is default.
+	//
+	// 	- If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
+	//
+	// 	- If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
+	//
+	// 	- If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
+	//
 	// example:
 	//
 	// nlb-5q4sp7u6oorkha****
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// The service endpoint type. Valid values:
+	//
+	// 	- DefaultGateway: the shared gateway.
+	//
+	// 	- PrivateGateway: the dedicated gateway.
+	//
+	// 	- Nlb: Associate the service with the Network Load Balancer (NLB) instance.
+	//
+	// 	- Nacos: Associate the service with the Nacos instance.
+	//
 	// example:
 	//
 	// Nlb
-	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The public endpoints.
 	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
+	// The internal endpoints.
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
+	// The path type. Valid values:
+	//
+	// 	- Group: the path of the service group.
+	//
+	// 	- Service: the path of the service.
+	//
 	// example:
 	//
 	// Service
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
+	//
 	// example:
 	//
 	// 9090
@@ -8158,14 +8242,26 @@ func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponse
 }
 
 type DescribeServiceSignedUrlRequest struct {
+	// The period of time for which the URL expires.
+	//
 	// example:
 	//
 	// 43200
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// Specifies whether to use the VPC connection.
+	//
 	// example:
 	//
 	// false
 	Internal *bool `json:"Internal,omitempty" xml:"Internal,omitempty"`
+	// The page type.
+	//
+	// Valid values:
+	//
+	// 	- webview
+	//
+	// 	- monitor
+	//
 	// example:
 	//
 	// webview
@@ -8202,6 +8298,8 @@ type DescribeServiceSignedUrlResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service URL.
+	//
 	// example:
 	//
 	// https://foo-115**.console.cn-hangzhou.eas.pai-ml.com?expire=1735202661&signature=ey*******
@@ -17929,7 +18027,7 @@ func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_resu
 
 // Summary:
 //
-// 获取群组端点列表
+// Obtains a list of endpoints of service groups.
 //
 // @param headers - map
 //
@@ -17962,7 +18060,7 @@ func (client *Client) DescribeGroupEndpointsWithOptions(ClusterId *string, Group
 
 // Summary:
 //
-// 获取群组端点列表
+// Obtains a list of endpoints of service groups.
 //
 // @return DescribeGroupEndpointsResponse
 func (client *Client) DescribeGroupEndpoints(ClusterId *string, GroupName *string) (_result *DescribeGroupEndpointsResponse, _err error) {
@@ -18329,7 +18427,7 @@ func (client *Client) DescribeServiceDiagnosis(ClusterId *string, ServiceName *s
 
 // Summary:
 //
-// 获取服务端点列表
+// Obtains a list of service endpoints.
 //
 // @param headers - map
 //
@@ -18362,7 +18460,7 @@ func (client *Client) DescribeServiceEndpointsWithOptions(ClusterId *string, Ser
 
 // Summary:
 //
-// 获取服务端点列表
+// Obtains a list of service endpoints.
 //
 // @return DescribeServiceEndpointsResponse
 func (client *Client) DescribeServiceEndpoints(ClusterId *string, ServiceName *string) (_result *DescribeServiceEndpointsResponse, _err error) {
@@ -18659,7 +18757,7 @@ func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *stri
 
 // Summary:
 //
-// 获取服务监控签名地址
+// Obtains the logon-free URL of the service.
 //
 // @param request - DescribeServiceSignedUrlRequest
 //
@@ -18712,7 +18810,7 @@ func (client *Client) DescribeServiceSignedUrlWithOptions(ClusterId *string, Ser
 
 // Summary:
 //
-// 获取服务监控签名地址
+// Obtains the logon-free URL of the service.
 //
 // @param request - DescribeServiceSignedUrlRequest
 //
