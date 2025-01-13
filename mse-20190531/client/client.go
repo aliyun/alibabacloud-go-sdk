@@ -4030,6 +4030,8 @@ type AddGatewayRouteRequest struct {
 	//
 	// [0,94]
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to activate Web Application Firewall (WAF).
 	//
 	// example:
@@ -4908,6 +4910,8 @@ type AddGatewayRouteShrinkRequest struct {
 	//
 	// [0,94]
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to activate Web Application Firewall (WAF).
 	//
 	// example:
@@ -10546,7 +10550,8 @@ type CreateFlowRuleRequest struct {
 	// example:
 	//
 	// false
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// The timeout period. Unit: milliseconds. This value is required if the ControlBehavior parameter is set to 2.
 	//
 	// example:
@@ -10616,6 +10621,11 @@ func (s *CreateFlowRuleRequest) SetControlBehavior(v int32) *CreateFlowRuleReque
 
 func (s *CreateFlowRuleRequest) SetEnable(v bool) *CreateFlowRuleRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *CreateFlowRuleRequest) SetLimitApp(v string) *CreateFlowRuleRequest {
+	s.LimitApp = &v
 	return s
 }
 
@@ -10799,7 +10809,8 @@ type CreateFlowRuleResponseBodyData struct {
 	// example:
 	//
 	// 12
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
 	//
 	// example:
@@ -10862,6 +10873,11 @@ func (s *CreateFlowRuleResponseBodyData) SetEnable(v bool) *CreateFlowRuleRespon
 
 func (s *CreateFlowRuleResponseBodyData) SetId(v int64) *CreateFlowRuleResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *CreateFlowRuleResponseBodyData) SetLimitApp(v string) *CreateFlowRuleResponseBodyData {
+	s.LimitApp = &v
 	return s
 }
 
@@ -11599,7 +11615,8 @@ type CreateIsolationRuleRequest struct {
 	// example:
 	//
 	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -11649,6 +11666,11 @@ func (s *CreateIsolationRuleRequest) SetAppName(v string) *CreateIsolationRuleRe
 
 func (s *CreateIsolationRuleRequest) SetEnable(v bool) *CreateIsolationRuleRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetLimitApp(v string) *CreateIsolationRuleRequest {
+	s.LimitApp = &v
 	return s
 }
 
@@ -11741,7 +11763,8 @@ type CreateIsolationRuleResponseBodyData struct {
 	// example:
 	//
 	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// example:
 	//
 	// default
@@ -11785,6 +11808,11 @@ func (s *CreateIsolationRuleResponseBodyData) SetEnable(v bool) *CreateIsolation
 
 func (s *CreateIsolationRuleResponseBodyData) SetId(v int64) *CreateIsolationRuleResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetLimitApp(v string) *CreateIsolationRuleResponseBodyData {
+	s.LimitApp = &v
 	return s
 }
 
@@ -43499,6 +43527,7 @@ type ListFlowRulesResponseBodyDataResult struct {
 	//
 	// "{\\"appName\\":\\"spring-cloud-a\\",\\"fallbackBehavior\\":{\\"webFallbackMode\\":0,\\"webRespContentType\\":0,\\"webRespMessage\\":\\"Blocked\\",\\"webRespStatusCode\\":429},\\"id\\":977,\\"name\\":\\"Fallback\\",\\"namespace\\":\\"default\\",\\"resourceClassification\\":1}"
 	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
+	LimitApp       *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
 	//
 	// example:
@@ -43580,6 +43609,11 @@ func (s *ListFlowRulesResponseBodyDataResult) SetEnable(v bool) *ListFlowRulesRe
 
 func (s *ListFlowRulesResponseBodyDataResult) SetFallbackObject(v string) *ListFlowRulesResponseBodyDataResult {
 	s.FallbackObject = &v
+	return s
+}
+
+func (s *ListFlowRulesResponseBodyDataResult) SetLimitApp(v string) *ListFlowRulesResponseBodyDataResult {
+	s.LimitApp = &v
 	return s
 }
 
@@ -48885,13 +48919,33 @@ func (s *ListGatewayRouteResponse) SetBody(v *ListGatewayRouteResponseBody) *Lis
 }
 
 type ListGatewayRouteOnAuthRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-c9bc5afd61014165bd58f621b491****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The authentication method. Valid values:
+	//
+	// 	- JWT
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// JWT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -48919,12 +48973,42 @@ func (s *ListGatewayRouteOnAuthRequest) SetType(v string) *ListGatewayRouteOnAut
 }
 
 type ListGatewayRouteOnAuthResponseBody struct {
-	Code           *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*ListGatewayRouteOnAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the data.
+	Data []*ListGatewayRouteOnAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// The request is successfully processed.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 58E06A0A-BD2C-47A0-99C2-B100F353****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListGatewayRouteOnAuthResponseBody) String() string {
@@ -48966,14 +49050,47 @@ func (s *ListGatewayRouteOnAuthResponseBody) SetSuccess(v bool) *ListGatewayRout
 }
 
 type ListGatewayRouteOnAuthResponseBodyData struct {
-	DomainId        *int64                                                 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	DomainIdList    []*int64                                               `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
-	DomainName      *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainNameList  []*string                                              `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
-	GatewayId       *string                                                `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	GatewayUniqueId *string                                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	Id              *int32                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The domain ID.
+	//
+	// example:
+	//
+	// 235
+	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The domain IDs.
+	DomainIdList []*int64 `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
+	// The domain name.
+	//
+	// example:
+	//
+	// 123.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The domain names.
+	DomainNameList []*string `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	// The gateway ID.
+	//
+	// example:
+	//
+	// 399
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
+	// example:
+	//
+	// gw-7ea3da97b96543e19f6c597c****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The route ID.
+	//
+	// example:
+	//
+	// 12
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the route.
+	//
+	// example:
+	//
+	// ceshi
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The information about route matching.
 	RoutePredicates *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates `json:"RoutePredicates,omitempty" xml:"RoutePredicates,omitempty" type:"Struct"`
 }
 
@@ -49031,6 +49148,7 @@ func (s *ListGatewayRouteOnAuthResponseBodyData) SetRoutePredicates(v *ListGatew
 }
 
 type ListGatewayRouteOnAuthResponseBodyDataRoutePredicates struct {
+	// The information about route matching.
 	PathPredicates *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
 }
 
@@ -49048,7 +49166,17 @@ func (s *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) SetPathPredicate
 }
 
 type ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates struct {
+	// The path.
+	//
+	// example:
+	//
+	// /api
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// PRE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -51158,6 +51286,7 @@ type ListIsolationRulesResponseBodyDataResult struct {
 	//
 	// "{\\"appName\\":\\"spring-cloud-a\\",\\"fallbackBehavior\\":{\\"webFallbackMode\\":0,\\"webRespContentType\\":0,\\"webRespMessage\\":\\"Blocked\\",\\"webRespStatusCode\\":429},\\"id\\":977,\\"name\\":\\"Fallback\\",\\"namespace\\":\\"default\\",\\"resourceClassification\\":1}"
 	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
+	LimitApp       *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// example:
 	//
 	// default
@@ -51205,6 +51334,11 @@ func (s *ListIsolationRulesResponseBodyDataResult) SetEnable(v bool) *ListIsolat
 
 func (s *ListIsolationRulesResponseBodyDataResult) SetFallbackObject(v string) *ListIsolationRulesResponseBodyDataResult {
 	s.FallbackObject = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetLimitApp(v string) *ListIsolationRulesResponseBodyDataResult {
+	s.LimitApp = &v
 	return s
 }
 
@@ -66875,7 +67009,8 @@ type UpdateFlowRuleRequest struct {
 	// example:
 	//
 	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// The timeout period. Unit: milliseconds. This parameter is required when the value of ControlBehavior is set to 2.
 	//
 	// example:
@@ -66936,6 +67071,11 @@ func (s *UpdateFlowRuleRequest) SetControlBehavior(v int32) *UpdateFlowRuleReque
 
 func (s *UpdateFlowRuleRequest) SetEnable(v bool) *UpdateFlowRuleRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *UpdateFlowRuleRequest) SetLimitApp(v string) *UpdateFlowRuleRequest {
+	s.LimitApp = &v
 	return s
 }
 
@@ -67117,7 +67257,8 @@ type UpdateFlowRuleResponseBodyData struct {
 	// example:
 	//
 	// 12
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
 	//
 	// example:
@@ -67174,6 +67315,11 @@ func (s *UpdateFlowRuleResponseBodyData) SetEnable(v bool) *UpdateFlowRuleRespon
 
 func (s *UpdateFlowRuleResponseBodyData) SetId(v int64) *UpdateFlowRuleResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateFlowRuleResponseBodyData) SetLimitApp(v string) *UpdateFlowRuleResponseBodyData {
+	s.LimitApp = &v
 	return s
 }
 
@@ -70071,6 +70217,8 @@ type UpdateGatewayRouteRequest struct {
 	//
 	// [90]
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to activate Web Application Firewall (WAF).
 	//
 	// example:
@@ -70911,6 +71059,8 @@ type UpdateGatewayRouteShrinkRequest struct {
 	//
 	// [90]
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to activate Web Application Firewall (WAF).
 	//
 	// example:
@@ -75336,7 +75486,8 @@ type UpdateIsolationRuleRequest struct {
 	// example:
 	//
 	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -75380,6 +75531,11 @@ func (s *UpdateIsolationRuleRequest) SetAppName(v string) *UpdateIsolationRuleRe
 
 func (s *UpdateIsolationRuleRequest) SetEnable(v bool) *UpdateIsolationRuleRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleRequest) SetLimitApp(v string) *UpdateIsolationRuleRequest {
+	s.LimitApp = &v
 	return s
 }
 
@@ -75467,7 +75623,8 @@ type UpdateIsolationRuleResponseBodyData struct {
 	// example:
 	//
 	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// example:
 	//
 	// default
@@ -75507,6 +75664,11 @@ func (s *UpdateIsolationRuleResponseBodyData) SetEnable(v bool) *UpdateIsolation
 
 func (s *UpdateIsolationRuleResponseBodyData) SetId(v int64) *UpdateIsolationRuleResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetLimitApp(v string) *UpdateIsolationRuleResponseBodyData {
+	s.LimitApp = &v
 	return s
 }
 
@@ -81592,6 +81754,10 @@ func (client *Client) CreateFlowRuleWithOptions(request *CreateFlowRuleRequest, 
 		query["Enable"] = request.Enable
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LimitApp)) {
+		query["LimitApp"] = request.LimitApp
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
 		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
 	}
@@ -82018,6 +82184,10 @@ func (client *Client) CreateIsolationRuleWithOptions(request *CreateIsolationRul
 
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitApp)) {
+		query["LimitApp"] = request.LimitApp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
@@ -90521,7 +90691,7 @@ func (client *Client) ListGatewayRoute(request *ListGatewayRouteRequest) (_resul
 
 // Summary:
 //
-// 获取网关开启鉴权的路由
+// Queries a list of routes for which authentication is enabled.
 //
 // @param request - ListGatewayRouteOnAuthRequest
 //
@@ -90571,7 +90741,7 @@ func (client *Client) ListGatewayRouteOnAuthWithOptions(request *ListGatewayRout
 
 // Summary:
 //
-// 获取网关开启鉴权的路由
+// Queries a list of routes for which authentication is enabled.
 //
 // @param request - ListGatewayRouteOnAuthRequest
 //
@@ -95182,6 +95352,10 @@ func (client *Client) UpdateFlowRuleWithOptions(request *UpdateFlowRuleRequest, 
 		query["Enable"] = request.Enable
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LimitApp)) {
+		query["LimitApp"] = request.LimitApp
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
 		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
 	}
@@ -97392,6 +97566,10 @@ func (client *Client) UpdateIsolationRuleWithOptions(request *UpdateIsolationRul
 
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitApp)) {
+		query["LimitApp"] = request.LimitApp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
