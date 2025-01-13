@@ -9964,6 +9964,7 @@ type CreateApplicationRequest struct {
 	//
 	// 1
 	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SaeVersion      *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// sg-wz969ngg2e49q5i4\\*\\*\\*\\*
@@ -10312,6 +10313,11 @@ func (s *CreateApplicationRequest) SetReplicas(v int32) *CreateApplicationReques
 	return s
 }
 
+func (s *CreateApplicationRequest) SetResourceType(v string) *CreateApplicationRequest {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetSaeVersion(v string) *CreateApplicationRequest {
 	s.SaeVersion = &v
 	return s
@@ -10652,6 +10658,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// 1
 	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SaeVersion      *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// sg-wz969ngg2e49q5i4\\*\\*\\*\\*
@@ -10997,6 +11004,11 @@ func (s *CreateApplicationShrinkRequest) SetReadiness(v string) *CreateApplicati
 
 func (s *CreateApplicationShrinkRequest) SetReplicas(v int32) *CreateApplicationShrinkRequest {
 	s.Replicas = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetResourceType(v string) *CreateApplicationShrinkRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -18828,6 +18840,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// 2
 	Replicas        *int32                                                      `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ResourceType    *string                                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 	// The ID of the security group.
 	//
@@ -19264,6 +19277,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetRegionId(v string) *Descr
 
 func (s *DescribeApplicationConfigResponseBodyData) SetReplicas(v int32) *DescribeApplicationConfigResponseBodyData {
 	s.Replicas = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetResourceType(v string) *DescribeApplicationConfigResponseBodyData {
+	s.ResourceType = &v
 	return s
 }
 
@@ -46836,6 +46854,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
 		query["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SaeVersion)) {

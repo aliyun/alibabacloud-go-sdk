@@ -1,3 +1,13 @@
+2025-01-13 Version: v1.25.6
+- Update API CreateApplication: add param ResourceType.
+- Update API CreateIngress: add param AddressType.
+- Update API CreateIngress: add param LoadBalancerEdition.
+- Update API CreateIngress: add param ZoneMappings.
+- Update API CreateIngress: update param SlbId.
+- Update API DescribeApplicationConfig: update response param.
+- Update API DescribeIngress: update response param.
+
+
 2025-01-10 Version: v1.25.5
 - Update API CreateIngress: add param AddressType.
 - Update API CreateIngress: add param LoadBalancerEdition.
