@@ -1535,6 +1535,138 @@ func (s *DataQualityRuleTarget) SetType(v string) *DataQualityRuleTarget {
 	return s
 }
 
+type DataQualityRuleTemplate struct {
+	CheckingConfig *DataQualityRuleTemplateCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// /ods/订单数据
+	DirectoryPath  *string                                `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	Name           *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId      *int64                                 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *DataQualityRuleTemplateSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	TenantId       *int64                                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// Project
+	VisibleScope *string `json:"VisibleScope,omitempty" xml:"VisibleScope,omitempty"`
+}
+
+func (s DataQualityRuleTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleTemplate) SetCheckingConfig(v *DataQualityRuleTemplateCheckingConfig) *DataQualityRuleTemplate {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *DataQualityRuleTemplate) SetCode(v string) *DataQualityRuleTemplate {
+	s.Code = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplate) SetDirectoryPath(v string) *DataQualityRuleTemplate {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplate) SetName(v string) *DataQualityRuleTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplate) SetProjectId(v int64) *DataQualityRuleTemplate {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplate) SetSamplingConfig(v *DataQualityRuleTemplateSamplingConfig) *DataQualityRuleTemplate {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *DataQualityRuleTemplate) SetTenantId(v int64) *DataQualityRuleTemplate {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplate) SetVisibleScope(v string) *DataQualityRuleTemplate {
+	s.VisibleScope = &v
+	return s
+}
+
+type DataQualityRuleTemplateCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityRuleTemplateCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleTemplateCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleTemplateCheckingConfig) SetReferencedSamplesFilter(v string) *DataQualityRuleTemplateCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplateCheckingConfig) SetType(v string) *DataQualityRuleTemplateCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type DataQualityRuleTemplateSamplingConfig struct {
+	// example:
+	//
+	// Min
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "SQL": "SELECT min(id) from table;" }
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s DataQualityRuleTemplateSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleTemplateSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleTemplateSamplingConfig) SetMetric(v string) *DataQualityRuleTemplateSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplateSamplingConfig) SetMetricParameters(v string) *DataQualityRuleTemplateSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *DataQualityRuleTemplateSamplingConfig) SetSettingConfig(v string) *DataQualityRuleTemplateSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
 type SuccessInfoValue struct {
 	// example:
 	//
@@ -1579,7 +1711,7 @@ type AbolishDeploymentRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s AbolishDeploymentRequest) String() string {
@@ -1595,7 +1727,7 @@ func (s *AbolishDeploymentRequest) SetId(v string) *AbolishDeploymentRequest {
 	return s
 }
 
-func (s *AbolishDeploymentRequest) SetProjectId(v string) *AbolishDeploymentRequest {
+func (s *AbolishDeploymentRequest) SetProjectId(v int64) *AbolishDeploymentRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -1908,11 +2040,15 @@ func (s *AttachDataQualityRulesToEvaluationTaskResponse) SetBody(v *AttachDataQu
 type CloneDataSourceRequest struct {
 	// The name of the destination data source The name can contain letters, digits, and underscores (_), and must start with a letter. It cannot exceed 60 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demo_holo_datasource
 	CloneDataSourceName *string `json:"CloneDataSourceName,omitempty" xml:"CloneDataSourceName,omitempty"`
 	// The data source ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2025,7 +2161,7 @@ type CreateAlertRuleRequest struct {
 	//
 	// 279114181716147735
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The conditions for triggering the alert.
+	// The alert triggering condition.
 	//
 	// This parameter is required.
 	TriggerCondition *CreateAlertRuleRequestTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
@@ -2194,37 +2330,37 @@ func (s *CreateAlertRuleRequestNotificationReceivers) SetReceiverValues(v []*str
 }
 
 type CreateAlertRuleRequestTriggerCondition struct {
-	// The extended information about the rule. This parameter is required for some trigger conditions.
+	// The extended information about the rule. This parameter is required for specific types of alerts.
 	Extension *CreateAlertRuleRequestTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	// The monitored object.
+	// The monitored objects.
 	Target *CreateAlertRuleRequestTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The condition for triggering the alert. Valid values:
+	// The alert type. Valid values:
 	//
-	// 	- Finished: The system sends an alert notification when the instance is successfully run.
+	// 	- Finished: An instance is successfully run.
 	//
-	// 	- UnFinished: The system sends an alert notification if the instance is still running at a specified point in time.
+	// 	- UnFinished: An instance does not finish running before a specified point in time.
 	//
-	// 	- Error: The system sends an alert notification if an error occurs when the instance is running.
+	// 	- Error: An error occurs on an instance.
 	//
-	// 	- CycleUnfinished: The system sends an alert notification if the instance is still running at the end of a specified cycle.
+	// 	- CycleUnfinished: An instance does not finish running as expected within a specific cycle.
 	//
-	// 	- Timeout: The system sends an alert notification if the instance is still running after a specified period of time ends.
+	// 	- Timeout: An instance times out.
 	//
-	// 	- InstanceTransferComplete: The system sends an alert notification if DataWorks generates auto triggered node instances that need to run the next day before 24:00.
+	// 	- InstanceTransferComplete: An instance is generated by the auto triggered node.
 	//
-	// 	- InstanceTransferFluctuate: The system sends an alert notification when the number of auto triggered node instances that are generated in your workspace significantly fluctuates, in comparison with the average number of auto triggered node instances that are historically generated in the workspace.
+	// 	- InstanceTransferFluctuate: The number of generated instances fluctuates.
 	//
-	// 	- ExhaustedError: The system sends an alert notification if an error persists after the instance is automatically rerun.
+	// 	- ExhaustedError: An error persists after an instance is automatically rerun.
 	//
-	// 	- InstanceKeyword: The system sends an alert notification if the instance with errors contain specified keywords.
+	// 	- InstanceKeyword: An instance with errors contains specified keywords.
 	//
-	// 	- InstanceErrorCount: The system sends an alert notification if the number of instances on which an error occurs on the current day reaches a specified threshold.
+	// 	- InstanceErrorCount: The number of instances on which an error occurs reaches a specified threshold.
 	//
-	// 	- InstanceErrorPercentage: The system sends an alert notification if the proportion of the number of instances on which an error occurs in the workspace to the total number of instances on the current day reaches a specified threshold.
+	// 	- InstanceErrorPercentage: The proportion of instances on which an error occurs in the workspace to the total number of instances reaches a specified threshold.
 	//
-	// 	- ResourceGroupPercentage: The system sends an alert notification if the value of the ResourceGroupPercentage parameter is greater than a specific percentage for a specific period of time.
+	// 	- ResourceGroupPercentage: The usage rate of the resource group reaches a specified threshold.
 	//
-	// 	- ResourceGroupWaitCount: The system sends an alert notification if the value of the ResourceGroupWaitCount parameter is greater than a specific number for a specific period of time.
+	// 	- ResourceGroupWaitCount: The number of instances that are waiting for resources in the resource group reaches a specified threshold.
 	//
 	// example:
 	//
@@ -2256,19 +2392,19 @@ func (s *CreateAlertRuleRequestTriggerCondition) SetType(v string) *CreateAlertR
 }
 
 type CreateAlertRuleRequestTriggerConditionExtension struct {
-	// The alert configuration. This parameter takes effect only if the Type parameter is set to CycleUnfinished.
+	// The configuration for an alert of the CycleUnfinished type.
 	CycleUnfinished *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
-	// The alert configuration. This parameter takes effect only if the Type parameter is set to Error.
+	// The configuration for an alert of the Error type.
 	Error *CreateAlertRuleRequestTriggerConditionExtensionError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The alert configuration. This parameter takes effect only if the Type parameter is set to InstanceErrorCount.
+	// The configuration for an alert of the InstanceErrorCount type.
 	InstanceErrorCount *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
-	// The alert configuration. This parameter takes effect only if the Type parameter is set to InstanceErrorPercentage.
+	// The configuration for an alert of the InstanceErrorPercentage type.
 	InstanceErrorPercentage *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
-	// The alert configuration. This parameter takes effect only if the Type parameter is set to InstanceTransferFluctuate.
+	// The configuration for an alert of the InstanceTransferFluctuate type.
 	InstanceTransferFluctuate *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
-	// The alert configuration. This parameter takes effect only if the Type parameter is set to Timeout.
+	// The configuration for an alert of the Timeout type.
 	Timeout *CreateAlertRuleRequestTriggerConditionExtensionTimeout `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
-	// The alert configuration. This parameter takes effect only if the Type parameter is set to UnFinished.
+	// The configuration for an alert of the UnFinished type.
 	UnFinished *CreateAlertRuleRequestTriggerConditionExtensionUnFinished `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
 }
 
@@ -2334,13 +2470,13 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) SetCycl
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
-	// The ID of the scheduling cycle of the instance. Valid values: 1 to 288.
+	// The ID of the scheduling cycle of the instance. Valid values: [1,288].
 	//
 	// example:
 	//
 	// 1
 	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
-	// The timeout period of instance running. The time is in the hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
+	// The latest completion time of the instance within the scheduling cycle. The time is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
 	//
 	// example:
 	//
@@ -2367,12 +2503,10 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndT
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionError struct {
-	// Indicates whether an alert is triggered if a batch synchronization task is rerun after it fails to run as expected.
-	//
 	// example:
 	//
 	// false
-	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	AutoRerunAlertEnabled *bool `json:"AutoRerunAlertEnabled,omitempty" xml:"AutoRerunAlertEnabled,omitempty"`
 	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
 	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
@@ -2385,8 +2519,8 @@ func (s CreateAlertRuleRequestTriggerConditionExtensionError) GoString() string 
 	return s.String()
 }
 
-func (s *CreateAlertRuleRequestTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *CreateAlertRuleRequestTriggerConditionExtensionError {
-	s.AutoRerunAlert = &v
+func (s *CreateAlertRuleRequestTriggerConditionExtensionError) SetAutoRerunAlertEnabled(v bool) *CreateAlertRuleRequestTriggerConditionExtensionError {
+	s.AutoRerunAlertEnabled = &v
 	return s
 }
 
@@ -2396,7 +2530,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionError) SetStreamTaskIds(
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount struct {
-	// The number of instances on which an error occurs. Valid values: 1 to 10,000.
+	// The maximum number of instances on which an error occurs. Valid values: [1,10000].
 	//
 	// example:
 	//
@@ -2418,7 +2552,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) SetC
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage struct {
-	// The percentage of the number of instances on which an error occurs in the workspace to the total number of instances on the current day. Valid values: 1 to 100.
+	// The maximum percentage of instances on which an error occurs in the workspace to the total number of instances. Valid values: [1-100].
 	//
 	// example:
 	//
@@ -2440,15 +2574,15 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage)
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate struct {
-	// The percentage of fluctuation in the number of auto triggered node instances that are generated in your workspace. Valid values: 1 to 100.
+	// The maximum percentage of fluctuation in the number of auto triggered node instances that are generated in your workspace. Valid values: [1-100].
 	//
 	// example:
 	//
 	// 10
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The way in which the number of auto triggered node instances that are generated in your workspace significantly fluctuates. Valid values:
+	// The way in which the number of auto triggered node instances that are generated in your workspace fluctuates. Valid values:
 	//
-	// 	- abs: The number of instances increases or decreases.
+	// 	- abs: the absolute value. The number of instances increases or decreases.
 	//
 	// 	- increase: The number of instances increases.
 	//
@@ -2479,7 +2613,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuat
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionTimeout struct {
-	// The timeout period. Unit: minutes. Valid values: 1 to 21,600.
+	// The timeout period. Unit: minutes. Valid values: [1, 21600].
 	//
 	// example:
 	//
@@ -2501,7 +2635,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionTimeout) SetTimeoutInMin
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionUnFinished struct {
-	// The timeout period of the instance that is still running at a specified point in time. The time is in the hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
+	// The latest completion time of the instance. The period is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
 	//
 	// example:
 	//
@@ -2523,11 +2657,11 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionUnFinished) SetUnFinishe
 }
 
 type CreateAlertRuleRequestTriggerConditionTarget struct {
-	// The whitelists of the monitoring tasks.
+	// The nodes that are not to be monitored.
 	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
 	// The IDs of monitored objects.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The type of the monitored object. Valid values:
+	// The type of the monitored objects. Valid values:
 	//
 	// 	- Task: node
 	//
@@ -2593,7 +2727,7 @@ type CreateAlertRuleShrinkRequest struct {
 	//
 	// 279114181716147735
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The conditions for triggering the alert.
+	// The alert triggering condition.
 	//
 	// This parameter is required.
 	TriggerConditionShrink *string `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty"`
@@ -2802,12 +2936,15 @@ func (s *CreateDIAlarmRuleRequest) SetTriggerConditions(v []*CreateDIAlarmRuleRe
 }
 
 type CreateDIAlarmRuleRequestNotificationSettings struct {
+	// Deprecated
+	//
 	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
 	//
 	// example:
 	//
 	// 5
 	InhibitionInterval *int32 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
+	MuteInterval       *int32 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
 	// The alert notification methods.
 	NotificationChannels []*CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
 	// The settings of alert notification recipients.
@@ -2824,6 +2961,11 @@ func (s CreateDIAlarmRuleRequestNotificationSettings) GoString() string {
 
 func (s *CreateDIAlarmRuleRequestNotificationSettings) SetInhibitionInterval(v int32) *CreateDIAlarmRuleRequestNotificationSettings {
 	s.InhibitionInterval = &v
+	return s
+}
+
+func (s *CreateDIAlarmRuleRequestNotificationSettings) SetMuteInterval(v int32) *CreateDIAlarmRuleRequestNotificationSettings {
+	s.MuteInterval = &v
 	return s
 }
 
@@ -2912,8 +3054,11 @@ func (s *CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers) SetR
 }
 
 type CreateDIAlarmRuleRequestTriggerConditions struct {
+	// Deprecated
+	//
 	// The types of DDL operations for which the alert rule takes effect.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
+	DdlTypes      []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
 	// example:
@@ -2954,6 +3099,11 @@ func (s CreateDIAlarmRuleRequestTriggerConditions) GoString() string {
 
 func (s *CreateDIAlarmRuleRequestTriggerConditions) SetDdlReportTags(v []*string) *CreateDIAlarmRuleRequestTriggerConditions {
 	s.DdlReportTags = v
+	return s
+}
+
+func (s *CreateDIAlarmRuleRequestTriggerConditions) SetDdlTypes(v []*string) *CreateDIAlarmRuleRequestTriggerConditions {
+	s.DdlTypes = v
 	return s
 }
 
@@ -3080,12 +3230,20 @@ func (s *CreateDIAlarmRuleShrinkRequest) SetTriggerConditionsShrink(v string) *C
 }
 
 type CreateDIAlarmRuleResponseBody struct {
-	// The ID of the alert rule.
+	// Deprecated
+	//
+	// This parameter is deprecated and is replaced by the Id parameter.
 	//
 	// example:
 	//
 	// 1
 	DIAlarmRuleId *string `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
+	// The ID of the alert rule.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
@@ -3104,6 +3262,11 @@ func (s CreateDIAlarmRuleResponseBody) GoString() string {
 
 func (s *CreateDIAlarmRuleResponseBody) SetDIAlarmRuleId(v string) *CreateDIAlarmRuleResponseBody {
 	s.DIAlarmRuleId = &v
+	return s
+}
+
+func (s *CreateDIAlarmRuleResponseBody) SetId(v int64) *CreateDIAlarmRuleResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -3156,9 +3319,9 @@ type CreateDIJobRequest struct {
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
-	// The name of the synchronization task.
+	// Deprecated
 	//
-	// This parameter is required.
+	// This parameter is deprecated and is replaced by the Name parameter.
 	//
 	// example:
 	//
@@ -3184,6 +3347,12 @@ type CreateDIJobRequest struct {
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// The name of the synchronization task.
+	//
+	// example:
+	//
+	// mysql_to_holo_sync_8772
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -3251,6 +3420,11 @@ func (s *CreateDIJobRequest) SetJobSettings(v *CreateDIJobRequestJobSettings) *C
 
 func (s *CreateDIJobRequest) SetMigrationType(v string) *CreateDIJobRequest {
 	s.MigrationType = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetName(v string) *CreateDIJobRequest {
+	s.Name = &v
 	return s
 }
 
@@ -3993,9 +4167,9 @@ type CreateDIJobShrinkRequest struct {
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
-	// The name of the synchronization task.
+	// Deprecated
 	//
-	// This parameter is required.
+	// This parameter is deprecated and is replaced by the Name parameter.
 	//
 	// example:
 	//
@@ -4021,6 +4195,12 @@ type CreateDIJobShrinkRequest struct {
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// The name of the synchronization task.
+	//
+	// example:
+	//
+	// mysql_to_holo_sync_8772
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -4091,6 +4271,11 @@ func (s *CreateDIJobShrinkRequest) SetMigrationType(v string) *CreateDIJobShrink
 	return s
 }
 
+func (s *CreateDIJobShrinkRequest) SetName(v string) *CreateDIJobShrinkRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *CreateDIJobShrinkRequest) SetProjectId(v int64) *CreateDIJobShrinkRequest {
 	s.ProjectId = &v
 	return s
@@ -4122,12 +4307,20 @@ func (s *CreateDIJobShrinkRequest) SetTransformationRulesShrink(v string) *Creat
 }
 
 type CreateDIJobResponseBody struct {
-	// The ID of the synchronization task.
+	// Deprecated
+	//
+	// This parameter is deprecated and is replaced by the Id parameter.
 	//
 	// example:
 	//
 	// 11792
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 11792
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
@@ -4146,6 +4339,11 @@ func (s CreateDIJobResponseBody) GoString() string {
 
 func (s *CreateDIJobResponseBody) SetDIJobId(v int64) *CreateDIJobResponseBody {
 	s.DIJobId = &v
+	return s
+}
+
+func (s *CreateDIJobResponseBody) SetId(v int64) *CreateDIJobResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -4183,37 +4381,208 @@ func (s *CreateDIJobResponse) SetBody(v *CreateDIJobResponseBody) *CreateDIJobRe
 	return s
 }
 
+type CreateDataAssetTagRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key      *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Managers []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// String
+	ValueType *string   `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataAssetTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataAssetTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataAssetTagRequest) SetDescription(v string) *CreateDataAssetTagRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataAssetTagRequest) SetKey(v string) *CreateDataAssetTagRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDataAssetTagRequest) SetManagers(v []*string) *CreateDataAssetTagRequest {
+	s.Managers = v
+	return s
+}
+
+func (s *CreateDataAssetTagRequest) SetValueType(v string) *CreateDataAssetTagRequest {
+	s.ValueType = &v
+	return s
+}
+
+func (s *CreateDataAssetTagRequest) SetValues(v []*string) *CreateDataAssetTagRequest {
+	s.Values = v
+	return s
+}
+
+type CreateDataAssetTagShrinkRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ManagersShrink *string `json:"Managers,omitempty" xml:"Managers,omitempty"`
+	// example:
+	//
+	// String
+	ValueType    *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	ValuesShrink *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s CreateDataAssetTagShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataAssetTagShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataAssetTagShrinkRequest) SetDescription(v string) *CreateDataAssetTagShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataAssetTagShrinkRequest) SetKey(v string) *CreateDataAssetTagShrinkRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDataAssetTagShrinkRequest) SetManagersShrink(v string) *CreateDataAssetTagShrinkRequest {
+	s.ManagersShrink = &v
+	return s
+}
+
+func (s *CreateDataAssetTagShrinkRequest) SetValueType(v string) *CreateDataAssetTagShrinkRequest {
+	s.ValueType = &v
+	return s
+}
+
+func (s *CreateDataAssetTagShrinkRequest) SetValuesShrink(v string) *CreateDataAssetTagShrinkRequest {
+	s.ValuesShrink = &v
+	return s
+}
+
+type CreateDataAssetTagResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1ec92159376
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataAssetTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataAssetTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataAssetTagResponseBody) SetRequestId(v string) *CreateDataAssetTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataAssetTagResponseBody) SetSuccess(v bool) *CreateDataAssetTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataAssetTagResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataAssetTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataAssetTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataAssetTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataAssetTagResponse) SetHeaders(v map[string]*string) *CreateDataAssetTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataAssetTagResponse) SetStatusCode(v int32) *CreateDataAssetTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataAssetTagResponse) SetBody(v *CreateDataAssetTagResponseBody) *CreateDataAssetTagResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataQualityEvaluationTaskRequest struct {
+	// The list of monitoring rules that are associated with the monitor. If you configure the ID of a monitoring rule by using the DataQualityRule.Id parameter, the system associates the rule with a created monitor. If you do not configure the ID of a monitoring rule, the system creates a new monitoring rule by using other fields and associates the rule with a created monitor.
 	DataQualityRules []*CreateDataQualityEvaluationTaskRequestDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
+	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+	//
 	// example:
 	//
 	// 1
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 质量监控任务描述
+	// The description of the monitor.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	// The hook.
 	Hooks []*CreateDataQualityEvaluationTaskRequestHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
-	// 质量监控任务名称
+	// The name of the monitor.
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 数据质量校验任务通知订阅配置
+	// The configurations of alert notifications.
 	Notifications *CreateDataQualityEvaluationTaskRequestNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// 项目空间Id
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	// The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
+	//
+	// 	- queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
+	//
+	// 	- sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
+	//
+	//     	- HIVE_SQL
+	//
+	//     	- SPARK_SQL
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	// The monitored object of the monitor.
 	Target *CreateDataQualityEvaluationTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// 数据质量校验任务的触发配置
+	// The trigger configuration of the monitor.
 	Trigger *CreateDataQualityEvaluationTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -4276,23 +4645,40 @@ func (s *CreateDataQualityEvaluationTaskRequest) SetTrigger(v *CreateDataQuality
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRules struct {
+	// The check settings for sample data.
 	CheckingConfig *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	Description    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the monitoring rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the monitoring rule.
+	//
 	// example:
 	//
 	// true
-	Enabled       *bool                                                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check.
 	ErrorHandlers []*CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 2176
-	Id             *int64                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the monitoring rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters required for sampling.
 	SamplingConfig *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// The strength of the monitoring rule. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- High
+	//
 	// example:
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The ID of the template used by the monitoring rule.
+	//
 	// example:
 	//
 	// SYSTEM:field:null_value:fixed:0
@@ -4353,11 +4739,26 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetTemplateCode
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain specific types of thresholds, you must query reference values. In this example, an expression is used to specify the query method of referenced samples.
+	//
 	// example:
 	//
 	// {"bizdate": ["-1"]}
-	ReferencedSamplesFilter *string                                                                         `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	Thresholds              *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold settings.
+	Thresholds *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// The threshold calculation method. Valid values:
+	//
+	// 	- Fixed
+	//
+	// 	- Fluctuation
+	//
+	// 	- FluctuationDiscreate
+	//
+	// 	- Auto
+	//
+	// 	- Average
+	//
 	// example:
 	//
 	// Fixed
@@ -4388,9 +4789,12 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) S
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds struct {
+	// The threshold settings for critical alerts.
 	Critical *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	// The expected threshold setting.
 	Expected *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	Warned   *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+	// The threshold settings for normal alerts.
+	Warned *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
 func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) String() string {
@@ -4417,10 +4821,26 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 0.01
@@ -4446,10 +4866,26 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
 	// example:
 	//
 	// =
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 0
@@ -4475,10 +4911,26 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 0.001
@@ -4504,10 +4956,16 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers struct {
+	// The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
+	//
 	// example:
 	//
 	// SELECT 	- FROM ods_api_log WHERE status = \\"Error\\";
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// The type of the operation. Valid values:
+	//
+	// 	- SaveErrorData
+	//
 	// example:
 	//
 	// SaveErrorData
@@ -4533,18 +4991,56 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) Se
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig struct {
+	// The metrics used for sampling. Valid values:
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
+	//
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
+	//
 	// example:
 	//
 	// NullValueCount
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
 	// example:
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+	//
 	// example:
 	//
 	// status != \\"Succeeded\\"
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
 	// example:
 	//
 	// odps.sql.type.system.odps2=True,odps.sql.hive.compatible=True
@@ -4580,13 +5076,19 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) S
 }
 
 type CreateDataQualityEvaluationTaskRequestHooks struct {
-	// Hook触发条件
+	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
+	//
+	// 1.  Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	//
+	// 2.  Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// Hook类型
+	// The hook type. Only one hook type is supported.
+	//
+	// 	- BlockTaskInstance: Blocks the running of scheduling tasks. A monitor is triggered by scheduling tasks. After a monitor finishes running, the monitor determines whether to block the running of scheduling tasks based on the hook condition.
 	//
 	// example:
 	//
@@ -4613,13 +5115,15 @@ func (s *CreateDataQualityEvaluationTaskRequestHooks) SetType(v string) *CreateD
 }
 
 type CreateDataQualityEvaluationTaskRequestNotifications struct {
-	// 通知触发条件
+	// The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
+	//
+	// Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical. Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// 具体的消息通知设置
+	// The configurations of the alert notification.
 	Notifications []*CreateDataQualityEvaluationTaskRequestNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -4642,9 +5146,9 @@ func (s *CreateDataQualityEvaluationTaskRequestNotifications) SetNotifications(v
 }
 
 type CreateDataQualityEvaluationTaskRequestNotificationsNotifications struct {
-	// 通知方式
+	// The alert notification method.
 	NotificationChannels []*CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// 告警接收人设置
+	// The configurations of alert recipients.
 	NotificationReceivers []*CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -4667,7 +5171,7 @@ func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotifications) SetNo
 }
 
 type CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels struct {
-	// 通知方式
+	// The alert notification method.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -4685,19 +5189,33 @@ func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotific
 }
 
 type CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers struct {
-	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	// The additional parameters that are required when alerts are sent. The parameters are JSON-formatted strings. The following keys are supported:
+	//
+	// 	- atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
 	//
 	// example:
 	//
 	// {  "atAll": true }
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 告警接收人类型
+	// The type of the alert recipient.
+	//
+	// Valid values:
+	//
+	// 	- WebhookUrl
+	//
+	// 	- FeishuUrl
+	//
+	// 	- DingdingUrl
+	//
+	// 	- WeixinUrl
+	//
+	// 	- AliUid
 	//
 	// example:
 	//
 	// DingdingUrl
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// 告警接收人
+	// The alert recipient.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -4725,19 +5243,19 @@ func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotific
 }
 
 type CreateDataQualityEvaluationTaskRequestTarget struct {
-	// 表所属的数据库类型
+	// The type of the database to which the table belongs.
 	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// 分区表的分区设置
+	// The partition configuration of the partitioned table.
 	//
 	// example:
 	//
 	// pt=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// 表在数据地图中的唯一ID
+	// The ID of the table in Data Map.
 	//
 	// example:
 	//
@@ -4769,9 +5287,13 @@ func (s *CreateDataQualityEvaluationTaskRequestTarget) SetTableGuid(v string) *C
 }
 
 type CreateDataQualityEvaluationTaskRequestTrigger struct {
-	// 具体指明哪些调度节点的实例执行成功后可以触发
+	// The IDs of scheduling tasks. This parameter is valid only if you set Type to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// 何种事件可以触发质量校验任务执行
+	// The trigger type of the monitor. Valid values:
+	//
+	// 	- ByManual (default): The monitor is manually triggered.
+	//
+	// 	- ByScheduledTaskInstance: The monitor is triggered by the associated scheduling tasks.
 	//
 	// example:
 	//
@@ -4798,36 +5320,49 @@ func (s *CreateDataQualityEvaluationTaskRequestTrigger) SetType(v string) *Creat
 }
 
 type CreateDataQualityEvaluationTaskShrinkRequest struct {
+	// The list of monitoring rules that are associated with the monitor. If you configure the ID of a monitoring rule by using the DataQualityRule.Id parameter, the system associates the rule with a created monitor. If you do not configure the ID of a monitoring rule, the system creates a new monitoring rule by using other fields and associates the rule with a created monitor.
 	DataQualityRulesShrink *string `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty"`
+	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+	//
 	// example:
 	//
 	// 1
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 质量监控任务描述
+	// The description of the monitor.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	// The hook.
 	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	// 质量监控任务名称
+	// The name of the monitor.
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 数据质量校验任务通知订阅配置
+	// The configurations of alert notifications.
 	NotificationsShrink *string `json:"Notifications,omitempty" xml:"Notifications,omitempty"`
-	// 项目空间Id
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	// The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
+	//
+	// 	- queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
+	//
+	// 	- sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
+	//
+	//     	- HIVE_SQL
+	//
+	//     	- SPARK_SQL
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	// The monitored object of the monitor.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// 数据质量校验任务的触发配置
+	// The trigger configuration of the monitor.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 
@@ -4890,6 +5425,8 @@ func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetTriggerShrink(v string
 }
 
 type CreateDataQualityEvaluationTaskResponseBody struct {
+	// The ID of the new monitor.
+	//
 	// example:
 	//
 	// 10001
@@ -6213,7 +6750,7 @@ type CreateDataSourceRequest struct {
 	//
 	// 	- Prod: production environment
 	//
-	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
+	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// This parameter is required.
 	//
@@ -6514,7 +7051,7 @@ type CreateDeploymentRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// Specifies whether to deploy or undeploy the entity. Valid values:
 	//
 	// 	- Online: deploys the entity.
@@ -6547,7 +7084,7 @@ func (s *CreateDeploymentRequest) SetObjectIds(v []*string) *CreateDeploymentReq
 	return s
 }
 
-func (s *CreateDeploymentRequest) SetProjectId(v string) *CreateDeploymentRequest {
+func (s *CreateDeploymentRequest) SetProjectId(v int64) *CreateDeploymentRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -6575,7 +7112,7 @@ type CreateDeploymentShrinkRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// Specifies whether to deploy or undeploy the entity. Valid values:
 	//
 	// 	- Online: deploys the entity.
@@ -6608,7 +7145,7 @@ func (s *CreateDeploymentShrinkRequest) SetObjectIdsShrink(v string) *CreateDepl
 	return s
 }
 
-func (s *CreateDeploymentShrinkRequest) SetProjectId(v string) *CreateDeploymentShrinkRequest {
+func (s *CreateDeploymentShrinkRequest) SetProjectId(v int64) *CreateDeploymentShrinkRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -6688,7 +7225,7 @@ type CreateFunctionRequest struct {
 	// example:
 	//
 	// 12345
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the UDF. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
 	//
 	// This parameter is required.
@@ -6703,7 +7240,7 @@ func (s CreateFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFunctionRequest) SetProjectId(v string) *CreateFunctionRequest {
+func (s *CreateFunctionRequest) SetProjectId(v int64) *CreateFunctionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -6719,7 +7256,7 @@ type CreateFunctionResponseBody struct {
 	// example:
 	//
 	// 580667964888595XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -6736,7 +7273,7 @@ func (s CreateFunctionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFunctionResponseBody) SetId(v string) *CreateFunctionResponseBody {
+func (s *CreateFunctionResponseBody) SetId(v int64) *CreateFunctionResponseBody {
 	s.Id = &v
 	return s
 }
@@ -6834,7 +7371,7 @@ type CreateNetworkResponseBody struct {
 	// example:
 	//
 	// 1000
-	NetworkId *int64 `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
@@ -6853,8 +7390,8 @@ func (s CreateNetworkResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateNetworkResponseBody) SetNetworkId(v int64) *CreateNetworkResponseBody {
-	s.NetworkId = &v
+func (s *CreateNetworkResponseBody) SetId(v int64) *CreateNetworkResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -6905,7 +7442,7 @@ type CreateNodeRequest struct {
 	// example:
 	//
 	// a7ef0634-20ec-4a7c-a214-54020f91XXXX
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerId *int64 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -6915,7 +7452,7 @@ type CreateNodeRequest struct {
 	// example:
 	//
 	// 123456
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The scene of the node. This parameter determines the location (the DataStudio pane or the Manual pane) of the node. You can set this parameter to DATAWORKS_MANUAL_WORKFLOW only if the ContainerId parameter is configured and the container specified by ContainerId is a manually triggered workflow.
 	//
 	// Valid values:
@@ -6946,12 +7483,12 @@ func (s CreateNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateNodeRequest) SetContainerId(v string) *CreateNodeRequest {
+func (s *CreateNodeRequest) SetContainerId(v int64) *CreateNodeRequest {
 	s.ContainerId = &v
 	return s
 }
 
-func (s *CreateNodeRequest) SetProjectId(v string) *CreateNodeRequest {
+func (s *CreateNodeRequest) SetProjectId(v int64) *CreateNodeRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -6972,7 +7509,7 @@ type CreateNodeResponseBody struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -6989,7 +7526,7 @@ func (s CreateNodeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateNodeResponseBody) SetId(v string) *CreateNodeResponseBody {
+func (s *CreateNodeResponseBody) SetId(v int64) *CreateNodeResponseBody {
 	s.Id = &v
 	return s
 }
@@ -7272,6 +7809,12 @@ func (s *CreateProjectShrinkRequest) SetPaiTaskEnabled(v bool) *CreateProjectShr
 }
 
 type CreateProjectResponseBody struct {
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Deprecated
+	//
 	// The workspace ID.
 	//
 	// example:
@@ -7292,6 +7835,11 @@ func (s CreateProjectResponseBody) String() string {
 
 func (s CreateProjectResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetId(v int64) *CreateProjectResponseBody {
+	s.Id = &v
+	return s
 }
 
 func (s *CreateProjectResponseBody) SetProjectId(v int64) *CreateProjectResponseBody {
@@ -7344,13 +7892,13 @@ type CreateProjectMemberRequest struct {
 	//
 	// 24054
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	//
-	// You must configure this parameter to specify the roles that you want to assign to the member.
+	// This parameter specifies the roles that you can assign to a member when you add the member.
 	//
 	// This parameter is required.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
-	// The ID of the account that you want to add to the workspace as a member. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.7159281fJ97yfv), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account that you want to add to the workspace as a member.
+	// The ID of the account that you want to add to the workspace as a member. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click **Tenant Members and Roles**. On the Tenant Members and Roles page, view the ID of the account that you want to add to the workspace as a member.
 	//
 	// This parameter is required.
 	//
@@ -7394,13 +7942,13 @@ type CreateProjectMemberShrinkRequest struct {
 	//
 	// 24054
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	//
-	// You must configure this parameter to specify the roles that you want to assign to the member.
+	// This parameter specifies the roles that you can assign to a member when you add the member.
 	//
 	// This parameter is required.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
-	// The ID of the account that you want to add to the workspace as a member. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.7159281fJ97yfv), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account that you want to add to the workspace as a member.
+	// The ID of the account that you want to add to the workspace as a member. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click **Tenant Members and Roles**. On the Tenant Members and Roles page, view the ID of the account that you want to add to the workspace as a member.
 	//
 	// This parameter is required.
 	//
@@ -7492,7 +8040,7 @@ type CreateResourceRequest struct {
 	// example:
 	//
 	// 123456
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
 	//
 	// This parameter is required.
@@ -7507,7 +8055,7 @@ func (s CreateResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceRequest) SetProjectId(v string) *CreateResourceRequest {
+func (s *CreateResourceRequest) SetProjectId(v int64) *CreateResourceRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -7523,7 +8071,7 @@ type CreateResourceResponseBody struct {
 	// example:
 	//
 	// 631478864897630XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -7540,7 +8088,7 @@ func (s CreateResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceResponseBody) SetId(v string) *CreateResourceResponseBody {
+func (s *CreateResourceResponseBody) SetId(v int64) *CreateResourceResponseBody {
 	s.Id = &v
 	return s
 }
@@ -7582,8 +8130,10 @@ func (s *CreateResourceResponse) SetBody(v *CreateResourceResponseBody) *CreateR
 type CreateResourceGroupRequest struct {
 	// example:
 	//
-	// true
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// rg-aek2kqofrgXXXXX
+	AliyunResourceGroupId *string                                         `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*CreateResourceGroupRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	AutoRenewEnabled      *bool                                           `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -7642,8 +8192,18 @@ func (s CreateResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceGroupRequest) SetAutoRenew(v bool) *CreateResourceGroupRequest {
-	s.AutoRenew = &v
+func (s *CreateResourceGroupRequest) SetAliyunResourceGroupId(v string) *CreateResourceGroupRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetAliyunResourceTags(v []*CreateResourceGroupRequestAliyunResourceTags) *CreateResourceGroupRequest {
+	s.AliyunResourceTags = v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetAutoRenewEnabled(v bool) *CreateResourceGroupRequest {
+	s.AutoRenewEnabled = &v
 	return s
 }
 
@@ -7688,6 +8248,160 @@ func (s *CreateResourceGroupRequest) SetVpcId(v string) *CreateResourceGroupRequ
 }
 
 func (s *CreateResourceGroupRequest) SetVswitchId(v string) *CreateResourceGroupRequest {
+	s.VswitchId = &v
+	return s
+}
+
+type CreateResourceGroupRequestAliyunResourceTags struct {
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateResourceGroupRequestAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceGroupRequestAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceGroupRequestAliyunResourceTags) SetKey(v string) *CreateResourceGroupRequestAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequestAliyunResourceTags) SetValue(v string) *CreateResourceGroupRequestAliyunResourceTags {
+	s.Value = &v
+	return s
+}
+
+type CreateResourceGroupShrinkRequest struct {
+	// example:
+	//
+	// rg-aek2kqofrgXXXXX
+	AliyunResourceGroupId    *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
+	AutoRenewEnabled         *bool   `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eb870033-74c8-4b1b-9664-04c4e7cc3465
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// common_resource_group
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PaymentDuration *int32 `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	// example:
+	//
+	// Month
+	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// example:
+	//
+	// 创建用于普通任务的通用资源组
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
+	//
+	// example:
+	//
+	// 2
+	Spec *int32 `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-m2et4f3oc8msfbccXXXXX
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf8usrhs7hjd9amsXXXXX
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s CreateResourceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetAliyunResourceGroupId(v string) *CreateResourceGroupShrinkRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetAliyunResourceTagsShrink(v string) *CreateResourceGroupShrinkRequest {
+	s.AliyunResourceTagsShrink = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetAutoRenewEnabled(v bool) *CreateResourceGroupShrinkRequest {
+	s.AutoRenewEnabled = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetClientToken(v string) *CreateResourceGroupShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetName(v string) *CreateResourceGroupShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetPaymentDuration(v int32) *CreateResourceGroupShrinkRequest {
+	s.PaymentDuration = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetPaymentDurationUnit(v string) *CreateResourceGroupShrinkRequest {
+	s.PaymentDurationUnit = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetPaymentType(v string) *CreateResourceGroupShrinkRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetRemark(v string) *CreateResourceGroupShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetSpec(v int32) *CreateResourceGroupShrinkRequest {
+	s.Spec = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetVpcId(v string) *CreateResourceGroupShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateResourceGroupShrinkRequest) SetVswitchId(v string) *CreateResourceGroupShrinkRequest {
 	s.VswitchId = &v
 	return s
 }
@@ -7830,12 +8544,12 @@ func (s *CreateRouteRequest) SetNetworkId(v int64) *CreateRouteRequest {
 type CreateRouteResponseBody struct {
 	// example:
 	//
-	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 1000
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
-	// 1000
-	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
 	// example:
@@ -7852,13 +8566,13 @@ func (s CreateRouteResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRouteResponseBody) SetRequestId(v string) *CreateRouteResponseBody {
-	s.RequestId = &v
+func (s *CreateRouteResponseBody) SetId(v int64) *CreateRouteResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *CreateRouteResponseBody) SetRouteId(v int64) *CreateRouteResponseBody {
-	s.RouteId = &v
+func (s *CreateRouteResponseBody) SetRequestId(v string) *CreateRouteResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7904,7 +8618,7 @@ type CreateWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
 	//
 	// This parameter is required.
@@ -7919,7 +8633,7 @@ func (s CreateWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateWorkflowDefinitionRequest) SetProjectId(v string) *CreateWorkflowDefinitionRequest {
+func (s *CreateWorkflowDefinitionRequest) SetProjectId(v int64) *CreateWorkflowDefinitionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -7935,7 +8649,7 @@ type CreateWorkflowDefinitionResponseBody struct {
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -7952,7 +8666,7 @@ func (s CreateWorkflowDefinitionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateWorkflowDefinitionResponseBody) SetId(v string) *CreateWorkflowDefinitionResponseBody {
+func (s *CreateWorkflowDefinitionResponseBody) SetId(v int64) *CreateWorkflowDefinitionResponseBody {
 	s.Id = &v
 	return s
 }
@@ -8076,7 +8790,9 @@ func (s *DeleteAlertRuleResponse) SetBody(v *DeleteAlertRuleResponseBody) *Delet
 }
 
 type DeleteDIAlarmRuleRequest struct {
-	// The ID of the alert rule.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -8088,6 +8804,10 @@ type DeleteDIAlarmRuleRequest struct {
 	//
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// 2
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DeleteDIAlarmRuleRequest) String() string {
@@ -8105,6 +8825,11 @@ func (s *DeleteDIAlarmRuleRequest) SetDIAlarmRuleId(v int64) *DeleteDIAlarmRuleR
 
 func (s *DeleteDIAlarmRuleRequest) SetDIJobId(v int64) *DeleteDIAlarmRuleRequest {
 	s.DIJobId = &v
+	return s
+}
+
+func (s *DeleteDIAlarmRuleRequest) SetId(v int64) *DeleteDIAlarmRuleRequest {
+	s.Id = &v
 	return s
 }
 
@@ -8175,12 +8900,25 @@ func (s *DeleteDIAlarmRuleResponse) SetBody(v *DeleteDIAlarmRuleResponseBody) *D
 }
 
 type DeleteDIJobRequest struct {
-	// This parameter is required.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
 	// 11126
-	DIJobId   *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 11126
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// example:
+	//
+	// 108864
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -8194,6 +8932,11 @@ func (s DeleteDIJobRequest) GoString() string {
 
 func (s *DeleteDIJobRequest) SetDIJobId(v int64) *DeleteDIJobRequest {
 	s.DIJobId = &v
+	return s
+}
+
+func (s *DeleteDIJobRequest) SetId(v int64) *DeleteDIJobRequest {
+	s.Id = &v
 	return s
 }
 
@@ -8256,6 +8999,122 @@ func (s *DeleteDIJobResponse) SetStatusCode(v int32) *DeleteDIJobResponse {
 }
 
 func (s *DeleteDIJobResponse) SetBody(v *DeleteDIJobResponseBody) *DeleteDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataAssetTagRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DeleteDataAssetTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataAssetTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataAssetTagRequest) SetKey(v string) *DeleteDataAssetTagRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DeleteDataAssetTagRequest) SetValues(v []*string) *DeleteDataAssetTagRequest {
+	s.Values = v
+	return s
+}
+
+type DeleteDataAssetTagShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ValuesShrink *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DeleteDataAssetTagShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataAssetTagShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataAssetTagShrinkRequest) SetKey(v string) *DeleteDataAssetTagShrinkRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DeleteDataAssetTagShrinkRequest) SetValuesShrink(v string) *DeleteDataAssetTagShrinkRequest {
+	s.ValuesShrink = &v
+	return s
+}
+
+type DeleteDataAssetTagResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1411515937635973****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataAssetTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataAssetTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataAssetTagResponseBody) SetRequestId(v string) *DeleteDataAssetTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataAssetTagResponseBody) SetSuccess(v bool) *DeleteDataAssetTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataAssetTagResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataAssetTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDataAssetTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataAssetTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataAssetTagResponse) SetHeaders(v map[string]*string) *DeleteDataAssetTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataAssetTagResponse) SetStatusCode(v int32) *DeleteDataAssetTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataAssetTagResponse) SetBody(v *DeleteDataAssetTagResponseBody) *DeleteDataAssetTagResponse {
 	s.Body = v
 	return s
 }
@@ -8348,6 +9207,8 @@ func (s *DeleteDataQualityEvaluationTaskResponse) SetBody(v *DeleteDataQualityEv
 
 type DeleteDataQualityRuleRequest struct {
 	// The rule ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8444,6 +9305,8 @@ func (s *DeleteDataQualityRuleResponse) SetBody(v *DeleteDataQualityRuleResponse
 type DeleteDataQualityRuleTemplateRequest struct {
 	// The code for the template.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// USER_DEFINED:123
@@ -8538,6 +9401,8 @@ func (s *DeleteDataQualityRuleTemplateResponse) SetBody(v *DeleteDataQualityRule
 
 type DeleteDataSourceRequest struct {
 	// The data source ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8708,7 +9573,7 @@ type DeleteFunctionRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
 	//
 	// This parameter is required.
@@ -8716,7 +9581,7 @@ type DeleteFunctionRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s DeleteFunctionRequest) String() string {
@@ -8727,12 +9592,12 @@ func (s DeleteFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteFunctionRequest) SetId(v string) *DeleteFunctionRequest {
+func (s *DeleteFunctionRequest) SetId(v int64) *DeleteFunctionRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *DeleteFunctionRequest) SetProjectId(v string) *DeleteFunctionRequest {
+func (s *DeleteFunctionRequest) SetProjectId(v int64) *DeleteFunctionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -8893,7 +9758,7 @@ type DeleteNodeRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -8903,7 +9768,7 @@ type DeleteNodeRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s DeleteNodeRequest) String() string {
@@ -8914,12 +9779,12 @@ func (s DeleteNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteNodeRequest) SetId(v string) *DeleteNodeRequest {
+func (s *DeleteNodeRequest) SetId(v int64) *DeleteNodeRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *DeleteNodeRequest) SetProjectId(v string) *DeleteNodeRequest {
+func (s *DeleteNodeRequest) SetProjectId(v int64) *DeleteNodeRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -9076,7 +9941,7 @@ type DeleteProjectMemberRequest struct {
 	//
 	// 534752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -9163,7 +10028,7 @@ type DeleteResourceRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
 	//
 	// This parameter is required.
@@ -9171,7 +10036,7 @@ type DeleteResourceRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s DeleteResourceRequest) String() string {
@@ -9182,12 +10047,12 @@ func (s DeleteResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteResourceRequest) SetId(v string) *DeleteResourceRequest {
+func (s *DeleteResourceRequest) SetId(v int64) *DeleteResourceRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *DeleteResourceRequest) SetProjectId(v string) *DeleteResourceRequest {
+func (s *DeleteResourceRequest) SetProjectId(v int64) *DeleteResourceRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -9537,7 +10402,7 @@ type DeleteWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter is required.
@@ -9545,7 +10410,7 @@ type DeleteWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s DeleteWorkflowDefinitionRequest) String() string {
@@ -9556,12 +10421,12 @@ func (s DeleteWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteWorkflowDefinitionRequest) SetId(v string) *DeleteWorkflowDefinitionRequest {
+func (s *DeleteWorkflowDefinitionRequest) SetId(v int64) *DeleteWorkflowDefinitionRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *DeleteWorkflowDefinitionRequest) SetProjectId(v string) *DeleteWorkflowDefinitionRequest {
+func (s *DeleteWorkflowDefinitionRequest) SetProjectId(v int64) *DeleteWorkflowDefinitionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -9897,7 +10762,7 @@ type ExecDeploymentStageRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ExecDeploymentStageRequest) String() string {
@@ -9918,7 +10783,7 @@ func (s *ExecDeploymentStageRequest) SetId(v string) *ExecDeploymentStageRequest
 	return s
 }
 
-func (s *ExecDeploymentStageRequest) SetProjectId(v string) *ExecDeploymentStageRequest {
+func (s *ExecDeploymentStageRequest) SetProjectId(v int64) *ExecDeploymentStageRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -10412,12 +11277,7 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinish
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError struct {
-	// Indicates whether an alert is triggered if a batch synchronization task is automatically rerun upon a failure.
-	//
-	// example:
-	//
-	// false
-	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	AutoRerunAlertEnabled *bool `json:"AutoRerunAlertEnabled,omitempty" xml:"AutoRerunAlertEnabled,omitempty"`
 	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
 	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
@@ -10430,8 +11290,8 @@ func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) GoStrin
 	return s.String()
 }
 
-func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError {
-	s.AutoRerunAlert = &v
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) SetAutoRerunAlertEnabled(v bool) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError {
+	s.AutoRerunAlertEnabled = &v
 	return s
 }
 
@@ -10641,14 +11501,20 @@ func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRul
 }
 
 type GetDIJobRequest struct {
-	// The ID of the synchronization task.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
 	// 11588
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// DataWorks工作空间ID。您可以通过ListProjects接口获取工作空间ID。
+	// The ID of the synchronization task.
 	//
+	// example:
+	//
+	// 11588
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
 	// 10000
@@ -10671,6 +11537,11 @@ func (s GetDIJobRequest) GoString() string {
 
 func (s *GetDIJobRequest) SetDIJobId(v int64) *GetDIJobRequest {
 	s.DIJobId = &v
+	return s
+}
+
+func (s *GetDIJobRequest) SetId(v int64) *GetDIJobRequest {
+	s.Id = &v
 	return s
 }
 
@@ -10714,7 +11585,9 @@ func (s *GetDIJobResponseBody) SetRequestId(v string) *GetDIJobResponseBody {
 }
 
 type GetDIJobResponseBodyPagingInfo struct {
-	// The ID of the synchronization task.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -10734,6 +11607,12 @@ type GetDIJobResponseBodyPagingInfo struct {
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 32601
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the synchronization task.
 	//
 	// example:
@@ -10742,22 +11621,6 @@ type GetDIJobResponseBodyPagingInfo struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The runtime settings.
 	JobSettings *GetDIJobResponseBodyPagingInfoJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
-	// 任务状态。
-	//
-	// 同步状态，取值范围：
-	//
-	// - Finished：运行成功已结束
-	//
-	// - Failed：运行失败
-	//
-	// - Running：运行中
-	//
-	// - Initialized：初始化完成(未启动）
-	//
-	// - Stopping：停止中
-	//
-	// - Stop：停止
-	//
 	// example:
 	//
 	// Running
@@ -10827,6 +11690,11 @@ func (s *GetDIJobResponseBodyPagingInfo) SetDestinationDataSourceSettings(v []*G
 
 func (s *GetDIJobResponseBodyPagingInfo) SetDestinationDataSourceType(v string) *GetDIJobResponseBodyPagingInfo {
 	s.DestinationDataSourceType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetId(v int64) *GetDIJobResponseBodyPagingInfo {
+	s.Id = &v
 	return s
 }
 
@@ -11582,9 +12450,9 @@ func (s *GetDIJobResponse) SetBody(v *GetDIJobResponseBody) *GetDIJobResponse {
 }
 
 type GetDIJobLogRequest struct {
-	// The ID of the synchronization task.
+	// Deprecated
 	//
-	// This parameter is required.
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -11596,6 +12464,12 @@ type GetDIJobLogRequest struct {
 	//
 	// 10
 	FailoverId *int64 `json:"FailoverId,omitempty" xml:"FailoverId,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 10000
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -11619,6 +12493,11 @@ func (s *GetDIJobLogRequest) SetDIJobId(v int64) *GetDIJobLogRequest {
 
 func (s *GetDIJobLogRequest) SetFailoverId(v int64) *GetDIJobLogRequest {
 	s.FailoverId = &v
+	return s
+}
+
+func (s *GetDIJobLogRequest) SetId(v int64) *GetDIJobLogRequest {
+	s.Id = &v
 	return s
 }
 
@@ -11710,6 +12589,7 @@ func (s *GetDataQualityEvaluationTaskRequest) SetId(v int64) *GetDataQualityEval
 }
 
 type GetDataQualityEvaluationTaskResponseBody struct {
+	// The details of the monitor.
 	DataQualityEvaluationTask *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask `json:"DataQualityEvaluationTask,omitempty" xml:"DataQualityEvaluationTask,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -11740,7 +12620,7 @@ func (s *GetDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *GetDa
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
 	// 质量监控任务描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	// The hook.
 	Hooks []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
 	// 代表资源一级ID的资源属性字段
 	//
@@ -11752,7 +12632,7 @@ type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 数据质量校验任务通知订阅配置
+	// The configurations of alert notifications.
 	Notifications *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
 	// 项目空间Id
 	//
@@ -11766,9 +12646,9 @@ type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	// The monitored object of the monitor.
 	Target *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// 数据质量校验任务的触发配置
+	// The trigger configuration of the monitor.
 	Trigger *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -11832,7 +12712,13 @@ type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks stru
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// Hook类型
+	// The hook type. Only one hook type is supported.
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- BlockTaskInstance: Blocks the running of scheduling tasks. A monitor is triggered by scheduling tasks. After a monitor finishes running, the monitor determines whether to block the running of scheduling tasks based on the hook condition.
 	//
 	// example:
 	//
@@ -11865,7 +12751,7 @@ type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificati
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// 具体的消息通知设置
+	// The configurations of the alert notification.
 	Notifications []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -11888,9 +12774,9 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications struct {
-	// 通知方式
+	// The alert notification method.
 	NotificationChannels []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// 告警接收人设置
+	// The configurations of alert recipients.
 	NotificationReceivers []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -11913,7 +12799,7 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels struct {
-	// 通知方式
+	// The alert notification method.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -11937,7 +12823,21 @@ type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificati
 	//
 	// {  "atAll": true }
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 告警接收人类型
+	// The additional parameters that are required when alerts are sent. The parameters are JSON-formatted strings. The following keys are supported:
+	//
+	// 	- atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
+	//
+	// Valid values:
+	//
+	// 	- WebhookUrl
+	//
+	// 	- FeishuUrl
+	//
+	// 	- DingdingUrl
+	//
+	// 	- WeixinUrl
+	//
+	// 	- AliUid
 	//
 	// example:
 	//
@@ -11971,7 +12871,23 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget struct {
-	// 表所属的数据库类型
+	// The type of the database to which the table belongs.
+	//
+	// Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- hologres
+	//
+	// 	- cdh
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
+	//
+	// 	- emr
+	//
+	// 	- analyticdb_for_postgresql
 	//
 	// example:
 	//
@@ -12026,7 +12942,19 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger struct {
 	// 具体指明哪些调度节点的实例执行成功后可以触发
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// 何种事件可以触发质量校验任务执行
+	// The trigger type of the monitor.
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- ByManual (default): The monitor is manually triggered.
+	//
+	// 	- ByScheduledTaskInstance: The monitor is triggered by associated scheduling tasks.
+	//
+	// 	- ByQualityNode: The monitor is triggered by created data quality monitoring nodes.
 	//
 	// example:
 	//
@@ -12082,6 +13010,8 @@ func (s *GetDataQualityEvaluationTaskResponse) SetBody(v *GetDataQualityEvaluati
 }
 
 type GetDataQualityEvaluationTaskInstanceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7227550902
@@ -12514,6 +13444,8 @@ func (s *GetDataQualityEvaluationTaskInstanceResponse) SetBody(v *GetDataQuality
 }
 
 type GetDataQualityRuleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 19715
@@ -12591,10 +13523,6 @@ type GetDataQualityRuleResponseBodyDataQualityRule struct {
 	//
 	// system::user_defined
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// example:
-	//
-	// 228248921215042
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetDataQualityRuleResponseBodyDataQualityRule) String() string {
@@ -12657,11 +13585,6 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTarget(v *GetDataQual
 
 func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTemplateCode(v string) *GetDataQualityRuleResponseBodyDataQualityRule {
 	s.TemplateCode = &v
-	return s
-}
-
-func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTenantId(v int64) *GetDataQualityRuleResponseBodyDataQualityRule {
-	s.TenantId = &v
 	return s
 }
 
@@ -13008,6 +13931,10 @@ func (s *GetDataQualityRuleResponse) SetBody(v *GetDataQualityRuleResponseBody) 
 }
 
 type GetDataQualityRuleTemplateRequest struct {
+	// The code for the template.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// USER_DEFINED:123
@@ -13028,6 +13955,7 @@ func (s *GetDataQualityRuleTemplateRequest) SetCode(v string) *GetDataQualityRul
 }
 
 type GetDataQualityRuleTemplateResponseBody struct {
+	// The information about the template.
 	DataQualityRuleTemplate *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate `json:"DataQualityRuleTemplate,omitempty" xml:"DataQualityRuleTemplate,omitempty" type:"Struct"`
 	// example:
 	//
@@ -13066,10 +13994,6 @@ type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate struct {
 	// 4020
 	ProjectId      *int64                                                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	SamplingConfig *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// example:
-	//
-	// 195820716552192
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// example:
 	//
 	// Project
@@ -13111,11 +14035,6 @@ func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetProje
 
 func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetSamplingConfig(v *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
 	s.SamplingConfig = v
-	return s
-}
-
-func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetTenantId(v int64) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
-	s.TenantId = &v
 	return s
 }
 
@@ -13282,7 +14201,7 @@ type GetDataSourceResponseBodyDataSource struct {
 	//
 	// 	- Prod: production environment
 	//
-	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
+	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// example:
 	//
@@ -13493,7 +14412,7 @@ type GetDeploymentRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetDeploymentRequest) String() string {
@@ -13509,7 +14428,7 @@ func (s *GetDeploymentRequest) SetId(v string) *GetDeploymentRequest {
 	return s
 }
 
-func (s *GetDeploymentRequest) SetProjectId(v string) *GetDeploymentRequest {
+func (s *GetDeploymentRequest) SetProjectId(v int64) *GetDeploymentRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -13575,7 +14494,7 @@ type GetDeploymentResponseBodyPipeline struct {
 	// example:
 	//
 	// 56160
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The information about stages in the process.
 	Stages []*GetDeploymentResponseBodyPipelineStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 	// The status of the process.
@@ -13633,7 +14552,7 @@ func (s *GetDeploymentResponseBodyPipeline) SetModifyTime(v int64) *GetDeploymen
 	return s
 }
 
-func (s *GetDeploymentResponseBodyPipeline) SetProjectId(v string) *GetDeploymentResponseBodyPipeline {
+func (s *GetDeploymentResponseBodyPipeline) SetProjectId(v int64) *GetDeploymentResponseBodyPipeline {
 	s.ProjectId = &v
 	return s
 }
@@ -13794,7 +14713,7 @@ type GetFunctionRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -13802,7 +14721,7 @@ type GetFunctionRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetFunctionRequest) String() string {
@@ -13813,12 +14732,12 @@ func (s GetFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetFunctionRequest) SetId(v string) *GetFunctionRequest {
+func (s *GetFunctionRequest) SetId(v int64) *GetFunctionRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *GetFunctionRequest) SetProjectId(v string) *GetFunctionRequest {
+func (s *GetFunctionRequest) SetProjectId(v int64) *GetFunctionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -13864,7 +14783,7 @@ type GetFunctionResponseBodyFunction struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the UDF was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -13884,7 +14803,7 @@ type GetFunctionResponseBodyFunction struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the UDF. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
@@ -13902,7 +14821,7 @@ func (s *GetFunctionResponseBodyFunction) SetCreateTime(v int64) *GetFunctionRes
 	return s
 }
 
-func (s *GetFunctionResponseBodyFunction) SetId(v string) *GetFunctionResponseBodyFunction {
+func (s *GetFunctionResponseBodyFunction) SetId(v int64) *GetFunctionResponseBodyFunction {
 	s.Id = &v
 	return s
 }
@@ -13922,7 +14841,7 @@ func (s *GetFunctionResponseBodyFunction) SetOwner(v string) *GetFunctionRespons
 	return s
 }
 
-func (s *GetFunctionResponseBodyFunction) SetProjectId(v string) *GetFunctionResponseBodyFunction {
+func (s *GetFunctionResponseBodyFunction) SetProjectId(v int64) *GetFunctionResponseBodyFunction {
 	s.ProjectId = &v
 	return s
 }
@@ -14326,7 +15245,7 @@ type GetNodeRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -14334,7 +15253,7 @@ type GetNodeRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetNodeRequest) String() string {
@@ -14345,12 +15264,12 @@ func (s GetNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeRequest) SetId(v string) *GetNodeRequest {
+func (s *GetNodeRequest) SetId(v int64) *GetNodeRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *GetNodeRequest) SetProjectId(v string) *GetNodeRequest {
+func (s *GetNodeRequest) SetProjectId(v int64) *GetNodeRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -14396,7 +15315,7 @@ type GetNodeResponseBodyNode struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the node was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -14416,7 +15335,7 @@ type GetNodeResponseBodyNode struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about this node. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
@@ -14434,7 +15353,7 @@ func (s *GetNodeResponseBodyNode) SetCreateTime(v int64) *GetNodeResponseBodyNod
 	return s
 }
 
-func (s *GetNodeResponseBodyNode) SetId(v string) *GetNodeResponseBodyNode {
+func (s *GetNodeResponseBodyNode) SetId(v int64) *GetNodeResponseBodyNode {
 	s.Id = &v
 	return s
 }
@@ -14454,7 +15373,7 @@ func (s *GetNodeResponseBodyNode) SetOwner(v string) *GetNodeResponseBodyNode {
 	return s
 }
 
-func (s *GetNodeResponseBodyNode) SetProjectId(v string) *GetNodeResponseBodyNode {
+func (s *GetNodeResponseBodyNode) SetProjectId(v int64) *GetNodeResponseBodyNode {
 	s.ProjectId = &v
 	return s
 }
@@ -14599,7 +15518,7 @@ type GetProjectResponseBodyProject struct {
 	//
 	// 207947397706614299
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// Indicates whether scheduling of Platform for AI (PAI) tasks is enabled. Valid values:
+	// Indicates whether scheduling of PAI tasks is enabled. Valid values:
 	//
 	// 	- true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
 	//
@@ -14628,26 +15547,6 @@ type GetProjectResponseBodyProject struct {
 	// 	- Updating
 	//
 	// 	- UpdateFailed
-	//
-	// <!---->
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
 	//
 	// example:
 	//
@@ -15200,7 +16099,7 @@ type GetResourceRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -15208,7 +16107,7 @@ type GetResourceRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetResourceRequest) String() string {
@@ -15219,12 +16118,12 @@ func (s GetResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceRequest) SetId(v string) *GetResourceRequest {
+func (s *GetResourceRequest) SetId(v int64) *GetResourceRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *GetResourceRequest) SetProjectId(v string) *GetResourceRequest {
+func (s *GetResourceRequest) SetProjectId(v int64) *GetResourceRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -15270,7 +16169,7 @@ type GetResourceResponseBodyResource struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the file resource was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -15290,7 +16189,7 @@ type GetResourceResponseBodyResource struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
@@ -15308,7 +16207,7 @@ func (s *GetResourceResponseBodyResource) SetCreateTime(v int64) *GetResourceRes
 	return s
 }
 
-func (s *GetResourceResponseBodyResource) SetId(v string) *GetResourceResponseBodyResource {
+func (s *GetResourceResponseBodyResource) SetId(v int64) *GetResourceResponseBodyResource {
 	s.Id = &v
 	return s
 }
@@ -15328,7 +16227,7 @@ func (s *GetResourceResponseBodyResource) SetOwner(v string) *GetResourceRespons
 	return s
 }
 
-func (s *GetResourceResponseBodyResource) SetProjectId(v string) *GetResourceResponseBodyResource {
+func (s *GetResourceResponseBodyResource) SetProjectId(v int64) *GetResourceResponseBodyResource {
 	s.ProjectId = &v
 	return s
 }
@@ -15428,6 +16327,11 @@ func (s *GetResourceGroupResponseBody) SetSuccess(v bool) *GetResourceGroupRespo
 type GetResourceGroupResponseBodyResourceGroup struct {
 	// example:
 	//
+	// rg-aek2kqofrgXXXXX
+	AliyunResourceGroupId *string                                                        `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*GetResourceGroupResponseBodyResourceGroupAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	// example:
+	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
@@ -15514,6 +16418,16 @@ func (s GetResourceGroupResponseBodyResourceGroup) GoString() string {
 	return s.String()
 }
 
+func (s *GetResourceGroupResponseBodyResourceGroup) SetAliyunResourceGroupId(v string) *GetResourceGroupResponseBodyResourceGroup {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBodyResourceGroup) SetAliyunResourceTags(v []*GetResourceGroupResponseBodyResourceGroupAliyunResourceTags) *GetResourceGroupResponseBodyResourceGroup {
+	s.AliyunResourceTags = v
+	return s
+}
+
 func (s *GetResourceGroupResponseBodyResourceGroup) SetCreateTime(v int64) *GetResourceGroupResponseBodyResourceGroup {
 	s.CreateTime = &v
 	return s
@@ -15571,6 +16485,35 @@ func (s *GetResourceGroupResponseBodyResourceGroup) SetSpec(v *GetResourceGroupR
 
 func (s *GetResourceGroupResponseBodyResourceGroup) SetStatus(v string) *GetResourceGroupResponseBodyResourceGroup {
 	s.Status = &v
+	return s
+}
+
+type GetResourceGroupResponseBodyResourceGroupAliyunResourceTags struct {
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetResourceGroupResponseBodyResourceGroupAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupResponseBodyResourceGroupAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupResponseBodyResourceGroupAliyunResourceTags) SetKey(v string) *GetResourceGroupResponseBodyResourceGroupAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBodyResourceGroupAliyunResourceTags) SetValue(v string) *GetResourceGroupResponseBodyResourceGroupAliyunResourceTags {
+	s.Value = &v
 	return s
 }
 
@@ -15889,6 +16832,7 @@ type GetTaskResponseBodyTask struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType     *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -15896,6 +16840,9 @@ type GetTaskResponseBodyTask struct {
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The input information.
+	//
+	// if can be null:
+	// false
 	Inputs *GetTaskResponseBodyTaskInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// 实例生成模式。
 	//
@@ -15935,6 +16882,8 @@ type GetTaskResponseBodyTask struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Deprecated
+	//
 	// The environment of the workspace.
 	//
 	// Valid values:
@@ -16050,6 +16999,11 @@ func (s *GetTaskResponseBodyTask) SetDependencies(v []*GetTaskResponseBodyTaskDe
 
 func (s *GetTaskResponseBodyTask) SetDescription(v string) *GetTaskResponseBodyTask {
 	s.Description = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetEnvType(v string) *GetTaskResponseBodyTask {
+	s.EnvType = &v
 	return s
 }
 
@@ -16554,6 +17508,7 @@ type GetTaskResponseBodyTaskSubTasksSubTasks struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType     *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The task ID.
 	//
 	// example:
@@ -16586,6 +17541,8 @@ type GetTaskResponseBodyTaskSubTasksSubTasks struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Deprecated
+	//
 	// The environment of the workspace.
 	//
 	// Valid values:
@@ -16690,6 +17647,11 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetDataSource(v *GetTaskRespon
 
 func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetDescription(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
 	s.Description = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetEnvType(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.EnvType = &v
 	return s
 }
 
@@ -17186,6 +18148,8 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
+	//
 	// example:
 	//
 	// 1
@@ -17287,6 +18251,8 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
+	//
+	// Note: The value of this parameter is rounded up by hour.
 	//
 	// example:
 	//
@@ -18015,7 +18981,7 @@ type GetWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -18023,7 +18989,7 @@ type GetWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetWorkflowDefinitionRequest) String() string {
@@ -18034,12 +19000,12 @@ func (s GetWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetWorkflowDefinitionRequest) SetId(v string) *GetWorkflowDefinitionRequest {
+func (s *GetWorkflowDefinitionRequest) SetId(v int64) *GetWorkflowDefinitionRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *GetWorkflowDefinitionRequest) SetProjectId(v string) *GetWorkflowDefinitionRequest {
+func (s *GetWorkflowDefinitionRequest) SetProjectId(v int64) *GetWorkflowDefinitionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -18085,7 +19051,7 @@ type GetWorkflowDefinitionResponseBodyWorkflowDefinition struct {
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the workflow was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -18105,7 +19071,7 @@ type GetWorkflowDefinitionResponseBodyWorkflowDefinition struct {
 	// example:
 	//
 	// 307XXX
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
@@ -18123,7 +19089,7 @@ func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetCreateTime(v in
 	return s
 }
 
-func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetId(v string) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
+func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetId(v int64) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
 	s.Id = &v
 	return s
 }
@@ -18143,7 +19109,7 @@ func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetOwner(v string)
 	return s
 }
 
-func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetProjectId(v string) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
+func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetProjectId(v int64) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
 	s.ProjectId = &v
 	return s
 }
@@ -18191,7 +19157,7 @@ type GrantMemberProjectRolesRequest struct {
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	//
 	// You must configure this parameter to specify the roles that you want to assign to members in the workspace.
 	//
@@ -18239,7 +19205,7 @@ type GrantMemberProjectRolesShrinkRequest struct {
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	//
 	// You must configure this parameter to specify the roles that you want to assign to members in the workspace.
 	//
@@ -18339,7 +19305,7 @@ type ImportWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 123456
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
 	//
 	// This parameter is required.
@@ -18354,7 +19320,7 @@ func (s ImportWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ImportWorkflowDefinitionRequest) SetProjectId(v string) *ImportWorkflowDefinitionRequest {
+func (s *ImportWorkflowDefinitionRequest) SetProjectId(v int64) *ImportWorkflowDefinitionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -19023,12 +19989,7 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError struct {
-	// Indicates whether an alert is triggered if a batch synchronization task is automatically rerun upon a failure.
-	//
-	// example:
-	//
-	// false
-	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	AutoRerunAlertEnabled *bool `json:"AutoRerunAlertEnabled,omitempty" xml:"AutoRerunAlertEnabled,omitempty"`
 	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
 	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
@@ -19041,8 +20002,8 @@ func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionE
 	return s.String()
 }
 
-func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError {
-	s.AutoRerunAlert = &v
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) SetAutoRerunAlertEnabled(v bool) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError {
+	s.AutoRerunAlertEnabled = &v
 	return s
 }
 
@@ -19387,7 +20348,9 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIA
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules struct {
-	// The ID of the alert rule.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -19411,6 +20374,12 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules struct {
 	//
 	// True
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the alert rule.
+	//
+	// example:
+	//
+	// 72402
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
 	// 	- Heartbeat
@@ -19467,6 +20436,11 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) SetEnabled(v boo
 	return s
 }
 
+func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) SetId(v int64) *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules {
+	s.Id = &v
+	return s
+}
+
 func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) SetMetricType(v string) *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules {
 	s.MetricType = &v
 	return s
@@ -19488,12 +20462,15 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) SetTriggerCondit
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings struct {
+	// Deprecated
+	//
 	// The duration of the alert suppression interval. Unit: minutes.
 	//
 	// example:
 	//
 	// 5
 	InhibitionInterval *int64 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
+	MuteInterval       *int64 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
 	// The alert notification methods.
 	NotificationChannels []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
 	// The settings of alert notification recipients.
@@ -19510,6 +20487,11 @@ func (s ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSetting
 
 func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings) SetInhibitionInterval(v int64) *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings {
 	s.InhibitionInterval = &v
+	return s
+}
+
+func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings) SetMuteInterval(v int64) *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings {
+	s.MuteInterval = &v
 	return s
 }
 
@@ -19590,8 +20572,11 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettin
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions struct {
+	// Deprecated
+	//
 	// The types of DDL operations for which the alert rule takes effect. This parameter is returned only if the MetricType parameter is set to DdlReport.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
+	DdlTypes      []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
 	// example:
@@ -19632,6 +20617,11 @@ func (s ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions) 
 
 func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions) SetDdlReportTags(v []*string) *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions {
 	s.DdlReportTags = v
+	return s
+}
+
+func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions) SetDdlTypes(v []*string) *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions {
+	s.DdlTypes = v
 	return s
 }
 
@@ -20878,7 +21868,9 @@ func (s *ListDIJobsResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIJobsRes
 }
 
 type ListDIJobsResponseBodyPagingInfoDIJobs struct {
-	// The ID of the synchronization task.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -20890,6 +21882,12 @@ type ListDIJobsResponseBodyPagingInfoDIJobs struct {
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 32599
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the synchronization task.
 	//
 	// example:
@@ -20962,6 +21960,11 @@ func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetDestinationDataSourceType(v 
 	return s
 }
 
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetId(v int64) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.Id = &v
+	return s
+}
+
 func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetJobName(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
 	s.JobName = &v
 	return s
@@ -21012,6 +22015,640 @@ func (s *ListDIJobsResponse) SetStatusCode(v int32) *ListDIJobsResponse {
 }
 
 func (s *ListDIJobsResponse) SetBody(v *ListDIJobsResponseBody) *ListDIJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataAssetTagsRequest struct {
+	// example:
+	//
+	// Normal
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDataAssetTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetTagsRequest) SetCategory(v string) *ListDataAssetTagsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListDataAssetTagsRequest) SetKey(v string) *ListDataAssetTagsRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *ListDataAssetTagsRequest) SetPageNumber(v int32) *ListDataAssetTagsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataAssetTagsRequest) SetPageSize(v int32) *ListDataAssetTagsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDataAssetTagsResponseBody struct {
+	PagingInfo *ListDataAssetTagsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1ec92159376****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataAssetTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetTagsResponseBody) SetPagingInfo(v *ListDataAssetTagsResponseBodyPagingInfo) *ListDataAssetTagsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBody) SetRequestId(v string) *ListDataAssetTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataAssetTagsResponseBodyPagingInfo struct {
+	DataAssetTags []*ListDataAssetTagsResponseBodyPagingInfoDataAssetTags `json:"DataAssetTags,omitempty" xml:"DataAssetTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2524
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataAssetTagsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetTagsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfo) SetDataAssetTags(v []*ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) *ListDataAssetTagsResponseBodyPagingInfo {
+	s.DataAssetTags = v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataAssetTagsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfo) SetPageSize(v int32) *ListDataAssetTagsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataAssetTagsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
+	// example:
+	//
+	// Normal
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1735890003000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 12345
+	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// key1
+	Key      *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Managers []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1735890003000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1234
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// String
+	ValueType *string   `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetCategory(v string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.Category = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetCreateTime(v int64) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetCreateUser(v string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetDescription(v string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetKey(v string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetManagers(v []*string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.Managers = v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetModifyTime(v int64) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetModifyUser(v string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetValueType(v string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.ValueType = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags) SetValues(v []*string) *ListDataAssetTagsResponseBodyPagingInfoDataAssetTags {
+	s.Values = v
+	return s
+}
+
+type ListDataAssetTagsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataAssetTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataAssetTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetTagsResponse) SetHeaders(v map[string]*string) *ListDataAssetTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataAssetTagsResponse) SetStatusCode(v int32) *ListDataAssetTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataAssetTagsResponse) SetBody(v *ListDataAssetTagsResponseBody) *ListDataAssetTagsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataAssetsRequest struct {
+	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ACS::DataWorks::Task
+	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	Tags []*ListDataAssetsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListDataAssetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsRequest) SetDataAssetIds(v []*string) *ListDataAssetsRequest {
+	s.DataAssetIds = v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetDataAssetType(v string) *ListDataAssetsRequest {
+	s.DataAssetType = &v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetEnvType(v string) *ListDataAssetsRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetPageNumber(v int32) *ListDataAssetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetPageSize(v int32) *ListDataAssetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetProjectId(v int64) *ListDataAssetsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetTags(v []*ListDataAssetsRequestTags) *ListDataAssetsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListDataAssetsRequestTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataAssetsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsRequestTags) SetKey(v string) *ListDataAssetsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListDataAssetsRequestTags) SetValue(v string) *ListDataAssetsRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListDataAssetsShrinkRequest struct {
+	DataAssetIdsShrink *string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty"`
+	// example:
+	//
+	// ACS::DataWorks::Task
+	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListDataAssetsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsShrinkRequest) SetDataAssetIdsShrink(v string) *ListDataAssetsShrinkRequest {
+	s.DataAssetIdsShrink = &v
+	return s
+}
+
+func (s *ListDataAssetsShrinkRequest) SetDataAssetType(v string) *ListDataAssetsShrinkRequest {
+	s.DataAssetType = &v
+	return s
+}
+
+func (s *ListDataAssetsShrinkRequest) SetEnvType(v string) *ListDataAssetsShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDataAssetsShrinkRequest) SetPageNumber(v int32) *ListDataAssetsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataAssetsShrinkRequest) SetPageSize(v int32) *ListDataAssetsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataAssetsShrinkRequest) SetProjectId(v int64) *ListDataAssetsShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataAssetsShrinkRequest) SetTagsShrink(v string) *ListDataAssetsShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type ListDataAssetsResponseBody struct {
+	PagingInfo *ListDataAssetsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1ec92159376
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataAssetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsResponseBody) SetPagingInfo(v *ListDataAssetsResponseBodyPagingInfo) *ListDataAssetsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataAssetsResponseBody) SetRequestId(v string) *ListDataAssetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataAssetsResponseBodyPagingInfo struct {
+	DataAssets []*ListDataAssetsResponseBodyPagingInfoDataAssets `json:"DataAssets,omitempty" xml:"DataAssets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataAssetsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfo) SetDataAssets(v []*ListDataAssetsResponseBodyPagingInfoDataAssets) *ListDataAssetsResponseBodyPagingInfo {
+	s.DataAssets = v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataAssetsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfo) SetPageSize(v int32) *ListDataAssetsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataAssetsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
+	DataAssetTagMappings []*ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings `json:"DataAssetTagMappings,omitempty" xml:"DataAssetTagMappings,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 7259557313
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ali_cn_es_gfn
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 54275
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// ACS::DataWorks::Task
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataAssetsResponseBodyPagingInfoDataAssets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsResponseBodyPagingInfoDataAssets) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetDataAssetTagMappings(v []*ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) *ListDataAssetsResponseBodyPagingInfoDataAssets {
+	s.DataAssetTagMappings = v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetEnvType(v string) *ListDataAssetsResponseBodyPagingInfoDataAssets {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetId(v string) *ListDataAssetsResponseBodyPagingInfoDataAssets {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetName(v string) *ListDataAssetsResponseBodyPagingInfoDataAssets {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetProjectId(v int64) *ListDataAssetsResponseBodyPagingInfoDataAssets {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetType(v string) *ListDataAssetsResponseBodyPagingInfoDataAssets {
+	s.Type = &v
+	return s
+}
+
+type ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings struct {
+	AutoTraceEnabled *bool `json:"AutoTraceEnabled,omitempty" xml:"AutoTraceEnabled,omitempty"`
+	// example:
+	//
+	// 12345
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 7259557313
+	DataAssetId *string `json:"DataAssetId,omitempty" xml:"DataAssetId,omitempty"`
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// UserDefined
+	TagSource *string `json:"TagSource,omitempty" xml:"TagSource,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) SetAutoTraceEnabled(v bool) *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings {
+	s.AutoTraceEnabled = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) SetCreator(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) SetDataAssetId(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings {
+	s.DataAssetId = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) SetKey(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings {
+	s.Key = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) SetTagSource(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings {
+	s.TagSource = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) SetValue(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings {
+	s.Value = &v
+	return s
+}
+
+type ListDataAssetsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataAssetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataAssetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataAssetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsResponse) SetHeaders(v map[string]*string) *ListDataAssetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataAssetsResponse) SetStatusCode(v int32) *ListDataAssetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataAssetsResponse) SetBody(v *ListDataAssetsResponseBody) *ListDataAssetsResponse {
 	s.Body = v
 	return s
 }
@@ -21386,12 +23023,6 @@ type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEval
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
 	// The monitored object of the task.
 	Target *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 10
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The trigger configuration of the task.
 	Trigger *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
@@ -21446,11 +23077,6 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetTarget(v *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
 	s.Target = v
-	return s
-}
-
-func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetTenantId(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
-	s.TenantId = &v
 	return s
 }
 
@@ -21922,12 +23548,6 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
 	// The monitored object of the task.
 	Target *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The DataWorks tenant ID.
-	//
-	// example:
-	//
-	// 10
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The trigger configuration of the task.
 	Trigger *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
@@ -21977,11 +23597,6 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 
 func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetTarget(v *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
 	s.Target = v
-	return s
-}
-
-func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetTenantId(v int64) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
-	s.TenantId = &v
 	return s
 }
 
@@ -22323,6 +23938,8 @@ type ListDataQualityResultsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
@@ -22649,10 +24266,6 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
 	//
 	// system::user_defined
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) String() string {
@@ -22715,11 +24328,6 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) Set
 
 func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetTemplateCode(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
 	s.TemplateCode = &v
-	return s
-}
-
-func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetTenantId(v int64) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
-	s.TenantId = &v
 	return s
 }
 
@@ -23132,12 +24740,13 @@ func (s *ListDataQualityResultsResponse) SetBody(v *ListDataQualityResultsRespon
 	return s
 }
 
-type ListDataQualityRuleTemplateRequest struct {
+type ListDataQualityRuleTemplatesRequest struct {
+	// example:
+	//
+	// System
 	CreationSource *string `json:"CreationSource,omitempty" xml:"CreationSource,omitempty"`
-	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
-	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The name of the template. If you want to query a system template, set this parameter to the name of the system template. Fuzzy match is supported.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DirectoryPath  *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of entries per page. Default value: 10.
 	//
 	// example:
@@ -23150,7 +24759,7 @@ type ListDataQualityRuleTemplateRequest struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID.
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23158,301 +24767,214 @@ type ListDataQualityRuleTemplateRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
-func (s ListDataQualityRuleTemplateRequest) String() string {
+func (s ListDataQualityRuleTemplatesRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDataQualityRuleTemplateRequest) GoString() string {
+func (s ListDataQualityRuleTemplatesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRuleTemplateRequest) SetCreationSource(v string) *ListDataQualityRuleTemplateRequest {
+func (s *ListDataQualityRuleTemplatesRequest) SetCreationSource(v string) *ListDataQualityRuleTemplatesRequest {
 	s.CreationSource = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateRequest) SetDirectoryPath(v string) *ListDataQualityRuleTemplateRequest {
+func (s *ListDataQualityRuleTemplatesRequest) SetDirectoryPath(v string) *ListDataQualityRuleTemplatesRequest {
 	s.DirectoryPath = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateRequest) SetName(v string) *ListDataQualityRuleTemplateRequest {
+func (s *ListDataQualityRuleTemplatesRequest) SetName(v string) *ListDataQualityRuleTemplatesRequest {
 	s.Name = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateRequest) SetPageNumber(v int32) *ListDataQualityRuleTemplateRequest {
+func (s *ListDataQualityRuleTemplatesRequest) SetPageNumber(v int32) *ListDataQualityRuleTemplatesRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateRequest) SetPageSize(v int32) *ListDataQualityRuleTemplateRequest {
+func (s *ListDataQualityRuleTemplatesRequest) SetPageSize(v int32) *ListDataQualityRuleTemplatesRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateRequest) SetProjectId(v int64) *ListDataQualityRuleTemplateRequest {
+func (s *ListDataQualityRuleTemplatesRequest) SetProjectId(v int64) *ListDataQualityRuleTemplatesRequest {
 	s.ProjectId = &v
 	return s
 }
 
-type ListDataQualityRuleTemplateResponseBody struct {
-	// The pagination information.
-	PagingInfo *ListDataQualityRuleTemplateResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
-	//
+type ListDataQualityRuleTemplatesResponseBody struct {
+	PagingInfo *ListDataQualityRuleTemplatesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 691CA452-D37A-4ED0-9441
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s ListDataQualityRuleTemplateResponseBody) String() string {
+func (s ListDataQualityRuleTemplatesResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDataQualityRuleTemplateResponseBody) GoString() string {
+func (s ListDataQualityRuleTemplatesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRuleTemplateResponseBody) SetPagingInfo(v *ListDataQualityRuleTemplateResponseBodyPagingInfo) *ListDataQualityRuleTemplateResponseBody {
+func (s *ListDataQualityRuleTemplatesResponseBody) SetPagingInfo(v *ListDataQualityRuleTemplatesResponseBodyPagingInfo) *ListDataQualityRuleTemplatesResponseBody {
 	s.PagingInfo = v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBody) SetRequestId(v string) *ListDataQualityRuleTemplateResponseBody {
+func (s *ListDataQualityRuleTemplatesResponseBody) SetRequestId(v string) *ListDataQualityRuleTemplatesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ListDataQualityRuleTemplateResponseBodyPagingInfo struct {
-	// The templates.
-	DataQualityRuleTemplates []*ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates `json:"DataQualityRuleTemplates,omitempty" xml:"DataQualityRuleTemplates,omitempty" type:"Repeated"`
-	// The page number.
-	//
+type ListDataQualityRuleTemplatesResponseBodyPagingInfo struct {
+	DataQualityRuleTemplates []*ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates `json:"DataQualityRuleTemplates,omitempty" xml:"DataQualityRuleTemplates,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	//
 	// example:
 	//
 	// 42
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfo) String() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfo) GoString() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfo) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetDataQualityRuleTemplates(v []*ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfo) SetDataQualityRuleTemplates(v []*ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) *ListDataQualityRuleTemplatesResponseBodyPagingInfo {
 	s.DataQualityRuleTemplates = v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataQualityRuleTemplatesResponseBodyPagingInfo {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetPageSize(v int32) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfo) SetPageSize(v int32) *ListDataQualityRuleTemplatesResponseBodyPagingInfo {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataQualityRuleTemplatesResponseBodyPagingInfo {
 	s.TotalCount = &v
 	return s
 }
 
-type ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates struct {
-	// The check settings for sample data.
-	CheckingConfig *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The code for the template.
-	//
+type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates struct {
+	CheckingConfig *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// USER_DEFINED:123
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The path of the template. The backslash is used as the separator character in the path name. Each directory name can be up to 1024 characters in length. It cannot contain whitespace characters or slashes.
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The DataWorks workspace ID.
-	//
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// 2043
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sampling settings.
-	SamplingConfig *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The ID of the DataWorks tenant.
-	//
-	// example:
-	//
-	// 195820716552192
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The applicable scope of the template. Valid values:
-	//
-	// 	- Tenant: The template is available in all workspaces in the current tenant.
-	//
-	// 	- Project: The template is available only in the current workspace.
-	//
+	ProjectId      *int64                                                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// Project
 	VisibleScope *string `json:"VisibleScope,omitempty" xml:"VisibleScope,omitempty"`
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) String() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) GoString() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetCheckingConfig(v *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) SetCheckingConfig(v *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates {
 	s.CheckingConfig = v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetCode(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) SetCode(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates {
 	s.Code = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetDirectoryPath(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) SetDirectoryPath(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates {
 	s.DirectoryPath = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetName(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) SetName(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates {
 	s.Name = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetProjectId(v int64) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) SetProjectId(v int64) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates {
 	s.ProjectId = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetSamplingConfig(v *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) SetSamplingConfig(v *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates {
 	s.SamplingConfig = v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetTenantId(v int64) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
-	s.TenantId = &v
-	return s
-}
-
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetVisibleScope(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) SetVisibleScope(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates {
 	s.VisibleScope = &v
 	return s
 }
 
-type ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig struct {
-	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to indicate the query method of referenced samples.
-	//
+type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig struct {
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// The threshold calculation method. Valid values:
-	//
-	// 	- Fixed
-	//
-	// 	- Fluctation
-	//
-	// 	- FluctationDiscreate
-	//
-	// 	- Auto
-	//
-	// 	- Average
-	//
-	// 	- Variance
-	//
 	// example:
 	//
 	// Fixed
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) String() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) GoString() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) SetReferencedSamplesFilter(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) SetReferencedSamplesFilter(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig {
 	s.ReferencedSamplesFilter = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) SetType(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) SetType(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig {
 	s.Type = &v
 	return s
 }
 
-type ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig struct {
-	// The metrics used for sampling. Valid values:
-	//
-	// 	- Count: the number of rows in the table.
-	//
-	// 	- Min: the minimum value of the field.
-	//
-	// 	- Max: the maximum value of the field.
-	//
-	// 	- Avg: the average value of the field.
-	//
-	// 	- DistinctCount: the number of unique values of the field after deduplication.
-	//
-	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
-	//
-	// 	- DuplicatedCount: the number of duplicated values of the field.
-	//
-	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
-	//
-	// 	- TableSize: the table size.
-	//
-	// 	- NullValueCount: the number of rows in which the field value is null.
-	//
-	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
-	//
-	// 	- GroupCount: the field value and the number of rows for each field value.
-	//
-	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
-	//
-	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
-	//
-	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
-	//
+type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig struct {
 	// example:
 	//
 	// Max
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The parameters required for sampling.
-	//
 	// example:
 	//
-	// {"SQL": "select count(1) from table;"}
+	// {"Sql": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
-	//
 	// example:
 	//
 	// SET odps.sql.udf.timeout=600s;
@@ -23461,54 +24983,54 @@ type ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSa
 	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) String() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) GoString() string {
+func (s ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetMetric(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetMetric(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
 	s.Metric = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetMetricParameters(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetMetricParameters(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
 	s.MetricParameters = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetSettingConfig(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
+func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetSettingConfig(v string) *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
 	s.SettingConfig = &v
 	return s
 }
 
-type ListDataQualityRuleTemplateResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListDataQualityRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+type ListDataQualityRuleTemplatesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataQualityRuleTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
-func (s ListDataQualityRuleTemplateResponse) String() string {
+func (s ListDataQualityRuleTemplatesResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDataQualityRuleTemplateResponse) GoString() string {
+func (s ListDataQualityRuleTemplatesResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRuleTemplateResponse) SetHeaders(v map[string]*string) *ListDataQualityRuleTemplateResponse {
+func (s *ListDataQualityRuleTemplatesResponse) SetHeaders(v map[string]*string) *ListDataQualityRuleTemplatesResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponse) SetStatusCode(v int32) *ListDataQualityRuleTemplateResponse {
+func (s *ListDataQualityRuleTemplatesResponse) SetStatusCode(v int32) *ListDataQualityRuleTemplatesResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *ListDataQualityRuleTemplateResponse) SetBody(v *ListDataQualityRuleTemplateResponseBody) *ListDataQualityRuleTemplateResponse {
+func (s *ListDataQualityRuleTemplatesResponse) SetBody(v *ListDataQualityRuleTemplatesResponseBody) *ListDataQualityRuleTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -23721,12 +25243,6 @@ type ListDataQualityRulesResponseBodyPagingInfoDataQualityRules struct {
 	//
 	// system::user_defined
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The ID of the DataWorks tenant.
-	//
-	// example:
-	//
-	// 100001
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) String() string {
@@ -23789,11 +25305,6 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTarget(v
 
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTemplateCode(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
 	s.TemplateCode = &v
-	return s
-}
-
-func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTenantId(v int64) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
-	s.TenantId = &v
 	return s
 }
 
@@ -24848,7 +26359,7 @@ type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {
 	//
 	// 	- Prod: production environment
 	//
-	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
+	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// example:
 	//
@@ -25030,7 +26541,7 @@ type ListDeploymentsRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The status of the processes. This parameter specifies a filter condition.
 	//
 	// Valid values:
@@ -25076,7 +26587,7 @@ func (s *ListDeploymentsRequest) SetPageSize(v int32) *ListDeploymentsRequest {
 	return s
 }
 
-func (s *ListDeploymentsRequest) SetProjectId(v string) *ListDeploymentsRequest {
+func (s *ListDeploymentsRequest) SetProjectId(v int64) *ListDeploymentsRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -25198,7 +26709,7 @@ type ListDeploymentsResponseBodyPagingInfoDeployments struct {
 	// example:
 	//
 	// 44683
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The stages of the process.
 	Stages []*ListDeploymentsResponseBodyPagingInfoDeploymentsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 	// The status of the process.
@@ -25256,7 +26767,7 @@ func (s *ListDeploymentsResponseBodyPagingInfoDeployments) SetModifyTime(v int64
 	return s
 }
 
-func (s *ListDeploymentsResponseBodyPagingInfoDeployments) SetProjectId(v string) *ListDeploymentsResponseBodyPagingInfoDeployments {
+func (s *ListDeploymentsResponseBodyPagingInfoDeployments) SetProjectId(v int64) *ListDeploymentsResponseBodyPagingInfoDeployments {
 	s.ProjectId = &v
 	return s
 }
@@ -25485,6 +26996,7 @@ func (s *ListDownstreamTaskInstancesResponseBody) SetRequestId(v string) *ListDo
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfo struct {
+	DownstreamTaskInstances []*ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances `json:"DownstreamTaskInstances,omitempty" xml:"DownstreamTaskInstances,omitempty" type:"Repeated"`
 	// The page number.
 	//
 	// example:
@@ -25515,6 +27027,11 @@ func (s ListDownstreamTaskInstancesResponseBodyPagingInfo) GoString() string {
 	return s.String()
 }
 
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetDownstreamTaskInstances(v []*ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances) *ListDownstreamTaskInstancesResponseBodyPagingInfo {
+	s.DownstreamTaskInstances = v
+	return s
+}
+
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetPageNumber(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfo {
 	s.PageNumber = &v
 	return s
@@ -25532,6 +27049,312 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetTaskInstances(v [
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfo {
 	s.TotalCount = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances struct {
+	// The dependency type.
+	DependencyType *string `json:"DependencyType,omitempty" xml:"DependencyType,omitempty"`
+	// The information about a task instance.
+	TaskInstance *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance `json:"TaskInstance,omitempty" xml:"TaskInstance,omitempty" type:"Struct"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances) SetDependencyType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances {
+	s.DependencyType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances) SetTaskInstance(v *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances {
+	s.TaskInstance = v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance struct {
+	BaselineId   *int64                                                                                          `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	Bizdate      *int64                                                                                          `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	CreateTime   *int64                                                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser   *string                                                                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource   *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Description  *string                                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType      *string                                                                                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	FinishedTime *int64                                                                                          `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	Id           *int64                                                                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime   *int64                                                                                          `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUser   *string                                                                                         `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Owner        *string                                                                                         `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PeriodNumber *int32                                                                                          `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	Priority     *int32                                                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId    *int64                                                                                          `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun mode.
+	RerunMode       *string                                                                                              `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	RunNumber       *int32                                                                                               `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	Runtime         *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RuntimeResource *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	StartedTime     *int64                                                                                               `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the instance.
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task type.
+	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TenantId             *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Timeout              *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TriggerRecurrence    *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	TriggerTime          *int64  `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	TriggerType          *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	WorkflowId           *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowInstanceId   *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetBaselineId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetBizdate(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetCreateTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetCreateUser(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetDataSource(v *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetDescription(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetEnvType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetFinishedTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetModifyTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetModifyUser(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetOwner(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetPeriodNumber(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.PeriodNumber = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetPriority(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetProjectId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetRerunMode(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetRunNumber(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.RunNumber = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetRuntime(v *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Runtime = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetRuntimeResource(v *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetStartedTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetStatus(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTaskId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTaskName(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTaskType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTenantId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTimeout(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTriggerRecurrence(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTriggerTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.TriggerTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTriggerType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetWorkflowId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetWorkflowInstanceId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetWorkflowInstanceType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetWorkflowName(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
+	s.WorkflowName = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource) SetName(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime struct {
+	Gateway   *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime) SetGateway(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime {
+	s.Gateway = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime) SetProcessId(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntime {
+	s.ProcessId = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource struct {
+	Cu              *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource) SetCu(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource) SetImage(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource) SetResourceGroupId(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -25568,6 +27391,7 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType     *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The time when the instance finished running.
 	//
 	// example:
@@ -25598,6 +27422,8 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 100
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
+	//
 	// example:
 	//
 	// 1
@@ -25608,6 +27434,8 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Deprecated
+	//
 	// The environment of the workspace.
 	//
 	// Valid values:
@@ -25680,6 +27508,8 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The dependency type.
+	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
 	// The ID of the task for which the instance is generated.
 	//
 	// example:
@@ -25701,6 +27531,8 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
+	//
+	// Note: The value of this parameter is rounded up by hour.
 	//
 	// example:
 	//
@@ -25812,6 +27644,11 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetDesc
 	return s
 }
 
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetEnvType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.EnvType = &v
+	return s
+}
+
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetFinishedTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.FinishedTime = &v
 	return s
@@ -25884,6 +27721,11 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStar
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStatus(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.Status = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStepType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.StepType = &v
 	return s
 }
 
@@ -26168,6 +28010,7 @@ func (s *ListDownstreamTasksResponseBody) SetRequestId(v string) *ListDownstream
 }
 
 type ListDownstreamTasksResponseBodyPagingInfo struct {
+	DownstreamTasks []*ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks `json:"DownstreamTasks,omitempty" xml:"DownstreamTasks,omitempty" type:"Repeated"`
 	// The page number.
 	//
 	// example:
@@ -26198,6 +28041,11 @@ func (s ListDownstreamTasksResponseBodyPagingInfo) GoString() string {
 	return s.String()
 }
 
+func (s *ListDownstreamTasksResponseBodyPagingInfo) SetDownstreamTasks(v []*ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks) *ListDownstreamTasksResponseBodyPagingInfo {
+	s.DownstreamTasks = v
+	return s
+}
+
 func (s *ListDownstreamTasksResponseBodyPagingInfo) SetPageNumber(v int32) *ListDownstreamTasksResponseBodyPagingInfo {
 	s.PageNumber = &v
 	return s
@@ -26215,6 +28063,282 @@ func (s *ListDownstreamTasksResponseBodyPagingInfo) SetTasks(v []*ListDownstream
 
 func (s *ListDownstreamTasksResponseBodyPagingInfo) SetTotalCount(v int32) *ListDownstreamTasksResponseBodyPagingInfo {
 	s.TotalCount = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks struct {
+	// The dependency type.
+	DependencyType *string                                                       `json:"DependencyType,omitempty" xml:"DependencyType,omitempty"`
+	Task           *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks) SetDependencyType(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks {
+	s.DependencyType = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks) SetTask(v *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks {
+	s.Task = v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
+	// The ID of the baseline.
+	BaselineId *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the data source.
+	DataSource   *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Description  *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType      *string                                                                 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Id           *int64                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceMode *string                                                                 `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	ModifyTime   *int64                                                                  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUser   *string                                                                 `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name         *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner        *string                                                                 `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the task. Valid values: 1 to 8.
+	Priority  *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The interval between two consecutive reruns. Unit: seconds.
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// The rerun mode.
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of reruns.
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// The configurations of the runtime environment, such as the resource group information.
+	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	TenantId        *int64                                                                       `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The method to trigger the running of the task.
+	Trigger *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The type of the task.
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkflowId *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetBaselineId(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetCreateTime(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetCreateUser(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetDataSource(v *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetDescription(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetEnvType(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetId(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetInstanceMode(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.InstanceMode = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetModifyTime(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetModifyUser(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetName(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetOwner(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetPriority(v int32) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetProjectId(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetRerunInterval(v int32) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetRerunMode(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetRerunTimes(v int32) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetRuntimeResource(v *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetTenantId(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetTimeout(v int32) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetTrigger(v *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Trigger = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetType(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetWorkflowId(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource) SetName(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource struct {
+	Cu              *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource) SetCu(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource) SetImage(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource) SetResourceGroupId(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger struct {
+	Cron       *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timezone   *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) SetCron(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) SetEndTime(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) SetRecurrence(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) SetStartTime(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) SetTimezone(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger) SetType(v string) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger {
+	s.Type = &v
 	return s
 }
 
@@ -26245,6 +28369,7 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType     *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The task ID.
 	//
 	// example:
@@ -26281,6 +28406,8 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Deprecated
+	//
 	// The environment of the workspace.
 	//
 	// Valid values:
@@ -26389,6 +28516,11 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetDataSource(v *ListDo
 
 func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetDescription(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
 	s.Description = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetEnvType(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.EnvType = &v
 	return s
 }
 
@@ -26701,7 +28833,7 @@ type ListFunctionsRequest struct {
 	// example:
 	//
 	// 12345
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The UDF type. This parameter specifies a filter condition.
 	//
 	// Valid values:
@@ -26747,7 +28879,7 @@ func (s *ListFunctionsRequest) SetPageSize(v int32) *ListFunctionsRequest {
 	return s
 }
 
-func (s *ListFunctionsRequest) SetProjectId(v string) *ListFunctionsRequest {
+func (s *ListFunctionsRequest) SetProjectId(v int64) *ListFunctionsRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -26921,7 +29053,7 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	// example:
 	//
 	// 580667964888595XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the UDF was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -26943,7 +29075,7 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	// example:
 	//
 	// 307XXX
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The description of the return value.
 	ReturnValueDescription *string `json:"ReturnValueDescription,omitempty" xml:"ReturnValueDescription,omitempty"`
 	// The information about the resource group used when you run the UDF.
@@ -27040,7 +29172,7 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctions) SetFileResource(v string)
 	return s
 }
 
-func (s *ListFunctionsResponseBodyPagingInfoFunctions) SetId(v string) *ListFunctionsResponseBodyPagingInfoFunctions {
+func (s *ListFunctionsResponseBodyPagingInfoFunctions) SetId(v int64) *ListFunctionsResponseBodyPagingInfoFunctions {
 	s.Id = &v
 	return s
 }
@@ -27065,7 +29197,7 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctions) SetParameterDescription(v
 	return s
 }
 
-func (s *ListFunctionsResponseBodyPagingInfoFunctions) SetProjectId(v string) *ListFunctionsResponseBodyPagingInfoFunctions {
+func (s *ListFunctionsResponseBodyPagingInfoFunctions) SetProjectId(v int64) *ListFunctionsResponseBodyPagingInfoFunctions {
 	s.ProjectId = &v
 	return s
 }
@@ -27151,7 +29283,7 @@ type ListFunctionsResponseBodyPagingInfoFunctionsScript struct {
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The runtime.
@@ -27166,7 +29298,7 @@ func (s ListFunctionsResponseBodyPagingInfoFunctionsScript) GoString() string {
 	return s.String()
 }
 
-func (s *ListFunctionsResponseBodyPagingInfoFunctionsScript) SetId(v string) *ListFunctionsResponseBodyPagingInfoFunctionsScript {
+func (s *ListFunctionsResponseBodyPagingInfoFunctionsScript) SetId(v int64) *ListFunctionsResponseBodyPagingInfoFunctionsScript {
 	s.Id = &v
 	return s
 }
@@ -27233,12 +29365,18 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 }
 
 type ListNetworksRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// CreateTime Asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListNetworksRequest) String() string {
@@ -27249,13 +29387,28 @@ func (s ListNetworksRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListNetworksRequest) SetPageNumber(v int32) *ListNetworksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNetworksRequest) SetPageSize(v int32) *ListNetworksRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *ListNetworksRequest) SetResourceGroupId(v string) *ListNetworksRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
+func (s *ListNetworksRequest) SetSortBy(v string) *ListNetworksRequest {
+	s.SortBy = &v
+	return s
+}
+
 type ListNetworksResponseBody struct {
-	NetworkList []*ListNetworksResponseBodyNetworkList `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	PagingInfo *ListNetworksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
@@ -27274,8 +29427,8 @@ func (s ListNetworksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNetworksResponseBody) SetNetworkList(v []*ListNetworksResponseBodyNetworkList) *ListNetworksResponseBody {
-	s.NetworkList = v
+func (s *ListNetworksResponseBody) SetPagingInfo(v *ListNetworksResponseBodyPagingInfo) *ListNetworksResponseBody {
+	s.PagingInfo = v
 	return s
 }
 
@@ -27289,7 +29442,51 @@ func (s *ListNetworksResponseBody) SetSuccess(v bool) *ListNetworksResponseBody 
 	return s
 }
 
-type ListNetworksResponseBodyNetworkList struct {
+type ListNetworksResponseBodyPagingInfo struct {
+	NetworkList []*ListNetworksResponseBodyPagingInfoNetworkList `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListNetworksResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworksResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworksResponseBodyPagingInfo) SetNetworkList(v []*ListNetworksResponseBodyPagingInfoNetworkList) *ListNetworksResponseBodyPagingInfo {
+	s.NetworkList = v
+	return s
+}
+
+func (s *ListNetworksResponseBodyPagingInfo) SetPageNumber(v int32) *ListNetworksResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNetworksResponseBodyPagingInfo) SetPageSize(v int32) *ListNetworksResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNetworksResponseBodyPagingInfo) SetTotalCount(v int32) *ListNetworksResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListNetworksResponseBodyPagingInfoNetworkList struct {
 	// example:
 	//
 	// 1727055811000
@@ -27324,50 +29521,50 @@ type ListNetworksResponseBodyNetworkList struct {
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
-func (s ListNetworksResponseBodyNetworkList) String() string {
+func (s ListNetworksResponseBodyPagingInfoNetworkList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNetworksResponseBodyNetworkList) GoString() string {
+func (s ListNetworksResponseBodyPagingInfoNetworkList) GoString() string {
 	return s.String()
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetCreateTime(v int64) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetCreateTime(v int64) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetCreateUser(v string) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetCreateUser(v string) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.CreateUser = &v
 	return s
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetId(v int64) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetId(v int64) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.Id = &v
 	return s
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetResourceGroupId(v string) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetResourceGroupId(v string) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetSecurityGroupId(v string) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetSecurityGroupId(v string) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.SecurityGroupId = &v
 	return s
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetStatus(v string) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetStatus(v string) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.Status = &v
 	return s
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetVpcId(v string) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetVpcId(v string) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.VpcId = &v
 	return s
 }
 
-func (s *ListNetworksResponseBodyNetworkList) SetVswitchId(v string) *ListNetworksResponseBodyNetworkList {
+func (s *ListNetworksResponseBodyPagingInfoNetworkList) SetVswitchId(v string) *ListNetworksResponseBodyPagingInfoNetworkList {
 	s.VswitchId = &v
 	return s
 }
@@ -27409,7 +29606,7 @@ type ListNodeDependenciesRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
@@ -27431,7 +29628,7 @@ type ListNodeDependenciesRequest struct {
 	// example:
 	//
 	// 10001
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListNodeDependenciesRequest) String() string {
@@ -27442,7 +29639,7 @@ func (s ListNodeDependenciesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeDependenciesRequest) SetId(v string) *ListNodeDependenciesRequest {
+func (s *ListNodeDependenciesRequest) SetId(v int64) *ListNodeDependenciesRequest {
 	s.Id = &v
 	return s
 }
@@ -27457,7 +29654,7 @@ func (s *ListNodeDependenciesRequest) SetPageSize(v int32) *ListNodeDependencies
 	return s
 }
 
-func (s *ListNodeDependenciesRequest) SetProjectId(v string) *ListNodeDependenciesRequest {
+func (s *ListNodeDependenciesRequest) SetProjectId(v int64) *ListNodeDependenciesRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -27558,7 +29755,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
 	// example:
 	//
 	// 723932906364267XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The input of the node.
 	Inputs *ListNodeDependenciesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The time when the node was last modified. This value is a UNIX timestamp.
@@ -27582,7 +29779,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
 	// example:
 	//
 	// 65133
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The scheduling type.
 	//
 	// Valid values:
@@ -27610,7 +29807,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
 	// example:
 	//
 	// 580667964888595XXXX
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The trigger.
 	Trigger *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
@@ -27638,7 +29835,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetDescription(v strin
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodes {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodes {
 	s.Id = &v
 	return s
 }
@@ -27668,7 +29865,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetOwner(v string) *Li
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetProjectId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodes {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetProjectId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodes {
 	s.ProjectId = &v
 	return s
 }
@@ -27698,7 +29895,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetTags(v []*ListNodeD
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetTaskId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodes {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetTaskId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodes {
 	s.TaskId = &v
 	return s
 }
@@ -27829,7 +30026,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	// example:
 	//
 	// 543218872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the variable.
 	//
 	// example:
@@ -27893,7 +30090,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) SetArti
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables {
 	s.Id = &v
 	return s
 }
@@ -28033,7 +30230,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables struct {
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the variable.
 	//
 	// example:
@@ -28097,7 +30294,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) SetArt
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables {
 	s.Id = &v
 	return s
 }
@@ -28177,7 +30374,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesScript struct {
 	// example:
 	//
 	// 853573334108680XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	//
 	// example:
@@ -28196,7 +30393,7 @@ func (s ListNodeDependenciesResponseBodyPagingInfoNodesScript) GoString() string
 	return s.String()
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesScript {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesScript {
 	s.Id = &v
 	return s
 }
@@ -28350,7 +30547,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesTrigger struct {
 	// example:
 	//
 	// 543680677872062XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The start time of the validity period of the scheduling. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
@@ -28397,7 +30594,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) SetEndTime(v st
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger {
 	s.Id = &v
 	return s
 }
@@ -28452,7 +30649,7 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerId *int64 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -28472,7 +30669,7 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// 12345
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// example:
 	//
 	// Normal
@@ -28513,7 +30710,7 @@ func (s ListNodesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesRequest) SetContainerId(v string) *ListNodesRequest {
+func (s *ListNodesRequest) SetContainerId(v int64) *ListNodesRequest {
 	s.ContainerId = &v
 	return s
 }
@@ -28528,7 +30725,7 @@ func (s *ListNodesRequest) SetPageSize(v int32) *ListNodesRequest {
 	return s
 }
 
-func (s *ListNodesRequest) SetProjectId(v string) *ListNodesRequest {
+func (s *ListNodesRequest) SetProjectId(v int64) *ListNodesRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -28644,7 +30841,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The input of the node.
 	Inputs *ListNodesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The time when the node was last modified. This value is a UNIX timestamp.
@@ -28672,7 +30869,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	// example:
 	//
 	// 33233
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The scheduling type.
 	//
 	// Valid values:
@@ -28700,7 +30897,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	// example:
 	//
 	// 88888888888
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The trigger.
 	Trigger *ListNodesResponseBodyPagingInfoNodesTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
@@ -28728,7 +30925,7 @@ func (s *ListNodesResponseBodyPagingInfoNodes) SetDescription(v string) *ListNod
 	return s
 }
 
-func (s *ListNodesResponseBodyPagingInfoNodes) SetId(v string) *ListNodesResponseBodyPagingInfoNodes {
+func (s *ListNodesResponseBodyPagingInfoNodes) SetId(v int64) *ListNodesResponseBodyPagingInfoNodes {
 	s.Id = &v
 	return s
 }
@@ -28758,7 +30955,7 @@ func (s *ListNodesResponseBodyPagingInfoNodes) SetOwner(v string) *ListNodesResp
 	return s
 }
 
-func (s *ListNodesResponseBodyPagingInfoNodes) SetProjectId(v string) *ListNodesResponseBodyPagingInfoNodes {
+func (s *ListNodesResponseBodyPagingInfoNodes) SetProjectId(v int64) *ListNodesResponseBodyPagingInfoNodes {
 	s.ProjectId = &v
 	return s
 }
@@ -28788,7 +30985,7 @@ func (s *ListNodesResponseBodyPagingInfoNodes) SetTags(v []*ListNodesResponseBod
 	return s
 }
 
-func (s *ListNodesResponseBodyPagingInfoNodes) SetTaskId(v string) *ListNodesResponseBodyPagingInfoNodes {
+func (s *ListNodesResponseBodyPagingInfoNodes) SetTaskId(v int64) *ListNodesResponseBodyPagingInfoNodes {
 	s.TaskId = &v
 	return s
 }
@@ -28919,7 +31116,7 @@ type ListNodesResponseBodyPagingInfoNodesInputsVariables struct {
 	// example:
 	//
 	// 543211286945488XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the variable.
 	//
 	// example:
@@ -28983,7 +31180,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsVariables) SetArtifactType(v 
 	return s
 }
 
-func (s *ListNodesResponseBodyPagingInfoNodesInputsVariables) SetId(v string) *ListNodesResponseBodyPagingInfoNodesInputsVariables {
+func (s *ListNodesResponseBodyPagingInfoNodesInputsVariables) SetId(v int64) *ListNodesResponseBodyPagingInfoNodesInputsVariables {
 	s.Id = &v
 	return s
 }
@@ -29123,7 +31320,7 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	// example:
 	//
 	// 623731286945488XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the variable.
 	//
 	// example:
@@ -29187,7 +31384,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariables) SetArtifactType(v
 	return s
 }
 
-func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariables) SetId(v string) *ListNodesResponseBodyPagingInfoNodesOutputsVariables {
+func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariables) SetId(v int64) *ListNodesResponseBodyPagingInfoNodesOutputsVariables {
 	s.Id = &v
 	return s
 }
@@ -29267,7 +31464,7 @@ type ListNodesResponseBodyPagingInfoNodesScript struct {
 	// example:
 	//
 	// 853573334108680XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	//
 	// example:
@@ -29286,7 +31483,7 @@ func (s ListNodesResponseBodyPagingInfoNodesScript) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesResponseBodyPagingInfoNodesScript) SetId(v string) *ListNodesResponseBodyPagingInfoNodesScript {
+func (s *ListNodesResponseBodyPagingInfoNodesScript) SetId(v int64) *ListNodesResponseBodyPagingInfoNodesScript {
 	s.Id = &v
 	return s
 }
@@ -29440,7 +31637,7 @@ type ListNodesResponseBodyPagingInfoNodesTrigger struct {
 	// example:
 	//
 	// 543680677872062XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The start time of the validity period of the trigger.
 	//
 	// example:
@@ -29495,7 +31692,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesTrigger) SetEndTime(v string) *List
 	return s
 }
 
-func (s *ListNodesResponseBodyPagingInfoNodesTrigger) SetId(v string) *ListNodesResponseBodyPagingInfoNodesTrigger {
+func (s *ListNodesResponseBodyPagingInfoNodesTrigger) SetId(v int64) *ListNodesResponseBodyPagingInfoNodesTrigger {
 	s.Id = &v
 	return s
 }
@@ -29567,7 +31764,7 @@ type ListProjectMembersRequest struct {
 	//
 	// 62136
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
 	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
@@ -29629,7 +31826,7 @@ type ListProjectMembersShrinkRequest struct {
 	//
 	// 62136
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
 	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
 	UserIdsShrink *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
@@ -30838,13 +33035,28 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListResourceGroupsRequest struct {
+	// example:
+	//
+	// rg-aek2kqofrgXXXXX
+	AliyunResourceGroupId *string                                        `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*ListResourceGroupsRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
 	// The name of a resource group, which is used for fuzzy match.
 	//
 	// example:
 	//
 	// Resource
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The billing method of resource groups. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// *
+	//
+	// *
 	//
 	// example:
 	//
@@ -30855,10 +33067,12 @@ type ListResourceGroupsRequest struct {
 	// example:
 	//
 	// 1000
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
+	ProjectId          *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ResourceGroupTypes []*string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty" type:"Repeated"`
-	// The statuses of resource groups.
+	// example:
+	//
+	// CreateTime Asc
+	SortBy   *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -30870,8 +33084,28 @@ func (s ListResourceGroupsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListResourceGroupsRequest) SetAliyunResourceGroupId(v string) *ListResourceGroupsRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetAliyunResourceTags(v []*ListResourceGroupsRequestAliyunResourceTags) *ListResourceGroupsRequest {
+	s.AliyunResourceTags = v
+	return s
+}
+
 func (s *ListResourceGroupsRequest) SetName(v string) *ListResourceGroupsRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetPageNumber(v int32) *ListResourceGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetPageSize(v int32) *ListResourceGroupsRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -30890,19 +33124,68 @@ func (s *ListResourceGroupsRequest) SetResourceGroupTypes(v []*string) *ListReso
 	return s
 }
 
+func (s *ListResourceGroupsRequest) SetSortBy(v string) *ListResourceGroupsRequest {
+	s.SortBy = &v
+	return s
+}
+
 func (s *ListResourceGroupsRequest) SetStatuses(v []*string) *ListResourceGroupsRequest {
 	s.Statuses = v
 	return s
 }
 
+type ListResourceGroupsRequestAliyunResourceTags struct {
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListResourceGroupsRequestAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsRequestAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsRequestAliyunResourceTags) SetKey(v string) *ListResourceGroupsRequestAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequestAliyunResourceTags) SetValue(v string) *ListResourceGroupsRequestAliyunResourceTags {
+	s.Value = &v
+	return s
+}
+
 type ListResourceGroupsShrinkRequest struct {
+	// example:
+	//
+	// rg-aek2kqofrgXXXXX
+	AliyunResourceGroupId    *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
 	// The name of a resource group, which is used for fuzzy match.
 	//
 	// example:
 	//
 	// Resource
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The billing method of resource groups. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// *
+	//
+	// *
 	//
 	// example:
 	//
@@ -30913,10 +33196,12 @@ type ListResourceGroupsShrinkRequest struct {
 	// example:
 	//
 	// 1000
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
+	ProjectId                *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ResourceGroupTypesShrink *string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty"`
-	// The statuses of resource groups.
+	// example:
+	//
+	// CreateTime Asc
+	SortBy         *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 }
 
@@ -30928,8 +33213,28 @@ func (s ListResourceGroupsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListResourceGroupsShrinkRequest) SetAliyunResourceGroupId(v string) *ListResourceGroupsShrinkRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetAliyunResourceTagsShrink(v string) *ListResourceGroupsShrinkRequest {
+	s.AliyunResourceTagsShrink = &v
+	return s
+}
+
 func (s *ListResourceGroupsShrinkRequest) SetName(v string) *ListResourceGroupsShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetPageNumber(v int32) *ListResourceGroupsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetPageSize(v int32) *ListResourceGroupsShrinkRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -30948,20 +33253,24 @@ func (s *ListResourceGroupsShrinkRequest) SetResourceGroupTypesShrink(v string) 
 	return s
 }
 
+func (s *ListResourceGroupsShrinkRequest) SetSortBy(v string) *ListResourceGroupsShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
 func (s *ListResourceGroupsShrinkRequest) SetStatusesShrink(v string) *ListResourceGroupsShrinkRequest {
 	s.StatusesShrink = &v
 	return s
 }
 
 type ListResourceGroupsResponseBody struct {
+	PagingInfo *ListResourceGroupsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource groups returned.
-	ResourceGroupList []*ListResourceGroupsResponseBodyResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful. Valid values: true and false.
 	//
 	// example:
@@ -30978,13 +33287,13 @@ func (s ListResourceGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourceGroupsResponseBody) SetRequestId(v string) *ListResourceGroupsResponseBody {
-	s.RequestId = &v
+func (s *ListResourceGroupsResponseBody) SetPagingInfo(v *ListResourceGroupsResponseBodyPagingInfo) *ListResourceGroupsResponseBody {
+	s.PagingInfo = v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBody) SetResourceGroupList(v []*ListResourceGroupsResponseBodyResourceGroupList) *ListResourceGroupsResponseBody {
-	s.ResourceGroupList = v
+func (s *ListResourceGroupsResponseBody) SetRequestId(v string) *ListResourceGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -30993,202 +33302,200 @@ func (s *ListResourceGroupsResponseBody) SetSuccess(v bool) *ListResourceGroupsR
 	return s
 }
 
-type ListResourceGroupsResponseBodyResourceGroupList struct {
-	// The time when the resource group was created. The value is a 64-bit timestamp.
+type ListResourceGroupsResponseBodyPagingInfo struct {
+	// example:
 	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize          *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupList []*ListResourceGroupsResponseBodyPagingInfoResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBodyPagingInfo) SetPageNumber(v int32) *ListResourceGroupsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyPagingInfo) SetPageSize(v int32) *ListResourceGroupsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyPagingInfo) SetResourceGroupList(v []*ListResourceGroupsResponseBodyPagingInfoResourceGroupList) *ListResourceGroupsResponseBodyPagingInfo {
+	s.ResourceGroupList = v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyPagingInfo) SetTotalCount(v int32) *ListResourceGroupsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
+	// example:
+	//
+	// rg-aek2kqofrgXXXXX
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the account that is used to create the resource group.
-	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The ID of the virtual private cloud (VPC) with which the resource group is associated by default.
-	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	DefaultVpcId *string `json:"DefaultVpcId,omitempty" xml:"DefaultVpcId,omitempty"`
-	// The ID of the vSwitch with which the resource group is associated by default.
-	//
 	// example:
 	//
 	// vsw-uf8usrhs7hjd9amsXXXXX
 	DefaultVswicthId *string `json:"DefaultVswicthId,omitempty" xml:"DefaultVswicthId,omitempty"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the resource group.
-	//
 	// example:
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The instance ID of the order that is used to create the resource group.
-	//
 	// example:
 	//
 	// c442b330-3b10-4584-959e-736e4edXXXXX
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	// The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
-	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The description of the resource group.
-	//
 	// example:
 	//
 	// 创建用于普通任务的通用资源组
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The type the resource group. Valid values:
-	//
-	// 	- CommonV2: serverless resource group
-	//
-	// 	- ExclusiveDataIntegration: exclusive resource group for Data Integration
-	//
-	// 	- ExclusiveScheduler: exclusive resource group for scheduling
-	//
-	// 	- ExclusiveDataService: exclusive resource group for DataService Studio
-	//
 	// example:
 	//
 	// CommonV2
-	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	// The specifications of the resource group.
-	Spec *ListResourceGroupsResponseBodyResourceGroupListSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	// The status of the resource group. Valid values:
-	//
-	// 	- Normal: The resource group is running or in use.
-	//
-	// 	- Stop: The resource group is expired.
-	//
-	// 	- Deleted: The resource group is released or destroyed.
-	//
-	// 	- Creating: The resource group is being started.
-	//
-	// 	- CreateFailed: The resource group fails to be started.
-	//
-	// 	- Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
-	//
-	// 	- UpdateFailed: The resource group fails to be scaled out or upgraded.
-	//
-	// 	- Deleting: The resource group is being released or destroyed.
-	//
-	// 	- DeleteFailed: The resource group fails to be released or destroyed.
-	//
-	// 	- Timeout: The operations that are performed on the resource group time out.
-	//
+	ResourceGroupType *string                                                        `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	Spec              *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s ListResourceGroupsResponseBodyResourceGroupList) String() string {
+func (s ListResourceGroupsResponseBodyPagingInfoResourceGroupList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListResourceGroupsResponseBodyResourceGroupList) GoString() string {
+func (s ListResourceGroupsResponseBodyPagingInfoResourceGroupList) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetCreateTime(v int64) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetAliyunResourceGroupId(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetCreateTime(v int64) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetCreateUser(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetCreateUser(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.CreateUser = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetDefaultVpcId(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetDefaultVpcId(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.DefaultVpcId = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetDefaultVswicthId(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetDefaultVswicthId(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.DefaultVswicthId = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetId(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetId(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.Id = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetName(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetName(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.Name = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetOrderInstanceId(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetOrderInstanceId(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.OrderInstanceId = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetPaymentType(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetPaymentType(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.PaymentType = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetRemark(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetRemark(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.Remark = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetResourceGroupType(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetResourceGroupType(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.ResourceGroupType = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetSpec(v *ListResourceGroupsResponseBodyResourceGroupListSpec) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetSpec(v *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.Spec = v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupList) SetStatus(v string) *ListResourceGroupsResponseBodyResourceGroupList {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetStatus(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.Status = &v
 	return s
 }
 
-type ListResourceGroupsResponseBodyResourceGroupListSpec struct {
-	// The number of resources in the resource group.
-	//
+type ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec struct {
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The details about the specifications.
-	//
 	// example:
 	//
 	// 2CU
 	Standard *string `json:"Standard,omitempty" xml:"Standard,omitempty"`
 }
 
-func (s ListResourceGroupsResponseBodyResourceGroupListSpec) String() string {
+func (s ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListResourceGroupsResponseBodyResourceGroupListSpec) GoString() string {
+func (s ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupListSpec) SetAmount(v int32) *ListResourceGroupsResponseBodyResourceGroupListSpec {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec) SetAmount(v int32) *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec {
 	s.Amount = &v
 	return s
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupListSpec) SetStandard(v string) *ListResourceGroupsResponseBodyResourceGroupListSpec {
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec) SetStandard(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec {
 	s.Standard = &v
 	return s
 }
@@ -31250,7 +33557,7 @@ type ListResourcesRequest struct {
 	// example:
 	//
 	// 10002
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The resource type. This parameter specifies a filter condition.
 	//
 	// Valid values:
@@ -31292,7 +33599,7 @@ func (s *ListResourcesRequest) SetPageSize(v int32) *ListResourcesRequest {
 	return s
 }
 
-func (s *ListResourcesRequest) SetProjectId(v string) *ListResourcesRequest {
+func (s *ListResourcesRequest) SetProjectId(v int64) *ListResourcesRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -31396,7 +33703,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	// example:
 	//
 	// 631478864897630XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The times when the file resource was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -31420,7 +33727,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	// example:
 	//
 	// 344247
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The script information.
 	Script *ListResourcesResponseBodyPagingInfoResourcesScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
 	// The path of the source of the file resource. If the SourecType parameter is set to Local, this parameter is left empty.
@@ -31497,7 +33804,7 @@ func (s *ListResourcesResponseBodyPagingInfoResources) SetDataSource(v *ListReso
 	return s
 }
 
-func (s *ListResourcesResponseBodyPagingInfoResources) SetId(v string) *ListResourcesResponseBodyPagingInfoResources {
+func (s *ListResourcesResponseBodyPagingInfoResources) SetId(v int64) *ListResourcesResponseBodyPagingInfoResources {
 	s.Id = &v
 	return s
 }
@@ -31517,7 +33824,7 @@ func (s *ListResourcesResponseBodyPagingInfoResources) SetOwner(v string) *ListR
 	return s
 }
 
-func (s *ListResourcesResponseBodyPagingInfoResources) SetProjectId(v string) *ListResourcesResponseBodyPagingInfoResources {
+func (s *ListResourcesResponseBodyPagingInfoResources) SetProjectId(v int64) *ListResourcesResponseBodyPagingInfoResources {
 	s.ProjectId = &v
 	return s
 }
@@ -31591,7 +33898,7 @@ type ListResourcesResponseBodyPagingInfoResourcesScript struct {
 	// example:
 	//
 	// 123348864897630XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	//
 	// example:
@@ -31610,7 +33917,7 @@ func (s ListResourcesResponseBodyPagingInfoResourcesScript) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourcesResponseBodyPagingInfoResourcesScript) SetId(v string) *ListResourcesResponseBodyPagingInfoResourcesScript {
+func (s *ListResourcesResponseBodyPagingInfoResourcesScript) SetId(v int64) *ListResourcesResponseBodyPagingInfoResourcesScript {
 	s.Id = &v
 	return s
 }
@@ -31683,6 +33990,18 @@ type ListRoutesRequest struct {
 	//
 	// 1000
 	NetworkId *int64 `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CreateTime Asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListRoutesRequest) String() string {
@@ -31698,13 +34017,27 @@ func (s *ListRoutesRequest) SetNetworkId(v int64) *ListRoutesRequest {
 	return s
 }
 
+func (s *ListRoutesRequest) SetPageNumber(v int32) *ListRoutesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutesRequest) SetPageSize(v int32) *ListRoutesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutesRequest) SetSortBy(v string) *ListRoutesRequest {
+	s.SortBy = &v
+	return s
+}
+
 type ListRoutesResponseBody struct {
+	PagingInfo *ListRoutesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The routes.
-	RouteList []*ListRoutesResponseBodyRouteList `json:"RouteList,omitempty" xml:"RouteList,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful.
 	//
 	// example:
@@ -31721,13 +34054,13 @@ func (s ListRoutesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRoutesResponseBody) SetRequestId(v string) *ListRoutesResponseBody {
-	s.RequestId = &v
+func (s *ListRoutesResponseBody) SetPagingInfo(v *ListRoutesResponseBodyPagingInfo) *ListRoutesResponseBody {
+	s.PagingInfo = v
 	return s
 }
 
-func (s *ListRoutesResponseBody) SetRouteList(v []*ListRoutesResponseBodyRouteList) *ListRoutesResponseBody {
-	s.RouteList = v
+func (s *ListRoutesResponseBody) SetRequestId(v string) *ListRoutesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -31736,7 +34069,51 @@ func (s *ListRoutesResponseBody) SetSuccess(v bool) *ListRoutesResponseBody {
 	return s
 }
 
-type ListRoutesResponseBodyRouteList struct {
+type ListRoutesResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize  *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RouteList []*ListRoutesResponseBodyPagingInfoRouteList `json:"RouteList,omitempty" xml:"RouteList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRoutesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutesResponseBodyPagingInfo) SetPageNumber(v int32) *ListRoutesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutesResponseBodyPagingInfo) SetPageSize(v int32) *ListRoutesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutesResponseBodyPagingInfo) SetRouteList(v []*ListRoutesResponseBodyPagingInfoRouteList) *ListRoutesResponseBodyPagingInfo {
+	s.RouteList = v
+	return s
+}
+
+func (s *ListRoutesResponseBodyPagingInfo) SetTotalCount(v int32) *ListRoutesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRoutesResponseBodyPagingInfoRouteList struct {
 	// example:
 	//
 	// 1727055811000
@@ -31749,8 +34126,6 @@ type ListRoutesResponseBodyRouteList struct {
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The network ID.
-	//
 	// example:
 	//
 	// 1000
@@ -31765,40 +34140,40 @@ type ListRoutesResponseBodyRouteList struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
-func (s ListRoutesResponseBodyRouteList) String() string {
+func (s ListRoutesResponseBodyPagingInfoRouteList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListRoutesResponseBodyRouteList) GoString() string {
+func (s ListRoutesResponseBodyPagingInfoRouteList) GoString() string {
 	return s.String()
 }
 
-func (s *ListRoutesResponseBodyRouteList) SetCreateTime(v int64) *ListRoutesResponseBodyRouteList {
+func (s *ListRoutesResponseBodyPagingInfoRouteList) SetCreateTime(v int64) *ListRoutesResponseBodyPagingInfoRouteList {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *ListRoutesResponseBodyRouteList) SetDestinationCidr(v string) *ListRoutesResponseBodyRouteList {
+func (s *ListRoutesResponseBodyPagingInfoRouteList) SetDestinationCidr(v string) *ListRoutesResponseBodyPagingInfoRouteList {
 	s.DestinationCidr = &v
 	return s
 }
 
-func (s *ListRoutesResponseBodyRouteList) SetId(v int64) *ListRoutesResponseBodyRouteList {
+func (s *ListRoutesResponseBodyPagingInfoRouteList) SetId(v int64) *ListRoutesResponseBodyPagingInfoRouteList {
 	s.Id = &v
 	return s
 }
 
-func (s *ListRoutesResponseBodyRouteList) SetNetworkId(v int64) *ListRoutesResponseBodyRouteList {
+func (s *ListRoutesResponseBodyPagingInfoRouteList) SetNetworkId(v int64) *ListRoutesResponseBodyPagingInfoRouteList {
 	s.NetworkId = &v
 	return s
 }
 
-func (s *ListRoutesResponseBodyRouteList) SetResourceGroupId(v string) *ListRoutesResponseBodyRouteList {
+func (s *ListRoutesResponseBodyPagingInfoRouteList) SetResourceGroupId(v string) *ListRoutesResponseBodyPagingInfoRouteList {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *ListRoutesResponseBodyRouteList) SetResourceId(v string) *ListRoutesResponseBodyRouteList {
+func (s *ListRoutesResponseBodyPagingInfoRouteList) SetResourceId(v string) *ListRoutesResponseBodyPagingInfoRouteList {
 	s.ResourceId = &v
 	return s
 }
@@ -32155,10 +34530,28 @@ type ListTaskInstancesRequest struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Normal
@@ -32393,10 +34786,28 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Normal
@@ -32679,6 +35090,8 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
+	//
 	// example:
 	//
 	// 1
@@ -32782,6 +35195,8 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
+	//
+	// Note: The value of this parameter is rounded up by hour.
 	//
 	// example:
 	//
@@ -33683,12 +36098,6 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 实例生成模式。
-	//
-	// T+1（第二天生成）
-	//
-	// Immediately（立即生成）
-	//
 	// example:
 	//
 	// T+1
@@ -33764,7 +36173,8 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The configurations of the runtime environment, such as the resource group information.
-	RuntimeResource *ListTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	RuntimeResource  *ListTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	ScriptParameters *string                                              `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -33888,6 +36298,11 @@ func (s *ListTasksResponseBodyPagingInfoTasks) SetRerunTimes(v int32) *ListTasks
 
 func (s *ListTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *ListTasksResponseBodyPagingInfoTasksRuntimeResource) *ListTasksResponseBodyPagingInfoTasks {
 	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetScriptParameters(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.ScriptParameters = &v
 	return s
 }
 
@@ -34186,7 +36601,8 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfo struct {
 	// example:
 	//
 	// 100
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount            *int32                                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UpstreamTaskInstances []*ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances `json:"UpstreamTaskInstances,omitempty" xml:"UpstreamTaskInstances,omitempty" type:"Repeated"`
 }
 
 func (s ListUpstreamTaskInstancesResponseBodyPagingInfo) String() string {
@@ -34214,6 +36630,11 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetTaskInstances(v []*
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfo {
 	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetUpstreamTaskInstances(v []*ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances) *ListUpstreamTaskInstancesResponseBodyPagingInfo {
+	s.UpstreamTaskInstances = v
 	return s
 }
 
@@ -34250,6 +36671,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType     *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The time when the instance finished running.
 	//
 	// example:
@@ -34290,6 +36712,8 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Deprecated
+	//
 	// The environment of the workspace.
 	//
 	// Valid values:
@@ -34362,6 +36786,8 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The dependency type.
+	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
 	// The ID of the task for which the instance is generated.
 	//
 	// example:
@@ -34494,6 +36920,11 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetDescri
 	return s
 }
 
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetEnvType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.EnvType = &v
+	return s
+}
+
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetFinishedTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.FinishedTime = &v
 	return s
@@ -34566,6 +36997,11 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStarte
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStatus(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.Status = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStepType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.StepType = &v
 	return s
 }
 
@@ -34728,6 +37164,312 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeReso
 	return s
 }
 
+type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances struct {
+	// The dependency type.
+	DependencyType *string `json:"DependencyType,omitempty" xml:"DependencyType,omitempty"`
+	// The information about a task instance.
+	TaskInstance *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance `json:"TaskInstance,omitempty" xml:"TaskInstance,omitempty" type:"Struct"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances) SetDependencyType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances {
+	s.DependencyType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances) SetTaskInstance(v *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances {
+	s.TaskInstance = v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance struct {
+	BaselineId   *int64                                                                                      `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	Bizdate      *int64                                                                                      `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	CreateTime   *int64                                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser   *string                                                                                     `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource   *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Description  *string                                                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType      *string                                                                                     `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	FinishedTime *int64                                                                                      `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	Id           *int64                                                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime   *int64                                                                                      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUser   *string                                                                                     `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Owner        *string                                                                                     `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PeriodNumber *int32                                                                                      `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	Priority     *int32                                                                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId    *int64                                                                                      `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun mode.
+	RerunMode       *string                                                                                          `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	RunNumber       *int32                                                                                           `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	Runtime         *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RuntimeResource *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	StartedTime     *int64                                                                                           `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the instance.
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task type.
+	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TenantId             *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Timeout              *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TriggerRecurrence    *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	TriggerTime          *int64  `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	TriggerType          *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	WorkflowId           *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowInstanceId   *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetBaselineId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetBizdate(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetCreateTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetCreateUser(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetDataSource(v *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetDescription(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetEnvType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetFinishedTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetModifyTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetModifyUser(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetOwner(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetPeriodNumber(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.PeriodNumber = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetPriority(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetProjectId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetRerunMode(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetRunNumber(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.RunNumber = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetRuntime(v *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Runtime = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetRuntimeResource(v *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetStartedTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetStatus(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTaskId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTaskName(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTaskType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTenantId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTimeout(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTriggerRecurrence(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTriggerTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.TriggerTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTriggerType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetWorkflowId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetWorkflowInstanceId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetWorkflowInstanceType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetWorkflowName(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
+	s.WorkflowName = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource) SetName(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime struct {
+	Gateway   *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime) SetGateway(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime {
+	s.Gateway = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime) SetProcessId(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime {
+	s.ProcessId = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource struct {
+	Cu              *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource) SetCu(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource) SetImage(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource) SetResourceGroupId(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ListUpstreamTaskInstancesResponse struct {
 	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -34869,7 +37611,8 @@ type ListUpstreamTasksResponseBodyPagingInfo struct {
 	// example:
 	//
 	// 100
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount    *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UpstreamTasks []*ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks `json:"UpstreamTasks,omitempty" xml:"UpstreamTasks,omitempty" type:"Repeated"`
 }
 
 func (s ListUpstreamTasksResponseBodyPagingInfo) String() string {
@@ -34900,6 +37643,11 @@ func (s *ListUpstreamTasksResponseBodyPagingInfo) SetTotalCount(v int32) *ListUp
 	return s
 }
 
+func (s *ListUpstreamTasksResponseBodyPagingInfo) SetUpstreamTasks(v []*ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks) *ListUpstreamTasksResponseBodyPagingInfo {
+	s.UpstreamTasks = v
+	return s
+}
+
 type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	// The baseline ID.
 	//
@@ -34927,12 +37675,19 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType     *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance generation mode. Valid values:
+	//
+	// T+1
+	//
+	// Immediately
+	//
 	// example:
 	//
 	// T+1
@@ -34963,6 +37718,8 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Deprecated
+	//
 	// The environment of the workspace.
 	//
 	// Valid values:
@@ -35009,6 +37766,12 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The configurations of the runtime environment, such as the resource group information.
 	RuntimeResource *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// The scheduling dependency type. Valid values:
+	//
+	// Normal: same-cycle scheduling dependency
+	//
+	// CrossCycle: cross-cycle scheduling dependency
+	//
 	// example:
 	//
 	// Normal
@@ -35071,6 +37834,11 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetDataSource(v *ListUpst
 
 func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetDescription(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
 	s.Description = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetEnvType(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.EnvType = &v
 	return s
 }
 
@@ -35326,6 +38094,282 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) SetType(v string) 
 	return s
 }
 
+type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks struct {
+	// The dependency type.
+	DependencyType *string                                                   `json:"DependencyType,omitempty" xml:"DependencyType,omitempty"`
+	Task           *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks) SetDependencyType(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks {
+	s.DependencyType = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks) SetTask(v *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks {
+	s.Task = v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask struct {
+	// The ID of the baseline.
+	BaselineId *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the data source.
+	DataSource   *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Description  *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvType      *string                                                             `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Id           *int64                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceMode *string                                                             `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	ModifyTime   *int64                                                              `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUser   *string                                                             `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name         *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner        *string                                                             `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the task. Valid values: 1 to 8.
+	Priority  *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The interval between two consecutive reruns. Unit: seconds.
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// The rerun mode.
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of reruns.
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// The configurations of the runtime environment, such as the resource group information.
+	RuntimeResource *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	TenantId        *int64                                                                   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The method to trigger the running of the task.
+	Trigger *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The type of the task.
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkflowId *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetBaselineId(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetCreateTime(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetCreateUser(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetDataSource(v *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetDescription(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetEnvType(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetId(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetInstanceMode(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.InstanceMode = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetModifyTime(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetModifyUser(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetName(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetOwner(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetPriority(v int32) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetProjectId(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetRerunInterval(v int32) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetRerunMode(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetRerunTimes(v int32) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetRuntimeResource(v *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetTenantId(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetTimeout(v int32) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetTrigger(v *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Trigger = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetType(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.Type = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetWorkflowId(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource) SetName(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource struct {
+	Cu              *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource) SetCu(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource) SetImage(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource) SetResourceGroupId(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger struct {
+	Cron       *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timezone   *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) SetCron(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) SetEndTime(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) SetRecurrence(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) SetStartTime(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) SetTimezone(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger) SetType(v string) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger {
+	s.Type = &v
+	return s
+}
+
 type ListUpstreamTasksResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -35383,7 +38427,7 @@ type ListWorkflowDefinitionsRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The workflow type. This parameter specifies a filter condition.
 	//
 	// Valid values:
@@ -35421,7 +38465,7 @@ func (s *ListWorkflowDefinitionsRequest) SetPageSize(v int32) *ListWorkflowDefin
 	return s
 }
 
-func (s *ListWorkflowDefinitionsRequest) SetProjectId(v string) *ListWorkflowDefinitionsRequest {
+func (s *ListWorkflowDefinitionsRequest) SetProjectId(v int64) *ListWorkflowDefinitionsRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -35525,7 +38569,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The times when the workflow was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -35547,7 +38591,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	// example:
 	//
 	// 4710
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The script information.
 	Script *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
 	// The type of the workflow.
@@ -35582,7 +38626,7 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetDe
 	return s
 }
 
-func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetId(v string) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions {
+func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetId(v int64) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions {
 	s.Id = &v
 	return s
 }
@@ -35602,7 +38646,7 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetOw
 	return s
 }
 
-func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetProjectId(v string) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions {
+func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetProjectId(v int64) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions {
 	s.ProjectId = &v
 	return s
 }
@@ -35623,7 +38667,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript stru
 	// example:
 	//
 	// 698002781368644XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The runtime.
@@ -35638,7 +38682,7 @@ func (s ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) 
 	return s.String()
 }
 
-func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) SetId(v string) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript {
+func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) SetId(v int64) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript {
 	s.Id = &v
 	return s
 }
@@ -35712,7 +38756,7 @@ type MoveFunctionRequest struct {
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The path to which you want to move the UDF. You do not need to specify a UDF name in the path.
 	//
 	// For example, if you want to move the test UDF to root/demo/test, you must set this parameter to root/demo.
@@ -35732,7 +38776,7 @@ type MoveFunctionRequest struct {
 	// example:
 	//
 	// 12345
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s MoveFunctionRequest) String() string {
@@ -35743,7 +38787,7 @@ func (s MoveFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveFunctionRequest) SetId(v string) *MoveFunctionRequest {
+func (s *MoveFunctionRequest) SetId(v int64) *MoveFunctionRequest {
 	s.Id = &v
 	return s
 }
@@ -35753,7 +38797,7 @@ func (s *MoveFunctionRequest) SetPath(v string) *MoveFunctionRequest {
 	return s
 }
 
-func (s *MoveFunctionRequest) SetProjectId(v string) *MoveFunctionRequest {
+func (s *MoveFunctionRequest) SetProjectId(v int64) *MoveFunctionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -35832,7 +38876,7 @@ type MoveNodeRequest struct {
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The path to which you want to move the node. You do not need to specify a node name in the path.
 	//
 	// For example, if you want to move the test node to root/demo/test, you must set this parameter to root/demo.
@@ -35852,7 +38896,7 @@ type MoveNodeRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s MoveNodeRequest) String() string {
@@ -35863,7 +38907,7 @@ func (s MoveNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveNodeRequest) SetId(v string) *MoveNodeRequest {
+func (s *MoveNodeRequest) SetId(v int64) *MoveNodeRequest {
 	s.Id = &v
 	return s
 }
@@ -35873,7 +38917,7 @@ func (s *MoveNodeRequest) SetPath(v string) *MoveNodeRequest {
 	return s
 }
 
-func (s *MoveNodeRequest) SetProjectId(v string) *MoveNodeRequest {
+func (s *MoveNodeRequest) SetProjectId(v int64) *MoveNodeRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -35952,7 +38996,7 @@ type MoveResourceRequest struct {
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The path to which you want to move the file resource. You do not need to specify a file resource name in the path.
 	//
 	// For example, if you want to move the test file resource to root/demo/test, you must set this parameter to root/demo.
@@ -35972,7 +39016,7 @@ type MoveResourceRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s MoveResourceRequest) String() string {
@@ -35983,7 +39027,7 @@ func (s MoveResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveResourceRequest) SetId(v string) *MoveResourceRequest {
+func (s *MoveResourceRequest) SetId(v int64) *MoveResourceRequest {
 	s.Id = &v
 	return s
 }
@@ -35993,7 +39037,7 @@ func (s *MoveResourceRequest) SetPath(v string) *MoveResourceRequest {
 	return s
 }
 
-func (s *MoveResourceRequest) SetProjectId(v string) *MoveResourceRequest {
+func (s *MoveResourceRequest) SetProjectId(v int64) *MoveResourceRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -36072,7 +39116,7 @@ type MoveWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The path to which you want to move the workflow. You do not need to specify a workflow name in the path.
 	//
 	// For example, if you want to move the test workflow to root/demo/test, you must set this parameter to root/demo.
@@ -36090,7 +39134,7 @@ type MoveWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 10001
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s MoveWorkflowDefinitionRequest) String() string {
@@ -36101,7 +39145,7 @@ func (s MoveWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveWorkflowDefinitionRequest) SetId(v string) *MoveWorkflowDefinitionRequest {
+func (s *MoveWorkflowDefinitionRequest) SetId(v int64) *MoveWorkflowDefinitionRequest {
 	s.Id = &v
 	return s
 }
@@ -36111,7 +39155,7 @@ func (s *MoveWorkflowDefinitionRequest) SetPath(v string) *MoveWorkflowDefinitio
 	return s
 }
 
-func (s *MoveWorkflowDefinitionRequest) SetProjectId(v string) *MoveWorkflowDefinitionRequest {
+func (s *MoveWorkflowDefinitionRequest) SetProjectId(v int64) *MoveWorkflowDefinitionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -36336,7 +39380,7 @@ type RenameFunctionRequest struct {
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The new name.
 	//
 	// This parameter is required.
@@ -36348,7 +39392,7 @@ type RenameFunctionRequest struct {
 	// example:
 	//
 	// 10002
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s RenameFunctionRequest) String() string {
@@ -36359,7 +39403,7 @@ func (s RenameFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RenameFunctionRequest) SetId(v string) *RenameFunctionRequest {
+func (s *RenameFunctionRequest) SetId(v int64) *RenameFunctionRequest {
 	s.Id = &v
 	return s
 }
@@ -36369,7 +39413,7 @@ func (s *RenameFunctionRequest) SetName(v string) *RenameFunctionRequest {
 	return s
 }
 
-func (s *RenameFunctionRequest) SetProjectId(v string) *RenameFunctionRequest {
+func (s *RenameFunctionRequest) SetProjectId(v int64) *RenameFunctionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -36448,7 +39492,7 @@ type RenameNodeRequest struct {
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The new name.
 	//
 	// This parameter is required.
@@ -36460,7 +39504,7 @@ type RenameNodeRequest struct {
 	// example:
 	//
 	// 12345
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s RenameNodeRequest) String() string {
@@ -36471,7 +39515,7 @@ func (s RenameNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RenameNodeRequest) SetId(v string) *RenameNodeRequest {
+func (s *RenameNodeRequest) SetId(v int64) *RenameNodeRequest {
 	s.Id = &v
 	return s
 }
@@ -36481,7 +39525,7 @@ func (s *RenameNodeRequest) SetName(v string) *RenameNodeRequest {
 	return s
 }
 
-func (s *RenameNodeRequest) SetProjectId(v string) *RenameNodeRequest {
+func (s *RenameNodeRequest) SetProjectId(v int64) *RenameNodeRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -36560,7 +39604,7 @@ type RenameResourceRequest struct {
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The new name.
 	//
 	// This parameter is required.
@@ -36574,7 +39618,7 @@ type RenameResourceRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s RenameResourceRequest) String() string {
@@ -36585,7 +39629,7 @@ func (s RenameResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RenameResourceRequest) SetId(v string) *RenameResourceRequest {
+func (s *RenameResourceRequest) SetId(v int64) *RenameResourceRequest {
 	s.Id = &v
 	return s
 }
@@ -36595,7 +39639,7 @@ func (s *RenameResourceRequest) SetName(v string) *RenameResourceRequest {
 	return s
 }
 
-func (s *RenameResourceRequest) SetProjectId(v string) *RenameResourceRequest {
+func (s *RenameResourceRequest) SetProjectId(v int64) *RenameResourceRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -36674,7 +39718,7 @@ type RenameWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The new name.
 	//
 	// This parameter is required.
@@ -36686,7 +39730,7 @@ type RenameWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s RenameWorkflowDefinitionRequest) String() string {
@@ -36697,7 +39741,7 @@ func (s RenameWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RenameWorkflowDefinitionRequest) SetId(v string) *RenameWorkflowDefinitionRequest {
+func (s *RenameWorkflowDefinitionRequest) SetId(v int64) *RenameWorkflowDefinitionRequest {
 	s.Id = &v
 	return s
 }
@@ -36707,7 +39751,7 @@ func (s *RenameWorkflowDefinitionRequest) SetName(v string) *RenameWorkflowDefin
 	return s
 }
 
-func (s *RenameWorkflowDefinitionRequest) SetProjectId(v string) *RenameWorkflowDefinitionRequest {
+func (s *RenameWorkflowDefinitionRequest) SetProjectId(v int64) *RenameWorkflowDefinitionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -37003,13 +40047,13 @@ type RevokeMemberProjectRolesRequest struct {
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	//
 	// You must configure this parameter to specify the roles that you want to revoke from the member in the workspace.
 	//
 	// This parameter is required.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
-	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -37051,13 +40095,13 @@ type RevokeMemberProjectRolesShrinkRequest struct {
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
 	//
 	// You must configure this parameter to specify the roles that you want to revoke from the member in the workspace.
 	//
 	// This parameter is required.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
-	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -37250,7 +40294,9 @@ func (s *SetSuccessTaskInstancesResponse) SetBody(v *SetSuccessTaskInstancesResp
 }
 
 type StartDIJobRequest struct {
-	// The instance ID.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -37259,7 +40305,13 @@ type StartDIJobRequest struct {
 	// example:
 	//
 	// false
-	ForceToRerun          *bool                                   `json:"ForceToRerun,omitempty" xml:"ForceToRerun,omitempty"`
+	ForceToRerun *bool `json:"ForceToRerun,omitempty" xml:"ForceToRerun,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 10000
+	Id                    *int64                                  `json:"Id,omitempty" xml:"Id,omitempty"`
 	RealtimeStartSettings *StartDIJobRequestRealtimeStartSettings `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty" type:"Struct"`
 }
 
@@ -37281,12 +40333,18 @@ func (s *StartDIJobRequest) SetForceToRerun(v bool) *StartDIJobRequest {
 	return s
 }
 
+func (s *StartDIJobRequest) SetId(v int64) *StartDIJobRequest {
+	s.Id = &v
+	return s
+}
+
 func (s *StartDIJobRequest) SetRealtimeStartSettings(v *StartDIJobRequestRealtimeStartSettings) *StartDIJobRequest {
 	s.RealtimeStartSettings = v
 	return s
 }
 
 type StartDIJobRequestRealtimeStartSettings struct {
+	// Deprecated
 	FailoverSettings *StartDIJobRequestRealtimeStartSettingsFailoverSettings `json:"FailoverSettings,omitempty" xml:"FailoverSettings,omitempty" type:"Struct"`
 	// example:
 	//
@@ -37313,10 +40371,14 @@ func (s *StartDIJobRequestRealtimeStartSettings) SetStartTime(v int64) *StartDIJ
 }
 
 type StartDIJobRequestRealtimeStartSettingsFailoverSettings struct {
+	// Deprecated
+	//
 	// example:
 	//
 	// 10
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 30
@@ -37342,7 +40404,9 @@ func (s *StartDIJobRequestRealtimeStartSettingsFailoverSettings) SetUpperLimit(v
 }
 
 type StartDIJobShrinkRequest struct {
-	// The instance ID.
+	// Deprecated
+	//
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -37351,7 +40415,13 @@ type StartDIJobShrinkRequest struct {
 	// example:
 	//
 	// false
-	ForceToRerun                *bool   `json:"ForceToRerun,omitempty" xml:"ForceToRerun,omitempty"`
+	ForceToRerun *bool `json:"ForceToRerun,omitempty" xml:"ForceToRerun,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 10000
+	Id                          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	RealtimeStartSettingsShrink *string `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty"`
 }
 
@@ -37370,6 +40440,11 @@ func (s *StartDIJobShrinkRequest) SetDIJobId(v int64) *StartDIJobShrinkRequest {
 
 func (s *StartDIJobShrinkRequest) SetForceToRerun(v bool) *StartDIJobShrinkRequest {
 	s.ForceToRerun = &v
+	return s
+}
+
+func (s *StartDIJobShrinkRequest) SetId(v int64) *StartDIJobShrinkRequest {
+	s.Id = &v
 	return s
 }
 
@@ -37437,12 +40512,20 @@ func (s *StartDIJobResponse) SetBody(v *StartDIJobResponseBody) *StartDIJobRespo
 }
 
 type StopDIJobRequest struct {
-	// The ID of the synchronization task.
+	// Deprecated
+	//
+	// This parameter is deprecated and is replaced by the Id parameter.
 	//
 	// example:
 	//
 	// 11668
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 11668
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -37461,6 +40544,11 @@ func (s StopDIJobRequest) GoString() string {
 
 func (s *StopDIJobRequest) SetDIJobId(v int64) *StopDIJobRequest {
 	s.DIJobId = &v
+	return s
+}
+
+func (s *StopDIJobRequest) SetId(v int64) *StopDIJobRequest {
+	s.Id = &v
 	return s
 }
 
@@ -37751,7 +40839,225 @@ func (s *SuspendTaskInstancesResponse) SetBody(v *SuspendTaskInstancesResponseBo
 	return s
 }
 
+type TagDataAssetsRequest struct {
+	// example:
+	//
+	// false
+	AutoTraceEnabled *bool `json:"AutoTraceEnabled,omitempty" xml:"AutoTraceEnabled,omitempty"`
+	// This parameter is required.
+	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::DataWorks::Task
+	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	Tags []*TagDataAssetsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s TagDataAssetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagDataAssetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagDataAssetsRequest) SetAutoTraceEnabled(v bool) *TagDataAssetsRequest {
+	s.AutoTraceEnabled = &v
+	return s
+}
+
+func (s *TagDataAssetsRequest) SetDataAssetIds(v []*string) *TagDataAssetsRequest {
+	s.DataAssetIds = v
+	return s
+}
+
+func (s *TagDataAssetsRequest) SetDataAssetType(v string) *TagDataAssetsRequest {
+	s.DataAssetType = &v
+	return s
+}
+
+func (s *TagDataAssetsRequest) SetEnvType(v string) *TagDataAssetsRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *TagDataAssetsRequest) SetProjectId(v int64) *TagDataAssetsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *TagDataAssetsRequest) SetTags(v []*TagDataAssetsRequestTags) *TagDataAssetsRequest {
+	s.Tags = v
+	return s
+}
+
+type TagDataAssetsRequestTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagDataAssetsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagDataAssetsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *TagDataAssetsRequestTags) SetKey(v string) *TagDataAssetsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *TagDataAssetsRequestTags) SetValue(v string) *TagDataAssetsRequestTags {
+	s.Value = &v
+	return s
+}
+
+type TagDataAssetsShrinkRequest struct {
+	// example:
+	//
+	// false
+	AutoTraceEnabled *bool `json:"AutoTraceEnabled,omitempty" xml:"AutoTraceEnabled,omitempty"`
+	// This parameter is required.
+	DataAssetIdsShrink *string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::DataWorks::Task
+	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s TagDataAssetsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagDataAssetsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagDataAssetsShrinkRequest) SetAutoTraceEnabled(v bool) *TagDataAssetsShrinkRequest {
+	s.AutoTraceEnabled = &v
+	return s
+}
+
+func (s *TagDataAssetsShrinkRequest) SetDataAssetIdsShrink(v string) *TagDataAssetsShrinkRequest {
+	s.DataAssetIdsShrink = &v
+	return s
+}
+
+func (s *TagDataAssetsShrinkRequest) SetDataAssetType(v string) *TagDataAssetsShrinkRequest {
+	s.DataAssetType = &v
+	return s
+}
+
+func (s *TagDataAssetsShrinkRequest) SetEnvType(v string) *TagDataAssetsShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *TagDataAssetsShrinkRequest) SetProjectId(v int64) *TagDataAssetsShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *TagDataAssetsShrinkRequest) SetTagsShrink(v string) *TagDataAssetsShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type TagDataAssetsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1ec92159376
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TagDataAssetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagDataAssetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagDataAssetsResponseBody) SetRequestId(v string) *TagDataAssetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TagDataAssetsResponseBody) SetSuccess(v string) *TagDataAssetsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TagDataAssetsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagDataAssetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagDataAssetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagDataAssetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagDataAssetsResponse) SetHeaders(v map[string]*string) *TagDataAssetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagDataAssetsResponse) SetStatusCode(v int32) *TagDataAssetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagDataAssetsResponse) SetBody(v *TagDataAssetsResponseBody) *TagDataAssetsResponse {
+	s.Body = v
+	return s
+}
+
 type TriggerSchedulerTaskInstanceRequest struct {
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The task ID.
 	//
 	// This parameter is required.
@@ -37776,6 +41082,11 @@ func (s TriggerSchedulerTaskInstanceRequest) String() string {
 
 func (s TriggerSchedulerTaskInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TriggerSchedulerTaskInstanceRequest) SetEnvType(v string) *TriggerSchedulerTaskInstanceRequest {
+	s.EnvType = &v
+	return s
 }
 
 func (s *TriggerSchedulerTaskInstanceRequest) SetTaskId(v int64) *TriggerSchedulerTaskInstanceRequest {
@@ -37846,6 +41157,205 @@ func (s *TriggerSchedulerTaskInstanceResponse) SetStatusCode(v int32) *TriggerSc
 }
 
 func (s *TriggerSchedulerTaskInstanceResponse) SetBody(v *TriggerSchedulerTaskInstanceResponseBody) *TriggerSchedulerTaskInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UnTagDataAssetsRequest struct {
+	// This parameter is required.
+	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::DataWorks::Task
+	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 123
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	Tags []*UnTagDataAssetsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s UnTagDataAssetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagDataAssetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagDataAssetsRequest) SetDataAssetIds(v []*string) *UnTagDataAssetsRequest {
+	s.DataAssetIds = v
+	return s
+}
+
+func (s *UnTagDataAssetsRequest) SetDataAssetType(v string) *UnTagDataAssetsRequest {
+	s.DataAssetType = &v
+	return s
+}
+
+func (s *UnTagDataAssetsRequest) SetEnvType(v string) *UnTagDataAssetsRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *UnTagDataAssetsRequest) SetProjectId(v int64) *UnTagDataAssetsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UnTagDataAssetsRequest) SetTags(v []*UnTagDataAssetsRequestTags) *UnTagDataAssetsRequest {
+	s.Tags = v
+	return s
+}
+
+type UnTagDataAssetsRequestTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UnTagDataAssetsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagDataAssetsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagDataAssetsRequestTags) SetKey(v string) *UnTagDataAssetsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UnTagDataAssetsRequestTags) SetValue(v string) *UnTagDataAssetsRequestTags {
+	s.Value = &v
+	return s
+}
+
+type UnTagDataAssetsShrinkRequest struct {
+	// This parameter is required.
+	DataAssetIdsShrink *string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::DataWorks::Task
+	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 123
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s UnTagDataAssetsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagDataAssetsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagDataAssetsShrinkRequest) SetDataAssetIdsShrink(v string) *UnTagDataAssetsShrinkRequest {
+	s.DataAssetIdsShrink = &v
+	return s
+}
+
+func (s *UnTagDataAssetsShrinkRequest) SetDataAssetType(v string) *UnTagDataAssetsShrinkRequest {
+	s.DataAssetType = &v
+	return s
+}
+
+func (s *UnTagDataAssetsShrinkRequest) SetEnvType(v string) *UnTagDataAssetsShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *UnTagDataAssetsShrinkRequest) SetProjectId(v int64) *UnTagDataAssetsShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UnTagDataAssetsShrinkRequest) SetTagsShrink(v string) *UnTagDataAssetsShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type UnTagDataAssetsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 8754EE08-4AA2-5F77-ADD7-754DBBDA9F75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnTagDataAssetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagDataAssetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagDataAssetsResponseBody) SetRequestId(v string) *UnTagDataAssetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnTagDataAssetsResponseBody) SetSuccess(v string) *UnTagDataAssetsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnTagDataAssetsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnTagDataAssetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnTagDataAssetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagDataAssetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagDataAssetsResponse) SetHeaders(v map[string]*string) *UnTagDataAssetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnTagDataAssetsResponse) SetStatusCode(v int32) *UnTagDataAssetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnTagDataAssetsResponse) SetBody(v *UnTagDataAssetsResponseBody) *UnTagDataAssetsResponse {
 	s.Body = v
 	return s
 }
@@ -38053,7 +41563,7 @@ type UpdateAlertRuleRequestTriggerCondition struct {
 	//
 	// 	- Finished: An instance is successfully run.
 	//
-	// 	- UnFinished:An instance does not finish running before a specified point in time.
+	// 	- UnFinished: An instance does not finish running before a specified point in time.
 	//
 	// 	- Error: An error occurs on an instance.
 	//
@@ -38222,8 +41732,8 @@ type UpdateAlertRuleRequestTriggerConditionExtensionError struct {
 	//
 	// example:
 	//
-	// true
-	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	// false
+	AutoRerunAlertEnabled *bool `json:"AutoRerunAlertEnabled,omitempty" xml:"AutoRerunAlertEnabled,omitempty"`
 	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
 	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
@@ -38236,8 +41746,8 @@ func (s UpdateAlertRuleRequestTriggerConditionExtensionError) GoString() string 
 	return s.String()
 }
 
-func (s *UpdateAlertRuleRequestTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *UpdateAlertRuleRequestTriggerConditionExtensionError {
-	s.AutoRerunAlert = &v
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionError) SetAutoRerunAlertEnabled(v bool) *UpdateAlertRuleRequestTriggerConditionExtensionError {
+	s.AutoRerunAlertEnabled = &v
 	return s
 }
 
@@ -38330,7 +41840,7 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuat
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionTimeout struct {
-	// The timeout period. Unit: minutes. Valid values: [1, 21600].
+	// The timeout period. Unit: minutes.
 	//
 	// example:
 	//
@@ -38384,7 +41894,7 @@ type UpdateAlertRuleRequestTriggerConditionTarget struct {
 	//
 	// 	- Baseline: baseline
 	//
-	// 	- Project: workspace
+	// 	- project: workspace
 	//
 	// 	- BizProcess: workflow
 	//
@@ -38549,9 +42059,9 @@ func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *Updat
 }
 
 type UpdateDIAlarmRuleRequest struct {
-	// The ID of the alert rule.
+	// Deprecated
 	//
-	// This parameter is required.
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -38571,6 +42081,10 @@ type UpdateDIAlarmRuleRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 34982
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
 	// 	- Heartbeat
@@ -38627,6 +42141,11 @@ func (s *UpdateDIAlarmRuleRequest) SetEnabled(v bool) *UpdateDIAlarmRuleRequest 
 	return s
 }
 
+func (s *UpdateDIAlarmRuleRequest) SetId(v int64) *UpdateDIAlarmRuleRequest {
+	s.Id = &v
+	return s
+}
+
 func (s *UpdateDIAlarmRuleRequest) SetMetricType(v string) *UpdateDIAlarmRuleRequest {
 	s.MetricType = &v
 	return s
@@ -38648,12 +42167,15 @@ func (s *UpdateDIAlarmRuleRequest) SetTriggerConditions(v []*UpdateDIAlarmRuleRe
 }
 
 type UpdateDIAlarmRuleRequestNotificationSettings struct {
+	// Deprecated
+	//
 	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
 	//
 	// example:
 	//
 	// 5
 	InhibitionInterval *int64 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
+	MuteInterval       *int64 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
 	// The alert notification methods.
 	NotificationChannels []*UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
 	// The settings of alert notification recipients.
@@ -38670,6 +42192,11 @@ func (s UpdateDIAlarmRuleRequestNotificationSettings) GoString() string {
 
 func (s *UpdateDIAlarmRuleRequestNotificationSettings) SetInhibitionInterval(v int64) *UpdateDIAlarmRuleRequestNotificationSettings {
 	s.InhibitionInterval = &v
+	return s
+}
+
+func (s *UpdateDIAlarmRuleRequestNotificationSettings) SetMuteInterval(v int64) *UpdateDIAlarmRuleRequestNotificationSettings {
+	s.MuteInterval = &v
 	return s
 }
 
@@ -38758,8 +42285,11 @@ func (s *UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers) SetR
 }
 
 type UpdateDIAlarmRuleRequestTriggerConditions struct {
+	// Deprecated
+	//
 	// The types of DDL operations for which the alert rule takes effect.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
+	DdlTypes      []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
 	// example:
@@ -38803,6 +42333,11 @@ func (s *UpdateDIAlarmRuleRequestTriggerConditions) SetDdlReportTags(v []*string
 	return s
 }
 
+func (s *UpdateDIAlarmRuleRequestTriggerConditions) SetDdlTypes(v []*string) *UpdateDIAlarmRuleRequestTriggerConditions {
+	s.DdlTypes = v
+	return s
+}
+
 func (s *UpdateDIAlarmRuleRequestTriggerConditions) SetDuration(v int64) *UpdateDIAlarmRuleRequestTriggerConditions {
 	s.Duration = &v
 	return s
@@ -38819,9 +42354,9 @@ func (s *UpdateDIAlarmRuleRequestTriggerConditions) SetThreshold(v int64) *Updat
 }
 
 type UpdateDIAlarmRuleShrinkRequest struct {
-	// The ID of the alert rule.
+	// Deprecated
 	//
-	// This parameter is required.
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -38841,6 +42376,10 @@ type UpdateDIAlarmRuleShrinkRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 34982
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
 	// 	- Heartbeat
@@ -38894,6 +42433,11 @@ func (s *UpdateDIAlarmRuleShrinkRequest) SetDescription(v string) *UpdateDIAlarm
 
 func (s *UpdateDIAlarmRuleShrinkRequest) SetEnabled(v bool) *UpdateDIAlarmRuleShrinkRequest {
 	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateDIAlarmRuleShrinkRequest) SetId(v int64) *UpdateDIAlarmRuleShrinkRequest {
+	s.Id = &v
 	return s
 }
 
@@ -38984,9 +42528,9 @@ func (s *UpdateDIAlarmRuleResponse) SetBody(v *UpdateDIAlarmRuleResponseBody) *U
 }
 
 type UpdateDIJobRequest struct {
-	// The ID of the synchronization task.
+	// Deprecated
 	//
-	// This parameter is required.
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -38994,10 +42538,14 @@ type UpdateDIJobRequest struct {
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 11588
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettings *UpdateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
-	// DataWorks工作空间ID。您可以通过[ListProjects](https://help.aliyun.com/document_detail/178393.html)接口获取工作空间ID。
-	//
 	// example:
 	//
 	// 10000
@@ -39025,6 +42573,11 @@ func (s *UpdateDIJobRequest) SetDIJobId(v int64) *UpdateDIJobRequest {
 
 func (s *UpdateDIJobRequest) SetDescription(v string) *UpdateDIJobRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateDIJobRequest) SetId(v int64) *UpdateDIJobRequest {
+	s.Id = &v
 	return s
 }
 
@@ -39609,9 +43162,9 @@ func (s *UpdateDIJobRequestTransformationRules) SetRuleTargetType(v string) *Upd
 }
 
 type UpdateDIJobShrinkRequest struct {
-	// The ID of the synchronization task.
+	// Deprecated
 	//
-	// This parameter is required.
+	// This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -39619,10 +43172,14 @@ type UpdateDIJobShrinkRequest struct {
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// 11588
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
-	// DataWorks工作空间ID。您可以通过[ListProjects](https://help.aliyun.com/document_detail/178393.html)接口获取工作空间ID。
-	//
 	// example:
 	//
 	// 10000
@@ -39650,6 +43207,11 @@ func (s *UpdateDIJobShrinkRequest) SetDIJobId(v int64) *UpdateDIJobShrinkRequest
 
 func (s *UpdateDIJobShrinkRequest) SetDescription(v string) *UpdateDIJobShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateDIJobShrinkRequest) SetId(v int64) *UpdateDIJobShrinkRequest {
+	s.Id = &v
 	return s
 }
 
@@ -39744,27 +43306,172 @@ func (s *UpdateDIJobResponse) SetBody(v *UpdateDIJobResponseBody) *UpdateDIJobRe
 	return s
 }
 
+type UpdateDataAssetTagRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key      *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Managers []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
+	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDataAssetTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataAssetTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataAssetTagRequest) SetDescription(v string) *UpdateDataAssetTagRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataAssetTagRequest) SetKey(v string) *UpdateDataAssetTagRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateDataAssetTagRequest) SetManagers(v []*string) *UpdateDataAssetTagRequest {
+	s.Managers = v
+	return s
+}
+
+func (s *UpdateDataAssetTagRequest) SetValues(v []*string) *UpdateDataAssetTagRequest {
+	s.Values = v
+	return s
+}
+
+type UpdateDataAssetTagShrinkRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ManagersShrink *string `json:"Managers,omitempty" xml:"Managers,omitempty"`
+	ValuesShrink   *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s UpdateDataAssetTagShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataAssetTagShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataAssetTagShrinkRequest) SetDescription(v string) *UpdateDataAssetTagShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataAssetTagShrinkRequest) SetKey(v string) *UpdateDataAssetTagShrinkRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateDataAssetTagShrinkRequest) SetManagersShrink(v string) *UpdateDataAssetTagShrinkRequest {
+	s.ManagersShrink = &v
+	return s
+}
+
+func (s *UpdateDataAssetTagShrinkRequest) SetValuesShrink(v string) *UpdateDataAssetTagShrinkRequest {
+	s.ValuesShrink = &v
+	return s
+}
+
+type UpdateDataAssetTagResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1ec92159376
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDataAssetTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataAssetTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataAssetTagResponseBody) SetRequestId(v string) *UpdateDataAssetTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDataAssetTagResponseBody) SetSuccess(v bool) *UpdateDataAssetTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDataAssetTagResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDataAssetTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDataAssetTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataAssetTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataAssetTagResponse) SetHeaders(v map[string]*string) *UpdateDataAssetTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDataAssetTagResponse) SetStatusCode(v int32) *UpdateDataAssetTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDataAssetTagResponse) SetBody(v *UpdateDataAssetTagResponseBody) *UpdateDataAssetTagResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDataQualityEvaluationTaskRequest struct {
+	// The list of monitoring rules that are associated with the monitor.
 	DataQualityRules []*UpdateDataQualityEvaluationTaskRequestDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
+	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+	//
 	// example:
 	//
 	// 358750
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 质量监控任务描述
+	// The description of the monitor.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	// The hook.
 	Hooks []*UpdateDataQualityEvaluationTaskRequestHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// The ID of the monitor.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7227061794
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 质量监控任务名称
+	// The name of the monitor.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 数据质量校验任务通知订阅配置
+	// The configurations of alert notifications.
 	Notifications *UpdateDataQualityEvaluationTaskRequestNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// 项目空间Id
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//
@@ -39772,15 +43479,23 @@ type UpdateDataQualityEvaluationTaskRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	// The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
+	//
+	// 	- queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
+	//
+	// 	- sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
+	//
+	//     	- HIVE_SQL
+	//
+	//     	- SPARK_SQL
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	// The monitored object of the data quality monitoring task.
 	Target *UpdateDataQualityEvaluationTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// 数据质量校验任务的触发配置
+	// The trigger configuration of the monitor.
 	Trigger *UpdateDataQualityEvaluationTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -39848,23 +43563,46 @@ func (s *UpdateDataQualityEvaluationTaskRequest) SetTrigger(v *UpdateDataQuality
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRules struct {
+	// The check settings for sample data.
 	CheckingConfig *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	Description    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the rule.
+	//
 	// example:
 	//
 	// true
-	Enabled       *bool                                                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check fails.
 	ErrorHandlers []*UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// The rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID of the monitoring rule.
+	//
 	// example:
 	//
 	// 1022171560
-	Id             *int64                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the monitoring rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters required for sampling.
 	SamplingConfig *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// The strength of the rule.
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- High
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The ID of the template used by the rule.
+	//
 	// example:
 	//
 	// SYSTEM:field:null_value:fixed:0
@@ -39925,11 +43663,38 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetTemplateCode
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain specific types of thresholds, you must query reference values. In this example, an expression is used to specify the query method of referenced samples.
+	//
 	// example:
 	//
 	// {"bizdate": ["-1"]}
-	ReferencedSamplesFilter *string                                                                         `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	Thresholds              *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold settings.
+	Thresholds *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// The threshold calculation method.
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- Fluctuation
+	//
+	// 	- Auto
+	//
+	// 	- FluctationDiscreate
+	//
+	// 	- Average
+	//
+	// 	- Fixed
+	//
 	// example:
 	//
 	// Fixed
@@ -39960,9 +43725,12 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) S
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds struct {
+	// The threshold settings for critical alerts.
 	Critical *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	// The expected threshold setting.
 	Expected *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	Warned   *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+	// The threshold settings for normal alerts.
+	Warned *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
 func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) String() string {
@@ -39989,10 +43757,40 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
+	// The comparison operator. Valid values:
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- <=
+	//
+	// 	- <
+	//
+	// 	- ! =
+	//
+	// 	- \\=
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 0.01
@@ -40018,10 +43816,40 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
+	// The comparison operator. Valid values:
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// Valid values:
+	//
+	// 	- <=
+	//
+	// 	- <
+	//
+	// 	- ! =
+	//
+	// 	- \\=
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
 	// example:
 	//
 	// =
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 0
@@ -40047,10 +43875,40 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
+	// The comparison operator. Valid values:
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- <=
+	//
+	// 	- <
+	//
+	// 	- ! =
+	//
+	// 	- \\=
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 0.001
@@ -40076,10 +43934,20 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers struct {
+	// The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
+	//
 	// example:
 	//
 	// SELECT 	- FROM ods_d_openapi_log WHERE status = \\"Error\\"
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// The type of the operation.
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- SaveErrorData
+	//
 	// example:
 	//
 	// SaveErrorData
@@ -40105,18 +43973,88 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) Se
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig struct {
+	// The metrics used for sampling.
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
+	//
+	// 	- UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
+	//
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	//
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
 	// example:
 	//
 	// CountNotIn
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
 	// example:
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+	//
 	// example:
 	//
 	// status != \\"Succeeded\\"
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
 	// example:
 	//
 	// odps.sql.type.system.odps2=True,odps.sql.hive.compatible=True
@@ -40152,13 +44090,19 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) S
 }
 
 type UpdateDataQualityEvaluationTaskRequestHooks struct {
-	// Hook触发条件
+	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
+	//
+	// 	- Specify only one group of rule strength type and rule check status, such as ${severity} == "High" AND ${status} == "Critical". In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	//
+	// 	- Specify multiple groups of rule strength types and rule check status, such as (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error"). In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// Hook类型
+	// The hook type. Valid values:
+	//
+	// 	- BlockTaskInstance: Blocks the running of scheduling tasks.
 	//
 	// example:
 	//
@@ -40185,13 +44129,17 @@ func (s *UpdateDataQualityEvaluationTaskRequestHooks) SetType(v string) *UpdateD
 }
 
 type UpdateDataQualityEvaluationTaskRequestNotifications struct {
-	// 通知触发条件
+	// The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
+	//
+	// 	- Specify only one group of rule strength type and rule check status, such as ${severity} == "High" AND ${status} == "Critical". In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	//
+	// 	- Specify multiple groups of rule strength types and rule check status, such as (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error"). In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// 具体的消息通知设置
+	// The configurations of the alert notification.
 	Notifications []*UpdateDataQualityEvaluationTaskRequestNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -40214,9 +44162,9 @@ func (s *UpdateDataQualityEvaluationTaskRequestNotifications) SetNotifications(v
 }
 
 type UpdateDataQualityEvaluationTaskRequestNotificationsNotifications struct {
-	// 通知方式
+	// The alert notification method.
 	NotificationChannels []*UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// 告警接收人设置
+	// The configurations of alert recipients.
 	NotificationReceivers []*UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -40239,7 +44187,7 @@ func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotifications) SetNo
 }
 
 type UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels struct {
-	// 通知方式
+	// The alert notification method.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -40257,19 +44205,33 @@ func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotific
 }
 
 type UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers struct {
-	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	// The additional parameters that are required when alerts are sent. The parameters are JSON-formatted strings. The following keys are supported:
+	//
+	// 	- atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
+	//
+	// Valid values:
+	//
+	// 	- WebhookUrl
+	//
+	// 	- FeishuUrl
+	//
+	// 	- DingdingUrl
+	//
+	// 	- WeixinUrl
+	//
+	// 	- AliUid
 	//
 	// example:
 	//
 	// {  "atAll": true }
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 告警接收人类型
+	// The type of the alert recipient.
 	//
 	// example:
 	//
 	// DingdingUrl
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// 告警接收人
+	// The alert recipient.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -40297,19 +44259,35 @@ func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotific
 }
 
 type UpdateDataQualityEvaluationTaskRequestTarget struct {
-	// 表所属的数据库类型
+	// The type of the database to which the table belongs.
+	//
+	// Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- hologres
+	//
+	// 	- cdh
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
+	//
+	// 	- emr
+	//
+	// 	- analyticdb_for_postgresql
 	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// 分区表的分区设置
+	// The configuration of the partitioned table.
 	//
 	// example:
 	//
 	// dt=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// 表在数据地图中的唯一ID
+	// The ID of the table in Data Map.
 	//
 	// example:
 	//
@@ -40341,9 +44319,19 @@ func (s *UpdateDataQualityEvaluationTaskRequestTarget) SetTableGuid(v string) *U
 }
 
 type UpdateDataQualityEvaluationTaskRequestTrigger struct {
-	// 具体指明哪些调度节点的实例执行成功后可以触发
+	// The IDs of scheduling tasks. This parameter is valid only if you set Type to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// 何种事件可以触发质量校验任务执行
+	// The trigger type of the monitor.
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- ByScheduledTaskInstance: The monitor is triggered by the associated scheduling tasks.
+	//
+	// 	- ByManual: The monitor is manually triggered.
 	//
 	// example:
 	//
@@ -40370,26 +44358,31 @@ func (s *UpdateDataQualityEvaluationTaskRequestTrigger) SetType(v string) *Updat
 }
 
 type UpdateDataQualityEvaluationTaskShrinkRequest struct {
+	// The list of monitoring rules that are associated with the monitor.
 	DataQualityRulesShrink *string `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty"`
+	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+	//
 	// example:
 	//
 	// 358750
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 质量监控任务描述
+	// The description of the monitor.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	// The hook.
 	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// The ID of the monitor.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7227061794
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 质量监控任务名称
+	// The name of the monitor.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 数据质量校验任务通知订阅配置
+	// The configurations of alert notifications.
 	NotificationsShrink *string `json:"Notifications,omitempty" xml:"Notifications,omitempty"`
-	// 项目空间Id
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//
@@ -40397,15 +44390,23 @@ type UpdateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	// The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
+	//
+	// 	- queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
+	//
+	// 	- sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
+	//
+	//     	- HIVE_SQL
+	//
+	//     	- SPARK_SQL
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	// The monitored object of the data quality monitoring task.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// 数据质量校验任务的触发配置
+	// The trigger configuration of the monitor.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 
@@ -40473,10 +44474,14 @@ func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetTriggerShrink(v string
 }
 
 type UpdateDataQualityEvaluationTaskResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 8abcb91f-d266-4073-b907-2ed670378ed1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -41593,7 +45598,7 @@ type UpdateDataSourceRequest struct {
 	//
 	// 	- Prod: production environment
 	//
-	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
+	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// This parameter is required.
 	//
@@ -41754,7 +45759,7 @@ type UpdateFunctionRequest struct {
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter is required.
@@ -41762,7 +45767,7 @@ type UpdateFunctionRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the UDF. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
 	//
 	// This parameter is required.
@@ -41777,12 +45782,12 @@ func (s UpdateFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateFunctionRequest) SetId(v string) *UpdateFunctionRequest {
+func (s *UpdateFunctionRequest) SetId(v int64) *UpdateFunctionRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *UpdateFunctionRequest) SetProjectId(v string) *UpdateFunctionRequest {
+func (s *UpdateFunctionRequest) SetProjectId(v int64) *UpdateFunctionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -41866,7 +45871,7 @@ type UpdateNodeRequest struct {
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter is required.
@@ -41874,7 +45879,7 @@ type UpdateNodeRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the node. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
 	//
 	// This parameter is required.
@@ -41889,12 +45894,12 @@ func (s UpdateNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateNodeRequest) SetId(v string) *UpdateNodeRequest {
+func (s *UpdateNodeRequest) SetId(v int64) *UpdateNodeRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *UpdateNodeRequest) SetProjectId(v string) *UpdateNodeRequest {
+func (s *UpdateNodeRequest) SetProjectId(v int64) *UpdateNodeRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -42125,7 +46130,7 @@ type UpdateResourceRequest struct {
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter is required.
@@ -42133,7 +46138,7 @@ type UpdateResourceRequest struct {
 	// example:
 	//
 	// 10000
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
 	//
 	// This parameter is required.
@@ -42148,12 +46153,12 @@ func (s UpdateResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateResourceRequest) SetId(v string) *UpdateResourceRequest {
+func (s *UpdateResourceRequest) SetId(v int64) *UpdateResourceRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *UpdateResourceRequest) SetProjectId(v string) *UpdateResourceRequest {
+func (s *UpdateResourceRequest) SetProjectId(v int64) *UpdateResourceRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -42232,6 +46237,12 @@ func (s *UpdateResourceResponse) SetBody(v *UpdateResourceResponseBody) *UpdateR
 type UpdateResourceGroupRequest struct {
 	// The ID of the resource group.
 	//
+	// example:
+	//
+	// rg-aek2kqofrgXXXXX
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// The ID of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42260,6 +46271,11 @@ func (s UpdateResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateResourceGroupRequest) SetAliyunResourceGroupId(v string) *UpdateResourceGroupRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
 func (s *UpdateResourceGroupRequest) SetId(v string) *UpdateResourceGroupRequest {
 	s.Id = &v
 	return s
@@ -42282,7 +46298,7 @@ type UpdateResourceGroupResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -42633,7 +46649,7 @@ type UpdateWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter is required.
@@ -42641,7 +46657,7 @@ type UpdateWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 10001
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
 	//
 	// This parameter is required.
@@ -42656,12 +46672,12 @@ func (s UpdateWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateWorkflowDefinitionRequest) SetId(v string) *UpdateWorkflowDefinitionRequest {
+func (s *UpdateWorkflowDefinitionRequest) SetId(v int64) *UpdateWorkflowDefinitionRequest {
 	s.Id = &v
 	return s
 }
 
-func (s *UpdateWorkflowDefinitionRequest) SetProjectId(v string) *UpdateWorkflowDefinitionRequest {
+func (s *UpdateWorkflowDefinitionRequest) SetProjectId(v int64) *UpdateWorkflowDefinitionRequest {
 	s.ProjectId = &v
 	return s
 }
@@ -43264,6 +47280,10 @@ func (client *Client) CreateDIAlarmRule(request *CreateDIAlarmRuleRequest) (_res
 //
 // Creates a new-version synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - CreateDIJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -43328,6 +47348,10 @@ func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime
 //
 // Creates a new-version synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - CreateDIJobRequest
 //
 // @return CreateDIJobResponse
@@ -43344,7 +47368,97 @@ func (client *Client) CreateDIJob(request *CreateDIJobRequest) (_result *CreateD
 
 // Summary:
 //
-// 创建DataWorks数据质量监控
+// 创建标签
+//
+// @param tmpReq - CreateDataAssetTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataAssetTagResponse
+func (client *Client) CreateDataAssetTagWithOptions(tmpReq *CreateDataAssetTagRequest, runtime *util.RuntimeOptions) (_result *CreateDataAssetTagResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataAssetTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Managers)) {
+		request.ManagersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Managers, tea.String("Managers"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Values)) {
+		request.ValuesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Values, tea.String("Values"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagersShrink)) {
+		query["Managers"] = request.ManagersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValueType)) {
+		query["ValueType"] = request.ValueType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValuesShrink)) {
+		query["Values"] = request.ValuesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataAssetTag"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataAssetTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标签
+//
+// @param request - CreateDataAssetTagRequest
+//
+// @return CreateDataAssetTagResponse
+func (client *Client) CreateDataAssetTag(request *CreateDataAssetTagRequest) (_result *CreateDataAssetTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataAssetTagResponse{}
+	_body, _err := client.CreateDataAssetTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a monitor in DataWorks Data Quality.
+//
+// Description:
+//
+// This API operation is supported in all DataWorks editions.
 //
 // @param tmpReq - CreateDataQualityEvaluationTaskRequest
 //
@@ -43444,7 +47558,11 @@ func (client *Client) CreateDataQualityEvaluationTaskWithOptions(tmpReq *CreateD
 
 // Summary:
 //
-// 创建DataWorks数据质量监控
+// Creates a monitor in DataWorks Data Quality.
+//
+// Description:
+//
+// This API operation is supported in all DataWorks editions.
 //
 // @param request - CreateDataQualityEvaluationTaskRequest
 //
@@ -44340,7 +48458,11 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// Adds a member to a workspace.
+// Adds a workspace member and assigns a workspace-level role to the member.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - CreateProjectMemberRequest
 //
@@ -44396,7 +48518,11 @@ func (client *Client) CreateProjectMemberWithOptions(tmpReq *CreateProjectMember
 
 // Summary:
 //
-// Adds a member to a workspace.
+// Adds a workspace member and assigns a workspace-level role to the member.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - CreateProjectMemberRequest
 //
@@ -44492,21 +48618,35 @@ func (client *Client) CreateResource(request *CreateResourceRequest) (_result *C
 //
 // 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
 //
-// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
 //
-// @param request - CreateResourceGroupRequest
+// @param tmpReq - CreateResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateResourceGroupResponse
-func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateResourceGroupWithOptions(tmpReq *CreateResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateResourceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AliyunResourceTags)) {
+		request.AliyunResourceTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AliyunResourceTags, tea.String("AliyunResourceTags"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
-		body["AutoRenew"] = request.AutoRenew
+	if !tea.BoolValue(util.IsUnset(request.AliyunResourceGroupId)) {
+		body["AliyunResourceGroupId"] = request.AliyunResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunResourceTagsShrink)) {
+		body["AliyunResourceTags"] = request.AliyunResourceTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewEnabled)) {
+		body["AutoRenewEnabled"] = request.AutoRenewEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -44576,7 +48716,7 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 //
 // 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
 //
-// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -44856,6 +48996,10 @@ func (client *Client) DeleteDIAlarmRule(request *DeleteDIAlarmRuleRequest) (_res
 //
 // Deletes a new-version synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - DeleteDIJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -44894,6 +49038,10 @@ func (client *Client) DeleteDIJobWithOptions(request *DeleteDIJobRequest, runtim
 //
 // Deletes a new-version synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - DeleteDIJobRequest
 //
 // @return DeleteDIJobResponse
@@ -44901,6 +49049,76 @@ func (client *Client) DeleteDIJob(request *DeleteDIJobRequest) (_result *DeleteD
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDIJobResponse{}
 	_body, _err := client.DeleteDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除标签
+//
+// @param tmpReq - DeleteDataAssetTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAssetTagResponse
+func (client *Client) DeleteDataAssetTagWithOptions(tmpReq *DeleteDataAssetTagRequest, runtime *util.RuntimeOptions) (_result *DeleteDataAssetTagResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteDataAssetTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Values)) {
+		request.ValuesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Values, tea.String("Values"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValuesShrink)) {
+		query["Values"] = request.ValuesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataAssetTag"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataAssetTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除标签
+//
+// @param request - DeleteDataAssetTagRequest
+//
+// @return DeleteDataAssetTagResponse
+func (client *Client) DeleteDataAssetTag(request *DeleteDataAssetTagRequest) (_result *DeleteDataAssetTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataAssetTagResponse{}
+	_body, _err := client.DeleteDataAssetTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45464,6 +49682,10 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 //
 // Deletes a DataWorks workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - DeleteProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -45506,6 +49728,10 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 //
 // Deletes a DataWorks workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - DeleteProjectRequest
 //
 // @return DeleteProjectResponse
@@ -45522,7 +49748,11 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 
 // Summary:
 //
-// Removes a member from a workspace.
+// Removes a workspace member and the workspace-level roles that are assigned to the member.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - DeleteProjectMemberRequest
 //
@@ -45568,7 +49798,11 @@ func (client *Client) DeleteProjectMemberWithOptions(request *DeleteProjectMembe
 
 // Summary:
 //
-// Removes a member from a workspace.
+// Removes a workspace member and the workspace-level roles that are assigned to the member.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - DeleteProjectMemberRequest
 //
@@ -45664,7 +49898,7 @@ func (client *Client) DeleteResource(request *DeleteResourceRequest) (_result *D
 //
 // 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
 //
-// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -45712,7 +49946,7 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 //
 // 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
 //
-// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -46236,6 +50470,10 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 //
 // Queries the information about a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetDIJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -46274,6 +50512,10 @@ func (client *Client) GetDIJobWithOptions(request *GetDIJobRequest, runtime *uti
 //
 // Queries the information about a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetDIJobRequest
 //
 // @return GetDIJobResponse
@@ -46291,6 +50533,10 @@ func (client *Client) GetDIJob(request *GetDIJobRequest) (_result *GetDIJobRespo
 // Summary:
 //
 // Obtains logs generated for a synchronization task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetDIJobLogRequest
 //
@@ -46329,6 +50575,10 @@ func (client *Client) GetDIJobLogWithOptions(request *GetDIJobLogRequest, runtim
 // Summary:
 //
 // Obtains logs generated for a synchronization task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetDIJobLogRequest
 //
@@ -46948,6 +51198,10 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 //
 // Queries the information about a DataWorks workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -46985,6 +51239,10 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 // Summary:
 //
 // Queries the information about a DataWorks workspace.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetProjectRequest
 //
@@ -47388,6 +51646,10 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 //
 // Queries the information about an instance.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetTaskInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -47425,6 +51687,10 @@ func (client *Client) GetTaskInstanceWithOptions(request *GetTaskInstanceRequest
 // Summary:
 //
 // Queries the information about an instance.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetTaskInstanceRequest
 //
@@ -47872,6 +52138,10 @@ func (client *Client) ListDIAlarmRules(request *ListDIAlarmRulesRequest) (_resul
 //
 // Queries events for a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDIJobEventsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -47910,6 +52180,10 @@ func (client *Client) ListDIJobEventsWithOptions(request *ListDIJobEventsRequest
 //
 // Queries events for a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDIJobEventsRequest
 //
 // @return ListDIJobEventsResponse
@@ -47927,6 +52201,10 @@ func (client *Client) ListDIJobEvents(request *ListDIJobEventsRequest) (_result 
 // Summary:
 //
 // Queries metrics for a synchronization task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - ListDIJobMetricsRequest
 //
@@ -47972,6 +52250,10 @@ func (client *Client) ListDIJobMetricsWithOptions(tmpReq *ListDIJobMetricsReques
 //
 // Queries metrics for a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDIJobMetricsRequest
 //
 // @return ListDIJobMetricsResponse
@@ -47989,6 +52271,10 @@ func (client *Client) ListDIJobMetrics(request *ListDIJobMetricsRequest) (_resul
 // Summary:
 //
 // Queries the running information about a synchronization task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDIJobRunDetailsRequest
 //
@@ -48028,6 +52314,10 @@ func (client *Client) ListDIJobRunDetailsWithOptions(request *ListDIJobRunDetail
 //
 // Queries the running information about a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDIJobRunDetailsRequest
 //
 // @return ListDIJobRunDetailsResponse
@@ -48045,6 +52335,10 @@ func (client *Client) ListDIJobRunDetails(request *ListDIJobRunDetailsRequest) (
 // Summary:
 //
 // Queries a list of synchronization tasks.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDIJobsRequest
 //
@@ -48084,6 +52378,10 @@ func (client *Client) ListDIJobsWithOptions(request *ListDIJobsRequest, runtime 
 //
 // Queries a list of synchronization tasks.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDIJobsRequest
 //
 // @return ListDIJobsResponse
@@ -48091,6 +52389,128 @@ func (client *Client) ListDIJobs(request *ListDIJobsRequest) (_result *ListDIJob
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDIJobsResponse{}
 	_body, _err := client.ListDIJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询标签列表
+//
+// @param request - ListDataAssetTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAssetTagsResponse
+func (client *Client) ListDataAssetTagsWithOptions(request *ListDataAssetTagsRequest, runtime *util.RuntimeOptions) (_result *ListDataAssetTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataAssetTags"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataAssetTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询标签列表
+//
+// @param request - ListDataAssetTagsRequest
+//
+// @return ListDataAssetTagsResponse
+func (client *Client) ListDataAssetTags(request *ListDataAssetTagsRequest) (_result *ListDataAssetTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataAssetTagsResponse{}
+	_body, _err := client.ListDataAssetTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListDataAssets
+//
+// @param tmpReq - ListDataAssetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAssetsResponse
+func (client *Client) ListDataAssetsWithOptions(tmpReq *ListDataAssetsRequest, runtime *util.RuntimeOptions) (_result *ListDataAssetsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDataAssetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataAssetIds)) {
+		request.DataAssetIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataAssetIds, tea.String("DataAssetIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataAssets"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataAssetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ListDataAssets
+//
+// @param request - ListDataAssetsRequest
+//
+// @return ListDataAssetsResponse
+func (client *Client) ListDataAssets(request *ListDataAssetsRequest) (_result *ListDataAssetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataAssetsResponse{}
+	_body, _err := client.ListDataAssetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48284,14 +52704,14 @@ func (client *Client) ListDataQualityResults(request *ListDataQualityResultsRequ
 
 // Summary:
 //
-// Queries a list of data quality monitoring rule templates.
+// 查询质量规则模版列表
 //
-// @param request - ListDataQualityRuleTemplateRequest
+// @param request - ListDataQualityRuleTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return ListDataQualityRuleTemplateResponse
-func (client *Client) ListDataQualityRuleTemplateWithOptions(request *ListDataQualityRuleTemplateRequest, runtime *util.RuntimeOptions) (_result *ListDataQualityRuleTemplateResponse, _err error) {
+// @return ListDataQualityRuleTemplatesResponse
+func (client *Client) ListDataQualityRuleTemplatesWithOptions(request *ListDataQualityRuleTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListDataQualityRuleTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -48301,7 +52721,7 @@ func (client *Client) ListDataQualityRuleTemplateWithOptions(request *ListDataQu
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListDataQualityRuleTemplate"),
+		Action:      tea.String("ListDataQualityRuleTemplates"),
 		Version:     tea.String("2024-05-18"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -48311,7 +52731,7 @@ func (client *Client) ListDataQualityRuleTemplateWithOptions(request *ListDataQu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataQualityRuleTemplateResponse{}
+	_result = &ListDataQualityRuleTemplatesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -48322,15 +52742,15 @@ func (client *Client) ListDataQualityRuleTemplateWithOptions(request *ListDataQu
 
 // Summary:
 //
-// Queries a list of data quality monitoring rule templates.
+// 查询质量规则模版列表
 //
-// @param request - ListDataQualityRuleTemplateRequest
+// @param request - ListDataQualityRuleTemplatesRequest
 //
-// @return ListDataQualityRuleTemplateResponse
-func (client *Client) ListDataQualityRuleTemplate(request *ListDataQualityRuleTemplateRequest) (_result *ListDataQualityRuleTemplateResponse, _err error) {
+// @return ListDataQualityRuleTemplatesResponse
+func (client *Client) ListDataQualityRuleTemplates(request *ListDataQualityRuleTemplatesRequest) (_result *ListDataQualityRuleTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListDataQualityRuleTemplateResponse{}
-	_body, _err := client.ListDataQualityRuleTemplateWithOptions(request, runtime)
+	_result = &ListDataQualityRuleTemplatesResponse{}
+	_body, _err := client.ListDataQualityRuleTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48612,6 +53032,10 @@ func (client *Client) ListDeployments(request *ListDeploymentsRequest) (_result 
 //
 // Queries a list of descendant instances of an instance by page.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDownstreamTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48649,6 +53073,10 @@ func (client *Client) ListDownstreamTaskInstancesWithOptions(request *ListDownst
 // Summary:
 //
 // Queries a list of descendant instances of an instance by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDownstreamTaskInstancesRequest
 //
@@ -49270,6 +53698,10 @@ func (client *Client) ListResourceGroupsWithOptions(tmpReq *ListResourceGroupsRe
 	}
 	request := &ListResourceGroupsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AliyunResourceTags)) {
+		request.AliyunResourceTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AliyunResourceTags, tea.String("AliyunResourceTags"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceGroupTypes)) {
 		request.ResourceGroupTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceGroupTypes, tea.String("ResourceGroupTypes"), tea.String("json"))
 	}
@@ -49512,6 +53944,10 @@ func (client *Client) ListTaskInstanceOperationLogs(request *ListTaskInstanceOpe
 //
 // Queries a list of instances. You can also specify filter conditions to query specific instances.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - ListTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49635,6 +54071,10 @@ func (client *Client) ListTaskInstancesWithOptions(tmpReq *ListTaskInstancesRequ
 // Summary:
 //
 // Queries a list of instances. You can also specify filter conditions to query specific instances.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListTaskInstancesRequest
 //
@@ -49882,6 +54322,10 @@ func (client *Client) ListUpstreamTaskInstances(request *ListUpstreamTaskInstanc
 //
 // Queries a list of ancestor tasks of a task by page.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListUpstreamTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49919,6 +54363,10 @@ func (client *Client) ListUpstreamTasksWithOptions(request *ListUpstreamTasksReq
 // Summary:
 //
 // Queries a list of ancestor tasks of a task by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListUpstreamTasksRequest
 //
@@ -50762,6 +55210,10 @@ func (client *Client) ResumeTaskInstances(request *ResumeTaskInstancesRequest) (
 //
 // Revokes roles that are assigned to a member in a workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - RevokeMemberProjectRolesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50817,6 +55269,10 @@ func (client *Client) RevokeMemberProjectRolesWithOptions(tmpReq *RevokeMemberPr
 // Summary:
 //
 // Revokes roles that are assigned to a member in a workspace.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - RevokeMemberProjectRolesRequest
 //
@@ -50906,6 +55362,10 @@ func (client *Client) SetSuccessTaskInstances(request *SetSuccessTaskInstancesRe
 //
 // Starts a new-version synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - StartDIJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50950,6 +55410,10 @@ func (client *Client) StartDIJobWithOptions(tmpReq *StartDIJobRequest, runtime *
 //
 // Starts a new-version synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - StartDIJobRequest
 //
 // @return StartDIJobResponse
@@ -50967,6 +55431,10 @@ func (client *Client) StartDIJob(request *StartDIJobRequest) (_result *StartDIJo
 // Summary:
 //
 // Stops a synchronization task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - StopDIJobRequest
 //
@@ -51005,6 +55473,10 @@ func (client *Client) StopDIJobWithOptions(request *StopDIJobRequest, runtime *u
 // Summary:
 //
 // Stops a synchronization task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - StopDIJobRequest
 //
@@ -51162,6 +55634,96 @@ func (client *Client) SuspendTaskInstances(request *SuspendTaskInstancesRequest)
 
 // Summary:
 //
+// 为资产绑定标签
+//
+// @param tmpReq - TagDataAssetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagDataAssetsResponse
+func (client *Client) TagDataAssetsWithOptions(tmpReq *TagDataAssetsRequest, runtime *util.RuntimeOptions) (_result *TagDataAssetsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TagDataAssetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataAssetIds)) {
+		request.DataAssetIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataAssetIds, tea.String("DataAssetIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoTraceEnabled)) {
+		query["AutoTraceEnabled"] = request.AutoTraceEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataAssetIdsShrink)) {
+		query["DataAssetIds"] = request.DataAssetIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataAssetType)) {
+		query["DataAssetType"] = request.DataAssetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagDataAssets"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagDataAssetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为资产绑定标签
+//
+// @param request - TagDataAssetsRequest
+//
+// @return TagDataAssetsResponse
+func (client *Client) TagDataAssets(request *TagDataAssetsRequest) (_result *TagDataAssetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagDataAssetsResponse{}
+	_body, _err := client.TagDataAssetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Triggers a task to run by using an HTTP Trigger node at a specified time.
 //
 // Description:
@@ -51178,6 +55740,11 @@ func (client *Client) TriggerSchedulerTaskInstanceWithOptions(request *TriggerSc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		body["TaskId"] = request.TaskId
@@ -51188,7 +55755,8 @@ func (client *Client) TriggerSchedulerTaskInstanceWithOptions(request *TriggerSc
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TriggerSchedulerTaskInstance"),
@@ -51225,6 +55793,92 @@ func (client *Client) TriggerSchedulerTaskInstance(request *TriggerSchedulerTask
 	runtime := &util.RuntimeOptions{}
 	_result = &TriggerSchedulerTaskInstanceResponse{}
 	_body, _err := client.TriggerSchedulerTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 为资产解绑标签关系
+//
+// @param tmpReq - UnTagDataAssetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnTagDataAssetsResponse
+func (client *Client) UnTagDataAssetsWithOptions(tmpReq *UnTagDataAssetsRequest, runtime *util.RuntimeOptions) (_result *UnTagDataAssetsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UnTagDataAssetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataAssetIds)) {
+		request.DataAssetIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataAssetIds, tea.String("DataAssetIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataAssetIdsShrink)) {
+		query["DataAssetIds"] = request.DataAssetIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataAssetType)) {
+		query["DataAssetType"] = request.DataAssetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnTagDataAssets"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnTagDataAssetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为资产解绑标签关系
+//
+// @param request - UnTagDataAssetsRequest
+//
+// @return UnTagDataAssetsResponse
+func (client *Client) UnTagDataAssets(request *UnTagDataAssetsRequest) (_result *UnTagDataAssetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnTagDataAssetsResponse{}
+	_body, _err := client.UnTagDataAssetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51392,6 +56046,10 @@ func (client *Client) UpdateDIAlarmRule(request *UpdateDIAlarmRuleRequest) (_res
 //
 // Updates a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - UpdateDIJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51448,6 +56106,10 @@ func (client *Client) UpdateDIJobWithOptions(tmpReq *UpdateDIJobRequest, runtime
 //
 // Updates a synchronization task.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - UpdateDIJobRequest
 //
 // @return UpdateDIJobResponse
@@ -51464,7 +56126,93 @@ func (client *Client) UpdateDIJob(request *UpdateDIJobRequest) (_result *UpdateD
 
 // Summary:
 //
-// 更新数据质量校验任务
+// 更新标签
+//
+// @param tmpReq - UpdateDataAssetTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataAssetTagResponse
+func (client *Client) UpdateDataAssetTagWithOptions(tmpReq *UpdateDataAssetTagRequest, runtime *util.RuntimeOptions) (_result *UpdateDataAssetTagResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDataAssetTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Managers)) {
+		request.ManagersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Managers, tea.String("Managers"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Values)) {
+		request.ValuesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Values, tea.String("Values"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagersShrink)) {
+		query["Managers"] = request.ManagersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValuesShrink)) {
+		query["Values"] = request.ValuesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataAssetTag"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDataAssetTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新标签
+//
+// @param request - UpdateDataAssetTagRequest
+//
+// @return UpdateDataAssetTagResponse
+func (client *Client) UpdateDataAssetTag(request *UpdateDataAssetTagRequest) (_result *UpdateDataAssetTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDataAssetTagResponse{}
+	_body, _err := client.UpdateDataAssetTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a monitor.
+//
+// Description:
+//
+// This API operation is supported in all DataWorks editions.
 //
 // @param tmpReq - UpdateDataQualityEvaluationTaskRequest
 //
@@ -51568,7 +56316,11 @@ func (client *Client) UpdateDataQualityEvaluationTaskWithOptions(tmpReq *UpdateD
 
 // Summary:
 //
-// 更新数据质量校验任务
+// Updates a monitor.
+//
+// Description:
+//
+// This API operation is supported in all DataWorks editions.
 //
 // @param request - UpdateDataQualityEvaluationTaskRequest
 //
@@ -52195,6 +56947,10 @@ func (client *Client) UpdateResourceGroupWithOptions(request *UpdateResourceGrou
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunResourceGroupId)) {
+		body["AliyunResourceGroupId"] = request.AliyunResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
 	}
