@@ -2700,9 +2700,13 @@ func (s *CreateWmEmbedTaskRequest) SetWmType(v string) *CreateWmEmbedTaskRequest
 }
 
 type CreateWmEmbedTaskRequestCsvControl struct {
-	EmbedColumn    *int64  `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
-	EmbedPrecision *int64  `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
-	Method         *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	EmbedBitsNumberInEachTime *int64  `json:"EmbedBitsNumberInEachTime,omitempty" xml:"EmbedBitsNumberInEachTime,omitempty"`
+	EmbedColumn               *int64  `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
+	EmbedDensity              *string `json:"EmbedDensity,omitempty" xml:"EmbedDensity,omitempty"`
+	EmbedPrecision            *int64  `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
+	EmbedTimePosition         *string `json:"EmbedTimePosition,omitempty" xml:"EmbedTimePosition,omitempty"`
+	Method                    *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TimeFormat                *string `json:"TimeFormat,omitempty" xml:"TimeFormat,omitempty"`
 }
 
 func (s CreateWmEmbedTaskRequestCsvControl) String() string {
@@ -2713,8 +2717,18 @@ func (s CreateWmEmbedTaskRequestCsvControl) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWmEmbedTaskRequestCsvControl) SetEmbedBitsNumberInEachTime(v int64) *CreateWmEmbedTaskRequestCsvControl {
+	s.EmbedBitsNumberInEachTime = &v
+	return s
+}
+
 func (s *CreateWmEmbedTaskRequestCsvControl) SetEmbedColumn(v int64) *CreateWmEmbedTaskRequestCsvControl {
 	s.EmbedColumn = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestCsvControl) SetEmbedDensity(v string) *CreateWmEmbedTaskRequestCsvControl {
+	s.EmbedDensity = &v
 	return s
 }
 
@@ -2723,8 +2737,18 @@ func (s *CreateWmEmbedTaskRequestCsvControl) SetEmbedPrecision(v int64) *CreateW
 	return s
 }
 
+func (s *CreateWmEmbedTaskRequestCsvControl) SetEmbedTimePosition(v string) *CreateWmEmbedTaskRequestCsvControl {
+	s.EmbedTimePosition = &v
+	return s
+}
+
 func (s *CreateWmEmbedTaskRequestCsvControl) SetMethod(v string) *CreateWmEmbedTaskRequestCsvControl {
 	s.Method = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestCsvControl) SetTimeFormat(v string) *CreateWmEmbedTaskRequestCsvControl {
+	s.TimeFormat = &v
 	return s
 }
 
@@ -3206,9 +3230,12 @@ func (s *CreateWmExtractTaskRequest) SetWmType(v string) *CreateWmExtractTaskReq
 }
 
 type CreateWmExtractTaskRequestCsvControl struct {
-	EmbedColumn    *int64  `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
-	EmbedPrecision *int64  `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
-	Method         *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	EmbedBitsNumberInEachTime *int64  `json:"EmbedBitsNumberInEachTime,omitempty" xml:"EmbedBitsNumberInEachTime,omitempty"`
+	EmbedColumn               *int64  `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
+	EmbedPrecision            *int64  `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
+	EmbedTimePosition         *string `json:"EmbedTimePosition,omitempty" xml:"EmbedTimePosition,omitempty"`
+	Method                    *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TimeFormat                *string `json:"TimeFormat,omitempty" xml:"TimeFormat,omitempty"`
 }
 
 func (s CreateWmExtractTaskRequestCsvControl) String() string {
@@ -3217,6 +3244,11 @@ func (s CreateWmExtractTaskRequestCsvControl) String() string {
 
 func (s CreateWmExtractTaskRequestCsvControl) GoString() string {
 	return s.String()
+}
+
+func (s *CreateWmExtractTaskRequestCsvControl) SetEmbedBitsNumberInEachTime(v int64) *CreateWmExtractTaskRequestCsvControl {
+	s.EmbedBitsNumberInEachTime = &v
+	return s
 }
 
 func (s *CreateWmExtractTaskRequestCsvControl) SetEmbedColumn(v int64) *CreateWmExtractTaskRequestCsvControl {
@@ -3229,8 +3261,18 @@ func (s *CreateWmExtractTaskRequestCsvControl) SetEmbedPrecision(v int64) *Creat
 	return s
 }
 
+func (s *CreateWmExtractTaskRequestCsvControl) SetEmbedTimePosition(v string) *CreateWmExtractTaskRequestCsvControl {
+	s.EmbedTimePosition = &v
+	return s
+}
+
 func (s *CreateWmExtractTaskRequestCsvControl) SetMethod(v string) *CreateWmExtractTaskRequestCsvControl {
 	s.Method = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequestCsvControl) SetTimeFormat(v string) *CreateWmExtractTaskRequestCsvControl {
+	s.TimeFormat = &v
 	return s
 }
 
