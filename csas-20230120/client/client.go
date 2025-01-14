@@ -9,6 +9,165 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AuthReportInterval struct {
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	Value    *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AuthReportInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthReportInterval) GoString() string {
+	return s.String()
+}
+
+func (s *AuthReportInterval) SetTimeUnit(v string) *AuthReportInterval {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *AuthReportInterval) SetValue(v int64) *AuthReportInterval {
+	s.Value = &v
+	return s
+}
+
+type DisposalContent struct {
+	// if can be null:
+	// true
+	AlertContent *string `json:"AlertContent,omitempty" xml:"AlertContent,omitempty"`
+	// if can be null:
+	// true
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	NotifyActions   []*string `json:"NotifyActions,omitempty" xml:"NotifyActions,omitempty" type:"Repeated"`
+	ProhibitActions []*string `json:"ProhibitActions,omitempty" xml:"ProhibitActions,omitempty" type:"Repeated"`
+}
+
+func (s DisposalContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisposalContent) GoString() string {
+	return s.String()
+}
+
+func (s *DisposalContent) SetAlertContent(v string) *DisposalContent {
+	s.AlertContent = &v
+	return s
+}
+
+func (s *DisposalContent) SetAlertTitle(v string) *DisposalContent {
+	s.AlertTitle = &v
+	return s
+}
+
+func (s *DisposalContent) SetNotifyActions(v []*string) *DisposalContent {
+	s.NotifyActions = v
+	return s
+}
+
+func (s *DisposalContent) SetProhibitActions(v []*string) *DisposalContent {
+	s.ProhibitActions = v
+	return s
+}
+
+type RecoveryContent struct {
+	AuthReportInterval *AuthReportInterval `json:"AuthReportInterval,omitempty" xml:"AuthReportInterval,omitempty"`
+	// This parameter is required.
+	RecoveryActions []*string `json:"RecoveryActions,omitempty" xml:"RecoveryActions,omitempty" type:"Repeated"`
+}
+
+func (s RecoveryContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoveryContent) GoString() string {
+	return s.String()
+}
+
+func (s *RecoveryContent) SetAuthReportInterval(v *AuthReportInterval) *RecoveryContent {
+	s.AuthReportInterval = v
+	return s
+}
+
+func (s *RecoveryContent) SetRecoveryActions(v []*string) *RecoveryContent {
+	s.RecoveryActions = v
+	return s
+}
+
+type Rule struct {
+	// if can be null:
+	// true
+	Combinator *string `json:"Combinator,omitempty" xml:"Combinator,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// if can be null:
+	// true
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// if can be null:
+	// true
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// if can be null:
+	// true
+	RuleSubType *string `json:"RuleSubType,omitempty" xml:"RuleSubType,omitempty"`
+	// if can be null:
+	// true
+	RuleType *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Rules    []*Rule   `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s Rule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Rule) GoString() string {
+	return s.String()
+}
+
+func (s *Rule) SetCombinator(v string) *Rule {
+	s.Combinator = &v
+	return s
+}
+
+func (s *Rule) SetId(v string) *Rule {
+	s.Id = &v
+	return s
+}
+
+func (s *Rule) SetName(v string) *Rule {
+	s.Name = &v
+	return s
+}
+
+func (s *Rule) SetOperator(v string) *Rule {
+	s.Operator = &v
+	return s
+}
+
+func (s *Rule) SetRuleSubType(v string) *Rule {
+	s.RuleSubType = &v
+	return s
+}
+
+func (s *Rule) SetRuleType(v string) *Rule {
+	s.RuleType = &v
+	return s
+}
+
+func (s *Rule) SetRules(v []*Rule) *Rule {
+	s.Rules = v
+	return s
+}
+
+func (s *Rule) SetValues(v []*string) *Rule {
+	s.Values = v
+	return s
+}
+
 type AttachApplication2ConnectorRequest struct {
 	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
@@ -116,6 +275,605 @@ func (s *AttachApplication2ConnectorResponse) SetStatusCode(v int32) *AttachAppl
 }
 
 func (s *AttachApplication2ConnectorResponse) SetBody(v *AttachApplication2ConnectorResponseBody) *AttachApplication2ConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type AttachPolicy2ApprovalProcessRequest struct {
+	// example:
+	//
+	// ladp-27a4fedf5e73****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-process-2677fcf063f5****
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s AttachPolicy2ApprovalProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachPolicy2ApprovalProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachPolicy2ApprovalProcessRequest) SetPolicyId(v string) *AttachPolicy2ApprovalProcessRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *AttachPolicy2ApprovalProcessRequest) SetPolicyType(v string) *AttachPolicy2ApprovalProcessRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *AttachPolicy2ApprovalProcessRequest) SetProcessId(v string) *AttachPolicy2ApprovalProcessRequest {
+	s.ProcessId = &v
+	return s
+}
+
+type AttachPolicy2ApprovalProcessResponseBody struct {
+	// example:
+	//
+	// C51D9340-4604-5331-AE62-407F3B408F86
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachPolicy2ApprovalProcessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachPolicy2ApprovalProcessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachPolicy2ApprovalProcessResponseBody) SetRequestId(v string) *AttachPolicy2ApprovalProcessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachPolicy2ApprovalProcessResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachPolicy2ApprovalProcessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachPolicy2ApprovalProcessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachPolicy2ApprovalProcessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachPolicy2ApprovalProcessResponse) SetHeaders(v map[string]*string) *AttachPolicy2ApprovalProcessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachPolicy2ApprovalProcessResponse) SetStatusCode(v int32) *AttachPolicy2ApprovalProcessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachPolicy2ApprovalProcessResponse) SetBody(v *AttachPolicy2ApprovalProcessResponseBody) *AttachPolicy2ApprovalProcessResponse {
+	s.Body = v
+	return s
+}
+
+type CreateApprovalProcessRequest struct {
+	Description  *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	MatchSchemas *CreateApprovalProcessRequestMatchSchemas `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_process
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// This parameter is required.
+	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+}
+
+func (s CreateApprovalProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessRequest) SetDescription(v string) *CreateApprovalProcessRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequest) SetMatchSchemas(v *CreateApprovalProcessRequestMatchSchemas) *CreateApprovalProcessRequest {
+	s.MatchSchemas = v
+	return s
+}
+
+func (s *CreateApprovalProcessRequest) SetProcessName(v string) *CreateApprovalProcessRequest {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequest) SetProcessNodes(v [][]*string) *CreateApprovalProcessRequest {
+	s.ProcessNodes = v
+	return s
+}
+
+type CreateApprovalProcessRequestMatchSchemas struct {
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	AppUninstallSchemaId *string `json:"AppUninstallSchemaId,omitempty" xml:"AppUninstallSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DeviceRegistrationSchemaId *string `json:"DeviceRegistrationSchemaId,omitempty" xml:"DeviceRegistrationSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DlpSendSchemaId *string `json:"DlpSendSchemaId,omitempty" xml:"DlpSendSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DomainBlacklistSchemaId *string `json:"DomainBlacklistSchemaId,omitempty" xml:"DomainBlacklistSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DomainWhitelistSchemaId *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	PeripheralBlockSchemaId *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SoftwareBlockSchemaId *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessRequestMatchSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessRequestMatchSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetAppUninstallSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.AppUninstallSchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetDeviceRegistrationSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.DeviceRegistrationSchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetDlpSendSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.DlpSendSchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetDomainBlacklistSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.DomainBlacklistSchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetDomainWhitelistSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.DomainWhitelistSchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetPeripheralBlockSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.PeripheralBlockSchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetSoftwareBlockSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.SoftwareBlockSchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessShrinkRequest struct {
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MatchSchemasShrink *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_process
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// This parameter is required.
+	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+}
+
+func (s CreateApprovalProcessShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessShrinkRequest) SetDescription(v string) *CreateApprovalProcessShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateApprovalProcessShrinkRequest) SetMatchSchemasShrink(v string) *CreateApprovalProcessShrinkRequest {
+	s.MatchSchemasShrink = &v
+	return s
+}
+
+func (s *CreateApprovalProcessShrinkRequest) SetProcessName(v string) *CreateApprovalProcessShrinkRequest {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *CreateApprovalProcessShrinkRequest) SetProcessNodes(v [][]*string) *CreateApprovalProcessShrinkRequest {
+	s.ProcessNodes = v
+	return s
+}
+
+type CreateApprovalProcessResponseBody struct {
+	Process *CreateApprovalProcessResponseBodyProcess `json:"Process,omitempty" xml:"Process,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2CABFEBB-0CE7-575E-833A-266F75D46713
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBody) SetProcess(v *CreateApprovalProcessResponseBodyProcess) *CreateApprovalProcessResponseBody {
+	s.Process = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBody) SetRequestId(v string) *CreateApprovalProcessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcess struct {
+	AppUninstallPolicies *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2022-10-25 10:44:09
+	CreateTime                 *string                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceRegistrationPolicies *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
+	DlpSendPolicies            *CreateApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
+	DomainBlacklistPolicies    *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
+	DomainWhitelistPolicies    *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	PeripheralBlockPolicies    *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// approval-process-dc61e92ba5c5****
+	ProcessId             *string                                                        `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName           *string                                                        `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes          [][]*CreateApprovalProcessResponseBodyProcessProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcess) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcess) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetAppUninstallPolicies(v *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.AppUninstallPolicies = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetCreateTime(v string) *CreateApprovalProcessResponseBodyProcess {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetDescription(v string) *CreateApprovalProcessResponseBodyProcess {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetDeviceRegistrationPolicies(v *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.DeviceRegistrationPolicies = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetDlpSendPolicies(v *CreateApprovalProcessResponseBodyProcessDlpSendPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.DlpSendPolicies = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetDomainBlacklistPolicies(v *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.DomainBlacklistPolicies = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetDomainWhitelistPolicies(v *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.DomainWhitelistPolicies = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetPeripheralBlockPolicies(v *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.PeripheralBlockPolicies = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetProcessId(v string) *CreateApprovalProcessResponseBodyProcess {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetProcessName(v string) *CreateApprovalProcessResponseBodyProcess {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetProcessNodes(v [][]*CreateApprovalProcessResponseBodyProcessProcessNodes) *CreateApprovalProcessResponseBodyProcess {
+	s.ProcessNodes = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetSoftwareBlockPolicies(v *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.SoftwareBlockPolicies = v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessAppUninstallPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessAppUninstallPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessDlpSendPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDlpSendPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDlpSendPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDlpSendPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDlpSendPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessProcessNodes struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessProcessNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessProcessNodes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessProcessNodes) SetSaseUserId(v string) *CreateApprovalProcessResponseBodyProcessProcessNodes {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessProcessNodes) SetUsername(v string) *CreateApprovalProcessResponseBodyProcessProcessNodes {
+	s.Username = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApprovalProcessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateApprovalProcessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponse) SetHeaders(v map[string]*string) *CreateApprovalProcessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponse) SetStatusCode(v int32) *CreateApprovalProcessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApprovalProcessResponse) SetBody(v *CreateApprovalProcessResponseBody) *CreateApprovalProcessResponse {
 	s.Body = v
 	return s
 }
@@ -2754,6 +3512,73 @@ func (s *CreateWmInfoMappingResponse) SetBody(v *CreateWmInfoMappingResponseBody
 	return s
 }
 
+type DeleteApprovalProcessesRequest struct {
+	// This parameter is required.
+	ProcessIds []*string `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteApprovalProcessesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApprovalProcessesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApprovalProcessesRequest) SetProcessIds(v []*string) *DeleteApprovalProcessesRequest {
+	s.ProcessIds = v
+	return s
+}
+
+type DeleteApprovalProcessesResponseBody struct {
+	// example:
+	//
+	// B608C6AE-623D-55C4-9454-601B88AE937E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteApprovalProcessesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApprovalProcessesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApprovalProcessesResponseBody) SetRequestId(v string) *DeleteApprovalProcessesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteApprovalProcessesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApprovalProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteApprovalProcessesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApprovalProcessesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApprovalProcessesResponse) SetHeaders(v map[string]*string) *DeleteApprovalProcessesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApprovalProcessesResponse) SetStatusCode(v int32) *DeleteApprovalProcessesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteApprovalProcessesResponse) SetBody(v *DeleteApprovalProcessesResponseBody) *DeleteApprovalProcessesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteClientUserRequest struct {
 	// This parameter is required.
 	//
@@ -3506,6 +4331,99 @@ func (s *DetachApplication2ConnectorResponse) SetBody(v *DetachApplication2Conne
 	return s
 }
 
+type DetachPolicy2ApprovalProcessRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ladp-27a4fedf5e73****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeripheralBlock
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-process-2677fcf063f5****
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s DetachPolicy2ApprovalProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachPolicy2ApprovalProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachPolicy2ApprovalProcessRequest) SetPolicyId(v string) *DetachPolicy2ApprovalProcessRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DetachPolicy2ApprovalProcessRequest) SetPolicyType(v string) *DetachPolicy2ApprovalProcessRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *DetachPolicy2ApprovalProcessRequest) SetProcessId(v string) *DetachPolicy2ApprovalProcessRequest {
+	s.ProcessId = &v
+	return s
+}
+
+type DetachPolicy2ApprovalProcessResponseBody struct {
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachPolicy2ApprovalProcessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachPolicy2ApprovalProcessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachPolicy2ApprovalProcessResponseBody) SetRequestId(v string) *DetachPolicy2ApprovalProcessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachPolicy2ApprovalProcessResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachPolicy2ApprovalProcessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachPolicy2ApprovalProcessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachPolicy2ApprovalProcessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachPolicy2ApprovalProcessResponse) SetHeaders(v map[string]*string) *DetachPolicy2ApprovalProcessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachPolicy2ApprovalProcessResponse) SetStatusCode(v int32) *DetachPolicy2ApprovalProcessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachPolicy2ApprovalProcessResponse) SetBody(v *DetachPolicy2ApprovalProcessResponseBody) *DetachPolicy2ApprovalProcessResponse {
+	s.Body = v
+	return s
+}
+
 type ExportUserDevicesRequest struct {
 	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
 	Department  *string   `json:"Department,omitempty" xml:"Department,omitempty"`
@@ -3772,6 +4690,1091 @@ func (s *GetActiveIdpConfigResponse) SetStatusCode(v int32) *GetActiveIdpConfigR
 }
 
 func (s *GetActiveIdpConfigResponse) SetBody(v *GetActiveIdpConfigResponseBody) *GetActiveIdpConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetApprovalRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-872b5e911b35****
+	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
+}
+
+func (s GetApprovalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalRequest) SetApprovalId(v string) *GetApprovalRequest {
+	s.ApprovalId = &v
+	return s
+}
+
+type GetApprovalResponseBody struct {
+	Approval []*GetApprovalResponseBodyApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetApprovalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalResponseBody) SetApproval(v []*GetApprovalResponseBodyApproval) *GetApprovalResponseBody {
+	s.Approval = v
+	return s
+}
+
+func (s *GetApprovalResponseBody) SetRequestId(v string) *GetApprovalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetApprovalResponseBodyApproval struct {
+	ApprovalDetail *string `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty"`
+	// example:
+	//
+	// approval-3564b140642f****
+	ApprovalId         *string                                              `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
+	ApprovalProgresses []*GetApprovalResponseBodyApprovalApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-11-15 22:11:55
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorDepartment *string `json:"CreatorDepartment,omitempty" xml:"CreatorDepartment,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	CreatorUserId   *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
+	// example:
+	//
+	// 1757952000
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// approval-process-fcc351b8a95b****
+	ProcessId   *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// {"form": {"labelCol": 6,"wrapperCol": 12}}
+	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// Pending
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetApprovalResponseBodyApproval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalResponseBodyApproval) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalResponseBodyApproval) SetApprovalDetail(v string) *GetApprovalResponseBodyApproval {
+	s.ApprovalDetail = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetApprovalId(v string) *GetApprovalResponseBodyApproval {
+	s.ApprovalId = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetApprovalProgresses(v []*GetApprovalResponseBodyApprovalApprovalProgresses) *GetApprovalResponseBodyApproval {
+	s.ApprovalProgresses = v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetCreateTime(v string) *GetApprovalResponseBodyApproval {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetCreatorDepartment(v string) *GetApprovalResponseBodyApproval {
+	s.CreatorDepartment = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetCreatorDevTag(v string) *GetApprovalResponseBodyApproval {
+	s.CreatorDevTag = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetCreatorUserId(v string) *GetApprovalResponseBodyApproval {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetCreatorUsername(v string) *GetApprovalResponseBodyApproval {
+	s.CreatorUsername = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetEndTimestamp(v int64) *GetApprovalResponseBodyApproval {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetPolicyType(v string) *GetApprovalResponseBodyApproval {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetProcessId(v string) *GetApprovalResponseBodyApproval {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetProcessName(v string) *GetApprovalResponseBodyApproval {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetReason(v string) *GetApprovalResponseBodyApproval {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetSchemaContent(v string) *GetApprovalResponseBodyApproval {
+	s.SchemaContent = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetSchemaId(v string) *GetApprovalResponseBodyApproval {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetSchemaName(v string) *GetApprovalResponseBodyApproval {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApproval) SetStatus(v string) *GetApprovalResponseBodyApproval {
+	s.Status = &v
+	return s
+}
+
+type GetApprovalResponseBodyApprovalApprovalProgresses struct {
+	// example:
+	//
+	// Approve
+	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	Executor  *string                                                       `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	Operators []*GetApprovalResponseBodyApprovalApprovalProgressesOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Approved
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1736752000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetApprovalResponseBodyApprovalApprovalProgresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalResponseBodyApprovalApprovalProgresses) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgresses) SetAction(v string) *GetApprovalResponseBodyApprovalApprovalProgresses {
+	s.Action = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgresses) SetComment(v string) *GetApprovalResponseBodyApprovalApprovalProgresses {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgresses) SetExecutor(v string) *GetApprovalResponseBodyApprovalApprovalProgresses {
+	s.Executor = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgresses) SetOperators(v []*GetApprovalResponseBodyApprovalApprovalProgressesOperators) *GetApprovalResponseBodyApprovalApprovalProgresses {
+	s.Operators = v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgresses) SetStatus(v string) *GetApprovalResponseBodyApprovalApprovalProgresses {
+	s.Status = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgresses) SetTimestamp(v int64) *GetApprovalResponseBodyApprovalApprovalProgresses {
+	s.Timestamp = &v
+	return s
+}
+
+type GetApprovalResponseBodyApprovalApprovalProgressesOperators struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetApprovalResponseBodyApprovalApprovalProgressesOperators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalResponseBodyApprovalApprovalProgressesOperators) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgressesOperators) SetSaseUserId(v string) *GetApprovalResponseBodyApprovalApprovalProgressesOperators {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *GetApprovalResponseBodyApprovalApprovalProgressesOperators) SetUsername(v string) *GetApprovalResponseBodyApprovalApprovalProgressesOperators {
+	s.Username = &v
+	return s
+}
+
+type GetApprovalResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApprovalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApprovalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalResponse) SetHeaders(v map[string]*string) *GetApprovalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApprovalResponse) SetStatusCode(v int32) *GetApprovalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApprovalResponse) SetBody(v *GetApprovalResponseBody) *GetApprovalResponse {
+	s.Body = v
+	return s
+}
+
+type GetApprovalProcessRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-process-fcc351b8a95b****
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s GetApprovalProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessRequest) SetProcessId(v string) *GetApprovalProcessRequest {
+	s.ProcessId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBody struct {
+	Process *GetApprovalProcessResponseBodyProcess `json:"Process,omitempty" xml:"Process,omitempty" type:"Struct"`
+	// example:
+	//
+	// C81E0B4B-AAEB-5FDD-B27E-3F5AF7EBD7EF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBody) SetProcess(v *GetApprovalProcessResponseBodyProcess) *GetApprovalProcessResponseBody {
+	s.Process = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBody) SetRequestId(v string) *GetApprovalProcessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcess struct {
+	AppUninstallPolicies *GetApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2022-10-25 10:44:09
+	CreateTime                 *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceRegistrationPolicies *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
+	DlpSendPolicies            *GetApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
+	DomainBlacklistPolicies    *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
+	DomainWhitelistPolicies    *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	PeripheralBlockPolicies    *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// approval-process-35ee09077ee9****
+	ProcessId             *string                                                     `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName           *string                                                     `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes          [][]*GetApprovalProcessResponseBodyProcessProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+}
+
+func (s GetApprovalProcessResponseBodyProcess) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcess) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetAppUninstallPolicies(v *GetApprovalProcessResponseBodyProcessAppUninstallPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.AppUninstallPolicies = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetCreateTime(v string) *GetApprovalProcessResponseBodyProcess {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetDescription(v string) *GetApprovalProcessResponseBodyProcess {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetDeviceRegistrationPolicies(v *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.DeviceRegistrationPolicies = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetDlpSendPolicies(v *GetApprovalProcessResponseBodyProcessDlpSendPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.DlpSendPolicies = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetDomainBlacklistPolicies(v *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.DomainBlacklistPolicies = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetDomainWhitelistPolicies(v *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.DomainWhitelistPolicies = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetPeripheralBlockPolicies(v *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.PeripheralBlockPolicies = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetProcessId(v string) *GetApprovalProcessResponseBodyProcess {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetProcessName(v string) *GetApprovalProcessResponseBodyProcess {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetProcessNodes(v [][]*GetApprovalProcessResponseBodyProcessProcessNodes) *GetApprovalProcessResponseBodyProcess {
+	s.ProcessNodes = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetSoftwareBlockPolicies(v *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.SoftwareBlockPolicies = v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessAppUninstallPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessAppUninstallPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessAppUninstallPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessAppUninstallPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessDlpSendPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessDlpSendPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessDlpSendPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDlpSendPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDlpSendPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessProcessNodes struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessProcessNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessProcessNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessProcessNodes) SetSaseUserId(v string) *GetApprovalProcessResponseBodyProcessProcessNodes {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessProcessNodes) SetUsername(v string) *GetApprovalProcessResponseBodyProcessProcessNodes {
+	s.Username = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApprovalProcessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApprovalProcessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponse) SetHeaders(v map[string]*string) *GetApprovalProcessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApprovalProcessResponse) SetStatusCode(v int32) *GetApprovalProcessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponse) SetBody(v *GetApprovalProcessResponseBody) *GetApprovalProcessResponse {
+	s.Body = v
+	return s
+}
+
+type GetApprovalSchemaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalSchemaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalSchemaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalSchemaRequest) SetSchemaId(v string) *GetApprovalSchemaRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalSchemaResponseBody struct {
+	// example:
+	//
+	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schema    *GetApprovalSchemaResponseBodySchema `json:"Schema,omitempty" xml:"Schema,omitempty" type:"Struct"`
+}
+
+func (s GetApprovalSchemaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalSchemaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalSchemaResponseBody) SetRequestId(v string) *GetApprovalSchemaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBody) SetSchema(v *GetApprovalSchemaResponseBodySchema) *GetApprovalSchemaResponseBody {
+	s.Schema = v
+	return s
+}
+
+type GetApprovalSchemaResponseBodySchema struct {
+	// example:
+	//
+	// 2022-02-14 11:57:51
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// {"form": {"labelCol": 6,"wrapperCol": 12}}
+	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// 1715680940
+	SchemaVersion *int64 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+}
+
+func (s GetApprovalSchemaResponseBodySchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalSchemaResponseBodySchema) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetCreateTime(v string) *GetApprovalSchemaResponseBodySchema {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetDescription(v string) *GetApprovalSchemaResponseBodySchema {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetIsDefault(v bool) *GetApprovalSchemaResponseBodySchema {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetPolicyType(v string) *GetApprovalSchemaResponseBodySchema {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetSchemaContent(v string) *GetApprovalSchemaResponseBodySchema {
+	s.SchemaContent = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetSchemaId(v string) *GetApprovalSchemaResponseBodySchema {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetSchemaName(v string) *GetApprovalSchemaResponseBodySchema {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponseBodySchema) SetSchemaVersion(v int64) *GetApprovalSchemaResponseBodySchema {
+	s.SchemaVersion = &v
+	return s
+}
+
+type GetApprovalSchemaResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApprovalSchemaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApprovalSchemaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalSchemaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalSchemaResponse) SetHeaders(v map[string]*string) *GetApprovalSchemaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApprovalSchemaResponse) SetStatusCode(v int32) *GetApprovalSchemaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApprovalSchemaResponse) SetBody(v *GetApprovalSchemaResponseBody) *GetApprovalSchemaResponse {
+	s.Body = v
+	return s
+}
+
+type GetBootAndAntiUninstallPolicyResponseBody struct {
+	// example:
+	//
+	// CB67D866-1E54-5106-89DF-6D70C73E5989
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Strategy  *GetBootAndAntiUninstallPolicyResponseBodyStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBody) SetRequestId(v string) *GetBootAndAntiUninstallPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBody) SetStrategy(v *GetBootAndAntiUninstallPolicyResponseBodyStrategy) *GetBootAndAntiUninstallPolicyResponseBody {
+	s.Strategy = v
+	return s
+}
+
+type GetBootAndAntiUninstallPolicyResponseBodyStrategy struct {
+	// example:
+	//
+	// true
+	AllowReport  *bool                                                          `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	BlockContent *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent `json:"BlockContent,omitempty" xml:"BlockContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2023-04-16 10:50:05
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// true
+	IsAntiUninstall *bool `json:"IsAntiUninstall,omitempty" xml:"IsAntiUninstall,omitempty"`
+	// example:
+	//
+	// true
+	IsBoot *bool `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
+	// example:
+	//
+	// auto-boot-anti-uninstall-6f6cbf5f6605****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// approval-process-300abfb970cc****
+	ReportProcessId *string `json:"ReportProcessId,omitempty" xml:"ReportProcessId,omitempty"`
+	// example:
+	//
+	// 2024-06-14 10:17:14
+	UpdateTime     *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	WhitelistUsers []*string `json:"WhitelistUsers,omitempty" xml:"WhitelistUsers,omitempty" type:"Repeated"`
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetAllowReport(v bool) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.AllowReport = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetBlockContent(v *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.BlockContent = v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetCreateTime(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetIsAntiUninstall(v bool) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.IsAntiUninstall = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetIsBoot(v bool) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.IsBoot = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetPolicyId(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetReportProcessId(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.ReportProcessId = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetUpdateTime(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetUserGroupIds(v []*string) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) SetWhitelistUsers(v []*string) *GetBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.WhitelistUsers = v
+	return s
+}
+
+type GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent struct {
+	BlockTextEn *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn `json:"BlockTextEn,omitempty" xml:"BlockTextEn,omitempty" type:"Struct"`
+	BlockTextZh *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh `json:"BlockTextZh,omitempty" xml:"BlockTextZh,omitempty" type:"Struct"`
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) SetBlockTextEn(v *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent {
+	s.BlockTextEn = v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) SetBlockTextZh(v *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent {
+	s.BlockTextZh = v
+	return s
+}
+
+type GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn struct {
+	// example:
+	//
+	// After uninstalling, the device can no longer be used for company work, and it will lose access to the company\\"s intranet!
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// Report
+	MainButtonText *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// example:
+	//
+	// Ignore
+	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	// example:
+	//
+	// Anti-Uninstall Warning
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) GoString() string {
+	return s.String()
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetContent(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.Content = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetMainButtonText(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.MainButtonText = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetMinorButtonText(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.MinorButtonText = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetTitle(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.Title = &v
+	return s
+}
+
+type GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh struct {
+	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	MainButtonText  *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) GoString() string {
+	return s.String()
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetContent(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.Content = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetMainButtonText(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.MainButtonText = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetMinorButtonText(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.MinorButtonText = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetTitle(v string) *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.Title = &v
+	return s
+}
+
+type GetBootAndAntiUninstallPolicyResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetBootAndAntiUninstallPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetBootAndAntiUninstallPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBootAndAntiUninstallPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponse) SetHeaders(v map[string]*string) *GetBootAndAntiUninstallPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponse) SetStatusCode(v int32) *GetBootAndAntiUninstallPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBootAndAntiUninstallPolicyResponse) SetBody(v *GetBootAndAntiUninstallPolicyResponseBody) *GetBootAndAntiUninstallPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -5216,7 +7219,8 @@ type GetUserDeviceResponseBodyDevice struct {
 	// example:
 	//
 	// Unprovisioned
-	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NacStatus        *string                                            `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NetInterfaceInfo []*GetUserDeviceResponseBodyDeviceNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Enabled
@@ -5348,6 +7352,11 @@ func (s *GetUserDeviceResponseBodyDevice) SetNacStatus(v string) *GetUserDeviceR
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetNetInterfaceInfo(v []*GetUserDeviceResponseBodyDeviceNetInterfaceInfo) *GetUserDeviceResponseBodyDevice {
+	s.NetInterfaceInfo = v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetPaStatus(v string) *GetUserDeviceResponseBodyDevice {
 	s.PaStatus = &v
 	return s
@@ -5401,6 +7410,29 @@ func (s *GetUserDeviceResponseBodyDeviceHistoryUsers) SetSaseUserId(v string) *G
 
 func (s *GetUserDeviceResponseBodyDeviceHistoryUsers) SetUsername(v string) *GetUserDeviceResponseBodyDeviceHistoryUsers {
 	s.Username = &v
+	return s
+}
+
+type GetUserDeviceResponseBodyDeviceNetInterfaceInfo struct {
+	Mac  *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetUserDeviceResponseBodyDeviceNetInterfaceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserDeviceResponseBodyDeviceNetInterfaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserDeviceResponseBodyDeviceNetInterfaceInfo) SetMac(v string) *GetUserDeviceResponseBodyDeviceNetInterfaceInfo {
+	s.Mac = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDeviceNetInterfaceInfo) SetName(v string) *GetUserDeviceResponseBodyDeviceNetInterfaceInfo {
+	s.Name = &v
 	return s
 }
 
@@ -6310,6 +8342,1404 @@ func (s *ListApplicationsForPrivateAccessTagResponse) SetStatusCode(v int32) *Li
 }
 
 func (s *ListApplicationsForPrivateAccessTagResponse) SetBody(v *ListApplicationsForPrivateAccessTagResponseBody) *ListApplicationsForPrivateAccessTagResponse {
+	s.Body = v
+	return s
+}
+
+type ListApprovalProcessesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// pid-6d6ad77d5b52****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string   `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	ProcessIds []*string `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListApprovalProcessesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesRequest) SetCurrentPage(v int64) *ListApprovalProcessesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListApprovalProcessesRequest) SetPageSize(v int64) *ListApprovalProcessesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApprovalProcessesRequest) SetPolicyId(v string) *ListApprovalProcessesRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListApprovalProcessesRequest) SetPolicyType(v string) *ListApprovalProcessesRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListApprovalProcessesRequest) SetProcessIds(v []*string) *ListApprovalProcessesRequest {
+	s.ProcessIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesRequest) SetProcessName(v string) *ListApprovalProcessesRequest {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *ListApprovalProcessesRequest) SetSaseUserId(v string) *ListApprovalProcessesRequest {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *ListApprovalProcessesRequest) SetUsername(v string) *ListApprovalProcessesRequest {
+	s.Username = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBody struct {
+	Processes []*ListApprovalProcessesResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7E39C33B-F565-55C6-ACC2-953FCE7DA7D6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBody) SetProcesses(v []*ListApprovalProcessesResponseBodyProcesses) *ListApprovalProcessesResponseBody {
+	s.Processes = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBody) SetRequestId(v string) *ListApprovalProcessesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBody) SetTotalNum(v string) *ListApprovalProcessesResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcesses struct {
+	AppUninstallPolicies *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-02-27 14:04:27
+	CreateTime                 *string                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceRegistrationPolicies *ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
+	DlpSendPolicies            *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
+	DomainBlacklistPolicies    *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
+	DomainWhitelistPolicies    *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	PeripheralBlockPolicies    *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// approval-process-35ee09077ee9****
+	ProcessId             *string                                                          `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName           *string                                                          `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes          [][]*ListApprovalProcessesResponseBodyProcessesProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcesses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcesses) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetAppUninstallPolicies(v *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.AppUninstallPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetCreateTime(v string) *ListApprovalProcessesResponseBodyProcesses {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetDescription(v string) *ListApprovalProcessesResponseBodyProcesses {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetDeviceRegistrationPolicies(v *ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.DeviceRegistrationPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetDlpSendPolicies(v *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.DlpSendPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetDomainBlacklistPolicies(v *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.DomainBlacklistPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetDomainWhitelistPolicies(v *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.DomainWhitelistPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetPeripheralBlockPolicies(v *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.PeripheralBlockPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetProcessId(v string) *ListApprovalProcessesResponseBodyProcesses {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetProcessName(v string) *ListApprovalProcessesResponseBodyProcesses {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetProcessNodes(v [][]*ListApprovalProcessesResponseBodyProcessesProcessNodes) *ListApprovalProcessesResponseBodyProcesses {
+	s.ProcessNodes = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetSoftwareBlockPolicies(v *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.SoftwareBlockPolicies = v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesDlpSendPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDlpSendPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDlpSendPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesProcessNodes struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesProcessNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesProcessNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesProcessNodes) SetSaseUserId(v string) *ListApprovalProcessesResponseBodyProcessesProcessNodes {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesProcessNodes) SetUsername(v string) *ListApprovalProcessesResponseBodyProcessesProcessNodes {
+	s.Username = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApprovalProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApprovalProcessesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponse) SetHeaders(v map[string]*string) *ListApprovalProcessesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponse) SetStatusCode(v int32) *ListApprovalProcessesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApprovalProcessesResponse) SetBody(v *ListApprovalProcessesResponseBody) *ListApprovalProcessesResponse {
+	s.Body = v
+	return s
+}
+
+type ListApprovalProcessesForApprovalSchemasRequest struct {
+	// This parameter is required.
+	SchemaIds []*string `json:"SchemaIds,omitempty" xml:"SchemaIds,omitempty" type:"Repeated"`
+}
+
+func (s ListApprovalProcessesForApprovalSchemasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesForApprovalSchemasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasRequest) SetSchemaIds(v []*string) *ListApprovalProcessesForApprovalSchemasRequest {
+	s.SchemaIds = v
+	return s
+}
+
+type ListApprovalProcessesForApprovalSchemasResponseBody struct {
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
+	RequestId *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schemas   []*ListApprovalProcessesForApprovalSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBody) SetRequestId(v string) *ListApprovalProcessesForApprovalSchemasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBody) SetSchemas(v []*ListApprovalProcessesForApprovalSchemasResponseBodySchemas) *ListApprovalProcessesForApprovalSchemasResponseBody {
+	s.Schemas = v
+	return s
+}
+
+type ListApprovalProcessesForApprovalSchemasResponseBodySchemas struct {
+	Processes []*ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponseBodySchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponseBodySchemas) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBodySchemas) SetProcesses(v []*ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses) *ListApprovalProcessesForApprovalSchemasResponseBodySchemas {
+	s.Processes = v
+	return s
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBodySchemas) SetSchemaId(v string) *ListApprovalProcessesForApprovalSchemasResponseBodySchemas {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses struct {
+	// example:
+	//
+	// 2022-10-25 10:44:09
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// approval-process-dc61e92ba5c5****
+	ProcessId   *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses) SetCreateTime(v string) *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses) SetDescription(v string) *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses) SetProcessId(v string) *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses) SetProcessName(v string) *ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses {
+	s.ProcessName = &v
+	return s
+}
+
+type ListApprovalProcessesForApprovalSchemasResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApprovalProcessesForApprovalSchemasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesForApprovalSchemasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponse) SetHeaders(v map[string]*string) *ListApprovalProcessesForApprovalSchemasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponse) SetStatusCode(v int32) *ListApprovalProcessesForApprovalSchemasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApprovalProcessesForApprovalSchemasResponse) SetBody(v *ListApprovalProcessesForApprovalSchemasResponseBody) *ListApprovalProcessesForApprovalSchemasResponse {
+	s.Body = v
+	return s
+}
+
+type ListApprovalSchemasRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string   `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	SchemaIds  []*string `json:"SchemaIds,omitempty" xml:"SchemaIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+}
+
+func (s ListApprovalSchemasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasRequest) SetCurrentPage(v int64) *ListApprovalSchemasRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListApprovalSchemasRequest) SetPageSize(v int64) *ListApprovalSchemasRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApprovalSchemasRequest) SetPolicyType(v string) *ListApprovalSchemasRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListApprovalSchemasRequest) SetSchemaIds(v []*string) *ListApprovalSchemasRequest {
+	s.SchemaIds = v
+	return s
+}
+
+func (s *ListApprovalSchemasRequest) SetSchemaName(v string) *ListApprovalSchemasRequest {
+	s.SchemaName = &v
+	return s
+}
+
+type ListApprovalSchemasResponseBody struct {
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schemas   []*ListApprovalSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListApprovalSchemasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasResponseBody) SetRequestId(v string) *ListApprovalSchemasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBody) SetSchemas(v []*ListApprovalSchemasResponseBodySchemas) *ListApprovalSchemasResponseBody {
+	s.Schemas = v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBody) SetTotalNum(v string) *ListApprovalSchemasResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListApprovalSchemasResponseBodySchemas struct {
+	// example:
+	//
+	// 2024-03-15 14:44:07
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// {"form": {"labelCol": 6,"wrapperCol": 12}}
+	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// 1715680940
+	SchemaVersion *int64 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+}
+
+func (s ListApprovalSchemasResponseBodySchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasResponseBodySchemas) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetCreateTime(v string) *ListApprovalSchemasResponseBodySchemas {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetDescription(v string) *ListApprovalSchemasResponseBodySchemas {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetIsDefault(v bool) *ListApprovalSchemasResponseBodySchemas {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetPolicyType(v string) *ListApprovalSchemasResponseBodySchemas {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetSchemaContent(v string) *ListApprovalSchemasResponseBodySchemas {
+	s.SchemaContent = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetSchemaId(v string) *ListApprovalSchemasResponseBodySchemas {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetSchemaName(v string) *ListApprovalSchemasResponseBodySchemas {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponseBodySchemas) SetSchemaVersion(v int64) *ListApprovalSchemasResponseBodySchemas {
+	s.SchemaVersion = &v
+	return s
+}
+
+type ListApprovalSchemasResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApprovalSchemasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApprovalSchemasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasResponse) SetHeaders(v map[string]*string) *ListApprovalSchemasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApprovalSchemasResponse) SetStatusCode(v int32) *ListApprovalSchemasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApprovalSchemasResponse) SetBody(v *ListApprovalSchemasResponseBody) *ListApprovalSchemasResponse {
+	s.Body = v
+	return s
+}
+
+type ListApprovalSchemasForApprovalProcessesRequest struct {
+	// This parameter is required.
+	ProcessIds []*string `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
+}
+
+func (s ListApprovalSchemasForApprovalProcessesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasForApprovalProcessesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesRequest) SetProcessIds(v []*string) *ListApprovalSchemasForApprovalProcessesRequest {
+	s.ProcessIds = v
+	return s
+}
+
+type ListApprovalSchemasForApprovalProcessesResponseBody struct {
+	Processes []*ListApprovalSchemasForApprovalProcessesResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBody) SetProcesses(v []*ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) *ListApprovalSchemasForApprovalProcessesResponseBody {
+	s.Processes = v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBody) SetRequestId(v string) *ListApprovalSchemasForApprovalProcessesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListApprovalSchemasForApprovalProcessesResponseBodyProcesses struct {
+	// example:
+	//
+	// approval-process-35ee09077ee9****
+	ProcessId *string                                                                `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	Schemas   []*ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) SetProcessId(v string) *ListApprovalSchemasForApprovalProcessesResponseBodyProcesses {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) SetSchemas(v []*ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) *ListApprovalSchemasForApprovalProcessesResponseBodyProcesses {
+	s.Schemas = v
+	return s
+}
+
+type ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas struct {
+	// example:
+	//
+	// 2024-03-15 14:44:07
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// {"form": {"labelCol": 6,"wrapperCol": 12}}
+	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// 1715680940
+	SchemaVersion *int64 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetCreateTime(v string) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetDescription(v string) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetIsDefault(v bool) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetPolicyType(v string) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetSchemaContent(v string) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.SchemaContent = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetSchemaId(v string) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetSchemaName(v string) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas) SetSchemaVersion(v int64) *ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas {
+	s.SchemaVersion = &v
+	return s
+}
+
+type ListApprovalSchemasForApprovalProcessesResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApprovalSchemasForApprovalProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalSchemasForApprovalProcessesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponse) SetHeaders(v map[string]*string) *ListApprovalSchemasForApprovalProcessesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponse) SetStatusCode(v int32) *ListApprovalSchemasForApprovalProcessesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApprovalSchemasForApprovalProcessesResponse) SetBody(v *ListApprovalSchemasForApprovalProcessesResponseBody) *ListApprovalSchemasForApprovalProcessesResponse {
+	s.Body = v
+	return s
+}
+
+type ListApprovalsRequest struct {
+	ApprovalIds []*string `json:"ApprovalIds,omitempty" xml:"ApprovalIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1736750500
+	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
+	// example:
+	//
+	// 1730000000
+	CreateStartTime   *int64  `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
+	CreatorDepartment *string `json:"CreatorDepartment,omitempty" xml:"CreatorDepartment,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	CreatorUserId   *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	OperatorUserId   *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
+	OperatorUsername *string `json:"OperatorUsername,omitempty" xml:"OperatorUsername,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// approval-process-fcc351b8a95b****
+	ProcessId   *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// example:
+	//
+	// test
+	SchemaName *string   `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	Statuses   []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+}
+
+func (s ListApprovalsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalsRequest) SetApprovalIds(v []*string) *ListApprovalsRequest {
+	s.ApprovalIds = v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetCreateEndTime(v int64) *ListApprovalsRequest {
+	s.CreateEndTime = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetCreateStartTime(v int64) *ListApprovalsRequest {
+	s.CreateStartTime = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetCreatorDepartment(v string) *ListApprovalsRequest {
+	s.CreatorDepartment = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetCreatorDevTag(v string) *ListApprovalsRequest {
+	s.CreatorDevTag = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetCreatorUserId(v string) *ListApprovalsRequest {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetCreatorUsername(v string) *ListApprovalsRequest {
+	s.CreatorUsername = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetCurrentPage(v int64) *ListApprovalsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetOperatorUserId(v string) *ListApprovalsRequest {
+	s.OperatorUserId = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetOperatorUsername(v string) *ListApprovalsRequest {
+	s.OperatorUsername = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetPageSize(v int64) *ListApprovalsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetPolicyType(v string) *ListApprovalsRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetProcessId(v string) *ListApprovalsRequest {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetProcessName(v string) *ListApprovalsRequest {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetSchemaId(v string) *ListApprovalsRequest {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetSchemaName(v string) *ListApprovalsRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetStatuses(v []*string) *ListApprovalsRequest {
+	s.Statuses = v
+	return s
+}
+
+type ListApprovalsResponseBody struct {
+	Approvals []*ListApprovalsResponseBodyApprovals `json:"Approvals,omitempty" xml:"Approvals,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6965F5BA-53B6-5650-A708-51F090F843BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListApprovalsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalsResponseBody) SetApprovals(v []*ListApprovalsResponseBodyApprovals) *ListApprovalsResponseBody {
+	s.Approvals = v
+	return s
+}
+
+func (s *ListApprovalsResponseBody) SetRequestId(v string) *ListApprovalsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBody) SetTotalNum(v string) *ListApprovalsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListApprovalsResponseBodyApprovals struct {
+	ApprovalDetail *string `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty"`
+	// example:
+	//
+	// approval-872b5e911b35****
+	ApprovalId         *string                                                 `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
+	ApprovalProgresses []*ListApprovalsResponseBodyApprovalsApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-11-15 22:11:55
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorDepartment *string `json:"CreatorDepartment,omitempty" xml:"CreatorDepartment,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	CreatorUserId   *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
+	// example:
+	//
+	// 1757952000
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// approval-process-fcc351b8a95b****
+	ProcessId   *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// {"form": {"labelCol": 6,"wrapperCol": 12}}
+	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// Pending
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListApprovalsResponseBodyApprovals) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalsResponseBodyApprovals) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetApprovalDetail(v string) *ListApprovalsResponseBodyApprovals {
+	s.ApprovalDetail = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetApprovalId(v string) *ListApprovalsResponseBodyApprovals {
+	s.ApprovalId = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetApprovalProgresses(v []*ListApprovalsResponseBodyApprovalsApprovalProgresses) *ListApprovalsResponseBodyApprovals {
+	s.ApprovalProgresses = v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetCreateTime(v string) *ListApprovalsResponseBodyApprovals {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetCreatorDepartment(v string) *ListApprovalsResponseBodyApprovals {
+	s.CreatorDepartment = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetCreatorDevTag(v string) *ListApprovalsResponseBodyApprovals {
+	s.CreatorDevTag = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetCreatorUserId(v string) *ListApprovalsResponseBodyApprovals {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetCreatorUsername(v string) *ListApprovalsResponseBodyApprovals {
+	s.CreatorUsername = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetEndTimestamp(v int64) *ListApprovalsResponseBodyApprovals {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetPolicyType(v string) *ListApprovalsResponseBodyApprovals {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetProcessId(v string) *ListApprovalsResponseBodyApprovals {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetProcessName(v string) *ListApprovalsResponseBodyApprovals {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetReason(v string) *ListApprovalsResponseBodyApprovals {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetSchemaContent(v string) *ListApprovalsResponseBodyApprovals {
+	s.SchemaContent = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetSchemaId(v string) *ListApprovalsResponseBodyApprovals {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetSchemaName(v string) *ListApprovalsResponseBodyApprovals {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetStatus(v string) *ListApprovalsResponseBodyApprovals {
+	s.Status = &v
+	return s
+}
+
+type ListApprovalsResponseBodyApprovalsApprovalProgresses struct {
+	// example:
+	//
+	// Approve
+	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	Executor  *string                                                          `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	Operators []*ListApprovalsResponseBodyApprovalsApprovalProgressesOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Approved
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1736752000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s ListApprovalsResponseBodyApprovalsApprovalProgresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalsResponseBodyApprovalsApprovalProgresses) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) SetAction(v string) *ListApprovalsResponseBodyApprovalsApprovalProgresses {
+	s.Action = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) SetComment(v string) *ListApprovalsResponseBodyApprovalsApprovalProgresses {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) SetExecutor(v string) *ListApprovalsResponseBodyApprovalsApprovalProgresses {
+	s.Executor = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) SetOperators(v []*ListApprovalsResponseBodyApprovalsApprovalProgressesOperators) *ListApprovalsResponseBodyApprovalsApprovalProgresses {
+	s.Operators = v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) SetStatus(v string) *ListApprovalsResponseBodyApprovalsApprovalProgresses {
+	s.Status = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) SetTimestamp(v int64) *ListApprovalsResponseBodyApprovalsApprovalProgresses {
+	s.Timestamp = &v
+	return s
+}
+
+type ListApprovalsResponseBodyApprovalsApprovalProgressesOperators struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListApprovalsResponseBodyApprovalsApprovalProgressesOperators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalsResponseBodyApprovalsApprovalProgressesOperators) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgressesOperators) SetSaseUserId(v string) *ListApprovalsResponseBodyApprovalsApprovalProgressesOperators {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovalsApprovalProgressesOperators) SetUsername(v string) *ListApprovalsResponseBodyApprovalsApprovalProgressesOperators {
+	s.Username = &v
+	return s
+}
+
+type ListApprovalsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApprovalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApprovalsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalsResponse) SetHeaders(v map[string]*string) *ListApprovalsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApprovalsResponse) SetStatusCode(v int32) *ListApprovalsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApprovalsResponse) SetBody(v *ListApprovalsResponseBody) *ListApprovalsResponse {
 	s.Body = v
 	return s
 }
@@ -11196,6 +14626,261 @@ func (s *ListTagsForPrivateAccessPolicyResponse) SetBody(v *ListTagsForPrivateAc
 	return s
 }
 
+type ListUninstallApplicationsRequest struct {
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	Username *string   `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListUninstallApplicationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallApplicationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallApplicationsRequest) SetApplicationIds(v []*string) *ListUninstallApplicationsRequest {
+	s.ApplicationIds = v
+	return s
+}
+
+func (s *ListUninstallApplicationsRequest) SetCurrentPage(v int64) *ListUninstallApplicationsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsRequest) SetDepartment(v string) *ListUninstallApplicationsRequest {
+	s.Department = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsRequest) SetHostname(v string) *ListUninstallApplicationsRequest {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsRequest) SetMac(v string) *ListUninstallApplicationsRequest {
+	s.Mac = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsRequest) SetPageSize(v int64) *ListUninstallApplicationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsRequest) SetStatuses(v []*string) *ListUninstallApplicationsRequest {
+	s.Statuses = v
+	return s
+}
+
+func (s *ListUninstallApplicationsRequest) SetUsername(v string) *ListUninstallApplicationsRequest {
+	s.Username = &v
+	return s
+}
+
+type ListUninstallApplicationsResponseBody struct {
+	Applications []*ListUninstallApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListUninstallApplicationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallApplicationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallApplicationsResponseBody) SetApplications(v []*ListUninstallApplicationsResponseBodyApplications) *ListUninstallApplicationsResponseBody {
+	s.Applications = v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBody) SetRequestId(v string) *ListUninstallApplicationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBody) SetTotalNum(v int64) *ListUninstallApplicationsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListUninstallApplicationsResponseBodyApplications struct {
+	// example:
+	//
+	// uninstall-app-6646831ac314****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// 2023-07-17 18:46:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	IdpName  *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	// example:
+	//
+	// false
+	IsUninstall *bool `json:"IsUninstall,omitempty" xml:"IsUninstall,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac    *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// Approved
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListUninstallApplicationsResponseBodyApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallApplicationsResponseBodyApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetApplicationId(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetCreateTime(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetDepartment(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.Department = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetDevTag(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.DevTag = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetDevType(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.DevType = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetHostname(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetIdpName(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.IdpName = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetIsUninstall(v bool) *ListUninstallApplicationsResponseBodyApplications {
+	s.IsUninstall = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetMac(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.Mac = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetReason(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetSaseUserId(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetStatus(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetUsername(v string) *ListUninstallApplicationsResponseBodyApplications {
+	s.Username = &v
+	return s
+}
+
+type ListUninstallApplicationsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUninstallApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUninstallApplicationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallApplicationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallApplicationsResponse) SetHeaders(v map[string]*string) *ListUninstallApplicationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponse) SetStatusCode(v int32) *ListUninstallApplicationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponse) SetBody(v *ListUninstallApplicationsResponseBody) *ListUninstallApplicationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserApplicationsRequest struct {
 	// This parameter is required.
 	//
@@ -11661,7 +15346,8 @@ type ListUserDevicesResponseBodyDevices struct {
 	// example:
 	//
 	// Enabled
-	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NacStatus        *string                                               `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NetInterfaceInfo []*ListUserDevicesResponseBodyDevicesNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Enabled
@@ -11788,6 +15474,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetNacStatus(v string) *ListUserDev
 	return s
 }
 
+func (s *ListUserDevicesResponseBodyDevices) SetNetInterfaceInfo(v []*ListUserDevicesResponseBodyDevicesNetInterfaceInfo) *ListUserDevicesResponseBodyDevices {
+	s.NetInterfaceInfo = v
+	return s
+}
+
 func (s *ListUserDevicesResponseBodyDevices) SetPaStatus(v string) *ListUserDevicesResponseBodyDevices {
 	s.PaStatus = &v
 	return s
@@ -11815,6 +15506,29 @@ func (s *ListUserDevicesResponseBodyDevices) SetUpdateTime(v string) *ListUserDe
 
 func (s *ListUserDevicesResponseBodyDevices) SetUsername(v string) *ListUserDevicesResponseBodyDevices {
 	s.Username = &v
+	return s
+}
+
+type ListUserDevicesResponseBodyDevicesNetInterfaceInfo struct {
+	Mac  *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListUserDevicesResponseBodyDevicesNetInterfaceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserDevicesResponseBodyDevicesNetInterfaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserDevicesResponseBodyDevicesNetInterfaceInfo) SetMac(v string) *ListUserDevicesResponseBodyDevicesNetInterfaceInfo {
+	s.Mac = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevicesNetInterfaceInfo) SetName(v string) *ListUserDevicesResponseBodyDevicesNetInterfaceInfo {
+	s.Name = &v
 	return s
 }
 
@@ -13094,6 +16808,1297 @@ func (s *RevokeUserSessionResponse) SetStatusCode(v int32) *RevokeUserSessionRes
 }
 
 func (s *RevokeUserSessionResponse) SetBody(v *RevokeUserSessionResponseBody) *RevokeUserSessionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateApprovalProcessRequest struct {
+	Description  *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	MatchSchemas *UpdateApprovalProcessRequestMatchSchemas `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-process-f16bf74b2b29****
+	ProcessId    *string     `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName  *string     `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+}
+
+func (s UpdateApprovalProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessRequest) SetDescription(v string) *UpdateApprovalProcessRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequest) SetMatchSchemas(v *UpdateApprovalProcessRequestMatchSchemas) *UpdateApprovalProcessRequest {
+	s.MatchSchemas = v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequest) SetProcessId(v string) *UpdateApprovalProcessRequest {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequest) SetProcessName(v string) *UpdateApprovalProcessRequest {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequest) SetProcessNodes(v [][]*string) *UpdateApprovalProcessRequest {
+	s.ProcessNodes = v
+	return s
+}
+
+type UpdateApprovalProcessRequestMatchSchemas struct {
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	AppUninstallSchemaId *string `json:"AppUninstallSchemaId,omitempty" xml:"AppUninstallSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DeviceRegistrationSchemaId *string `json:"DeviceRegistrationSchemaId,omitempty" xml:"DeviceRegistrationSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DlpSendSchemaId *string `json:"DlpSendSchemaId,omitempty" xml:"DlpSendSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DomainBlacklistSchemaId *string `json:"DomainBlacklistSchemaId,omitempty" xml:"DomainBlacklistSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	DomainWhitelistSchemaId *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	PeripheralBlockSchemaId *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SoftwareBlockSchemaId *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessRequestMatchSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessRequestMatchSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetAppUninstallSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.AppUninstallSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetDeviceRegistrationSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.DeviceRegistrationSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetDlpSendSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.DlpSendSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetDomainBlacklistSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.DomainBlacklistSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetDomainWhitelistSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.DomainWhitelistSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetPeripheralBlockSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.PeripheralBlockSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetSoftwareBlockSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.SoftwareBlockSchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessShrinkRequest struct {
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MatchSchemasShrink *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-process-f16bf74b2b29****
+	ProcessId    *string     `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName  *string     `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+}
+
+func (s UpdateApprovalProcessShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetDescription(v string) *UpdateApprovalProcessShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetMatchSchemasShrink(v string) *UpdateApprovalProcessShrinkRequest {
+	s.MatchSchemasShrink = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetProcessId(v string) *UpdateApprovalProcessShrinkRequest {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetProcessName(v string) *UpdateApprovalProcessShrinkRequest {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetProcessNodes(v [][]*string) *UpdateApprovalProcessShrinkRequest {
+	s.ProcessNodes = v
+	return s
+}
+
+type UpdateApprovalProcessResponseBody struct {
+	Process *UpdateApprovalProcessResponseBodyProcess `json:"Process,omitempty" xml:"Process,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBody) SetProcess(v *UpdateApprovalProcessResponseBodyProcess) *UpdateApprovalProcessResponseBody {
+	s.Process = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBody) SetRequestId(v string) *UpdateApprovalProcessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcess struct {
+	AppUninstallPolicies *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2022-07-11 15:31:39
+	CreateTime                 *string                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceRegistrationPolicies *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
+	DlpSendPolicies            *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
+	DomainBlacklistPolicies    *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
+	DomainWhitelistPolicies    *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	PeripheraBlockPolicies     *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies     `json:"PeripheraBlockPolicies,omitempty" xml:"PeripheraBlockPolicies,omitempty" type:"Struct"`
+	// example:
+	//
+	// approval-process-2677fcf063f5****
+	ProcessId             *string                                                        `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName           *string                                                        `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes          [][]*UpdateApprovalProcessResponseBodyProcessProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcess) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcess) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetAppUninstallPolicies(v *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.AppUninstallPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetCreateTime(v string) *UpdateApprovalProcessResponseBodyProcess {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetDescription(v string) *UpdateApprovalProcessResponseBodyProcess {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetDeviceRegistrationPolicies(v *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.DeviceRegistrationPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetDlpSendPolicies(v *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.DlpSendPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetDomainBlacklistPolicies(v *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.DomainBlacklistPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetDomainWhitelistPolicies(v *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.DomainWhitelistPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetPeripheraBlockPolicies(v *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.PeripheraBlockPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetProcessId(v string) *UpdateApprovalProcessResponseBodyProcess {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetProcessName(v string) *UpdateApprovalProcessResponseBodyProcess {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetProcessNodes(v [][]*UpdateApprovalProcessResponseBodyProcessProcessNodes) *UpdateApprovalProcessResponseBodyProcess {
+	s.ProcessNodes = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetSoftwareBlockPolicies(v *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.SoftwareBlockPolicies = v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessDlpSendPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessProcessNodes struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessProcessNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessProcessNodes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessProcessNodes) SetSaseUserId(v string) *UpdateApprovalProcessResponseBodyProcessProcessNodes {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessProcessNodes) SetUsername(v string) *UpdateApprovalProcessResponseBodyProcessProcessNodes {
+	s.Username = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateApprovalProcessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponse) SetHeaders(v map[string]*string) *UpdateApprovalProcessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponse) SetStatusCode(v int32) *UpdateApprovalProcessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponse) SetBody(v *UpdateApprovalProcessResponseBody) *UpdateApprovalProcessResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateApprovalStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// approval-872b5e911b35****
+	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Approved
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateApprovalStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalStatusRequest) SetApprovalId(v string) *UpdateApprovalStatusRequest {
+	s.ApprovalId = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusRequest) SetStatus(v string) *UpdateApprovalStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateApprovalStatusResponseBody struct {
+	Approval []*UpdateApprovalStatusResponseBodyApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateApprovalStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalStatusResponseBody) SetApproval(v []*UpdateApprovalStatusResponseBodyApproval) *UpdateApprovalStatusResponseBody {
+	s.Approval = v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBody) SetRequestId(v string) *UpdateApprovalStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateApprovalStatusResponseBodyApproval struct {
+	ApprovalDetail *string `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty"`
+	// example:
+	//
+	// approval-165e6738ad9d****
+	ApprovalId         *string                                                       `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
+	ApprovalProgresses []*UpdateApprovalStatusResponseBodyApprovalApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-11-15 22:11:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	CreatorUserId *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	// example:
+	//
+	// 1757952000
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// example:
+	//
+	// DlpSend
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// approval-process-fcc351b8a95b****
+	ProcessId   *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// {"form": {"labelCol": 6,"wrapperCol": 12}}
+	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// Pending
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateApprovalStatusResponseBodyApproval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalStatusResponseBodyApproval) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetApprovalDetail(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.ApprovalDetail = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetApprovalId(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.ApprovalId = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetApprovalProgresses(v []*UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) *UpdateApprovalStatusResponseBodyApproval {
+	s.ApprovalProgresses = v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetCreateTime(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetCreatorDevTag(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.CreatorDevTag = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetCreatorUserId(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetEndTimestamp(v int64) *UpdateApprovalStatusResponseBodyApproval {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetPolicyType(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetProcessId(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetProcessName(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetReason(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.Reason = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetSchemaContent(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.SchemaContent = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetSchemaId(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetSchemaName(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApproval) SetStatus(v string) *UpdateApprovalStatusResponseBodyApproval {
+	s.Status = &v
+	return s
+}
+
+type UpdateApprovalStatusResponseBodyApprovalApprovalProgresses struct {
+	// example:
+	//
+	// Approve
+	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	Executor  *string                                                                `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	Operators []*UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Approved
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1736752000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) SetAction(v string) *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses {
+	s.Action = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) SetComment(v string) *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses {
+	s.Comment = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) SetExecutor(v string) *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses {
+	s.Executor = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) SetOperators(v []*UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators) *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses {
+	s.Operators = v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) SetStatus(v string) *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) SetTimestamp(v int64) *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses {
+	s.Timestamp = &v
+	return s
+}
+
+type UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators) SetSaseUserId(v string) *UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators) SetUsername(v string) *UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators {
+	s.Username = &v
+	return s
+}
+
+type UpdateApprovalStatusResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateApprovalStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateApprovalStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalStatusResponse) SetHeaders(v map[string]*string) *UpdateApprovalStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponse) SetStatusCode(v int32) *UpdateApprovalStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateApprovalStatusResponse) SetBody(v *UpdateApprovalStatusResponseBody) *UpdateApprovalStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyRequest struct {
+	// example:
+	//
+	// true
+	AllowReport  *bool                                                `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	BlockContent *UpdateBootAndAntiUninstallPolicyRequestBlockContent `json:"BlockContent,omitempty" xml:"BlockContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	IsAntiUninstall *bool `json:"IsAntiUninstall,omitempty" xml:"IsAntiUninstall,omitempty"`
+	// example:
+	//
+	// true
+	IsBoot         *bool     `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
+	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	WhitelistUsers []*string `json:"WhitelistUsers,omitempty" xml:"WhitelistUsers,omitempty" type:"Repeated"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequest) SetAllowReport(v bool) *UpdateBootAndAntiUninstallPolicyRequest {
+	s.AllowReport = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequest) SetBlockContent(v *UpdateBootAndAntiUninstallPolicyRequestBlockContent) *UpdateBootAndAntiUninstallPolicyRequest {
+	s.BlockContent = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequest) SetIsAntiUninstall(v bool) *UpdateBootAndAntiUninstallPolicyRequest {
+	s.IsAntiUninstall = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequest) SetIsBoot(v bool) *UpdateBootAndAntiUninstallPolicyRequest {
+	s.IsBoot = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequest) SetUserGroupIds(v []*string) *UpdateBootAndAntiUninstallPolicyRequest {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequest) SetWhitelistUsers(v []*string) *UpdateBootAndAntiUninstallPolicyRequest {
+	s.WhitelistUsers = v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyRequestBlockContent struct {
+	BlockTextEn *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn `json:"BlockTextEn,omitempty" xml:"BlockTextEn,omitempty" type:"Struct"`
+	BlockTextZh *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh `json:"BlockTextZh,omitempty" xml:"BlockTextZh,omitempty" type:"Struct"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequestBlockContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequestBlockContent) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContent) SetBlockTextEn(v *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) *UpdateBootAndAntiUninstallPolicyRequestBlockContent {
+	s.BlockTextEn = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContent) SetBlockTextZh(v *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) *UpdateBootAndAntiUninstallPolicyRequestBlockContent {
+	s.BlockTextZh = v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn struct {
+	// example:
+	//
+	// After uninstalling, the device can no longer be used for company work, and it will lose access to the company\\"s intranet!
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// Report
+	MainButtonText *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// example:
+	//
+	// Ignore
+	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	// example:
+	//
+	// Anti-Uninstall Warning
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) SetContent(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) SetMainButtonText(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn {
+	s.MainButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) SetMinorButtonText(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn {
+	s.MinorButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) SetTitle(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn {
+	s.Title = &v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh struct {
+	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	MainButtonText  *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) SetContent(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) SetMainButtonText(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh {
+	s.MainButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) SetMinorButtonText(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh {
+	s.MinorButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) SetTitle(v string) *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh {
+	s.Title = &v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyShrinkRequest struct {
+	// example:
+	//
+	// true
+	AllowReport        *bool   `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	BlockContentShrink *string `json:"BlockContent,omitempty" xml:"BlockContent,omitempty"`
+	// example:
+	//
+	// true
+	IsAntiUninstall *bool `json:"IsAntiUninstall,omitempty" xml:"IsAntiUninstall,omitempty"`
+	// example:
+	//
+	// true
+	IsBoot         *bool     `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
+	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	WhitelistUsers []*string `json:"WhitelistUsers,omitempty" xml:"WhitelistUsers,omitempty" type:"Repeated"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyShrinkRequest) SetAllowReport(v bool) *UpdateBootAndAntiUninstallPolicyShrinkRequest {
+	s.AllowReport = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyShrinkRequest) SetBlockContentShrink(v string) *UpdateBootAndAntiUninstallPolicyShrinkRequest {
+	s.BlockContentShrink = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyShrinkRequest) SetIsAntiUninstall(v bool) *UpdateBootAndAntiUninstallPolicyShrinkRequest {
+	s.IsAntiUninstall = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyShrinkRequest) SetIsBoot(v bool) *UpdateBootAndAntiUninstallPolicyShrinkRequest {
+	s.IsBoot = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyShrinkRequest) SetUserGroupIds(v []*string) *UpdateBootAndAntiUninstallPolicyShrinkRequest {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyShrinkRequest) SetWhitelistUsers(v []*string) *UpdateBootAndAntiUninstallPolicyShrinkRequest {
+	s.WhitelistUsers = v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyResponseBody struct {
+	// example:
+	//
+	// CB67D866-1E54-5106-89DF-6D70C73E5989
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Strategy  *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBody) SetRequestId(v string) *UpdateBootAndAntiUninstallPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBody) SetStrategy(v *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) *UpdateBootAndAntiUninstallPolicyResponseBody {
+	s.Strategy = v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyResponseBodyStrategy struct {
+	// example:
+	//
+	// true
+	AllowReport  *bool                                                             `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	BlockContent *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent `json:"BlockContent,omitempty" xml:"BlockContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2023-04-16 10:50:05
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// true
+	IsAntiUninstall *bool `json:"IsAntiUninstall,omitempty" xml:"IsAntiUninstall,omitempty"`
+	// example:
+	//
+	// true
+	IsBoot *bool `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
+	// example:
+	//
+	// auto-boot-anti-uninstall-6f6cbf5f6605****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// approval-process-65c255598826****
+	ReportProcessId *string `json:"ReportProcessId,omitempty" xml:"ReportProcessId,omitempty"`
+	// example:
+	//
+	// 2024-06-14 10:17:14
+	UpdateTime     *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	WhitelistUsers []*string `json:"WhitelistUsers,omitempty" xml:"WhitelistUsers,omitempty" type:"Repeated"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetAllowReport(v bool) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.AllowReport = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetBlockContent(v *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.BlockContent = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetCreateTime(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetIsAntiUninstall(v bool) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.IsAntiUninstall = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetIsBoot(v bool) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.IsBoot = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetPolicyId(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetReportProcessId(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.ReportProcessId = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetUpdateTime(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetUserGroupIds(v []*string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetWhitelistUsers(v []*string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy {
+	s.WhitelistUsers = v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent struct {
+	BlockTextEn *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn `json:"BlockTextEn,omitempty" xml:"BlockTextEn,omitempty" type:"Struct"`
+	BlockTextZh *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh `json:"BlockTextZh,omitempty" xml:"BlockTextZh,omitempty" type:"Struct"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) SetBlockTextEn(v *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent {
+	s.BlockTextEn = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) SetBlockTextZh(v *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent {
+	s.BlockTextZh = v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn struct {
+	// example:
+	//
+	// After uninstalling, the device can no longer be used for company work, and it will lose access to the company\\"s intranet!
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// Report
+	MainButtonText *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// example:
+	//
+	// Ignore
+	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	// example:
+	//
+	// Anti-Uninstall Warning
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetContent(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetMainButtonText(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.MainButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetMinorButtonText(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.MinorButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn) SetTitle(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn {
+	s.Title = &v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh struct {
+	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	MainButtonText  *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetContent(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetMainButtonText(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.MainButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetMinorButtonText(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.MinorButtonText = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) SetTitle(v string) *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh {
+	s.Title = &v
+	return s
+}
+
+type UpdateBootAndAntiUninstallPolicyResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateBootAndAntiUninstallPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBootAndAntiUninstallPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponse) SetHeaders(v map[string]*string) *UpdateBootAndAntiUninstallPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponse) SetStatusCode(v int32) *UpdateBootAndAntiUninstallPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBootAndAntiUninstallPolicyResponse) SetBody(v *UpdateBootAndAntiUninstallPolicyResponseBody) *UpdateBootAndAntiUninstallPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -14831,6 +19836,203 @@ func (s *UpdateRegistrationPolicyResponse) SetBody(v *UpdateRegistrationPolicyRe
 	return s
 }
 
+type UpdateUninstallApplicationsStatusRequest struct {
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Approved
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateUninstallApplicationsStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUninstallApplicationsStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUninstallApplicationsStatusRequest) SetApplicationIds(v []*string) *UpdateUninstallApplicationsStatusRequest {
+	s.ApplicationIds = v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusRequest) SetStatus(v string) *UpdateUninstallApplicationsStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateUninstallApplicationsStatusResponseBody struct {
+	Applications []*UpdateUninstallApplicationsStatusResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9B769522-D50C-5978-8981-52BE800D6099
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUninstallApplicationsStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUninstallApplicationsStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBody) SetApplications(v []*UpdateUninstallApplicationsStatusResponseBodyApplications) *UpdateUninstallApplicationsStatusResponseBody {
+	s.Applications = v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBody) SetRequestId(v string) *UpdateUninstallApplicationsStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUninstallApplicationsStatusResponseBodyApplications struct {
+	// example:
+	//
+	// uninstall-app-6646831ac314****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// 2023-07-17 18:46:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	IdpName  *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	// example:
+	//
+	// false
+	IsUninstall *bool `json:"IsUninstall,omitempty" xml:"IsUninstall,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac    *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// Approved
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s UpdateUninstallApplicationsStatusResponseBodyApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUninstallApplicationsStatusResponseBodyApplications) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetApplicationId(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetCreateTime(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetDepartment(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.Department = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetDevTag(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.DevTag = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetDevType(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.DevType = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetHostname(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.Hostname = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetIdpName(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.IdpName = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetIsUninstall(v bool) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.IsUninstall = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetMac(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.Mac = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetReason(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.Reason = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetSaseUserId(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetStatus(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponseBodyApplications) SetUsername(v string) *UpdateUninstallApplicationsStatusResponseBodyApplications {
+	s.Username = &v
+	return s
+}
+
+type UpdateUninstallApplicationsStatusResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUninstallApplicationsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUninstallApplicationsStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUninstallApplicationsStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUninstallApplicationsStatusResponse) SetHeaders(v map[string]*string) *UpdateUninstallApplicationsStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponse) SetStatusCode(v int32) *UpdateUninstallApplicationsStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUninstallApplicationsStatusResponse) SetBody(v *UpdateUninstallApplicationsStatusResponseBody) *UpdateUninstallApplicationsStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateUserDevicesSharingStatusRequest struct {
 	// This parameter is required.
 	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
@@ -14959,7 +20161,8 @@ type UpdateUserDevicesSharingStatusResponseBodyDevices struct {
 	// example:
 	//
 	// Enabled
-	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NacStatus        *string                                                              `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NetInterfaceInfo []*UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Enabled
@@ -15086,6 +20289,11 @@ func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) SetNacStatus(v strin
 	return s
 }
 
+func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) SetNetInterfaceInfo(v []*UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo) *UpdateUserDevicesSharingStatusResponseBodyDevices {
+	s.NetInterfaceInfo = v
+	return s
+}
+
 func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) SetPaStatus(v string) *UpdateUserDevicesSharingStatusResponseBodyDevices {
 	s.PaStatus = &v
 	return s
@@ -15113,6 +20321,29 @@ func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) SetUpdateTime(v stri
 
 func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) SetUsername(v string) *UpdateUserDevicesSharingStatusResponseBodyDevices {
 	s.Username = &v
+	return s
+}
+
+type UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo struct {
+	Mac  *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo) SetMac(v string) *UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo {
+	s.Mac = &v
+	return s
+}
+
+func (s *UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo) SetName(v string) *UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo {
+	s.Name = &v
 	return s
 }
 
@@ -15273,7 +20504,8 @@ type UpdateUserDevicesStatusResponseBodyDevices struct {
 	// example:
 	//
 	// Enabled
-	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NacStatus        *string                                                       `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NetInterfaceInfo []*UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Enabled
@@ -15400,6 +20632,11 @@ func (s *UpdateUserDevicesStatusResponseBodyDevices) SetNacStatus(v string) *Upd
 	return s
 }
 
+func (s *UpdateUserDevicesStatusResponseBodyDevices) SetNetInterfaceInfo(v []*UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo) *UpdateUserDevicesStatusResponseBodyDevices {
+	s.NetInterfaceInfo = v
+	return s
+}
+
 func (s *UpdateUserDevicesStatusResponseBodyDevices) SetPaStatus(v string) *UpdateUserDevicesStatusResponseBodyDevices {
 	s.PaStatus = &v
 	return s
@@ -15427,6 +20664,29 @@ func (s *UpdateUserDevicesStatusResponseBodyDevices) SetUpdateTime(v string) *Up
 
 func (s *UpdateUserDevicesStatusResponseBodyDevices) SetUsername(v string) *UpdateUserDevicesStatusResponseBodyDevices {
 	s.Username = &v
+	return s
+}
+
+type UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo struct {
+	Mac  *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo) SetMac(v string) *UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo {
+	s.Mac = &v
+	return s
+}
+
+func (s *UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo) SetName(v string) *UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo {
+	s.Name = &v
 	return s
 }
 
@@ -15790,6 +21050,155 @@ func (client *Client) AttachApplication2Connector(request *AttachApplication2Con
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachApplication2ConnectorResponse{}
 	_body, _err := client.AttachApplication2ConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 挂载业务策略至指定审批流程
+//
+// @param request - AttachPolicy2ApprovalProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachPolicy2ApprovalProcessResponse
+func (client *Client) AttachPolicy2ApprovalProcessWithOptions(request *AttachPolicy2ApprovalProcessRequest, runtime *util.RuntimeOptions) (_result *AttachPolicy2ApprovalProcessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		body["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessId)) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachPolicy2ApprovalProcess"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachPolicy2ApprovalProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 挂载业务策略至指定审批流程
+//
+// @param request - AttachPolicy2ApprovalProcessRequest
+//
+// @return AttachPolicy2ApprovalProcessResponse
+func (client *Client) AttachPolicy2ApprovalProcess(request *AttachPolicy2ApprovalProcessRequest) (_result *AttachPolicy2ApprovalProcessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachPolicy2ApprovalProcessResponse{}
+	_body, _err := client.AttachPolicy2ApprovalProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建审批流程
+//
+// @param tmpReq - CreateApprovalProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApprovalProcessResponse
+func (client *Client) CreateApprovalProcessWithOptions(tmpReq *CreateApprovalProcessRequest, runtime *util.RuntimeOptions) (_result *CreateApprovalProcessResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateApprovalProcessShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MatchSchemas)) {
+		request.MatchSchemasShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchSchemas, tea.String("MatchSchemas"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchSchemasShrink)) {
+		body["MatchSchemas"] = request.MatchSchemasShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessName)) {
+		body["ProcessName"] = request.ProcessName
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProcessNodes)) {
+		bodyFlat["ProcessNodes"] = request.ProcessNodes
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApprovalProcess"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateApprovalProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建审批流程
+//
+// @param request - CreateApprovalProcessRequest
+//
+// @return CreateApprovalProcessResponse
+func (client *Client) CreateApprovalProcess(request *CreateApprovalProcessRequest) (_result *CreateApprovalProcessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApprovalProcessResponse{}
+	_body, _err := client.CreateApprovalProcessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16872,6 +22281,69 @@ func (client *Client) CreateWmInfoMapping(request *CreateWmInfoMappingRequest) (
 
 // Summary:
 //
+// 批量删除审批流程
+//
+// @param request - DeleteApprovalProcessesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApprovalProcessesResponse
+func (client *Client) DeleteApprovalProcessesWithOptions(request *DeleteApprovalProcessesRequest, runtime *util.RuntimeOptions) (_result *DeleteApprovalProcessesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProcessIds)) {
+		bodyFlat["ProcessIds"] = request.ProcessIds
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApprovalProcesses"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteApprovalProcessesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除审批流程
+//
+// @param request - DeleteApprovalProcessesRequest
+//
+// @return DeleteApprovalProcessesResponse
+func (client *Client) DeleteApprovalProcesses(request *DeleteApprovalProcessesRequest) (_result *DeleteApprovalProcessesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteApprovalProcessesResponse{}
+	_body, _err := client.DeleteApprovalProcessesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除自定义身份源指定用户
 //
 // @param request - DeleteClientUserRequest
@@ -17492,6 +22964,74 @@ func (client *Client) DetachApplication2Connector(request *DetachApplication2Con
 
 // Summary:
 //
+// 解绑业务策略与审批流程
+//
+// @param request - DetachPolicy2ApprovalProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachPolicy2ApprovalProcessResponse
+func (client *Client) DetachPolicy2ApprovalProcessWithOptions(request *DetachPolicy2ApprovalProcessRequest, runtime *util.RuntimeOptions) (_result *DetachPolicy2ApprovalProcessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		body["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessId)) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachPolicy2ApprovalProcess"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachPolicy2ApprovalProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑业务策略与审批流程
+//
+// @param request - DetachPolicy2ApprovalProcessRequest
+//
+// @return DetachPolicy2ApprovalProcessResponse
+func (client *Client) DetachPolicy2ApprovalProcess(request *DetachPolicy2ApprovalProcessRequest) (_result *DetachPolicy2ApprovalProcessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachPolicy2ApprovalProcessResponse{}
+	_body, _err := client.DetachPolicy2ApprovalProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量查询用户设备列表
 //
 // @param request - ExportUserDevicesRequest
@@ -17649,6 +23189,221 @@ func (client *Client) GetActiveIdpConfig() (_result *GetActiveIdpConfigResponse,
 	runtime := &util.RuntimeOptions{}
 	_result = &GetActiveIdpConfigResponse{}
 	_body, _err := client.GetActiveIdpConfigWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批
+//
+// @param request - GetApprovalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApprovalResponse
+func (client *Client) GetApprovalWithOptions(request *GetApprovalRequest, runtime *util.RuntimeOptions) (_result *GetApprovalResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApproval"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApprovalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批
+//
+// @param request - GetApprovalRequest
+//
+// @return GetApprovalResponse
+func (client *Client) GetApproval(request *GetApprovalRequest) (_result *GetApprovalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApprovalResponse{}
+	_body, _err := client.GetApprovalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批流程
+//
+// @param request - GetApprovalProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApprovalProcessResponse
+func (client *Client) GetApprovalProcessWithOptions(request *GetApprovalProcessRequest, runtime *util.RuntimeOptions) (_result *GetApprovalProcessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApprovalProcess"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApprovalProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批流程
+//
+// @param request - GetApprovalProcessRequest
+//
+// @return GetApprovalProcessResponse
+func (client *Client) GetApprovalProcess(request *GetApprovalProcessRequest) (_result *GetApprovalProcessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApprovalProcessResponse{}
+	_body, _err := client.GetApprovalProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批动态模板
+//
+// @param request - GetApprovalSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApprovalSchemaResponse
+func (client *Client) GetApprovalSchemaWithOptions(request *GetApprovalSchemaRequest, runtime *util.RuntimeOptions) (_result *GetApprovalSchemaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApprovalSchema"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApprovalSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批动态模板
+//
+// @param request - GetApprovalSchemaRequest
+//
+// @return GetApprovalSchemaResponse
+func (client *Client) GetApprovalSchema(request *GetApprovalSchemaRequest) (_result *GetApprovalSchemaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApprovalSchemaResponse{}
+	_body, _err := client.GetApprovalSchemaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自启动与防卸载策略配置
+//
+// @param request - GetBootAndAntiUninstallPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBootAndAntiUninstallPolicyResponse
+func (client *Client) GetBootAndAntiUninstallPolicyWithOptions(runtime *util.RuntimeOptions) (_result *GetBootAndAntiUninstallPolicyResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetBootAndAntiUninstallPolicy"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBootAndAntiUninstallPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自启动与防卸载策略配置
+//
+// @return GetBootAndAntiUninstallPolicyResponse
+func (client *Client) GetBootAndAntiUninstallPolicy() (_result *GetBootAndAntiUninstallPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBootAndAntiUninstallPolicyResponse{}
+	_body, _err := client.GetBootAndAntiUninstallPolicyWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18321,6 +24076,286 @@ func (client *Client) ListApplicationsForPrivateAccessTag(request *ListApplicati
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsForPrivateAccessTagResponse{}
 	_body, _err := client.ListApplicationsForPrivateAccessTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询审批流程
+//
+// @param request - ListApprovalProcessesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApprovalProcessesResponse
+func (client *Client) ListApprovalProcessesWithOptions(request *ListApprovalProcessesRequest, runtime *util.RuntimeOptions) (_result *ListApprovalProcessesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApprovalProcesses"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApprovalProcessesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询审批流程
+//
+// @param request - ListApprovalProcessesRequest
+//
+// @return ListApprovalProcessesResponse
+func (client *Client) ListApprovalProcesses(request *ListApprovalProcessesRequest) (_result *ListApprovalProcessesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApprovalProcessesResponse{}
+	_body, _err := client.ListApprovalProcessesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批渲染模板关联的流程
+//
+// @param request - ListApprovalProcessesForApprovalSchemasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApprovalProcessesForApprovalSchemasResponse
+func (client *Client) ListApprovalProcessesForApprovalSchemasWithOptions(request *ListApprovalProcessesForApprovalSchemasRequest, runtime *util.RuntimeOptions) (_result *ListApprovalProcessesForApprovalSchemasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApprovalProcessesForApprovalSchemas"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApprovalProcessesForApprovalSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批渲染模板关联的流程
+//
+// @param request - ListApprovalProcessesForApprovalSchemasRequest
+//
+// @return ListApprovalProcessesForApprovalSchemasResponse
+func (client *Client) ListApprovalProcessesForApprovalSchemas(request *ListApprovalProcessesForApprovalSchemasRequest) (_result *ListApprovalProcessesForApprovalSchemasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApprovalProcessesForApprovalSchemasResponse{}
+	_body, _err := client.ListApprovalProcessesForApprovalSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询审批动态模板
+//
+// @param request - ListApprovalSchemasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApprovalSchemasResponse
+func (client *Client) ListApprovalSchemasWithOptions(request *ListApprovalSchemasRequest, runtime *util.RuntimeOptions) (_result *ListApprovalSchemasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApprovalSchemas"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApprovalSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询审批动态模板
+//
+// @param request - ListApprovalSchemasRequest
+//
+// @return ListApprovalSchemasResponse
+func (client *Client) ListApprovalSchemas(request *ListApprovalSchemasRequest) (_result *ListApprovalSchemasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApprovalSchemasResponse{}
+	_body, _err := client.ListApprovalSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批流程关联的渲染模板
+//
+// @param request - ListApprovalSchemasForApprovalProcessesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApprovalSchemasForApprovalProcessesResponse
+func (client *Client) ListApprovalSchemasForApprovalProcessesWithOptions(request *ListApprovalSchemasForApprovalProcessesRequest, runtime *util.RuntimeOptions) (_result *ListApprovalSchemasForApprovalProcessesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApprovalSchemasForApprovalProcesses"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApprovalSchemasForApprovalProcessesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批流程关联的渲染模板
+//
+// @param request - ListApprovalSchemasForApprovalProcessesRequest
+//
+// @return ListApprovalSchemasForApprovalProcessesResponse
+func (client *Client) ListApprovalSchemasForApprovalProcesses(request *ListApprovalSchemasForApprovalProcessesRequest) (_result *ListApprovalSchemasForApprovalProcessesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApprovalSchemasForApprovalProcessesResponse{}
+	_body, _err := client.ListApprovalSchemasForApprovalProcessesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询审批
+//
+// @param request - ListApprovalsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApprovalsResponse
+func (client *Client) ListApprovalsWithOptions(request *ListApprovalsRequest, runtime *util.RuntimeOptions) (_result *ListApprovalsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApprovals"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApprovalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询审批
+//
+// @param request - ListApprovalsRequest
+//
+// @return ListApprovalsResponse
+func (client *Client) ListApprovals(request *ListApprovalsRequest) (_result *ListApprovalsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApprovalsResponse{}
+	_body, _err := client.ListApprovalsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19585,6 +25620,62 @@ func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivate
 
 // Summary:
 //
+// 列表查询卸载申请列表
+//
+// @param request - ListUninstallApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUninstallApplicationsResponse
+func (client *Client) ListUninstallApplicationsWithOptions(request *ListUninstallApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListUninstallApplicationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUninstallApplications"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUninstallApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询卸载申请列表
+//
+// @param request - ListUninstallApplicationsRequest
+//
+// @return ListUninstallApplicationsResponse
+func (client *Client) ListUninstallApplications(request *ListUninstallApplicationsRequest) (_result *ListUninstallApplicationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUninstallApplicationsResponse{}
+	_body, _err := client.ListUninstallApplicationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列表查询用户应用权限
 //
 // @param request - ListUserApplicationsRequest
@@ -20088,6 +26179,244 @@ func (client *Client) RevokeUserSession(request *RevokeUserSessionRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeUserSessionResponse{}
 	_body, _err := client.RevokeUserSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新审批流程
+//
+// @param tmpReq - UpdateApprovalProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApprovalProcessResponse
+func (client *Client) UpdateApprovalProcessWithOptions(tmpReq *UpdateApprovalProcessRequest, runtime *util.RuntimeOptions) (_result *UpdateApprovalProcessResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateApprovalProcessShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MatchSchemas)) {
+		request.MatchSchemasShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchSchemas, tea.String("MatchSchemas"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchSchemasShrink)) {
+		body["MatchSchemas"] = request.MatchSchemasShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessId)) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessName)) {
+		body["ProcessName"] = request.ProcessName
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProcessNodes)) {
+		bodyFlat["ProcessNodes"] = request.ProcessNodes
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApprovalProcess"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateApprovalProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新审批流程
+//
+// @param request - UpdateApprovalProcessRequest
+//
+// @return UpdateApprovalProcessResponse
+func (client *Client) UpdateApprovalProcess(request *UpdateApprovalProcessRequest) (_result *UpdateApprovalProcessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateApprovalProcessResponse{}
+	_body, _err := client.UpdateApprovalProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改审批状态
+//
+// @param request - UpdateApprovalStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApprovalStatusResponse
+func (client *Client) UpdateApprovalStatusWithOptions(request *UpdateApprovalStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateApprovalStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApprovalId)) {
+		query["ApprovalId"] = request.ApprovalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApprovalStatus"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateApprovalStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改审批状态
+//
+// @param request - UpdateApprovalStatusRequest
+//
+// @return UpdateApprovalStatusResponse
+func (client *Client) UpdateApprovalStatus(request *UpdateApprovalStatusRequest) (_result *UpdateApprovalStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateApprovalStatusResponse{}
+	_body, _err := client.UpdateApprovalStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自启动与防卸载策略配置
+//
+// @param tmpReq - UpdateBootAndAntiUninstallPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBootAndAntiUninstallPolicyResponse
+func (client *Client) UpdateBootAndAntiUninstallPolicyWithOptions(tmpReq *UpdateBootAndAntiUninstallPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateBootAndAntiUninstallPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateBootAndAntiUninstallPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BlockContent)) {
+		request.BlockContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BlockContent, tea.String("BlockContent"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowReport)) {
+		body["AllowReport"] = request.AllowReport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BlockContentShrink)) {
+		body["BlockContent"] = request.BlockContentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAntiUninstall)) {
+		body["IsAntiUninstall"] = request.IsAntiUninstall
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsBoot)) {
+		body["IsBoot"] = request.IsBoot
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhitelistUsers)) {
+		bodyFlat["WhitelistUsers"] = request.WhitelistUsers
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBootAndAntiUninstallPolicy"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBootAndAntiUninstallPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自启动与防卸载策略配置
+//
+// @param request - UpdateBootAndAntiUninstallPolicyRequest
+//
+// @return UpdateBootAndAntiUninstallPolicyResponse
+func (client *Client) UpdateBootAndAntiUninstallPolicy(request *UpdateBootAndAntiUninstallPolicyRequest) (_result *UpdateBootAndAntiUninstallPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBootAndAntiUninstallPolicyResponse{}
+	_body, _err := client.UpdateBootAndAntiUninstallPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20940,6 +27269,73 @@ func (client *Client) UpdateRegistrationPolicy(request *UpdateRegistrationPolicy
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRegistrationPolicyResponse{}
 	_body, _err := client.UpdateRegistrationPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量修改卸载申请状态
+//
+// @param request - UpdateUninstallApplicationsStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUninstallApplicationsStatusResponse
+func (client *Client) UpdateUninstallApplicationsStatusWithOptions(request *UpdateUninstallApplicationsStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUninstallApplicationsStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationIds)) {
+		bodyFlat["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUninstallApplicationsStatus"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUninstallApplicationsStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量修改卸载申请状态
+//
+// @param request - UpdateUninstallApplicationsStatusRequest
+//
+// @return UpdateUninstallApplicationsStatusResponse
+func (client *Client) UpdateUninstallApplicationsStatus(request *UpdateUninstallApplicationsStatusRequest) (_result *UpdateUninstallApplicationsStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUninstallApplicationsStatusResponse{}
+	_body, _err := client.UpdateUninstallApplicationsStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
