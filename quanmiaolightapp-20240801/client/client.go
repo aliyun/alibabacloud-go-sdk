@@ -535,6 +535,976 @@ func (s *GenerateOutputFormatResponse) SetBody(v *GenerateOutputFormatResponseBo
 	return s
 }
 
+type GetVideoAnalysisConfigResponseBody struct {
+	// example:
+	//
+	// xx
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetVideoAnalysisConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 085BE2D2-BB7E-59A6-B688-F2CB32124E7F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetVideoAnalysisConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisConfigResponseBody) SetCode(v string) *GetVideoAnalysisConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVideoAnalysisConfigResponseBody) SetData(v *GetVideoAnalysisConfigResponseBodyData) *GetVideoAnalysisConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVideoAnalysisConfigResponseBody) SetHttpStatusCode(v int32) *GetVideoAnalysisConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetVideoAnalysisConfigResponseBody) SetMessage(v string) *GetVideoAnalysisConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetVideoAnalysisConfigResponseBody) SetRequestId(v string) *GetVideoAnalysisConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVideoAnalysisConfigResponseBody) SetSuccess(v bool) *GetVideoAnalysisConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetVideoAnalysisConfigResponseBodyData struct {
+	// example:
+	//
+	// 2
+	AsyncConcurrency *int32 `json:"asyncConcurrency,omitempty" xml:"asyncConcurrency,omitempty"`
+}
+
+func (s GetVideoAnalysisConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisConfigResponseBodyData) SetAsyncConcurrency(v int32) *GetVideoAnalysisConfigResponseBodyData {
+	s.AsyncConcurrency = &v
+	return s
+}
+
+type GetVideoAnalysisConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoAnalysisConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVideoAnalysisConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisConfigResponse) SetHeaders(v map[string]*string) *GetVideoAnalysisConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoAnalysisConfigResponse) SetStatusCode(v int32) *GetVideoAnalysisConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoAnalysisConfigResponse) SetBody(v *GetVideoAnalysisConfigResponseBody) *GetVideoAnalysisConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetVideoAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskRequest) SetTaskId(v string) *GetVideoAnalysisTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetVideoAnalysisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5D0E915E-655D-59A8-894F-93873F73AAE5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBody) SetCode(v string) *GetVideoAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBody) SetData(v *GetVideoAnalysisTaskResponseBodyData) *GetVideoAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *GetVideoAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBody) SetMessage(v string) *GetVideoAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBody) SetRequestId(v string) *GetVideoAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBody) SetSuccess(v bool) *GetVideoAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// Access was denied, message: No such namespace namespaces/mjp-test-default.
+	ErrorMessage *string                                      `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Header       *GetVideoAnalysisTaskResponseBodyDataHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload      *GetVideoAnalysisTaskResponseBodyDataPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3feb69ed02d9b1a17d0f1a942675d300
+	TaskId      *string                                          `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskRunInfo *GetVideoAnalysisTaskResponseBodyDataTaskRunInfo `json:"taskRunInfo,omitempty" xml:"taskRunInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESSED
+	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyData) SetErrorMessage(v string) *GetVideoAnalysisTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyData) SetHeader(v *GetVideoAnalysisTaskResponseBodyDataHeader) *GetVideoAnalysisTaskResponseBodyData {
+	s.Header = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyData) SetPayload(v *GetVideoAnalysisTaskResponseBodyDataPayload) *GetVideoAnalysisTaskResponseBodyData {
+	s.Payload = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyData) SetTaskId(v string) *GetVideoAnalysisTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyData) SetTaskRunInfo(v *GetVideoAnalysisTaskResponseBodyDataTaskRunInfo) *GetVideoAnalysisTaskResponseBodyData {
+	s.TaskRunInfo = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyData) SetTaskStatus(v string) *GetVideoAnalysisTaskResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// Deduct task already success,Please do not resubmit.token \\"369e8f2c-d283-424a-96c4-c83efe08c89e\\"
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// TIMEOUT_CLOSE_ORDER
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxx
+	EventInfo *string `json:"eventInfo,omitempty" xml:"eventInfo,omitempty"`
+	// example:
+	//
+	// d5c38cf6-a4bf-4a57-a697-9f449926f0c9
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 6e223291-729b-4e84-9271-c13ada1a776b
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 215045f817272303448235204efdef
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataHeader) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataHeader) SetErrorCode(v string) *GetVideoAnalysisTaskResponseBodyDataHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataHeader) SetErrorMessage(v string) *GetVideoAnalysisTaskResponseBodyDataHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataHeader) SetEvent(v string) *GetVideoAnalysisTaskResponseBodyDataHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataHeader) SetEventInfo(v string) *GetVideoAnalysisTaskResponseBodyDataHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataHeader) SetSessionId(v string) *GetVideoAnalysisTaskResponseBodyDataHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataHeader) SetTaskId(v string) *GetVideoAnalysisTaskResponseBodyDataHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataHeader) SetTraceId(v string) *GetVideoAnalysisTaskResponseBodyDataHeader {
+	s.TraceId = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayload struct {
+	Output *GetVideoAnalysisTaskResponseBodyDataPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *GetVideoAnalysisTaskResponseBodyDataPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayload) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayload) SetOutput(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) *GetVideoAnalysisTaskResponseBodyDataPayload {
+	s.Output = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayload) SetUsage(v *GetVideoAnalysisTaskResponseBodyDataPayloadUsage) *GetVideoAnalysisTaskResponseBodyDataPayload {
+	s.Usage = v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutput struct {
+	VideoAnalysisResult            *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult            `json:"videoAnalysisResult,omitempty" xml:"videoAnalysisResult,omitempty" type:"Struct"`
+	VideoCaptionResult             *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult             `json:"videoCaptionResult,omitempty" xml:"videoCaptionResult,omitempty" type:"Struct"`
+	VideoGenerateResult            *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult            `json:"videoGenerateResult,omitempty" xml:"videoGenerateResult,omitempty" type:"Struct"`
+	VideoMindMappingGenerateResult *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult `json:"videoMindMappingGenerateResult,omitempty" xml:"videoMindMappingGenerateResult,omitempty" type:"Struct"`
+	VideoTitleGenerateResult       *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult       `json:"videoTitleGenerateResult,omitempty" xml:"videoTitleGenerateResult,omitempty" type:"Struct"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoAnalysisResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.VideoAnalysisResult = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoCaptionResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.VideoCaptionResult = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoGenerateResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.VideoGenerateResult = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoMindMappingGenerateResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.VideoMindMappingGenerateResult = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoTitleGenerateResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.VideoTitleGenerateResult = v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished *bool `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	// example:
+	//
+	// xxx
+	Text                     *string                                                                                         `json:"text,omitempty" xml:"text,omitempty"`
+	Usage                    *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage                      `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	VideoShotAnalysisResults []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults `json:"videoShotAnalysisResults,omitempty" xml:"videoShotAnalysisResults,omitempty" type:"Repeated"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) SetGenerateFinished(v bool) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) SetText(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult {
+	s.Text = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) SetUsage(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult {
+	s.Usage = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) SetVideoShotAnalysisResults(v []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult {
+	s.VideoShotAnalysisResults = v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage struct {
+	// example:
+	//
+	// 0
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 0
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 0
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) SetInputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) SetOutputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) SetTotalTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults struct {
+	// example:
+	//
+	// 1710432000000
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 2024-10-05 06:22:00
+	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults) SetEndTime(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults) SetStartTime(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults) SetText(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults {
+	s.Text = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished *bool                                                                               `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	VideoCaptions    []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions `json:"videoCaptions,omitempty" xml:"videoCaptions,omitempty" type:"Repeated"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult) SetGenerateFinished(v bool) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult) SetVideoCaptions(v []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult {
+	s.VideoCaptions = v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions struct {
+	// example:
+	//
+	// 1736129678000
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 00:01
+	EndTimeFormat *string `json:"endTimeFormat,omitempty" xml:"endTimeFormat,omitempty"`
+	// example:
+	//
+	// 00:01
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 2025-01-07 11:52:06
+	StartTimeFormat *string `json:"startTimeFormat,omitempty" xml:"startTimeFormat,omitempty"`
+	// example:
+	//
+	// xxxx
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) SetEndTime(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) SetEndTimeFormat(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions {
+	s.EndTimeFormat = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) SetStartTime(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) SetStartTimeFormat(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions {
+	s.StartTimeFormat = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions) SetText(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions {
+	s.Text = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished *bool `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	// example:
+	//
+	// xxx
+	Text  *string                                                                    `json:"text,omitempty" xml:"text,omitempty"`
+	Usage *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) SetGenerateFinished(v bool) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) SetText(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult {
+	s.Text = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) SetUsage(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult {
+	s.Usage = v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage) SetInputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage) SetOutputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage) SetTotalTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished  *bool                                                                                               `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	Text              *string                                                                                             `json:"text,omitempty" xml:"text,omitempty"`
+	Usage             *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage               `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	VideoMindMappings []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings `json:"videoMindMappings,omitempty" xml:"videoMindMappings,omitempty" type:"Repeated"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) SetGenerateFinished(v bool) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) SetText(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult {
+	s.Text = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) SetUsage(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult {
+	s.Usage = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) SetVideoMindMappings(v []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult {
+	s.VideoMindMappings = v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage) SetInputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage) SetOutputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage) SetTotalTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings struct {
+	ChildNodes []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes `json:"childNodes,omitempty" xml:"childNodes,omitempty" type:"Repeated"`
+	Name       *string                                                                                                       `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings) SetChildNodes(v []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings {
+	s.ChildNodes = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings) SetName(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings {
+	s.Name = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes struct {
+	ChildNodes []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes `json:"childNodes,omitempty" xml:"childNodes,omitempty" type:"Repeated"`
+	Name       *string                                                                                                                 `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes) SetChildNodes(v []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes {
+	s.ChildNodes = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes) SetName(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes {
+	s.Name = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes) SetName(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes {
+	s.Name = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished *bool `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	// example:
+	//
+	// xxxx
+	Text  *string                                                                         `json:"text,omitempty" xml:"text,omitempty"`
+	Usage *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult) SetGenerateFinished(v bool) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult) SetText(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult {
+	s.Text = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult) SetUsage(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult {
+	s.Usage = v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage struct {
+	// example:
+	//
+	// 0
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 0
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 0
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage) SetInputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage) SetOutputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage) SetTotalTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadUsage struct {
+	// example:
+	//
+	// 0
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 0
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 0
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadUsage) SetInputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadUsage) SetOutputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadUsage) SetTotalTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponseBodyDataTaskRunInfo struct {
+	// example:
+	//
+	// true
+	ConcurrentChargeEnable *bool `json:"concurrentChargeEnable,omitempty" xml:"concurrentChargeEnable,omitempty"`
+	// example:
+	//
+	// 1
+	ResponseTime *int64 `json:"responseTime,omitempty" xml:"responseTime,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataTaskRunInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataTaskRunInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataTaskRunInfo) SetConcurrentChargeEnable(v bool) *GetVideoAnalysisTaskResponseBodyDataTaskRunInfo {
+	s.ConcurrentChargeEnable = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataTaskRunInfo) SetResponseTime(v int64) *GetVideoAnalysisTaskResponseBodyDataTaskRunInfo {
+	s.ResponseTime = &v
+	return s
+}
+
+type GetVideoAnalysisTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponse) SetHeaders(v map[string]*string) *GetVideoAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponse) SetStatusCode(v int32) *GetVideoAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponse) SetBody(v *GetVideoAnalysisTaskResponseBody) *GetVideoAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ListHotTopicSummariesRequest struct {
 	// example:
 	//
@@ -3803,8 +4773,13 @@ func (s *RunTagMiningAnalysisResponse) SetBody(v *RunTagMiningAnalysisResponseBo
 }
 
 type RunVideoAnalysisRequest struct {
-	GenerateOptions           []*string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
-	ModelCustomPromptTemplate *string   `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
+	FrameSampleMethod *RunVideoAnalysisRequestFrameSampleMethod `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty" type:"Struct"`
+	GenerateOptions   []*string                                 `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// english
+	Language                  *string `json:"language,omitempty" xml:"language,omitempty"`
+	ModelCustomPromptTemplate *string `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
 	// example:
 	//
 	// PlotDetail
@@ -3827,7 +4802,8 @@ type RunVideoAnalysisRequest struct {
 	// example:
 	//
 	// qwen-vl-max
-	VideoModelId *string `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
+	VideoModelId *string                              `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
+	VideoRoles   []*RunVideoAnalysisRequestVideoRoles `json:"videoRoles,omitempty" xml:"videoRoles,omitempty" type:"Repeated"`
 	// example:
 	//
 	// http://xxxx.mp4
@@ -3842,8 +4818,18 @@ func (s RunVideoAnalysisRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunVideoAnalysisRequest) SetFrameSampleMethod(v *RunVideoAnalysisRequestFrameSampleMethod) *RunVideoAnalysisRequest {
+	s.FrameSampleMethod = v
+	return s
+}
+
 func (s *RunVideoAnalysisRequest) SetGenerateOptions(v []*string) *RunVideoAnalysisRequest {
 	s.GenerateOptions = v
+	return s
+}
+
+func (s *RunVideoAnalysisRequest) SetLanguage(v string) *RunVideoAnalysisRequest {
+	s.Language = &v
 	return s
 }
 
@@ -3892,13 +4878,81 @@ func (s *RunVideoAnalysisRequest) SetVideoModelId(v string) *RunVideoAnalysisReq
 	return s
 }
 
+func (s *RunVideoAnalysisRequest) SetVideoRoles(v []*RunVideoAnalysisRequestVideoRoles) *RunVideoAnalysisRequest {
+	s.VideoRoles = v
+	return s
+}
+
 func (s *RunVideoAnalysisRequest) SetVideoUrl(v string) *RunVideoAnalysisRequest {
 	s.VideoUrl = &v
 	return s
 }
 
+type RunVideoAnalysisRequestFrameSampleMethod struct {
+	Interval   *float64 `json:"interval,omitempty" xml:"interval,omitempty"`
+	MethodName *string  `json:"methodName,omitempty" xml:"methodName,omitempty"`
+	Pixel      *int32   `json:"pixel,omitempty" xml:"pixel,omitempty"`
+}
+
+func (s RunVideoAnalysisRequestFrameSampleMethod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunVideoAnalysisRequestFrameSampleMethod) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestFrameSampleMethod) SetInterval(v float64) *RunVideoAnalysisRequestFrameSampleMethod {
+	s.Interval = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestFrameSampleMethod) SetMethodName(v string) *RunVideoAnalysisRequestFrameSampleMethod {
+	s.MethodName = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestFrameSampleMethod) SetPixel(v int32) *RunVideoAnalysisRequestFrameSampleMethod {
+	s.Pixel = &v
+	return s
+}
+
+type RunVideoAnalysisRequestVideoRoles struct {
+	RoleInfo *string   `json:"roleInfo,omitempty" xml:"roleInfo,omitempty"`
+	RoleName *string   `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	Urls     []*string `json:"urls,omitempty" xml:"urls,omitempty" type:"Repeated"`
+}
+
+func (s RunVideoAnalysisRequestVideoRoles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunVideoAnalysisRequestVideoRoles) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestVideoRoles) SetRoleInfo(v string) *RunVideoAnalysisRequestVideoRoles {
+	s.RoleInfo = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestVideoRoles) SetRoleName(v string) *RunVideoAnalysisRequestVideoRoles {
+	s.RoleName = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestVideoRoles) SetUrls(v []*string) *RunVideoAnalysisRequestVideoRoles {
+	s.Urls = v
+	return s
+}
+
 type RunVideoAnalysisShrinkRequest struct {
-	GenerateOptionsShrink     *string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty"`
+	FrameSampleMethodShrink *string `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty"`
+	GenerateOptionsShrink   *string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty"`
+	// example:
+	//
+	// english
+	Language                  *string `json:"language,omitempty" xml:"language,omitempty"`
 	ModelCustomPromptTemplate *string `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
 	// example:
 	//
@@ -3922,7 +4976,8 @@ type RunVideoAnalysisShrinkRequest struct {
 	// example:
 	//
 	// qwen-vl-max
-	VideoModelId *string `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
+	VideoModelId     *string `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
+	VideoRolesShrink *string `json:"videoRoles,omitempty" xml:"videoRoles,omitempty"`
 	// example:
 	//
 	// http://xxxx.mp4
@@ -3937,8 +4992,18 @@ func (s RunVideoAnalysisShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunVideoAnalysisShrinkRequest) SetFrameSampleMethodShrink(v string) *RunVideoAnalysisShrinkRequest {
+	s.FrameSampleMethodShrink = &v
+	return s
+}
+
 func (s *RunVideoAnalysisShrinkRequest) SetGenerateOptionsShrink(v string) *RunVideoAnalysisShrinkRequest {
 	s.GenerateOptionsShrink = &v
+	return s
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetLanguage(v string) *RunVideoAnalysisShrinkRequest {
+	s.Language = &v
 	return s
 }
 
@@ -3984,6 +5049,11 @@ func (s *RunVideoAnalysisShrinkRequest) SetVideoModelCustomPromptTemplate(v stri
 
 func (s *RunVideoAnalysisShrinkRequest) SetVideoModelId(v string) *RunVideoAnalysisShrinkRequest {
 	s.VideoModelId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetVideoRolesShrink(v string) *RunVideoAnalysisShrinkRequest {
+	s.VideoRolesShrink = &v
 	return s
 }
 
@@ -4123,6 +5193,7 @@ type RunVideoAnalysisResponseBodyPayloadOutput struct {
 	VideoCaptionResult             *RunVideoAnalysisResponseBodyPayloadOutputVideoCaptionResult             `json:"videoCaptionResult,omitempty" xml:"videoCaptionResult,omitempty" type:"Struct"`
 	VideoGenerateResult            *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult            `json:"videoGenerateResult,omitempty" xml:"videoGenerateResult,omitempty" type:"Struct"`
 	VideoMindMappingGenerateResult *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult `json:"videoMindMappingGenerateResult,omitempty" xml:"videoMindMappingGenerateResult,omitempty" type:"Struct"`
+	VideoShotSnapshotResult        *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult        `json:"videoShotSnapshotResult,omitempty" xml:"videoShotSnapshotResult,omitempty" type:"Struct"`
 	VideoTitleGenerateResult       *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult       `json:"videoTitleGenerateResult,omitempty" xml:"videoTitleGenerateResult,omitempty" type:"Struct"`
 }
 
@@ -4154,6 +5225,11 @@ func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetVideoMindMappingGenerateR
 	return s
 }
 
+func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetVideoShotSnapshotResult(v *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult) *RunVideoAnalysisResponseBodyPayloadOutput {
+	s.VideoShotSnapshotResult = v
+	return s
+}
+
 func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetVideoTitleGenerateResult(v *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult) *RunVideoAnalysisResponseBodyPayloadOutput {
 	s.VideoTitleGenerateResult = v
 	return s
@@ -4163,7 +5239,11 @@ type RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult struct {
 	// example:
 	//
 	// true
-	GenerateFinished         *bool                                                                                   `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	GenerateFinished *bool `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	// example:
+	//
+	// qwen-vl-max
+	ModelId                  *string                                                                                 `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	Text                     *string                                                                                 `json:"text,omitempty" xml:"text,omitempty"`
 	Usage                    *RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResultUsage                      `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 	VideoShotAnalysisResults []*RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResultVideoShotAnalysisResults `json:"videoShotAnalysisResults,omitempty" xml:"videoShotAnalysisResults,omitempty" type:"Repeated"`
@@ -4179,6 +5259,11 @@ func (s RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult) GoString()
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult) SetGenerateFinished(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult {
 	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult) SetModelId(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult {
+	s.ModelId = &v
 	return s
 }
 
@@ -4356,9 +5441,14 @@ type RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult struct {
 	// example:
 	//
 	// true
-	GenerateFinished *bool                                                              `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
-	Text             *string                                                            `json:"text,omitempty" xml:"text,omitempty"`
-	Usage            *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResultUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	GenerateFinished *bool `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId     *string                                                            `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelReduce *bool                                                              `json:"modelReduce,omitempty" xml:"modelReduce,omitempty"`
+	Text        *string                                                            `json:"text,omitempty" xml:"text,omitempty"`
+	Usage       *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResultUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult) String() string {
@@ -4371,6 +5461,16 @@ func (s RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult) GoString()
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult) SetGenerateFinished(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult {
 	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult) SetModelId(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult) SetModelReduce(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult {
+	s.ModelReduce = &v
 	return s
 }
 
@@ -4426,7 +5526,12 @@ type RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult str
 	// example:
 	//
 	// true
-	GenerateFinished  *bool                                                                                       `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	GenerateFinished *bool `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	// example:
+	//
+	// true
+	ModelId           *string                                                                                     `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelReduce       *bool                                                                                       `json:"modelReduce,omitempty" xml:"modelReduce,omitempty"`
 	Text              *string                                                                                     `json:"text,omitempty" xml:"text,omitempty"`
 	Usage             *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResultUsage               `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 	VideoMindMappings []*RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResultVideoMindMappings `json:"videoMindMappings,omitempty" xml:"videoMindMappings,omitempty" type:"Repeated"`
@@ -4442,6 +5547,16 @@ func (s RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult)
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult) SetGenerateFinished(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult {
 	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult) SetModelId(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult) SetModelReduce(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult {
+	s.ModelReduce = &v
 	return s
 }
 
@@ -4561,13 +5676,93 @@ func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult
 	return s
 }
 
+type RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult struct {
+	VideoShots []*RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots `json:"videoShots,omitempty" xml:"videoShots,omitempty" type:"Repeated"`
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult) SetVideoShots(v []*RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult {
+	s.VideoShots = v
+	return s
+}
+
+type RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots struct {
+	EndTime         *int64                                                                                      `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndTimeFormat   *string                                                                                     `json:"endTimeFormat,omitempty" xml:"endTimeFormat,omitempty"`
+	StartTime       *int64                                                                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StartTimeFormat *string                                                                                     `json:"startTimeFormat,omitempty" xml:"startTimeFormat,omitempty"`
+	VideoSnapshots  []*RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots `json:"videoSnapshots,omitempty" xml:"videoSnapshots,omitempty" type:"Repeated"`
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) SetEndTime(v int64) *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) SetEndTimeFormat(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots {
+	s.EndTimeFormat = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) SetStartTime(v int64) *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots {
+	s.StartTime = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) SetStartTimeFormat(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots {
+	s.StartTimeFormat = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots) SetVideoSnapshots(v []*RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots) *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShots {
+	s.VideoSnapshots = v
+	return s
+}
+
+type RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots struct {
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots) SetUrl(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots {
+	s.Url = &v
+	return s
+}
+
 type RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult struct {
 	// example:
 	//
 	// true
-	GenerateFinished *bool                                                                   `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
-	Text             *string                                                                 `json:"text,omitempty" xml:"text,omitempty"`
-	Usage            *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResultUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	GenerateFinished *bool `json:"generateFinished,omitempty" xml:"generateFinished,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId     *string                                                                 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelReduce *bool                                                                   `json:"modelReduce,omitempty" xml:"modelReduce,omitempty"`
+	Text        *string                                                                 `json:"text,omitempty" xml:"text,omitempty"`
+	Usage       *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResultUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult) String() string {
@@ -4580,6 +5775,16 @@ func (s RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult) GoStr
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult) SetGenerateFinished(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult {
 	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult) SetModelId(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult) SetModelReduce(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult {
+	s.ModelReduce = &v
 	return s
 }
 
@@ -4685,6 +5890,499 @@ func (s *RunVideoAnalysisResponse) SetStatusCode(v int32) *RunVideoAnalysisRespo
 }
 
 func (s *RunVideoAnalysisResponse) SetBody(v *RunVideoAnalysisResponseBody) *RunVideoAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitVideoAnalysisTaskRequest struct {
+	FrameSampleMethod *SubmitVideoAnalysisTaskRequestFrameSampleMethod `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty" type:"Struct"`
+	GenerateOptions   []*string                                        `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// chinese
+	Language                  *string `json:"language,omitempty" xml:"language,omitempty"`
+	ModelCustomPromptTemplate *string `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
+	// example:
+	//
+	// PlotDetail
+	ModelCustomPromptTemplateId *string `json:"modelCustomPromptTemplateId,omitempty" xml:"modelCustomPromptTemplateId,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 2
+	SnapshotInterval               *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
+	VideoExtraInfo                 *string  `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
+	VideoModelCustomPromptTemplate *string  `json:"videoModelCustomPromptTemplate,omitempty" xml:"videoModelCustomPromptTemplate,omitempty"`
+	// example:
+	//
+	// qwen-vl-max-latest
+	VideoModelId *string                                     `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
+	VideoRoles   []*SubmitVideoAnalysisTaskRequestVideoRoles `json:"videoRoles,omitempty" xml:"videoRoles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://xxxx.mp4
+	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetFrameSampleMethod(v *SubmitVideoAnalysisTaskRequestFrameSampleMethod) *SubmitVideoAnalysisTaskRequest {
+	s.FrameSampleMethod = v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetGenerateOptions(v []*string) *SubmitVideoAnalysisTaskRequest {
+	s.GenerateOptions = v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetLanguage(v string) *SubmitVideoAnalysisTaskRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetModelCustomPromptTemplate(v string) *SubmitVideoAnalysisTaskRequest {
+	s.ModelCustomPromptTemplate = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetModelCustomPromptTemplateId(v string) *SubmitVideoAnalysisTaskRequest {
+	s.ModelCustomPromptTemplateId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetModelId(v string) *SubmitVideoAnalysisTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetSnapshotInterval(v float64) *SubmitVideoAnalysisTaskRequest {
+	s.SnapshotInterval = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetVideoExtraInfo(v string) *SubmitVideoAnalysisTaskRequest {
+	s.VideoExtraInfo = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetVideoModelCustomPromptTemplate(v string) *SubmitVideoAnalysisTaskRequest {
+	s.VideoModelCustomPromptTemplate = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetVideoModelId(v string) *SubmitVideoAnalysisTaskRequest {
+	s.VideoModelId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetVideoRoles(v []*SubmitVideoAnalysisTaskRequestVideoRoles) *SubmitVideoAnalysisTaskRequest {
+	s.VideoRoles = v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetVideoUrl(v string) *SubmitVideoAnalysisTaskRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type SubmitVideoAnalysisTaskRequestFrameSampleMethod struct {
+	// example:
+	//
+	// 2
+	Interval *float64 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// standard
+	MethodName *string `json:"methodName,omitempty" xml:"methodName,omitempty"`
+	// example:
+	//
+	// 768
+	Pixel *int32 `json:"pixel,omitempty" xml:"pixel,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskRequestFrameSampleMethod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskRequestFrameSampleMethod) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequestFrameSampleMethod) SetInterval(v float64) *SubmitVideoAnalysisTaskRequestFrameSampleMethod {
+	s.Interval = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestFrameSampleMethod) SetMethodName(v string) *SubmitVideoAnalysisTaskRequestFrameSampleMethod {
+	s.MethodName = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestFrameSampleMethod) SetPixel(v int32) *SubmitVideoAnalysisTaskRequestFrameSampleMethod {
+	s.Pixel = &v
+	return s
+}
+
+type SubmitVideoAnalysisTaskRequestVideoRoles struct {
+	RoleInfo *string   `json:"roleInfo,omitempty" xml:"roleInfo,omitempty"`
+	RoleName *string   `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	Urls     []*string `json:"urls,omitempty" xml:"urls,omitempty" type:"Repeated"`
+}
+
+func (s SubmitVideoAnalysisTaskRequestVideoRoles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskRequestVideoRoles) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetRoleInfo(v string) *SubmitVideoAnalysisTaskRequestVideoRoles {
+	s.RoleInfo = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetRoleName(v string) *SubmitVideoAnalysisTaskRequestVideoRoles {
+	s.RoleName = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetUrls(v []*string) *SubmitVideoAnalysisTaskRequestVideoRoles {
+	s.Urls = v
+	return s
+}
+
+type SubmitVideoAnalysisTaskShrinkRequest struct {
+	FrameSampleMethodShrink *string `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty"`
+	GenerateOptionsShrink   *string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty"`
+	// example:
+	//
+	// chinese
+	Language                  *string `json:"language,omitempty" xml:"language,omitempty"`
+	ModelCustomPromptTemplate *string `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
+	// example:
+	//
+	// PlotDetail
+	ModelCustomPromptTemplateId *string `json:"modelCustomPromptTemplateId,omitempty" xml:"modelCustomPromptTemplateId,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 2
+	SnapshotInterval               *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
+	VideoExtraInfo                 *string  `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
+	VideoModelCustomPromptTemplate *string  `json:"videoModelCustomPromptTemplate,omitempty" xml:"videoModelCustomPromptTemplate,omitempty"`
+	// example:
+	//
+	// qwen-vl-max-latest
+	VideoModelId     *string `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
+	VideoRolesShrink *string `json:"videoRoles,omitempty" xml:"videoRoles,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://xxxx.mp4
+	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetFrameSampleMethodShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.FrameSampleMethodShrink = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetGenerateOptionsShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.GenerateOptionsShrink = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetLanguage(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetModelCustomPromptTemplate(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.ModelCustomPromptTemplate = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetModelCustomPromptTemplateId(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.ModelCustomPromptTemplateId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetModelId(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetSnapshotInterval(v float64) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.SnapshotInterval = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoExtraInfo(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.VideoExtraInfo = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoModelCustomPromptTemplate(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.VideoModelCustomPromptTemplate = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoModelId(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.VideoModelId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoRolesShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.VideoRolesShrink = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoUrl(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type SubmitVideoAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// xx
+	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data *SubmitVideoAnalysisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 085BE2D2-BB7E-59A6-B688-F2CB32124E7F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskResponseBody) SetCode(v string) *SubmitVideoAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskResponseBody) SetData(v *SubmitVideoAnalysisTaskResponseBodyData) *SubmitVideoAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *SubmitVideoAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskResponseBody) SetMessage(v string) *SubmitVideoAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskResponseBody) SetRequestId(v string) *SubmitVideoAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskResponseBody) SetSuccess(v bool) *SubmitVideoAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitVideoAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// 3feb69ed02d9b1a17d0f1a942675d300
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskResponseBodyData) SetTaskId(v string) *SubmitVideoAnalysisTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitVideoAnalysisTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitVideoAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskResponse) SetHeaders(v map[string]*string) *SubmitVideoAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskResponse) SetStatusCode(v int32) *SubmitVideoAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskResponse) SetBody(v *SubmitVideoAnalysisTaskResponseBody) *SubmitVideoAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateVideoAnalysisConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	AsyncConcurrency *int32 `json:"asyncConcurrency,omitempty" xml:"asyncConcurrency,omitempty"`
+}
+
+func (s UpdateVideoAnalysisConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoAnalysisConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoAnalysisConfigRequest) SetAsyncConcurrency(v int32) *UpdateVideoAnalysisConfigRequest {
+	s.AsyncConcurrency = &v
+	return s
+}
+
+type UpdateVideoAnalysisConfigResponseBody struct {
+	// example:
+	//
+	// xx
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5D0E915E-655D-59A8-894F-93873F73AAE5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateVideoAnalysisConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoAnalysisConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoAnalysisConfigResponseBody) SetCode(v string) *UpdateVideoAnalysisConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateVideoAnalysisConfigResponseBody) SetHttpStatusCode(v int32) *UpdateVideoAnalysisConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateVideoAnalysisConfigResponseBody) SetMessage(v string) *UpdateVideoAnalysisConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateVideoAnalysisConfigResponseBody) SetRequestId(v string) *UpdateVideoAnalysisConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateVideoAnalysisConfigResponseBody) SetSuccess(v bool) *UpdateVideoAnalysisConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateVideoAnalysisConfigResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVideoAnalysisConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateVideoAnalysisConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoAnalysisConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoAnalysisConfigResponse) SetHeaders(v map[string]*string) *UpdateVideoAnalysisConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVideoAnalysisConfigResponse) SetStatusCode(v int32) *UpdateVideoAnalysisConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateVideoAnalysisConfigResponse) SetBody(v *UpdateVideoAnalysisConfigResponseBody) *UpdateVideoAnalysisConfigResponse {
 	s.Body = v
 	return s
 }
@@ -4879,6 +6577,120 @@ func (client *Client) GenerateOutputFormat(workspaceId *string, request *Generat
 	headers := make(map[string]*string)
 	_result = &GenerateOutputFormatResponse{}
 	_body, _err := client.GenerateOutputFormatWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 视频理解-获取配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoAnalysisConfigResponse
+func (client *Client) GetVideoAnalysisConfigWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVideoAnalysisConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoAnalysisConfig"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/getVideoAnalysisConfig"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoAnalysisConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 视频理解-获取配置
+//
+// @return GetVideoAnalysisConfigResponse
+func (client *Client) GetVideoAnalysisConfig(workspaceId *string) (_result *GetVideoAnalysisConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVideoAnalysisConfigResponse{}
+	_body, _err := client.GetVideoAnalysisConfigWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-获取视频理解异步任务结果
+//
+// @param request - GetVideoAnalysisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoAnalysisTaskResponse
+func (client *Client) GetVideoAnalysisTaskWithOptions(workspaceId *string, request *GetVideoAnalysisTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVideoAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoAnalysisTask"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/getVideoAnalysisTask"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-获取视频理解异步任务结果
+//
+// @param request - GetVideoAnalysisTaskRequest
+//
+// @return GetVideoAnalysisTaskResponse
+func (client *Client) GetVideoAnalysisTask(workspaceId *string, request *GetVideoAnalysisTaskRequest) (_result *GetVideoAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVideoAnalysisTaskResponse{}
+	_body, _err := client.GetVideoAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5702,13 +7514,29 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 	}
 	request := &RunVideoAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FrameSampleMethod)) {
+		request.FrameSampleMethodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FrameSampleMethod, tea.String("frameSampleMethod"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.GenerateOptions)) {
 		request.GenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GenerateOptions, tea.String("generateOptions"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoRoles)) {
+		request.VideoRolesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoRoles, tea.String("videoRoles"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FrameSampleMethodShrink)) {
+		body["frameSampleMethod"] = request.FrameSampleMethodShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GenerateOptionsShrink)) {
 		body["generateOptions"] = request.GenerateOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["language"] = request.Language
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModelCustomPromptTemplate)) {
@@ -5745,6 +7573,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 
 	if !tea.BoolValue(util.IsUnset(request.VideoModelId)) {
 		body["videoModelId"] = request.VideoModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoRolesShrink)) {
+		body["videoRoles"] = request.VideoRolesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
@@ -5787,6 +7619,192 @@ func (client *Client) RunVideoAnalysis(workspaceId *string, request *RunVideoAna
 	headers := make(map[string]*string)
 	_result = &RunVideoAnalysisResponse{}
 	_body, _err := client.RunVideoAnalysisWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-提交视频理解任务
+//
+// @param tmpReq - SubmitVideoAnalysisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoAnalysisTaskResponse
+func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tmpReq *SubmitVideoAnalysisTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitVideoAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitVideoAnalysisTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FrameSampleMethod)) {
+		request.FrameSampleMethodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FrameSampleMethod, tea.String("frameSampleMethod"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.GenerateOptions)) {
+		request.GenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GenerateOptions, tea.String("generateOptions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoRoles)) {
+		request.VideoRolesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoRoles, tea.String("videoRoles"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FrameSampleMethodShrink)) {
+		body["frameSampleMethod"] = request.FrameSampleMethodShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenerateOptionsShrink)) {
+		body["generateOptions"] = request.GenerateOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelCustomPromptTemplate)) {
+		body["modelCustomPromptTemplate"] = request.ModelCustomPromptTemplate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelCustomPromptTemplateId)) {
+		body["modelCustomPromptTemplateId"] = request.ModelCustomPromptTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotInterval)) {
+		body["snapshotInterval"] = request.SnapshotInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoExtraInfo)) {
+		body["videoExtraInfo"] = request.VideoExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoModelCustomPromptTemplate)) {
+		body["videoModelCustomPromptTemplate"] = request.VideoModelCustomPromptTemplate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoModelId)) {
+		body["videoModelId"] = request.VideoModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoRolesShrink)) {
+		body["videoRoles"] = request.VideoRolesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["videoUrl"] = request.VideoUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitVideoAnalysisTask"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/submitVideoAnalysisTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitVideoAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-提交视频理解任务
+//
+// @param request - SubmitVideoAnalysisTaskRequest
+//
+// @return SubmitVideoAnalysisTaskResponse
+func (client *Client) SubmitVideoAnalysisTask(workspaceId *string, request *SubmitVideoAnalysisTaskRequest) (_result *SubmitVideoAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitVideoAnalysisTaskResponse{}
+	_body, _err := client.SubmitVideoAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 视频理解-更新配置
+//
+// @param request - UpdateVideoAnalysisConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVideoAnalysisConfigResponse
+func (client *Client) UpdateVideoAnalysisConfigWithOptions(workspaceId *string, request *UpdateVideoAnalysisConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateVideoAnalysisConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncConcurrency)) {
+		body["asyncConcurrency"] = request.AsyncConcurrency
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVideoAnalysisConfig"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/updateVideoAnalysisConfig"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateVideoAnalysisConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 视频理解-更新配置
+//
+// @param request - UpdateVideoAnalysisConfigRequest
+//
+// @return UpdateVideoAnalysisConfigResponse
+func (client *Client) UpdateVideoAnalysisConfig(workspaceId *string, request *UpdateVideoAnalysisConfigRequest) (_result *UpdateVideoAnalysisConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateVideoAnalysisConfigResponse{}
+	_body, _err := client.UpdateVideoAnalysisConfigWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
