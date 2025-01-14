@@ -748,7 +748,10 @@ type AttachInstancesRequest struct {
 	// example:
 	//
 	// false
-	Entrusted             *bool `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
+	Entrusted *bool `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
+	// example:
+	//
+	// false
 	IgnoreInvalidInstance *bool `json:"IgnoreInvalidInstance,omitempty" xml:"IgnoreInvalidInstance,omitempty"`
 	// The IDs of the ECS instances, elastic container instances, non-Alibaba Cloud instances, or instances in Economical Mode.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -20716,7 +20719,8 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	// example:
 	//
 	// The specified ECS resource is out of stock in this region. Please try again later.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage  *string                                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessages []*DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages `json:"ErrorMessages,omitempty" xml:"ErrorMessages,omitempty" type:"Repeated"`
 	// The ID of the instance refresh task.
 	//
 	// example:
@@ -20900,6 +20904,11 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetErrorMessage
 	return s
 }
 
+func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetErrorMessages(v []*DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) *DescribeScalingActivitiesResponseBodyScalingActivities {
+	s.ErrorMessages = v
+	return s
+}
+
 func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetInstanceRefreshTaskId(v string) *DescribeScalingActivitiesResponseBodyScalingActivities {
 	s.InstanceRefreshTaskId = &v
 	return s
@@ -20977,6 +20986,41 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTriggerSourc
 
 func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTriggerSourceType(v string) *DescribeScalingActivitiesResponseBodyScalingActivities {
 	s.TriggerSourceType = &v
+	return s
+}
+
+type DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages struct {
+	Code              *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" xml:"FailedInstanceIds,omitempty" type:"Repeated"`
+	Message           *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) SetCode(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) SetDescription(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) SetFailedInstanceIds(v []*string) *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages {
+	s.FailedInstanceIds = v
+	return s
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) SetMessage(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages {
+	s.Message = &v
 	return s
 }
 
