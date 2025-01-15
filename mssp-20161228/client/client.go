@@ -243,6 +243,7 @@ type CreateServiceWorkOrderRequest struct {
 	//
 	// Y
 	IsAttachment *string `json:"IsAttachment,omitempty" xml:"IsAttachment,omitempty"`
+	IsMilestone  *string `json:"IsMilestone,omitempty" xml:"IsMilestone,omitempty"`
 	// Whether a reminder is needed.
 	//
 	// This parameter is required.
@@ -364,6 +365,11 @@ func (s *CreateServiceWorkOrderRequest) SetDurationDay(v string) *CreateServiceW
 
 func (s *CreateServiceWorkOrderRequest) SetIsAttachment(v string) *CreateServiceWorkOrderRequest {
 	s.IsAttachment = &v
+	return s
+}
+
+func (s *CreateServiceWorkOrderRequest) SetIsMilestone(v string) *CreateServiceWorkOrderRequest {
+	s.IsMilestone = &v
 	return s
 }
 
@@ -2662,7 +2668,12 @@ type GetDocumentDownloadUrlRequest struct {
 	// example:
 	//
 	// 175815
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Report type.
+	//
+	// example:
+	//
+	// 5
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 }
 
@@ -2805,13 +2816,13 @@ type GetDocumentPageRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// luna
 	DeliveredBy *string `json:"DeliveredBy,omitempty" xml:"DeliveredBy,omitempty"`
 	// Document name.
 	//
 	// example:
 	//
-	// 季度报告
+	// month report
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
 	// Document type.
 	//
@@ -2876,7 +2887,7 @@ func (s *GetDocumentPageRequest) SetReportType(v string) *GetDocumentPageRequest
 }
 
 type GetDocumentPageResponseBody struct {
-	// Interface response code.
+	// API response code.
 	//
 	// example:
 	//
@@ -2890,7 +2901,7 @@ type GetDocumentPageResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Prompt message for the response result.
+	// Prompt message for the result.
 	//
 	// example:
 	//
@@ -2962,13 +2973,13 @@ type GetDocumentPageResponseBodyData struct {
 	//
 	// example:
 	//
-	// 张三
+	// luna
 	DeliveredBy *string `json:"DeliveredBy,omitempty" xml:"DeliveredBy,omitempty"`
 	// Report name.
 	//
 	// example:
 	//
-	// 季度报告
+	// month report
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
 	// Service report type.
 	//
@@ -2976,12 +2987,17 @@ type GetDocumentPageResponseBodyData struct {
 	//
 	// 3
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
-	// Document primary key ID.
+	// Primary key ID of the document.
 	//
 	// example:
 	//
 	// 346409
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Report status.
+	//
+	// example:
+	//
+	// uploaded
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	// Report generation time.
 	//
@@ -3036,13 +3052,13 @@ type GetDocumentPageResponseBodyPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of data items displayed per page.
+	// Number of items per page in the returned data.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of data items found.
+	// Total number of queried items.
 	//
 	// example:
 	//
@@ -8035,6 +8051,10 @@ func (client *Client) CreateServiceWorkOrderWithOptions(request *CreateServiceWo
 
 	if !tea.BoolValue(util.IsUnset(request.IsAttachment)) {
 		body["IsAttachment"] = request.IsAttachment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsMilestone)) {
+		body["IsMilestone"] = request.IsMilestone
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsWorkOrderNotify)) {
