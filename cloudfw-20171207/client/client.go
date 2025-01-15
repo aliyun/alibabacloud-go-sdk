@@ -13878,7 +13878,9 @@ type DescribePostpayTrafficTotalResponseBody struct {
 	// example:
 	//
 	// 560646279
-	TotalNatTraffic *int64 `json:"TotalNatTraffic,omitempty" xml:"TotalNatTraffic,omitempty"`
+	TotalNatTraffic     *int64 `json:"TotalNatTraffic,omitempty" xml:"TotalNatTraffic,omitempty"`
+	TotalSdlBillTraffic *int64 `json:"TotalSdlBillTraffic,omitempty" xml:"TotalSdlBillTraffic,omitempty"`
+	TotalSdlFreeTraffic *int64 `json:"TotalSdlFreeTraffic,omitempty" xml:"TotalSdlFreeTraffic,omitempty"`
 	// The total volume of traffic. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic. Unit: bytes.
 	//
 	// example:
@@ -13939,6 +13941,16 @@ func (s *DescribePostpayTrafficTotalResponseBody) SetTotalNatAssets(v int64) *De
 
 func (s *DescribePostpayTrafficTotalResponseBody) SetTotalNatTraffic(v int64) *DescribePostpayTrafficTotalResponseBody {
 	s.TotalNatTraffic = &v
+	return s
+}
+
+func (s *DescribePostpayTrafficTotalResponseBody) SetTotalSdlBillTraffic(v int64) *DescribePostpayTrafficTotalResponseBody {
+	s.TotalSdlBillTraffic = &v
+	return s
+}
+
+func (s *DescribePostpayTrafficTotalResponseBody) SetTotalSdlFreeTraffic(v int64) *DescribePostpayTrafficTotalResponseBody {
+	s.TotalSdlFreeTraffic = &v
 	return s
 }
 
