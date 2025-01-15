@@ -194,20 +194,41 @@ func (s *DataDisk) SetSnapshotId(v string) *DataDisk {
 }
 
 type InstancePatterns struct {
+	// Deprecated
 	Architectures []*string `json:"architectures,omitempty" xml:"architectures,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// example:
 	//
 	// Exclude
 	BurstPerformanceOption *string `json:"burst_performance_option,omitempty" xml:"burst_performance_option,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 4
-	Core                  *int64    `json:"core,omitempty" xml:"core,omitempty"`
+	Core *int64 `json:"core,omitempty" xml:"core,omitempty"`
+	// example:
+	//
+	// 4
+	Cores                 *int64    `json:"cores,omitempty" xml:"cores,omitempty"`
+	CpuArchitectures      []*string `json:"cpu_architectures,omitempty" xml:"cpu_architectures,omitempty" type:"Repeated"`
 	ExcludedInstanceTypes []*string `json:"excluded_instance_types,omitempty" xml:"excluded_instance_types,omitempty" type:"Repeated"`
+	InstanceCategories    []*string `json:"instance_categories,omitempty" xml:"instance_categories,omitempty" type:"Repeated"`
 	// example:
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel *string `json:"instance_family_level,omitempty" xml:"instance_family_level,omitempty"`
+	// example:
+	//
+	// 8
+	MaxCpuCores *int64 `json:"max_cpu_cores,omitempty" xml:"max_cpu_cores,omitempty"`
+	// example:
+	//
+	// 16
+	MaxMemorySize *float32 `json:"max_memory_size,omitempty" xml:"max_memory_size,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 2
@@ -216,6 +237,14 @@ type InstancePatterns struct {
 	//
 	// 8
 	Memory *float32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// example:
+	//
+	// 4
+	MinCpuCores *int64 `json:"min_cpu_cores,omitempty" xml:"min_cpu_cores,omitempty"`
+	// example:
+	//
+	// 8
+	MinMemorySize *float32 `json:"min_memory_size,omitempty" xml:"min_memory_size,omitempty"`
 }
 
 func (s InstancePatterns) String() string {
@@ -241,13 +270,38 @@ func (s *InstancePatterns) SetCore(v int64) *InstancePatterns {
 	return s
 }
 
+func (s *InstancePatterns) SetCores(v int64) *InstancePatterns {
+	s.Cores = &v
+	return s
+}
+
+func (s *InstancePatterns) SetCpuArchitectures(v []*string) *InstancePatterns {
+	s.CpuArchitectures = v
+	return s
+}
+
 func (s *InstancePatterns) SetExcludedInstanceTypes(v []*string) *InstancePatterns {
 	s.ExcludedInstanceTypes = v
 	return s
 }
 
+func (s *InstancePatterns) SetInstanceCategories(v []*string) *InstancePatterns {
+	s.InstanceCategories = v
+	return s
+}
+
 func (s *InstancePatterns) SetInstanceFamilyLevel(v string) *InstancePatterns {
 	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *InstancePatterns) SetMaxCpuCores(v int64) *InstancePatterns {
+	s.MaxCpuCores = &v
+	return s
+}
+
+func (s *InstancePatterns) SetMaxMemorySize(v float32) *InstancePatterns {
+	s.MaxMemorySize = &v
 	return s
 }
 
@@ -258,6 +312,16 @@ func (s *InstancePatterns) SetMaxPrice(v float32) *InstancePatterns {
 
 func (s *InstancePatterns) SetMemory(v float32) *InstancePatterns {
 	s.Memory = &v
+	return s
+}
+
+func (s *InstancePatterns) SetMinCpuCores(v int64) *InstancePatterns {
+	s.MinCpuCores = &v
+	return s
+}
+
+func (s *InstancePatterns) SetMinMemorySize(v float32) *InstancePatterns {
+	s.MinMemorySize = &v
 	return s
 }
 
@@ -272,6 +336,14 @@ type KubeletConfig struct {
 	//
 	// 10Mi
 	ContainerLogMaxSize *string `json:"containerLogMaxSize,omitempty" xml:"containerLogMaxSize,omitempty"`
+	// example:
+	//
+	// 1
+	ContainerLogMaxWorkers *int32 `json:"containerLogMaxWorkers,omitempty" xml:"containerLogMaxWorkers,omitempty"`
+	// example:
+	//
+	// 10s
+	ContainerLogMonitorInterval *string `json:"containerLogMonitorInterval,omitempty" xml:"containerLogMonitorInterval,omitempty"`
 	// example:
 	//
 	// true
@@ -375,6 +447,16 @@ func (s *KubeletConfig) SetContainerLogMaxFiles(v int64) *KubeletConfig {
 
 func (s *KubeletConfig) SetContainerLogMaxSize(v string) *KubeletConfig {
 	s.ContainerLogMaxSize = &v
+	return s
+}
+
+func (s *KubeletConfig) SetContainerLogMaxWorkers(v int32) *KubeletConfig {
+	s.ContainerLogMaxWorkers = &v
+	return s
+}
+
+func (s *KubeletConfig) SetContainerLogMonitorInterval(v string) *KubeletConfig {
+	s.ContainerLogMonitorInterval = &v
 	return s
 }
 
