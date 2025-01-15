@@ -14257,7 +14257,8 @@ type DescribeBundlesResponseBodyBundles struct {
 	// example:
 	//
 	// 2021-09-30T06:09Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
 	// The description of the cloud computer template.
 	//
 	// example:
@@ -14421,7 +14422,8 @@ type DescribeBundlesResponseBodyBundles struct {
 	// example:
 	//
 	// Sufficient
-	StockState *string `json:"StockState,omitempty" xml:"StockState,omitempty"`
+	StockState         *string `json:"StockState,omitempty" xml:"StockState,omitempty"`
+	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
 	// Indicates whether disk encryption is enabled.
 	//
 	// example:
@@ -14461,6 +14463,11 @@ func (s *DescribeBundlesResponseBodyBundles) SetBundleType(v string) *DescribeBu
 
 func (s *DescribeBundlesResponseBodyBundles) SetCreationTime(v string) *DescribeBundlesResponseBodyBundles {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeBundlesResponseBodyBundles) SetDataDiskCategory(v string) *DescribeBundlesResponseBodyBundles {
+	s.DataDiskCategory = &v
 	return s
 }
 
@@ -14531,6 +14538,11 @@ func (s *DescribeBundlesResponseBodyBundles) SetSessionType(v string) *DescribeB
 
 func (s *DescribeBundlesResponseBodyBundles) SetStockState(v string) *DescribeBundlesResponseBodyBundles {
 	s.StockState = &v
+	return s
+}
+
+func (s *DescribeBundlesResponseBodyBundles) SetSystemDiskCategory(v string) *DescribeBundlesResponseBodyBundles {
+	s.SystemDiskCategory = &v
 	return s
 }
 
@@ -32846,7 +32858,9 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	// example:
 	//
 	// 30
-	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	RemainTime       *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	RestorePointId   *string `json:"RestorePointId,omitempty" xml:"RestorePointId,omitempty"`
+	RestorePointName *string `json:"RestorePointName,omitempty" xml:"RestorePointName,omitempty"`
 	// The snapshot ID.
 	//
 	// example:
@@ -33014,6 +33028,16 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetProtocolType(v string) *Desc
 
 func (s *DescribeSnapshotsResponseBodySnapshots) SetRemainTime(v int32) *DescribeSnapshotsResponseBodySnapshots {
 	s.RemainTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetRestorePointId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.RestorePointId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetRestorePointName(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.RestorePointName = &v
 	return s
 }
 
