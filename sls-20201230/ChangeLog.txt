@@ -1,3 +1,9 @@
+2025-01-15 Version: v6.7.1
+- Update API CreateMetricStore: update param body.
+- Update API GetMetricStore: update response param.
+- Update API UpdateMetricStore: update param body.
+
+
 2024-12-09 Version: v6.7.0
 - Support API CreateAgentInstanceConfig.
 - Support API DeleteAgentInstanceConfig.

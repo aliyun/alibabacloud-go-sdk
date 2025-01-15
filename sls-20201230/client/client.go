@@ -2259,6 +2259,10 @@ func (s *MaxComputeExportConfiguration) SetToTime(v int64) *MaxComputeExportConf
 type MaxComputeExportConfigurationSink struct {
 	// This parameter is required.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	FilterInvalid *bool `json:"filterInvalid,omitempty" xml:"filterInvalid,omitempty"`
 	// Deprecated
 	//
 	// example:
@@ -2327,6 +2331,11 @@ func (s MaxComputeExportConfigurationSink) GoString() string {
 
 func (s *MaxComputeExportConfigurationSink) SetFields(v []*string) *MaxComputeExportConfigurationSink {
 	s.Fields = v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetFilterInvalid(v bool) *MaxComputeExportConfigurationSink {
+	s.FilterInvalid = &v
 	return s
 }
 
@@ -4411,6 +4420,7 @@ type Project struct {
 	// This parameter is required.
 	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
 	Owner          *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// This parameter is required.
 	ProjectName     *string                `json:"projectName,omitempty" xml:"projectName,omitempty"`
@@ -4445,6 +4455,11 @@ func (s *Project) SetDescription(v string) *Project {
 
 func (s *Project) SetLastModifyTime(v string) *Project {
 	s.LastModifyTime = &v
+	return s
+}
+
+func (s *Project) SetLocation(v string) *Project {
+	s.Location = &v
 	return s
 }
 
@@ -6015,8 +6030,18 @@ func (s *CreateLoggingResponse) SetStatusCode(v int32) *CreateLoggingResponse {
 
 type CreateLogtailPipelineConfigRequest struct {
 	// The aggregation plug-ins.
+	//
+	// >  This parameter takes effect only when extended plug-ins are used. You can use only one aggregation plug-in.
 	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
 	// The name of the configuration.
+	//
+	// >  The name of the configuration must be unique in the project to which the configuration belongs. After the configuration is created, you cannot change the name of the configuration. The name must meet the following requirements:
+	//
+	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start and end with a lowercase letter or a digit.
+	//
+	// 	- The name must be 2 to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -6024,23 +6049,41 @@ type CreateLogtailPipelineConfigRequest struct {
 	//
 	// test-config
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	// The data output plug-ins.
+	// The output plug-ins.
+	//
+	// >  You can configure only one output plug-in.
 	//
 	// This parameter is required.
 	Flushers []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
-	// The global configuration.
+	// The global settings.
 	Global map[string]interface{} `json:"global,omitempty" xml:"global,omitempty"`
-	// The data source plug-ins.
+	// The input plug-ins.
+	//
+	// >  You can configure only one input plug-in.
 	//
 	// This parameter is required.
 	Inputs []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
-	// The sample log.
+	// The sample log. You can specify multiple sample logs.
 	//
 	// example:
 	//
 	// 2022-06-14 11:13:29.796 | DEBUG    | __main__:<module>:1 - hello world
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
 	// The processing plug-ins.
+	//
+	// >  Logtail plug-ins for data processing are classified into native plug-ins and extended plug-ins. For more information, see [Overview of Logtail plug-ins for data processing](https://help.aliyun.com/document_detail/64957.html).
+	//
+	// >
+	//
+	// 	- You can use native plug-ins only to collect text logs.
+	//
+	// 	- You cannot add native plug-ins and extended plug-ins at a time.
+	//
+	// 	- When you add native plug-ins, take note of the following items:
+	//
+	//     	- You must add one of the following Logtail plug-ins for data processing as the first plug-in: Data Parsing (Regex Mode), Data Parsing (Delimiter Mode), Data Parsing (JSON Mode), Data Parsing (NGINX Mode), Data Parsing (Apache Mode), and Data Parsing (IIS Mode).
+	//
+	//     	- After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 }
 
@@ -6252,7 +6295,9 @@ type CreateMetricStoreRequest struct {
 	// example:
 	//
 	// true
-	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	AutoSplit           *bool  `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The maximum number of shards into which existing shards can be automatically split. This parameter is valid only when you set the autoSplit parameter to true.
 	//
 	// example:
@@ -6307,6 +6352,16 @@ func (s CreateMetricStoreRequest) GoString() string {
 
 func (s *CreateMetricStoreRequest) SetAutoSplit(v bool) *CreateMetricStoreRequest {
 	s.AutoSplit = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetHotTtl(v int32) *CreateMetricStoreRequest {
+	s.HotTtl = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetInfrequentAccessTTL(v int32) *CreateMetricStoreRequest {
+	s.InfrequentAccessTTL = &v
 	return s
 }
 
@@ -6516,17 +6571,25 @@ func (s *CreateOSSHDFSExportResponse) SetStatusCode(v int32) *CreateOSSHDFSExpor
 }
 
 type CreateOSSIngestionRequest struct {
+	// The configurations of the OSS data import job.
+	//
 	// This parameter is required.
 	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name.
+	//
 	// This parameter is required.
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The name of the OSS data import job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-oss-123456
-	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling type. By default, you do not need to specify this parameter. If you want to import data at regular intervals, such as importing data every Monday at 08: 00., you can specify a cron expression.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
@@ -7361,11 +7424,19 @@ func (s *CreateStoreViewResponse) SetStatusCode(v int32) *CreateStoreViewRespons
 }
 
 type CreateTicketRequest struct {
+	// 	- The validity period of the access token. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 86400.
+	//
+	// 	- The validity period of the access token is the smaller value between accessTokenExpirationTime and expirationTime.
+	//
+	// 	- If you use a Security Token Service (STS) token to call this operation, the validity period of the access token is the smallest value among accessTokenExpirationTime, expirationTime, and the validity period of the STS token.
+	//
 	// example:
 	//
 	// 600
 	AccessTokenExpirationTime *int64 `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
-	// The validity period of the ticket that is used for logon-free access. Unit: seconds. Default value: 86400. Maximum value: 2592000. The value 86400 specifies one day.
+	// 	- You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the CreateTicket operation. After you obtain the ticket, you can use the ticket regardless of the region.
+	//
+	// 	- The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 2592000. The value 2592000 specifies 30 days.
 	//
 	// example:
 	//
@@ -8781,14 +8852,20 @@ type GetCollectionPolicyResponseBodyCollectionPolicy struct {
 	// example:
 	//
 	// true
-	Enabled        *bool                                                        `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// false
 	InternalPolicy *bool                                                        `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
 	PolicyConfig   *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	// example:
+	//
+	// 148***********50
+	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 	// example:
 	//
 	// oss
@@ -8907,8 +8984,14 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDes
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyDataConfig struct {
+	// example:
+	//
+	// ""
 	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
-	DataRegion  *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	DataRegion *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
 }
 
 func (s GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) String() string {
@@ -8935,7 +9018,10 @@ type GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig struct {
 	// example:
 	//
 	// all
-	ResourceMode *string                `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	ResourceMode *string `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	// example:
+	//
+	// {"tag1":"value1","tag2":"value2"}
 	ResourceTags map[string]interface{} `json:"resourceTags,omitempty" xml:"resourceTags,omitempty"`
 }
 
@@ -8968,6 +9054,9 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourc
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory struct {
+	// example:
+	//
+	// all,custom
 	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
 	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
@@ -9414,7 +9503,7 @@ type GetDownloadJobResponseBody struct {
 	//
 	// download-123
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 代表资源状态的资源属性字段
+	// The status of the log download task.
 	//
 	// example:
 	//
@@ -11070,7 +11159,9 @@ type GetMetricStoreResponseBody struct {
 	// example:
 	//
 	// 1698933894
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime          *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The last update time. The value is a UNIX timestamp.
 	//
 	// example:
@@ -11130,6 +11221,16 @@ func (s *GetMetricStoreResponseBody) SetAutoSplit(v bool) *GetMetricStoreRespons
 
 func (s *GetMetricStoreResponseBody) SetCreateTime(v int64) *GetMetricStoreResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetHotTtl(v int32) *GetMetricStoreResponseBody {
+	s.HotTtl = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetInfrequentAccessTTL(v int32) *GetMetricStoreResponseBody {
+	s.InfrequentAccessTTL = &v
 	return s
 }
 
@@ -11888,6 +11989,8 @@ type ListAlertsRequest struct {
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Maximum value: 200. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -12280,6 +12383,8 @@ type ListCollectionPoliciesRequest struct {
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// The code of the service.
+	//
 	// example:
 	//
 	// oss
@@ -13137,7 +13242,8 @@ type ListDownloadJobsResponseBody struct {
 	// example:
 	//
 	// 10
-	Count   *int32                                 `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The log download tasks.
 	Results []*ListDownloadJobsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -13195,6 +13301,8 @@ type ListDownloadJobsResponseBodyResults struct {
 	//
 	// download-123
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// running
@@ -13636,7 +13744,7 @@ type ListLogStoresRequest struct {
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page. Maximum value: 500. Default value: 500.
+	// The number of entries per page. Maximum value: 500. Default value: 200.
 	//
 	// example:
 	//
@@ -14233,6 +14341,8 @@ type ListOSSExportsRequest struct {
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries to return. Default value: 10.
+	//
 	// example:
 	//
 	// 100
@@ -14332,6 +14442,8 @@ type ListOSSHDFSExportsRequest struct {
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries to return. Default value: 10.
+	//
 	// example:
 	//
 	// 100
@@ -14771,6 +14883,8 @@ type ListScheduledSQLsRequest struct {
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries to return. Default value: 10.
+	//
 	// example:
 	//
 	// 100
@@ -15046,9 +15160,9 @@ type ListTagResourcesRequest struct {
 	//
 	// 	- dashboard
 	//
-	// 	- MachineGroup
+	// 	- machinegroup
 	//
-	// 	- LogtailConfig
+	// 	- logtailconfig
 	//
 	// This parameter is required.
 	//
@@ -15134,9 +15248,9 @@ type ListTagResourcesShrinkRequest struct {
 	//
 	// 	- dashboard
 	//
-	// 	- MachineGroup
+	// 	- machinegroup
 	//
-	// 	- LogtailConfig
+	// 	- logtailconfig
 	//
 	// This parameter is required.
 	//
@@ -15739,6 +15853,12 @@ func (s *PutWebtrackingResponse) SetStatusCode(v int32) *PutWebtrackingResponse 
 }
 
 type RefreshTokenRequest struct {
+	// 	- The validity period of the access token. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 86400.
+	//
+	// 	- The validity period of the access token is the smaller value between accessTokenExpirationTime and expirationTime.
+	//
+	// 	- If you use a Security Token Service (STS) token to call this operation, the validity period of the access token is the smallest value among accessTokenExpirationTime, expirationTime, and the validity period of the STS token.
+	//
 	// example:
 	//
 	// 600
@@ -16996,16 +17116,21 @@ func (s *UpdateLogStoreResponse) SetStatusCode(v int32) *UpdateLogStoreResponse 
 }
 
 type UpdateLogStoreEncryptionRequest struct {
+	// Specifies whether to enable the encryption feature. After you update the encryption configuration of the Logstore, you can modify only the enable parameter in subsequent update requests. You cannot modify the encryptType or userCmkInfo parameters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The encryption algorithm. Valid values: default, m4, sm4_ecb, sm4_cbc, sm4_gcm, aes_ecb, aes_cbc, aes_cfb, aes_ofb, and aes_gcm.
+	//
 	// example:
 	//
 	// default
-	EncryptType *string                                     `json:"encryptType,omitempty" xml:"encryptType,omitempty"`
+	EncryptType *string `json:"encryptType,omitempty" xml:"encryptType,omitempty"`
+	// Optional. If you use a BYOK key to encrypt logs, you must specify this parameter. If you use the service key of Simple Log Service to encrypt logs, you do not need to specify this parameter.
 	UserCmkInfo *UpdateLogStoreEncryptionRequestUserCmkInfo `json:"userCmkInfo,omitempty" xml:"userCmkInfo,omitempty" type:"Struct"`
 }
 
@@ -17033,14 +17158,20 @@ func (s *UpdateLogStoreEncryptionRequest) SetUserCmkInfo(v *UpdateLogStoreEncryp
 }
 
 type UpdateLogStoreEncryptionRequestUserCmkInfo struct {
+	// The ID of the CMK to which the BYOK key belongs. You can create a CMK in KMS. The CMK must be in the same region as the endpoint of Simple Log Service.
+	//
 	// example:
 	//
 	// f5136b95-2420-ab31-xxxxxxxxx
 	KeyId *string `json:"keyId,omitempty" xml:"keyId,omitempty"`
+	// The region ID. Example: cn-hangzhou.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role.The value is in the acs:ram::12344\\*\\*\\*:role/xxxxx format. To use a BYOK key to encrypt logs, you must create a RAM role and grant the AliyunKMSReadOnlyAccess and AliyunKMSCryptoUserAccess permissions to the RAM role. You must grant the API caller the PassRole permission on the RAM role.
+	//
 	// example:
 	//
 	// acs:ram::12344***:role/xxxxx
@@ -17266,15 +17397,11 @@ type UpdateLogtailPipelineConfigRequest struct {
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
 	// The output plug-ins.
 	//
-	// >  You can use only one Simple Log Service output plug-in.
+	// >  You can configure only one output plug-in.
 	//
 	// This parameter is required.
 	Flushers []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
 	// The global settings.
-	//
-	// **
-	//
-	// ****
 	Global map[string]interface{} `json:"global,omitempty" xml:"global,omitempty"`
 	// The input plug-ins.
 	//
@@ -17290,13 +17417,13 @@ type UpdateLogtailPipelineConfigRequest struct {
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
 	// The processing plug-ins.
 	//
-	// >  Logtail supports native plug-ins and extended plug-ins for data processing. For more information, see [Logtail plug-ins overview](https://help.aliyun.com/document_detail/64957.html).
+	// >  Logtail plug-ins for data processing are classified into native plug-ins and extended plug-ins. For more information, see [Overview of Logtail plug-ins for data processing](https://help.aliyun.com/document_detail/64957.html).
 	//
 	// >
 	//
 	// 	- You can use native plug-ins only to collect text logs.
 	//
-	// 	- You cannot add native plug-ins and extended plug-ins at the same time.
+	// 	- You cannot add native plug-ins and extended plug-ins at a time.
 	//
 	// 	- When you add native plug-ins, take note of the following items:
 	//
@@ -17564,7 +17691,9 @@ type UpdateMetricStoreRequest struct {
 	// example:
 	//
 	// true
-	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	AutoSplit           *bool  `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The maximum number of shards into which existing shards can be automatically split. This parameter is valid only when you set the autoSplit parameter to true.
 	//
 	// example:
@@ -17595,6 +17724,16 @@ func (s UpdateMetricStoreRequest) GoString() string {
 
 func (s *UpdateMetricStoreRequest) SetAutoSplit(v bool) *UpdateMetricStoreRequest {
 	s.AutoSplit = &v
+	return s
+}
+
+func (s *UpdateMetricStoreRequest) SetHotTtl(v int32) *UpdateMetricStoreRequest {
+	s.HotTtl = &v
+	return s
+}
+
+func (s *UpdateMetricStoreRequest) SetInfrequentAccessTTL(v int32) *UpdateMetricStoreRequest {
+	s.InfrequentAccessTTL = &v
 	return s
 }
 
@@ -18579,38 +18718,59 @@ func (s *UpdateStoreViewResponse) SetStatusCode(v int32) *UpdateStoreViewRespons
 }
 
 type UpsertCollectionPolicyRequest struct {
+	// The configurations of centralized storage.
 	CentralizeConfig *UpsertCollectionPolicyRequestCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
+	// Specifies whether to enable centralized storage. Default value: false.
+	//
 	// example:
 	//
 	// false
 	CentralizeEnabled *bool `json:"centralizeEnabled,omitempty" xml:"centralizeEnabled,omitempty"`
+	// The code of the log type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// access_log
-	DataCode   *string                                  `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	// The data configurations. The configuration is returned only for global logs. For example, if productCode is set to sls, the configuration is returned.
 	DataConfig *UpsertCollectionPolicyRequestDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
+	// Specifies whether to enable the policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The configurations of the policy.
+	//
 	// This parameter is required.
 	PolicyConfig *UpsertCollectionPolicyRequestPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	// The name must meet the following requirements:
+	//
+	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- The name must be 3 to 63 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// The code of the service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss
-	ProductCode       *string                                         `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// The configurations of the resource directory. The account must have activated the resource directory and be a management account or a delegated administrator of the resource directory.
 	ResourceDirectory *UpsertCollectionPolicyRequestResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -18668,18 +18828,26 @@ func (s *UpsertCollectionPolicyRequest) SetResourceDirectory(v *UpsertCollection
 }
 
 type UpsertCollectionPolicyRequestCentralizeConfig struct {
+	// The destination logstore for centralized storage. Make sure that the region of the destination logstore is consistent with the region specified by destRegion and the destination logstore belongs to the destination project specified by destProject.
+	//
 	// example:
 	//
 	// your-sls-logstore-in-beijing
 	DestLogstore *string `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	// The destination project for centralized storage. Make sure that the region of the destination project is consistent with the region specified by destRegion.
+	//
 	// example:
 	//
 	// your-sls-project-in-beijing
 	DestProject *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	// The destination region for centralized storage.
+	//
 	// example:
 	//
 	// cn-beijing
 	DestRegion *string `json:"destRegion,omitempty" xml:"destRegion,omitempty"`
+	// The data retention period for centralized storage. Unit: days. This parameter takes effect only when you use an existing logstore for centralized storage.
+	//
 	// example:
 	//
 	// your-sls-logstore-ttl
@@ -18715,6 +18883,11 @@ func (s *UpsertCollectionPolicyRequestCentralizeConfig) SetDestTTL(v int32) *Ups
 }
 
 type UpsertCollectionPolicyRequestDataConfig struct {
+	// The region for storing the global logs that are collected for the first time.
+	//
+	// example:
+	//
+	// cn-beijing
 	DataRegion *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
 }
 
@@ -18732,14 +18905,23 @@ func (s *UpsertCollectionPolicyRequestDataConfig) SetDataRegion(v string) *Upser
 }
 
 type UpsertCollectionPolicyRequestPolicyConfig struct {
+	// The IDs of the instances. This parameter takes effect only when resourceMode is set to instanceMode. Logs are collected only from instances that use the specified IDs.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	Regions     []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	// The regions of the instances. This parameter takes effect only when resourceMode is set to attributeMode. Wildcard characters are supported. If you leave this parameter empty, region-based filtering is not performed. The system considers that all instances are matched. If you specify a value for this parameter, logs of instances that reside in the specified regions are collected. Logs are collected from an instance only if the resource tags and region of the instance match the specified conditions.
+	Regions []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	// The resource collection mode. Valid values: all, attributeMode, and instanceMode. The value all specifies that logs of all instances within your account are collected to the default logstore. The value attributeMode specifies that logs are collected based on the regions of instances and resource tags. The value instanceMode specifies that logs are collected based on instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// all
-	ResourceMode *string                `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	ResourceMode *string `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	// The resource tags. This parameter takes effect only when resourceMode is set to attributeMode. If you leave this parameter empty, resource tag-based filtering is not performed. The system considers that all instances are matched. If you specify a value for this parameter, logs of instances that use the specified resource tags are collected. Logs are collected from an instance only if the resource tags and region of the instance match the specified conditions.
+	//
+	// example:
+	//
+	// {"tag1":"value1",“tag2":"value2"}
 	ResourceTags map[string]interface{} `json:"resourceTags,omitempty" xml:"resourceTags,omitempty"`
 }
 
@@ -18772,8 +18954,14 @@ func (s *UpsertCollectionPolicyRequestPolicyConfig) SetResourceTags(v map[string
 }
 
 type UpsertCollectionPolicyRequestResourceDirectory struct {
-	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
-	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	// The mode of the resource directory. Valid values: all and custom.
+	//
+	// example:
+	//
+	// all,custom
+	AccountGroupType *string `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	// The members. If accountGroupType is set to custom, the members are returned.
+	Members []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
 
 func (s UpsertCollectionPolicyRequestResourceDirectory) String() string {
@@ -19109,7 +19297,7 @@ func (client *Client) ConsumerGroupHeartBeat(project *string, logstore *string, 
 
 // Summary:
 //
-// Updates the data consumption progress.
+// Updates the checkpoint of a shard for a consumer group.
 //
 // Description:
 //
@@ -19183,7 +19371,7 @@ func (client *Client) ConsumerGroupUpdateCheckPointWithOptions(project *string, 
 
 // Summary:
 //
-// Updates the data consumption progress.
+// Updates the checkpoint of a shard for a consumer group.
 //
 // Description:
 //
@@ -20584,6 +20772,14 @@ func (client *Client) CreateMetricStoreWithOptions(project *string, request *Cre
 		body["autoSplit"] = request.AutoSplit
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HotTtl)) {
+		body["hot_ttl"] = request.HotTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InfrequentAccessTTL)) {
+		body["infrequentAccessTTL"] = request.InfrequentAccessTTL
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxSplitShard)) {
 		body["maxSplitShard"] = request.MaxSplitShard
 	}
@@ -21163,7 +21359,25 @@ func (client *Client) CreateRdsExternalStore(project *string, request *CreateRds
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
 //
 // @param request - CreateSavedSearchRequest
 //
@@ -21233,7 +21447,25 @@ func (client *Client) CreateSavedSearchWithOptions(project *string, request *Cre
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
 //
 // @param request - CreateSavedSearchRequest
 //
@@ -21489,7 +21721,7 @@ func (client *Client) CreateStoreView(project *string, request *CreateStoreViewR
 
 // Summary:
 //
-// Creates a ticket to enable logon-free access to the Simple Log Service console or embed console pages into a third-party system.
+// Obtains a ticket. Simple Log Service allows you to share the query and analysis pages and dashboard pages with other users and embed the console pages into third-party systems. This way, other users can view your logs in password-free mode. The URLs of the shared pages are referred to as password-free URLs. You can call the CreateTicket operation to obtain a ticket and generate a password-free URL based on the ticket and the URL of the console page that you want to share.
 //
 // @param request - CreateTicketRequest
 //
@@ -21538,7 +21770,7 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, head
 
 // Summary:
 //
-// Creates a ticket to enable logon-free access to the Simple Log Service console or embed console pages into a third-party system.
+// Obtains a ticket. Simple Log Service allows you to share the query and analysis pages and dashboard pages with other users and embed the console pages into third-party systems. This way, other users can view your logs in password-free mode. The URLs of the shared pages are referred to as password-free URLs. You can call the CreateTicket operation to obtain a ticket and generate a password-free URL based on the ticket and the URL of the console page that you want to share.
 //
 // @param request - CreateTicketRequest
 //
@@ -21844,7 +22076,7 @@ func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnn
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
 //
 // @param request - DeleteCollectionPolicyRequest
 //
@@ -21897,7 +22129,7 @@ func (client *Client) DeleteCollectionPolicyWithOptions(policyName *string, requ
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
 //
 // @param request - DeleteCollectionPolicyRequest
 //
@@ -24073,6 +24305,10 @@ func (client *Client) GetCheckPoint(project *string, logstore *string, consumerG
 //
 // 调用GetCollectionPolicy获取对应的规则
 //
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+//
 // @param request - GetCollectionPolicyRequest
 //
 // @param headers - map
@@ -24121,6 +24357,10 @@ func (client *Client) GetCollectionPolicyWithOptions(policyName *string, request
 // Summary:
 //
 // 调用GetCollectionPolicy获取对应的规则
+//
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
 //
 // @param request - GetCollectionPolicyRequest
 //
@@ -26922,7 +27162,7 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
 //
 // @param request - ListCollectionPoliciesRequest
 //
@@ -26995,7 +27235,7 @@ func (client *Client) ListCollectionPoliciesWithOptions(request *ListCollectionP
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
 //
 // @param request - ListCollectionPoliciesRequest
 //
@@ -28811,7 +29051,7 @@ func (client *Client) MergeShard(project *string, logstore *string, shard *strin
 
 // Summary:
 //
-// Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
+// Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
 //
 // @param headers - map
 //
@@ -28844,7 +29084,7 @@ func (client *Client) OpenSlsServiceWithOptions(headers map[string]*string, runt
 
 // Summary:
 //
-// Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
+// Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
 //
 // @return OpenSlsServiceResponse
 func (client *Client) OpenSlsService() (_result *OpenSlsServiceResponse, _err error) {
@@ -28865,7 +29105,13 @@ func (client *Client) OpenSlsService() (_result *OpenSlsServiceResponse, _err er
 //
 // Description:
 //
-// You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+// You cannot call this operation by using Alibaba Cloud SDKs. You can use Simple Log Service (SLS) SDKs to call this operation. For more information, see [Overview of Simple Log Service SDKs](https://help.aliyun.com/document_detail/29063.html).
+//
+// 	- You must specify a shard when you query logs.
+//
+// 	- You can query only logs in the Protocol Buffers (Protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+//
+// 	- The value of Host consists of a project name and an SLS endpoint. You must specify a project in Host.
 //
 // @param request - PullLogsRequest
 //
@@ -28935,7 +29181,13 @@ func (client *Client) PullLogsWithOptions(project *string, logStore *string, sha
 //
 // Description:
 //
-// You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+// You cannot call this operation by using Alibaba Cloud SDKs. You can use Simple Log Service (SLS) SDKs to call this operation. For more information, see [Overview of Simple Log Service SDKs](https://help.aliyun.com/document_detail/29063.html).
+//
+// 	- You must specify a shard when you query logs.
+//
+// 	- You can query only logs in the Protocol Buffers (Protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+//
+// 	- The value of Host consists of a project name and an SLS endpoint. You must specify a project in Host.
 //
 // @param request - PullLogsRequest
 //
@@ -29028,11 +29280,25 @@ func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotatio
 
 // Summary:
 //
-// Sends logs to Simple Log Service.
+// Writes logs to a Logstore.
 //
 // Description:
 //
-// You cannot call this operation by using cloud service SDKs that are provided by Alibaba Cloud OpenAPI Portal. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+// You cannot call this operation by using Alibaba Cloud SDKs. You can use Simple Log Service (SLS) SDKs to call this operation. For more information, see [Overview of Simple Log Service SDKs](https://help.aliyun.com/document_detail/29063.html).
+//
+// 	- When you call the PutLogs operation to write logs to SLS, SLS checks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to SLS.
+//
+// 	- You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+//
+// 	- You can write logs in one of the following modes:
+//
+//     	- LoadBalance mode: Logs are automatically written to all the writable shards in the specified Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+//
+//     	- KeyHash: Logs are written to a specific shard based on the hash key specified in the URL. The hash key is optional. If you do not specify a hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+//
+// 	- You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+//
+// 	- The references for SLS SDK for Java and SLS SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
 //
 // @param request - PutLogsRequest
 //
@@ -29084,11 +29350,25 @@ func (client *Client) PutLogsWithOptions(project *string, logstore *string, requ
 
 // Summary:
 //
-// Sends logs to Simple Log Service.
+// Writes logs to a Logstore.
 //
 // Description:
 //
-// You cannot call this operation by using cloud service SDKs that are provided by Alibaba Cloud OpenAPI Portal. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+// You cannot call this operation by using Alibaba Cloud SDKs. You can use Simple Log Service (SLS) SDKs to call this operation. For more information, see [Overview of Simple Log Service SDKs](https://help.aliyun.com/document_detail/29063.html).
+//
+// 	- When you call the PutLogs operation to write logs to SLS, SLS checks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to SLS.
+//
+// 	- You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+//
+// 	- You can write logs in one of the following modes:
+//
+//     	- LoadBalance mode: Logs are automatically written to all the writable shards in the specified Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+//
+//     	- KeyHash: Logs are written to a specific shard based on the hash key specified in the URL. The hash key is optional. If you do not specify a hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+//
+// 	- You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+//
+// 	- The references for SLS SDK for Java and SLS SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
 //
 // @param request - PutLogsRequest
 //
@@ -31116,7 +31396,27 @@ func (client *Client) UpdateLogStore(project *string, logstore *string, request 
 
 // Summary:
 //
-// 更新日志库的加密配置
+// Updates the encryption configuration of a Logstore. You can create encryption configurations for the Logstore and enable or disable the encryption feature.
+//
+// Description:
+//
+// ## [](#)Limits
+//
+// If you specify a data encryption method when you configure data encryption settings, you cannot switch to the other method after the configuration. In addition, you cannot change the encryption algorithm or the encryption type. You can only enable or disable the encryption feature by using the enable parameter. If you specify the encryption method by using the service key of Simple Log Service when you configure data encryption settings, you cannot switch to the encryption method by using Bring Your Own Key (BYOK) keys after the configuration.
+//
+// ## [](#)Create encryption configurations
+//
+// ### [](#)Encryption by using service keys
+//
+// Simple Log Service is fully responsible for data encryption and key management. No additional operations are required. When you create encryption configurations for the Logstore, you must specify the enable and encryptType parameters.
+//
+// ### [](#byok)Encryption by using BYOK keys
+//
+// You must create a customer master key (CMK) in Key Management Service (KMS). Then, Simple Log Service encrypts logs by using the CMK. When you create encryption configurations for the Logstore, you must specify the enable, encryptType, and userCmkInfo parameters.
+//
+// ## [](#)Enable or disable the encryption feature
+//
+// After you create encryption configurations for the Logstore, you cannot modify the encryptType or userCmkInfo parameters. However, you can enable and disable the encryption feature by using the enable parameter.
 //
 // @param request - UpdateLogStoreEncryptionRequest
 //
@@ -31172,7 +31472,27 @@ func (client *Client) UpdateLogStoreEncryptionWithOptions(project *string, logst
 
 // Summary:
 //
-// 更新日志库的加密配置
+// Updates the encryption configuration of a Logstore. You can create encryption configurations for the Logstore and enable or disable the encryption feature.
+//
+// Description:
+//
+// ## [](#)Limits
+//
+// If you specify a data encryption method when you configure data encryption settings, you cannot switch to the other method after the configuration. In addition, you cannot change the encryption algorithm or the encryption type. You can only enable or disable the encryption feature by using the enable parameter. If you specify the encryption method by using the service key of Simple Log Service when you configure data encryption settings, you cannot switch to the encryption method by using Bring Your Own Key (BYOK) keys after the configuration.
+//
+// ## [](#)Create encryption configurations
+//
+// ### [](#)Encryption by using service keys
+//
+// Simple Log Service is fully responsible for data encryption and key management. No additional operations are required. When you create encryption configurations for the Logstore, you must specify the enable and encryptType parameters.
+//
+// ### [](#byok)Encryption by using BYOK keys
+//
+// You must create a customer master key (CMK) in Key Management Service (KMS). Then, Simple Log Service encrypts logs by using the CMK. When you create encryption configurations for the Logstore, you must specify the enable, encryptType, and userCmkInfo parameters.
+//
+// ## [](#)Enable or disable the encryption feature
+//
+// After you create encryption configurations for the Logstore, you cannot modify the encryptType or userCmkInfo parameters. However, you can enable and disable the encryption feature by using the enable parameter.
 //
 // @param request - UpdateLogStoreEncryptionRequest
 //
@@ -31640,6 +31960,14 @@ func (client *Client) UpdateMetricStoreWithOptions(project *string, name *string
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoSplit)) {
 		body["autoSplit"] = request.AutoSplit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotTtl)) {
+		body["hot_ttl"] = request.HotTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InfrequentAccessTTL)) {
+		body["infrequentAccessTTL"] = request.InfrequentAccessTTL
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxSplitShard)) {
