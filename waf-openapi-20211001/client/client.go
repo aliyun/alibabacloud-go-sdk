@@ -2631,6 +2631,10 @@ type CreateHybridCloudGroupRequest struct {
 	// The name of the node group.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// demoGroupName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the node group. Valid values:
 	//
@@ -2672,7 +2676,7 @@ type CreateHybridCloudGroupRequest struct {
 	//
 	// 0-410-0
 	LocationCode *string `json:"LocationCode,omitempty" xml:"LocationCode,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
@@ -2683,6 +2687,10 @@ type CreateHybridCloudGroupRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The remarks.
+	//
+	// example:
+	//
+	// demoRamark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//
@@ -13375,7 +13383,12 @@ type DescribeDefenseResourceTemplatesRequest struct {
 	// example:
 	//
 	// 20111098
-	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the rule.
+	//
+	// example:
+	//
+	// demoRuleName
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the protection rule. Valid values:
 	//
@@ -13386,7 +13399,12 @@ type DescribeDefenseResourceTemplatesRequest struct {
 	// example:
 	//
 	// whitelist
-	RuleType     *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The name of the protection rule template.
+	//
+	// example:
+	//
+	// test221
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -13686,13 +13704,14 @@ type DescribeDefenseResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string                               `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	Tag                            []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The tag of the resource. You can specify up to 20 tags.
+	Tag []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDefenseResourcesRequest) String() string {
@@ -13739,10 +13758,14 @@ func (s *DescribeDefenseResourcesRequest) SetTag(v []*DescribeDefenseResourcesRe
 }
 
 type DescribeDefenseResourcesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// Tagkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// TagValue1
@@ -13768,13 +13791,13 @@ func (s *DescribeDefenseResourcesRequestTag) SetValue(v string) *DescribeDefense
 }
 
 type DescribeDefenseResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 618F2626-DB27-5187-8C6C-4E61A491DF29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of protected objects.
+	// The protected objects.
 	Resources []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries that are returned.
 	//
@@ -13808,37 +13831,37 @@ func (s *DescribeDefenseResourcesResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 type DescribeDefenseResourcesResponseBodyResources struct {
-	// 跟踪cookie开关状态。
+	// The status of the tracking cookie.
 	//
-	// - **0**：表示关闭。
+	// 	- **0**: disabled
 	//
-	// - **1**：表示开启。
+	// 	- **1**: enabled. This is the default value.
 	//
 	// example:
 	//
 	// 1
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// 跟踪cookie的secure属性状态。
+	// The status of the secure attribute of the tracking cookie.
 	//
-	// - **0**：表示关闭。
+	// 	- **0**: disabled. This is the default value.
 	//
-	// - **1**：表示开启。
+	// 	- **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// 滑块cookie的secure属性状态。
+	// The status of the secure attribute of the slider CAPTCHA cookie.
 	//
-	// - **0**：表示关闭。
+	// 	- **0**: disabled. This is the default value.
 	//
-	// - **1**：表示开启。
+	// 	- **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// An array of custom XFF headers that are used to identify the originating IP addresses of clients. If the value of the XffStatus parameter is 1 and the CustomHeaders field is left empty, the first IP address in the XFF header is the originating IP address of the client.
+	// The custom header fields that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP addresses in the XFF header fields are used as the originating IP addresses of clients.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The description of the protected object.
 	//
@@ -13860,7 +13883,7 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// 1665633032000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 多账号统一管理场景中防护对象资产归属账号。
+	// The Alibaba Cloud account to which the protected object belongs. You can specify this parameter to query protected objects that belong to a specific Alibaba Cloud account. Exact match is supported.
 	//
 	// example:
 	//
@@ -15095,8 +15118,18 @@ type DescribeDefenseTemplatesRequest struct {
 	// example:
 	//
 	// 12345
-	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateIds  *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The IDs of the protection templates that you want to query. Separate multiple template IDs with commas (,).
+	//
+	// example:
+	//
+	// 189731,189539,189538,189531,189540,189542,189541
+	TemplateIds *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
+	// The name of the protection template.
+	//
+	// example:
+	//
+	// testTemplateName
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the protection template. Valid values:
 	//
@@ -16000,7 +16033,8 @@ func (s *DescribeDomainDetailResponseBodyListen) SetXffHeaders(v []*string) *Des
 
 type DescribeDomainDetailResponseBodyRedirect struct {
 	// An array of addresses of origin servers.
-	Backends       []*DescribeDomainDetailResponseBodyRedirectBackends       `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	Backends []*DescribeDomainDetailResponseBodyRedirectBackends `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	// An array of HTTPS listener ports.
 	BackupBackends []*DescribeDomainDetailResponseBodyRedirectBackupBackends `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
 	// The timeout period of the connection. Unit: seconds. Valid values: 5 to 120.
 	//
@@ -16214,6 +16248,17 @@ func (s *DescribeDomainDetailResponseBodyRedirectBackends) SetBackend(v string) 
 }
 
 type DescribeDomainDetailResponseBodyRedirectBackupBackends struct {
+	// The back-to-origin IP address or domain name.
+	//
+	// example:
+	//
+	// [
+	//
+	//     "1.1.XX.XX",
+	//
+	//     "2.2.XX.XX"
+	//
+	// ]
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
 }
 
@@ -18469,6 +18514,10 @@ type DescribeHybridCloudClustersResponseBodyClusterInfos struct {
 	// cn-hangzhou
 	AccessRegion *string `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
 	// The name of the cluster.
+	//
+	// example:
+	//
+	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The ID of the hybrid cloud cluster resource.
 	//
@@ -18521,6 +18570,10 @@ type DescribeHybridCloudClustersResponseBodyClusterInfos struct {
 	// cname
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 	// The remarks about the cluster.
+	//
+	// example:
+	//
+	// demo
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The configurations of the rule.
 	//
@@ -22480,6 +22533,7 @@ type DescribePunishedDomainsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-uqm****qa07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PunishType *string `json:"PunishType,omitempty" xml:"PunishType,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
@@ -22513,6 +22567,11 @@ func (s *DescribePunishedDomainsRequest) SetDomains(v []*string) *DescribePunish
 
 func (s *DescribePunishedDomainsRequest) SetInstanceId(v string) *DescribePunishedDomainsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribePunishedDomainsRequest) SetPunishType(v string) *DescribePunishedDomainsRequest {
+	s.PunishType = &v
 	return s
 }
 
@@ -23232,7 +23291,7 @@ type DescribeResourceSupportRegionsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
 	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
@@ -23246,7 +23305,18 @@ type DescribeResourceSupportRegionsRequest struct {
 	//
 	// rg-aekzpks****kdjq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	ResourceProduct                *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The cloud service. Valid values:
+	//
+	// 	- **clb4**: Layer 4 CLB.
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **ecs**: ECS.
+	//
+	// example:
+	//
+	// clb7
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 }
 
 func (s DescribeResourceSupportRegionsRequest) String() string {
@@ -23282,9 +23352,9 @@ type DescribeResourceSupportRegionsResponseBody struct {
 	//
 	// example:
 	//
-	// 58FDF266-3D56-5DE8-91E0-96A26B****DD
+	// 58FD****-3D56-5DE8-91E0-96A26BABFFDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The region IDs.
+	// An array of region IDs of the CLB and ECS instances that are added to WAF in cloud native mode.
 	SupportRegions []*string `json:"SupportRegions,omitempty" xml:"SupportRegions,omitempty" type:"Repeated"`
 }
 
@@ -29797,11 +29867,11 @@ type DescribeVisitUasRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -29812,7 +29882,12 @@ type DescribeVisitUasRequest struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	Resource                       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
 	//
@@ -30485,7 +30560,15 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-lbj****x10g
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The tag key.
 	//
@@ -30501,18 +30584,23 @@ type ListTagValuesRequest struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzwwk****cv5i
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
 	//
@@ -34375,8 +34463,22 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqt****
-	InstanceId                     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The status of manual bypass. Valid values:
 	//
@@ -34636,31 +34738,58 @@ func (s *ModifyHybridCloudClusterRuleResponse) SetBody(v *ModifyHybridCloudClust
 }
 
 type ModifyHybridCloudGroupRequest struct {
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the node group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the node group.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// demo
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid value:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -34711,6 +34840,8 @@ func (s *ModifyHybridCloudGroupRequest) SetResourceManagerResourceGroupId(v stri
 }
 
 type ModifyHybridCloudGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D***0
@@ -35162,6 +35293,10 @@ type ModifyHybridCloudServerRequest struct {
 	// The name of the node.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// demo
 	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
 	// The ID of the WAF instance.
 	//
@@ -36247,7 +36382,7 @@ type TagResourcesRequest struct {
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -43586,6 +43721,10 @@ func (client *Client) DescribePunishedDomainsWithOptions(request *DescribePunish
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PunishType)) {
+		query["PunishType"] = request.PunishType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -43929,7 +44068,7 @@ func (client *Client) DescribeResourceRegionId(request *DescribeResourceRegionId
 
 // Summary:
 //
-// Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+// Queries the region IDs of the Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that are added to Web Application Firewall (WAF) in cloud native mode.
 //
 // @param request - DescribeResourceSupportRegionsRequest
 //
@@ -43983,7 +44122,7 @@ func (client *Client) DescribeResourceSupportRegionsWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+// Queries the region IDs of the Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that are added to Web Application Firewall (WAF) in cloud native mode.
 //
 // @param request - DescribeResourceSupportRegionsRequest
 //
@@ -48307,7 +48446,7 @@ func (client *Client) ModifyDomainPunishStatus(request *ModifyDomainPunishStatus
 
 // Summary:
 //
-// Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+// Enables or disables manual bypass for a hybrid cloud cluster whose type is set to SDK Integration Mode.
 //
 // @param request - ModifyHybridCloudClusterBypassStatusRequest
 //
@@ -48365,7 +48504,7 @@ func (client *Client) ModifyHybridCloudClusterBypassStatusWithOptions(request *M
 
 // Summary:
 //
-// Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+// Enables or disables manual bypass for a hybrid cloud cluster whose type is set to SDK Integration Mode.
 //
 // @param request - ModifyHybridCloudClusterBypassStatusRequest
 //
@@ -48467,7 +48606,7 @@ func (client *Client) ModifyHybridCloudClusterRule(request *ModifyHybridCloudClu
 
 // Summary:
 //
-// 修改组信息
+// Modifies a node group in a hybrid cloud cluster.
 //
 // @param request - ModifyHybridCloudGroupRequest
 //
@@ -48533,7 +48672,7 @@ func (client *Client) ModifyHybridCloudGroupWithOptions(request *ModifyHybridClo
 
 // Summary:
 //
-// 修改组信息
+// Modifies a node group in a hybrid cloud cluster.
 //
 // @param request - ModifyHybridCloudGroupRequest
 //
