@@ -357,7 +357,8 @@ type CreateEaiRequest struct {
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaiRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vsw-uf6h3rbwbm90urjwa****
@@ -407,8 +408,36 @@ func (s *CreateEaiRequest) SetSecurityGroupId(v string) *CreateEaiRequest {
 	return s
 }
 
+func (s *CreateEaiRequest) SetTag(v []*CreateEaiRequestTag) *CreateEaiRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateEaiRequest) SetVSwitchId(v string) *CreateEaiRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaiRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiRequestTag) SetKey(v string) *CreateEaiRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiRequestTag) SetValue(v string) *CreateEaiRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -501,7 +530,8 @@ type CreateEaiEciRequest struct {
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaiEciRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -550,6 +580,11 @@ func (s *CreateEaiEciRequest) SetResourceGroupId(v string) *CreateEaiEciRequest 
 
 func (s *CreateEaiEciRequest) SetSecurityGroupId(v string) *CreateEaiEciRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEaiEciRequest) SetTag(v []*CreateEaiEciRequestTag) *CreateEaiEciRequest {
+	s.Tag = v
 	return s
 }
 
@@ -667,6 +702,29 @@ func (s *CreateEaiEciRequestEciContainer) SetVolumes(v string) *CreateEaiEciRequ
 	return s
 }
 
+type CreateEaiEciRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiEciRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiEciRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiEciRequestTag) SetKey(v string) *CreateEaiEciRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiEciRequestTag) SetValue(v string) *CreateEaiEciRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateEaiEciShrinkRequest struct {
 	// example:
 	//
@@ -698,7 +756,8 @@ type CreateEaiEciShrinkRequest struct {
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                         `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaiEciShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -750,8 +809,36 @@ func (s *CreateEaiEciShrinkRequest) SetSecurityGroupId(v string) *CreateEaiEciSh
 	return s
 }
 
+func (s *CreateEaiEciShrinkRequest) SetTag(v []*CreateEaiEciShrinkRequestTag) *CreateEaiEciShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateEaiEciShrinkRequest) SetVSwitchId(v string) *CreateEaiEciShrinkRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaiEciShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiEciShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiEciShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiEciShrinkRequestTag) SetKey(v string) *CreateEaiEciShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiEciShrinkRequestTag) SetValue(v string) *CreateEaiEciShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -853,7 +940,8 @@ type CreateEaiEcsRequest struct {
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaiEcsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -902,6 +990,11 @@ func (s *CreateEaiEcsRequest) SetResourceGroupId(v string) *CreateEaiEcsRequest 
 
 func (s *CreateEaiEcsRequest) SetSecurityGroupId(v string) *CreateEaiEcsRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEaiEcsRequest) SetTag(v []*CreateEaiEcsRequestTag) *CreateEaiEcsRequest {
+	s.Tag = v
 	return s
 }
 
@@ -1002,6 +1095,29 @@ func (s *CreateEaiEcsRequestEcs) SetZoneId(v string) *CreateEaiEcsRequestEcs {
 	return s
 }
 
+type CreateEaiEcsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiEcsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiEcsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiEcsRequestTag) SetKey(v string) *CreateEaiEcsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiEcsRequestTag) SetValue(v string) *CreateEaiEcsRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateEaiEcsShrinkRequest struct {
 	// example:
 	//
@@ -1033,7 +1149,8 @@ type CreateEaiEcsShrinkRequest struct {
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                         `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaiEcsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -1085,8 +1202,36 @@ func (s *CreateEaiEcsShrinkRequest) SetSecurityGroupId(v string) *CreateEaiEcsSh
 	return s
 }
 
+func (s *CreateEaiEcsShrinkRequest) SetTag(v []*CreateEaiEcsShrinkRequestTag) *CreateEaiEcsShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateEaiEcsShrinkRequest) SetVSwitchId(v string) *CreateEaiEcsShrinkRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaiEcsShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiEcsShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiEcsShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiEcsShrinkRequestTag) SetKey(v string) *CreateEaiEcsShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiEcsShrinkRequestTag) SetValue(v string) *CreateEaiEcsShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1182,7 +1327,8 @@ type CreateEaiJupyterRequest struct {
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                       `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaiJupyterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -1234,6 +1380,11 @@ func (s *CreateEaiJupyterRequest) SetSecurityGroupId(v string) *CreateEaiJupyter
 	return s
 }
 
+func (s *CreateEaiJupyterRequest) SetTag(v []*CreateEaiJupyterRequestTag) *CreateEaiJupyterRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateEaiJupyterRequest) SetVSwitchId(v string) *CreateEaiJupyterRequest {
 	s.VSwitchId = &v
 	return s
@@ -1268,6 +1419,29 @@ func (s *CreateEaiJupyterRequestEnvironmentVar) SetValue(v string) *CreateEaiJup
 	return s
 }
 
+type CreateEaiJupyterRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiJupyterRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiJupyterRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiJupyterRequestTag) SetKey(v string) *CreateEaiJupyterRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiJupyterRequestTag) SetValue(v string) *CreateEaiJupyterRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateEaiJupyterShrinkRequest struct {
 	// example:
 	//
@@ -1293,7 +1467,8 @@ type CreateEaiJupyterShrinkRequest struct {
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                             `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaiJupyterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -1345,8 +1520,36 @@ func (s *CreateEaiJupyterShrinkRequest) SetSecurityGroupId(v string) *CreateEaiJ
 	return s
 }
 
+func (s *CreateEaiJupyterShrinkRequest) SetTag(v []*CreateEaiJupyterShrinkRequestTag) *CreateEaiJupyterShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateEaiJupyterShrinkRequest) SetVSwitchId(v string) *CreateEaiJupyterShrinkRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaiJupyterShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiJupyterShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiJupyterShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiJupyterShrinkRequestTag) SetKey(v string) *CreateEaiJupyterShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiJupyterShrinkRequestTag) SetValue(v string) *CreateEaiJupyterShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1438,7 +1641,8 @@ type CreateEaisEiRequest struct {
 	// example:
 	//
 	// sg-bp16jgp51ttnkbdr****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateEaisEiRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -1485,8 +1689,36 @@ func (s *CreateEaisEiRequest) SetSecurityGroupId(v string) *CreateEaisEiRequest 
 	return s
 }
 
+func (s *CreateEaisEiRequest) SetTag(v []*CreateEaisEiRequestTag) *CreateEaisEiRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateEaisEiRequest) SetVSwitchId(v string) *CreateEaisEiRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaisEiRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaisEiRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaisEiRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaisEiRequestTag) SetKey(v string) *CreateEaisEiRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaisEiRequestTag) SetValue(v string) *CreateEaisEiRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -3786,7 +4018,7 @@ func (client *Client) AttachEai(request *AttachEaiRequest) (_result *AttachEaiRe
 
 // Summary:
 //
-// 将EI绑定到ECS或ECI实例上。
+// 将EI绑定到ECS或ECI实例上
 //
 // @param request - AttachEaisEiRequest
 //
@@ -3840,7 +4072,7 @@ func (client *Client) AttachEaisEiWithOptions(request *AttachEaisEiRequest, runt
 
 // Summary:
 //
-// 将EI绑定到ECS或ECI实例上。
+// 将EI绑定到ECS或ECI实例上
 //
 // @param request - AttachEaisEiRequest
 //
@@ -3967,6 +4199,10 @@ func (client *Client) CreateEaiWithOptions(request *CreateEaiRequest, runtime *u
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
 	}
@@ -4059,6 +4295,10 @@ func (client *Client) CreateEaiEciWithOptions(tmpReq *CreateEaiEciRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
@@ -4155,6 +4395,10 @@ func (client *Client) CreateEaiEcsWithOptions(tmpReq *CreateEaiEcsRequest, runti
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
 	}
@@ -4249,6 +4493,10 @@ func (client *Client) CreateEaiJupyterWithOptions(tmpReq *CreateEaiJupyterReques
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
 	}
@@ -4331,6 +4579,10 @@ func (client *Client) CreateEaisEiWithOptions(request *CreateEaisEiRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
