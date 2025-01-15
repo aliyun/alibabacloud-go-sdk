@@ -20,13 +20,11 @@ type AddIpRequest struct {
 	//
 	// ddosbgp-cn-npk1z7t9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP addresses that you want to add to the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
+	// The IP addresses that you want to add to the Anti-DDoS Origin instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following fields:
 	//
 	// 	- **ip**: required. The IP address that you want to add. Data type: string.
 	//
-	//     **
-	//
-	//     **Note*	- The IP address must be the IP address of an asset that belongs to the current Alibaba Cloud account.
+	// 	- **member_uid**: optional. The member to which the asset belongs. Data type: string. This field is required only if the asset of a member is queried. Example: [{"ip":"121.41.XX.XX","member_uid":"120100811162\\*\\*\\*\\*"}].
 	//
 	// This parameter is required.
 	//
@@ -2936,7 +2934,8 @@ type DescribeDdosOriginInstanceBillResponseBodyFlowList struct {
 	// example:
 	//
 	// 1620951900
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time          *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	TotalBillFlow *int64 `json:"TotalBillFlow,omitempty" xml:"TotalBillFlow,omitempty"`
 	// The traffic of EIPs with Anti-DDoS (Enhanced) enabled. Unit: bytes.
 	//
 	// example:
@@ -2965,6 +2964,11 @@ func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetRegionFlow(v str
 
 func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetTime(v int64) *DescribeDdosOriginInstanceBillResponseBodyFlowList {
 	s.Time = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetTotalBillFlow(v int64) *DescribeDdosOriginInstanceBillResponseBodyFlowList {
+	s.TotalBillFlow = &v
 	return s
 }
 
@@ -3386,48 +3390,22 @@ func (s *DescribeExcpetionCountResponse) SetBody(v *DescribeExcpetionCountRespon
 }
 
 type DescribeInstanceListRequest struct {
-	// The IDs of the Anti-DDoS Origin instances to query. Specify the value is in the `["<Instance ID 1>","<Instance ID 2>",……]` format.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// ["ddosbgp-cn-oew1pjrk****"]
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
-	// The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
-	//
-	// 	- **0**: the Professional mitigation plan
-	//
-	// 	- **1**: the Enterprise mitigation plan
-	//
-	// example:
-	//
-	// 0
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The mitigation plan of the Anti-DDoS Origin instance.
-	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
-	// The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
-	//
-	// example:
-	//
-	// 47.89.XX.XX
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
-	//
-	// 	- **Ipv4**: IPv4
-	//
-	// 	- **Ipv6**: IPv6
-	//
-	// example:
-	//
-	// IPv4
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
 	//
 	// You can set the **Orderdire*	- parameter to specify the sorting method.
 	//
 	// example:
 	//
-	// expireTime
-	Orderby *string `json:"Orderby,omitempty" xml:"Orderby,omitempty"`
+	// 0
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The total number of Anti-DDoS Origin instances.
+	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
 	// The sorting method. Valid values:
 	//
 	// 	- **desc**: the descending order. This is the default value.
@@ -3436,9 +3414,33 @@ type DescribeInstanceListRequest struct {
 	//
 	// example:
 	//
+	// 47.89.XX.XX
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
+	//
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The ID of the region where the Anti-DDoS Origin instance to query resides.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// expireTime
+	Orderby *string `json:"Orderby,omitempty" xml:"Orderby,omitempty"`
+	// The tags that are added to the Anti-DDoS Origin instance.
+	//
+	// example:
+	//
 	// desc
 	Orderdire *string `json:"Orderdire,omitempty" xml:"Orderdire,omitempty"`
-	// The number of the page to return.
+	// The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
+	//
+	// 	- **Ipv4**: IPv4
+	//
+	// 	- **Ipv6**: IPv6
 	//
 	// This parameter is required.
 	//
@@ -3446,7 +3448,11 @@ type DescribeInstanceListRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page.
+	// The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
+	//
+	// 	- **0**: the Professional mitigation plan
+	//
+	// 	- **1**: the Enterprise mitigation plan
 	//
 	// This parameter is required.
 	//
@@ -3454,29 +3460,25 @@ type DescribeInstanceListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Anti-DDoS Origin instance to query resides.
-	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// The tag that is added to the Anti-DDoS Origin instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
-	//
-	// If you do not specify this parameter, the instance belongs to the default resource group.
+	// The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags that are added to the Anti-DDoS Origin instance.
+	// The key of the tag that is added to the Anti-DDoS Origin instance.
 	Tag []*DescribeInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -3554,13 +3556,17 @@ func (s *DescribeInstanceListRequest) SetTag(v []*DescribeInstanceListRequestTag
 }
 
 type DescribeInstanceListRequestTag struct {
-	// The key of the tag that is added to the Anti-DDoS Origin instance.
+	// The mitigation plan of the Anti-DDoS Origin instance.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the Anti-DDoS Origin instance.
+	// The mitigation plan of the Anti-DDoS Origin instance. Valid values:
+	//
+	// 	- 0: the Professional mitigation plan.
+	//
+	// 	- 1: the Enterprise mitigation plan.
 	//
 	// example:
 	//
@@ -3589,13 +3595,13 @@ func (s *DescribeInstanceListRequestTag) SetValue(v string) *DescribeInstanceLis
 type DescribeInstanceListResponseBody struct {
 	// The details about the Anti-DDoS Origin instances.
 	InstanceList []*DescribeInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The details about the Anti-DDoS Origin instance.
 	//
 	// example:
 	//
 	// 381D5D33-BB8F-395F-8EE4-AE3BB4B523C4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of Anti-DDoS Origin instances.
+	// The details about the Anti-DDoS Origin instances.
 	//
 	// example:
 	//
@@ -3627,26 +3633,20 @@ func (s *DescribeInstanceListResponseBody) SetTotal(v int64) *DescribeInstanceLi
 }
 
 type DescribeInstanceListResponseBodyInstanceList struct {
-	// The condition that triggers automatic association of the instance with an object.
+	// The event that triggers automatic association. Valid values:
+	//
+	// 	- **any**: The instance is automatically associated with an object based on traffic scrubbing events or blackhole filtering events.
+	//
+	// 	- **clean**: The instance is automatically associated with an object based on traffic scrubbing events.
+	//
+	// 	- **blackhole**: The instance is automatically associated with an object based on blackhole filtering events.
 	AutoProtectCondition *DescribeInstanceListResponseBodyInstanceListAutoProtectCondition `json:"AutoProtectCondition,omitempty" xml:"AutoProtectCondition,omitempty" type:"Struct"`
-	// Indicates whether auto-renewal is enabled for the instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
+	// The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The number of protected public IP addresses for which blackhole filtering is triggered.
-	//
-	// >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
-	//
-	// example:
-	//
-	// 0
-	BlackholdingCount *string `json:"BlackholdingCount,omitempty" xml:"BlackholdingCount,omitempty"`
 	// The type of the instance.
 	//
 	// 	- **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com).
@@ -3655,8 +3655,54 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	//
 	// example:
 	//
+	// 0
+	BlackholdingCount *string `json:"BlackholdingCount,omitempty" xml:"BlackholdingCount,omitempty"`
+	// The condition that triggers automatic association of the instance with an object.
+	//
+	// example:
+	//
 	// ddos_ddosorigin_public_cn
 	CommodityType *string `json:"CommodityType,omitempty" xml:"CommodityType,omitempty"`
+	// Indicates whether overdue payments exist. Valid values:
+	//
+	// 	- **0**: Overdue payments do not exist.
+	//
+	// 	- **1**: Overdue payments exist.
+	//
+	// example:
+	//
+	// 1
+	CoverageType *int32 `json:"CoverageType,omitempty" xml:"CoverageType,omitempty"`
+	// The events that trigger automatic association.
+	//
+	// example:
+	//
+	// 0
+	DebtStatus *int64 `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
+	// The time when the instance was purchased. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1640275200000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The mitigation plan of the instance. Valid values:
+	//
+	// 	- **0**: the Professional mitigation plan
+	//
+	// 	- **1**: the Enterprise mitigation plan
+	//
+	// example:
+	//
+	// 1592886047000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The number of protected public IP addresses for which blackhole filtering is triggered.
+	//
+	// >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
+	//
+	// example:
+	//
+	// ddosbgp-cn-oew1pjrk****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The application scope of the instance.
 	//
 	// 	- **1**: The instance supports public IP addresses in all regions.
@@ -3670,46 +3716,19 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	// example:
 	//
 	// 1
-	CoverageType *int32 `json:"CoverageType,omitempty" xml:"CoverageType,omitempty"`
-	DebtStatus   *int64 `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
-	// The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1640275200000
-	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The time when the instance was purchased. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1592886047000
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// ddosbgp-cn-oew1pjrk****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The mitigation plan of the instance. Valid values:
-	//
-	// 	- **0**: the Professional mitigation plan
-	//
-	// 	- **1**: the Enterprise mitigation plan
-	//
-	// example:
-	//
-	// 1
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The protocol type of the IP address asset that is protected by the instance. Valid values:
-	//
-	// 	- **Ipv4**
-	//
-	// 	- **Ipv6**
+	// The description of the instance.
 	//
 	// example:
 	//
 	// IPv4
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// gamebox
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The type of the cloud service that is associated with the Anti-DDoS Origin instance By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
 	//
 	// Valid values:
@@ -3720,22 +3739,19 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	//
 	// example:
 	//
-	// gamebox
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The description of the instance.
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The resource group ID.
 	//
 	// example:
 	//
-	// test
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// rg-aek3ccjxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the instance. Valid values:
+	// Indicates whether auto-renewal is enabled for the instance. Valid values:
 	//
-	// 	- **1**: normal
+	// 	- **true**
 	//
-	// 	- **2**: expired
-	//
-	// 	- **3**: released
+	// 	- **false**
 	//
 	// example:
 	//
@@ -3827,7 +3843,7 @@ func (s *DescribeInstanceListResponseBodyInstanceList) SetStatus(v string) *Desc
 }
 
 type DescribeInstanceListResponseBodyInstanceListAutoProtectCondition struct {
-	// The events that trigger automatic association.
+	// Events which result in auto binding.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 }
 
@@ -4713,7 +4729,42 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OpAction   *int32  `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
+	// The type of the operation. Valid values:
+	//
+	// 	- **3**: Add an IP address to the instance.
+	//
+	// 	- **4**: Remove an IP address from the instance.
+	//
+	// 	- **5**: Downgrade the instance.
+	//
+	// 	- **6**: Deactivate blackhole filtering.
+	//
+	// 	- **7**: Reset the number of times that you can deactivate blackhole filtering.
+	//
+	// 	- **8**: Restore the mitigation capability.
+	//
+	// 	- **9**: Add an asset group.
+	//
+	// 	- **10**: Remove an asset group.
+	//
+	// 	- **11**: Enable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
+	//
+	// 	- **12**: Enable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
+	//
+	// 	- **13**: Periodically switch between the metering methods of daily 95th percentile and monthly 95th percentile for the burstable clean bandwidth feature.
+	//
+	// 	- **14**: Disable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
+	//
+	// 	- **15**: Disable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
+	//
+	// 	- **16**: Disable burstable clean bandwidth due to overdue payments.
+	//
+	// 	- **17**: Disable burstable clean bandwidth due to instance expiration.
+	//
+	// example:
+	//
+	// 3
+	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
 	// The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
 	//
 	// example:
@@ -5526,11 +5577,11 @@ type DescribeRdStatusResponseBody struct {
 	CurrentUid *string `json:"CurrentUid,omitempty" xml:"CurrentUid,omitempty"`
 	// The type of the Alibaba Cloud account. Valid values:
 	//
-	// 	- **MasterAccount**: management account
+	// 	- **MasterAccount**: management account.
 	//
-	// 	- **DelegatedAdminAccount**: delegated administrator account
+	// 	- **DelegatedAdminAccount**: delegated administrator account.
 	//
-	// 	- **MasterAccount**: member
+	// 	- **MemberAccount**: member.
 	//
 	// example:
 	//
@@ -5838,9 +5889,17 @@ type DescribeTrafficRequest struct {
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the traffic statistics to query. Valid values:
 	//
-	// 	- **max**: the peak traffic within the specified interval
+	// 	- **max**: the peak traffic within the specified interval.
 	//
-	// 	- **avg**: the average traffic within the specified interval
+	// 	- **avg**: the average traffic within the specified interval.
+	//
+	// Enumerated values:
+	//
+	// 	- all
+	//
+	// 	- avg
+	//
+	// 	- max
 	//
 	// example:
 	//
@@ -8593,6 +8652,10 @@ type ModifyPolicyRequestContent struct {
 	// true
 	EnableIntelligence *bool `json:"EnableIntelligence,omitempty" xml:"EnableIntelligence,omitempty"`
 	// Specifies whether to enable port-specific mitigation.
+	//
+	// example:
+	//
+	// true
 	EnableL4Defense *bool `json:"EnableL4Defense,omitempty" xml:"EnableL4Defense,omitempty"`
 	// The byte-match filter rules.
 	FingerPrintRuleList []*ModifyPolicyRequestContentFingerPrintRuleList `json:"FingerPrintRuleList,omitempty" xml:"FingerPrintRuleList,omitempty" type:"Repeated"`
@@ -9529,6 +9592,10 @@ type ModifyPolicyContentRequestContent struct {
 	// true
 	EnableIntelligence *bool `json:"EnableIntelligence,omitempty" xml:"EnableIntelligence,omitempty"`
 	// Specifies whether to enable port-specific mitigation.
+	//
+	// example:
+	//
+	// true
 	EnableL4Defense *bool `json:"EnableL4Defense,omitempty" xml:"EnableL4Defense,omitempty"`
 	// The byte-match filter rules.
 	FingerPrintRuleList []*ModifyPolicyContentRequestContentFingerPrintRuleList `json:"FingerPrintRuleList,omitempty" xml:"FingerPrintRuleList,omitempty" type:"Repeated"`
@@ -10451,24 +10518,32 @@ func (s *ModifyRemarkResponse) SetBody(v *ModifyRemarkResponseBody) *ModifyRemar
 }
 
 type MoveResourceGroupRequest struct {
+	// The ID of the resource group to which you want to move the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-acfm3peow3k****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ddos_originpre_public_cn-7213kxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The resource type. Set the value to **instance**.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10506,6 +10581,8 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 }
 
 type MoveResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 16A78396-936F-5481-91D7-591BF7981246
@@ -11831,7 +11908,7 @@ func (client *Client) CheckGrant(request *CheckGrantRequest) (_result *CheckGran
 
 // Summary:
 //
-// Modifies a scheduling rule of an on-demand instance.
+// Modifies a scheduling rule of an anti-DDoS diversion instance.
 //
 // @param request - ConfigSchedruleOnDemandRequest
 //
@@ -11917,7 +11994,7 @@ func (client *Client) ConfigSchedruleOnDemandWithOptions(request *ConfigSchedrul
 
 // Summary:
 //
-// Modifies a scheduling rule of an on-demand instance.
+// Modifies a scheduling rule of an anti-DDoS diversion instance.
 //
 // @param request - ConfigSchedruleOnDemandRequest
 //
@@ -11999,7 +12076,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a scheduling rule for an on-demand instance.
+// Creates a scheduling rule for an anti-DDoS diversion instance.
 //
 // @param request - CreateSchedruleOnDemandRequest
 //
@@ -12085,7 +12162,7 @@ func (client *Client) CreateSchedruleOnDemandWithOptions(request *CreateSchedrul
 
 // Summary:
 //
-// Creates a scheduling rule for an on-demand instance.
+// Creates a scheduling rule for an anti-DDoS diversion instance.
 //
 // @param request - CreateSchedruleOnDemandRequest
 //
@@ -12893,11 +12970,7 @@ func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequ
 //
 // Description:
 //
-// You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
-//
-// ## Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Queries the details of all Anti-DDoS Origin instances.
 //
 // @param request - DescribeInstanceListRequest
 //
@@ -12991,11 +13064,7 @@ func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceL
 //
 // Description:
 //
-// You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
-//
-// ## Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Queries the details of all Anti-DDoS Origin instances.
 //
 // @param request - DescribeInstanceListRequest
 //
@@ -14364,6 +14433,10 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // Modifies a mitigation policy.
 //
+// Description:
+//
+// Modifies a mitigation policy.
+//
 // @param tmpReq - ModifyPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14421,6 +14494,10 @@ func (client *Client) ModifyPolicyWithOptions(tmpReq *ModifyPolicyRequest, runti
 }
 
 // Summary:
+//
+// Modifies a mitigation policy.
+//
+// Description:
 //
 // Modifies a mitigation policy.
 //
@@ -14610,7 +14687,7 @@ func (client *Client) ModifyRemark(request *ModifyRemarkRequest) (_result *Modif
 
 // Summary:
 //
-// 移动资源组
+// Changes the resource group to which a cloud resource belongs.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -14664,7 +14741,7 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 
 // Summary:
 //
-// 移动资源组
+// Changes the resource group to which a cloud resource belongs.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -14682,7 +14759,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 
 // Summary:
 //
-// Queries the scheduling rule of an on-demand instance.
+// Queries the scheduling rule of an anti-DDoS diversion instance.
 //
 // @param request - QuerySchedruleOnDemandRequest
 //
@@ -14728,7 +14805,7 @@ func (client *Client) QuerySchedruleOnDemandWithOptions(request *QuerySchedruleO
 
 // Summary:
 //
-// Queries the scheduling rule of an on-demand instance.
+// Queries the scheduling rule of an anti-DDoS diversion instance.
 //
 // @param request - QuerySchedruleOnDemandRequest
 //
