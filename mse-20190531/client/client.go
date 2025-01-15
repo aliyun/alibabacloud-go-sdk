@@ -58005,10 +58005,11 @@ type QueryAllSwimmingLaneResponseBodyData struct {
 	// example:
 	//
 	// true
-	Enable                   *string                                                       `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EntryRules               []*QueryAllSwimmingLaneResponseBodyDataEntryRules             `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
-	GatewaySwimmingLaneRoute *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute `json:"GatewaySwimmingLaneRoute,omitempty" xml:"GatewaySwimmingLaneRoute,omitempty" type:"Struct"`
-	GroupId                  *string                                                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Enable                       *string                                                       `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EntryRules                   []*QueryAllSwimmingLaneResponseBodyDataEntryRules             `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	GatewaySwimmingLaneRoute     *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute `json:"GatewaySwimmingLaneRoute,omitempty" xml:"GatewaySwimmingLaneRoute,omitempty" type:"Struct"`
+	GatewaySwimmingLaneRouteJson *string                                                       `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty"`
+	GroupId                      *string                                                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// example:
 	//
 	// 123
@@ -58062,6 +58063,11 @@ func (s *QueryAllSwimmingLaneResponseBodyData) SetEntryRules(v []*QueryAllSwimmi
 
 func (s *QueryAllSwimmingLaneResponseBodyData) SetGatewaySwimmingLaneRoute(v *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) *QueryAllSwimmingLaneResponseBodyData {
 	s.GatewaySwimmingLaneRoute = v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyData) SetGatewaySwimmingLaneRouteJson(v string) *QueryAllSwimmingLaneResponseBodyData {
+	s.GatewaySwimmingLaneRouteJson = &v
 	return s
 }
 
@@ -58246,6 +58252,7 @@ type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute struct {
 	//
 	// 0
 	CanaryModel *int32                                                                    `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	Condition   *string                                                                   `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	Conditions  []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -58274,6 +58281,11 @@ func (s QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) GoString()
 
 func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetCanaryModel(v int32) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
 	s.CanaryModel = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetCondition(v string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
+	s.Condition = &v
 	return s
 }
 
