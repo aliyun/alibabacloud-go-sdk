@@ -5449,6 +5449,8 @@ func (s *ListFreeNodesResponse) SetBody(v *ListFreeNodesResponseBody) *ListFreeN
 }
 
 type ListMachineTypesRequest struct {
+	// Machine name
+	//
 	// example:
 	//
 	// efg1.nvga1
@@ -5469,7 +5471,10 @@ func (s *ListMachineTypesRequest) SetName(v string) *ListMachineTypesRequest {
 }
 
 type ListMachineTypesResponseBody struct {
+	// Details of the machine types
 	MachineTypes []*ListMachineTypesResponseBodyMachineTypes `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty" type:"Repeated"`
+	// NextToken for the next page, include this value when requesting the next page
+	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
@@ -5506,39 +5511,62 @@ func (s *ListMachineTypesResponseBody) SetRequestId(v string) *ListMachineTypesR
 }
 
 type ListMachineTypesResponseBodyMachineTypes struct {
+	// Number of bonds
+	//
 	// example:
 	//
 	// 2
 	BondNum *int32 `json:"BondNum,omitempty" xml:"BondNum,omitempty"`
+	// CPU information
+	//
 	// example:
 	//
 	// 2x Intel Icelake 8369B 32C CPU
 	CpuInfo *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	// Disk information
+	//
 	// example:
 	//
 	// 2x 480GB SATA SSD
 	DiskInfo *string `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
+	// GPU information
+	//
 	// example:
 	//
 	// 8x NVIDIA SXM4 80GB A100 GPU
 	GpuInfo *string `json:"GpuInfo,omitempty" xml:"GpuInfo,omitempty"`
+	// Memory information
+	//
 	// example:
 	//
 	// 32x 64GB DDR4 3200 Memory
 	MemoryInfo *string `json:"MemoryInfo,omitempty" xml:"MemoryInfo,omitempty"`
+	// Machine name
+	//
 	// example:
 	//
 	// efg1.nvga1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Network information
+	//
 	// example:
 	//
 	// 2x 100Gbps DP NIC
 	NetworkInfo *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
+	// Number of nodes
+	//
 	// example:
 	//
 	// 10
-	NodeCount    *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	TotalCpuCore *int32  `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
+	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Number of CPU cores
+	//
+	// example:
+	//
+	// 48
+	TotalCpuCore *int32 `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
+	// Type of machine
+	//
 	// example:
 	//
 	// Public
@@ -6533,6 +6561,8 @@ type RunCommandRequest struct {
 	//
 	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// Command ID
+	//
 	// example:
 	//
 	// c-e996287206324975b5fbe1d***
@@ -6593,6 +6623,8 @@ type RunCommandRequest struct {
 	//
 	// For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? 	- 	- 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 	- 	- ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 	- 10 ? 2022/2 UTC.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// Bootstrap for script execution. The length must not exceed 1 KB.
+	//
 	// example:
 	//
 	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
@@ -6643,6 +6675,10 @@ type RunCommandRequest struct {
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// The mode when stopping a task (manually or due to execution timeout). Possible values:
+	//
+	// Process: Stops the current script process. ProcessTree: Stops the current process tree (a collection of the script process and all its child processes).
+	//
 	// example:
 	//
 	// ProcessTree
@@ -6784,6 +6820,8 @@ type RunCommandShrinkRequest struct {
 	//
 	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// Command ID
+	//
 	// example:
 	//
 	// c-e996287206324975b5fbe1d***
@@ -6844,6 +6882,8 @@ type RunCommandShrinkRequest struct {
 	//
 	// For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? 	- 	- 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 	- 	- ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 	- 10 ? 2022/2 UTC.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// Bootstrap for script execution. The length must not exceed 1 KB.
+	//
 	// example:
 	//
 	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
@@ -6894,6 +6934,10 @@ type RunCommandShrinkRequest struct {
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// The mode when stopping a task (manually or due to execution timeout). Possible values:
+	//
+	// Process: Stops the current script process. ProcessTree: Stops the current process tree (a collection of the script process and all its child processes).
+	//
 	// example:
 	//
 	// ProcessTree
@@ -7764,6 +7808,116 @@ func (s *StopInvocationResponse) SetStatusCode(v int32) *StopInvocationResponse 
 }
 
 func (s *StopInvocationResponse) SetBody(v *StopInvocationResponseBody) *StopInvocationResponse {
+	s.Body = v
+	return s
+}
+
+type StopNodesRequest struct {
+	// example:
+	//
+	// False
+	IgnoreFailedNodeTasks *bool     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	Nodes                 []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+}
+
+func (s StopNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopNodesRequest) SetIgnoreFailedNodeTasks(v bool) *StopNodesRequest {
+	s.IgnoreFailedNodeTasks = &v
+	return s
+}
+
+func (s *StopNodesRequest) SetNodes(v []*string) *StopNodesRequest {
+	s.Nodes = v
+	return s
+}
+
+type StopNodesShrinkRequest struct {
+	// example:
+	//
+	// False
+	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	NodesShrink           *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+}
+
+func (s StopNodesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopNodesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopNodesShrinkRequest) SetIgnoreFailedNodeTasks(v bool) *StopNodesShrinkRequest {
+	s.IgnoreFailedNodeTasks = &v
+	return s
+}
+
+func (s *StopNodesShrinkRequest) SetNodesShrink(v string) *StopNodesShrinkRequest {
+	s.NodesShrink = &v
+	return s
+}
+
+type StopNodesResponseBody struct {
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// i155847351716171893489
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopNodesResponseBody) SetRequestId(v string) *StopNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopNodesResponseBody) SetTaskId(v string) *StopNodesResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StopNodesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopNodesResponse) SetHeaders(v map[string]*string) *StopNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopNodesResponse) SetStatusCode(v int32) *StopNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopNodesResponse) SetBody(v *StopNodesResponseBody) *StopNodesResponse {
 	s.Body = v
 	return s
 }
@@ -9221,7 +9375,7 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 
 // Summary:
 //
-// 查询用户可用的机型列表
+// Query the list of machine types available to the user
 //
 // @param request - ListMachineTypesRequest
 //
@@ -9263,7 +9417,7 @@ func (client *Client) ListMachineTypesWithOptions(request *ListMachineTypesReque
 
 // Summary:
 //
-// 查询用户可用的机型列表
+// Query the list of machine types available to the user
 //
 // @param request - ListMachineTypesRequest
 //
@@ -9952,6 +10106,76 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &StopInvocationResponse{}
 	_body, _err := client.StopInvocationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关机节点
+//
+// @param tmpReq - StopNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopNodesResponse
+func (client *Client) StopNodesWithOptions(tmpReq *StopNodesRequest, runtime *util.RuntimeOptions) (_result *StopNodesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopNodesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Nodes)) {
+		request.NodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Nodes, tea.String("Nodes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IgnoreFailedNodeTasks)) {
+		body["IgnoreFailedNodeTasks"] = request.IgnoreFailedNodeTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodesShrink)) {
+		body["Nodes"] = request.NodesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopNodes"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关机节点
+//
+// @param request - StopNodesRequest
+//
+// @return StopNodesResponse
+func (client *Client) StopNodes(request *StopNodesRequest) (_result *StopNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopNodesResponse{}
+	_body, _err := client.StopNodesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
