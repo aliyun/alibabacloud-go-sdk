@@ -2079,7 +2079,9 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	// example:
 	//
 	// 30
-	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	RemainTime       *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	RestorePointId   *string `json:"RestorePointId,omitempty" xml:"RestorePointId,omitempty"`
+	RestorePointName *string `json:"RestorePointName,omitempty" xml:"RestorePointName,omitempty"`
 	// example:
 	//
 	// s-2zeipxmnhej803x7****
@@ -2136,6 +2138,16 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetProgress(v string) *Describe
 
 func (s *DescribeSnapshotsResponseBodySnapshots) SetRemainTime(v int32) *DescribeSnapshotsResponseBodySnapshots {
 	s.RemainTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetRestorePointId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.RestorePointId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetRestorePointName(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.RestorePointName = &v
 	return s
 }
 
@@ -4229,7 +4241,8 @@ type ResetSnapshotRequest struct {
 	// example:
 	//
 	// s-2zeipxmnhej803x7****
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	StopDesktop *bool   `json:"StopDesktop,omitempty" xml:"StopDesktop,omitempty"`
 }
 
 func (s ResetSnapshotRequest) String() string {
@@ -4267,6 +4280,11 @@ func (s *ResetSnapshotRequest) SetSessionId(v string) *ResetSnapshotRequest {
 
 func (s *ResetSnapshotRequest) SetSnapshotId(v string) *ResetSnapshotRequest {
 	s.SnapshotId = &v
+	return s
+}
+
+func (s *ResetSnapshotRequest) SetStopDesktop(v bool) *ResetSnapshotRequest {
+	s.StopDesktop = &v
 	return s
 }
 
@@ -7284,6 +7302,10 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
 		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopDesktop)) {
+		query["StopDesktop"] = request.StopDesktop
 	}
 
 	req := &openapi.OpenApiRequest{
