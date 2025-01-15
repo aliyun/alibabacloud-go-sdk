@@ -3871,6 +3871,7 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyData) SetT
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {
+	AfterDiscountAmount *float64 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// The allocation month. Format: YYYYMM.
 	//
 	// example:
@@ -3934,7 +3935,8 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems stru
 	// example:
 	//
 	// 1234
-	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	CostUnitCode                           *string  `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	CurrentAmortizationAfterDiscountAmount *float64 `json:"CurrentAmortizationAfterDiscountAmount,omitempty" xml:"CurrentAmortizationAfterDiscountAmount,omitempty"`
 	// The amount deducted by using vouchers and allocated to the current allocation month.
 	//
 	// example:
@@ -4042,7 +4044,8 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems stru
 	// example:
 	//
 	// 0
-	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PretaxGrossAmount                      *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PreviouslyAmortizedAfterDiscountAmount *float64 `json:"PreviouslyAmortizedAfterDiscountAmount,omitempty" xml:"PreviouslyAmortizedAfterDiscountAmount,omitempty"`
 	// The amount deducted by using vouchers and allocated before the current allocation month.
 	//
 	// example:
@@ -4120,7 +4123,8 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems stru
 	// example:
 	//
 	// China (Hangzhou)
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region                                   *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	RemainingAmortizationAfterDiscountAmount *float64 `json:"RemainingAmortizationAfterDiscountAmount,omitempty" xml:"RemainingAmortizationAfterDiscountAmount,omitempty"`
 	// The amount deducted by using vouchers and to be allocated to one or more future allocation months.
 	//
 	// example:
@@ -4237,6 +4241,11 @@ func (s DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) 
 	return s.String()
 }
 
+func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.AfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetAmortizationPeriod(v string) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.AmortizationPeriod = &v
 	return s
@@ -4284,6 +4293,11 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems)
 
 func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCostUnitCode(v string) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.CostUnitCode = &v
+	return s
+}
+
+func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCurrentAmortizationAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CurrentAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -4377,6 +4391,11 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems)
 	return s
 }
 
+func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetPreviouslyAmortizedAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.PreviouslyAmortizedAfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetPreviouslyAmortizedDeductedByCashCoupons(v float64) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.PreviouslyAmortizedDeductedByCashCoupons = &v
 	return s
@@ -4439,6 +4458,11 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems)
 
 func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetRegion(v string) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetRemainingAmortizationAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.RemainingAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -5572,6 +5596,7 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData) SetTotalC
 }
 
 type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems struct {
+	AfterDiscountAmount *float64 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 202210
@@ -5608,7 +5633,8 @@ type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems struct {
 	// example:
 	//
 	// 1234
-	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	CostUnitCode                           *string  `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	CurrentAmortizationAfterDiscountAmount *float64 `json:"CurrentAmortizationAfterDiscountAmount,omitempty" xml:"CurrentAmortizationAfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 0
@@ -5680,7 +5706,8 @@ type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems struct {
 	// example:
 	//
 	// 0
-	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PretaxGrossAmount                      *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PreviouslyAmortizedAfterDiscountAmount *float64 `json:"PreviouslyAmortizedAfterDiscountAmount,omitempty" xml:"PreviouslyAmortizedAfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 0
@@ -5721,9 +5748,10 @@ type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems struct {
 	// example:
 	//
 	// rds
-	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ProductDetailCode                        *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	ProductName                              *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Region                                   *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	RemainingAmortizationAfterDiscountAmount *float64 `json:"RemainingAmortizationAfterDiscountAmount,omitempty" xml:"RemainingAmortizationAfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 0
@@ -5796,6 +5824,11 @@ func (s DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) GoStr
 	return s.String()
 }
 
+func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.AfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetAmortizationPeriod(v string) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.AmortizationPeriod = &v
 	return s
@@ -5843,6 +5876,11 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetC
 
 func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetCostUnitCode(v string) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.CostUnitCode = &v
+	return s
+}
+
+func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetCurrentAmortizationAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.CurrentAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -5936,6 +5974,11 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetP
 	return s
 }
 
+func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetPreviouslyAmortizedAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.PreviouslyAmortizedAfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetPreviouslyAmortizedDeductedByCashCoupons(v float64) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.PreviouslyAmortizedDeductedByCashCoupons = &v
 	return s
@@ -5998,6 +6041,11 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetP
 
 func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetRegion(v string) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) SetRemainingAmortizationAfterDiscountAmount(v float64) *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.RemainingAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -6452,7 +6500,7 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	//
 	// 0
 	AdjustAmount        *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	AfterDiscountAmount *string  `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
+	AfterDiscountAmount *float32 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
 	//
 	// example:
@@ -6756,7 +6804,7 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetAdjustAmount(v float32) *
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetAfterDiscountAmount(v string) *DescribeInstanceBillResponseBodyDataItems {
+func (s *DescribeInstanceBillResponseBodyDataItems) SetAfterDiscountAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
 	s.AfterDiscountAmount = &v
 	return s
 }
@@ -8336,6 +8384,7 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData) SetTo
 }
 
 type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {
+	AfterDiscountAmount *float64 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// The allocation month. Format: YYYYMM.
 	//
 	// example:
@@ -8387,7 +8436,8 @@ type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems struc
 	// example:
 	//
 	// 202210
-	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	ConsumePeriod                          *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	CurrentAmortizationAfterDiscountAmount *float64 `json:"CurrentAmortizationAfterDiscountAmount,omitempty" xml:"CurrentAmortizationAfterDiscountAmount,omitempty"`
 	// The amount deducted by using vouchers and allocated to the current allocation month.
 	//
 	// example:
@@ -8477,7 +8527,8 @@ type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems struc
 	// example:
 	//
 	// 0
-	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PretaxGrossAmount                      *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PreviouslyAmortizedAfterDiscountAmount *float64 `json:"PreviouslyAmortizedAfterDiscountAmount,omitempty" xml:"PreviouslyAmortizedAfterDiscountAmount,omitempty"`
 	// The amount deducted by using vouchers and allocated before the current allocation month.
 	//
 	// example:
@@ -8549,7 +8600,8 @@ type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems struc
 	// example:
 	//
 	// ApsaraDB RDS
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductName                              *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RemainingAmortizationAfterDiscountAmount *float64 `json:"RemainingAmortizationAfterDiscountAmount,omitempty" xml:"RemainingAmortizationAfterDiscountAmount,omitempty"`
 	// The amount deducted by using vouchers and to be allocated to one or more future allocation months.
 	//
 	// example:
@@ -8624,6 +8676,11 @@ func (s DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) G
 	return s.String()
 }
 
+func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.AfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetAmortizationPeriod(v string) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.AmortizationPeriod = &v
 	return s
@@ -8661,6 +8718,11 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) 
 
 func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetConsumePeriod(v string) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.ConsumePeriod = &v
+	return s
+}
+
+func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCurrentAmortizationAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CurrentAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -8739,6 +8801,11 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) 
 	return s
 }
 
+func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetPreviouslyAmortizedAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.PreviouslyAmortizedAfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetPreviouslyAmortizedDeductedByCashCoupons(v float64) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.PreviouslyAmortizedDeductedByCashCoupons = &v
 	return s
@@ -8796,6 +8863,11 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) 
 
 func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetProductName(v string) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
 	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetRemainingAmortizationAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.RemainingAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -9088,6 +9160,7 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyData) SetTotalCo
 }
 
 type DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems struct {
+	AfterDiscountAmount *float64 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 202210
@@ -9119,7 +9192,8 @@ type DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems struct {
 	// example:
 	//
 	// 202210
-	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	ConsumePeriod                          *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	CurrentAmortizationAfterDiscountAmount *float64 `json:"CurrentAmortizationAfterDiscountAmount,omitempty" xml:"CurrentAmortizationAfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 0
@@ -9179,7 +9253,8 @@ type DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems struct {
 	// example:
 	//
 	// 0
-	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PretaxGrossAmount                      *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PreviouslyAmortizedAfterDiscountAmount *float64 `json:"PreviouslyAmortizedAfterDiscountAmount,omitempty" xml:"PreviouslyAmortizedAfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 0
@@ -9220,8 +9295,9 @@ type DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems struct {
 	// example:
 	//
 	// rds
-	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductDetailCode                        *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	ProductName                              *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RemainingAmortizationAfterDiscountAmount *float64 `json:"RemainingAmortizationAfterDiscountAmount,omitempty" xml:"RemainingAmortizationAfterDiscountAmount,omitempty"`
 	// example:
 	//
 	// 0
@@ -9272,6 +9348,11 @@ func (s DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) GoStri
 	return s.String()
 }
 
+func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.AfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetAmortizationPeriod(v string) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.AmortizationPeriod = &v
 	return s
@@ -9309,6 +9390,11 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetBi
 
 func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetConsumePeriod(v string) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.ConsumePeriod = &v
+	return s
+}
+
+func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetCurrentAmortizationAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.CurrentAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -9387,6 +9473,11 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetPr
 	return s
 }
 
+func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetPreviouslyAmortizedAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.PreviouslyAmortizedAfterDiscountAmount = &v
+	return s
+}
+
 func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetPreviouslyAmortizedDeductedByCashCoupons(v float64) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.PreviouslyAmortizedDeductedByCashCoupons = &v
 	return s
@@ -9444,6 +9535,11 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetPr
 
 func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetProductName(v string) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
 	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) SetRemainingAmortizationAfterDiscountAmount(v float64) *DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems {
+	s.RemainingAmortizationAfterDiscountAmount = &v
 	return s
 }
 
@@ -13077,7 +13173,7 @@ type DescribeSplitItemBillResponseBodyDataItems struct {
 	//
 	// 0
 	AdjustAmount        *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	AfterDiscountAmount *string  `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
+	AfterDiscountAmount *float32 `json:"AfterDiscountAmount,omitempty" xml:"AfterDiscountAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
 	//
 	// example:
@@ -13411,7 +13507,7 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetAdjustAmount(v float32) 
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetAfterDiscountAmount(v string) *DescribeSplitItemBillResponseBodyDataItems {
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetAfterDiscountAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
 	s.AfterDiscountAmount = &v
 	return s
 }

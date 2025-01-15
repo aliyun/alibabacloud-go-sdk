@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/bssopenapi-20171214/v5
+module github.com/alibabacloud-go/bssopenapi-20171214/v6
 
 go 1.14
 
