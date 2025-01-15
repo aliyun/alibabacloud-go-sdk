@@ -2149,6 +2149,7 @@ func (s *RecoverColumnResponse) SetBody(v *RecoverColumnResponseBody) *RecoverCo
 }
 
 type ResyncTableRequest struct {
+	Keep *bool `json:"keep,omitempty" xml:"keep,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -2169,6 +2170,11 @@ func (s ResyncTableRequest) String() string {
 
 func (s ResyncTableRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ResyncTableRequest) SetKeep(v bool) *ResyncTableRequest {
+	s.Keep = &v
+	return s
 }
 
 func (s *ResyncTableRequest) SetTableIdKey(v string) *ResyncTableRequest {
@@ -3099,7 +3105,8 @@ func (s *SaveVirtualDatasourceDdlResponse) SetBody(v *SaveVirtualDatasourceDdlRe
 }
 
 type SyncRemoteTablesRequest struct {
-	KeepTableNames []*string `json:"keepTableNames,omitempty" xml:"keepTableNames,omitempty" type:"Repeated"`
+	KeepTableNames       []*string `json:"keepTableNames,omitempty" xml:"keepTableNames,omitempty" type:"Repeated"`
+	NoModifiedTableNames []*string `json:"noModifiedTableNames,omitempty" xml:"noModifiedTableNames,omitempty" type:"Repeated"`
 	// example:
 	//
 	// true
@@ -3124,6 +3131,11 @@ func (s SyncRemoteTablesRequest) GoString() string {
 
 func (s *SyncRemoteTablesRequest) SetKeepTableNames(v []*string) *SyncRemoteTablesRequest {
 	s.KeepTableNames = v
+	return s
+}
+
+func (s *SyncRemoteTablesRequest) SetNoModifiedTableNames(v []*string) *SyncRemoteTablesRequest {
+	s.NoModifiedTableNames = v
 	return s
 }
 
@@ -5412,6 +5424,10 @@ func (client *Client) ResyncTableWithOptions(request *ResyncTableRequest, header
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keep)) {
+		body["keep"] = request.Keep
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
 		body["tableIdKey"] = request.TableIdKey
 	}
@@ -5798,6 +5814,10 @@ func (client *Client) SyncRemoteTablesWithOptions(request *SyncRemoteTablesReque
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.KeepTableNames)) {
 		body["keepTableNames"] = request.KeepTableNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoModifiedTableNames)) {
+		body["noModifiedTableNames"] = request.NoModifiedTableNames
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PullSamples)) {
