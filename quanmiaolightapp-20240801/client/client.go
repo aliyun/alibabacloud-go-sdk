@@ -888,6 +888,7 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayload) SetUsage(v *GetVideoAnalys
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutput struct {
+	ResultJsonFileUrl              *string                                                                          `json:"resultJsonFileUrl,omitempty" xml:"resultJsonFileUrl,omitempty"`
 	VideoAnalysisResult            *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult            `json:"videoAnalysisResult,omitempty" xml:"videoAnalysisResult,omitempty" type:"Struct"`
 	VideoCaptionResult             *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult             `json:"videoCaptionResult,omitempty" xml:"videoCaptionResult,omitempty" type:"Struct"`
 	VideoGenerateResult            *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult            `json:"videoGenerateResult,omitempty" xml:"videoGenerateResult,omitempty" type:"Struct"`
@@ -901,6 +902,11 @@ func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutput) String() string {
 
 func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GoString() string {
 	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetResultJsonFileUrl(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.ResultJsonFileUrl = &v
+	return s
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoAnalysisResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
@@ -3528,6 +3534,252 @@ func (s *RunMarketingInformationWritingResponse) SetBody(v *RunMarketingInformat
 	return s
 }
 
+type RunScriptChatRequest struct {
+	// This parameter is required.
+	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s RunScriptChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptChatRequest) SetPrompt(v string) *RunScriptChatRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunScriptChatRequest) SetTaskId(v string) *RunScriptChatRequest {
+	s.TaskId = &v
+	return s
+}
+
+type RunScriptChatResponseBody struct {
+	// example:
+	//
+	// true
+	End     *bool                             `json:"end,omitempty" xml:"end,omitempty"`
+	Header  *RunScriptChatResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunScriptChatResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+}
+
+func (s RunScriptChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptChatResponseBody) SetEnd(v bool) *RunScriptChatResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBody) SetHeader(v *RunScriptChatResponseBodyHeader) *RunScriptChatResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunScriptChatResponseBody) SetPayload(v *RunScriptChatResponseBodyPayload) *RunScriptChatResponseBody {
+	s.Payload = v
+	return s
+}
+
+type RunScriptChatResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check log.
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event     *string `json:"event,omitempty" xml:"event,omitempty"`
+	EventInfo *string `json:"eventInfo,omitempty" xml:"eventInfo,omitempty"`
+	// example:
+	//
+	// F8A35034-EDCF-5C50-95A5-1044316F36E3
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 147648697127_914847410985_1730600302167
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 2150432017236011824686132ecdbc
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunScriptChatResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptChatResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetErrorCode(v string) *RunScriptChatResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetErrorMessage(v string) *RunScriptChatResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetEvent(v string) *RunScriptChatResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetEventInfo(v string) *RunScriptChatResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetRequestId(v string) *RunScriptChatResponseBodyHeader {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetSessionId(v string) *RunScriptChatResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetTaskId(v string) *RunScriptChatResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyHeader) SetTraceId(v string) *RunScriptChatResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunScriptChatResponseBodyPayload struct {
+	Output *RunScriptChatResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunScriptChatResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunScriptChatResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptChatResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptChatResponseBodyPayload) SetOutput(v *RunScriptChatResponseBodyPayloadOutput) *RunScriptChatResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyPayload) SetUsage(v *RunScriptChatResponseBodyPayloadUsage) *RunScriptChatResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunScriptChatResponseBodyPayloadOutput struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunScriptChatResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptChatResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptChatResponseBodyPayloadOutput) SetText(v string) *RunScriptChatResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunScriptChatResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunScriptChatResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptChatResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptChatResponseBodyPayloadUsage) SetInputTokens(v int64) *RunScriptChatResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunScriptChatResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunScriptChatResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunScriptChatResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunScriptChatResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunScriptChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunScriptChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptChatResponse) SetHeaders(v map[string]*string) *RunScriptChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunScriptChatResponse) SetStatusCode(v int32) *RunScriptChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptChatResponse) SetBody(v *RunScriptChatResponseBody) *RunScriptChatResponse {
+	s.Body = v
+	return s
+}
+
 type RunScriptContinueRequest struct {
 	// example:
 	//
@@ -4078,6 +4330,275 @@ func (s *RunScriptPlanningResponse) SetStatusCode(v int32) *RunScriptPlanningRes
 }
 
 func (s *RunScriptPlanningResponse) SetBody(v *RunScriptPlanningResponseBody) *RunScriptPlanningResponse {
+	s.Body = v
+	return s
+}
+
+type RunScriptRefineRequest struct {
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s RunScriptRefineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptRefineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptRefineRequest) SetTaskId(v string) *RunScriptRefineRequest {
+	s.TaskId = &v
+	return s
+}
+
+type RunScriptRefineResponseBody struct {
+	End     *bool                               `json:"end,omitempty" xml:"end,omitempty"`
+	Header  *RunScriptRefineResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunScriptRefineResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+}
+
+func (s RunScriptRefineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptRefineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptRefineResponseBody) SetEnd(v bool) *RunScriptRefineResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBody) SetHeader(v *RunScriptRefineResponseBodyHeader) *RunScriptRefineResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunScriptRefineResponseBody) SetPayload(v *RunScriptRefineResponseBodyPayload) *RunScriptRefineResponseBody {
+	s.Payload = v
+	return s
+}
+
+type RunScriptRefineResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check log.
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event     *string `json:"event,omitempty" xml:"event,omitempty"`
+	EventInfo *string `json:"eventInfo,omitempty" xml:"eventInfo,omitempty"`
+	// example:
+	//
+	// F8A35034-EDCF-5C50-95A5-1044316F36E3
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 17dc8bcd-f34a-46d1-a7a3-0fa3d1ce3824
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 14356391-6c6c-40d5-b80a-8ecd03b69d72
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 2150432017236011824686132ecdbc
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunScriptRefineResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptRefineResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetErrorCode(v string) *RunScriptRefineResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetErrorMessage(v string) *RunScriptRefineResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetEvent(v string) *RunScriptRefineResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetEventInfo(v string) *RunScriptRefineResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetRequestId(v string) *RunScriptRefineResponseBodyHeader {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetSessionId(v string) *RunScriptRefineResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetTaskId(v string) *RunScriptRefineResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyHeader) SetTraceId(v string) *RunScriptRefineResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunScriptRefineResponseBodyPayload struct {
+	Output *RunScriptRefineResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunScriptRefineResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunScriptRefineResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptRefineResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptRefineResponseBodyPayload) SetOutput(v *RunScriptRefineResponseBodyPayloadOutput) *RunScriptRefineResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayload) SetUsage(v *RunScriptRefineResponseBodyPayloadUsage) *RunScriptRefineResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunScriptRefineResponseBodyPayloadOutput struct {
+	Content []map[string]*string `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	Outline *string              `json:"outline,omitempty" xml:"outline,omitempty"`
+	Role    *string              `json:"role,omitempty" xml:"role,omitempty"`
+	Scene   *string              `json:"scene,omitempty" xml:"scene,omitempty"`
+	Summary *string              `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunScriptRefineResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptRefineResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptRefineResponseBodyPayloadOutput) SetContent(v []map[string]*string) *RunScriptRefineResponseBodyPayloadOutput {
+	s.Content = v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayloadOutput) SetOutline(v string) *RunScriptRefineResponseBodyPayloadOutput {
+	s.Outline = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayloadOutput) SetRole(v string) *RunScriptRefineResponseBodyPayloadOutput {
+	s.Role = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayloadOutput) SetScene(v string) *RunScriptRefineResponseBodyPayloadOutput {
+	s.Scene = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayloadOutput) SetSummary(v string) *RunScriptRefineResponseBodyPayloadOutput {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayloadOutput) SetText(v string) *RunScriptRefineResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunScriptRefineResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunScriptRefineResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptRefineResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptRefineResponseBodyPayloadUsage) SetInputTokens(v int64) *RunScriptRefineResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunScriptRefineResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunScriptRefineResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunScriptRefineResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunScriptRefineResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunScriptRefineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunScriptRefineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptRefineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptRefineResponse) SetHeaders(v map[string]*string) *RunScriptRefineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunScriptRefineResponse) SetStatusCode(v int32) *RunScriptRefineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptRefineResponse) SetBody(v *RunScriptRefineResponseBody) *RunScriptRefineResponse {
 	s.Body = v
 	return s
 }
@@ -5189,6 +5710,10 @@ func (s *RunVideoAnalysisResponseBodyPayload) SetUsage(v *RunVideoAnalysisRespon
 }
 
 type RunVideoAnalysisResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// http://
+	ResultJsonFileUrl              *string                                                                  `json:"resultJsonFileUrl,omitempty" xml:"resultJsonFileUrl,omitempty"`
 	VideoAnalysisResult            *RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult            `json:"videoAnalysisResult,omitempty" xml:"videoAnalysisResult,omitempty" type:"Struct"`
 	VideoCaptionResult             *RunVideoAnalysisResponseBodyPayloadOutputVideoCaptionResult             `json:"videoCaptionResult,omitempty" xml:"videoCaptionResult,omitempty" type:"Struct"`
 	VideoGenerateResult            *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult            `json:"videoGenerateResult,omitempty" xml:"videoGenerateResult,omitempty" type:"Struct"`
@@ -5203,6 +5728,11 @@ func (s RunVideoAnalysisResponseBodyPayloadOutput) String() string {
 
 func (s RunVideoAnalysisResponseBodyPayloadOutput) GoString() string {
 	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetResultJsonFileUrl(v string) *RunVideoAnalysisResponseBodyPayloadOutput {
+	s.ResultJsonFileUrl = &v
+	return s
 }
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetVideoAnalysisResult(v *RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult) *RunVideoAnalysisResponseBodyPayloadOutput {
@@ -7158,6 +7688,74 @@ func (client *Client) RunMarketingInformationWriting(workspaceId *string, reques
 
 // Summary:
 //
+// 长剧本创作
+//
+// @param request - RunScriptChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunScriptChatResponse
+func (client *Client) RunScriptChatWithOptions(workspaceId *string, request *RunScriptChatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunScriptChatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunScriptChat"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runScriptChat"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunScriptChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 长剧本创作
+//
+// @param request - RunScriptChatRequest
+//
+// @return RunScriptChatResponse
+func (client *Client) RunScriptChat(workspaceId *string, request *RunScriptChatRequest) (_result *RunScriptChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunScriptChatResponse{}
+	_body, _err := client.RunScriptChatWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 剧本续写
 //
 // @param request - RunScriptContinueRequest
@@ -7309,6 +7907,70 @@ func (client *Client) RunScriptPlanning(workspaceId *string, request *RunScriptP
 	headers := make(map[string]*string)
 	_result = &RunScriptPlanningResponse{}
 	_body, _err := client.RunScriptPlanningWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 剧本对话内容的整理
+//
+// @param request - RunScriptRefineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunScriptRefineResponse
+func (client *Client) RunScriptRefineWithOptions(workspaceId *string, request *RunScriptRefineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunScriptRefineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunScriptRefine"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runScriptRefine"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunScriptRefineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 剧本对话内容的整理
+//
+// @param request - RunScriptRefineRequest
+//
+// @return RunScriptRefineResponse
+func (client *Client) RunScriptRefine(workspaceId *string, request *RunScriptRefineRequest) (_result *RunScriptRefineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunScriptRefineResponse{}
+	_body, _err := client.RunScriptRefineWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
