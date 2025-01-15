@@ -1544,11 +1544,13 @@ type CreateIdentityProviderRequestLarkConfig struct {
 	// example:
 	//
 	// KiiLzh5Dueh4wbLxxxx
-	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	AppSecret  *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
 	// example:
 	//
 	// FSX123111xxx
-	EnterpriseNumber *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
+	EnterpriseNumber  *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
+	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
 }
 
 func (s CreateIdentityProviderRequestLarkConfig) String() string {
@@ -1569,8 +1571,18 @@ func (s *CreateIdentityProviderRequestLarkConfig) SetAppSecret(v string) *Create
 	return s
 }
 
+func (s *CreateIdentityProviderRequestLarkConfig) SetEncryptKey(v string) *CreateIdentityProviderRequestLarkConfig {
+	s.EncryptKey = &v
+	return s
+}
+
 func (s *CreateIdentityProviderRequestLarkConfig) SetEnterpriseNumber(v string) *CreateIdentityProviderRequestLarkConfig {
 	s.EnterpriseNumber = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLarkConfig) SetVerificationToken(v string) *CreateIdentityProviderRequestLarkConfig {
+	s.VerificationToken = &v
 	return s
 }
 
@@ -8371,13 +8383,15 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig struct {
 	// example:
 	//
 	// ***
-	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	AppSecret  *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
 	// IDaaS EIAM 飞书企业编码
 	//
 	// example:
 	//
 	// FX1231xxxx
-	EnterpriseNumber *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
+	EnterpriseNumber  *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
+	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
 }
 
 func (s GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) String() string {
@@ -8398,8 +8412,18 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) SetApp
 	return s
 }
 
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) SetEncryptKey(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig {
+	s.EncryptKey = &v
+	return s
+}
+
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) SetEnterpriseNumber(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig {
 	s.EnterpriseNumber = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) SetVerificationToken(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig {
+	s.VerificationToken = &v
 	return s
 }
 
@@ -9472,7 +9496,7 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetInstanceLicenseRequest struct {
-	// IDaaS EIAM的实例id
+	// Instance ID
 	//
 	// This parameter is required.
 	//
@@ -9496,7 +9520,10 @@ func (s *GetInstanceLicenseRequest) SetInstanceId(v string) *GetInstanceLicenseR
 }
 
 type GetInstanceLicenseResponseBody struct {
+	// Returned result.
 	License *GetInstanceLicenseResponseBodyLicense `json:"License,omitempty" xml:"License,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -9522,67 +9549,67 @@ func (s *GetInstanceLicenseResponseBody) SetRequestId(v string) *GetInstanceLice
 }
 
 type GetInstanceLicenseResponseBodyLicense struct {
-	// License 的版本型号,free-免费版，trail-试用版，enterprise-企业版
+	// Edition of the License
 	//
 	// example:
 	//
 	// free
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// License 的有效期终止日期
+	// End date of the validity period of the License, timestamp
 	//
 	// example:
 	//
 	// 1723996800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// License 的付费类型，prepay-预付费，postpay-后付费
+	// Payment type of the License
 	//
 	// example:
 	//
 	// prepay
 	LicenseChargeType *string `json:"LicenseChargeType,omitempty" xml:"LicenseChargeType,omitempty"`
-	// License 详细配置JSON
+	// Detailed configuration JSON string of the License
 	//
 	// example:
 	//
 	// {"modules":[{"features":[{"name":"urn:alibaba:idaas:license:module:ud:customField","status":"enabled"}]……{"name":"urn:alibaba:idaas:license:tag:enterprise","status":"enabled"}],"version":"1.0"}
 	LicenseConfigJson *string `json:"LicenseConfigJson,omitempty" xml:"LicenseConfigJson,omitempty"`
-	// License 的创建时间
+	// Creation time of the License, timestamp
 	//
 	// example:
 	//
 	// 1720509699000
 	LicenseCreateTime *int64 `json:"LicenseCreateTime,omitempty" xml:"LicenseCreateTime,omitempty"`
-	// License 的唯一标识
+	// Unique identifier of the License
 	//
 	// example:
 	//
 	// license_1234xxxx
 	LicenseId *string `json:"LicenseId,omitempty" xml:"LicenseId,omitempty"`
-	// License 的状态，valid-有效，expired-已过期，released-已释放
+	// Status of the License
 	//
 	// example:
 	//
 	// valid
 	LicenseStatus *string `json:"LicenseStatus,omitempty" xml:"LicenseStatus,omitempty"`
-	// License 的购买渠道
+	// Purchase channel of the License
 	//
 	// example:
 	//
 	// alibaba_cloud
 	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
-	// License 对应的外部商品唯一标识
+	// Unique external product identifier corresponding to the License
 	//
 	// example:
 	//
 	// eiam-cn-xxxxx
 	PurchaseInstanceId *string `json:"PurchaseInstanceId,omitempty" xml:"PurchaseInstanceId,omitempty"`
-	// License 的有效期开始日期
+	// Start date of the validity period of the License, timestamp
 	//
 	// example:
 	//
 	// 1720509699000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// License 的用户配额
+	// User quota of the License
 	//
 	// example:
 	//
@@ -15610,6 +15637,10 @@ type ListIdentityProvidersResponseBodyIdentityProviders struct {
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	LogoUrl    *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
+	// example:
+	//
+	// disabled
+	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
 	// IDaaS EIAM 是否支持UD同步
 	//
 	// example:
@@ -15714,6 +15745,11 @@ func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetLockReason(v str
 
 func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetLogoUrl(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
 	s.LogoUrl = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetPeriodicSyncStatus(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.PeriodicSyncStatus = &v
 	return s
 }
 
@@ -24136,7 +24172,9 @@ type UpdateIdentityProviderRequestLarkConfig struct {
 	// example:
 	//
 	// KiiLzh5Dueh4wbLxxxx
-	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	AppSecret         *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	EncryptKey        *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
+	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
 }
 
 func (s UpdateIdentityProviderRequestLarkConfig) String() string {
@@ -24154,6 +24192,16 @@ func (s *UpdateIdentityProviderRequestLarkConfig) SetAppId(v string) *UpdateIden
 
 func (s *UpdateIdentityProviderRequestLarkConfig) SetAppSecret(v string) *UpdateIdentityProviderRequestLarkConfig {
 	s.AppSecret = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLarkConfig) SetEncryptKey(v string) *UpdateIdentityProviderRequestLarkConfig {
+	s.EncryptKey = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLarkConfig) SetVerificationToken(v string) *UpdateIdentityProviderRequestLarkConfig {
+	s.VerificationToken = &v
 	return s
 }
 
@@ -29309,7 +29357,11 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
-// 查询实例当前生效的 License 信息
+// Query the currently effective License information of the instance
+//
+// Description:
+//
+// Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -29351,7 +29403,11 @@ func (client *Client) GetInstanceLicenseWithOptions(request *GetInstanceLicenseR
 
 // Summary:
 //
-// 查询实例当前生效的 License 信息
+// Query the currently effective License information of the instance
+//
+// Description:
+//
+// Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
