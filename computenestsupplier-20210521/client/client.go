@@ -9929,6 +9929,12 @@ func (s *ListArtifactsResponseBody) SetTotalCount(v int32) *ListArtifactsRespons
 }
 
 type ListArtifactsResponseBodyArtifacts struct {
+	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	//
+	// example:
+	//
+	// {\\"CodeRepo\\":{\\"Owner\\":\\"wenle\\",\\"Platform\\":\\"github\\",\\"Branch\\":\\"main\\",\\"RepoName\\":\\"aliyun-computenest/java-springboot-demo\\"}}
+	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -9999,6 +10005,11 @@ func (s ListArtifactsResponseBodyArtifacts) String() string {
 
 func (s ListArtifactsResponseBodyArtifacts) GoString() string {
 	return s.String()
+}
+
+func (s *ListArtifactsResponseBodyArtifacts) SetArtifactBuildProperty(v string) *ListArtifactsResponseBodyArtifacts {
+	s.ArtifactBuildProperty = &v
+	return s
 }
 
 func (s *ListArtifactsResponseBodyArtifacts) SetArtifactId(v string) *ListArtifactsResponseBodyArtifacts {
