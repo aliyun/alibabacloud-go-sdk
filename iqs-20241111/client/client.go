@@ -311,7 +311,8 @@ type ScorePageItem struct {
 	// 		而	在	介绍	技术	时	，	雷军	也	从	电机	、	电池	、	大	压铸	、	自动	驾驶	、	智能	座舱	等	五	大	方面	展开	，	充分	展示	了	小米	汽车	的	技术	以及	技术	储备	，		 		能	堆	的	料	，	全都	堆	上去	了	…	…
 	//
 	// 		大家	比较	感	兴趣	的	性能	方面	，	2	.	78	s	的	0	-	100	km	/	h	加速	，	265	km	/	h	的	最高	时速
-	MainText *string `json:"mainText,omitempty" xml:"mainText,omitempty"`
+	MainText     *string `json:"mainText,omitempty" xml:"mainText,omitempty"`
+	MarkdownText *string `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
 	// example:
 	//
 	// text/html
@@ -389,6 +390,11 @@ func (s *ScorePageItem) SetLink(v string) *ScorePageItem {
 
 func (s *ScorePageItem) SetMainText(v string) *ScorePageItem {
 	s.MainText = &v
+	return s
+}
+
+func (s *ScorePageItem) SetMarkdownText(v string) *ScorePageItem {
+	s.MarkdownText = &v
 	return s
 }
 
