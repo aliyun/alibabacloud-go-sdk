@@ -12073,6 +12073,88 @@ func (s *UpdateMessageContactResponse) SetBody(v *UpdateMessageContactResponseBo
 	return s
 }
 
+type UpdatePayerForAccountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 138660628348****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12323344****
+	PayerAccountId *string `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
+}
+
+func (s UpdatePayerForAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePayerForAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePayerForAccountRequest) SetAccountId(v string) *UpdatePayerForAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *UpdatePayerForAccountRequest) SetPayerAccountId(v string) *UpdatePayerForAccountRequest {
+	s.PayerAccountId = &v
+	return s
+}
+
+type UpdatePayerForAccountResponseBody struct {
+	// example:
+	//
+	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePayerForAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePayerForAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePayerForAccountResponseBody) SetRequestId(v string) *UpdatePayerForAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePayerForAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePayerForAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePayerForAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePayerForAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePayerForAccountResponse) SetHeaders(v map[string]*string) *UpdatePayerForAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePayerForAccountResponse) SetStatusCode(v int32) *UpdatePayerForAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePayerForAccountResponse) SetBody(v *UpdatePayerForAccountResponseBody) *UpdatePayerForAccountResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -16919,6 +17001,70 @@ func (client *Client) UpdateMessageContact(request *UpdateMessageContactRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMessageContactResponse{}
 	_body, _err := client.UpdateMessageContactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新成员的结算账号
+//
+// @param request - UpdatePayerForAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePayerForAccountResponse
+func (client *Client) UpdatePayerForAccountWithOptions(request *UpdatePayerForAccountRequest, runtime *util.RuntimeOptions) (_result *UpdatePayerForAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayerAccountId)) {
+		query["PayerAccountId"] = request.PayerAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePayerForAccount"),
+		Version:     tea.String("2022-04-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePayerForAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新成员的结算账号
+//
+// @param request - UpdatePayerForAccountRequest
+//
+// @return UpdatePayerForAccountResponse
+func (client *Client) UpdatePayerForAccount(request *UpdatePayerForAccountRequest) (_result *UpdatePayerForAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePayerForAccountResponse{}
+	_body, _err := client.UpdatePayerForAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
