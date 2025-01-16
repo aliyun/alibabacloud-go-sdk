@@ -6291,6 +6291,18 @@ type ListServiceInstanceLogsRequest struct {
 	//
 	// si-70a3b15bb626435b****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// Sort Order. Possible values:
+	//
+	// + Ascending: Ascending order
+	//
+	// + Descending (default value): Descending order
+	//
+	// example:
+	//
+	// Ascending: Ascending order
+	//
+	// Descending (default value): Descending order
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 
 func (s ListServiceInstanceLogsRequest) String() string {
@@ -6333,6 +6345,11 @@ func (s *ListServiceInstanceLogsRequest) SetRegionId(v string) *ListServiceInsta
 
 func (s *ListServiceInstanceLogsRequest) SetServiceInstanceId(v string) *ListServiceInstanceLogsRequest {
 	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetSortOrder(v string) *ListServiceInstanceLogsRequest {
+	s.SortOrder = &v
 	return s
 }
 
@@ -12634,6 +12651,10 @@ func (client *Client) ListServiceInstanceLogsWithOptions(request *ListServiceIns
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
 		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
 	}
 
 	req := &openapi.OpenApiRequest{

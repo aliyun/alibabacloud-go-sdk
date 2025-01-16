@@ -1,3 +1,7 @@
+2025-01-16 Version: v4.6.1
+- Update API ListServiceInstanceLogs: add param SortOrder.
+
+
 2025-01-09 Version: v4.6.0
 - Support API DescribeRegions.
 - Update API GetService: update param ServiceVersion.
