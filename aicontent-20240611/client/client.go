@@ -3096,6 +3096,1568 @@ func (s *ExecuteAITeacherSyncDialogueTranslateResponse) SetBody(v *ExecuteAITeac
 	return s
 }
 
+type ExecuteTextbookAssistantDialogueRequest struct {
+	// This parameter is required.
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+	// This parameter is required.
+	UserMessage *string `json:"userMessage,omitempty" xml:"userMessage,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDialogueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDialogueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDialogueRequest) SetAuthToken(v string) *ExecuteTextbookAssistantDialogueRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueRequest) SetChatId(v string) *ExecuteTextbookAssistantDialogueRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueRequest) SetScenario(v string) *ExecuteTextbookAssistantDialogueRequest {
+	s.Scenario = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueRequest) SetUserMessage(v string) *ExecuteTextbookAssistantDialogueRequest {
+	s.UserMessage = &v
+	return s
+}
+
+type ExecuteTextbookAssistantDialogueResponseBody struct {
+	Data           *ExecuteTextbookAssistantDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode        *string                                           `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage     *string                                           `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	HttpStatusCode *string                                           `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDialogueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDialogueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBody) SetData(v *ExecuteTextbookAssistantDialogueResponseBodyData) *ExecuteTextbookAssistantDialogueResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantDialogueResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantDialogueResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBody) SetHttpStatusCode(v string) *ExecuteTextbookAssistantDialogueResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantDialogueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBody) SetSuccess(v string) *ExecuteTextbookAssistantDialogueResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantDialogueResponseBodyData struct {
+	Assistant *string                                                 `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	ChatId    *string                                                 `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	Result    *ExecuteTextbookAssistantDialogueResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	User      *string                                                 `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDialogueResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDialogueResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyData) SetAssistant(v string) *ExecuteTextbookAssistantDialogueResponseBodyData {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyData) SetChatId(v string) *ExecuteTextbookAssistantDialogueResponseBodyData {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyData) SetResult(v *ExecuteTextbookAssistantDialogueResponseBodyDataResult) *ExecuteTextbookAssistantDialogueResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyData) SetUser(v string) *ExecuteTextbookAssistantDialogueResponseBodyData {
+	s.User = &v
+	return s
+}
+
+type ExecuteTextbookAssistantDialogueResponseBodyDataResult struct {
+	ChineseResult   *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+	EnglishResult   *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+	IsFinish        *bool   `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	IsTaskCompleted *bool   `json:"isTaskCompleted,omitempty" xml:"isTaskCompleted,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDialogueResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDialogueResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyDataResult) SetChineseResult(v string) *ExecuteTextbookAssistantDialogueResponseBodyDataResult {
+	s.ChineseResult = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyDataResult) SetEnglishResult(v string) *ExecuteTextbookAssistantDialogueResponseBodyDataResult {
+	s.EnglishResult = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyDataResult) SetIsFinish(v bool) *ExecuteTextbookAssistantDialogueResponseBodyDataResult {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponseBodyDataResult) SetIsTaskCompleted(v bool) *ExecuteTextbookAssistantDialogueResponseBodyDataResult {
+	s.IsTaskCompleted = &v
+	return s
+}
+
+type ExecuteTextbookAssistantDialogueResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDialogueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDialogueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantDialogueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDialogueResponse) SetBody(v *ExecuteTextbookAssistantDialogueResponseBody) *ExecuteTextbookAssistantDialogueResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteTextbookAssistantDifficultyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UP
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788f4a6b54c5268c1b78a25
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDifficultyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDifficultyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDifficultyRequest) SetAction(v string) *ExecuteTextbookAssistantDifficultyRequest {
+	s.Action = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyRequest) SetAssistant(v string) *ExecuteTextbookAssistantDifficultyRequest {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyRequest) SetAuthToken(v string) *ExecuteTextbookAssistantDifficultyRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyRequest) SetChatId(v string) *ExecuteTextbookAssistantDifficultyRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyRequest) SetScenario(v string) *ExecuteTextbookAssistantDifficultyRequest {
+	s.Scenario = &v
+	return s
+}
+
+type ExecuteTextbookAssistantDifficultyResponseBody struct {
+	Data *ExecuteTextbookAssistantDifficultyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// null
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0D7D382F-9475-572E-BE83-DDFBF5C5EB24
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBody) SetData(v *ExecuteTextbookAssistantDifficultyResponseBodyData) *ExecuteTextbookAssistantDifficultyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantDifficultyResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantDifficultyResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBody) SetHttpStatusCode(v int32) *ExecuteTextbookAssistantDifficultyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantDifficultyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantDifficultyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantDifficultyResponseBodyData struct {
+	Result *ExecuteTextbookAssistantDifficultyResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBodyData) SetResult(v *ExecuteTextbookAssistantDifficultyResponseBodyDataResult) *ExecuteTextbookAssistantDifficultyResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type ExecuteTextbookAssistantDifficultyResponseBodyDataResult struct {
+	// example:
+	//
+	// Let\\"s look at the text again. Mike says, \\"I\\"m Mike Black.\\" Can you try saying it like Mike?
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponseBodyDataResult) SetResult(v string) *ExecuteTextbookAssistantDifficultyResponseBodyDataResult {
+	s.Result = &v
+	return s
+}
+
+type ExecuteTextbookAssistantDifficultyResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantDifficultyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantDifficultyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantDifficultyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantDifficultyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantDifficultyResponse) SetBody(v *ExecuteTextbookAssistantDifficultyResponseBody) *ExecuteTextbookAssistantDifficultyResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteTextbookAssistantGrammarCheckRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b45bdfc807f077a5a1
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckRequest) SetAuthToken(v string) *ExecuteTextbookAssistantGrammarCheckRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckRequest) SetChatId(v string) *ExecuteTextbookAssistantGrammarCheckRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckRequest) SetScenario(v string) *ExecuteTextbookAssistantGrammarCheckRequest {
+	s.Scenario = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckRequest) SetUser(v string) *ExecuteTextbookAssistantGrammarCheckRequest {
+	s.User = &v
+	return s
+}
+
+type ExecuteTextbookAssistantGrammarCheckResponseBody struct {
+	Data *ExecuteTextbookAssistantGrammarCheckResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// null
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1e96d17091734639835114e12c8
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBody) SetData(v *ExecuteTextbookAssistantGrammarCheckResponseBodyData) *ExecuteTextbookAssistantGrammarCheckResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantGrammarCheckResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantGrammarCheckResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBody) SetHttpStatusCode(v int32) *ExecuteTextbookAssistantGrammarCheckResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantGrammarCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantGrammarCheckResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantGrammarCheckResponseBodyData struct {
+	Result *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBodyData) SetResult(v *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult) *ExecuteTextbookAssistantGrammarCheckResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult struct {
+	Analysis *string `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// example:
+	//
+	// I am you.
+	Correction *string `json:"correction,omitempty" xml:"correction,omitempty"`
+	// example:
+	//
+	// Has_Error
+	CorrectionStatus *string `json:"correctionStatus,omitempty" xml:"correctionStatus,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult) SetAnalysis(v string) *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult {
+	s.Analysis = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult) SetCorrection(v string) *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult {
+	s.Correction = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult) SetCorrectionStatus(v string) *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult {
+	s.CorrectionStatus = &v
+	return s
+}
+
+type ExecuteTextbookAssistantGrammarCheckResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantGrammarCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantGrammarCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantGrammarCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantGrammarCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantGrammarCheckResponse) SetBody(v *ExecuteTextbookAssistantGrammarCheckResponseBody) *ExecuteTextbookAssistantGrammarCheckResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteTextbookAssistantRefineByContextRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b45bdfc807f077a5a1
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRefineByContextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRefineByContextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextRequest) SetAuthToken(v string) *ExecuteTextbookAssistantRefineByContextRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextRequest) SetChatId(v string) *ExecuteTextbookAssistantRefineByContextRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextRequest) SetScenario(v string) *ExecuteTextbookAssistantRefineByContextRequest {
+	s.Scenario = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextRequest) SetUser(v string) *ExecuteTextbookAssistantRefineByContextRequest {
+	s.User = &v
+	return s
+}
+
+type ExecuteTextbookAssistantRefineByContextResponseBody struct {
+	Data *ExecuteTextbookAssistantRefineByContextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// null
+	ErrMessage *int32 `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6F73C114-A76E-51AD-99E3-BC7B941B69E0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBody) SetData(v *ExecuteTextbookAssistantRefineByContextResponseBodyData) *ExecuteTextbookAssistantRefineByContextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantRefineByContextResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBody) SetErrMessage(v int32) *ExecuteTextbookAssistantRefineByContextResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBody) SetHttpStatusCode(v string) *ExecuteTextbookAssistantRefineByContextResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantRefineByContextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantRefineByContextResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantRefineByContextResponseBodyData struct {
+	Result *ExecuteTextbookAssistantRefineByContextResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBodyData) SetResult(v *ExecuteTextbookAssistantRefineByContextResponseBodyDataResult) *ExecuteTextbookAssistantRefineByContextResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type ExecuteTextbookAssistantRefineByContextResponseBodyDataResult struct {
+	// example:
+	//
+	// Good evening! From the book, how does Mike Black introduce himself?
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponseBodyDataResult) SetResult(v string) *ExecuteTextbookAssistantRefineByContextResponseBodyDataResult {
+	s.Result = &v
+	return s
+}
+
+type ExecuteTextbookAssistantRefineByContextResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantRefineByContextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRefineByContextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantRefineByContextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantRefineByContextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRefineByContextResponse) SetBody(v *ExecuteTextbookAssistantRefineByContextResponseBody) *ExecuteTextbookAssistantRefineByContextResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteTextbookAssistantRetryConversationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b4b54c5268c1b78638
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRetryConversationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRetryConversationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationRequest) SetAssistant(v string) *ExecuteTextbookAssistantRetryConversationRequest {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationRequest) SetAuthToken(v string) *ExecuteTextbookAssistantRetryConversationRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationRequest) SetChatId(v string) *ExecuteTextbookAssistantRetryConversationRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationRequest) SetScenario(v string) *ExecuteTextbookAssistantRetryConversationRequest {
+	s.Scenario = &v
+	return s
+}
+
+type ExecuteTextbookAssistantRetryConversationResponseBody struct {
+	Data *ExecuteTextbookAssistantRetryConversationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// null
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2F2ABF4B-A4F6-5EC7-B287-7EF5B156F1ED
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBody) SetData(v *ExecuteTextbookAssistantRetryConversationResponseBodyData) *ExecuteTextbookAssistantRetryConversationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantRetryConversationResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantRetryConversationResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBody) SetHttpStatusCode(v int32) *ExecuteTextbookAssistantRetryConversationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantRetryConversationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantRetryConversationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantRetryConversationResponseBodyData struct {
+	// example:
+	//
+	// 6788e0b4b54c5268c1b78638
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string                                                          `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	Result *ExecuteTextbookAssistantRetryConversationResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6788e0b45bdfc807f077a5a1
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBodyData) SetAssistant(v string) *ExecuteTextbookAssistantRetryConversationResponseBodyData {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBodyData) SetChatId(v string) *ExecuteTextbookAssistantRetryConversationResponseBodyData {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBodyData) SetResult(v *ExecuteTextbookAssistantRetryConversationResponseBodyDataResult) *ExecuteTextbookAssistantRetryConversationResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBodyData) SetUser(v string) *ExecuteTextbookAssistantRetryConversationResponseBodyData {
+	s.User = &v
+	return s
+}
+
+type ExecuteTextbookAssistantRetryConversationResponseBodyDataResult struct {
+	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+	// example:
+	//
+	// Good evening! From the book, how does Mike Black introduce himself?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBodyDataResult) SetChineseResult(v string) *ExecuteTextbookAssistantRetryConversationResponseBodyDataResult {
+	s.ChineseResult = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponseBodyDataResult) SetEnglishResult(v string) *ExecuteTextbookAssistantRetryConversationResponseBodyDataResult {
+	s.EnglishResult = &v
+	return s
+}
+
+type ExecuteTextbookAssistantRetryConversationResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantRetryConversationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantRetryConversationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantRetryConversationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantRetryConversationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantRetryConversationResponse) SetBody(v *ExecuteTextbookAssistantRetryConversationResponseBody) *ExecuteTextbookAssistantRetryConversationResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteTextbookAssistantStartConversationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0c05700d4d9411efbe6e0c42a106bb02
+	ArticleId *string `json:"articleId,omitempty" xml:"articleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantStartConversationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantStartConversationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantStartConversationRequest) SetArticleId(v string) *ExecuteTextbookAssistantStartConversationRequest {
+	s.ArticleId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationRequest) SetAuthToken(v string) *ExecuteTextbookAssistantStartConversationRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationRequest) SetScenario(v string) *ExecuteTextbookAssistantStartConversationRequest {
+	s.Scenario = &v
+	return s
+}
+
+type ExecuteTextbookAssistantStartConversationResponseBody struct {
+	Data *ExecuteTextbookAssistantStartConversationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// B_USER_NOT_FOUND_EXCEPTION
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6F73C114-A76E-51AD-99E3-BC7B941B69E0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBody) SetData(v *ExecuteTextbookAssistantStartConversationResponseBodyData) *ExecuteTextbookAssistantStartConversationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantStartConversationResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantStartConversationResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBody) SetHttpStatusCode(v int32) *ExecuteTextbookAssistantStartConversationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantStartConversationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantStartConversationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantStartConversationResponseBodyData struct {
+	// example:
+	//
+	// 6788e0b4b54c5268c1b78638
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string                                                          `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	Result *ExecuteTextbookAssistantStartConversationResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6788e0b45bdfc807f077a5a1
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBodyData) SetAssistant(v string) *ExecuteTextbookAssistantStartConversationResponseBodyData {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBodyData) SetChatId(v string) *ExecuteTextbookAssistantStartConversationResponseBodyData {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBodyData) SetResult(v *ExecuteTextbookAssistantStartConversationResponseBodyDataResult) *ExecuteTextbookAssistantStartConversationResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBodyData) SetUser(v string) *ExecuteTextbookAssistantStartConversationResponseBodyData {
+	s.User = &v
+	return s
+}
+
+type ExecuteTextbookAssistantStartConversationResponseBodyDataResult struct {
+	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+	// example:
+	//
+	// Good evening! From the book, how does Mike Black introduce himself?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBodyDataResult) SetChineseResult(v string) *ExecuteTextbookAssistantStartConversationResponseBodyDataResult {
+	s.ChineseResult = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponseBodyDataResult) SetEnglishResult(v string) *ExecuteTextbookAssistantStartConversationResponseBodyDataResult {
+	s.EnglishResult = &v
+	return s
+}
+
+type ExecuteTextbookAssistantStartConversationResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantStartConversationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantStartConversationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantStartConversationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantStartConversationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantStartConversationResponse) SetBody(v *ExecuteTextbookAssistantStartConversationResponseBody) *ExecuteTextbookAssistantStartConversationResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteTextbookAssistantSuggestionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b4b54c5268c1b78638
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b4b54c5268c1b78638
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSuggestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSuggestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSuggestionRequest) SetAssistant(v string) *ExecuteTextbookAssistantSuggestionRequest {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionRequest) SetAuthToken(v string) *ExecuteTextbookAssistantSuggestionRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionRequest) SetChatId(v string) *ExecuteTextbookAssistantSuggestionRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionRequest) SetScenario(v string) *ExecuteTextbookAssistantSuggestionRequest {
+	s.Scenario = &v
+	return s
+}
+
+type ExecuteTextbookAssistantSuggestionResponseBody struct {
+	Data *ExecuteTextbookAssistantSuggestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// null
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpstatusCode *int32 `json:"httpstatusCode,omitempty" xml:"httpstatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0D7D382F-9475-572E-BE83-DDFBF5C5EB24
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBody) SetData(v *ExecuteTextbookAssistantSuggestionResponseBodyData) *ExecuteTextbookAssistantSuggestionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantSuggestionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantSuggestionResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBody) SetHttpstatusCode(v int32) *ExecuteTextbookAssistantSuggestionResponseBody {
+	s.HttpstatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantSuggestionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantSuggestionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantSuggestionResponseBodyData struct {
+	Result *ExecuteTextbookAssistantSuggestionResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBodyData) SetResult(v *ExecuteTextbookAssistantSuggestionResponseBodyDataResult) *ExecuteTextbookAssistantSuggestionResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type ExecuteTextbookAssistantSuggestionResponseBodyDataResult struct {
+	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+	// example:
+	//
+	// Good evening! From the book, how does Mike Black introduce himself?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBodyDataResult) SetChineseResult(v string) *ExecuteTextbookAssistantSuggestionResponseBodyDataResult {
+	s.ChineseResult = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponseBodyDataResult) SetEnglishResult(v string) *ExecuteTextbookAssistantSuggestionResponseBodyDataResult {
+	s.EnglishResult = &v
+	return s
+}
+
+type ExecuteTextbookAssistantSuggestionResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantSuggestionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSuggestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantSuggestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantSuggestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSuggestionResponse) SetBody(v *ExecuteTextbookAssistantSuggestionResponseBody) *ExecuteTextbookAssistantSuggestionResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteTextbookAssistantTranslateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b4b54c5268c1b78638
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantTranslateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantTranslateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantTranslateRequest) SetAssistant(v string) *ExecuteTextbookAssistantTranslateRequest {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateRequest) SetAuthToken(v string) *ExecuteTextbookAssistantTranslateRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateRequest) SetChatId(v string) *ExecuteTextbookAssistantTranslateRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateRequest) SetScenario(v string) *ExecuteTextbookAssistantTranslateRequest {
+	s.Scenario = &v
+	return s
+}
+
+type ExecuteTextbookAssistantTranslateResponseBody struct {
+	Data *ExecuteTextbookAssistantTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9EB79C1E-36C2-5777-BED6-C23A98DF0637
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantTranslateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantTranslateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBody) SetData(v *ExecuteTextbookAssistantTranslateResponseBodyData) *ExecuteTextbookAssistantTranslateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantTranslateResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantTranslateResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBody) SetHttpStatusCode(v int32) *ExecuteTextbookAssistantTranslateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantTranslateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantTranslateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteTextbookAssistantTranslateResponseBodyData struct {
+	Result *ExecuteTextbookAssistantTranslateResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ExecuteTextbookAssistantTranslateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantTranslateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBodyData) SetResult(v *ExecuteTextbookAssistantTranslateResponseBodyDataResult) *ExecuteTextbookAssistantTranslateResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type ExecuteTextbookAssistantTranslateResponseBodyDataResult struct {
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantTranslateResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantTranslateResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponseBodyDataResult) SetResult(v string) *ExecuteTextbookAssistantTranslateResponseBodyDataResult {
+	s.Result = &v
+	return s
+}
+
+type ExecuteTextbookAssistantTranslateResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantTranslateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantTranslateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantTranslateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantTranslateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantTranslateResponse) SetBody(v *ExecuteTextbookAssistantTranslateResponseBody) *ExecuteTextbookAssistantTranslateResponse {
+	s.Body = v
+	return s
+}
+
 type GetAITeacherExpansionDialogueSuggestionRequest struct {
 	// This parameter is required.
 	//
@@ -3729,6 +5291,1121 @@ func (s *GetAITeacherSyncDialogueSuggestionResponse) SetStatusCode(v int32) *Get
 }
 
 func (s *GetAITeacherSyncDialogueSuggestionResponse) SetBody(v *GetAITeacherSyncDialogueSuggestionResponseBody) *GetAITeacherSyncDialogueSuggestionResponse {
+	s.Body = v
+	return s
+}
+
+type GetTextbookAssistantTokenRequest struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 700d4d9411efbe6e0
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 25032PS56C
+	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+}
+
+func (s GetTextbookAssistantTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTextbookAssistantTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTextbookAssistantTokenRequest) SetDeviceId(v string) *GetTextbookAssistantTokenRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenRequest) SetModel(v string) *GetTextbookAssistantTokenRequest {
+	s.Model = &v
+	return s
+}
+
+type GetTextbookAssistantTokenResponseBody struct {
+	Data *GetTextbookAssistantTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0A5E9849-A2F0-551D-A7D8-1A8118557BAB
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetTextbookAssistantTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTextbookAssistantTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTextbookAssistantTokenResponseBody) SetData(v *GetTextbookAssistantTokenResponseBodyData) *GetTextbookAssistantTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponseBody) SetErrCode(v string) *GetTextbookAssistantTokenResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponseBody) SetErrMessage(v string) *GetTextbookAssistantTokenResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponseBody) SetHttpStatusCode(v int32) *GetTextbookAssistantTokenResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponseBody) SetRequestId(v string) *GetTextbookAssistantTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponseBody) SetSuccess(v bool) *GetTextbookAssistantTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTextbookAssistantTokenResponseBodyData struct {
+	// example:
+	//
+	// tc_197bf5bb81889cc79eb51ae9b8c0cea3
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// example:
+	//
+	// 5400
+	Expire *int32 `json:"expire,omitempty" xml:"expire,omitempty"`
+}
+
+func (s GetTextbookAssistantTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTextbookAssistantTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTextbookAssistantTokenResponseBodyData) SetAuthToken(v string) *GetTextbookAssistantTokenResponseBodyData {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponseBodyData) SetExpire(v int32) *GetTextbookAssistantTokenResponseBodyData {
+	s.Expire = &v
+	return s
+}
+
+type GetTextbookAssistantTokenResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTextbookAssistantTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTextbookAssistantTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTextbookAssistantTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTextbookAssistantTokenResponse) SetHeaders(v map[string]*string) *GetTextbookAssistantTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponse) SetStatusCode(v int32) *GetTextbookAssistantTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTextbookAssistantTokenResponse) SetBody(v *GetTextbookAssistantTokenResponseBody) *GetTextbookAssistantTokenResponse {
+	s.Body = v
+	return s
+}
+
+type ListTextbookAssistantArticlesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_a893b8492c4be046cbc906c566aeb8c9
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 90aa861b4d9311efbe6e0c42a106bb02
+	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+}
+
+func (s ListTextbookAssistantArticlesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticlesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticlesRequest) SetAuthToken(v string) *ListTextbookAssistantArticlesRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesRequest) SetDirectoryId(v string) *ListTextbookAssistantArticlesRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+type ListTextbookAssistantArticlesResponseBody struct {
+	Data []*ListTextbookAssistantArticlesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 70412360-4272-571A-827D-84C2C07C450F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTextbookAssistantArticlesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticlesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticlesResponseBody) SetData(v []*ListTextbookAssistantArticlesResponseBodyData) *ListTextbookAssistantArticlesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesResponseBody) SetErrCode(v string) *ListTextbookAssistantArticlesResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesResponseBody) SetErrMessage(v string) *ListTextbookAssistantArticlesResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesResponseBody) SetHttpStatusCode(v int32) *ListTextbookAssistantArticlesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesResponseBody) SetRequestId(v string) *ListTextbookAssistantArticlesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesResponseBody) SetSuccess(v bool) *ListTextbookAssistantArticlesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTextbookAssistantArticlesResponseBodyData struct {
+	// example:
+	//
+	// 0c05700d4d9411efbe6e0c42a106bb02
+	ArticleId *string `json:"articleId,omitempty" xml:"articleId,omitempty"`
+}
+
+func (s ListTextbookAssistantArticlesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticlesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticlesResponseBodyData) SetArticleId(v string) *ListTextbookAssistantArticlesResponseBodyData {
+	s.ArticleId = &v
+	return s
+}
+
+type ListTextbookAssistantArticlesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTextbookAssistantArticlesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTextbookAssistantArticlesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticlesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticlesResponse) SetHeaders(v map[string]*string) *ListTextbookAssistantArticlesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesResponse) SetStatusCode(v int32) *ListTextbookAssistantArticlesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticlesResponse) SetBody(v *ListTextbookAssistantArticlesResponseBody) *ListTextbookAssistantArticlesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 231698
+	BookId *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesRequest) SetAuthToken(v string) *ListTextbookAssistantBookDirectoriesRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesRequest) SetBookId(v string) *ListTextbookAssistantBookDirectoriesRequest {
+	s.BookId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesRequest) SetScenario(v string) *ListTextbookAssistantBookDirectoriesRequest {
+	s.Scenario = &v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBody struct {
+	Data *ListTextbookAssistantBookDirectoriesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// B_USER_NOT_FOUND_EXCEPTION
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0A5E9849-A2F0-551D-A7D8-1A8118557BAB
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBody) SetData(v *ListTextbookAssistantBookDirectoriesResponseBodyData) *ListTextbookAssistantBookDirectoriesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBody) SetErrCode(v string) *ListTextbookAssistantBookDirectoriesResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBody) SetErrMessage(v string) *ListTextbookAssistantBookDirectoriesResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBody) SetHttpStatusCode(v int32) *ListTextbookAssistantBookDirectoriesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBody) SetRequestId(v string) *ListTextbookAssistantBookDirectoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBody) SetSuccess(v bool) *ListTextbookAssistantBookDirectoriesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyData struct {
+	DirectoryTree []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree `json:"directoryTree,omitempty" xml:"directoryTree,omitempty" type:"Repeated"`
+	EditionInfo   *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo     `json:"editionInfo,omitempty" xml:"editionInfo,omitempty" type:"Struct"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyData) SetDirectoryTree(v []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) *ListTextbookAssistantBookDirectoriesResponseBodyData {
+	s.DirectoryTree = v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyData) SetEditionInfo(v *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) *ListTextbookAssistantBookDirectoriesResponseBodyData {
+	s.EditionInfo = v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree struct {
+	// example:
+	//
+	// 05758807ed8e11eebe6e0c42a106bb02
+	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	// example:
+	//
+	// 2 Jobs
+	DirectoryName *string                                                                   `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
+	Topic         []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) SetDirectoryId(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) SetDirectoryName(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree {
+	s.DirectoryName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) SetTopic(v []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree {
+	s.Topic = v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic struct {
+	// example:
+	//
+	// 1323
+	LabelId   *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	LabelName *string `json:"labelName,omitempty" xml:"labelName,omitempty"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic) SetLabelId(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic {
+	s.LabelId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic) SetLabelName(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic {
+	s.LabelName = &v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo struct {
+	// example:
+	//
+	// 55857
+	BookId *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	// example:
+	//
+	// 1
+	BookVolume *string `json:"bookVolume,omitempty" xml:"bookVolume,omitempty"`
+	// example:
+	//
+	// 2010-1(2)
+	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// example:
+	//
+	// 3
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// 2019-1(10)
+	Impression *string `json:"impression,omitempty" xml:"impression,omitempty"`
+	// example:
+	//
+	// 9787544413695
+	Isbn      *string `json:"isbn,omitempty" xml:"isbn,omitempty"`
+	Publisher *string `json:"publisher,omitempty" xml:"publisher,omitempty"`
+	// example:
+	//
+	// ENGLISH
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetBookId(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.BookId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetBookVolume(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.BookVolume = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetEdition(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.Edition = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetGrade(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.Grade = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetImpression(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.Impression = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetIsbn(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.Isbn = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetPublisher(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.Publisher = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetSubject(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.Subject = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo) SetVersion(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo {
+	s.Version = &v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTextbookAssistantBookDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponse) SetHeaders(v map[string]*string) *ListTextbookAssistantBookDirectoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponse) SetStatusCode(v int32) *ListTextbookAssistantBookDirectoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponse) SetBody(v *ListTextbookAssistantBookDirectoriesResponseBody) *ListTextbookAssistantBookDirectoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTextbookAssistantBooksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_197bf5bb81889cc79eb51ae9b8c0cea3
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// example:
+	//
+	// 231698
+	BookId *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	// example:
+	//
+	// 1
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 1
+	Page    *string `json:"page,omitempty" xml:"page,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// 1
+	Volume *string `json:"volume,omitempty" xml:"volume,omitempty"`
+}
+
+func (s ListTextbookAssistantBooksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBooksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBooksRequest) SetAuthToken(v string) *ListTextbookAssistantBooksRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksRequest) SetBookId(v string) *ListTextbookAssistantBooksRequest {
+	s.BookId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksRequest) SetGrade(v string) *ListTextbookAssistantBooksRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksRequest) SetMaxResults(v string) *ListTextbookAssistantBooksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksRequest) SetPage(v string) *ListTextbookAssistantBooksRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksRequest) SetVersion(v string) *ListTextbookAssistantBooksRequest {
+	s.Version = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksRequest) SetVolume(v string) *ListTextbookAssistantBooksRequest {
+	s.Volume = &v
+	return s
+}
+
+type ListTextbookAssistantBooksResponseBody struct {
+	Data *ListTextbookAssistantBooksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// B_USER_NOT_FOUND_EXCEPTION
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// B695B377-7029-5805-9DE2-1AAE06C1BF6B
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTextbookAssistantBooksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBooksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBooksResponseBody) SetData(v *ListTextbookAssistantBooksResponseBodyData) *ListTextbookAssistantBooksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBody) SetErrCode(v string) *ListTextbookAssistantBooksResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBody) SetErrMessage(v string) *ListTextbookAssistantBooksResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBody) SetHttpStatusCode(v int32) *ListTextbookAssistantBooksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBody) SetRequestId(v string) *ListTextbookAssistantBooksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBody) SetSuccess(v bool) *ListTextbookAssistantBooksResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTextbookAssistantBooksResponseBodyData struct {
+	BookList       []*ListTextbookAssistantBooksResponseBodyDataBookList     `json:"bookList,omitempty" xml:"bookList,omitempty" type:"Repeated"`
+	PaginationData *ListTextbookAssistantBooksResponseBodyDataPaginationData `json:"paginationData,omitempty" xml:"paginationData,omitempty" type:"Struct"`
+}
+
+func (s ListTextbookAssistantBooksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBooksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyData) SetBookList(v []*ListTextbookAssistantBooksResponseBodyDataBookList) *ListTextbookAssistantBooksResponseBodyData {
+	s.BookList = v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyData) SetPaginationData(v *ListTextbookAssistantBooksResponseBodyDataPaginationData) *ListTextbookAssistantBooksResponseBodyData {
+	s.PaginationData = v
+	return s
+}
+
+type ListTextbookAssistantBooksResponseBodyDataBookList struct {
+	Author *string `json:"author,omitempty" xml:"author,omitempty"`
+	// example:
+	//
+	// 231698
+	BookId   *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	BookName *string `json:"bookName,omitempty" xml:"bookName,omitempty"`
+	// example:
+	//
+	// null
+	CoverImage *string `json:"coverImage,omitempty" xml:"coverImage,omitempty"`
+	// example:
+	//
+	// 2024-7（1）
+	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// example:
+	//
+	// 3
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// 2024-7（1）
+	Impression *string `json:"impression,omitempty" xml:"impression,omitempty"`
+	// example:
+	//
+	// 9787107382505
+	Isbn      *string `json:"isbn,omitempty" xml:"isbn,omitempty"`
+	Publisher *string `json:"publisher,omitempty" xml:"publisher,omitempty"`
+	// example:
+	//
+	// ENGLISH
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// 0
+	Volume *string `json:"volume,omitempty" xml:"volume,omitempty"`
+}
+
+func (s ListTextbookAssistantBooksResponseBodyDataBookList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBooksResponseBodyDataBookList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetAuthor(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Author = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetBookId(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.BookId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetBookName(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.BookName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetCoverImage(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.CoverImage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetEdition(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Edition = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetGrade(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Grade = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetImpression(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Impression = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetIsbn(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Isbn = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetPublisher(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Publisher = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetSubject(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Subject = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetVersion(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Version = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataBookList) SetVolume(v string) *ListTextbookAssistantBooksResponseBodyDataBookList {
+	s.Volume = &v
+	return s
+}
+
+type ListTextbookAssistantBooksResponseBodyDataPaginationData struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListTextbookAssistantBooksResponseBodyDataPaginationData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBooksResponseBodyDataPaginationData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataPaginationData) SetCurrentPage(v int32) *ListTextbookAssistantBooksResponseBodyDataPaginationData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataPaginationData) SetMaxResults(v int32) *ListTextbookAssistantBooksResponseBodyDataPaginationData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponseBodyDataPaginationData) SetTotalCount(v int32) *ListTextbookAssistantBooksResponseBodyDataPaginationData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTextbookAssistantBooksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTextbookAssistantBooksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTextbookAssistantBooksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBooksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBooksResponse) SetHeaders(v map[string]*string) *ListTextbookAssistantBooksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponse) SetStatusCode(v int32) *ListTextbookAssistantBooksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBooksResponse) SetBody(v *ListTextbookAssistantBooksResponseBody) *ListTextbookAssistantBooksResponse {
+	s.Body = v
+	return s
+}
+
+type ListTextbookAssistantGradeVolumesRequest struct {
+	// example:
+	//
+	// tc_197bf5bb81889cc79eb51ae9b8c0cea3
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNC
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s ListTextbookAssistantGradeVolumesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantGradeVolumesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantGradeVolumesRequest) SetAuthToken(v string) *ListTextbookAssistantGradeVolumesRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesRequest) SetScenario(v string) *ListTextbookAssistantGradeVolumesRequest {
+	s.Scenario = &v
+	return s
+}
+
+type ListTextbookAssistantGradeVolumesResponseBody struct {
+	Data *ListTextbookAssistantGradeVolumesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F3B1AAF2-3041-5AA7-A352-BD5F998FA465
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTextbookAssistantGradeVolumesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantGradeVolumesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBody) SetData(v *ListTextbookAssistantGradeVolumesResponseBodyData) *ListTextbookAssistantGradeVolumesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBody) SetErrCode(v string) *ListTextbookAssistantGradeVolumesResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBody) SetErrMessage(v string) *ListTextbookAssistantGradeVolumesResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBody) SetHttpStatusCode(v int32) *ListTextbookAssistantGradeVolumesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBody) SetRequestId(v string) *ListTextbookAssistantGradeVolumesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBody) SetSuccess(v bool) *ListTextbookAssistantGradeVolumesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTextbookAssistantGradeVolumesResponseBodyData struct {
+	GradeVolumes []*ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes `json:"gradeVolumes,omitempty" xml:"gradeVolumes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 人教版
+	TextbookVersion *string `json:"textbookVersion,omitempty" xml:"textbookVersion,omitempty"`
+}
+
+func (s ListTextbookAssistantGradeVolumesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantGradeVolumesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBodyData) SetGradeVolumes(v []*ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes) *ListTextbookAssistantGradeVolumesResponseBodyData {
+	s.GradeVolumes = v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBodyData) SetTextbookVersion(v string) *ListTextbookAssistantGradeVolumesResponseBodyData {
+	s.TextbookVersion = &v
+	return s
+}
+
+type ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Volume *string `json:"volume,omitempty" xml:"volume,omitempty"`
+}
+
+func (s ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes) SetGrade(v string) *ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes {
+	s.Grade = &v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes) SetVolume(v string) *ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes {
+	s.Volume = &v
+	return s
+}
+
+type ListTextbookAssistantGradeVolumesResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTextbookAssistantGradeVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTextbookAssistantGradeVolumesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantGradeVolumesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponse) SetHeaders(v map[string]*string) *ListTextbookAssistantGradeVolumesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponse) SetStatusCode(v int32) *ListTextbookAssistantGradeVolumesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantGradeVolumesResponse) SetBody(v *ListTextbookAssistantGradeVolumesResponseBody) *ListTextbookAssistantGradeVolumesResponse {
 	s.Body = v
 	return s
 }
@@ -6231,6 +8908,614 @@ func (client *Client) ExecuteAITeacherSyncDialogueTranslate(request *ExecuteAITe
 
 // Summary:
 //
+// 进行AI对话
+//
+// @param request - ExecuteTextbookAssistantDialogueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantDialogueResponse
+func (client *Client) ExecuteTextbookAssistantDialogueWithOptions(request *ExecuteTextbookAssistantDialogueRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantDialogueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserMessage)) {
+		body["userMessage"] = request.UserMessage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantDialogue"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/ExecuteDialogue"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 进行AI对话
+//
+// @param request - ExecuteTextbookAssistantDialogueRequest
+//
+// @return ExecuteTextbookAssistantDialogueResponse
+func (client *Client) ExecuteTextbookAssistantDialogue(request *ExecuteTextbookAssistantDialogueRequest) (_result *ExecuteTextbookAssistantDialogueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantDialogueResponse{}
+	_body, _err := client.ExecuteTextbookAssistantDialogueWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调整难度
+//
+// @param request - ExecuteTextbookAssistantDifficultyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantDifficultyResponse
+func (client *Client) ExecuteTextbookAssistantDifficultyWithOptions(request *ExecuteTextbookAssistantDifficultyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantDifficultyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		body["action"] = request.Action
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Assistant)) {
+		body["assistant"] = request.Assistant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantDifficulty"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/ExecuteDifficulty"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantDifficultyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调整难度
+//
+// @param request - ExecuteTextbookAssistantDifficultyRequest
+//
+// @return ExecuteTextbookAssistantDifficultyResponse
+func (client *Client) ExecuteTextbookAssistantDifficulty(request *ExecuteTextbookAssistantDifficultyRequest) (_result *ExecuteTextbookAssistantDifficultyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantDifficultyResponse{}
+	_body, _err := client.ExecuteTextbookAssistantDifficultyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 语法检测
+//
+// @param request - ExecuteTextbookAssistantGrammarCheckRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantGrammarCheckResponse
+func (client *Client) ExecuteTextbookAssistantGrammarCheckWithOptions(request *ExecuteTextbookAssistantGrammarCheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantGrammarCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		body["user"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantGrammarCheck"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/ExecuteGrammarCheck"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 语法检测
+//
+// @param request - ExecuteTextbookAssistantGrammarCheckRequest
+//
+// @return ExecuteTextbookAssistantGrammarCheckResponse
+func (client *Client) ExecuteTextbookAssistantGrammarCheck(request *ExecuteTextbookAssistantGrammarCheckRequest) (_result *ExecuteTextbookAssistantGrammarCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
+	_body, _err := client.ExecuteTextbookAssistantGrammarCheckWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 句子润色
+//
+// @param request - ExecuteTextbookAssistantRefineByContextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantRefineByContextResponse
+func (client *Client) ExecuteTextbookAssistantRefineByContextWithOptions(request *ExecuteTextbookAssistantRefineByContextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantRefineByContextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		body["user"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantRefineByContext"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/RefineByContext"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantRefineByContextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 句子润色
+//
+// @param request - ExecuteTextbookAssistantRefineByContextRequest
+//
+// @return ExecuteTextbookAssistantRefineByContextResponse
+func (client *Client) ExecuteTextbookAssistantRefineByContext(request *ExecuteTextbookAssistantRefineByContextRequest) (_result *ExecuteTextbookAssistantRefineByContextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantRefineByContextResponse{}
+	_body, _err := client.ExecuteTextbookAssistantRefineByContextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 对话重试
+//
+// @param request - ExecuteTextbookAssistantRetryConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantRetryConversationResponse
+func (client *Client) ExecuteTextbookAssistantRetryConversationWithOptions(request *ExecuteTextbookAssistantRetryConversationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantRetryConversationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Assistant)) {
+		body["assistant"] = request.Assistant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantRetryConversation"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/RetryConversation"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantRetryConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 对话重试
+//
+// @param request - ExecuteTextbookAssistantRetryConversationRequest
+//
+// @return ExecuteTextbookAssistantRetryConversationResponse
+func (client *Client) ExecuteTextbookAssistantRetryConversation(request *ExecuteTextbookAssistantRetryConversationRequest) (_result *ExecuteTextbookAssistantRetryConversationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantRetryConversationResponse{}
+	_body, _err := client.ExecuteTextbookAssistantRetryConversationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启自由对话
+//
+// @param request - ExecuteTextbookAssistantStartConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantStartConversationResponse
+func (client *Client) ExecuteTextbookAssistantStartConversationWithOptions(request *ExecuteTextbookAssistantStartConversationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantStartConversationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArticleId)) {
+		body["articleId"] = request.ArticleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantStartConversation"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/StartConversation"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantStartConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启自由对话
+//
+// @param request - ExecuteTextbookAssistantStartConversationRequest
+//
+// @return ExecuteTextbookAssistantStartConversationResponse
+func (client *Client) ExecuteTextbookAssistantStartConversation(request *ExecuteTextbookAssistantStartConversationRequest) (_result *ExecuteTextbookAssistantStartConversationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantStartConversationResponse{}
+	_body, _err := client.ExecuteTextbookAssistantStartConversationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取鉴权参数
+//
+// @param request - ExecuteTextbookAssistantSuggestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantSuggestionResponse
+func (client *Client) ExecuteTextbookAssistantSuggestionWithOptions(request *ExecuteTextbookAssistantSuggestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantSuggestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Assistant)) {
+		body["assistant"] = request.Assistant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantSuggestion"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/Suggestion"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantSuggestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取鉴权参数
+//
+// @param request - ExecuteTextbookAssistantSuggestionRequest
+//
+// @return ExecuteTextbookAssistantSuggestionResponse
+func (client *Client) ExecuteTextbookAssistantSuggestion(request *ExecuteTextbookAssistantSuggestionRequest) (_result *ExecuteTextbookAssistantSuggestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantSuggestionResponse{}
+	_body, _err := client.ExecuteTextbookAssistantSuggestionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 翻译消息内容
+//
+// @param request - ExecuteTextbookAssistantTranslateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantTranslateResponse
+func (client *Client) ExecuteTextbookAssistantTranslateWithOptions(request *ExecuteTextbookAssistantTranslateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantTranslateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Assistant)) {
+		body["assistant"] = request.Assistant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantTranslate"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/ExecuteTranslate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteTextbookAssistantTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 翻译消息内容
+//
+// @param request - ExecuteTextbookAssistantTranslateRequest
+//
+// @return ExecuteTextbookAssistantTranslateResponse
+func (client *Client) ExecuteTextbookAssistantTranslate(request *ExecuteTextbookAssistantTranslateRequest) (_result *ExecuteTextbookAssistantTranslateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantTranslateResponse{}
+	_body, _err := client.ExecuteTextbookAssistantTranslateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 拓展练小助手
 //
 // @param request - GetAITeacherExpansionDialogueSuggestionRequest
@@ -6390,6 +9675,370 @@ func (client *Client) GetAITeacherSyncDialogueSuggestion(request *GetAITeacherSy
 	headers := make(map[string]*string)
 	_result = &GetAITeacherSyncDialogueSuggestionResponse{}
 	_body, _err := client.GetAITeacherSyncDialogueSuggestionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取请求鉴权参数
+//
+// @param request - GetTextbookAssistantTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTextbookAssistantTokenResponse
+func (client *Client) GetTextbookAssistantTokenWithOptions(request *GetTextbookAssistantTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTextbookAssistantTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		body["deviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["model"] = request.Model
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTextbookAssistantToken"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/teachingResource/GetToken"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTextbookAssistantTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取请求鉴权参数
+//
+// @param request - GetTextbookAssistantTokenRequest
+//
+// @return GetTextbookAssistantTokenResponse
+func (client *Client) GetTextbookAssistantToken(request *GetTextbookAssistantTokenRequest) (_result *GetTextbookAssistantTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTextbookAssistantTokenResponse{}
+	_body, _err := client.GetTextbookAssistantTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文章列表
+//
+// @param request - ListTextbookAssistantArticlesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTextbookAssistantArticlesResponse
+func (client *Client) ListTextbookAssistantArticlesWithOptions(request *ListTextbookAssistantArticlesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextbookAssistantArticlesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTextbookAssistantArticles"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/teachingResource/ListArticles"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTextbookAssistantArticlesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文章列表
+//
+// @param request - ListTextbookAssistantArticlesRequest
+//
+// @return ListTextbookAssistantArticlesResponse
+func (client *Client) ListTextbookAssistantArticles(request *ListTextbookAssistantArticlesRequest) (_result *ListTextbookAssistantArticlesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTextbookAssistantArticlesResponse{}
+	_body, _err := client.ListTextbookAssistantArticlesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取书本下的目录信息
+//
+// @param request - ListTextbookAssistantBookDirectoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTextbookAssistantBookDirectoriesResponse
+func (client *Client) ListTextbookAssistantBookDirectoriesWithOptions(request *ListTextbookAssistantBookDirectoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextbookAssistantBookDirectoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BookId)) {
+		body["bookId"] = request.BookId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTextbookAssistantBookDirectories"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/teachingResource/ListBookDirectories"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTextbookAssistantBookDirectoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取书本下的目录信息
+//
+// @param request - ListTextbookAssistantBookDirectoriesRequest
+//
+// @return ListTextbookAssistantBookDirectoriesResponse
+func (client *Client) ListTextbookAssistantBookDirectories(request *ListTextbookAssistantBookDirectoriesRequest) (_result *ListTextbookAssistantBookDirectoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTextbookAssistantBookDirectoriesResponse{}
+	_body, _err := client.ListTextbookAssistantBookDirectoriesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取包含年级下的书本列表
+//
+// @param request - ListTextbookAssistantBooksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTextbookAssistantBooksResponse
+func (client *Client) ListTextbookAssistantBooksWithOptions(request *ListTextbookAssistantBooksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextbookAssistantBooksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BookId)) {
+		body["bookId"] = request.BookId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		body["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		body["version"] = request.Version
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		body["volume"] = request.Volume
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTextbookAssistantBooks"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/teachingResource/ListBooks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTextbookAssistantBooksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取包含年级下的书本列表
+//
+// @param request - ListTextbookAssistantBooksRequest
+//
+// @return ListTextbookAssistantBooksResponse
+func (client *Client) ListTextbookAssistantBooks(request *ListTextbookAssistantBooksRequest) (_result *ListTextbookAssistantBooksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTextbookAssistantBooksResponse{}
+	_body, _err := client.ListTextbookAssistantBooksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取有资源的年级信息
+//
+// @param request - ListTextbookAssistantGradeVolumesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTextbookAssistantGradeVolumesResponse
+func (client *Client) ListTextbookAssistantGradeVolumesWithOptions(request *ListTextbookAssistantGradeVolumesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextbookAssistantGradeVolumesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTextbookAssistantGradeVolumes"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/teachingResource/ListGradeVolumes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTextbookAssistantGradeVolumesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取有资源的年级信息
+//
+// @param request - ListTextbookAssistantGradeVolumesRequest
+//
+// @return ListTextbookAssistantGradeVolumesResponse
+func (client *Client) ListTextbookAssistantGradeVolumes(request *ListTextbookAssistantGradeVolumesRequest) (_result *ListTextbookAssistantGradeVolumesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTextbookAssistantGradeVolumesResponse{}
+	_body, _err := client.ListTextbookAssistantGradeVolumesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
