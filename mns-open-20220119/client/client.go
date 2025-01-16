@@ -9,6 +9,239 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type EventMatchRule struct {
+	// example:
+	//
+	// true
+	MatchState *bool   `json:"MatchState,omitempty" xml:"MatchState,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Prefix     *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Suffix     *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
+}
+
+func (s EventMatchRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventMatchRule) GoString() string {
+	return s.String()
+}
+
+func (s *EventMatchRule) SetMatchState(v bool) *EventMatchRule {
+	s.MatchState = &v
+	return s
+}
+
+func (s *EventMatchRule) SetName(v string) *EventMatchRule {
+	s.Name = &v
+	return s
+}
+
+func (s *EventMatchRule) SetPrefix(v string) *EventMatchRule {
+	s.Prefix = &v
+	return s
+}
+
+func (s *EventMatchRule) SetSuffix(v string) *EventMatchRule {
+	s.Suffix = &v
+	return s
+}
+
+type AuthorizeEndpointAclRequest struct {
+	// The ACL policy. Valid value:
+	//
+	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// allow
+	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
+	// The CIDR blocks.
+	//
+	// This parameter is required.
+	CidrList []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
+	// The type of the endpoint. Valid value:
+	//
+	// 	- **public**: indicates public endpoint. (Only public endpoint is supported.)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s AuthorizeEndpointAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeEndpointAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeEndpointAclRequest) SetAclStrategy(v string) *AuthorizeEndpointAclRequest {
+	s.AclStrategy = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclRequest) SetCidrList(v []*string) *AuthorizeEndpointAclRequest {
+	s.CidrList = v
+	return s
+}
+
+func (s *AuthorizeEndpointAclRequest) SetEndpointType(v string) *AuthorizeEndpointAclRequest {
+	s.EndpointType = &v
+	return s
+}
+
+type AuthorizeEndpointAclShrinkRequest struct {
+	// The ACL policy. Valid value:
+	//
+	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// allow
+	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
+	// The CIDR blocks.
+	//
+	// This parameter is required.
+	CidrListShrink *string `json:"CidrList,omitempty" xml:"CidrList,omitempty"`
+	// The type of the endpoint. Valid value:
+	//
+	// 	- **public**: indicates public endpoint. (Only public endpoint is supported.)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s AuthorizeEndpointAclShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeEndpointAclShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeEndpointAclShrinkRequest) SetAclStrategy(v string) *AuthorizeEndpointAclShrinkRequest {
+	s.AclStrategy = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclShrinkRequest) SetCidrListShrink(v string) *AuthorizeEndpointAclShrinkRequest {
+	s.CidrListShrink = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclShrinkRequest) SetEndpointType(v string) *AuthorizeEndpointAclShrinkRequest {
+	s.EndpointType = &v
+	return s
+}
+
+type AuthorizeEndpointAclResponseBody struct {
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AuthorizeEndpointAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeEndpointAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeEndpointAclResponseBody) SetCode(v int64) *AuthorizeEndpointAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclResponseBody) SetMessage(v string) *AuthorizeEndpointAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclResponseBody) SetRequestId(v string) *AuthorizeEndpointAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclResponseBody) SetStatus(v string) *AuthorizeEndpointAclResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclResponseBody) SetSuccess(v bool) *AuthorizeEndpointAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AuthorizeEndpointAclResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AuthorizeEndpointAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AuthorizeEndpointAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeEndpointAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeEndpointAclResponse) SetHeaders(v map[string]*string) *AuthorizeEndpointAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuthorizeEndpointAclResponse) SetStatusCode(v int32) *AuthorizeEndpointAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuthorizeEndpointAclResponse) SetBody(v *AuthorizeEndpointAclResponseBody) *AuthorizeEndpointAclResponse {
+	s.Body = v
+	return s
+}
+
 type CreateQueueRequest struct {
 	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
 	//
@@ -16,11 +249,13 @@ type CreateQueueRequest struct {
 	//
 	// 0
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// Specifies whether to enable the logging feature. Valid values:
+	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- True
+	// 	- true: enabled.
 	//
-	// 	- False (default)
+	// 	- false: disabled.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
@@ -110,7 +345,13 @@ func (s *CreateQueueRequest) SetVisibilityTimeout(v int64) *CreateQueueRequest {
 }
 
 type CreateQueueRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -275,11 +516,11 @@ func (s *CreateQueueResponse) SetBody(v *CreateQueueResponseBody) *CreateQueueRe
 }
 
 type CreateTopicRequest struct {
-	// Specifies whether to enable the logging feature. Valid values:
+	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- True
+	// 	- true: enabled.
 	//
-	// 	- False (default)
+	// 	- false: disabled. Default value: false.
 	//
 	// example:
 	//
@@ -798,6 +1039,451 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 	return s
 }
 
+type DisableEndpointRequest struct {
+	// The type of the endpoint. Valid value:
+	//
+	// 	- **public**: indicates a public endpoint. (Only public endpoint is supported.)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s DisableEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableEndpointRequest) SetEndpointType(v string) *DisableEndpointRequest {
+	s.EndpointType = &v
+	return s
+}
+
+type DisableEndpointResponseBody struct {
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisableEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableEndpointResponseBody) SetCode(v int64) *DisableEndpointResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisableEndpointResponseBody) SetMessage(v string) *DisableEndpointResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisableEndpointResponseBody) SetRequestId(v string) *DisableEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisableEndpointResponseBody) SetStatus(v string) *DisableEndpointResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DisableEndpointResponseBody) SetSuccess(v bool) *DisableEndpointResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisableEndpointResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableEndpointResponse) SetHeaders(v map[string]*string) *DisableEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableEndpointResponse) SetStatusCode(v int32) *DisableEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableEndpointResponse) SetBody(v *DisableEndpointResponseBody) *DisableEndpointResponse {
+	s.Body = v
+	return s
+}
+
+type EnableEndpointRequest struct {
+	// The type of the endpoint. Valid value:
+	//
+	// 	- **public**: indicates a public endpoint. (Only public endpoint is supported.)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s EnableEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableEndpointRequest) SetEndpointType(v string) *EnableEndpointRequest {
+	s.EndpointType = &v
+	return s
+}
+
+type EnableEndpointResponseBody struct {
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableEndpointResponseBody) SetCode(v int64) *EnableEndpointResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableEndpointResponseBody) SetMessage(v string) *EnableEndpointResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableEndpointResponseBody) SetRequestId(v string) *EnableEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableEndpointResponseBody) SetStatus(v string) *EnableEndpointResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *EnableEndpointResponseBody) SetSuccess(v bool) *EnableEndpointResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableEndpointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableEndpointResponse) SetHeaders(v map[string]*string) *EnableEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableEndpointResponse) SetStatusCode(v int32) *EnableEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableEndpointResponse) SetBody(v *EnableEndpointResponseBody) *EnableEndpointResponse {
+	s.Body = v
+	return s
+}
+
+type GetEndpointAttributeRequest struct {
+	// The type of the endpoint. Valid value:
+	//
+	// 	- **public**: indicates a public endpoint. (Only public endpoint is supported.)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s GetEndpointAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeRequest) SetEndpointType(v string) *GetEndpointAttributeRequest {
+	s.EndpointType = &v
+	return s
+}
+
+type GetEndpointAttributeResponseBody struct {
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *GetEndpointAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetEndpointAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeResponseBody) SetCode(v int64) *GetEndpointAttributeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBody) SetData(v *GetEndpointAttributeResponseBodyData) *GetEndpointAttributeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBody) SetMessage(v string) *GetEndpointAttributeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBody) SetRequestId(v string) *GetEndpointAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBody) SetStatus(v string) *GetEndpointAttributeResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBody) SetSuccess(v bool) *GetEndpointAttributeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEndpointAttributeResponseBodyData struct {
+	// The CIDR blocks.
+	CidrList []*GetEndpointAttributeResponseBodyDataCidrList `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
+	// Specifies whether the endpoint is enabled.
+	//
+	// example:
+	//
+	// true
+	EndpointEnabled *bool `json:"EndpointEnabled,omitempty" xml:"EndpointEnabled,omitempty"`
+}
+
+func (s GetEndpointAttributeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeResponseBodyData) SetCidrList(v []*GetEndpointAttributeResponseBodyDataCidrList) *GetEndpointAttributeResponseBodyData {
+	s.CidrList = v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBodyData) SetEndpointEnabled(v bool) *GetEndpointAttributeResponseBodyData {
+	s.EndpointEnabled = &v
+	return s
+}
+
+type GetEndpointAttributeResponseBodyDataCidrList struct {
+	// The ACL policy. Valid value:
+	//
+	// 	- **allow**: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
+	//
+	// example:
+	//
+	// allow
+	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
+	// The CIDR block.
+	//
+	// example:
+	//
+	// 172.18.0.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the list was created.
+	//
+	// example:
+	//
+	// 1701951224000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s GetEndpointAttributeResponseBodyDataCidrList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeResponseBodyDataCidrList) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeResponseBodyDataCidrList) SetAclStrategy(v string) *GetEndpointAttributeResponseBodyDataCidrList {
+	s.AclStrategy = &v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBodyDataCidrList) SetCidr(v string) *GetEndpointAttributeResponseBodyDataCidrList {
+	s.Cidr = &v
+	return s
+}
+
+func (s *GetEndpointAttributeResponseBodyDataCidrList) SetCreateTime(v int64) *GetEndpointAttributeResponseBodyDataCidrList {
+	s.CreateTime = &v
+	return s
+}
+
+type GetEndpointAttributeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEndpointAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEndpointAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeResponse) SetHeaders(v map[string]*string) *GetEndpointAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEndpointAttributeResponse) SetStatusCode(v int32) *GetEndpointAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEndpointAttributeResponse) SetBody(v *GetEndpointAttributeResponseBody) *GetEndpointAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type GetQueueAttributesRequest struct {
 	// The name of the queue.
 	//
@@ -829,7 +1515,13 @@ func (s *GetQueueAttributesRequest) SetTag(v []*GetQueueAttributesRequestTag) *G
 }
 
 type GetQueueAttributesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -858,7 +1550,7 @@ type GetQueueAttributesResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *GetQueueAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -925,7 +1617,7 @@ func (s *GetQueueAttributesResponseBody) SetSuccess(v bool) *GetQueueAttributesR
 }
 
 type GetQueueAttributesResponseBodyData struct {
-	// The total number of messages that are in the Active state in the queue. The value is an approximate number.
+	// The total number of messages that are in the Active state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -937,7 +1629,7 @@ type GetQueueAttributesResponseBodyData struct {
 	//
 	// 1250700999
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
+	// The total number of messages that are in the Delayed state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -949,7 +1641,7 @@ type GetQueueAttributesResponseBodyData struct {
 	//
 	// 30
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
+	// The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -1078,7 +1770,13 @@ func (s *GetQueueAttributesResponseBodyData) SetVisibilityTimeout(v int64) *GetQ
 }
 
 type GetQueueAttributesResponseBodyDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// tag1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1419,7 +2117,13 @@ func (s *GetTopicAttributesRequest) SetTopicName(v string) *GetTopicAttributesRe
 }
 
 type GetTopicAttributesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1448,7 +2152,7 @@ type GetTopicAttributesResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *GetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -1554,8 +2258,9 @@ type GetTopicAttributesResponseBodyData struct {
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64                                    `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	Tags                   []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The tags added to the resources.
+	Tags []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The name of the topic.
 	//
 	// example:
@@ -1613,7 +2318,17 @@ func (s *GetTopicAttributesResponseBodyData) SetTopicName(v string) *GetTopicAtt
 }
 
 type GetTopicAttributesResponseBodyDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1715,7 +2430,13 @@ func (s *ListQueueRequest) SetTag(v []*ListQueueRequestTag) *ListQueueRequest {
 }
 
 type ListQueueRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1744,7 +2465,7 @@ type ListQueueResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *ListQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -1884,7 +2605,7 @@ func (s *ListQueueResponseBodyData) SetTotal(v int64) *ListQueueResponseBodyData
 }
 
 type ListQueueResponseBodyDataPageData struct {
-	// The total number of messages that are in the Active state in the queue. The value is an approximate number.
+	// The total number of messages that are in the Active state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -1896,7 +2617,7 @@ type ListQueueResponseBodyDataPageData struct {
 	//
 	// 1250700999
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
+	// The total number of messages that are in the Delayed state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -1908,7 +2629,7 @@ type ListQueueResponseBodyDataPageData struct {
 	//
 	// 30
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
+	// The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -1953,8 +2674,9 @@ type ListQueueResponseBodyDataPageData struct {
 	// example:
 	//
 	// demo-queue
-	QueueName *string                                  `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Tags      []*ListQueueResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The tags added to the resources.
+	Tags []*ListQueueResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -2037,7 +2759,17 @@ func (s *ListQueueResponseBodyDataPageData) SetVisibilityTimeout(v int64) *ListQ
 }
 
 type ListQueueResponseBodyDataPageDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2107,7 +2839,7 @@ type ListSubscriptionByTopicRequest struct {
 	//
 	// demo-subscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	// The name of the topic.
+	// The topic name.
 	//
 	// example:
 	//
@@ -2489,7 +3221,13 @@ func (s *ListTopicRequest) SetTopicName(v string) *ListTopicRequest {
 }
 
 type ListTopicRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2518,7 +3256,7 @@ type ListTopicResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *ListTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -2675,16 +3413,27 @@ type ListTopicResponseBodyDataPageData struct {
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64                                   `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	Tags                   []*ListTopicResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TopicInnerUrl          *string                                  `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The tags added to the resources.
+	Tags []*ListTopicResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The internal URL of the message topic. The internal URL can be accessed over an internal network.
+	//
+	// example:
+	//
+	// http:// 111111111****.mns.us-west-1-internal.aliyuncs.com/topics/testTopic
+	TopicInnerUrl *string `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
 	// The name of the topic.
 	//
 	// example:
 	//
 	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	TopicUrl  *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
+	// The URL of the message topic.
+	//
+	// example:
+	//
+	// http:// 111111111****.mns.us-west-1.aliyuncs.com/topics/testTopic
+	TopicUrl *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
 }
 
 func (s ListTopicResponseBodyDataPageData) String() string {
@@ -2746,7 +3495,17 @@ func (s *ListTopicResponseBodyDataPageData) SetTopicUrl(v string) *ListTopicResp
 }
 
 type ListTopicResponseBodyDataPageDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2797,6 +3556,201 @@ func (s *ListTopicResponse) SetBody(v *ListTopicResponseBody) *ListTopicResponse
 	return s
 }
 
+type RevokeEndpointAclRequest struct {
+	// The ACL policy. Valid value:
+	//
+	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// allow
+	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
+	// The CIDR blocks.
+	//
+	// This parameter is required.
+	CidrList []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
+	// The type of the endpoint. Valid value:
+	//
+	// 	- **public**: indicates an public endpoint. (Only public endpoint is supported.)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s RevokeEndpointAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeEndpointAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeEndpointAclRequest) SetAclStrategy(v string) *RevokeEndpointAclRequest {
+	s.AclStrategy = &v
+	return s
+}
+
+func (s *RevokeEndpointAclRequest) SetCidrList(v []*string) *RevokeEndpointAclRequest {
+	s.CidrList = v
+	return s
+}
+
+func (s *RevokeEndpointAclRequest) SetEndpointType(v string) *RevokeEndpointAclRequest {
+	s.EndpointType = &v
+	return s
+}
+
+type RevokeEndpointAclShrinkRequest struct {
+	// The ACL policy. Valid value:
+	//
+	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// allow
+	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
+	// The CIDR blocks.
+	//
+	// This parameter is required.
+	CidrListShrink *string `json:"CidrList,omitempty" xml:"CidrList,omitempty"`
+	// The type of the endpoint. Valid value:
+	//
+	// 	- **public**: indicates an public endpoint. (Only public endpoint is supported.)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s RevokeEndpointAclShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeEndpointAclShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeEndpointAclShrinkRequest) SetAclStrategy(v string) *RevokeEndpointAclShrinkRequest {
+	s.AclStrategy = &v
+	return s
+}
+
+func (s *RevokeEndpointAclShrinkRequest) SetCidrListShrink(v string) *RevokeEndpointAclShrinkRequest {
+	s.CidrListShrink = &v
+	return s
+}
+
+func (s *RevokeEndpointAclShrinkRequest) SetEndpointType(v string) *RevokeEndpointAclShrinkRequest {
+	s.EndpointType = &v
+	return s
+}
+
+type RevokeEndpointAclResponseBody struct {
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RevokeEndpointAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeEndpointAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeEndpointAclResponseBody) SetCode(v int64) *RevokeEndpointAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RevokeEndpointAclResponseBody) SetMessage(v string) *RevokeEndpointAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RevokeEndpointAclResponseBody) SetRequestId(v string) *RevokeEndpointAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RevokeEndpointAclResponseBody) SetStatus(v string) *RevokeEndpointAclResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *RevokeEndpointAclResponseBody) SetSuccess(v bool) *RevokeEndpointAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RevokeEndpointAclResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeEndpointAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RevokeEndpointAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeEndpointAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeEndpointAclResponse) SetHeaders(v map[string]*string) *RevokeEndpointAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeEndpointAclResponse) SetStatusCode(v int32) *RevokeEndpointAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeEndpointAclResponse) SetBody(v *RevokeEndpointAclResponseBody) *RevokeEndpointAclResponse {
+	s.Body = v
+	return s
+}
+
 type SetQueueAttributesRequest struct {
 	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
 	//
@@ -2804,11 +3758,11 @@ type SetQueueAttributesRequest struct {
 	//
 	// 0
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// Specifies whether to enable the logging feature. Valid values:
+	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- True
+	// 	- true: enabled.
 	//
-	// 	- False (default)
+	// 	- false: disabled. Default value: false.
 	//
 	// example:
 	//
@@ -3228,11 +4182,11 @@ func (s *SetSubscriptionAttributesResponse) SetBody(v *SetSubscriptionAttributes
 }
 
 type SetTopicAttributesRequest struct {
-	// Specifies whether to enable the logging feature. Valid values:
+	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- True
+	// 	- true: enabled.
 	//
-	// 	- False (default)
+	// 	- false: disabled. Default value: false.
 	//
 	// example:
 	//
@@ -3881,6 +4835,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// Adds one or more ACLrules for an endpoint of a specified type.
+//
+// @param tmpReq - AuthorizeEndpointAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeEndpointAclResponse
+func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointAclRequest, runtime *util.RuntimeOptions) (_result *AuthorizeEndpointAclResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AuthorizeEndpointAclShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CidrList)) {
+		request.CidrListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CidrList, tea.String("CidrList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclStrategy)) {
+		query["AclStrategy"] = request.AclStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CidrListShrink)) {
+		query["CidrList"] = request.CidrListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuthorizeEndpointAcl"),
+		Version:     tea.String("2022-01-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuthorizeEndpointAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds one or more ACLrules for an endpoint of a specified type.
+//
+// @param request - AuthorizeEndpointAclRequest
+//
+// @return AuthorizeEndpointAclResponse
+func (client *Client) AuthorizeEndpointAcl(request *AuthorizeEndpointAclRequest) (_result *AuthorizeEndpointAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AuthorizeEndpointAclResponse{}
+	_body, _err := client.AuthorizeEndpointAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a queue.
 //
 // @param request - CreateQueueRequest
@@ -4154,6 +5182,186 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTopicResponse{}
 	_body, _err := client.DeleteTopicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+//
+// @param request - DisableEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableEndpointResponse
+func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest, runtime *util.RuntimeOptions) (_result *DisableEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableEndpoint"),
+		Version:     tea.String("2022-01-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+//
+// @param request - DisableEndpointRequest
+//
+// @return DisableEndpointResponse
+func (client *Client) DisableEndpoint(request *DisableEndpointRequest) (_result *DisableEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableEndpointResponse{}
+	_body, _err := client.DisableEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+//
+// @param request - EnableEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableEndpointResponse
+func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, runtime *util.RuntimeOptions) (_result *EnableEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableEndpoint"),
+		Version:     tea.String("2022-01-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+//
+// @param request - EnableEndpointRequest
+//
+// @return EnableEndpointResponse
+func (client *Client) EnableEndpoint(request *EnableEndpointRequest) (_result *EnableEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableEndpointResponse{}
+	_body, _err := client.EnableEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// GetEndpointAttribute
+//
+// @param request - GetEndpointAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEndpointAttributeResponse
+func (client *Client) GetEndpointAttributeWithOptions(request *GetEndpointAttributeRequest, runtime *util.RuntimeOptions) (_result *GetEndpointAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEndpointAttribute"),
+		Version:     tea.String("2022-01-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEndpointAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GetEndpointAttribute
+//
+// @param request - GetEndpointAttributeRequest
+//
+// @return GetEndpointAttributeResponse
+func (client *Client) GetEndpointAttribute(request *GetEndpointAttributeRequest) (_result *GetEndpointAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEndpointAttributeResponse{}
+	_body, _err := client.GetEndpointAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4562,6 +5770,80 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTopicResponse{}
 	_body, _err := client.ListTopicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes one or more ACLs from an endpoint of a specified type.
+//
+// @param tmpReq - RevokeEndpointAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeEndpointAclResponse
+func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequest, runtime *util.RuntimeOptions) (_result *RevokeEndpointAclResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RevokeEndpointAclShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CidrList)) {
+		request.CidrListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CidrList, tea.String("CidrList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclStrategy)) {
+		query["AclStrategy"] = request.AclStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CidrListShrink)) {
+		query["CidrList"] = request.CidrListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeEndpointAcl"),
+		Version:     tea.String("2022-01-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeEndpointAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes one or more ACLs from an endpoint of a specified type.
+//
+// @param request - RevokeEndpointAclRequest
+//
+// @return RevokeEndpointAclResponse
+func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_result *RevokeEndpointAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeEndpointAclResponse{}
+	_body, _err := client.RevokeEndpointAclWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
