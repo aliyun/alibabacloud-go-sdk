@@ -1190,7 +1190,8 @@ type MassPushRequest struct {
 	// example:
 	//
 	// 23267207
-	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey          *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	IdempotentToken *string `json:"IdempotentToken,omitempty" xml:"IdempotentToken,omitempty"`
 	// This parameter is required.
 	PushTask []*MassPushRequestPushTask `json:"PushTask,omitempty" xml:"PushTask,omitempty" type:"Repeated"`
 }
@@ -1205,6 +1206,11 @@ func (s MassPushRequest) GoString() string {
 
 func (s *MassPushRequest) SetAppKey(v int64) *MassPushRequest {
 	s.AppKey = &v
+	return s
+}
+
+func (s *MassPushRequest) SetIdempotentToken(v string) *MassPushRequest {
+	s.IdempotentToken = &v
 	return s
 }
 
@@ -2214,6 +2220,7 @@ type PushRequest struct {
 	HarmonyRenderStyle          *string `json:"HarmonyRenderStyle,omitempty" xml:"HarmonyRenderStyle,omitempty"`
 	HarmonyTestMessage          *bool   `json:"HarmonyTestMessage,omitempty" xml:"HarmonyTestMessage,omitempty"`
 	HarmonyUri                  *string `json:"HarmonyUri,omitempty" xml:"HarmonyUri,omitempty"`
+	IdempotentToken             *string `json:"IdempotentToken,omitempty" xml:"IdempotentToken,omitempty"`
 	// example:
 	//
 	// 123
@@ -2680,6 +2687,11 @@ func (s *PushRequest) SetHarmonyTestMessage(v bool) *PushRequest {
 
 func (s *PushRequest) SetHarmonyUri(v string) *PushRequest {
 	s.HarmonyUri = &v
+	return s
+}
+
+func (s *PushRequest) SetIdempotentToken(v string) *PushRequest {
+	s.IdempotentToken = &v
 	return s
 }
 
@@ -6432,6 +6444,10 @@ func (client *Client) MassPushWithOptions(request *MassPushRequest, runtime *uti
 		query["AppKey"] = request.AppKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdempotentToken)) {
+		query["IdempotentToken"] = request.IdempotentToken
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PushTask)) {
 		body["PushTask"] = request.PushTask
@@ -6764,6 +6780,10 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.HarmonyUri)) {
 		query["HarmonyUri"] = request.HarmonyUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdempotentToken)) {
+		query["IdempotentToken"] = request.IdempotentToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
