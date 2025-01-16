@@ -994,8 +994,8 @@ func (s *AutoScalingConstraintsSupportMetricTags) SetTags(v []*Tag) *AutoScaling
 }
 
 type AutoScalingPolicy struct {
-	Constraints  *AutoScalingPolicyConstraints `json:"constraints,omitempty" xml:"constraints,omitempty" type:"Struct"`
-	ScalingRules []*ScalingRule                `json:"scalingRules,omitempty" xml:"scalingRules,omitempty" type:"Repeated"`
+	Constraints  *AutoScalingPolicyConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
+	ScalingRules []*ScalingRule                `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 
 func (s AutoScalingPolicy) String() string {
@@ -1017,8 +1017,8 @@ func (s *AutoScalingPolicy) SetScalingRules(v []*ScalingRule) *AutoScalingPolicy
 }
 
 type AutoScalingPolicyConstraints struct {
-	MaxCapacity *int32 `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
-	MinCapacity *int32 `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
+	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
 }
 
 func (s AutoScalingPolicyConstraints) String() string {
@@ -8293,7 +8293,8 @@ type CreateScriptRequest struct {
 	// The scripts.
 	//
 	// This parameter is required.
-	Scripts []*Script `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	Scripts     []*Script `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	TimeoutSecs *string   `json:"TimeoutSecs,omitempty" xml:"TimeoutSecs,omitempty"`
 }
 
 func (s CreateScriptRequest) String() string {
@@ -8321,6 +8322,11 @@ func (s *CreateScriptRequest) SetScriptType(v string) *CreateScriptRequest {
 
 func (s *CreateScriptRequest) SetScripts(v []*Script) *CreateScriptRequest {
 	s.Scripts = v
+	return s
+}
+
+func (s *CreateScriptRequest) SetTimeoutSecs(v string) *CreateScriptRequest {
+	s.TimeoutSecs = &v
 	return s
 }
 
@@ -10314,7 +10320,8 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies struct {
 	// example:
 	//
 	// ng-869471354ecd****
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId   *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	// The ID of the auto scaling policy.
 	//
 	// example:
@@ -10347,6 +10354,11 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetCons
 
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetNodeGroupId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetNodeGroupName(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
+	s.NodeGroupName = &v
 	return s
 }
 
@@ -48553,7 +48565,9 @@ type ListScriptsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScriptId   *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	// Type of cluster script. Possible values:
 	//
 	// - BOOTSTRAP: Bootstrap script.
@@ -48565,7 +48579,8 @@ type ListScriptsRequest struct {
 	// example:
 	//
 	// BOOTSTRAP
-	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+	ScriptType *string   `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+	Statuses   []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
 func (s ListScriptsRequest) String() string {
@@ -48596,8 +48611,23 @@ func (s *ListScriptsRequest) SetRegionId(v string) *ListScriptsRequest {
 	return s
 }
 
+func (s *ListScriptsRequest) SetScriptId(v string) *ListScriptsRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *ListScriptsRequest) SetScriptName(v string) *ListScriptsRequest {
+	s.ScriptName = &v
+	return s
+}
+
 func (s *ListScriptsRequest) SetScriptType(v string) *ListScriptsRequest {
 	s.ScriptType = &v
+	return s
+}
+
+func (s *ListScriptsRequest) SetStatuses(v []*string) *ListScriptsRequest {
+	s.Statuses = v
 	return s
 }
 
@@ -51470,6 +51500,10 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Scripts)) {
 		query["Scripts"] = request.Scripts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSecs)) {
+		query["TimeoutSecs"] = request.TimeoutSecs
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -55688,8 +55722,20 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptName)) {
+		query["ScriptName"] = request.ScriptName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScriptType)) {
 		query["ScriptType"] = request.ScriptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Statuses)) {
+		query["Statuses"] = request.Statuses
 	}
 
 	req := &openapi.OpenApiRequest{
