@@ -9390,7 +9390,8 @@ type CreateFreeLockCorrectOrderRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	Param *CreateFreeLockCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	Param            *CreateFreeLockCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	RealLoginUserUid *string                                 `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -9421,6 +9422,11 @@ func (s *CreateFreeLockCorrectOrderRequest) SetComment(v string) *CreateFreeLock
 
 func (s *CreateFreeLockCorrectOrderRequest) SetParam(v *CreateFreeLockCorrectOrderRequestParam) *CreateFreeLockCorrectOrderRequest {
 	s.Param = v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequest) SetRealLoginUserUid(v string) *CreateFreeLockCorrectOrderRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -9623,7 +9629,8 @@ type CreateFreeLockCorrectOrderShrinkRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParamShrink      *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -9654,6 +9661,11 @@ func (s *CreateFreeLockCorrectOrderShrinkRequest) SetComment(v string) *CreateFr
 
 func (s *CreateFreeLockCorrectOrderShrinkRequest) SetParamShrink(v string) *CreateFreeLockCorrectOrderShrinkRequest {
 	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderShrinkRequest) SetRealLoginUserUid(v string) *CreateFreeLockCorrectOrderShrinkRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -57210,7 +57222,8 @@ type ModifyDataCorrectExecSQLRequest struct {
 	// example:
 	//
 	// 4328****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
 	// example:
@@ -57234,6 +57247,11 @@ func (s *ModifyDataCorrectExecSQLRequest) SetExecSQL(v string) *ModifyDataCorrec
 
 func (s *ModifyDataCorrectExecSQLRequest) SetOrderId(v int64) *ModifyDataCorrectExecSQLRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyDataCorrectExecSQLRequest) SetRealLoginUserUid(v string) *ModifyDataCorrectExecSQLRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -60273,7 +60291,8 @@ type RestartDataCorrectSQLJobRequest struct {
 	// example:
 	//
 	// 453****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
 	// example:
@@ -60309,6 +60328,11 @@ func (s *RestartDataCorrectSQLJobRequest) SetJobId(v int64) *RestartDataCorrectS
 
 func (s *RestartDataCorrectSQLJobRequest) SetOrderId(v int64) *RestartDataCorrectSQLJobRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobRequest) SetRealLoginUserUid(v string) *RestartDataCorrectSQLJobRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -60683,7 +60707,8 @@ type RetryDataCorrectPreCheckRequest struct {
 	// example:
 	//
 	// 414****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
 	// example:
@@ -60702,6 +60727,11 @@ func (s RetryDataCorrectPreCheckRequest) GoString() string {
 
 func (s *RetryDataCorrectPreCheckRequest) SetOrderId(v int64) *RetryDataCorrectPreCheckRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *RetryDataCorrectPreCheckRequest) SetRealLoginUserUid(v string) *RetryDataCorrectPreCheckRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -63070,7 +63100,8 @@ type SkipDataCorrectRowCheckRequest struct {
 	// example:
 	//
 	// 420****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The reason for skipping the verification on the number of rows in the precheck for data change.
 	//
 	// This parameter is required.
@@ -63097,6 +63128,11 @@ func (s SkipDataCorrectRowCheckRequest) GoString() string {
 
 func (s *SkipDataCorrectRowCheckRequest) SetOrderId(v int64) *SkipDataCorrectRowCheckRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckRequest) SetRealLoginUserUid(v string) *SkipDataCorrectRowCheckRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -71589,6 +71625,10 @@ func (client *Client) CreateFreeLockCorrectOrderWithOptions(tmpReq *CreateFreeLo
 
 	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
 		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
@@ -84705,6 +84745,10 @@ func (client *Client) ModifyDataCorrectExecSQLWithOptions(request *ModifyDataCor
 		query["OrderId"] = request.OrderId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
 	}
@@ -86049,6 +86093,10 @@ func (client *Client) RestartDataCorrectSQLJobWithOptions(request *RestartDataCo
 		query["OrderId"] = request.OrderId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
 	}
@@ -86263,6 +86311,10 @@ func (client *Client) RetryDataCorrectPreCheckWithOptions(request *RetryDataCorr
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
@@ -86949,6 +87001,10 @@ func (client *Client) SkipDataCorrectRowCheckWithOptions(request *SkipDataCorrec
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Reason)) {
