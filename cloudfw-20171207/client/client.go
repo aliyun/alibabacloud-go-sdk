@@ -261,6 +261,8 @@ type AddControlPolicyRequest struct {
 	//
 	// accept
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// Deprecated
+	//
 	// The application type supported by the access control policy. Valid values:
 	//
 	// 	- **FTP**
@@ -3093,6 +3095,8 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// accept
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// Deprecated
+	//
 	// The type of the applications that the access control policy supports. Valid values:
 	//
 	// - **FTP**
@@ -23176,8 +23180,6 @@ type ModifyControlPolicyRequest struct {
 	//
 	// 	- **log**: monitors the traffic.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// accept
@@ -23192,6 +23194,8 @@ type ModifyControlPolicyRequest struct {
 	//
 	// 00281255-d220-4db1-8f4f-c4df221ad84c
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// Deprecated
+	//
 	// The type of the application that the access control policy supports. Valid values:
 	//
 	// 	- **ANY**
@@ -23236,8 +23240,6 @@ type ModifyControlPolicyRequest struct {
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// test
@@ -23274,8 +23276,6 @@ type ModifyControlPolicyRequest struct {
 	//
 	// 	- If **DestinationType*	- is set to location, the value of **Destination*	- is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"].
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 192.0.XX.XX/24
@@ -23290,8 +23290,6 @@ type ModifyControlPolicyRequest struct {
 	//
 	// 	- **location**: location
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// net
@@ -23301,8 +23299,6 @@ type ModifyControlPolicyRequest struct {
 	// 	- **in**: inbound traffic
 	//
 	// 	- **out**: outbound traffic
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -23351,8 +23347,6 @@ type ModifyControlPolicyRequest struct {
 	// >  The value **ANY*	- indicates all types of applications.
 	//
 	// >  If the traffic direction is outbound and the destination address is a threat intelligence address book of the domain name type or a cloud service address book, you can set Proto to TCP or ANY. If you set Proto to TCP, you can set ApplicationName to HTTP, HTTPS, SMTP, SMTPS, and SSL. If you set Proto to ANY, you can set ApplicationName to ANY.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -23420,8 +23414,6 @@ type ModifyControlPolicyRequest struct {
 	//
 	// 	- If **SourceType*	- is set to location, the value of **Source*	- is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"]
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 192.0.XX.XX/24
@@ -23433,8 +23425,6 @@ type ModifyControlPolicyRequest struct {
 	// 	- **group**: address book
 	//
 	// 	- **location**: location
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -24171,8 +24161,6 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	//
 	// 	- **log**: monitors the traffic.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// log
@@ -24192,8 +24180,6 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	// The description of the access control policy. Fuzzy match is supported.
 	//
 	// > If you do not specify this parameter, the descriptions of all policies are queried.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -24233,8 +24219,6 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	//
 	// 	- If **DestinationType*	- is set to location, the value of **Destination*	- is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"]
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// x.x.x.x/32
@@ -24248,8 +24232,6 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	// 	- **domain**: domain name
 	//
 	// 	- **location**: destination location
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -24315,8 +24297,6 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	//
 	// >  If the destination address type is a threat intelligence address book of the domain name type or a cloud service address book, you can set Proto to TCP. If you set Proto to TCP, you can set application types to HTTP, HTTPS, SMTP, SMTPS, and SSL.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// TCP
@@ -24381,8 +24361,6 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	//
 	// 	- If **SourceType*	- is set to `group`, the value of this parameter is an address book name. Example: db_group.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 192.168.0.25/32
@@ -24392,8 +24370,6 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	// 	- **net**: CIDR block
 	//
 	// 	- **group**: address book
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -25883,8 +25859,6 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	// 	- **log**: monitors the traffic.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// accept
@@ -25899,6 +25873,8 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	// 00281255-d220-4db1-8f4f-c4df221a****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// Deprecated
+	//
 	// The type of the application that the access control policy supports.
 	//
 	// Valid values:
@@ -25941,8 +25917,6 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// test
@@ -25983,8 +25957,6 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	//     Example: \\*.aliyuncs.com
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 10.2.X.X/XX
@@ -25998,8 +25970,6 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// 	- **group**: address book
 	//
 	// 	- **domain**: domain name
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -26048,8 +26018,6 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// 	- UDP
 	//
 	// 	- ICMP
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -26121,8 +26089,6 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	//     Example: db_group
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 10.2.X.X/XX
@@ -26134,8 +26100,6 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// 	- **net**: CIDR block
 	//
 	// 	- **group**: address book
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
