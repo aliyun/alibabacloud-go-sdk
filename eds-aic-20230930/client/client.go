@@ -1443,13 +1443,14 @@ func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGrou
 }
 
 type CreatePolicyGroupRequestNetRedirectPolicy struct {
-	CustomProxy   *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	HostAddr      *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
-	NetRedirect   *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	ProxyType     *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
+	CustomProxy   *string                                           `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	HostAddr      *string                                           `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	NetRedirect   *string                                           `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	Port          *string                                           `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyPassword *string                                           `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	ProxyType     *string                                           `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	ProxyUserName *string                                           `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
+	Rules         []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s CreatePolicyGroupRequestNetRedirectPolicy) String() string {
@@ -1492,6 +1493,34 @@ func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetProxyType(v string) *Crea
 
 func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetProxyUserName(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
 	s.ProxyUserName = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetRules(v []*CreatePolicyGroupRequestNetRedirectPolicyRules) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.Rules = v
+	return s
+}
+
+type CreatePolicyGroupRequestNetRedirectPolicyRules struct {
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s CreatePolicyGroupRequestNetRedirectPolicyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupRequestNetRedirectPolicyRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicyRules) SetRuleType(v string) *CreatePolicyGroupRequestNetRedirectPolicyRules {
+	s.RuleType = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicyRules) SetTarget(v string) *CreatePolicyGroupRequestNetRedirectPolicyRules {
+	s.Target = &v
 	return s
 }
 
@@ -2711,6 +2740,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// cn-hangzhou
 	RegionId      *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RenderingType *string                                                  `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	SessionStatus *string                                                  `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 	Tags          []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -2859,6 +2889,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRegionId(v string
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRenderingType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.RenderingType = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetSessionStatus(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.SessionStatus = &v
 	return s
 }
 
@@ -5629,13 +5664,14 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
-	CustomProxy   *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	HostAddr      *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
-	NetRedirect   *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	ProxyType     *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
+	CustomProxy   *string                                                               `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	HostAddr      *string                                                               `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	NetRedirect   *string                                                               `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	Port          *string                                                               `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyPassword *string                                                               `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	ProxyType     *string                                                               `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	ProxyUserName *string                                                               `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
+	Rules         []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) String() string {
@@ -5678,6 +5714,34 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetProxy
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetProxyUserName(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
 	s.ProxyUserName = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetRules(v []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.Rules = v
+	return s
+}
+
+type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) SetRuleType(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules {
+	s.RuleType = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) SetTarget(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules {
+	s.Target = &v
 	return s
 }
 
