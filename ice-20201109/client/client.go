@@ -170,6 +170,7 @@ type AIAgentTemplateConfigAvatarChat3D struct {
 	UserOfflineTimeout       *int32                                         `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32                                         `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	VoiceId                  *string                                        `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList              []*string                                      `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 	VoiceprintId             *string                                        `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 	Volume                   *int64                                         `json:"Volume,omitempty" xml:"Volume,omitempty"`
 	WakeUpQuery              *string                                        `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
@@ -259,6 +260,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetVoiceId(v string) *AIAgentTemplat
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetVoiceIdList(v []*string) *AIAgentTemplateConfigAvatarChat3D {
+	s.VoiceIdList = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetVoiceprintId(v string) *AIAgentTemplateConfigAvatarChat3D {
 	s.VoiceprintId = &v
 	return s
@@ -317,6 +323,7 @@ type AIAgentTemplateConfigVisionChat struct {
 	UserOfflineTimeout       *int32                                       `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32                                       `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	VoiceId                  *string                                      `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList              []*string                                    `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 	VoiceprintId             *string                                      `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 	Volume                   *int64                                       `json:"Volume,omitempty" xml:"Volume,omitempty"`
 	WakeUpQuery              *string                                      `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
@@ -401,6 +408,11 @@ func (s *AIAgentTemplateConfigVisionChat) SetVoiceId(v string) *AIAgentTemplateC
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetVoiceIdList(v []*string) *AIAgentTemplateConfigVisionChat {
+	s.VoiceIdList = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetVoiceprintId(v string) *AIAgentTemplateConfigVisionChat {
 	s.VoiceprintId = &v
 	return s
@@ -461,6 +473,7 @@ type AIAgentTemplateConfigVoiceChat struct {
 	UserOfflineTimeout       *int32                                      `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32                                      `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	VoiceId                  *string                                     `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList              []*string                                   `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 	VoiceprintId             *string                                     `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 	Volume                   *int64                                      `json:"Volume,omitempty" xml:"Volume,omitempty"`
 	WakeUpQuery              *string                                     `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
@@ -552,6 +565,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetUserOnlineTimeout(v int32) *AIAgentT
 
 func (s *AIAgentTemplateConfigVoiceChat) SetVoiceId(v string) *AIAgentTemplateConfigVoiceChat {
 	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetVoiceIdList(v []*string) *AIAgentTemplateConfigVoiceChat {
+	s.VoiceIdList = v
 	return s
 }
 
@@ -20565,6 +20583,183 @@ func (s *GetPlayInfoResponse) SetStatusCode(v int32) *GetPlayInfoResponse {
 }
 
 func (s *GetPlayInfoResponse) SetBody(v *GetPlayInfoResponseBody) *GetPlayInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetProjectExportJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetProjectExportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectExportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectExportJobRequest) SetJobId(v string) *GetProjectExportJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetProjectExportJobResponseBody struct {
+	ProjectExportJob *GetProjectExportJobResponseBodyProjectExportJob `json:"ProjectExportJob,omitempty" xml:"ProjectExportJob,omitempty" type:"Struct"`
+	// example:
+	//
+	// ****2876-6263-4B75-8F2C-CD0F7FCF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetProjectExportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectExportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectExportJobResponseBody) SetProjectExportJob(v *GetProjectExportJobResponseBodyProjectExportJob) *GetProjectExportJobResponseBody {
+	s.ProjectExportJob = v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBody) SetRequestId(v string) *GetProjectExportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetProjectExportJobResponseBodyProjectExportJob struct {
+	// example:
+	//
+	// InvalidParameter
+	Code         *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExportResult *GetProjectExportJobResponseBodyProjectExportJobExportResult `json:"ExportResult,omitempty" xml:"ExportResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// BaseTimeline
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// The specified parameter is not valid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ****fddd7748b58bf1d47e95****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx","Key":"Valuexxx"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetProjectExportJobResponseBodyProjectExportJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectExportJobResponseBodyProjectExportJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetCode(v string) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.Code = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetExportResult(v *GetProjectExportJobResponseBodyProjectExportJobExportResult) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.ExportResult = v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetExportType(v string) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.ExportType = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetJobId(v string) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetMessage(v string) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.Message = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetProjectId(v string) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetStatus(v string) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJob) SetUserData(v string) *GetProjectExportJobResponseBodyProjectExportJob {
+	s.UserData = &v
+	return s
+}
+
+type GetProjectExportJobResponseBodyProjectExportJobExportResult struct {
+	// example:
+	//
+	// {"VideoTracks":[{"VideoTrackClips":[{"Type":"Video","MediaId":"****4d7cf14dc7b83b0e801c****","MediaURL":"https://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4","TimelineIn":0.0,"TimelineOut":5.0,"In":0.0,"Out":5.0,"Speed":1.0,"Duration":5.0,"VirginDuration":13.334,"Height":1.0,"Width":1.0,"X":0.0,"Y":0.0}]}]}
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+}
+
+func (s GetProjectExportJobResponseBodyProjectExportJobExportResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectExportJobResponseBodyProjectExportJobExportResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) SetTimeline(v string) *GetProjectExportJobResponseBodyProjectExportJobExportResult {
+	s.Timeline = &v
+	return s
+}
+
+type GetProjectExportJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProjectExportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetProjectExportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectExportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectExportJobResponse) SetHeaders(v map[string]*string) *GetProjectExportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectExportJobResponse) SetStatusCode(v int32) *GetProjectExportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponse) SetBody(v *GetProjectExportJobResponseBody) *GetProjectExportJobResponse {
 	s.Body = v
 	return s
 }
@@ -59245,6 +59440,128 @@ func (s *SubmitPackageJobResponse) SetBody(v *SubmitPackageJobResponseBody) *Sub
 	return s
 }
 
+type SubmitProjectExportJobRequest struct {
+	// example:
+	//
+	// BaseTimeline
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"Bucket": "example-bucket",
+	//
+	//     "Prefix": "example_prefix"
+	//
+	// }
+	OutputMediaConfig *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
+	// example:
+	//
+	// *****67ae06542b9b93e0d1c387*****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx","Key":"Valuexxx"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitProjectExportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitProjectExportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitProjectExportJobRequest) SetExportType(v string) *SubmitProjectExportJobRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *SubmitProjectExportJobRequest) SetOutputMediaConfig(v string) *SubmitProjectExportJobRequest {
+	s.OutputMediaConfig = &v
+	return s
+}
+
+func (s *SubmitProjectExportJobRequest) SetProjectId(v string) *SubmitProjectExportJobRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SubmitProjectExportJobRequest) SetTimeline(v string) *SubmitProjectExportJobRequest {
+	s.Timeline = &v
+	return s
+}
+
+func (s *SubmitProjectExportJobRequest) SetUserData(v string) *SubmitProjectExportJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitProjectExportJobResponseBody struct {
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitProjectExportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitProjectExportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitProjectExportJobResponseBody) SetJobId(v string) *SubmitProjectExportJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitProjectExportJobResponseBody) SetRequestId(v string) *SubmitProjectExportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitProjectExportJobResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitProjectExportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitProjectExportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitProjectExportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitProjectExportJobResponse) SetHeaders(v map[string]*string) *SubmitProjectExportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitProjectExportJobResponse) SetStatusCode(v int32) *SubmitProjectExportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitProjectExportJobResponse) SetBody(v *SubmitProjectExportJobResponseBody) *SubmitProjectExportJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitScreenMediaHighlightsJobRequest struct {
 	// example:
 	//
@@ -77959,6 +78276,66 @@ func (client *Client) GetPlayInfo(request *GetPlayInfoRequest) (_result *GetPlay
 
 // Summary:
 //
+// 查询工程导出任务
+//
+// @param request - GetProjectExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectExportJobResponse
+func (client *Client) GetProjectExportJobWithOptions(request *GetProjectExportJobRequest, runtime *util.RuntimeOptions) (_result *GetProjectExportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProjectExportJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProjectExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工程导出任务
+//
+// @param request - GetProjectExportJobRequest
+//
+// @return GetProjectExportJobResponse
+func (client *Client) GetProjectExportJob(request *GetProjectExportJobRequest) (_result *GetProjectExportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProjectExportJobResponse{}
+	_body, _err := client.GetProjectExportJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取公共媒资内容信息
 //
 // @param request - GetPublicMediaInfoRequest
@@ -86567,6 +86944,84 @@ func (client *Client) SubmitPackageJob(request *SubmitPackageJobRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitPackageJobResponse{}
 	_body, _err := client.SubmitPackageJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交工程导出任务
+//
+// @param request - SubmitProjectExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitProjectExportJobResponse
+func (client *Client) SubmitProjectExportJobWithOptions(request *SubmitProjectExportJobRequest, runtime *util.RuntimeOptions) (_result *SubmitProjectExportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputMediaConfig)) {
+		query["OutputMediaConfig"] = request.OutputMediaConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
+		body["Timeline"] = request.Timeline
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitProjectExportJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitProjectExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交工程导出任务
+//
+// @param request - SubmitProjectExportJobRequest
+//
+// @return SubmitProjectExportJobResponse
+func (client *Client) SubmitProjectExportJob(request *SubmitProjectExportJobRequest) (_result *SubmitProjectExportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitProjectExportJobResponse{}
+	_body, _err := client.SubmitProjectExportJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
