@@ -935,6 +935,7 @@ func (s *CreateTaskRequestServiceInspectionInspectionContents) SetTitle(v string
 }
 
 type CreateTaskRequestTranscription struct {
+	AsrModelCode *string `json:"asrModelCode,omitempty" xml:"asrModelCode,omitempty"`
 	// example:
 	//
 	// 1
@@ -949,6 +950,7 @@ type CreateTaskRequestTranscription struct {
 	//
 	// sss.mp3
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	Level    *string `json:"level,omitempty" xml:"level,omitempty"`
 	// example:
 	//
 	// 1
@@ -970,6 +972,11 @@ func (s CreateTaskRequestTranscription) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTaskRequestTranscription) SetAsrModelCode(v string) *CreateTaskRequestTranscription {
+	s.AsrModelCode = &v
+	return s
+}
+
 func (s *CreateTaskRequestTranscription) SetAutoSplit(v int32) *CreateTaskRequestTranscription {
 	s.AutoSplit = &v
 	return s
@@ -982,6 +989,11 @@ func (s *CreateTaskRequestTranscription) SetClientChannel(v int32) *CreateTaskRe
 
 func (s *CreateTaskRequestTranscription) SetFileName(v string) *CreateTaskRequestTranscription {
 	s.FileName = &v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetLevel(v string) *CreateTaskRequestTranscription {
+	s.Level = &v
 	return s
 }
 
@@ -1173,6 +1185,7 @@ func (s *GetTaskResultResponseBody) SetSuccess(v string) *GetTaskResultResponseB
 
 type GetTaskResultResponseBodyData struct {
 	AsrResult        []*GetTaskResultResponseBodyDataAsrResult `json:"asrResult,omitempty" xml:"asrResult,omitempty" type:"Repeated"`
+	Extra            *string                                   `json:"extra,omitempty" xml:"extra,omitempty"`
 	TaskErrorMessage *string                                   `json:"taskErrorMessage,omitempty" xml:"taskErrorMessage,omitempty"`
 	// example:
 	//
@@ -1195,6 +1208,11 @@ func (s GetTaskResultResponseBodyData) GoString() string {
 
 func (s *GetTaskResultResponseBodyData) SetAsrResult(v []*GetTaskResultResponseBodyDataAsrResult) *GetTaskResultResponseBodyData {
 	s.AsrResult = v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyData) SetExtra(v string) *GetTaskResultResponseBodyData {
+	s.Extra = &v
 	return s
 }
 
