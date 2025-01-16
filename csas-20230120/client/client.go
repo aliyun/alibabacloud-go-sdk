@@ -7237,6 +7237,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// Unauthorized
 	DlpStatus    *string                                        `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	EdrStatus    *string                                        `json:"EdrStatus,omitempty" xml:"EdrStatus,omitempty"`
 	HistoryUsers []*GetUserDeviceResponseBodyDeviceHistoryUsers `json:"HistoryUsers,omitempty" xml:"HistoryUsers,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -7356,6 +7357,11 @@ func (s *GetUserDeviceResponseBodyDevice) SetDisk(v string) *GetUserDeviceRespon
 
 func (s *GetUserDeviceResponseBodyDevice) SetDlpStatus(v string) *GetUserDeviceResponseBodyDevice {
 	s.DlpStatus = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetEdrStatus(v string) *GetUserDeviceResponseBodyDevice {
+	s.EdrStatus = &v
 	return s
 }
 
@@ -15132,6 +15138,7 @@ func (s *ListUserApplicationsResponse) SetBody(v *ListUserApplicationsResponseBo
 
 type ListUserDevicesRequest struct {
 	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
+	AppVersions []*string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -15187,6 +15194,11 @@ func (s ListUserDevicesRequest) GoString() string {
 
 func (s *ListUserDevicesRequest) SetAppStatuses(v []*string) *ListUserDevicesRequest {
 	s.AppStatuses = v
+	return s
+}
+
+func (s *ListUserDevicesRequest) SetAppVersions(v []*string) *ListUserDevicesRequest {
+	s.AppVersions = v
 	return s
 }
 
@@ -15365,6 +15377,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// Enabled
 	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	EdrStatus *string `json:"EdrStatus,omitempty" xml:"EdrStatus,omitempty"`
 	// example:
 	//
 	// win10-64bit
@@ -15483,6 +15496,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetDisk(v string) *ListUserDevicesR
 
 func (s *ListUserDevicesResponseBodyDevices) SetDlpStatus(v string) *ListUserDevicesResponseBodyDevices {
 	s.DlpStatus = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetEdrStatus(v string) *ListUserDevicesResponseBodyDevices {
+	s.EdrStatus = &v
 	return s
 }
 
