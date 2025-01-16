@@ -8036,7 +8036,7 @@ type UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig struct {
 	AnswerScope           *string   `json:"answerScope,omitempty" xml:"answerScope,omitempty"`
 	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
 	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
-	EnableWebSearch       *string   `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
+	EnableWebSearch       *bool     `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
 	FixedReplyDetail      *string   `json:"fixedReplyDetail,omitempty" xml:"fixedReplyDetail,omitempty"`
 	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
 	PromptStrategy        *string   `json:"promptStrategy,omitempty" xml:"promptStrategy,omitempty"`
@@ -8070,7 +8070,7 @@ func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetEna
 	return s
 }
 
-func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetEnableWebSearch(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetEnableWebSearch(v bool) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
 	s.EnableWebSearch = &v
 	return s
 }

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/bailian-20231229
+module github.com/alibabacloud-go/bailian-20231229/v2
 
 go 1.14
 
