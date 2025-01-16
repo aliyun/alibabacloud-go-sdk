@@ -901,7 +901,7 @@ func (s *GetInstanceRequest) SetInstanceName(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponseBody struct {
-	// The alias of the instance.
+	// The instance alias.
 	//
 	// example:
 	//
@@ -912,7 +912,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// 2019-12-23T07:24:33Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime           *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ElasticVCUUpperLimit *float32 `json:"ElasticVCUUpperLimit,omitempty" xml:"ElasticVCUUpperLimit,omitempty"`
 	// The description of the instance.
 	//
 	// example:
@@ -947,7 +948,12 @@ type GetInstanceResponseBody struct {
 	//
 	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	IsMultiAZ      *bool   `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
+	// Indicates whether zone-redundant storage (ZRS) is enabled for the instance.
+	//
+	// 	- true: ZRS is enabled for the instance.
+	//
+	// 	- false: Locally redundant storage (LRS) is enabled for the instance.
+	IsMultiAZ *bool `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
 	// The network type of the instance. Valid values:
 	//
 	// 	- VPC: The instance can be accessed only over the bound virtual private clouds (VPCs).
@@ -1123,6 +1129,11 @@ func (s *GetInstanceResponseBody) SetAliasName(v string) *GetInstanceResponseBod
 
 func (s *GetInstanceResponseBody) SetCreateTime(v string) *GetInstanceResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetElasticVCUUpperLimit(v float32) *GetInstanceResponseBody {
+	s.ElasticVCUUpperLimit = &v
 	return s
 }
 
@@ -1469,7 +1480,7 @@ func (s *ListInstancesShrinkRequest) SetStatus(v string) *ListInstancesShrinkReq
 }
 
 type ListInstancesResponseBody struct {
-	// The instances.
+	// The details about the instances.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The token that determines the start position of the next query. If this parameter is empty, all instances that you want to query are returned.
 	//
@@ -1560,7 +1571,12 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	IsMultiAZ      *bool   `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
+	// Indicates whether zone-redundant storage (ZRS) is enabled for the instance.
+	//
+	// 	- true: ZRS is enabled for the instance.
+	//
+	// 	- false: Locally redundant storage (LRS) is enabled for the instance.
+	IsMultiAZ *bool `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
 	// The billing method.
 	//
 	// 	- Subscription: subscription
@@ -1583,7 +1599,7 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// rg-acfmxh4em5jnbcd
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
