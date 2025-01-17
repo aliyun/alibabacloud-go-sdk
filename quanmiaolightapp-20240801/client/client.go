@@ -3534,6 +3534,390 @@ func (s *RunMarketingInformationWritingResponse) SetBody(v *RunMarketingInformat
 	return s
 }
 
+type RunNetworkContentAuditRequest struct {
+	// example:
+	//
+	// clueMining
+	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 待分析文本
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 额外信息
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 请返回如下JSON格式，{"key1":"","key2":""}
+	OutputFormat *string                              `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	Tags         []*RunNetworkContentAuditRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 给你一条待分析文本数据，请你按照标签体系来对数据进行打标。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s RunNetworkContentAuditRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditRequest) SetBusinessType(v string) *RunNetworkContentAuditRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditRequest) SetContent(v string) *RunNetworkContentAuditRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditRequest) SetExtraInfo(v string) *RunNetworkContentAuditRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditRequest) SetModelId(v string) *RunNetworkContentAuditRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditRequest) SetOutputFormat(v string) *RunNetworkContentAuditRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditRequest) SetTags(v []*RunNetworkContentAuditRequestTags) *RunNetworkContentAuditRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *RunNetworkContentAuditRequest) SetTaskDescription(v string) *RunNetworkContentAuditRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type RunNetworkContentAuditRequestTags struct {
+	// example:
+	//
+	// xxxx
+	TagDefinePrompt *string `json:"tagDefinePrompt,omitempty" xml:"tagDefinePrompt,omitempty"`
+	// example:
+	//
+	// xxxx
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s RunNetworkContentAuditRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditRequestTags) SetTagDefinePrompt(v string) *RunNetworkContentAuditRequestTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditRequestTags) SetTagName(v string) *RunNetworkContentAuditRequestTags {
+	s.TagName = &v
+	return s
+}
+
+type RunNetworkContentAuditShrinkRequest struct {
+	// example:
+	//
+	// clueMining
+	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 待分析文本
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 额外信息
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 请返回如下JSON格式，{"key1":"","key2":""}
+	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	TagsShrink   *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// example:
+	//
+	// 给你一条待分析文本数据，请你按照标签体系来对数据进行打标。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s RunNetworkContentAuditShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetBusinessType(v string) *RunNetworkContentAuditShrinkRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetContent(v string) *RunNetworkContentAuditShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetExtraInfo(v string) *RunNetworkContentAuditShrinkRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetModelId(v string) *RunNetworkContentAuditShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetOutputFormat(v string) *RunNetworkContentAuditShrinkRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetTagsShrink(v string) *RunNetworkContentAuditShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetTaskDescription(v string) *RunNetworkContentAuditShrinkRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type RunNetworkContentAuditResponseBody struct {
+	Header  *RunNetworkContentAuditResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunNetworkContentAuditResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5D0E915E-655D-59A8-894F-93873F73AAE5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RunNetworkContentAuditResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditResponseBody) SetHeader(v *RunNetworkContentAuditResponseBodyHeader) *RunNetworkContentAuditResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBody) SetPayload(v *RunNetworkContentAuditResponseBodyPayload) *RunNetworkContentAuditResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBody) SetRequestId(v string) *RunNetworkContentAuditResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunNetworkContentAuditResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbidden
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// task-finished
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunNetworkContentAuditResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditResponseBodyHeader) SetErrorCode(v string) *RunNetworkContentAuditResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyHeader) SetErrorMessage(v string) *RunNetworkContentAuditResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyHeader) SetEvent(v string) *RunNetworkContentAuditResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyHeader) SetSessionId(v string) *RunNetworkContentAuditResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyHeader) SetTaskId(v string) *RunNetworkContentAuditResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyHeader) SetTraceId(v string) *RunNetworkContentAuditResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunNetworkContentAuditResponseBodyPayload struct {
+	Output *RunNetworkContentAuditResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunNetworkContentAuditResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunNetworkContentAuditResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditResponseBodyPayload) SetOutput(v *RunNetworkContentAuditResponseBodyPayloadOutput) *RunNetworkContentAuditResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyPayload) SetUsage(v *RunNetworkContentAuditResponseBodyPayloadUsage) *RunNetworkContentAuditResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunNetworkContentAuditResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// xxxx
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunNetworkContentAuditResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditResponseBodyPayloadOutput) SetText(v string) *RunNetworkContentAuditResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunNetworkContentAuditResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunNetworkContentAuditResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditResponseBodyPayloadUsage) SetInputTokens(v int64) *RunNetworkContentAuditResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunNetworkContentAuditResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunNetworkContentAuditResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunNetworkContentAuditResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunNetworkContentAuditResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunNetworkContentAuditResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunNetworkContentAuditResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunNetworkContentAuditResponse) SetHeaders(v map[string]*string) *RunNetworkContentAuditResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponse) SetStatusCode(v int32) *RunNetworkContentAuditResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponse) SetBody(v *RunNetworkContentAuditResponseBody) *RunNetworkContentAuditResponse {
+	s.Body = v
+	return s
+}
+
 type RunScriptChatRequest struct {
 	// This parameter is required.
 	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
@@ -7679,6 +8063,100 @@ func (client *Client) RunMarketingInformationWriting(workspaceId *string, reques
 	headers := make(map[string]*string)
 	_result = &RunMarketingInformationWritingResponse{}
 	_body, _err := client.RunMarketingInformationWritingWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-网络内容审核
+//
+// @param tmpReq - RunNetworkContentAuditRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunNetworkContentAuditResponse
+func (client *Client) RunNetworkContentAuditWithOptions(workspaceId *string, tmpReq *RunNetworkContentAuditRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunNetworkContentAuditResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunNetworkContentAuditShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		body["businessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["extraInfo"] = request.ExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		body["outputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDescription)) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunNetworkContentAudit"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runNetworkContentAudit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunNetworkContentAuditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-网络内容审核
+//
+// @param request - RunNetworkContentAuditRequest
+//
+// @return RunNetworkContentAuditResponse
+func (client *Client) RunNetworkContentAudit(workspaceId *string, request *RunNetworkContentAuditRequest) (_result *RunNetworkContentAuditResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunNetworkContentAuditResponse{}
+	_body, _err := client.RunNetworkContentAuditWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
