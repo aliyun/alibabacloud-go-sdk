@@ -10,18 +10,12 @@ import (
 )
 
 type ActiveCaCertificateRequest struct {
-	// CA证书所绑定的实例ID，即云消息队列 MQTT 版的实例ID。
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
-	// 待激活CA证书的SN序列号，用于唯一标识一个CA证书。
-	//
-	// 取值范围：不超过128 Byte。
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -352,7 +346,11 @@ type AddCustomAuthIdentityRequest struct {
 	//
 	// GID_test@@@test
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The identity type. Valid values: USER and CLIENT.
+	// The identity type. Valid values:
+	//
+	// 	- USER
+	//
+	// 	- CLIENT
 	//
 	// This parameter is required.
 	//
@@ -377,6 +375,8 @@ type AddCustomAuthIdentityRequest struct {
 	// xxxxx
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
 	// The signature verification mode. ORIGIN: compares the password and the AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -515,7 +515,7 @@ func (s *AddCustomAuthIdentityResponse) SetBody(v *AddCustomAuthIdentityResponse
 }
 
 type AddCustomAuthPermissionRequest struct {
-	// Specify whether to allow or deny the permissions.
+	// Specifies whether to allow or deny access.
 	//
 	// This parameter is required.
 	//
@@ -547,7 +547,7 @@ type AddCustomAuthPermissionRequest struct {
 	//
 	// mqtt-cn-0pp12gl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The permissions that you want to add.
+	// The permissions that you want to grant.
 	//
 	// This parameter is required.
 	//
@@ -555,7 +555,7 @@ type AddCustomAuthPermissionRequest struct {
 	//
 	// PUB_SUB
 	PermitAction *string `json:"PermitAction,omitempty" xml:"PermitAction,omitempty"`
-	// The topic on which you want to add the permissions. Multi-level topics and wildcard characters are supported.
+	// The topics on which you want to grant permissions. Multi-level topics and wildcard characters are supported.
 	//
 	// This parameter is required.
 	//
@@ -4355,12 +4355,6 @@ type QueryCustomAuthIdentityRequest struct {
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The identity type.
 	//
-	// Valid values:
-	//
-	// 	- USER
-	//
-	// 	- CLIENT
-	//
 	// example:
 	//
 	// USER
@@ -4631,12 +4625,6 @@ type QueryCustomAuthPermissionRequest struct {
 	// test
 	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
 	// The identity type.
-	//
-	// Valid values:
-	//
-	// 	- USER
-	//
-	// 	- CLIENT
 	//
 	// example:
 	//
@@ -6423,17 +6411,13 @@ func (s *RefreshDeviceCredentialResponse) SetBody(v *RefreshDeviceCredentialResp
 }
 
 type RegisterCaCertificateRequest struct {
-	// Content of the CA certificate to be registered.
-	//
-	// > Note that \\n in the example represents a new line.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END CERTIFICATE-----
 	CaContent *string `json:"CaContent,omitempty" xml:"CaContent,omitempty"`
-	// Name of the CA certificate to be registered
+	// - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 	//
 	// This parameter is required.
 	//
@@ -6441,7 +6425,7 @@ type RegisterCaCertificateRequest struct {
 	//
 	// mqtt_ca
 	CaName *string `json:"CaName,omitempty" xml:"CaName,omitempty"`
-	// The instance ID of the Cloud Message Queue MQTT version. When registering a CA certificate, you need to specify an instance to bind with.
+	// RegisterCaCertificate
 	//
 	// This parameter is required.
 	//
@@ -6449,10 +6433,6 @@ type RegisterCaCertificateRequest struct {
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
-	// Content of the verification certificate for the CA certificate to be registered. It is used together with the registration code of the CA certificate to verify that the user possesses the private key of this CA certificate.
-	//
-	// >  in the example represents a line break.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -6490,14 +6470,10 @@ func (s *RegisterCaCertificateRequest) SetVerificationContent(v string) *Registe
 }
 
 type RegisterCaCertificateResponseBody struct {
-	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
-	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The SN serial number of the registered CA certificate, used to uniquely identify a CA certificate.
-	//
 	// example:
 	//
 	// 007269004887******
@@ -6924,11 +6900,28 @@ func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageRe
 }
 
 type SetSniConfigRequest struct {
+	// The default certificate. If the domain name that you access cannot match the certificates of the broker, the default certificate is returned.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1533xxxx-cn-hangzhou
 	DefaultCertificate *string `json:"DefaultCertificate,omitempty" xml:"DefaultCertificate,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// mqtt-cn-5yd3xxx
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
-	SniConfig      *string `json:"SniConfig,omitempty" xml:"SniConfig,omitempty"`
+	// The Server Name Indication (SNI) configuration. This parameter is used to map domain names and certificates. Format: Domain name#Certificate ID#Password (if available);Domain name#Certificate ID#Password (if available).
+	//
+	// example:
+	//
+	// *.mqtt.aliyuncs.com#15xxxxx-cn-hangzhou;mqtt-test.mqtt.aliyuncs.com#15xxxx9-cn-hangzhou
+	SniConfig *string `json:"SniConfig,omitempty" xml:"SniConfig,omitempty"`
 }
 
 func (s SetSniConfigRequest) String() string {
@@ -6956,9 +6949,16 @@ func (s *SetSniConfigRequest) SetSniConfig(v string) *SetSniConfigRequest {
 
 type SetSniConfigResponseBody struct {
 	AccessDeniedDetail *SetSniConfigResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// E4581CCF-62AF-44D9-B5B4-D1DQDC0E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetSniConfigResponseBody) String() string {
@@ -6985,13 +6985,34 @@ func (s *SetSniConfigResponseBody) SetSuccess(v string) *SetSniConfigResponseBod
 }
 
 type SetSniConfigResponseBodyAccessDeniedDetail struct {
-	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// example:
+	//
+	// SetSniConfig
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// example:
+	//
+	// 2063xxxxxxxx533
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// example:
+	//
+	// 1245xxxxx34343
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// example:
+	//
+	// AQFma6gWZmuoFkMxQ0M3MUVCLTRFQzQtNTI1OS1BQ0Q0LTlBMTFGQkVDOTA3Qw==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// ImplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// example:
+	//
+	// AccountLevelIdentityBasedPolicy
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s SetSniConfigResponseBodyAccessDeniedDetail) String() string {
@@ -7454,7 +7475,7 @@ type UpdateCustomAuthIdentityRequest struct {
 	//
 	// xxxx
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	// The signature verification mode. ORIGIN: compares the password and AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
+	// The signature verification mode. ORIGIN: compares the password and the AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
 	//
 	// This parameter is required.
 	//
@@ -7462,7 +7483,7 @@ type UpdateCustomAuthIdentityRequest struct {
 	//
 	// SIGNED
 	SignMode *string `json:"SignMode,omitempty" xml:"SignMode,omitempty"`
-	// The username.
+	// The username. The value cannot exceed 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -7822,14 +7843,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Activate CA Certificate
 //
-// Description:
-//
-// - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
-//
-// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-//
-// -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
-//
 // @param request - ActiveCaCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7875,14 +7888,6 @@ func (client *Client) ActiveCaCertificateWithOptions(request *ActiveCaCertificat
 // Summary:
 //
 // Activate CA Certificate
-//
-// Description:
-//
-// - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
-//
-// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-//
-// -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
 //
 // @param request - ActiveCaCertificateRequest
 //
@@ -8124,7 +8129,7 @@ func (client *Client) AddCustomAuthIdentity(request *AddCustomAuthIdentityReques
 
 // Summary:
 //
-// Adds permissions on topics. You must create a level-1 topic in the ApsaraMQ for MQTT console before you call this operation.
+// Grants permissions on topics. You must create a parent topic in the console before you call this API operation.
 //
 // @param request - AddCustomAuthPermissionRequest
 //
@@ -8186,7 +8191,7 @@ func (client *Client) AddCustomAuthPermissionWithOptions(request *AddCustomAuthP
 
 // Summary:
 //
-// Adds permissions on topics. You must create a level-1 topic in the ApsaraMQ for MQTT console before you call this operation.
+// Grants permissions on topics. You must create a parent topic in the console before you call this API operation.
 //
 // @param request - AddCustomAuthPermissionRequest
 //
@@ -8958,12 +8963,6 @@ func (client *Client) DeleteGroupId(request *DeleteGroupIdRequest) (_result *Del
 //
 // Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
 //
-// Description:
-//
-// - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
-//
-// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-//
 // @param request - GetCaCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9001,12 +9000,6 @@ func (client *Client) GetCaCertificateWithOptions(request *GetCaCertificateReque
 // Summary:
 //
 // Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
-//
-// Description:
-//
-// - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
-//
-// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
 //
 // @param request - GetCaCertificateRequest
 //
@@ -10592,11 +10585,11 @@ func (client *Client) RefreshDeviceCredential(request *RefreshDeviceCredentialRe
 
 // Summary:
 //
-// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+// RegisterCaCertificate
 //
 // Description:
 //
-// - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -10650,11 +10643,11 @@ func (client *Client) RegisterCaCertificateWithOptions(request *RegisterCaCertif
 
 // Summary:
 //
-// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+// RegisterCaCertificate
 //
 // Description:
 //
-// - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -10828,13 +10821,11 @@ func (client *Client) RevokeToken(request *RevokeTokenRequest) (_result *RevokeT
 //
 // Description:
 //
-//   The **SendMessage*	- operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+//   The **SendMessage*	- operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
 //
-// 	- Before you call the **SendMessage*	- operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
+// 	- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage*	- operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](https://help.aliyun.com/document_detail/174527.html). You can call the **SendMessage*	- operation up to 1,000 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
-//
-// 	- Each successful call to the **SendMessage*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+// 	- Each successful call to the **SendMessage*	- operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - SendMessageRequest
 //
@@ -10888,13 +10879,11 @@ func (client *Client) SendMessageWithOptions(request *SendMessageRequest, runtim
 //
 // Description:
 //
-//   The **SendMessage*	- operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+//   The **SendMessage*	- operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
 //
-// 	- Before you call the **SendMessage*	- operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
+// 	- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage*	- operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](https://help.aliyun.com/document_detail/174527.html). You can call the **SendMessage*	- operation up to 1,000 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
-//
-// 	- Each successful call to the **SendMessage*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+// 	- Each successful call to the **SendMessage*	- operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - SendMessageRequest
 //
@@ -10912,7 +10901,7 @@ func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMes
 
 // Summary:
 //
-// 配置多域名证书
+// Configures a multi-domain certificate.
 //
 // @param request - SetSniConfigRequest
 //
@@ -10962,7 +10951,7 @@ func (client *Client) SetSniConfigWithOptions(request *SetSniConfigRequest, runt
 
 // Summary:
 //
-// 配置多域名证书
+// Configures a multi-domain certificate.
 //
 // @param request - SetSniConfigRequest
 //
