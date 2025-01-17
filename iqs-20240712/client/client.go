@@ -285,6 +285,7 @@ func (s *BicyclingDirectionNovaRequest) SetOriginLongitude(v string) *BicyclingD
 }
 
 type BicyclingDirectionNovaResponseBody struct {
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
 	Data *BicyclingDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -294,6 +295,7 @@ type BicyclingDirectionNovaResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -309,6 +311,11 @@ func (s BicyclingDirectionNovaResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *BicyclingDirectionNovaResponseBody) SetCode(v string) *BicyclingDirectionNovaResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *BicyclingDirectionNovaResponseBody) SetData(v *BicyclingDirectionNovaResponseBodyData) *BicyclingDirectionNovaResponseBody {
 	s.Data = v
 	return s
@@ -321,6 +328,11 @@ func (s *BicyclingDirectionNovaResponseBody) SetErrorCode(v int32) *BicyclingDir
 
 func (s *BicyclingDirectionNovaResponseBody) SetErrorMessage(v string) *BicyclingDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BicyclingDirectionNovaResponseBody) SetMessage(v string) *BicyclingDirectionNovaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -755,6 +767,7 @@ func (s *DrivingDirectionNovaRequest) SetPlate(v string) *DrivingDirectionNovaRe
 }
 
 type DrivingDirectionNovaResponseBody struct {
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
 	Data *DrivingDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -764,6 +777,7 @@ type DrivingDirectionNovaResponseBody struct {
 	//
 	// Access was denied, message: No such namespace namespaces/general-perf-cn-shenzhen-e-default.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -779,6 +793,11 @@ func (s DrivingDirectionNovaResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DrivingDirectionNovaResponseBody) SetCode(v string) *DrivingDirectionNovaResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DrivingDirectionNovaResponseBody) SetData(v *DrivingDirectionNovaResponseBodyData) *DrivingDirectionNovaResponseBody {
 	s.Data = v
 	return s
@@ -791,6 +810,11 @@ func (s *DrivingDirectionNovaResponseBody) SetErrorCode(v int32) *DrivingDirecti
 
 func (s *DrivingDirectionNovaResponseBody) SetErrorMessage(v string) *DrivingDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DrivingDirectionNovaResponseBody) SetMessage(v string) *DrivingDirectionNovaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1122,281 +1146,6 @@ func (s *DrivingDirectionNovaResponse) SetBody(v *DrivingDirectionNovaResponseBo
 	return s
 }
 
-type ElectrobikeDirectionRequest struct {
-	// example:
-	//
-	// 39.896463
-	DestinationLatitude *string `json:"destinationLatitude,omitempty" xml:"destinationLatitude,omitempty"`
-	// example:
-	//
-	// 116.46424
-	DestinationLongitude *string `json:"destinationLongitude,omitempty" xml:"destinationLongitude,omitempty"`
-	// example:
-	//
-	// 39.995197
-	OriginLatitude *string `json:"originLatitude,omitempty" xml:"originLatitude,omitempty"`
-	// example:
-	//
-	// 116.466485
-	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
-}
-
-func (s ElectrobikeDirectionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ElectrobikeDirectionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ElectrobikeDirectionRequest) SetDestinationLatitude(v string) *ElectrobikeDirectionRequest {
-	s.DestinationLatitude = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionRequest) SetDestinationLongitude(v string) *ElectrobikeDirectionRequest {
-	s.DestinationLongitude = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionRequest) SetOriginLatitude(v string) *ElectrobikeDirectionRequest {
-	s.OriginLatitude = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionRequest) SetOriginLongitude(v string) *ElectrobikeDirectionRequest {
-	s.OriginLongitude = &v
-	return s
-}
-
-type ElectrobikeDirectionResponseBody struct {
-	Data []*ElectrobikeDirectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// success
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// Access was denied, message: Unauthorized.
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// ECB2144C-E277-5434-80E6-12D26678D364
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ElectrobikeDirectionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ElectrobikeDirectionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ElectrobikeDirectionResponseBody) SetData(v []*ElectrobikeDirectionResponseBodyData) *ElectrobikeDirectionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBody) SetErrorCode(v string) *ElectrobikeDirectionResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBody) SetErrorMessage(v string) *ElectrobikeDirectionResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBody) SetRequestId(v string) *ElectrobikeDirectionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBody) SetSuccess(v bool) *ElectrobikeDirectionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ElectrobikeDirectionResponseBodyData struct {
-	// example:
-	//
-	// 445
-	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
-	// example:
-	//
-	// 2345
-	DurationSecond *string                                      `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
-	Steps          []*ElectrobikeDirectionResponseBodyDataSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
-}
-
-func (s ElectrobikeDirectionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ElectrobikeDirectionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ElectrobikeDirectionResponseBodyData) SetDistanceMeter(v string) *ElectrobikeDirectionResponseBodyData {
-	s.DistanceMeter = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyData) SetDurationSecond(v string) *ElectrobikeDirectionResponseBodyData {
-	s.DurationSecond = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyData) SetSteps(v []*ElectrobikeDirectionResponseBodyDataSteps) *ElectrobikeDirectionResponseBodyData {
-	s.Steps = v
-	return s
-}
-
-type ElectrobikeDirectionResponseBodyDataSteps struct {
-	Cost        *ElectrobikeDirectionResponseBodyDataStepsCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
-	Instruction *string                                        `json:"instruction,omitempty" xml:"instruction,omitempty"`
-	Orientation *string                                        `json:"orientation,omitempty" xml:"orientation,omitempty"`
-	RoadName    *string                                        `json:"roadName,omitempty" xml:"roadName,omitempty"`
-	// example:
-	//
-	// 500
-	StepDistanceMeter *string `json:"stepDistanceMeter,omitempty" xml:"stepDistanceMeter,omitempty"`
-}
-
-func (s ElectrobikeDirectionResponseBodyDataSteps) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ElectrobikeDirectionResponseBodyDataSteps) GoString() string {
-	return s.String()
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataSteps) SetCost(v *ElectrobikeDirectionResponseBodyDataStepsCost) *ElectrobikeDirectionResponseBodyDataSteps {
-	s.Cost = v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataSteps) SetInstruction(v string) *ElectrobikeDirectionResponseBodyDataSteps {
-	s.Instruction = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataSteps) SetOrientation(v string) *ElectrobikeDirectionResponseBodyDataSteps {
-	s.Orientation = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataSteps) SetRoadName(v string) *ElectrobikeDirectionResponseBodyDataSteps {
-	s.RoadName = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataSteps) SetStepDistanceMeter(v string) *ElectrobikeDirectionResponseBodyDataSteps {
-	s.StepDistanceMeter = &v
-	return s
-}
-
-type ElectrobikeDirectionResponseBodyDataStepsCost struct {
-	// example:
-	//
-	// 2002
-	DurationSecond *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
-	TaxiFee        *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
-	// example:
-	//
-	// 1000
-	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
-	// example:
-	//
-	// xxx
-	TollRoads *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
-	Tolls     *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
-	// example:
-	//
-	// 5
-	TrafficLights *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
-	TransitFee    *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
-}
-
-func (s ElectrobikeDirectionResponseBodyDataStepsCost) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ElectrobikeDirectionResponseBodyDataStepsCost) GoString() string {
-	return s.String()
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataStepsCost) SetDurationSecond(v string) *ElectrobikeDirectionResponseBodyDataStepsCost {
-	s.DurationSecond = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataStepsCost) SetTaxiFee(v string) *ElectrobikeDirectionResponseBodyDataStepsCost {
-	s.TaxiFee = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataStepsCost) SetTollDistanceMeter(v string) *ElectrobikeDirectionResponseBodyDataStepsCost {
-	s.TollDistanceMeter = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataStepsCost) SetTollRoads(v string) *ElectrobikeDirectionResponseBodyDataStepsCost {
-	s.TollRoads = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataStepsCost) SetTolls(v string) *ElectrobikeDirectionResponseBodyDataStepsCost {
-	s.Tolls = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataStepsCost) SetTrafficLights(v string) *ElectrobikeDirectionResponseBodyDataStepsCost {
-	s.TrafficLights = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponseBodyDataStepsCost) SetTransitFee(v string) *ElectrobikeDirectionResponseBodyDataStepsCost {
-	s.TransitFee = &v
-	return s
-}
-
-type ElectrobikeDirectionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ElectrobikeDirectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ElectrobikeDirectionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ElectrobikeDirectionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ElectrobikeDirectionResponse) SetHeaders(v map[string]*string) *ElectrobikeDirectionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponse) SetStatusCode(v int32) *ElectrobikeDirectionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionResponse) SetBody(v *ElectrobikeDirectionResponseBody) *ElectrobikeDirectionResponse {
-	s.Body = v
-	return s
-}
-
 type ElectrobikeDirectionNovaRequest struct {
 	// example:
 	//
@@ -1445,6 +1194,7 @@ func (s *ElectrobikeDirectionNovaRequest) SetOriginLongitude(v string) *Electrob
 }
 
 type ElectrobikeDirectionNovaResponseBody struct {
+	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ElectrobikeDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -1454,6 +1204,7 @@ type ElectrobikeDirectionNovaResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -1469,6 +1220,11 @@ func (s ElectrobikeDirectionNovaResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ElectrobikeDirectionNovaResponseBody) SetCode(v string) *ElectrobikeDirectionNovaResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ElectrobikeDirectionNovaResponseBody) SetData(v *ElectrobikeDirectionNovaResponseBodyData) *ElectrobikeDirectionNovaResponseBody {
 	s.Data = v
 	return s
@@ -1481,6 +1237,11 @@ func (s *ElectrobikeDirectionNovaResponseBody) SetErrorCode(v int32) *Electrobik
 
 func (s *ElectrobikeDirectionNovaResponseBody) SetErrorMessage(v string) *ElectrobikeDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ElectrobikeDirectionNovaResponseBody) SetMessage(v string) *ElectrobikeDirectionNovaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1839,6 +1600,7 @@ func (s *GeoCodeRequest) SetCity(v string) *GeoCodeRequest {
 }
 
 type GeoCodeResponseBody struct {
+	Code *string                    `json:"code,omitempty" xml:"code,omitempty"`
 	Data []*GeoCodeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -1848,6 +1610,7 @@ type GeoCodeResponseBody struct {
 	//
 	// Pop sign mismatch, please check log.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -1863,6 +1626,11 @@ func (s GeoCodeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GeoCodeResponseBody) SetCode(v string) *GeoCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *GeoCodeResponseBody) SetData(v []*GeoCodeResponseBodyData) *GeoCodeResponseBody {
 	s.Data = v
 	return s
@@ -1875,6 +1643,11 @@ func (s *GeoCodeResponseBody) SetErrorCode(v int32) *GeoCodeResponseBody {
 
 func (s *GeoCodeResponseBody) SetErrorMessage(v string) *GeoCodeResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GeoCodeResponseBody) SetMessage(v string) *GeoCodeResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2110,6 +1883,7 @@ func (s *NearbySearchNovaRequest) SetTypes(v string) *NearbySearchNovaRequest {
 }
 
 type NearbySearchNovaResponseBody struct {
+	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
 	Data []*NearbySearchNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2119,6 +1893,7 @@ type NearbySearchNovaResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -2134,6 +1909,11 @@ func (s NearbySearchNovaResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *NearbySearchNovaResponseBody) SetCode(v string) *NearbySearchNovaResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *NearbySearchNovaResponseBody) SetData(v []*NearbySearchNovaResponseBodyData) *NearbySearchNovaResponseBody {
 	s.Data = v
 	return s
@@ -2146,6 +1926,11 @@ func (s *NearbySearchNovaResponseBody) SetErrorCode(v int32) *NearbySearchNovaRe
 
 func (s *NearbySearchNovaResponseBody) SetErrorMessage(v string) *NearbySearchNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *NearbySearchNovaResponseBody) SetMessage(v string) *NearbySearchNovaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2473,6 +2258,7 @@ func (s *PlaceSearchNovaRequest) SetTypes(v string) *PlaceSearchNovaRequest {
 }
 
 type PlaceSearchNovaResponseBody struct {
+	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
 	Data []*PlaceSearchNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2482,6 +2268,7 @@ type PlaceSearchNovaResponseBody struct {
 	//
 	// Access was denied, message: Unauthorized.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -2497,6 +2284,11 @@ func (s PlaceSearchNovaResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *PlaceSearchNovaResponseBody) SetCode(v string) *PlaceSearchNovaResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *PlaceSearchNovaResponseBody) SetData(v []*PlaceSearchNovaResponseBodyData) *PlaceSearchNovaResponseBody {
 	s.Data = v
 	return s
@@ -2509,6 +2301,11 @@ func (s *PlaceSearchNovaResponseBody) SetErrorCode(v int32) *PlaceSearchNovaResp
 
 func (s *PlaceSearchNovaResponseBody) SetErrorMessage(v string) *PlaceSearchNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PlaceSearchNovaResponseBody) SetMessage(v string) *PlaceSearchNovaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2812,12 +2609,14 @@ func (s *RgeoCodeRequest) SetLongitude(v string) *RgeoCodeRequest {
 }
 
 type RgeoCodeResponseBody struct {
+	Code *string                   `json:"code,omitempty" xml:"code,omitempty"`
 	Data *RgeoCodeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
 	// success
 	ErrorCode    *int32  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -2833,6 +2632,11 @@ func (s RgeoCodeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RgeoCodeResponseBody) SetCode(v string) *RgeoCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RgeoCodeResponseBody) SetData(v *RgeoCodeResponseBodyData) *RgeoCodeResponseBody {
 	s.Data = v
 	return s
@@ -2845,6 +2649,11 @@ func (s *RgeoCodeResponseBody) SetErrorCode(v int32) *RgeoCodeResponseBody {
 
 func (s *RgeoCodeResponseBody) SetErrorMessage(v string) *RgeoCodeResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RgeoCodeResponseBody) SetMessage(v string) *RgeoCodeResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -3191,6 +3000,7 @@ func (s *TransitIntegratedDirectionRequest) SetOriginLongitude(v string) *Transi
 }
 
 type TransitIntegratedDirectionResponseBody struct {
+	Code *string                                     `json:"code,omitempty" xml:"code,omitempty"`
 	Data *TransitIntegratedDirectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -3200,6 +3010,7 @@ type TransitIntegratedDirectionResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -3215,6 +3026,11 @@ func (s TransitIntegratedDirectionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *TransitIntegratedDirectionResponseBody) SetCode(v string) *TransitIntegratedDirectionResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *TransitIntegratedDirectionResponseBody) SetData(v *TransitIntegratedDirectionResponseBodyData) *TransitIntegratedDirectionResponseBody {
 	s.Data = v
 	return s
@@ -3227,6 +3043,11 @@ func (s *TransitIntegratedDirectionResponseBody) SetErrorCode(v int32) *TransitI
 
 func (s *TransitIntegratedDirectionResponseBody) SetErrorMessage(v string) *TransitIntegratedDirectionResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBody) SetMessage(v string) *TransitIntegratedDirectionResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -4543,6 +4364,7 @@ func (s *WalkingDirectionNovaRequest) SetOriginLongitude(v string) *WalkingDirec
 }
 
 type WalkingDirectionNovaResponseBody struct {
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
 	Data *WalkingDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -4552,6 +4374,7 @@ type WalkingDirectionNovaResponseBody struct {
 	//
 	// Access was denied
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
@@ -4567,6 +4390,11 @@ func (s WalkingDirectionNovaResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *WalkingDirectionNovaResponseBody) SetCode(v string) *WalkingDirectionNovaResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *WalkingDirectionNovaResponseBody) SetData(v *WalkingDirectionNovaResponseBodyData) *WalkingDirectionNovaResponseBody {
 	s.Data = v
 	return s
@@ -4579,6 +4407,11 @@ func (s *WalkingDirectionNovaResponseBody) SetErrorCode(v int32) *WalkingDirecti
 
 func (s *WalkingDirectionNovaResponseBody) SetErrorMessage(v string) *WalkingDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *WalkingDirectionNovaResponseBody) SetMessage(v string) *WalkingDirectionNovaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -5169,82 +5002,6 @@ func (client *Client) DrivingDirectionNova(request *DrivingDirectionNovaRequest)
 	headers := make(map[string]*string)
 	_result = &DrivingDirectionNovaResponse{}
 	_body, _err := client.DrivingDirectionNovaWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据起终点坐标检索符合条件的电动车路线规划方案
-//
-// @param request - ElectrobikeDirectionRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ElectrobikeDirectionResponse
-func (client *Client) ElectrobikeDirectionWithOptions(request *ElectrobikeDirectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ElectrobikeDirectionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DestinationLatitude)) {
-		query["destinationLatitude"] = request.DestinationLatitude
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DestinationLongitude)) {
-		query["destinationLongitude"] = request.DestinationLongitude
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OriginLatitude)) {
-		query["originLatitude"] = request.OriginLatitude
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OriginLongitude)) {
-		query["originLongitude"] = request.OriginLongitude
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ElectrobikeDirection"),
-		Version:     tea.String("2024-07-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/ipaas/v1/direction/electrobike"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ElectrobikeDirectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据起终点坐标检索符合条件的电动车路线规划方案
-//
-// @param request - ElectrobikeDirectionRequest
-//
-// @return ElectrobikeDirectionResponse
-func (client *Client) ElectrobikeDirection(request *ElectrobikeDirectionRequest) (_result *ElectrobikeDirectionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ElectrobikeDirectionResponse{}
-	_body, _err := client.ElectrobikeDirectionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
