@@ -3303,6 +3303,7 @@ func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList) SetStatu
 type GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp struct {
 	DialogExecPlan *string                                                                                  `json:"dialogExecPlan,omitempty" xml:"dialogExecPlan,omitempty"`
 	DialogLabels   []*GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels `json:"dialogLabels,omitempty" xml:"dialogLabels,omitempty" type:"Repeated"`
+	DialogSop      *string                                                                                  `json:"dialogSop,omitempty" xml:"dialogSop,omitempty"`
 	DialogSummary  *string                                                                                  `json:"dialogSummary,omitempty" xml:"dialogSummary,omitempty"`
 }
 
@@ -3321,6 +3322,11 @@ func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRe
 
 func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp) SetDialogLabels(v []*GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels) *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp {
 	s.DialogLabels = v
+	return s
+}
+
+func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp) SetDialogSop(v string) *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp {
+	s.DialogSop = &v
 	return s
 }
 
