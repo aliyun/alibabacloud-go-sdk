@@ -4175,8 +4175,6 @@ type CreateTransitRouteTableAggregationRequest struct {
 	//
 	// Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// VPC
