@@ -973,6 +973,598 @@ func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionPkg(v string) *Lice
 	return s
 }
 
+type MediaConvertAudio struct {
+	Bitrate    *int64  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *int64  `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove     *bool   `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+}
+
+func (s MediaConvertAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertAudio) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertAudio) SetBitrate(v int64) *MediaConvertAudio {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *MediaConvertAudio) SetChannels(v int64) *MediaConvertAudio {
+	s.Channels = &v
+	return s
+}
+
+func (s *MediaConvertAudio) SetCodec(v string) *MediaConvertAudio {
+	s.Codec = &v
+	return s
+}
+
+func (s *MediaConvertAudio) SetProfile(v string) *MediaConvertAudio {
+	s.Profile = &v
+	return s
+}
+
+func (s *MediaConvertAudio) SetRemove(v bool) *MediaConvertAudio {
+	s.Remove = &v
+	return s
+}
+
+func (s *MediaConvertAudio) SetSamplerate(v string) *MediaConvertAudio {
+	s.Samplerate = &v
+	return s
+}
+
+type MediaConvertInput struct {
+	InputFile *MediaObject `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	Name      *string      `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s MediaConvertInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertInput) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertInput) SetInputFile(v *MediaObject) *MediaConvertInput {
+	s.InputFile = v
+	return s
+}
+
+func (s *MediaConvertInput) SetName(v string) *MediaConvertInput {
+	s.Name = &v
+	return s
+}
+
+type MediaConvertMuxConfig struct {
+	Segment *MediaConvertSegment `json:"Segment,omitempty" xml:"Segment,omitempty"`
+}
+
+func (s MediaConvertMuxConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertMuxConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertMuxConfig) SetSegment(v *MediaConvertSegment) *MediaConvertMuxConfig {
+	s.Segment = v
+	return s
+}
+
+type MediaConvertOutput struct {
+	Features       *string      `json:"Features,omitempty" xml:"Features,omitempty"`
+	Name           *string      `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputFile     *MediaObject `json:"OutputFile,omitempty" xml:"OutputFile,omitempty"`
+	OverrideParams *string      `json:"OverrideParams,omitempty" xml:"OverrideParams,omitempty"`
+	Priority       *int32       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	TemplateId     *string      `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s MediaConvertOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutput) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutput) SetFeatures(v string) *MediaConvertOutput {
+	s.Features = &v
+	return s
+}
+
+func (s *MediaConvertOutput) SetName(v string) *MediaConvertOutput {
+	s.Name = &v
+	return s
+}
+
+func (s *MediaConvertOutput) SetOutputFile(v *MediaObject) *MediaConvertOutput {
+	s.OutputFile = v
+	return s
+}
+
+func (s *MediaConvertOutput) SetOverrideParams(v string) *MediaConvertOutput {
+	s.OverrideParams = &v
+	return s
+}
+
+func (s *MediaConvertOutput) SetPriority(v int32) *MediaConvertOutput {
+	s.Priority = &v
+	return s
+}
+
+func (s *MediaConvertOutput) SetTemplateId(v string) *MediaConvertOutput {
+	s.TemplateId = &v
+	return s
+}
+
+type MediaConvertOutputDetail struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s MediaConvertOutputDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputDetail) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputDetail) SetCode(v string) *MediaConvertOutputDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetail) SetMessage(v string) *MediaConvertOutputDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetail) SetName(v string) *MediaConvertOutputDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetail) SetStatus(v string) *MediaConvertOutputDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetail) SetTaskId(v string) *MediaConvertOutputDetail {
+	s.TaskId = &v
+	return s
+}
+
+type MediaConvertOutputGroup struct {
+	GroupConfig *MediaConvertOutputGroupConfig   `json:"GroupConfig,omitempty" xml:"GroupConfig,omitempty"`
+	Name        *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs     []*MediaConvertOutputGroupOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+}
+
+func (s MediaConvertOutputGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputGroup) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputGroup) SetGroupConfig(v *MediaConvertOutputGroupConfig) *MediaConvertOutputGroup {
+	s.GroupConfig = v
+	return s
+}
+
+func (s *MediaConvertOutputGroup) SetName(v string) *MediaConvertOutputGroup {
+	s.Name = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroup) SetOutputs(v []*MediaConvertOutputGroupOutput) *MediaConvertOutputGroup {
+	s.Outputs = v
+	return s
+}
+
+type MediaConvertOutputGroupConfig struct {
+	ManifestName   *string      `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	OutputFileBase *MediaObject `json:"OutputFileBase,omitempty" xml:"OutputFileBase,omitempty"`
+	Type           *string      `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s MediaConvertOutputGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputGroupConfig) SetManifestName(v string) *MediaConvertOutputGroupConfig {
+	s.ManifestName = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupConfig) SetOutputFileBase(v *MediaObject) *MediaConvertOutputGroupConfig {
+	s.OutputFileBase = v
+	return s
+}
+
+func (s *MediaConvertOutputGroupConfig) SetType(v string) *MediaConvertOutputGroupConfig {
+	s.Type = &v
+	return s
+}
+
+type MediaConvertOutputGroupDetail struct {
+	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs []*MediaConvertOutputDetail `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	Status  *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId  *string                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s MediaConvertOutputGroupDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputGroupDetail) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputGroupDetail) SetCode(v string) *MediaConvertOutputGroupDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupDetail) SetMessage(v string) *MediaConvertOutputGroupDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupDetail) SetName(v string) *MediaConvertOutputGroupDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupDetail) SetOutputs(v []*MediaConvertOutputDetail) *MediaConvertOutputGroupDetail {
+	s.Outputs = v
+	return s
+}
+
+func (s *MediaConvertOutputGroupDetail) SetStatus(v string) *MediaConvertOutputGroupDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupDetail) SetTaskId(v string) *MediaConvertOutputGroupDetail {
+	s.TaskId = &v
+	return s
+}
+
+type MediaConvertOutputGroupOutput struct {
+	Features       *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputFileName *string `json:"OutputFileName,omitempty" xml:"OutputFileName,omitempty"`
+	OverrideParams *string `json:"OverrideParams,omitempty" xml:"OverrideParams,omitempty"`
+	Priority       *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s MediaConvertOutputGroupOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputGroupOutput) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputGroupOutput) SetFeatures(v string) *MediaConvertOutputGroupOutput {
+	s.Features = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupOutput) SetName(v string) *MediaConvertOutputGroupOutput {
+	s.Name = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupOutput) SetOutputFileName(v string) *MediaConvertOutputGroupOutput {
+	s.OutputFileName = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupOutput) SetOverrideParams(v string) *MediaConvertOutputGroupOutput {
+	s.OverrideParams = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupOutput) SetPriority(v int32) *MediaConvertOutputGroupOutput {
+	s.Priority = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupOutput) SetTemplateId(v string) *MediaConvertOutputGroupOutput {
+	s.TemplateId = &v
+	return s
+}
+
+type MediaConvertSegment struct {
+	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ForceSegTime *string `json:"ForceSegTime,omitempty" xml:"ForceSegTime,omitempty"`
+}
+
+func (s MediaConvertSegment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertSegment) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertSegment) SetDuration(v int32) *MediaConvertSegment {
+	s.Duration = &v
+	return s
+}
+
+func (s *MediaConvertSegment) SetForceSegTime(v string) *MediaConvertSegment {
+	s.ForceSegTime = &v
+	return s
+}
+
+type MediaConvertTransConfig struct {
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *bool   `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckAudioBitrateFail *bool   `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+	IsCheckReso             *bool   `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *bool   `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *bool   `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckVideoBitrateFail *bool   `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+}
+
+func (s MediaConvertTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertTransConfig) SetAdjDarMethod(v string) *MediaConvertTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *MediaConvertTransConfig) SetIsCheckAudioBitrate(v bool) *MediaConvertTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *MediaConvertTransConfig) SetIsCheckAudioBitrateFail(v bool) *MediaConvertTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+func (s *MediaConvertTransConfig) SetIsCheckReso(v bool) *MediaConvertTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *MediaConvertTransConfig) SetIsCheckResoFail(v bool) *MediaConvertTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *MediaConvertTransConfig) SetIsCheckVideoBitrate(v bool) *MediaConvertTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *MediaConvertTransConfig) SetIsCheckVideoBitrateFail(v bool) *MediaConvertTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *MediaConvertTransConfig) SetTransMode(v string) *MediaConvertTransConfig {
+	s.TransMode = &v
+	return s
+}
+
+type MediaConvertVideo struct {
+	Bitrate       *int32      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bufsize       *int32      `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string     `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           interface{} `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string     `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Fps           interface{} `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           interface{} `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height        *int32      `json:"Height,omitempty" xml:"Height,omitempty"`
+	LongShortMode *bool       `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	MaxFps        interface{} `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
+	Maxrate       *int32      `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad           *string     `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	Profile       *string     `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Qscale        *int32      `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Remove        *bool       `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ScanMode      *string     `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *int32      `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s MediaConvertVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertVideo) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertVideo) SetBitrate(v int32) *MediaConvertVideo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetBufsize(v int32) *MediaConvertVideo {
+	s.Bufsize = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetCodec(v string) *MediaConvertVideo {
+	s.Codec = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetCrf(v interface{}) *MediaConvertVideo {
+	s.Crf = v
+	return s
+}
+
+func (s *MediaConvertVideo) SetCrop(v string) *MediaConvertVideo {
+	s.Crop = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetFps(v interface{}) *MediaConvertVideo {
+	s.Fps = v
+	return s
+}
+
+func (s *MediaConvertVideo) SetGop(v interface{}) *MediaConvertVideo {
+	s.Gop = v
+	return s
+}
+
+func (s *MediaConvertVideo) SetHeight(v int32) *MediaConvertVideo {
+	s.Height = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetLongShortMode(v bool) *MediaConvertVideo {
+	s.LongShortMode = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetMaxFps(v interface{}) *MediaConvertVideo {
+	s.MaxFps = v
+	return s
+}
+
+func (s *MediaConvertVideo) SetMaxrate(v int32) *MediaConvertVideo {
+	s.Maxrate = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetPad(v string) *MediaConvertVideo {
+	s.Pad = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetProfile(v string) *MediaConvertVideo {
+	s.Profile = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetQscale(v int32) *MediaConvertVideo {
+	s.Qscale = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetRemove(v bool) *MediaConvertVideo {
+	s.Remove = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetScanMode(v string) *MediaConvertVideo {
+	s.ScanMode = &v
+	return s
+}
+
+func (s *MediaConvertVideo) SetWidth(v int32) *MediaConvertVideo {
+	s.Width = &v
+	return s
+}
+
+type MediaConvertVolume struct {
+	IntegratedLoudnessTarget *int32  `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	Level                    *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
+	LoudnessRangeTarget      *int32  `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TruePeak                 *int32  `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+}
+
+func (s MediaConvertVolume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertVolume) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertVolume) SetIntegratedLoudnessTarget(v int32) *MediaConvertVolume {
+	s.IntegratedLoudnessTarget = &v
+	return s
+}
+
+func (s *MediaConvertVolume) SetLevel(v int32) *MediaConvertVolume {
+	s.Level = &v
+	return s
+}
+
+func (s *MediaConvertVolume) SetLoudnessRangeTarget(v int32) *MediaConvertVolume {
+	s.LoudnessRangeTarget = &v
+	return s
+}
+
+func (s *MediaConvertVolume) SetMethod(v string) *MediaConvertVolume {
+	s.Method = &v
+	return s
+}
+
+func (s *MediaConvertVolume) SetTruePeak(v int32) *MediaConvertVolume {
+	s.TruePeak = &v
+	return s
+}
+
+type MediaObject struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s MediaObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaObject) GoString() string {
+	return s.String()
+}
+
+func (s *MediaObject) SetMedia(v string) *MediaObject {
+	s.Media = &v
+	return s
+}
+
+func (s *MediaObject) SetType(v string) *MediaObject {
+	s.Type = &v
+	return s
+}
+
+func (s *MediaObject) SetUrl(v string) *MediaObject {
+	s.Url = &v
+	return s
+}
+
 type Program struct {
 	AdBreaks           []*ProgramAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
 	Arn                *string            `json:"Arn,omitempty" xml:"Arn,omitempty"`
@@ -16739,6 +17331,185 @@ func (s *GetLiveTranscodeTemplateResponse) SetStatusCode(v int32) *GetLiveTransc
 }
 
 func (s *GetLiveTranscodeTemplateResponse) SetBody(v *GetLiveTranscodeTemplateResponseBody) *GetLiveTranscodeTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetMediaConvertJobRequest struct {
+	// example:
+	//
+	// ****d80e4e4044975745c14b****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetMediaConvertJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConvertJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConvertJobRequest) SetJobId(v string) *GetMediaConvertJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetMediaConvertJobResponseBody struct {
+	Job *GetMediaConvertJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMediaConvertJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConvertJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConvertJobResponseBody) SetJob(v *GetMediaConvertJobResponseBodyJob) *GetMediaConvertJobResponseBody {
+	s.Job = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBody) SetRequestId(v string) *GetMediaConvertJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMediaConvertJobResponseBodyJob struct {
+	ClientToken        *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Code               *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Config             *GetMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	JobId              *string                                  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message            *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	OutputDetails      []*MediaConvertOutputDetail              `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	OutputGroupDetails []*MediaConvertOutputGroupDetail         `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
+	PipelineId         *string                                  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	RequestId          *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State              *string                                  `json:"State,omitempty" xml:"State,omitempty"`
+	UserData           *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetMediaConvertJobResponseBodyJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConvertJobResponseBodyJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetClientToken(v string) *GetMediaConvertJobResponseBodyJob {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetCode(v string) *GetMediaConvertJobResponseBodyJob {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetConfig(v *GetMediaConvertJobResponseBodyJobConfig) *GetMediaConvertJobResponseBodyJob {
+	s.Config = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetJobId(v string) *GetMediaConvertJobResponseBodyJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetMessage(v string) *GetMediaConvertJobResponseBodyJob {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetOutputDetails(v []*MediaConvertOutputDetail) *GetMediaConvertJobResponseBodyJob {
+	s.OutputDetails = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetOutputGroupDetails(v []*MediaConvertOutputGroupDetail) *GetMediaConvertJobResponseBodyJob {
+	s.OutputGroupDetails = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetPipelineId(v string) *GetMediaConvertJobResponseBodyJob {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetRequestId(v string) *GetMediaConvertJobResponseBodyJob {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetState(v string) *GetMediaConvertJobResponseBodyJob {
+	s.State = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetUserData(v string) *GetMediaConvertJobResponseBodyJob {
+	s.UserData = &v
+	return s
+}
+
+type GetMediaConvertJobResponseBodyJobConfig struct {
+	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+}
+
+func (s GetMediaConvertJobResponseBodyJobConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConvertJobResponseBodyJobConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConvertJobResponseBodyJobConfig) SetInputs(v []*MediaConvertInput) *GetMediaConvertJobResponseBodyJobConfig {
+	s.Inputs = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJobConfig) SetOutputGroups(v []*MediaConvertOutputGroup) *GetMediaConvertJobResponseBodyJobConfig {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJobConfig) SetOutputs(v []*MediaConvertOutput) *GetMediaConvertJobResponseBodyJobConfig {
+	s.Outputs = v
+	return s
+}
+
+type GetMediaConvertJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaConvertJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMediaConvertJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConvertJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConvertJobResponse) SetHeaders(v map[string]*string) *GetMediaConvertJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponse) SetStatusCode(v int32) *GetMediaConvertJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponse) SetBody(v *GetMediaConvertJobResponseBody) *GetMediaConvertJobResponse {
 	s.Body = v
 	return s
 }
@@ -57793,6 +58564,223 @@ func (s *SubmitMediaCensorJobResponse) SetBody(v *SubmitMediaCensorJobResponseBo
 	return s
 }
 
+type SubmitMediaConvertJobRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserData   *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitMediaConvertJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaConvertJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaConvertJobRequest) SetClientToken(v string) *SubmitMediaConvertJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobRequest) SetConfig(v string) *SubmitMediaConvertJobRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobRequest) SetPipelineId(v string) *SubmitMediaConvertJobRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobRequest) SetUserData(v string) *SubmitMediaConvertJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitMediaConvertJobResponseBody struct {
+	Job *SubmitMediaConvertJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitMediaConvertJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaConvertJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaConvertJobResponseBody) SetJob(v *SubmitMediaConvertJobResponseBodyJob) *SubmitMediaConvertJobResponseBody {
+	s.Job = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBody) SetRequestId(v string) *SubmitMediaConvertJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitMediaConvertJobResponseBodyJob struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 200
+	Code   *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Config *SubmitMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// ****20b48fb04483915d4f2cd8ac****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ok
+	Message            *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	OutputDetails      []*MediaConvertOutputDetail      `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3780049
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// example:
+	//
+	// A2129C9F-CE95-58B5-B8C1-07758FF6C86F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Created
+	State    *string `json:"State,omitempty" xml:"State,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitMediaConvertJobResponseBodyJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaConvertJobResponseBodyJob) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetClientToken(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetCode(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetConfig(v *SubmitMediaConvertJobResponseBodyJobConfig) *SubmitMediaConvertJobResponseBodyJob {
+	s.Config = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetJobId(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetMessage(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetOutputDetails(v []*MediaConvertOutputDetail) *SubmitMediaConvertJobResponseBodyJob {
+	s.OutputDetails = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetOutputGroupDetails(v []*MediaConvertOutputGroupDetail) *SubmitMediaConvertJobResponseBodyJob {
+	s.OutputGroupDetails = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetPipelineId(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetRequestId(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetState(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.State = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJob) SetUserData(v string) *SubmitMediaConvertJobResponseBodyJob {
+	s.UserData = &v
+	return s
+}
+
+type SubmitMediaConvertJobResponseBodyJobConfig struct {
+	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+}
+
+func (s SubmitMediaConvertJobResponseBodyJobConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaConvertJobResponseBodyJobConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJobConfig) SetInputs(v []*MediaConvertInput) *SubmitMediaConvertJobResponseBodyJobConfig {
+	s.Inputs = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJobConfig) SetOutputGroups(v []*MediaConvertOutputGroup) *SubmitMediaConvertJobResponseBodyJobConfig {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJobConfig) SetOutputs(v []*MediaConvertOutput) *SubmitMediaConvertJobResponseBodyJobConfig {
+	s.Outputs = v
+	return s
+}
+
+type SubmitMediaConvertJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitMediaConvertJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitMediaConvertJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaConvertJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaConvertJobResponse) SetHeaders(v map[string]*string) *SubmitMediaConvertJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponse) SetStatusCode(v int32) *SubmitMediaConvertJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponse) SetBody(v *SubmitMediaConvertJobResponseBody) *SubmitMediaConvertJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitMediaInfoJobRequest struct {
 	// The input of the job.
 	//
@@ -77824,6 +78812,66 @@ func (client *Client) GetLiveTranscodeTemplate(request *GetLiveTranscodeTemplate
 
 // Summary:
 //
+// 获取 MediaConvert 任务详情
+//
+// @param request - GetMediaConvertJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMediaConvertJobResponse
+func (client *Client) GetMediaConvertJobWithOptions(request *GetMediaConvertJobRequest, runtime *util.RuntimeOptions) (_result *GetMediaConvertJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaConvertJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMediaConvertJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 MediaConvert 任务详情
+//
+// @param request - GetMediaConvertJobRequest
+//
+// @return GetMediaConvertJobResponse
+func (client *Client) GetMediaConvertJob(request *GetMediaConvertJobRequest) (_result *GetMediaConvertJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaConvertJobResponse{}
+	_body, _err := client.GetMediaConvertJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
 //
 // Description:
@@ -86598,6 +87646,78 @@ func (client *Client) SubmitMediaCensorJob(request *SubmitMediaCensorJobRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitMediaCensorJobResponse{}
 	_body, _err := client.SubmitMediaCensorJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交媒体处理任务
+//
+// @param request - SubmitMediaConvertJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitMediaConvertJobResponse
+func (client *Client) SubmitMediaConvertJobWithOptions(request *SubmitMediaConvertJobRequest, runtime *util.RuntimeOptions) (_result *SubmitMediaConvertJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitMediaConvertJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitMediaConvertJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交媒体处理任务
+//
+// @param request - SubmitMediaConvertJobRequest
+//
+// @return SubmitMediaConvertJobResponse
+func (client *Client) SubmitMediaConvertJob(request *SubmitMediaConvertJobRequest) (_result *SubmitMediaConvertJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitMediaConvertJobResponse{}
+	_body, _err := client.SubmitMediaConvertJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
