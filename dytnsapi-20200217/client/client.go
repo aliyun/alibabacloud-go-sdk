@@ -3091,6 +3091,301 @@ func (s *DescribePhoneNumberOperatorAttributeResponse) SetBody(v *DescribePhoneN
 	return s
 }
 
+type DescribePhoneNumberOperatorAttributeAnnualRequest struct {
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	Mask     *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualRequest) SetAuthCode(v string) *DescribePhoneNumberOperatorAttributeAnnualRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualRequest) SetMask(v string) *DescribePhoneNumberOperatorAttributeAnnualRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualRequest) SetNumber(v string) *DescribePhoneNumberOperatorAttributeAnnualRequest {
+	s.Number = &v
+	return s
+}
+
+type DescribePhoneNumberOperatorAttributeAnnualResponseBody struct {
+	Code      *string                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBody) SetCode(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBody) SetData(v *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) *DescribePhoneNumberOperatorAttributeAnnualResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBody) SetMessage(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBody) SetRequestId(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBody) SetSuccess(v bool) *DescribePhoneNumberOperatorAttributeAnnualResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribePhoneNumberOperatorAttributeAnnualResponseBodyData struct {
+	BasicCarrier      *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	Carrier           *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	City              *string `json:"City,omitempty" xml:"City,omitempty"`
+	Mts               *string `json:"Mts,omitempty" xml:"Mts,omitempty"`
+	NumberPortability *bool   `json:"NumberPortability,omitempty" xml:"NumberPortability,omitempty"`
+	Province          *string `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) SetBasicCarrier(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData {
+	s.BasicCarrier = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) SetCarrier(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData {
+	s.Carrier = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) SetCity(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) SetMts(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData {
+	s.Mts = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) SetNumberPortability(v bool) *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData {
+	s.NumberPortability = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData) SetProvince(v string) *DescribePhoneNumberOperatorAttributeAnnualResponseBodyData {
+	s.Province = &v
+	return s
+}
+
+type DescribePhoneNumberOperatorAttributeAnnualResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberOperatorAttributeAnnualResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberOperatorAttributeAnnualResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponse) SetStatusCode(v int32) *DescribePhoneNumberOperatorAttributeAnnualResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualResponse) SetBody(v *DescribePhoneNumberOperatorAttributeAnnualResponseBody) *DescribePhoneNumberOperatorAttributeAnnualResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePhoneNumberOperatorAttributeAnnualUseRequest struct {
+	// This parameter is required.
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// This parameter is required.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// This parameter is required.
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseRequest) SetAuthCode(v string) *DescribePhoneNumberOperatorAttributeAnnualUseRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseRequest) SetInputNumber(v string) *DescribePhoneNumberOperatorAttributeAnnualUseRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseRequest) SetMask(v string) *DescribePhoneNumberOperatorAttributeAnnualUseRequest {
+	s.Mask = &v
+	return s
+}
+
+type DescribePhoneNumberOperatorAttributeAnnualUseResponseBody struct {
+	AccessDeniedDetail *string                                                        `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) SetAccessDeniedDetail(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) SetCode(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) SetData(v *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) SetMessage(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) SetRequestId(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData struct {
+	BasicCarrier        *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	Carrier             *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	City                *string `json:"City,omitempty" xml:"City,omitempty"`
+	IsNumberPortability *bool   `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
+	NumberSegment       *int64  `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
+	Province            *string `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) SetBasicCarrier(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData {
+	s.BasicCarrier = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) SetCarrier(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData {
+	s.Carrier = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) SetCity(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) SetIsNumberPortability(v bool) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData {
+	s.IsNumberPortability = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) SetNumberSegment(v int64) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData {
+	s.NumberSegment = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData) SetProvince(v string) *DescribePhoneNumberOperatorAttributeAnnualUseResponseBodyData {
+	s.Province = &v
+	return s
+}
+
+type DescribePhoneNumberOperatorAttributeAnnualUseResponse struct {
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberOperatorAttributeAnnualUseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberOperatorAttributeAnnualUseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponse) SetStatusCode(v int32) *DescribePhoneNumberOperatorAttributeAnnualUseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeAnnualUseResponse) SetBody(v *DescribePhoneNumberOperatorAttributeAnnualUseResponseBody) *DescribePhoneNumberOperatorAttributeAnnualUseResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePhoneNumberRiskRequest struct {
 	// This parameter is required.
 	//
@@ -10038,6 +10333,142 @@ func (client *Client) DescribePhoneNumberOperatorAttribute(request *DescribePhon
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberOperatorAttributeResponse{}
 	_body, _err := client.DescribePhoneNumberOperatorAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码归属服务(包年包月客户专用)
+//
+// @param request - DescribePhoneNumberOperatorAttributeAnnualRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePhoneNumberOperatorAttributeAnnualResponse
+func (client *Client) DescribePhoneNumberOperatorAttributeAnnualWithOptions(request *DescribePhoneNumberOperatorAttributeAnnualRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberOperatorAttributeAnnualResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePhoneNumberOperatorAttributeAnnual"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePhoneNumberOperatorAttributeAnnualResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码归属服务(包年包月客户专用)
+//
+// @param request - DescribePhoneNumberOperatorAttributeAnnualRequest
+//
+// @return DescribePhoneNumberOperatorAttributeAnnualResponse
+func (client *Client) DescribePhoneNumberOperatorAttributeAnnual(request *DescribePhoneNumberOperatorAttributeAnnualRequest) (_result *DescribePhoneNumberOperatorAttributeAnnualResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePhoneNumberOperatorAttributeAnnualResponse{}
+	_body, _err := client.DescribePhoneNumberOperatorAttributeAnnualWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码归属服务(包年包月客户专用)
+//
+// @param request - DescribePhoneNumberOperatorAttributeAnnualUseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePhoneNumberOperatorAttributeAnnualUseResponse
+func (client *Client) DescribePhoneNumberOperatorAttributeAnnualUseWithOptions(request *DescribePhoneNumberOperatorAttributeAnnualUseRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberOperatorAttributeAnnualUseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePhoneNumberOperatorAttributeAnnualUse"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePhoneNumberOperatorAttributeAnnualUseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码归属服务(包年包月客户专用)
+//
+// @param request - DescribePhoneNumberOperatorAttributeAnnualUseRequest
+//
+// @return DescribePhoneNumberOperatorAttributeAnnualUseResponse
+func (client *Client) DescribePhoneNumberOperatorAttributeAnnualUse(request *DescribePhoneNumberOperatorAttributeAnnualUseRequest) (_result *DescribePhoneNumberOperatorAttributeAnnualUseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePhoneNumberOperatorAttributeAnnualUseResponse{}
+	_body, _err := client.DescribePhoneNumberOperatorAttributeAnnualUseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
