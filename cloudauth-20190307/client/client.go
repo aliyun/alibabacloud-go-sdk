@@ -4856,6 +4856,7 @@ type InitFaceVerifyRequest struct {
 	Birthday        *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
 	CallbackToken   *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
 	CallbackUrl     *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CameraSelection *string `json:"CameraSelection,omitempty" xml:"CameraSelection,omitempty"`
 	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// example:
 	//
@@ -4964,6 +4965,11 @@ func (s *InitFaceVerifyRequest) SetCallbackToken(v string) *InitFaceVerifyReques
 
 func (s *InitFaceVerifyRequest) SetCallbackUrl(v string) *InitFaceVerifyRequest {
 	s.CallbackUrl = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetCameraSelection(v string) *InitFaceVerifyRequest {
+	s.CameraSelection = &v
 	return s
 }
 
@@ -10212,6 +10218,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
 		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CameraSelection)) {
+		query["CameraSelection"] = request.CameraSelection
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CertName)) {
