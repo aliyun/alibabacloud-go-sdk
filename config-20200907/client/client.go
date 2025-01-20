@@ -4849,8 +4849,9 @@ type CreateConfigRuleRequest struct {
 	// example:
 	//
 	// ALIYUN
-	SourceOwner *string                       `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	Tag         []*CreateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// rule attached tags
+	Tag []*CreateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -5038,7 +5039,23 @@ func (s *CreateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *CreateC
 }
 
 type CreateConfigRuleRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag keys.
+	//
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5250,7 +5267,8 @@ type CreateConfigRuleShrinkRequest struct {
 	//
 	// ALIYUN
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// rule attached tags
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -8272,6 +8290,7 @@ type EvaluatePreConfigRulesRequest struct {
 	//
 	// This parameter is required.
 	ResourceEvaluateItems []*EvaluatePreConfigRulesRequestResourceEvaluateItems `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty" type:"Repeated"`
+	ResourceTypeFormat    *string                                               `json:"ResourceTypeFormat,omitempty" xml:"ResourceTypeFormat,omitempty"`
 }
 
 func (s EvaluatePreConfigRulesRequest) String() string {
@@ -8289,6 +8308,11 @@ func (s *EvaluatePreConfigRulesRequest) SetEnableManagedRules(v bool) *EvaluateP
 
 func (s *EvaluatePreConfigRulesRequest) SetResourceEvaluateItems(v []*EvaluatePreConfigRulesRequestResourceEvaluateItems) *EvaluatePreConfigRulesRequest {
 	s.ResourceEvaluateItems = v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesRequest) SetResourceTypeFormat(v string) *EvaluatePreConfigRulesRequest {
+	s.ResourceTypeFormat = &v
 	return s
 }
 
@@ -8405,6 +8429,7 @@ type EvaluatePreConfigRulesShrinkRequest struct {
 	//
 	// This parameter is required.
 	ResourceEvaluateItemsShrink *string `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty"`
+	ResourceTypeFormat          *string `json:"ResourceTypeFormat,omitempty" xml:"ResourceTypeFormat,omitempty"`
 }
 
 func (s EvaluatePreConfigRulesShrinkRequest) String() string {
@@ -8422,6 +8447,11 @@ func (s *EvaluatePreConfigRulesShrinkRequest) SetEnableManagedRules(v bool) *Eva
 
 func (s *EvaluatePreConfigRulesShrinkRequest) SetResourceEvaluateItemsShrink(v string) *EvaluatePreConfigRulesShrinkRequest {
 	s.ResourceEvaluateItemsShrink = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesShrinkRequest) SetResourceTypeFormat(v string) *EvaluatePreConfigRulesShrinkRequest {
+	s.ResourceTypeFormat = &v
 	return s
 }
 
@@ -11031,8 +11061,11 @@ type GetAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// cr-7f7d626622af0041****
-	ConfigRuleId *string                             `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	Tag          []*GetAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*GetAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregateConfigRuleRequest) String() string {
@@ -11059,7 +11092,23 @@ func (s *GetAggregateConfigRuleRequest) SetTag(v []*GetAggregateConfigRuleReques
 }
 
 type GetAggregateConfigRuleRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11102,7 +11151,10 @@ type GetAggregateConfigRuleShrinkRequest struct {
 	//
 	// cr-7f7d626622af0041****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	TagShrink    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetAggregateConfigRuleShrinkRequest) String() string {
@@ -11377,8 +11429,9 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	// example:
 	//
 	// MFA
-	TagValueScope *string                                             `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	Tags          []*GetAggregateConfigRuleResponseBodyConfigRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The list of tags.
+	Tags []*GetAggregateConfigRuleResponseBodyConfigRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The tag scope.
 	TagsScope []*GetAggregateConfigRuleResponseBodyConfigRuleTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
@@ -12080,7 +12133,17 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMes
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -16548,8 +16611,11 @@ type GetConfigRuleRequest struct {
 	// example:
 	//
 	// cr-7f7d626622af0041****
-	ConfigRuleId *string                    `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	Tag          []*GetConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*GetConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetConfigRuleRequest) String() string {
@@ -16571,7 +16637,21 @@ func (s *GetConfigRuleRequest) SetTag(v []*GetConfigRuleRequestTag) *GetConfigRu
 }
 
 type GetConfigRuleRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16604,7 +16684,10 @@ type GetConfigRuleShrinkRequest struct {
 	//
 	// cr-7f7d626622af0041****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	TagShrink    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetConfigRuleShrinkRequest) String() string {
@@ -16842,8 +16925,9 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	// example:
 	//
 	// MFA
-	TagValueScope *string                                    `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	Tags          []*GetConfigRuleResponseBodyConfigRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The tag list.
+	Tags []*GetConfigRuleResponseBodyConfigRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// TagsScope
 	TagsScope []*GetConfigRuleResponseBodyConfigRuleTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
@@ -17519,7 +17603,17 @@ func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMessageType(
 }
 
 type GetConfigRuleResponseBodyConfigRuleTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -27047,8 +27141,11 @@ type ListConfigRulesRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32                       `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Tag       []*ListConfigRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*ListConfigRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListConfigRulesRequest) String() string {
@@ -27110,7 +27207,23 @@ func (s *ListConfigRulesRequest) SetTag(v []*ListConfigRulesRequestTag) *ListCon
 }
 
 type ListConfigRulesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -27218,7 +27331,10 @@ type ListConfigRulesShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -35981,8 +36097,11 @@ type UpdateConfigRuleRequest struct {
 	// example:
 	//
 	// 3
-	RiskLevel *int32                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Tag       []*UpdateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*UpdateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -36165,7 +36284,17 @@ func (s *UpdateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *UpdateC
 }
 
 type UpdateConfigRuleRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the key pair. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N. Valid values of N: **1 to 20**. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` and `acs:`.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -36357,7 +36486,10 @@ type UpdateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// 3
-	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
@@ -40355,6 +40487,10 @@ func (client *Client) EvaluatePreConfigRulesWithOptions(tmpReq *EvaluatePreConfi
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceEvaluateItemsShrink)) {
 		body["ResourceEvaluateItems"] = request.ResourceEvaluateItemsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypeFormat)) {
+		body["ResourceTypeFormat"] = request.ResourceTypeFormat
 	}
 
 	req := &openapi.OpenApiRequest{
