@@ -7001,6 +7001,140 @@ func (s *CreateAudioFileResponse) SetBody(v *CreateAudioFileResponseBody) *Creat
 	return s
 }
 
+type CreateCallSummaryRequest struct {
+	// example:
+	//
+	// job-522327189435260928
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Context   *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// example:
+	//
+	// 51e155ce-3747-*****-b402-13c69597b920
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateCallSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCallSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCallSummaryRequest) SetContactId(v string) *CreateCallSummaryRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *CreateCallSummaryRequest) SetContext(v string) *CreateCallSummaryRequest {
+	s.Context = &v
+	return s
+}
+
+func (s *CreateCallSummaryRequest) SetCustomerId(v string) *CreateCallSummaryRequest {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *CreateCallSummaryRequest) SetInstanceId(v string) *CreateCallSummaryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateCallSummaryResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// c58b9719-3bc3-441d-a4d3-fc0309ef7066
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8707EB29-BAED-4302-B999-40BA61877437
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCallSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCallSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCallSummaryResponseBody) SetCode(v string) *CreateCallSummaryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateCallSummaryResponseBody) SetData(v string) *CreateCallSummaryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateCallSummaryResponseBody) SetHttpStatusCode(v int32) *CreateCallSummaryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateCallSummaryResponseBody) SetMessage(v string) *CreateCallSummaryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateCallSummaryResponseBody) SetParams(v []*string) *CreateCallSummaryResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *CreateCallSummaryResponseBody) SetRequestId(v string) *CreateCallSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCallSummaryResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCallSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCallSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCallSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCallSummaryResponse) SetHeaders(v map[string]*string) *CreateCallSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCallSummaryResponse) SetStatusCode(v int32) *CreateCallSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCallSummaryResponse) SetBody(v *CreateCallSummaryResponseBody) *CreateCallSummaryResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCallTagsRequest struct {
 	// This parameter is required.
 	//
@@ -19120,6 +19254,389 @@ func (s *GetSkillGroupResponse) SetStatusCode(v int32) *GetSkillGroupResponse {
 }
 
 func (s *GetSkillGroupResponse) SetBody(v *GetSkillGroupResponseBody) *GetSkillGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetSummaryTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 43c2671b-8939-4223-86d0-6bd187905cc8_1717664210492
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetSummaryTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTemplateRequest) SetInstanceId(v string) *GetSummaryTemplateRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSummaryTemplateRequest) SetTemplateId(v string) *GetSummaryTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetSummaryTemplateResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSummaryTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30C7D235-DDCF-4C7F-A462-5E2598252C2B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSummaryTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTemplateResponseBody) SetCode(v string) *GetSummaryTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBody) SetData(v *GetSummaryTemplateResponseBodyData) *GetSummaryTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBody) SetHttpStatusCode(v int32) *GetSummaryTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBody) SetMessage(v string) *GetSummaryTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBody) SetParams(v []*string) *GetSummaryTemplateResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBody) SetRequestId(v string) *GetSummaryTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSummaryTemplateResponseBodyData struct {
+	// example:
+	//
+	// 8939-4223-86d0-6bd187905cc8
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// editor-xxx@ccc-test
+	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId   *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name         *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	PropertyList []*GetSummaryTemplateResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Enabled
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 43c2671b-8939-4223-86d0-6bd187905cc8_1717664210492
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetSummaryTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTemplateResponseBodyData) SetCategoryId(v string) *GetSummaryTemplateResponseBodyData {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyData) SetEditor(v string) *GetSummaryTemplateResponseBodyData {
+	s.Editor = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyData) SetInstanceId(v string) *GetSummaryTemplateResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyData) SetName(v string) *GetSummaryTemplateResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyData) SetPropertyList(v []*GetSummaryTemplateResponseBodyDataPropertyList) *GetSummaryTemplateResponseBodyData {
+	s.PropertyList = v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyData) SetState(v string) *GetSummaryTemplateResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyData) SetTemplateId(v string) *GetSummaryTemplateResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+type GetSummaryTemplateResponseBodyDataPropertyList struct {
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// {}
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// 1717664210000
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// cretor-xxx@ccc-test
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// string
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// Description-xxxx
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// example:
+	//
+	// DisplayName-A
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 1
+	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// example:
+	//
+	// textbox
+	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// example:
+	//
+	// 30
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 10
+	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// example:
+	//
+	// 1
+	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// example:
+	//
+	// 1
+	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// example:
+	//
+	// Name-A
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ^
+	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// example:
+	//
+	// false
+	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// example:
+	//
+	// 1717664210000
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s GetSummaryTemplateResponseBodyDataPropertyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTemplateResponseBodyDataPropertyList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetArray(v bool) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Array = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetAttributes(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Attributes = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetCreatedTime(v int64) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetCreator(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetDataType(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetDescription(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetDisabled(v bool) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Disabled = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetDisplayName(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetDisplayOrder(v int32) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.DisplayOrder = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetEditorType(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.EditorType = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetMaxLength(v int32) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetMaximum(v float64) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Maximum = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetMinLength(v int32) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.MinLength = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetMinimum(v float64) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Minimum = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetName(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetPattern(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetPatternErrorMessage(v string) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.PatternErrorMessage = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetReadOnly(v bool) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetRequired(v bool) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.Required = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetSystem(v bool) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.System = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponseBodyDataPropertyList) SetUpdatedTime(v int64) *GetSummaryTemplateResponseBodyDataPropertyList {
+	s.UpdatedTime = &v
+	return s
+}
+
+type GetSummaryTemplateResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSummaryTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSummaryTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTemplateResponse) SetHeaders(v map[string]*string) *GetSummaryTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSummaryTemplateResponse) SetStatusCode(v int32) *GetSummaryTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSummaryTemplateResponse) SetBody(v *GetSummaryTemplateResponseBody) *GetSummaryTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -64849,6 +65366,130 @@ func (s *UnregisterDeviceResponse) SetBody(v *UnregisterDeviceResponseBody) *Unr
 	return s
 }
 
+type UpdateCallSummaryRequest struct {
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f2c6722b-cd13-442d-bf10-22a07c70d6d5
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s UpdateCallSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallSummaryRequest) SetContext(v string) *UpdateCallSummaryRequest {
+	s.Context = &v
+	return s
+}
+
+func (s *UpdateCallSummaryRequest) SetInstanceId(v string) *UpdateCallSummaryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCallSummaryRequest) SetTicketId(v string) *UpdateCallSummaryRequest {
+	s.TicketId = &v
+	return s
+}
+
+type UpdateCallSummaryResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9FBA26B0-462B-4D77-B78F-AF35560DBC71
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCallSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallSummaryResponseBody) SetCode(v string) *UpdateCallSummaryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateCallSummaryResponseBody) SetData(v interface{}) *UpdateCallSummaryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateCallSummaryResponseBody) SetHttpStatusCode(v int32) *UpdateCallSummaryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateCallSummaryResponseBody) SetMessage(v string) *UpdateCallSummaryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCallSummaryResponseBody) SetParams(v []*string) *UpdateCallSummaryResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateCallSummaryResponseBody) SetRequestId(v string) *UpdateCallSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCallSummaryResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCallSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCallSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallSummaryResponse) SetHeaders(v map[string]*string) *UpdateCallSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCallSummaryResponse) SetStatusCode(v int32) *UpdateCallSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCallSummaryResponse) SetBody(v *UpdateCallSummaryResponseBody) *UpdateCallSummaryResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateCampaignRequest struct {
 	// example:
 	//
@@ -68192,6 +68833,81 @@ func (client *Client) CreateAudioFile(request *CreateAudioFileRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAudioFileResponse{}
 	_body, _err := client.CreateAudioFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateCallSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCallSummaryResponse
+func (client *Client) CreateCallSummaryWithOptions(request *CreateCallSummaryRequest, runtime *util.RuntimeOptions) (_result *CreateCallSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerId)) {
+		query["CustomerId"] = request.CustomerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCallSummary"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCallSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCallSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - CreateCallSummaryRequest
+//
+// @return CreateCallSummaryResponse
+func (client *Client) CreateCallSummary(request *CreateCallSummaryRequest) (_result *CreateCallSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCallSummaryResponse{}
+	_body, _err := client.CreateCallSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -72614,6 +73330,73 @@ func (client *Client) GetSkillGroup(request *GetSkillGroupRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupResponse{}
 	_body, _err := client.GetSkillGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetSummaryTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSummaryTemplateResponse
+func (client *Client) GetSummaryTemplateWithOptions(request *GetSummaryTemplateRequest, runtime *util.RuntimeOptions) (_result *GetSummaryTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSummaryTemplate"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSummaryTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSummaryTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - GetSummaryTemplateRequest
+//
+// @return GetSummaryTemplateResponse
+func (client *Client) GetSummaryTemplate(request *GetSummaryTemplateRequest) (_result *GetSummaryTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSummaryTemplateResponse{}
+	_body, _err := client.GetSummaryTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -84219,6 +85002,77 @@ func (client *Client) UnregisterDevice(request *UnregisterDeviceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UnregisterDeviceResponse{}
 	_body, _err := client.UnregisterDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCallSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCallSummaryResponse
+func (client *Client) UpdateCallSummaryWithOptions(request *UpdateCallSummaryRequest, runtime *util.RuntimeOptions) (_result *UpdateCallSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCallSummary"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCallSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCallSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - UpdateCallSummaryRequest
+//
+// @return UpdateCallSummaryResponse
+func (client *Client) UpdateCallSummary(request *UpdateCallSummaryRequest) (_result *UpdateCallSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCallSummaryResponse{}
+	_body, _err := client.UpdateCallSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
