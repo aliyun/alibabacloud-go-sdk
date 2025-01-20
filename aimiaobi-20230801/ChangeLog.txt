@@ -1,3 +1,7 @@
+2025-01-20 Version: v1.16.0
+- Support API RunSearchSimilarArticles.
+
+
 2025-01-03 Version: v1.15.1
 - Update API SubmitSmartClipTask: add param ExtendParam.
 - Update API SubmitSmartClipTask: update param EditingConfig.
