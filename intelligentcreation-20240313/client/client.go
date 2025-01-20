@@ -252,7 +252,8 @@ type IllustrationTaskCreateCmd struct {
 	// example:
 	//
 	// 28274623764834
-	IdempotentId *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
+	IdempotentId *string   `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
+	ImageUrls    []*string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 4
@@ -286,6 +287,11 @@ func (s *IllustrationTaskCreateCmd) SetDstWidth(v int32) *IllustrationTaskCreate
 
 func (s *IllustrationTaskCreateCmd) SetIdempotentId(v string) *IllustrationTaskCreateCmd {
 	s.IdempotentId = &v
+	return s
+}
+
+func (s *IllustrationTaskCreateCmd) SetImageUrls(v []*string) *IllustrationTaskCreateCmd {
+	s.ImageUrls = v
 	return s
 }
 
@@ -592,9 +598,9 @@ type TextTask struct {
 	// example:
 	//
 	// xxx
-	Point        *string       `json:"point,omitempty" xml:"point,omitempty"`
-	ReferenceTag *ReferenceTag `json:"referenceTag,omitempty" xml:"referenceTag,omitempty"`
-	RelatedRagId *int32        `json:"relatedRagId,omitempty" xml:"relatedRagId,omitempty"`
+	Point         *string       `json:"point,omitempty" xml:"point,omitempty"`
+	ReferenceTag  *ReferenceTag `json:"referenceTag,omitempty" xml:"referenceTag,omitempty"`
+	RelatedRagIds []*int64      `json:"relatedRagIds,omitempty" xml:"relatedRagIds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Style   *string  `json:"style,omitempty" xml:"style,omitempty"`
 	Target  *string  `json:"target,omitempty" xml:"target,omitempty"`
@@ -664,8 +670,8 @@ func (s *TextTask) SetReferenceTag(v *ReferenceTag) *TextTask {
 	return s
 }
 
-func (s *TextTask) SetRelatedRagId(v int32) *TextTask {
-	s.RelatedRagId = &v
+func (s *TextTask) SetRelatedRagIds(v []*int64) *TextTask {
+	s.RelatedRagIds = v
 	return s
 }
 
@@ -1151,6 +1157,98 @@ func (s *AddTextFeedbackResponse) SetStatusCode(v int32) *AddTextFeedbackRespons
 }
 
 func (s *AddTextFeedbackResponse) SetBody(v *AddTextFeedbackResponseBody) *AddTextFeedbackResponse {
+	s.Body = v
+	return s
+}
+
+type BatchCreateAICoachTaskRequest struct {
+	// example:
+	//
+	// 7915125A-0D96-5A25-A54B-D3B739A86AFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1
+	ScriptRecordId *string   `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	StudentIds     []*string `json:"studentIds,omitempty" xml:"studentIds,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateAICoachTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateAICoachTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateAICoachTaskRequest) SetRequestId(v string) *BatchCreateAICoachTaskRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateAICoachTaskRequest) SetScriptRecordId(v string) *BatchCreateAICoachTaskRequest {
+	s.ScriptRecordId = &v
+	return s
+}
+
+func (s *BatchCreateAICoachTaskRequest) SetStudentIds(v []*string) *BatchCreateAICoachTaskRequest {
+	s.StudentIds = v
+	return s
+}
+
+type BatchCreateAICoachTaskResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 10923AA3-F7A1-5EA0-ACCA-D704269EAA78
+	RequestId *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TaskIds   []*string `json:"taskIds,omitempty" xml:"taskIds,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateAICoachTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateAICoachTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateAICoachTaskResponseBody) SetRequestId(v string) *BatchCreateAICoachTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateAICoachTaskResponseBody) SetTaskIds(v []*string) *BatchCreateAICoachTaskResponseBody {
+	s.TaskIds = v
+	return s
+}
+
+type BatchCreateAICoachTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCreateAICoachTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchCreateAICoachTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateAICoachTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateAICoachTaskResponse) SetHeaders(v map[string]*string) *BatchCreateAICoachTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateAICoachTaskResponse) SetStatusCode(v int32) *BatchCreateAICoachTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchCreateAICoachTaskResponse) SetBody(v *BatchCreateAICoachTaskResponseBody) *BatchCreateAICoachTaskResponse {
 	s.Body = v
 	return s
 }
@@ -3878,6 +3976,7 @@ func (s *InteractTextResponse) SetBody(v *InteractTextResponseBody) *InteractTex
 }
 
 type ListAICoachScriptPageRequest struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// 1
@@ -3890,6 +3989,7 @@ type ListAICoachScriptPageRequest struct {
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	Type   *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListAICoachScriptPageRequest) String() string {
@@ -3898,6 +3998,11 @@ func (s ListAICoachScriptPageRequest) String() string {
 
 func (s ListAICoachScriptPageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAICoachScriptPageRequest) SetName(v string) *ListAICoachScriptPageRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *ListAICoachScriptPageRequest) SetPageNumber(v int32) *ListAICoachScriptPageRequest {
@@ -3912,6 +4017,11 @@ func (s *ListAICoachScriptPageRequest) SetPageSize(v int32) *ListAICoachScriptPa
 
 func (s *ListAICoachScriptPageRequest) SetStatus(v int32) *ListAICoachScriptPageRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageRequest) SetType(v int32) *ListAICoachScriptPageRequest {
+	s.Type = &v
 	return s
 }
 
@@ -3980,12 +4090,16 @@ func (s *ListAICoachScriptPageResponseBody) SetTotal(v int32) *ListAICoachScript
 }
 
 type ListAICoachScriptPageResponseBodyList struct {
-	CompleteStrategy *ListAICoachScriptPageResponseBodyListCompleteStrategy `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
+	AppendQuestionFlag *string                                                `json:"appendQuestionFlag,omitempty" xml:"appendQuestionFlag,omitempty"`
+	AssessmentScope    *string                                                `json:"assessmentScope,omitempty" xml:"assessmentScope,omitempty"`
+	CompleteStrategy   *ListAICoachScriptPageResponseBodyListCompleteStrategy `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
 	// example:
 	//
 	// https://oss-ata.alibaba.com/front/live/banner1.png
-	CoverUrl       *string            `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
-	Expressiveness map[string]*string `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	CoverUrl           *string            `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
+	DialogueTipFlag    *bool              `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
+	EvaluateReportFlag *bool              `json:"evaluateReportFlag,omitempty" xml:"evaluateReportFlag,omitempty"`
+	Expressiveness     map[string]*string `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
 	// example:
 	//
 	// 2024-12-25 14:00:00
@@ -4007,16 +4121,21 @@ type ListAICoachScriptPageResponseBodyList struct {
 	//
 	// prod-ydsf
 	Name               *string                                                    `json:"name,omitempty" xml:"name,omitempty"`
+	OrderAckFlag       *bool                                                      `json:"orderAckFlag,omitempty" xml:"orderAckFlag,omitempty"`
 	SampleDialogueList []*ListAICoachScriptPageResponseBodyListSampleDialogueList `json:"sampleDialogueList,omitempty" xml:"sampleDialogueList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
-	ScriptRecordId *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	ScriptRecordId     *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	SparringTipContent *string `json:"sparringTipContent,omitempty" xml:"sparringTipContent,omitempty"`
+	SparringTipTitle   *string `json:"sparringTipTitle,omitempty" xml:"sparringTipTitle,omitempty"`
 	// example:
 	//
 	// 1
-	Status  *int32                                        `json:"status,omitempty" xml:"status,omitempty"`
-	Weights *ListAICoachScriptPageResponseBodyListWeights `json:"weights,omitempty" xml:"weights,omitempty" type:"Struct"`
+	Status               *int32                                        `json:"status,omitempty" xml:"status,omitempty"`
+	StudentThinkTimeFlag *bool                                         `json:"studentThinkTimeFlag,omitempty" xml:"studentThinkTimeFlag,omitempty"`
+	Type                 *int32                                        `json:"type,omitempty" xml:"type,omitempty"`
+	Weights              *ListAICoachScriptPageResponseBodyListWeights `json:"weights,omitempty" xml:"weights,omitempty" type:"Struct"`
 }
 
 func (s ListAICoachScriptPageResponseBodyList) String() string {
@@ -4027,6 +4146,16 @@ func (s ListAICoachScriptPageResponseBodyList) GoString() string {
 	return s.String()
 }
 
+func (s *ListAICoachScriptPageResponseBodyList) SetAppendQuestionFlag(v string) *ListAICoachScriptPageResponseBodyList {
+	s.AppendQuestionFlag = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetAssessmentScope(v string) *ListAICoachScriptPageResponseBodyList {
+	s.AssessmentScope = &v
+	return s
+}
+
 func (s *ListAICoachScriptPageResponseBodyList) SetCompleteStrategy(v *ListAICoachScriptPageResponseBodyListCompleteStrategy) *ListAICoachScriptPageResponseBodyList {
 	s.CompleteStrategy = v
 	return s
@@ -4034,6 +4163,16 @@ func (s *ListAICoachScriptPageResponseBodyList) SetCompleteStrategy(v *ListAICoa
 
 func (s *ListAICoachScriptPageResponseBodyList) SetCoverUrl(v string) *ListAICoachScriptPageResponseBodyList {
 	s.CoverUrl = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetDialogueTipFlag(v bool) *ListAICoachScriptPageResponseBodyList {
+	s.DialogueTipFlag = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetEvaluateReportFlag(v bool) *ListAICoachScriptPageResponseBodyList {
+	s.EvaluateReportFlag = &v
 	return s
 }
 
@@ -4072,6 +4211,11 @@ func (s *ListAICoachScriptPageResponseBodyList) SetName(v string) *ListAICoachSc
 	return s
 }
 
+func (s *ListAICoachScriptPageResponseBodyList) SetOrderAckFlag(v bool) *ListAICoachScriptPageResponseBodyList {
+	s.OrderAckFlag = &v
+	return s
+}
+
 func (s *ListAICoachScriptPageResponseBodyList) SetSampleDialogueList(v []*ListAICoachScriptPageResponseBodyListSampleDialogueList) *ListAICoachScriptPageResponseBodyList {
 	s.SampleDialogueList = v
 	return s
@@ -4082,8 +4226,28 @@ func (s *ListAICoachScriptPageResponseBodyList) SetScriptRecordId(v string) *Lis
 	return s
 }
 
+func (s *ListAICoachScriptPageResponseBodyList) SetSparringTipContent(v string) *ListAICoachScriptPageResponseBodyList {
+	s.SparringTipContent = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetSparringTipTitle(v string) *ListAICoachScriptPageResponseBodyList {
+	s.SparringTipTitle = &v
+	return s
+}
+
 func (s *ListAICoachScriptPageResponseBodyList) SetStatus(v int32) *ListAICoachScriptPageResponseBodyList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetStudentThinkTimeFlag(v bool) *ListAICoachScriptPageResponseBodyList {
+	s.StudentThinkTimeFlag = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetType(v int32) *ListAICoachScriptPageResponseBodyList {
+	s.Type = &v
 	return s
 }
 
@@ -4164,7 +4328,10 @@ type ListAICoachScriptPageResponseBodyListWeights struct {
 	// example:
 	//
 	// 30
-	Expressiveness *int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	Expressiveness            *int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	ExpressivenessEnabled     *bool  `json:"expressivenessEnabled,omitempty" xml:"expressivenessEnabled,omitempty"`
+	PointDeductionRule        *int32 `json:"pointDeductionRule,omitempty" xml:"pointDeductionRule,omitempty"`
+	PointDeductionRuleEnabled *bool  `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
 	// example:
 	//
 	// 20
@@ -4190,6 +4357,21 @@ func (s *ListAICoachScriptPageResponseBodyListWeights) SetAssessmentPoint(v int3
 
 func (s *ListAICoachScriptPageResponseBodyListWeights) SetExpressiveness(v int32) *ListAICoachScriptPageResponseBodyListWeights {
 	s.Expressiveness = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListWeights) SetExpressivenessEnabled(v bool) *ListAICoachScriptPageResponseBodyListWeights {
+	s.ExpressivenessEnabled = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListWeights) SetPointDeductionRule(v int32) *ListAICoachScriptPageResponseBodyListWeights {
+	s.PointDeductionRule = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListWeights) SetPointDeductionRuleEnabled(v bool) *ListAICoachScriptPageResponseBodyListWeights {
+	s.PointDeductionRuleEnabled = &v
 	return s
 }
 
@@ -5910,6 +6092,7 @@ type SaveAvatarProjectRequest struct {
 	//
 	// STANDARD
 	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	Resolution  *string `json:"resolution,omitempty" xml:"resolution,omitempty"`
 	// example:
 	//
 	// 9:16
@@ -5951,6 +6134,11 @@ func (s *SaveAvatarProjectRequest) SetProjectName(v string) *SaveAvatarProjectRe
 
 func (s *SaveAvatarProjectRequest) SetResSpecType(v string) *SaveAvatarProjectRequest {
 	s.ResSpecType = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetResolution(v string) *SaveAvatarProjectRequest {
+	s.Resolution = &v
 	return s
 }
 
@@ -6796,7 +6984,9 @@ func (s *SendTextMsgResponse) SetBody(v *SendTextMsgResponseBody) *SendTextMsgRe
 }
 
 type StartAvatarSessionRequest struct {
+	ChannelToken  *string `json:"channelToken,omitempty" xml:"channelToken,omitempty"`
 	CustomPushUrl *string `json:"customPushUrl,omitempty" xml:"customPushUrl,omitempty"`
+	CustomUserId  *string `json:"customUserId,omitempty" xml:"customUserId,omitempty"`
 	// example:
 	//
 	// 13534711288320
@@ -6815,8 +7005,18 @@ func (s StartAvatarSessionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StartAvatarSessionRequest) SetChannelToken(v string) *StartAvatarSessionRequest {
+	s.ChannelToken = &v
+	return s
+}
+
 func (s *StartAvatarSessionRequest) SetCustomPushUrl(v string) *StartAvatarSessionRequest {
 	s.CustomPushUrl = &v
+	return s
+}
+
+func (s *StartAvatarSessionRequest) SetCustomUserId(v string) *StartAvatarSessionRequest {
+	s.CustomUserId = &v
 	return s
 }
 
@@ -7742,6 +7942,78 @@ func (client *Client) AddTextFeedback(request *AddTextFeedbackRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &AddTextFeedbackResponse{}
 	_body, _err := client.AddTextFeedbackWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量发布剧本任务
+//
+// @param request - BatchCreateAICoachTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateAICoachTaskResponse
+func (client *Client) BatchCreateAICoachTaskWithOptions(request *BatchCreateAICoachTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchCreateAICoachTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptRecordId)) {
+		body["scriptRecordId"] = request.ScriptRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StudentIds)) {
+		body["studentIds"] = request.StudentIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateAICoachTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/batchCreateTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCreateAICoachTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量发布剧本任务
+//
+// @param request - BatchCreateAICoachTaskRequest
+//
+// @return BatchCreateAICoachTaskResponse
+func (client *Client) BatchCreateAICoachTask(request *BatchCreateAICoachTaskRequest) (_result *BatchCreateAICoachTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchCreateAICoachTaskResponse{}
+	_body, _err := client.BatchCreateAICoachTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9532,6 +9804,10 @@ func (client *Client) ListAICoachScriptPageWithOptions(request *ListAICoachScrip
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
 	}
@@ -9542,6 +9818,10 @@ func (client *Client) ListAICoachScriptPageWithOptions(request *ListAICoachScrip
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10506,6 +10786,10 @@ func (client *Client) SaveAvatarProjectWithOptions(request *SaveAvatarProjectReq
 		body["resSpecType"] = request.ResSpecType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Resolution)) {
+		body["resolution"] = request.Resolution
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
 		body["scaleType"] = request.ScaleType
 	}
@@ -10840,8 +11124,16 @@ func (client *Client) StartAvatarSessionWithOptions(request *StartAvatarSessionR
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelToken)) {
+		body["channelToken"] = request.ChannelToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomPushUrl)) {
 		body["customPushUrl"] = request.CustomPushUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomUserId)) {
+		body["customUserId"] = request.CustomUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
