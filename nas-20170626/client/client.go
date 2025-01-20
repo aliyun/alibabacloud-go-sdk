@@ -371,7 +371,7 @@ type ApplyDataFlowAutoRefreshRequest struct {
 	//
 	// example:
 	//
-	// dfid-194433a5be31****
+	// df-194433a5be31****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
@@ -621,7 +621,7 @@ type CancelDataFlowAutoRefreshRequest struct {
 	//
 	// example:
 	//
-	// dfid-123456
+	// df-194433a5be31****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
@@ -643,7 +643,7 @@ type CancelDataFlowAutoRefreshRequest struct {
 	//
 	// example:
 	//
-	// cpfs-12345678
+	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The directory for which you want to cancel AutoRefresh configurations.
 	//
@@ -790,7 +790,7 @@ type CancelDataFlowSubTaskRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
+	// 	- true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
 	//
 	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a data streaming task is created.
 	//
@@ -1184,21 +1184,39 @@ func (s *CancelDirQuotaResponse) SetBody(v *CancelDirQuotaResponseBody) *CancelD
 }
 
 type CancelFilesetQuotaRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run.
+	//
+	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset quota is canceled and no fee is incurred.
+	//
+	// Valid values:
+	//
+	// 	- true: performs a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the DataFlowld parameter.
+	//
+	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, the fileset quota is canceled.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the CPFS for LINGJUN file system. The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// Fileset ID。
+	// The fileset ID.
 	//
 	// This parameter is required.
 	//
@@ -1237,6 +1255,8 @@ func (s *CancelFilesetQuotaRequest) SetFsetId(v string) *CancelFilesetQuotaReque
 }
 
 type CancelFilesetQuotaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
@@ -1701,7 +1721,7 @@ func (s *CreateAccessGroupResponse) SetBody(v *CreateAccessGroupResponseBody) *C
 type CreateAccessPointRequest struct {
 	// The name of the permission group.
 	//
-	// This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+	// This parameter is required for a General-purpose File Storage NAS (NAS) file system.
 	//
 	// The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
 	//
@@ -1723,7 +1743,7 @@ type CreateAccessPointRequest struct {
 	//
 	// 	- false (default): The RAM policy is disabled.
 	//
-	// >  After the RAM policy is enabled for access points, no RAM user is allowed to use access points to mount and access data by default. To use access points to mount and access data as a RAM user, you must grant the related access permissions to the RAM user. If the RAM policy is disabled, access points can be anonymously mounted.
+	// >  After the RAM policy is enabled for access points, no RAM user is allowed to use access points to mount and access data by default. To use access points to mount and access data as a RAM user, you must grant the related access permissions to the RAM user. If the RAM policy is disabled, access points can be anonymously mounted. For more information about how to configure permissions on access points, see [Configure a policy for the access point](https://help.aliyun.com/document_detail/2545998.html).
 	//
 	// example:
 	//
@@ -2448,7 +2468,7 @@ type CreateDataFlowRequest struct {
 	//
 	// 	- storage type: Only OSS is supported.
 	//
-	// 	- account id (optional): the UID of the account of the source storage.
+	// 	- account id (optional): the UID of the account of the source storage. This parameter is required when you use OSS buckets across accounts.
 	//
 	// 	- path: the name of the OSS bucket. Limits:
 	//
@@ -2458,13 +2478,9 @@ type CreateDataFlowRequest struct {
 	//
 	//     	- The name must be encoded in UTF-8.
 	//
-	// >
+	// > 	- The OSS bucket must be an existing bucket in the region.
 	//
-	// 	- The OSS bucket must be an existing bucket in the region.
-	//
-	// 	- Only CPFS for LINGJUN V2.6.0 and later support the account id parameter.
-	//
-	// 	- The account id parameter is optional. This parameter is required when you use OSS buckets across accounts.
+	// > 	- Only CPFS for LINGJUN V2.6.0 and later support the account id parameter.
 	//
 	// This parameter is required.
 	//
@@ -2677,39 +2693,84 @@ func (s *CreateDataFlowResponse) SetBody(v *CreateDataFlowResponseBody) *CreateD
 }
 
 type CreateDataFlowSubTaskRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Condition   *CreateDataFlowSubTaskRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The check conditions. The check must be passed after the following conditions are specified.
+	Condition *CreateDataFlowSubTaskRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// The ID of the data flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dfid-194433a5be31****
+	// df-194433a5be31****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	// The ID of the data flow task.
+	//
+	// >  Only the IDs of data streaming tasks are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// taskId-12345678
+	// task-38aa8e890f45****
 	DataFlowTaskId *string `json:"DataFlowTaskId,omitempty" xml:"DataFlowTaskId,omitempty"`
+	// Specifies whether to perform a dry run.
+	//
+	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no data streaming subtask is created and no fee is incurred.
+	//
+	// Valid values:
+	//
+	// 	- true: performs a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the DataFlowSubTaskId parameter.
+	//
+	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a data streaming subtask is created.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The path of the destination file. Limits:
+	//
+	// 	- The path must be 1 to 1,023 characters in length.
+	//
+	// 	- The path must be encoded in UTF-8.
+	//
+	// 	- The path must start with a forward slash (/).
+	//
+	// 	- The path must end with the file name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /mnt/file.png
 	DstFilePath *string `json:"DstFilePath,omitempty" xml:"DstFilePath,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-370lx1ev9ss27o0****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The path of the source file. Limits:
+	//
+	// 	- The path must be 1 to 1,023 characters in length.
+	//
+	// 	- The path must be encoded in UTF-8.
+	//
+	// 	- The path must start with a forward slash (/).
+	//
+	// 	- The path must end with the file name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2767,10 +2828,14 @@ func (s *CreateDataFlowSubTaskRequest) SetSrcFilePath(v string) *CreateDataFlowS
 }
 
 type CreateDataFlowSubTaskRequestCondition struct {
+	// The modification time. The value must be a UNIX timestamp. Unit: ns.
+	//
 	// example:
 	//
 	// 1725897600000000000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 68
@@ -2796,10 +2861,14 @@ func (s *CreateDataFlowSubTaskRequestCondition) SetSize(v int64) *CreateDataFlow
 }
 
 type CreateDataFlowSubTaskResponseBody struct {
+	// The ID of the data streaming task.
+	//
 	// example:
 	//
 	// subTaskId-370kyfmyknxcyzw****
 	DataFlowSubTaskId *string `json:"DataFlowSubTaskId,omitempty" xml:"DataFlowSubTaskId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A70BEE5D-76D3-49FB-B58F-1F398211A5C3
@@ -2872,20 +2941,33 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// 	- OVERWRITE_EXISTING: forcibly overwrites the existing file.
 	//
-	// >  This parameter does not take effect for CPFS file systems.
+	// >  This parameter is required for CPFS for LINGJUN file systems.
 	//
 	// example:
 	//
 	// SKIP_THE_FILE
-	ConflictPolicy      *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
-	CreateDirIfNotExist *bool   `json:"CreateDirIfNotExist,omitempty" xml:"CreateDirIfNotExist,omitempty"`
+	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
+	// Specifies whether to automatically create a directory if no directory exists. Valid values:
+	//
+	// 	- true: automatically creates a directory.
+	//
+	// 	- false (default): does not automatically create a directory.
+	//
+	// > - This parameter is required if the TaskAction parameter is set to Import.
+	//
+	// > - Only CPFS for LINGJUN V2.6.0 and later support this parameter.
+	//
+	// example:
+	//
+	// false
+	CreateDirIfNotExist *bool `json:"CreateDirIfNotExist,omitempty" xml:"CreateDirIfNotExist,omitempty"`
 	// The dataflow ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dfid-123456
+	// df-194433a5be31****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	// The type of data on which operations are performed by the dataflow task.
 	//
@@ -2901,7 +2983,7 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// Metadata
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The directory in which the data flow task is executed.
+	// The source directory of the data.
 	//
 	// Limits:
 	//
@@ -2917,24 +2999,53 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// 	- If the TaskAction parameter is set to Import, the directory must be a relative path within the SourceStoragePath.
 	//
+	// 	- If the TaskAction parameter is set to StreamExport, the directory must be a relative path within the FileSystemPath.
+	//
+	// 	- If the TaskAction parameter is set to StreamImport, the directory must be a relative path within the SourceStoragePath.
+	//
+	// >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
+	//
 	// example:
 	//
 	// /path_in_cpfs/
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
-	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no data flow task is created and no fee is incurred.
 	//
 	// Valid values:
 	//
-	// 	- true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
+	// 	- true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the TaskId parameter.
 	//
-	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
+	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a data flow task is created.
 	//
 	// example:
 	//
 	// false
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The directory mapped to the data flow task. Limits:
+	//
+	// 	- The directory must start and end with a forward slash (/). The directory cannot be /../.
+	//
+	// 	- The directory must be 1 to 1,023 characters in length.
+	//
+	// 	- The directory must be encoded in UTF-8.
+	//
+	// 	- Only one directory can be listed at a time.
+	//
+	// 	- If the TaskAction parameter is set to Export, the directory must be a relative path within the SourceStoragePath.
+	//
+	// 	- If the TaskAction parameter is set to Import, the directory must be a relative path within the FileSystemPath.
+	//
+	// 	- If the TaskAction parameter is set to StreamExport, the directory must be a relative path within the SourceStoragePath.
+	//
+	// 	- If the TaskAction parameter is set to StreamImport, the directory must be a relative path within the FileSystemPath.
+	//
+	// >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
+	//
+	// example:
+	//
+	// /path_in_cpfs/
 	DstDirectory *string `json:"DstDirectory,omitempty" xml:"DstDirectory,omitempty"`
 	// The list of files that are executed by the data flow task.
 	//
@@ -2962,19 +3073,19 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
 	//
-	// >  CPFS file systems are available only on the China site (aliyun.com).
+	// >  CPFS is not supported on the international site.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cpfs-12345678
+	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// If you specify SrcTaskId, the configurations of the TaskAction, DataType, and EntryList parameters are copied from the desired dataflow task. You do not need to specify them.
 	//
 	// example:
 	//
-	// task-xxxx
+	// task-27aa8e890f45****
 	SrcTaskId *string `json:"SrcTaskId,omitempty" xml:"SrcTaskId,omitempty"`
 	// The type of the data flow task.
 	//
@@ -2984,11 +3095,11 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// 	- Export: exports specified data from a CPFS file system to the source storage.
 	//
-	// 	- Evict: releases the data blocks of a file in a CPFS file system. After the eviction, only the metadata of the file is retained in the CPFS file system. You can still query the file. However, the data blocks of the file are cleared and do not occupy the storage space in the CPFS file system. When you access the file data, the file is loaded from the source storage as required.
+	// 	- StreamImport: batch imports the specified data from the source storage to a CPFS file system.
 	//
-	// 	- Inventory: obtains the inventory list managed by a data flow from the CPFS file system, providing the cache status of inventories in the data flow.
+	// 	- StreamExport: batch exports specified data from a CPFS file system to the source storage.
 	//
-	// >  CPFS for LINGJUN supports only the Import and Export tasks.
+	// >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
 	//
 	// example:
 	//
@@ -3075,7 +3186,7 @@ type CreateDataFlowTaskResponseBody struct {
 	//
 	// example:
 	//
-	// taskId-12345678
+	// task-38aa8e890f45****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3510,7 +3621,7 @@ type CreateFileSystemRequest struct {
 	//
 	// >  	- Extreme NAS file system: All regions support KMS-managed keys.
 	//
-	// > 	- General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt), Australia (Sydney) Closing Down, and China East 1 Finance.
+	// > 	- General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt),  and China East 1 Finance.
 	//
 	// example:
 	//
@@ -3782,7 +3893,7 @@ type CreateFilesetRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2838077.html) operation.
 	//
 	// 	- true: enables release protection.
 	//
@@ -3822,27 +3933,42 @@ type CreateFilesetRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the file system.
 	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cpfs-099394bd928c****
+	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The absolute path of the fileset.
 	//
-	// 	- The parent directory of the path that you specify must be an existing directory in the file system.
-	//
-	// 	- The path must be 2 to 1,024 characters in length.
+	// 	- The path must be 2 to 1024 characters in length.
 	//
 	// 	- The path must start and end with a forward slash (/).
+	//
+	// 	- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+	//
+	// 	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+	//
+	// 	- If the fileset path is a multi-level path, the parent directory must be an existing directory.
+	//
+	// 	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /test/
-	FileSystemPath *string                    `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
-	Quota          *CreateFilesetRequestQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
+	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
+	// The quota information.
+	//
+	// >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+	Quota *CreateFilesetRequestQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
 }
 
 func (s CreateFilesetRequest) String() string {
@@ -3889,8 +4015,30 @@ func (s *CreateFilesetRequest) SetQuota(v *CreateFilesetRequestQuota) *CreateFil
 }
 
 type CreateFilesetRequestQuota struct {
+	// The number of files of the quota. Valid values:
+	//
+	// 	- Minimum value: 100000.
+	//
+	// 	- Maximum value: 10000000000.
+	//
+	// example:
+	//
+	// 10000
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
-	SizeLimit      *int64 `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
+	// The total capacity of the quota. Unit: bytes.
+	//
+	// Valid values:
+	//
+	// 	- Minimum value: 10737418240 (10 GiB).
+	//
+	// 	- Maximum value: 1073741824000 (1024000 GiB).
+	//
+	// 	- Step size: 1073741824 (1 GiB).
+	//
+	// example:
+	//
+	// 10737418240
+	SizeLimit *int64 `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
 }
 
 func (s CreateFilesetRequestQuota) String() string {
@@ -6107,7 +6255,7 @@ type DeleteFilesetRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request.
+	// Specifies whether to perform a dry run.
 	//
 	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset is deleted.
 	//
@@ -6115,13 +6263,19 @@ type DeleteFilesetRequest struct {
 	//
 	// 	- true: performs only a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
 	//
-	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a fileset is deleted.
+	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, the fileset is deleted.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the file system.
+	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
 	//
 	// This parameter is required.
 	//
@@ -7114,7 +7268,7 @@ type DescribeAccessGroupsResponseBodyAccessGroupsAccessGroup struct {
 	//
 	// Valid values:
 	//
-	// 	- standard: General-purpose Apsara File Storage NAS (NAS) file system
+	// 	- standard: General-purpose File Storage NAS (NAS) file system
 	//
 	// 	- extreme: Extreme NAS file system
 	//
@@ -7617,7 +7771,7 @@ func (s *DescribeAccessPointResponse) SetBody(v *DescribeAccessPointResponseBody
 type DescribeAccessPointsRequest struct {
 	// The name of the permission group.
 	//
-	// This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+	// This parameter is required for a General-purpose File Storage NAS (NAS) file system.
 	//
 	// The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
 	//
@@ -8216,7 +8370,7 @@ type DescribeAccessRulesResponseBodyAccessRulesAccessRule struct {
 	//
 	// Valid values:
 	//
-	// 	- standard: General-purpose Apsara File Storage NAS (NAS) file system
+	// 	- standard: General-purpose File Storage NAS (NAS) file system
 	//
 	// 	- extreme: Extreme NAS file system
 	//
@@ -8369,7 +8523,7 @@ type DescribeAutoSnapshotPoliciesRequest struct {
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// The type of the file system.
 	//
-	// Valid value: extreme, which indicates Extreme Apsara File Storage NAS (NAS) file systems.
+	// Valid value: extreme, which indicates Extreme File Storage NAS (NAS) file systems.
 	//
 	// example:
 	//
@@ -9505,19 +9659,37 @@ func (s *DescribeDataFlowSubTasksResponse) SetBody(v *DescribeDataFlowSubTasksRe
 }
 
 type DescribeDataFlowTasksRequest struct {
+	// The ID of the file system.
+	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The details about filters.
+	//
 	// if can be null:
 	// false
 	Filters []*DescribeDataFlowTasksRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The number of results for each query.
+	//
+	// Valid values: 10 to 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// TGlzdFJlc291cmNlU****mVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0=
@@ -9553,57 +9725,63 @@ func (s *DescribeDataFlowTasksRequest) SetNextToken(v string) *DescribeDataFlowT
 }
 
 type DescribeDataFlowTasksRequestFilters struct {
-	// *
+	// The filter name.
 	//
-	// *
+	// Valid values:
 	//
-	// *
+	// 	- DataFlowIds: filters data flow tasks by data flow ID.
 	//
-	// *
+	// 	- TaskIds: filters data flow tasks by task ID.
 	//
-	// *
+	// 	- Originator: filters data flow tasks by task initiator.
 	//
-	// *
+	// 	- TaskActions: filters data flow tasks by task type.
 	//
-	// *
+	// 	- DataTypes: filters data flow tasks by data type.
 	//
-	// *
+	// 	- Status: filters data flow tasks by data flow status.
 	//
-	// *
+	// 	- CreateTimeBegin: filters data flow tasks that are created after a specified time.
 	//
-	// *
+	// 	- CreateTimeEnd: filters data flow tasks that are created before a specified time.
 	//
-	// *
+	// 	- StartTimeBegin: filters data flow tasks that are started after a specified time.
 	//
-	// *
+	// 	- StartTimeEnd: filters data flow tasks that are started before a specified time.
+	//
+	// 	- EndTimeBegin: filters data flow tasks that are stopped after a specified time.
+	//
+	// 	- EndTimeEnd: filters data flow tasks that are stopped before a specified time.
 	//
 	// example:
 	//
 	// DataFlowIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 	- ````
+	// The filter value. This parameter does not support wildcards.
 	//
-	// 	- ````
+	// 	- If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
 	//
-	// *
+	// 	- If Key is set to TaskId, set Value to a data flow task ID or a part of the data flow task ID. You can specify a data flow task ID or a group of data flow task IDs. You can specify a maximum of 10 data flow task IDs. Example: `task-38aa8e890f45****` or `task-38aa8e890f45****,task-29ae8e890f45****`.
 	//
-	// *
+	// 	- If Key is set to TaskActions, set Value to the type of data flow task. The task type can be **Import**, **Export**, **Evict**, **Inventory**, **StreamImport**, or **StreamExport**. Combined query is supported. CPFS for LINGJUN supports only the Import, Export, StreamImport, and StreamExport tasks. Only CPFS for LINGJUN V2.6.0 and later support the StreamImport and StreamExport tasks.
 	//
-	// *
+	// 	- If Key is set to DataTypes, set Value to the data type of the data flow task. The data type can be MetaAndData, Metadata, or Data. Combined query is supported.
 	//
-	// *
+	// 	- If Key is set to Originator, set Value to the initiator of the data flow task. The initiator can be User or System.
 	//
-	// 	- ``
+	// 	- If Key is set to Status, set Value to the status of the data flow task. The status can be Pending, Executing, Failed, Completed, Canceling, or Canceled. Combined query is supported.
 	//
-	// 	- ``
+	// 	- If Key is set to CreateTimeBegin, set Value to the beginning of the time range to create the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
 	//
-	// 	- ``
+	// 	- If Key is set to CreateTimeEnd, set Value to the end of the time range to create the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
 	//
-	// 	- ``
+	// 	- If Key is set to StartTimeBegin, set Value to the beginning of the time range to start the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
 	//
-	// 	- ``
+	// 	- If Key is set to StartTimeEnd, set Value to the end of the time range to start the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
 	//
-	// 	- ``
+	// 	- If Key is set to EndTimeBegin, set Value to the beginning of the time range to stop the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
+	//
+	// 	- If Key is set to EndTimeEnd, set Value to the end of the time range to stop the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
 	//
 	// example:
 	//
@@ -9630,15 +9808,20 @@ func (s *DescribeDataFlowTasksRequestFilters) SetValue(v string) *DescribeDataFl
 }
 
 type DescribeDataFlowTasksResponseBody struct {
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// TGlzdFJlc291cmNlU****mVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D69A58F-345C-4FDE-88E4-BF518948****
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskInfo  *DescribeDataFlowTasksResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about data flow tasks.
+	TaskInfo *DescribeDataFlowTasksResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeDataFlowTasksResponseBody) String() string {
@@ -9682,6 +9865,14 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfo) SetTask(v []*DescribeDataFlo
 }
 
 type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
+	// The conflict policy for files with the same name. Valid values:
+	//
+	// 	- SKIP_THE_FILE: skips files with the same name.
+	//
+	// 	- KEEP_LATEST: compares the update time and keeps the latest version.
+	//
+	// 	- OVERWRITE_EXISTING: forcibly overwrites the existing file.
+	//
 	// example:
 	//
 	// KEEP_LATEST
@@ -9692,145 +9883,186 @@ type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
 	//
 	// 2021-08-04 18:27:35
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the data flow.
+	//
 	// example:
 	//
 	// dfid-194433a5be3****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
-	// null Valid values:
+	// The type of data on which operations are performed by the data flow task. Valid values:
 	//
-	// 	- null null
+	// 	- Metadata: the metadata of a file, including the timestamp, ownership, and permission information of the file. If you select Metadata, only the metadata of the file is imported. You can only query the file. When you access the file data, the file is loaded from the source storage as required.
 	//
-	// 	- null
+	// 	- Data: the data blocks of the file.
 	//
-	// 	- null
+	// 	- MetaAndData: the metadata and data blocks of the file.
+	//
+	// >  CPFS for LINGJUN supports only the MetaAndData type.
 	//
 	// example:
 	//
 	// Metadata
-	DataType     *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Directory    *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The directory in which the data flow task is executed.
+	//
+	// example:
+	//
+	// /path_in_cpfs/
+	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The directory mapped to the data flow task.
+	//
+	// example:
+	//
+	// /path_in_cpfs/
 	DstDirectory *string `json:"DstDirectory,omitempty" xml:"DstDirectory,omitempty"`
 	// The time when the task ended.
 	//
 	// example:
 	//
 	// 2021-08-04 18:27:35
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The cause of the task exception.
+	//
+	// >  If this parameter is not returned or the return value is empty, no error occurs.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// *
+	// The directory of the fileset in the CPFS file system.
 	//
-	// *
+	// Limits:
 	//
-	// *
+	// 	- The directory must be 2 to 1024 characters in length.
 	//
-	// 	- null
+	// 	- The directory must be encoded in UTF-8.
+	//
+	// 	- The directory must start and end with a forward slash (/).
+	//
+	// 	- The directory must be a fileset directory in the CPFS file system.
+	//
+	// >  Only CPFS supports this parameter.
 	//
 	// example:
 	//
 	// /a/b/c/
 	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
+	// The ID of the file system.
+	//
 	// example:
 	//
 	// cpfs-099394bd928c****
 	FilesystemId *string `json:"FilesystemId,omitempty" xml:"FilesystemId,omitempty"`
-	// null
+	// The path of the smart directory.
 	//
 	// example:
 	//
 	// /aa/
 	FsPath *string `json:"FsPath,omitempty" xml:"FsPath,omitempty"`
-	// null Valid values:
+	// The initiator of the data flow task. Valid values:
 	//
-	// 	- null
+	// 	- User: The task is initiated by a user.
 	//
-	// 	- null
+	// 	- System: The task is automatically initiated by CPFS based on the automatic update interval.
+	//
+	// >  Only CPFS supports this parameter.
 	//
 	// example:
 	//
 	// User
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
-	// null null
+	// The progress of the data flow task. The number of operations that have been performed by the data flow task.
 	//
 	// example:
 	//
 	// 240
-	Progress      *int64                                                      `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The progress of the data flow task.
 	ProgressStats *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats `json:"ProgressStats,omitempty" xml:"ProgressStats,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// null
+	// The save path of data flow task reports in the CPFS file system.
 	//
-	// null``
+	// 	- The task reports for a CPFS file system are generated in the `.dataflow_report` directory of the CPFS file system.
 	//
-	// Limits:
-	//
-	// 	- null
-	//
-	// 	- The name must be encoded in UTF-8.
+	// 	- CPFS for LINGJUN returns an OSS download link for you to download the task reports.
 	//
 	// example:
 	//
 	// /path_in_cpfs/reportfile.cvs
-	ReportPath *string                                               `json:"ReportPath,omitempty" xml:"ReportPath,omitempty"`
-	Reports    *DescribeDataFlowTasksResponseBodyTaskInfoTaskReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Struct"`
-	// ://
+	ReportPath *string `json:"ReportPath,omitempty" xml:"ReportPath,omitempty"`
+	// The reports.
 	//
-	// *
+	// >  Streaming tasks do not support reports.
+	Reports *DescribeDataFlowTasksResponseBodyTaskInfoTaskReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Struct"`
+	// The access path of the source storage. Format: `<storage type>://[<account id>:]<path>`.
 	//
-	// 	- *
+	// Parameters:
 	//
-	//     *
+	// 	- storage type: Only Object Storage Service (OSS) is supported.
 	//
-	//     *
+	// 	- account id: the UID of the account of the source storage.
 	//
-	//     	- [](http://https://。)
+	// 	- path: the name of the OSS bucket. Limits:
 	//
-	// **
+	//     	- The name can contain only lowercase letters, digits, and hyphens (-). The name must start and end with a lowercase letter or digit.
 	//
-	// ****
+	//     	- The name can be up to 128 characters in length.
+	//
+	//     	- The name must be encoded in UTF-8.
+	//
+	// >
+	//
+	// 	- The OSS bucket must be an existing bucket in the region.
+	//
+	// 	- Only CPFS for LINGJUN V2.6.0 and later support the account id parameter.
 	//
 	// example:
 	//
 	// oss://bucket1
 	SourceStorage *string `json:"SourceStorage,omitempty" xml:"SourceStorage,omitempty"`
-	// null
+	// The time when the task started.
 	//
 	// example:
 	//
 	// 2021-08-04 18:27:35
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// null Valid values:
+	// The status of the data flow task. Valid values:
 	//
-	// 	- null
+	// 	- Pending: The data flow task has been created and has not started.
 	//
-	// 	- null
+	// 	- Executing: The data flow task is being executed.
 	//
-	// 	- null
+	// 	- Failed: The data flow task failed to be executed. You can view the cause of the failure in the data flow task report.
 	//
-	// 	- null
+	// 	- Completed: The data flow task is completed. You can check that all the files have been correctly transferred in the data flow task report.
 	//
-	// 	- null
+	// 	- Canceled: The data flow task is canceled and is not completed.
 	//
-	// 	- null
+	// 	- Canceling: The data flow task is being canceled.
 	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// null Valid values:
+	// The type of the data flow task. Valid values:
 	//
-	// 	- null
+	// 	- Import: imports data stored in the source storage to a CPFS file system.
 	//
-	// 	- null
+	// 	- Export: exports specified data from a CPFS file system to the source storage.
 	//
-	// 	- null null
+	// 	- StreamImport: imports the specified data from the source storage to a CPFS file system in streaming mode.
 	//
-	// 	- null
+	// 	- StreamExport: exports specified data from a CPFS file system to the source storage in streaming mode.
+	//
+	// 	- Evict: releases the data blocks of a file in a CPFS file system. After the eviction, only the metadata of the file is retained in the CPFS file system. You can still query the file. However, the data blocks of the file are cleared and do not occupy the storage space in the CPFS file system. When you access the file data, the file is loaded from the source storage as required.
+	//
+	// 	- Inventory: obtains the inventory list managed by a data flow from the CPFS file system, providing the cache status of inventories in the data flow.
+	//
+	// >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
 	//
 	// example:
 	//
 	// Import
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	// The ID of the data flow task.
+	//
 	// example:
 	//
 	// taskId-12345678
@@ -9951,14 +10183,54 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetTaskId(v string) *Des
 }
 
 type DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats struct {
-	ActualBytes  *int64 `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	ActualFiles  *int64 `json:"ActualFiles,omitempty" xml:"ActualFiles,omitempty"`
+	// The actual amount of data for which the data flow task is complete. Unit: bytes.
+	//
+	// example:
+	//
+	// 131092971520
+	ActualBytes *int64 `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	// The actual number of files for which the data flow task is complete.
+	//
+	// example:
+	//
+	// 3
+	ActualFiles *int64 `json:"ActualFiles,omitempty" xml:"ActualFiles,omitempty"`
+	// The average flow velocity. Unit: bytes/s.
+	//
+	// example:
+	//
+	// 342279299
 	AverageSpeed *int64 `json:"AverageSpeed,omitempty" xml:"AverageSpeed,omitempty"`
-	BytesDone    *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	BytesTotal   *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	FilesDone    *int64 `json:"FilesDone,omitempty" xml:"FilesDone,omitempty"`
-	FilesTotal   *int64 `json:"FilesTotal,omitempty" xml:"FilesTotal,omitempty"`
-	RemainTime   *int64 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// The amount of data (including skipped data) for which the data flow task is complete. Unit: bytes.
+	//
+	// example:
+	//
+	// 131092971520
+	BytesDone *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	// The amount of data scanned on the source. Unit: bytes.
+	//
+	// example:
+	//
+	// 131092971520
+	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	// The number of files (including skipped files) for which the data flow task is complete.
+	//
+	// example:
+	//
+	// 3
+	FilesDone *int64 `json:"FilesDone,omitempty" xml:"FilesDone,omitempty"`
+	// The number of files scanned on the source.
+	//
+	// example:
+	//
+	// 3
+	FilesTotal *int64 `json:"FilesTotal,omitempty" xml:"FilesTotal,omitempty"`
+	// The estimated remaining execution time. Unit: seconds.
+	//
+	// example:
+	//
+	// 437
+	RemainTime *int64 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
 }
 
 func (s DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) String() string {
@@ -10027,7 +10299,25 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskReports) SetReport(v []*De
 }
 
 type DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport struct {
+	// The name of the report.
+	//
+	// 	- CPFS:
+	//
+	//     TotalFilesReport: task reports.
+	//
+	// 	- CPFS for LINGJUN:
+	//
+	//     	- FailedFilesReport: failed file reports.
+	//
+	//     	- SkippedFilesReport: skipped file reports.
+	//
+	//     	- SuccessFilesReport: successful file reports.
+	//
+	// example:
+	//
+	// TotalFilesReport
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The report URL.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
@@ -10091,7 +10381,7 @@ type DescribeDataFlowsRequest struct {
 	//
 	// example:
 	//
-	// cpfs-12345678
+	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The filter that is used to query data flows.
 	//
@@ -10165,9 +10455,9 @@ type DescribeDataFlowsRequestFilters struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The filter value. This parameter does not support wildcards.
 	//
-	// 	- If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `dfid-12345678` or `dfid-12345678,dfid-12345679`.
+	// 	- If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `df-194433a5be31****` or `df-194433a5be31****,df-184433a5be31****`.
 	//
-	// 	- If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. Example: `fset-12345678` or `fset-12345678,fset-12345679`.
+	// 	- If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. Example: `fset-1902718ea0ae****` or `fset-1902718ea0ae****,fset-1242718ea0ae****`.
 	//
 	// 	- If Key is set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value of the parameter must be 1 to 1,024 characters in length.
 	//
@@ -10301,7 +10591,7 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	//
 	// example:
 	//
-	// dfid-123456
+	// df-194433a5be31****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	// The description of the dataflow.
 	//
@@ -10333,7 +10623,7 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	//
 	// example:
 	//
-	// cpfs-12345678
+	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The directory of the fileset in the CPFS file system.
 	//
@@ -10365,7 +10655,7 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	//
 	// example:
 	//
-	// fset-123456
+	// fset-1902718ea0ae****
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
 	// The type of security mechanism for the source storage. This parameter must be specified if the source storage is accessed with a security mechanism. Valid values:
 	//
@@ -11721,7 +12011,12 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// example:
 	//
 	// 1
-	AccessPointCount     *string `json:"AccessPointCount,omitempty" xml:"AccessPointCount,omitempty"`
+	AccessPointCount *string `json:"AccessPointCount,omitempty" xml:"AccessPointCount,omitempty"`
+	// The ID of the automatic snapshot policy.
+	//
+	// example:
+	//
+	// sp-extreme-233e6****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// The bandwidth of the file system.
 	//
@@ -11863,7 +12158,12 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	//
 	// NFS
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	QuorumVswId  *string `json:"QuorumVswId,omitempty" xml:"QuorumVswId,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-2ze37k6jh8ums2fw2****
+	QuorumVswId *string `json:"QuorumVswId,omitempty" xml:"QuorumVswId,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -11923,9 +12223,15 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// example:
 	//
 	// 2.3.4
-	Version *string                                                     `json:"Version,omitempty" xml:"Version,omitempty"`
-	VpcId   *string                                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswIds  *DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds `json:"VswIds,omitempty" xml:"VswIds,omitempty" type:"Struct"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-bp1cbv1ljve4j5hlw****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// A collection of vSwitch IDs.
+	VswIds *DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds `json:"VswIds,omitempty" xml:"VswIds,omitempty" type:"Struct"`
 	// The ID of the zone where the file system resides.
 	//
 	// example:
@@ -12622,11 +12928,17 @@ func (s *DescribeFileSystemsResponse) SetBody(v *DescribeFileSystemsResponseBody
 type DescribeFilesetsRequest struct {
 	// The ID of the file system.
 	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cpfs-099394bd928c****
+	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The filter that is used to query filesets.
 	Filters []*DescribeFilesetsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
@@ -12643,7 +12955,9 @@ type DescribeFilesetsRequest struct {
 	// example:
 	//
 	// TGlzdFJlc291cmNlU****mVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0=
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderByField *string `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
+	SortOrder    *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 
 func (s DescribeFilesetsRequest) String() string {
@@ -12674,6 +12988,16 @@ func (s *DescribeFilesetsRequest) SetNextToken(v string) *DescribeFilesetsReques
 	return s
 }
 
+func (s *DescribeFilesetsRequest) SetOrderByField(v string) *DescribeFilesetsRequest {
+	s.OrderByField = &v
+	return s
+}
+
+func (s *DescribeFilesetsRequest) SetSortOrder(v string) *DescribeFilesetsRequest {
+	s.SortOrder = &v
+	return s
+}
+
 type DescribeFilesetsRequestFilters struct {
 	// The filter name. Valid values:
 	//
@@ -12683,17 +13007,23 @@ type DescribeFilesetsRequestFilters struct {
 	//
 	// 	- Description: filters filesets based on the fileset description.
 	//
+	// 	- QuotaExists: filters filesets based on whether quotas exist.
+	//
+	// >  Only CPFS for LINGJUN V2.7.0 and later support the QuotaExists parameter.
+	//
 	// example:
 	//
 	// FsetIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The filter value. This parameter does not support wildcards.
 	//
-	// 	- If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. Example: `fset-12345678` or `fset-12345678,fset-12345679`.
+	// 	- If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. Example: `fset-1902718ea0ae****` or `fset-1902718ea0ae****,fset-3212718ea0ae****`.
 	//
-	// 	- If Key is set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value must be 2 to 1,024 characters in length. The value must be encoded in UTF-8.
+	// 	- If Key is set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value must be 2 to 1024 characters in length. The value must be encoded in UTF-8.
 	//
 	// 	- If Key is set to Description, set Value to a fileset description or a part of the fileset description.
+	//
+	// 	- If Key is set to QuotaExists, set Value to true or false. If you do not specify the parameter, all filesets are returned.
 	//
 	// example:
 	//
@@ -12726,9 +13056,15 @@ type DescribeFilesetsResponseBody struct {
 	//
 	// The ID of the file system.
 	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
+	//
 	// example:
 	//
-	// cpfs-099394bd928c****
+	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
@@ -12798,7 +13134,7 @@ type DescribeFilesetsResponseBodyEntriesEntrie struct {
 	//
 	// 2021-09-30T10:08:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation. Valid values:
+	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2838077.html) operation. Valid values:
 	//
 	// 	- true
 	//
@@ -12815,9 +13151,27 @@ type DescribeFilesetsResponseBodyEntriesEntrie struct {
 	// example:
 	//
 	// test
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileCountUsage *int64  `json:"FileCountUsage,omitempty" xml:"FileCountUsage,omitempty"`
-	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The usage of the file quantity.
+	//
+	// >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+	//
+	// example:
+	//
+	// 1024
+	FileCountUsage *int64 `json:"FileCountUsage,omitempty" xml:"FileCountUsage,omitempty"`
+	// The ID of the file system.
+	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
+	//
+	// example:
+	//
+	// bmcpfs-290w65p03ok64ya****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The fileset path.
 	//
 	// example:
@@ -12829,9 +13183,19 @@ type DescribeFilesetsResponseBodyEntriesEntrie struct {
 	// example:
 	//
 	// fset-1902718ea0ae****
-	FsetId     *string                                         `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
-	Quota      *DescribeFilesetsResponseBodyEntriesEntrieQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
-	SpaceUsage *int64                                          `json:"SpaceUsage,omitempty" xml:"SpaceUsage,omitempty"`
+	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
+	// The quota information.
+	//
+	// >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+	Quota *DescribeFilesetsResponseBodyEntriesEntrieQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
+	// The capacity usage. Unit: bytes.
+	//
+	// >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+	//
+	// example:
+	//
+	// 1024
+	SpaceUsage *int64 `json:"SpaceUsage,omitempty" xml:"SpaceUsage,omitempty"`
 	// The fileset status. Valid values:
 	//
 	// 	- CREATING: The fileset is being created.
@@ -12920,8 +13284,28 @@ func (s *DescribeFilesetsResponseBodyEntriesEntrie) SetUpdateTime(v string) *Des
 }
 
 type DescribeFilesetsResponseBodyEntriesEntrieQuota struct {
+	// The limit of the file quantity of the quota. Valid values:
+	//
+	// Minimum value: 10000.
+	//
+	// Maximum value: 10000000000.
+	//
+	// example:
+	//
+	// 10000
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
-	SizeLimit      *int64 `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
+	// The limit of the quota capacity. Unit: bytes.
+	//
+	// Minimum value: 10737418240 (10 GiB).
+	//
+	// Maximum value: 1073741824000 (1024000 GiB).
+	//
+	// Step size: 1073741824 (1 GiB).
+	//
+	// example:
+	//
+	// 10737418240
+	SizeLimit *int64 `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
 }
 
 func (s DescribeFilesetsResponseBodyEntriesEntrieQuota) String() string {
@@ -15345,7 +15729,7 @@ type DescribeSnapshotsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The type of the file system.
 	//
-	// Valid value: extreme, which indicates Extreme Apsara File Storage NAS (NAS) file systems.
+	// Valid value: extreme, which indicates Extreme File Storage NAS (NAS) file systems.
 	//
 	// example:
 	//
@@ -15543,6 +15927,16 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshot(v []*DescribeSnapsh
 }
 
 type DescribeSnapshotsResponseBodySnapshotsSnapshot struct {
+	// The time when snapshot creation was complete.
+	//
+	// The time follows the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) standard in UTC. The time is displayed in the `yyyy-MM-ddThh:mmZ` format.
+	//
+	// >  This parameter is valid only when the snapshot is created. During snapshot creation, the value of this parameter is the same as that of CreateTime.
+	//
+	// example:
+	//
+	// 2014-07-24T13:10:52Z
+	CompletedTime *string `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
 	// The time when the snapshot was created.
 	//
 	// The time follows the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) standard in UTC. The time is displayed in the `yyyy-MM-ddThh:mmZ` format.
@@ -15671,6 +16065,11 @@ func (s DescribeSnapshotsResponseBodySnapshotsSnapshot) String() string {
 
 func (s DescribeSnapshotsResponseBodySnapshotsSnapshot) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetCompletedTime(v string) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
+	s.CompletedTime = &v
+	return s
 }
 
 func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetCreateTime(v string) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
@@ -19038,7 +19437,7 @@ func (s *ModifyAccessGroupResponse) SetBody(v *ModifyAccessGroupResponseBody) *M
 type ModifyAccessPointRequest struct {
 	// The name of the permission group.
 	//
-	// This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+	// This parameter is required for a General-purpose File Storage NAS (NAS) file system.
 	//
 	// The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
 	//
@@ -19522,7 +19921,7 @@ type ModifyDataFlowRequest struct {
 	//
 	// example:
 	//
-	// dfid-194433a5be31****
+	// df-194433a5be31****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	// The description of the dataflow.
 	//
@@ -19554,6 +19953,12 @@ type ModifyDataFlowRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the file system.
 	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19568,7 +19973,7 @@ type ModifyDataFlowRequest struct {
 	//
 	// 	- 1500
 	//
-	// >  The data flow throughput must be less than the I/O throughput of the file system.
+	// >  The data flow throughput must be less than the I/O throughput of the file system. This parameter is required for CPFS file systems.
 	//
 	// example:
 	//
@@ -20021,7 +20426,7 @@ type ModifyFilesetRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2838077.html) operation.
 	//
 	// 	- true: enables release protection.
 	//
@@ -20058,11 +20463,17 @@ type ModifyFilesetRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the file system.
 	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
+	// >  CPFS is not supported on the international site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cpfs-099394bd928c****
+	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The fileset ID.
 	//
@@ -20472,7 +20883,7 @@ type ModifyMountTargetRequest struct {
 	//
 	// 	- Inactive: The mount target is unavailable.
 	//
-	// >  Only General-purpose Apsara File Storage NAS (NAS) file systems support changing the mount target status.
+	// >  Only General-purpose File Storage NAS (NAS) file systems support changing the mount target status.
 	//
 	// example:
 	//
@@ -21717,25 +22128,47 @@ func (s *SetDirQuotaResponse) SetBody(v *SetDirQuotaResponseBody) *SetDirQuotaRe
 }
 
 type SetFilesetQuotaRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. The dry run checks parameter validity and prerequisites. The dry run does not delete the specified quota or incur fees.
+	//
+	// Valid values:
+	//
+	// 	- true: performs only a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
+	//
+	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, the quota is deleted.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The limit of the file quantity of the quota. Valid values:
+	//
+	// 	- Minimum value: 10000.
+	//
+	// 	- Maximum value: 10000000000.
+	//
 	// example:
 	//
 	// 10000
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
+	// The ID of the CPFS for LINGJUN file system. The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// Fileset ID。
+	// The fileset ID.
 	//
 	// This parameter is required.
 	//
@@ -21743,6 +22176,16 @@ type SetFilesetQuotaRequest struct {
 	//
 	// fset-1902718ea0ae****
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
+	// The limit of the total capacity of the quota. Unit: bytes.
+	//
+	// Valid values:
+	//
+	// 	- Minimum value: 10737418240 (10 GiB).
+	//
+	// 	- Maximum value: 1073741824000 (1024000 GiB).
+	//
+	// 	- Step size: 1073741824 (1 GiB).
+	//
 	// example:
 	//
 	// 10737418240
@@ -21788,6 +22231,8 @@ func (s *SetFilesetQuotaRequest) SetSizeLimit(v int64) *SetFilesetQuotaRequest {
 }
 
 type SetFilesetQuotaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D69A58F-345C-4FDE-88E4-BF518948****
@@ -22682,13 +23127,24 @@ func (client *Client) AddClientToBlackListWithOptions(request *AddClientToBlackL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddClientToBlackListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddClientToBlackListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddClientToBlackListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI AddClientToBlackList is deprecated
@@ -22774,13 +23230,24 @@ func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI AddTags is deprecated, please use NAS::2017-06-26::TagResources instead.
@@ -22828,7 +23295,7 @@ func (client *Client) AddTags(request *AddTagsRequest) (_result *AddTagsResponse
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -22871,13 +23338,24 @@ func (client *Client) ApplyAutoSnapshotPolicyWithOptions(request *ApplyAutoSnaps
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyAutoSnapshotPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyAutoSnapshotPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22886,7 +23364,7 @@ func (client *Client) ApplyAutoSnapshotPolicyWithOptions(request *ApplyAutoSnaps
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -22924,13 +23402,11 @@ func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRe
 //
 // 	- You can add a maximum of five AutoRefresh configurations to a dataflow.
 //
-// 	- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
+// 	- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
 //
 // 	- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
 //
-//     **
-//
-//     **Note*	- The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//     > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
 //
 // 	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
 //
@@ -22991,13 +23467,24 @@ func (client *Client) ApplyDataFlowAutoRefreshWithOptions(request *ApplyDataFlow
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyDataFlowAutoRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyDataFlowAutoRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyDataFlowAutoRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23014,13 +23501,11 @@ func (client *Client) ApplyDataFlowAutoRefreshWithOptions(request *ApplyDataFlow
 //
 // 	- You can add a maximum of five AutoRefresh configurations to a dataflow.
 //
-// 	- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
+// 	- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
 //
 // 	- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
 //
-//     **
-//
-//     **Note*	- The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//     > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
 //
 // 	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
 //
@@ -23048,7 +23533,7 @@ func (client *Client) ApplyDataFlowAutoRefresh(request *ApplyDataFlowAutoRefresh
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -23081,13 +23566,24 @@ func (client *Client) CancelAutoSnapshotPolicyWithOptions(request *CancelAutoSna
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelAutoSnapshotPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelAutoSnapshotPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23096,7 +23592,7 @@ func (client *Client) CancelAutoSnapshotPolicyWithOptions(request *CancelAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -23126,7 +23622,7 @@ func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicy
 //
 // 	- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the AutoRefresh tasks.
+// 	- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
 //
 // @param request - CancelDataFlowAutoRefreshRequest
 //
@@ -23173,13 +23669,24 @@ func (client *Client) CancelDataFlowAutoRefreshWithOptions(request *CancelDataFl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelDataFlowAutoRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelDataFlowAutoRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelDataFlowAutoRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23194,7 +23701,7 @@ func (client *Client) CancelDataFlowAutoRefreshWithOptions(request *CancelDataFl
 //
 // 	- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the AutoRefresh tasks.
+// 	- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
 //
 // @param request - CancelDataFlowAutoRefreshRequest
 //
@@ -23271,13 +23778,24 @@ func (client *Client) CancelDataFlowSubTaskWithOptions(request *CancelDataFlowSu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelDataFlowSubTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelDataFlowSubTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelDataFlowSubTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23316,7 +23834,7 @@ func (client *Client) CancelDataFlowSubTask(request *CancelDataFlowSubTaskReques
 //
 // 	- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
 //
-// 	- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
+// 	- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
 //
 // @param request - CancelDataFlowTaskRequest
 //
@@ -23363,13 +23881,24 @@ func (client *Client) CancelDataFlowTaskWithOptions(request *CancelDataFlowTaskR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelDataFlowTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelDataFlowTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelDataFlowTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23382,7 +23911,7 @@ func (client *Client) CancelDataFlowTaskWithOptions(request *CancelDataFlowTaskR
 //
 // 	- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
 //
-// 	- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
+// 	- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
 //
 // @param request - CancelDataFlowTaskRequest
 //
@@ -23447,13 +23976,24 @@ func (client *Client) CancelDirQuotaWithOptions(request *CancelDirQuotaRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelDirQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelDirQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelDirQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23480,7 +24020,11 @@ func (client *Client) CancelDirQuota(request *CancelDirQuotaRequest) (_result *C
 
 // Summary:
 //
-// 取消设置智能目录配额
+// Cancels the quota set for a fileset.
+//
+// Description:
+//
+// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
 //
 // @param request - CancelFilesetQuotaRequest
 //
@@ -23523,18 +24067,33 @@ func (client *Client) CancelFilesetQuotaWithOptions(request *CancelFilesetQuotaR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelFilesetQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelFilesetQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelFilesetQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 取消设置智能目录配额
+// Cancels the quota set for a fileset.
+//
+// Description:
+//
+// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
 //
 // @param request - CancelFilesetQuotaRequest
 //
@@ -23587,13 +24146,24 @@ func (client *Client) CancelLifecycleRetrieveJobWithOptions(request *CancelLifec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelLifecycleRetrieveJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelLifecycleRetrieveJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelLifecycleRetrieveJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23657,13 +24227,24 @@ func (client *Client) CancelRecycleBinJobWithOptions(request *CancelRecycleBinJo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelRecycleBinJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelRecycleBinJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelRecycleBinJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23739,13 +24320,24 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23811,13 +24403,24 @@ func (client *Client) CreateAccessGroupWithOptions(request *CreateAccessGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccessGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccessGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccessGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23844,11 +24447,11 @@ func (client *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (_res
 //
 // Description:
 //
-//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you perform the CreateAccessPoint operation successfully, call the DescribeAccessPoints or DescribeAccessPoint operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
+//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you call the CreateAccessPoint operation successfully, call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html) or [DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html) operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
 //
-// 	- Only General-purpose Network File System (NFS) file systems support this operation.
+// 	- Only General-purpose Network File System (NFS) file systems support access points.
 //
-// 	- If you want to perform the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
+// 	- If you want to call the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
 //
 // @param request - CreateAccessPointRequest
 //
@@ -23927,13 +24530,24 @@ func (client *Client) CreateAccessPointWithOptions(request *CreateAccessPointReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23942,11 +24556,11 @@ func (client *Client) CreateAccessPointWithOptions(request *CreateAccessPointReq
 //
 // Description:
 //
-//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you perform the CreateAccessPoint operation successfully, call the DescribeAccessPoints or DescribeAccessPoint operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
+//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you call the CreateAccessPoint operation successfully, call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html) or [DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html) operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
 //
-// 	- Only General-purpose Network File System (NFS) file systems support this operation.
+// 	- Only General-purpose Network File System (NFS) file systems support access points.
 //
-// 	- If you want to perform the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
+// 	- If you want to call the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
 //
 // @param request - CreateAccessPointRequest
 //
@@ -24019,13 +24633,24 @@ func (client *Client) CreateAccessRuleWithOptions(request *CreateAccessRuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccessRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccessRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccessRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24052,7 +24677,7 @@ func (client *Client) CreateAccessRule(request *CreateAccessRuleRequest) (_resul
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -24117,13 +24742,24 @@ func (client *Client) CreateAutoSnapshotPolicyWithOptions(request *CreateAutoSna
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAutoSnapshotPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAutoSnapshotPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24132,7 +24768,7 @@ func (client *Client) CreateAutoSnapshotPolicyWithOptions(request *CreateAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -24184,29 +24820,27 @@ func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicy
 //
 // 	- Permissions
 //
-//     When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+//     When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
 //
 // 	- CPFS for LINGJUN usage notes
 //
-//     	- Source storage
+//      	- Source storage
 //
-//         	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
+//          	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
 //
-//         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//          	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
 //
-//         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//          	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
 //
-//         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//          	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
 //
-//         	- CPFS for LINGJUN V2.6.0 and later allows you to create data flows for OSS buckets across accounts.
+//          	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
 //
-//         	- The account id parameter is required only when you use OSS buckets across accounts.
+//          	- The account id parameter is required only when you use OSS buckets across accounts.
 //
-//         	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/182246.html).
+//          	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
 //
-//             **
-//
-//             **Note*	- Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//          >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
 //
 //     	- Limits of data flows on file systems
 //
@@ -24311,13 +24945,24 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataFlowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataFlowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24338,29 +24983,27 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 //
 // 	- Permissions
 //
-//     When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+//     When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
 //
 // 	- CPFS for LINGJUN usage notes
 //
-//     	- Source storage
+//      	- Source storage
 //
-//         	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
+//          	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
 //
-//         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//          	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
 //
-//         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//          	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
 //
-//         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//          	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
 //
-//         	- CPFS for LINGJUN V2.6.0 and later allows you to create data flows for OSS buckets across accounts.
+//          	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
 //
-//         	- The account id parameter is required only when you use OSS buckets across accounts.
+//          	- The account id parameter is required only when you use OSS buckets across accounts.
 //
-//         	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/182246.html).
+//          	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
 //
-//             **
-//
-//             **Note*	- Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//          >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
 //
 //     	- Limits of data flows on file systems
 //
@@ -24404,7 +25047,17 @@ func (client *Client) CreateDataFlow(request *CreateDataFlowRequest) (_result *C
 
 // Summary:
 //
-// 创建数据流动子任务
+// Creates a data streaming subtask.
+//
+// Description:
+//
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
+//
+// 	- You can create subtasks only for a data streaming subtask in the Executing state.
+//
+// 	- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
+//
+// 	- When the type of data flow task is streaming, the running status only indicates that a streaming import or export task can be created. It does not indicate that the import or export task is running.
 //
 // @param request - CreateDataFlowSubTaskRequest
 //
@@ -24463,18 +25116,39 @@ func (client *Client) CreateDataFlowSubTaskWithOptions(request *CreateDataFlowSu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataFlowSubTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataFlowSubTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataFlowSubTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建数据流动子任务
+// Creates a data streaming subtask.
+//
+// Description:
+//
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
+//
+// 	- You can create subtasks only for a data streaming subtask in the Executing state.
+//
+// 	- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
+//
+// 	- When the type of data flow task is streaming, the running status only indicates that a streaming import or export task can be created. It does not indicate that the import or export task is running.
 //
 // @param request - CreateDataFlowSubTaskRequest
 //
@@ -24496,15 +25170,17 @@ func (client *Client) CreateDataFlowSubTask(request *CreateDataFlowSubTaskReques
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.3.4 and later support data flows. You can view the version information on the file system details page in the console.
+//   Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 // 	- You can create a data flow task only for a data flow that is in the Running state.
 //
-// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
 // 	- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
 //
 // 	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
+//
+// 	- CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -24579,13 +25255,24 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataFlowTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataFlowTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataFlowTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24594,15 +25281,17 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.3.4 and later support data flows. You can view the version information on the file system details page in the console.
+//   Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 // 	- You can create a data flow task only for a data flow that is in the Running state.
 //
-// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
 // 	- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
 //
 // 	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
+//
+// 	- CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -24675,13 +25364,24 @@ func (client *Client) CreateDirWithOptions(request *CreateDirRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDirResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDirResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDirResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24761,13 +25461,24 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24800,7 +25511,7 @@ func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFil
 //
 // Description:
 //
-//   Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+//   Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
 //
 // 	- Before you create a file system, you must complete real-name verification.
 //
@@ -24899,13 +25610,24 @@ func (client *Client) CreateFileSystemWithOptions(request *CreateFileSystemReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24914,7 +25636,7 @@ func (client *Client) CreateFileSystemWithOptions(request *CreateFileSystemReque
 //
 // Description:
 //
-//   Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+//   Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
 //
 // 	- Before you create a file system, you must complete real-name verification.
 //
@@ -24940,17 +25662,25 @@ func (client *Client) CreateFileSystem(request *CreateFileSystemRequest) (_resul
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
+// 	- A maximum of 500 filesets can be created for a CPFS file system.
 //
-// 	- A maximum of 10 filesets can be created for a CPFS file system.
+// 	- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
 //
-// 	- The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
+// 	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
 //
-// 	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
+// 	- If the fileset path is a multi-level path, the parent directory must be an existing directory.
 //
-// 	- A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
+// 	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//
+// 	- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
+//
+// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//
+// 	- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//
+// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - CreateFilesetRequest
 //
@@ -25005,13 +25735,24 @@ func (client *Client) CreateFilesetWithOptions(request *CreateFilesetRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFilesetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFilesetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFilesetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25020,17 +25761,25 @@ func (client *Client) CreateFilesetWithOptions(request *CreateFilesetRequest, ru
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
+// 	- A maximum of 500 filesets can be created for a CPFS file system.
 //
-// 	- A maximum of 10 filesets can be created for a CPFS file system.
+// 	- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
 //
-// 	- The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
+// 	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
 //
-// 	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
+// 	- If the fileset path is a multi-level path, the parent directory must be an existing directory.
 //
-// 	- A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
+// 	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//
+// 	- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
+//
+// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//
+// 	- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//
+// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - CreateFilesetRequest
 //
@@ -25046,6 +25795,8 @@ func (client *Client) CreateFileset(request *CreateFilesetRequest) (_result *Cre
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateLDAPConfig is deprecated
+//
 // Summary:
 //
 // Creates LDAP configurations.
@@ -25055,6 +25806,7 @@ func (client *Client) CreateFileset(request *CreateFilesetRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLDAPConfigResponse
+// Deprecated
 func (client *Client) CreateLDAPConfigWithOptions(request *CreateLDAPConfigRequest, runtime *util.RuntimeOptions) (_result *CreateLDAPConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25091,15 +25843,28 @@ func (client *Client) CreateLDAPConfigWithOptions(request *CreateLDAPConfigReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLDAPConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLDAPConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLDAPConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI CreateLDAPConfig is deprecated
+//
 // Summary:
 //
 // Creates LDAP configurations.
@@ -25107,6 +25872,7 @@ func (client *Client) CreateLDAPConfigWithOptions(request *CreateLDAPConfigReque
 // @param request - CreateLDAPConfigRequest
 //
 // @return CreateLDAPConfigResponse
+// Deprecated
 func (client *Client) CreateLDAPConfig(request *CreateLDAPConfigRequest) (_result *CreateLDAPConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLDAPConfigResponse{}
@@ -25177,13 +25943,24 @@ func (client *Client) CreateLifecyclePolicyWithOptions(request *CreateLifecycleP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLifecyclePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLifecyclePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLifecyclePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25257,13 +26034,24 @@ func (client *Client) CreateLifecycleRetrieveJobWithOptions(request *CreateLifec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLifecycleRetrieveJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLifecycleRetrieveJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLifecycleRetrieveJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25327,13 +26115,24 @@ func (client *Client) CreateLogAnalysisWithOptions(request *CreateLogAnalysisReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLogAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLogAnalysisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLogAnalysisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25421,13 +26220,24 @@ func (client *Client) CreateMountTargetWithOptions(request *CreateMountTargetReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25541,13 +26351,24 @@ func (client *Client) CreateProtocolMountTargetWithOptions(request *CreateProtoc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateProtocolMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProtocolMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProtocolMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25677,13 +26498,24 @@ func (client *Client) CreateProtocolServiceWithOptions(request *CreateProtocolSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateProtocolServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProtocolServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProtocolServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25767,13 +26599,24 @@ func (client *Client) CreateRecycleBinDeleteJobWithOptions(request *CreateRecycl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRecycleBinDeleteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRecycleBinDeleteJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRecycleBinDeleteJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25843,13 +26686,24 @@ func (client *Client) CreateRecycleBinRestoreJobWithOptions(request *CreateRecyc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRecycleBinRestoreJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRecycleBinRestoreJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRecycleBinRestoreJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25888,7 +26742,7 @@ func (client *Client) CreateRecycleBinRestoreJob(request *CreateRecycleBinRestor
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -25947,13 +26801,24 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25962,7 +26827,7 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -26035,13 +26900,24 @@ func (client *Client) DeleteAccessGroupWithOptions(request *DeleteAccessGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccessGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccessGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccessGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26109,13 +26985,24 @@ func (client *Client) DeleteAccessPointWithOptions(request *DeleteAccessPointReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26187,13 +27074,24 @@ func (client *Client) DeleteAccessRuleWithOptions(request *DeleteAccessRuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccessRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccessRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccessRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26224,7 +27122,7 @@ func (client *Client) DeleteAccessRule(request *DeleteAccessRuleRequest) (_resul
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -26259,13 +27157,24 @@ func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSna
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAutoSnapshotPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAutoSnapshotPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26274,7 +27183,7 @@ func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -26347,13 +27256,24 @@ func (client *Client) DeleteDataFlowWithOptions(request *DeleteDataFlowRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataFlowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataFlowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26423,13 +27343,24 @@ func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26464,9 +27395,9 @@ func (client *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (_resul
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
 //
-// 	- Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+// 	- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
 //
 // @param request - DeleteFilesetRequest
 //
@@ -26509,13 +27440,24 @@ func (client *Client) DeleteFilesetWithOptions(request *DeleteFilesetRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFilesetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFilesetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFilesetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26524,9 +27466,9 @@ func (client *Client) DeleteFilesetWithOptions(request *DeleteFilesetRequest, ru
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
 //
-// 	- Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+// 	- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
 //
 // @param request - DeleteFilesetRequest
 //
@@ -26542,11 +27484,18 @@ func (client *Client) DeleteFileset(request *DeleteFilesetRequest) (_result *Del
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteLDAPConfig is deprecated
+//
+// Summary:
+//
+// 删除LDAP配置
+//
 // @param request - DeleteLDAPConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLDAPConfigResponse
+// Deprecated
 func (client *Client) DeleteLDAPConfigWithOptions(request *DeleteLDAPConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteLDAPConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26571,18 +27520,36 @@ func (client *Client) DeleteLDAPConfigWithOptions(request *DeleteLDAPConfigReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLDAPConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLDAPConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLDAPConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI DeleteLDAPConfig is deprecated
+//
+// Summary:
+//
+// 删除LDAP配置
+//
 // @param request - DeleteLDAPConfigRequest
 //
 // @return DeleteLDAPConfigResponse
+// Deprecated
 func (client *Client) DeleteLDAPConfig(request *DeleteLDAPConfigRequest) (_result *DeleteLDAPConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLDAPConfigResponse{}
@@ -26635,13 +27602,24 @@ func (client *Client) DeleteLifecyclePolicyWithOptions(request *DeleteLifecycleP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLifecyclePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLifecyclePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLifecyclePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26703,13 +27681,24 @@ func (client *Client) DeleteLogAnalysisWithOptions(request *DeleteLogAnalysisReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLogAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLogAnalysisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLogAnalysisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26771,13 +27760,24 @@ func (client *Client) DeleteMountTargetWithOptions(request *DeleteMountTargetReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26855,13 +27855,24 @@ func (client *Client) DeleteProtocolMountTargetWithOptions(request *DeleteProtoc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteProtocolMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteProtocolMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteProtocolMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26937,13 +27948,24 @@ func (client *Client) DeleteProtocolServiceWithOptions(request *DeleteProtocolSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteProtocolServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteProtocolServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteProtocolServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26976,7 +27998,7 @@ func (client *Client) DeleteProtocolService(request *DeleteProtocolServiceReques
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -27009,13 +28031,24 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27024,7 +28057,7 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -27091,13 +28124,24 @@ func (client *Client) DescribeAccessGroupsWithOptions(request *DescribeAccessGro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccessGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccessGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccessGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27159,13 +28203,24 @@ func (client *Client) DescribeAccessPointWithOptions(request *DescribeAccessPoin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27239,13 +28294,24 @@ func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPoi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccessPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccessPointsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccessPointsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27319,13 +28385,24 @@ func (client *Client) DescribeAccessRulesWithOptions(request *DescribeAccessRule
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccessRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccessRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccessRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27352,7 +28429,7 @@ func (client *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -27397,13 +28474,24 @@ func (client *Client) DescribeAutoSnapshotPoliciesWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAutoSnapshotPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAutoSnapshotPoliciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAutoSnapshotPoliciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27412,7 +28500,7 @@ func (client *Client) DescribeAutoSnapshotPoliciesWithOptions(request *DescribeA
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -27436,7 +28524,7 @@ func (client *Client) DescribeAutoSnapshotPolicies(request *DescribeAutoSnapshot
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -27485,13 +28573,24 @@ func (client *Client) DescribeAutoSnapshotTasksWithOptions(request *DescribeAuto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAutoSnapshotTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAutoSnapshotTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAutoSnapshotTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27500,7 +28599,7 @@ func (client *Client) DescribeAutoSnapshotTasksWithOptions(request *DescribeAuto
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -27566,13 +28665,24 @@ func (client *Client) DescribeBlackListClientsWithOptions(request *DescribeBlack
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBlackListClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBlackListClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBlackListClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI DescribeBlackListClients is deprecated
@@ -27649,13 +28759,24 @@ func (client *Client) DescribeDataFlowSubTasksWithOptions(request *DescribeDataF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDataFlowSubTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDataFlowSubTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDataFlowSubTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27682,15 +28803,11 @@ func (client *Client) DescribeDataFlowSubTasks(request *DescribeDataFlowSubTasks
 
 // Summary:
 //
-// 查询数据流动任务
+// Queries the details of data flow tasks.
 //
 // Description:
 //
-// ###
-//
-// *
-//
-// *
+// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support query of data flow tasks. You can view the version information on the file system details page in the console.
 //
 // @param request - DescribeDataFlowTasksRequest
 //
@@ -27733,26 +28850,33 @@ func (client *Client) DescribeDataFlowTasksWithOptions(request *DescribeDataFlow
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDataFlowTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDataFlowTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDataFlowTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询数据流动任务
+// Queries the details of data flow tasks.
 //
 // Description:
 //
-// ###
-//
-// *
-//
-// *
+// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support query of data flow tasks. You can view the version information on the file system details page in the console.
 //
 // @param request - DescribeDataFlowTasksRequest
 //
@@ -27774,7 +28898,7 @@ func (client *Client) DescribeDataFlowTasks(request *DescribeDataFlowTasksReques
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//   Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 // 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
@@ -27821,13 +28945,24 @@ func (client *Client) DescribeDataFlowsWithOptions(request *DescribeDataFlowsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDataFlowsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDataFlowsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDataFlowsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27836,7 +28971,7 @@ func (client *Client) DescribeDataFlowsWithOptions(request *DescribeDataFlowsReq
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//   Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 // 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
@@ -27905,13 +29040,24 @@ func (client *Client) DescribeDirQuotasWithOptions(request *DescribeDirQuotasReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDirQuotasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDirQuotasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDirQuotasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27936,6 +29082,8 @@ func (client *Client) DescribeDirQuotas(request *DescribeDirQuotasRequest) (_res
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeFileSystemStatistics is deprecated, please use NAS::2017-06-26::DescribeResourceStatistics instead.
+//
 // Summary:
 //
 // Queries the statistics of file systems that are owned by the current account.
@@ -27945,6 +29093,7 @@ func (client *Client) DescribeDirQuotas(request *DescribeDirQuotasRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFileSystemStatisticsResponse
+// Deprecated
 func (client *Client) DescribeFileSystemStatisticsWithOptions(request *DescribeFileSystemStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeFileSystemStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27973,15 +29122,28 @@ func (client *Client) DescribeFileSystemStatisticsWithOptions(request *DescribeF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFileSystemStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFileSystemStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFileSystemStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI DescribeFileSystemStatistics is deprecated, please use NAS::2017-06-26::DescribeResourceStatistics instead.
+//
 // Summary:
 //
 // Queries the statistics of file systems that are owned by the current account.
@@ -27989,6 +29151,7 @@ func (client *Client) DescribeFileSystemStatisticsWithOptions(request *DescribeF
 // @param request - DescribeFileSystemStatisticsRequest
 //
 // @return DescribeFileSystemStatisticsResponse
+// Deprecated
 func (client *Client) DescribeFileSystemStatistics(request *DescribeFileSystemStatisticsRequest) (_result *DescribeFileSystemStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFileSystemStatisticsResponse{}
@@ -28057,13 +29220,24 @@ func (client *Client) DescribeFileSystemsWithOptions(request *DescribeFileSystem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFileSystemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFileSystemsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFileSystemsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28090,9 +29264,7 @@ func (client *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-//
-// 	- Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 // 	- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
 //
@@ -28125,6 +29297,14 @@ func (client *Client) DescribeFilesetsWithOptions(request *DescribeFilesetsReque
 		query["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrderByField)) {
+		query["OrderByField"] = request.OrderByField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28139,13 +29319,24 @@ func (client *Client) DescribeFilesetsWithOptions(request *DescribeFilesetsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFilesetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFilesetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFilesetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28154,9 +29345,7 @@ func (client *Client) DescribeFilesetsWithOptions(request *DescribeFilesetsReque
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-//
-// 	- Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 // 	- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
 //
@@ -28209,13 +29398,24 @@ func (client *Client) DescribeLifecyclePoliciesWithOptions(request *DescribeLife
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLifecyclePoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLifecyclePoliciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLifecyclePoliciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28285,13 +29485,24 @@ func (client *Client) DescribeLogAnalysisWithOptions(request *DescribeLogAnalysi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLogAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLogAnalysisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLogAnalysisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28361,13 +29572,24 @@ func (client *Client) DescribeMountTargetsWithOptions(request *DescribeMountTarg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMountTargetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMountTargetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMountTargetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28447,13 +29669,24 @@ func (client *Client) DescribeMountedClientsWithOptions(request *DescribeMounted
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMountedClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMountedClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMountedClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28513,13 +29746,24 @@ func (client *Client) DescribeNfsAclWithOptions(request *DescribeNfsAclRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNfsAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNfsAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNfsAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28593,13 +29837,24 @@ func (client *Client) DescribeProtocolMountTargetWithOptions(request *DescribePr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProtocolMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProtocolMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProtocolMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28685,13 +29940,24 @@ func (client *Client) DescribeProtocolServiceWithOptions(request *DescribeProtoc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProtocolServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProtocolServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProtocolServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28718,7 +29984,7 @@ func (client *Client) DescribeProtocolService(request *DescribeProtocolServiceRe
 
 // Summary:
 //
-// Queries the regions in which Apsara File Storage NAS is available.
+// Queries the regions in which File Storage NAS is available.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -28757,18 +30023,29 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the regions in which Apsara File Storage NAS is available.
+// Queries the regions in which File Storage NAS is available.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -28817,13 +30094,24 @@ func (client *Client) DescribeSmbAclWithOptions(request *DescribeSmbAclRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSmbAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSmbAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSmbAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28850,7 +30138,7 @@ func (client *Client) DescribeSmbAcl(request *DescribeSmbAclRequest) (_result *D
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -28911,13 +30199,24 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28926,7 +30225,7 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -28989,13 +30288,24 @@ func (client *Client) DescribeStoragePackagesWithOptions(request *DescribeStorag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeStoragePackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeStoragePackagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeStoragePackagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29053,13 +30363,24 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29117,13 +30438,24 @@ func (client *Client) DisableAndCleanRecycleBinWithOptions(request *DisableAndCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableAndCleanRecycleBinResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableAndCleanRecycleBinResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableAndCleanRecycleBinResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29185,13 +30517,24 @@ func (client *Client) DisableNfsAclWithOptions(request *DisableNfsAclRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableNfsAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableNfsAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableNfsAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29245,13 +30588,24 @@ func (client *Client) DisableSmbAclWithOptions(request *DisableSmbAclRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableSmbAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableSmbAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableSmbAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29305,13 +30659,24 @@ func (client *Client) EnableNfsAclWithOptions(request *EnableNfsAclRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableNfsAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableNfsAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableNfsAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29373,13 +30738,24 @@ func (client *Client) EnableRecycleBinWithOptions(request *EnableRecycleBinReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableRecycleBinResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableRecycleBinResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableRecycleBinResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29445,13 +30821,24 @@ func (client *Client) EnableSmbAclWithOptions(request *EnableSmbAclRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableSmbAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableSmbAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableSmbAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29513,13 +30900,24 @@ func (client *Client) GetDirectoryOrFilePropertiesWithOptions(request *GetDirect
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDirectoryOrFilePropertiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDirectoryOrFilePropertiesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDirectoryOrFilePropertiesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29550,7 +30948,7 @@ func (client *Client) GetDirectoryOrFileProperties(request *GetDirectoryOrFilePr
 //
 // Description:
 //
-// Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
+// Only General-purpose File Storage NAS (NAS) file systems support this operation.
 //
 // @param request - GetRecycleBinAttributeRequest
 //
@@ -29577,13 +30975,24 @@ func (client *Client) GetRecycleBinAttributeWithOptions(request *GetRecycleBinAt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRecycleBinAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRecycleBinAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRecycleBinAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29592,7 +31001,7 @@ func (client *Client) GetRecycleBinAttributeWithOptions(request *GetRecycleBinAt
 //
 // Description:
 //
-// Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
+// Only General-purpose File Storage NAS (NAS) file systems support this operation.
 //
 // @param request - GetRecycleBinAttributeRequest
 //
@@ -29665,13 +31074,24 @@ func (client *Client) ListDirectoriesAndFilesWithOptions(request *ListDirectorie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDirectoriesAndFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDirectoriesAndFilesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDirectoriesAndFilesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29749,13 +31169,24 @@ func (client *Client) ListLifecycleRetrieveJobsWithOptions(request *ListLifecycl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLifecycleRetrieveJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLifecycleRetrieveJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLifecycleRetrieveJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29813,13 +31244,24 @@ func (client *Client) ListRecentlyRecycledDirectoriesWithOptions(request *ListRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRecentlyRecycledDirectoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRecentlyRecycledDirectoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRecentlyRecycledDirectoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29879,13 +31321,24 @@ func (client *Client) ListRecycleBinJobsWithOptions(request *ListRecycleBinJobsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRecycleBinJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRecycleBinJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRecycleBinJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29945,13 +31398,24 @@ func (client *Client) ListRecycledDirectoriesAndFilesWithOptions(request *ListRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRecycledDirectoriesAndFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRecycledDirectoriesAndFilesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRecycledDirectoriesAndFilesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30021,13 +31485,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30093,13 +31568,24 @@ func (client *Client) ModifyAccessGroupWithOptions(request *ModifyAccessGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccessGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccessGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccessGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30177,13 +31663,24 @@ func (client *Client) ModifyAccessPointWithOptions(request *ModifyAccessPointReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30273,13 +31770,24 @@ func (client *Client) ModifyAccessRuleWithOptions(request *ModifyAccessRuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccessRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccessRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccessRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30310,7 +31818,7 @@ func (client *Client) ModifyAccessRule(request *ModifyAccessRuleRequest) (_resul
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -30359,13 +31867,24 @@ func (client *Client) ModifyAutoSnapshotPolicyWithOptions(request *ModifyAutoSna
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAutoSnapshotPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAutoSnapshotPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30374,7 +31893,7 @@ func (client *Client) ModifyAutoSnapshotPolicyWithOptions(request *ModifyAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -30398,23 +31917,11 @@ func (client *Client) ModifyAutoSnapshotPolicy(request *ModifyAutoSnapshotPolicy
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
 //
-// 	- Only CPFS V2.2.0 and later support dataflows.
+// 	- You can modify the attributes only of the data flows that are in the `Running` state.
 //
-// 	- You can modify the attributes only of the dataflows that are in the `Running` state.
-//
-// 	- It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the dataflow to be modified.
-//
-// 	- Data flow specifications:
-//
-//     	- The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-//
-//     	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-//
-// 	- Billing
-//
-//     Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+// 	- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
 //
 // @param request - ModifyDataFlowRequest
 //
@@ -30465,13 +31972,24 @@ func (client *Client) ModifyDataFlowWithOptions(request *ModifyDataFlowRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDataFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDataFlowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDataFlowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30480,23 +31998,11 @@ func (client *Client) ModifyDataFlowWithOptions(request *ModifyDataFlowRequest, 
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
 //
-// 	- Only CPFS V2.2.0 and later support dataflows.
+// 	- You can modify the attributes only of the data flows that are in the `Running` state.
 //
-// 	- You can modify the attributes only of the dataflows that are in the `Running` state.
-//
-// 	- It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the dataflow to be modified.
-//
-// 	- Data flow specifications:
-//
-//     	- The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-//
-//     	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-//
-// 	- Billing
-//
-//     Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+// 	- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
 //
 // @param request - ModifyDataFlowRequest
 //
@@ -30524,7 +32030,7 @@ func (client *Client) ModifyDataFlow(request *ModifyDataFlowRequest) (_result *M
 //
 // 	- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the task of modifying an AutoRefresh configuration.
+// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -30575,13 +32081,24 @@ func (client *Client) ModifyDataFlowAutoRefreshWithOptions(request *ModifyDataFl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDataFlowAutoRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDataFlowAutoRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDataFlowAutoRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30596,7 +32113,7 @@ func (client *Client) ModifyDataFlowAutoRefreshWithOptions(request *ModifyDataFl
 //
 // 	- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the task of modifying an AutoRefresh configuration.
+// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -30659,13 +32176,24 @@ func (client *Client) ModifyFileSystemWithOptions(tmpReq *ModifyFileSystemReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30692,9 +32220,7 @@ func (client *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (_resul
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-//
-// 	- Only CPFS V2.2.0 and later support fileset modification.
+// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
 //
 // @param request - ModifyFilesetRequest
 //
@@ -30745,13 +32271,24 @@ func (client *Client) ModifyFilesetWithOptions(request *ModifyFilesetRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyFilesetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFilesetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFilesetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30760,9 +32297,7 @@ func (client *Client) ModifyFilesetWithOptions(request *ModifyFilesetRequest, ru
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-//
-// 	- Only CPFS V2.2.0 and later support fileset modification.
+// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
 //
 // @param request - ModifyFilesetRequest
 //
@@ -30778,6 +32313,12 @@ func (client *Client) ModifyFileset(request *ModifyFilesetRequest) (_result *Mod
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ModifyLDAPConfig is deprecated
+//
+// Summary:
+//
+// 修改LDAP配置
+//
 // Description:
 //
 // The API operation is available only for Cloud Parallel File Storage (CPFS) file systems.
@@ -30787,6 +32328,7 @@ func (client *Client) ModifyFileset(request *ModifyFilesetRequest) (_result *Mod
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLDAPConfigResponse
+// Deprecated
 func (client *Client) ModifyLDAPConfigWithOptions(request *ModifyLDAPConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyLDAPConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30823,15 +32365,32 @@ func (client *Client) ModifyLDAPConfigWithOptions(request *ModifyLDAPConfigReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyLDAPConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyLDAPConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyLDAPConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI ModifyLDAPConfig is deprecated
+//
+// Summary:
+//
+// 修改LDAP配置
+//
 // Description:
 //
 // The API operation is available only for Cloud Parallel File Storage (CPFS) file systems.
@@ -30839,6 +32398,7 @@ func (client *Client) ModifyLDAPConfigWithOptions(request *ModifyLDAPConfigReque
 // @param request - ModifyLDAPConfigRequest
 //
 // @return ModifyLDAPConfigResponse
+// Deprecated
 func (client *Client) ModifyLDAPConfig(request *ModifyLDAPConfigRequest) (_result *ModifyLDAPConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyLDAPConfigResponse{}
@@ -30903,13 +32463,24 @@ func (client *Client) ModifyLifecyclePolicyWithOptions(request *ModifyLifecycleP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyLifecyclePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyLifecyclePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyLifecyclePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30983,13 +32554,24 @@ func (client *Client) ModifyMountTargetWithOptions(request *ModifyMountTargetReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31067,13 +32649,24 @@ func (client *Client) ModifyProtocolMountTargetWithOptions(request *ModifyProtoc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyProtocolMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyProtocolMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyProtocolMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31151,13 +32744,24 @@ func (client *Client) ModifyProtocolServiceWithOptions(request *ModifyProtocolSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyProtocolServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyProtocolServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyProtocolServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31243,13 +32847,24 @@ func (client *Client) ModifySmbAclWithOptions(request *ModifySmbAclRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySmbAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySmbAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySmbAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31272,7 +32887,7 @@ func (client *Client) ModifySmbAcl(request *ModifySmbAclRequest) (_result *Modif
 
 // Summary:
 //
-// Activates Apsara File Storage NAS.
+// Activates File Storage NAS.
 //
 // @param request - OpenNASServiceRequest
 //
@@ -31292,18 +32907,29 @@ func (client *Client) OpenNASServiceWithOptions(runtime *util.RuntimeOptions) (_
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OpenNASServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OpenNASServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OpenNASServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Activates Apsara File Storage NAS.
+// Activates File Storage NAS.
 //
 // @return OpenNASServiceResponse
 func (client *Client) OpenNASService() (_result *OpenNASServiceResponse, _err error) {
@@ -31369,13 +32995,24 @@ func (client *Client) RemoveClientFromBlackListWithOptions(request *RemoveClient
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveClientFromBlackListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveClientFromBlackListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveClientFromBlackListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI RemoveClientFromBlackList is deprecated
@@ -31449,13 +33086,24 @@ func (client *Client) RemoveTagsWithOptions(request *RemoveTagsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI RemoveTags is deprecated, please use NAS::2017-06-26::UntagResources instead.
@@ -31491,7 +33139,7 @@ func (client *Client) RemoveTags(request *RemoveTagsRequest) (_result *RemoveTag
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -31532,13 +33180,24 @@ func (client *Client) ResetFileSystemWithOptions(request *ResetFileSystemRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31547,7 +33206,7 @@ func (client *Client) ResetFileSystemWithOptions(request *ResetFileSystemRequest
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support this feature.
 //
@@ -31606,13 +33265,24 @@ func (client *Client) RetryLifecycleRetrieveJobWithOptions(request *RetryLifecyc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RetryLifecycleRetrieveJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RetryLifecycleRetrieveJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RetryLifecycleRetrieveJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31643,7 +33313,7 @@ func (client *Client) RetryLifecycleRetrieveJob(request *RetryLifecycleRetrieveJ
 //
 // Description:
 //
-// Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
+// Only General-purpose File Storage NAS (NAS) file systems support the directory quota feature.
 //
 // @param request - SetDirQuotaRequest
 //
@@ -31698,13 +33368,24 @@ func (client *Client) SetDirQuotaWithOptions(request *SetDirQuotaRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDirQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDirQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDirQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31713,7 +33394,7 @@ func (client *Client) SetDirQuotaWithOptions(request *SetDirQuotaRequest, runtim
 //
 // Description:
 //
-// Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
+// Only General-purpose File Storage NAS (NAS) file systems support the directory quota feature.
 //
 // @param request - SetDirQuotaRequest
 //
@@ -31731,7 +33412,19 @@ func (client *Client) SetDirQuota(request *SetDirQuotaRequest) (_result *SetDirQ
 
 // Summary:
 //
-// 设置智能目录配额
+// Sets the quota for a fileset.
+//
+// Description:
+//
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
+//
+// 	- The minimum capacity quota of a fileset is 10 GiB, and the maximum capacity quota is 1,000 TiB. The scaling step size is 1 GiB. The capacity quota cannot exceed the total capacity of the file system.
+//
+// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//
+// 	- When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+//
+// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - SetFilesetQuotaRequest
 //
@@ -31782,18 +33475,41 @@ func (client *Client) SetFilesetQuotaWithOptions(request *SetFilesetQuotaRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetFilesetQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetFilesetQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetFilesetQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 设置智能目录配额
+// Sets the quota for a fileset.
+//
+// Description:
+//
+//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
+//
+// 	- The minimum capacity quota of a fileset is 10 GiB, and the maximum capacity quota is 1,000 TiB. The scaling step size is 1 GiB. The capacity quota cannot exceed the total capacity of the file system.
+//
+// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//
+// 	- When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+//
+// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - SetFilesetQuotaRequest
 //
@@ -31866,13 +33582,24 @@ func (client *Client) StartDataFlowWithOptions(request *StartDataFlowRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartDataFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartDataFlowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartDataFlowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31964,13 +33691,24 @@ func (client *Client) StopDataFlowWithOptions(request *StopDataFlowRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopDataFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopDataFlowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopDataFlowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32046,13 +33784,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32118,13 +33867,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32178,13 +33938,24 @@ func (client *Client) UpdateRecycleBinAttributeWithOptions(request *UpdateRecycl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRecycleBinAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRecycleBinAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRecycleBinAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32260,13 +34031,24 @@ func (client *Client) UpgradeFileSystemWithOptions(request *UpgradeFileSystemReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
