@@ -50,7 +50,8 @@ func (s *CommonAgentQuery) SetQuerySceneEnumCode(v string) *CommonAgentQuery {
 }
 
 type QueryResult struct {
-	Data []*QueryResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Data      []*QueryResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s QueryResult) String() string {
@@ -66,22 +67,28 @@ func (s *QueryResult) SetData(v []*QueryResultData) *QueryResult {
 	return s
 }
 
+func (s *QueryResult) SetRequestId(v string) *QueryResult {
+	s.RequestId = &v
+	return s
+}
+
 type QueryResultData struct {
-	Address      *string                  `json:"address,omitempty" xml:"address,omitempty"`
-	CityCode     *string                  `json:"cityCode,omitempty" xml:"cityCode,omitempty"`
-	CityName     *string                  `json:"cityName,omitempty" xml:"cityName,omitempty"`
-	DistrictCode *string                  `json:"districtCode,omitempty" xml:"districtCode,omitempty"`
-	DistrictName *string                  `json:"districtName,omitempty" xml:"districtName,omitempty"`
-	Id           *string                  `json:"id,omitempty" xml:"id,omitempty"`
-	Images       []*QueryResultDataImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	Latitude     *string                  `json:"latitude,omitempty" xml:"latitude,omitempty"`
-	Longitude    *string                  `json:"longitude,omitempty" xml:"longitude,omitempty"`
-	Metadata     *QueryResultDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	Name         *string                  `json:"name,omitempty" xml:"name,omitempty"`
-	ProvinceCode *string                  `json:"provinceCode,omitempty" xml:"provinceCode,omitempty"`
-	ProvinceName *string                  `json:"provinceName,omitempty" xml:"provinceName,omitempty"`
-	TypeCode     *string                  `json:"typeCode,omitempty" xml:"typeCode,omitempty"`
-	Types        *string                  `json:"types,omitempty" xml:"types,omitempty"`
+	Address       *string                  `json:"address,omitempty" xml:"address,omitempty"`
+	CityCode      *string                  `json:"cityCode,omitempty" xml:"cityCode,omitempty"`
+	CityName      *string                  `json:"cityName,omitempty" xml:"cityName,omitempty"`
+	DistanceMeter *string                  `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	DistrictCode  *string                  `json:"districtCode,omitempty" xml:"districtCode,omitempty"`
+	DistrictName  *string                  `json:"districtName,omitempty" xml:"districtName,omitempty"`
+	Id            *string                  `json:"id,omitempty" xml:"id,omitempty"`
+	Images        []*QueryResultDataImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Latitude      *string                  `json:"latitude,omitempty" xml:"latitude,omitempty"`
+	Longitude     *string                  `json:"longitude,omitempty" xml:"longitude,omitempty"`
+	Metadata      *QueryResultDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
+	Name          *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	ProvinceCode  *string                  `json:"provinceCode,omitempty" xml:"provinceCode,omitempty"`
+	ProvinceName  *string                  `json:"provinceName,omitempty" xml:"provinceName,omitempty"`
+	TypeCode      *string                  `json:"typeCode,omitempty" xml:"typeCode,omitempty"`
+	Types         *string                  `json:"types,omitempty" xml:"types,omitempty"`
 }
 
 func (s QueryResultData) String() string {
@@ -104,6 +111,11 @@ func (s *QueryResultData) SetCityCode(v string) *QueryResultData {
 
 func (s *QueryResultData) SetCityName(v string) *QueryResultData {
 	s.CityName = &v
+	return s
+}
+
+func (s *QueryResultData) SetDistanceMeter(v string) *QueryResultData {
+	s.DistanceMeter = &v
 	return s
 }
 
@@ -191,6 +203,7 @@ func (s *QueryResultDataImages) SetUrl(v string) *QueryResultDataImages {
 }
 
 type QueryResultDataMetadata struct {
+	AverageSpend      *string `json:"averageSpend,omitempty" xml:"averageSpend,omitempty"`
 	BusinessArea      *string `json:"businessArea,omitempty" xml:"businessArea,omitempty"`
 	DailyOpeningHours *string `json:"dailyOpeningHours,omitempty" xml:"dailyOpeningHours,omitempty"`
 	MainTag           *string `json:"mainTag,omitempty" xml:"mainTag,omitempty"`
@@ -205,6 +218,11 @@ func (s QueryResultDataMetadata) String() string {
 
 func (s QueryResultDataMetadata) GoString() string {
 	return s.String()
+}
+
+func (s *QueryResultDataMetadata) SetAverageSpend(v string) *QueryResultDataMetadata {
+	s.AverageSpend = &v
+	return s
 }
 
 func (s *QueryResultDataMetadata) SetBusinessArea(v string) *QueryResultDataMetadata {
@@ -2579,6 +2597,366 @@ func (s *PlaceSearchNovaResponse) SetBody(v *PlaceSearchNovaResponseBody) *Place
 	return s
 }
 
+type QueryAttractionsRequest struct {
+	Body *AgentBaseQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAttractionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttractionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttractionsRequest) SetBody(v *AgentBaseQuery) *QueryAttractionsRequest {
+	s.Body = v
+	return s
+}
+
+type QueryAttractionsResponseBody struct {
+	QueryResult *QueryResult `json:"queryResult,omitempty" xml:"queryResult,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ECB2144C-E277-5434-80E6-12D26678D364
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s QueryAttractionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttractionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttractionsResponseBody) SetQueryResult(v *QueryResult) *QueryAttractionsResponseBody {
+	s.QueryResult = v
+	return s
+}
+
+func (s *QueryAttractionsResponseBody) SetRequestId(v string) *QueryAttractionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryAttractionsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAttractionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAttractionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttractionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttractionsResponse) SetHeaders(v map[string]*string) *QueryAttractionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAttractionsResponse) SetStatusCode(v int32) *QueryAttractionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAttractionsResponse) SetBody(v *QueryAttractionsResponseBody) *QueryAttractionsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAttractionsNlRequest struct {
+	Body *AgentBaseQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAttractionsNlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttractionsNlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttractionsNlRequest) SetBody(v *AgentBaseQuery) *QueryAttractionsNlRequest {
+	s.Body = v
+	return s
+}
+
+type QueryAttractionsNlResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryResult       `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAttractionsNlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttractionsNlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttractionsNlResponse) SetHeaders(v map[string]*string) *QueryAttractionsNlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAttractionsNlResponse) SetStatusCode(v int32) *QueryAttractionsNlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAttractionsNlResponse) SetBody(v *QueryResult) *QueryAttractionsNlResponse {
+	s.Body = v
+	return s
+}
+
+type QueryHotelsRequest struct {
+	Body *AgentBaseQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryHotelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelsRequest) SetBody(v *AgentBaseQuery) *QueryHotelsRequest {
+	s.Body = v
+	return s
+}
+
+type QueryHotelsResponseBody struct {
+	QueryResult *QueryResult `json:"queryResult,omitempty" xml:"queryResult,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 78032F8B-0157-53F9-B1A8-3BD86ADE38D0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s QueryHotelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelsResponseBody) SetQueryResult(v *QueryResult) *QueryHotelsResponseBody {
+	s.QueryResult = v
+	return s
+}
+
+func (s *QueryHotelsResponseBody) SetRequestId(v string) *QueryHotelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryHotelsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryHotelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryHotelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelsResponse) SetHeaders(v map[string]*string) *QueryHotelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryHotelsResponse) SetStatusCode(v int32) *QueryHotelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryHotelsResponse) SetBody(v *QueryHotelsResponseBody) *QueryHotelsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryHotelsNlRequest struct {
+	Body *AgentBaseQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryHotelsNlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelsNlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelsNlRequest) SetBody(v *AgentBaseQuery) *QueryHotelsNlRequest {
+	s.Body = v
+	return s
+}
+
+type QueryHotelsNlResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryResult       `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryHotelsNlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelsNlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelsNlResponse) SetHeaders(v map[string]*string) *QueryHotelsNlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryHotelsNlResponse) SetStatusCode(v int32) *QueryHotelsNlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryHotelsNlResponse) SetBody(v *QueryResult) *QueryHotelsNlResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRestaurantsRequest struct {
+	Body *AgentBaseQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRestaurantsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRestaurantsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRestaurantsRequest) SetBody(v *AgentBaseQuery) *QueryRestaurantsRequest {
+	s.Body = v
+	return s
+}
+
+type QueryRestaurantsResponseBody struct {
+	QueryResult *QueryResult `json:"queryResult,omitempty" xml:"queryResult,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// D78E16C0-4D44-5065-BFF7-127F7859F687
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s QueryRestaurantsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRestaurantsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRestaurantsResponseBody) SetQueryResult(v *QueryResult) *QueryRestaurantsResponseBody {
+	s.QueryResult = v
+	return s
+}
+
+func (s *QueryRestaurantsResponseBody) SetRequestId(v string) *QueryRestaurantsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryRestaurantsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRestaurantsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRestaurantsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRestaurantsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRestaurantsResponse) SetHeaders(v map[string]*string) *QueryRestaurantsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRestaurantsResponse) SetStatusCode(v int32) *QueryRestaurantsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRestaurantsResponse) SetBody(v *QueryRestaurantsResponseBody) *QueryRestaurantsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRestaurantsNlRequest struct {
+	Body *AgentBaseQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRestaurantsNlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRestaurantsNlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRestaurantsNlRequest) SetBody(v *AgentBaseQuery) *QueryRestaurantsNlRequest {
+	s.Body = v
+	return s
+}
+
+type QueryRestaurantsNlResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryResult       `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRestaurantsNlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRestaurantsNlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRestaurantsNlResponse) SetHeaders(v map[string]*string) *QueryRestaurantsNlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRestaurantsNlResponse) SetStatusCode(v int32) *QueryRestaurantsNlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRestaurantsNlResponse) SetBody(v *QueryResult) *QueryRestaurantsNlResponse {
+	s.Body = v
+	return s
+}
+
 type RgeoCodeRequest struct {
 	// example:
 	//
@@ -4838,13 +5216,24 @@ func (client *Client) BicyclingDirectionNovaWithOptions(request *BicyclingDirect
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BicyclingDirectionNovaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BicyclingDirectionNovaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BicyclingDirectionNovaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4897,13 +5286,24 @@ func (client *Client) CommonQueryBySceneWithOptions(request *CommonQueryBySceneR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CommonQueryBySceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CommonQueryBySceneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CommonQueryBySceneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4981,13 +5381,24 @@ func (client *Client) DrivingDirectionNovaWithOptions(request *DrivingDirectionN
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DrivingDirectionNovaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DrivingDirectionNovaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DrivingDirectionNovaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5057,13 +5468,24 @@ func (client *Client) ElectrobikeDirectionNovaWithOptions(request *ElectrobikeDi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ElectrobikeDirectionNovaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ElectrobikeDirectionNovaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ElectrobikeDirectionNovaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5125,13 +5547,24 @@ func (client *Client) GeoCodeWithOptions(request *GeoCodeRequest, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GeoCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GeoCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GeoCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5221,13 +5654,24 @@ func (client *Client) NearbySearchNovaWithOptions(request *NearbySearchNovaReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &NearbySearchNovaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &NearbySearchNovaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &NearbySearchNovaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5305,13 +5749,24 @@ func (client *Client) PlaceSearchNovaWithOptions(request *PlaceSearchNovaRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PlaceSearchNovaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PlaceSearchNovaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PlaceSearchNovaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5326,6 +5781,426 @@ func (client *Client) PlaceSearchNova(request *PlaceSearchNovaRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &PlaceSearchNovaResponse{}
 	_body, _err := client.PlaceSearchNovaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 景点查询
+//
+// @param request - QueryAttractionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAttractionsResponse
+func (client *Client) QueryAttractionsWithOptions(request *QueryAttractionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAttractionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAttractions"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/amap-function-call-agent/iqs-agent-service/v1/nl/attractions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryAttractionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryAttractionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 景点查询
+//
+// @param request - QueryAttractionsRequest
+//
+// @return QueryAttractionsResponse
+func (client *Client) QueryAttractions(request *QueryAttractionsRequest) (_result *QueryAttractionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryAttractionsResponse{}
+	_body, _err := client.QueryAttractionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 景点查询
+//
+// @param request - QueryAttractionsNlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAttractionsNlResponse
+func (client *Client) QueryAttractionsNlWithOptions(request *QueryAttractionsNlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAttractionsNlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAttractionsNl"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/amap-function-call-agent/iqs-agent-service/v2/nl/attractions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryAttractionsNlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryAttractionsNlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 景点查询
+//
+// @param request - QueryAttractionsNlRequest
+//
+// @return QueryAttractionsNlResponse
+func (client *Client) QueryAttractionsNl(request *QueryAttractionsNlRequest) (_result *QueryAttractionsNlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryAttractionsNlResponse{}
+	_body, _err := client.QueryAttractionsNlWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店查询
+//
+// @param request - QueryHotelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHotelsResponse
+func (client *Client) QueryHotelsWithOptions(request *QueryHotelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryHotelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryHotels"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/amap-function-call-agent/iqs-agent-service/v1/nl/hotels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryHotelsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryHotelsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 酒店查询
+//
+// @param request - QueryHotelsRequest
+//
+// @return QueryHotelsResponse
+func (client *Client) QueryHotels(request *QueryHotelsRequest) (_result *QueryHotelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryHotelsResponse{}
+	_body, _err := client.QueryHotelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店查询
+//
+// @param request - QueryHotelsNlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHotelsNlResponse
+func (client *Client) QueryHotelsNlWithOptions(request *QueryHotelsNlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryHotelsNlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryHotelsNl"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/amap-function-call-agent/iqs-agent-service/v2/nl/hotels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryHotelsNlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryHotelsNlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 酒店查询
+//
+// @param request - QueryHotelsNlRequest
+//
+// @return QueryHotelsNlResponse
+func (client *Client) QueryHotelsNl(request *QueryHotelsNlRequest) (_result *QueryHotelsNlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryHotelsNlResponse{}
+	_body, _err := client.QueryHotelsNlWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 餐厅查询
+//
+// @param request - QueryRestaurantsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRestaurantsResponse
+func (client *Client) QueryRestaurantsWithOptions(request *QueryRestaurantsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryRestaurantsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRestaurants"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/amap-function-call-agent/iqs-agent-service/v1/nl/restaurants"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryRestaurantsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryRestaurantsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 餐厅查询
+//
+// @param request - QueryRestaurantsRequest
+//
+// @return QueryRestaurantsResponse
+func (client *Client) QueryRestaurants(request *QueryRestaurantsRequest) (_result *QueryRestaurantsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryRestaurantsResponse{}
+	_body, _err := client.QueryRestaurantsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 餐厅查询
+//
+// @param request - QueryRestaurantsNlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRestaurantsNlResponse
+func (client *Client) QueryRestaurantsNlWithOptions(request *QueryRestaurantsNlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryRestaurantsNlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRestaurantsNl"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/amap-function-call-agent/iqs-agent-service/v2/nl/restaurants"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryRestaurantsNlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryRestaurantsNlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 餐厅查询
+//
+// @param request - QueryRestaurantsNlRequest
+//
+// @return QueryRestaurantsNlResponse
+func (client *Client) QueryRestaurantsNl(request *QueryRestaurantsNlRequest) (_result *QueryRestaurantsNlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryRestaurantsNlResponse{}
+	_body, _err := client.QueryRestaurantsNlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5373,13 +6248,24 @@ func (client *Client) RgeoCodeWithOptions(request *RgeoCodeRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RgeoCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RgeoCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RgeoCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5457,13 +6343,24 @@ func (client *Client) TransitIntegratedDirectionWithOptions(request *TransitInte
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TransitIntegratedDirectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TransitIntegratedDirectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TransitIntegratedDirectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5533,13 +6430,24 @@ func (client *Client) WalkingDirectionNovaWithOptions(request *WalkingDirectionN
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &WalkingDirectionNovaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &WalkingDirectionNovaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &WalkingDirectionNovaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
