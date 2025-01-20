@@ -8775,9 +8775,9 @@ func (s *DescribeBackupLogsResponse) SetBody(v *DescribeBackupLogsResponseBody) 
 }
 
 type DescribeBackupPolicyRequest struct {
-	// The ID of cluster.
+	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -8847,7 +8847,7 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 	- **ALL**: permanently retains all backups.
 	//
-	// 	- **LATEST**: permanently retains only the last backup.
+	// 	- **LATEST**: permanently retains the most recent backup.
 	//
 	// 	- **NONE**: does not retain backups.
 	//
@@ -8927,9 +8927,9 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 	- **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
 	//
-	// 	- **1**: Cross-region level-2 backups are permanently retained.
+	// 	- **1**: Cross-region level-2 backups are retained for a long period of time.
 	//
-	// > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+	// >  The default value of the parameter is **0**.
 	//
 	// example:
 	//
@@ -8967,9 +8967,9 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 	- 30 to 7300: Level-2 backups are retained for 30 to 7,300 days.
 	//
-	// 	- \\-1: Level-2 backups are permanently retained.
+	// 	- \\-1: Level-2 backups are retained for a long period of time.
 	//
-	// > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+	// >  The default value of this parameter is **0**.
 	//
 	// example:
 	//
@@ -10940,7 +10940,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// OFF
-	ImciAutoIndex *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	ImciAutoIndex       *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	ImperceptibleSwitch *string `json:"ImperceptibleSwitch,omitempty" xml:"ImperceptibleSwitch,omitempty"`
 	// Maximum number of inodes in the file system.
 	//
 	// example:
@@ -11108,7 +11109,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// RestoreByTime
-	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	RestoreType    *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	RowCompression *string `json:"RowCompression,omitempty" xml:"RowCompression,omitempty"`
 	// Storage amount of SQL, in bytes. If the value is -1, it indicates no data.
 	//
 	// example:
@@ -11376,6 +11378,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetImciAutoIndex(v string) *Des
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) SetImperceptibleSwitch(v string) *DescribeDBClusterAttributeResponseBody {
+	s.ImperceptibleSwitch = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) SetInodeTotal(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.InodeTotal = &v
 	return s
@@ -11468,6 +11475,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetRestoreDataPoint(v string) *
 
 func (s *DescribeDBClusterAttributeResponseBody) SetRestoreType(v string) *DescribeDBClusterAttributeResponseBody {
 	s.RestoreType = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetRowCompression(v string) *DescribeDBClusterAttributeResponseBody {
+	s.RowCompression = &v
 	return s
 }
 
@@ -14823,13 +14835,13 @@ type DescribeDBClusterServerlessConfResponseBody struct {
 	//
 	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Maximum limit for the number of read-only column storage nodes. Range: 0~7.
+	// The maximum number of read-only column store nodes. Valid values: 0 to 15.
 	//
 	// example:
 	//
 	// 1
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
-	// Minimum limit for the number of read-only column storage nodes. Range: 0~7.
+	// The minimum number of read-only column store nodes. Valid values: 0 to 15.
 	//
 	// example:
 	//
@@ -28831,6 +28843,7 @@ type ModifyDBClusterRequest struct {
 	//
 	// OFF
 	ImciAutoIndex        *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	ModifyRowCompression *string `json:"ModifyRowCompression,omitempty" xml:"ModifyRowCompression,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -28862,7 +28875,8 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// 800
-	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	StorageUpperBound *int64  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	TableMeta         *string `json:"TableMeta,omitempty" xml:"TableMeta,omitempty"`
 }
 
 func (s ModifyDBClusterRequest) String() string {
@@ -28908,6 +28922,11 @@ func (s *ModifyDBClusterRequest) SetImciAutoIndex(v string) *ModifyDBClusterRequ
 	return s
 }
 
+func (s *ModifyDBClusterRequest) SetModifyRowCompression(v string) *ModifyDBClusterRequest {
+	s.ModifyRowCompression = &v
+	return s
+}
+
 func (s *ModifyDBClusterRequest) SetOwnerAccount(v string) *ModifyDBClusterRequest {
 	s.OwnerAccount = &v
 	return s
@@ -28940,6 +28959,11 @@ func (s *ModifyDBClusterRequest) SetStorageAutoScale(v string) *ModifyDBClusterR
 
 func (s *ModifyDBClusterRequest) SetStorageUpperBound(v int64) *ModifyDBClusterRequest {
 	s.StorageUpperBound = &v
+	return s
+}
+
+func (s *ModifyDBClusterRequest) SetTableMeta(v string) *ModifyDBClusterRequest {
+	s.TableMeta = &v
 	return s
 }
 
@@ -31011,11 +31035,11 @@ type ModifyDBClusterSSLRequest struct {
 	//
 	// >
 	//
-	// 	- This parameter is required for a PolarDB for MySQL cluster.
+	// 	- This parameter is required for PolarDB for MySQL clusters.
 	//
-	// 	- This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
+	// 	- This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
 	//
-	// 	- You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/153414.html) operation to view the details of the endpoint.
+	// 	- You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to view the details of the endpoint.
 	//
 	// example:
 	//
@@ -31473,6 +31497,146 @@ func (s *ModifyDBClusterServerlessConfResponse) SetStatusCode(v int32) *ModifyDB
 }
 
 func (s *ModifyDBClusterServerlessConfResponse) SetBody(v *ModifyDBClusterServerlessConfResponseBody) *ModifyDBClusterServerlessConfResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBClusterStoragePerformanceRequest struct {
+	// example:
+	//
+	// false
+	BurstingEnabled *string `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	// example:
+	//
+	// 6000170000591aed949d0f******************
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// Upgrade
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// example:
+	//
+	// 2500
+	ProvisionedIops *int32 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// ESSDAUTOPL
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s ModifyDBClusterStoragePerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterStoragePerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetBurstingEnabled(v string) *ModifyDBClusterStoragePerformanceRequest {
+	s.BurstingEnabled = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetClientToken(v string) *ModifyDBClusterStoragePerformanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetDBClusterId(v string) *ModifyDBClusterStoragePerformanceRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetModifyType(v string) *ModifyDBClusterStoragePerformanceRequest {
+	s.ModifyType = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetProvisionedIops(v int32) *ModifyDBClusterStoragePerformanceRequest {
+	s.ProvisionedIops = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetResourceOwnerId(v int64) *ModifyDBClusterStoragePerformanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetStorageType(v string) *ModifyDBClusterStoragePerformanceRequest {
+	s.StorageType = &v
+	return s
+}
+
+type ModifyDBClusterStoragePerformanceResponseBody struct {
+	// example:
+	//
+	// pc-************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2035629******
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// E56531A4-E552-40BA-9C58-137B80******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBClusterStoragePerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterStoragePerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterStoragePerformanceResponseBody) SetDBClusterId(v string) *ModifyDBClusterStoragePerformanceResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceResponseBody) SetOrderId(v string) *ModifyDBClusterStoragePerformanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceResponseBody) SetRequestId(v string) *ModifyDBClusterStoragePerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBClusterStoragePerformanceResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBClusterStoragePerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBClusterStoragePerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterStoragePerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterStoragePerformanceResponse) SetHeaders(v map[string]*string) *ModifyDBClusterStoragePerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceResponse) SetStatusCode(v int32) *ModifyDBClusterStoragePerformanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceResponse) SetBody(v *ModifyDBClusterStoragePerformanceResponseBody) *ModifyDBClusterStoragePerformanceResponse {
 	s.Body = v
 	return s
 }
@@ -42232,7 +42396,7 @@ func (client *Client) DescribeDBClusterSSL(request *DescribeDBClusterSSLRequest)
 
 // Summary:
 //
-// Query serverless configuration.
+// Queries the serverless configurations of a serverless cluster.
 //
 // @param request - DescribeDBClusterServerlessConfRequest
 //
@@ -42290,7 +42454,7 @@ func (client *Client) DescribeDBClusterServerlessConfWithOptions(request *Descri
 
 // Summary:
 //
-// Query serverless configuration.
+// Queries the serverless configurations of a serverless cluster.
 //
 // @param request - DescribeDBClusterServerlessConfRequest
 //
@@ -46777,6 +46941,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		query["ImciAutoIndex"] = request.ImciAutoIndex
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModifyRowCompression)) {
+		query["ModifyRowCompression"] = request.ModifyRowCompression
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -46803,6 +46971,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.StorageUpperBound)) {
 		query["StorageUpperBound"] = request.StorageUpperBound
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableMeta)) {
+		query["TableMeta"] = request.TableMeta
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -48036,7 +48208,7 @@ func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResou
 
 // Summary:
 //
-// Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+// Enables or disables the SSL encryption feature for a PolarDB cluster, or updates the CA certificate of the cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -48110,7 +48282,7 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 
 // Summary:
 //
-// Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+// Enables or disables the SSL encryption feature for a PolarDB cluster, or updates the CA certificate of the cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -48259,6 +48431,90 @@ func (client *Client) ModifyDBClusterServerlessConf(request *ModifyDBClusterServ
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterServerlessConfResponse{}
 	_body, _err := client.ModifyDBClusterServerlessConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改存储性能
+//
+// @param request - ModifyDBClusterStoragePerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterStoragePerformanceResponse
+func (client *Client) ModifyDBClusterStoragePerformanceWithOptions(request *ModifyDBClusterStoragePerformanceRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterStoragePerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BurstingEnabled)) {
+		query["BurstingEnabled"] = request.BurstingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
+		query["ModifyType"] = request.ModifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisionedIops)) {
+		query["ProvisionedIops"] = request.ProvisionedIops
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBClusterStoragePerformance"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBClusterStoragePerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改存储性能
+//
+// @param request - ModifyDBClusterStoragePerformanceRequest
+//
+// @return ModifyDBClusterStoragePerformanceResponse
+func (client *Client) ModifyDBClusterStoragePerformance(request *ModifyDBClusterStoragePerformanceRequest) (_result *ModifyDBClusterStoragePerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBClusterStoragePerformanceResponse{}
+	_body, _err := client.ModifyDBClusterStoragePerformanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
