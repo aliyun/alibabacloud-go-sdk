@@ -1249,7 +1249,8 @@ type CreateAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Tag       []*CreateAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -1356,6 +1357,11 @@ func (s *CreateAggregateCompliancePackRequest) SetResourceIdsScope(v string) *Cr
 
 func (s *CreateAggregateCompliancePackRequest) SetRiskLevel(v int32) *CreateAggregateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetTag(v []*CreateAggregateCompliancePackRequestTag) *CreateAggregateCompliancePackRequest {
+	s.Tag = v
 	return s
 }
 
@@ -1532,6 +1538,29 @@ func (s *CreateAggregateCompliancePackRequestExcludeTagsScope) SetTagValue(v str
 	return s
 }
 
+type CreateAggregateCompliancePackRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAggregateCompliancePackRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateCompliancePackRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateCompliancePackRequestTag) SetKey(v string) *CreateAggregateCompliancePackRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequestTag) SetValue(v string) *CreateAggregateCompliancePackRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateAggregateCompliancePackRequestTagsScope struct {
 	// The tag key.
 	//
@@ -1667,7 +1696,8 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -1774,6 +1804,11 @@ func (s *CreateAggregateCompliancePackShrinkRequest) SetResourceIdsScope(v strin
 
 func (s *CreateAggregateCompliancePackShrinkRequest) SetRiskLevel(v int32) *CreateAggregateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetTagShrink(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -2413,7 +2448,8 @@ type CreateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// ALIYUN
-	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	SourceOwner *string                                `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	Tag         []*CreateAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -2567,6 +2603,11 @@ func (s *CreateAggregateConfigRuleRequest) SetSourceOwner(v string) *CreateAggre
 	return s
 }
 
+func (s *CreateAggregateConfigRuleRequest) SetTag(v []*CreateAggregateConfigRuleRequestTag) *CreateAggregateConfigRuleRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateAggregateConfigRuleRequest) SetTagKeyLogicScope(v string) *CreateAggregateConfigRuleRequest {
 	s.TagKeyLogicScope = &v
 	return s
@@ -2617,6 +2658,29 @@ func (s *CreateAggregateConfigRuleRequestExcludeTagsScope) SetTagKey(v string) *
 
 func (s *CreateAggregateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *CreateAggregateConfigRuleRequestExcludeTagsScope {
 	s.TagValue = &v
+	return s
+}
+
+type CreateAggregateConfigRuleRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAggregateConfigRuleRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateConfigRuleRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateConfigRuleRequestTag) SetKey(v string) *CreateAggregateConfigRuleRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequestTag) SetValue(v string) *CreateAggregateConfigRuleRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -2856,6 +2920,7 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// ALIYUN
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -3006,6 +3071,11 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetSourceIdentifier(v string) *
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetSourceOwner(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.SourceOwner = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetTagShrink(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -3423,7 +3493,8 @@ type CreateAggregatorRequest struct {
 	// example:
 	//
 	// fd-brHdgv****
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderId *string                       `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	Tag      []*CreateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateAggregatorRequest) String() string {
@@ -3461,6 +3532,11 @@ func (s *CreateAggregatorRequest) SetDescription(v string) *CreateAggregatorRequ
 
 func (s *CreateAggregatorRequest) SetFolderId(v string) *CreateAggregatorRequest {
 	s.FolderId = &v
+	return s
+}
+
+func (s *CreateAggregatorRequest) SetTag(v []*CreateAggregatorRequestTag) *CreateAggregatorRequest {
+	s.Tag = v
 	return s
 }
 
@@ -3505,6 +3581,29 @@ func (s *CreateAggregatorRequestAggregatorAccounts) SetAccountName(v string) *Cr
 
 func (s *CreateAggregatorRequestAggregatorAccounts) SetAccountType(v string) *CreateAggregatorRequestAggregatorAccounts {
 	s.AccountType = &v
+	return s
+}
+
+type CreateAggregatorRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAggregatorRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregatorRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregatorRequestTag) SetKey(v string) *CreateAggregatorRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAggregatorRequestTag) SetValue(v string) *CreateAggregatorRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -3573,7 +3672,8 @@ type CreateAggregatorShrinkRequest struct {
 	// example:
 	//
 	// fd-brHdgv****
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderId  *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s CreateAggregatorShrinkRequest) String() string {
@@ -3611,6 +3711,11 @@ func (s *CreateAggregatorShrinkRequest) SetDescription(v string) *CreateAggregat
 
 func (s *CreateAggregatorShrinkRequest) SetFolderId(v string) *CreateAggregatorShrinkRequest {
 	s.FolderId = &v
+	return s
+}
+
+func (s *CreateAggregatorShrinkRequest) SetTagShrink(v string) *CreateAggregatorShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -3769,7 +3874,8 @@ type CreateCompliancePackRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Tag       []*CreateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -3869,6 +3975,11 @@ func (s *CreateCompliancePackRequest) SetResourceIdsScope(v string) *CreateCompl
 
 func (s *CreateCompliancePackRequest) SetRiskLevel(v int32) *CreateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetTag(v []*CreateCompliancePackRequestTag) *CreateCompliancePackRequest {
+	s.Tag = v
 	return s
 }
 
@@ -4045,6 +4156,29 @@ func (s *CreateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *Cre
 	return s
 }
 
+type CreateCompliancePackRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCompliancePackRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompliancePackRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompliancePackRequestTag) SetKey(v string) *CreateCompliancePackRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequestTag) SetValue(v string) *CreateCompliancePackRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateCompliancePackRequestTagsScope struct {
 	// Tagkey
 	//
@@ -4171,7 +4305,8 @@ type CreateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -4271,6 +4406,11 @@ func (s *CreateCompliancePackShrinkRequest) SetResourceIdsScope(v string) *Creat
 
 func (s *CreateCompliancePackShrinkRequest) SetRiskLevel(v int32) *CreateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetTagShrink(v string) *CreateCompliancePackShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -8290,7 +8430,12 @@ type EvaluatePreConfigRulesRequest struct {
 	//
 	// This parameter is required.
 	ResourceEvaluateItems []*EvaluatePreConfigRulesRequestResourceEvaluateItems `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty" type:"Repeated"`
-	ResourceTypeFormat    *string                                               `json:"ResourceTypeFormat,omitempty" xml:"ResourceTypeFormat,omitempty"`
+	// 下一个查询开始Token
+	//
+	// example:
+	//
+	// ros
+	ResourceTypeFormat *string `json:"ResourceTypeFormat,omitempty" xml:"ResourceTypeFormat,omitempty"`
 }
 
 func (s EvaluatePreConfigRulesRequest) String() string {
@@ -8429,7 +8574,12 @@ type EvaluatePreConfigRulesShrinkRequest struct {
 	//
 	// This parameter is required.
 	ResourceEvaluateItemsShrink *string `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty"`
-	ResourceTypeFormat          *string `json:"ResourceTypeFormat,omitempty" xml:"ResourceTypeFormat,omitempty"`
+	// 下一个查询开始Token
+	//
+	// example:
+	//
+	// ros
+	ResourceTypeFormat *string `json:"ResourceTypeFormat,omitempty" xml:"ResourceTypeFormat,omitempty"`
 }
 
 func (s EvaluatePreConfigRulesShrinkRequest) String() string {
@@ -9725,7 +9875,8 @@ type GetAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// cp-fdc8626622af00f9****
-	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackId *string                                 `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	Tag              []*GetAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregateCompliancePackRequest) String() string {
@@ -9743,6 +9894,81 @@ func (s *GetAggregateCompliancePackRequest) SetAggregatorId(v string) *GetAggreg
 
 func (s *GetAggregateCompliancePackRequest) SetCompliancePackId(v string) *GetAggregateCompliancePackRequest {
 	s.CompliancePackId = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackRequest) SetTag(v []*GetAggregateCompliancePackRequestTag) *GetAggregateCompliancePackRequest {
+	s.Tag = v
+	return s
+}
+
+type GetAggregateCompliancePackRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetAggregateCompliancePackRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateCompliancePackRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateCompliancePackRequestTag) SetKey(v string) *GetAggregateCompliancePackRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackRequestTag) SetValue(v string) *GetAggregateCompliancePackRequestTag {
+	s.Value = &v
+	return s
+}
+
+type GetAggregateCompliancePackShrinkRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca-f632626622af0079****
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cp-fdc8626622af00f9****
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	TagShrink        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetAggregateCompliancePackShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateCompliancePackShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateCompliancePackShrinkRequest) SetAggregatorId(v string) *GetAggregateCompliancePackShrinkRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackShrinkRequest) SetCompliancePackId(v string) *GetAggregateCompliancePackShrinkRequest {
+	s.CompliancePackId = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackShrinkRequest) SetTagShrink(v string) *GetAggregateCompliancePackShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -9843,7 +10069,8 @@ type GetAggregateCompliancePackResponseBodyCompliancePack struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetAggregateCompliancePackResponseBodyCompliancePackTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
 	//
 	// example:
@@ -9962,6 +10189,11 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetScope(v *GetAg
 
 func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetStatus(v string) *GetAggregateCompliancePackResponseBodyCompliancePack {
 	s.Status = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetTags(v []*GetAggregateCompliancePackResponseBodyCompliancePackTags) *GetAggregateCompliancePackResponseBodyCompliancePack {
+	s.Tags = v
 	return s
 }
 
@@ -10283,6 +10515,29 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) Set
 }
 
 func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagValue(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type GetAggregateCompliancePackResponseBodyCompliancePackTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackTags) SetTagKey(v string) *GetAggregateCompliancePackResponseBodyCompliancePackTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackTags) SetTagValue(v string) *GetAggregateCompliancePackResponseBodyCompliancePackTags {
 	s.TagValue = &v
 	return s
 }
@@ -15078,7 +15333,8 @@ type GetAggregatorRequest struct {
 	// example:
 	//
 	// ca-88ea626622af0055****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	AggregatorId *string                    `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	Tag          []*GetAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregatorRequest) String() string {
@@ -15091,6 +15347,64 @@ func (s GetAggregatorRequest) GoString() string {
 
 func (s *GetAggregatorRequest) SetAggregatorId(v string) *GetAggregatorRequest {
 	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregatorRequest) SetTag(v []*GetAggregatorRequestTag) *GetAggregatorRequest {
+	s.Tag = v
+	return s
+}
+
+type GetAggregatorRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetAggregatorRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregatorRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregatorRequestTag) SetKey(v string) *GetAggregatorRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetAggregatorRequestTag) SetValue(v string) *GetAggregatorRequestTag {
+	s.Value = &v
+	return s
+}
+
+type GetAggregatorShrinkRequest struct {
+	// The ID of the account group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca-88ea626622af0055****
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	TagShrink    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetAggregatorShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregatorShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregatorShrinkRequest) SetAggregatorId(v string) *GetAggregatorShrinkRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregatorShrinkRequest) SetTagShrink(v string) *GetAggregatorShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -15191,7 +15505,8 @@ type GetAggregatorResponseBodyAggregator struct {
 	// example:
 	//
 	// fd-brHdgv****
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderId *string                                    `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	Tags     []*GetAggregatorResponseBodyAggregatorTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregatorResponseBodyAggregator) String() string {
@@ -15249,6 +15564,11 @@ func (s *GetAggregatorResponseBodyAggregator) SetDescription(v string) *GetAggre
 
 func (s *GetAggregatorResponseBodyAggregator) SetFolderId(v string) *GetAggregatorResponseBodyAggregator {
 	s.FolderId = &v
+	return s
+}
+
+func (s *GetAggregatorResponseBodyAggregator) SetTags(v []*GetAggregatorResponseBodyAggregatorTags) *GetAggregatorResponseBodyAggregator {
+	s.Tags = v
 	return s
 }
 
@@ -15318,6 +15638,29 @@ func (s *GetAggregatorResponseBodyAggregatorAggregatorAccounts) SetRecorderStatu
 	return s
 }
 
+type GetAggregatorResponseBodyAggregatorTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetAggregatorResponseBodyAggregatorTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregatorResponseBodyAggregatorTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregatorResponseBodyAggregatorTags) SetTagKey(v string) *GetAggregatorResponseBodyAggregatorTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetAggregatorResponseBodyAggregatorTags) SetTagValue(v string) *GetAggregatorResponseBodyAggregatorTags {
+	s.TagValue = &v
+	return s
+}
+
 type GetAggregatorResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -15357,7 +15700,8 @@ type GetCompliancePackRequest struct {
 	// example:
 	//
 	// cp-a8a8626622af0082****
-	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackId *string                        `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	Tag              []*GetCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetCompliancePackRequest) String() string {
@@ -15370,6 +15714,66 @@ func (s GetCompliancePackRequest) GoString() string {
 
 func (s *GetCompliancePackRequest) SetCompliancePackId(v string) *GetCompliancePackRequest {
 	s.CompliancePackId = &v
+	return s
+}
+
+func (s *GetCompliancePackRequest) SetTag(v []*GetCompliancePackRequestTag) *GetCompliancePackRequest {
+	s.Tag = v
+	return s
+}
+
+type GetCompliancePackRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetCompliancePackRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompliancePackRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompliancePackRequestTag) SetKey(v string) *GetCompliancePackRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetCompliancePackRequestTag) SetValue(v string) *GetCompliancePackRequestTag {
+	s.Value = &v
+	return s
+}
+
+type GetCompliancePackShrinkRequest struct {
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cp-a8a8626622af0082****
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	TagShrink        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetCompliancePackShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompliancePackShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompliancePackShrinkRequest) SetCompliancePackId(v string) *GetCompliancePackShrinkRequest {
+	s.CompliancePackId = &v
+	return s
+}
+
+func (s *GetCompliancePackShrinkRequest) SetTagShrink(v string) *GetCompliancePackShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -15464,7 +15868,8 @@ type GetCompliancePackResponseBodyCompliancePack struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetCompliancePackResponseBodyCompliancePackTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
 	//
 	// example:
@@ -15586,6 +15991,11 @@ func (s *GetCompliancePackResponseBodyCompliancePack) SetScope(v *GetComplianceP
 
 func (s *GetCompliancePackResponseBodyCompliancePack) SetStatus(v string) *GetCompliancePackResponseBodyCompliancePack {
 	s.Status = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePack) SetTags(v []*GetCompliancePackResponseBodyCompliancePackTags) *GetCompliancePackResponseBodyCompliancePack {
+	s.Tags = v
 	return s
 }
 
@@ -15911,6 +16321,29 @@ func (s *GetCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagKey(v 
 }
 
 func (s *GetCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagValue(v string) *GetCompliancePackResponseBodyCompliancePackScopeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type GetCompliancePackResponseBodyCompliancePackTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackTags) SetTagKey(v string) *GetCompliancePackResponseBodyCompliancePackTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackTags) SetTagValue(v string) *GetCompliancePackResponseBodyCompliancePackTags {
 	s.TagValue = &v
 	return s
 }
@@ -21442,7 +21875,8 @@ type ListAggregateCompliancePacksRequest struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*ListAggregateCompliancePacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregateCompliancePacksRequest) String() string {
@@ -21470,6 +21904,107 @@ func (s *ListAggregateCompliancePacksRequest) SetPageSize(v int32) *ListAggregat
 
 func (s *ListAggregateCompliancePacksRequest) SetStatus(v string) *ListAggregateCompliancePacksRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksRequest) SetTag(v []*ListAggregateCompliancePacksRequestTag) *ListAggregateCompliancePacksRequest {
+	s.Tag = v
+	return s
+}
+
+type ListAggregateCompliancePacksRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAggregateCompliancePacksRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateCompliancePacksRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateCompliancePacksRequestTag) SetKey(v string) *ListAggregateCompliancePacksRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksRequestTag) SetValue(v string) *ListAggregateCompliancePacksRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListAggregateCompliancePacksShrinkRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca-f632626622af0079****
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the one or more compliance packages to be queried. Valid values:
+	//
+	// 	- ACTIVE: compliance packages that are available for use.
+	//
+	// 	- CREATING: compliance packages that are being created.
+	//
+	// example:
+	//
+	// ACTIVE
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListAggregateCompliancePacksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateCompliancePacksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateCompliancePacksShrinkRequest) SetAggregatorId(v string) *ListAggregateCompliancePacksShrinkRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksShrinkRequest) SetPageNumber(v int32) *ListAggregateCompliancePacksShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksShrinkRequest) SetPageSize(v int32) *ListAggregateCompliancePacksShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksShrinkRequest) SetStatus(v string) *ListAggregateCompliancePacksShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksShrinkRequest) SetTagShrink(v string) *ListAggregateCompliancePacksShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -21617,7 +22152,8 @@ type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePack
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) String() string {
@@ -21670,6 +22206,34 @@ func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliance
 
 func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) SetStatus(v string) *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) SetTags(v []*ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks {
+	s.Tags = v
+	return s
+}
+
+type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) SetTagKey(v string) *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) SetTagValue(v string) *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -22816,7 +23380,8 @@ type ListAggregateConfigRulesRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32                                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Tag       []*ListAggregateConfigRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregateConfigRulesRequest) String() string {
@@ -22874,6 +23439,193 @@ func (s *ListAggregateConfigRulesRequest) SetResourceTypes(v string) *ListAggreg
 
 func (s *ListAggregateConfigRulesRequest) SetRiskLevel(v int32) *ListAggregateConfigRulesRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesRequest) SetTag(v []*ListAggregateConfigRulesRequestTag) *ListAggregateConfigRulesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListAggregateConfigRulesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAggregateConfigRulesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateConfigRulesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateConfigRulesRequestTag) SetKey(v string) *ListAggregateConfigRulesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesRequestTag) SetValue(v string) *ListAggregateConfigRulesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListAggregateConfigRulesShrinkRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca-f632626622af0079****
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The compliance package ID.
+	//
+	// example:
+	//
+	// cp-fe416457e0d90022****
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The compliance evaluation result. Valid values:
+	//
+	// 	- COMPLIANT: The resources are evaluated as compliant.
+	//
+	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
+	//
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
+	//
+	// 	- INSUFFICIENT_DATA: No data is available.
+	//
+	// example:
+	//
+	// COMPLIANT
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The name of the rule.
+	//
+	// example:
+	//
+	// test-rule-name
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// 	- ACTIVE: The rule is being used to monitor resource configurations.
+	//
+	// 	- DELETING: The rule is being deleted.
+	//
+	// 	- EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+	//
+	// 	- INACTIVE: The rule is disabled.
+	//
+	// example:
+	//
+	// ACTIVE
+	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	// The keyword that is used for queries.
+	//
+	// You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
+	//
+	// example:
+	//
+	// ecs
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
+	// Pages start from page 1. Default value: 1
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Resource type for the rule to evaluate.
+	//
+	// example:
+	//
+	// ACS::ECS::Instance
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// The risk level of the resources that do not comply with the rule. Valid values:
+	//
+	// 	- 1: high
+	//
+	// 	- 2: medium
+	//
+	// 	- 3: low
+	//
+	// example:
+	//
+	// 1
+	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListAggregateConfigRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateConfigRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetAggregatorId(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetCompliancePackId(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.CompliancePackId = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetComplianceType(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetConfigRuleName(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetConfigRuleState(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.ConfigRuleState = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetKeyword(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetPageNumber(v int32) *ListAggregateConfigRulesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetPageSize(v int32) *ListAggregateConfigRulesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetResourceTypes(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetRiskLevel(v int32) *ListAggregateConfigRulesShrinkRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesShrinkRequest) SetTagShrink(v string) *ListAggregateConfigRulesShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -25206,7 +25958,8 @@ type ListAggregatorsRequest struct {
 	// example:
 	//
 	// TGlzdFJlc291cmNlU2hhcmVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Tag       []*ListAggregatorsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregatorsRequest) String() string {
@@ -25224,6 +25977,75 @@ func (s *ListAggregatorsRequest) SetMaxResults(v int32) *ListAggregatorsRequest 
 
 func (s *ListAggregatorsRequest) SetNextToken(v string) *ListAggregatorsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListAggregatorsRequest) SetTag(v []*ListAggregatorsRequestTag) *ListAggregatorsRequest {
+	s.Tag = v
+	return s
+}
+
+type ListAggregatorsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAggregatorsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregatorsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregatorsRequestTag) SetKey(v string) *ListAggregatorsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAggregatorsRequestTag) SetValue(v string) *ListAggregatorsRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListAggregatorsShrinkRequest struct {
+	// The maximum number of entries to return in a request. Valid values: 1 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	//
+	// example:
+	//
+	// TGlzdFJlc291cmNlU2hhcmVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListAggregatorsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregatorsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregatorsShrinkRequest) SetMaxResults(v int32) *ListAggregatorsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAggregatorsShrinkRequest) SetNextToken(v string) *ListAggregatorsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAggregatorsShrinkRequest) SetTagShrink(v string) *ListAggregatorsShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -25349,7 +26171,8 @@ type ListAggregatorsResponseBodyAggregatorsResultAggregators struct {
 	// example:
 	//
 	// r-BU****
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderId *string                                                        `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	Tags     []*ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregatorsResponseBodyAggregatorsResultAggregators) String() string {
@@ -25402,6 +26225,34 @@ func (s *ListAggregatorsResponseBodyAggregatorsResultAggregators) SetDescription
 
 func (s *ListAggregatorsResponseBodyAggregatorsResultAggregators) SetFolderId(v string) *ListAggregatorsResponseBodyAggregatorsResultAggregators {
 	s.FolderId = &v
+	return s
+}
+
+func (s *ListAggregatorsResponseBodyAggregatorsResultAggregators) SetTags(v []*ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags) *ListAggregatorsResponseBodyAggregatorsResultAggregators {
+	s.Tags = v
+	return s
+}
+
+type ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags) SetTagKey(v string) *ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags) SetTagValue(v string) *ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -25884,7 +26735,8 @@ type ListCompliancePacksRequest struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*ListCompliancePacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListCompliancePacksRequest) String() string {
@@ -25907,6 +26759,92 @@ func (s *ListCompliancePacksRequest) SetPageSize(v int32) *ListCompliancePacksRe
 
 func (s *ListCompliancePacksRequest) SetStatus(v string) *ListCompliancePacksRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCompliancePacksRequest) SetTag(v []*ListCompliancePacksRequestTag) *ListCompliancePacksRequest {
+	s.Tag = v
+	return s
+}
+
+type ListCompliancePacksRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListCompliancePacksRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCompliancePacksRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListCompliancePacksRequestTag) SetKey(v string) *ListCompliancePacksRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListCompliancePacksRequestTag) SetValue(v string) *ListCompliancePacksRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListCompliancePacksShrinkRequest struct {
+	// The page number.
+	//
+	// Pages start from page 1. Default value: 1
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the compliance package to be queried. Valid values:
+	//
+	// 	- ACTIVE: The compliance package is active.
+	//
+	// 	- CREATING: The compliance package is being created.
+	//
+	// example:
+	//
+	// ACTIVE
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListCompliancePacksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCompliancePacksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCompliancePacksShrinkRequest) SetPageNumber(v int32) *ListCompliancePacksShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCompliancePacksShrinkRequest) SetPageSize(v int32) *ListCompliancePacksShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCompliancePacksShrinkRequest) SetStatus(v string) *ListCompliancePacksShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCompliancePacksShrinkRequest) SetTagShrink(v string) *ListCompliancePacksShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -26048,7 +26986,8 @@ type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct 
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) String() string {
@@ -26096,6 +27035,34 @@ func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) Se
 
 func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) SetStatus(v string) *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) SetTags(v []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks {
+	s.Tags = v
+	return s
+}
+
+type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) SetTagKey(v string) *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags) SetTagValue(v string) *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -32720,6 +33687,10 @@ type UpdateAggregateCompliancePackRequest struct {
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*UpdateAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -32813,6 +33784,11 @@ func (s *UpdateAggregateCompliancePackRequest) SetResourceIdsScope(v string) *Up
 
 func (s *UpdateAggregateCompliancePackRequest) SetRiskLevel(v int32) *UpdateAggregateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetTag(v []*UpdateAggregateCompliancePackRequestTag) *UpdateAggregateCompliancePackRequest {
+	s.Tag = v
 	return s
 }
 
@@ -32984,6 +33960,45 @@ func (s *UpdateAggregateCompliancePackRequestExcludeTagsScope) SetTagValue(v str
 	return s
 }
 
+type UpdateAggregateCompliancePackRequestTag struct {
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateAggregateCompliancePackRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateCompliancePackRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateCompliancePackRequestTag) SetKey(v string) *UpdateAggregateCompliancePackRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequestTag) SetValue(v string) *UpdateAggregateCompliancePackRequestTag {
+	s.Value = &v
+	return s
+}
+
 type UpdateAggregateCompliancePackRequestTagsScope struct {
 	// The tag key.
 	//
@@ -33112,6 +34127,10 @@ type UpdateAggregateCompliancePackShrinkRequest struct {
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -33205,6 +34224,11 @@ func (s *UpdateAggregateCompliancePackShrinkRequest) SetResourceIdsScope(v strin
 
 func (s *UpdateAggregateCompliancePackShrinkRequest) SetRiskLevel(v int32) *UpdateAggregateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetTagShrink(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -33833,6 +34857,10 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*UpdateAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -33976,6 +35004,11 @@ func (s *UpdateAggregateConfigRuleRequest) SetRiskLevel(v int32) *UpdateAggregat
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleRequest) SetTag(v []*UpdateAggregateConfigRuleRequestTag) *UpdateAggregateConfigRuleRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleRequest) SetTagKeyLogicScope(v string) *UpdateAggregateConfigRuleRequest {
 	s.TagKeyLogicScope = &v
 	return s
@@ -34026,6 +35059,45 @@ func (s *UpdateAggregateConfigRuleRequestExcludeTagsScope) SetTagKey(v string) *
 
 func (s *UpdateAggregateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *UpdateAggregateConfigRuleRequestExcludeTagsScope {
 	s.TagValue = &v
+	return s
+}
+
+type UpdateAggregateConfigRuleRequestTag struct {
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateAggregateConfigRuleRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateConfigRuleRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateConfigRuleRequestTag) SetKey(v string) *UpdateAggregateConfigRuleRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequestTag) SetValue(v string) *UpdateAggregateConfigRuleRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -34239,6 +35311,10 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -34379,6 +35455,11 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceTypesScopeShrink(v s
 
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetRiskLevel(v int32) *UpdateAggregateConfigRuleShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetTagShrink(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -34747,7 +35828,8 @@ type UpdateAggregatorRequest struct {
 	// example:
 	//
 	// Test_Aggregator_Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Tag         []*UpdateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAggregatorRequest) String() string {
@@ -34780,6 +35862,11 @@ func (s *UpdateAggregatorRequest) SetClientToken(v string) *UpdateAggregatorRequ
 
 func (s *UpdateAggregatorRequest) SetDescription(v string) *UpdateAggregatorRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAggregatorRequest) SetTag(v []*UpdateAggregatorRequestTag) *UpdateAggregatorRequest {
+	s.Tag = v
 	return s
 }
 
@@ -34837,6 +35924,29 @@ func (s *UpdateAggregatorRequestAggregatorAccounts) SetAccountType(v string) *Up
 	return s
 }
 
+type UpdateAggregatorRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateAggregatorRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregatorRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregatorRequestTag) SetKey(v string) *UpdateAggregatorRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateAggregatorRequestTag) SetValue(v string) *UpdateAggregatorRequestTag {
+	s.Value = &v
+	return s
+}
+
 type UpdateAggregatorShrinkRequest struct {
 	// The members in the account group.
 	//
@@ -34877,6 +35987,7 @@ type UpdateAggregatorShrinkRequest struct {
 	//
 	// Test_Aggregator_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s UpdateAggregatorShrinkRequest) String() string {
@@ -34909,6 +36020,11 @@ func (s *UpdateAggregatorShrinkRequest) SetClientToken(v string) *UpdateAggregat
 
 func (s *UpdateAggregatorShrinkRequest) SetDescription(v string) *UpdateAggregatorShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAggregatorShrinkRequest) SetTagShrink(v string) *UpdateAggregatorShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -35058,7 +36174,8 @@ type UpdateCompliancePackRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Tag       []*UpdateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -35147,6 +36264,11 @@ func (s *UpdateCompliancePackRequest) SetResourceIdsScope(v string) *UpdateCompl
 
 func (s *UpdateCompliancePackRequest) SetRiskLevel(v int32) *UpdateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetTag(v []*UpdateCompliancePackRequestTag) *UpdateCompliancePackRequest {
+	s.Tag = v
 	return s
 }
 
@@ -35318,6 +36440,29 @@ func (s *UpdateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *Upd
 	return s
 }
 
+type UpdateCompliancePackRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateCompliancePackRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompliancePackRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompliancePackRequestTag) SetKey(v string) *UpdateCompliancePackRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequestTag) SetValue(v string) *UpdateCompliancePackRequestTag {
+	s.Value = &v
+	return s
+}
+
 type UpdateCompliancePackRequestTagsScope struct {
 	// The tag key.
 	//
@@ -35435,7 +36580,8 @@ type UpdateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -35524,6 +36670,11 @@ func (s *UpdateCompliancePackShrinkRequest) SetResourceIdsScope(v string) *Updat
 
 func (s *UpdateCompliancePackShrinkRequest) SetRiskLevel(v int32) *UpdateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetTagShrink(v string) *UpdateCompliancePackShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -37539,13 +38690,24 @@ func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ActiveAggregateConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActiveAggregateConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActiveAggregateConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -37613,13 +38775,24 @@ func (client *Client) ActiveConfigRulesWithOptions(request *ActiveConfigRulesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ActiveConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActiveConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActiveConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -37691,13 +38864,24 @@ func (client *Client) AttachAggregateConfigRuleToCompliancePackWithOptions(reque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachAggregateConfigRuleToCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachAggregateConfigRuleToCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachAggregateConfigRuleToCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -37763,13 +38947,24 @@ func (client *Client) AttachConfigRuleToCompliancePackWithOptions(request *Attac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachConfigRuleToCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachConfigRuleToCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachConfigRuleToCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -37835,13 +39030,24 @@ func (client *Client) CopyCompliancePacksWithOptions(request *CopyCompliancePack
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CopyCompliancePacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CopyCompliancePacksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CopyCompliancePacksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -37903,13 +39109,24 @@ func (client *Client) CopyConfigRulesWithOptions(request *CopyConfigRulesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CopyConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CopyConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CopyConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -37963,13 +39180,24 @@ func (client *Client) CreateAdvancedSearchFileWithOptions(request *CreateAdvance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAdvancedSearchFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAdvancedSearchFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAdvancedSearchFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38031,13 +39259,24 @@ func (client *Client) CreateAggregateAdvancedSearchFileWithOptions(request *Crea
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAggregateAdvancedSearchFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAggregateAdvancedSearchFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAggregateAdvancedSearchFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38084,6 +39323,15 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.ConfigRules)) {
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	body := map[string]interface{}{}
@@ -38167,7 +39415,8 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAggregateCompliancePack"),
@@ -38180,13 +39429,24 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAggregateCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAggregateCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAggregateCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38296,13 +39556,24 @@ func (client *Client) CreateAggregateConfigDeliveryChannelWithOptions(request *C
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAggregateConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38359,6 +39630,15 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceTypesScope)) {
 		request.ResourceTypesScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTypesScope, tea.String("ResourceTypesScope"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	body := map[string]interface{}{}
@@ -38474,7 +39754,8 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAggregateConfigRule"),
@@ -38487,13 +39768,24 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAggregateConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAggregateConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAggregateConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38589,13 +39881,24 @@ func (client *Client) CreateAggregateRemediationWithOptions(request *CreateAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAggregateRemediationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAggregateRemediationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAggregateRemediationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38656,6 +39959,15 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 		request.AggregatorAccountsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AggregatorAccounts, tea.String("AggregatorAccounts"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AggregatorAccountsShrink)) {
 		body["AggregatorAccounts"] = request.AggregatorAccountsShrink
@@ -38682,7 +39994,8 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAggregator"),
@@ -38695,13 +40008,24 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAggregatorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAggregatorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAggregatorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38762,6 +40086,15 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.ConfigRules)) {
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	body := map[string]interface{}{}
@@ -38841,7 +40174,8 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCompliancePack"),
@@ -38854,13 +40188,24 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38968,13 +40313,24 @@ func (client *Client) CreateConfigDeliveryChannelWithOptions(request *CreateConf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39145,13 +40501,24 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39258,13 +40625,24 @@ func (client *Client) CreateDeliveryChannelWithOptions(request *CreateDeliveryCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
@@ -39353,13 +40731,24 @@ func (client *Client) CreateRemediationWithOptions(request *CreateRemediationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRemediationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRemediationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRemediationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39435,13 +40824,24 @@ func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeactiveAggregateConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeactiveAggregateConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeactiveAggregateConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39519,13 +40919,24 @@ func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRule
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeactiveConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeactiveConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeactiveConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39605,13 +41016,24 @@ func (client *Client) DeleteAggregateCompliancePacksWithOptions(request *DeleteA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAggregateCompliancePacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAggregateCompliancePacksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAggregateCompliancePacksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39677,13 +41099,24 @@ func (client *Client) DeleteAggregateConfigDeliveryChannelWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAggregateConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39749,13 +41182,24 @@ func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAggregateConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAggregateConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAggregateConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39821,13 +41265,24 @@ func (client *Client) DeleteAggregateRemediationsWithOptions(request *DeleteAggr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAggregateRemediationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAggregateRemediationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAggregateRemediationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39907,13 +41362,24 @@ func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAggregatorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAggregatorsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAggregatorsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39997,13 +41463,24 @@ func (client *Client) DeleteCompliancePacksWithOptions(request *DeleteCompliance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCompliancePacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCompliancePacksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCompliancePacksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40065,13 +41542,24 @@ func (client *Client) DeleteConfigDeliveryChannelWithOptions(request *DeleteConf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40133,13 +41621,24 @@ func (client *Client) DeleteConfigRulesWithOptions(request *DeleteConfigRulesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40201,13 +41700,24 @@ func (client *Client) DeleteRemediationsWithOptions(request *DeleteRemediationsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRemediationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRemediationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRemediationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40261,13 +41771,24 @@ func (client *Client) DescribeRemediationWithOptions(request *DescribeRemediatio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRemediationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRemediationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRemediationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40339,13 +41860,24 @@ func (client *Client) DetachAggregateConfigRuleToCompliancePackWithOptions(reque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachAggregateConfigRuleToCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachAggregateConfigRuleToCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachAggregateConfigRuleToCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40423,13 +41955,24 @@ func (client *Client) DetachConfigRuleToCompliancePackWithOptions(request *Detac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachConfigRuleToCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachConfigRuleToCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachConfigRuleToCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40507,13 +42050,24 @@ func (client *Client) EvaluatePreConfigRulesWithOptions(tmpReq *EvaluatePreConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EvaluatePreConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EvaluatePreConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EvaluatePreConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40581,13 +42135,24 @@ func (client *Client) GenerateAggregateCompliancePackReportWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateAggregateCompliancePackReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateAggregateCompliancePackReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateAggregateCompliancePackReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40661,13 +42226,24 @@ func (client *Client) GenerateAggregateConfigRulesReportWithOptions(request *Gen
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateAggregateConfigRulesReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateAggregateConfigRulesReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateAggregateConfigRulesReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40747,13 +42323,24 @@ func (client *Client) GenerateAggregateResourceInventoryWithOptions(request *Gen
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateAggregateResourceInventoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateAggregateResourceInventoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateAggregateResourceInventoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40821,13 +42408,24 @@ func (client *Client) GenerateCompliancePackReportWithOptions(request *GenerateC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateCompliancePackReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateCompliancePackReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateCompliancePackReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40897,13 +42495,24 @@ func (client *Client) GenerateConfigRulesReportWithOptions(request *GenerateConf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateConfigRulesReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateConfigRulesReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateConfigRulesReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40975,13 +42584,24 @@ func (client *Client) GenerateResourceInventoryWithOptions(request *GenerateReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateResourceInventoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateResourceInventoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateResourceInventoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41034,13 +42654,24 @@ func (client *Client) GetAdvancedSearchFileWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAdvancedSearchFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAdvancedSearchFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAdvancedSearchFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41098,13 +42729,24 @@ func (client *Client) GetAggregateAccountComplianceByPackWithOptions(request *Ge
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateAccountComplianceByPackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateAccountComplianceByPackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateAccountComplianceByPackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41162,13 +42804,24 @@ func (client *Client) GetAggregateAdvancedSearchFileWithOptions(request *GetAggr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateAdvancedSearchFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateAdvancedSearchFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateAdvancedSearchFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41197,16 +42850,22 @@ func (client *Client) GetAggregateAdvancedSearchFile(request *GetAggregateAdvanc
 //
 // The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9****` in an account group whose ID is `ca-f632626622af0079****`.
 //
-// @param request - GetAggregateCompliancePackRequest
+// @param tmpReq - GetAggregateCompliancePackRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAggregateCompliancePackResponse
-func (client *Client) GetAggregateCompliancePackWithOptions(request *GetAggregateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *GetAggregateCompliancePackResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetAggregateCompliancePackWithOptions(tmpReq *GetAggregateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *GetAggregateCompliancePackResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetAggregateCompliancePackShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -41222,13 +42881,24 @@ func (client *Client) GetAggregateCompliancePackWithOptions(request *GetAggregat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41288,13 +42958,24 @@ func (client *Client) GetAggregateCompliancePackReportWithOptions(request *GetAg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateCompliancePackReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateCompliancePackReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateCompliancePackReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41358,13 +43039,24 @@ func (client *Client) GetAggregateComplianceSummaryWithOptions(request *GetAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateComplianceSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateComplianceSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateComplianceSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41426,13 +43118,24 @@ func (client *Client) GetAggregateConfigDeliveryChannelWithOptions(request *GetA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41504,13 +43207,24 @@ func (client *Client) GetAggregateConfigRuleWithOptions(tmpReq *GetAggregateConf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41568,13 +43282,24 @@ func (client *Client) GetAggregateConfigRuleComplianceByPackWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateConfigRuleComplianceByPackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateConfigRuleComplianceByPackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateConfigRuleComplianceByPackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41636,13 +43361,24 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevelWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateConfigRuleSummaryByRiskLevelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateConfigRuleSummaryByRiskLevelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateConfigRuleSummaryByRiskLevelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41710,13 +43446,24 @@ func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateConfigRulesReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateConfigRulesReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateConfigRulesReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41804,13 +43551,24 @@ func (client *Client) GetAggregateDiscoveredResourceWithOptions(request *GetAggr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateDiscoveredResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateDiscoveredResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateDiscoveredResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41888,13 +43646,24 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceComplianceByConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceComplianceByConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceComplianceByConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41952,13 +43721,24 @@ func (client *Client) GetAggregateResourceComplianceByPackWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceComplianceByPackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceComplianceByPackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceComplianceByPackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42020,13 +43800,24 @@ func (client *Client) GetAggregateResourceComplianceGroupByRegionWithOptions(req
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceComplianceGroupByRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceComplianceGroupByRegionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceComplianceGroupByRegionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42084,13 +43875,24 @@ func (client *Client) GetAggregateResourceComplianceGroupByResourceTypeWithOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceComplianceGroupByResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceComplianceGroupByResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceComplianceGroupByResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42144,13 +43946,24 @@ func (client *Client) GetAggregateResourceComplianceTimelineWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceComplianceTimelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceComplianceTimelineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceComplianceTimelineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42208,13 +44021,24 @@ func (client *Client) GetAggregateResourceConfigurationTimelineWithOptions(reque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceConfigurationTimelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceConfigurationTimelineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceConfigurationTimelineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42292,13 +44116,24 @@ func (client *Client) GetAggregateResourceCountsGroupByRegionWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceCountsGroupByRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceCountsGroupByRegionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceCountsGroupByRegionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42376,13 +44211,24 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceTypeWithOptions(r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceCountsGroupByResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceCountsGroupByResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceCountsGroupByResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42450,13 +44296,24 @@ func (client *Client) GetAggregateResourceInventoryWithOptions(request *GetAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregateResourceInventoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregateResourceInventoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregateResourceInventoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42495,19 +44352,29 @@ func (client *Client) GetAggregateResourceInventory(request *GetAggregateResourc
 //
 // The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055****` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
 //
-// @param request - GetAggregatorRequest
+// @param tmpReq - GetAggregatorRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAggregatorResponse
-func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, runtime *util.RuntimeOptions) (_result *GetAggregatorResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetAggregatorWithOptions(tmpReq *GetAggregatorRequest, runtime *util.RuntimeOptions) (_result *GetAggregatorResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetAggregatorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
 		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -42524,13 +44391,24 @@ func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAggregatorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAggregatorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAggregatorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42563,16 +44441,22 @@ func (client *Client) GetAggregator(request *GetAggregatorRequest) (_result *Get
 //
 // This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9****`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
 //
-// @param request - GetCompliancePackRequest
+// @param tmpReq - GetCompliancePackRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCompliancePackResponse
-func (client *Client) GetCompliancePackWithOptions(request *GetCompliancePackRequest, runtime *util.RuntimeOptions) (_result *GetCompliancePackResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetCompliancePackWithOptions(tmpReq *GetCompliancePackRequest, runtime *util.RuntimeOptions) (_result *GetCompliancePackResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetCompliancePackShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -42588,13 +44472,24 @@ func (client *Client) GetCompliancePackWithOptions(request *GetCompliancePackReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42654,13 +44549,24 @@ func (client *Client) GetCompliancePackReportWithOptions(request *GetComplianceP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCompliancePackReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCompliancePackReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCompliancePackReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42713,13 +44619,24 @@ func (client *Client) GetComplianceSummaryWithOptions(runtime *util.RuntimeOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetComplianceSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetComplianceSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetComplianceSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42775,13 +44692,24 @@ func (client *Client) GetConfigDeliveryChannelWithOptions(request *GetConfigDeli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42849,13 +44777,24 @@ func (client *Client) GetConfigRuleWithOptions(tmpReq *GetConfigRuleRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42913,13 +44852,24 @@ func (client *Client) GetConfigRuleComplianceByPackWithOptions(request *GetConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConfigRuleComplianceByPackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConfigRuleComplianceByPackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConfigRuleComplianceByPackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42970,13 +44920,24 @@ func (client *Client) GetConfigRuleSummaryByRiskLevelWithOptions(runtime *util.R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConfigRuleSummaryByRiskLevelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConfigRuleSummaryByRiskLevelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConfigRuleSummaryByRiskLevelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43038,13 +44999,24 @@ func (client *Client) GetConfigRulesReportWithOptions(request *GetConfigRulesRep
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConfigRulesReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConfigRulesReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConfigRulesReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43097,13 +45069,24 @@ func (client *Client) GetConfigurationRecorderWithOptions(runtime *util.RuntimeO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConfigurationRecorderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConfigurationRecorderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConfigurationRecorderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43175,13 +45158,24 @@ func (client *Client) GetDiscoveredResourceWithOptions(request *GetDiscoveredRes
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDiscoveredResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDiscoveredResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDiscoveredResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43243,13 +45237,24 @@ func (client *Client) GetDiscoveredResourceCountsGroupByRegionWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDiscoveredResourceCountsGroupByRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDiscoveredResourceCountsGroupByRegionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDiscoveredResourceCountsGroupByRegionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43311,13 +45316,24 @@ func (client *Client) GetDiscoveredResourceCountsGroupByResourceTypeWithOptions(
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDiscoveredResourceCountsGroupByResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDiscoveredResourceCountsGroupByResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDiscoveredResourceCountsGroupByResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43375,13 +45391,24 @@ func (client *Client) GetIntegratedServiceStatusWithOptions(request *GetIntegrat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetIntegratedServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetIntegratedServiceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetIntegratedServiceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43439,13 +45466,24 @@ func (client *Client) GetManagedRuleWithOptions(request *GetManagedRuleRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetManagedRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetManagedRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetManagedRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43507,13 +45545,24 @@ func (client *Client) GetRemediationTemplateWithOptions(request *GetRemediationT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRemediationTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRemediationTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRemediationTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43571,13 +45620,24 @@ func (client *Client) GetResourceComplianceByConfigRuleWithOptions(request *GetR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceComplianceByConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceComplianceByConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceComplianceByConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43635,13 +45695,24 @@ func (client *Client) GetResourceComplianceByPackWithOptions(request *GetResourc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceComplianceByPackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceComplianceByPackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceComplianceByPackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43699,13 +45770,24 @@ func (client *Client) GetResourceComplianceGroupByRegionWithOptions(request *Get
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceComplianceGroupByRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceComplianceGroupByRegionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceComplianceGroupByRegionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43759,13 +45841,24 @@ func (client *Client) GetResourceComplianceGroupByResourceTypeWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceComplianceGroupByResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceComplianceGroupByResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceComplianceGroupByResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43821,13 +45914,24 @@ func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceComplianceTimelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceComplianceTimelineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceComplianceTimelineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43887,13 +45991,24 @@ func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceConfigurationTimelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceConfigurationTimelineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceConfigurationTimelineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43950,13 +46065,24 @@ func (client *Client) GetResourceInventoryWithOptions(runtime *util.RuntimeOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceInventoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceInventoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceInventoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44022,13 +46148,24 @@ func (client *Client) GetSupportedResourceRelationConfigWithOptions(request *Get
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSupportedResourceRelationConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSupportedResourceRelationConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSupportedResourceRelationConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44114,13 +46251,24 @@ func (client *Client) IgnoreAggregateEvaluationResultsWithOptions(tmpReq *Ignore
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &IgnoreAggregateEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &IgnoreAggregateEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &IgnoreAggregateEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44204,13 +46352,24 @@ func (client *Client) IgnoreEvaluationResultsWithOptions(tmpReq *IgnoreEvaluatio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &IgnoreEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &IgnoreEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &IgnoreEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44245,16 +46404,22 @@ func (client *Client) IgnoreEvaluationResults(request *IgnoreEvaluationResultsRe
 //
 // In this topic, the `ca-f632626622af0079****` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
 //
-// @param request - ListAggregateCompliancePacksRequest
+// @param tmpReq - ListAggregateCompliancePacksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAggregateCompliancePacksResponse
-func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggregateCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *ListAggregateCompliancePacksResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListAggregateCompliancePacksWithOptions(tmpReq *ListAggregateCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *ListAggregateCompliancePacksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListAggregateCompliancePacksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
 		query["AggregatorId"] = request.AggregatorId
@@ -44272,6 +46437,10 @@ func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggre
 		query["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -44286,13 +46455,24 @@ func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateCompliancePacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateCompliancePacksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateCompliancePacksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44354,13 +46534,24 @@ func (client *Client) ListAggregateConfigDeliveryChannelsWithOptions(request *Li
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateConfigDeliveryChannelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateConfigDeliveryChannelsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateConfigDeliveryChannelsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44458,13 +46649,24 @@ func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateConfigRuleEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateConfigRuleEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateConfigRuleEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44526,13 +46728,24 @@ func (client *Client) ListAggregateConfigRuleEvaluationStatisticsWithOptions(req
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateConfigRuleEvaluationStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateConfigRuleEvaluationStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateConfigRuleEvaluationStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44565,16 +46778,22 @@ func (client *Client) ListAggregateConfigRuleEvaluationStatistics(request *ListA
 //
 // This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079****`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
 //
-// @param request - ListAggregateConfigRulesRequest
+// @param tmpReq - ListAggregateConfigRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAggregateConfigRulesResponse
-func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ListAggregateConfigRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListAggregateConfigRulesWithOptions(tmpReq *ListAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ListAggregateConfigRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListAggregateConfigRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
 		query["AggregatorId"] = request.AggregatorId
@@ -44616,6 +46835,10 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 		query["RiskLevel"] = request.RiskLevel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -44630,13 +46853,24 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44742,13 +46976,24 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateDiscoveredResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateDiscoveredResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateDiscoveredResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44830,13 +47075,24 @@ func (client *Client) ListAggregateRemediationExecutionsWithOptions(request *Lis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateRemediationExecutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateRemediationExecutionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateRemediationExecutionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44902,13 +47158,24 @@ func (client *Client) ListAggregateRemediationsWithOptions(request *ListAggregat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateRemediationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateRemediationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateRemediationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44994,13 +47261,24 @@ func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateResourceEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateResourceEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateResourceEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45098,13 +47376,24 @@ func (client *Client) ListAggregateResourceRelationsWithOptions(request *ListAgg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateResourceRelationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateResourceRelationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateResourceRelationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45178,13 +47467,24 @@ func (client *Client) ListAggregateResourcesByAdvancedSearchWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregateResourcesByAdvancedSearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregateResourcesByAdvancedSearchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregateResourcesByAdvancedSearchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45225,16 +47525,22 @@ func (client *Client) ListAggregateResourcesByAdvancedSearch(request *ListAggreg
 //
 // The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
 //
-// @param request - ListAggregatorsRequest
+// @param tmpReq - ListAggregatorsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAggregatorsResponse
-func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest, runtime *util.RuntimeOptions) (_result *ListAggregatorsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListAggregatorsWithOptions(tmpReq *ListAggregatorsRequest, runtime *util.RuntimeOptions) (_result *ListAggregatorsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListAggregatorsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
@@ -45242,6 +47548,10 @@ func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -45258,13 +47568,24 @@ func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAggregatorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAggregatorsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAggregatorsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45338,13 +47659,24 @@ func (client *Client) ListCompliancePackTemplatesWithOptions(request *ListCompli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCompliancePackTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCompliancePackTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCompliancePackTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45377,16 +47709,22 @@ func (client *Client) ListCompliancePackTemplates(request *ListCompliancePackTem
 //
 // This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9****` compliance package.
 //
-// @param request - ListCompliancePacksRequest
+// @param tmpReq - ListCompliancePacksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCompliancePacksResponse
-func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *ListCompliancePacksResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListCompliancePacksWithOptions(tmpReq *ListCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *ListCompliancePacksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListCompliancePacksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -45398,6 +47736,10 @@ func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePack
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -45414,13 +47756,24 @@ func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePack
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCompliancePacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCompliancePacksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCompliancePacksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45478,13 +47831,24 @@ func (client *Client) ListConfigDeliveryChannelsWithOptions(request *ListConfigD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListConfigDeliveryChannelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConfigDeliveryChannelsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConfigDeliveryChannelsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45538,13 +47902,24 @@ func (client *Client) ListConfigRuleEvaluationResultsWithOptions(request *ListCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListConfigRuleEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConfigRuleEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConfigRuleEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45591,13 +47966,24 @@ func (client *Client) ListConfigRuleEvaluationStatisticsWithOptions(runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListConfigRuleEvaluationStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConfigRuleEvaluationStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConfigRuleEvaluationStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45695,13 +48081,24 @@ func (client *Client) ListConfigRulesWithOptions(tmpReq *ListConfigRulesRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListConfigRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConfigRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConfigRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45795,13 +48192,24 @@ func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscovered
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDiscoveredResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDiscoveredResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDiscoveredResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45852,13 +48260,24 @@ func (client *Client) ListIntegratedServiceWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListIntegratedServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListIntegratedServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListIntegratedServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45940,13 +48359,24 @@ func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListManagedRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListManagedRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListManagedRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46030,13 +48460,24 @@ func (client *Client) ListPreManagedRulesWithOptions(tmpReq *ListPreManagedRules
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPreManagedRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPreManagedRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPreManagedRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46112,13 +48553,24 @@ func (client *Client) ListRemediationExecutionsWithOptions(request *ListRemediat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRemediationExecutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRemediationExecutionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRemediationExecutionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46192,13 +48644,24 @@ func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediati
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRemediationTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRemediationTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRemediationTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46268,13 +48731,24 @@ func (client *Client) ListRemediationsWithOptions(request *ListRemediationsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRemediationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRemediationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRemediationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46356,13 +48830,24 @@ func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46454,13 +48939,24 @@ func (client *Client) ListResourceRelationsWithOptions(request *ListResourceRela
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceRelationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceRelationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceRelationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46532,13 +49028,24 @@ func (client *Client) ListResourcesByAdvancedSearchWithOptions(request *ListReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourcesByAdvancedSearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourcesByAdvancedSearchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourcesByAdvancedSearchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46612,13 +49119,24 @@ func (client *Client) ListSupportedProductsWithOptions(request *ListSupportedPro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSupportedProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSupportedProductsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSupportedProductsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46698,13 +49216,24 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46770,13 +49299,24 @@ func (client *Client) PutEvaluationsWithOptions(request *PutEvaluationsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutEvaluationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutEvaluationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutEvaluationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46858,13 +49398,24 @@ func (client *Client) RevertAggregateEvaluationResultsWithOptions(tmpReq *Revert
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevertAggregateEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevertAggregateEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevertAggregateEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46948,13 +49499,24 @@ func (client *Client) RevertEvaluationResultsWithOptions(tmpReq *RevertEvaluatio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevertEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevertEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevertEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47036,13 +49598,24 @@ func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *Sta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartAggregateConfigRuleEvaluationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartAggregateConfigRuleEvaluationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartAggregateConfigRuleEvaluationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47114,13 +49687,24 @@ func (client *Client) StartAggregateRemediationWithOptions(request *StartAggrega
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartAggregateRemediationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartAggregateRemediationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartAggregateRemediationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47190,13 +49774,24 @@ func (client *Client) StartConfigRuleEvaluationWithOptions(request *StartConfigR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartConfigRuleEvaluationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartConfigRuleEvaluationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartConfigRuleEvaluationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47247,13 +49842,24 @@ func (client *Client) StartConfigurationRecorderWithOptions(runtime *util.Runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartConfigurationRecorderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartConfigurationRecorderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartConfigurationRecorderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47313,13 +49919,24 @@ func (client *Client) StartRemediationWithOptions(request *StartRemediationReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartRemediationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartRemediationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartRemediationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47370,13 +49987,24 @@ func (client *Client) StopConfigurationRecorderWithOptions(runtime *util.Runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopConfigurationRecorderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopConfigurationRecorderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopConfigurationRecorderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47450,13 +50078,24 @@ func (client *Client) TagResourcesWithOptions(tmpReq *TagResourcesRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47526,13 +50165,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47575,6 +50225,15 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.ConfigRules)) {
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	body := map[string]interface{}{}
@@ -47650,7 +50309,8 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAggregateCompliancePack"),
@@ -47663,13 +50323,24 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAggregateCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAggregateCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAggregateCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47783,13 +50454,24 @@ func (client *Client) UpdateAggregateConfigDeliveryChannelWithOptions(request *U
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAggregateConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAggregateConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47840,6 +50522,15 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceTypesScope)) {
 		request.ResourceTypesScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTypesScope, tea.String("ResourceTypesScope"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	body := map[string]interface{}{}
@@ -47947,7 +50638,8 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAggregateConfigRule"),
@@ -47960,13 +50652,24 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAggregateConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAggregateConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAggregateConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48052,13 +50755,24 @@ func (client *Client) UpdateAggregateRemediationWithOptions(request *UpdateAggre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAggregateRemediationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAggregateRemediationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAggregateRemediationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48107,6 +50821,15 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 		request.AggregatorAccountsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AggregatorAccounts, tea.String("AggregatorAccounts"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AggregatorAccountsShrink)) {
 		body["AggregatorAccounts"] = request.AggregatorAccountsShrink
@@ -48129,7 +50852,8 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAggregator"),
@@ -48142,13 +50866,24 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAggregatorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAggregatorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAggregatorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48195,6 +50930,15 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.ConfigRules)) {
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	body := map[string]interface{}{}
@@ -48266,7 +51010,8 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCompliancePack"),
@@ -48279,13 +51024,24 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCompliancePackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCompliancePackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCompliancePackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48395,13 +51151,24 @@ func (client *Client) UpdateConfigDeliveryChannelWithOptions(request *UpdateConf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateConfigDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateConfigDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateConfigDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48566,13 +51333,24 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateConfigRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateConfigRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateConfigRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48634,13 +51412,24 @@ func (client *Client) UpdateConfigurationRecorderWithOptions(request *UpdateConf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateConfigurationRecorderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateConfigurationRecorderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateConfigurationRecorderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48749,13 +51538,24 @@ func (client *Client) UpdateDeliveryChannelWithOptions(request *UpdateDeliveryCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDeliveryChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDeliveryChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDeliveryChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
@@ -48828,13 +51628,24 @@ func (client *Client) UpdateIntegratedServiceStatusWithOptions(request *UpdateIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateIntegratedServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateIntegratedServiceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateIntegratedServiceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48916,13 +51727,24 @@ func (client *Client) UpdateRemediationWithOptions(request *UpdateRemediationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRemediationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRemediationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRemediationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
