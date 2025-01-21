@@ -10119,6 +10119,460 @@ func (s *ListArtifactsResponse) SetBody(v *ListArtifactsResponseBody) *ListArtif
 	return s
 }
 
+type ListServiceInstanceDeployDetailsRequest struct {
+	// The time zone.
+	//
+	// Reference Format: "+08:00"
+	//
+	// Valid Range: "-12:59" to "+13:00"
+	//
+	// example:
+	//
+	// +08:00
+	CycleTimeZone *string `json:"CycleTimeZone,omitempty" xml:"CycleTimeZone,omitempty"`
+	// Determines the time period over which data is aggregated. If no aggregation dimension is specified, the query defaults to providing detailed, unaggregated results.
+	//
+	// Optional Values:
+	//
+	// - Year
+	//
+	// - Month
+	//
+	// - Day
+	//
+	// - All
+	//
+	// example:
+	//
+	// Month
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The dimension names. (Equivalent to SQL\\"s GROUP BY Clause)
+	//
+	// Optional Values:
+	//
+	// - UserId
+	//
+	// - ServiceId
+	//
+	// - ServiceVersion
+	//
+	// - ServiceInstanceId
+	//
+	// - DeploySucceeded
+	//
+	// - ErrorType
+	//
+	// - ErrorCode
+	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2024-12-31T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter.
+	Filter []*ListServiceInstanceDeployDetailsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAZbOYA+x9UgM6xrgcMqFUjk=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2024-08-25T02:23:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListServiceInstanceDeployDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceDeployDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetCycleTimeZone(v string) *ListServiceInstanceDeployDetailsRequest {
+	s.CycleTimeZone = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetCycleType(v string) *ListServiceInstanceDeployDetailsRequest {
+	s.CycleType = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetDimension(v []*string) *ListServiceInstanceDeployDetailsRequest {
+	s.Dimension = v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetEndTime(v string) *ListServiceInstanceDeployDetailsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetFilter(v []*ListServiceInstanceDeployDetailsRequestFilter) *ListServiceInstanceDeployDetailsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetMaxResults(v int32) *ListServiceInstanceDeployDetailsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetNextToken(v string) *ListServiceInstanceDeployDetailsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetRegionId(v string) *ListServiceInstanceDeployDetailsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequest) SetStartTime(v string) *ListServiceInstanceDeployDetailsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListServiceInstanceDeployDetailsRequestFilter struct {
+	// Filter Value Names (Equivalent to SQL\\"s WHERE Clause)
+	//
+	// Available Options:
+	//
+	// - UserId
+	//
+	// - ServiceId
+	//
+	// - ServiceVersion
+	//
+	// - ServiceInstanceId
+	//
+	// - DeploySucceeded (Accepts True or False and case-insensitive)
+	//
+	// - ErrorType
+	//
+	// - ErrorCode
+	//
+	// example:
+	//
+	// ServiceId
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A value of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceDeployDetailsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceDeployDetailsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceDeployDetailsRequestFilter) SetName(v string) *ListServiceInstanceDeployDetailsRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsRequestFilter) SetValue(v []*string) *ListServiceInstanceDeployDetailsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListServiceInstanceDeployDetailsResponseBody struct {
+	// The details of the service instance deployment.
+	DeployDetails []*ListServiceInstanceDeployDetailsResponseBodyDeployDetails `json:"DeployDetails,omitempty" xml:"DeployDetails,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// AAAAAW8kZY+u1sYOaYf5JmgmDQQ=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0036D82E-0624-5B37-B797-C460F4B02026
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 7
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListServiceInstanceDeployDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceDeployDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBody) SetDeployDetails(v []*ListServiceInstanceDeployDetailsResponseBodyDeployDetails) *ListServiceInstanceDeployDetailsResponseBody {
+	s.DeployDetails = v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBody) SetMaxResults(v int32) *ListServiceInstanceDeployDetailsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBody) SetNextToken(v string) *ListServiceInstanceDeployDetailsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBody) SetRequestId(v string) *ListServiceInstanceDeployDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBody) SetTotalCount(v int32) *ListServiceInstanceDeployDetailsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServiceInstanceDeployDetailsResponseBodyDeployDetails struct {
+	// The total number of entries that meet the specified conditions.
+	//
+	// example:
+	//
+	// 4
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time when the service instance was created.
+	//
+	// example:
+	//
+	// 2024-04-10T01:58:20Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The period over which data is aggregated.
+	//
+	// example:
+	//
+	// Month
+	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// The indicates whether the deployment was successful.
+	//
+	// example:
+	//
+	// False
+	DeploySucceeded *string `json:"DeploySucceeded,omitempty" xml:"DeploySucceeded,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// StackValidationFailed
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error description.
+	//
+	// example:
+	//
+	// {code: StackValidationFailed, message: \\"Failed to continue create ROS stack 89e724e2-84e6-4517-a372-30a545ab4145: Resource [LinuxInstanceRunCommand]: i-wz91nfbh1fxtmfb0try4 are not running. Command invocation only support running instances. ErrorCode: StackValidationFailed\\", requestId: null}
+	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
+	// The type of error that caused the deployment to fail.
+	//
+	// example:
+	//
+	// ValidationError
+	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-c751ed91f2074af39779
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service instance ID.
+	//
+	// example:
+	//
+	// si-273e8cee11d349e1803c
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The name of the service in Chinese.
+	//
+	// example:
+	//
+	// 测试服务(Test Service)
+	ServiceNameChn *string `json:"ServiceNameChn,omitempty" xml:"ServiceNameChn,omitempty"`
+	// The name of the service in English.
+	//
+	// example:
+	//
+	// Test Service
+	ServiceNameEng *string `json:"ServiceNameEng,omitempty" xml:"ServiceNameEng,omitempty"`
+	// The type of service.
+	//
+	// Possible values:
+	//
+	// - private: Deployed under the user\\"s account.
+	//
+	// - managed: Hosted under the service provider\\"s account.
+	//
+	// - operation: Managed operation service.
+	//
+	// example:
+	//
+	// private
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The service version.
+	//
+	// example:
+	//
+	// 42
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The timestamp when the response is returned.
+	//
+	// example:
+	//
+	// 1723946641994
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The aliuid of user.
+	//
+	// example:
+	//
+	// 1591457835436382
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListServiceInstanceDeployDetailsResponseBodyDeployDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceDeployDetailsResponseBodyDeployDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetCount(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.Count = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetCreateTime(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetCycle(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.Cycle = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetDeploySucceeded(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.DeploySucceeded = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetErrorCode(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetErrorDetail(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ErrorDetail = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetErrorType(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ErrorType = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetServiceId(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetServiceInstanceId(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetServiceNameChn(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ServiceNameChn = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetServiceNameEng(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ServiceNameEng = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetServiceType(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetServiceVersion(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetTimestamp(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponseBodyDeployDetails) SetUserId(v string) *ListServiceInstanceDeployDetailsResponseBodyDeployDetails {
+	s.UserId = &v
+	return s
+}
+
+type ListServiceInstanceDeployDetailsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceDeployDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceInstanceDeployDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceDeployDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceDeployDetailsResponse) SetHeaders(v map[string]*string) *ListServiceInstanceDeployDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponse) SetStatusCode(v int32) *ListServiceInstanceDeployDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceDeployDetailsResponse) SetBody(v *ListServiceInstanceDeployDetailsResponseBody) *ListServiceInstanceDeployDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceInstancesRequest struct {
 	// The filter.
 	Filter []*ListServiceInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -17232,13 +17686,24 @@ func (client *Client) AddServiceSharedAccountsWithOptions(request *AddServiceSha
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddServiceSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddServiceSharedAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddServiceSharedAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17312,13 +17777,24 @@ func (client *Client) ApproveServiceUsageWithOptions(request *ApproveServiceUsag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApproveServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApproveServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApproveServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17388,13 +17864,24 @@ func (client *Client) ContinueDeployServiceInstanceWithOptions(request *Continue
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ContinueDeployServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ContinueDeployServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ContinueDeployServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17502,13 +17989,24 @@ func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17676,13 +18174,24 @@ func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17790,13 +18299,24 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17858,13 +18378,24 @@ func (client *Client) CreateServiceUsageWithOptions(request *CreateServiceUsageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17926,13 +18457,24 @@ func (client *Client) DeleteArtifactWithOptions(request *DeleteArtifactRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17998,13 +18540,24 @@ func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18066,13 +18619,24 @@ func (client *Client) DeleteServiceInstancesWithOptions(request *DeleteServiceIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteServiceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteServiceInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteServiceInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18134,13 +18698,24 @@ func (client *Client) DeployServiceInstanceWithOptions(request *DeployServiceIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeployServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeployServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeployServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18214,13 +18789,24 @@ func (client *Client) GenerateServicePolicyWithOptions(request *GenerateServiceP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateServicePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateServicePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateServicePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18282,13 +18868,24 @@ func (client *Client) GetArtifactWithOptions(request *GetArtifactRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18346,13 +18943,24 @@ func (client *Client) GetArtifactRepositoryCredentialsWithOptions(request *GetAr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetArtifactRepositoryCredentialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactRepositoryCredentialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactRepositoryCredentialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18434,13 +19042,24 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18536,13 +19155,24 @@ func (client *Client) GetServiceEstimateCostWithOptions(tmpReq *GetServiceEstima
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceEstimateCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceEstimateCostResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceEstimateCostResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18600,13 +19230,24 @@ func (client *Client) GetServiceInstanceWithOptions(request *GetServiceInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18682,13 +19323,24 @@ func (client *Client) GetServiceProvisionsWithOptions(tmpReq *GetServiceProvisio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceProvisionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceProvisionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceProvisionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18774,13 +19426,24 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceTemplateParameterConstraintsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceTemplateParameterConstraintsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceTemplateParameterConstraintsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18838,13 +19501,24 @@ func (client *Client) GetUploadCredentialsWithOptions(request *GetUploadCredenti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUploadCredentialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUploadCredentialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUploadCredentialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18918,13 +19592,24 @@ func (client *Client) LaunchServiceWithOptions(request *LaunchServiceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LaunchServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LaunchServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LaunchServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18990,13 +19675,24 @@ func (client *Client) ListAcrImageRepositoriesWithOptions(request *ListAcrImageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAcrImageRepositoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAcrImageRepositoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAcrImageRepositoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19062,13 +19758,24 @@ func (client *Client) ListAcrImageTagsWithOptions(request *ListAcrImageTagsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAcrImageTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAcrImageTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAcrImageTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19140,13 +19847,24 @@ func (client *Client) ListArtifactVersionsWithOptions(tmpReq *ListArtifactVersio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListArtifactVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactVersionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactVersionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19216,13 +19934,24 @@ func (client *Client) ListArtifactsWithOptions(request *ListArtifactsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListArtifactsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19236,6 +19965,109 @@ func (client *Client) ListArtifacts(request *ListArtifactsRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListArtifactsResponse{}
 	_body, _err := client.ListArtifactsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务实例部署详情
+//
+// @param request - ListServiceInstanceDeployDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceDeployDetailsResponse
+func (client *Client) ListServiceInstanceDeployDetailsWithOptions(request *ListServiceInstanceDeployDetailsRequest, runtime *util.RuntimeOptions) (_result *ListServiceInstanceDeployDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CycleTimeZone)) {
+		query["CycleTimeZone"] = request.CycleTimeZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleType)) {
+		query["CycleType"] = request.CycleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
+		query["Dimension"] = request.Dimension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceDeployDetails"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstanceDeployDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstanceDeployDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询服务实例部署详情
+//
+// @param request - ListServiceInstanceDeployDetailsRequest
+//
+// @return ListServiceInstanceDeployDetailsResponse
+func (client *Client) ListServiceInstanceDeployDetails(request *ListServiceInstanceDeployDetailsRequest) (_result *ListServiceInstanceDeployDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceInstanceDeployDetailsResponse{}
+	_body, _err := client.ListServiceInstanceDeployDetailsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19300,13 +20132,24 @@ func (client *Client) ListServiceInstancesWithOptions(request *ListServiceInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19380,13 +20223,24 @@ func (client *Client) ListServiceSharedAccountsWithOptions(request *ListServiceS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceSharedAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceSharedAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19452,13 +20306,24 @@ func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceUsagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceUsagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceUsagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19536,13 +20401,24 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19604,13 +20480,24 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19676,13 +20563,24 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19744,13 +20642,24 @@ func (client *Client) ModifyServiceInstanceResourcesWithOptions(request *ModifyS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyServiceInstanceResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyServiceInstanceResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyServiceInstanceResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19812,13 +20721,24 @@ func (client *Client) PreLaunchServiceWithOptions(request *PreLaunchServiceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreLaunchServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreLaunchServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreLaunchServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19876,13 +20796,24 @@ func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PushMeteringDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PushMeteringDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PushMeteringDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19944,13 +20875,24 @@ func (client *Client) RegisterServiceWithOptions(request *RegisterServiceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RegisterServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RegisterServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RegisterServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20020,13 +20962,24 @@ func (client *Client) RejectServiceUsageWithOptions(request *RejectServiceUsageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RejectServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RejectServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RejectServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20084,13 +21037,24 @@ func (client *Client) ReleaseArtifactWithOptions(request *ReleaseArtifactRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20160,13 +21124,24 @@ func (client *Client) RemoveServiceSharedAccountsWithOptions(request *RemoveServ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveServiceSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveServiceSharedAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveServiceSharedAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20228,13 +21203,24 @@ func (client *Client) RestartServiceInstanceWithOptions(request *RestartServiceI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20296,13 +21282,24 @@ func (client *Client) RollbackServiceInstanceWithOptions(request *RollbackServic
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20364,13 +21361,24 @@ func (client *Client) StartServiceInstanceWithOptions(request *StartServiceInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20432,13 +21440,24 @@ func (client *Client) StopServiceInstanceWithOptions(request *StopServiceInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20504,13 +21523,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20580,13 +21610,24 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20678,13 +21719,24 @@ func (client *Client) UpdateArtifactWithOptions(tmpReq *UpdateArtifactRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20852,13 +21904,24 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20934,13 +21997,24 @@ func (client *Client) UpdateServiceInstanceAttributeWithOptions(tmpReq *UpdateSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21020,13 +22094,24 @@ func (client *Client) UpdateServiceInstanceSpecWithOptions(tmpReq *UpdateService
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceInstanceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceInstanceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21106,13 +22191,24 @@ func (client *Client) UpgradeServiceInstanceWithOptions(tmpReq *UpgradeServiceIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
