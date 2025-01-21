@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,11 +10,36 @@ import (
 )
 
 type RegisterDeviceRequest struct {
-	AppKey       *string                `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	DeviceId     *string                `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Extend       map[string]interface{} `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	SdkCode      *string                `json:"SdkCode,omitempty" xml:"SdkCode,omitempty"`
-	UserDeviceId *string                `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NWTtS623eqo6s070
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 99daf4a623f2b623ae08e79d6d4bf686
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
+	Extend map[string]interface{} `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SDKCodeTest01
+	SdkCode *string `json:"SdkCode,omitempty" xml:"SdkCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// D001
+	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 
 func (s RegisterDeviceRequest) String() string {
@@ -54,10 +76,35 @@ func (s *RegisterDeviceRequest) SetUserDeviceId(v string) *RegisterDeviceRequest
 }
 
 type RegisterDeviceShrinkRequest struct {
-	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NWTtS623eqo6s070
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 99daf4a623f2b623ae08e79d6d4bf686
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
 	ExtendShrink *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	SdkCode      *string `json:"SdkCode,omitempty" xml:"SdkCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SDKCodeTest01
+	SdkCode *string `json:"SdkCode,omitempty" xml:"SdkCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// D001
 	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 
@@ -95,11 +142,20 @@ func (s *RegisterDeviceShrinkRequest) SetUserDeviceId(v string) *RegisterDeviceS
 }
 
 type RegisterDeviceResponseBody struct {
-	Data         *RegisterDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Message      *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *RegisterDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A68E0F1E-9CEE-4BB9-8880-943730FFD9A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RegisterDeviceResponseBody) String() string {
@@ -136,9 +192,21 @@ func (s *RegisterDeviceResponseBody) SetRequestId(v string) *RegisterDeviceRespo
 }
 
 type RegisterDeviceResponseBodyData struct {
-	License   *string `json:"License,omitempty" xml:"License,omitempty"`
+	// example:
+	//
+	// rSDUqJEawcrhaHVDXgQQ2vV3eOQDzuos5TAJgx9uolqVaAKkgcBHfWd/jYknsiVeYxsLWyscP0U6ia0XL/u6t7ira9XnI3Jv9qHzosrAW09YrT68VigxqwrutxtexXGgrXFzYmcMMe05rYhEmyyoeNu0CB40HxggXIIw10vH0pvhMLd0ssz6FbaOGhZ/7WDzFAqeXlz7+whZFNlXwaCfIwHTDIj9nBHHsBzWWocOHO==
+	License *string `json:"License,omitempty" xml:"License,omitempty"`
+	// example:
+	//
+	// SSTfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwdTbYqDHxAlmdSFowPthsG3wKyXdembceyc5j31FZIYGESE4x6ND0al5ejdx26d2ZMRDzlkjnLqUN3snezRA1x0qs92taGXMrIvYDi0dEsz3X/a/VXHPxNu0+/PBT9RYzakLDV9F/6QdYn4PQUvHSTfz2ghaS5SCj++VVDe4CBBIDAAPB
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	Rid       *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// example:
+	//
+	// 1082f5e57a004a0799198d4a370c3efa
+	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// example:
+	//
+	// VnxhWhjL2D3kkGcv8Q/wHzyD6dTEYIDfnIgzDWLS7iQRiCWLu1K+EA+Q6iiH1lpaDNGeQ65zVpbB1wtGMmJymQMJeJ5RHzEo74wwXP48Yfn6tdAoZwtLkxXqZo5N99W/JyEyHyeisC44ZIpLcs1YPv3Wr+uRirUgjHhZXorxJ1E=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
@@ -171,9 +239,9 @@ func (s *RegisterDeviceResponseBodyData) SetSignature(v string) *RegisterDeviceR
 }
 
 type RegisterDeviceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegisterDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegisterDeviceResponse) String() string {
@@ -246,6 +314,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册设备
+//
+// @param tmpReq - RegisterDeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterDeviceResponse
 func (client *Client) RegisterDeviceWithOptions(tmpReq *RegisterDeviceRequest, runtime *util.RuntimeOptions) (_result *RegisterDeviceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -292,15 +369,33 @@ func (client *Client) RegisterDeviceWithOptions(tmpReq *RegisterDeviceRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RegisterDeviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RegisterDeviceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RegisterDeviceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 注册设备
+//
+// @param request - RegisterDeviceRequest
+//
+// @return RegisterDeviceResponse
 func (client *Client) RegisterDevice(request *RegisterDeviceRequest) (_result *RegisterDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterDeviceResponse{}
