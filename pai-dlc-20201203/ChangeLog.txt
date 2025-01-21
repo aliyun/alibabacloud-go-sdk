@@ -1,3 +1,9 @@
+2025-01-21 Version: v1.5.21
+- Update API CreateJob: update param body.
+- Update API GetJob: update response param.
+- Update API ListJobs: add param PaymentType.
+
+
 2024-12-17 Version: v1.5.20
 - Generated golang 2020-12-03 for pai-dlc.
 

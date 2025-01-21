@@ -2,7 +2,6 @@
 package client
 
 import (
-	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -2225,6 +2224,10 @@ type JobSettings struct {
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	// example:
 	//
+	// true
+	EnableCPUAffinity *bool `json:"EnableCPUAffinity,omitempty" xml:"EnableCPUAffinity,omitempty"`
+	// example:
+	//
 	// false
 	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
 	// example:
@@ -2300,6 +2303,11 @@ func (s *JobSettings) SetDisableEcsStockCheck(v bool) *JobSettings {
 
 func (s *JobSettings) SetDriver(v string) *JobSettings {
 	s.Driver = &v
+	return s
+}
+
+func (s *JobSettings) SetEnableCPUAffinity(v bool) *JobSettings {
+	s.EnableCPUAffinity = &v
 	return s
 }
 
@@ -4055,7 +4063,8 @@ type CreateJobRequestDataSources struct {
 	// example:
 	//
 	// d-cn9dl*******
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceId      *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceVersion *string `json:"DataSourceVersion,omitempty" xml:"DataSourceVersion,omitempty"`
 	// example:
 	//
 	// /root/data
@@ -4077,6 +4086,11 @@ func (s CreateJobRequestDataSources) GoString() string {
 
 func (s *CreateJobRequestDataSources) SetDataSourceId(v string) *CreateJobRequestDataSources {
 	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateJobRequestDataSources) SetDataSourceVersion(v string) *CreateJobRequestDataSources {
+	s.DataSourceVersion = &v
 	return s
 }
 
@@ -4721,7 +4735,8 @@ type GetJobResponseBody struct {
 	// example:
 	//
 	// 12*********
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId  *string                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserVpc *GetJobResponseBodyUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	// example:
 	//
 	// 268
@@ -4927,6 +4942,11 @@ func (s *GetJobResponseBody) SetUserCommand(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetUserId(v string) *GetJobResponseBody {
 	s.UserId = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetUserVpc(v *GetJobResponseBodyUserVpc) *GetJobResponseBody {
+	s.UserVpc = v
 	return s
 }
 
@@ -5230,6 +5250,56 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetSubStatus(v string) *GetJobRespon
 
 func (s *GetJobResponseBodyPodsHistoryPods) SetType(v string) *GetJobResponseBodyPodsHistoryPods {
 	s.Type = &v
+	return s
+}
+
+type GetJobResponseBodyUserVpc struct {
+	DefaultRoute  *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCidrs []*string `json:"ExtendedCidrs,omitempty" xml:"ExtendedCidrs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sg-abcdef****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// vs-abcdef****
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// example:
+	//
+	// vpc-abcdef****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetJobResponseBodyUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBodyUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyUserVpc) SetDefaultRoute(v string) *GetJobResponseBodyUserVpc {
+	s.DefaultRoute = &v
+	return s
+}
+
+func (s *GetJobResponseBodyUserVpc) SetExtendedCidrs(v []*string) *GetJobResponseBodyUserVpc {
+	s.ExtendedCidrs = v
+	return s
+}
+
+func (s *GetJobResponseBodyUserVpc) SetSecurityGroupId(v string) *GetJobResponseBodyUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyUserVpc) SetSwitchId(v string) *GetJobResponseBodyUserVpc {
+	s.SwitchId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyUserVpc) SetVpcId(v string) *GetJobResponseBodyUserVpc {
+	s.VpcId = &v
 	return s
 }
 
@@ -6438,7 +6508,8 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// example:
 	//
 	// flow-*******
@@ -6541,6 +6612,11 @@ func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
 	return s
 }
 
+func (s *ListJobsRequest) SetPaymentType(v string) *ListJobsRequest {
+	s.PaymentType = &v
+	return s
+}
+
 func (s *ListJobsRequest) SetPipelineId(v string) *ListJobsRequest {
 	s.PipelineId = &v
 	return s
@@ -6638,7 +6714,8 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// example:
 	//
 	// flow-*******
@@ -6738,6 +6815,11 @@ func (s *ListJobsShrinkRequest) SetPageNumber(v int32) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetPageSize(v int32) *ListJobsShrinkRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetPaymentType(v string) *ListJobsShrinkRequest {
+	s.PaymentType = &v
 	return s
 }
 
@@ -7509,13 +7591,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.ProductId = tea.String("pai-dlc")
-	gatewayClient, _err := gatewayclient.NewClient()
-	if _err != nil {
-		return _err
-	}
-
-	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":              tea.String("pai-dlc.aliyuncs.com"),
@@ -9114,6 +9189,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["PaymentType"] = request.PaymentType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
