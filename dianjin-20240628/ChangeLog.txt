@@ -1,3 +1,7 @@
+2025-01-22 Version: v1.11.0
+- Support API RunAgent.
+
+
 2025-01-17 Version: v1.10.1
 - Update API GetDialogAnalysisResult: update response param.
 
