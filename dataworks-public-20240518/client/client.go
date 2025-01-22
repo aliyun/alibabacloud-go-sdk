@@ -2037,6 +2037,373 @@ func (s *AttachDataQualityRulesToEvaluationTaskResponse) SetBody(v *AttachDataQu
 	return s
 }
 
+type BatchUpdateTasksRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string                         `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Tasks   []*BatchUpdateTasksRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s BatchUpdateTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksRequest) SetComment(v string) *BatchUpdateTasksRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequest) SetTasks(v []*BatchUpdateTasksRequestTasks) *BatchUpdateTasksRequest {
+	s.Tasks = v
+	return s
+}
+
+type BatchUpdateTasksRequestTasks struct {
+	DataSource *BatchUpdateTasksRequestTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes      *int32                                       `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RuntimeResource *BatchUpdateTasksRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	Tags            []*BatchUpdateTasksRequestTasksTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3600
+	Timeout *int32                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Trigger *BatchUpdateTasksRequestTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s BatchUpdateTasksRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetDataSource(v *BatchUpdateTasksRequestTasksDataSource) *BatchUpdateTasksRequestTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetDescription(v string) *BatchUpdateTasksRequestTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetEnvType(v string) *BatchUpdateTasksRequestTasks {
+	s.EnvType = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetId(v int64) *BatchUpdateTasksRequestTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetName(v string) *BatchUpdateTasksRequestTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetOwner(v string) *BatchUpdateTasksRequestTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetRerunInterval(v int32) *BatchUpdateTasksRequestTasks {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetRerunMode(v string) *BatchUpdateTasksRequestTasks {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetRerunTimes(v int32) *BatchUpdateTasksRequestTasks {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetRuntimeResource(v *BatchUpdateTasksRequestTasksRuntimeResource) *BatchUpdateTasksRequestTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetTags(v []*BatchUpdateTasksRequestTasksTags) *BatchUpdateTasksRequestTasks {
+	s.Tags = v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetTimeout(v int32) *BatchUpdateTasksRequestTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasks) SetTrigger(v *BatchUpdateTasksRequestTasksTrigger) *BatchUpdateTasksRequestTasks {
+	s.Trigger = v
+	return s
+}
+
+type BatchUpdateTasksRequestTasksDataSource struct {
+	// example:
+	//
+	// odps_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s BatchUpdateTasksRequestTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksRequestTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksRequestTasksDataSource) SetName(v string) *BatchUpdateTasksRequestTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type BatchUpdateTasksRequestTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s BatchUpdateTasksRequestTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksRequestTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksRequestTasksRuntimeResource) SetCu(v string) *BatchUpdateTasksRequestTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasksRuntimeResource) SetImage(v string) *BatchUpdateTasksRequestTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasksRuntimeResource) SetResourceGroupId(v string) *BatchUpdateTasksRequestTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type BatchUpdateTasksRequestTasksTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s BatchUpdateTasksRequestTasksTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksRequestTasksTags) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksRequestTasksTags) SetKey(v string) *BatchUpdateTasksRequestTasksTags {
+	s.Key = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasksTags) SetValue(v string) *BatchUpdateTasksRequestTasksTags {
+	s.Value = &v
+	return s
+}
+
+type BatchUpdateTasksRequestTasksTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s BatchUpdateTasksRequestTasksTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksRequestTasksTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksRequestTasksTrigger) SetCron(v string) *BatchUpdateTasksRequestTasksTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasksTrigger) SetEndTime(v string) *BatchUpdateTasksRequestTasksTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasksTrigger) SetRecurrence(v string) *BatchUpdateTasksRequestTasksTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasksTrigger) SetStartTime(v string) *BatchUpdateTasksRequestTasksTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *BatchUpdateTasksRequestTasksTrigger) SetType(v string) *BatchUpdateTasksRequestTasksTrigger {
+	s.Type = &v
+	return s
+}
+
+type BatchUpdateTasksShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
+}
+
+func (s BatchUpdateTasksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksShrinkRequest) SetComment(v string) *BatchUpdateTasksShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *BatchUpdateTasksShrinkRequest) SetTasksShrink(v string) *BatchUpdateTasksShrinkRequest {
+	s.TasksShrink = &v
+	return s
+}
+
+type BatchUpdateTasksResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s BatchUpdateTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksResponseBody) SetRequestId(v string) *BatchUpdateTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchUpdateTasksResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *BatchUpdateTasksResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type BatchUpdateTasksResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchUpdateTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchUpdateTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateTasksResponse) SetHeaders(v map[string]*string) *BatchUpdateTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateTasksResponse) SetStatusCode(v int32) *BatchUpdateTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchUpdateTasksResponse) SetBody(v *BatchUpdateTasksResponseBody) *BatchUpdateTasksResponse {
+	s.Body = v
+	return s
+}
+
 type CloneDataSourceRequest struct {
 	// The name of the destination data source The name can contain letters, digits, and underscores (_), and must start with a letter. It cannot exceed 60 characters in length.
 	//
@@ -2844,6 +3211,10 @@ type CreateDIAlarmRuleRequest struct {
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// The description of the alert rule.
+	//
+	// example:
+	//
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
@@ -2944,7 +3315,12 @@ type CreateDIAlarmRuleRequestNotificationSettings struct {
 	//
 	// 5
 	InhibitionInterval *int32 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	MuteInterval       *int32 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
+	// 告警抑制间隔时长，单位分钟，默认5分钟。
+	//
+	// example:
+	//
+	// 5
+	MuteInterval *int32 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
 	// The alert notification methods.
 	NotificationChannels []*CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
 	// The settings of alert notification recipients.
@@ -3058,7 +3434,8 @@ type CreateDIAlarmRuleRequestTriggerConditions struct {
 	//
 	// The types of DDL operations for which the alert rule takes effect.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
-	DdlTypes      []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
+	// 在DDL通知的时候才生效，需要生效的DDL列表。
+	DdlTypes []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
 	// example:
@@ -3137,6 +3514,10 @@ type CreateDIAlarmRuleShrinkRequest struct {
 	//
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The description of the alert rule.
+	//
+	// example:
+	//
 	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
@@ -3244,7 +3625,7 @@ type CreateDIAlarmRuleResponseBody struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can locate logs and troubleshoot issues based on the ID.
 	//
 	// example:
 	//
@@ -3305,6 +3686,10 @@ func (s *CreateDIAlarmRuleResponse) SetBody(v *CreateDIAlarmRuleResponseBody) *C
 }
 
 type CreateDIJobRequest struct {
+	// The description of the synchronization task.
+	//
+	// example:
+	//
 	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The settings of the destination. Only a single destination is supported.
@@ -4154,6 +4539,10 @@ func (s *CreateDIJobRequestTransformationRules) SetRuleTargetType(v string) *Cre
 
 type CreateDIJobShrinkRequest struct {
 	// The description of the synchronization task.
+	//
+	// example:
+	//
+	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The settings of the destination. Only a single destination is supported.
 	//
@@ -4821,6 +5210,7 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// 	- \\>
@@ -4855,6 +5245,11 @@ func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThre
 	return s.String()
 }
 
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetExpression(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
 func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetOperator(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
 	s.Operator = &v
 	return s
@@ -4866,6 +5261,7 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// 	- \\>
@@ -4900,6 +5296,11 @@ func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThre
 	return s.String()
 }
 
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetExpression(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
 func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetOperator(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
 	s.Operator = &v
 	return s
@@ -4911,6 +5312,7 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// 	- \\>
@@ -4943,6 +5345,11 @@ func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThre
 
 func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetExpression(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
 }
 
 func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetOperator(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
@@ -5684,7 +6091,7 @@ type CreateDataQualityRuleRequest struct {
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the rule.
+	// Specifies whether to enable the monitoring rule.
 	//
 	// example:
 	//
@@ -5706,7 +6113,7 @@ type CreateDataQualityRuleRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfig *CreateDataQualityRuleRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The strength of the rule. Valid values:
+	// The strength of the rule.
 	//
 	// 	- Normal
 	//
@@ -5869,18 +6276,6 @@ func (s *CreateDataQualityRuleRequestCheckingConfigThresholds) SetWarned(v *Crea
 }
 
 type CreateDataQualityRuleRequestCheckingConfigThresholdsCritical struct {
-	// 阈值表达式。
-	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
-	//
-	// - 波动上升大于0.01： $checkValue > 0.01
-	//
-	// - 波动下降大于0.01：$checkValue < -0.01
-	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
-	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
-	//
 	// example:
 	//
 	// $checkValue > 0.05
@@ -5935,18 +6330,6 @@ func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetValue(
 }
 
 type CreateDataQualityRuleRequestCheckingConfigThresholdsExpected struct {
-	// 阈值表达式。
-	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
-	//
-	// - 波动上升大于0.01： $checkValue > 0.01
-	//
-	// - 波动下降大于0.01：$checkValue < -0.01
-	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
-	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
-	//
 	// example:
 	//
 	// $checkValue <= 0.01
@@ -6001,18 +6384,6 @@ func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetValue(
 }
 
 type CreateDataQualityRuleRequestCheckingConfigThresholdsWarned struct {
-	// 阈值表达式。
-	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
-	//
-	// - 波动上升大于0.01： $checkValue > 0.01
-	//
-	// - 波动下降大于0.01：$checkValue < -0.01
-	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
-	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
-	//
 	// example:
 	//
 	// $checkValue > 0.01
@@ -6270,7 +6641,7 @@ type CreateDataQualityRuleShrinkRequest struct {
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the rule.
+	// Specifies whether to enable the monitoring rule.
 	//
 	// example:
 	//
@@ -6292,7 +6663,7 @@ type CreateDataQualityRuleShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
-	// The strength of the rule. Valid values:
+	// The strength of the rule.
 	//
 	// 	- Normal
 	//
@@ -6371,6 +6742,9 @@ func (s *CreateDataQualityRuleShrinkRequest) SetTemplateCode(v string) *CreateDa
 }
 
 type CreateDataQualityRuleResponseBody struct {
+	// example:
+	//
+	// 19715
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
@@ -6687,6 +7061,9 @@ func (s *CreateDataQualityRuleTemplateShrinkRequest) SetVisibleScope(v string) *
 }
 
 type CreateDataQualityRuleTemplateResponseBody struct {
+	// example:
+	//
+	// UserDefined:3001
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The request ID.
 	//
@@ -8705,6 +9082,588 @@ func (s *CreateWorkflowDefinitionResponse) SetBody(v *CreateWorkflowDefinitionRe
 	return s
 }
 
+type CreateWorkflowInstancesRequest struct {
+	// example:
+	//
+	// true
+	AutoStartEnabled *bool `json:"AutoStartEnabled,omitempty" xml:"AutoStartEnabled,omitempty"`
+	// example:
+	//
+	// create for test
+	Comment              *string                                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DefaultRunProperties *CreateWorkflowInstancesRequestDefaultRunProperties `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty" type:"Struct"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WorkflowInstance1
+	Name    *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Periods *CreateWorkflowInstancesRequestPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "1001": "key1=val2 key2=val2",
+	//
+	//   "1002": "key1=val2 key2=val2"
+	//
+	// }
+	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SupplementData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "key1": "value1",
+	//
+	//   "key2": "value2"
+	//
+	// }
+	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequest) SetAutoStartEnabled(v bool) *CreateWorkflowInstancesRequest {
+	s.AutoStartEnabled = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetComment(v string) *CreateWorkflowInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetDefaultRunProperties(v *CreateWorkflowInstancesRequestDefaultRunProperties) *CreateWorkflowInstancesRequest {
+	s.DefaultRunProperties = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetEnvType(v string) *CreateWorkflowInstancesRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetName(v string) *CreateWorkflowInstancesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetPeriods(v *CreateWorkflowInstancesRequestPeriods) *CreateWorkflowInstancesRequest {
+	s.Periods = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetProjectId(v int64) *CreateWorkflowInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetTaskParameters(v string) *CreateWorkflowInstancesRequest {
+	s.TaskParameters = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetType(v string) *CreateWorkflowInstancesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetWorkflowId(v int64) *CreateWorkflowInstancesRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetWorkflowParameters(v string) *CreateWorkflowInstancesRequest {
+	s.WorkflowParameters = &v
+	return s
+}
+
+type CreateWorkflowInstancesRequestDefaultRunProperties struct {
+	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
+	// This parameter is required.
+	Analysis          *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	ExcludeProjectIds []*int64                                                    `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
+	ExcludeTaskIds    []*int64                                                    `json:"ExcludeTaskIds,omitempty" xml:"ExcludeTaskIds,omitempty" type:"Repeated"`
+	IncludeProjectIds []*int64                                                    `json:"IncludeProjectIds,omitempty" xml:"IncludeProjectIds,omitempty" type:"Repeated"`
+	IncludeTaskIds    []*int64                                                    `json:"IncludeTaskIds,omitempty" xml:"IncludeTaskIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ManualSelection
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Parallelism *int32                                                       `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	RootTaskIds []*int64                                                     `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
+	RunPolicy   *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy `json:"RunPolicy,omitempty" xml:"RunPolicy,omitempty" type:"Struct"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetAlert(v *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.Alert = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetAnalysis(v *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.Analysis = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetExcludeProjectIds(v []*int64) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.ExcludeProjectIds = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetExcludeTaskIds(v []*int64) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.ExcludeTaskIds = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetIncludeProjectIds(v []*int64) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.IncludeProjectIds = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetIncludeTaskIds(v []*int64) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.IncludeTaskIds = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetMode(v string) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetOrder(v string) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.Order = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetParallelism(v int32) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.Parallelism = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetRootTaskIds(v []*int64) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.RootTaskIds = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetRunPolicy(v *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.RunPolicy = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetRuntimeResource(v string) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.RuntimeResource = &v
+	return s
+}
+
+type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
+	// example:
+	//
+	// Sms
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// example:
+	//
+	// Succes
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) SetNoticeType(v string) *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert {
+	s.NoticeType = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) SetType(v string) *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert {
+	s.Type = &v
+	return s
+}
+
+type CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Blocked *bool `json:"Blocked,omitempty" xml:"Blocked,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) SetBlocked(v bool) *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis {
+	s.Blocked = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) SetEnabled(v bool) *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis {
+	s.Enabled = &v
+	return s
+}
+
+type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
+	// example:
+	//
+	// 23:59:59
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// false
+	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// example:
+	//
+	// 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Daily
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) SetEndTime(v string) *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) SetImmediately(v bool) *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy {
+	s.Immediately = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) SetStartTime(v string) *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) SetType(v string) *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy {
+	s.Type = &v
+	return s
+}
+
+type CreateWorkflowInstancesRequestPeriods struct {
+	// This parameter is required.
+	BizDates []*CreateWorkflowInstancesRequestPeriodsBizDates `json:"BizDates,omitempty" xml:"BizDates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 23:59:59
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequestPeriods) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequestPeriods) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequestPeriods) SetBizDates(v []*CreateWorkflowInstancesRequestPeriodsBizDates) *CreateWorkflowInstancesRequestPeriods {
+	s.BizDates = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestPeriods) SetEndTime(v string) *CreateWorkflowInstancesRequestPeriods {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestPeriods) SetStartTime(v string) *CreateWorkflowInstancesRequestPeriods {
+	s.StartTime = &v
+	return s
+}
+
+type CreateWorkflowInstancesRequestPeriodsBizDates struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-11-24
+	EndBizDate *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-11-20
+	StartBizDate *string `json:"StartBizDate,omitempty" xml:"StartBizDate,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequestPeriodsBizDates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequestPeriodsBizDates) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequestPeriodsBizDates) SetEndBizDate(v string) *CreateWorkflowInstancesRequestPeriodsBizDates {
+	s.EndBizDate = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestPeriodsBizDates) SetStartBizDate(v string) *CreateWorkflowInstancesRequestPeriodsBizDates {
+	s.StartBizDate = &v
+	return s
+}
+
+type CreateWorkflowInstancesShrinkRequest struct {
+	// example:
+	//
+	// true
+	AutoStartEnabled *bool `json:"AutoStartEnabled,omitempty" xml:"AutoStartEnabled,omitempty"`
+	// example:
+	//
+	// create for test
+	Comment                    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DefaultRunPropertiesShrink *string `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WorkflowInstance1
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PeriodsShrink *string `json:"Periods,omitempty" xml:"Periods,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "1001": "key1=val2 key2=val2",
+	//
+	//   "1002": "key1=val2 key2=val2"
+	//
+	// }
+	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SupplementData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "key1": "value1",
+	//
+	//   "key2": "value2"
+	//
+	// }
+	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+}
+
+func (s CreateWorkflowInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetAutoStartEnabled(v bool) *CreateWorkflowInstancesShrinkRequest {
+	s.AutoStartEnabled = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetComment(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetDefaultRunPropertiesShrink(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.DefaultRunPropertiesShrink = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetEnvType(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetName(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetPeriodsShrink(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.PeriodsShrink = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetProjectId(v int64) *CreateWorkflowInstancesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetTaskParameters(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.TaskParameters = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetType(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetWorkflowId(v int64) *CreateWorkflowInstancesShrinkRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetWorkflowParameters(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.WorkflowParameters = &v
+	return s
+}
+
+type CreateWorkflowInstancesResponseBody struct {
+	// example:
+	//
+	// e15ad21c-b0e9-4792-8f55-b037xxxxxxxx
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWorkflowInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesResponseBody) SetOperationId(v string) *CreateWorkflowInstancesResponseBody {
+	s.OperationId = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesResponseBody) SetRequestId(v string) *CreateWorkflowInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWorkflowInstancesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWorkflowInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWorkflowInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesResponse) SetHeaders(v map[string]*string) *CreateWorkflowInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWorkflowInstancesResponse) SetStatusCode(v int32) *CreateWorkflowInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesResponse) SetBody(v *CreateWorkflowInstancesResponseBody) *CreateWorkflowInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAlertRuleRequest struct {
 	// The rule ID.
 	//
@@ -8804,6 +9763,8 @@ type DeleteDIAlarmRuleRequest struct {
 	//
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 2
@@ -8834,7 +9795,7 @@ func (s *DeleteDIAlarmRuleRequest) SetId(v int64) *DeleteDIAlarmRuleRequest {
 }
 
 type DeleteDIAlarmRuleResponseBody struct {
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can locate logs and troubleshoot issues based on the ID.
 	//
 	// example:
 	//
@@ -8946,10 +9907,14 @@ func (s *DeleteDIJobRequest) SetProjectId(v int64) *DeleteDIJobRequest {
 }
 
 type DeleteDIJobResponseBody struct {
+	// The request ID. You can troubleshoot issues based on the ID.
+	//
 	// example:
 	//
 	// D33D4A51-5845-579A-B4BA-FAADD0F83D53
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// true
+	//
 	// example:
 	//
 	// true
@@ -9155,7 +10120,10 @@ type DeleteDataQualityEvaluationTaskResponseBody struct {
 	//
 	// 0bc1ec92159376****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteDataQualityEvaluationTaskResponseBody) String() string {
@@ -10394,6 +11362,104 @@ func (s *DeleteTaskResponse) SetBody(v *DeleteTaskResponseBody) *DeleteTaskRespo
 	return s
 }
 
+type DeleteWorkflowRequest struct {
+	// example:
+	//
+	// Workflow_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkflowRequest) SetClientUniqueCode(v string) *DeleteWorkflowRequest {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *DeleteWorkflowRequest) SetEnvType(v string) *DeleteWorkflowRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *DeleteWorkflowRequest) SetId(v int64) *DeleteWorkflowRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteWorkflowResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkflowResponseBody) SetRequestId(v string) *DeleteWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteWorkflowResponseBody) SetSuccess(v bool) *DeleteWorkflowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteWorkflowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkflowResponse) SetHeaders(v map[string]*string) *DeleteWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWorkflowResponse) SetStatusCode(v int32) *DeleteWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWorkflowResponse) SetBody(v *DeleteWorkflowResponseBody) *DeleteWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteWorkflowDefinitionRequest struct {
 	// The ID of the workflow.
 	//
@@ -10854,6 +11920,531 @@ func (s *ExecDeploymentStageResponse) SetStatusCode(v int32) *ExecDeploymentStag
 }
 
 func (s *ExecDeploymentStageResponse) SetBody(v *ExecDeploymentStageResponseBody) *ExecDeploymentStageResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequest struct {
+	// This parameter is required.
+	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WorkflowInstance1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	Tasks []*ExecuteAdhocWorkflowInstanceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequest) SetBizDate(v int64) *ExecuteAdhocWorkflowInstanceRequest {
+	s.BizDate = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequest) SetEnvType(v string) *ExecuteAdhocWorkflowInstanceRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequest) SetName(v string) *ExecuteAdhocWorkflowInstanceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequest) SetOwner(v string) *ExecuteAdhocWorkflowInstanceRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequest) SetProjectId(v int64) *ExecuteAdhocWorkflowInstanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequest) SetTasks(v []*ExecuteAdhocWorkflowInstanceRequestTasks) *ExecuteAdhocWorkflowInstanceRequest {
+	s.Tasks = v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Task_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string                                                 `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	DataSource       *ExecuteAdhocWorkflowInstanceRequestTasksDataSource     `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Dependencies     []*ExecuteAdhocWorkflowInstanceRequestTasksDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	Inputs           *ExecuteAdhocWorkflowInstanceRequestTasksInputs         `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// This parameter is required.
+	Name    *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs *ExecuteAdhocWorkflowInstanceRequestTasksOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	RuntimeResource *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	Script          *ExecuteAdhocWorkflowInstanceRequestTasksScript          `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetClientUniqueCode(v string) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetDataSource(v *ExecuteAdhocWorkflowInstanceRequestTasksDataSource) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetDependencies(v []*ExecuteAdhocWorkflowInstanceRequestTasksDependencies) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Dependencies = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetInputs(v *ExecuteAdhocWorkflowInstanceRequestTasksInputs) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Inputs = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetName(v string) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetOutputs(v *ExecuteAdhocWorkflowInstanceRequestTasksOutputs) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Outputs = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetOwner(v string) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetRuntimeResource(v *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetScript(v *ExecuteAdhocWorkflowInstanceRequestTasksScript) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Script = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetTimeout(v int32) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetType(v string) *ExecuteAdhocWorkflowInstanceRequestTasks {
+	s.Type = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksDataSource) SetName(v string) *ExecuteAdhocWorkflowInstanceRequestTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksDependencies struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksDependencies) SetUpstreamOutput(v string) *ExecuteAdhocWorkflowInstanceRequestTasksDependencies {
+	s.UpstreamOutput = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksInputs struct {
+	Variables []*ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksInputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksInputs) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksInputs) SetVariables(v []*ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables) *ExecuteAdhocWorkflowInstanceRequestTasksInputs {
+	s.Variables = v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables) SetName(v string) *ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables) SetValue(v string) *ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables {
+	s.Value = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksOutputs struct {
+	TaskOutputs []*ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
+	Variables   []*ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables   `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputs) SetTaskOutputs(v []*ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs) *ExecuteAdhocWorkflowInstanceRequestTasksOutputs {
+	s.TaskOutputs = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputs) SetVariables(v []*ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) *ExecuteAdhocWorkflowInstanceRequestTasksOutputs {
+	s.Variables = v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs) SetOutput(v string) *ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs {
+	s.Output = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) SetName(v string) *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) SetType(v string) *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) SetValue(v string) *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables {
+	s.Value = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource) SetCu(v string) *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource) SetImage(v string) *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource) SetResourceGroupId(v string) *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceRequestTasksScript struct {
+	// example:
+	//
+	// echo "helloWorld"
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// para1=$bizdate
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksScript) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceRequestTasksScript) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksScript) SetContent(v string) *ExecuteAdhocWorkflowInstanceRequestTasksScript {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceRequestTasksScript) SetParameters(v string) *ExecuteAdhocWorkflowInstanceRequestTasksScript {
+	s.Parameters = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceShrinkRequest struct {
+	// This parameter is required.
+	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WorkflowInstance1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceShrinkRequest) SetBizDate(v int64) *ExecuteAdhocWorkflowInstanceShrinkRequest {
+	s.BizDate = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceShrinkRequest) SetEnvType(v string) *ExecuteAdhocWorkflowInstanceShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceShrinkRequest) SetName(v string) *ExecuteAdhocWorkflowInstanceShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceShrinkRequest) SetOwner(v string) *ExecuteAdhocWorkflowInstanceShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceShrinkRequest) SetProjectId(v int64) *ExecuteAdhocWorkflowInstanceShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceShrinkRequest) SetTasksShrink(v string) *ExecuteAdhocWorkflowInstanceShrinkRequest {
+	s.TasksShrink = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceResponseBody) SetRequestId(v string) *ExecuteAdhocWorkflowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceResponseBody) SetWorkflowInstanceId(v int64) *ExecuteAdhocWorkflowInstanceResponseBody {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+type ExecuteAdhocWorkflowInstanceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAdhocWorkflowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAdhocWorkflowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAdhocWorkflowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAdhocWorkflowInstanceResponse) SetHeaders(v map[string]*string) *ExecuteAdhocWorkflowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceResponse) SetStatusCode(v int32) *ExecuteAdhocWorkflowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAdhocWorkflowInstanceResponse) SetBody(v *ExecuteAdhocWorkflowInstanceResponseBody) *ExecuteAdhocWorkflowInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -11500,6 +13091,118 @@ func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRul
 	return s
 }
 
+type GetCreateWorkflowInstancesResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e15ad21c-b0e9-4792-8f55-b037xxxxxxxx
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+}
+
+func (s GetCreateWorkflowInstancesResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateWorkflowInstancesResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateWorkflowInstancesResultRequest) SetOperationId(v string) *GetCreateWorkflowInstancesResultRequest {
+	s.OperationId = &v
+	return s
+}
+
+type GetCreateWorkflowInstancesResultResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetCreateWorkflowInstancesResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetCreateWorkflowInstancesResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateWorkflowInstancesResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateWorkflowInstancesResultResponseBody) SetRequestId(v string) *GetCreateWorkflowInstancesResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCreateWorkflowInstancesResultResponseBody) SetResult(v *GetCreateWorkflowInstancesResultResponseBodyResult) *GetCreateWorkflowInstancesResultResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetCreateWorkflowInstancesResultResponseBodyResult struct {
+	// example:
+	//
+	// Invalid Param xxx
+	FailureMessage *string `json:"FailureMessage,omitempty" xml:"FailureMessage,omitempty"`
+	// example:
+	//
+	// Created
+	Status              *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkflowInstanceIds []*int64 `json:"WorkflowInstanceIds,omitempty" xml:"WorkflowInstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s GetCreateWorkflowInstancesResultResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateWorkflowInstancesResultResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetFailureMessage(v string) *GetCreateWorkflowInstancesResultResponseBodyResult {
+	s.FailureMessage = &v
+	return s
+}
+
+func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetStatus(v string) *GetCreateWorkflowInstancesResultResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetWorkflowInstanceIds(v []*int64) *GetCreateWorkflowInstancesResultResponseBodyResult {
+	s.WorkflowInstanceIds = v
+	return s
+}
+
+type GetCreateWorkflowInstancesResultResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCreateWorkflowInstancesResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCreateWorkflowInstancesResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateWorkflowInstancesResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateWorkflowInstancesResultResponse) SetHeaders(v map[string]*string) *GetCreateWorkflowInstancesResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCreateWorkflowInstancesResultResponse) SetStatusCode(v int32) *GetCreateWorkflowInstancesResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCreateWorkflowInstancesResultResponse) SetBody(v *GetCreateWorkflowInstancesResultResponseBody) *GetCreateWorkflowInstancesResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetDIJobRequest struct {
 	// Deprecated
 	//
@@ -11515,6 +13218,10 @@ type GetDIJobRequest struct {
 	//
 	// 11588
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// example:
 	//
 	// 10000
@@ -11621,6 +13328,8 @@ type GetDIJobResponseBodyPagingInfo struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The runtime settings.
 	JobSettings *GetDIJobResponseBodyPagingInfoJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	// The status of the job.
+	//
 	// example:
 	//
 	// Running
@@ -12618,6 +14327,7 @@ func (s *GetDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *GetDa
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// 质量监控任务描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The hook.
@@ -12658,6 +14368,11 @@ func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) Strin
 
 func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) GoString() string {
 	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetDataSourceId(v int64) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.DataSourceId = &v
+	return s
 }
 
 func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetDescription(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
@@ -16936,12 +18651,6 @@ type GetTaskResponseBodyTask struct {
 	SubTasks *GetTaskResponseBodyTaskSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Struct"`
 	// The tags.
 	Tags []*GetTaskResponseBodyTaskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
@@ -17094,11 +18803,6 @@ func (s *GetTaskResponseBodyTask) SetSubTasks(v *GetTaskResponseBodyTaskSubTasks
 
 func (s *GetTaskResponseBodyTask) SetTags(v []*GetTaskResponseBodyTaskTags) *GetTaskResponseBodyTask {
 	s.Tags = v
-	return s
-}
-
-func (s *GetTaskResponseBodyTask) SetTenantId(v int64) *GetTaskResponseBodyTask {
-	s.TenantId = &v
 	return s
 }
 
@@ -17589,12 +19293,6 @@ type GetTaskResponseBodyTaskSubTasksSubTasks struct {
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The runtime environment configuration of the task, such as the resource group.
 	RuntimeResource *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
@@ -17712,11 +19410,6 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetRerunTimes(v int32) *GetTas
 
 func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetRuntimeResource(v *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) *GetTaskResponseBodyTaskSubTasksSubTasks {
 	s.RuntimeResource = v
-	return s
-}
-
-func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetTenantId(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
-	s.TenantId = &v
 	return s
 }
 
@@ -18244,12 +19937,6 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// Note: The value of this parameter is rounded up by hour.
@@ -18465,11 +20152,6 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) SetTaskName(v string) *GetTask
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) SetTaskType(v string) *GetTaskInstanceResponseBodyTaskInstance {
 	s.TaskType = &v
-	return s
-}
-
-func (s *GetTaskInstanceResponseBodyTaskInstance) SetTenantId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
-	s.TenantId = &v
 	return s
 }
 
@@ -18973,6 +20655,653 @@ func (s *GetTaskInstanceLogResponse) SetBody(v *GetTaskInstanceLogResponseBody) 
 	return s
 }
 
+type GetWorkflowRequest struct {
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowRequest) SetEnvType(v string) *GetWorkflowRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetWorkflowRequest) SetId(v int64) *GetWorkflowRequest {
+	s.Id = &v
+	return s
+}
+
+type GetWorkflowResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Workflow  *GetWorkflowResponseBodyWorkflow `json:"Workflow,omitempty" xml:"Workflow,omitempty" type:"Struct"`
+}
+
+func (s GetWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBody) SetRequestId(v string) *GetWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBody) SetWorkflow(v *GetWorkflowResponseBodyWorkflow) *GetWorkflowResponseBody {
+	s.Workflow = v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflow struct {
+	// example:
+	//
+	// Workflow_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser   *string                                        `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	Dependencies []*GetWorkflowResponseBodyWorkflowDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	Description  *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string                                 `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name       *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs    *GetWorkflowResponseBodyWorkflowOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// para1=$bizdate para2=$[yyyymmdd]
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64                                  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Tags      []*GetWorkflowResponseBodyWorkflowTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tasks     []*GetWorkflowResponseBodyWorkflowTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	Trigger   *GetWorkflowResponseBodyWorkflowTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s GetWorkflowResponseBodyWorkflow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflow) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetClientUniqueCode(v string) *GetWorkflowResponseBodyWorkflow {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetCreateTime(v int64) *GetWorkflowResponseBodyWorkflow {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetCreateUser(v string) *GetWorkflowResponseBodyWorkflow {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetDependencies(v []*GetWorkflowResponseBodyWorkflowDependencies) *GetWorkflowResponseBodyWorkflow {
+	s.Dependencies = v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetDescription(v string) *GetWorkflowResponseBodyWorkflow {
+	s.Description = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetEnvType(v string) *GetWorkflowResponseBodyWorkflow {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetId(v int64) *GetWorkflowResponseBodyWorkflow {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetModifyTime(v int64) *GetWorkflowResponseBodyWorkflow {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetModifyUser(v string) *GetWorkflowResponseBodyWorkflow {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetName(v string) *GetWorkflowResponseBodyWorkflow {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetOutputs(v *GetWorkflowResponseBodyWorkflowOutputs) *GetWorkflowResponseBodyWorkflow {
+	s.Outputs = v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetOwner(v string) *GetWorkflowResponseBodyWorkflow {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetParameters(v string) *GetWorkflowResponseBodyWorkflow {
+	s.Parameters = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetProjectId(v int64) *GetWorkflowResponseBodyWorkflow {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetTags(v []*GetWorkflowResponseBodyWorkflowTags) *GetWorkflowResponseBodyWorkflow {
+	s.Tags = v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetTasks(v []*GetWorkflowResponseBodyWorkflowTasks) *GetWorkflowResponseBodyWorkflow {
+	s.Tasks = v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflow) SetTrigger(v *GetWorkflowResponseBodyWorkflowTrigger) *GetWorkflowResponseBodyWorkflow {
+	s.Trigger = v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowDependencies struct {
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
+	// example:
+	//
+	// 1234
+	UpstreamTaskId *int64 `json:"UpstreamTaskId,omitempty" xml:"UpstreamTaskId,omitempty"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowDependencies) SetType(v string) *GetWorkflowResponseBodyWorkflowDependencies {
+	s.Type = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowDependencies) SetUpstreamOutput(v string) *GetWorkflowResponseBodyWorkflowDependencies {
+	s.UpstreamOutput = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowDependencies) SetUpstreamTaskId(v int64) *GetWorkflowResponseBodyWorkflowDependencies {
+	s.UpstreamTaskId = &v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowOutputs struct {
+	TaskOutputs []*GetWorkflowResponseBodyWorkflowOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowOutputs) SetTaskOutputs(v []*GetWorkflowResponseBodyWorkflowOutputsTaskOutputs) *GetWorkflowResponseBodyWorkflowOutputs {
+	s.TaskOutputs = v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowOutputsTaskOutputs struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowOutputsTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowOutputsTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowOutputsTaskOutputs) SetOutput(v string) *GetWorkflowResponseBodyWorkflowOutputsTaskOutputs {
+	s.Output = &v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowTags struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTags) SetKey(v string) *GetWorkflowResponseBodyWorkflowTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTags) SetValue(v string) *GetWorkflowResponseBodyWorkflowTags {
+	s.Value = &v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowTasks struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// Task_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *GetWorkflowResponseBodyWorkflowTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// Test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes      *int32                                               `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RuntimeResource *GetWorkflowResponseBodyWorkflowTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetBaselineId(v int64) *GetWorkflowResponseBodyWorkflowTasks {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetClientUniqueCode(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetCreateTime(v int64) *GetWorkflowResponseBodyWorkflowTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetCreateUser(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetDataSource(v *GetWorkflowResponseBodyWorkflowTasksDataSource) *GetWorkflowResponseBodyWorkflowTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetDescription(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetEnvType(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetId(v int64) *GetWorkflowResponseBodyWorkflowTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetModifyTime(v int64) *GetWorkflowResponseBodyWorkflowTasks {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetModifyUser(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetName(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetOwner(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetPriority(v int32) *GetWorkflowResponseBodyWorkflowTasks {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetProjectId(v int64) *GetWorkflowResponseBodyWorkflowTasks {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetRerunInterval(v int32) *GetWorkflowResponseBodyWorkflowTasks {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetRerunMode(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetRerunTimes(v int32) *GetWorkflowResponseBodyWorkflowTasks {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetRuntimeResource(v *GetWorkflowResponseBodyWorkflowTasksRuntimeResource) *GetWorkflowResponseBodyWorkflowTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetTimeout(v int32) *GetWorkflowResponseBodyWorkflowTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetTriggerRecurrence(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetType(v string) *GetWorkflowResponseBodyWorkflowTasks {
+	s.Type = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasks) SetWorkflowId(v int64) *GetWorkflowResponseBodyWorkflowTasks {
+	s.WorkflowId = &v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowTasksDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasksDataSource) SetName(v string) *GetWorkflowResponseBodyWorkflowTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasksRuntimeResource) SetCu(v string) *GetWorkflowResponseBodyWorkflowTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasksRuntimeResource) SetImage(v string) *GetWorkflowResponseBodyWorkflowTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTasksRuntimeResource) SetResourceGroupId(v string) *GetWorkflowResponseBodyWorkflowTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type GetWorkflowResponseBodyWorkflowTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetWorkflowResponseBodyWorkflowTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponseBodyWorkflowTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTrigger) SetCron(v string) *GetWorkflowResponseBodyWorkflowTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTrigger) SetEndTime(v string) *GetWorkflowResponseBodyWorkflowTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTrigger) SetRecurrence(v string) *GetWorkflowResponseBodyWorkflowTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTrigger) SetStartTime(v string) *GetWorkflowResponseBodyWorkflowTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetWorkflowResponseBodyWorkflowTrigger) SetType(v string) *GetWorkflowResponseBodyWorkflowTrigger {
+	s.Type = &v
+	return s
+}
+
+type GetWorkflowResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowResponse) SetHeaders(v map[string]*string) *GetWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkflowResponse) SetStatusCode(v int32) *GetWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWorkflowResponse) SetBody(v *GetWorkflowResponseBody) *GetWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkflowDefinitionRequest struct {
 	// The ID of the workflow.
 	//
@@ -19144,6 +21473,271 @@ func (s *GetWorkflowDefinitionResponse) SetStatusCode(v int32) *GetWorkflowDefin
 }
 
 func (s *GetWorkflowDefinitionResponse) SetBody(v *GetWorkflowDefinitionResponseBody) *GetWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorkflowInstanceRequest struct {
+	// The ID of the workflow instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetWorkflowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceRequest) SetId(v int64) *GetWorkflowInstanceRequest {
+	s.Id = &v
+	return s
+}
+
+type GetWorkflowInstanceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the workflow instance.
+	WorkflowInstance *GetWorkflowInstanceResponseBodyWorkflowInstance `json:"WorkflowInstance,omitempty" xml:"WorkflowInstance,omitempty" type:"Struct"`
+}
+
+func (s GetWorkflowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBody) SetRequestId(v string) *GetWorkflowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBody) SetWorkflowInstance(v *GetWorkflowInstanceResponseBodyWorkflowInstance) *GetWorkflowInstanceResponseBody {
+	s.WorkflowInstance = v
+	return s
+}
+
+type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
+	// example:
+	//
+	// 1710239005403
+	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
+	// example:
+	//
+	// 1000
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The environment of the workspace. Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The time when the instance finished running.
+	//
+	// example:
+	//
+	// 1710239005403
+	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The ID of the workflow instance.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The name of the workflow instance.
+	//
+	// example:
+	//
+	// WorkInstance1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The time when the instance started to run.
+	//
+	// example:
+	//
+	// 1710239005403
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the workflow instance. Valid values:
+	//
+	// 	- NotRun: The instance is not run.
+	//
+	// 	- Running: The instance is running.
+	//
+	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	//
+	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	//
+	// 	- WaitResource: The instance is waiting for resources.
+	//
+	// 	- Failure: The instance fails to be run.
+	//
+	// 	- Success: The instance is successfully run.
+	//
+	// 	- Checking: Data quality is being checked for the instance.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 工作流类型
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workflow to which the instance belongs.
+	//
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s GetWorkflowInstanceResponseBodyWorkflowInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBodyWorkflowInstance) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetBizDate(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.BizDate = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetCreateTime(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetCreateUser(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetEnvType(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetFinishedTime(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetId(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetModifyTime(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetModifyUser(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetName(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetProjectId(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetStartedTime(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetStatus(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetType(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.Type = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetWorkflowId(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.WorkflowId = &v
+	return s
+}
+
+type GetWorkflowInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWorkflowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWorkflowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponse) SetHeaders(v map[string]*string) *GetWorkflowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponse) SetStatusCode(v int32) *GetWorkflowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponse) SetBody(v *GetWorkflowInstanceResponseBody) *GetWorkflowInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -20297,7 +22891,7 @@ func (s *ListDIAlarmRulesResponseBody) SetRequestId(v string) *ListDIAlarmRulesR
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfo struct {
-	// The alert rules returned.
+	// The alert rules.
 	DIJobAlarmRules []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules `json:"DIJobAlarmRules,omitempty" xml:"DIJobAlarmRules,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1.
 	//
@@ -20470,7 +23064,12 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings s
 	//
 	// 5
 	InhibitionInterval *int64 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	MuteInterval       *int64 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
+	// The duration of the alert suppression interval. Unit: minutes.
+	//
+	// example:
+	//
+	// 5
+	MuteInterval *int64 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
 	// The alert notification methods.
 	NotificationChannels []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
 	// The settings of alert notification recipients.
@@ -20576,7 +23175,8 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions stru
 	//
 	// The types of DDL operations for which the alert rule takes effect. This parameter is returned only if the MetricType parameter is set to DdlReport.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
-	DdlTypes      []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
+	// The types of DDL operations for which the alert rule takes effect. This parameter is returned only if the MetricType parameter is set to DdlReport.
+	DdlTypes []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
 	// example:
@@ -20755,7 +23355,7 @@ func (s *ListDIJobEventsRequest) SetStartTime(v int64) *ListDIJobEventsRequest {
 type ListDIJobEventsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListDIJobEventsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can locate logs and troubleshoot issues based on the ID.
 	//
 	// example:
 	//
@@ -20852,6 +23452,10 @@ type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
 	// 1663573162
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The alert details.
+	//
+	// example:
+	//
+	// aggregator:avg [**] for 5 minutes, service maybe abnormal
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The DDL statement of the destination table.
 	//
@@ -23009,12 +25613,6 @@ type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEval
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field can be set to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks.
 	//
 	// example:
@@ -23062,11 +25660,6 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetProjectId(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
 	s.ProjectId = &v
-	return s
-}
-
-func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetRegionId(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
-	s.RegionId = &v
 	return s
 }
 
@@ -24335,8 +26928,9 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingC
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
-	ReferencedSamplesFilter *string                                                                                     `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	Thresholds              *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold settings.
+	Thresholds *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
 	// The threshold calculation method. Valid values:
 	//
 	// 	- Fixed
@@ -24381,9 +26975,12 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds struct {
+	// The threshold settings for critical alerts.
 	Critical *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	// The expected threshold setting.
 	Expected *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	Warned   *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+	// The threshold settings for normal alerts.
+	Warned *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
 func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds) String() string {
@@ -24410,6 +27007,10 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical struct {
+	// example:
+	//
+	// $checkValue > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// 	- \\>
 	//
 	// 	- \\>=
@@ -24440,6 +27041,11 @@ func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecki
 	return s.String()
 }
 
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical) SetExpression(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
 func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical) SetOperator(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical {
 	s.Operator = &v
 	return s
@@ -24451,6 +27057,10 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// $checkValue > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// 	- \\>
 	//
 	// 	- \\>=
@@ -24481,6 +27091,11 @@ func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecki
 	return s.String()
 }
 
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected) SetExpression(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
 func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected) SetOperator(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected {
 	s.Operator = &v
 	return s
@@ -24492,6 +27107,10 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// $checkValue > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// 	- \\>
 	//
 	// 	- \\>=
@@ -24520,6 +27139,11 @@ func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecki
 
 func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) SetExpression(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
 }
 
 func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) SetOperator(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned {
@@ -24667,10 +27291,6 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget st
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
 	// example:
 	//
-	// ds=$[yyyymmdd-1]
-	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// example:
-	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The type of the monitored object. Valid values:
@@ -24693,11 +27313,6 @@ func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget
 
 func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) SetDatabaseType(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget {
 	s.DatabaseType = &v
-	return s
-}
-
-func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) SetPartitionSpec(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget {
-	s.PartitionSpec = &v
 	return s
 }
 
@@ -25688,12 +28303,6 @@ type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget struct {
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The configuration of the partitioned table.
-	//
-	// example:
-	//
-	// ds=$[yyyymmdd-1]
-	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
 	// The ID of the table that is limited by the rule in Data Map.
 	//
 	// example:
@@ -25720,11 +28329,6 @@ func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) GoStri
 
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) SetDatabaseType(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget {
 	s.DatabaseType = &v
-	return s
-}
-
-func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) SetPartitionSpec(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget {
-	s.PartitionSpec = &v
 	return s
 }
 
@@ -27105,7 +29709,6 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task type.
 	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TenantId             *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Timeout              *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	TriggerRecurrence    *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	TriggerTime          *int64  `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
@@ -27241,11 +29844,6 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstance
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTaskType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
 	s.TaskType = &v
-	return s
-}
-
-func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) SetTenantId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance {
-	s.TenantId = &v
 	return s
 }
 
@@ -27524,12 +30122,6 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// Note: The value of this parameter is rounded up by hour.
@@ -27741,11 +30333,6 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTask
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.TaskType = &v
-	return s
-}
-
-func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTenantId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
-	s.TenantId = &v
 	return s
 }
 
@@ -28116,7 +30703,6 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The configurations of the runtime environment, such as the resource group information.
 	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	TenantId        *int64                                                                       `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The method to trigger the running of the task.
@@ -28221,11 +30807,6 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetRerunT
 
 func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetRuntimeResource(v *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
 	s.RuntimeResource = v
-	return s
-}
-
-func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetTenantId(v int64) *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask {
-	s.TenantId = &v
 	return s
 }
 
@@ -28458,12 +31039,6 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// Normal
 	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
@@ -28591,11 +31166,6 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *L
 
 func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetStepType(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
 	s.StepType = &v
-	return s
-}
-
-func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetTenantId(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
-	s.TenantId = &v
 	return s
 }
 
@@ -33046,17 +35616,23 @@ type ListResourceGroupsRequest struct {
 	//
 	// Resource
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// *
+	// The billing method of resource groups. Valid values:
 	//
-	// *
+	// 	- PrePaid
+	//
+	// 	- PostPaid
 	//
 	// example:
 	//
@@ -33067,12 +35643,34 @@ type ListResourceGroupsRequest struct {
 	// example:
 	//
 	// 1000
-	ProjectId          *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
 	ResourceGroupTypes []*string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty" type:"Repeated"`
+	// The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+	//
+	// 	- Id (Desc/Asc): the resource group ID
+	//
+	// 	- Name (Desc/Asc): the name of the resource group
+	//
+	// 	- Remark (Desc/Asc): the remarks of the resource group
+	//
+	// 	- Type (Desc/Asc): the type of the resource group
+	//
+	// 	- Status (Desc/Asc): the status of the resource group
+	//
+	// 	- Spec (Desc/Asc): the specifications of the resource group
+	//
+	// 	- CreateUser (Desc/Asc): the creator of the resource group
+	//
+	// 	- CreateTime (Desc/Asc): the time when the route is created
+	//
+	// Default value: CreateTime Asc
+	//
 	// example:
 	//
 	// CreateTime Asc
-	SortBy   *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The statuses of resource groups.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -33175,17 +35773,23 @@ type ListResourceGroupsShrinkRequest struct {
 	//
 	// Resource
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// *
+	// The billing method of resource groups. Valid values:
 	//
-	// *
+	// 	- PrePaid
+	//
+	// 	- PostPaid
 	//
 	// example:
 	//
@@ -33196,12 +35800,34 @@ type ListResourceGroupsShrinkRequest struct {
 	// example:
 	//
 	// 1000
-	ProjectId                *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
 	ResourceGroupTypesShrink *string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty"`
+	// The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+	//
+	// 	- Id (Desc/Asc): the resource group ID
+	//
+	// 	- Name (Desc/Asc): the name of the resource group
+	//
+	// 	- Remark (Desc/Asc): the remarks of the resource group
+	//
+	// 	- Type (Desc/Asc): the type of the resource group
+	//
+	// 	- Status (Desc/Asc): the status of the resource group
+	//
+	// 	- Spec (Desc/Asc): the specifications of the resource group
+	//
+	// 	- CreateUser (Desc/Asc): the creator of the resource group
+	//
+	// 	- CreateTime (Desc/Asc): the time when the route is created
+	//
+	// Default value: CreateTime Asc
+	//
 	// example:
 	//
 	// CreateTime Asc
-	SortBy         *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The statuses of resource groups.
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 }
 
@@ -33264,8 +35890,9 @@ func (s *ListResourceGroupsShrinkRequest) SetStatusesShrink(v string) *ListResou
 }
 
 type ListResourceGroupsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListResourceGroupsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
@@ -33303,14 +35930,19 @@ func (s *ListResourceGroupsResponseBody) SetSuccess(v bool) *ListResourceGroupsR
 }
 
 type ListResourceGroupsResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
-	PageSize          *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource groups returned.
 	ResourceGroupList []*ListResourceGroupsResponseBodyPagingInfoResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -33379,6 +36011,8 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	//
 	// c442b330-3b10-4584-959e-736e4edXXXXX
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	//
 	// example:
 	//
 	// PrePaid
@@ -33387,11 +36021,43 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	//
 	// 创建用于普通任务的通用资源组
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The type of the resource group. Valid values:
+	//
+	// 	- CommonV2: serverless resource group
+	//
+	// 	- ExclusiveDataIntegration: exclusive resource group for Data Integration
+	//
+	// 	- ExclusiveScheduler: exclusive resource group for scheduling
+	//
+	// 	- ExclusiveDataService: exclusive resource group for DataService Studio
+	//
 	// example:
 	//
 	// CommonV2
 	ResourceGroupType *string                                                        `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
 	Spec              *ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	// The status of the resource group. Valid values:
+	//
+	// 	- Normal: The resource group is running or in use.
+	//
+	// 	- Stop: The resource group is expired.
+	//
+	// 	- Deleted: The resource group is released or destroyed.
+	//
+	// 	- Creating: The resource group is being started.
+	//
+	// 	- CreateFailed: The resource group fails to be started.
+	//
+	// 	- Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
+	//
+	// 	- UpdateFailed: The resource group fails to be scaled out or upgraded.
+	//
+	// 	- Deleting: The resource group is being released or destroyed.
+	//
+	// 	- DeleteFailed: The resource group fails to be released or destroyed.
+	//
+	// 	- Timeout: The operations that are performed on the resource group time out.
+	//
 	// example:
 	//
 	// Normal
@@ -34470,9 +37136,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The environment of the workspace.
-	//
-	// Valid values:
+	// The environment of the workspace. Valid values:
 	//
 	// 	- Prod: production environment
 	//
@@ -34530,9 +37194,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
-	//
-	// Valid values:
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
 	//
 	// 	- Pause
 	//
@@ -34544,9 +37206,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The trigger type.
-	//
-	// Valid values:
+	// The trigger type. Valid values:
 	//
 	// 	- Scheduler: scheduling cycle-based trigger
 	//
@@ -34568,9 +37228,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance.
-	//
-	// Valid values:
+	// The type of the workflow instance. Valid values:
 	//
 	// 	- SmokeTest
 	//
@@ -34726,9 +37384,7 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The environment of the workspace.
-	//
-	// Valid values:
+	// The environment of the workspace. Valid values:
 	//
 	// 	- Prod: production environment
 	//
@@ -34786,9 +37442,7 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
-	//
-	// Valid values:
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
 	//
 	// 	- Pause
 	//
@@ -34800,9 +37454,7 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The trigger type.
-	//
-	// Valid values:
+	// The trigger type. Valid values:
 	//
 	// 	- Scheduler: scheduling cycle-based trigger
 	//
@@ -34824,9 +37476,7 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance.
-	//
-	// Valid values:
+	// The type of the workflow instance. Valid values:
 	//
 	// 	- SmokeTest
 	//
@@ -35188,12 +37838,6 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// Note: The value of this parameter is rounded up by hour.
@@ -35395,11 +38039,6 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskName(v str
 
 func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskType(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.TaskType = &v
-	return s
-}
-
-func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTenantId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
-	s.TenantId = &v
 	return s
 }
 
@@ -35817,6 +38456,7 @@ func (s *ListTaskOperationLogsResponse) SetBody(v *ListTaskOperationLogsResponse
 }
 
 type ListTasksRequest struct {
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The name of the task. Fuzzy match is supported.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The account ID of the task owner.
@@ -35925,6 +38565,11 @@ func (s ListTasksRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTasksRequest) SetIds(v []*int64) *ListTasksRequest {
+	s.Ids = v
+	return s
+}
+
 func (s *ListTasksRequest) SetName(v string) *ListTasksRequest {
 	s.Name = &v
 	return s
@@ -35981,6 +38626,181 @@ func (s *ListTasksRequest) SetTriggerType(v string) *ListTasksRequest {
 }
 
 func (s *ListTasksRequest) SetWorkflowId(v int64) *ListTasksRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListTasksShrinkRequest struct {
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The name of the task. Fuzzy match is supported.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the task owner.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The information about the resource group. Set this parameter to the ID of a resource group for scheduling.
+	//
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	// The field that is used to sort tasks. This parameter is configured in the format of "Sorting field Sorting order". You can set the sorting order to Desc or Asc. If you do not specify the sorting order, Asc is used by default. Valid values:
+	//
+	// 	- `ModifyTime (Desc/Asc)`
+	//
+	// 	- `CreateTime (Desc/Asc)`
+	//
+	// 	- `Id (Desc/Asc)`
+	//
+	//     Default value: `Id Desc`.
+	//
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The type of the task.
+	//
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The running mode of the task after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
+	// example:
+	//
+	// Normal
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the task belongs.
+	//
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListTasksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksShrinkRequest) SetIdsShrink(v string) *ListTasksShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetName(v string) *ListTasksShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetOwner(v string) *ListTasksShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetPageNumber(v int32) *ListTasksShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetPageSize(v int32) *ListTasksShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetProjectEnv(v string) *ListTasksShrinkRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetProjectId(v int64) *ListTasksShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetRuntimeResource(v string) *ListTasksShrinkRequest {
+	s.RuntimeResource = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetSortBy(v string) *ListTasksShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetTaskType(v string) *ListTasksShrinkRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetTriggerRecurrence(v string) *ListTasksShrinkRequest {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetTriggerType(v string) *ListTasksShrinkRequest {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetWorkflowId(v int64) *ListTasksShrinkRequest {
 	s.WorkflowId = &v
 	return s
 }
@@ -36173,14 +38993,11 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The configurations of the runtime environment, such as the resource group information.
-	RuntimeResource  *ListTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	ScriptParameters *string                                              `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
-	// The tenant ID.
-	//
+	RuntimeResource *ListTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// example:
 	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// para1=$bizdate para2=$[yyyymmdd]
+	ScriptParameters *string `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
@@ -36303,11 +39120,6 @@ func (s *ListTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *ListTasksRe
 
 func (s *ListTasksResponseBodyPagingInfoTasks) SetScriptParameters(v string) *ListTasksResponseBodyPagingInfoTasks {
 	s.ScriptParameters = &v
-	return s
-}
-
-func (s *ListTasksResponseBodyPagingInfoTasks) SetTenantId(v int64) *ListTasksResponseBodyPagingInfoTasks {
-	s.TenantId = &v
 	return s
 }
 
@@ -36802,12 +39614,6 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
@@ -37020,11 +39826,6 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskTy
 	return s
 }
 
-func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTenantId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
-	s.TenantId = &v
-	return s
-}
-
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTimeout(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.Timeout = &v
 	return s
@@ -37217,7 +40018,6 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task type.
 	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TenantId             *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Timeout              *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	TriggerRecurrence    *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	TriggerTime          *int64  `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
@@ -37353,11 +40153,6 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTas
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTaskType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
 	s.TaskType = &v
-	return s
-}
-
-func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) SetTenantId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance {
-	s.TenantId = &v
 	return s
 }
 
@@ -37776,12 +40571,6 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// Normal
 	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 1
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
@@ -37909,11 +40698,6 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *Lis
 
 func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetStepType(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
 	s.StepType = &v
-	return s
-}
-
-func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetTenantId(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
-	s.TenantId = &v
 	return s
 }
 
@@ -38144,7 +40928,6 @@ type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask struct {
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The configurations of the runtime environment, such as the resource group information.
 	RuntimeResource *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	TenantId        *int64                                                                   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The timeout period of task running. Unit: seconds.
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The method to trigger the running of the task.
@@ -38249,11 +41032,6 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetRerunTimes
 
 func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetRuntimeResource(v *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
 	s.RuntimeResource = v
-	return s
-}
-
-func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetTenantId(v int64) *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask {
-	s.TenantId = &v
 	return s
 }
 
@@ -38744,6 +41522,888 @@ func (s *ListWorkflowDefinitionsResponse) SetStatusCode(v int32) *ListWorkflowDe
 }
 
 func (s *ListWorkflowDefinitionsResponse) SetBody(v *ListWorkflowDefinitionsResponseBody) *ListWorkflowDefinitionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkflowInstancesRequest struct {
+	// This parameter is required.
+	BizDate *int64   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// WorkflowInstance1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListWorkflowInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstancesRequest) SetBizDate(v int64) *ListWorkflowInstancesRequest {
+	s.BizDate = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetIds(v []*int64) *ListWorkflowInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetName(v string) *ListWorkflowInstancesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetOwner(v string) *ListWorkflowInstancesRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetPageNumber(v int32) *ListWorkflowInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetPageSize(v int32) *ListWorkflowInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetProjectId(v int64) *ListWorkflowInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetSortBy(v string) *ListWorkflowInstancesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetType(v string) *ListWorkflowInstancesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetWorkflowId(v int64) *ListWorkflowInstancesRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListWorkflowInstancesShrinkRequest struct {
+	// This parameter is required.
+	BizDate   *int64  `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// WorkflowInstance1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListWorkflowInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetBizDate(v int64) *ListWorkflowInstancesShrinkRequest {
+	s.BizDate = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetIdsShrink(v string) *ListWorkflowInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetName(v string) *ListWorkflowInstancesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetOwner(v string) *ListWorkflowInstancesShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetPageNumber(v int32) *ListWorkflowInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetPageSize(v int32) *ListWorkflowInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetProjectId(v int64) *ListWorkflowInstancesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetSortBy(v string) *ListWorkflowInstancesShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetType(v string) *ListWorkflowInstancesShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetWorkflowId(v int64) *ListWorkflowInstancesShrinkRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListWorkflowInstancesResponseBody struct {
+	PagingInfo *ListWorkflowInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListWorkflowInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstancesResponseBody) SetPagingInfo(v *ListWorkflowInstancesResponseBodyPagingInfo) *ListWorkflowInstancesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBody) SetRequestId(v string) *ListWorkflowInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListWorkflowInstancesResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount        *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	WorkflowInstances []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances `json:"WorkflowInstances,omitempty" xml:"WorkflowInstances,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkflowInstancesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstancesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfo) SetPageNumber(v int32) *ListWorkflowInstancesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfo) SetPageSize(v int32) *ListWorkflowInstancesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListWorkflowInstancesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfo) SetWorkflowInstances(v []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) *ListWorkflowInstancesResponseBodyPagingInfo {
+	s.WorkflowInstances = v
+	return s
+}
+
+type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
+	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 100
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 100
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// WorkflowInstance1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetBizDate(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.BizDate = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetCreateTime(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetCreateUser(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetEnvType(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetFinishedTime(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetId(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetModifyTime(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetModifyUser(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetName(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetProjectId(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetStartedTime(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetStatus(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetType(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.Type = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetWorkflowId(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListWorkflowInstancesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkflowInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkflowInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstancesResponse) SetHeaders(v map[string]*string) *ListWorkflowInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponse) SetStatusCode(v int32) *ListWorkflowInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponse) SetBody(v *ListWorkflowInstancesResponseBody) *ListWorkflowInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkflowsRequest struct {
+	// example:
+	//
+	// Prod
+	EnvType *string  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Workflow1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ListWorkflowsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowsRequest) SetEnvType(v string) *ListWorkflowsRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetIds(v []*int64) *ListWorkflowsRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetName(v string) *ListWorkflowsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetOwner(v string) *ListWorkflowsRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetPageNumber(v int32) *ListWorkflowsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetPageSize(v int32) *ListWorkflowsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetProjectId(v int64) *ListWorkflowsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetSortBy(v string) *ListWorkflowsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetTriggerType(v string) *ListWorkflowsRequest {
+	s.TriggerType = &v
+	return s
+}
+
+type ListWorkflowsShrinkRequest struct {
+	// example:
+	//
+	// Prod
+	EnvType   *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// Workflow1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ListWorkflowsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowsShrinkRequest) SetEnvType(v string) *ListWorkflowsShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetIdsShrink(v string) *ListWorkflowsShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetName(v string) *ListWorkflowsShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetOwner(v string) *ListWorkflowsShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetPageNumber(v int32) *ListWorkflowsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetPageSize(v int32) *ListWorkflowsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetProjectId(v int64) *ListWorkflowsShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetSortBy(v string) *ListWorkflowsShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetTriggerType(v string) *ListWorkflowsShrinkRequest {
+	s.TriggerType = &v
+	return s
+}
+
+type ListWorkflowsResponseBody struct {
+	PagingInfo *ListWorkflowsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListWorkflowsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowsResponseBody) SetPagingInfo(v *ListWorkflowsResponseBodyPagingInfo) *ListWorkflowsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListWorkflowsResponseBody) SetRequestId(v string) *ListWorkflowsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListWorkflowsResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Workflows  []*ListWorkflowsResponseBodyPagingInfoWorkflows `json:"Workflows,omitempty" xml:"Workflows,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkflowsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfo) SetPageNumber(v int32) *ListWorkflowsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfo) SetPageSize(v int32) *ListWorkflowsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfo) SetTotalCount(v int32) *ListWorkflowsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfo) SetWorkflows(v []*ListWorkflowsResponseBodyPagingInfoWorkflows) *ListWorkflowsResponseBodyPagingInfo {
+	s.Workflows = v
+	return s
+}
+
+type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
+	// example:
+	//
+	// Workflow_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// Workflow1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// para1=$bizdate para2=$[yyyymmdd]
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64                                               `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Trigger   *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s ListWorkflowsResponseBodyPagingInfoWorkflows) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowsResponseBodyPagingInfoWorkflows) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetClientUniqueCode(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetCreateTime(v int64) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetCreateUser(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetDescription(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetEnvType(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetId(v int64) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetModifyTime(v int64) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetModifyUser(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetName(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetOwner(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetParameters(v string) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetProjectId(v int64) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetTrigger(v *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) *ListWorkflowsResponseBodyPagingInfoWorkflows {
+	s.Trigger = v
+	return s
+}
+
+type ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) SetCron(v string) *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) SetEndTime(v string) *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) SetRecurrence(v string) *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) SetStartTime(v string) *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger) SetType(v string) *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger {
+	s.Type = &v
+	return s
+}
+
+type ListWorkflowsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkflowsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkflowsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowsResponse) SetHeaders(v map[string]*string) *ListWorkflowsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkflowsResponse) SetStatusCode(v int32) *ListWorkflowsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkflowsResponse) SetBody(v *ListWorkflowsResponseBody) *ListWorkflowsResponse {
 	s.Body = v
 	return s
 }
@@ -40302,6 +43962,8 @@ type StartDIJobRequest struct {
 	//
 	// 10000
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// false
@@ -40311,7 +43973,8 @@ type StartDIJobRequest struct {
 	// example:
 	//
 	// 10000
-	Id                    *int64                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The settings for starting real-time synchronization.
 	RealtimeStartSettings *StartDIJobRequestRealtimeStartSettings `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty" type:"Struct"`
 }
 
@@ -40345,7 +44008,11 @@ func (s *StartDIJobRequest) SetRealtimeStartSettings(v *StartDIJobRequestRealtim
 
 type StartDIJobRequestRealtimeStartSettings struct {
 	// Deprecated
+	//
+	// The failover settings.
 	FailoverSettings *StartDIJobRequestRealtimeStartSettingsFailoverSettings `json:"FailoverSettings,omitempty" xml:"FailoverSettings,omitempty" type:"Struct"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1671516776
@@ -40373,11 +44040,15 @@ func (s *StartDIJobRequestRealtimeStartSettings) SetStartTime(v int64) *StartDIJ
 type StartDIJobRequestRealtimeStartSettingsFailoverSettings struct {
 	// Deprecated
 	//
+	// The failover interval. Unit: minutes.
+	//
 	// example:
 	//
 	// 10
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// Deprecated
+	//
+	// The maximum number of failovers allowed.
 	//
 	// example:
 	//
@@ -40412,6 +44083,8 @@ type StartDIJobShrinkRequest struct {
 	//
 	// 10000
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// false
@@ -40421,7 +44094,8 @@ type StartDIJobShrinkRequest struct {
 	// example:
 	//
 	// 10000
-	Id                          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The settings for starting real-time synchronization.
 	RealtimeStartSettingsShrink *string `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty"`
 }
 
@@ -40454,10 +44128,18 @@ func (s *StartDIJobShrinkRequest) SetRealtimeStartSettingsShrink(v string) *Star
 }
 
 type StartDIJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 999431B2-6013-577F-B684-36F7433C753B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -40507,6 +44189,126 @@ func (s *StartDIJobResponse) SetStatusCode(v int32) *StartDIJobResponse {
 }
 
 func (s *StartDIJobResponse) SetBody(v *StartDIJobResponseBody) *StartDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type StartWorkflowInstancesRequest struct {
+	// The remarks.
+	//
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The IDs of workflow instances.
+	//
+	// This parameter is required.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s StartWorkflowInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowInstancesRequest) SetComment(v string) *StartWorkflowInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *StartWorkflowInstancesRequest) SetIds(v []*int64) *StartWorkflowInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+type StartWorkflowInstancesShrinkRequest struct {
+	// The remarks.
+	//
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The IDs of workflow instances.
+	//
+	// This parameter is required.
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s StartWorkflowInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowInstancesShrinkRequest) SetComment(v string) *StartWorkflowInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *StartWorkflowInstancesShrinkRequest) SetIdsShrink(v string) *StartWorkflowInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+type StartWorkflowInstancesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the batch operation, which is in the MAP structure. The workflow instance ID serves as a key, and the result serves as a value.
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s StartWorkflowInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowInstancesResponseBody) SetRequestId(v string) *StartWorkflowInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartWorkflowInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *StartWorkflowInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type StartWorkflowInstancesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartWorkflowInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartWorkflowInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowInstancesResponse) SetHeaders(v map[string]*string) *StartWorkflowInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartWorkflowInstancesResponse) SetStatusCode(v int32) *StartWorkflowInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartWorkflowInstancesResponse) SetBody(v *StartWorkflowInstancesResponseBody) *StartWorkflowInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -40727,6 +44529,115 @@ func (s *StopTaskInstancesResponse) SetStatusCode(v int32) *StopTaskInstancesRes
 }
 
 func (s *StopTaskInstancesResponse) SetBody(v *StopTaskInstancesResponseBody) *StopTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type StopWorkflowInstancesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s StopWorkflowInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWorkflowInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopWorkflowInstancesRequest) SetComment(v string) *StopWorkflowInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *StopWorkflowInstancesRequest) SetIds(v []*int64) *StopWorkflowInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+type StopWorkflowInstancesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s StopWorkflowInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWorkflowInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopWorkflowInstancesShrinkRequest) SetComment(v string) *StopWorkflowInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *StopWorkflowInstancesShrinkRequest) SetIdsShrink(v string) *StopWorkflowInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+type StopWorkflowInstancesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17****
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s StopWorkflowInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWorkflowInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopWorkflowInstancesResponseBody) SetRequestId(v string) *StopWorkflowInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopWorkflowInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *StopWorkflowInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type StopWorkflowInstancesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopWorkflowInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopWorkflowInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWorkflowInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopWorkflowInstancesResponse) SetHeaders(v map[string]*string) *StopWorkflowInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopWorkflowInstancesResponse) SetStatusCode(v int32) *StopWorkflowInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopWorkflowInstancesResponse) SetBody(v *StopWorkflowInstancesResponseBody) *StopWorkflowInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -41057,6 +44968,15 @@ func (s *TagDataAssetsResponse) SetBody(v *TagDataAssetsResponseBody) *TagDataAs
 }
 
 type TriggerSchedulerTaskInstanceRequest struct {
+	// The environment of the workspace. Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
+	// example:
+	//
+	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The task ID.
 	//
@@ -42074,6 +45994,10 @@ type UpdateDIAlarmRuleRequest struct {
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// The description of the alert rule.
+	//
+	// example:
+	//
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
@@ -42081,6 +46005,8 @@ type UpdateDIAlarmRuleRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The alert rule Id
+	//
 	// example:
 	//
 	// 34982
@@ -42175,7 +46101,12 @@ type UpdateDIAlarmRuleRequestNotificationSettings struct {
 	//
 	// 5
 	InhibitionInterval *int64 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	MuteInterval       *int64 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
+	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+	//
+	// example:
+	//
+	// 5
+	MuteInterval *int64 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
 	// The alert notification methods.
 	NotificationChannels []*UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
 	// The settings of alert notification recipients.
@@ -42289,7 +46220,8 @@ type UpdateDIAlarmRuleRequestTriggerConditions struct {
 	//
 	// The types of DDL operations for which the alert rule takes effect.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
-	DdlTypes      []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
+	// The types of DDL operations for which the alert rule takes effect.
+	DdlTypes []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
 	// example:
@@ -42369,6 +46301,10 @@ type UpdateDIAlarmRuleShrinkRequest struct {
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// The description of the alert rule.
+	//
+	// example:
+	//
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
@@ -42376,6 +46312,8 @@ type UpdateDIAlarmRuleShrinkRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The alert rule Id
+	//
 	// example:
 	//
 	// 34982
@@ -42537,6 +46475,10 @@ type UpdateDIJobRequest struct {
 	// 11588
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// The description of the synchronization task.
+	//
+	// example:
+	//
+	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the synchronization task.
 	//
@@ -42546,6 +46488,10 @@ type UpdateDIJobRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettings *UpdateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
+	//
 	// example:
 	//
 	// 10000
@@ -43171,6 +47117,10 @@ type UpdateDIJobShrinkRequest struct {
 	// 11588
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// The description of the synchronization task.
+	//
+	// example:
+	//
+	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the synchronization task.
 	//
@@ -43180,6 +47130,10 @@ type UpdateDIJobShrinkRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
+	//
 	// example:
 	//
 	// 10000
@@ -43241,7 +47195,7 @@ func (s *UpdateDIJobShrinkRequest) SetTransformationRulesShrink(v string) *Updat
 }
 
 type UpdateDIJobResponseBody struct {
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can locate logs and troubleshoot issues based on the ID.
 	//
 	// example:
 	//
@@ -43757,6 +47711,7 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// *
@@ -43805,6 +47760,11 @@ func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThre
 	return s.String()
 }
 
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetExpression(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
 func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetOperator(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
 	s.Operator = &v
 	return s
@@ -43816,6 +47776,7 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// *
@@ -43864,6 +47825,11 @@ func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThre
 	return s.String()
 }
 
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetExpression(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
 func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetOperator(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
 	s.Operator = &v
 	return s
@@ -43875,6 +47841,7 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// *
@@ -43921,6 +47888,11 @@ func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThre
 
 func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetExpression(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
 }
 
 func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetOperator(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
@@ -44566,7 +48538,7 @@ type UpdateDataQualityRuleRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfig *UpdateDataQualityRuleRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The strength of the rule. Valid values:
+	// The strength of the rule.
 	//
 	// 	- Normal
 	//
@@ -44576,8 +48548,6 @@ type UpdateDataQualityRuleRequest struct {
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The monitored object of the rule.
-	Target *UpdateDataQualityRuleRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// The ID of the template used by the rule.
 	//
 	// example:
@@ -44636,11 +48606,6 @@ func (s *UpdateDataQualityRuleRequest) SetSamplingConfig(v *UpdateDataQualityRul
 
 func (s *UpdateDataQualityRuleRequest) SetSeverity(v string) *UpdateDataQualityRuleRequest {
 	s.Severity = &v
-	return s
-}
-
-func (s *UpdateDataQualityRuleRequest) SetTarget(v *UpdateDataQualityRuleRequestTarget) *UpdateDataQualityRuleRequest {
-	s.Target = v
 	return s
 }
 
@@ -44734,18 +48699,6 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholds) SetWarned(v *Upda
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical struct {
-	// 阈值表达式。
-	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
-	//
-	// - 波动上升大于0.01： $checkValue > 0.01
-	//
-	// - 波动下降大于0.01：$checkValue < -0.01
-	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
-	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
-	//
 	// example:
 	//
 	// $checkValue > 0.05
@@ -44800,18 +48753,6 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetValue(
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected struct {
-	// 阈值表达式。
-	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
-	//
-	// - 波动上升大于0.01： $checkValue > 0.01
-	//
-	// - 波动下降大于0.01：$checkValue < -0.01
-	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
-	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
-	//
 	// example:
 	//
 	// $checkValue <= 0.01
@@ -44866,18 +48807,6 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetValue(
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned struct {
-	// 阈值表达式。
-	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
-	//
-	// - 波动上升大于0.01： $checkValue > 0.01
-	//
-	// - 波动下降大于0.01：$checkValue < -0.01
-	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
-	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
-	//
 	// example:
 	//
 	// $checkValue > 0.01
@@ -45053,77 +48982,6 @@ func (s *UpdateDataQualityRuleRequestSamplingConfig) SetSettingConfig(v string) 
 	return s
 }
 
-type UpdateDataQualityRuleRequestTarget struct {
-	// The type of the database to which the table belongs. Valid values:
-	//
-	// 	- maxcompute
-	//
-	// 	- emr
-	//
-	// 	- cdh
-	//
-	// 	- hologres
-	//
-	// 	- analyticdb_for_postgresql
-	//
-	// 	- analyticdb_for_mysql
-	//
-	// 	- starrocks
-	//
-	// example:
-	//
-	// maxcompute
-	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The configuration of the partitioned table.
-	//
-	// example:
-	//
-	// ds=$[yyyymmdd-1]
-	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The ID of the table that is limited by the rule in Data Map.
-	//
-	// example:
-	//
-	// odps.unit_test.tb_unit_test
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The type of the monitored object. Valid values:
-	//
-	// 	- Table
-	//
-	// example:
-	//
-	// Table
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s UpdateDataQualityRuleRequestTarget) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDataQualityRuleRequestTarget) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDataQualityRuleRequestTarget) SetDatabaseType(v string) *UpdateDataQualityRuleRequestTarget {
-	s.DatabaseType = &v
-	return s
-}
-
-func (s *UpdateDataQualityRuleRequestTarget) SetPartitionSpec(v string) *UpdateDataQualityRuleRequestTarget {
-	s.PartitionSpec = &v
-	return s
-}
-
-func (s *UpdateDataQualityRuleRequestTarget) SetTableGuid(v string) *UpdateDataQualityRuleRequestTarget {
-	s.TableGuid = &v
-	return s
-}
-
-func (s *UpdateDataQualityRuleRequestTarget) SetType(v string) *UpdateDataQualityRuleRequestTarget {
-	s.Type = &v
-	return s
-}
-
 type UpdateDataQualityRuleShrinkRequest struct {
 	// The check settings for sample data.
 	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
@@ -45155,7 +49013,7 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
-	// The strength of the rule. Valid values:
+	// The strength of the rule.
 	//
 	// 	- Normal
 	//
@@ -45165,8 +49023,6 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The monitored object of the rule.
-	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The ID of the template used by the rule.
 	//
 	// example:
@@ -45225,11 +49081,6 @@ func (s *UpdateDataQualityRuleShrinkRequest) SetSamplingConfigShrink(v string) *
 
 func (s *UpdateDataQualityRuleShrinkRequest) SetSeverity(v string) *UpdateDataQualityRuleShrinkRequest {
 	s.Severity = &v
-	return s
-}
-
-func (s *UpdateDataQualityRuleShrinkRequest) SetTargetShrink(v string) *UpdateDataQualityRuleShrinkRequest {
-	s.TargetShrink = &v
 	return s
 }
 
@@ -46448,6 +50299,750 @@ func (s *UpdateRouteResponse) SetBody(v *UpdateRouteResponseBody) *UpdateRouteRe
 	return s
 }
 
+type UpdateTaskRequest struct {
+	// example:
+	//
+	// Task_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string                          `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	DataSource       *UpdateTaskRequestDataSource     `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Dependencies     []*UpdateTaskRequestDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id     *int64                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Inputs *UpdateTaskRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// example:
+	//
+	// T+1
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	// This parameter is required.
+	Name    *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs *UpdateTaskRequestOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// This parameter is required.
+	RuntimeResource *UpdateTaskRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	Script          *UpdateTaskRequestScript          `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	Tags            []*UpdateTaskRequestTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	Trigger *UpdateTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s UpdateTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequest) SetClientUniqueCode(v string) *UpdateTaskRequest {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetDataSource(v *UpdateTaskRequestDataSource) *UpdateTaskRequest {
+	s.DataSource = v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetDependencies(v []*UpdateTaskRequestDependencies) *UpdateTaskRequest {
+	s.Dependencies = v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetDescription(v string) *UpdateTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetEnvType(v string) *UpdateTaskRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetId(v int64) *UpdateTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetInputs(v *UpdateTaskRequestInputs) *UpdateTaskRequest {
+	s.Inputs = v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetInstanceMode(v string) *UpdateTaskRequest {
+	s.InstanceMode = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetName(v string) *UpdateTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetOutputs(v *UpdateTaskRequestOutputs) *UpdateTaskRequest {
+	s.Outputs = v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetOwner(v string) *UpdateTaskRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetRerunInterval(v int32) *UpdateTaskRequest {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetRerunMode(v string) *UpdateTaskRequest {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetRerunTimes(v int32) *UpdateTaskRequest {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetRuntimeResource(v *UpdateTaskRequestRuntimeResource) *UpdateTaskRequest {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetScript(v *UpdateTaskRequestScript) *UpdateTaskRequest {
+	s.Script = v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetTags(v []*UpdateTaskRequestTags) *UpdateTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetTimeout(v int32) *UpdateTaskRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateTaskRequest) SetTrigger(v *UpdateTaskRequestTrigger) *UpdateTaskRequest {
+	s.Trigger = v
+	return s
+}
+
+type UpdateTaskRequestDataSource struct {
+	// example:
+	//
+	// odps_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateTaskRequestDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestDataSource) SetName(v string) *UpdateTaskRequestDataSource {
+	s.Name = &v
+	return s
+}
+
+type UpdateTaskRequestDependencies struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
+	// example:
+	//
+	// 1234
+	UpstreamTaskId *int64 `json:"UpstreamTaskId,omitempty" xml:"UpstreamTaskId,omitempty"`
+}
+
+func (s UpdateTaskRequestDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestDependencies) SetType(v string) *UpdateTaskRequestDependencies {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateTaskRequestDependencies) SetUpstreamOutput(v string) *UpdateTaskRequestDependencies {
+	s.UpstreamOutput = &v
+	return s
+}
+
+func (s *UpdateTaskRequestDependencies) SetUpstreamTaskId(v int64) *UpdateTaskRequestDependencies {
+	s.UpstreamTaskId = &v
+	return s
+}
+
+type UpdateTaskRequestInputs struct {
+	Variables []*UpdateTaskRequestInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTaskRequestInputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestInputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestInputs) SetVariables(v []*UpdateTaskRequestInputsVariables) *UpdateTaskRequestInputs {
+	s.Variables = v
+	return s
+}
+
+type UpdateTaskRequestInputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTaskRequestInputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestInputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestInputsVariables) SetName(v string) *UpdateTaskRequestInputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTaskRequestInputsVariables) SetType(v string) *UpdateTaskRequestInputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateTaskRequestInputsVariables) SetValue(v string) *UpdateTaskRequestInputsVariables {
+	s.Value = &v
+	return s
+}
+
+type UpdateTaskRequestOutputs struct {
+	TaskOutputs []*UpdateTaskRequestOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
+	Variables   []*UpdateTaskRequestOutputsVariables   `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTaskRequestOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestOutputs) SetTaskOutputs(v []*UpdateTaskRequestOutputsTaskOutputs) *UpdateTaskRequestOutputs {
+	s.TaskOutputs = v
+	return s
+}
+
+func (s *UpdateTaskRequestOutputs) SetVariables(v []*UpdateTaskRequestOutputsVariables) *UpdateTaskRequestOutputs {
+	s.Variables = v
+	return s
+}
+
+type UpdateTaskRequestOutputsTaskOutputs struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s UpdateTaskRequestOutputsTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestOutputsTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestOutputsTaskOutputs) SetOutput(v string) *UpdateTaskRequestOutputsTaskOutputs {
+	s.Output = &v
+	return s
+}
+
+type UpdateTaskRequestOutputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTaskRequestOutputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestOutputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestOutputsVariables) SetName(v string) *UpdateTaskRequestOutputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTaskRequestOutputsVariables) SetType(v string) *UpdateTaskRequestOutputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateTaskRequestOutputsVariables) SetValue(v string) *UpdateTaskRequestOutputsVariables {
+	s.Value = &v
+	return s
+}
+
+type UpdateTaskRequestRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s UpdateTaskRequestRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestRuntimeResource) SetCu(v string) *UpdateTaskRequestRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *UpdateTaskRequestRuntimeResource) SetImage(v string) *UpdateTaskRequestRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *UpdateTaskRequestRuntimeResource) SetResourceGroupId(v string) *UpdateTaskRequestRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type UpdateTaskRequestScript struct {
+	// example:
+	//
+	// echo "helloWorld"
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// para1=$bizdate
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s UpdateTaskRequestScript) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestScript) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestScript) SetContent(v string) *UpdateTaskRequestScript {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateTaskRequestScript) SetParameters(v string) *UpdateTaskRequestScript {
+	s.Parameters = &v
+	return s
+}
+
+type UpdateTaskRequestTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTaskRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestTags) SetKey(v string) *UpdateTaskRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateTaskRequestTags) SetValue(v string) *UpdateTaskRequestTags {
+	s.Value = &v
+	return s
+}
+
+type UpdateTaskRequestTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateTaskRequestTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskRequestTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskRequestTrigger) SetCron(v string) *UpdateTaskRequestTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *UpdateTaskRequestTrigger) SetEndTime(v string) *UpdateTaskRequestTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateTaskRequestTrigger) SetRecurrence(v string) *UpdateTaskRequestTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *UpdateTaskRequestTrigger) SetStartTime(v string) *UpdateTaskRequestTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateTaskRequestTrigger) SetType(v string) *UpdateTaskRequestTrigger {
+	s.Type = &v
+	return s
+}
+
+type UpdateTaskShrinkRequest struct {
+	// example:
+	//
+	// Task_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode   *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	DataSourceShrink   *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	DependenciesShrink *string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	// example:
+	//
+	// T+1
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	// This parameter is required.
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputsShrink *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// This parameter is required.
+	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	ScriptShrink          *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+}
+
+func (s UpdateTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskShrinkRequest) SetClientUniqueCode(v string) *UpdateTaskShrinkRequest {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetDataSourceShrink(v string) *UpdateTaskShrinkRequest {
+	s.DataSourceShrink = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetDependenciesShrink(v string) *UpdateTaskShrinkRequest {
+	s.DependenciesShrink = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetDescription(v string) *UpdateTaskShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetEnvType(v string) *UpdateTaskShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetId(v int64) *UpdateTaskShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetInputsShrink(v string) *UpdateTaskShrinkRequest {
+	s.InputsShrink = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetInstanceMode(v string) *UpdateTaskShrinkRequest {
+	s.InstanceMode = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetName(v string) *UpdateTaskShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetOutputsShrink(v string) *UpdateTaskShrinkRequest {
+	s.OutputsShrink = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetOwner(v string) *UpdateTaskShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetRerunInterval(v int32) *UpdateTaskShrinkRequest {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetRerunMode(v string) *UpdateTaskShrinkRequest {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetRerunTimes(v int32) *UpdateTaskShrinkRequest {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetRuntimeResourceShrink(v string) *UpdateTaskShrinkRequest {
+	s.RuntimeResourceShrink = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetScriptShrink(v string) *UpdateTaskShrinkRequest {
+	s.ScriptShrink = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetTagsShrink(v string) *UpdateTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetTimeout(v int32) *UpdateTaskShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateTaskShrinkRequest) SetTriggerShrink(v string) *UpdateTaskShrinkRequest {
+	s.TriggerShrink = &v
+	return s
+}
+
+type UpdateTaskResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskResponseBody) SetRequestId(v string) *UpdateTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskResponseBody) SetSuccess(v bool) *UpdateTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskResponse) SetHeaders(v map[string]*string) *UpdateTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskResponse) SetStatusCode(v int32) *UpdateTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskResponse) SetBody(v *UpdateTaskResponseBody) *UpdateTaskResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTaskInstancesRequest struct {
 	// The remarks.
 	//
@@ -46637,6 +51232,941 @@ func (s *UpdateTaskInstancesResponse) SetStatusCode(v int32) *UpdateTaskInstance
 }
 
 func (s *UpdateTaskInstancesResponse) SetBody(v *UpdateTaskInstancesResponseBody) *UpdateTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWorkflowRequest struct {
+	// example:
+	//
+	// Workflow_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string                              `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	Dependencies     []*UpdateWorkflowRequestDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	Name    *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs *UpdateWorkflowRequestOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// para1=$bizdate para2=$[yyyymmdd]
+	Parameters *string                       `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Tags       []*UpdateWorkflowRequestTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tasks      []*UpdateWorkflowRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Trigger *UpdateWorkflowRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s UpdateWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequest) SetClientUniqueCode(v string) *UpdateWorkflowRequest {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetDependencies(v []*UpdateWorkflowRequestDependencies) *UpdateWorkflowRequest {
+	s.Dependencies = v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetDescription(v string) *UpdateWorkflowRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetEnvType(v string) *UpdateWorkflowRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetId(v int64) *UpdateWorkflowRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetName(v string) *UpdateWorkflowRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetOutputs(v *UpdateWorkflowRequestOutputs) *UpdateWorkflowRequest {
+	s.Outputs = v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetOwner(v string) *UpdateWorkflowRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetParameters(v string) *UpdateWorkflowRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetTags(v []*UpdateWorkflowRequestTags) *UpdateWorkflowRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetTasks(v []*UpdateWorkflowRequestTasks) *UpdateWorkflowRequest {
+	s.Tasks = v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetTrigger(v *UpdateWorkflowRequestTrigger) *UpdateWorkflowRequest {
+	s.Trigger = v
+	return s
+}
+
+type UpdateWorkflowRequestDependencies struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
+	// example:
+	//
+	// 1234
+	UpstreamTaskId *int64 `json:"UpstreamTaskId,omitempty" xml:"UpstreamTaskId,omitempty"`
+}
+
+func (s UpdateWorkflowRequestDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestDependencies) SetType(v string) *UpdateWorkflowRequestDependencies {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestDependencies) SetUpstreamOutput(v string) *UpdateWorkflowRequestDependencies {
+	s.UpstreamOutput = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestDependencies) SetUpstreamTaskId(v int64) *UpdateWorkflowRequestDependencies {
+	s.UpstreamTaskId = &v
+	return s
+}
+
+type UpdateWorkflowRequestOutputs struct {
+	TaskOutputs []*UpdateWorkflowRequestOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
+}
+
+func (s UpdateWorkflowRequestOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestOutputs) SetTaskOutputs(v []*UpdateWorkflowRequestOutputsTaskOutputs) *UpdateWorkflowRequestOutputs {
+	s.TaskOutputs = v
+	return s
+}
+
+type UpdateWorkflowRequestOutputsTaskOutputs struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s UpdateWorkflowRequestOutputsTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestOutputsTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestOutputsTaskOutputs) SetOutput(v string) *UpdateWorkflowRequestOutputsTaskOutputs {
+	s.Output = &v
+	return s
+}
+
+type UpdateWorkflowRequestTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTags) SetKey(v string) *UpdateWorkflowRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTags) SetValue(v string) *UpdateWorkflowRequestTags {
+	s.Value = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasks struct {
+	// example:
+	//
+	// 1234
+	BaseLineId *int64 `json:"BaseLineId,omitempty" xml:"BaseLineId,omitempty"`
+	// example:
+	//
+	// Task_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode *string                                   `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	DataSource       *UpdateWorkflowRequestTasksDataSource     `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Dependencies     []*UpdateWorkflowRequestTasksDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id     *int64                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Inputs *UpdateWorkflowRequestTasksInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// This parameter is required.
+	Name    *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs *UpdateWorkflowRequestTasksOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// This parameter is required.
+	RuntimeResource *UpdateWorkflowRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	Script          *UpdateWorkflowRequestTasksScript          `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	Tags            []*UpdateWorkflowRequestTasksTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	Trigger *UpdateWorkflowRequestTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasks) SetBaseLineId(v int64) *UpdateWorkflowRequestTasks {
+	s.BaseLineId = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetClientUniqueCode(v string) *UpdateWorkflowRequestTasks {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetDataSource(v *UpdateWorkflowRequestTasksDataSource) *UpdateWorkflowRequestTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetDependencies(v []*UpdateWorkflowRequestTasksDependencies) *UpdateWorkflowRequestTasks {
+	s.Dependencies = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetDescription(v string) *UpdateWorkflowRequestTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetEnvType(v string) *UpdateWorkflowRequestTasks {
+	s.EnvType = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetId(v int64) *UpdateWorkflowRequestTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetInputs(v *UpdateWorkflowRequestTasksInputs) *UpdateWorkflowRequestTasks {
+	s.Inputs = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetName(v string) *UpdateWorkflowRequestTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetOutputs(v *UpdateWorkflowRequestTasksOutputs) *UpdateWorkflowRequestTasks {
+	s.Outputs = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetOwner(v string) *UpdateWorkflowRequestTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetRerunInterval(v int32) *UpdateWorkflowRequestTasks {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetRerunMode(v string) *UpdateWorkflowRequestTasks {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetRerunTimes(v int32) *UpdateWorkflowRequestTasks {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetRuntimeResource(v *UpdateWorkflowRequestTasksRuntimeResource) *UpdateWorkflowRequestTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetScript(v *UpdateWorkflowRequestTasksScript) *UpdateWorkflowRequestTasks {
+	s.Script = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetTags(v []*UpdateWorkflowRequestTasksTags) *UpdateWorkflowRequestTasks {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetTimeout(v int32) *UpdateWorkflowRequestTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetTrigger(v *UpdateWorkflowRequestTasksTrigger) *UpdateWorkflowRequestTasks {
+	s.Trigger = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasks) SetType(v string) *UpdateWorkflowRequestTasks {
+	s.Type = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksDataSource struct {
+	// example:
+	//
+	// odps_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksDataSource) SetName(v string) *UpdateWorkflowRequestTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksDependencies struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
+	// example:
+	//
+	// 1234
+	UpstreamTaskId *int64 `json:"UpstreamTaskId,omitempty" xml:"UpstreamTaskId,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksDependencies) SetType(v string) *UpdateWorkflowRequestTasksDependencies {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksDependencies) SetUpstreamOutput(v string) *UpdateWorkflowRequestTasksDependencies {
+	s.UpstreamOutput = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksDependencies) SetUpstreamTaskId(v int64) *UpdateWorkflowRequestTasksDependencies {
+	s.UpstreamTaskId = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksInputs struct {
+	Variables []*UpdateWorkflowRequestTasksInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s UpdateWorkflowRequestTasksInputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksInputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksInputs) SetVariables(v []*UpdateWorkflowRequestTasksInputsVariables) *UpdateWorkflowRequestTasksInputs {
+	s.Variables = v
+	return s
+}
+
+type UpdateWorkflowRequestTasksInputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksInputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksInputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksInputsVariables) SetName(v string) *UpdateWorkflowRequestTasksInputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksInputsVariables) SetType(v string) *UpdateWorkflowRequestTasksInputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksInputsVariables) SetValue(v string) *UpdateWorkflowRequestTasksInputsVariables {
+	s.Value = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksOutputs struct {
+	TaskOutputs []*UpdateWorkflowRequestTasksOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
+	Variables   []*UpdateWorkflowRequestTasksOutputsVariables   `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s UpdateWorkflowRequestTasksOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksOutputs) SetTaskOutputs(v []*UpdateWorkflowRequestTasksOutputsTaskOutputs) *UpdateWorkflowRequestTasksOutputs {
+	s.TaskOutputs = v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksOutputs) SetVariables(v []*UpdateWorkflowRequestTasksOutputsVariables) *UpdateWorkflowRequestTasksOutputs {
+	s.Variables = v
+	return s
+}
+
+type UpdateWorkflowRequestTasksOutputsTaskOutputs struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksOutputsTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksOutputsTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksOutputsTaskOutputs) SetOutput(v string) *UpdateWorkflowRequestTasksOutputsTaskOutputs {
+	s.Output = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksOutputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksOutputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksOutputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksOutputsVariables) SetName(v string) *UpdateWorkflowRequestTasksOutputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksOutputsVariables) SetType(v string) *UpdateWorkflowRequestTasksOutputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksOutputsVariables) SetValue(v string) *UpdateWorkflowRequestTasksOutputsVariables {
+	s.Value = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksRuntimeResource) SetCu(v string) *UpdateWorkflowRequestTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksRuntimeResource) SetImage(v string) *UpdateWorkflowRequestTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksRuntimeResource) SetResourceGroupId(v string) *UpdateWorkflowRequestTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksScript struct {
+	// example:
+	//
+	// echo "helloWorld"
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// para1=$bizdate
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksScript) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksScript) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksScript) SetContent(v string) *UpdateWorkflowRequestTasksScript {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksScript) SetParameters(v string) *UpdateWorkflowRequestTasksScript {
+	s.Parameters = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksTags) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksTags) SetKey(v string) *UpdateWorkflowRequestTasksTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksTags) SetValue(v string) *UpdateWorkflowRequestTasksTags {
+	s.Value = &v
+	return s
+}
+
+type UpdateWorkflowRequestTasksTrigger struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTasksTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTasksTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTasksTrigger) SetRecurrence(v string) *UpdateWorkflowRequestTasksTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTasksTrigger) SetType(v string) *UpdateWorkflowRequestTasksTrigger {
+	s.Type = &v
+	return s
+}
+
+type UpdateWorkflowRequestTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateWorkflowRequestTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequestTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequestTrigger) SetCron(v string) *UpdateWorkflowRequestTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTrigger) SetEndTime(v string) *UpdateWorkflowRequestTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTrigger) SetStartTime(v string) *UpdateWorkflowRequestTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequestTrigger) SetType(v string) *UpdateWorkflowRequestTrigger {
+	s.Type = &v
+	return s
+}
+
+type UpdateWorkflowShrinkRequest struct {
+	// example:
+	//
+	// Workflow_0bc5213917368545132902xxxxxxxx
+	ClientUniqueCode   *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
+	DependenciesShrink *string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputsShrink *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// para1=$bizdate para2=$[yyyymmdd]
+	Parameters  *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
+	// This parameter is required.
+	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+}
+
+func (s UpdateWorkflowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetClientUniqueCode(v string) *UpdateWorkflowShrinkRequest {
+	s.ClientUniqueCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetDependenciesShrink(v string) *UpdateWorkflowShrinkRequest {
+	s.DependenciesShrink = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetDescription(v string) *UpdateWorkflowShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetEnvType(v string) *UpdateWorkflowShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetId(v int64) *UpdateWorkflowShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetName(v string) *UpdateWorkflowShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetOutputsShrink(v string) *UpdateWorkflowShrinkRequest {
+	s.OutputsShrink = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetOwner(v string) *UpdateWorkflowShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetParameters(v string) *UpdateWorkflowShrinkRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetTagsShrink(v string) *UpdateWorkflowShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetTasksShrink(v string) *UpdateWorkflowShrinkRequest {
+	s.TasksShrink = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetTriggerShrink(v string) *UpdateWorkflowShrinkRequest {
+	s.TriggerShrink = &v
+	return s
+}
+
+type UpdateWorkflowResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowResponseBody) SetRequestId(v string) *UpdateWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkflowResponseBody) SetSuccess(v bool) *UpdateWorkflowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateWorkflowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowResponse) SetHeaders(v map[string]*string) *UpdateWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkflowResponse) SetStatusCode(v int32) *UpdateWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowResponse) SetBody(v *UpdateWorkflowResponseBody) *UpdateWorkflowResponse {
 	s.Body = v
 	return s
 }
@@ -46863,13 +52393,24 @@ func (client *Client) AbolishDeploymentWithOptions(request *AbolishDeploymentReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AbolishDeploymentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AbolishDeploymentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AbolishDeploymentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46935,13 +52476,24 @@ func (client *Client) AssociateProjectToResourceGroupWithOptions(request *Associ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssociateProjectToResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssociateProjectToResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssociateProjectToResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47017,13 +52569,24 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithOptions(tmpReq *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachDataQualityRulesToEvaluationTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachDataQualityRulesToEvaluationTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachDataQualityRulesToEvaluationTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47037,6 +52600,79 @@ func (client *Client) AttachDataQualityRulesToEvaluationTask(request *AttachData
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachDataQualityRulesToEvaluationTaskResponse{}
 	_body, _err := client.AttachDataQualityRulesToEvaluationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - BatchUpdateTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateTasksResponse
+func (client *Client) BatchUpdateTasksWithOptions(tmpReq *BatchUpdateTasksRequest, runtime *util.RuntimeOptions) (_result *BatchUpdateTasksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchUpdateTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tasks)) {
+		request.TasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tasks, tea.String("Tasks"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TasksShrink)) {
+		body["Tasks"] = request.TasksShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchUpdateTasks"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchUpdateTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchUpdateTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - BatchUpdateTasksRequest
+//
+// @return BatchUpdateTasksResponse
+func (client *Client) BatchUpdateTasks(request *BatchUpdateTasksRequest) (_result *BatchUpdateTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchUpdateTasksResponse{}
+	_body, _err := client.BatchUpdateTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47089,13 +52725,24 @@ func (client *Client) CloneDataSourceWithOptions(request *CloneDataSourceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloneDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47183,13 +52830,24 @@ func (client *Client) CreateAlertRuleWithOptions(tmpReq *CreateAlertRuleRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAlertRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAlertRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47249,13 +52907,24 @@ func (client *Client) CreateDIAlarmRuleWithOptions(tmpReq *CreateDIAlarmRuleRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDIAlarmRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDIAlarmRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDIAlarmRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47335,13 +53004,24 @@ func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47425,13 +53105,24 @@ func (client *Client) CreateDataAssetTagWithOptions(tmpReq *CreateDataAssetTagRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataAssetTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataAssetTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataAssetTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47547,13 +53238,24 @@ func (client *Client) CreateDataQualityEvaluationTaskWithOptions(tmpReq *CreateD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataQualityEvaluationTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataQualityEvaluationTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataQualityEvaluationTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47629,13 +53331,24 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithOptions(tmpReq 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataQualityEvaluationTaskInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataQualityEvaluationTaskInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataQualityEvaluationTaskInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47743,13 +53456,24 @@ func (client *Client) CreateDataQualityRuleWithOptions(tmpReq *CreateDataQuality
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataQualityRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataQualityRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataQualityRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47833,13 +53557,24 @@ func (client *Client) CreateDataQualityRuleTemplateWithOptions(tmpReq *CreateDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataQualityRuleTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataQualityRuleTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataQualityRuleTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47921,13 +53656,24 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48009,13 +53755,24 @@ func (client *Client) CreateDataSourceSharedRuleWithOptions(request *CreateDataS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDataSourceSharedRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataSourceSharedRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataSourceSharedRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48099,13 +53856,24 @@ func (client *Client) CreateDeploymentWithOptions(tmpReq *CreateDeploymentReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDeploymentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDeploymentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDeploymentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48171,13 +53939,24 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48251,13 +54030,24 @@ func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48331,13 +54121,24 @@ func (client *Client) CreateNodeWithOptions(request *CreateNodeRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48429,13 +54230,24 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48507,13 +54319,24 @@ func (client *Client) CreateProjectMemberWithOptions(tmpReq *CreateProjectMember
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateProjectMemberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProjectMemberResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProjectMemberResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48579,13 +54402,24 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48699,13 +54533,24 @@ func (client *Client) CreateResourceGroupWithOptions(tmpReq *CreateResourceGroup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48773,13 +54618,24 @@ func (client *Client) CreateRouteWithOptions(request *CreateRouteRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48845,13 +54701,24 @@ func (client *Client) CreateWorkflowDefinitionWithOptions(request *CreateWorkflo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateWorkflowDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWorkflowDefinitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWorkflowDefinitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48869,6 +54736,119 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWorkflowDefinitionResponse{}
 	_body, _err := client.CreateWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - CreateWorkflowInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkflowInstancesResponse
+func (client *Client) CreateWorkflowInstancesWithOptions(tmpReq *CreateWorkflowInstancesRequest, runtime *util.RuntimeOptions) (_result *CreateWorkflowInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateWorkflowInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultRunProperties)) {
+		request.DefaultRunPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultRunProperties, tea.String("DefaultRunProperties"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Periods)) {
+		request.PeriodsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Periods, tea.String("Periods"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoStartEnabled)) {
+		body["AutoStartEnabled"] = request.AutoStartEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRunPropertiesShrink)) {
+		body["DefaultRunProperties"] = request.DefaultRunPropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodsShrink)) {
+		body["Periods"] = request.PeriodsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskParameters)) {
+		body["TaskParameters"] = request.TaskParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowParameters)) {
+		body["WorkflowParameters"] = request.WorkflowParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWorkflowInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWorkflowInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWorkflowInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - CreateWorkflowInstancesRequest
+//
+// @return CreateWorkflowInstancesResponse
+func (client *Client) CreateWorkflowInstances(request *CreateWorkflowInstancesRequest) (_result *CreateWorkflowInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWorkflowInstancesResponse{}
+	_body, _err := client.CreateWorkflowInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48909,13 +54889,24 @@ func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAlertRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAlertRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48965,13 +54956,24 @@ func (client *Client) DeleteDIAlarmRuleWithOptions(request *DeleteDIAlarmRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDIAlarmRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDIAlarmRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDIAlarmRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49025,13 +55027,24 @@ func (client *Client) DeleteDIJobWithOptions(request *DeleteDIJobRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49099,13 +55112,24 @@ func (client *Client) DeleteDataAssetTagWithOptions(tmpReq *DeleteDataAssetTagRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataAssetTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataAssetTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataAssetTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49163,13 +55187,24 @@ func (client *Client) DeleteDataQualityEvaluationTaskWithOptions(request *Delete
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataQualityEvaluationTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataQualityEvaluationTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataQualityEvaluationTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49227,13 +55262,24 @@ func (client *Client) DeleteDataQualityRuleWithOptions(request *DeleteDataQualit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataQualityRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataQualityRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataQualityRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49291,13 +55337,24 @@ func (client *Client) DeleteDataQualityRuleTemplateWithOptions(request *DeleteDa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataQualityRuleTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataQualityRuleTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataQualityRuleTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49355,13 +55412,24 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49431,13 +55499,24 @@ func (client *Client) DeleteDataSourceSharedRuleWithOptions(request *DeleteDataS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataSourceSharedRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataSourceSharedRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataSourceSharedRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49507,13 +55586,24 @@ func (client *Client) DeleteFunctionWithOptions(request *DeleteFunctionRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49575,13 +55665,24 @@ func (client *Client) DeleteNetworkWithOptions(request *DeleteNetworkRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49647,13 +55748,24 @@ func (client *Client) DeleteNodeWithOptions(request *DeleteNodeRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49715,13 +55827,24 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49787,13 +55910,24 @@ func (client *Client) DeleteProjectMemberWithOptions(request *DeleteProjectMembe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteProjectMemberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteProjectMemberResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteProjectMemberResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49859,13 +55993,24 @@ func (client *Client) DeleteResourceWithOptions(request *DeleteResourceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49929,13 +56074,24 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49999,13 +56155,24 @@ func (client *Client) DeleteRouteWithOptions(request *DeleteRouteRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50071,13 +56238,24 @@ func (client *Client) DeleteTaskWithOptions(request *DeleteTaskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50095,6 +56273,79 @@ func (client *Client) DeleteTask(request *DeleteTaskRequest) (_result *DeleteTas
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTaskResponse{}
 	_body, _err := client.DeleteTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkflowResponse
+func (client *Client) DeleteWorkflowWithOptions(request *DeleteWorkflowRequest, runtime *util.RuntimeOptions) (_result *DeleteWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientUniqueCode)) {
+		body["ClientUniqueCode"] = request.ClientUniqueCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWorkflow"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWorkflowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWorkflowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - DeleteWorkflowRequest
+//
+// @return DeleteWorkflowResponse
+func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *DeleteWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWorkflowResponse{}
+	_body, _err := client.DeleteWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50143,13 +56394,24 @@ func (client *Client) DeleteWorkflowDefinitionWithOptions(request *DeleteWorkflo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteWorkflowDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWorkflowDefinitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWorkflowDefinitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50221,13 +56483,24 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithOptions(tmpReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachDataQualityRulesFromEvaluationTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachDataQualityRulesFromEvaluationTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachDataQualityRulesFromEvaluationTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50293,13 +56566,24 @@ func (client *Client) DissociateProjectFromResourceGroupWithOptions(request *Dis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DissociateProjectFromResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DissociateProjectFromResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DissociateProjectFromResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50377,13 +56661,24 @@ func (client *Client) ExecDeploymentStageWithOptions(request *ExecDeploymentStag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecDeploymentStageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecDeploymentStageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecDeploymentStageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50403,6 +56698,95 @@ func (client *Client) ExecDeploymentStage(request *ExecDeploymentStageRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecDeploymentStageResponse{}
 	_body, _err := client.ExecDeploymentStageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ExecuteAdhocWorkflowInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAdhocWorkflowInstanceResponse
+func (client *Client) ExecuteAdhocWorkflowInstanceWithOptions(tmpReq *ExecuteAdhocWorkflowInstanceRequest, runtime *util.RuntimeOptions) (_result *ExecuteAdhocWorkflowInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExecuteAdhocWorkflowInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tasks)) {
+		request.TasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tasks, tea.String("Tasks"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		body["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TasksShrink)) {
+		body["Tasks"] = request.TasksShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAdhocWorkflowInstance"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAdhocWorkflowInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAdhocWorkflowInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - ExecuteAdhocWorkflowInstanceRequest
+//
+// @return ExecuteAdhocWorkflowInstanceResponse
+func (client *Client) ExecuteAdhocWorkflowInstance(request *ExecuteAdhocWorkflowInstanceRequest) (_result *ExecuteAdhocWorkflowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteAdhocWorkflowInstanceResponse{}
+	_body, _err := client.ExecuteAdhocWorkflowInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50439,13 +56823,24 @@ func (client *Client) GetAlertRuleWithOptions(request *GetAlertRuleRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAlertRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAlertRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50459,6 +56854,73 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAlertRuleResponse{}
 	_body, _err := client.GetAlertRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异步创建工作流实例的结果
+//
+// @param request - GetCreateWorkflowInstancesResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCreateWorkflowInstancesResultResponse
+func (client *Client) GetCreateWorkflowInstancesResultWithOptions(request *GetCreateWorkflowInstancesResultRequest, runtime *util.RuntimeOptions) (_result *GetCreateWorkflowInstancesResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCreateWorkflowInstancesResult"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCreateWorkflowInstancesResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCreateWorkflowInstancesResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询异步创建工作流实例的结果
+//
+// @param request - GetCreateWorkflowInstancesResultRequest
+//
+// @return GetCreateWorkflowInstancesResultResponse
+func (client *Client) GetCreateWorkflowInstancesResult(request *GetCreateWorkflowInstancesResultRequest) (_result *GetCreateWorkflowInstancesResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCreateWorkflowInstancesResultResponse{}
+	_body, _err := client.GetCreateWorkflowInstancesResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50499,13 +56961,24 @@ func (client *Client) GetDIJobWithOptions(request *GetDIJobRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50563,13 +57036,24 @@ func (client *Client) GetDIJobLogWithOptions(request *GetDIJobLogRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDIJobLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDIJobLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDIJobLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50623,13 +57107,24 @@ func (client *Client) GetDataQualityEvaluationTaskWithOptions(request *GetDataQu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDataQualityEvaluationTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDataQualityEvaluationTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDataQualityEvaluationTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50679,13 +57174,24 @@ func (client *Client) GetDataQualityEvaluationTaskInstanceWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDataQualityEvaluationTaskInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDataQualityEvaluationTaskInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDataQualityEvaluationTaskInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50739,13 +57245,24 @@ func (client *Client) GetDataQualityRuleWithOptions(request *GetDataQualityRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDataQualityRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDataQualityRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDataQualityRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50803,13 +57320,24 @@ func (client *Client) GetDataQualityRuleTemplateWithOptions(request *GetDataQual
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDataQualityRuleTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDataQualityRuleTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDataQualityRuleTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50871,13 +57399,24 @@ func (client *Client) GetDataSourceWithOptions(request *GetDataSourceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50935,13 +57474,24 @@ func (client *Client) GetDeploymentWithOptions(request *GetDeploymentRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeploymentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeploymentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeploymentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50991,13 +57541,24 @@ func (client *Client) GetFunctionWithOptions(request *GetFunctionRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51047,13 +57608,24 @@ func (client *Client) GetJobStatusWithOptions(request *GetJobStatusRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetJobStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetJobStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetJobStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51107,13 +57679,24 @@ func (client *Client) GetNetworkWithOptions(request *GetNetworkRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51167,13 +57750,24 @@ func (client *Client) GetNodeWithOptions(request *GetNodeRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51227,13 +57821,24 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51299,13 +57904,24 @@ func (client *Client) GetProjectMemberWithOptions(request *GetProjectMemberReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetProjectMemberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetProjectMemberResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetProjectMemberResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51371,13 +57987,24 @@ func (client *Client) GetProjectRoleWithOptions(request *GetProjectRoleRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetProjectRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetProjectRoleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetProjectRoleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51431,13 +58058,24 @@ func (client *Client) GetResourceWithOptions(request *GetResourceRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51491,13 +58129,24 @@ func (client *Client) GetResourceGroupWithOptions(request *GetResourceGroupReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51555,13 +58204,24 @@ func (client *Client) GetRouteWithOptions(request *GetRouteRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51615,13 +58275,24 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51675,13 +58346,24 @@ func (client *Client) GetTaskInstanceWithOptions(request *GetTaskInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTaskInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTaskInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTaskInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51739,13 +58421,24 @@ func (client *Client) GetTaskInstanceLogWithOptions(request *GetTaskInstanceLogR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTaskInstanceLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTaskInstanceLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTaskInstanceLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51763,6 +58456,65 @@ func (client *Client) GetTaskInstanceLog(request *GetTaskInstanceLogRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskInstanceLogResponse{}
 	_body, _err := client.GetTaskInstanceLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowResponse
+func (client *Client) GetWorkflowWithOptions(request *GetWorkflowRequest, runtime *util.RuntimeOptions) (_result *GetWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkflow"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWorkflowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWorkflowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - GetWorkflowRequest
+//
+// @return GetWorkflowResponse
+func (client *Client) GetWorkflow(request *GetWorkflowRequest) (_result *GetWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWorkflowResponse{}
+	_body, _err := client.GetWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51799,13 +58551,24 @@ func (client *Client) GetWorkflowDefinitionWithOptions(request *GetWorkflowDefin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetWorkflowDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWorkflowDefinitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWorkflowDefinitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51819,6 +58582,81 @@ func (client *Client) GetWorkflowDefinition(request *GetWorkflowDefinitionReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWorkflowDefinitionResponse{}
 	_body, _err := client.GetWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about a workflow instance.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param request - GetWorkflowInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowInstanceResponse
+func (client *Client) GetWorkflowInstanceWithOptions(request *GetWorkflowInstanceRequest, runtime *util.RuntimeOptions) (_result *GetWorkflowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkflowInstance"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWorkflowInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWorkflowInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the information about a workflow instance.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param request - GetWorkflowInstanceRequest
+//
+// @return GetWorkflowInstanceResponse
+func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (_result *GetWorkflowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWorkflowInstanceResponse{}
+	_body, _err := client.GetWorkflowInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51877,13 +58715,24 @@ func (client *Client) GrantMemberProjectRolesWithOptions(tmpReq *GrantMemberProj
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GrantMemberProjectRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GrantMemberProjectRolesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GrantMemberProjectRolesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51951,13 +58800,24 @@ func (client *Client) ImportWorkflowDefinitionWithOptions(request *ImportWorkflo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImportWorkflowDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportWorkflowDefinitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportWorkflowDefinitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52051,13 +58911,24 @@ func (client *Client) ListAlertRulesWithOptions(tmpReq *ListAlertRulesRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAlertRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAlertRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52107,13 +58978,24 @@ func (client *Client) ListDIAlarmRulesWithOptions(request *ListDIAlarmRulesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDIAlarmRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDIAlarmRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDIAlarmRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52167,13 +59049,24 @@ func (client *Client) ListDIJobEventsWithOptions(request *ListDIJobEventsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDIJobEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDIJobEventsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDIJobEventsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52237,13 +59130,24 @@ func (client *Client) ListDIJobMetricsWithOptions(tmpReq *ListDIJobMetricsReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDIJobMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDIJobMetricsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDIJobMetricsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52301,13 +59205,24 @@ func (client *Client) ListDIJobRunDetailsWithOptions(request *ListDIJobRunDetail
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDIJobRunDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDIJobRunDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDIJobRunDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52365,13 +59280,24 @@ func (client *Client) ListDIJobsWithOptions(request *ListDIJobsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDIJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDIJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDIJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52425,13 +59351,24 @@ func (client *Client) ListDataAssetTagsWithOptions(request *ListDataAssetTagsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataAssetTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataAssetTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataAssetTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52491,13 +59428,24 @@ func (client *Client) ListDataAssetsWithOptions(tmpReq *ListDataAssetsRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataAssetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataAssetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataAssetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52551,13 +59499,24 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataQualityEvaluationTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataQualityEvaluationTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataQualityEvaluationTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52615,13 +59574,24 @@ func (client *Client) ListDataQualityEvaluationTasksWithOptions(request *ListDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataQualityEvaluationTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataQualityEvaluationTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataQualityEvaluationTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52675,13 +59645,24 @@ func (client *Client) ListDataQualityResultsWithOptions(request *ListDataQuality
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataQualityResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataQualityResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataQualityResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -52731,13 +59712,24 @@ func (client *Client) ListDataQualityRuleTemplatesWithOptions(request *ListDataQ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataQualityRuleTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataQualityRuleTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataQualityRuleTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52791,13 +59783,24 @@ func (client *Client) ListDataQualityRulesWithOptions(request *ListDataQualityRu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataQualityRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataQualityRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataQualityRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52859,13 +59862,24 @@ func (client *Client) ListDataSourceSharedRulesWithOptions(request *ListDataSour
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataSourceSharedRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataSourceSharedRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataSourceSharedRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52937,13 +59951,24 @@ func (client *Client) ListDataSourcesWithOptions(tmpReq *ListDataSourcesRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataSourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataSourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53001,13 +60026,24 @@ func (client *Client) ListDeploymentsWithOptions(request *ListDeploymentsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDeploymentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDeploymentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDeploymentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53061,13 +60097,24 @@ func (client *Client) ListDownstreamTaskInstancesWithOptions(request *ListDownst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDownstreamTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDownstreamTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDownstreamTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53121,13 +60168,24 @@ func (client *Client) ListDownstreamTasksWithOptions(request *ListDownstreamTask
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDownstreamTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDownstreamTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDownstreamTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53177,13 +60235,24 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFunctionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFunctionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFunctionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53237,13 +60306,24 @@ func (client *Client) ListNetworksWithOptions(request *ListNetworksRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNetworksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNetworksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNetworksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53297,13 +60377,24 @@ func (client *Client) ListNodeDependenciesWithOptions(request *ListNodeDependenc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNodeDependenciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNodeDependenciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNodeDependenciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53353,13 +60444,24 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53443,13 +60545,24 @@ func (client *Client) ListProjectMembersWithOptions(tmpReq *ListProjectMembersRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListProjectMembersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProjectMembersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProjectMembersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53541,13 +60654,24 @@ func (client *Client) ListProjectRolesWithOptions(tmpReq *ListProjectRolesReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListProjectRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProjectRolesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProjectRolesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53655,13 +60779,24 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListProjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProjectsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProjectsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53725,13 +60860,24 @@ func (client *Client) ListResourceGroupsWithOptions(tmpReq *ListResourceGroupsRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53781,13 +60927,24 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53841,13 +60998,24 @@ func (client *Client) ListRoutesWithOptions(request *ListRoutesRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRoutesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRoutesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRoutesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53907,13 +61075,24 @@ func (client *Client) ListTaskInstanceOperationLogsWithOptions(request *ListTask
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTaskInstanceOperationLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTaskInstanceOperationLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTaskInstanceOperationLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54059,13 +61238,24 @@ func (client *Client) ListTaskInstancesWithOptions(tmpReq *ListTaskInstancesRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54125,13 +61315,24 @@ func (client *Client) ListTaskOperationLogsWithOptions(request *ListTaskOperatio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTaskOperationLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTaskOperationLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTaskOperationLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54162,17 +61363,27 @@ func (client *Client) ListTaskOperationLogs(request *ListTaskOperationLogsReques
 //
 // Queries a list of tasks by page. You can also specify filter conditions to query tasks.
 //
-// @param request - ListTasksRequest
+// @param tmpReq - ListTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTasksResponse
-func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
 	}
@@ -54235,13 +61446,24 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54291,13 +61513,24 @@ func (client *Client) ListUpstreamTaskInstancesWithOptions(request *ListUpstream
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUpstreamTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUpstreamTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUpstreamTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54351,13 +61584,24 @@ func (client *Client) ListUpstreamTasksWithOptions(request *ListUpstreamTasksReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUpstreamTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUpstreamTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUpstreamTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54411,13 +61655,24 @@ func (client *Client) ListWorkflowDefinitionsWithOptions(request *ListWorkflowDe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWorkflowDefinitionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWorkflowDefinitionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWorkflowDefinitionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54431,6 +61686,212 @@ func (client *Client) ListWorkflowDefinitions(request *ListWorkflowDefinitionsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkflowDefinitionsResponse{}
 	_body, _err := client.ListWorkflowDefinitionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ListWorkflowInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowInstancesResponse
+func (client *Client) ListWorkflowInstancesWithOptions(tmpReq *ListWorkflowInstancesRequest, runtime *util.RuntimeOptions) (_result *ListWorkflowInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWorkflowInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		body["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		body["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkflowInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWorkflowInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWorkflowInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - ListWorkflowInstancesRequest
+//
+// @return ListWorkflowInstancesResponse
+func (client *Client) ListWorkflowInstances(request *ListWorkflowInstancesRequest) (_result *ListWorkflowInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkflowInstancesResponse{}
+	_body, _err := client.ListWorkflowInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ListWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowsResponse
+func (client *Client) ListWorkflowsWithOptions(tmpReq *ListWorkflowsRequest, runtime *util.RuntimeOptions) (_result *ListWorkflowsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWorkflowsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		body["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		body["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkflows"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWorkflowsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWorkflowsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - ListWorkflowsRequest
+//
+// @return ListWorkflowsResponse
+func (client *Client) ListWorkflows(request *ListWorkflowsRequest) (_result *ListWorkflowsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkflowsResponse{}
+	_body, _err := client.ListWorkflowsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54479,13 +61940,24 @@ func (client *Client) MoveFunctionWithOptions(request *MoveFunctionRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54547,13 +62019,24 @@ func (client *Client) MoveNodeWithOptions(request *MoveNodeRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54615,13 +62098,24 @@ func (client *Client) MoveResourceWithOptions(request *MoveResourceRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54683,13 +62177,24 @@ func (client *Client) MoveWorkflowDefinitionWithOptions(request *MoveWorkflowDef
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveWorkflowDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveWorkflowDefinitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveWorkflowDefinitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54763,13 +62268,24 @@ func (client *Client) RemoveTaskInstanceDependenciesWithOptions(tmpReq *RemoveTa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveTaskInstanceDependenciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveTaskInstanceDependenciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveTaskInstanceDependenciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54835,13 +62351,24 @@ func (client *Client) RenameFunctionWithOptions(request *RenameFunctionRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenameFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenameFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenameFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54903,13 +62430,24 @@ func (client *Client) RenameNodeWithOptions(request *RenameNodeRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenameNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenameNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenameNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54971,13 +62509,24 @@ func (client *Client) RenameResourceWithOptions(request *RenameResourceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenameResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenameResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenameResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55039,13 +62588,24 @@ func (client *Client) RenameWorkflowDefinitionWithOptions(request *RenameWorkflo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenameWorkflowDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenameWorkflowDefinitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenameWorkflowDefinitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55109,13 +62669,24 @@ func (client *Client) RerunTaskInstancesWithOptions(tmpReq *RerunTaskInstancesRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RerunTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RerunTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RerunTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -55179,13 +62750,24 @@ func (client *Client) ResumeTaskInstancesWithOptions(tmpReq *ResumeTaskInstances
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResumeTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResumeTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResumeTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -55257,13 +62839,24 @@ func (client *Client) RevokeMemberProjectRolesWithOptions(tmpReq *RevokeMemberPr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeMemberProjectRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeMemberProjectRolesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeMemberProjectRolesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55331,13 +62924,24 @@ func (client *Client) SetSuccessTaskInstancesWithOptions(tmpReq *SetSuccessTaskI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetSuccessTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetSuccessTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetSuccessTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -55397,13 +63001,24 @@ func (client *Client) StartDIJobWithOptions(tmpReq *StartDIJobRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartDIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartDIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartDIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55421,6 +63036,95 @@ func (client *Client) StartDIJob(request *StartDIJobRequest) (_result *StartDIJo
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDIJobResponse{}
 	_body, _err := client.StartDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts multiple workflow instances at a time.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param tmpReq - StartWorkflowInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartWorkflowInstancesResponse
+func (client *Client) StartWorkflowInstancesWithOptions(tmpReq *StartWorkflowInstancesRequest, runtime *util.RuntimeOptions) (_result *StartWorkflowInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartWorkflowInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartWorkflowInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartWorkflowInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartWorkflowInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Starts multiple workflow instances at a time.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param request - StartWorkflowInstancesRequest
+//
+// @return StartWorkflowInstancesResponse
+func (client *Client) StartWorkflowInstances(request *StartWorkflowInstancesRequest) (_result *StartWorkflowInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartWorkflowInstancesResponse{}
+	_body, _err := client.StartWorkflowInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55461,13 +63165,24 @@ func (client *Client) StopDIJobWithOptions(request *StopDIJobRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopDIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopDIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopDIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55535,13 +63250,24 @@ func (client *Client) StopTaskInstancesWithOptions(tmpReq *StopTaskInstancesRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -55555,6 +63281,79 @@ func (client *Client) StopTaskInstances(request *StopTaskInstancesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &StopTaskInstancesResponse{}
 	_body, _err := client.StopTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - StopWorkflowInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopWorkflowInstancesResponse
+func (client *Client) StopWorkflowInstancesWithOptions(tmpReq *StopWorkflowInstancesRequest, runtime *util.RuntimeOptions) (_result *StopWorkflowInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopWorkflowInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopWorkflowInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopWorkflowInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopWorkflowInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - StopWorkflowInstancesRequest
+//
+// @return StopWorkflowInstancesResponse
+func (client *Client) StopWorkflowInstances(request *StopWorkflowInstancesRequest) (_result *StopWorkflowInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopWorkflowInstancesResponse{}
+	_body, _err := client.StopWorkflowInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55605,13 +63404,24 @@ func (client *Client) SuspendTaskInstancesWithOptions(tmpReq *SuspendTaskInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SuspendTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SuspendTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SuspendTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -55695,13 +63505,24 @@ func (client *Client) TagDataAssetsWithOptions(tmpReq *TagDataAssetsRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagDataAssetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagDataAssetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagDataAssetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55769,13 +63590,24 @@ func (client *Client) TriggerSchedulerTaskInstanceWithOptions(request *TriggerSc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TriggerSchedulerTaskInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TriggerSchedulerTaskInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TriggerSchedulerTaskInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55859,13 +63691,24 @@ func (client *Client) UnTagDataAssetsWithOptions(tmpReq *UnTagDataAssetsRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnTagDataAssetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnTagDataAssetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnTagDataAssetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55949,13 +63792,24 @@ func (client *Client) UpdateAlertRuleWithOptions(tmpReq *UpdateAlertRuleRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAlertRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAlertRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56015,13 +63869,24 @@ func (client *Client) UpdateDIAlarmRuleWithOptions(tmpReq *UpdateDIAlarmRuleRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDIAlarmRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDIAlarmRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDIAlarmRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56093,13 +63958,24 @@ func (client *Client) UpdateDIJobWithOptions(tmpReq *UpdateDIJobRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56179,13 +64055,24 @@ func (client *Client) UpdateDataAssetTagWithOptions(tmpReq *UpdateDataAssetTagRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDataAssetTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDataAssetTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDataAssetTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56305,13 +64192,24 @@ func (client *Client) UpdateDataQualityEvaluationTaskWithOptions(tmpReq *UpdateD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDataQualityEvaluationTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDataQualityEvaluationTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDataQualityEvaluationTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56364,10 +64262,6 @@ func (client *Client) UpdateDataQualityRuleWithOptions(tmpReq *UpdateDataQuality
 		request.SamplingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SamplingConfig, tea.String("SamplingConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.Target)) {
-		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, tea.String("Target"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		query["ProjectId"] = request.ProjectId
@@ -56406,10 +64300,6 @@ func (client *Client) UpdateDataQualityRuleWithOptions(tmpReq *UpdateDataQuality
 		body["Severity"] = request.Severity
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TargetShrink)) {
-		body["Target"] = request.TargetShrink
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
 		body["TemplateCode"] = request.TemplateCode
 	}
@@ -56429,13 +64319,24 @@ func (client *Client) UpdateDataQualityRuleWithOptions(tmpReq *UpdateDataQuality
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDataQualityRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDataQualityRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDataQualityRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56521,13 +64422,24 @@ func (client *Client) UpdateDataQualityRuleTemplateWithOptions(tmpReq *UpdateDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDataQualityRuleTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDataQualityRuleTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDataQualityRuleTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56605,13 +64517,24 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56681,13 +64604,24 @@ func (client *Client) UpdateFunctionWithOptions(request *UpdateFunctionRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56749,13 +64683,24 @@ func (client *Client) UpdateNodeWithOptions(request *UpdateNodeRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56833,13 +64778,24 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56901,13 +64857,24 @@ func (client *Client) UpdateResourceWithOptions(request *UpdateResourceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56977,13 +64944,24 @@ func (client *Client) UpdateResourceGroupWithOptions(request *UpdateResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57049,13 +65027,24 @@ func (client *Client) UpdateRouteWithOptions(request *UpdateRouteRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57073,6 +65062,175 @@ func (client *Client) UpdateRoute(request *UpdateRouteRequest) (_result *UpdateR
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRouteResponse{}
 	_body, _err := client.UpdateRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTaskResponse
+func (client *Client) UpdateTaskWithOptions(tmpReq *UpdateTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataSource)) {
+		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, tea.String("DataSource"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Dependencies)) {
+		request.DependenciesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dependencies, tea.String("Dependencies"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Inputs)) {
+		request.InputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Inputs, tea.String("Inputs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Outputs)) {
+		request.OutputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Outputs, tea.String("Outputs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RuntimeResource)) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, tea.String("RuntimeResource"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Script)) {
+		request.ScriptShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Script, tea.String("Script"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Trigger)) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, tea.String("Trigger"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientUniqueCode)) {
+		body["ClientUniqueCode"] = request.ClientUniqueCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceShrink)) {
+		body["DataSource"] = request.DataSourceShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependenciesShrink)) {
+		body["Dependencies"] = request.DependenciesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputsShrink)) {
+		body["Inputs"] = request.InputsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceMode)) {
+		body["InstanceMode"] = request.InstanceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputsShrink)) {
+		body["Outputs"] = request.OutputsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerunInterval)) {
+		body["RerunInterval"] = request.RerunInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerunMode)) {
+		body["RerunMode"] = request.RerunMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerunTimes)) {
+		body["RerunTimes"] = request.RerunTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeResourceShrink)) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptShrink)) {
+		body["Script"] = request.ScriptShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerShrink)) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - UpdateTaskRequest
+//
+// @return UpdateTaskResponse
+func (client *Client) UpdateTask(request *UpdateTaskRequest) (_result *UpdateTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskResponse{}
+	_body, _err := client.UpdateTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57127,13 +65285,24 @@ func (client *Client) UpdateTaskInstancesWithOptions(tmpReq *UpdateTaskInstances
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTaskInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTaskInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57151,6 +65320,135 @@ func (client *Client) UpdateTaskInstances(request *UpdateTaskInstancesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTaskInstancesResponse{}
 	_body, _err := client.UpdateTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkflowResponse
+func (client *Client) UpdateWorkflowWithOptions(tmpReq *UpdateWorkflowRequest, runtime *util.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateWorkflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Dependencies)) {
+		request.DependenciesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dependencies, tea.String("Dependencies"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Outputs)) {
+		request.OutputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Outputs, tea.String("Outputs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tasks)) {
+		request.TasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tasks, tea.String("Tasks"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Trigger)) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, tea.String("Trigger"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientUniqueCode)) {
+		body["ClientUniqueCode"] = request.ClientUniqueCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependenciesShrink)) {
+		body["Dependencies"] = request.DependenciesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputsShrink)) {
+		body["Outputs"] = request.OutputsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TasksShrink)) {
+		body["Tasks"] = request.TasksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerShrink)) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkflow"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWorkflowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWorkflowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - UpdateWorkflowRequest
+//
+// @return UpdateWorkflowResponse
+func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *UpdateWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWorkflowResponse{}
+	_body, _err := client.UpdateWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57199,13 +65497,24 @@ func (client *Client) UpdateWorkflowDefinitionWithOptions(request *UpdateWorkflo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateWorkflowDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWorkflowDefinitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWorkflowDefinitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
