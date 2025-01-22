@@ -843,6 +843,490 @@ func (s *ChannelOutPutConfigList) SetSourceGroupName(v string) *ChannelOutPutCon
 	return s
 }
 
+type ChannelAssemblyChannel struct {
+	AccessPolicy             *bool                                     `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	AccessToken              *string                                   `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	Arn                      *string                                   `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	ChannelName              *string                                   `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	ChannelTier              *string                                   `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	FillerSourceLocationName *string                                   `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	FillerSourceName         *string                                   `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	GmtCreate                *string                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified              *string                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	OutPutConfigList         []*ChannelAssemblyChannelOutPutConfigList `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty" type:"Repeated"`
+	PlaybackMode             *string                                   `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
+	State                    *int32                                    `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ChannelAssemblyChannel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblyChannel) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblyChannel) SetAccessPolicy(v bool) *ChannelAssemblyChannel {
+	s.AccessPolicy = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetAccessToken(v string) *ChannelAssemblyChannel {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetArn(v string) *ChannelAssemblyChannel {
+	s.Arn = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetChannelName(v string) *ChannelAssemblyChannel {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetChannelTier(v string) *ChannelAssemblyChannel {
+	s.ChannelTier = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetFillerSourceLocationName(v string) *ChannelAssemblyChannel {
+	s.FillerSourceLocationName = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetFillerSourceName(v string) *ChannelAssemblyChannel {
+	s.FillerSourceName = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetGmtCreate(v string) *ChannelAssemblyChannel {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetGmtModified(v string) *ChannelAssemblyChannel {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetOutPutConfigList(v []*ChannelAssemblyChannelOutPutConfigList) *ChannelAssemblyChannel {
+	s.OutPutConfigList = v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetPlaybackMode(v string) *ChannelAssemblyChannel {
+	s.PlaybackMode = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannel) SetState(v int32) *ChannelAssemblyChannel {
+	s.State = &v
+	return s
+}
+
+type ChannelAssemblyChannelOutPutConfigList struct {
+	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	ManifestName     *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	ManifestSettings *string `json:"ManifestSettings,omitempty" xml:"ManifestSettings,omitempty"`
+	PlaybackUrl      *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	SourceGroupName  *string `json:"SourceGroupName,omitempty" xml:"SourceGroupName,omitempty"`
+}
+
+func (s ChannelAssemblyChannelOutPutConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblyChannelOutPutConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblyChannelOutPutConfigList) SetChannelName(v string) *ChannelAssemblyChannelOutPutConfigList {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannelOutPutConfigList) SetFormat(v string) *ChannelAssemblyChannelOutPutConfigList {
+	s.Format = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannelOutPutConfigList) SetManifestName(v string) *ChannelAssemblyChannelOutPutConfigList {
+	s.ManifestName = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannelOutPutConfigList) SetManifestSettings(v string) *ChannelAssemblyChannelOutPutConfigList {
+	s.ManifestSettings = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannelOutPutConfigList) SetPlaybackUrl(v string) *ChannelAssemblyChannelOutPutConfigList {
+	s.PlaybackUrl = &v
+	return s
+}
+
+func (s *ChannelAssemblyChannelOutPutConfigList) SetSourceGroupName(v string) *ChannelAssemblyChannelOutPutConfigList {
+	s.SourceGroupName = &v
+	return s
+}
+
+type ChannelAssemblyProgram struct {
+	AdBreaks           []*ChannelAssemblyProgramAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
+	Arn                *string                           `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	ChannelName        *string                           `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	ClipRange          *string                           `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
+	GmtCreate          *string                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                           `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ProgramName        *string                           `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	SourceLocationName *string                           `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName         *string                           `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceType         *string                           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Transition         *string                           `json:"Transition,omitempty" xml:"Transition,omitempty"`
+}
+
+func (s ChannelAssemblyProgram) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblyProgram) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblyProgram) SetAdBreaks(v []*ChannelAssemblyProgramAdBreaks) *ChannelAssemblyProgram {
+	s.AdBreaks = v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetArn(v string) *ChannelAssemblyProgram {
+	s.Arn = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetChannelName(v string) *ChannelAssemblyProgram {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetClipRange(v string) *ChannelAssemblyProgram {
+	s.ClipRange = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetGmtCreate(v string) *ChannelAssemblyProgram {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetGmtModified(v string) *ChannelAssemblyProgram {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetProgramName(v string) *ChannelAssemblyProgram {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetSourceLocationName(v string) *ChannelAssemblyProgram {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetSourceName(v string) *ChannelAssemblyProgram {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetSourceType(v string) *ChannelAssemblyProgram {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgram) SetTransition(v string) *ChannelAssemblyProgram {
+	s.Transition = &v
+	return s
+}
+
+type ChannelAssemblyProgramAdBreaks struct {
+	ChannelName          *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	OffsetMillis         *int64  `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
+	ProgramName          *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	SourceLocationName   *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SpliceInsertSettings *string `json:"SpliceInsertSettings,omitempty" xml:"SpliceInsertSettings,omitempty"`
+	TimeSignalSettings   *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
+}
+
+func (s ChannelAssemblyProgramAdBreaks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblyProgramAdBreaks) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetChannelName(v string) *ChannelAssemblyProgramAdBreaks {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetMessageType(v string) *ChannelAssemblyProgramAdBreaks {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetOffsetMillis(v int64) *ChannelAssemblyProgramAdBreaks {
+	s.OffsetMillis = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetProgramName(v string) *ChannelAssemblyProgramAdBreaks {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetSourceLocationName(v string) *ChannelAssemblyProgramAdBreaks {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetSourceName(v string) *ChannelAssemblyProgramAdBreaks {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetSpliceInsertSettings(v string) *ChannelAssemblyProgramAdBreaks {
+	s.SpliceInsertSettings = &v
+	return s
+}
+
+func (s *ChannelAssemblyProgramAdBreaks) SetTimeSignalSettings(v string) *ChannelAssemblyProgramAdBreaks {
+	s.TimeSignalSettings = &v
+	return s
+}
+
+type ChannelAssemblyScheduleData struct {
+	AdBreaks                   []*ChannelAssemblyScheduleDataAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
+	ApproximateDurationSeconds *int64                                 `json:"ApproximateDurationSeconds,omitempty" xml:"ApproximateDurationSeconds,omitempty"`
+	ApproximateStartTime       *string                                `json:"ApproximateStartTime,omitempty" xml:"ApproximateStartTime,omitempty"`
+	EntryType                  *string                                `json:"EntryType,omitempty" xml:"EntryType,omitempty"`
+	ProgramName                *string                                `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	SourceLocationName         *string                                `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName                 *string                                `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceType                 *string                                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ChannelAssemblyScheduleData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblyScheduleData) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblyScheduleData) SetAdBreaks(v []*ChannelAssemblyScheduleDataAdBreaks) *ChannelAssemblyScheduleData {
+	s.AdBreaks = v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleData) SetApproximateDurationSeconds(v int64) *ChannelAssemblyScheduleData {
+	s.ApproximateDurationSeconds = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleData) SetApproximateStartTime(v string) *ChannelAssemblyScheduleData {
+	s.ApproximateStartTime = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleData) SetEntryType(v string) *ChannelAssemblyScheduleData {
+	s.EntryType = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleData) SetProgramName(v string) *ChannelAssemblyScheduleData {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleData) SetSourceLocationName(v string) *ChannelAssemblyScheduleData {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleData) SetSourceName(v string) *ChannelAssemblyScheduleData {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleData) SetSourceType(v string) *ChannelAssemblyScheduleData {
+	s.SourceType = &v
+	return s
+}
+
+type ChannelAssemblyScheduleDataAdBreaks struct {
+	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	OffsetMillis         *string `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
+	SourceLocationName   *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SpliceInsertSettings *string `json:"SpliceInsertSettings,omitempty" xml:"SpliceInsertSettings,omitempty"`
+	TimeSignalSettings   *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
+}
+
+func (s ChannelAssemblyScheduleDataAdBreaks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblyScheduleDataAdBreaks) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblyScheduleDataAdBreaks) SetMessageType(v string) *ChannelAssemblyScheduleDataAdBreaks {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleDataAdBreaks) SetOffsetMillis(v string) *ChannelAssemblyScheduleDataAdBreaks {
+	s.OffsetMillis = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleDataAdBreaks) SetSourceLocationName(v string) *ChannelAssemblyScheduleDataAdBreaks {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleDataAdBreaks) SetSourceName(v string) *ChannelAssemblyScheduleDataAdBreaks {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleDataAdBreaks) SetSpliceInsertSettings(v string) *ChannelAssemblyScheduleDataAdBreaks {
+	s.SpliceInsertSettings = &v
+	return s
+}
+
+func (s *ChannelAssemblyScheduleDataAdBreaks) SetTimeSignalSettings(v string) *ChannelAssemblyScheduleDataAdBreaks {
+	s.TimeSignalSettings = &v
+	return s
+}
+
+type ChannelAssemblySource struct {
+	Arn                       *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	GmtCreate                 *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified               *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HttpPackageConfigurations *string `json:"HttpPackageConfigurations,omitempty" xml:"HttpPackageConfigurations,omitempty"`
+	SourceLocationName        *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName                *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceType                *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	State                     *int32  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ChannelAssemblySource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblySource) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblySource) SetArn(v string) *ChannelAssemblySource {
+	s.Arn = &v
+	return s
+}
+
+func (s *ChannelAssemblySource) SetGmtCreate(v string) *ChannelAssemblySource {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ChannelAssemblySource) SetGmtModified(v string) *ChannelAssemblySource {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ChannelAssemblySource) SetHttpPackageConfigurations(v string) *ChannelAssemblySource {
+	s.HttpPackageConfigurations = &v
+	return s
+}
+
+func (s *ChannelAssemblySource) SetSourceLocationName(v string) *ChannelAssemblySource {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ChannelAssemblySource) SetSourceName(v string) *ChannelAssemblySource {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ChannelAssemblySource) SetSourceType(v string) *ChannelAssemblySource {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ChannelAssemblySource) SetState(v int32) *ChannelAssemblySource {
+	s.State = &v
+	return s
+}
+
+type ChannelAssemblySourceLocation struct {
+	Arn                           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	BaseUrl                       *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	GmtCreate                     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	SegmentDeliveryConfigurations *string `json:"SegmentDeliveryConfigurations,omitempty" xml:"SegmentDeliveryConfigurations,omitempty"`
+	SourceLocationName            *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	State                         *int32  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ChannelAssemblySourceLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelAssemblySourceLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelAssemblySourceLocation) SetArn(v string) *ChannelAssemblySourceLocation {
+	s.Arn = &v
+	return s
+}
+
+func (s *ChannelAssemblySourceLocation) SetBaseUrl(v string) *ChannelAssemblySourceLocation {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *ChannelAssemblySourceLocation) SetGmtCreate(v string) *ChannelAssemblySourceLocation {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ChannelAssemblySourceLocation) SetGmtModified(v string) *ChannelAssemblySourceLocation {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ChannelAssemblySourceLocation) SetSegmentDeliveryConfigurations(v string) *ChannelAssemblySourceLocation {
+	s.SegmentDeliveryConfigurations = &v
+	return s
+}
+
+func (s *ChannelAssemblySourceLocation) SetSourceLocationName(v string) *ChannelAssemblySourceLocation {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ChannelAssemblySourceLocation) SetState(v int32) *ChannelAssemblySourceLocation {
+	s.State = &v
+	return s
+}
+
 type LicenseInstanceAppDTO struct {
 	AppId            *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BeginOn          *string                                `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
@@ -5012,6 +5496,168 @@ func (s *CreateAvatarTrainingJobResponse) SetBody(v *CreateAvatarTrainingJobResp
 	return s
 }
 
+type CreateChannelRequest struct {
+	// example:
+	//
+	// false
+	AccessPolicy *bool `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	// example:
+	//
+	// xxxxx
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// basic
+	ChannelTier *string `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	// example:
+	//
+	// MySourceLocation
+	FillerSourceLocationName *string `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	// example:
+	//
+	// FillerSource
+	FillerSourceName *string `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{
+	//
+	// 	"ManifestName": "manifest-1",
+	//
+	// 	"Format": "HLS",
+	//
+	// 	"SourceGroupName": "source-group-1",
+	//
+	// 	"ManifestSettings": {
+	//
+	// 		"WindowDuration": 60,
+	//
+	// 		"AdMarkType": "Daterange"
+	//
+	// 	}
+	//
+	// }]
+	OutPutConfigList *string `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// loop
+	PlaybackMode *string `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
+}
+
+func (s CreateChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChannelRequest) SetAccessPolicy(v bool) *CreateChannelRequest {
+	s.AccessPolicy = &v
+	return s
+}
+
+func (s *CreateChannelRequest) SetAccessToken(v string) *CreateChannelRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateChannelRequest) SetChannelName(v string) *CreateChannelRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *CreateChannelRequest) SetChannelTier(v string) *CreateChannelRequest {
+	s.ChannelTier = &v
+	return s
+}
+
+func (s *CreateChannelRequest) SetFillerSourceLocationName(v string) *CreateChannelRequest {
+	s.FillerSourceLocationName = &v
+	return s
+}
+
+func (s *CreateChannelRequest) SetFillerSourceName(v string) *CreateChannelRequest {
+	s.FillerSourceName = &v
+	return s
+}
+
+func (s *CreateChannelRequest) SetOutPutConfigList(v string) *CreateChannelRequest {
+	s.OutPutConfigList = &v
+	return s
+}
+
+func (s *CreateChannelRequest) SetPlaybackMode(v string) *CreateChannelRequest {
+	s.PlaybackMode = &v
+	return s
+}
+
+type CreateChannelResponseBody struct {
+	Channel *ChannelAssemblyChannel `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChannelResponseBody) SetChannel(v *ChannelAssemblyChannel) *CreateChannelResponseBody {
+	s.Channel = v
+	return s
+}
+
+func (s *CreateChannelResponseBody) SetRequestId(v string) *CreateChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateChannelResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChannelResponse) SetHeaders(v map[string]*string) *CreateChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateChannelResponse) SetStatusCode(v int32) *CreateChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateChannelResponse) SetBody(v *CreateChannelResponseBody) *CreateChannelResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCustomTemplateRequest struct {
 	// The template name.
 	//
@@ -7959,6 +8605,156 @@ func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreateP
 	return s
 }
 
+type CreateProgramRequest struct {
+	// example:
+	//
+	// [{"MessageType":"SPLICE_INSERT","OffsetMillis":1000,"SourceLocationName":"MySourceLocation","SourceName":"MyAdSource","SpliceInsertSettings":{"AvailNumber":0,"AvailExpected":0,"SpliceEventID":1,"UniqueProgramID":0}}]
+	AdBreaks *string `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// {StartOffsetMillis: 213123, EndOffsetMillis: 213134}
+	ClipRange *string `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// program1
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourceLcation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Type": "RELATIVE", "RelativePosition": "AFTER_PROGRAM", "RelativeProgram": "program2"}
+	Transition *string `json:"Transition,omitempty" xml:"Transition,omitempty"`
+}
+
+func (s CreateProgramRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProgramRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProgramRequest) SetAdBreaks(v string) *CreateProgramRequest {
+	s.AdBreaks = &v
+	return s
+}
+
+func (s *CreateProgramRequest) SetChannelName(v string) *CreateProgramRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *CreateProgramRequest) SetClipRange(v string) *CreateProgramRequest {
+	s.ClipRange = &v
+	return s
+}
+
+func (s *CreateProgramRequest) SetProgramName(v string) *CreateProgramRequest {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *CreateProgramRequest) SetSourceLocationName(v string) *CreateProgramRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *CreateProgramRequest) SetSourceName(v string) *CreateProgramRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *CreateProgramRequest) SetSourceType(v string) *CreateProgramRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateProgramRequest) SetTransition(v string) *CreateProgramRequest {
+	s.Transition = &v
+	return s
+}
+
+type CreateProgramResponseBody struct {
+	Program *ChannelAssemblyProgram `json:"Program,omitempty" xml:"Program,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateProgramResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProgramResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProgramResponseBody) SetProgram(v *ChannelAssemblyProgram) *CreateProgramResponseBody {
+	s.Program = v
+	return s
+}
+
+func (s *CreateProgramResponseBody) SetRequestId(v string) *CreateProgramResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateProgramResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProgramResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateProgramResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProgramResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProgramResponse) SetHeaders(v map[string]*string) *CreateProgramResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProgramResponse) SetStatusCode(v int32) *CreateProgramResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProgramResponse) SetBody(v *CreateProgramResponseBody) *CreateProgramResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSearchIndexRequest struct {
 	// example:
 	//
@@ -8193,6 +8989,230 @@ func (s *CreateSearchLibResponse) SetStatusCode(v int32) *CreateSearchLibRespons
 }
 
 func (s *CreateSearchLibResponse) SetBody(v *CreateSearchLibResponseBody) *CreateSearchLibResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// “[{
+	//
+	// 	"sourceGroupName": "mySourceGroup-1",
+	//
+	// 	"relativePath": "group1/hls.m3u8",
+	//
+	// 	"type": "hls"
+	//
+	// }]”
+	HttpPackageConfigurations *string `json:"HttpPackageConfigurations,omitempty" xml:"HttpPackageConfigurations,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyVodSource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s CreateSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSourceRequest) SetHttpPackageConfigurations(v string) *CreateSourceRequest {
+	s.HttpPackageConfigurations = &v
+	return s
+}
+
+func (s *CreateSourceRequest) SetSourceLocationName(v string) *CreateSourceRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *CreateSourceRequest) SetSourceName(v string) *CreateSourceRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *CreateSourceRequest) SetSourceType(v string) *CreateSourceRequest {
+	s.SourceType = &v
+	return s
+}
+
+type CreateSourceResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Source    *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s CreateSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSourceResponseBody) SetRequestId(v string) *CreateSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSourceResponseBody) SetSource(v *ChannelAssemblySource) *CreateSourceResponseBody {
+	s.Source = v
+	return s
+}
+
+type CreateSourceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSourceResponse) SetHeaders(v map[string]*string) *CreateSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSourceResponse) SetStatusCode(v int32) *CreateSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSourceResponse) SetBody(v *CreateSourceResponseBody) *CreateSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSourceLocationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://xxx.com
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// example:
+	//
+	// true
+	EnableSegmentDelivery *bool `json:"EnableSegmentDelivery,omitempty" xml:"EnableSegmentDelivery,omitempty"`
+	// example:
+	//
+	// http://xxxxx.com
+	SegmentDeliveryUrl *string `json:"SegmentDeliveryUrl,omitempty" xml:"SegmentDeliveryUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourcelocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+}
+
+func (s CreateSourceLocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSourceLocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSourceLocationRequest) SetBaseUrl(v string) *CreateSourceLocationRequest {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *CreateSourceLocationRequest) SetEnableSegmentDelivery(v bool) *CreateSourceLocationRequest {
+	s.EnableSegmentDelivery = &v
+	return s
+}
+
+func (s *CreateSourceLocationRequest) SetSegmentDeliveryUrl(v string) *CreateSourceLocationRequest {
+	s.SegmentDeliveryUrl = &v
+	return s
+}
+
+func (s *CreateSourceLocationRequest) SetSourceLocationName(v string) *CreateSourceLocationRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+type CreateSourceLocationResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceLocation *ChannelAssemblySourceLocation `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
+}
+
+func (s CreateSourceLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSourceLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSourceLocationResponseBody) SetRequestId(v string) *CreateSourceLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSourceLocationResponseBody) SetSourceLocation(v *ChannelAssemblySourceLocation) *CreateSourceLocationResponseBody {
+	s.SourceLocation = v
+	return s
+}
+
+type CreateSourceLocationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSourceLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSourceLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSourceLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSourceLocationResponse) SetHeaders(v map[string]*string) *CreateSourceLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSourceLocationResponse) SetStatusCode(v int32) *CreateSourceLocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSourceLocationResponse) SetBody(v *CreateSourceLocationResponseBody) *CreateSourceLocationResponse {
 	s.Body = v
 	return s
 }
@@ -8953,6 +9973,86 @@ func (s *DeleteCategoryResponse) SetStatusCode(v int32) *DeleteCategoryResponse 
 }
 
 func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteCategoryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteChannelRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+}
+
+func (s DeleteChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChannelRequest) SetChannelName(v string) *DeleteChannelRequest {
+	s.ChannelName = &v
+	return s
+}
+
+type DeleteChannelResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChannelResponseBody) SetRequestId(v string) *DeleteChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteChannelResponseBody) SetSuccess(v bool) *DeleteChannelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteChannelResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChannelResponse) SetHeaders(v map[string]*string) *DeleteChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteChannelResponse) SetStatusCode(v int32) *DeleteChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteChannelResponse) SetBody(v *DeleteChannelResponseBody) *DeleteChannelResponse {
 	s.Body = v
 	return s
 }
@@ -11057,6 +12157,97 @@ func (s *DeletePlayInfoResponse) SetBody(v *DeletePlayInfoResponseBody) *DeleteP
 	return s
 }
 
+type DeleteProgramRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// program_name
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+}
+
+func (s DeleteProgramRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProgramRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProgramRequest) SetChannelName(v string) *DeleteProgramRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *DeleteProgramRequest) SetProgramName(v string) *DeleteProgramRequest {
+	s.ProgramName = &v
+	return s
+}
+
+type DeleteProgramResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteProgramResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProgramResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProgramResponseBody) SetRequestId(v string) *DeleteProgramResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProgramResponseBody) SetSuccess(v bool) *DeleteProgramResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteProgramResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProgramResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteProgramResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProgramResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProgramResponse) SetHeaders(v map[string]*string) *DeleteProgramResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProgramResponse) SetStatusCode(v int32) *DeleteProgramResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteProgramResponse) SetBody(v *DeleteProgramResponseBody) *DeleteProgramResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSmartJobRequest struct {
 	// The IDs of the jobs to delete. Separate multiple IDs with commas (,).
 	//
@@ -11126,6 +12317,206 @@ func (s *DeleteSmartJobResponse) SetStatusCode(v int32) *DeleteSmartJobResponse 
 }
 
 func (s *DeleteSmartJobResponse) SetBody(v *DeleteSmartJobResponseBody) *DeleteSmartJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSourceRequest struct {
+	// example:
+	//
+	// true
+	SoftDelete *bool `json:"SoftDelete,omitempty" xml:"SoftDelete,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyVodSource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DeleteSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceRequest) SetSoftDelete(v bool) *DeleteSourceRequest {
+	s.SoftDelete = &v
+	return s
+}
+
+func (s *DeleteSourceRequest) SetSourceLocationName(v string) *DeleteSourceRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *DeleteSourceRequest) SetSourceName(v string) *DeleteSourceRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *DeleteSourceRequest) SetSourceType(v string) *DeleteSourceRequest {
+	s.SourceType = &v
+	return s
+}
+
+type DeleteSourceResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceResponseBody) SetRequestId(v string) *DeleteSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSourceResponseBody) SetSuccess(v bool) *DeleteSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSourceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceResponse) SetHeaders(v map[string]*string) *DeleteSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSourceResponse) SetStatusCode(v int32) *DeleteSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSourceResponse) SetBody(v *DeleteSourceResponseBody) *DeleteSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSourceLocationRequest struct {
+	// example:
+	//
+	// true
+	SoftDelete *bool `json:"SoftDelete,omitempty" xml:"SoftDelete,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+}
+
+func (s DeleteSourceLocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceLocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceLocationRequest) SetSoftDelete(v bool) *DeleteSourceLocationRequest {
+	s.SoftDelete = &v
+	return s
+}
+
+func (s *DeleteSourceLocationRequest) SetSourceLocationName(v string) *DeleteSourceLocationRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+type DeleteSourceLocationResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSourceLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceLocationResponseBody) SetRequestId(v string) *DeleteSourceLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSourceLocationResponseBody) SetSuccess(v bool) *DeleteSourceLocationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSourceLocationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSourceLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSourceLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceLocationResponse) SetHeaders(v map[string]*string) *DeleteSourceLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSourceLocationResponse) SetStatusCode(v int32) *DeleteSourceLocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSourceLocationResponse) SetBody(v *DeleteSourceLocationResponseBody) *DeleteSourceLocationResponse {
 	s.Body = v
 	return s
 }
@@ -14565,6 +15956,83 @@ func (s *GetCategoriesResponse) SetStatusCode(v int32) *GetCategoriesResponse {
 }
 
 func (s *GetCategoriesResponse) SetBody(v *GetCategoriesResponseBody) *GetCategoriesResponse {
+	s.Body = v
+	return s
+}
+
+type GetChannelRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+}
+
+func (s GetChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChannelRequest) SetChannelName(v string) *GetChannelRequest {
+	s.ChannelName = &v
+	return s
+}
+
+type GetChannelResponseBody struct {
+	Channel *ChannelAssemblyChannel `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChannelResponseBody) SetChannel(v *ChannelAssemblyChannel) *GetChannelResponseBody {
+	s.Channel = v
+	return s
+}
+
+func (s *GetChannelResponseBody) SetRequestId(v string) *GetChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChannelResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChannelResponse) SetHeaders(v map[string]*string) *GetChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChannelResponse) SetStatusCode(v int32) *GetChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChannelResponse) SetBody(v *GetChannelResponseBody) *GetChannelResponse {
 	s.Body = v
 	return s
 }
@@ -24078,6 +25546,94 @@ func (s *GetPlayInfoResponse) SetBody(v *GetPlayInfoResponseBody) *GetPlayInfoRe
 	return s
 }
 
+type GetProgramRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// program1
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+}
+
+func (s GetProgramRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProgramRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProgramRequest) SetChannelName(v string) *GetProgramRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *GetProgramRequest) SetProgramName(v string) *GetProgramRequest {
+	s.ProgramName = &v
+	return s
+}
+
+type GetProgramResponseBody struct {
+	Program *ChannelAssemblyProgram `json:"Program,omitempty" xml:"Program,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetProgramResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProgramResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProgramResponseBody) SetProgram(v *ChannelAssemblyProgram) *GetProgramResponseBody {
+	s.Program = v
+	return s
+}
+
+func (s *GetProgramResponseBody) SetRequestId(v string) *GetProgramResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetProgramResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProgramResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetProgramResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProgramResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProgramResponse) SetHeaders(v map[string]*string) *GetProgramResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProgramResponse) SetStatusCode(v int32) *GetProgramResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetProgramResponse) SetBody(v *GetProgramResponseBody) *GetProgramResponse {
+	s.Body = v
+	return s
+}
+
 type GetProjectExportJobRequest struct {
 	// This parameter is required.
 	//
@@ -26175,6 +27731,182 @@ func (s *GetSnapshotUrlsResponse) SetStatusCode(v int32) *GetSnapshotUrlsRespons
 }
 
 func (s *GetSnapshotUrlsResponse) SetBody(v *GetSnapshotUrlsResponseBody) *GetSnapshotUrlsResponse {
+	s.Body = v
+	return s
+}
+
+type GetSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyVodSource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s GetSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceRequest) SetSourceLocationName(v string) *GetSourceRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *GetSourceRequest) SetSourceName(v string) *GetSourceRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *GetSourceRequest) SetSourceType(v string) *GetSourceRequest {
+	s.SourceType = &v
+	return s
+}
+
+type GetSourceResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Source    *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s GetSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceResponseBody) SetRequestId(v string) *GetSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSourceResponseBody) SetSource(v *ChannelAssemblySource) *GetSourceResponseBody {
+	s.Source = v
+	return s
+}
+
+type GetSourceResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceResponse) SetHeaders(v map[string]*string) *GetSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSourceResponse) SetStatusCode(v int32) *GetSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSourceResponse) SetBody(v *GetSourceResponseBody) *GetSourceResponse {
+	s.Body = v
+	return s
+}
+
+type GetSourceLocationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+}
+
+func (s GetSourceLocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceLocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceLocationRequest) SetSourceLocationName(v string) *GetSourceLocationRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+type GetSourceLocationResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceLocation *ChannelAssemblySourceLocation `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
+}
+
+func (s GetSourceLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceLocationResponseBody) SetRequestId(v string) *GetSourceLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSourceLocationResponseBody) SetSourceLocation(v *ChannelAssemblySourceLocation) *GetSourceLocationResponseBody {
+	s.SourceLocation = v
+	return s
+}
+
+type GetSourceLocationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSourceLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSourceLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceLocationResponse) SetHeaders(v map[string]*string) *GetSourceLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSourceLocationResponse) SetStatusCode(v int32) *GetSourceLocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSourceLocationResponse) SetBody(v *GetSourceLocationResponseBody) *GetSourceLocationResponse {
 	s.Body = v
 	return s
 }
@@ -32331,6 +34063,241 @@ func (s *ListAIAgentInstanceResponse) SetBody(v *ListAIAgentInstanceResponseBody
 	return s
 }
 
+type ListAlertsRequest struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 2024-11-22T16:10:45Z
+	GmtEnd *string `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
+	// example:
+	//
+	// 2024-11-21T16:10:45Z
+	GmtStart *string `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:vodSource/mySourceLocation/MySource
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	// example:
+	//
+	// asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// asc
+	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+}
+
+func (s ListAlertsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertsRequest) SetCategory(v string) *ListAlertsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetGmtEnd(v string) *ListAlertsRequest {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetGmtStart(v string) *ListAlertsRequest {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetPageNo(v int32) *ListAlertsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetPageSize(v int32) *ListAlertsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetResourceArn(v string) *ListAlertsRequest {
+	s.ResourceArn = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetSortBy(v string) *ListAlertsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetSortByModifiedTime(v string) *ListAlertsRequest {
+	s.SortByModifiedTime = &v
+	return s
+}
+
+type ListAlertsResponseBody struct {
+	Alerts []*ListAlertsResponseBodyAlerts `json:"Alerts,omitempty" xml:"Alerts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAlertsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertsResponseBody) SetAlerts(v []*ListAlertsResponseBodyAlerts) *ListAlertsResponseBody {
+	s.Alerts = v
+	return s
+}
+
+func (s *ListAlertsResponseBody) SetPageNo(v int32) *ListAlertsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListAlertsResponseBody) SetPageSize(v int32) *ListAlertsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAlertsResponseBody) SetRequestId(v string) *ListAlertsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAlertsResponseBody) SetTotalCount(v int32) *ListAlertsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAlertsResponseBodyAlerts struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// ScheduleError
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2024-07-16T10:03Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-07-16T10:03Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// xxxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:vodSource/mySourceLocation/MySource
+	RelatedResourceArns *string `json:"RelatedResourceArns,omitempty" xml:"RelatedResourceArns,omitempty"`
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:vodSource/mySourceLocation/MySource
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+}
+
+func (s ListAlertsResponseBodyAlerts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertsResponseBodyAlerts) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertsResponseBodyAlerts) SetCategory(v string) *ListAlertsResponseBodyAlerts {
+	s.Category = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyAlerts) SetCode(v string) *ListAlertsResponseBodyAlerts {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyAlerts) SetGmtCreate(v string) *ListAlertsResponseBodyAlerts {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyAlerts) SetGmtModified(v string) *ListAlertsResponseBodyAlerts {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyAlerts) SetMessage(v string) *ListAlertsResponseBodyAlerts {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyAlerts) SetRelatedResourceArns(v string) *ListAlertsResponseBodyAlerts {
+	s.RelatedResourceArns = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyAlerts) SetResourceArn(v string) *ListAlertsResponseBodyAlerts {
+	s.ResourceArn = &v
+	return s
+}
+
+type ListAlertsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAlertsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertsResponse) SetHeaders(v map[string]*string) *ListAlertsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAlertsResponse) SetStatusCode(v int32) *ListAlertsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAlertsResponse) SetBody(v *ListAlertsResponseBody) *ListAlertsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAllPublicMediaTagsRequest struct {
 	// The business type of the media asset.
 	//
@@ -33396,6 +35363,379 @@ func (s *ListBatchMediaProducingJobsResponse) SetStatusCode(v int32) *ListBatchM
 }
 
 func (s *ListBatchMediaProducingJobsResponse) SetBody(v *ListBatchMediaProducingJobsResponseBody) *ListBatchMediaProducingJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListChannelAlertsRequest struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 2024-11-21T16:10:45Z
+	GmtEnd *string `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
+	// example:
+	//
+	// 2024-11-21T16:10:45Z
+	GmtStart *string `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:channel/myChannel
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	// example:
+	//
+	// desc
+	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+}
+
+func (s ListChannelAlertsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChannelAlertsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChannelAlertsRequest) SetCategory(v string) *ListChannelAlertsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListChannelAlertsRequest) SetGmtEnd(v string) *ListChannelAlertsRequest {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *ListChannelAlertsRequest) SetGmtStart(v string) *ListChannelAlertsRequest {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *ListChannelAlertsRequest) SetPageNo(v int32) *ListChannelAlertsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChannelAlertsRequest) SetPageSize(v int32) *ListChannelAlertsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChannelAlertsRequest) SetResourceArn(v string) *ListChannelAlertsRequest {
+	s.ResourceArn = &v
+	return s
+}
+
+func (s *ListChannelAlertsRequest) SetSortByModifiedTime(v string) *ListChannelAlertsRequest {
+	s.SortByModifiedTime = &v
+	return s
+}
+
+type ListChannelAlertsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProgramAlerts []*ListChannelAlertsResponseBodyProgramAlerts `json:"ProgramAlerts,omitempty" xml:"ProgramAlerts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListChannelAlertsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChannelAlertsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChannelAlertsResponseBody) SetPageNo(v int32) *ListChannelAlertsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBody) SetPageSize(v int32) *ListChannelAlertsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBody) SetProgramAlerts(v []*ListChannelAlertsResponseBodyProgramAlerts) *ListChannelAlertsResponseBody {
+	s.ProgramAlerts = v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBody) SetRequestId(v string) *ListChannelAlertsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBody) SetTotalCount(v int32) *ListChannelAlertsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListChannelAlertsResponseBodyProgramAlerts struct {
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:program/myChannel/MyProgram
+	Arn      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 4
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 2024-07-16T10:03Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// program_name
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+}
+
+func (s ListChannelAlertsResponseBodyProgramAlerts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChannelAlertsResponseBodyProgramAlerts) GoString() string {
+	return s.String()
+}
+
+func (s *ListChannelAlertsResponseBodyProgramAlerts) SetArn(v string) *ListChannelAlertsResponseBodyProgramAlerts {
+	s.Arn = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBodyProgramAlerts) SetCategory(v string) *ListChannelAlertsResponseBodyProgramAlerts {
+	s.Category = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBodyProgramAlerts) SetCount(v int32) *ListChannelAlertsResponseBodyProgramAlerts {
+	s.Count = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBodyProgramAlerts) SetGmtModified(v string) *ListChannelAlertsResponseBodyProgramAlerts {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponseBodyProgramAlerts) SetProgramName(v string) *ListChannelAlertsResponseBodyProgramAlerts {
+	s.ProgramName = &v
+	return s
+}
+
+type ListChannelAlertsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChannelAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListChannelAlertsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChannelAlertsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChannelAlertsResponse) SetHeaders(v map[string]*string) *ListChannelAlertsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChannelAlertsResponse) SetStatusCode(v int32) *ListChannelAlertsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChannelAlertsResponse) SetBody(v *ListChannelAlertsResponseBody) *ListChannelAlertsResponse {
+	s.Body = v
+	return s
+}
+
+type ListChannelsRequest struct {
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// basic
+	ChannelTier *string `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// loop
+	PlaybackMode *string `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
+	// example:
+	//
+	// asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// desc
+	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+	// example:
+	//
+	// 0
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChannelsRequest) SetChannelName(v string) *ListChannelsRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ListChannelsRequest) SetChannelTier(v string) *ListChannelsRequest {
+	s.ChannelTier = &v
+	return s
+}
+
+func (s *ListChannelsRequest) SetPageNo(v int32) *ListChannelsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChannelsRequest) SetPageSize(v int32) *ListChannelsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChannelsRequest) SetPlaybackMode(v string) *ListChannelsRequest {
+	s.PlaybackMode = &v
+	return s
+}
+
+func (s *ListChannelsRequest) SetSortBy(v string) *ListChannelsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListChannelsRequest) SetSortByModifiedTime(v string) *ListChannelsRequest {
+	s.SortByModifiedTime = &v
+	return s
+}
+
+func (s *ListChannelsRequest) SetState(v int32) *ListChannelsRequest {
+	s.State = &v
+	return s
+}
+
+type ListChannelsResponseBody struct {
+	ChannelList []*ChannelAssemblyChannel `json:"ChannelList,omitempty" xml:"ChannelList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 180
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChannelsResponseBody) SetChannelList(v []*ChannelAssemblyChannel) *ListChannelsResponseBody {
+	s.ChannelList = v
+	return s
+}
+
+func (s *ListChannelsResponseBody) SetPageNo(v int32) *ListChannelsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChannelsResponseBody) SetPageSize(v int32) *ListChannelsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChannelsResponseBody) SetRequestId(v string) *ListChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChannelsResponseBody) SetTotalCount(v int32) *ListChannelsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListChannelsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChannelsResponse) SetHeaders(v map[string]*string) *ListChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChannelsResponse) SetStatusCode(v int32) *ListChannelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChannelsResponse) SetBody(v *ListChannelsResponseBody) *ListChannelsResponse {
 	s.Body = v
 	return s
 }
@@ -41945,6 +44285,146 @@ func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipel
 	return s
 }
 
+type ListProgramsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// program1
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListProgramsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProgramsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProgramsRequest) SetChannelName(v string) *ListProgramsRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ListProgramsRequest) SetPageNo(v string) *ListProgramsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListProgramsRequest) SetPageSize(v string) *ListProgramsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProgramsRequest) SetProgramName(v string) *ListProgramsRequest {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *ListProgramsRequest) SetSortBy(v string) *ListProgramsRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListProgramsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Programs []*ChannelAssemblyProgram `json:"Programs,omitempty" xml:"Programs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProgramsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProgramsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProgramsResponseBody) SetPageNo(v int32) *ListProgramsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListProgramsResponseBody) SetPageSize(v int32) *ListProgramsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProgramsResponseBody) SetPrograms(v []*ChannelAssemblyProgram) *ListProgramsResponseBody {
+	s.Programs = v
+	return s
+}
+
+func (s *ListProgramsResponseBody) SetRequestId(v string) *ListProgramsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProgramsResponseBody) SetTotalCount(v int32) *ListProgramsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProgramsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProgramsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListProgramsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProgramsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProgramsResponse) SetHeaders(v map[string]*string) *ListProgramsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProgramsResponse) SetStatusCode(v int32) *ListProgramsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProgramsResponse) SetBody(v *ListProgramsResponseBody) *ListProgramsResponse {
+	s.Body = v
+	return s
+}
+
 type ListPublicMediaBasicInfosRequest struct {
 	// The business type of the media asset. Valid values:
 	//
@@ -42548,6 +45028,139 @@ func (s *ListPublicMediaBasicInfosResponse) SetStatusCode(v int32) *ListPublicMe
 }
 
 func (s *ListPublicMediaBasicInfosResponse) SetBody(v *ListPublicMediaBasicInfosResponseBody) *ListPublicMediaBasicInfosResponse {
+	s.Body = v
+	return s
+}
+
+type ListSchedulesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 14400
+	WindowDurationSeconds *int64 `json:"WindowDurationSeconds,omitempty" xml:"WindowDurationSeconds,omitempty"`
+}
+
+func (s ListSchedulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesRequest) SetChannelName(v string) *ListSchedulesRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ListSchedulesRequest) SetPageNo(v int32) *ListSchedulesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSchedulesRequest) SetPageSize(v int32) *ListSchedulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSchedulesRequest) SetWindowDurationSeconds(v int64) *ListSchedulesRequest {
+	s.WindowDurationSeconds = &v
+	return s
+}
+
+type ListSchedulesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Programs []*ChannelAssemblyScheduleData `json:"Programs,omitempty" xml:"Programs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSchedulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesResponseBody) SetPageNo(v int32) *ListSchedulesResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBody) SetPageSize(v int32) *ListSchedulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBody) SetPrograms(v []*ChannelAssemblyScheduleData) *ListSchedulesResponseBody {
+	s.Programs = v
+	return s
+}
+
+func (s *ListSchedulesResponseBody) SetRequestId(v string) *ListSchedulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBody) SetTotalCount(v int32) *ListSchedulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSchedulesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSchedulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSchedulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesResponse) SetHeaders(v map[string]*string) *ListSchedulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSchedulesResponse) SetStatusCode(v int32) *ListSchedulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSchedulesResponse) SetBody(v *ListSchedulesResponseBody) *ListSchedulesResponse {
 	s.Body = v
 	return s
 }
@@ -43991,6 +46604,318 @@ func (s *ListSnapshotJobsResponse) SetStatusCode(v int32) *ListSnapshotJobsRespo
 }
 
 func (s *ListSnapshotJobsResponse) SetBody(v *ListSnapshotJobsResponseBody) *ListSnapshotJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSourceLocationsRequest struct {
+	// example:
+	//
+	// true
+	FilterState *bool `json:"FilterState,omitempty" xml:"FilterState,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// desc
+	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+}
+
+func (s ListSourceLocationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSourceLocationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSourceLocationsRequest) SetFilterState(v bool) *ListSourceLocationsRequest {
+	s.FilterState = &v
+	return s
+}
+
+func (s *ListSourceLocationsRequest) SetPageNo(v int32) *ListSourceLocationsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSourceLocationsRequest) SetPageSize(v int32) *ListSourceLocationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSourceLocationsRequest) SetSortBy(v string) *ListSourceLocationsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListSourceLocationsRequest) SetSortByModifiedTime(v string) *ListSourceLocationsRequest {
+	s.SortByModifiedTime = &v
+	return s
+}
+
+func (s *ListSourceLocationsRequest) SetSourceLocationName(v string) *ListSourceLocationsRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+type ListSourceLocationsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId          *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceLocationList []*ChannelAssemblySourceLocation `json:"SourceLocationList,omitempty" xml:"SourceLocationList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSourceLocationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSourceLocationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSourceLocationsResponseBody) SetPageNo(v int32) *ListSourceLocationsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSourceLocationsResponseBody) SetPageSize(v int32) *ListSourceLocationsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSourceLocationsResponseBody) SetRequestId(v string) *ListSourceLocationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSourceLocationsResponseBody) SetSourceLocationList(v []*ChannelAssemblySourceLocation) *ListSourceLocationsResponseBody {
+	s.SourceLocationList = v
+	return s
+}
+
+func (s *ListSourceLocationsResponseBody) SetTotalCount(v int32) *ListSourceLocationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSourceLocationsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSourceLocationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSourceLocationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSourceLocationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSourceLocationsResponse) SetHeaders(v map[string]*string) *ListSourceLocationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSourceLocationsResponse) SetStatusCode(v int32) *ListSourceLocationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSourceLocationsResponse) SetBody(v *ListSourceLocationsResponseBody) *ListSourceLocationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSourcesRequest struct {
+	// example:
+	//
+	// true
+	FilterState *bool `json:"FilterState,omitempty" xml:"FilterState,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// desc
+	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// example:
+	//
+	// MyVodSource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ListSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSourcesRequest) SetFilterState(v bool) *ListSourcesRequest {
+	s.FilterState = &v
+	return s
+}
+
+func (s *ListSourcesRequest) SetPageNo(v string) *ListSourcesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSourcesRequest) SetPageSize(v string) *ListSourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSourcesRequest) SetSortBy(v string) *ListSourcesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListSourcesRequest) SetSortByModifiedTime(v string) *ListSourcesRequest {
+	s.SortByModifiedTime = &v
+	return s
+}
+
+func (s *ListSourcesRequest) SetSourceLocationName(v string) *ListSourcesRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ListSourcesRequest) SetSourceName(v string) *ListSourcesRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ListSourcesRequest) SetSourceType(v string) *ListSourcesRequest {
+	s.SourceType = &v
+	return s
+}
+
+type ListSourcesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId  *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceList []*ChannelAssemblySource `json:"SourceList,omitempty" xml:"SourceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSourcesResponseBody) SetPageNo(v int32) *ListSourcesResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSourcesResponseBody) SetPageSize(v int32) *ListSourcesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSourcesResponseBody) SetRequestId(v string) *ListSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSourcesResponseBody) SetSourceList(v []*ChannelAssemblySource) *ListSourcesResponseBody {
+	s.SourceList = v
+	return s
+}
+
+func (s *ListSourcesResponseBody) SetTotalCount(v int32) *ListSourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSourcesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSourcesResponse) SetHeaders(v map[string]*string) *ListSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSourcesResponse) SetStatusCode(v int32) *ListSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSourcesResponse) SetBody(v *ListSourcesResponseBody) *ListSourcesResponse {
 	s.Body = v
 	return s
 }
@@ -57075,6 +60000,86 @@ func (s *StartAIAgentInstanceResponse) SetBody(v *StartAIAgentInstanceResponseBo
 	return s
 }
 
+type StartChannelRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+}
+
+func (s StartChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartChannelRequest) SetChannelName(v string) *StartChannelRequest {
+	s.ChannelName = &v
+	return s
+}
+
+type StartChannelResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StartChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartChannelResponseBody) SetRequestId(v string) *StartChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartChannelResponseBody) SetSuccess(v bool) *StartChannelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartChannelResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartChannelResponse) SetHeaders(v map[string]*string) *StartChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartChannelResponse) SetStatusCode(v int32) *StartChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartChannelResponse) SetBody(v *StartChannelResponseBody) *StartChannelResponse {
+	s.Body = v
+	return s
+}
+
 type StartRtcRobotInstanceRequest struct {
 	// This parameter is required.
 	//
@@ -57521,6 +60526,86 @@ func (s *StopAIAgentInstanceResponse) SetStatusCode(v int32) *StopAIAgentInstanc
 }
 
 func (s *StopAIAgentInstanceResponse) SetBody(v *StopAIAgentInstanceResponseBody) *StopAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopChannelRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+}
+
+func (s StopChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopChannelRequest) SetChannelName(v string) *StopChannelRequest {
+	s.ChannelName = &v
+	return s
+}
+
+type StopChannelResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StopChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopChannelResponseBody) SetRequestId(v string) *StopChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopChannelResponseBody) SetSuccess(v bool) *StopChannelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopChannelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopChannelResponse) SetHeaders(v map[string]*string) *StopChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopChannelResponse) SetStatusCode(v int32) *StopChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopChannelResponse) SetBody(v *StopChannelResponseBody) *StopChannelResponse {
 	s.Body = v
 	return s
 }
@@ -73993,6 +77078,146 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 	return s
 }
 
+type UpdateChannelRequest struct {
+	// example:
+	//
+	// true
+	AccessPolicy *bool `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	// example:
+	//
+	// xxxxx
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// MySourceLocation
+	FillerSourceLocationName *string `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	// example:
+	//
+	// MySource
+	FillerSourceName *string `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{
+	//
+	// 	"ManifestName": "manifest-1",
+	//
+	// 	"Format": "HLS",
+	//
+	// 	"SourceGroupName": "source-group-1",
+	//
+	// 	"ManifestSettings": {
+	//
+	// 		"WindowDuration": 60,
+	//
+	// 		"AdMarkType": "Daterange"
+	//
+	// 	}
+	//
+	// }]
+	OutPutConfigList *string `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty"`
+}
+
+func (s UpdateChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChannelRequest) SetAccessPolicy(v bool) *UpdateChannelRequest {
+	s.AccessPolicy = &v
+	return s
+}
+
+func (s *UpdateChannelRequest) SetAccessToken(v string) *UpdateChannelRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateChannelRequest) SetChannelName(v string) *UpdateChannelRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *UpdateChannelRequest) SetFillerSourceLocationName(v string) *UpdateChannelRequest {
+	s.FillerSourceLocationName = &v
+	return s
+}
+
+func (s *UpdateChannelRequest) SetFillerSourceName(v string) *UpdateChannelRequest {
+	s.FillerSourceName = &v
+	return s
+}
+
+func (s *UpdateChannelRequest) SetOutPutConfigList(v string) *UpdateChannelRequest {
+	s.OutPutConfigList = &v
+	return s
+}
+
+type UpdateChannelResponseBody struct {
+	Channel *ChannelAssemblyChannel `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChannelResponseBody) SetChannel(v *ChannelAssemblyChannel) *UpdateChannelResponseBody {
+	s.Channel = v
+	return s
+}
+
+func (s *UpdateChannelResponseBody) SetRequestId(v string) *UpdateChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateChannelResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChannelResponse) SetHeaders(v map[string]*string) *UpdateChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateChannelResponse) SetStatusCode(v int32) *UpdateChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateChannelResponse) SetBody(v *UpdateChannelResponseBody) *UpdateChannelResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateCustomTemplateRequest struct {
 	// The template name.
 	//
@@ -76984,6 +80209,148 @@ func (s *UpdatePipelineResponse) SetBody(v *UpdatePipelineResponseBody) *UpdateP
 	return s
 }
 
+type UpdateProgramRequest struct {
+	// example:
+	//
+	// [{"MessageType":"SPLICE_INSERT","OffsetMillis":1000,"SourceLocationName":"MySourceLocation","SourceName":"MyAdSource","SpliceInsertSettings":{"AvailNumber":0,"AvailExpected":0,"SpliceEventID":1,"UniqueProgramID":0}}]
+	AdBreaks *string `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// {StartOffsetMillis: 213123, EndOffsetMillis: 213134}
+	ClipRange *string `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// program1
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// example:
+	//
+	// MySourceLcation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// example:
+	//
+	// MySource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// {"Type": "RELATIVE", "RelativePosition": "AFTER_PROGRAM", "RelativeProgram": "program2"}
+	Transition *string `json:"Transition,omitempty" xml:"Transition,omitempty"`
+}
+
+func (s UpdateProgramRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProgramRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProgramRequest) SetAdBreaks(v string) *UpdateProgramRequest {
+	s.AdBreaks = &v
+	return s
+}
+
+func (s *UpdateProgramRequest) SetChannelName(v string) *UpdateProgramRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *UpdateProgramRequest) SetClipRange(v string) *UpdateProgramRequest {
+	s.ClipRange = &v
+	return s
+}
+
+func (s *UpdateProgramRequest) SetProgramName(v string) *UpdateProgramRequest {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *UpdateProgramRequest) SetSourceLocationName(v string) *UpdateProgramRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *UpdateProgramRequest) SetSourceName(v string) *UpdateProgramRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *UpdateProgramRequest) SetSourceType(v string) *UpdateProgramRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateProgramRequest) SetTransition(v string) *UpdateProgramRequest {
+	s.Transition = &v
+	return s
+}
+
+type UpdateProgramResponseBody struct {
+	Program *ChannelAssemblyProgram `json:"Program,omitempty" xml:"Program,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateProgramResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProgramResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProgramResponseBody) SetProgram(v *ChannelAssemblyProgram) *UpdateProgramResponseBody {
+	s.Program = v
+	return s
+}
+
+func (s *UpdateProgramResponseBody) SetRequestId(v string) *UpdateProgramResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateProgramResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProgramResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateProgramResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProgramResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProgramResponse) SetHeaders(v map[string]*string) *UpdateProgramResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProgramResponse) SetStatusCode(v int32) *UpdateProgramResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProgramResponse) SetBody(v *UpdateProgramResponseBody) *UpdateProgramResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateRtcRobotInstanceRequest struct {
 	Config *UpdateRtcRobotInstanceRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -77122,6 +80489,228 @@ func (s *UpdateRtcRobotInstanceResponse) SetStatusCode(v int32) *UpdateRtcRobotI
 }
 
 func (s *UpdateRtcRobotInstanceResponse) SetBody(v *UpdateRtcRobotInstanceResponseBody) *UpdateRtcRobotInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{
+	//
+	// 	"sourceGroupName": "mySourceGroup-1",
+	//
+	// 	"relativePath": "group1/hls.m3u8",
+	//
+	// 	"packageType": "hls"
+	//
+	// }]
+	HttpPackageConfigurations *string `json:"HttpPackageConfigurations,omitempty" xml:"HttpPackageConfigurations,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourcelocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s UpdateSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSourceRequest) SetHttpPackageConfigurations(v string) *UpdateSourceRequest {
+	s.HttpPackageConfigurations = &v
+	return s
+}
+
+func (s *UpdateSourceRequest) SetSourceLocationName(v string) *UpdateSourceRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *UpdateSourceRequest) SetSourceName(v string) *UpdateSourceRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *UpdateSourceRequest) SetSourceType(v string) *UpdateSourceRequest {
+	s.SourceType = &v
+	return s
+}
+
+type UpdateSourceResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Source    *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s UpdateSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSourceResponseBody) SetRequestId(v string) *UpdateSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSourceResponseBody) SetSource(v *ChannelAssemblySource) *UpdateSourceResponseBody {
+	s.Source = v
+	return s
+}
+
+type UpdateSourceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSourceResponse) SetHeaders(v map[string]*string) *UpdateSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSourceResponse) SetStatusCode(v int32) *UpdateSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSourceResponse) SetBody(v *UpdateSourceResponseBody) *UpdateSourceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSourceLocationRequest struct {
+	// example:
+	//
+	// http://xxx.com
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// example:
+	//
+	// true
+	EnableSegmentDelivery *bool `json:"EnableSegmentDelivery,omitempty" xml:"EnableSegmentDelivery,omitempty"`
+	// example:
+	//
+	// http://xxxx.com
+	SegmentDeliveryUrl *string `json:"SegmentDeliveryUrl,omitempty" xml:"SegmentDeliveryUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+}
+
+func (s UpdateSourceLocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSourceLocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSourceLocationRequest) SetBaseUrl(v string) *UpdateSourceLocationRequest {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *UpdateSourceLocationRequest) SetEnableSegmentDelivery(v bool) *UpdateSourceLocationRequest {
+	s.EnableSegmentDelivery = &v
+	return s
+}
+
+func (s *UpdateSourceLocationRequest) SetSegmentDeliveryUrl(v string) *UpdateSourceLocationRequest {
+	s.SegmentDeliveryUrl = &v
+	return s
+}
+
+func (s *UpdateSourceLocationRequest) SetSourceLocationName(v string) *UpdateSourceLocationRequest {
+	s.SourceLocationName = &v
+	return s
+}
+
+type UpdateSourceLocationResponseBody struct {
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceLocation *ChannelAssemblySourceLocation `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
+}
+
+func (s UpdateSourceLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSourceLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSourceLocationResponseBody) SetRequestId(v string) *UpdateSourceLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSourceLocationResponseBody) SetSourceLocation(v *ChannelAssemblySourceLocation) *UpdateSourceLocationResponseBody {
+	s.SourceLocation = v
+	return s
+}
+
+type UpdateSourceLocationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSourceLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSourceLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSourceLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSourceLocationResponse) SetHeaders(v map[string]*string) *UpdateSourceLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSourceLocationResponse) SetStatusCode(v int32) *UpdateSourceLocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSourceLocationResponse) SetBody(v *UpdateSourceLocationResponseBody) *UpdateSourceLocationResponse {
 	s.Body = v
 	return s
 }
@@ -78977,6 +82566,105 @@ func (client *Client) CreateAvatarTrainingJob(request *CreateAvatarTrainingJobRe
 
 // Summary:
 //
+// 创建一个新的频道
+//
+// @param request - CreateChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChannelResponse
+func (client *Client) CreateChannelWithOptions(request *CreateChannelRequest, runtime *util.RuntimeOptions) (_result *CreateChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPolicy)) {
+		query["AccessPolicy"] = request.AccessPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelTier)) {
+		query["ChannelTier"] = request.ChannelTier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FillerSourceLocationName)) {
+		query["FillerSourceLocationName"] = request.FillerSourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FillerSourceName)) {
+		query["FillerSourceName"] = request.FillerSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutPutConfigList)) {
+		query["OutPutConfigList"] = request.OutPutConfigList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlaybackMode)) {
+		query["PlaybackMode"] = request.PlaybackMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建一个新的频道
+//
+// @param request - CreateChannelRequest
+//
+// @return CreateChannelResponse
+func (client *Client) CreateChannel(request *CreateChannelRequest) (_result *CreateChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateChannelResponse{}
+	_body, _err := client.CreateChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom template.
 //
 // @param request - CreateCustomTemplateRequest
@@ -80061,6 +83749,105 @@ func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *C
 
 // Summary:
 //
+// 创建一个新的节目
+//
+// @param request - CreateProgramRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProgramResponse
+func (client *Client) CreateProgramWithOptions(request *CreateProgramRequest, runtime *util.RuntimeOptions) (_result *CreateProgramResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdBreaks)) {
+		query["AdBreaks"] = request.AdBreaks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClipRange)) {
+		query["ClipRange"] = request.ClipRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramName)) {
+		query["ProgramName"] = request.ProgramName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transition)) {
+		query["Transition"] = request.Transition
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProgram"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProgramResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProgramResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建一个新的节目
+//
+// @param request - CreateProgramRequest
+//
+// @return CreateProgramResponse
+func (client *Client) CreateProgram(request *CreateProgramRequest) (_result *CreateProgramResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProgramResponse{}
+	_body, _err := client.CreateProgramWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建搜索索引
 //
 // Description:
@@ -80214,6 +84001,172 @@ func (client *Client) CreateSearchLib(request *CreateSearchLibRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSearchLibResponse{}
 	_body, _err := client.CreateSearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个新的源
+//
+// @param request - CreateSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSourceResponse
+func (client *Client) CreateSourceWithOptions(request *CreateSourceRequest, runtime *util.RuntimeOptions) (_result *CreateSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HttpPackageConfigurations)) {
+		query["HttpPackageConfigurations"] = request.HttpPackageConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSource"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建一个新的源
+//
+// @param request - CreateSourceRequest
+//
+// @return CreateSourceResponse
+func (client *Client) CreateSource(request *CreateSourceRequest) (_result *CreateSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSourceResponse{}
+	_body, _err := client.CreateSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个新的源位置
+//
+// @param request - CreateSourceLocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSourceLocationResponse
+func (client *Client) CreateSourceLocationWithOptions(request *CreateSourceLocationRequest, runtime *util.RuntimeOptions) (_result *CreateSourceLocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseUrl)) {
+		query["BaseUrl"] = request.BaseUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSegmentDelivery)) {
+		query["EnableSegmentDelivery"] = request.EnableSegmentDelivery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SegmentDeliveryUrl)) {
+		query["SegmentDeliveryUrl"] = request.SegmentDeliveryUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSourceLocation"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSourceLocationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSourceLocationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建一个新的源位置
+//
+// @param request - CreateSourceLocationRequest
+//
+// @return CreateSourceLocationResponse
+func (client *Client) CreateSourceLocation(request *CreateSourceLocationRequest) (_result *CreateSourceLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSourceLocationResponse{}
+	_body, _err := client.CreateSourceLocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -80665,6 +84618,77 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCategoryResponse{}
 	_body, _err := client.DeleteCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除频道
+//
+// @param request - DeleteChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChannelResponse
+func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除频道
+//
+// @param request - DeleteChannelRequest
+//
+// @return DeleteChannelResponse
+func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *DeleteChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteChannelResponse{}
+	_body, _err := client.DeleteChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -82275,6 +86299,81 @@ func (client *Client) DeletePlayInfo(request *DeletePlayInfoRequest) (_result *D
 
 // Summary:
 //
+// 删除节目
+//
+// @param request - DeleteProgramRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProgramResponse
+func (client *Client) DeleteProgramWithOptions(request *DeleteProgramRequest, runtime *util.RuntimeOptions) (_result *DeleteProgramResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramName)) {
+		query["ProgramName"] = request.ProgramName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProgram"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteProgramResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteProgramResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除节目
+//
+// @param request - DeleteProgramRequest
+//
+// @return DeleteProgramResponse
+func (client *Client) DeleteProgram(request *DeleteProgramRequest) (_result *DeleteProgramResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProgramResponse{}
+	_body, _err := client.DeleteProgramWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes intelligent jobs based on job IDs.
 //
 // @param request - DeleteSmartJobRequest
@@ -82337,6 +86436,164 @@ func (client *Client) DeleteSmartJob(request *DeleteSmartJobRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSmartJobResponse{}
 	_body, _err := client.DeleteSmartJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除源
+//
+// @param request - DeleteSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSourceResponse
+func (client *Client) DeleteSourceWithOptions(request *DeleteSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SoftDelete)) {
+		query["SoftDelete"] = request.SoftDelete
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSource"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除源
+//
+// @param request - DeleteSourceRequest
+//
+// @return DeleteSourceResponse
+func (client *Client) DeleteSource(request *DeleteSourceRequest) (_result *DeleteSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSourceResponse{}
+	_body, _err := client.DeleteSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除源位置
+//
+// @param request - DeleteSourceLocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSourceLocationResponse
+func (client *Client) DeleteSourceLocationWithOptions(request *DeleteSourceLocationRequest, runtime *util.RuntimeOptions) (_result *DeleteSourceLocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SoftDelete)) {
+		query["SoftDelete"] = request.SoftDelete
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSourceLocation"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSourceLocationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSourceLocationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除源位置
+//
+// @param request - DeleteSourceLocationRequest
+//
+// @return DeleteSourceLocationResponse
+func (client *Client) DeleteSourceLocation(request *DeleteSourceLocationRequest) (_result *DeleteSourceLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSourceLocationResponse{}
+	_body, _err := client.DeleteSourceLocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -83823,6 +88080,77 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCategoriesResponse{}
 	_body, _err := client.GetCategoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取频道
+//
+// @param request - GetChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChannelResponse
+func (client *Client) GetChannelWithOptions(request *GetChannelRequest, runtime *util.RuntimeOptions) (_result *GetChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取频道
+//
+// @param request - GetChannelRequest
+//
+// @return GetChannelResponse
+func (client *Client) GetChannel(request *GetChannelRequest) (_result *GetChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetChannelResponse{}
+	_body, _err := client.GetChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -86091,6 +90419,81 @@ func (client *Client) GetPlayInfo(request *GetPlayInfoRequest) (_result *GetPlay
 
 // Summary:
 //
+// 获取节目
+//
+// @param request - GetProgramRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProgramResponse
+func (client *Client) GetProgramWithOptions(request *GetProgramRequest, runtime *util.RuntimeOptions) (_result *GetProgramResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramName)) {
+		query["ProgramName"] = request.ProgramName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProgram"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetProgramResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetProgramResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取节目
+//
+// @param request - GetProgramRequest
+//
+// @return GetProgramResponse
+func (client *Client) GetProgram(request *GetProgramRequest) (_result *GetProgramResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProgramResponse{}
+	_body, _err := client.GetProgramWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询工程导出任务
 //
 // @param request - GetProjectExportJobRequest
@@ -86453,6 +90856,156 @@ func (client *Client) GetSnapshotUrls(request *GetSnapshotUrlsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSnapshotUrlsResponse{}
 	_body, _err := client.GetSnapshotUrlsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取源
+//
+// @param request - GetSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSourceResponse
+func (client *Client) GetSourceWithOptions(request *GetSourceRequest, runtime *util.RuntimeOptions) (_result *GetSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSource"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取源
+//
+// @param request - GetSourceRequest
+//
+// @return GetSourceResponse
+func (client *Client) GetSource(request *GetSourceRequest) (_result *GetSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSourceResponse{}
+	_body, _err := client.GetSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取源位置
+//
+// @param request - GetSourceLocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSourceLocationResponse
+func (client *Client) GetSourceLocationWithOptions(request *GetSourceLocationRequest, runtime *util.RuntimeOptions) (_result *GetSourceLocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSourceLocation"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSourceLocationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSourceLocationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取源位置
+//
+// @param request - GetSourceLocationRequest
+//
+// @return GetSourceLocationResponse
+func (client *Client) GetSourceLocation(request *GetSourceLocationRequest) (_result *GetSourceLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSourceLocationResponse{}
+	_body, _err := client.GetSourceLocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -87351,6 +91904,105 @@ func (client *Client) ListAIAgentInstance(request *ListAIAgentInstanceRequest) (
 
 // Summary:
 //
+// 获取警告
+//
+// @param request - ListAlertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertsResponse
+func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime *util.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtEnd)) {
+		query["GmtEnd"] = request.GmtEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtStart)) {
+		query["GmtStart"] = request.GmtStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceArn)) {
+		query["ResourceArn"] = request.ResourceArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortByModifiedTime)) {
+		query["SortByModifiedTime"] = request.SortByModifiedTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlerts"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAlertsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAlertsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取警告
+//
+// @param request - ListAlertsRequest
+//
+// @return ListAlertsResponse
+func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlertsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAlertsResponse{}
+	_body, _err := client.ListAlertsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of tags of media assets in the public media library.
 //
 // @param request - ListAllPublicMediaTagsRequest
@@ -87674,6 +92326,200 @@ func (client *Client) ListBatchMediaProducingJobs(request *ListBatchMediaProduci
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBatchMediaProducingJobsResponse{}
 	_body, _err := client.ListBatchMediaProducingJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取频道警告
+//
+// @param request - ListChannelAlertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChannelAlertsResponse
+func (client *Client) ListChannelAlertsWithOptions(request *ListChannelAlertsRequest, runtime *util.RuntimeOptions) (_result *ListChannelAlertsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtEnd)) {
+		query["GmtEnd"] = request.GmtEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtStart)) {
+		query["GmtStart"] = request.GmtStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceArn)) {
+		query["ResourceArn"] = request.ResourceArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortByModifiedTime)) {
+		query["SortByModifiedTime"] = request.SortByModifiedTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChannelAlerts"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChannelAlertsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChannelAlertsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取频道警告
+//
+// @param request - ListChannelAlertsRequest
+//
+// @return ListChannelAlertsResponse
+func (client *Client) ListChannelAlerts(request *ListChannelAlertsRequest) (_result *ListChannelAlertsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChannelAlertsResponse{}
+	_body, _err := client.ListChannelAlertsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取频道列表
+//
+// @param request - ListChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChannelsResponse
+func (client *Client) ListChannelsWithOptions(request *ListChannelsRequest, runtime *util.RuntimeOptions) (_result *ListChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelTier)) {
+		query["ChannelTier"] = request.ChannelTier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlaybackMode)) {
+		query["PlaybackMode"] = request.PlaybackMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortByModifiedTime)) {
+		query["SortByModifiedTime"] = request.SortByModifiedTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChannels"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChannelsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChannelsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取频道列表
+//
+// @param request - ListChannelsRequest
+//
+// @return ListChannelsResponse
+func (client *Client) ListChannels(request *ListChannelsRequest) (_result *ListChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChannelsResponse{}
+	_body, _err := client.ListChannelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -89743,6 +94589,93 @@ func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *Lis
 
 // Summary:
 //
+// 获取节目列表
+//
+// @param request - ListProgramsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProgramsResponse
+func (client *Client) ListProgramsWithOptions(request *ListProgramsRequest, runtime *util.RuntimeOptions) (_result *ListProgramsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramName)) {
+		query["ProgramName"] = request.ProgramName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPrograms"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProgramsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProgramsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取节目列表
+//
+// @param request - ListProgramsRequest
+//
+// @return ListProgramsResponse
+func (client *Client) ListPrograms(request *ListProgramsRequest) (_result *ListProgramsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProgramsResponse{}
+	_body, _err := client.ListProgramsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of media assets in the public media library that meet the specified conditions. A maximum of 100 media assets can be returned.
 //
 // @param request - ListPublicMediaBasicInfosRequest
@@ -89829,6 +94762,89 @@ func (client *Client) ListPublicMediaBasicInfos(request *ListPublicMediaBasicInf
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublicMediaBasicInfosResponse{}
 	_body, _err := client.ListPublicMediaBasicInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节目单
+//
+// @param request - ListSchedulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSchedulesResponse
+func (client *Client) ListSchedulesWithOptions(request *ListSchedulesRequest, runtime *util.RuntimeOptions) (_result *ListSchedulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WindowDurationSeconds)) {
+		query["WindowDurationSeconds"] = request.WindowDurationSeconds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSchedules"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSchedulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSchedulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取节目单
+//
+// @param request - ListSchedulesRequest
+//
+// @return ListSchedulesResponse
+func (client *Client) ListSchedules(request *ListSchedulesRequest) (_result *ListSchedulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSchedulesResponse{}
+	_body, _err := client.ListSchedulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -90203,6 +95219,196 @@ func (client *Client) ListSnapshotJobs(request *ListSnapshotJobsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSnapshotJobsResponse{}
 	_body, _err := client.ListSnapshotJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举源位置
+//
+// @param request - ListSourceLocationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSourceLocationsResponse
+func (client *Client) ListSourceLocationsWithOptions(request *ListSourceLocationsRequest, runtime *util.RuntimeOptions) (_result *ListSourceLocationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterState)) {
+		query["FilterState"] = request.FilterState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortByModifiedTime)) {
+		query["SortByModifiedTime"] = request.SortByModifiedTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSourceLocations"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSourceLocationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSourceLocationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 列举源位置
+//
+// @param request - ListSourceLocationsRequest
+//
+// @return ListSourceLocationsResponse
+func (client *Client) ListSourceLocations(request *ListSourceLocationsRequest) (_result *ListSourceLocationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSourceLocationsResponse{}
+	_body, _err := client.ListSourceLocationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举源
+//
+// @param request - ListSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSourcesResponse
+func (client *Client) ListSourcesWithOptions(request *ListSourcesRequest, runtime *util.RuntimeOptions) (_result *ListSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterState)) {
+		query["FilterState"] = request.FilterState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortByModifiedTime)) {
+		query["SortByModifiedTime"] = request.SortByModifiedTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSources"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 列举源
+//
+// @param request - ListSourcesRequest
+//
+// @return ListSourcesResponse
+func (client *Client) ListSources(request *ListSourcesRequest) (_result *ListSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSourcesResponse{}
+	_body, _err := client.ListSourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -93708,6 +98914,77 @@ func (client *Client) StartAIAgentInstance(request *StartAIAgentInstanceRequest)
 
 // Summary:
 //
+// 启动频道
+//
+// @param request - StartChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartChannelResponse
+func (client *Client) StartChannelWithOptions(request *StartChannelRequest, runtime *util.RuntimeOptions) (_result *StartChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 启动频道
+//
+// @param request - StartChannelRequest
+//
+// @return StartChannelResponse
+func (client *Client) StartChannel(request *StartChannelRequest) (_result *StartChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartChannelResponse{}
+	_body, _err := client.StartChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 开启一个机器人实例
 //
 // @param tmpReq - StartRtcRobotInstanceRequest
@@ -93958,6 +99235,77 @@ func (client *Client) StopAIAgentInstance(request *StopAIAgentInstanceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAIAgentInstanceResponse{}
 	_body, _err := client.StopAIAgentInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止频道
+//
+// @param request - StopChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopChannelResponse
+func (client *Client) StopChannelWithOptions(request *StopChannelRequest, runtime *util.RuntimeOptions) (_result *StopChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 停止频道
+//
+// @param request - StopChannelRequest
+//
+// @return StopChannelResponse
+func (client *Client) StopChannel(request *StopChannelRequest) (_result *StopChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopChannelResponse{}
+	_body, _err := client.StopChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -97983,6 +103331,97 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 
 // Summary:
 //
+// 更新频道
+//
+// @param request - UpdateChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChannelResponse
+func (client *Client) UpdateChannelWithOptions(request *UpdateChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPolicy)) {
+		query["AccessPolicy"] = request.AccessPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FillerSourceLocationName)) {
+		query["FillerSourceLocationName"] = request.FillerSourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FillerSourceName)) {
+		query["FillerSourceName"] = request.FillerSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutPutConfigList)) {
+		query["OutPutConfigList"] = request.OutPutConfigList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新频道
+//
+// @param request - UpdateChannelRequest
+//
+// @return UpdateChannelResponse
+func (client *Client) UpdateChannel(request *UpdateChannelRequest) (_result *UpdateChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateChannelResponse{}
+	_body, _err := client.UpdateChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a custom template.
 //
 // @param request - UpdateCustomTemplateRequest
@@ -99403,6 +104842,105 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 
 // Summary:
 //
+// 更新节目
+//
+// @param request - UpdateProgramRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProgramResponse
+func (client *Client) UpdateProgramWithOptions(request *UpdateProgramRequest, runtime *util.RuntimeOptions) (_result *UpdateProgramResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdBreaks)) {
+		query["AdBreaks"] = request.AdBreaks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelName)) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClipRange)) {
+		query["ClipRange"] = request.ClipRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramName)) {
+		query["ProgramName"] = request.ProgramName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transition)) {
+		query["Transition"] = request.Transition
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProgram"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateProgramResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateProgramResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新节目
+//
+// @param request - UpdateProgramRequest
+//
+// @return UpdateProgramResponse
+func (client *Client) UpdateProgram(request *UpdateProgramRequest) (_result *UpdateProgramResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateProgramResponse{}
+	_body, _err := client.UpdateProgramWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改实例的配置
 //
 // @param tmpReq - UpdateRtcRobotInstanceRequest
@@ -99475,6 +105013,172 @@ func (client *Client) UpdateRtcRobotInstance(request *UpdateRtcRobotInstanceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRtcRobotInstanceResponse{}
 	_body, _err := client.UpdateRtcRobotInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新源
+//
+// @param request - UpdateSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSourceResponse
+func (client *Client) UpdateSourceWithOptions(request *UpdateSourceRequest, runtime *util.RuntimeOptions) (_result *UpdateSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HttpPackageConfigurations)) {
+		query["HttpPackageConfigurations"] = request.HttpPackageConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSource"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新源
+//
+// @param request - UpdateSourceRequest
+//
+// @return UpdateSourceResponse
+func (client *Client) UpdateSource(request *UpdateSourceRequest) (_result *UpdateSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSourceResponse{}
+	_body, _err := client.UpdateSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新源位置
+//
+// @param request - UpdateSourceLocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSourceLocationResponse
+func (client *Client) UpdateSourceLocationWithOptions(request *UpdateSourceLocationRequest, runtime *util.RuntimeOptions) (_result *UpdateSourceLocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseUrl)) {
+		query["BaseUrl"] = request.BaseUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSegmentDelivery)) {
+		query["EnableSegmentDelivery"] = request.EnableSegmentDelivery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SegmentDeliveryUrl)) {
+		query["SegmentDeliveryUrl"] = request.SegmentDeliveryUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocationName)) {
+		query["SourceLocationName"] = request.SourceLocationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSourceLocation"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSourceLocationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSourceLocationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新源位置
+//
+// @param request - UpdateSourceLocationRequest
+//
+// @return UpdateSourceLocationResponse
+func (client *Client) UpdateSourceLocation(request *UpdateSourceLocationRequest) (_result *UpdateSourceLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSourceLocationResponse{}
+	_body, _err := client.UpdateSourceLocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
