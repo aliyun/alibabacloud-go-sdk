@@ -1,3 +1,15 @@
+2025-01-22 Version: v4.4.0
+- Support API CloneDBInstance.
+- Support API CreateBackup.
+- Support API DeleteBackup.
+- Support API DescribeBackupJob.
+- Support API ListBackupJobs.
+- Support API ModifyDBInstanceDeploymentMode.
+- Update API CreateCollection: add param HnswEfConstruction.
+- Update API CreateDocumentCollection: add param HnswEfConstruction.
+- Update API CreateVectorIndex: add param HnswEfConstruction.
+
+
 2025-01-10 Version: v4.3.0
 - Support API CreateBackup.
 - Support API DeleteBackup.
