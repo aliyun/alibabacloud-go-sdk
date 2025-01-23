@@ -5134,67 +5134,67 @@ func (s *CreateReplicationVaultResponse) SetBody(v *CreateReplicationVaultRespon
 }
 
 type CreateRestoreJobRequest struct {
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the role created in the RAM of the original account for cross-account backup managed by the current account.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	// Cross-account backup type. Supported values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: Backup within the same account
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: Cross-account backup
 	//
 	// example:
 	//
 	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The original account ID managed by the current account for cross-account backup.
 	//
 	// example:
 	//
 	// 158975xxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	// The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// Details of restoration to local.
+	// Details of restoring to the local environment.
 	FailbackDetail map[string]interface{} `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
-	// The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	// The path to be restored. All documents under this path will be restored. Maximum length is 255 characters.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+	// Indicates whether it is called by the container service. Default is false.
 	//
 	// example:
 	//
 	// false
 	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	// Parameters for restoring a task
+	// Parameters for the restore job.
 	//
 	// example:
 	//
 	// {\\"includes\\":[],\\"excludes\\":[],\\"conflictPolicy\\":\\"OVERWRITE_EXISTING\\"}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The details about the Tablestore instance.
+	// Details of the Table Store instance.
 	OtsDetail *OtsTableRestoreDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	// The type of the restore destination. Valid values:
+	// The type of the restore destination data source. Possible values:
 	//
-	// 	- **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
+	//   - **ECS_FILE**: Restore to ECS file.
 	//
-	// 	- **OSS**: restores data to Object Storage Service (OSS) buckets.
+	//   - **OSS**: Restore to Alibaba Cloud OSS.
 	//
-	// 	- **NAS**: restores data to Apsara File Storage NAS file systems.
+	//   - **NAS**: Restore to Alibaba Cloud NAS.
 	//
-	// 	- **OTS_TABLE**: restores data to Tablestore instances.
+	//   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
 	//
-	// 	- **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+	//   - **UDM_ECS_ROLLBACK**: Restore to Alibaba Cloud ECS whole machine.
 	//
 	// This parameter is required.
 	//
@@ -5202,7 +5202,7 @@ type CreateRestoreJobRequest struct {
 	//
 	// ECS_FILE
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The hash value of the backup snapshot.
+	// The HASH value of the backup snapshot.
 	//
 	// example:
 	//
@@ -5214,17 +5214,17 @@ type CreateRestoreJobRequest struct {
 	//
 	// s-********************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The type of the data source. Valid values:
+	// The type of the data source. Possible values:
 	//
-	// 	- **ECS_FILE**: ECS files
+	//   - **ECS_FILE**: Restore ECS file.
 	//
-	// 	- **OSS**: OSS buckets
+	//   - **OSS**: Restore Alibaba Cloud OSS.
 	//
-	// 	- **NAS**: NAS file systems
+	//   - **NAS**: Restore Alibaba Cloud NAS.
 	//
-	// 	- **OTS_TABLE**: Tablestore instances
+	//   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
 	//
-	// 	- **UDM_ECS**: ECS instances
+	//   - **UDM_ECS**: Restore to Alibaba Cloud ECS whole machine.
 	//
 	// This parameter is required.
 	//
@@ -5232,85 +5232,85 @@ type CreateRestoreJobRequest struct {
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+	// Valid only when **RestoreType*	- is **OSS**. Indicates the name of the OSS bucket at the restore destination.
 	//
 	// example:
 	//
 	// hbr-backup-oss
 	TargetBucket *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	// The details about the container to which you want to restore data.
+	// Details of the target container.
 	//
 	// example:
 	//
 	// {\\"host\\":\\"k8s-node1\\",\\"hostPrefix\\":\\"/var/lib/kubelet/pods/4acb31fe-8577-40ff-bc8c-eccabd835f73/volumes/kubernetes.io~csi/pvc-b050b00e-ef17-4792-aab1-1642355cf1f4/mount\\",\\"pvPath\\":\\"/\\"}
 	TargetContainer *string `json:"TargetContainer,omitempty" xml:"TargetContainer,omitempty"`
-	// The ID of the container cluster to which you want to restore data.
+	// The ID of the target container cluster.
 	//
 	// example:
 	//
 	// cc-000amjsc7o1h9506oob7
 	TargetContainerClusterId *string `json:"TargetContainerClusterId,omitempty" xml:"TargetContainerClusterId,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+	// Valid only when **RestoreType*	- is **NAS**. Indicates the creation time of the file system at the restore destination.
 	//
 	// example:
 	//
 	// 1554347313
 	TargetCreateTime *int64 `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+	// Valid only when **RestoreType*	- is **NAS**. Indicates the ID of the file system at the restore destination.
 	//
 	// example:
 	//
 	// 005494
 	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+	// Valid only when **RestoreType*	- is **ECS_FILE**. Indicates the ECS instance ID at the restore destination.
 	//
 	// example:
 	//
 	// i-*********************
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The name of the Tablestore instance to which you want to restore data.
+	// The name of the target Table Store instance.
 	//
 	// example:
 	//
 	// instancename
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+	// Valid only when **RestoreType*	- is **ECS_FILE**. Indicates the file path at the restore destination.
 	//
 	// example:
 	//
 	// C:\\
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+	// Valid only when **RestoreType*	- is **OSS**. Indicates the object prefix at the restore destination.
 	//
 	// example:
 	//
 	// hbr
 	TargetPrefix *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	// The name of the table that stores the restored data.
+	// The name of the data table in the target Table Store.
 	//
 	// example:
 	//
 	// tablename
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	// The time when data is restored to the Tablestore instance. The value must be a UNIX timestamp. Unit: seconds.
+	// The time of the Table Store to be restored. UNIX timestamp, in seconds.
 	//
 	// example:
 	//
 	// 1642496881
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	// The details of ECS instance backup.
+	// Details of the whole machine backup.
 	//
 	// example:
 	//
 	// {\\"sourceInstanceId\\":\\"i-uf62te6pm3iwsyxyz66q\\",\\"bootAfterRestore\\":false}
 	UdmDetail map[string]interface{} `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+	// Valid only when **SourceType*	- is **UDM_ECS**. Indicates the target region for the restore.
 	//
 	// example:
 	//
 	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	// The ID of the backup vault to which the backup snapshot belongs.
+	// The ID of the backup vault that the snapshot belongs to.
 	//
 	// example:
 	//
@@ -5462,67 +5462,67 @@ func (s *CreateRestoreJobRequest) SetVaultId(v string) *CreateRestoreJobRequest 
 }
 
 type CreateRestoreJobShrinkRequest struct {
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the role created in the RAM of the original account for cross-account backup managed by the current account.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	// Cross-account backup type. Supported values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: Backup within the same account
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: Cross-account backup
 	//
 	// example:
 	//
 	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The original account ID managed by the current account for cross-account backup.
 	//
 	// example:
 	//
 	// 158975xxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	// The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// Details of restoration to local.
+	// Details of restoring to the local environment.
 	FailbackDetailShrink *string `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
-	// The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	// The path to be restored. All documents under this path will be restored. Maximum length is 255 characters.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+	// Indicates whether it is called by the container service. Default is false.
 	//
 	// example:
 	//
 	// false
 	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	// Parameters for restoring a task
+	// Parameters for the restore job.
 	//
 	// example:
 	//
 	// {\\"includes\\":[],\\"excludes\\":[],\\"conflictPolicy\\":\\"OVERWRITE_EXISTING\\"}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The details about the Tablestore instance.
+	// Details of the Table Store instance.
 	OtsDetailShrink *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	// The type of the restore destination. Valid values:
+	// The type of the restore destination data source. Possible values:
 	//
-	// 	- **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
+	//   - **ECS_FILE**: Restore to ECS file.
 	//
-	// 	- **OSS**: restores data to Object Storage Service (OSS) buckets.
+	//   - **OSS**: Restore to Alibaba Cloud OSS.
 	//
-	// 	- **NAS**: restores data to Apsara File Storage NAS file systems.
+	//   - **NAS**: Restore to Alibaba Cloud NAS.
 	//
-	// 	- **OTS_TABLE**: restores data to Tablestore instances.
+	//   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
 	//
-	// 	- **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+	//   - **UDM_ECS_ROLLBACK**: Restore to Alibaba Cloud ECS whole machine.
 	//
 	// This parameter is required.
 	//
@@ -5530,7 +5530,7 @@ type CreateRestoreJobShrinkRequest struct {
 	//
 	// ECS_FILE
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The hash value of the backup snapshot.
+	// The HASH value of the backup snapshot.
 	//
 	// example:
 	//
@@ -5542,17 +5542,17 @@ type CreateRestoreJobShrinkRequest struct {
 	//
 	// s-********************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The type of the data source. Valid values:
+	// The type of the data source. Possible values:
 	//
-	// 	- **ECS_FILE**: ECS files
+	//   - **ECS_FILE**: Restore ECS file.
 	//
-	// 	- **OSS**: OSS buckets
+	//   - **OSS**: Restore Alibaba Cloud OSS.
 	//
-	// 	- **NAS**: NAS file systems
+	//   - **NAS**: Restore Alibaba Cloud NAS.
 	//
-	// 	- **OTS_TABLE**: Tablestore instances
+	//   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
 	//
-	// 	- **UDM_ECS**: ECS instances
+	//   - **UDM_ECS**: Restore to Alibaba Cloud ECS whole machine.
 	//
 	// This parameter is required.
 	//
@@ -5560,85 +5560,85 @@ type CreateRestoreJobShrinkRequest struct {
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+	// Valid only when **RestoreType*	- is **OSS**. Indicates the name of the OSS bucket at the restore destination.
 	//
 	// example:
 	//
 	// hbr-backup-oss
 	TargetBucket *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	// The details about the container to which you want to restore data.
+	// Details of the target container.
 	//
 	// example:
 	//
 	// {\\"host\\":\\"k8s-node1\\",\\"hostPrefix\\":\\"/var/lib/kubelet/pods/4acb31fe-8577-40ff-bc8c-eccabd835f73/volumes/kubernetes.io~csi/pvc-b050b00e-ef17-4792-aab1-1642355cf1f4/mount\\",\\"pvPath\\":\\"/\\"}
 	TargetContainer *string `json:"TargetContainer,omitempty" xml:"TargetContainer,omitempty"`
-	// The ID of the container cluster to which you want to restore data.
+	// The ID of the target container cluster.
 	//
 	// example:
 	//
 	// cc-000amjsc7o1h9506oob7
 	TargetContainerClusterId *string `json:"TargetContainerClusterId,omitempty" xml:"TargetContainerClusterId,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+	// Valid only when **RestoreType*	- is **NAS**. Indicates the creation time of the file system at the restore destination.
 	//
 	// example:
 	//
 	// 1554347313
 	TargetCreateTime *int64 `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+	// Valid only when **RestoreType*	- is **NAS**. Indicates the ID of the file system at the restore destination.
 	//
 	// example:
 	//
 	// 005494
 	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+	// Valid only when **RestoreType*	- is **ECS_FILE**. Indicates the ECS instance ID at the restore destination.
 	//
 	// example:
 	//
 	// i-*********************
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The name of the Tablestore instance to which you want to restore data.
+	// The name of the target Table Store instance.
 	//
 	// example:
 	//
 	// instancename
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+	// Valid only when **RestoreType*	- is **ECS_FILE**. Indicates the file path at the restore destination.
 	//
 	// example:
 	//
 	// C:\\
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+	// Valid only when **RestoreType*	- is **OSS**. Indicates the object prefix at the restore destination.
 	//
 	// example:
 	//
 	// hbr
 	TargetPrefix *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	// The name of the table that stores the restored data.
+	// The name of the data table in the target Table Store.
 	//
 	// example:
 	//
 	// tablename
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	// The time when data is restored to the Tablestore instance. The value must be a UNIX timestamp. Unit: seconds.
+	// The time of the Table Store to be restored. UNIX timestamp, in seconds.
 	//
 	// example:
 	//
 	// 1642496881
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	// The details of ECS instance backup.
+	// Details of the whole machine backup.
 	//
 	// example:
 	//
 	// {\\"sourceInstanceId\\":\\"i-uf62te6pm3iwsyxyz66q\\",\\"bootAfterRestore\\":false}
 	UdmDetailShrink *string `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+	// Valid only when **SourceType*	- is **UDM_ECS**. Indicates the target region for the restore.
 	//
 	// example:
 	//
 	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	// The ID of the backup vault to which the backup snapshot belongs.
+	// The ID of the backup vault that the snapshot belongs to.
 	//
 	// example:
 	//
@@ -5790,35 +5790,35 @@ func (s *CreateRestoreJobShrinkRequest) SetVaultId(v string) *CreateRestoreJobSh
 }
 
 type CreateRestoreJobResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// Return code, 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// Description of the return message, usually \\"successful\\" when successful, and corresponding error messages when there is an error.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the restore job.
+	// Restore job ID.
 	//
 	// example:
 	//
 	// r-*********************
 	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Whether the request was successful.
 	//
-	// 	- true: The call is successful.
+	//   - true: Success
 	//
-	// 	- false: The call fails.
+	//   - false: Failure
 	//
 	// example:
 	//
@@ -6131,7 +6131,8 @@ type CreateVaultRequest struct {
 	// example:
 	//
 	// STANDARD
-	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
+	VaultType   *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
+	WormEnabled *bool   `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
 }
 
 func (s CreateVaultRequest) String() string {
@@ -6174,6 +6175,11 @@ func (s *CreateVaultRequest) SetVaultStorageClass(v string) *CreateVaultRequest 
 
 func (s *CreateVaultRequest) SetVaultType(v string) *CreateVaultRequest {
 	s.VaultType = &v
+	return s
+}
+
+func (s *CreateVaultRequest) SetWormEnabled(v bool) *CreateVaultRequest {
+	s.WormEnabled = &v
 	return s
 }
 
@@ -9039,7 +9045,7 @@ func (s *DescribeBackupClientsResponse) SetBody(v *DescribeBackupClientsResponse
 }
 
 type DescribeBackupJobs2Request struct {
-	// The keys in the filter.
+	// The keys that you want to match in the filter.
 	Filters []*DescribeBackupJobs2RequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	//
@@ -9117,7 +9123,7 @@ func (s *DescribeBackupJobs2Request) SetSourceType(v string) *DescribeBackupJobs
 }
 
 type DescribeBackupJobs2RequestFilters struct {
-	// The key in the filter. Valid values:
+	// The keys in the filter. Valid values:
 	//
 	// 	- **RegionId**: the ID of a region
 	//
@@ -9139,7 +9145,7 @@ type DescribeBackupJobs2RequestFilters struct {
 	//
 	// 	- **CompleteTime**: the end time of a backup job
 	//
-	// 	- **InstanceName**: the name of a Tablestore instance
+	// 	- **instanceName**: the name of a Tablestore instance
 	//
 	// example:
 	//
@@ -9159,17 +9165,17 @@ type DescribeBackupJobs2RequestFilters struct {
 	//
 	// 	- **LESS_THAN_OR_EQUAL**: less than or equal to
 	//
-	// 	- **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
+	// 	- **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,maximum value]` format.
 	//
 	// 	- **IN**: specifies an array as a collection. The results must fall within the collection.
 	//
-	// > If you specify the **CompleteTime*	- parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+	// >  If you specify **CompleteTime*	- as a key to query backup jobs, you cannot use the IN operator to perform a match.
 	//
 	// example:
 	//
 	// IN
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The variable values of the filter.
+	// The values that you want to match in the filter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9197,7 +9203,7 @@ func (s *DescribeBackupJobs2RequestFilters) SetValues(v []*string) *DescribeBack
 }
 
 type DescribeBackupJobs2ResponseBody struct {
-	// The backup jobs that meet the specified conditions.
+	// The returned backup jobs that meet the specified conditions.
 	BackupJobs *DescribeBackupJobs2ResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Struct"`
 	// The HTTP status code. The status code 200 indicates that the call is successful.
 	//
@@ -9217,7 +9223,7 @@ type DescribeBackupJobs2ResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries returned per page. Valid values: 1 to 99. Default value: 10.
 	//
 	// example:
 	//
@@ -9229,7 +9235,7 @@ type DescribeBackupJobs2ResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call is successful.
 	//
 	// 	- true: The call is successful.
 	//
@@ -9313,7 +9319,7 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobs) SetBackupJob(v []*DescribeBa
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
-	// The actual amount of data that is backed up after the system removes duplicate files. Unit: bytes.
+	// The actual amount of data that is backed up after duplicates are removed. Unit: bytes.
 	//
 	// example:
 	//
@@ -9325,19 +9331,19 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// 8
 	ActualFiles *int64 `json:"ActualFiles,omitempty" xml:"ActualFiles,omitempty"`
-	// The actual number of objects that are backed up by the backup job. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the actual number of objects that are backed up by the backup job.
 	//
 	// example:
 	//
 	// 6
 	ActualItems *int64 `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
-	// The backup type. Only **COMPLETE*	- may be returned, which indicates full backup.
+	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
 	//
 	// example:
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The name of the OSS bucket that is backed up. This parameter is returned only if the value of **SourceType*	- is **OSS**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **OSS**. This parameter indicates the name of the OSS bucket that is backed up.
 	//
 	// example:
 	//
@@ -9355,43 +9361,43 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// 1000
 	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	// The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
+	// The data source details at the destination. Thisparameter is returned only for data synchronization.
 	//
 	// example:
 	//
 	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
 	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
-	// The ID of the backup client. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the ID of the backup client.
 	//
 	// example:
 	//
 	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The time when the backup job was complete. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the backup job was completed. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1554347313
 	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the file system was created. This parameter is returned only if the value of **SourceType*	- is **NAS**. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **NAS**. This parameter indicates the time when the file system was created. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the backup job was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the backup job was created. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1554347313
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// The backup type. Valid values:
+	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
 	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
 	//
@@ -9407,25 +9413,25 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// 158975xxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The data source details at the destination. This parameter is returned only for data synchronization.
+	// Destination data source details. (Required only for synchronization)
 	//
 	// example:
 	//
 	// {\\"prefix\\":\\"/\\"}
 	DestDataSourceDetail *string `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
-	// The data source ID at the destination. This parameter is returned only for data synchronization.
+	// Destination data source ID. (Required only for synchronization)
 	//
 	// example:
 	//
 	// ds-000cov4ufudxklj24zdk
 	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
-	// The data source type at the destination. This parameter is returned only for data synchronization.
+	// Destination data source type. (Required only for synchronization)
 	//
 	// example:
 	//
 	// OSS
 	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
-	// The details of the ECS instance backup job.
+	// The udm backup job detail.
 	Detail *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
 	// The error message that is returned for the backup job.
 	//
@@ -9433,13 +9439,13 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// PARTIAL_COMPLETE
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The paths to the files that are excluded from the backup job. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**. The value can be up to 255 characters in length.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// The ID of the NAS file system. This parameter is returned only if the value of **SourceType*	- is **NAS**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
 	//
 	// example:
 	//
@@ -9457,7 +9463,7 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// 10
 	FilesTotal *int64 `json:"FilesTotal,omitempty" xml:"FilesTotal,omitempty"`
-	// The identifier of the cluster that is backed up in the container backup job. This parameter is returned only if the value of SourceType is CONTAINER. If the cluster is a Container Service for Kubernetes (ACK) cluster, the value of this parameter is the ACK cluster ID.
+	// The identifier of the container cluster. For a Container Service for Kubernetes (ACK) cluster, specify the cluster ID.
 	//
 	// example:
 	//
@@ -9469,7 +9475,7 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// The ID of the ECS instance. This parameter is returned only if the value of **SourceType*	- is **NAS**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **NAS**. This parameter indicates the ID of the ECS instance.
 	//
 	// example:
 	//
@@ -9481,13 +9487,13 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The number of objects that are backed up. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the number of objects that are backed up.
 	//
 	// example:
 	//
 	// 8
 	ItemsDone *int64 `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
-	// The total number of objects in the data source. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the total number of objects in the data source.
 	//
 	// example:
 	//
@@ -9505,21 +9511,21 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// jobname
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates whether Windows VSS is used to define a backup path.
 	//
 	// 	- This parameter is available only for Windows ECS instances.
 	//
-	// 	- A value of `["UseVSS":true]` indicates that the consistency between the source data and backup data is ensured while data changes occur in the source data.
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
 	//
-	// 	- If VSS is used, multiple directories cannot be backed up at a time.
+	// 	- If you use VSS, you cannot back up data from multiple directories.
 	//
 	// example:
 	//
 	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The details of the Tablestore instance.
+	// The details about the Tablestore instance.
 	OtsDetail *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	// The source paths.
+	// The backup paths.
 	Paths *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
 	// The ID of the backup plan.
 	//
@@ -9527,13 +9533,13 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// plan-20********35
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The prefix of objects that are backed up. This parameter is returned only if the value of **SourceType*	- is **OSS**.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **OSS**. This parameter indicates the prefix of objects that are backed up.
 	//
 	// example:
 	//
 	// example/
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The backup progress. Valid values: 0 to 10000. For example, a value of 10000 indicates that the progress is 100%.
+	// The backup progress. For example, 10000 indicates that the progress is 100%.
 	//
 	// example:
 	//
@@ -9541,11 +9547,11 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **ECS_FILE**: ECS file.
+	// 	- **ECS_FILE**: ECS files
 	//
-	// 	- **OSS**: OSS bucket.
+	// 	- **OSS**: OSS buckets
 	//
-	// 	- **NAS**: NAS file system.
+	// 	- **NAS**: NAS file systems
 	//
 	// example:
 	//
@@ -9557,9 +9563,9 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// 500
 	Speed *int64 `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// The throttling rules. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**. Format: `{start}:{end}:{bandwidth}`. Multiple throttling rules are separated by vertical bars (`|`). The time ranges of the throttling rules cannot overlap.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}{end}{bandwidth}`. Multiple throttling rules are separated with vertical bars (`{start}|{end}|{bandwidth}`). A specified time range cannot overlap with another one.
 	//
-	// 	- **start**: the start hour.
+	// 	- **start**: the start hour
 	//
 	// 	- **end**: the end hour
 	//
@@ -9569,31 +9575,31 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	//
 	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The time when the backup job started. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the backup job started. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1554347313
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The state of the backup job. Valid values:
+	// The status of the backup job. Valid values:
 	//
-	// 	- **COMPLETE**
+	// 	- **COMPLETE**: The backup job is completed.
 	//
-	// 	- **PARTIAL_COMPLETE**
+	// 	- **PARTIAL_COMPLETE**: The backup job is partially completed.
 	//
-	// 	- **FAILED**
+	// 	- **FAILED**: The restore job has failed.
 	//
 	// example:
 	//
 	// COMPLETE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the table in the Tablestore instance.
+	// The name of a destination table in the Tablestore instance.
 	//
 	// example:
 	//
 	// table1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The time when the backup job was last updated. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the backup job was updated. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -9890,39 +9896,7 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail struct {
 	//
 	// true
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
-	// ECS instance information, including ECS instance name, instance type, etc.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "i-xxxxxxxx": {
-	//
-	//     "hostName": "test",
-	//
-	//     "instanceName": "test",
-	//
-	//     "instanceType": "ecs.c7.xlarge",
-	//
-	//     "osType": "linux",
-	//
-	//     "diskIds": [
-	//
-	//       "d-xxxxxxxx01",
-	//
-	//       "d-xxxxxxxx02"
-	//
-	//     ],
-	//
-	//     "osNameEn": "Rocky Linux 8.8 64 bit",
-	//
-	//     "osName": "Rocky Linux 8.8 64位",
-	//
-	//     "platform": "Rocky Linux"
-	//
-	//   }
-	//
-	// }
+	// The ecs instance infos.
 	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 	// The ID of the backup snapshot.
 	//
@@ -10008,7 +9982,7 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetailDiskNativeSnaps
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail struct {
-	// The names of the tables in the Tablestore instance.
+	// The names of the destination tables in the Tablestore instance.
 	TableNames *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetailTableNames `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Struct"`
 }
 
@@ -27137,7 +27111,8 @@ type UpdateVaultRequest struct {
 	// example:
 	//
 	// vaultname
-	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	VaultName   *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	WormEnabled *bool   `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
 }
 
 func (s UpdateVaultRequest) String() string {
@@ -27165,6 +27140,11 @@ func (s *UpdateVaultRequest) SetVaultId(v string) *UpdateVaultRequest {
 
 func (s *UpdateVaultRequest) SetVaultName(v string) *UpdateVaultRequest {
 	s.VaultName = &v
+	return s
+}
+
+func (s *UpdateVaultRequest) SetWormEnabled(v bool) *UpdateVaultRequest {
+	s.WormEnabled = &v
 	return s
 }
 
@@ -27831,13 +27811,24 @@ func (client *Client) AddContainerClusterWithOptions(request *AddContainerCluste
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddContainerClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddContainerClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddContainerClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27895,13 +27886,24 @@ func (client *Client) CancelBackupJobWithOptions(request *CancelBackupJobRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelBackupJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelBackupJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelBackupJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27959,13 +27961,24 @@ func (client *Client) CancelRestoreJobWithOptions(request *CancelRestoreJobReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelRestoreJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelRestoreJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelRestoreJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28035,13 +28048,24 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28111,13 +28135,24 @@ func (client *Client) CheckRoleWithOptions(request *CheckRoleRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckRoleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckRoleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28245,13 +28280,24 @@ func (client *Client) CreateBackupJobWithOptions(tmpReq *CreateBackupJobRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateBackupJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateBackupJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateBackupJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28447,13 +28493,24 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28549,13 +28606,24 @@ func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28651,13 +28719,24 @@ func (client *Client) CreateHanaBackupPlanWithOptions(request *CreateHanaBackupP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHanaBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHanaBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28781,13 +28860,24 @@ func (client *Client) CreateHanaInstanceWithOptions(request *CreateHanaInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateHanaInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHanaInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHanaInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28917,13 +29007,24 @@ func (client *Client) CreateHanaRestoreWithOptions(request *CreateHanaRestoreReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateHanaRestoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHanaRestoreResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHanaRestoreResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28999,13 +29100,24 @@ func (client *Client) CreatePolicyBindingsWithOptions(tmpReq *CreatePolicyBindin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePolicyBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePolicyBindingsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePolicyBindingsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29093,13 +29205,24 @@ func (client *Client) CreatePolicyV2WithOptions(tmpReq *CreatePolicyV2Request, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePolicyV2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePolicyV2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29136,7 +29259,7 @@ func (client *Client) CreatePolicyV2(request *CreatePolicyV2Request) (_result *C
 //
 // Description:
 //
-// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.Call this operation in the region where the mirror vault resides, which is specified by the VaultRegionId parameter.
 //
 // @param request - CreateReplicationVaultRequest
 //
@@ -29199,13 +29322,24 @@ func (client *Client) CreateReplicationVaultWithOptions(request *CreateReplicati
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateReplicationVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateReplicationVaultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateReplicationVaultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29214,7 +29348,7 @@ func (client *Client) CreateReplicationVaultWithOptions(request *CreateReplicati
 //
 // Description:
 //
-// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.Call this operation in the region where the mirror vault resides, which is specified by the VaultRegionId parameter.
 //
 // @param request - CreateReplicationVaultRequest
 //
@@ -29232,13 +29366,13 @@ func (client *Client) CreateReplicationVault(request *CreateReplicationVaultRequ
 
 // Summary:
 //
-// Creates a restore job.
+// Create a restore job.
 //
 // Description:
 //
-//   You must create a restore job based on the specified backup snapshot and restore destination.
+// - Create a restore job based on the selected snapshot and the restore destination.
 //
-// 	- The type of the data source from which you restore data must be the same as the type of the restore destination.
+// - Currently, the data source type must match the restore destination data source type.
 //
 // @param tmpReq - CreateRestoreJobRequest
 //
@@ -29389,24 +29523,35 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRestoreJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRestoreJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRestoreJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Creates a restore job.
+// Create a restore job.
 //
 // Description:
 //
-//   You must create a restore job based on the specified backup snapshot and restore destination.
+// - Create a restore job based on the selected snapshot and the restore destination.
 //
-// 	- The type of the data source from which you restore data must be the same as the type of the restore destination.
+// - Currently, the data source type must match the restore destination data source type.
 //
 // @param request - CreateRestoreJobRequest
 //
@@ -29463,13 +29608,24 @@ func (client *Client) CreateTempFileUploadUrlWithOptions(request *CreateTempFile
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTempFileUploadUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTempFileUploadUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTempFileUploadUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29551,6 +29707,10 @@ func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtim
 		query["VaultType"] = request.VaultType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WormEnabled)) {
+		query["WormEnabled"] = request.WormEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29565,13 +29725,24 @@ func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVaultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVaultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29645,13 +29816,24 @@ func (client *Client) DeleteAirEcsInstanceWithOptions(tmpReq *DeleteAirEcsInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAirEcsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAirEcsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAirEcsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29717,13 +29899,24 @@ func (client *Client) DeleteBackupClientWithOptions(request *DeleteBackupClientR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteBackupClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteBackupClientResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteBackupClientResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29799,13 +29992,24 @@ func (client *Client) DeleteBackupClientResourceWithOptions(tmpReq *DeleteBackup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteBackupClientResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteBackupClientResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteBackupClientResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29881,13 +30085,24 @@ func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29951,13 +30166,24 @@ func (client *Client) DeleteClientWithOptions(request *DeleteClientRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteClientResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteClientResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteClientRequest
@@ -30019,13 +30245,24 @@ func (client *Client) DeleteHanaBackupPlanWithOptions(request *DeleteHanaBackupP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHanaBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHanaBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30095,13 +30332,24 @@ func (client *Client) DeleteHanaInstanceWithOptions(request *DeleteHanaInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteHanaInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHanaInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHanaInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30175,13 +30423,24 @@ func (client *Client) DeletePolicyBindingWithOptions(tmpReq *DeletePolicyBinding
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePolicyBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePolicyBindingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePolicyBindingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30239,13 +30498,24 @@ func (client *Client) DeletePolicyV2WithOptions(request *DeletePolicyV2Request, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePolicyV2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePolicyV2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30331,13 +30601,24 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30395,13 +30676,24 @@ func (client *Client) DeleteUdmDiskWithOptions(request *DeleteUdmDiskRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteUdmDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteUdmDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteUdmDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30455,13 +30747,24 @@ func (client *Client) DeleteUdmEcsInstanceWithOptions(request *DeleteUdmEcsInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteUdmEcsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteUdmEcsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteUdmEcsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30529,13 +30832,24 @@ func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVaultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVaultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30643,13 +30957,24 @@ func (client *Client) DescribeBackupClientsWithOptions(tmpReq *DescribeBackupCli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30719,13 +31044,24 @@ func (client *Client) DescribeBackupJobs2WithOptions(request *DescribeBackupJobs
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupJobs2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupJobs2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupJobs2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30791,13 +31127,24 @@ func (client *Client) DescribeBackupPlansWithOptions(request *DescribeBackupPlan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30883,13 +31230,24 @@ func (client *Client) DescribeClientsWithOptions(request *DescribeClientsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30963,13 +31321,24 @@ func (client *Client) DescribeContainerClusterWithOptions(request *DescribeConta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeContainerClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeContainerClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeContainerClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31031,13 +31400,24 @@ func (client *Client) DescribeCrossAccountsWithOptions(request *DescribeCrossAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCrossAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCrossAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCrossAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31111,13 +31491,24 @@ func (client *Client) DescribeHanaBackupPlansWithOptions(request *DescribeHanaBa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHanaBackupPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHanaBackupPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHanaBackupPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31183,13 +31574,24 @@ func (client *Client) DescribeHanaBackupSettingWithOptions(request *DescribeHana
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHanaBackupSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHanaBackupSettingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHanaBackupSettingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31315,13 +31717,24 @@ func (client *Client) DescribeHanaBackupsAsyncWithOptions(request *DescribeHanaB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHanaBackupsAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHanaBackupsAsyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHanaBackupsAsyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31399,13 +31812,24 @@ func (client *Client) DescribeHanaDatabasesWithOptions(request *DescribeHanaData
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHanaDatabasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHanaDatabasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHanaDatabasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31485,13 +31909,24 @@ func (client *Client) DescribeHanaInstancesWithOptions(request *DescribeHanaInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHanaInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHanaInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHanaInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31577,13 +32012,24 @@ func (client *Client) DescribeHanaRestoresWithOptions(request *DescribeHanaResto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHanaRestoresResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHanaRestoresResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHanaRestoresResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31651,13 +32097,24 @@ func (client *Client) DescribeHanaRetentionSettingWithOptions(request *DescribeH
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHanaRetentionSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHanaRetentionSettingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHanaRetentionSettingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31754,13 +32211,24 @@ func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOtsTableSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOtsTableSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOtsTableSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31822,13 +32290,24 @@ func (client *Client) DescribePoliciesV2WithOptions(request *DescribePoliciesV2R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePoliciesV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePoliciesV2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePoliciesV2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31910,13 +32389,24 @@ func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePolicyBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePolicyBindingsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePolicyBindingsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31978,13 +32468,24 @@ func (client *Client) DescribeRecoverableOtsInstancesWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecoverableOtsInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecoverableOtsInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecoverableOtsInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32027,13 +32528,24 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32097,13 +32609,24 @@ func (client *Client) DescribeRestoreJobs2WithOptions(request *DescribeRestoreJo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRestoreJobs2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRestoreJobs2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRestoreJobs2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32165,13 +32688,24 @@ func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32261,13 +32795,24 @@ func (client *Client) DescribeUdmSnapshotsWithOptions(tmpReq *DescribeUdmSnapsho
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeUdmSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeUdmSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeUdmSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32325,13 +32870,24 @@ func (client *Client) DescribeVaultReplicationRegionsWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVaultReplicationRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVaultReplicationRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVaultReplicationRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32415,13 +32971,24 @@ func (client *Client) DescribeVaultsWithOptions(request *DescribeVaultsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVaultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVaultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVaultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32497,13 +33064,24 @@ func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSyste
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachNasFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachNasFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachNasFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32575,13 +33153,24 @@ func (client *Client) DisableBackupPlanWithOptions(request *DisableBackupPlanReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32655,13 +33244,24 @@ func (client *Client) DisableHanaBackupPlanWithOptions(request *DisableHanaBacku
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableHanaBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableHanaBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32731,13 +33331,24 @@ func (client *Client) EnableBackupPlanWithOptions(request *EnableBackupPlanReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32811,13 +33422,24 @@ func (client *Client) EnableHanaBackupPlanWithOptions(request *EnableHanaBackupP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableHanaBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableHanaBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32887,13 +33509,24 @@ func (client *Client) ExecuteBackupPlanWithOptions(request *ExecuteBackupPlanReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32961,13 +33594,24 @@ func (client *Client) ExecutePolicyV2WithOptions(request *ExecutePolicyV2Request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecutePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecutePolicyV2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecutePolicyV2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33033,13 +33677,24 @@ func (client *Client) GenerateRamPolicyWithOptions(request *GenerateRamPolicyReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateRamPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateRamPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateRamPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33093,13 +33748,24 @@ func (client *Client) GetTempFileDownloadLinkWithOptions(request *GetTempFileDow
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTempFileDownloadLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTempFileDownloadLinkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTempFileDownloadLinkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33179,13 +33845,24 @@ func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClien
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InstallBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InstallBackupClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InstallBackupClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33236,13 +33913,24 @@ func (client *Client) OpenHbrServiceWithOptions(runtime *util.RuntimeOptions) (_
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OpenHbrServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OpenHbrServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OpenHbrServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33320,13 +34008,24 @@ func (client *Client) SearchHistoricalSnapshotsWithOptions(tmpReq *SearchHistori
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchHistoricalSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchHistoricalSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchHistoricalSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33392,13 +34091,24 @@ func (client *Client) StartHanaDatabaseAsyncWithOptions(request *StartHanaDataba
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartHanaDatabaseAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartHanaDatabaseAsyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartHanaDatabaseAsyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33468,13 +34178,24 @@ func (client *Client) StopHanaDatabaseAsyncWithOptions(request *StopHanaDatabase
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopHanaDatabaseAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopHanaDatabaseAsyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopHanaDatabaseAsyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33566,13 +34287,24 @@ func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UninstallBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UninstallBackupClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UninstallBackupClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33646,13 +34378,24 @@ func (client *Client) UninstallClientWithOptions(request *UninstallClientRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UninstallClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UninstallClientResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UninstallClientResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33790,13 +34533,24 @@ func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33906,13 +34660,24 @@ func (client *Client) UpdateClientSettingsWithOptions(request *UpdateClientSetti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateClientSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateClientSettingsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateClientSettingsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33986,13 +34751,24 @@ func (client *Client) UpdateContainerClusterWithOptions(request *UpdateContainer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateContainerClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateContainerClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateContainerClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34080,13 +34856,24 @@ func (client *Client) UpdateHanaBackupPlanWithOptions(request *UpdateHanaBackupP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHanaBackupPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHanaBackupPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34190,13 +34977,24 @@ func (client *Client) UpdateHanaBackupSettingWithOptions(request *UpdateHanaBack
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateHanaBackupSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHanaBackupSettingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHanaBackupSettingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34294,13 +35092,24 @@ func (client *Client) UpdateHanaInstanceWithOptions(request *UpdateHanaInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateHanaInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHanaInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHanaInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34380,13 +35189,24 @@ func (client *Client) UpdateHanaRetentionSettingWithOptions(request *UpdateHanaR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateHanaRetentionSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHanaRetentionSettingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHanaRetentionSettingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34490,13 +35310,24 @@ func (client *Client) UpdatePolicyBindingWithOptions(tmpReq *UpdatePolicyBinding
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePolicyBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePolicyBindingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePolicyBindingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34572,13 +35403,24 @@ func (client *Client) UpdatePolicyV2WithOptions(tmpReq *UpdatePolicyV2Request, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePolicyV2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePolicyV2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34634,6 +35476,10 @@ func (client *Client) UpdateVaultWithOptions(request *UpdateVaultRequest, runtim
 		query["VaultName"] = request.VaultName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WormEnabled)) {
+		query["WormEnabled"] = request.WormEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34648,13 +35494,24 @@ func (client *Client) UpdateVaultWithOptions(request *UpdateVaultRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVaultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVaultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34742,13 +35599,24 @@ func (client *Client) UpgradeBackupClientsWithOptions(tmpReq *UpgradeBackupClien
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeBackupClientsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeBackupClientsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34822,13 +35690,24 @@ func (client *Client) UpgradeClientWithOptions(request *UpgradeClientRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeClientResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeClientResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
