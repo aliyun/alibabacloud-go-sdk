@@ -1,3 +1,8 @@
+2025-01-23 Version: v7.2.2
+- Update API GetDISyncTask: update response param.
+- Update API ListCheckProcesses: add param MessageId.
+
+
 2024-12-13 Version: v7.2.1
 - Update API CreateFile: add param Timeout.
 - Update API GetFile: update response param.
