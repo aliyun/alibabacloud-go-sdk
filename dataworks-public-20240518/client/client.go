@@ -36650,8 +36650,6 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 }
 
 type ListRoutesRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1000
@@ -36664,6 +36662,12 @@ type ListRoutesRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Serverless_res_group_524257424564736_6831777003XXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// example:
 	//
 	// CreateTime Asc
@@ -36690,6 +36694,11 @@ func (s *ListRoutesRequest) SetPageNumber(v int32) *ListRoutesRequest {
 
 func (s *ListRoutesRequest) SetPageSize(v int32) *ListRoutesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutesRequest) SetResourceGroupId(v string) *ListRoutesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
