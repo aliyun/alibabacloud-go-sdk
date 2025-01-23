@@ -4988,13 +4988,12 @@ func (s *RunScriptRefineResponse) SetBody(v *RunScriptRefineResponseBody) *RunSc
 }
 
 type RunStyleWritingRequest struct {
-	// This parameter is required.
-	LearningSamples []*string `json:"learningSamples,omitempty" xml:"learningSamples,omitempty" type:"Repeated"`
-	// This parameter is required.
+	LearningSamples    []*string `json:"learningSamples,omitempty" xml:"learningSamples,omitempty" type:"Repeated"`
+	ProcessStage       *string   `json:"processStage,omitempty" xml:"processStage,omitempty"`
 	ReferenceMaterials []*string `json:"referenceMaterials,omitempty" xml:"referenceMaterials,omitempty" type:"Repeated"`
 	StyleFeature       *string   `json:"styleFeature,omitempty" xml:"styleFeature,omitempty"`
-	// This parameter is required.
-	WritingTheme *string `json:"writingTheme,omitempty" xml:"writingTheme,omitempty"`
+	UseSearch          *bool     `json:"useSearch,omitempty" xml:"useSearch,omitempty"`
+	WritingTheme       *string   `json:"writingTheme,omitempty" xml:"writingTheme,omitempty"`
 }
 
 func (s RunStyleWritingRequest) String() string {
@@ -5010,6 +5009,11 @@ func (s *RunStyleWritingRequest) SetLearningSamples(v []*string) *RunStyleWritin
 	return s
 }
 
+func (s *RunStyleWritingRequest) SetProcessStage(v string) *RunStyleWritingRequest {
+	s.ProcessStage = &v
+	return s
+}
+
 func (s *RunStyleWritingRequest) SetReferenceMaterials(v []*string) *RunStyleWritingRequest {
 	s.ReferenceMaterials = v
 	return s
@@ -5020,19 +5024,23 @@ func (s *RunStyleWritingRequest) SetStyleFeature(v string) *RunStyleWritingReque
 	return s
 }
 
+func (s *RunStyleWritingRequest) SetUseSearch(v bool) *RunStyleWritingRequest {
+	s.UseSearch = &v
+	return s
+}
+
 func (s *RunStyleWritingRequest) SetWritingTheme(v string) *RunStyleWritingRequest {
 	s.WritingTheme = &v
 	return s
 }
 
 type RunStyleWritingShrinkRequest struct {
-	// This parameter is required.
-	LearningSamplesShrink *string `json:"learningSamples,omitempty" xml:"learningSamples,omitempty"`
-	// This parameter is required.
+	LearningSamplesShrink    *string `json:"learningSamples,omitempty" xml:"learningSamples,omitempty"`
+	ProcessStage             *string `json:"processStage,omitempty" xml:"processStage,omitempty"`
 	ReferenceMaterialsShrink *string `json:"referenceMaterials,omitempty" xml:"referenceMaterials,omitempty"`
 	StyleFeature             *string `json:"styleFeature,omitempty" xml:"styleFeature,omitempty"`
-	// This parameter is required.
-	WritingTheme *string `json:"writingTheme,omitempty" xml:"writingTheme,omitempty"`
+	UseSearch                *bool   `json:"useSearch,omitempty" xml:"useSearch,omitempty"`
+	WritingTheme             *string `json:"writingTheme,omitempty" xml:"writingTheme,omitempty"`
 }
 
 func (s RunStyleWritingShrinkRequest) String() string {
@@ -5048,6 +5056,11 @@ func (s *RunStyleWritingShrinkRequest) SetLearningSamplesShrink(v string) *RunSt
 	return s
 }
 
+func (s *RunStyleWritingShrinkRequest) SetProcessStage(v string) *RunStyleWritingShrinkRequest {
+	s.ProcessStage = &v
+	return s
+}
+
 func (s *RunStyleWritingShrinkRequest) SetReferenceMaterialsShrink(v string) *RunStyleWritingShrinkRequest {
 	s.ReferenceMaterialsShrink = &v
 	return s
@@ -5055,6 +5068,11 @@ func (s *RunStyleWritingShrinkRequest) SetReferenceMaterialsShrink(v string) *Ru
 
 func (s *RunStyleWritingShrinkRequest) SetStyleFeature(v string) *RunStyleWritingShrinkRequest {
 	s.StyleFeature = &v
+	return s
+}
+
+func (s *RunStyleWritingShrinkRequest) SetUseSearch(v bool) *RunStyleWritingShrinkRequest {
+	s.UseSearch = &v
 	return s
 }
 
@@ -7384,13 +7402,24 @@ func (client *Client) GenerateBroadcastNewsWithOptions(workspaceId *string, requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateBroadcastNewsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateBroadcastNewsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateBroadcastNewsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7470,13 +7499,24 @@ func (client *Client) GenerateOutputFormatWithOptions(workspaceId *string, tmpRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateOutputFormatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateOutputFormatResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateOutputFormatResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7522,13 +7562,24 @@ func (client *Client) GetVideoAnalysisConfigWithOptions(workspaceId *string, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVideoAnalysisConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVideoAnalysisConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVideoAnalysisConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7584,13 +7635,24 @@ func (client *Client) GetVideoAnalysisTaskWithOptions(workspaceId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVideoAnalysisTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVideoAnalysisTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVideoAnalysisTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7664,13 +7726,24 @@ func (client *Client) ListHotTopicSummariesWithOptions(workspaceId *string, requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListHotTopicSummariesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListHotTopicSummariesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListHotTopicSummariesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7790,13 +7863,24 @@ func (client *Client) RunHotTopicChatWithOptions(workspaceId *string, tmpReq *Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunHotTopicChatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunHotTopicChatResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunHotTopicChatResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7872,13 +7956,24 @@ func (client *Client) RunHotTopicSummaryWithOptions(workspaceId *string, tmpReq 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunHotTopicSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunHotTopicSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunHotTopicSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7954,13 +8049,24 @@ func (client *Client) RunMarketingInformationExtractWithOptions(workspaceId *str
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunMarketingInformationExtractResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunMarketingInformationExtractResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunMarketingInformationExtractResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8042,13 +8148,24 @@ func (client *Client) RunMarketingInformationWritingWithOptions(workspaceId *str
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunMarketingInformationWritingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunMarketingInformationWritingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunMarketingInformationWritingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8136,13 +8253,24 @@ func (client *Client) RunNetworkContentAuditWithOptions(workspaceId *string, tmp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunNetworkContentAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunNetworkContentAuditResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunNetworkContentAuditResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8204,13 +8332,24 @@ func (client *Client) RunScriptChatWithOptions(workspaceId *string, request *Run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunScriptChatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunScriptChatResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunScriptChatResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8276,13 +8415,24 @@ func (client *Client) RunScriptContinueWithOptions(workspaceId *string, request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunScriptContinueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunScriptContinueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunScriptContinueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8364,13 +8514,24 @@ func (client *Client) RunScriptPlanningWithOptions(workspaceId *string, request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunScriptPlanningResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunScriptPlanningResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunScriptPlanningResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8428,13 +8589,24 @@ func (client *Client) RunScriptRefineWithOptions(workspaceId *string, request *R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunScriptRefineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunScriptRefineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunScriptRefineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8487,12 +8659,20 @@ func (client *Client) RunStyleWritingWithOptions(workspaceId *string, tmpReq *Ru
 		body["learningSamples"] = request.LearningSamplesShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProcessStage)) {
+		body["processStage"] = request.ProcessStage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReferenceMaterialsShrink)) {
 		body["referenceMaterials"] = request.ReferenceMaterialsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StyleFeature)) {
 		body["styleFeature"] = request.StyleFeature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseSearch)) {
+		body["useSearch"] = request.UseSearch
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WritingTheme)) {
@@ -8514,13 +8694,24 @@ func (client *Client) RunStyleWritingWithOptions(workspaceId *string, tmpReq *Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunStyleWritingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunStyleWritingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunStyleWritingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8608,13 +8799,24 @@ func (client *Client) RunTagMiningAnalysisWithOptions(workspaceId *string, tmpRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunTagMiningAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunTagMiningAnalysisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunTagMiningAnalysisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8738,13 +8940,24 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunVideoAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunVideoAnalysisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunVideoAnalysisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8860,13 +9073,24 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitVideoAnalysisTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitVideoAnalysisTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitVideoAnalysisTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8924,13 +9148,24 @@ func (client *Client) UpdateVideoAnalysisConfigWithOptions(workspaceId *string, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVideoAnalysisConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVideoAnalysisConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVideoAnalysisConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
