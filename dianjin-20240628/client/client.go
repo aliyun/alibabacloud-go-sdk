@@ -3008,8 +3008,9 @@ type GetChatQuestionRespResponseBodyDataQuestionList struct {
 	// example:
 	//
 	// 2024-11-17 10:05:00
-	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	Reply     *string `json:"reply,omitempty" xml:"reply,omitempty"`
+	GmtCreate  *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	OriContent *string `json:"oriContent,omitempty" xml:"oriContent,omitempty"`
+	Reply      *string `json:"reply,omitempty" xml:"reply,omitempty"`
 	// example:
 	//
 	// 1732846760323001
@@ -3040,6 +3041,11 @@ func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetContent(v string) *
 
 func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetGmtCreate(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetOriContent(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.OriContent = &v
 	return s
 }
 
