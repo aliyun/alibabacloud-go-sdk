@@ -2210,6 +2210,1111 @@ func (s *DescribeSnapshotsResponse) SetBody(v *DescribeSnapshotsResponseBody) *D
 	return s
 }
 
+type DescribeUserResourcesRequest struct {
+	// example:
+	//
+	// INTERNET
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// false
+	AutoRefresh *bool `json:"AutoRefresh,omitempty" xml:"AutoRefresh,omitempty"`
+	// example:
+	//
+	// 0
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryType *int32 `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 54c17e1d-2d72-4b87-aa33-25f3b3f2****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// windows
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// 7.6.0-R-20241112.222305
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// false
+	DualCenterForward *bool `json:"DualCenterForward,omitempty" xml:"DualCenterForward,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// 500
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken     *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OfficeSiteIds []*string `json:"OfficeSiteIds,omitempty" xml:"OfficeSiteIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AssignTime
+	OrderBy      *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	ProductTypes []*string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ASP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// example:
+	//
+	// false
+	QueryFotaUpdate *bool `json:"QueryFotaUpdate,omitempty" xml:"QueryFotaUpdate,omitempty"`
+	// example:
+	//
+	// false
+	RefreshFotaUpdate *bool     `json:"RefreshFotaUpdate,omitempty" xml:"RefreshFotaUpdate,omitempty"`
+	ResourceIds       []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// testName
+	ResourceName  *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// desktop
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// ASC
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+}
+
+func (s DescribeUserResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesRequest) SetAccessType(v string) *DescribeUserResourcesRequest {
+	s.AccessType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetAutoRefresh(v bool) *DescribeUserResourcesRequest {
+	s.AutoRefresh = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetCategoryId(v int32) *DescribeUserResourcesRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetCategoryType(v int32) *DescribeUserResourcesRequest {
+	s.CategoryType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetClientId(v string) *DescribeUserResourcesRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetClientType(v string) *DescribeUserResourcesRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetClientVersion(v string) *DescribeUserResourcesRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetDualCenterForward(v bool) *DescribeUserResourcesRequest {
+	s.DualCenterForward = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetLanguage(v string) *DescribeUserResourcesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetLoginRegionId(v string) *DescribeUserResourcesRequest {
+	s.LoginRegionId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetLoginToken(v string) *DescribeUserResourcesRequest {
+	s.LoginToken = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetMaxResults(v int32) *DescribeUserResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetNextToken(v string) *DescribeUserResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetOfficeSiteIds(v []*string) *DescribeUserResourcesRequest {
+	s.OfficeSiteIds = v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetOrderBy(v string) *DescribeUserResourcesRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetProductTypes(v []*string) *DescribeUserResourcesRequest {
+	s.ProductTypes = v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetProtocolType(v string) *DescribeUserResourcesRequest {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetQueryFotaUpdate(v bool) *DescribeUserResourcesRequest {
+	s.QueryFotaUpdate = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetRefreshFotaUpdate(v bool) *DescribeUserResourcesRequest {
+	s.RefreshFotaUpdate = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetResourceIds(v []*string) *DescribeUserResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetResourceName(v string) *DescribeUserResourcesRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetResourceTypes(v []*string) *DescribeUserResourcesRequest {
+	s.ResourceTypes = v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetScene(v string) *DescribeUserResourcesRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetSearchRegionId(v string) *DescribeUserResourcesRequest {
+	s.SearchRegionId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetSessionId(v string) *DescribeUserResourcesRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetSortType(v string) *DescribeUserResourcesRequest {
+	s.SortType = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBody struct {
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
+	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	QueryFailedResourceTypes []*string `json:"QueryFailedResourceTypes,omitempty" xml:"QueryFailedResourceTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1732869815062
+	RankVersion *int64 `json:"RankVersion,omitempty" xml:"RankVersion,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources []*DescribeUserResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUserResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBody) SetNextToken(v string) *DescribeUserResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBody) SetQueryFailedResourceTypes(v []*string) *DescribeUserResourcesResponseBody {
+	s.QueryFailedResourceTypes = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBody) SetRankVersion(v int64) *DescribeUserResourcesResponseBody {
+	s.RankVersion = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBody) SetRequestId(v string) *DescribeUserResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBody) SetResources(v []*DescribeUserResourcesResponseBodyResources) *DescribeUserResourcesResponseBody {
+	s.Resources = v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResources struct {
+	// example:
+	//
+	// INTERNET
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// 194101959****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// app-0001
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// App
+	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
+	// example:
+	//
+	// 0
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryType *int32 `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// example:
+	//
+	// cn-shanghai+cds-695277****
+	CdsName *string `json:"CdsName,omitempty" xml:"CdsName,omitempty"`
+	// example:
+	//
+	// ecds-0****
+	CenterResourceId *string `json:"CenterResourceId,omitempty" xml:"CenterResourceId,omitempty"`
+	// example:
+	//
+	// PrePaid
+	ChargeType *string                                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Clients    []*DescribeUserResourcesResponseBodyResourcesClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"authMode":"App"}
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// example:
+	//
+	// 2024-12-11T07:12:12Z
+	CreateTime          *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DesktopDurationList []*DescribeUserResourcesResponseBodyResourcesDesktopDurationList `json:"DesktopDurationList,omitempty" xml:"DesktopDurationList,omitempty" type:"Repeated"`
+	DesktopTimers       []*DescribeUserResourcesResponseBodyResourcesDesktopTimers       `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2025-02-22T16:00:00Z
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// stg114510
+	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
+	// example:
+	//
+	// test001
+	ExternalUserId *string                                               `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	FotaUpdate     *DescribeUserResourcesResponseBodyResourcesFotaUpdate `json:"FotaUpdate,omitempty" xml:"FotaUpdate,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	GlobalStatus *bool `json:"GlobalStatus,omitempty" xml:"GlobalStatus,omitempty"`
+	// example:
+	//
+	// false
+	HibernationBeta *bool `json:"HibernationBeta,omitempty" xml:"HibernationBeta,omitempty"`
+	// example:
+	//
+	// http://example.com/icon.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 2025-01-24T03:12:04Z
+	LastStartTime      *string   `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	LocalName          *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	ManagementStatuses []*string `json:"ManagementStatuses,omitempty" xml:"ManagementStatuses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-shanghai+dir-3367****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// Normal
+	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// example:
+	//
+	// Windows Server 2022
+	Os            *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsDescription *string `json:"OsDescription,omitempty" xml:"OsDescription,omitempty"`
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// example:
+	//
+	// AndroidCloud
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// ASP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// example:
+	//
+	// ecd-0001
+	RealDesktopId *string `json:"RealDesktopId,omitempty" xml:"RealDesktopId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Mainland
+	RegionLocation *string `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
+	// example:
+	//
+	// dg-0****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// ecd-d19tya8zi4****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Center
+	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	// example:
+	//
+	// testName01
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// Connected
+	ResourceSessionStatus *string `json:"ResourceSessionStatus,omitempty" xml:"ResourceSessionStatus,omitempty"`
+	// example:
+	//
+	// Running
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// example:
+	//
+	// Desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// SINGLE_SESSION
+	SessionType *string                                               `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	Sessions    []*DescribeUserResourcesResponseBodyResourcesSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PrePaid
+	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	// example:
+	//
+	// true
+	SupportHibernation *bool     `json:"SupportHibernation,omitempty" xml:"SupportHibernation,omitempty"`
+	SupportedActions   []*string `json:"SupportedActions,omitempty" xml:"SupportedActions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// #FFFFFF
+	ThemeColor     *string `json:"ThemeColor,omitempty" xml:"ThemeColor,omitempty"`
+	UserCustomName *string `json:"UserCustomName,omitempty" xml:"UserCustomName,omitempty"`
+	Version        *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetAccessType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.AccessType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetAliUid(v int64) *DescribeUserResourcesResponseBodyResources {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetAppId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetAuthMode(v string) *DescribeUserResourcesResponseBodyResources {
+	s.AuthMode = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetCategoryId(v int32) *DescribeUserResourcesResponseBodyResources {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetCategoryType(v int32) *DescribeUserResourcesResponseBodyResources {
+	s.CategoryType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetCdsName(v string) *DescribeUserResourcesResponseBodyResources {
+	s.CdsName = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetCenterResourceId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.CenterResourceId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetChargeType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetClients(v []*DescribeUserResourcesResponseBodyResourcesClients) *DescribeUserResourcesResponseBodyResources {
+	s.Clients = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetConnectionProperties(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ConnectionProperties = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetCreateTime(v string) *DescribeUserResourcesResponseBodyResources {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetDesktopDurationList(v []*DescribeUserResourcesResponseBodyResourcesDesktopDurationList) *DescribeUserResourcesResponseBodyResources {
+	s.DesktopDurationList = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetDesktopTimers(v []*DescribeUserResourcesResponseBodyResourcesDesktopTimers) *DescribeUserResourcesResponseBodyResources {
+	s.DesktopTimers = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetExpiredTime(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetExternalDomainId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ExternalDomainId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetExternalUserId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetFotaUpdate(v *DescribeUserResourcesResponseBodyResourcesFotaUpdate) *DescribeUserResourcesResponseBodyResources {
+	s.FotaUpdate = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetGlobalStatus(v bool) *DescribeUserResourcesResponseBodyResources {
+	s.GlobalStatus = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetHibernationBeta(v bool) *DescribeUserResourcesResponseBodyResources {
+	s.HibernationBeta = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetIcon(v string) *DescribeUserResourcesResponseBodyResources {
+	s.Icon = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetLastStartTime(v string) *DescribeUserResourcesResponseBodyResources {
+	s.LastStartTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetLocalName(v string) *DescribeUserResourcesResponseBodyResources {
+	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetManagementStatuses(v []*string) *DescribeUserResourcesResponseBodyResources {
+	s.ManagementStatuses = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetOfficeSiteId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetOrderStatus(v string) *DescribeUserResourcesResponseBodyResources {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetOs(v string) *DescribeUserResourcesResponseBodyResources {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetOsDescription(v string) *DescribeUserResourcesResponseBodyResources {
+	s.OsDescription = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetOsType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.OsType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetProductType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetProtocolType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetRealDesktopId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.RealDesktopId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetRegionId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetRegionLocation(v string) *DescribeUserResourcesResponseBodyResources {
+	s.RegionLocation = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetResourceGroupId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetResourceId(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetResourceLevel(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ResourceLevel = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetResourceName(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetResourceSessionStatus(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ResourceSessionStatus = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetResourceStatus(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetResourceType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetSessionType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.SessionType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetSessions(v []*DescribeUserResourcesResponseBodyResourcesSessions) *DescribeUserResourcesResponseBodyResources {
+	s.Sessions = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetSubPayType(v string) *DescribeUserResourcesResponseBodyResources {
+	s.SubPayType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetSupportHibernation(v bool) *DescribeUserResourcesResponseBodyResources {
+	s.SupportHibernation = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetSupportedActions(v []*string) *DescribeUserResourcesResponseBodyResources {
+	s.SupportedActions = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetThemeColor(v string) *DescribeUserResourcesResponseBodyResources {
+	s.ThemeColor = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetUserCustomName(v string) *DescribeUserResourcesResponseBodyResources {
+	s.UserCustomName = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetVersion(v string) *DescribeUserResourcesResponseBodyResources {
+	s.Version = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResourcesClients struct {
+	// example:
+	//
+	// windows
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// ON
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesClients) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesClients) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesClients) SetClientType(v string) *DescribeUserResourcesResponseBodyResourcesClients {
+	s.ClientType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesClients) SetStatus(v string) *DescribeUserResourcesResponseBodyResourcesClients {
+	s.Status = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResourcesDesktopDurationList struct {
+	// example:
+	//
+	// mdp-0bxls4qpi6bl6****
+	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// example:
+	//
+	// 2025-01-17T07:01Z
+	PackageCreationTime *string `json:"PackageCreationTime,omitempty" xml:"PackageCreationTime,omitempty"`
+	// example:
+	//
+	// 2025-02-17T15:59Z
+	PackageExpiredTime *string `json:"PackageExpiredTime,omitempty" xml:"PackageExpiredTime,omitempty"`
+	// example:
+	//
+	// mdp-0bxls4qpi6bl6****
+	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// example:
+	//
+	// Available
+	PackageStatus *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
+	// example:
+	//
+	// NORMAL_PACKAGE
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// example:
+	//
+	// Postpaid
+	PackageUsedUpStrategy *string `json:"PackageUsedUpStrategy,omitempty" xml:"PackageUsedUpStrategy,omitempty"`
+	// example:
+	//
+	// 2025-02-17T15:59Z
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
+	// example:
+	//
+	// 2025-01-17T07:01Z
+	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
+	// example:
+	//
+	// 199
+	PostPaidLimitFee *float32 `json:"PostPaidLimitFee,omitempty" xml:"PostPaidLimitFee,omitempty"`
+	// example:
+	//
+	// 432000
+	TotalDuration *int64 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
+	// example:
+	//
+	// 16850
+	UsedDuration *int64 `json:"UsedDuration,omitempty" xml:"UsedDuration,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesDesktopDurationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesDesktopDurationList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetOrderInstanceId(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.OrderInstanceId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPackageCreationTime(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PackageCreationTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPackageExpiredTime(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PackageExpiredTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPackageId(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PackageId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPackageStatus(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PackageStatus = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPackageType(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PackageType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPackageUsedUpStrategy(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PackageUsedUpStrategy = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPeriodEndTime(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PeriodEndTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPeriodStartTime(v string) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PeriodStartTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetPostPaidLimitFee(v float32) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.PostPaidLimitFee = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetTotalDuration(v int64) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.TotalDuration = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) SetUsedDuration(v int64) *DescribeUserResourcesResponseBodyResourcesDesktopDurationList {
+	s.UsedDuration = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResourcesDesktopTimers struct {
+	// example:
+	//
+	// false
+	AllowClientSetting *string `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
+	// example:
+	//
+	// 0 30 13 ? 	- 1-7
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// example:
+	//
+	// false
+	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	// example:
+	//
+	// 2025-01-21T11:37Z
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// 15
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// Hibernate
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// example:
+	//
+	// RESET_TYPE_SYSTEM
+	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// example:
+	//
+	// TimerBoot
+	TimerType *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesDesktopTimers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesDesktopTimers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetAllowClientSetting(v string) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.AllowClientSetting = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetCronExpression(v string) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetEnforce(v bool) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.Enforce = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetExecutionTime(v string) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.ExecutionTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetInterval(v int32) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetOperationType(v string) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.OperationType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetResetType(v string) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.ResetType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesDesktopTimers) SetTimerType(v string) *DescribeUserResourcesResponseBodyResourcesDesktopTimers {
+	s.TimerType = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResourcesFotaUpdate struct {
+	// example:
+	//
+	// aliyun
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// 2.7.0-R-20250122.154826
+	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// example:
+	//
+	// 2.7.0-R-20250125.154826
+	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
+	// example:
+	//
+	// 2.6.9-R-20250123.153415
+	NewDcdVersion *string `json:"NewDcdVersion,omitempty" xml:"NewDcdVersion,omitempty"`
+	// example:
+	//
+	// wuying-asp_single_session_desktop_win_x64
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// example:
+	//
+	// up
+	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// example:
+	//
+	// up
+	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
+	// example:
+	//
+	// up
+	ReleaseNoteJp *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
+	// example:
+	//
+	// 474981930
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesFotaUpdate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesFotaUpdate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetChannel(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.Channel = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetCurrentAppVersion(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.CurrentAppVersion = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetForce(v bool) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.Force = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetNewAppVersion(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.NewAppVersion = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetNewDcdVersion(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.NewDcdVersion = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetProject(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.Project = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetReleaseNote(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.ReleaseNote = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetReleaseNoteEn(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.ReleaseNoteEn = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetReleaseNoteJp(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.ReleaseNoteJp = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetSize(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
+	s.Size = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResourcesSessions struct {
+	// example:
+	//
+	// 2025-01-22T11:03:36Z
+	ResourceSessionStartTime *string `json:"ResourceSessionStartTime,omitempty" xml:"ResourceSessionStartTime,omitempty"`
+	// example:
+	//
+	// user001
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// benchmark_test@test.shenzhen
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesSessions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesSessions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesSessions) SetResourceSessionStartTime(v string) *DescribeUserResourcesResponseBodyResourcesSessions {
+	s.ResourceSessionStartTime = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesSessions) SetUserId(v string) *DescribeUserResourcesResponseBodyResourcesSessions {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesSessions) SetUserPrincipalName(v string) *DescribeUserResourcesResponseBodyResourcesSessions {
+	s.UserPrincipalName = &v
+	return s
+}
+
+type DescribeUserResourcesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponse) SetHeaders(v map[string]*string) *DescribeUserResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponse) SetStatusCode(v int32) *DescribeUserResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponse) SetBody(v *DescribeUserResourcesResponseBody) *DescribeUserResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type EncryptPasswordRequest struct {
 	// This parameter is required.
 	//
@@ -5714,13 +6819,24 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApproveFotaUpdateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApproveFotaUpdateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApproveFotaUpdateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5798,13 +6914,24 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangePasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangePasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangePasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ChangePasswordRequest
@@ -5870,13 +6997,24 @@ func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFinger
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFingerPrintTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFingerPrintTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFingerPrintTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteFingerPrintTemplateRequest
@@ -5930,13 +7068,24 @@ func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectorie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDirectoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDirectoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDirectoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDirectoriesRequest
@@ -5994,13 +7143,24 @@ func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFingerPrintTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFingerPrintTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFingerPrintTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeFingerPrintTemplatesRequest
@@ -6122,13 +7282,24 @@ func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGlobalDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGlobalDesktopsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGlobalDesktopsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeGlobalDesktopsRequest
@@ -6182,13 +7353,24 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOfficeSitesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOfficeSitesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOfficeSitesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeOfficeSitesRequest
@@ -6238,13 +7420,24 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeRegionsRequest
@@ -6322,13 +7515,24 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6342,6 +7546,177 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSnapshotsResponse{}
 	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户资源列表
+//
+// @param request - DescribeUserResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserResourcesResponse
+func (client *Client) DescribeUserResourcesWithOptions(request *DescribeUserResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeUserResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessType)) {
+		query["AccessType"] = request.AccessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRefresh)) {
+		query["AutoRefresh"] = request.AutoRefresh
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryType)) {
+		query["CategoryType"] = request.CategoryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		query["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
+		query["ClientVersion"] = request.ClientVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DualCenterForward)) {
+		query["DualCenterForward"] = request.DualCenterForward
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
+		query["LoginRegionId"] = request.LoginRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
+		query["LoginToken"] = request.LoginToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeSiteIds)) {
+		query["OfficeSiteIds"] = request.OfficeSiteIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductTypes)) {
+		query["ProductTypes"] = request.ProductTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtocolType)) {
+		query["ProtocolType"] = request.ProtocolType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryFotaUpdate)) {
+		query["QueryFotaUpdate"] = request.QueryFotaUpdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefreshFotaUpdate)) {
+		query["RefreshFotaUpdate"] = request.RefreshFotaUpdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		query["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchRegionId)) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserResources"),
+		Version:     tea.String("2020-10-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeUserResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeUserResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询用户资源列表
+//
+// @param request - DescribeUserResourcesRequest
+//
+// @return DescribeUserResourcesResponse
+func (client *Client) DescribeUserResources(request *DescribeUserResourcesRequest) (_result *DescribeUserResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserResourcesResponse{}
+	_body, _err := client.DescribeUserResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6402,13 +7777,24 @@ func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EncryptPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EncryptPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EncryptPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - EncryptPasswordRequest
@@ -6474,13 +7860,24 @@ func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetClou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCloudDriveServiceMountTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCloudDriveServiceMountTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCloudDriveServiceMountTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6586,13 +7983,24 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConnectionTicketResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConnectionTicketResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetConnectionTicketRequest
@@ -6710,13 +8118,24 @@ func (client *Client) GetLoginTokenWithOptions(request *GetLoginTokenRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLoginTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLoginTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLoginTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6778,13 +8197,24 @@ func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &IsKeepAliveResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &IsKeepAliveResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &IsKeepAliveResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6846,13 +8276,24 @@ func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgen
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryEdsAgentReportConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryEdsAgentReportConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryEdsAgentReportConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6942,13 +8383,24 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebootDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebootDesktopsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebootDesktopsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7022,13 +8474,24 @@ func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefreshLoginTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefreshLoginTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefreshLoginTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - RefreshLoginTokenRequest
@@ -7090,13 +8553,24 @@ func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReportEdsAgentInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReportEdsAgentInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReportEdsAgentInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7166,13 +8640,24 @@ func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReportSessionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReportSessionStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReportSessionStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ReportSessionStatusRequest
@@ -7242,13 +8727,24 @@ func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ResetPasswordRequest
@@ -7322,13 +8818,24 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7406,13 +8913,24 @@ func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SendTokenCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SendTokenCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SendTokenCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SendTokenCodeRequest
@@ -7494,13 +9012,24 @@ func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetFingerPrintTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetFingerPrintTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetFingerPrintTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SetFingerPrintTemplateRequest
@@ -7570,13 +9099,24 @@ func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetFingerPrintTemplateDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetFingerPrintTemplateDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetFingerPrintTemplateDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SetFingerPrintTemplateDescriptionRequest
@@ -7662,13 +9202,24 @@ func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartDesktopsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartDesktopsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7750,13 +9301,24 @@ func (client *Client) StartRecordContentWithOptions(request *StartRecordContentR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartRecordContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartRecordContentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartRecordContentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - StartRecordContentRequest
@@ -7842,13 +9404,24 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopDesktopsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopDesktopsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7926,13 +9499,24 @@ func (client *Client) StopRecordContentWithOptions(request *StopRecordContentReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopRecordContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopRecordContentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopRecordContentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - StopRecordContentRequest
@@ -8006,13 +9590,24 @@ func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnbindUserDesktopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindUserDesktopResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindUserDesktopResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8090,13 +9685,24 @@ func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VerifyCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VerifyCredentialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VerifyCredentialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - VerifyCredentialRequest
