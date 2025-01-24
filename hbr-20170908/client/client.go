@@ -1585,6 +1585,7 @@ type CreateBackupPlanRequest struct {
 	//
 	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
 	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
 	//
 	// example:
@@ -1612,7 +1613,8 @@ type CreateBackupPlanRequest struct {
 	// example:
 	//
 	// 15897534xxxx4625
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	DataSourceId       *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// Destination data source details. (Required only for synchronization)
 	//
 	// example:
@@ -1808,6 +1810,11 @@ func (s *CreateBackupPlanRequest) SetChangeListPath(v string) *CreateBackupPlanR
 	return s
 }
 
+func (s *CreateBackupPlanRequest) SetClusterId(v string) *CreateBackupPlanRequest {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *CreateBackupPlanRequest) SetCreateTime(v int64) *CreateBackupPlanRequest {
 	s.CreateTime = &v
 	return s
@@ -1825,6 +1832,11 @@ func (s *CreateBackupPlanRequest) SetCrossAccountType(v string) *CreateBackupPla
 
 func (s *CreateBackupPlanRequest) SetCrossAccountUserId(v int64) *CreateBackupPlanRequest {
 	s.CrossAccountUserId = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetDataSourceId(v string) *CreateBackupPlanRequest {
+	s.DataSourceId = &v
 	return s
 }
 
@@ -2067,6 +2079,7 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
 	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
 	//
 	// example:
@@ -2094,7 +2107,8 @@ type CreateBackupPlanShrinkRequest struct {
 	// example:
 	//
 	// 15897534xxxx4625
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	DataSourceId       *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// Destination data source details. (Required only for synchronization)
 	//
 	// example:
@@ -2290,6 +2304,11 @@ func (s *CreateBackupPlanShrinkRequest) SetChangeListPath(v string) *CreateBacku
 	return s
 }
 
+func (s *CreateBackupPlanShrinkRequest) SetClusterId(v string) *CreateBackupPlanShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *CreateBackupPlanShrinkRequest) SetCreateTime(v int64) *CreateBackupPlanShrinkRequest {
 	s.CreateTime = &v
 	return s
@@ -2307,6 +2326,11 @@ func (s *CreateBackupPlanShrinkRequest) SetCrossAccountType(v string) *CreateBac
 
 func (s *CreateBackupPlanShrinkRequest) SetCrossAccountUserId(v int64) *CreateBackupPlanShrinkRequest {
 	s.CrossAccountUserId = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetDataSourceId(v string) *CreateBackupPlanShrinkRequest {
+	s.DataSourceId = &v
 	return s
 }
 
@@ -28369,6 +28393,10 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 		query["ChangeListPath"] = request.ChangeListPath
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CreateTime)) {
 		query["CreateTime"] = request.CreateTime
 	}
@@ -28442,6 +28470,10 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		body["DataSourceId"] = request.DataSourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Exclude)) {
 		body["Exclude"] = request.Exclude
 	}
