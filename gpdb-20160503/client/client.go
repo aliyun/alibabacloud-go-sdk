@@ -526,6 +526,163 @@ func (s *BindDBResourceGroupWithRoleResponse) SetBody(v *BindDBResourceGroupWith
 	return s
 }
 
+type CancelCreateIndexJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CancelCreateIndexJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCreateIndexJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCreateIndexJobRequest) SetCollection(v string) *CancelCreateIndexJobRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobRequest) SetDBInstanceId(v string) *CancelCreateIndexJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobRequest) SetJobId(v string) *CancelCreateIndexJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobRequest) SetNamespace(v string) *CancelCreateIndexJobRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobRequest) SetNamespacePassword(v string) *CancelCreateIndexJobRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobRequest) SetOwnerId(v int64) *CancelCreateIndexJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobRequest) SetRegionId(v string) *CancelCreateIndexJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobRequest) SetWorkspaceId(v string) *CancelCreateIndexJobRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CancelCreateIndexJobResponseBody struct {
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CancelCreateIndexJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCreateIndexJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCreateIndexJobResponseBody) SetMessage(v string) *CancelCreateIndexJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobResponseBody) SetRequestId(v string) *CancelCreateIndexJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobResponseBody) SetStatus(v string) *CancelCreateIndexJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CancelCreateIndexJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelCreateIndexJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelCreateIndexJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCreateIndexJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCreateIndexJobResponse) SetHeaders(v map[string]*string) *CancelCreateIndexJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelCreateIndexJobResponse) SetStatusCode(v int32) *CancelCreateIndexJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelCreateIndexJobResponse) SetBody(v *CancelCreateIndexJobResponseBody) *CancelCreateIndexJobResponse {
+	s.Body = v
+	return s
+}
+
 type CancelUploadDocumentJobRequest struct {
 	// The name of the document collection.
 	//
@@ -4175,6 +4332,185 @@ func (s *CreateHadoopDataSourceResponse) SetStatusCode(v int32) *CreateHadoopDat
 }
 
 func (s *CreateHadoopDataSourceResponse) SetBody(v *CreateHadoopDataSourceResponseBody) *CreateHadoopDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIndexRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	IndexConfig  *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	// example:
+	//
+	// title
+	IndexField *string `json:"IndexField,omitempty" xml:"IndexField,omitempty"`
+	// example:
+	//
+	// testindex
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndexRequest) SetCollection(v string) *CreateIndexRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetDBInstanceId(v string) *CreateIndexRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetIndexConfig(v string) *CreateIndexRequest {
+	s.IndexConfig = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetIndexField(v string) *CreateIndexRequest {
+	s.IndexField = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetIndexName(v string) *CreateIndexRequest {
+	s.IndexName = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetNamespace(v string) *CreateIndexRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetNamespacePassword(v string) *CreateIndexRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetOwnerId(v int64) *CreateIndexRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetRegionId(v string) *CreateIndexRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetWorkspaceId(v string) *CreateIndexRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateIndexResponseBody struct {
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// Successfully create job
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndexResponseBody) SetJobId(v string) *CreateIndexResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateIndexResponseBody) SetMessage(v string) *CreateIndexResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateIndexResponseBody) SetRequestId(v string) *CreateIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIndexResponseBody) SetStatus(v string) *CreateIndexResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateIndexResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndexResponse) SetHeaders(v map[string]*string) *CreateIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexResponse {
 	s.Body = v
 	return s
 }
@@ -8433,6 +8769,163 @@ func (s *DeleteHadoopDataSourceResponse) SetBody(v *DeleteHadoopDataSourceRespon
 	return s
 }
 
+type DeleteIndexRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testindex
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DeleteIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexRequest) SetCollection(v string) *DeleteIndexRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DeleteIndexRequest) SetDBInstanceId(v string) *DeleteIndexRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteIndexRequest) SetIndexName(v string) *DeleteIndexRequest {
+	s.IndexName = &v
+	return s
+}
+
+func (s *DeleteIndexRequest) SetNamespace(v string) *DeleteIndexRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteIndexRequest) SetNamespacePassword(v string) *DeleteIndexRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DeleteIndexRequest) SetOwnerId(v int64) *DeleteIndexRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteIndexRequest) SetRegionId(v string) *DeleteIndexRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteIndexRequest) SetWorkspaceId(v string) *DeleteIndexRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteIndexResponseBody struct {
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexResponseBody) SetMessage(v string) *DeleteIndexResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteIndexResponseBody) SetRequestId(v string) *DeleteIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteIndexResponseBody) SetStatus(v string) *DeleteIndexResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteIndexResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexResponse) SetHeaders(v map[string]*string) *DeleteIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIndexResponse) SetStatusCode(v int32) *DeleteIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIndexResponse) SetBody(v *DeleteIndexResponseBody) *DeleteIndexResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteJDBCDataSourceRequest struct {
 	// Instance ID.
 	//
@@ -10917,6 +11410,245 @@ func (s *DescribeCollectionResponse) SetStatusCode(v int32) *DescribeCollectionR
 }
 
 func (s *DescribeCollectionResponse) SetBody(v *DescribeCollectionResponseBody) *DescribeCollectionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCreateIndexJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DescribeCreateIndexJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCreateIndexJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCreateIndexJobRequest) SetCollection(v string) *DescribeCreateIndexJobRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobRequest) SetDBInstanceId(v string) *DescribeCreateIndexJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobRequest) SetJobId(v string) *DescribeCreateIndexJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobRequest) SetNamespace(v string) *DescribeCreateIndexJobRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobRequest) SetNamespacePassword(v string) *DescribeCreateIndexJobRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobRequest) SetOwnerId(v int64) *DescribeCreateIndexJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobRequest) SetRegionId(v string) *DescribeCreateIndexJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobRequest) SetWorkspaceId(v string) *DescribeCreateIndexJobRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DescribeCreateIndexJobResponseBody struct {
+	Job *DescribeCreateIndexJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCreateIndexJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCreateIndexJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCreateIndexJobResponseBody) SetJob(v *DescribeCreateIndexJobResponseBodyJob) *DescribeCreateIndexJobResponseBody {
+	s.Job = v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBody) SetMessage(v string) *DescribeCreateIndexJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBody) SetRequestId(v string) *DescribeCreateIndexJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBody) SetStatus(v string) *DescribeCreateIndexJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeCreateIndexJobResponseBodyJob struct {
+	// example:
+	//
+	// false
+	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// 2024-01-08 16:52:04.864664
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// Failed to connect database.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Job ID。
+	//
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 20
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-01-08 16:53:04.864664
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeCreateIndexJobResponseBodyJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCreateIndexJobResponseBodyJob) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCreateIndexJobResponseBodyJob) SetCompleted(v bool) *DescribeCreateIndexJobResponseBodyJob {
+	s.Completed = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBodyJob) SetCreateTime(v string) *DescribeCreateIndexJobResponseBodyJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBodyJob) SetError(v string) *DescribeCreateIndexJobResponseBodyJob {
+	s.Error = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBodyJob) SetId(v string) *DescribeCreateIndexJobResponseBodyJob {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBodyJob) SetProgress(v int32) *DescribeCreateIndexJobResponseBodyJob {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBodyJob) SetStatus(v string) *DescribeCreateIndexJobResponseBodyJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponseBodyJob) SetUpdateTime(v string) *DescribeCreateIndexJobResponseBodyJob {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeCreateIndexJobResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCreateIndexJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCreateIndexJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCreateIndexJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCreateIndexJobResponse) SetHeaders(v map[string]*string) *DescribeCreateIndexJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponse) SetStatusCode(v int32) *DescribeCreateIndexJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCreateIndexJobResponse) SetBody(v *DescribeCreateIndexJobResponseBody) *DescribeCreateIndexJobResponse {
 	s.Body = v
 	return s
 }
@@ -21208,6 +21940,199 @@ func (s *DescribeIMVInfosResponse) SetBody(v *DescribeIMVInfosResponseBody) *Des
 	return s
 }
 
+type DescribeIndexRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testindex
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DescribeIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIndexRequest) SetCollection(v string) *DescribeIndexRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DescribeIndexRequest) SetDBInstanceId(v string) *DescribeIndexRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeIndexRequest) SetIndexName(v string) *DescribeIndexRequest {
+	s.IndexName = &v
+	return s
+}
+
+func (s *DescribeIndexRequest) SetNamespace(v string) *DescribeIndexRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeIndexRequest) SetNamespacePassword(v string) *DescribeIndexRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DescribeIndexRequest) SetOwnerId(v int64) *DescribeIndexRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeIndexRequest) SetRegionId(v string) *DescribeIndexRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeIndexRequest) SetWorkspaceId(v string) *DescribeIndexRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DescribeIndexResponseBody struct {
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// CREATE INDEX testindex ON mynamespace. testcollection
+	IndexDef *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
+	// example:
+	//
+	// testindex
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIndexResponseBody) SetCollection(v string) *DescribeIndexResponseBody {
+	s.Collection = &v
+	return s
+}
+
+func (s *DescribeIndexResponseBody) SetIndexDef(v string) *DescribeIndexResponseBody {
+	s.IndexDef = &v
+	return s
+}
+
+func (s *DescribeIndexResponseBody) SetIndexName(v string) *DescribeIndexResponseBody {
+	s.IndexName = &v
+	return s
+}
+
+func (s *DescribeIndexResponseBody) SetMessage(v string) *DescribeIndexResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeIndexResponseBody) SetNamespace(v string) *DescribeIndexResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeIndexResponseBody) SetRequestId(v string) *DescribeIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeIndexResponseBody) SetStatus(v string) *DescribeIndexResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeIndexResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIndexResponse) SetHeaders(v map[string]*string) *DescribeIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIndexResponse) SetStatusCode(v int32) *DescribeIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeIndexResponse) SetBody(v *DescribeIndexResponseBody) *DescribeIndexResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeJDBCDataSourceRequest struct {
 	// The instance ID.
 	//
@@ -31324,6 +32249,224 @@ func (s *ListExternalDataSourcesResponse) SetStatusCode(v int32) *ListExternalDa
 }
 
 func (s *ListExternalDataSourcesResponse) SetBody(v *ListExternalDataSourcesResponseBody) *ListExternalDataSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListIndicesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListIndicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesRequest) SetCollection(v string) *ListIndicesRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetDBInstanceId(v string) *ListIndicesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetNamespace(v string) *ListIndicesRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetNamespacePassword(v string) *ListIndicesRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetOwnerId(v int64) *ListIndicesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetRegionId(v string) *ListIndicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetWorkspaceId(v string) *ListIndicesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListIndicesResponseBody struct {
+	Indices *ListIndicesResponseBodyIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListIndicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBody) SetIndices(v *ListIndicesResponseBodyIndices) *ListIndicesResponseBody {
+	s.Indices = v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetMessage(v string) *ListIndicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetRequestId(v string) *ListIndicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetStatus(v string) *ListIndicesResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListIndicesResponseBodyIndices struct {
+	Indices []*ListIndicesResponseBodyIndicesIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
+}
+
+func (s ListIndicesResponseBodyIndices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponseBodyIndices) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBodyIndices) SetIndices(v []*ListIndicesResponseBodyIndicesIndices) *ListIndicesResponseBodyIndices {
+	s.Indices = v
+	return s
+}
+
+type ListIndicesResponseBodyIndicesIndices struct {
+	// example:
+	//
+	// testcollection
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// CREATE INDEX testindex ON mynamespace. testcollection
+	IndexDef *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
+	// example:
+	//
+	// testindex
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ListIndicesResponseBodyIndicesIndices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponseBodyIndicesIndices) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBodyIndicesIndices) SetCollection(v string) *ListIndicesResponseBodyIndicesIndices {
+	s.Collection = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyIndicesIndices) SetIndexDef(v string) *ListIndicesResponseBodyIndicesIndices {
+	s.IndexDef = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyIndicesIndices) SetIndexName(v string) *ListIndicesResponseBodyIndicesIndices {
+	s.IndexName = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyIndicesIndices) SetNamespace(v string) *ListIndicesResponseBodyIndicesIndices {
+	s.Namespace = &v
+	return s
+}
+
+type ListIndicesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIndicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIndicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponse) SetHeaders(v map[string]*string) *ListIndicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIndicesResponse) SetStatusCode(v int32) *ListIndicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIndicesResponse) SetBody(v *ListIndicesResponseBody) *ListIndicesResponse {
 	s.Body = v
 	return s
 }
@@ -46191,6 +47334,105 @@ func (client *Client) BindDBResourceGroupWithRole(request *BindDBResourceGroupWi
 
 // Summary:
 //
+// 取消创建索引任务
+//
+// @param request - CancelCreateIndexJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelCreateIndexJobResponse
+func (client *Client) CancelCreateIndexJobWithOptions(request *CancelCreateIndexJobRequest, runtime *util.RuntimeOptions) (_result *CancelCreateIndexJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelCreateIndexJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelCreateIndexJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelCreateIndexJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 取消创建索引任务
+//
+// @param request - CancelCreateIndexJobRequest
+//
+// @return CancelCreateIndexJobResponse
+func (client *Client) CancelCreateIndexJob(request *CancelCreateIndexJobRequest) (_result *CancelCreateIndexJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelCreateIndexJobResponse{}
+	_body, _err := client.CancelCreateIndexJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels an asynchronous document upload job based on the job ID.
 //
 // Description:
@@ -48001,6 +49243,113 @@ func (client *Client) CreateHadoopDataSource(request *CreateHadoopDataSourceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHadoopDataSourceResponse{}
 	_body, _err := client.CreateHadoopDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建索引
+//
+// @param request - CreateIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIndexResponse
+func (client *Client) CreateIndexWithOptions(request *CreateIndexRequest, runtime *util.RuntimeOptions) (_result *CreateIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexConfig)) {
+		query["IndexConfig"] = request.IndexConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexField)) {
+		query["IndexField"] = request.IndexField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexName)) {
+		query["IndexName"] = request.IndexName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIndex"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateIndexResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateIndexResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建索引
+//
+// @param request - CreateIndexRequest
+//
+// @return CreateIndexResponse
+func (client *Client) CreateIndex(request *CreateIndexRequest) (_result *CreateIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIndexResponse{}
+	_body, _err := client.CreateIndexWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50102,6 +51451,105 @@ func (client *Client) DeleteHadoopDataSource(request *DeleteHadoopDataSourceRequ
 
 // Summary:
 //
+// 删除索引
+//
+// @param request - DeleteIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIndexResponse
+func (client *Client) DeleteIndexWithOptions(request *DeleteIndexRequest, runtime *util.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexName)) {
+		query["IndexName"] = request.IndexName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIndex"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteIndexResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteIndexResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除索引
+//
+// @param request - DeleteIndexRequest
+//
+// @return DeleteIndexResponse
+func (client *Client) DeleteIndex(request *DeleteIndexRequest) (_result *DeleteIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIndexResponse{}
+	_body, _err := client.DeleteIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Delete JDBC data source
 //
 // @param request - DeleteJDBCDataSourceRequest
@@ -51307,6 +52755,105 @@ func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCollectionResponse{}
 	_body, _err := client.DescribeCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取创建索引任务
+//
+// @param request - DescribeCreateIndexJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCreateIndexJobResponse
+func (client *Client) DescribeCreateIndexJobWithOptions(request *DescribeCreateIndexJobRequest, runtime *util.RuntimeOptions) (_result *DescribeCreateIndexJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCreateIndexJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCreateIndexJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCreateIndexJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取创建索引任务
+//
+// @param request - DescribeCreateIndexJobRequest
+//
+// @return DescribeCreateIndexJobResponse
+func (client *Client) DescribeCreateIndexJob(request *DescribeCreateIndexJobRequest) (_result *DescribeCreateIndexJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCreateIndexJobResponse{}
+	_body, _err := client.DescribeCreateIndexJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54582,6 +56129,105 @@ func (client *Client) DescribeIMVInfos(request *DescribeIMVInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIMVInfosResponse{}
 	_body, _err := client.DescribeIMVInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取索引详情
+//
+// @param request - DescribeIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIndexResponse
+func (client *Client) DescribeIndexWithOptions(request *DescribeIndexRequest, runtime *util.RuntimeOptions) (_result *DescribeIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexName)) {
+		query["IndexName"] = request.IndexName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIndex"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIndexResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIndexResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取索引详情
+//
+// @param request - DescribeIndexRequest
+//
+// @return DescribeIndexResponse
+func (client *Client) DescribeIndex(request *DescribeIndexRequest) (_result *DescribeIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIndexResponse{}
+	_body, _err := client.DescribeIndexWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58521,6 +60167,101 @@ func (client *Client) ListExternalDataSources(request *ListExternalDataSourcesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExternalDataSourcesResponse{}
 	_body, _err := client.ListExternalDataSourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取索引列表
+//
+// @param request - ListIndicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIndicesResponse
+func (client *Client) ListIndicesWithOptions(request *ListIndicesRequest, runtime *util.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIndices"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListIndicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListIndicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取索引列表
+//
+// @param request - ListIndicesRequest
+//
+// @return ListIndicesResponse
+func (client *Client) ListIndices(request *ListIndicesRequest) (_result *ListIndicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIndicesResponse{}
+	_body, _err := client.ListIndicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

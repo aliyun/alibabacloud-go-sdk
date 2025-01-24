@@ -1,3 +1,12 @@
+2025-01-24 Version: v4.5.0
+- Support API CancelCreateIndexJob.
+- Support API CreateIndex.
+- Support API DeleteIndex.
+- Support API DescribeCreateIndexJob.
+- Support API DescribeIndex.
+- Support API ListIndices.
+
+
 2025-01-22 Version: v4.4.0
 - Support API CloneDBInstance.
 - Support API CreateBackup.
