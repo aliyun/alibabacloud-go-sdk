@@ -1,3 +1,10 @@
+2025-01-24 Version: v6.3.0
+- Support API CancelServiceRegistration.
+- Support API ListServiceRegistrations.
+- Support API UpdateSharedAccountPermission.
+- Support API WithdrawService.
+
+
 2025-01-21 Version: v6.2.0
 - Support API ListServiceInstanceDeployDetails.
 - Update API ListArtifacts: update response param.

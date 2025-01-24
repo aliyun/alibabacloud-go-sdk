@@ -305,6 +305,105 @@ func (s *ApproveServiceUsageResponse) SetBody(v *ApproveServiceUsageResponseBody
 	return s
 }
 
+type CancelServiceRegistrationRequest struct {
+	// Client token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+	//
+	// example:
+	//
+	// AAAAAWns8w4MmhzeptXVRG0PUEU=
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service registration ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sr-540930183f93xxxxxx
+	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+}
+
+func (s CancelServiceRegistrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelServiceRegistrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelServiceRegistrationRequest) SetClientToken(v string) *CancelServiceRegistrationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CancelServiceRegistrationRequest) SetRegionId(v string) *CancelServiceRegistrationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CancelServiceRegistrationRequest) SetRegistrationId(v string) *CancelServiceRegistrationRequest {
+	s.RegistrationId = &v
+	return s
+}
+
+type CancelServiceRegistrationResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// C4A145D8-6F6C-532A-9001-9730CDA27578
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelServiceRegistrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelServiceRegistrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelServiceRegistrationResponseBody) SetRequestId(v string) *CancelServiceRegistrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelServiceRegistrationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelServiceRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelServiceRegistrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelServiceRegistrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelServiceRegistrationResponse) SetHeaders(v map[string]*string) *CancelServiceRegistrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelServiceRegistrationResponse) SetStatusCode(v int32) *CancelServiceRegistrationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelServiceRegistrationResponse) SetBody(v *CancelServiceRegistrationResponseBody) *CancelServiceRegistrationResponse {
+	s.Body = v
+	return s
+}
+
 type ContinueDeployServiceInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -11398,6 +11497,274 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 	return s
 }
 
+type ListServiceRegistrationsRequest struct {
+	// Filter.
+	Filter []*ListServiceRegistrationsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of items to return per page during a paginated query. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// BBBAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListServiceRegistrationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceRegistrationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceRegistrationsRequest) SetFilter(v []*ListServiceRegistrationsRequestFilter) *ListServiceRegistrationsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListServiceRegistrationsRequest) SetMaxResults(v int32) *ListServiceRegistrationsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsRequest) SetNextToken(v string) *ListServiceRegistrationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsRequest) SetRegionId(v string) *ListServiceRegistrationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListServiceRegistrationsRequestFilter struct {
+	// Name of the filter field. Allowed values:
+	//
+	// - ServiceId: Service ID.
+	//
+	// - RegistrationId: Registration ID.
+	//
+	// - Status: Registration status. Allowed values: Submitted, Approved, Rejected, Canceled, and Executed.
+	//
+	// example:
+	//
+	// Canceled
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of filter values.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceRegistrationsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceRegistrationsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceRegistrationsRequestFilter) SetName(v string) *ListServiceRegistrationsRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsRequestFilter) SetValue(v []*string) *ListServiceRegistrationsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListServiceRegistrationsResponseBody struct {
+	// Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Service registration information.
+	ServiceRegistrations []*ListServiceRegistrationsResponseBodyServiceRegistrations `json:"ServiceRegistrations,omitempty" xml:"ServiceRegistrations,omitempty" type:"Repeated"`
+	// Total number of records that meet the criteria.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListServiceRegistrationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceRegistrationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceRegistrationsResponseBody) SetMaxResults(v int32) *ListServiceRegistrationsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBody) SetNextToken(v string) *ListServiceRegistrationsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBody) SetRequestId(v string) *ListServiceRegistrationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBody) SetServiceRegistrations(v []*ListServiceRegistrationsResponseBodyServiceRegistrations) *ListServiceRegistrationsResponseBody {
+	s.ServiceRegistrations = v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBody) SetTotalCount(v int32) *ListServiceRegistrationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServiceRegistrationsResponseBodyServiceRegistrations struct {
+	// Comment.
+	//
+	// example:
+	//
+	// some info is missing
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Finish time.
+	//
+	// example:
+	//
+	// 2021-05-23T00:00:00Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Registration ID.
+	//
+	// example:
+	//
+	// sr-001
+	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	// Service ID.
+	//
+	// example:
+	//
+	// service-f4c0026a254bxxxxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Registration status. Allowed values:
+	//
+	// - Submitted
+	//
+	// - Approved
+	//
+	// - Rejected
+	//
+	// - Canceled
+	//
+	// - Executed
+	//
+	// - Executed: Executed.
+	//
+	// example:
+	//
+	// Rejected
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Submit time.
+	//
+	// example:
+	//
+	// 2021-05-22T00:00:00Z
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+}
+
+func (s ListServiceRegistrationsResponseBodyServiceRegistrations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceRegistrationsResponseBodyServiceRegistrations) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceRegistrationsResponseBodyServiceRegistrations) SetComment(v string) *ListServiceRegistrationsResponseBodyServiceRegistrations {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBodyServiceRegistrations) SetFinishTime(v string) *ListServiceRegistrationsResponseBodyServiceRegistrations {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBodyServiceRegistrations) SetRegistrationId(v string) *ListServiceRegistrationsResponseBodyServiceRegistrations {
+	s.RegistrationId = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBodyServiceRegistrations) SetServiceId(v string) *ListServiceRegistrationsResponseBodyServiceRegistrations {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBodyServiceRegistrations) SetStatus(v string) *ListServiceRegistrationsResponseBodyServiceRegistrations {
+	s.Status = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponseBodyServiceRegistrations) SetSubmitTime(v string) *ListServiceRegistrationsResponseBodyServiceRegistrations {
+	s.SubmitTime = &v
+	return s
+}
+
+type ListServiceRegistrationsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceRegistrationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceRegistrationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceRegistrationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceRegistrationsResponse) SetHeaders(v map[string]*string) *ListServiceRegistrationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponse) SetStatusCode(v int32) *ListServiceRegistrationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceRegistrationsResponse) SetBody(v *ListServiceRegistrationsResponseBody) *ListServiceRegistrationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceSharedAccountsRequest struct {
 	// The filters.
 	Filter []*ListServiceSharedAccountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -17324,6 +17691,158 @@ func (s *UpdateServiceInstanceSpecResponse) SetBody(v *UpdateServiceInstanceSpec
 	return s
 }
 
+type UpdateSharedAccountPermissionRequest struct {
+	// Client token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+	//
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Permission type. Possible values:
+	//
+	// - Deployable: Can be deployed.
+	//
+	// - Accessible: Can be accessed.
+	//
+	// - AccessibleIncludeBeta: Can access all versions, including Beta versions.
+	//
+	// - DeployableIncludeBeta: Can deploy all versions, including Beta versions.
+	//
+	// - Authorized: Authorized (for reselling scenarios)
+	//
+	// - Unauthorized: Unauthorized (for reselling scenarios)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Deployable
+	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-0d6e1d846e4c4axxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Service sharing type, with a default value of SharedAccount. Available options:
+	//
+	// - SharedAccount: Regular sharing type.
+	//
+	// - Reseller: Reselling sharing type.
+	//
+	// example:
+	//
+	// SharedAccount
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Whitelist account for service sharing.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1563457855xxxxxx
+	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+}
+
+func (s UpdateSharedAccountPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSharedAccountPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSharedAccountPermissionRequest) SetClientToken(v string) *UpdateSharedAccountPermissionRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateSharedAccountPermissionRequest) SetPermission(v string) *UpdateSharedAccountPermissionRequest {
+	s.Permission = &v
+	return s
+}
+
+func (s *UpdateSharedAccountPermissionRequest) SetRegionId(v string) *UpdateSharedAccountPermissionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSharedAccountPermissionRequest) SetServiceId(v string) *UpdateSharedAccountPermissionRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateSharedAccountPermissionRequest) SetType(v string) *UpdateSharedAccountPermissionRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateSharedAccountPermissionRequest) SetUserAliUid(v int64) *UpdateSharedAccountPermissionRequest {
+	s.UserAliUid = &v
+	return s
+}
+
+type UpdateSharedAccountPermissionResponseBody struct {
+	// RequestId
+	//
+	// example:
+	//
+	// C68B41B4-A646-5680-8A33-67884E3823A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSharedAccountPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSharedAccountPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSharedAccountPermissionResponseBody) SetRequestId(v string) *UpdateSharedAccountPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSharedAccountPermissionResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSharedAccountPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSharedAccountPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSharedAccountPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSharedAccountPermissionResponse) SetHeaders(v map[string]*string) *UpdateSharedAccountPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSharedAccountPermissionResponse) SetStatusCode(v int32) *UpdateSharedAccountPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSharedAccountPermissionResponse) SetBody(v *UpdateSharedAccountPermissionResponseBody) *UpdateSharedAccountPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeServiceInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -17590,6 +18109,118 @@ func (s *UpgradeServiceInstanceResponse) SetBody(v *UpgradeServiceInstanceRespon
 	return s
 }
 
+type WithdrawServiceRequest struct {
+	// Client token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+	//
+	// example:
+	//
+	// 788E7CP0EN9D51P
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a544xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Service version.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s WithdrawServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WithdrawServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *WithdrawServiceRequest) SetClientToken(v string) *WithdrawServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *WithdrawServiceRequest) SetRegionId(v string) *WithdrawServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *WithdrawServiceRequest) SetServiceId(v string) *WithdrawServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *WithdrawServiceRequest) SetServiceVersion(v string) *WithdrawServiceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type WithdrawServiceResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s WithdrawServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WithdrawServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WithdrawServiceResponseBody) SetRequestId(v string) *WithdrawServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type WithdrawServiceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WithdrawServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s WithdrawServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WithdrawServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *WithdrawServiceResponse) SetHeaders(v map[string]*string) *WithdrawServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *WithdrawServiceResponse) SetStatusCode(v int32) *WithdrawServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WithdrawServiceResponse) SetBody(v *WithdrawServiceResponseBody) *WithdrawServiceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -17808,6 +18439,93 @@ func (client *Client) ApproveServiceUsage(request *ApproveServiceUsageRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ApproveServiceUsageResponse{}
 	_body, _err := client.ApproveServiceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancel service registration.
+//
+// Description:
+//
+// Only service registration in the Submitted status can be canceled.
+//
+// @param request - CancelServiceRegistrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelServiceRegistrationResponse
+func (client *Client) CancelServiceRegistrationWithOptions(request *CancelServiceRegistrationRequest, runtime *util.RuntimeOptions) (_result *CancelServiceRegistrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistrationId)) {
+		query["RegistrationId"] = request.RegistrationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelServiceRegistration"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelServiceRegistrationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelServiceRegistrationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Cancel service registration.
+//
+// Description:
+//
+// Only service registration in the Submitted status can be canceled.
+//
+// @param request - CancelServiceRegistrationRequest
+//
+// @return CancelServiceRegistrationResponse
+func (client *Client) CancelServiceRegistration(request *CancelServiceRegistrationRequest) (_result *CancelServiceRegistrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelServiceRegistrationResponse{}
+	_body, _err := client.CancelServiceRegistrationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20172,6 +20890,89 @@ func (client *Client) ListServiceInstances(request *ListServiceInstancesRequest)
 
 // Summary:
 //
+// Query service registrations.
+//
+// @param request - ListServiceRegistrationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceRegistrationsResponse
+func (client *Client) ListServiceRegistrationsWithOptions(request *ListServiceRegistrationsRequest, runtime *util.RuntimeOptions) (_result *ListServiceRegistrationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceRegistrations"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceRegistrationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceRegistrationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Query service registrations.
+//
+// @param request - ListServiceRegistrationsRequest
+//
+// @return ListServiceRegistrationsResponse
+func (client *Client) ListServiceRegistrations(request *ListServiceRegistrationsRequest) (_result *ListServiceRegistrationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceRegistrationsResponse{}
+	_body, _err := client.ListServiceRegistrationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 调用ListServiceSharedAccounts查看服务共享账号列表。
 //
 // @param request - ListServiceSharedAccountsRequest
@@ -22134,6 +22935,97 @@ func (client *Client) UpdateServiceInstanceSpec(request *UpdateServiceInstanceSp
 
 // Summary:
 //
+// Update Service Sharing Permissions
+//
+// @param request - UpdateSharedAccountPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSharedAccountPermissionResponse
+func (client *Client) UpdateSharedAccountPermissionWithOptions(request *UpdateSharedAccountPermissionRequest, runtime *util.RuntimeOptions) (_result *UpdateSharedAccountPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Permission)) {
+		query["Permission"] = request.Permission
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAliUid)) {
+		query["UserAliUid"] = request.UserAliUid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSharedAccountPermission"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSharedAccountPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSharedAccountPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Update Service Sharing Permissions
+//
+// @param request - UpdateSharedAccountPermissionRequest
+//
+// @return UpdateSharedAccountPermissionResponse
+func (client *Client) UpdateSharedAccountPermission(request *UpdateSharedAccountPermissionRequest) (_result *UpdateSharedAccountPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSharedAccountPermissionResponse{}
+	_body, _err := client.UpdateSharedAccountPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Upgrades a service instance.
 //
 // @param tmpReq - UpgradeServiceInstanceRequest
@@ -22222,6 +23114,89 @@ func (client *Client) UpgradeServiceInstance(request *UpgradeServiceInstanceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeServiceInstanceResponse{}
 	_body, _err := client.UpgradeServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Withdraw service version.
+//
+// @param request - WithdrawServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WithdrawServiceResponse
+func (client *Client) WithdrawServiceWithOptions(request *WithdrawServiceRequest, runtime *util.RuntimeOptions) (_result *WithdrawServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("WithdrawService"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &WithdrawServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &WithdrawServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Withdraw service version.
+//
+// @param request - WithdrawServiceRequest
+//
+// @return WithdrawServiceResponse
+func (client *Client) WithdrawService(request *WithdrawServiceRequest) (_result *WithdrawServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &WithdrawServiceResponse{}
+	_body, _err := client.WithdrawServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
