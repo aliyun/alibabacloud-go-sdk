@@ -159,11 +159,13 @@ type CreateTaskRequestParameters struct {
 	// example:
 	//
 	// true
-	AutoChaptersEnabled *bool                                         `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
-	CustomPrompt        *CreateTaskRequestParametersCustomPrompt      `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
-	CustomPromptEnabled *bool                                         `json:"CustomPromptEnabled,omitempty" xml:"CustomPromptEnabled,omitempty"`
-	ExtraParams         *CreateTaskRequestParametersExtraParams       `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
-	MeetingAssistance   *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
+	AutoChaptersEnabled      *bool                                         `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
+	ContentExtraction        *CreateTaskRequestParametersContentExtraction `json:"ContentExtraction,omitempty" xml:"ContentExtraction,omitempty" type:"Struct"`
+	ContentExtractionEnabled *bool                                         `json:"ContentExtractionEnabled,omitempty" xml:"ContentExtractionEnabled,omitempty"`
+	CustomPrompt             *CreateTaskRequestParametersCustomPrompt      `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
+	CustomPromptEnabled      *bool                                         `json:"CustomPromptEnabled,omitempty" xml:"CustomPromptEnabled,omitempty"`
+	ExtraParams              *CreateTaskRequestParametersExtraParams       `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
+	MeetingAssistance        *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
 	// example:
 	//
 	// false
@@ -196,6 +198,16 @@ func (s CreateTaskRequestParameters) GoString() string {
 
 func (s *CreateTaskRequestParameters) SetAutoChaptersEnabled(v bool) *CreateTaskRequestParameters {
 	s.AutoChaptersEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetContentExtraction(v *CreateTaskRequestParametersContentExtraction) *CreateTaskRequestParameters {
+	s.ContentExtraction = v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetContentExtractionEnabled(v bool) *CreateTaskRequestParameters {
+	s.ContentExtractionEnabled = &v
 	return s
 }
 
@@ -271,6 +283,58 @@ func (s *CreateTaskRequestParameters) SetTranslation(v *CreateTaskRequestParamet
 
 func (s *CreateTaskRequestParameters) SetTranslationEnabled(v bool) *CreateTaskRequestParameters {
 	s.TranslationEnabled = &v
+	return s
+}
+
+type CreateTaskRequestParametersContentExtraction struct {
+	ExtractionContents []*CreateTaskRequestParametersContentExtractionExtractionContents `json:"ExtractionContents,omitempty" xml:"ExtractionContents,omitempty" type:"Repeated"`
+	SceneIntroduction  *string                                                           `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
+	SpeakerMap         map[string]interface{}                                            `json:"SpeakerMap,omitempty" xml:"SpeakerMap,omitempty"`
+}
+
+func (s CreateTaskRequestParametersContentExtraction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersContentExtraction) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersContentExtraction) SetExtractionContents(v []*CreateTaskRequestParametersContentExtractionExtractionContents) *CreateTaskRequestParametersContentExtraction {
+	s.ExtractionContents = v
+	return s
+}
+
+func (s *CreateTaskRequestParametersContentExtraction) SetSceneIntroduction(v string) *CreateTaskRequestParametersContentExtraction {
+	s.SceneIntroduction = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersContentExtraction) SetSpeakerMap(v map[string]interface{}) *CreateTaskRequestParametersContentExtraction {
+	s.SpeakerMap = v
+	return s
+}
+
+type CreateTaskRequestParametersContentExtractionExtractionContents struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateTaskRequestParametersContentExtractionExtractionContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersContentExtractionExtractionContents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersContentExtractionExtractionContents) SetContent(v string) *CreateTaskRequestParametersContentExtractionExtractionContents {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersContentExtractionExtractionContents) SetTitle(v string) *CreateTaskRequestParametersContentExtractionExtractionContents {
+	s.Title = &v
 	return s
 }
 
@@ -1761,13 +1825,24 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1833,13 +1908,24 @@ func (client *Client) CreateTranscriptionPhrasesWithOptions(request *CreateTrans
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTranscriptionPhrasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTranscriptionPhrasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1885,13 +1971,24 @@ func (client *Client) DeleteTranscriptionPhrasesWithOptions(PhraseId *string, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTranscriptionPhrasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTranscriptionPhrasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1935,13 +2032,24 @@ func (client *Client) GetTaskInfoWithOptions(TaskId *string, headers map[string]
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTaskInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTaskInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTaskInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1985,13 +2093,24 @@ func (client *Client) GetTranscriptionPhrasesWithOptions(PhraseId *string, heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTranscriptionPhrasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTranscriptionPhrasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2035,13 +2154,24 @@ func (client *Client) ListTranscriptionPhrasesWithOptions(headers map[string]*st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTranscriptionPhrasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTranscriptionPhrasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2105,13 +2235,24 @@ func (client *Client) UpdateTranscriptionPhrasesWithOptions(PhraseId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTranscriptionPhrasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTranscriptionPhrasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
