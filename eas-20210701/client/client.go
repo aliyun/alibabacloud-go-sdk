@@ -457,29 +457,30 @@ func (s *Resource) SetVendor(v string) *Resource {
 }
 
 type ResourceInstance struct {
-	Arch                   *string  `json:"Arch,omitempty" xml:"Arch,omitempty"`
-	AutoRenewal            *bool    `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType             *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateTime             *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime            *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceCpuCount       *int32   `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
-	InstanceGpuCount       *int32   `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
-	InstanceGpuMemory      *string  `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
-	InstanceId             *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIp             *string  `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	InstanceMemory         *string  `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
-	InstanceName           *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus         *string  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceSystemDiskSize *int32   `json:"InstanceSystemDiskSize,omitempty" xml:"InstanceSystemDiskSize,omitempty"`
-	InstanceTenantIp       *string  `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
-	InstanceType           *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceUsedCpu        *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
-	InstanceUsedGpu        *float32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
-	InstanceUsedGpuMemory  *string  `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
-	InstanceUsedMemory     *string  `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
-	Region                 *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId             *string  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Zone                   *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	Arch                   *string                   `json:"Arch,omitempty" xml:"Arch,omitempty"`
+	AutoRenewal            *bool                     `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType             *string                   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime             *string                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpiredTime            *string                   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceCpuCount       *int32                    `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
+	InstanceGpuCount       *int32                    `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
+	InstanceGpuMemory      *string                   `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
+	InstanceId             *string                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIp             *string                   `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	InstanceMemory         *string                   `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
+	InstanceName           *string                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus         *string                   `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceSystemDiskSize *int32                    `json:"InstanceSystemDiskSize,omitempty" xml:"InstanceSystemDiskSize,omitempty"`
+	InstanceTenantIp       *string                   `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
+	InstanceType           *string                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsedCpu        *float32                  `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
+	InstanceUsedGpu        *float32                  `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
+	InstanceUsedGpuMemory  *string                   `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
+	InstanceUsedMemory     *string                   `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
+	Labels                 []*ResourceInstanceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Region                 *string                   `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceId             *string                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Zone                   *string                   `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s ResourceInstance) String() string {
@@ -590,6 +591,11 @@ func (s *ResourceInstance) SetInstanceUsedMemory(v string) *ResourceInstance {
 	return s
 }
 
+func (s *ResourceInstance) SetLabels(v []*ResourceInstanceLabels) *ResourceInstance {
+	s.Labels = v
+	return s
+}
+
 func (s *ResourceInstance) SetRegion(v string) *ResourceInstance {
 	s.Region = &v
 	return s
@@ -602,6 +608,29 @@ func (s *ResourceInstance) SetResourceId(v string) *ResourceInstance {
 
 func (s *ResourceInstance) SetZone(v string) *ResourceInstance {
 	s.Zone = &v
+	return s
+}
+
+type ResourceInstanceLabels struct {
+	LabelKey   *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+}
+
+func (s ResourceInstanceLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceInstanceLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceInstanceLabels) SetLabelKey(v string) *ResourceInstanceLabels {
+	s.LabelKey = &v
+	return s
+}
+
+func (s *ResourceInstanceLabels) SetLabelValue(v string) *ResourceInstanceLabels {
+	s.LabelValue = &v
 	return s
 }
 
@@ -2452,7 +2481,8 @@ type CreateResourceRequest struct {
 	// example:
 	//
 	// ecs.c6.8xlarge
-	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	EcsInstanceType *string            `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	Labels          map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The type of the resource group. Valid values:
 	//
 	// 	- Dedicated: the dedicated resource group.
@@ -2506,6 +2536,11 @@ func (s *CreateResourceRequest) SetEcsInstanceCount(v int32) *CreateResourceRequ
 
 func (s *CreateResourceRequest) SetEcsInstanceType(v string) *CreateResourceRequest {
 	s.EcsInstanceType = &v
+	return s
+}
+
+func (s *CreateResourceRequest) SetLabels(v map[string]*string) *CreateResourceRequest {
+	s.Labels = v
 	return s
 }
 
@@ -2785,7 +2820,8 @@ type CreateResourceInstancesRequest struct {
 	// example:
 	//
 	// ecs.s6-c1m2.xlarge
-	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	EcsInstanceType *string            `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	Labels          map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
 	//
 	// example:
@@ -2831,6 +2867,11 @@ func (s *CreateResourceInstancesRequest) SetEcsInstanceCount(v int32) *CreateRes
 
 func (s *CreateResourceInstancesRequest) SetEcsInstanceType(v string) *CreateResourceInstancesRequest {
 	s.EcsInstanceType = &v
+	return s
+}
+
+func (s *CreateResourceInstancesRequest) SetLabels(v map[string]*string) *CreateResourceInstancesRequest {
+	s.Labels = v
 	return s
 }
 
@@ -4946,6 +4987,122 @@ func (s *DeleteResourceDLinkResponse) SetStatusCode(v int32) *DeleteResourceDLin
 }
 
 func (s *DeleteResourceDLinkResponse) SetBody(v *DeleteResourceDLinkResponseBody) *DeleteResourceDLinkResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteResourceInstanceLabelRequest struct {
+	AllInstances *bool     `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	InstanceIds  []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	Keys         []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+}
+
+func (s DeleteResourceInstanceLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceInstanceLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceInstanceLabelRequest) SetAllInstances(v bool) *DeleteResourceInstanceLabelRequest {
+	s.AllInstances = &v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelRequest) SetInstanceIds(v []*string) *DeleteResourceInstanceLabelRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelRequest) SetKeys(v []*string) *DeleteResourceInstanceLabelRequest {
+	s.Keys = v
+	return s
+}
+
+type DeleteResourceInstanceLabelShrinkRequest struct {
+	AllInstances      *bool   `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	KeysShrink        *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+}
+
+func (s DeleteResourceInstanceLabelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceInstanceLabelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceInstanceLabelShrinkRequest) SetAllInstances(v bool) *DeleteResourceInstanceLabelShrinkRequest {
+	s.AllInstances = &v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelShrinkRequest) SetInstanceIdsShrink(v string) *DeleteResourceInstanceLabelShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelShrinkRequest) SetKeysShrink(v string) *DeleteResourceInstanceLabelShrinkRequest {
+	s.KeysShrink = &v
+	return s
+}
+
+type DeleteResourceInstanceLabelResponseBody struct {
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteResourceInstanceLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceInstanceLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceInstanceLabelResponseBody) SetMessage(v string) *DeleteResourceInstanceLabelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelResponseBody) SetRequestId(v string) *DeleteResourceInstanceLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteResourceInstanceLabelResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceInstanceLabelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteResourceInstanceLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceInstanceLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceInstanceLabelResponse) SetHeaders(v map[string]*string) *DeleteResourceInstanceLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelResponse) SetStatusCode(v int32) *DeleteResourceInstanceLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelResponse) SetBody(v *DeleteResourceInstanceLabelResponseBody) *DeleteResourceInstanceLabelResponse {
 	s.Body = v
 	return s
 }
@@ -10721,7 +10878,8 @@ type ListResourceInstancesRequest struct {
 	// example:
 	//
 	// Ready
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceStatus *string            `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	Label          map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sorting order.
 	//
 	// Valid values:
@@ -10864,6 +11022,11 @@ func (s *ListResourceInstancesRequest) SetInstanceStatus(v string) *ListResource
 	return s
 }
 
+func (s *ListResourceInstancesRequest) SetLabel(v map[string]*string) *ListResourceInstancesRequest {
+	s.Label = v
+	return s
+}
+
 func (s *ListResourceInstancesRequest) SetOrder(v string) *ListResourceInstancesRequest {
 	s.Order = &v
 	return s
@@ -10880,6 +11043,311 @@ func (s *ListResourceInstancesRequest) SetPageSize(v int32) *ListResourceInstanc
 }
 
 func (s *ListResourceInstancesRequest) SetSort(v string) *ListResourceInstancesRequest {
+	s.Sort = &v
+	return s
+}
+
+type ListResourceInstancesShrinkRequest struct {
+	// The billing method of the instance. Valid values:
+	//
+	// 	- PrePaid: subscription.
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The keyword used to query instances. Instances can be queried by instance ID or instance IP address.
+	//
+	// example:
+	//
+	// 10.224.xx.xx
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 10.224.xx.xx
+	InstanceIP *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
+	// The instance ID. For more information about how to query the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+	//
+	// example:
+	//
+	// i-bp1jd6x3uotsv****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// e-xxxx***
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance state.
+	//
+	// Valid values:
+	//
+	// 	- Ready-SchedulingDisabled
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instance is available but unschedulable
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Ready
+	//
+	//     <!-- -->
+	//
+	//     : The instance
+	//
+	//     <!-- -->
+	//
+	//     is running
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- NotReady
+	//
+	//     <!-- -->
+	//
+	//     : The instance is unready.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Stopped
+	//
+	//     <!-- -->
+	//
+	//     : The instance has stopped.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- NotReady-SchedulingDisabled
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instance is unavailable and unschedulable
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Attaching
+	//
+	//     <!-- -->
+	//
+	//     : The instance
+	//
+	//     <!-- -->
+	//
+	//     is starting
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Deleting
+	//
+	//     <!-- -->
+	//
+	//     : The instance is being deleted.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- CreateFailed: The instance failed to be created.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Ready
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	LabelShrink    *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The sorting order.
+	//
+	// Valid values:
+	//
+	// 	- asc: The instances are sorted in ascending order.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- desc
+	//
+	//     <!-- -->
+	//
+	//     : The instances are sorted in descending order.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field that you use to sort the query results.
+	//
+	// Valid values:
+	//
+	// 	- CreateTime
+	//
+	//     <!-- -->
+	//
+	//     : The instances are sorted based on the time when the instances were created.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- MemoryUsed
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instances are sorted based on the memory usage of the instances
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- GpuUsed
+	//
+	//     <!-- -->
+	//
+	//     : The instances are sorted based on the
+	//
+	//     <!-- -->
+	//
+	//     GPU usage of the instances.
+	//
+	//     <!-- -->
+	//
+	// 	- ExpireTime: The instances are sorted based on the time when the instances expired.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- CpuUsed
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instances are sorted based on the CPU utilization of the instances.
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s ListResourceInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetChargeType(v string) *ListResourceInstancesShrinkRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetFilter(v string) *ListResourceInstancesShrinkRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetInstanceIP(v string) *ListResourceInstancesShrinkRequest {
+	s.InstanceIP = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetInstanceId(v string) *ListResourceInstancesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetInstanceName(v string) *ListResourceInstancesShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetInstanceStatus(v string) *ListResourceInstancesShrinkRequest {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetLabelShrink(v string) *ListResourceInstancesShrinkRequest {
+	s.LabelShrink = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetOrder(v string) *ListResourceInstancesShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetPageNumber(v int32) *ListResourceInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetPageSize(v int32) *ListResourceInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetSort(v string) *ListResourceInstancesShrinkRequest {
 	s.Sort = &v
 	return s
 }
@@ -14459,6 +14927,130 @@ func (s *UpdateResourceInstanceResponse) SetBody(v *UpdateResourceInstanceRespon
 	return s
 }
 
+type UpdateResourceInstanceLabelRequest struct {
+	// example:
+	//
+	// false
+	AllInstances *bool              `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	InstanceIds  []*string          `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s UpdateResourceInstanceLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceInstanceLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceInstanceLabelRequest) SetAllInstances(v bool) *UpdateResourceInstanceLabelRequest {
+	s.AllInstances = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceLabelRequest) SetInstanceIds(v []*string) *UpdateResourceInstanceLabelRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *UpdateResourceInstanceLabelRequest) SetLabels(v map[string]*string) *UpdateResourceInstanceLabelRequest {
+	s.Labels = v
+	return s
+}
+
+type UpdateResourceInstanceLabelShrinkRequest struct {
+	// example:
+	//
+	// false
+	AllInstances      *bool              `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	InstanceIdsShrink *string            `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	Labels            map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s UpdateResourceInstanceLabelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceInstanceLabelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceInstanceLabelShrinkRequest) SetAllInstances(v bool) *UpdateResourceInstanceLabelShrinkRequest {
+	s.AllInstances = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceLabelShrinkRequest) SetInstanceIdsShrink(v string) *UpdateResourceInstanceLabelShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceLabelShrinkRequest) SetLabels(v map[string]*string) *UpdateResourceInstanceLabelShrinkRequest {
+	s.Labels = v
+	return s
+}
+
+type UpdateResourceInstanceLabelResponseBody struct {
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateResourceInstanceLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceInstanceLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceInstanceLabelResponseBody) SetMessage(v string) *UpdateResourceInstanceLabelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceLabelResponseBody) SetRequestId(v string) *UpdateResourceInstanceLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateResourceInstanceLabelResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateResourceInstanceLabelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateResourceInstanceLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceInstanceLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceInstanceLabelResponse) SetHeaders(v map[string]*string) *UpdateResourceInstanceLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceInstanceLabelResponse) SetStatusCode(v int32) *UpdateResourceInstanceLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceLabelResponse) SetBody(v *UpdateResourceInstanceLabelResponseBody) *UpdateResourceInstanceLabelResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateServiceRequest struct {
 	// The type of the service update. Valid values: merge and replace. By default, merge is used if you do not specify this parameter.
 	//
@@ -16452,6 +17044,10 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 		body["EcsInstanceType"] = request.EcsInstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		body["ResourceType"] = request.ResourceType
 	}
@@ -16557,6 +17153,10 @@ func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, Reso
 
 	if !tea.BoolValue(util.IsUnset(request.EcsInstanceType)) {
 		body["EcsInstanceType"] = request.EcsInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
@@ -17616,6 +18216,99 @@ func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string)
 	headers := make(map[string]*string)
 	_result = &DeleteResourceDLinkResponse{}
 	_body, _err := client.DeleteResourceDLinkWithOptions(ClusterId, ResourceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资源组实例标签
+//
+// @param tmpReq - DeleteResourceInstanceLabelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceInstanceLabelResponse
+func (client *Client) DeleteResourceInstanceLabelWithOptions(ClusterId *string, ResourceId *string, tmpReq *DeleteResourceInstanceLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceInstanceLabelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteResourceInstanceLabelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Keys)) {
+		request.KeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keys, tea.String("Keys"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllInstances)) {
+		query["AllInstances"] = request.AllInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeysShrink)) {
+		query["Keys"] = request.KeysShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteResourceInstanceLabel"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/label"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteResourceInstanceLabelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteResourceInstanceLabelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除资源组实例标签
+//
+// @param request - DeleteResourceInstanceLabelRequest
+//
+// @return DeleteResourceInstanceLabelResponse
+func (client *Client) DeleteResourceInstanceLabel(ClusterId *string, ResourceId *string, request *DeleteResourceInstanceLabelRequest) (_result *DeleteResourceInstanceLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteResourceInstanceLabelResponse{}
+	_body, _err := client.DeleteResourceInstanceLabelWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20427,18 +21120,24 @@ func (client *Client) ListResourceInstanceWorker(ClusterId *string, ResourceId *
 //
 // Queries a list of instances in a dedicated resource group.
 //
-// @param request - ListResourceInstancesRequest
+// @param tmpReq - ListResourceInstancesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceInstancesResponse
-func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, ResourceId *string, request *ListResourceInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, ResourceId *string, tmpReq *ListResourceInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListResourceInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Label)) {
+		request.LabelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Label, tea.String("Label"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
@@ -20462,6 +21161,10 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceStatus)) {
 		query["InstanceStatus"] = request.InstanceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelShrink)) {
+		query["Label"] = request.LabelShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
@@ -22227,6 +22930,97 @@ func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *stri
 	headers := make(map[string]*string)
 	_result = &UpdateResourceInstanceResponse{}
 	_body, _err := client.UpdateResourceInstanceWithOptions(ClusterId, ResourceId, InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新资源组实例标签
+//
+// @param tmpReq - UpdateResourceInstanceLabelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceInstanceLabelResponse
+func (client *Client) UpdateResourceInstanceLabelWithOptions(ClusterId *string, ResourceId *string, tmpReq *UpdateResourceInstanceLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceInstanceLabelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateResourceInstanceLabelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllInstances)) {
+		query["AllInstances"] = request.AllInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceInstanceLabel"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/label"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateResourceInstanceLabelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateResourceInstanceLabelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新资源组实例标签
+//
+// @param request - UpdateResourceInstanceLabelRequest
+//
+// @return UpdateResourceInstanceLabelResponse
+func (client *Client) UpdateResourceInstanceLabel(ClusterId *string, ResourceId *string, request *UpdateResourceInstanceLabelRequest) (_result *UpdateResourceInstanceLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateResourceInstanceLabelResponse{}
+	_body, _err := client.UpdateResourceInstanceLabelWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
