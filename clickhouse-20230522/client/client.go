@@ -16,6 +16,12 @@ type CreateAccountRequest struct {
 	//
 	// test1
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The type of the database account. Valid values:
+	//
+	// 	- **NormalAccount**: standard account
+	//
+	// 	- **SuperAccount**: privileged account
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27,8 +33,9 @@ type CreateAccountRequest struct {
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceId   *string                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Description    *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about permissions.
 	DmlAuthSetting *CreateAccountRequestDmlAuthSetting `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
@@ -36,6 +43,8 @@ type CreateAccountRequest struct {
 	//
 	// a1b2c3d4@
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The code of the cloud service.
+	//
 	// example:
 	//
 	// clickhouse
@@ -97,12 +106,28 @@ func (s *CreateAccountRequest) SetRegionId(v string) *CreateAccountRequest {
 }
 
 type CreateAccountRequestDmlAuthSetting struct {
-	AllowDatabases    []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
+	// The databases on which you want to grant permissions. Separate multiple databases with commas (,).
+	AllowDatabases []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
+	// The dictionaries on which you want to grant permissions. Separate multiple dictionaries with commas (,).
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
+	// Specifies whether to grant the DDL permissions to the database account. Valid values:
+	//
+	// 	- **true**: The account has the permissions to execute DDL statements.
+	//
+	// 	- **false**: The account does not have the permissions to execute DDL statements.
+	//
 	// example:
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
+	// Specifies whether to grant the DML permissions to the database account. Valid values:
+	//
+	// 	- **0**: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
+	//
+	// 	- **1**: The account only has the permissions to read data from the database.
+	//
+	// 	- **2**: The account only has the permissions to read data from the database and modify the settings of the database.
+	//
 	// example:
 	//
 	// 0
@@ -144,6 +169,12 @@ type CreateAccountShrinkRequest struct {
 	//
 	// test1
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The type of the database account. Valid values:
+	//
+	// 	- **NormalAccount**: standard account
+	//
+	// 	- **SuperAccount**: privileged account
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -155,8 +186,9 @@ type CreateAccountShrinkRequest struct {
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about permissions.
 	DmlAuthSettingShrink *string `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty"`
 	// This parameter is required.
 	//
@@ -164,6 +196,8 @@ type CreateAccountShrinkRequest struct {
 	//
 	// a1b2c3d4@
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The code of the cloud service.
+	//
 	// example:
 	//
 	// clickhouse
@@ -226,6 +260,8 @@ func (s *CreateAccountShrinkRequest) SetRegionId(v string) *CreateAccountShrinkR
 
 type CreateAccountResponseBody struct {
 	Data *CreateAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627FA5A19
@@ -319,12 +355,24 @@ type CreateDBRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database. The name must meet the following requirements:
+	//
+	// 	- The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	//
+	// 	- The name can be up to 64 characters in length.
+	//
+	// >  An underscore (_) is counted as two characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdb001
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -451,6 +499,9 @@ type CreateDBInstanceRequest struct {
 	// AB
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DeploySchema          *string `json:"DeploySchema,omitempty" xml:"DeploySchema,omitempty"`
+	// The engine type.
+	//
 	// example:
 	//
 	// clickhouse
@@ -505,6 +556,11 @@ func (s *CreateDBInstanceRequest) SetClientToken(v string) *CreateDBInstanceRequ
 
 func (s *CreateDBInstanceRequest) SetDBInstanceDescription(v string) *CreateDBInstanceRequest {
 	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetDeploySchema(v string) *CreateDBInstanceRequest {
+	s.DeploySchema = &v
 	return s
 }
 
@@ -585,6 +641,9 @@ type CreateDBInstanceShrinkRequest struct {
 	// AB
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DeploySchema          *string `json:"DeploySchema,omitempty" xml:"DeploySchema,omitempty"`
+	// The engine type.
+	//
 	// example:
 	//
 	// clickhouse
@@ -639,6 +698,11 @@ func (s *CreateDBInstanceShrinkRequest) SetClientToken(v string) *CreateDBInstan
 
 func (s *CreateDBInstanceShrinkRequest) SetDBInstanceDescription(v string) *CreateDBInstanceShrinkRequest {
 	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDeploySchema(v string) *CreateDBInstanceShrinkRequest {
+	s.DeploySchema = &v
 	return s
 }
 
@@ -791,6 +855,8 @@ type CreateEndpointRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The network type.
+	//
 	// example:
 	//
 	// Public
@@ -893,6 +959,8 @@ type DeleteAccountRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The code of the cloud service.
+	//
 	// example:
 	//
 	// clickhouse
@@ -1024,12 +1092,16 @@ type DeleteDBRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdb001
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1525,6 +1597,8 @@ type DescribeAccountsRequest struct {
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The code of the cloud service.
+	//
 	// example:
 	//
 	// clickhouse
@@ -1743,6 +1817,7 @@ func (s *DescribeDBInstanceAttributeRequest) SetRegionId(v string) *DescribeDBIn
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
+	// The result returned.
 	Data *DescribeDBInstanceAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -1794,6 +1869,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	// 0/1
 	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisabledPorts      *string `json:"DisabledPorts,omitempty" xml:"DisabledPorts,omitempty"`
 	// example:
 	//
 	// clickhouse
@@ -1809,7 +1885,10 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	// example:
 	//
 	// 2024-04-17T08:14:48Z
-	ExpireTime               *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 23.8.1.41495_6
 	LatestEngineMinorVersion *string `json:"LatestEngineMinorVersion,omitempty" xml:"LatestEngineMinorVersion,omitempty"`
 	// example:
 	//
@@ -1917,6 +1996,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyData) SetDeletionProtection(v bo
 
 func (s *DescribeDBInstanceAttributeResponseBodyData) SetDescription(v string) *DescribeDBInstanceAttributeResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyData) SetDisabledPorts(v string) *DescribeDBInstanceAttributeResponseBodyData {
+	s.DisabledPorts = &v
 	return s
 }
 
@@ -2035,7 +2119,10 @@ type DescribeDBInstanceAttributeResponseBodyDataNodes struct {
 	//
 	// active
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDataNodes) String() string {
@@ -2334,10 +2421,14 @@ type DescribeDBInstancesRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
@@ -2964,40 +3055,64 @@ func (s *DescribeEndpointsResponse) SetBody(v *DescribeEndpointsResponseBody) *D
 }
 
 type DescribeProcessListRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
 	// 1
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
+	// The user who executes the query statement.
+	//
 	// example:
 	//
 	// testuser
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
+	// The keyword of the query statement.
+	//
 	// example:
 	//
 	// SELECT
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The execution duration of slow SQL queries. Minimum value: 1000. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *string `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
+	// Specifies the columns by which the query results are sorted in descending order.
+	//
+	// 	- 0: The query results are sorted by the query_duration_ms column.
+	//
+	// 	- 1: The query results are sorted by the query_duration_ms and query_start_time columns.
+	//
+	// 	- 2: The query results are sorted by the query_duration_ms, query_start_time, and user columns.
+	//
 	// example:
 	//
 	// id
 	QueryOrder *int64 `json:"QueryOrder,omitempty" xml:"QueryOrder,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -3058,7 +3173,10 @@ func (s *DescribeProcessListRequest) SetRegionId(v string) *DescribeProcessListR
 }
 
 type DescribeProcessListResponseBody struct {
+	// The data returned.
 	Data *DescribeProcessListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx-xxx-xxx
@@ -3084,12 +3202,18 @@ func (s *DescribeProcessListResponseBody) SetRequestId(v string) *DescribeProces
 }
 
 type DescribeProcessListResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-xxxx
-	DBInstanceID   *int32                                          `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	DBInstanceName *string                                         `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	ResultSet      []*DescribeProcessListResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
+	DBInstanceID *int32 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The result sets.
+	ResultSet []*DescribeProcessListResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -3125,26 +3249,38 @@ func (s *DescribeProcessListResponseBodyData) SetTotalCount(v int32) *DescribePr
 }
 
 type DescribeProcessListResponseBodyDataResultSet struct {
+	// The address to which the query statement is sent.
+	//
 	// example:
 	//
 	// 0:0:0:0:0:ffff:1edd65ea
 	InitialAddress *string `json:"InitialAddress,omitempty" xml:"InitialAddress,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
 	// \\"79f7e40b-87e2-4ef4-b6df-21889a3a030e\\"
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
+	// The user who executes the query statement.
+	//
 	// example:
 	//
 	// bany
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
+	// The query statement that is running.
+	//
 	// example:
 	//
 	// select 	- from test
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The minimum query duration. Minimum value: **1000**. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *int64 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
+	// The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-07-23T10:13:23Z
@@ -3219,12 +3355,16 @@ func (s *DescribeProcessListResponse) SetBody(v *DescribeProcessListResponseBody
 }
 
 type DescribeSecurityIPListRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3250,7 +3390,10 @@ func (s *DescribeSecurityIPListRequest) SetRegionId(v string) *DescribeSecurityI
 }
 
 type DescribeSecurityIPListResponseBody struct {
+	// The data returned.
 	Data *DescribeSecurityIPListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD8660E9CC
@@ -3276,12 +3419,16 @@ func (s *DescribeSecurityIPListResponseBody) SetRequestId(v string) *DescribeSec
 }
 
 type DescribeSecurityIPListResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceID   *int32                                              `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	DBInstanceName *string                                             `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	GroupItems     []*DescribeSecurityIPListResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
+	DBInstanceID *int32 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The details about the whitelists.
+	GroupItems []*DescribeSecurityIPListResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSecurityIPListResponseBodyData) String() string {
@@ -3308,22 +3455,32 @@ func (s *DescribeSecurityIPListResponseBodyData) SetGroupItems(v []*DescribeSecu
 }
 
 type DescribeSecurityIPListResponseBodyDataGroupItems struct {
+	// The name of the whitelist.
+	//
 	// example:
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tag of the whitelist.
+	//
 	// example:
 	//
 	// test
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
+	// The IP addresses and CIDR blocks in the whitelist.
+	//
 	// example:
 	//
 	// 127.0.XX.XX
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The IP address type.
+	//
 	// example:
 	//
 	// ipv4
 	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	// The network type of the whitelist.
+	//
 	// example:
 	//
 	// mix
@@ -3393,32 +3550,52 @@ func (s *DescribeSecurityIPListResponse) SetBody(v *DescribeSecurityIPListRespon
 }
 
 type DescribeSlowLogRecordsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-09-15 16:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- 30 (default)
+	//
+	// 	- 50
+	//
+	// 	- 100
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 3000
 	QueryDurationMs *string `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-09-11 16:00:00
@@ -3469,7 +3646,10 @@ func (s *DescribeSlowLogRecordsRequest) SetStartTime(v string) *DescribeSlowLogR
 }
 
 type DescribeSlowLogRecordsResponseBody struct {
+	// The data returned.
 	Data *DescribeSlowLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DF203CC8-5F68-5E3F-8050-3C77DD65731A
@@ -3495,12 +3675,18 @@ func (s *DescribeSlowLogRecordsResponseBody) SetRequestId(v string) *DescribeSlo
 }
 
 type DescribeSlowLogRecordsResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-bp100p4q1g9z32****
-	DBInstanceID   *int32                                             `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	DBInstanceName *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	ResultSet      []*DescribeSlowLogRecordsResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
+	DBInstanceID *int32 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The result sets.
+	ResultSet []*DescribeSlowLogRecordsResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -3536,46 +3722,68 @@ func (s *DescribeSlowLogRecordsResponseBodyData) SetTotalCount(v int32) *Describ
 }
 
 type DescribeSlowLogRecordsResponseBodyDataResultSet struct {
+	// The address to which the query statement is sent.
+	//
 	// example:
 	//
 	// 0:0:0:0:0:ffff:1edd65ea
 	InitialAddress *string `json:"InitialAddress,omitempty" xml:"InitialAddress,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
 	// \\"ae915a3ad30e77e67a7215d05b658cc6\\"
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
+	// The user who executes the query statement.
+	//
 	// example:
 	//
 	// bany
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
+	// The peak memory usage for the query. Unit: bytes.
+	//
 	// example:
 	//
 	// 4941696
 	MemoryUsage *int64 `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+	// The query statement that is running.
+	//
 	// example:
 	//
 	// select 	- from test
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 3000
 	QueryDurationMs *int64 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
+	// The beginning of the time range to query. The time is in the yyyy-MM-dd hh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-09-11 16:00:00
 	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// The size of the data that is scanned. Unit: bytes.
+	//
 	// example:
 	//
 	// 4507128020832
 	ReadBytes *int64 `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
+	// The number of read rows.
+	//
 	// example:
 	//
 	// 10
 	ReadRows *int64 `json:"ReadRows,omitempty" xml:"ReadRows,omitempty"`
+	// The size of the result data. Unit: bytes.
+	//
 	// example:
 	//
 	// 10
 	ResultBytes *int64 `json:"ResultBytes,omitempty" xml:"ResultBytes,omitempty"`
+	// The type of the slow query logs.
+	//
 	// example:
 	//
 	// ExceptionWhileProcessing
@@ -3685,6 +3893,8 @@ type DescribeSlowLogTrendRequest struct {
 	//
 	// 2023-06-07 10:03:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The code of the cloud service.
+	//
 	// example:
 	//
 	// clickhouse
@@ -3885,16 +4095,22 @@ func (s *DescribeSlowLogTrendResponse) SetBody(v *DescribeSlowLogTrendResponseBo
 }
 
 type KillProcessRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
 	// 1
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3925,7 +4141,10 @@ func (s *KillProcessRequest) SetRegionId(v string) *KillProcessRequest {
 }
 
 type KillProcessResponseBody struct {
+	// The data returned.
 	Data *KillProcessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx-xxx-xxx
@@ -3951,14 +4170,20 @@ func (s *KillProcessResponseBody) SetRequestId(v string) *KillProcessResponseBod
 }
 
 type KillProcessResponseBodyData struct {
+	// The number of queries that are terminated.
+	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-xxxxxxx
 	DBInstanceID *int32 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// cc-xxxxxxx
@@ -4018,6 +4243,8 @@ func (s *KillProcessResponse) SetBody(v *KillProcessResponseBody) *KillProcessRe
 }
 
 type ModifyAccountAuthorityRequest struct {
+	// The name of the database account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4030,8 +4257,12 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The information about permissions.
+	//
 	// This parameter is required.
 	DmlAuthSetting *ModifyAccountAuthorityRequestDmlAuthSetting `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4069,14 +4300,30 @@ func (s *ModifyAccountAuthorityRequest) SetRegionId(v string) *ModifyAccountAuth
 }
 
 type ModifyAccountAuthorityRequestDmlAuthSetting struct {
-	AllowDatabases    []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
+	// The databases on which you want to grant permissions. Separate multiple databases with commas (,).
+	AllowDatabases []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
+	// The dictionaries on which you want to grant permissions. Separate multiple dictionaries with commas (,).
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
+	// Specifies whether to grant the DDL permissions to the database account. Valid values:
+	//
+	// 	- **true**: The account has the permissions to execute DDL statements.
+	//
+	// 	- **false**: The account does not have the permissions to execute DDL statements.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
+	// Specifies whether to grant the DML permissions to the database account. Valid values:
+	//
+	// 	- **0**: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
+	//
+	// 	- **1**: The account only has the permissions to read data from the database.
+	//
+	// 	- **2**: The account only has the permissions to read data from the database and modify the settings of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4114,6 +4361,8 @@ func (s *ModifyAccountAuthorityRequestDmlAuthSetting) SetDmlAuthority(v int32) *
 }
 
 type ModifyAccountAuthorityShrinkRequest struct {
+	// The name of the database account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4126,8 +4375,12 @@ type ModifyAccountAuthorityShrinkRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The information about permissions.
+	//
 	// This parameter is required.
 	DmlAuthSettingShrink *string `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4249,24 +4502,32 @@ func (s *ModifyAccountAuthorityResponse) SetBody(v *ModifyAccountAuthorityRespon
 }
 
 type ModifyAccountDescriptionRequest struct {
+	// The name of the account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testuser
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description of the account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4304,7 +4565,10 @@ func (s *ModifyAccountDescriptionRequest) SetRegionId(v string) *ModifyAccountDe
 }
 
 type ModifyAccountDescriptionResponseBody struct {
+	// The returned data.
 	Data *ModifyAccountDescriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx-xxx-xxx
@@ -4334,6 +4598,8 @@ type ModifyAccountDescriptionResponseBodyData struct {
 	//
 	// testuser
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-xxxxx
@@ -4388,6 +4654,12 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 }
 
 type ModifyDBInstanceAttributeRequest struct {
+	// The configuration that you want to modify.
+	//
+	// 	- MaintainTime: the O\\&M time
+	//
+	// 	- DBInstanceDescription: the cluster name
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4406,6 +4678,8 @@ type ModifyDBInstanceAttributeRequest struct {
 	//
 	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The code of the cloud service.
+	//
 	// example:
 	//
 	// clickhouse
@@ -4515,6 +4789,8 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// 32
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum capacity for auto scaling.
+	//
 	// example:
 	//
 	// 2
@@ -4661,20 +4937,29 @@ func (s *ModifyDBInstanceClassResponse) SetBody(v *ModifyDBInstanceClassResponse
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
+	// The endpoint of the cluster.
+	//
 	// example:
 	//
 	// cc-2ze34****-clickhouse..clickhouseserver.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The prefix of the endpoint that is used to connect to the database.
+	//
 	// example:
 	//
 	// cc-****-clickhouse
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DisablePorts *string `json:"DisablePorts,omitempty" xml:"DisablePorts,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4704,13 +4989,21 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetDBInstanceId(v string) *Mod
 	return s
 }
 
+func (s *ModifyDBInstanceConnectionStringRequest) SetDisablePorts(v string) *ModifyDBInstanceConnectionStringRequest {
+	s.DisablePorts = &v
+	return s
+}
+
 func (s *ModifyDBInstanceConnectionStringRequest) SetRegionId(v string) *ModifyDBInstanceConnectionStringRequest {
 	s.RegionId = &v
 	return s
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
+	// The returned data.
 	Data *ModifyDBInstanceConnectionStringResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx-xxx-xxx
@@ -4736,18 +5029,25 @@ func (s *ModifyDBInstanceConnectionStringResponseBody) SetRequestId(v string) *M
 }
 
 type ModifyDBInstanceConnectionStringResponseBodyData struct {
+	// The endpoint of the cluster.
+	//
 	// example:
 	//
 	// cc-2ze34****-clickhouse..clickhouseserver.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-xxxxx
 	DBInstanceID *int32 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// cc-xxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DisabledPorts  *string `json:"DisabledPorts,omitempty" xml:"DisabledPorts,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringResponseBodyData) String() string {
@@ -4770,6 +5070,11 @@ func (s *ModifyDBInstanceConnectionStringResponseBodyData) SetDBInstanceID(v int
 
 func (s *ModifyDBInstanceConnectionStringResponseBodyData) SetDBInstanceName(v string) *ModifyDBInstanceConnectionStringResponseBodyData {
 	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConnectionStringResponseBodyData) SetDisabledPorts(v string) *ModifyDBInstanceConnectionStringResponseBodyData {
+	s.DisabledPorts = &v
 	return s
 }
 
@@ -5017,6 +5322,8 @@ type ResetAccountPasswordRequest struct {
 	//
 	// 123456Aa
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the service.
+	//
 	// example:
 	//
 	// clickhouse
@@ -5147,12 +5454,16 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type RestartDBInstanceRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5178,7 +5489,10 @@ func (s *RestartDBInstanceRequest) SetRegionId(v string) *RestartDBInstanceReque
 }
 
 type RestartDBInstanceResponseBody struct {
+	// The data returned.
 	Data *RestartDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD8660E9CC
@@ -5204,11 +5518,16 @@ func (s *RestartDBInstanceResponseBody) SetRequestId(v string) *RestartDBInstanc
 }
 
 type RestartDBInstanceResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceID   *int64  `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	DBInstanceID *int64 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 100001080
@@ -5268,12 +5587,16 @@ func (s *RestartDBInstanceResponse) SetBody(v *RestartDBInstanceResponseBody) *R
 }
 
 type StartDBInstanceRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5299,7 +5622,10 @@ func (s *StartDBInstanceRequest) SetRegionId(v string) *StartDBInstanceRequest {
 }
 
 type StartDBInstanceResponseBody struct {
+	// The data returned.
 	Data *StartDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F76
@@ -5325,11 +5651,16 @@ func (s *StartDBInstanceResponseBody) SetRequestId(v string) *StartDBInstanceRes
 }
 
 type StartDBInstanceResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceID   *int64  `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	DBInstanceID *int64 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 100000837
@@ -5389,12 +5720,16 @@ func (s *StartDBInstanceResponse) SetBody(v *StartDBInstanceResponseBody) *Start
 }
 
 type StopDBInstanceRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5420,7 +5755,10 @@ func (s *StopDBInstanceRequest) SetRegionId(v string) *StopDBInstanceRequest {
 }
 
 type StopDBInstanceResponseBody struct {
+	// The data returned.
 	Data *StopDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627FA5A19
@@ -5446,11 +5784,16 @@ func (s *StopDBInstanceResponseBody) SetRequestId(v string) *StopDBInstanceRespo
 }
 
 type StopDBInstanceResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceID   *int64  `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	DBInstanceID *int64 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The cluster name.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 100000785
@@ -5524,6 +5867,14 @@ type UpgradeMinorVersionRequest struct {
 	//
 	// 2023-01-09T05:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// Specifies whether to update the minor engine version of the cluster immediately. Valid values:
+	//
+	// 	- **Immediate**: The system immediately performs the update.
+	//
+	// 	- **MaintainTime**: The system performs the update during the specified maintenance window.
+	//
+	// 	- **SpecifyTime**: The system performs the update at a specified time.
+	//
 	// example:
 	//
 	// Immediate
@@ -5802,13 +6153,24 @@ func (client *Client) CreateAccountWithOptions(tmpReq *CreateAccountRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5874,13 +6236,24 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDBResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDBResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5928,6 +6301,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceDescription)) {
 		query["DBInstanceDescription"] = request.DBInstanceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploySchema)) {
+		query["DeploySchema"] = request.DeploySchema
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Engine)) {
@@ -5980,13 +6357,24 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6009,7 +6397,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 创建链接地址
+// 申请外网地址
 //
 // @param request - CreateEndpointRequest
 //
@@ -6052,18 +6440,29 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEndpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEndpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建链接地址
+// 申请外网地址
 //
 // @param request - CreateEndpointRequest
 //
@@ -6124,13 +6523,24 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6192,13 +6602,24 @@ func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDBResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDBResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6256,13 +6677,24 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6324,13 +6756,24 @@ func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEndpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEndpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6392,13 +6835,24 @@ func (client *Client) DescribeAccountAuthorityWithOptions(request *DescribeAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccountAuthorityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccountAuthorityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccountAuthorityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6468,13 +6922,24 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6532,13 +6997,24 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6604,13 +7080,24 @@ func (client *Client) DescribeDBInstanceDataSourcesWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBInstanceDataSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBInstanceDataSourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBInstanceDataSourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6688,13 +7175,24 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6752,13 +7250,24 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEndpointsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEndpointsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6781,7 +7290,7 @@ func (client *Client) DescribeEndpoints(request *DescribeEndpointsRequest) (_res
 
 // Summary:
 //
-// 查看正在运行的查询
+// Views running queries.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -6844,18 +7353,29 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProcessListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProcessListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProcessListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查看正在运行的查询
+// Views running queries.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -6873,7 +7393,7 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 
 // Summary:
 //
-// 查询白名单
+// Queries the whitelist of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -6908,18 +7428,29 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecurityIPListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityIPListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityIPListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询白名单
+// Queries the whitelist of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -6937,7 +7468,7 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 
 // Summary:
 //
-// 查看慢日志明细
+// Queries the details of slow query logs.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -6992,18 +7523,29 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlowLogRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlowLogRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlowLogRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查看慢日志明细
+// Queries the details of slow query logs.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -7072,13 +7614,24 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlowLogTrendResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlowLogTrendResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlowLogTrendResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7101,7 +7654,7 @@ func (client *Client) DescribeSlowLogTrend(request *DescribeSlowLogTrendRequest)
 
 // Summary:
 //
-// 终止正在进行的任务
+// Terminates an ongoing query.
 //
 // @param request - KillProcessRequest
 //
@@ -7140,18 +7693,29 @@ func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &KillProcessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &KillProcessResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &KillProcessResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 终止正在进行的任务
+// Terminates an ongoing query.
 //
 // @param request - KillProcessRequest
 //
@@ -7218,13 +7782,24 @@ func (client *Client) ModifyAccountAuthorityWithOptions(tmpReq *ModifyAccountAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccountAuthorityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccountAuthorityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccountAuthorityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7290,13 +7865,24 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccountDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccountDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccountDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7366,13 +7952,24 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7422,13 +8019,24 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBInstanceClassResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBInstanceClassResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBInstanceClassResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7451,7 +8059,7 @@ func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassReques
 
 // Summary:
 //
-// 修改链接地址
+// Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -7476,6 +8084,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DisablePorts)) {
+		query["DisablePorts"] = request.DisablePorts
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -7494,18 +8106,29 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBInstanceConnectionStringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBInstanceConnectionStringResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBInstanceConnectionStringResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改链接地址
+// Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -7570,13 +8193,24 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySecurityIPListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySecurityIPListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySecurityIPListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7646,13 +8280,24 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetAccountPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetAccountPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetAccountPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7675,7 +8320,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
-// 重启实例
+// Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - RestartDBInstanceRequest
 //
@@ -7710,18 +8355,29 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 重启实例
+// Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - RestartDBInstanceRequest
 //
@@ -7739,7 +8395,7 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 
 // Summary:
 //
-// 启动实例
+// Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StartDBInstanceRequest
 //
@@ -7774,18 +8430,29 @@ func (client *Client) StartDBInstanceWithOptions(request *StartDBInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 启动实例
+// Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StartDBInstanceRequest
 //
@@ -7803,7 +8470,7 @@ func (client *Client) StartDBInstance(request *StartDBInstanceRequest) (_result 
 
 // Summary:
 //
-// 暂停实例
+// Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StopDBInstanceRequest
 //
@@ -7838,18 +8505,29 @@ func (client *Client) StopDBInstanceWithOptions(request *StopDBInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 暂停实例
+// Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StopDBInstanceRequest
 //
@@ -7914,13 +8592,24 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeMinorVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeMinorVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeMinorVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:

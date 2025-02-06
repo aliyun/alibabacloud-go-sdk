@@ -1,3 +1,10 @@
+2025-02-06 Version: v1.0.1
+- Update API CreateDBInstance: add param DeploySchema.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API ModifyDBInstanceConnectionString: add param DisablePorts.
+- Update API ModifyDBInstanceConnectionString: update response param.
+
+
 2024-07-29 Version: v1.0.0
 - Support API UpgradeMinorVersion.
 - Update API CreateDB: update param DBInstanceId.
