@@ -2337,6 +2337,166 @@ func (s *AddRuleV4Response) SetBody(v *AddRuleV4ResponseBody) *AddRuleV4Response
 	return s
 }
 
+type ApplyWsTokenRequest struct {
+	// example:
+	//
+	// 123456
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "business": "test",
+	//
+	//     "callType": 1,
+	//
+	//     "callee": "13111111111",
+	//
+	//     "caller": "13800000000",
+	//
+	//     "skillGroupId": 1,
+	//
+	//     "skillGroupName": "test",
+	//
+	//     "taskConfigId": 399,
+	//
+	//     "tid": "2025012412cb129e-1579-46b5-9326-1b2ececf8f30"
+	//
+	// }
+	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
+}
+
+func (s ApplyWsTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyWsTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyWsTokenRequest) SetBaseMeAgentId(v int64) *ApplyWsTokenRequest {
+	s.BaseMeAgentId = &v
+	return s
+}
+
+func (s *ApplyWsTokenRequest) SetJsonStr(v string) *ApplyWsTokenRequest {
+	s.JsonStr = &v
+	return s
+}
+
+type ApplyWsTokenResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ApplyWsTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6987D326-83D9-4A42-B9A5-0B27F9B40539
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApplyWsTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyWsTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyWsTokenResponseBody) SetCode(v string) *ApplyWsTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApplyWsTokenResponseBody) SetData(v *ApplyWsTokenResponseBodyData) *ApplyWsTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ApplyWsTokenResponseBody) SetHttpStatusCode(v int32) *ApplyWsTokenResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ApplyWsTokenResponseBody) SetRequestId(v string) *ApplyWsTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApplyWsTokenResponseBodyData struct {
+	// example:
+	//
+	// 42e59bcd-7206-44c5-ad34-525d364687c4
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 5607b21d1728700640
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// wss://ws-gateway-real-voice.aliyuncs.com
+	WsEndpoint *string `json:"WsEndpoint,omitempty" xml:"WsEndpoint,omitempty"`
+}
+
+func (s ApplyWsTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyWsTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyWsTokenResponseBodyData) SetSessionId(v string) *ApplyWsTokenResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ApplyWsTokenResponseBodyData) SetToken(v string) *ApplyWsTokenResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+func (s *ApplyWsTokenResponseBodyData) SetWsEndpoint(v string) *ApplyWsTokenResponseBodyData {
+	s.WsEndpoint = &v
+	return s
+}
+
+type ApplyWsTokenResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyWsTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyWsTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyWsTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyWsTokenResponse) SetHeaders(v map[string]*string) *ApplyWsTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyWsTokenResponse) SetStatusCode(v int32) *ApplyWsTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyWsTokenResponse) SetBody(v *ApplyWsTokenResponseBody) *ApplyWsTokenResponse {
+	s.Body = v
+	return s
+}
+
 type AssignReviewerRequest struct {
 	// baseMeAgentId
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
@@ -5520,6 +5680,8 @@ func (s *GetAsrVocabResponseBody) SetSuccess(v bool) *GetAsrVocabResponseBody {
 }
 
 type GetAsrVocabResponseBodyData struct {
+	AsrVersion           *int32  `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
+	ModelCustomizationId *string `json:"ModelCustomizationId,omitempty" xml:"ModelCustomizationId,omitempty"`
 	// example:
 	//
 	// test
@@ -5533,6 +5695,16 @@ func (s GetAsrVocabResponseBodyData) String() string {
 
 func (s GetAsrVocabResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetAsrVocabResponseBodyData) SetAsrVersion(v int32) *GetAsrVocabResponseBodyData {
+	s.AsrVersion = &v
+	return s
+}
+
+func (s *GetAsrVocabResponseBodyData) SetModelCustomizationId(v string) *GetAsrVocabResponseBodyData {
+	s.ModelCustomizationId = &v
+	return s
 }
 
 func (s *GetAsrVocabResponseBodyData) SetName(v string) *GetAsrVocabResponseBodyData {
@@ -5879,6 +6051,7 @@ func (s *GetCustomizationConfigListResponseBodyData) SetModelCustomizationDataSe
 }
 
 type GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo struct {
+	AsrVersion *int32 `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
 	// example:
 	//
 	// 2019-01-08
@@ -5908,6 +6081,11 @@ func (s GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo) S
 
 func (s GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo) GoString() string {
 	return s.String()
+}
+
+func (s *GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo) SetAsrVersion(v int32) *GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo {
+	s.AsrVersion = &v
+	return s
 }
 
 func (s *GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo) SetCreateTime(v string) *GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo {
@@ -14170,6 +14348,7 @@ func (s *ListAsrVocabResponseBodyData) SetAsrVocab(v []*ListAsrVocabResponseBody
 }
 
 type ListAsrVocabResponseBodyDataAsrVocab struct {
+	AsrVersion *int32 `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
 	// example:
 	//
 	// 2019-04-15T14:57Z
@@ -14177,8 +14356,9 @@ type ListAsrVocabResponseBodyDataAsrVocab struct {
 	// example:
 	//
 	// 18
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id                   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModelCustomizationId *string `json:"ModelCustomizationId,omitempty" xml:"ModelCustomizationId,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// 2019-04-15T14:57Z
@@ -14197,6 +14377,11 @@ func (s ListAsrVocabResponseBodyDataAsrVocab) GoString() string {
 	return s.String()
 }
 
+func (s *ListAsrVocabResponseBodyDataAsrVocab) SetAsrVersion(v int32) *ListAsrVocabResponseBodyDataAsrVocab {
+	s.AsrVersion = &v
+	return s
+}
+
 func (s *ListAsrVocabResponseBodyDataAsrVocab) SetCreateTime(v string) *ListAsrVocabResponseBodyDataAsrVocab {
 	s.CreateTime = &v
 	return s
@@ -14204,6 +14389,11 @@ func (s *ListAsrVocabResponseBodyDataAsrVocab) SetCreateTime(v string) *ListAsrV
 
 func (s *ListAsrVocabResponseBodyDataAsrVocab) SetId(v string) *ListAsrVocabResponseBodyDataAsrVocab {
 	s.Id = &v
+	return s
+}
+
+func (s *ListAsrVocabResponseBodyDataAsrVocab) SetModelCustomizationId(v string) *ListAsrVocabResponseBodyDataAsrVocab {
+	s.ModelCustomizationId = &v
 	return s
 }
 
@@ -16181,6 +16371,7 @@ type ListSchemeTaskConfigResponseBodyDataData struct {
 	//
 	// 2
 	AsrTaskPriority *int32 `json:"AsrTaskPriority,omitempty" xml:"AsrTaskPriority,omitempty"`
+	AsrVersion      *int32 `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
 	// example:
 	//
 	// 0
@@ -16275,6 +16466,11 @@ func (s ListSchemeTaskConfigResponseBodyDataData) GoString() string {
 
 func (s *ListSchemeTaskConfigResponseBodyDataData) SetAsrTaskPriority(v int32) *ListSchemeTaskConfigResponseBodyDataData {
 	s.AsrTaskPriority = &v
+	return s
+}
+
+func (s *ListSchemeTaskConfigResponseBodyDataData) SetAsrVersion(v int32) *ListSchemeTaskConfigResponseBodyDataData {
+	s.AsrVersion = &v
 	return s
 }
 
@@ -19917,8 +20113,9 @@ type SyncQualityCheckResponseBodyDataRules struct {
 	// example:
 	//
 	// 232232
-	Rid      *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Rid          *string                                            `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	RuleInfoBase *SyncQualityCheckResponseBodyDataRulesRuleInfoBase `json:"RuleInfoBase,omitempty" xml:"RuleInfoBase,omitempty" type:"Struct"`
+	RuleName     *string                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s SyncQualityCheckResponseBodyDataRules) String() string {
@@ -19936,6 +20133,11 @@ func (s *SyncQualityCheckResponseBodyDataRules) SetHit(v []*SyncQualityCheckResp
 
 func (s *SyncQualityCheckResponseBodyDataRules) SetRid(v string) *SyncQualityCheckResponseBodyDataRules {
 	s.Rid = &v
+	return s
+}
+
+func (s *SyncQualityCheckResponseBodyDataRules) SetRuleInfoBase(v *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) *SyncQualityCheckResponseBodyDataRules {
+	s.RuleInfoBase = v
 	return s
 }
 
@@ -20094,6 +20296,59 @@ func (s *SyncQualityCheckResponseBodyDataRulesHitPhrase) SetSpeechRate(v int32) 
 
 func (s *SyncQualityCheckResponseBodyDataRulesHitPhrase) SetWords(v string) *SyncQualityCheckResponseBodyDataRulesHitPhrase {
 	s.Words = &v
+	return s
+}
+
+type SyncQualityCheckResponseBodyDataRulesRuleInfoBase struct {
+	Comments         *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	Level            *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
+	RuleCategoryName *string `json:"RuleCategoryName,omitempty" xml:"RuleCategoryName,omitempty"`
+	ScoreNum         *int32  `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	ScoreNumType     *int32  `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
+	ScoreType        *int32  `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
+	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SyncQualityCheckResponseBodyDataRulesRuleInfoBase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncQualityCheckResponseBodyDataRulesRuleInfoBase) GoString() string {
+	return s.String()
+}
+
+func (s *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) SetComments(v string) *SyncQualityCheckResponseBodyDataRulesRuleInfoBase {
+	s.Comments = &v
+	return s
+}
+
+func (s *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) SetLevel(v int32) *SyncQualityCheckResponseBodyDataRulesRuleInfoBase {
+	s.Level = &v
+	return s
+}
+
+func (s *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) SetRuleCategoryName(v string) *SyncQualityCheckResponseBodyDataRulesRuleInfoBase {
+	s.RuleCategoryName = &v
+	return s
+}
+
+func (s *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) SetScoreNum(v int32) *SyncQualityCheckResponseBodyDataRulesRuleInfoBase {
+	s.ScoreNum = &v
+	return s
+}
+
+func (s *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) SetScoreNumType(v int32) *SyncQualityCheckResponseBodyDataRulesRuleInfoBase {
+	s.ScoreNumType = &v
+	return s
+}
+
+func (s *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) SetScoreType(v int32) *SyncQualityCheckResponseBodyDataRulesRuleInfoBase {
+	s.ScoreType = &v
+	return s
+}
+
+func (s *SyncQualityCheckResponseBodyDataRulesRuleInfoBase) SetType(v int32) *SyncQualityCheckResponseBodyDataRulesRuleInfoBase {
+	s.Type = &v
 	return s
 }
 
@@ -24021,13 +24276,24 @@ func (client *Client) AddBusinessCategoryWithOptions(request *AddBusinessCategor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddBusinessCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddBusinessCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddBusinessCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - AddBusinessCategoryRequest
@@ -24077,13 +24343,24 @@ func (client *Client) AddRuleCategoryWithOptions(request *AddRuleCategoryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddRuleCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddRuleCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddRuleCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - AddRuleCategoryRequest
@@ -24143,13 +24420,24 @@ func (client *Client) AddRuleV4WithOptions(request *AddRuleV4Request, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddRuleV4Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddRuleV4Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddRuleV4Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24163,6 +24451,81 @@ func (client *Client) AddRuleV4(request *AddRuleV4Request) (_result *AddRuleV4Re
 	runtime := &util.RuntimeOptions{}
 	_result = &AddRuleV4Response{}
 	_body, _err := client.AddRuleV4WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 申领实时语音所需token
+//
+// @param request - ApplyWsTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyWsTokenResponse
+func (client *Client) ApplyWsTokenWithOptions(request *ApplyWsTokenRequest, runtime *util.RuntimeOptions) (_result *ApplyWsTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyWsToken"),
+		Version:     tea.String("2019-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyWsTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyWsTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 申领实时语音所需token
+//
+// @param request - ApplyWsTokenRequest
+//
+// @return ApplyWsTokenResponse
+func (client *Client) ApplyWsToken(request *ApplyWsTokenRequest) (_result *ApplyWsTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyWsTokenResponse{}
+	_body, _err := client.ApplyWsTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24203,13 +24566,24 @@ func (client *Client) AssignReviewerWithOptions(request *AssignReviewerRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssignReviewerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssignReviewerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssignReviewerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - AssignReviewerRequest
@@ -24266,13 +24640,24 @@ func (client *Client) AssignReviewerBySessionGroupWithOptions(request *AssignRev
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssignReviewerBySessionGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssignReviewerBySessionGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssignReviewerBySessionGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI AssignReviewerBySessionGroup is deprecated
@@ -24333,13 +24718,24 @@ func (client *Client) BatchSubmitReviewInfoWithOptions(request *BatchSubmitRevie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchSubmitReviewInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchSubmitReviewInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchSubmitReviewInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24360,6 +24756,10 @@ func (client *Client) BatchSubmitReviewInfo(request *BatchSubmitReviewInfoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建热词模型
+//
 // @param request - CreateAsrVocabRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -24393,15 +24793,30 @@ func (client *Client) CreateAsrVocabWithOptions(request *CreateAsrVocabRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAsrVocabResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAsrVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAsrVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 创建热词模型
+//
 // @param request - CreateAsrVocabRequest
 //
 // @return CreateAsrVocabResponse
@@ -24453,13 +24868,24 @@ func (client *Client) CreateCheckTypeToSchemeWithOptions(request *CreateCheckTyp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCheckTypeToSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCheckTypeToSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCheckTypeToSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24517,13 +24943,24 @@ func (client *Client) CreateQualityCheckSchemeWithOptions(request *CreateQuality
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateQualityCheckSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateQualityCheckSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateQualityCheckSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24581,13 +25018,24 @@ func (client *Client) CreateSchemeTaskConfigWithOptions(request *CreateSchemeTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSchemeTaskConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSchemeTaskConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSchemeTaskConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24641,13 +25089,24 @@ func (client *Client) CreateSkillGroupConfigWithOptions(request *CreateSkillGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSkillGroupConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSkillGroupConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSkillGroupConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - CreateSkillGroupConfigRequest
@@ -24697,13 +25156,24 @@ func (client *Client) CreateTaskAssignRuleWithOptions(request *CreateTaskAssignR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTaskAssignRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTaskAssignRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTaskAssignRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - CreateTaskAssignRuleRequest
@@ -24753,13 +25223,24 @@ func (client *Client) CreateWarningConfigWithOptions(request *CreateWarningConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateWarningConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWarningConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWarningConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - CreateWarningConfigRequest
@@ -24813,13 +25294,24 @@ func (client *Client) CreateWarningStrategyConfigWithOptions(request *CreateWarn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateWarningStrategyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWarningStrategyConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWarningStrategyConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24873,13 +25365,24 @@ func (client *Client) DelRuleCategoryWithOptions(request *DelRuleCategoryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DelRuleCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DelRuleCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DelRuleCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DelRuleCategoryRequest
@@ -24929,13 +25432,24 @@ func (client *Client) DeleteAsrVocabWithOptions(request *DeleteAsrVocabRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAsrVocabResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAsrVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAsrVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteAsrVocabRequest
@@ -24985,13 +25499,24 @@ func (client *Client) DeleteBusinessCategoryWithOptions(request *DeleteBusinessC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteBusinessCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteBusinessCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteBusinessCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteBusinessCategoryRequest
@@ -25045,13 +25570,24 @@ func (client *Client) DeleteCheckTypeToSchemeWithOptions(request *DeleteCheckTyp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCheckTypeToSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCheckTypeToSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCheckTypeToSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25105,13 +25641,24 @@ func (client *Client) DeleteCustomizationConfigWithOptions(request *DeleteCustom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomizationConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomizationConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomizationConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteCustomizationConfigRequest
@@ -25164,13 +25711,24 @@ func (client *Client) DeleteDataSetWithOptions(request *DeleteDataSetRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI DeleteDataSet is deprecated
@@ -25223,13 +25781,24 @@ func (client *Client) DeletePrecisionTaskWithOptions(request *DeletePrecisionTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePrecisionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePrecisionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeletePrecisionTaskRequest
@@ -25283,13 +25852,24 @@ func (client *Client) DeleteQualityCheckSchemeWithOptions(request *DeleteQuality
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteQualityCheckSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteQualityCheckSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteQualityCheckSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25360,13 +25940,24 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI DeleteRule is deprecated, please use Qualitycheck::2019-01-15::DeleteRuleV4 instead.
@@ -25433,13 +26024,24 @@ func (client *Client) DeleteRuleV4WithOptions(request *DeleteRuleV4Request, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRuleV4Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRuleV4Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRuleV4Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25497,13 +26099,24 @@ func (client *Client) DeleteSchemeTaskConfigWithOptions(request *DeleteSchemeTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSchemeTaskConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSchemeTaskConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSchemeTaskConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25557,13 +26170,24 @@ func (client *Client) DeleteSkillGroupConfigWithOptions(request *DeleteSkillGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSkillGroupConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSkillGroupConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSkillGroupConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteSkillGroupConfigRequest
@@ -25613,13 +26237,24 @@ func (client *Client) DeleteTaskAssignRuleWithOptions(request *DeleteTaskAssignR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTaskAssignRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTaskAssignRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTaskAssignRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteTaskAssignRuleRequest
@@ -25669,13 +26304,24 @@ func (client *Client) DeleteWarningConfigWithOptions(request *DeleteWarningConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteWarningConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWarningConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWarningConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteWarningConfigRequest
@@ -25729,13 +26375,24 @@ func (client *Client) DeleteWarningStrategyConfigWithOptions(request *DeleteWarn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteWarningStrategyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWarningStrategyConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWarningStrategyConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25789,13 +26446,24 @@ func (client *Client) GetAsrVocabWithOptions(request *GetAsrVocabRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAsrVocabResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAsrVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAsrVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetAsrVocabRequest
@@ -25845,13 +26513,24 @@ func (client *Client) GetBusinessCategoryListWithOptions(request *GetBusinessCat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetBusinessCategoryListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetBusinessCategoryListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetBusinessCategoryListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetBusinessCategoryListRequest
@@ -25870,7 +26549,7 @@ func (client *Client) GetBusinessCategoryList(request *GetBusinessCategoryListRe
 
 // Summary:
 //
-// GetCustomizationConfigList HSF_HTTP
+// 获取语音模型列表
 //
 // @param request - GetCustomizationConfigListRequest
 //
@@ -25905,18 +26584,29 @@ func (client *Client) GetCustomizationConfigListWithOptions(request *GetCustomiz
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCustomizationConfigListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCustomizationConfigListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCustomizationConfigListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// GetCustomizationConfigList HSF_HTTP
+// 获取语音模型列表
 //
 // @param request - GetCustomizationConfigListRequest
 //
@@ -25965,13 +26655,24 @@ func (client *Client) GetNextResultToVerifyWithOptions(request *GetNextResultToV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNextResultToVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNextResultToVerifyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNextResultToVerifyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetNextResultToVerifyRequest
@@ -26021,13 +26722,24 @@ func (client *Client) GetPrecisionTaskWithOptions(request *GetPrecisionTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPrecisionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPrecisionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetPrecisionTaskRequest
@@ -26081,13 +26793,24 @@ func (client *Client) GetQualityCheckSchemeWithOptions(request *GetQualityCheckS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQualityCheckSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQualityCheckSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQualityCheckSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26141,13 +26864,24 @@ func (client *Client) GetResultWithOptions(request *GetResultRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetResultRequest
@@ -26197,13 +26931,24 @@ func (client *Client) GetResultToReviewWithOptions(request *GetResultToReviewReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResultToReviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResultToReviewResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResultToReviewResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetResultToReviewRequest
@@ -26256,13 +27001,24 @@ func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI GetRule is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
@@ -26324,13 +27080,24 @@ func (client *Client) GetRuleByIdWithOptions(request *GetRuleByIdRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRuleByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRuleByIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRuleByIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI GetRuleById is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
@@ -26387,13 +27154,24 @@ func (client *Client) GetRuleCategoryWithOptions(request *GetRuleCategoryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRuleCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRuleCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRuleCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetRuleCategoryRequest
@@ -26446,13 +27224,24 @@ func (client *Client) GetRuleDetailWithOptions(request *GetRuleDetailRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRuleDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRuleDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRuleDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI GetRuleDetail is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
@@ -26505,13 +27294,24 @@ func (client *Client) GetRuleV4WithOptions(request *GetRuleV4Request, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRuleV4Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRuleV4Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRuleV4Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26667,13 +27467,24 @@ func (client *Client) GetRulesCountListWithOptions(request *GetRulesCountListReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRulesCountListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRulesCountListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRulesCountListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26730,13 +27541,24 @@ func (client *Client) GetScoreInfoWithOptions(request *GetScoreInfoRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetScoreInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetScoreInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetScoreInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI GetScoreInfo is deprecated
@@ -26789,13 +27611,24 @@ func (client *Client) GetSkillGroupConfigWithOptions(request *GetSkillGroupConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSkillGroupConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSkillGroupConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSkillGroupConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetSkillGroupConfigRequest
@@ -26848,13 +27681,24 @@ func (client *Client) GetSyncResultWithOptions(request *GetSyncResultRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSyncResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSyncResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSyncResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI GetSyncResult is deprecated, please use Qualitycheck::2019-01-15::GetResult instead.
@@ -26911,13 +27755,24 @@ func (client *Client) GetWarningStrategyConfigWithOptions(request *GetWarningStr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetWarningStrategyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWarningStrategyConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWarningStrategyConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26971,13 +27826,24 @@ func (client *Client) HandleComplaintWithOptions(request *HandleComplaintRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &HandleComplaintResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &HandleComplaintResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &HandleComplaintResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - HandleComplaintRequest
@@ -27030,13 +27896,24 @@ func (client *Client) InvalidRuleWithOptions(request *InvalidRuleRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InvalidRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InvalidRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InvalidRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI InvalidRule is deprecated, please use Qualitycheck::2019-01-15::DeleteRuleV4 instead.
@@ -27056,6 +27933,10 @@ func (client *Client) InvalidRule(request *InvalidRuleRequest) (_result *Invalid
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取热词模型列表
+//
 // @param request - ListAsrVocabRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -27089,15 +27970,30 @@ func (client *Client) ListAsrVocabWithOptions(request *ListAsrVocabRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAsrVocabResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAsrVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAsrVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 获取热词模型列表
+//
 // @param request - ListAsrVocabRequest
 //
 // @return ListAsrVocabResponse
@@ -27152,13 +28048,24 @@ func (client *Client) ListDataSetWithOptions(request *ListDataSetRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI ListDataSet is deprecated
@@ -27215,13 +28122,24 @@ func (client *Client) ListPrecisionTaskWithOptions(request *ListPrecisionTaskReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPrecisionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPrecisionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ListPrecisionTaskRequest
@@ -27275,13 +28193,24 @@ func (client *Client) ListQualityCheckSchemeWithOptions(request *ListQualityChec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListQualityCheckSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListQualityCheckSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListQualityCheckSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27338,13 +28267,24 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI ListRules is deprecated, please use Qualitycheck::2019-01-15::ListRulesV4 instead.
@@ -27499,13 +28439,24 @@ func (client *Client) ListRulesV4WithOptions(request *ListRulesV4Request, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRulesV4Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRulesV4Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRulesV4Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27563,13 +28514,24 @@ func (client *Client) ListSchemeTaskConfigWithOptions(request *ListSchemeTaskCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSchemeTaskConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSchemeTaskConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSchemeTaskConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27630,13 +28592,24 @@ func (client *Client) ListSessionGroupWithOptions(request *ListSessionGroupReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSessionGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSessionGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSessionGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI ListSessionGroup is deprecated
@@ -27693,13 +28666,24 @@ func (client *Client) ListSkillGroupConfigWithOptions(request *ListSkillGroupCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSkillGroupConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSkillGroupConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSkillGroupConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ListSkillGroupConfigRequest
@@ -27749,13 +28733,24 @@ func (client *Client) ListTaskAssignRulesWithOptions(request *ListTaskAssignRule
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTaskAssignRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTaskAssignRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTaskAssignRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ListTaskAssignRulesRequest
@@ -27805,13 +28800,24 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUsersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUsersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ListUsersRequest
@@ -27861,13 +28867,24 @@ func (client *Client) ListWarningConfigWithOptions(request *ListWarningConfigReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWarningConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWarningConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWarningConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ListWarningConfigRequest
@@ -27921,13 +28938,24 @@ func (client *Client) ListWarningStrategyConfigWithOptions(request *ListWarningS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWarningStrategyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWarningStrategyConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWarningStrategyConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27985,13 +29013,24 @@ func (client *Client) RevertAssignedSessionWithOptions(request *RevertAssignedSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevertAssignedSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevertAssignedSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevertAssignedSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28052,13 +29091,24 @@ func (client *Client) RevertAssignedSessionGroupWithOptions(request *RevertAssig
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevertAssignedSessionGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevertAssignedSessionGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevertAssignedSessionGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI RevertAssignedSessionGroup is deprecated
@@ -28118,13 +29168,24 @@ func (client *Client) SaveConfigDataSetWithOptions(request *SaveConfigDataSetReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SaveConfigDataSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SaveConfigDataSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SaveConfigDataSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI SaveConfigDataSet is deprecated
@@ -28177,13 +29238,24 @@ func (client *Client) SubmitComplaintWithOptions(request *SubmitComplaintRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitComplaintResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitComplaintResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitComplaintResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SubmitComplaintRequest
@@ -28233,13 +29305,24 @@ func (client *Client) SubmitPrecisionTaskWithOptions(request *SubmitPrecisionTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitPrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitPrecisionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitPrecisionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SubmitPrecisionTaskRequest
@@ -28289,13 +29372,24 @@ func (client *Client) SubmitQualityCheckTaskWithOptions(request *SubmitQualityCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitQualityCheckTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitQualityCheckTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitQualityCheckTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SubmitQualityCheckTaskRequest
@@ -28345,13 +29439,24 @@ func (client *Client) SubmitReviewInfoWithOptions(request *SubmitReviewInfoReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitReviewInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitReviewInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitReviewInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SubmitReviewInfoRequest
@@ -28401,13 +29506,24 @@ func (client *Client) SyncQualityCheckWithOptions(request *SyncQualityCheckReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SyncQualityCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SyncQualityCheckResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SyncQualityCheckResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SyncQualityCheckRequest
@@ -28461,13 +29577,24 @@ func (client *Client) TestRuleV4WithOptions(request *TestRuleV4Request, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TestRuleV4Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TestRuleV4Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TestRuleV4Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28521,13 +29648,24 @@ func (client *Client) UpdateAsrVocabWithOptions(request *UpdateAsrVocabRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAsrVocabResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAsrVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAsrVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateAsrVocabRequest
@@ -28581,13 +29719,24 @@ func (client *Client) UpdateCheckTypeToSchemeWithOptions(request *UpdateCheckTyp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCheckTypeToSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCheckTypeToSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCheckTypeToSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28645,13 +29794,24 @@ func (client *Client) UpdateQualityCheckDataWithOptions(request *UpdateQualityCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateQualityCheckDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateQualityCheckDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateQualityCheckDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28709,13 +29869,24 @@ func (client *Client) UpdateQualityCheckSchemeWithOptions(request *UpdateQuality
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateQualityCheckSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateQualityCheckSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateQualityCheckSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28772,13 +29943,24 @@ func (client *Client) UpdateRuleWithOptions(request *UpdateRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI UpdateRule is deprecated, please use Qualitycheck::2019-01-15::UpdateRuleV4 instead.
@@ -28852,13 +30034,24 @@ func (client *Client) UpdateRuleByIdWithOptions(request *UpdateRuleByIdRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRuleByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRuleByIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRuleByIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI UpdateRuleById is deprecated, please use Qualitycheck::2019-01-15::UpdateRuleV4 instead.
@@ -28919,13 +30112,24 @@ func (client *Client) UpdateRuleToSchemeWithOptions(request *UpdateRuleToSchemeR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRuleToSchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRuleToSchemeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRuleToSchemeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28989,13 +30193,24 @@ func (client *Client) UpdateRuleV4WithOptions(request *UpdateRuleV4Request, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRuleV4Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRuleV4Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRuleV4Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29018,7 +30233,7 @@ func (client *Client) UpdateRuleV4(request *UpdateRuleV4Request) (_result *Updat
 
 // Summary:
 //
-// 创建质检任务
+// 更新质检任务
 //
 // @param request - UpdateSchemeTaskConfigRequest
 //
@@ -29053,18 +30268,29 @@ func (client *Client) UpdateSchemeTaskConfigWithOptions(request *UpdateSchemeTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSchemeTaskConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSchemeTaskConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSchemeTaskConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建质检任务
+// 更新质检任务
 //
 // @param request - UpdateSchemeTaskConfigRequest
 //
@@ -29113,13 +30339,24 @@ func (client *Client) UpdateSkillGroupConfigWithOptions(request *UpdateSkillGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSkillGroupConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSkillGroupConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSkillGroupConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateSkillGroupConfigRequest
@@ -29169,13 +30406,24 @@ func (client *Client) UpdateSyncQualityCheckDataWithOptions(request *UpdateSyncQ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSyncQualityCheckDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSyncQualityCheckDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSyncQualityCheckDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateSyncQualityCheckDataRequest
@@ -29225,13 +30473,24 @@ func (client *Client) UpdateTaskAssignRuleWithOptions(request *UpdateTaskAssignR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTaskAssignRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTaskAssignRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTaskAssignRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateTaskAssignRuleRequest
@@ -29281,13 +30540,24 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateUserRequest
@@ -29337,13 +30607,24 @@ func (client *Client) UpdateWarningConfigWithOptions(request *UpdateWarningConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateWarningConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWarningConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWarningConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateWarningConfigRequest
@@ -29397,13 +30678,24 @@ func (client *Client) UpdateWarningStrategyConfigWithOptions(request *UpdateWarn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateWarningStrategyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWarningStrategyConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWarningStrategyConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29457,13 +30749,24 @@ func (client *Client) UploadAudioDataWithOptions(request *UploadAudioDataRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadAudioDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadAudioDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadAudioDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UploadAudioDataRequest
@@ -29520,13 +30823,24 @@ func (client *Client) UploadDataWithOptions(request *UploadDataRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI UploadData is deprecated, please use Qualitycheck::2019-01-15::UploadDataV4 instead.
@@ -29587,13 +30901,24 @@ func (client *Client) UploadDataSyncWithOptions(request *UploadDataSyncRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadDataSyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadDataSyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadDataSyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29651,13 +30976,24 @@ func (client *Client) UploadDataV4WithOptions(request *UploadDataV4Request, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadDataV4Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadDataV4Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadDataV4Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29711,13 +31047,24 @@ func (client *Client) UploadRuleWithOptions(request *UploadRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UploadRuleRequest
@@ -29767,13 +31114,24 @@ func (client *Client) VerifyFileWithOptions(request *VerifyFileRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VerifyFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VerifyFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VerifyFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - VerifyFileRequest
@@ -29823,13 +31181,24 @@ func (client *Client) VerifySentenceWithOptions(request *VerifySentenceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VerifySentenceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VerifySentenceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VerifySentenceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - VerifySentenceRequest
