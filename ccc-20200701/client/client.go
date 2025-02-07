@@ -7723,6 +7723,164 @@ func (s *CreateCampaignResponse) SetBody(v *CreateCampaignResponseBody) *CreateC
 	return s
 }
 
+type CreateChatMediaUrlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// media id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jpg
+	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
+	// example:
+	//
+	// 9F766284-F103-4298-8EC5-19F9F9BE5522
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateChatMediaUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatMediaUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatMediaUrlRequest) SetInstanceId(v string) *CreateChatMediaUrlRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateChatMediaUrlRequest) SetMimeType(v string) *CreateChatMediaUrlRequest {
+	s.MimeType = &v
+	return s
+}
+
+func (s *CreateChatMediaUrlRequest) SetRequestId(v string) *CreateChatMediaUrlRequest {
+	s.RequestId = &v
+	return s
+}
+
+type CreateChatMediaUrlResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateChatMediaUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateChatMediaUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatMediaUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatMediaUrlResponseBody) SetCode(v string) *CreateChatMediaUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponseBody) SetData(v *CreateChatMediaUrlResponseBodyData) *CreateChatMediaUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponseBody) SetHttpStatusCode(v int32) *CreateChatMediaUrlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponseBody) SetMessage(v string) *CreateChatMediaUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponseBody) SetParams(v []*string) *CreateChatMediaUrlResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponseBody) SetRequestId(v string) *CreateChatMediaUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateChatMediaUrlResponseBodyData struct {
+	// example:
+	//
+	// $iAHNCNQCo21wMwMGBAAFAAbaACOEAaQhIH6TAqogDGyb-qD2Hbj0A88AAAGRLKYVnwTOACwwYwcACM8AAAGRLRPynQ
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com/ccc-test/namelist.csv?Expires=1642067227&OSSAccessKeyId=****&Signature=****
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateChatMediaUrlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatMediaUrlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatMediaUrlResponseBodyData) SetMediaId(v string) *CreateChatMediaUrlResponseBodyData {
+	s.MediaId = &v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponseBodyData) SetUrl(v string) *CreateChatMediaUrlResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type CreateChatMediaUrlResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChatMediaUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateChatMediaUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatMediaUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatMediaUrlResponse) SetHeaders(v map[string]*string) *CreateChatMediaUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponse) SetStatusCode(v int32) *CreateChatMediaUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateChatMediaUrlResponse) SetBody(v *CreateChatMediaUrlResponseBody) *CreateChatMediaUrlResponse {
+	s.Body = v
+	return s
+}
+
 type CreateContactFlowRequest struct {
 	// This parameter is required.
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
@@ -55822,6 +55980,189 @@ func (s *ProcessAliMeCallbackOfStagingResponse) SetBody(v *ProcessAliMeCallbackO
 	return s
 }
 
+type ProcessCustomIMCallbackRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cf584733-***-***-9699-cb77aa3b7aa6
+	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d165de4f-9851-445e-9535-66ebfa72fa51
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	MessageContent *string `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
+	// example:
+	//
+	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// xxxx
+	SenderAvatarMediaId *string `json:"SenderAvatarMediaId,omitempty" xml:"SenderAvatarMediaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 63061274befd6b545aab4c83
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// example:
+	//
+	// tom
+	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
+}
+
+func (s ProcessCustomIMCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessCustomIMCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetAccessChannelId(v string) *ProcessCustomIMCallbackRequest {
+	s.AccessChannelId = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetConversationId(v string) *ProcessCustomIMCallbackRequest {
+	s.ConversationId = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetInstanceId(v string) *ProcessCustomIMCallbackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetMessageContent(v string) *ProcessCustomIMCallbackRequest {
+	s.MessageContent = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetRequestId(v string) *ProcessCustomIMCallbackRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetSenderAvatarMediaId(v string) *ProcessCustomIMCallbackRequest {
+	s.SenderAvatarMediaId = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetSenderId(v string) *ProcessCustomIMCallbackRequest {
+	s.SenderId = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackRequest) SetSenderName(v string) *ProcessCustomIMCallbackRequest {
+	s.SenderName = &v
+	return s
+}
+
+type ProcessCustomIMCallbackResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// chat-65382141036853491
+	JobId   *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2778FA12-EDD6-42AA-9B15-AF855072E5E5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ProcessCustomIMCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessCustomIMCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessCustomIMCallbackResponseBody) SetCode(v string) *ProcessCustomIMCallbackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponseBody) SetData(v string) *ProcessCustomIMCallbackResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponseBody) SetHttpStatusCode(v int32) *ProcessCustomIMCallbackResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponseBody) SetJobId(v string) *ProcessCustomIMCallbackResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponseBody) SetMessage(v string) *ProcessCustomIMCallbackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponseBody) SetParams(v []*string) *ProcessCustomIMCallbackResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponseBody) SetRequestId(v string) *ProcessCustomIMCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ProcessCustomIMCallbackResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ProcessCustomIMCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ProcessCustomIMCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessCustomIMCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessCustomIMCallbackResponse) SetHeaders(v map[string]*string) *ProcessCustomIMCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponse) SetStatusCode(v int32) *ProcessCustomIMCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ProcessCustomIMCallbackResponse) SetBody(v *ProcessCustomIMCallbackResponseBody) *ProcessCustomIMCallbackResponse {
+	s.Body = v
+	return s
+}
+
 type PublishContactFlowRequest struct {
 	// This parameter is required.
 	//
@@ -69127,6 +69468,77 @@ func (client *Client) CreateCampaign(request *CreateCampaignRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - CreateChatMediaUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatMediaUrlResponse
+func (client *Client) CreateChatMediaUrlWithOptions(request *CreateChatMediaUrlRequest, runtime *util.RuntimeOptions) (_result *CreateChatMediaUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MimeType)) {
+		body["MimeType"] = request.MimeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChatMediaUrl"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateChatMediaUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateChatMediaUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - CreateChatMediaUrlRequest
+//
+// @return CreateChatMediaUrlResponse
+func (client *Client) CreateChatMediaUrl(request *CreateChatMediaUrlRequest) (_result *CreateChatMediaUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateChatMediaUrlResponse{}
+	_body, _err := client.CreateChatMediaUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -81541,6 +81953,97 @@ func (client *Client) ProcessAliMeCallbackOfStaging(request *ProcessAliMeCallbac
 	runtime := &util.RuntimeOptions{}
 	_result = &ProcessAliMeCallbackOfStagingResponse{}
 	_body, _err := client.ProcessAliMeCallbackOfStagingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ProcessCustomIMCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProcessCustomIMCallbackResponse
+func (client *Client) ProcessCustomIMCallbackWithOptions(request *ProcessCustomIMCallbackRequest, runtime *util.RuntimeOptions) (_result *ProcessCustomIMCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessChannelId)) {
+		body["AccessChannelId"] = request.AccessChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageContent)) {
+		body["MessageContent"] = request.MessageContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderAvatarMediaId)) {
+		body["SenderAvatarMediaId"] = request.SenderAvatarMediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderId)) {
+		body["SenderId"] = request.SenderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderName)) {
+		body["SenderName"] = request.SenderName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ProcessCustomIMCallback"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ProcessCustomIMCallbackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ProcessCustomIMCallbackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - ProcessCustomIMCallbackRequest
+//
+// @return ProcessCustomIMCallbackResponse
+func (client *Client) ProcessCustomIMCallback(request *ProcessCustomIMCallbackRequest) (_result *ProcessCustomIMCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ProcessCustomIMCallbackResponse{}
+	_body, _err := client.ProcessCustomIMCallbackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
