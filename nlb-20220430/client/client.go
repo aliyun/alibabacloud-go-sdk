@@ -46,7 +46,9 @@ type AddServersToServerGroupRequest struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// A list of backend servers.
+	// The backend servers.
+	//
+	// >  You can add at most 200 backend servers in each call.
 	//
 	// This parameter is required.
 	Servers []*AddServersToServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
@@ -86,39 +88,35 @@ func (s *AddServersToServerGroupRequest) SetServers(v []*AddServersToServerGroup
 }
 
 type AddServersToServerGroupRequestServers struct {
-	// The description of the servers.
+	// The description of the backend server.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-	//
-	// >  You can specify at most 40 servers in each call.
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at sings (@), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// ECS
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port used by the backend server. Valid values: **1*	- to **65535**.
+	// The port that is used by the backend server. Valid values: **0 to 65535**. If you do not specify a port, the default value **0*	- is used.
 	//
-	// >  You can specify at most 40 servers in each call.
+	// If you enable all-port forwarding, you do not need to specify a port when you add a backend server. The default port is port 0. NLB forwards requests to the requested ports. To determine whether all-port forwarding is enabled, call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) API operation and check the value of the **AnyPortEnabled*	- parameter.
 	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the server. You can specify at most 40 server IDs in each call.
+	// The ID of the server group.
 	//
-	// 	- If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
+	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
 	//
-	// 	- If the server group type is **Ip**, set the ServerId parameter to an IP address.
+	// 	- If the server group is of the **Ip*	- type, set this parameter to IP addresses.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecs-bp67acfmxazb4p****
+	// i-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP address of the server. If the server group type is **Ip**, set the ServerId parameter to an IP address.
-	//
-	// >  You can specify at most 40 server IP addresses in each call.
+	// The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
 	//
 	// example:
 	//
@@ -126,15 +124,13 @@ type AddServersToServerGroupRequestServers struct {
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server. Valid values:
 	//
-	// 	- **Ecs**: an ECS instance
+	// 	- **Ecs**: ECS instance
 	//
-	// 	- **Eni**: an ENI
+	// 	- **Eni**: ENI
 	//
-	// 	- **Eci**: an elastic container instance
+	// 	- **Eci**: elastic container instance
 	//
-	// 	- **Ip**: an IP address
-	//
-	// >  You can specify at most 40 servers in each call.
+	// 	- **Ip**: IP address
 	//
 	// This parameter is required.
 	//
@@ -142,9 +138,7 @@ type AddServersToServerGroupRequestServers struct {
 	//
 	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
-	//
-	// >  You can specify at most 40 servers in each call.
+	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If the value is set to **0**, no requests are forwarded to the server.
 	//
 	// example:
 	//
@@ -264,7 +258,7 @@ func (s *AddServersToServerGroupResponse) SetBody(v *AddServersToServerGroupResp
 }
 
 type AssociateAdditionalCertificatesWithListenerRequest struct {
-	// The additional certificates. You can associate up to 15 additional certificates with a listener in each request.
+	// The additional certificates. You can associate at most 15 additional certificates with a listener in each call.
 	//
 	// This parameter is required.
 	AdditionalCertificateIds []*string `json:"AdditionalCertificateIds,omitempty" xml:"AdditionalCertificateIds,omitempty" type:"Repeated"`
@@ -288,13 +282,13 @@ type AssociateAdditionalCertificatesWithListenerRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+	// The listener ID. Only TCP/SSL listener IDs are supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// lsr-bp1bpn0kn908w4nbw****
+	// lsn-bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The region ID of the Network Load Balancer (NLB) instance.
 	//
@@ -724,21 +718,23 @@ type CreateListenerRequest struct {
 	//
 	// false
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	// The ALPN policy.
+	// The ALPN policy. Valid values:
 	//
-	// Valid values:
+	// 	- HTTP1Only: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP1Only
+	// 	- HTTP2Only: uses only HTTP 2.0.
 	//
-	// 	- HTTP2Only
+	// 	- HTTP2Preferred: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP2Preferred
+	// Note
 	//
-	// 	- HTTP2Optional
+	// 	- HTTP2Optional: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	//
+	// > This parameter is required if AlpnEnabled is set to true.
 	//
 	// example:
 	//
-	// ALPN
+	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
 	// The certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
 	//
@@ -768,7 +764,7 @@ type CreateListenerRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0*	- to **1000000**. **0*	- specifies that the number of connections is unlimited.
+	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
 	//
 	// example:
 	//
@@ -792,7 +788,11 @@ type CreateListenerRequest struct {
 	//
 	// 566
 	EndPort *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// The timeout period of idle connections. Unit: seconds. Valid values: **1*	- to **900**. Default value: **900**.
+	// The timeout period of idle connections. Unit: seconds
+	//
+	// 	- If you set **ListenerProtocol*	- to **TCP*	- or **TCPSSL**, the timeout period of idle connections can be set to **10*	- to **900*	- seconds. Default value: **900**.
+	//
+	// 	- If **ListenerProtocol*	- is set to **UDP**, the timeout period of idle connections can be set to **10*	- to **20*	- seconds. Default value: **20**.
 	//
 	// example:
 	//
@@ -872,7 +872,13 @@ type CreateListenerRequest struct {
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The security policy ID. System security policies and custom security policies are supported.
 	//
-	// Valid values: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	// - Valid values: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	//
+	// - Custom security policy: the ID of the custom security policy.
+	//
+	//     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+	//
+	//     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
 	//
 	// > This parameter takes effect only for listeners that use SSL over TCP.
 	//
@@ -881,6 +887,12 @@ type CreateListenerRequest struct {
 	// tls_cipher_policy_1_0
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The server group ID.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
 	//
 	// This parameter is required.
 	//
@@ -1130,21 +1142,23 @@ type CreateListenerShrinkRequest struct {
 	//
 	// false
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	// The ALPN policy.
+	// The ALPN policy. Valid values:
 	//
-	// Valid values:
+	// 	- HTTP1Only: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP1Only
+	// 	- HTTP2Only: uses only HTTP 2.0.
 	//
-	// 	- HTTP2Only
+	// 	- HTTP2Preferred: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP2Preferred
+	// Note
 	//
-	// 	- HTTP2Optional
+	// 	- HTTP2Optional: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	//
+	// > This parameter is required if AlpnEnabled is set to true.
 	//
 	// example:
 	//
-	// ALPN
+	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
 	// The certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
 	//
@@ -1174,7 +1188,7 @@ type CreateListenerShrinkRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0*	- to **1000000**. **0*	- specifies that the number of connections is unlimited.
+	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
 	//
 	// example:
 	//
@@ -1198,7 +1212,11 @@ type CreateListenerShrinkRequest struct {
 	//
 	// 566
 	EndPort *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// The timeout period of idle connections. Unit: seconds. Valid values: **1*	- to **900**. Default value: **900**.
+	// The timeout period of idle connections. Unit: seconds
+	//
+	// 	- If you set **ListenerProtocol*	- to **TCP*	- or **TCPSSL**, the timeout period of idle connections can be set to **10*	- to **900*	- seconds. Default value: **900**.
+	//
+	// 	- If **ListenerProtocol*	- is set to **UDP**, the timeout period of idle connections can be set to **10*	- to **20*	- seconds. Default value: **20**.
 	//
 	// example:
 	//
@@ -1278,7 +1296,13 @@ type CreateListenerShrinkRequest struct {
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The security policy ID. System security policies and custom security policies are supported.
 	//
-	// Valid values: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	// - Valid values: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	//
+	// - Custom security policy: the ID of the custom security policy.
+	//
+	//     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+	//
+	//     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
 	//
 	// > This parameter takes effect only for listeners that use SSL over TCP.
 	//
@@ -1287,6 +1311,12 @@ type CreateListenerShrinkRequest struct {
 	// tls_cipher_policy_1_0
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The server group ID.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
 	//
 	// This parameter is required.
 	//
@@ -1480,7 +1510,7 @@ type CreateListenerResponseBody struct {
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The request ID.
 	//
@@ -1543,23 +1573,23 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
-	// The protocol version. Valid values:
+	// The version of the protocol. Valid values:
 	//
-	// 	- **ipv4:*	- IPv4. This is the default value.
+	// 	- **ipv4*	- (default)
 	//
-	// 	- **DualStack:*	- dual stack.
+	// 	- **DualStack**
 	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The type of IPv4 address used by the NLB instance. Valid values:
+	// The network type of the IPv4 address used by the NLB instance. Valid values:
 	//
-	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// 	- **Internet**: The NLB instance is assigned a public IP address. The domain name is resolved to the public IP address. The NLB instance is accessible over the Internet.
 	//
-	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+	// 	- **Intranet**: The NLB instance is assigned only a private IP address. The domain name is resolved to the private IP address. The NLB instance is accessible only within the VPC of the NLB instance.
 	//
-	// >  To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://help.aliyun.com/document_detail/445878.html) operation.
+	// >  To enable a public IPv6 address for a dual-stack NLB instance, call the [EnableLoadBalancerIpv6Internet](https://help.aliyun.com/document_detail/445878.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -1585,11 +1615,11 @@ type CreateLoadBalancerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration of the deletion protection feature.
 	DeletionProtectionConfig *CreateLoadBalancerRequestDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: performs a dry run and sends the request. This is the default value. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -1874,9 +1904,16 @@ type CreateLoadBalancerRequestZoneMappings struct {
 	// example:
 	//
 	// eip-bp1aedxso6u80u0qf****
-	AllocationId       *string   `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The IPv4 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
 	Ipv4LocalAddresses []*string `json:"Ipv4LocalAddresses,omitempty" xml:"Ipv4LocalAddresses,omitempty" type:"Repeated"`
-	Ipv6Address        *string   `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	// The IPv6 address. The IPv6 address that the NLB instance uses to provide external services.
+	//
+	// example:
+	//
+	// 2408:400a:d5:3080:b409:840a:ca:e8e5
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	// The IPv6 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
 	Ipv6LocalAddresses []*string `json:"Ipv6LocalAddresses,omitempty" xml:"Ipv6LocalAddresses,omitempty" type:"Repeated"`
 	// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
 	//
@@ -2135,7 +2172,7 @@ type CreateSecurityPolicyRequest struct {
 	//
 	// TLSCipherPolicy
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	// 标签列表。
+	// The tags.
 	//
 	// if can be null:
 	// true
@@ -2195,17 +2232,17 @@ func (s *CreateSecurityPolicyRequest) SetTlsVersions(v []*string) *CreateSecurit
 }
 
 type CreateSecurityPolicyRequestTag struct {
-	// 标签键。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// 一次调用最多支持添加20个标签。
+	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// 一次调用最多支持添加20个标签。
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -2361,13 +2398,15 @@ type CreateServerGroupRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configurations of the health check feature.
+	// The configuration of health checks.
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	//
-	// 	- **true**
+	// 	- **true*	- (default)
 	//
-	// 	- **false*	- (default)
+	// 	- **false**
+	//
+	// >  If you set the value to **true*	- and **Protocol*	- to **TCP**, the server group cannot be associated with **TCPSSL*	- listeners.
 	//
 	// if can be null:
 	// false
@@ -2376,13 +2415,21 @@ type CreateServerGroupRequest struct {
 	//
 	// false
 	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
-	// The protocol used to forward requests to the backend servers. Valid values:
+	// The protocol between the NLB instance and backend servers. Valid values:
 	//
 	// 	- **TCP*	- (default)
 	//
 	// 	- **UDP**
 	//
-	// 	- **TCPSSL**
+	// 	- **TCP_UDP**
+	//
+	// > 	- If you set the value to **UDP**, you can associate the server group only with **UDP*	- listeners.
+	//
+	// > 	- If you set the value to **TCP*	- and **PreserveClientIpEnabled*	- to **true**, you can associate the server group only with **TCP*	- listeners.
+	//
+	// > 	- If you set the value to **TCP*	- and **PreserveClientIpEnabled*	- to **false**, you can associate the server group with **TCP/SSL*	- and **TCP*	- listeners.
+	//
+	// > 	- If you set the value to **TCP_UDP**, you can associate the server group with **TCP*	- and **UDP*	- listeners.
 	//
 	// example:
 	//
@@ -2414,6 +2461,8 @@ type CreateServerGroupRequest struct {
 	//
 	// 	- **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	//
+	// > QUIC ID hashing is supported only when the backend protocol is set to UDP.
+	//
 	// example:
 	//
 	// Wrr
@@ -2430,9 +2479,9 @@ type CreateServerGroupRequest struct {
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
 	// The type of server group. Valid values:
 	//
-	// 	- **Instance**: allows you to add servers of the **Ecs**, **Ens**, or **Eci*	- type. This is the default value.
+	// 	- **Instance*	- (default): allows you to specify servers of the **Ecs**, **Eni**, or **Eci*	- type.
 	//
-	// 	- **Ip**: allows you to add servers by specifying IP addresses.
+	// 	- **Ip**: allows you to add servers of by specifying IP addresses.
 	//
 	// example:
 	//
@@ -2548,7 +2597,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// Valid values: **0*	- to **65535**.
 	//
-	// Default value: **0**. If you set the value to 0, the port of the backend server is used for health checks.
+	// Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
 	//
 	// example:
 	//
@@ -2560,13 +2609,13 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// 5
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The domain name that you want to use for health checks. Valid values:
+	// The domain name that is used for health checks. Valid values:
 	//
-	// 	- **$SERVER_IP**: the private IP address of a backend server.
+	// 	- **$SERVER_IP**: the internal IP address of a backend server.
 	//
-	// 	- **domain**: a specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
+	// 	- **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -2581,34 +2630,50 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	// example:
 	//
 	// true
-	HealthCheckEnabled *bool   `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	HealthCheckExp     *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
+	//
+	// example:
+	//
+	// ok
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
 	// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx*	- (default), **http_3xx**, **http_4xx**, and **http_5xx**.
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
 	// The interval at which health checks are performed. Unit: seconds.
 	//
-	// Valid values: **5*	- to **50**.
+	// Valid values: **1*	- to **50**.
 	//
 	// Default value: **10**.
 	//
 	// example:
 	//
 	// 10
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq      *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// The protocol that you want to use for health checks. Valid values: **TCP*	- (default) and **HTTP**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
+	//
+	// example:
+	//
+	// hello
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The protocol that is used for health checks. Valid values:
+	//
+	// 	- **TCP**
+	//
+	// 	- **HTTP**
+	//
+	// 	- **UDP**
 	//
 	// example:
 	//
 	// TCP
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The path to which health check requests are sent.
+	// The URL that is used for health checks.
 	//
-	// The path must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # &`. It must start with a forward slash (/).
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `. The URL must start with a forward slash (/).
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -2626,7 +2691,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// The HTTP method that is used for health checks. Valid values: **GET*	- (default) and **HEAD**.
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -2848,13 +2913,13 @@ type DeleteListenerRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The ID of the region where the NLB instance is deployed.
 	//
@@ -3656,7 +3721,7 @@ type DescribeZonesResponseBody struct {
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of zones.
+	// A list of zones.
 	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -3679,13 +3744,13 @@ func (s *DescribeZonesResponseBody) SetZones(v []*DescribeZonesResponseBodyZones
 }
 
 type DescribeZonesResponseBodyZones struct {
-	// The name of the zone.
+	// The zone name.
 	//
 	// example:
 	//
 	// ap_southeast_2
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -4025,13 +4090,13 @@ type DisassociateAdditionalCertificatesWithListenerRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+	// The listener ID. Only TCP/SSL listener IDs are supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// lsr-bp1bpn0kn908w4nbw****
+	// lsn-bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The region ID of the Network Load Balancer (NLB) instance.
 	//
@@ -4388,7 +4453,7 @@ type GetListenerAttributeRequest struct {
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@233
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
 	//
@@ -4471,7 +4536,7 @@ type GetListenerAttributeResponseBody struct {
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0*	- to **1000000**. **0*	- specifies that the number of connections is unlimited.
+	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
 	//
 	// example:
 	//
@@ -4501,7 +4566,7 @@ type GetListenerAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// lsn-ga6sjjcll6ou34l1et****
+	// lsn-bp1bpn0kn908w4nbw****@233
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The listening port. Valid values: **0*	- to **65535**. A value of **0*	- specifies all ports. If you set the value to **0**, you must also set the **StartPort*	- and **EndPort*	- parameters.
 	//
@@ -4587,7 +4652,14 @@ type GetListenerAttributeResponseBody struct {
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The ID of the security policy. System security policies and custom security policies are supported.
 	//
-	// Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	// - Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	//
+	// - Custom security policy: the ID of the custom security policy.
+	//
+	//     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+	//
+	//     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
+	//
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	//
@@ -4864,24 +4936,8 @@ type GetListenerHealthStatusRequest struct {
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
-	//
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
-	//
-	// 	- If this is your first query or no next query is to be sent, ignore this parameter.
-	//
-	// 	- If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
-	//
-	// example:
-	//
-	// FFmyTO70tTpLG6I3FmYAXGKPd****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region where the NLB instance is deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
@@ -4902,16 +4958,6 @@ func (s GetListenerHealthStatusRequest) GoString() string {
 
 func (s *GetListenerHealthStatusRequest) SetListenerId(v string) *GetListenerHealthStatusRequest {
 	s.ListenerId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusRequest) SetMaxResults(v int32) *GetListenerHealthStatusRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusRequest) SetNextToken(v string) *GetListenerHealthStatusRequest {
-	s.NextToken = &v
 	return s
 }
 
@@ -4991,7 +5037,7 @@ type GetListenerHealthStatusResponseBodyListenerHealthStatus struct {
 	//
 	// example:
 	//
-	// lsn-agkd9gmjx8nd85jjs0****
+	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The listening port.
 	//
@@ -5308,7 +5354,7 @@ type GetLoadBalancerAttributeResponseBody struct {
 	//
 	// cbwp-bp1vevu8h3ieh****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The maximum number of connections per second that can be created on the NLB instance. Valid values: **0*	- to **1000000**.
+	// The maximum number of new connections per second supported by the NLB instance in each zone (virtual IP address). Valid values: **0*	- to **1000000**.
 	//
 	// **0*	- indicates that the number of connections is unlimited.
 	//
@@ -5833,14 +5879,16 @@ type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struc
 	// example:
 	//
 	// eni-bp12f1xhs5yal61a****
-	EniId              *string   `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	// The IPv4 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
 	Ipv4LocalAddresses []*string `json:"Ipv4LocalAddresses,omitempty" xml:"Ipv4LocalAddresses,omitempty" type:"Repeated"`
 	// The IPv6 address of the NLB instance.
 	//
 	// example:
 	//
 	// 2001:db8:1:1:1:1:1:1
-	Ipv6Address        *string   `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	// The IPv6 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
 	Ipv6LocalAddresses []*string `json:"Ipv6LocalAddresses,omitempty" xml:"Ipv6LocalAddresses,omitempty" type:"Repeated"`
 	// The private IPv4 address of the NLB instance.
 	//
@@ -5965,14 +6013,21 @@ func (s *GetLoadBalancerAttributeResponse) SetBody(v *GetLoadBalancerAttributeRe
 type ListListenerCertificatesRequest struct {
 	// The type of the certificate. Valid values:
 	//
-	// 	- **Server**: a server certificate.
+	// 	- **Ca**: CA certificate.
 	//
-	// 	- **Ca**: Certificate Authority Certificate
+	// 	- **Server**: server certificate
 	//
 	// example:
 	//
-	// Server
+	// Ca
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The server certificates. Only one server certificate is supported.
+	//
+	// > This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// if can be null:
+	// true
+	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
 	//
 	// This parameter is required.
@@ -6017,6 +6072,11 @@ func (s ListListenerCertificatesRequest) GoString() string {
 
 func (s *ListListenerCertificatesRequest) SetCertType(v string) *ListListenerCertificatesRequest {
 	s.CertType = &v
+	return s
+}
+
+func (s *ListListenerCertificatesRequest) SetCertificateIds(v []*string) *ListListenerCertificatesRequest {
+	s.CertificateIds = v
 	return s
 }
 
@@ -6114,17 +6174,13 @@ func (s *ListListenerCertificatesResponseBody) SetTotalCount(v int32) *ListListe
 }
 
 type ListListenerCertificatesResponseBodyCertificates struct {
-	// The ID of the certificate.
+	// The ID of the certificate. Only one server certificate is supported.
 	//
 	// example:
 	//
 	// 12315790343_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The type of the certificate.
-	//
-	// -  Server
-	//
-	// - Ca
 	//
 	// example:
 	//
@@ -6236,7 +6292,7 @@ type ListListenersRequest struct {
 	//
 	// example:
 	//
-	// NextToken	FFmyTO70tTpLG6I3FmYAXGKPd****
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region where the NLB instance is deployed.
 	//
@@ -6245,7 +6301,16 @@ type ListListenersRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable fine-grained monitoring. Valid values:
+	//
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// false
 	SecSensorEnabled *string `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The tags.
 	Tag []*ListListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -6337,7 +6402,7 @@ func (s *ListListenersRequestTag) SetValue(v string) *ListListenersRequestTag {
 }
 
 type ListListenersResponseBody struct {
-	// A list of listeners.
+	// The listeners.
 	Listeners []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -6445,7 +6510,7 @@ type ListListenersResponseBodyListeners struct {
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
+	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
 	//
 	// example:
 	//
@@ -7582,11 +7647,17 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersTags) SetValue(v string) *Lis
 type ListLoadBalancersResponseBodyLoadBalancersZoneMappings struct {
 	// The IP addresses that are used by the NLB instance.
 	LoadBalancerAddresses []*ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
-	// The state of the task. Valid values:
+	// The zone status. Valid values:
 	//
-	// 	- **Succeeded**: The task is successful.
+	// - **Active**: The zone is available.
 	//
-	// 	- **processing**: The ticket is being executed.
+	// - **Stopped**: The zone is disabled. You can set the zone to this status only by using Cloud Architect Design Tools (CADT).
+	//
+	// - **Shifted**: The DNS record is removed.
+	//
+	// - **Starting**: The zone is being enabled. You can set the zone to this status only by using CADT.
+	//
+	// - **Stopping*	- You can set the zone to this status only by using CADT.
 	//
 	// example:
 	//
@@ -7659,13 +7730,25 @@ type ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses
 	//
 	// 192.168.3.32
 	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
-	// The health check status of the private IPv4 address.
+	// The health status of the private IPv4 address of the NLB instance. Valid values:
+	//
+	// - **Healthy**
+	//
+	// - **Unhealthy**
+	//
+	// > This parameter is returned only when the Status of the zone is Active.
 	//
 	// example:
 	//
 	// Healthy
 	PrivateIPv4HcStatus *string `json:"PrivateIPv4HcStatus,omitempty" xml:"PrivateIPv4HcStatus,omitempty"`
-	// The health check status of the private IPv6 address.
+	// The health status of the IPv6 address of the NLB instance. Valid values:
+	//
+	// - **Healthy**
+	//
+	// - **Unhealthy**
+	//
+	// > This parameter is returned only when the Status of the zone is Active.
 	//
 	// example:
 	//
@@ -7893,7 +7976,7 @@ type ListSecurityPolicyResponseBody struct {
 	//
 	// D7A8875F-373A-5F48-8484-25B07A61F2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of TLS security policies.
+	// The TLS security policies.
 	SecurityPolicies []*ListSecurityPolicyResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -8115,7 +8198,7 @@ type ListSecurityPolicyResponseBodySecurityPoliciesRelatedListeners struct {
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The listener port.
 	//
@@ -8262,9 +8345,9 @@ type ListServerGroupServersRequest struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The IDs of the servers.
+	// The server IDs. You can specify at most 40 servers in each call.
 	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
-	// The IP addresses of the servers.
+	// A list of server IP addresses. You can specify at most 40 servers in each call.
 	ServerIps []*string `json:"ServerIps,omitempty" xml:"ServerIps,omitempty" type:"Repeated"`
 }
 
@@ -8329,7 +8412,7 @@ type ListServerGroupServersResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of backend servers.
+	// The backend servers.
 	Servers []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 	// The number of entries returned.
 	//
@@ -8379,7 +8462,7 @@ type ListServerGroupServersResponseBodyServers struct {
 	//
 	// ECS
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port used by the backend server. Valid values: **1*	- to **65535**.
+	// The port that is used by the backend server. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -8391,7 +8474,7 @@ type ListServerGroupServersResponseBodyServers struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The ID of the server.
+	// The ID of the server group.
 	//
 	// example:
 	//
@@ -8403,29 +8486,29 @@ type ListServerGroupServersResponseBodyServers struct {
 	//
 	// 192.168.2.1
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The type of the backend server. Valid values:
+	// The type of backend server. Valid values:
 	//
-	// 	- **Ecs**: an Elastic Compute Service (ECS) instance
+	// 	- **Ecs**: Elastic Compute Service (ECS) instance
 	//
-	// 	- **Eni**: an elastic network interface (ENI)
+	// 	- **Eni**: elastic network interface (ENI)
 	//
-	// 	- **Eci**: an elastic container instance
+	// 	- **Eci**: elastic container instance
 	//
-	// 	- **Ip**: an IP address
+	// 	- **Ip**: IP address
 	//
 	// example:
 	//
 	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// Indicates the status of the backend server. Valid values:
+	// The status of the backend server. Valid values:
 	//
-	// 	- **Adding**: The backend server is being added.
+	// 	- **Adding**
 	//
-	// 	- **Available**: The backend server is added.
+	// 	- **Available**
 	//
-	// 	- **Configuring**: The backend server is being configured.
+	// 	- **Configuring**
 	//
-	// 	- **Removing**: The backend server is being removed.
+	// 	- **Removing**
 	//
 	// example:
 	//
@@ -8795,7 +8878,7 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	//
 	// true
 	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
-	// The protocol used to forward requests to the backend servers. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+	// The backend protocol. Valid values: **TCP*	- and **UDP**.
 	//
 	// example:
 	//
@@ -9022,8 +9105,13 @@ type ListServerGroupsResponseBodyServerGroupsHealthCheck struct {
 	// example:
 	//
 	// false
-	HealthCheckEnabled *bool   `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	HealthCheckExp     *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The response string of UDP health checks. The string must be 1 to 64 characters in length, and can contain letters and digits.
+	//
+	// example:
+	//
+	// ok
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
 	// The HTTP status codes returned for health checks. Multiple HTTP status codes are separated by commas (,). Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
 	//
 	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
@@ -9035,9 +9123,20 @@ type ListServerGroupsResponseBodyServerGroupsHealthCheck struct {
 	// example:
 	//
 	// 200
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq      *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// The protocol that is used for health checks. Valid values: **TCP*	- and **HTTP**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string of UDP health checks. The string must be 1 to 64 characters in length, and can contain letters and digits.
+	//
+	// example:
+	//
+	// hello
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The protocol that is used for health checks. Valid values:
+	//
+	// 	- **TCP**
+	//
+	// 	- **HTTP**
+	//
+	// 	- **UDP**
 	//
 	// example:
 	//
@@ -9270,25 +9369,25 @@ func (s *ListSystemSecurityPolicyResponseBody) SetSecurityPolicies(v []*ListSyst
 }
 
 type ListSystemSecurityPolicyResponseBodySecurityPolicies struct {
-	// The cipher suites.
+	// The cipher suite.
 	//
 	// example:
 	//
-	// ECDHE-ECDSA-AES128-SHA
+	// ECDHE-ECDSA-AES128-GCM-SHA256,ECDHE-ECDSA-AES256-GCM-SHA384,ECDHE-ECDSA-AES128-SHA256,ECDHE-ECDSA-AES256-SHA384,ECDHE-RSA-AES128-GCM-SHA256,ECDHE-RSA-AES256-GCM-SHA384,ECDHE-RSA-AES128-SHA256,ECDHE-RSA-AES256-SHA384,AES128-GCM-SHA256,AES256-GCM-SHA384,AES128-SHA256,AES256-SHA256,ECDHE-ECDSA-AES128-SHA,ECDHE-ECDSA-AES256-SHA,ECDHE-RSA-AES128-SHA,ECDHE-RSA-AES256-SHA,AES128-SHA,AES256-SHA,DES-CBC3-SHA
 	Ciphers *string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty"`
-	// The TLS policy ID.
+	// The ID of the TLS security policy.
 	//
 	// example:
 	//
 	// sp-3fdab6dkkke10s****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The TLS policy name.
+	// The name of the TLS security policy.
 	//
 	// example:
 	//
 	// test
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	// The version of the TLS protocol.
+	// The TLS version.
 	//
 	// example:
 	//
@@ -9954,8 +10053,6 @@ func (s *LoadBalancerLeaveSecurityGroupResponse) SetBody(v *LoadBalancerLeaveSec
 type MoveResourceGroupRequest struct {
 	// The ID of the new resource group.
 	//
-	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -9964,17 +10061,13 @@ type MoveResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The region ID of the NLB instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the bastion host for which you want to change the resource group.
-	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// The ID of the resource group.
 	//
 	// This parameter is required.
 	//
@@ -10169,7 +10262,7 @@ type RemoveServersFromServerGroupRequest struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The backend servers that you want to add to the server group. You can specify up to 40 servers in each call.
+	// The server groups. You can specify at most 200 server groups in each call.
 	//
 	// This parameter is required.
 	Servers []*RemoveServersFromServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
@@ -10218,11 +10311,11 @@ type RemoveServersFromServerGroupRequestServers struct {
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The backend server ID.
+	// The ID of the server group.
 	//
-	// 	- If the server group type is **Instance**, set this parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. The backend servers are specified by **Ecs**, **Eni**, or **Eci**.
+	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
 	//
-	// 	- If the server group type is **Ip**, set this parameter to an IP address.
+	// 	- If the server group is of the **Ip*	- type, set this parameter to IP addresses.
 	//
 	// This parameter is required.
 	//
@@ -10230,13 +10323,13 @@ type RemoveServersFromServerGroupRequestServers struct {
 	//
 	// ecs-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
+	// The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
 	//
 	// example:
 	//
 	// 192.168.6.6
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The type of the backend server. Valid values:
+	// The type of backend server. Valid values:
 	//
 	// 	- **Ecs**: ECS instance
 	//
@@ -10476,9 +10569,9 @@ func (s *SetHdMonitorRegionConfigResponse) SetBody(v *SetHdMonitorRegionConfigRe
 type StartListenerRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -10496,9 +10589,11 @@ type StartListenerRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The region ID of the NLB instance.
 	//
@@ -10797,7 +10892,7 @@ type StopListenerRequest struct {
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The region ID of the NLB instance.
 	//
@@ -11028,12 +11123,6 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the asynchronous task.
-	//
-	// example:
-	//
-	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -11048,11 +11137,6 @@ func (s TagResourcesResponseBody) String() string {
 
 func (s TagResourcesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *TagResourcesResponseBody) SetJobId(v string) *TagResourcesResponseBody {
-	s.JobId = &v
-	return s
 }
 
 func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
@@ -11194,12 +11278,6 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// The ID of the asynchronous task.
-	//
-	// example:
-	//
-	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -11214,11 +11292,6 @@ func (s UntagResourcesResponseBody) String() string {
 
 func (s UntagResourcesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *UntagResourcesResponseBody) SetJobId(v string) *UntagResourcesResponseBody {
-	s.JobId = &v
-	return s
 }
 
 func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
@@ -11283,7 +11356,7 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// example:
 	//
-	// ALPN
+	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
 	// The CA certificates. Only one CA certificate is supported.
 	//
@@ -11311,7 +11384,7 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0*	- to **1000000**. **0*	- specifies that the number of connections is unlimited.
+	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
 	//
 	// example:
 	//
@@ -11327,7 +11400,11 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: **1*	- to **900**.
+	// The timeout period of idle connections. Unit: seconds
+	//
+	// 	- If the listener uses **TCP*	- or **TCPSSL**, you can set the timeout period of idle connections to **10*	- to **900*	- seconds. Default value: **900**.
+	//
+	// 	- If the listener uses **UDP**, you can set the timeout period of idle connections to **10*	- to **20*	- seconds. Default value: **20**.
 	//
 	// example:
 	//
@@ -11347,7 +11424,7 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The size of the largest TCP segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- specifies that the maximum segment size remains unchanged. This parameter is supported only by listeners that use SSL over TCP.
 	//
@@ -11394,6 +11471,12 @@ type UpdateListenerAttributeRequest struct {
 	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The ID of the server group.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
 	//
 	// example:
 	//
@@ -11583,7 +11666,7 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// example:
 	//
-	// ALPN
+	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
 	// The CA certificates. Only one CA certificate is supported.
 	//
@@ -11611,7 +11694,7 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0*	- to **1000000**. **0*	- specifies that the number of connections is unlimited.
+	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
 	//
 	// example:
 	//
@@ -11627,7 +11710,11 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: **1*	- to **900**.
+	// The timeout period of idle connections. Unit: seconds
+	//
+	// 	- If the listener uses **TCP*	- or **TCPSSL**, you can set the timeout period of idle connections to **10*	- to **900*	- seconds. Default value: **900**.
+	//
+	// 	- If the listener uses **UDP**, you can set the timeout period of idle connections to **10*	- to **20*	- seconds. Default value: **20**.
 	//
 	// example:
 	//
@@ -11647,7 +11734,7 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// example:
 	//
-	// lsn-bp1bpn0kn908w4nbw****
+	// lsn-bp1bpn0kn908w4nbw****@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The size of the largest TCP segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- specifies that the maximum segment size remains unchanged. This parameter is supported only by listeners that use SSL over TCP.
 	//
@@ -11694,6 +11781,12 @@ type UpdateListenerAttributeShrinkRequest struct {
 	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The ID of the server group.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	//
+	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
 	//
 	// example:
 	//
@@ -12088,7 +12181,7 @@ type UpdateLoadBalancerAttributeRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **1*	- to **1000000**.
+	// The maximum number of new connections per second supported by the NLB instance in each zone (virtual IP address). Valid values: **1*	- to **1000000**.
 	//
 	// example:
 	//
@@ -12897,7 +12990,7 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// 10
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
@@ -12907,13 +13000,15 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configurations of the health check feature.
+	// The configuration of health checks.
 	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
+	//
+	// >  You cannot set this parameter to **true*	- if **PreserveClientIpEnabled*	- is set to **false*	- and the server group is associated with a **TCP/SSL*	- listener.
 	//
 	// example:
 	//
@@ -12938,6 +13033,8 @@ type UpdateServerGroupAttributeRequest struct {
 	// 	- **tch:*	- Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
 	//
 	// 	- **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
+	//
+	// > QUIC ID hashing is supported only when the backend protocol is set to UDP.
 	//
 	// example:
 	//
@@ -13020,25 +13117,25 @@ func (s *UpdateServerGroupAttributeRequest) SetServerGroupName(v string) *Update
 }
 
 type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
-	// The port that you want to use for health checks on backend servers. Valid values: **0*	- to **65535**. If you set the value to **0**, the ports of backend servers are used for health checks.
+	// The backend port that is used for health checks. Valid values: **0*	- to **65535**. If you set the value to **0**, the port of a backend server is used for health checks.
 	//
 	// example:
 	//
 	// 0
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The maximum timeout period of a health check. Unit: seconds. Valid values: **1*	- to **300**.
+	// The maximum timeout period of a health check. Unit: seconds Valid values: **1 to 300**. Default value: 5****
 	//
 	// example:
 	//
 	// 100
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The domain name that you want to use for health checks. Valid values:
+	// The domain name that is used for health checks. Valid values:
 	//
-	// 	- **$SERVER_IP**: the private IP address of a backend server.
+	// 	- **$SERVER_IP**: the internal IP address of a backend server.
 	//
-	// 	- **domain**: a specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
+	// 	- **domain**: the specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -13053,32 +13150,50 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	// example:
 	//
 	// false
-	HealthCheckEnabled *bool   `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	HealthCheckExp     *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The response string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
+	//
+	// example:
+	//
+	// ok
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
 	// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx*	- (default), **http_3xx**, **http_4xx**, and **http_5xx**.
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
-	// The interval at which health checks are performed. Unit: seconds.
+	// The interval at which health checks are performed. Unit: seconds. Default value: 5.****
 	//
-	// Valid values: **5*	- to **50**.
+	// 	- If you set **HealthCheckType*	- to **TCP*	- or **HTTP**, valid values are **1 to 50**.
+	//
+	// 	- If you set **HealthCheckType*	- to **UDP**, valid values are **1 to 300**. Set the health check interval equal to or larger than the response timeout period to ensure that UDP response timeouts are not determined as no responses.
 	//
 	// example:
 	//
 	// 5
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq      *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// The protocol that you want to use for health checks. Valid values: **TCP*	- and **HTTP**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
+	//
+	// example:
+	//
+	// hello
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The protocol that is used for health checks. Valid values:
+	//
+	// 	- **TCP**
+	//
+	// 	- **HTTP**
+	//
+	// 	- **UDP**
 	//
 	// example:
 	//
 	// TCP
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The path to which health check requests are sent.
+	// The URL that is used for health checks.
 	//
-	// The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The path must start with a forward slash (/).
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -13092,7 +13207,7 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// The HTTP method that is used for health checks. Valid values: **GET*	- and **HEAD**.
 	//
-	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
+	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -13289,7 +13404,7 @@ type UpdateServerGroupServersAttributeRequest struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The backend servers that you want to modify. You can specify up to 40 servers in each call.
+	// The backend servers. You can specify at most 200 backend servers in each call.
 	//
 	// This parameter is required.
 	Servers []*UpdateServerGroupServersAttributeRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
@@ -13331,15 +13446,15 @@ func (s *UpdateServerGroupServersAttributeRequest) SetServers(v []*UpdateServerG
 type UpdateServerGroupServersAttributeRequestServers struct {
 	// The description of the backend server.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at sings (@), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port that is used by the backend server. Valid values: **1*	- to **65535**. You can specify at most 40 backend servers in each call.
+	// The port that is used by the backend server. Valid values: **1*	- to **65535**.
 	//
-	// > This is parameter cannot be modified.
+	// >  This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -13347,11 +13462,11 @@ type UpdateServerGroupServersAttributeRequestServers struct {
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The backend server ID. You can specify at most 40 backend servers in each call.
+	// The ID of the server group.
 	//
-	// 	- If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
+	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
 	//
-	// 	- If the server group type is **Ip**, set this parameter to an IP address.
+	// 	- If the server group is of the **Ip*	- type, set this parameter to IP addresses.
 	//
 	// This parameter is required.
 	//
@@ -13359,9 +13474,7 @@ type UpdateServerGroupServersAttributeRequestServers struct {
 	//
 	// ecs-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
-	//
-	// > You can specify at most 40 backend servers in each call.
+	// The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
 	//
 	// example:
 	//
@@ -13369,15 +13482,13 @@ type UpdateServerGroupServersAttributeRequestServers struct {
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server. Valid values:
 	//
-	// 	- **Ecs**: ECS instance
+	// 	- **Ecs**: Elastic Compute Service (ECS) instance
 	//
-	// 	- **Eni**: ENI
+	// 	- **Eni**: elastic network interface (ENI)
 	//
-	// 	- **Eci**: an elastic container instance
+	// 	- **Eci**: elastic container instance
 	//
-	// 	- **Ip**: an IP address
-	//
-	// > You can specify at most 40 backend servers in each call.
+	// 	- **Ip**: IP address
 	//
 	// This parameter is required.
 	//
@@ -13385,9 +13496,7 @@ type UpdateServerGroupServersAttributeRequestServers struct {
 	//
 	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
-	//
-	// > You can specify at most 40 backend servers in each call.
+	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If the value is set to **0**, no requests are forwarded to the server.
 	//
 	// example:
 	//
@@ -13605,13 +13714,24 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddServersToServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddServersToServerGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddServersToServerGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13689,13 +13809,24 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssociateAdditionalCertificatesWithListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssociateAdditionalCertificatesWithListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssociateAdditionalCertificatesWithListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13726,7 +13857,7 @@ func (client *Client) AssociateAdditionalCertificatesWithListener(request *Assoc
 
 // Summary:
 //
-// 绑定带宽包
+// Associates an Internet Shared Bandwidth instance with a Network Load Balancer (NLB) instance.
 //
 // @param request - AttachCommonBandwidthPackageToLoadBalancerRequest
 //
@@ -13773,18 +13904,29 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 绑定带宽包
+// Associates an Internet Shared Bandwidth instance with a Network Load Balancer (NLB) instance.
 //
 // @param request - AttachCommonBandwidthPackageToLoadBalancerRequest
 //
@@ -13853,13 +13995,24 @@ func (client *Client) CancelShiftLoadBalancerZonesWithOptions(request *CancelShi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelShiftLoadBalancerZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelShiftLoadBalancerZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelShiftLoadBalancerZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14011,13 +14164,24 @@ func (client *Client) CreateListenerWithOptions(tmpReq *CreateListenerRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14140,13 +14304,24 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLoadBalancerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14179,7 +14354,7 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 
 // Summary:
 //
-// Creates a custom security policy for a Network Load Balancer (NLB) instance.
+// Creates a custom security policy for a TCP/SSL listener.
 //
 // @param request - CreateSecurityPolicyRequest
 //
@@ -14238,18 +14413,29 @@ func (client *Client) CreateSecurityPolicyWithOptions(request *CreateSecurityPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSecurityPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSecurityPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSecurityPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Creates a custom security policy for a Network Load Balancer (NLB) instance.
+// Creates a custom security policy for a TCP/SSL listener.
 //
 // @param request - CreateSecurityPolicyRequest
 //
@@ -14373,13 +14559,24 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServerGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServerGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14414,7 +14611,7 @@ func (client *Client) CreateServerGroup(request *CreateServerGroupRequest) (_res
 
 // Summary:
 //
-// 删除监听
+// Deletes a Network Load Balancer (NLB) listener.
 //
 // @param request - DeleteListenerRequest
 //
@@ -14457,18 +14654,29 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除监听
+// Deletes a Network Load Balancer (NLB) listener.
 //
 // @param request - DeleteListenerRequest
 //
@@ -14486,7 +14694,7 @@ func (client *Client) DeleteListener(request *DeleteListenerRequest) (_result *D
 
 // Summary:
 //
-// 删除负载均衡
+// Deletes a Network Load Balancer (NLB) instance.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -14529,18 +14737,29 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLoadBalancerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除负载均衡
+// Deletes a Network Load Balancer (NLB) instance.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -14558,7 +14777,7 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 
 // Summary:
 //
-// 删除安全策略
+// Deletes a custom TLS security policy from a Network Load Balancer (NLB) instance.
 //
 // @param request - DeleteSecurityPolicyRequest
 //
@@ -14601,18 +14820,29 @@ func (client *Client) DeleteSecurityPolicyWithOptions(request *DeleteSecurityPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSecurityPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSecurityPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSecurityPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除安全策略
+// Deletes a custom TLS security policy from a Network Load Balancer (NLB) instance.
 //
 // @param request - DeleteSecurityPolicyRequest
 //
@@ -14630,7 +14860,7 @@ func (client *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest)
 
 // Summary:
 //
-// DeleteServerGroup
+// Deletes a Network Load Balancer (NLB) server group.
 //
 // Description:
 //
@@ -14677,18 +14907,29 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteServerGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteServerGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// DeleteServerGroup
+// Deletes a Network Load Balancer (NLB) server group.
 //
 // Description:
 //
@@ -14741,13 +14982,24 @@ func (client *Client) DescribeHdMonitorRegionConfigWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHdMonitorRegionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHdMonitorRegionConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHdMonitorRegionConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14811,13 +15063,24 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14840,7 +15103,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries zones in a region that supports Network Load Balancer (NLB).
+// Queries the zones of a region in which a Network Load Balancer (NLB) instance is deployed.
 //
 // @param request - DescribeZonesRequest
 //
@@ -14883,18 +15146,29 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries zones in a region that supports Network Load Balancer (NLB).
+// Queries the zones of a region in which a Network Load Balancer (NLB) instance is deployed.
 //
 // @param request - DescribeZonesRequest
 //
@@ -14912,7 +15186,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 
 // Summary:
 //
-// 解绑带宽包
+// Disassociates a Network Load Balancer (NLB) instance from an Internet Shared Bandwidth instance.
 //
 // @param request - DetachCommonBandwidthPackageFromLoadBalancerRequest
 //
@@ -14959,18 +15233,29 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 解绑带宽包
+// Disassociates a Network Load Balancer (NLB) instance from an Internet Shared Bandwidth instance.
 //
 // @param request - DetachCommonBandwidthPackageFromLoadBalancerRequest
 //
@@ -14988,7 +15273,7 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancer(request *Deta
 
 // Summary:
 //
-// Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+// Changes the public IPv6 address of a dual-stack Network Load Balancer (NLB) instance to a private IPv6 address.
 //
 // @param request - DisableLoadBalancerIpv6InternetRequest
 //
@@ -15031,18 +15316,29 @@ func (client *Client) DisableLoadBalancerIpv6InternetWithOptions(request *Disabl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableLoadBalancerIpv6InternetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableLoadBalancerIpv6InternetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableLoadBalancerIpv6InternetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+// Changes the public IPv6 address of a dual-stack Network Load Balancer (NLB) instance to a private IPv6 address.
 //
 // @param request - DisableLoadBalancerIpv6InternetRequest
 //
@@ -15115,13 +15411,24 @@ func (client *Client) DisassociateAdditionalCertificatesWithListenerWithOptions(
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisassociateAdditionalCertificatesWithListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisassociateAdditionalCertificatesWithListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisassociateAdditionalCertificatesWithListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15195,13 +15502,24 @@ func (client *Client) EnableLoadBalancerIpv6InternetWithOptions(request *EnableL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableLoadBalancerIpv6InternetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableLoadBalancerIpv6InternetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableLoadBalancerIpv6InternetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15224,7 +15542,7 @@ func (client *Client) EnableLoadBalancerIpv6Internet(request *EnableLoadBalancer
 
 // Summary:
 //
-// 获取工作流状态
+// Queries the result of an asynchronous operation performed on a Network Load Balancer (NLB) instance.
 //
 // @param request - GetJobStatusRequest
 //
@@ -15259,18 +15577,29 @@ func (client *Client) GetJobStatusWithOptions(request *GetJobStatusRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetJobStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetJobStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetJobStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取工作流状态
+// Queries the result of an asynchronous operation performed on a Network Load Balancer (NLB) instance.
 //
 // @param request - GetJobStatusRequest
 //
@@ -15331,13 +15660,24 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15360,7 +15700,7 @@ func (client *Client) GetListenerAttribute(request *GetListenerAttributeRequest)
 
 // Summary:
 //
-// Queries the health check status of a Network Load Balancer (NLB) instance.
+// Queries the health check status of a Network Load Balancer (NLB) listener.
 //
 // @param request - GetListenerHealthStatusRequest
 //
@@ -15375,14 +15715,6 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
 		query["ListenerId"] = request.ListenerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -15403,18 +15735,29 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetListenerHealthStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetListenerHealthStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetListenerHealthStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the health check status of a Network Load Balancer (NLB) instance.
+// Queries the health check status of a Network Load Balancer (NLB) listener.
 //
 // @param request - GetListenerHealthStatusRequest
 //
@@ -15475,13 +15818,24 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLoadBalancerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLoadBalancerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLoadBalancerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15504,7 +15858,7 @@ func (client *Client) GetLoadBalancerAttribute(request *GetLoadBalancerAttribute
 
 // Summary:
 //
-// Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+// Queries the server certificate of a TCP/SSL listener.
 //
 // @param request - ListListenerCertificatesRequest
 //
@@ -15519,6 +15873,10 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CertType)) {
 		body["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateIds)) {
+		body["CertificateIds"] = request.CertificateIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
@@ -15551,18 +15909,29 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListListenerCertificatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListListenerCertificatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListListenerCertificatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+// Queries the server certificate of a TCP/SSL listener.
 //
 // @param request - ListListenerCertificatesRequest
 //
@@ -15639,13 +16008,24 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListListenersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListListenersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListListenersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15668,7 +16048,7 @@ func (client *Client) ListListeners(request *ListListenersRequest) (_result *Lis
 
 // Summary:
 //
-// Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+// Queries the basic information about a Network Load Balancer (NLB) instance.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -15759,18 +16139,29 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLoadBalancersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLoadBalancersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLoadBalancersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+// Queries the basic information about a Network Load Balancer (NLB) instance.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -15845,13 +16236,24 @@ func (client *Client) ListSecurityPolicyWithOptions(request *ListSecurityPolicyR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSecurityPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSecurityPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSecurityPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15874,7 +16276,7 @@ func (client *Client) ListSecurityPolicy(request *ListSecurityPolicyRequest) (_r
 
 // Summary:
 //
-// Queries the backend servers in a specified server group.
+// Queries servers in a server group of a Network Load Balancer (NLB) instance.
 //
 // @param request - ListServerGroupServersRequest
 //
@@ -15925,18 +16327,29 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServerGroupServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServerGroupServersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServerGroupServersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the backend servers in a specified server group.
+// Queries servers in a server group of a Network Load Balancer (NLB) instance.
 //
 // @param request - ListServerGroupServersRequest
 //
@@ -16019,13 +16432,24 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServerGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServerGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16079,13 +16503,24 @@ func (client *Client) ListSystemSecurityPolicyWithOptions(request *ListSystemSec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSystemSecurityPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSystemSecurityPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSystemSecurityPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16162,13 +16597,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16252,13 +16698,24 @@ func (client *Client) LoadBalancerJoinSecurityGroupWithOptions(request *LoadBala
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LoadBalancerJoinSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LoadBalancerJoinSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LoadBalancerJoinSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16295,7 +16752,7 @@ func (client *Client) LoadBalancerJoinSecurityGroup(request *LoadBalancerJoinSec
 
 // Summary:
 //
-// Disassociates a security group from a Network Load Balancer (NLB) instance.
+// Disassociates a Network Load Balancer (NLB) instance from a security group.
 //
 // Description:
 //
@@ -16350,18 +16807,29 @@ func (client *Client) LoadBalancerLeaveSecurityGroupWithOptions(request *LoadBal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LoadBalancerLeaveSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LoadBalancerLeaveSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LoadBalancerLeaveSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Disassociates a security group from a Network Load Balancer (NLB) instance.
+// Disassociates a Network Load Balancer (NLB) instance from a security group.
 //
 // Description:
 //
@@ -16430,13 +16898,24 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16459,7 +16938,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 
 // Summary:
 //
-// Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+// Deletes server groups from a Network Load Balancer (NLB) instance.
 //
 // @param request - RemoveServersFromServerGroupRequest
 //
@@ -16506,18 +16985,29 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveServersFromServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveServersFromServerGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveServersFromServerGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+// Deletes server groups from a Network Load Balancer (NLB) instance.
 //
 // @param request - RemoveServersFromServerGroupRequest
 //
@@ -16574,13 +17064,24 @@ func (client *Client) SetHdMonitorRegionConfigWithOptions(request *SetHdMonitorR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetHdMonitorRegionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetHdMonitorRegionConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetHdMonitorRegionConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16603,7 +17104,7 @@ func (client *Client) SetHdMonitorRegionConfig(request *SetHdMonitorRegionConfig
 
 // Summary:
 //
-// Enables a listener for a Network Load Balancer (NLB) instance.
+// Enables a Network Load Balancer (NLB) listener.
 //
 // @param request - StartListenerRequest
 //
@@ -16646,18 +17147,29 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Enables a listener for a Network Load Balancer (NLB) instance.
+// Enables a Network Load Balancer (NLB) listener.
 //
 // @param request - StartListenerRequest
 //
@@ -16675,7 +17187,7 @@ func (client *Client) StartListener(request *StartListenerRequest) (_result *Sta
 
 // Summary:
 //
-// Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+// Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
 //
 // Description:
 //
@@ -16726,18 +17238,29 @@ func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShift
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartShiftLoadBalancerZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartShiftLoadBalancerZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartShiftLoadBalancerZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+// Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
 //
 // Description:
 //
@@ -16759,7 +17282,7 @@ func (client *Client) StartShiftLoadBalancerZones(request *StartShiftLoadBalance
 
 // Summary:
 //
-// Disables a listener for a Network Load Balancer (NLB) instance.
+// Stops a listener of a Network Load Balancer (NLB) instance.
 //
 // @param request - StopListenerRequest
 //
@@ -16802,18 +17325,29 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Disables a listener for a Network Load Balancer (NLB) instance.
+// Stops a listener of a Network Load Balancer (NLB) instance.
 //
 // @param request - StopListenerRequest
 //
@@ -16885,13 +17419,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16972,13 +17517,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17106,13 +17662,24 @@ func (client *Client) UpdateListenerAttributeWithOptions(tmpReq *UpdateListenerA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17135,7 +17702,7 @@ func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRe
 
 // Summary:
 //
-// Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+// Changes the network type of the IPv4 address for a Network Load Balancer (NLB) instance.
 //
 // Description:
 //
@@ -17198,18 +17765,29 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *Up
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+// Changes the network type of the IPv4 address for a Network Load Balancer (NLB) instance.
 //
 // Description:
 //
@@ -17294,13 +17872,24 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLoadBalancerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLoadBalancerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLoadBalancerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17323,7 +17912,7 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 
 // Summary:
 //
-// Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+// Enables or disables the deletion protection feature.
 //
 // Description:
 //
@@ -17386,18 +17975,29 @@ func (client *Client) UpdateLoadBalancerProtectionWithOptions(request *UpdateLoa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLoadBalancerProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLoadBalancerProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLoadBalancerProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+// Enables or disables the deletion protection feature.
 //
 // Description:
 //
@@ -17482,13 +18082,24 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLoadBalancerZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLoadBalancerZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLoadBalancerZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17582,13 +18193,24 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSecurityPolicyAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSecurityPolicyAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSecurityPolicyAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17611,7 +18233,7 @@ func (client *Client) UpdateSecurityPolicyAttribute(request *UpdateSecurityPolic
 
 // Summary:
 //
-// Modifies the configurations of a server group of Network Load Balancer (NLB).
+// Modifies the configurations of a Network Load Balancer (NLB) server group.
 //
 // @param request - UpdateServerGroupAttributeRequest
 //
@@ -17681,18 +18303,29 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServerGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServerGroupAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServerGroupAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Modifies the configurations of a server group of Network Load Balancer (NLB).
+// Modifies the configurations of a Network Load Balancer (NLB) server group.
 //
 // @param request - UpdateServerGroupAttributeRequest
 //
@@ -17710,7 +18343,7 @@ func (client *Client) UpdateServerGroupAttribute(request *UpdateServerGroupAttri
 
 // Summary:
 //
-// Modifies the configurations of backend servers in a server group, such as the weight and description.
+// Modifies the weights and descriptions of backend servers in a server group of a Network Load Balancer (NLB) instance.
 //
 // Description:
 //
@@ -17773,18 +18406,29 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServerGroupServersAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServerGroupServersAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServerGroupServersAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Modifies the configurations of backend servers in a server group, such as the weight and description.
+// Modifies the weights and descriptions of backend servers in a server group of a Network Load Balancer (NLB) instance.
 //
 // Description:
 //
