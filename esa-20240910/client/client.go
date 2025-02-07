@@ -1594,6 +1594,70 @@ func (s *ActivateClientCertificateResponse) SetBody(v *ActivateClientCertificate
 	return s
 }
 
+type ActivateVersionManagementRequest struct {
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ActivateVersionManagementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateVersionManagementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateVersionManagementRequest) SetSiteId(v int64) *ActivateVersionManagementRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ActivateVersionManagementResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ActivateVersionManagementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateVersionManagementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateVersionManagementResponseBody) SetRequestId(v string) *ActivateVersionManagementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ActivateVersionManagementResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActivateVersionManagementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ActivateVersionManagementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateVersionManagementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateVersionManagementResponse) SetHeaders(v map[string]*string) *ActivateVersionManagementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ActivateVersionManagementResponse) SetStatusCode(v int32) *ActivateVersionManagementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ActivateVersionManagementResponse) SetBody(v *ActivateVersionManagementResponseBody) *ActivateVersionManagementResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyCertificateRequest struct {
 	// This parameter is required.
 	//
@@ -4336,6 +4400,302 @@ func (s *CommitRoutineStagingCodeResponse) SetBody(v *CommitRoutineStagingCodeRe
 	return s
 }
 
+type CreateCacheRuleRequest struct {
+	// example:
+	//
+	// 8880
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// example:
+	//
+	// follow_origin
+	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// example:
+	//
+	// cache_all
+	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// example:
+	//
+	// on
+	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// example:
+	//
+	// bypass_cache_reserve
+	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// example:
+	//
+	// cookiename
+	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// example:
+	//
+	// headername
+	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// example:
+	//
+	// follow_origin
+	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// example:
+	//
+	// cookie_exapmle
+	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// example:
+	//
+	// example
+	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// example:
+	//
+	// example
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// example:
+	//
+	// reserve_all
+	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// on
+	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 340035003106221
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// example:
+	//
+	// on
+	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// example:
+	//
+	// on
+	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// example:
+	//
+	// on
+	UserLanguage *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s CreateCacheRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCacheRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCacheRuleRequest) SetAdditionalCacheablePorts(v string) *CreateCacheRuleRequest {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetBrowserCacheMode(v string) *CreateCacheRuleRequest {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetBrowserCacheTtl(v string) *CreateCacheRuleRequest {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetBypassCache(v string) *CreateCacheRuleRequest {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetCacheDeceptionArmor(v string) *CreateCacheRuleRequest {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetCacheReserveEligibility(v string) *CreateCacheRuleRequest {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetCheckPresenceCookie(v string) *CreateCacheRuleRequest {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetCheckPresenceHeader(v string) *CreateCacheRuleRequest {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetEdgeCacheMode(v string) *CreateCacheRuleRequest {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetEdgeCacheTtl(v string) *CreateCacheRuleRequest {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetEdgeStatusCodeCacheTtl(v string) *CreateCacheRuleRequest {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetIncludeCookie(v string) *CreateCacheRuleRequest {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetIncludeHeader(v string) *CreateCacheRuleRequest {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetQueryString(v string) *CreateCacheRuleRequest {
+	s.QueryString = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetQueryStringMode(v string) *CreateCacheRuleRequest {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetRule(v string) *CreateCacheRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetRuleEnable(v string) *CreateCacheRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetRuleName(v string) *CreateCacheRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetServeStale(v string) *CreateCacheRuleRequest {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetSiteId(v int64) *CreateCacheRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetSiteVersion(v int32) *CreateCacheRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetSortQueryStringForCache(v string) *CreateCacheRuleRequest {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetUserDeviceType(v string) *CreateCacheRuleRequest {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetUserGeo(v string) *CreateCacheRuleRequest {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetUserLanguage(v string) *CreateCacheRuleRequest {
+	s.UserLanguage = &v
+	return s
+}
+
+type CreateCacheRuleResponseBody struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCacheRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCacheRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCacheRuleResponseBody) SetConfigId(v int64) *CreateCacheRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateCacheRuleResponseBody) SetRequestId(v string) *CreateCacheRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCacheRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCacheRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCacheRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCacheRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCacheRuleResponse) SetHeaders(v map[string]*string) *CreateCacheRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCacheRuleResponse) SetStatusCode(v int32) *CreateCacheRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCacheRuleResponse) SetBody(v *CreateCacheRuleResponseBody) *CreateCacheRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateClientCertificateRequest struct {
 	// example:
 	//
@@ -4549,6 +4909,140 @@ func (s *CreateClientCertificateResponse) SetStatusCode(v int32) *CreateClientCe
 }
 
 func (s *CreateClientCertificateResponse) SetBody(v *CreateClientCertificateResponseBody) *CreateClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCompressionRuleRequest struct {
+	// example:
+	//
+	// on
+	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// example:
+	//
+	// on
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1231231221***
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateCompressionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompressionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompressionRuleRequest) SetBrotli(v string) *CreateCompressionRuleRequest {
+	s.Brotli = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetGzip(v string) *CreateCompressionRuleRequest {
+	s.Gzip = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetRule(v string) *CreateCompressionRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetRuleEnable(v string) *CreateCompressionRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetRuleName(v string) *CreateCompressionRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetSiteId(v int64) *CreateCompressionRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetSiteVersion(v int32) *CreateCompressionRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateCompressionRuleResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCompressionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompressionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompressionRuleResponseBody) SetConfigId(v int64) *CreateCompressionRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateCompressionRuleResponseBody) SetRequestId(v string) *CreateCompressionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCompressionRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCompressionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCompressionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompressionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompressionRuleResponse) SetHeaders(v map[string]*string) *CreateCompressionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCompressionRuleResponse) SetStatusCode(v int32) *CreateCompressionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCompressionRuleResponse) SetBody(v *CreateCompressionRuleResponseBody) *CreateCompressionRuleResponse {
 	s.Body = v
 	return s
 }
@@ -5760,6 +6254,869 @@ func (s *CreateEdgeContainerAppVersionResponse) SetBody(v *CreateEdgeContainerAp
 	return s
 }
 
+type CreateHttpRequestHeaderModificationRuleRequest struct {
+	// This parameter is required.
+	RequestHeaderModification []*CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateHttpRequestHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpRequestHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequest) SetRequestHeaderModification(v []*CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) *CreateHttpRequestHeaderModificationRuleRequest {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequest) SetRule(v string) *CreateHttpRequestHeaderModificationRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequest) SetRuleEnable(v string) *CreateHttpRequestHeaderModificationRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequest) SetRuleName(v string) *CreateHttpRequestHeaderModificationRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequest) SetSiteId(v int64) *CreateHttpRequestHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequest) SetSiteVersion(v int32) *CreateHttpRequestHeaderModificationRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// headername
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// headervalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetName(v string) *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetOperation(v string) *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetValue(v string) *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type CreateHttpRequestHeaderModificationRuleShrinkRequest struct {
+	// This parameter is required.
+	RequestHeaderModificationShrink *string `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateHttpRequestHeaderModificationRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpRequestHeaderModificationRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetRequestHeaderModificationShrink(v string) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.RequestHeaderModificationShrink = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetRule(v string) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleEnable(v string) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleName(v string) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetSiteId(v int64) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetSiteVersion(v int32) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateHttpRequestHeaderModificationRuleResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHttpRequestHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpRequestHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleResponseBody) SetConfigId(v int64) *CreateHttpRequestHeaderModificationRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleResponseBody) SetRequestId(v string) *CreateHttpRequestHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHttpRequestHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHttpRequestHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHttpRequestHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpRequestHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *CreateHttpRequestHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleResponse) SetStatusCode(v int32) *CreateHttpRequestHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleResponse) SetBody(v *CreateHttpRequestHeaderModificationRuleResponseBody) *CreateHttpRequestHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHttpResponseHeaderModificationRuleRequest struct {
+	// This parameter is required.
+	ResponseHeaderModification []*CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateHttpResponseHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpResponseHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequest) SetResponseHeaderModification(v []*CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) *CreateHttpResponseHeaderModificationRuleRequest {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequest) SetRule(v string) *CreateHttpResponseHeaderModificationRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequest) SetRuleEnable(v string) *CreateHttpResponseHeaderModificationRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequest) SetRuleName(v string) *CreateHttpResponseHeaderModificationRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequest) SetSiteId(v int64) *CreateHttpResponseHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequest) SetSiteVersion(v int32) *CreateHttpResponseHeaderModificationRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// headername
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// headervalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetName(v string) *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetOperation(v string) *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetValue(v string) *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type CreateHttpResponseHeaderModificationRuleShrinkRequest struct {
+	// This parameter is required.
+	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateHttpResponseHeaderModificationRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpResponseHeaderModificationRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetResponseHeaderModificationShrink(v string) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.ResponseHeaderModificationShrink = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetRule(v string) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleEnable(v string) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleName(v string) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetSiteId(v int64) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetSiteVersion(v int32) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateHttpResponseHeaderModificationRuleResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHttpResponseHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpResponseHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleResponseBody) SetConfigId(v int64) *CreateHttpResponseHeaderModificationRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleResponseBody) SetRequestId(v string) *CreateHttpResponseHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHttpResponseHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHttpResponseHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHttpResponseHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpResponseHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *CreateHttpResponseHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleResponse) SetStatusCode(v int32) *CreateHttpResponseHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleResponse) SetBody(v *CreateHttpResponseHeaderModificationRuleResponseBody) *CreateHttpResponseHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHttpsApplicationConfigurationRequest struct {
+	// example:
+	//
+	// on
+	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// example:
+	//
+	// 86400
+	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// example:
+	//
+	// on
+	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// example:
+	//
+	// 3600
+	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// example:
+	//
+	// on
+	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// example:
+	//
+	// on
+	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// example:
+	//
+	// 301
+	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateHttpsApplicationConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpsApplicationConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetAltSvc(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetAltSvcClear(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetAltSvcMa(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetAltSvcPersist(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHsts(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.Hsts = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHstsIncludeSubdomains(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHstsMaxAge(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHstsPreload(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHttpsForce(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHttpsForceCode(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetRule(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetRuleEnable(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetRuleName(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetSiteId(v int64) *CreateHttpsApplicationConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetSiteVersion(v int32) *CreateHttpsApplicationConfigurationRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateHttpsApplicationConfigurationResponseBody struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHttpsApplicationConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpsApplicationConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpsApplicationConfigurationResponseBody) SetConfigId(v int64) *CreateHttpsApplicationConfigurationResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationResponseBody) SetRequestId(v string) *CreateHttpsApplicationConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHttpsApplicationConfigurationResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHttpsApplicationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHttpsApplicationConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpsApplicationConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpsApplicationConfigurationResponse) SetHeaders(v map[string]*string) *CreateHttpsApplicationConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationResponse) SetStatusCode(v int32) *CreateHttpsApplicationConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationResponse) SetBody(v *CreateHttpsApplicationConfigurationResponseBody) *CreateHttpsApplicationConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHttpsBasicConfigurationRequest struct {
+	// example:
+	//
+	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// all
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// example:
+	//
+	// on
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// example:
+	//
+	// on
+	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// example:
+	//
+	// on
+	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// on
+	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// on
+	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// example:
+	//
+	// on
+	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// example:
+	//
+	// on
+	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// example:
+	//
+	// on
+	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s CreateHttpsBasicConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpsBasicConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetCiphersuite(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetCiphersuiteGroup(v string) *CreateHttpsBasicConfigurationRequest {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetHttp2(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Http2 = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetHttp3(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Http3 = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetHttps(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Https = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetOcspStapling(v string) *CreateHttpsBasicConfigurationRequest {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetRule(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetRuleEnable(v string) *CreateHttpsBasicConfigurationRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetRuleName(v string) *CreateHttpsBasicConfigurationRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetSiteId(v int64) *CreateHttpsBasicConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetTls10(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetTls11(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetTls12(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetTls13(v string) *CreateHttpsBasicConfigurationRequest {
+	s.Tls13 = &v
+	return s
+}
+
+type CreateHttpsBasicConfigurationResponseBody struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHttpsBasicConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpsBasicConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpsBasicConfigurationResponseBody) SetConfigId(v int64) *CreateHttpsBasicConfigurationResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationResponseBody) SetRequestId(v string) *CreateHttpsBasicConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHttpsBasicConfigurationResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHttpsBasicConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHttpsBasicConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpsBasicConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpsBasicConfigurationResponse) SetHeaders(v map[string]*string) *CreateHttpsBasicConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationResponse) SetStatusCode(v int32) *CreateHttpsBasicConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationResponse) SetBody(v *CreateHttpsBasicConfigurationResponseBody) *CreateHttpsBasicConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type CreateKvNamespaceRequest struct {
 	// The description of the namespace.
 	//
@@ -6074,6 +7431,588 @@ func (s *CreateListResponse) SetBody(v *CreateListResponseBody) *CreateListRespo
 	return s
 }
 
+type CreateLoadBalancerRequest struct {
+	// example:
+	//
+	// true
+	AdaptiveRouting *CreateLoadBalancerRequestAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	Description  *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 123
+	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// example:
+	//
+	// order
+	Monitor *CreateLoadBalancerRequestMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb.example.com
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123
+	RandomSteering *CreateLoadBalancerRequestRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
+	RegionPools    interface{}                              `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	Rules                     []*CreateLoadBalancerRequestRules                   `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	SessionAffinity           *string                                             `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	SessionAffinityAttributes *CreateLoadBalancerRequestSessionAffinityAttributes `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty" type:"Struct"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// ip
+	SteeringPolicy *string     `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	Ttl            *int32      `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s CreateLoadBalancerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequest) SetAdaptiveRouting(v *CreateLoadBalancerRequestAdaptiveRouting) *CreateLoadBalancerRequest {
+	s.AdaptiveRouting = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetDefaultPools(v []*int64) *CreateLoadBalancerRequest {
+	s.DefaultPools = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetDescription(v string) *CreateLoadBalancerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetFallbackPool(v int64) *CreateLoadBalancerRequest {
+	s.FallbackPool = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetMonitor(v *CreateLoadBalancerRequestMonitor) *CreateLoadBalancerRequest {
+	s.Monitor = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetName(v string) *CreateLoadBalancerRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetRandomSteering(v *CreateLoadBalancerRequestRandomSteering) *CreateLoadBalancerRequest {
+	s.RandomSteering = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetRegionPools(v interface{}) *CreateLoadBalancerRequest {
+	s.RegionPools = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetRules(v []*CreateLoadBalancerRequestRules) *CreateLoadBalancerRequest {
+	s.Rules = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetSessionAffinity(v string) *CreateLoadBalancerRequest {
+	s.SessionAffinity = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetSessionAffinityAttributes(v *CreateLoadBalancerRequestSessionAffinityAttributes) *CreateLoadBalancerRequest {
+	s.SessionAffinityAttributes = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetSiteId(v int64) *CreateLoadBalancerRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetSteeringPolicy(v string) *CreateLoadBalancerRequest {
+	s.SteeringPolicy = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetSubRegionPools(v interface{}) *CreateLoadBalancerRequest {
+	s.SubRegionPools = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetTtl(v int32) *CreateLoadBalancerRequest {
+	s.Ttl = &v
+	return s
+}
+
+type CreateLoadBalancerRequestAdaptiveRouting struct {
+	FailoverAcrossPools *bool `json:"FailoverAcrossPools,omitempty" xml:"FailoverAcrossPools,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestAdaptiveRouting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestAdaptiveRouting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestAdaptiveRouting) SetFailoverAcrossPools(v bool) *CreateLoadBalancerRequestAdaptiveRouting {
+	s.FailoverAcrossPools = &v
+	return s
+}
+
+type CreateLoadBalancerRequestMonitor struct {
+	ConsecutiveDown *int32      `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	ConsecutiveUp   *int32      `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	ExpectedCodes   *string     `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	FollowRedirects *bool       `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	Header          interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	Interval        *int32      `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Method          *string     `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path            *string     `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port            *int32      `json:"Port,omitempty" xml:"Port,omitempty"`
+	Timeout         *int32      `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Type            *string     `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestMonitor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestMonitor) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetConsecutiveDown(v int32) *CreateLoadBalancerRequestMonitor {
+	s.ConsecutiveDown = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetConsecutiveUp(v int32) *CreateLoadBalancerRequestMonitor {
+	s.ConsecutiveUp = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetExpectedCodes(v string) *CreateLoadBalancerRequestMonitor {
+	s.ExpectedCodes = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetFollowRedirects(v bool) *CreateLoadBalancerRequestMonitor {
+	s.FollowRedirects = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetHeader(v interface{}) *CreateLoadBalancerRequestMonitor {
+	s.Header = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetInterval(v int32) *CreateLoadBalancerRequestMonitor {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetMethod(v string) *CreateLoadBalancerRequestMonitor {
+	s.Method = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetPath(v string) *CreateLoadBalancerRequestMonitor {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetPort(v int32) *CreateLoadBalancerRequestMonitor {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetTimeout(v int32) *CreateLoadBalancerRequestMonitor {
+	s.Timeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestMonitor) SetType(v string) *CreateLoadBalancerRequestMonitor {
+	s.Type = &v
+	return s
+}
+
+type CreateLoadBalancerRequestRandomSteering struct {
+	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestRandomSteering) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestRandomSteering) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestRandomSteering) SetDefaultWeight(v int32) *CreateLoadBalancerRequestRandomSteering {
+	s.DefaultWeight = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRandomSteering) SetPoolWeights(v map[string]*int32) *CreateLoadBalancerRequestRandomSteering {
+	s.PoolWeights = v
+	return s
+}
+
+type CreateLoadBalancerRequestRules struct {
+	FixedResponse *CreateLoadBalancerRequestRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
+	Overrides     interface{}                                  `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	Rule          *string                                      `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable    *string                                      `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName      *string                                      `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence      *int32                                       `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	Terminates    *bool                                        `json:"Terminates,omitempty" xml:"Terminates,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestRules) SetFixedResponse(v *CreateLoadBalancerRequestRulesFixedResponse) *CreateLoadBalancerRequestRules {
+	s.FixedResponse = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRules) SetOverrides(v interface{}) *CreateLoadBalancerRequestRules {
+	s.Overrides = v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRules) SetRule(v string) *CreateLoadBalancerRequestRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRules) SetRuleEnable(v string) *CreateLoadBalancerRequestRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRules) SetRuleName(v string) *CreateLoadBalancerRequestRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRules) SetSequence(v int32) *CreateLoadBalancerRequestRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRules) SetTerminates(v bool) *CreateLoadBalancerRequestRules {
+	s.Terminates = &v
+	return s
+}
+
+type CreateLoadBalancerRequestRulesFixedResponse struct {
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	StatusCode  *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestRulesFixedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestRulesFixedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestRulesFixedResponse) SetContentType(v string) *CreateLoadBalancerRequestRulesFixedResponse {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRulesFixedResponse) SetLocation(v string) *CreateLoadBalancerRequestRulesFixedResponse {
+	s.Location = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRulesFixedResponse) SetMessageBody(v string) *CreateLoadBalancerRequestRulesFixedResponse {
+	s.MessageBody = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestRulesFixedResponse) SetStatusCode(v int32) *CreateLoadBalancerRequestRulesFixedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateLoadBalancerRequestSessionAffinityAttributes struct {
+	SameSite             *string `json:"SameSite,omitempty" xml:"SameSite,omitempty"`
+	Secure               *string `json:"Secure,omitempty" xml:"Secure,omitempty"`
+	ZeroDowntimeFailover *string `json:"ZeroDowntimeFailover,omitempty" xml:"ZeroDowntimeFailover,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestSessionAffinityAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestSessionAffinityAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestSessionAffinityAttributes) SetSameSite(v string) *CreateLoadBalancerRequestSessionAffinityAttributes {
+	s.SameSite = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestSessionAffinityAttributes) SetSecure(v string) *CreateLoadBalancerRequestSessionAffinityAttributes {
+	s.Secure = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestSessionAffinityAttributes) SetZeroDowntimeFailover(v string) *CreateLoadBalancerRequestSessionAffinityAttributes {
+	s.ZeroDowntimeFailover = &v
+	return s
+}
+
+type CreateLoadBalancerShrinkRequest struct {
+	// example:
+	//
+	// true
+	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 123
+	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// example:
+	//
+	// order
+	MonitorShrink *string `json:"Monitor,omitempty" xml:"Monitor,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb.example.com
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123
+	RandomSteeringShrink *string     `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
+	RegionPools          interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RulesShrink                     *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	SessionAffinity                 *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	SessionAffinityAttributesShrink *string `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// ip
+	SteeringPolicy *string     `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	Ttl            *int32      `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s CreateLoadBalancerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetAdaptiveRoutingShrink(v string) *CreateLoadBalancerShrinkRequest {
+	s.AdaptiveRoutingShrink = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetDefaultPoolsShrink(v string) *CreateLoadBalancerShrinkRequest {
+	s.DefaultPoolsShrink = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetDescription(v string) *CreateLoadBalancerShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetFallbackPool(v int64) *CreateLoadBalancerShrinkRequest {
+	s.FallbackPool = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetMonitorShrink(v string) *CreateLoadBalancerShrinkRequest {
+	s.MonitorShrink = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetName(v string) *CreateLoadBalancerShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetRandomSteeringShrink(v string) *CreateLoadBalancerShrinkRequest {
+	s.RandomSteeringShrink = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetRegionPools(v interface{}) *CreateLoadBalancerShrinkRequest {
+	s.RegionPools = v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetRulesShrink(v string) *CreateLoadBalancerShrinkRequest {
+	s.RulesShrink = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetSessionAffinity(v string) *CreateLoadBalancerShrinkRequest {
+	s.SessionAffinity = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetSessionAffinityAttributesShrink(v string) *CreateLoadBalancerShrinkRequest {
+	s.SessionAffinityAttributesShrink = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetSiteId(v int64) *CreateLoadBalancerShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetSteeringPolicy(v string) *CreateLoadBalancerShrinkRequest {
+	s.SteeringPolicy = &v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetSubRegionPools(v interface{}) *CreateLoadBalancerShrinkRequest {
+	s.SubRegionPools = v
+	return s
+}
+
+func (s *CreateLoadBalancerShrinkRequest) SetTtl(v int32) *CreateLoadBalancerShrinkRequest {
+	s.Ttl = &v
+	return s
+}
+
+type CreateLoadBalancerResponseBody struct {
+	// example:
+	//
+	// 99867648760****
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLoadBalancerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerResponseBody) SetId(v int64) *CreateLoadBalancerResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateLoadBalancerResponseBody) SetRequestId(v string) *CreateLoadBalancerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLoadBalancerResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLoadBalancerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLoadBalancerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerResponse) SetHeaders(v map[string]*string) *CreateLoadBalancerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLoadBalancerResponse) SetStatusCode(v int32) *CreateLoadBalancerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) *CreateLoadBalancerResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOriginPoolRequest struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// This parameter is required.
@@ -6374,6 +8313,185 @@ func (s *CreateOriginProtectionResponse) SetStatusCode(v int32) *CreateOriginPro
 }
 
 func (s *CreateOriginProtectionResponse) SetBody(v *CreateOriginProtectionResponseBody) *CreateOriginProtectionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOriginRuleRequest struct {
+	// example:
+	//
+	// test.example.com
+	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// example:
+	//
+	// 8080
+	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// example:
+	//
+	// 4433
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// example:
+	//
+	// http
+	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// example:
+	//
+	// on
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 340035003106221
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateOriginRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginRuleRequest) SetDnsRecord(v string) *CreateOriginRuleRequest {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetOriginHost(v string) *CreateOriginRuleRequest {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetOriginHttpPort(v string) *CreateOriginRuleRequest {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetOriginHttpsPort(v string) *CreateOriginRuleRequest {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetOriginScheme(v string) *CreateOriginRuleRequest {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetOriginSni(v string) *CreateOriginRuleRequest {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetRange(v string) *CreateOriginRuleRequest {
+	s.Range = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetRule(v string) *CreateOriginRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetRuleEnable(v string) *CreateOriginRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetRuleName(v string) *CreateOriginRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetSiteId(v int64) *CreateOriginRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetSiteVersion(v int32) *CreateOriginRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateOriginRuleResponseBody struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateOriginRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginRuleResponseBody) SetConfigId(v int64) *CreateOriginRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateOriginRuleResponseBody) SetRequestId(v string) *CreateOriginRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateOriginRuleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOriginRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateOriginRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginRuleResponse) SetHeaders(v map[string]*string) *CreateOriginRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOriginRuleResponse) SetStatusCode(v int32) *CreateOriginRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOriginRuleResponse) SetBody(v *CreateOriginRuleResponseBody) *CreateOriginRuleResponse {
 	s.Body = v
 	return s
 }
@@ -7160,6 +9278,324 @@ func (s *CreateRecordResponse) SetStatusCode(v int32) *CreateRecordResponse {
 }
 
 func (s *CreateRecordResponse) SetBody(v *CreateRecordResponseBody) *CreateRecordResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRedirectRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateRedirectRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRedirectRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRedirectRuleRequest) SetReserveQueryString(v string) *CreateRedirectRuleRequest {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetRule(v string) *CreateRedirectRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetRuleEnable(v string) *CreateRedirectRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetRuleName(v string) *CreateRedirectRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetSiteId(v int64) *CreateRedirectRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetSiteVersion(v int32) *CreateRedirectRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetStatusCode(v string) *CreateRedirectRuleRequest {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetTargetUrl(v string) *CreateRedirectRuleRequest {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetType(v string) *CreateRedirectRuleRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateRedirectRuleResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 1FCB0DA6-9B6D-509D-B91C-B9B9F0780D0E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRedirectRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRedirectRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRedirectRuleResponseBody) SetConfigId(v int64) *CreateRedirectRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateRedirectRuleResponseBody) SetRequestId(v string) *CreateRedirectRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRedirectRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRedirectRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRedirectRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRedirectRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRedirectRuleResponse) SetHeaders(v map[string]*string) *CreateRedirectRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRedirectRuleResponse) SetStatusCode(v int32) *CreateRedirectRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRedirectRuleResponse) SetBody(v *CreateRedirectRuleResponseBody) *CreateRedirectRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRewriteUrlRuleRequest struct {
+	// example:
+	//
+	// example=123
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// static
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// static
+	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// /image/example.jpg
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateRewriteUrlRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRewriteUrlRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetQueryString(v string) *CreateRewriteUrlRuleRequest {
+	s.QueryString = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetRewriteQueryStringType(v string) *CreateRewriteUrlRuleRequest {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetRewriteUriType(v string) *CreateRewriteUrlRuleRequest {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetRule(v string) *CreateRewriteUrlRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetRuleEnable(v string) *CreateRewriteUrlRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetRuleName(v string) *CreateRewriteUrlRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetSiteId(v int64) *CreateRewriteUrlRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetSiteVersion(v int32) *CreateRewriteUrlRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetUri(v string) *CreateRewriteUrlRuleRequest {
+	s.Uri = &v
+	return s
+}
+
+type CreateRewriteUrlRuleResponseBody struct {
+	// example:
+	//
+	// 39237781679****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRewriteUrlRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRewriteUrlRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRewriteUrlRuleResponseBody) SetConfigId(v int64) *CreateRewriteUrlRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleResponseBody) SetRequestId(v string) *CreateRewriteUrlRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRewriteUrlRuleResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRewriteUrlRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRewriteUrlRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRewriteUrlRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRewriteUrlRuleResponse) SetHeaders(v map[string]*string) *CreateRewriteUrlRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleResponse) SetStatusCode(v int32) *CreateRewriteUrlRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleResponse) SetBody(v *CreateRewriteUrlRuleResponseBody) *CreateRewriteUrlRuleResponse {
 	s.Body = v
 	return s
 }
@@ -11430,6 +13866,152 @@ func (s *CreateWaitingRoomRuleResponse) SetBody(v *CreateWaitingRoomRuleResponse
 	return s
 }
 
+type DeactivateVersionManagementRequest struct {
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeactivateVersionManagementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeactivateVersionManagementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeactivateVersionManagementRequest) SetSiteId(v int64) *DeactivateVersionManagementRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeactivateVersionManagementResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeactivateVersionManagementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeactivateVersionManagementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeactivateVersionManagementResponseBody) SetRequestId(v string) *DeactivateVersionManagementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeactivateVersionManagementResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeactivateVersionManagementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeactivateVersionManagementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeactivateVersionManagementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeactivateVersionManagementResponse) SetHeaders(v map[string]*string) *DeactivateVersionManagementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeactivateVersionManagementResponse) SetStatusCode(v int32) *DeactivateVersionManagementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeactivateVersionManagementResponse) SetBody(v *DeactivateVersionManagementResponseBody) *DeactivateVersionManagementResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCacheRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160*********
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3500241*********
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteCacheRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCacheRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCacheRuleRequest) SetConfigId(v int64) *DeleteCacheRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteCacheRuleRequest) SetSiteId(v int64) *DeleteCacheRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteCacheRuleResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCacheRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCacheRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCacheRuleResponseBody) SetRequestId(v string) *DeleteCacheRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCacheRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCacheRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCacheRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCacheRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCacheRuleResponse) SetHeaders(v map[string]*string) *DeleteCacheRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCacheRuleResponse) SetStatusCode(v int32) *DeleteCacheRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCacheRuleResponse) SetBody(v *DeleteCacheRuleResponseBody) *DeleteCacheRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCertificateRequest struct {
 	// The certificate ID.
 	//
@@ -11777,6 +14359,94 @@ func (s *DeleteClientCertificateResponse) SetStatusCode(v int32) *DeleteClientCe
 }
 
 func (s *DeleteClientCertificateResponse) SetBody(v *DeleteClientCertificateResponseBody) *DeleteClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCompressionRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListCompressionRules](~~ListCompressionRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteCompressionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCompressionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCompressionRuleRequest) SetConfigId(v int64) *DeleteCompressionRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteCompressionRuleRequest) SetSiteId(v int64) *DeleteCompressionRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteCompressionRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCompressionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCompressionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCompressionRuleResponseBody) SetRequestId(v string) *DeleteCompressionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCompressionRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCompressionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCompressionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCompressionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCompressionRuleResponse) SetHeaders(v map[string]*string) *DeleteCompressionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCompressionRuleResponse) SetStatusCode(v int32) *DeleteCompressionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCompressionRuleResponse) SetBody(v *DeleteCompressionRuleResponseBody) *DeleteCompressionRuleResponse {
 	s.Body = v
 	return s
 }
@@ -12138,6 +14808,346 @@ func (s *DeleteEdgeContainerAppVersionResponse) SetBody(v *DeleteEdgeContainerAp
 	return s
 }
 
+type DeleteHttpRequestHeaderModificationRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](~~ListHttpRequestHeaderModificationRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteHttpRequestHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpRequestHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpRequestHeaderModificationRuleRequest) SetConfigId(v int64) *DeleteHttpRequestHeaderModificationRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteHttpRequestHeaderModificationRuleRequest) SetSiteId(v int64) *DeleteHttpRequestHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteHttpRequestHeaderModificationRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHttpRequestHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpRequestHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpRequestHeaderModificationRuleResponseBody) SetRequestId(v string) *DeleteHttpRequestHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHttpRequestHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHttpRequestHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHttpRequestHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpRequestHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpRequestHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *DeleteHttpRequestHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHttpRequestHeaderModificationRuleResponse) SetStatusCode(v int32) *DeleteHttpRequestHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHttpRequestHeaderModificationRuleResponse) SetBody(v *DeleteHttpRequestHeaderModificationRuleResponseBody) *DeleteHttpRequestHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHttpResponseHeaderModificationRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListHttpResponseHeaderModificationRules](~~ListHttpResponseHeaderModificationRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteHttpResponseHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpResponseHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpResponseHeaderModificationRuleRequest) SetConfigId(v int64) *DeleteHttpResponseHeaderModificationRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteHttpResponseHeaderModificationRuleRequest) SetSiteId(v int64) *DeleteHttpResponseHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteHttpResponseHeaderModificationRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHttpResponseHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpResponseHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpResponseHeaderModificationRuleResponseBody) SetRequestId(v string) *DeleteHttpResponseHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHttpResponseHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHttpResponseHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHttpResponseHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpResponseHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpResponseHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *DeleteHttpResponseHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHttpResponseHeaderModificationRuleResponse) SetStatusCode(v int32) *DeleteHttpResponseHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHttpResponseHeaderModificationRuleResponse) SetBody(v *DeleteHttpResponseHeaderModificationRuleResponseBody) *DeleteHttpResponseHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHttpsApplicationConfigurationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteHttpsApplicationConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpsApplicationConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpsApplicationConfigurationRequest) SetConfigId(v int64) *DeleteHttpsApplicationConfigurationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteHttpsApplicationConfigurationRequest) SetSiteId(v int64) *DeleteHttpsApplicationConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteHttpsApplicationConfigurationResponseBody struct {
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHttpsApplicationConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpsApplicationConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpsApplicationConfigurationResponseBody) SetRequestId(v string) *DeleteHttpsApplicationConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHttpsApplicationConfigurationResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHttpsApplicationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHttpsApplicationConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpsApplicationConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpsApplicationConfigurationResponse) SetHeaders(v map[string]*string) *DeleteHttpsApplicationConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHttpsApplicationConfigurationResponse) SetStatusCode(v int32) *DeleteHttpsApplicationConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHttpsApplicationConfigurationResponse) SetBody(v *DeleteHttpsApplicationConfigurationResponseBody) *DeleteHttpsApplicationConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHttpsBasicConfigurationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteHttpsBasicConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpsBasicConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpsBasicConfigurationRequest) SetConfigId(v int64) *DeleteHttpsBasicConfigurationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteHttpsBasicConfigurationRequest) SetSiteId(v int64) *DeleteHttpsBasicConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteHttpsBasicConfigurationResponseBody struct {
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHttpsBasicConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpsBasicConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpsBasicConfigurationResponseBody) SetRequestId(v string) *DeleteHttpsBasicConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHttpsBasicConfigurationResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHttpsBasicConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHttpsBasicConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpsBasicConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpsBasicConfigurationResponse) SetHeaders(v map[string]*string) *DeleteHttpsBasicConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHttpsBasicConfigurationResponse) SetStatusCode(v int32) *DeleteHttpsBasicConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHttpsBasicConfigurationResponse) SetBody(v *DeleteHttpsBasicConfigurationResponseBody) *DeleteHttpsBasicConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteKvRequest struct {
 	// The name of the key that you want to delete.
 	//
@@ -12376,6 +15386,82 @@ func (s *DeleteListResponse) SetBody(v *DeleteListResponseBody) *DeleteListRespo
 	return s
 }
 
+type DeleteLoadBalancerRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DeleteLoadBalancer
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteLoadBalancerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLoadBalancerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLoadBalancerRequest) SetId(v int64) *DeleteLoadBalancerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteLoadBalancerRequest) SetSiteId(v int64) *DeleteLoadBalancerRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteLoadBalancerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLoadBalancerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLoadBalancerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLoadBalancerResponseBody) SetRequestId(v string) *DeleteLoadBalancerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLoadBalancerResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLoadBalancerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteLoadBalancerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLoadBalancerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLoadBalancerResponse) SetHeaders(v map[string]*string) *DeleteLoadBalancerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLoadBalancerResponse) SetStatusCode(v int32) *DeleteLoadBalancerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) *DeleteLoadBalancerResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteOriginPoolRequest struct {
 	// This parameter is required.
 	//
@@ -12523,6 +15609,88 @@ func (s *DeleteOriginProtectionResponse) SetStatusCode(v int32) *DeleteOriginPro
 }
 
 func (s *DeleteOriginProtectionResponse) SetBody(v *DeleteOriginProtectionResponseBody) *DeleteOriginProtectionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteOriginRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 33793140540****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3400350********
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteOriginRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginRuleRequest) SetConfigId(v int64) *DeleteOriginRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteOriginRuleRequest) SetSiteId(v int64) *DeleteOriginRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteOriginRuleResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteOriginRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginRuleResponseBody) SetRequestId(v string) *DeleteOriginRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteOriginRuleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOriginRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOriginRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginRuleResponse) SetHeaders(v map[string]*string) *DeleteOriginRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOriginRuleResponse) SetStatusCode(v int32) *DeleteOriginRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOriginRuleResponse) SetBody(v *DeleteOriginRuleResponseBody) *DeleteOriginRuleResponse {
 	s.Body = v
 	return s
 }
@@ -12684,6 +15852,182 @@ func (s *DeleteRecordResponse) SetStatusCode(v int32) *DeleteRecordResponse {
 }
 
 func (s *DeleteRecordResponse) SetBody(v *DeleteRecordResponseBody) *DeleteRecordResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRedirectRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteRedirectRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRedirectRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRedirectRuleRequest) SetConfigId(v int64) *DeleteRedirectRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteRedirectRuleRequest) SetSiteId(v int64) *DeleteRedirectRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteRedirectRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// BF9B849D-D847-5B16-9371-8ECB557A5921
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRedirectRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRedirectRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRedirectRuleResponseBody) SetRequestId(v string) *DeleteRedirectRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRedirectRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRedirectRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRedirectRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRedirectRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRedirectRuleResponse) SetHeaders(v map[string]*string) *DeleteRedirectRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRedirectRuleResponse) SetStatusCode(v int32) *DeleteRedirectRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRedirectRuleResponse) SetBody(v *DeleteRedirectRuleResponseBody) *DeleteRedirectRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRewriteUrlRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListRewriteUrlRules](~~ListRewriteUrlRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteRewriteUrlRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRewriteUrlRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRewriteUrlRuleRequest) SetConfigId(v int64) *DeleteRewriteUrlRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteRewriteUrlRuleRequest) SetSiteId(v int64) *DeleteRewriteUrlRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteRewriteUrlRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRewriteUrlRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRewriteUrlRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRewriteUrlRuleResponseBody) SetRequestId(v string) *DeleteRewriteUrlRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRewriteUrlRuleResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRewriteUrlRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRewriteUrlRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRewriteUrlRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRewriteUrlRuleResponse) SetHeaders(v map[string]*string) *DeleteRewriteUrlRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRewriteUrlRuleResponse) SetStatusCode(v int32) *DeleteRewriteUrlRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRewriteUrlRuleResponse) SetBody(v *DeleteRewriteUrlRuleResponseBody) *DeleteRewriteUrlRuleResponse {
 	s.Body = v
 	return s
 }
@@ -16127,6 +19471,454 @@ func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecifi
 	return s
 }
 
+type GetCacheRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetCacheRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheRuleRequest) SetConfigId(v int64) *GetCacheRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetCacheRuleRequest) SetSiteId(v int64) *GetCacheRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetCacheRuleResponseBody struct {
+	// example:
+	//
+	// 2095
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// example:
+	//
+	// follow_origin
+	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// example:
+	//
+	// cache_all
+	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// example:
+	//
+	// on
+	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// example:
+	//
+	// bypass_cache_reserve
+	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// example:
+	//
+	// cookiename
+	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// example:
+	//
+	// headername
+	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// follow_origin
+	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// example:
+	//
+	// cookie_exapmle
+	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// example:
+	//
+	// example
+	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// example:
+	//
+	// example
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// example:
+	//
+	// reserve_all
+	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// on
+	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// example:
+	//
+	// on
+	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// example:
+	//
+	// on
+	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// example:
+	//
+	// on
+	UserLanguage *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s GetCacheRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheRuleResponseBody) SetAdditionalCacheablePorts(v string) *GetCacheRuleResponseBody {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetBrowserCacheMode(v string) *GetCacheRuleResponseBody {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetBrowserCacheTtl(v string) *GetCacheRuleResponseBody {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetBypassCache(v string) *GetCacheRuleResponseBody {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetCacheDeceptionArmor(v string) *GetCacheRuleResponseBody {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetCacheReserveEligibility(v string) *GetCacheRuleResponseBody {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetCheckPresenceCookie(v string) *GetCacheRuleResponseBody {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetCheckPresenceHeader(v string) *GetCacheRuleResponseBody {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetConfigId(v int64) *GetCacheRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetConfigType(v string) *GetCacheRuleResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetEdgeCacheMode(v string) *GetCacheRuleResponseBody {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetEdgeCacheTtl(v string) *GetCacheRuleResponseBody {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetEdgeStatusCodeCacheTtl(v string) *GetCacheRuleResponseBody {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetIncludeCookie(v string) *GetCacheRuleResponseBody {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetIncludeHeader(v string) *GetCacheRuleResponseBody {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetQueryString(v string) *GetCacheRuleResponseBody {
+	s.QueryString = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetQueryStringMode(v string) *GetCacheRuleResponseBody {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetRequestId(v string) *GetCacheRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetRule(v string) *GetCacheRuleResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetRuleEnable(v string) *GetCacheRuleResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetRuleName(v string) *GetCacheRuleResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetSequence(v int32) *GetCacheRuleResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetServeStale(v string) *GetCacheRuleResponseBody {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetSiteVersion(v int32) *GetCacheRuleResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetSortQueryStringForCache(v string) *GetCacheRuleResponseBody {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetUserDeviceType(v string) *GetCacheRuleResponseBody {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetUserGeo(v string) *GetCacheRuleResponseBody {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetUserLanguage(v string) *GetCacheRuleResponseBody {
+	s.UserLanguage = &v
+	return s
+}
+
+type GetCacheRuleResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCacheRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCacheRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheRuleResponse) SetHeaders(v map[string]*string) *GetCacheRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCacheRuleResponse) SetStatusCode(v int32) *GetCacheRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCacheRuleResponse) SetBody(v *GetCacheRuleResponseBody) *GetCacheRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetCacheTagRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetCacheTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheTagRequest) SetSiteId(v int64) *GetCacheTagRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetCacheTagRequest) SetSiteVersion(v int32) *GetCacheTagRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetCacheTagResponseBody struct {
+	// Indicates whether the matching is not case-sensitive. Valid values:
+	//
+	// 	- on: The matching is not case-sensitive.
+	//
+	// 	- off: The matching is case-sensitive.
+	//
+	// example:
+	//
+	// on
+	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version number of the website.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The name of the custom cache tag.
+	//
+	// example:
+	//
+	// example
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s GetCacheTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheTagResponseBody) SetCaseInsensitive(v string) *GetCacheTagResponseBody {
+	s.CaseInsensitive = &v
+	return s
+}
+
+func (s *GetCacheTagResponseBody) SetRequestId(v string) *GetCacheTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCacheTagResponseBody) SetSiteVersion(v int32) *GetCacheTagResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetCacheTagResponseBody) SetTagName(v string) *GetCacheTagResponseBody {
+	s.TagName = &v
+	return s
+}
+
+type GetCacheTagResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCacheTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCacheTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheTagResponse) SetHeaders(v map[string]*string) *GetCacheTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCacheTagResponse) SetStatusCode(v int32) *GetCacheTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCacheTagResponse) SetBody(v *GetCacheTagResponseBody) *GetCacheTagResponse {
+	s.Body = v
+	return s
+}
+
 type GetCertificateRequest struct {
 	// The certificate ID.
 	//
@@ -17397,6 +21189,349 @@ func (s *GetClientCertificateHostnamesResponse) SetStatusCode(v int32) *GetClien
 }
 
 func (s *GetClientCertificateHostnamesResponse) SetBody(v *GetClientCertificateHostnamesResponseBody) *GetClientCertificateHostnamesResponse {
+	s.Body = v
+	return s
+}
+
+type GetCnameFlatteningRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetCnameFlatteningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCnameFlatteningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCnameFlatteningRequest) SetSiteId(v int64) *GetCnameFlatteningRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetCnameFlatteningResponseBody struct {
+	// The CNAME flattening mode. Valid values:
+	//
+	// 	- flatten_all: flattens all CNAMEs.
+	//
+	// 	- flatten_all (default): flattens only the root domain.
+	//
+	// example:
+	//
+	// flatten_all
+	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCnameFlatteningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCnameFlatteningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCnameFlatteningResponseBody) SetFlattenMode(v string) *GetCnameFlatteningResponseBody {
+	s.FlattenMode = &v
+	return s
+}
+
+func (s *GetCnameFlatteningResponseBody) SetRequestId(v string) *GetCnameFlatteningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCnameFlatteningResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCnameFlatteningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCnameFlatteningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCnameFlatteningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCnameFlatteningResponse) SetHeaders(v map[string]*string) *GetCnameFlatteningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCnameFlatteningResponse) SetStatusCode(v int32) *GetCnameFlatteningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCnameFlatteningResponse) SetBody(v *GetCnameFlatteningResponseBody) *GetCnameFlatteningResponse {
+	s.Body = v
+	return s
+}
+
+type GetCompressionRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34003500310****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetCompressionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompressionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompressionRuleRequest) SetConfigId(v int64) *GetCompressionRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetCompressionRuleRequest) SetSiteId(v int64) *GetCompressionRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetCompressionRuleResponseBody struct {
+	// example:
+	//
+	// on
+	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// example:
+	//
+	// 186C6DF2-D96A-5102-B04E-FB92C16C9867
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetCompressionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompressionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompressionRuleResponseBody) SetBrotli(v string) *GetCompressionRuleResponseBody {
+	s.Brotli = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetConfigId(v int64) *GetCompressionRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetConfigType(v string) *GetCompressionRuleResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetGzip(v string) *GetCompressionRuleResponseBody {
+	s.Gzip = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetRequestId(v string) *GetCompressionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetRule(v string) *GetCompressionRuleResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetRuleEnable(v string) *GetCompressionRuleResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetRuleName(v string) *GetCompressionRuleResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetSequence(v int32) *GetCompressionRuleResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetSiteVersion(v int32) *GetCompressionRuleResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetCompressionRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCompressionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCompressionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompressionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompressionRuleResponse) SetHeaders(v map[string]*string) *GetCompressionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCompressionRuleResponse) SetStatusCode(v int32) *GetCompressionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponse) SetBody(v *GetCompressionRuleResponseBody) *GetCompressionRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetDevelopmentModeRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetDevelopmentModeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevelopmentModeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevelopmentModeRequest) SetSiteId(v int64) *GetDevelopmentModeRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetDevelopmentModeResponseBody struct {
+	// Indicates whether the development mode is enabled. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDevelopmentModeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevelopmentModeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevelopmentModeResponseBody) SetEnable(v string) *GetDevelopmentModeResponseBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetDevelopmentModeResponseBody) SetRequestId(v string) *GetDevelopmentModeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDevelopmentModeResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDevelopmentModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDevelopmentModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevelopmentModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevelopmentModeResponse) SetHeaders(v map[string]*string) *GetDevelopmentModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDevelopmentModeResponse) SetStatusCode(v int32) *GetDevelopmentModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDevelopmentModeResponse) SetBody(v *GetDevelopmentModeResponseBody) *GetDevelopmentModeResponse {
 	s.Body = v
 	return s
 }
@@ -19200,6 +23335,1007 @@ func (s *GetEdgeContainerTerminalResponse) SetBody(v *GetEdgeContainerTerminalRe
 	return s
 }
 
+type GetHttpRequestHeaderModificationRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](~~ListHttpRequestHeaderModificationRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetHttpRequestHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpRequestHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpRequestHeaderModificationRuleRequest) SetConfigId(v int64) *GetHttpRequestHeaderModificationRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleRequest) SetSiteId(v int64) *GetHttpRequestHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetHttpRequestHeaderModificationRuleResponseBody struct {
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The configurations of modifying request headers. You can add, delete, or modify a request header.
+	RequestHeaderModification []*GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website configurations.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetHttpRequestHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpRequestHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetConfigId(v int64) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetConfigType(v string) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetRequestHeaderModification(v []*GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetRequestId(v string) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetRule(v string) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetRuleEnable(v string) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetRuleName(v string) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetSequence(v int32) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetSiteVersion(v int32) *GetHttpRequestHeaderModificationRuleResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification struct {
+	// The name of the request header.
+	//
+	// example:
+	//
+	// headerName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The action. Valid values:
+	//
+	// 	- add: adds a header.
+	//
+	// 	- del: deletes a header.
+	//
+	// 	- modify: modifies a header.
+	//
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The value of the request header.
+	//
+	// example:
+	//
+	// headValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) SetName(v string) *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) SetOperation(v string) *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) SetValue(v string) *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type GetHttpRequestHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHttpRequestHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHttpRequestHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpRequestHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *GetHttpRequestHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponse) SetStatusCode(v int32) *GetHttpRequestHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponse) SetBody(v *GetHttpRequestHeaderModificationRuleResponseBody) *GetHttpRequestHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetHttpResponseHeaderModificationRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListHttpResponseHeaderModificationRules](~~ListHttpResponseHeaderModificationRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetHttpResponseHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpResponseHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpResponseHeaderModificationRuleRequest) SetConfigId(v int64) *GetHttpResponseHeaderModificationRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleRequest) SetSiteId(v int64) *GetHttpResponseHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetHttpResponseHeaderModificationRuleResponseBody struct {
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of modifying response headers. You can add, delete, or modify a response header.
+	ResponseHeaderModification []*GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// The rule content.
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website configurations.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetHttpResponseHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpResponseHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetConfigId(v int64) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetConfigType(v string) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetRequestId(v string) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetResponseHeaderModification(v []*GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetRule(v string) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetRuleEnable(v string) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetRuleName(v string) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetSequence(v int32) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBody) SetSiteVersion(v int32) *GetHttpResponseHeaderModificationRuleResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification struct {
+	// The name of the response header.
+	//
+	// example:
+	//
+	// headerName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The action. Valid values:
+	//
+	// 	- add: adds a response header.
+	//
+	// 	- del: deletes a response header.
+	//
+	// 	- modify: modifies a response header.
+	//
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The value of the response header.
+	//
+	// example:
+	//
+	// headerValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) SetName(v string) *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) SetOperation(v string) *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) SetValue(v string) *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type GetHttpResponseHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHttpResponseHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHttpResponseHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpResponseHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *GetHttpResponseHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponse) SetStatusCode(v int32) *GetHttpResponseHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponse) SetBody(v *GetHttpResponseHeaderModificationRuleResponseBody) *GetHttpResponseHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetHttpsApplicationConfigurationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetHttpsApplicationConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpsApplicationConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpsApplicationConfigurationRequest) SetConfigId(v int64) *GetHttpsApplicationConfigurationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationRequest) SetSiteId(v int64) *GetHttpsApplicationConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetHttpsApplicationConfigurationResponseBody struct {
+	// example:
+	//
+	// on
+	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// example:
+	//
+	// 86400
+	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// example:
+	//
+	// 3600
+	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// example:
+	//
+	// on
+	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// example:
+	//
+	// on
+	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// example:
+	//
+	// 301
+	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// example:
+	//
+	// A3790430-3A06-535F-A424-0998BD9A6C9F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetHttpsApplicationConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpsApplicationConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetAltSvc(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetAltSvcClear(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetAltSvcMa(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetAltSvcPersist(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetConfigId(v int64) *GetHttpsApplicationConfigurationResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetConfigType(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHsts(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.Hsts = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHstsIncludeSubdomains(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHstsMaxAge(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHstsPreload(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHttpsForce(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHttpsForceCode(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetRequestId(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetRule(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetRuleEnable(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetRuleName(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetSequence(v int32) *GetHttpsApplicationConfigurationResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetSiteVersion(v int32) *GetHttpsApplicationConfigurationResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetHttpsApplicationConfigurationResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHttpsApplicationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHttpsApplicationConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpsApplicationConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpsApplicationConfigurationResponse) SetHeaders(v map[string]*string) *GetHttpsApplicationConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponse) SetStatusCode(v int32) *GetHttpsApplicationConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponse) SetBody(v *GetHttpsApplicationConfigurationResponseBody) *GetHttpsApplicationConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type GetHttpsBasicConfigurationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetHttpsBasicConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpsBasicConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpsBasicConfigurationRequest) SetConfigId(v int64) *GetHttpsBasicConfigurationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationRequest) SetSiteId(v int64) *GetHttpsBasicConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetHttpsBasicConfigurationResponseBody struct {
+	// example:
+	//
+	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// all
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// example:
+	//
+	// on
+	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// example:
+	//
+	// on
+	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// on
+	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D2***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// on
+	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// example:
+	//
+	// on
+	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// example:
+	//
+	// on
+	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// example:
+	//
+	// on
+	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s GetHttpsBasicConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpsBasicConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetCiphersuite(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetCiphersuiteGroup(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetConfigId(v int64) *GetHttpsBasicConfigurationResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetConfigType(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetHttp2(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Http2 = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetHttp3(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Http3 = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetHttps(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Https = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetOcspStapling(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetRequestId(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetRule(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetRuleEnable(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetRuleName(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetSequence(v int32) *GetHttpsBasicConfigurationResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetTls10(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetTls11(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetTls12(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponseBody) SetTls13(v string) *GetHttpsBasicConfigurationResponseBody {
+	s.Tls13 = &v
+	return s
+}
+
+type GetHttpsBasicConfigurationResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHttpsBasicConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHttpsBasicConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpsBasicConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpsBasicConfigurationResponse) SetHeaders(v map[string]*string) *GetHttpsBasicConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponse) SetStatusCode(v int32) *GetHttpsBasicConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHttpsBasicConfigurationResponse) SetBody(v *GetHttpsBasicConfigurationResponseBody) *GetHttpsBasicConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type GetIPv6Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetIPv6Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIPv6Request) GoString() string {
+	return s.String()
+}
+
+func (s *GetIPv6Request) SetSiteId(v int64) *GetIPv6Request {
+	s.SiteId = &v
+	return s
+}
+
+type GetIPv6ResponseBody struct {
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIPv6ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIPv6ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIPv6ResponseBody) SetEnable(v string) *GetIPv6ResponseBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetIPv6ResponseBody) SetRequestId(v string) *GetIPv6ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIPv6Response struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIPv6ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIPv6Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIPv6Response) GoString() string {
+	return s.String()
+}
+
+func (s *GetIPv6Response) SetHeaders(v map[string]*string) *GetIPv6Response {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIPv6Response) SetStatusCode(v int32) *GetIPv6Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIPv6Response) SetBody(v *GetIPv6ResponseBody) *GetIPv6Response {
+	s.Body = v
+	return s
+}
+
 type GetKvRequest struct {
 	// Specifies whether to decode the value by using Base 64. If you call the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation and set the Base64 parameter to true, set this parameter to true to read the original content.
 	//
@@ -19864,6 +25000,761 @@ func (s *GetListResponse) SetBody(v *GetListResponseBody) *GetListResponse {
 	return s
 }
 
+type GetLoadBalancerRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GetLoadBalancer
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1159101787****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetLoadBalancerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerRequest) SetId(v int64) *GetLoadBalancerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetLoadBalancerRequest) SetSiteId(v int64) *GetLoadBalancerRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetLoadBalancerResponseBody struct {
+	AdaptiveRouting *GetLoadBalancerResponseBodyAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
+	DefaultPools    []*int64                                    `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 96228666776****
+	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// example:
+	//
+	// 99867648760****
+	Id      *int64                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Monitor *GetLoadBalancerResponseBodyMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	// example:
+	//
+	// lb.example.com
+	Name           *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	RandomSteering *GetLoadBalancerResponseBodyRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     []*GetLoadBalancerResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Session persistence. Valid values:
+	//
+	// 	- off: disables session persistence.
+	//
+	// 	- ip: enables session persistence by IP address.
+	//
+	// 	- cookie: disables session persistence.
+	//
+	// example:
+	//
+	// ip
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// example:
+	//
+	// 11591017874****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// healthy
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// order
+	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s GetLoadBalancerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerResponseBody) SetAdaptiveRouting(v *GetLoadBalancerResponseBodyAdaptiveRouting) *GetLoadBalancerResponseBody {
+	s.AdaptiveRouting = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetDefaultPools(v []*int64) *GetLoadBalancerResponseBody {
+	s.DefaultPools = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetDescription(v string) *GetLoadBalancerResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetEnabled(v bool) *GetLoadBalancerResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetFallbackPool(v int64) *GetLoadBalancerResponseBody {
+	s.FallbackPool = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetId(v int64) *GetLoadBalancerResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetMonitor(v *GetLoadBalancerResponseBodyMonitor) *GetLoadBalancerResponseBody {
+	s.Monitor = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetName(v string) *GetLoadBalancerResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetRandomSteering(v *GetLoadBalancerResponseBodyRandomSteering) *GetLoadBalancerResponseBody {
+	s.RandomSteering = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetRegionPools(v interface{}) *GetLoadBalancerResponseBody {
+	s.RegionPools = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetRequestId(v string) *GetLoadBalancerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetRules(v []*GetLoadBalancerResponseBodyRules) *GetLoadBalancerResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetSessionAffinity(v string) *GetLoadBalancerResponseBody {
+	s.SessionAffinity = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetSiteId(v int64) *GetLoadBalancerResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetStatus(v string) *GetLoadBalancerResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetSteeringPolicy(v string) *GetLoadBalancerResponseBody {
+	s.SteeringPolicy = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetSubRegionPools(v interface{}) *GetLoadBalancerResponseBody {
+	s.SubRegionPools = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBody) SetTtl(v int32) *GetLoadBalancerResponseBody {
+	s.Ttl = &v
+	return s
+}
+
+type GetLoadBalancerResponseBodyAdaptiveRouting struct {
+	// example:
+	//
+	// true
+	FailoverAcrossPools *bool `json:"FailoverAcrossPools,omitempty" xml:"FailoverAcrossPools,omitempty"`
+}
+
+func (s GetLoadBalancerResponseBodyAdaptiveRouting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerResponseBodyAdaptiveRouting) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerResponseBodyAdaptiveRouting) SetFailoverAcrossPools(v bool) *GetLoadBalancerResponseBodyAdaptiveRouting {
+	s.FailoverAcrossPools = &v
+	return s
+}
+
+type GetLoadBalancerResponseBodyMonitor struct {
+	// example:
+	//
+	// 5
+	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	// example:
+	//
+	// 3
+	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	// example:
+	//
+	// 200,202
+	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	// example:
+	//
+	// true
+	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "host": [
+	//
+	//             "example1.com",
+	//
+	//             "example2.com"
+	//
+	//         ]
+	//
+	//     }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// GET
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// /
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 5
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// HTTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetLoadBalancerResponseBodyMonitor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerResponseBodyMonitor) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetConsecutiveDown(v int32) *GetLoadBalancerResponseBodyMonitor {
+	s.ConsecutiveDown = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetConsecutiveUp(v int32) *GetLoadBalancerResponseBodyMonitor {
+	s.ConsecutiveUp = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetExpectedCodes(v string) *GetLoadBalancerResponseBodyMonitor {
+	s.ExpectedCodes = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetFollowRedirects(v bool) *GetLoadBalancerResponseBodyMonitor {
+	s.FollowRedirects = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetHeader(v interface{}) *GetLoadBalancerResponseBodyMonitor {
+	s.Header = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetInterval(v int32) *GetLoadBalancerResponseBodyMonitor {
+	s.Interval = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetMethod(v string) *GetLoadBalancerResponseBodyMonitor {
+	s.Method = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetPath(v string) *GetLoadBalancerResponseBodyMonitor {
+	s.Path = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetPort(v int32) *GetLoadBalancerResponseBodyMonitor {
+	s.Port = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetTimeout(v int32) *GetLoadBalancerResponseBodyMonitor {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetType(v string) *GetLoadBalancerResponseBodyMonitor {
+	s.Type = &v
+	return s
+}
+
+type GetLoadBalancerResponseBodyRandomSteering struct {
+	// example:
+	//
+	// 50
+	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+}
+
+func (s GetLoadBalancerResponseBodyRandomSteering) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerResponseBodyRandomSteering) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerResponseBodyRandomSteering) SetDefaultWeight(v int32) *GetLoadBalancerResponseBodyRandomSteering {
+	s.DefaultWeight = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRandomSteering) SetPoolWeights(v map[string]*int32) *GetLoadBalancerResponseBodyRandomSteering {
+	s.PoolWeights = v
+	return s
+}
+
+type GetLoadBalancerResponseBodyRules struct {
+	FixedResponse *GetLoadBalancerResponseBodyRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//             "adaptive_routing": {
+	//
+	//                 "failover_across_pools": true
+	//
+	//             },
+	//
+	//             "sub_region_pools": {
+	//
+	//                 "GB": [
+	//
+	//                     96228666776****
+	//
+	//                 ],
+	//
+	//                 "US": [
+	//
+	//                     96228666776****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "default_pools": [
+	//
+	//                 96228666776****,
+	//
+	//                 96228666776****
+	//
+	//             ],
+	//
+	//             "fallback_pool": 96228666776****,
+	//
+	//             "location_strategy": {
+	//
+	//                 "mode": "resolver_ip",
+	//
+	//                 "prefer_ecs": "always"
+	//
+	//             },
+	//
+	//             "random_steering": {
+	//
+	//                 "default_weight": 30,
+	//
+	//                 "pool_weights": {
+	//
+	//                     "96228666776****": 70,
+	//
+	//                     "96228666776****": 80
+	//
+	//                 }
+	//
+	//             },
+	//
+	//             "region_pools": {
+	//
+	//                 "ENAM": [
+	//
+	//                     96228666776****,
+	//
+	//                     92843536908****
+	//
+	//                 ],
+	//
+	//                 "WNAM": [
+	//
+	//                     92843536908****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "session_affinity": "cookie",
+	//
+	//             "session_affinity_attributes": {
+	//
+	//                 "drain_duration": 100,
+	//
+	//                 "headers": ["none"],
+	//
+	//                 "require_all_headers": false,
+	//
+	//                 "samesite": "Auto",
+	//
+	//                 "secure": "Auto",
+	//
+	//                 "zero_downtime_failover": "sticky"
+	//
+	//             },
+	//
+	//             "session_affinity_ttl": 1800,
+	//
+	//             "steering_policy": "dynamic_latency",
+	//
+	//             "ttl": 30
+	//
+	//         }
+	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	// example:
+	//
+	// http.request.uri.path contains "/testing"
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// off
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// r2
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// true
+	Terminates *bool `json:"Terminates,omitempty" xml:"Terminates,omitempty"`
+}
+
+func (s GetLoadBalancerResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerResponseBodyRules) SetFixedResponse(v *GetLoadBalancerResponseBodyRulesFixedResponse) *GetLoadBalancerResponseBodyRules {
+	s.FixedResponse = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRules) SetOverrides(v interface{}) *GetLoadBalancerResponseBodyRules {
+	s.Overrides = v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRules) SetRule(v string) *GetLoadBalancerResponseBodyRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRules) SetRuleEnable(v string) *GetLoadBalancerResponseBodyRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRules) SetRuleName(v string) *GetLoadBalancerResponseBodyRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRules) SetSequence(v int32) *GetLoadBalancerResponseBodyRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRules) SetTerminates(v bool) *GetLoadBalancerResponseBodyRules {
+	s.Terminates = &v
+	return s
+}
+
+type GetLoadBalancerResponseBodyRulesFixedResponse struct {
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// http://www.example.com/index.html
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// Hello World.
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetLoadBalancerResponseBodyRulesFixedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerResponseBodyRulesFixedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerResponseBodyRulesFixedResponse) SetContentType(v string) *GetLoadBalancerResponseBodyRulesFixedResponse {
+	s.ContentType = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRulesFixedResponse) SetLocation(v string) *GetLoadBalancerResponseBodyRulesFixedResponse {
+	s.Location = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRulesFixedResponse) SetMessageBody(v string) *GetLoadBalancerResponseBodyRulesFixedResponse {
+	s.MessageBody = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyRulesFixedResponse) SetStatusCode(v int32) *GetLoadBalancerResponseBodyRulesFixedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type GetLoadBalancerResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLoadBalancerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLoadBalancerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerResponse) SetHeaders(v map[string]*string) *GetLoadBalancerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLoadBalancerResponse) SetStatusCode(v int32) *GetLoadBalancerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponse) SetBody(v *GetLoadBalancerResponseBody) *GetLoadBalancerResponse {
+	s.Body = v
+	return s
+}
+
+type GetManagedTransformRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetManagedTransformRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedTransformRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedTransformRequest) SetSiteId(v int64) *GetManagedTransformRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetManagedTransformRequest) SetSiteVersion(v int32) *GetManagedTransformRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetManagedTransformResponseBody struct {
+	// Indicates whether to include the header that indicates the geographical location of a client in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	AddClientGeolocationHeader *string `json:"AddClientGeolocationHeader,omitempty" xml:"AddClientGeolocationHeader,omitempty"`
+	// Indicates whether to include the "ali-real-client-ip" header that contains the client\\"s real IP address in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version number of the website.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetManagedTransformResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedTransformResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedTransformResponseBody) SetAddClientGeolocationHeader(v string) *GetManagedTransformResponseBody {
+	s.AddClientGeolocationHeader = &v
+	return s
+}
+
+func (s *GetManagedTransformResponseBody) SetAddRealClientIpHeader(v string) *GetManagedTransformResponseBody {
+	s.AddRealClientIpHeader = &v
+	return s
+}
+
+func (s *GetManagedTransformResponseBody) SetRequestId(v string) *GetManagedTransformResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetManagedTransformResponseBody) SetSiteVersion(v int32) *GetManagedTransformResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetManagedTransformResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetManagedTransformResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetManagedTransformResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedTransformResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedTransformResponse) SetHeaders(v map[string]*string) *GetManagedTransformResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetManagedTransformResponse) SetStatusCode(v int32) *GetManagedTransformResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetManagedTransformResponse) SetBody(v *GetManagedTransformResponseBody) *GetManagedTransformResponse {
+	s.Body = v
+	return s
+}
+
 type GetOriginPoolRequest struct {
 	// This parameter is required.
 	//
@@ -20491,6 +26382,214 @@ func (s *GetOriginProtectionResponse) SetStatusCode(v int32) *GetOriginProtectio
 }
 
 func (s *GetOriginProtectionResponse) SetBody(v *GetOriginProtectionResponseBody) *GetOriginProtectionResponse {
+	s.Body = v
+	return s
+}
+
+type GetOriginRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 33793140540****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3400350********
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginRuleRequest) SetConfigId(v int64) *GetOriginRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetOriginRuleRequest) SetSiteId(v int64) *GetOriginRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginRuleResponseBody struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// test.example.com
+	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// example:
+	//
+	// 8080
+	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// example:
+	//
+	// 4433
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// example:
+	//
+	// http
+	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// example:
+	//
+	// on
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetOriginRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginRuleResponseBody) SetConfigId(v int64) *GetOriginRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetConfigType(v string) *GetOriginRuleResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetDnsRecord(v string) *GetOriginRuleResponseBody {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetOriginHost(v string) *GetOriginRuleResponseBody {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetOriginHttpPort(v string) *GetOriginRuleResponseBody {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetOriginHttpsPort(v string) *GetOriginRuleResponseBody {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetOriginScheme(v string) *GetOriginRuleResponseBody {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetOriginSni(v string) *GetOriginRuleResponseBody {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetRange(v string) *GetOriginRuleResponseBody {
+	s.Range = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetRequestId(v string) *GetOriginRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetRule(v string) *GetOriginRuleResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetRuleEnable(v string) *GetOriginRuleResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetRuleName(v string) *GetOriginRuleResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetSequence(v int32) *GetOriginRuleResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetSiteVersion(v int32) *GetOriginRuleResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetOriginRuleResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOriginRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOriginRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginRuleResponse) SetHeaders(v map[string]*string) *GetOriginRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOriginRuleResponse) SetStatusCode(v int32) *GetOriginRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOriginRuleResponse) SetBody(v *GetOriginRuleResponseBody) *GetOriginRuleResponse {
 	s.Body = v
 	return s
 }
@@ -21411,6 +27510,460 @@ func (s *GetRecordResponse) SetBody(v *GetRecordResponseBody) *GetRecordResponse
 	return s
 }
 
+type GetRedirectRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34003500310****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetRedirectRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedirectRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedirectRuleRequest) SetConfigId(v int64) *GetRedirectRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetRedirectRuleRequest) SetSiteId(v int64) *GetRedirectRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetRedirectRuleResponseBody struct {
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the feature of retaining the query string is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version of the website configurations.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The response code that you want to use to indicate URL redirection. Valid values:
+	//
+	// 	- 301
+	//
+	// 	- 302
+	//
+	// 	- 303
+	//
+	// 	- 307
+	//
+	// 	- 308
+	//
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The destination URL to which requests are redirected.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The redirect type. Valid value:
+	//
+	// 	- static
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetRedirectRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedirectRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedirectRuleResponseBody) SetConfigId(v int64) *GetRedirectRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetConfigType(v string) *GetRedirectRuleResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetRequestId(v string) *GetRedirectRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetReserveQueryString(v string) *GetRedirectRuleResponseBody {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetRule(v string) *GetRedirectRuleResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetRuleEnable(v string) *GetRedirectRuleResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetRuleName(v string) *GetRedirectRuleResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetSequence(v int32) *GetRedirectRuleResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetSiteVersion(v int32) *GetRedirectRuleResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetStatusCode(v string) *GetRedirectRuleResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetTargetUrl(v string) *GetRedirectRuleResponseBody {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponseBody) SetType(v string) *GetRedirectRuleResponseBody {
+	s.Type = &v
+	return s
+}
+
+type GetRedirectRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRedirectRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRedirectRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedirectRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedirectRuleResponse) SetHeaders(v map[string]*string) *GetRedirectRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRedirectRuleResponse) SetStatusCode(v int32) *GetRedirectRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRedirectRuleResponse) SetBody(v *GetRedirectRuleResponseBody) *GetRedirectRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetRewriteUrlRuleRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListRewriteUrlRules](~~ListRewriteUrlRules~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetRewriteUrlRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRewriteUrlRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRewriteUrlRuleRequest) SetConfigId(v int64) *GetRewriteUrlRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleRequest) SetSiteId(v int64) *GetRewriteUrlRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetRewriteUrlRuleResponseBody struct {
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The desired query string to which you want to rewrite the query string in the original request.
+	//
+	// example:
+	//
+	// example=123
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query string rewrite method. Valid value:
+	//
+	// 	- static
+	//
+	// example:
+	//
+	// static
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	// The path rewrite method. Valid value:
+	//
+	// 	- static
+	//
+	// example:
+	//
+	// static
+	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website configurations.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The desired URI to which you want to rewrite the path in the original request.
+	//
+	// example:
+	//
+	// /image/example.jpg
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s GetRewriteUrlRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRewriteUrlRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetConfigId(v int64) *GetRewriteUrlRuleResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetConfigType(v string) *GetRewriteUrlRuleResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetQueryString(v string) *GetRewriteUrlRuleResponseBody {
+	s.QueryString = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetRequestId(v string) *GetRewriteUrlRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetRewriteQueryStringType(v string) *GetRewriteUrlRuleResponseBody {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetRewriteUriType(v string) *GetRewriteUrlRuleResponseBody {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetRule(v string) *GetRewriteUrlRuleResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetRuleEnable(v string) *GetRewriteUrlRuleResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetRuleName(v string) *GetRewriteUrlRuleResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetSequence(v int32) *GetRewriteUrlRuleResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetSiteVersion(v int32) *GetRewriteUrlRuleResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponseBody) SetUri(v string) *GetRewriteUrlRuleResponseBody {
+	s.Uri = &v
+	return s
+}
+
+type GetRewriteUrlRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRewriteUrlRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRewriteUrlRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRewriteUrlRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRewriteUrlRuleResponse) SetHeaders(v map[string]*string) *GetRewriteUrlRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponse) SetStatusCode(v int32) *GetRewriteUrlRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRewriteUrlRuleResponse) SetBody(v *GetRewriteUrlRuleResponseBody) *GetRewriteUrlRuleResponse {
+	s.Body = v
+	return s
+}
+
 type GetRoutineRequest struct {
 	// The routine name.
 	//
@@ -22285,6 +28838,96 @@ func (s *GetScheduledPreloadJobResponse) SetStatusCode(v int32) *GetScheduledPre
 }
 
 func (s *GetScheduledPreloadJobResponse) SetBody(v *GetScheduledPreloadJobResponseBody) *GetScheduledPreloadJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetSeoBypassRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetSeoBypassRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSeoBypassRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSeoBypassRequest) SetSiteId(v int64) *GetSeoBypassRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetSeoBypassResponseBody struct {
+	// The status of the feature. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247B78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSeoBypassResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSeoBypassResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSeoBypassResponseBody) SetEnable(v string) *GetSeoBypassResponseBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetSeoBypassResponseBody) SetRequestId(v string) *GetSeoBypassResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSeoBypassResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSeoBypassResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSeoBypassResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSeoBypassResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSeoBypassResponse) SetHeaders(v map[string]*string) *GetSeoBypassResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSeoBypassResponse) SetStatusCode(v int32) *GetSeoBypassResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSeoBypassResponse) SetBody(v *GetSeoBypassResponseBody) *GetSeoBypassResponse {
 	s.Body = v
 	return s
 }
@@ -23184,6 +29827,86 @@ func (s *GetSiteLogDeliveryQuotaResponse) SetBody(v *GetSiteLogDeliveryQuotaResp
 	return s
 }
 
+type GetSiteNameExclusiveRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetSiteNameExclusiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSiteNameExclusiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSiteNameExclusiveRequest) SetSiteId(v int64) *GetSiteNameExclusiveRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetSiteNameExclusiveResponseBody struct {
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSiteNameExclusiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSiteNameExclusiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSiteNameExclusiveResponseBody) SetEnable(v string) *GetSiteNameExclusiveResponseBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetSiteNameExclusiveResponseBody) SetRequestId(v string) *GetSiteNameExclusiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSiteNameExclusiveResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSiteNameExclusiveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSiteNameExclusiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSiteNameExclusiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSiteNameExclusiveResponse) SetHeaders(v map[string]*string) *GetSiteNameExclusiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSiteNameExclusiveResponse) SetStatusCode(v int32) *GetSiteNameExclusiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSiteNameExclusiveResponse) SetBody(v *GetSiteNameExclusiveResponseBody) *GetSiteNameExclusiveResponse {
+	s.Body = v
+	return s
+}
+
 type GetSiteWafSettingsRequest struct {
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
@@ -23277,6 +30000,100 @@ func (s *GetSiteWafSettingsResponse) SetStatusCode(v int32) *GetSiteWafSettingsR
 }
 
 func (s *GetSiteWafSettingsResponse) SetBody(v *GetSiteWafSettingsResponseBody) *GetSiteWafSettingsResponse {
+	s.Body = v
+	return s
+}
+
+type GetTieredCacheRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetTieredCacheRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTieredCacheRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTieredCacheRequest) SetSiteId(v int64) *GetTieredCacheRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetTieredCacheResponseBody struct {
+	// The tiered cache architecture mode. Valid values:
+	//
+	// 	- edge: edge tiered cache.
+	//
+	// 	- edge_smart: edge tiered cache + smart tiered cache.
+	//
+	// 	- edge_regional: edge tiered cache + regional tiered cache.
+	//
+	// 	- edge_regional_smart: edge tiered cache + regional tiered cache + smart tiered cache.
+	//
+	// example:
+	//
+	// edge
+	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTieredCacheResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTieredCacheResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTieredCacheResponseBody) SetCacheArchitectureMode(v string) *GetTieredCacheResponseBody {
+	s.CacheArchitectureMode = &v
+	return s
+}
+
+func (s *GetTieredCacheResponseBody) SetRequestId(v string) *GetTieredCacheResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTieredCacheResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTieredCacheResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTieredCacheResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTieredCacheResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTieredCacheResponse) SetHeaders(v map[string]*string) *GetTieredCacheResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTieredCacheResponse) SetStatusCode(v int32) *GetTieredCacheResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTieredCacheResponse) SetBody(v *GetTieredCacheResponseBody) *GetTieredCacheResponse {
 	s.Body = v
 	return s
 }
@@ -24776,6 +31593,427 @@ func (s *ListCacheReserveInstancesResponse) SetBody(v *ListCacheReserveInstances
 	return s
 }
 
+type ListCacheRulesRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListCacheRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheRulesRequest) SetConfigId(v int64) *ListCacheRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListCacheRulesRequest) SetConfigType(v string) *ListCacheRulesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListCacheRulesRequest) SetPageNumber(v int32) *ListCacheRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCacheRulesRequest) SetPageSize(v int32) *ListCacheRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCacheRulesRequest) SetRuleName(v string) *ListCacheRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListCacheRulesRequest) SetSiteId(v int64) *ListCacheRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListCacheRulesRequest) SetSiteVersion(v int32) *ListCacheRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListCacheRulesResponseBody struct {
+	Configs []*ListCacheRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListCacheRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheRulesResponseBody) SetConfigs(v []*ListCacheRulesResponseBodyConfigs) *ListCacheRulesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListCacheRulesResponseBody) SetPageNumber(v int32) *ListCacheRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBody) SetPageSize(v int32) *ListCacheRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBody) SetRequestId(v string) *ListCacheRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBody) SetTotalCount(v int32) *ListCacheRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBody) SetTotalPage(v int32) *ListCacheRulesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListCacheRulesResponseBodyConfigs struct {
+	// example:
+	//
+	// 2082
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// example:
+	//
+	// no_cache
+	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// example:
+	//
+	// cache_all
+	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// example:
+	//
+	// on
+	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// example:
+	//
+	// bypass_cache_reserve
+	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// example:
+	//
+	// cookiename
+	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// example:
+	//
+	// headername
+	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// example:
+	//
+	// 395386449776640
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// follow_origin
+	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// example:
+	//
+	// cookie_exapmle
+	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// example:
+	//
+	// example
+	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// example:
+	//
+	// example
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// example:
+	//
+	// ignore_all
+	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// on
+	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// example:
+	//
+	// on
+	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// example:
+	//
+	// on
+	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// example:
+	//
+	// on
+	UserLanguage *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s ListCacheRulesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheRulesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetAdditionalCacheablePorts(v string) *ListCacheRulesResponseBodyConfigs {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetBrowserCacheMode(v string) *ListCacheRulesResponseBodyConfigs {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetBrowserCacheTtl(v string) *ListCacheRulesResponseBodyConfigs {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetBypassCache(v string) *ListCacheRulesResponseBodyConfigs {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetCacheDeceptionArmor(v string) *ListCacheRulesResponseBodyConfigs {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetCacheReserveEligibility(v string) *ListCacheRulesResponseBodyConfigs {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetCheckPresenceCookie(v string) *ListCacheRulesResponseBodyConfigs {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetCheckPresenceHeader(v string) *ListCacheRulesResponseBodyConfigs {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetConfigId(v int64) *ListCacheRulesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetConfigType(v string) *ListCacheRulesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetEdgeCacheMode(v string) *ListCacheRulesResponseBodyConfigs {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetEdgeCacheTtl(v string) *ListCacheRulesResponseBodyConfigs {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetEdgeStatusCodeCacheTtl(v string) *ListCacheRulesResponseBodyConfigs {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetIncludeCookie(v string) *ListCacheRulesResponseBodyConfigs {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetIncludeHeader(v string) *ListCacheRulesResponseBodyConfigs {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetQueryString(v string) *ListCacheRulesResponseBodyConfigs {
+	s.QueryString = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetQueryStringMode(v string) *ListCacheRulesResponseBodyConfigs {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetRule(v string) *ListCacheRulesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetRuleEnable(v string) *ListCacheRulesResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetRuleName(v string) *ListCacheRulesResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetSequence(v int32) *ListCacheRulesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetServeStale(v string) *ListCacheRulesResponseBodyConfigs {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListCacheRulesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetSortQueryStringForCache(v string) *ListCacheRulesResponseBodyConfigs {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetUserDeviceType(v string) *ListCacheRulesResponseBodyConfigs {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetUserGeo(v string) *ListCacheRulesResponseBodyConfigs {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetUserLanguage(v string) *ListCacheRulesResponseBodyConfigs {
+	s.UserLanguage = &v
+	return s
+}
+
+type ListCacheRulesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCacheRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCacheRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheRulesResponse) SetHeaders(v map[string]*string) *ListCacheRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCacheRulesResponse) SetStatusCode(v int32) *ListCacheRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCacheRulesResponse) SetBody(v *ListCacheRulesResponseBody) *ListCacheRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListCertificatesRequest struct {
 	// example:
 	//
@@ -25894,6 +33132,328 @@ func (s *ListClientCertificatesResponse) SetStatusCode(v int32) *ListClientCerti
 }
 
 func (s *ListClientCertificatesResponse) SetBody(v *ListClientCertificatesResponseBody) *ListClientCertificatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCompressionRulesRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) operation.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34003500310****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website configurations.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListCompressionRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCompressionRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCompressionRulesRequest) SetConfigId(v int64) *ListCompressionRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListCompressionRulesRequest) SetConfigType(v string) *ListCompressionRulesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListCompressionRulesRequest) SetPageNumber(v int32) *ListCompressionRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCompressionRulesRequest) SetPageSize(v int32) *ListCompressionRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCompressionRulesRequest) SetRuleName(v string) *ListCompressionRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListCompressionRulesRequest) SetSiteId(v int64) *ListCompressionRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListCompressionRulesRequest) SetSiteVersion(v int32) *ListCompressionRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListCompressionRulesResponseBody struct {
+	// The configured compression rules.
+	Configs []*ListCompressionRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListCompressionRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCompressionRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCompressionRulesResponseBody) SetConfigs(v []*ListCompressionRulesResponseBodyConfigs) *ListCompressionRulesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBody) SetPageNumber(v int32) *ListCompressionRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBody) SetPageSize(v int32) *ListCompressionRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBody) SetRequestId(v string) *ListCompressionRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBody) SetTotalCount(v int32) *ListCompressionRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBody) SetTotalPage(v int32) *ListCompressionRulesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListCompressionRulesResponseBodyConfigs struct {
+	// Indicates whether Brotli compression is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Indicates whether Gzip compression is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version of the website configurations.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListCompressionRulesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCompressionRulesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetBrotli(v string) *ListCompressionRulesResponseBodyConfigs {
+	s.Brotli = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetConfigId(v int64) *ListCompressionRulesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetConfigType(v string) *ListCompressionRulesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetGzip(v string) *ListCompressionRulesResponseBodyConfigs {
+	s.Gzip = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetRule(v string) *ListCompressionRulesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetRuleEnable(v string) *ListCompressionRulesResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetRuleName(v string) *ListCompressionRulesResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetSequence(v int32) *ListCompressionRulesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListCompressionRulesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListCompressionRulesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCompressionRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCompressionRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCompressionRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCompressionRulesResponse) SetHeaders(v map[string]*string) *ListCompressionRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCompressionRulesResponse) SetStatusCode(v int32) *ListCompressionRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponse) SetBody(v *ListCompressionRulesResponseBody) *ListCompressionRulesResponse {
 	s.Body = v
 	return s
 }
@@ -27904,6 +35464,1220 @@ func (s *ListEdgeRoutineRecordsResponse) SetBody(v *ListEdgeRoutineRecordsRespon
 	return s
 }
 
+type ListHttpRequestHeaderModificationRulesRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListHttpRequestHeaderModificationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpRequestHeaderModificationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpRequestHeaderModificationRulesRequest) SetConfigId(v int64) *ListHttpRequestHeaderModificationRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesRequest) SetConfigType(v string) *ListHttpRequestHeaderModificationRulesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesRequest) SetPageNumber(v int32) *ListHttpRequestHeaderModificationRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesRequest) SetPageSize(v int32) *ListHttpRequestHeaderModificationRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesRequest) SetRuleName(v string) *ListHttpRequestHeaderModificationRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesRequest) SetSiteId(v int64) *ListHttpRequestHeaderModificationRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesRequest) SetSiteVersion(v int32) *ListHttpRequestHeaderModificationRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListHttpRequestHeaderModificationRulesResponseBody struct {
+	Configs []*ListHttpRequestHeaderModificationRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBody) SetConfigs(v []*ListHttpRequestHeaderModificationRulesResponseBodyConfigs) *ListHttpRequestHeaderModificationRulesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBody) SetPageNumber(v int32) *ListHttpRequestHeaderModificationRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBody) SetPageSize(v int32) *ListHttpRequestHeaderModificationRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBody) SetRequestId(v string) *ListHttpRequestHeaderModificationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBody) SetTotalCount(v int32) *ListHttpRequestHeaderModificationRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBody) SetTotalPage(v int32) *ListHttpRequestHeaderModificationRulesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListHttpRequestHeaderModificationRulesResponseBodyConfigs struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType                *string                                                                               `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	RequestHeaderModification []*ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetConfigId(v int64) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetConfigType(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetRequestHeaderModification(v []*ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetRule(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetRuleEnable(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetRuleName(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetSequence(v int32) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListHttpRequestHeaderModificationRulesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification struct {
+	// example:
+	//
+	// headerName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// headerValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) SetName(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) SetOperation(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) SetValue(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type ListHttpRequestHeaderModificationRulesResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHttpRequestHeaderModificationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpRequestHeaderModificationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponse) SetHeaders(v map[string]*string) *ListHttpRequestHeaderModificationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponse) SetStatusCode(v int32) *ListHttpRequestHeaderModificationRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponse) SetBody(v *ListHttpRequestHeaderModificationRulesResponseBody) *ListHttpRequestHeaderModificationRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListHttpResponseHeaderModificationRulesRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListHttpResponseHeaderModificationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpResponseHeaderModificationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpResponseHeaderModificationRulesRequest) SetConfigId(v int64) *ListHttpResponseHeaderModificationRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesRequest) SetConfigType(v string) *ListHttpResponseHeaderModificationRulesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesRequest) SetPageNumber(v int32) *ListHttpResponseHeaderModificationRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesRequest) SetPageSize(v int32) *ListHttpResponseHeaderModificationRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesRequest) SetRuleName(v string) *ListHttpResponseHeaderModificationRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesRequest) SetSiteId(v int64) *ListHttpResponseHeaderModificationRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesRequest) SetSiteVersion(v int32) *ListHttpResponseHeaderModificationRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListHttpResponseHeaderModificationRulesResponseBody struct {
+	Configs []*ListHttpResponseHeaderModificationRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 14
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetConfigs(v []*ListHttpResponseHeaderModificationRulesResponseBodyConfigs) *ListHttpResponseHeaderModificationRulesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetPageNumber(v int32) *ListHttpResponseHeaderModificationRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetPageSize(v int32) *ListHttpResponseHeaderModificationRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetRequestId(v string) *ListHttpResponseHeaderModificationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetTotalCount(v int32) *ListHttpResponseHeaderModificationRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetTotalPage(v int32) *ListHttpResponseHeaderModificationRulesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListHttpResponseHeaderModificationRulesResponseBodyConfigs struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// rule
+	ConfigType                 *string                                                                                 `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ResponseHeaderModification []*ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetConfigId(v int64) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetConfigType(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetResponseHeaderModification(v []*ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetRule(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetRuleEnable(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetRuleName(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetSequence(v int32) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListHttpResponseHeaderModificationRulesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification struct {
+	// example:
+	//
+	// headerName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// headerValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) SetName(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) SetOperation(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) SetValue(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type ListHttpResponseHeaderModificationRulesResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHttpResponseHeaderModificationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpResponseHeaderModificationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponse) SetHeaders(v map[string]*string) *ListHttpResponseHeaderModificationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponse) SetStatusCode(v int32) *ListHttpResponseHeaderModificationRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponse) SetBody(v *ListHttpResponseHeaderModificationRulesResponseBody) *ListHttpResponseHeaderModificationRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListHttpsApplicationConfigurationsRequest struct {
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListHttpsApplicationConfigurationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsApplicationConfigurationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsApplicationConfigurationsRequest) SetConfigId(v int64) *ListHttpsApplicationConfigurationsRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsRequest) SetConfigType(v string) *ListHttpsApplicationConfigurationsRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsRequest) SetPageNumber(v int32) *ListHttpsApplicationConfigurationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsRequest) SetPageSize(v int32) *ListHttpsApplicationConfigurationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsRequest) SetRuleName(v string) *ListHttpsApplicationConfigurationsRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsRequest) SetSiteId(v int64) *ListHttpsApplicationConfigurationsRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsRequest) SetSiteVersion(v int32) *ListHttpsApplicationConfigurationsRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListHttpsApplicationConfigurationsResponseBody struct {
+	Configs []*ListHttpsApplicationConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListHttpsApplicationConfigurationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsApplicationConfigurationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBody) SetConfigs(v []*ListHttpsApplicationConfigurationsResponseBodyConfigs) *ListHttpsApplicationConfigurationsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBody) SetPageNumber(v int32) *ListHttpsApplicationConfigurationsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBody) SetPageSize(v int32) *ListHttpsApplicationConfigurationsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBody) SetRequestId(v string) *ListHttpsApplicationConfigurationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBody) SetTotalCount(v int32) *ListHttpsApplicationConfigurationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBody) SetTotalPage(v int32) *ListHttpsApplicationConfigurationsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListHttpsApplicationConfigurationsResponseBodyConfigs struct {
+	// example:
+	//
+	// on
+	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// example:
+	//
+	// 86400
+	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// example:
+	//
+	// 395386449776640
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// example:
+	//
+	// 3600
+	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// example:
+	//
+	// on
+	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// example:
+	//
+	// on
+	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// example:
+	//
+	// 301
+	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListHttpsApplicationConfigurationsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsApplicationConfigurationsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetAltSvc(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetAltSvcClear(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetAltSvcMa(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetAltSvcPersist(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetConfigId(v int64) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetConfigType(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHsts(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.Hsts = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHstsIncludeSubdomains(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHstsMaxAge(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHstsPreload(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHttpsForce(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHttpsForceCode(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetRule(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetRuleEnable(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetRuleName(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetSequence(v int32) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetSiteVersion(v int32) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListHttpsApplicationConfigurationsResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHttpsApplicationConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHttpsApplicationConfigurationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsApplicationConfigurationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsApplicationConfigurationsResponse) SetHeaders(v map[string]*string) *ListHttpsApplicationConfigurationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponse) SetStatusCode(v int32) *ListHttpsApplicationConfigurationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponse) SetBody(v *ListHttpsApplicationConfigurationsResponseBody) *ListHttpsApplicationConfigurationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListHttpsBasicConfigurationsRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListHttpsBasicConfigurationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsBasicConfigurationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsBasicConfigurationsRequest) SetConfigId(v int64) *ListHttpsBasicConfigurationsRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsRequest) SetConfigType(v string) *ListHttpsBasicConfigurationsRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsRequest) SetPageNumber(v int32) *ListHttpsBasicConfigurationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsRequest) SetPageSize(v int32) *ListHttpsBasicConfigurationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsRequest) SetRuleName(v string) *ListHttpsBasicConfigurationsRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsRequest) SetSiteId(v int64) *ListHttpsBasicConfigurationsRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListHttpsBasicConfigurationsResponseBody struct {
+	Configs []*ListHttpsBasicConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListHttpsBasicConfigurationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsBasicConfigurationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBody) SetConfigs(v []*ListHttpsBasicConfigurationsResponseBodyConfigs) *ListHttpsBasicConfigurationsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBody) SetPageNumber(v int32) *ListHttpsBasicConfigurationsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBody) SetPageSize(v int32) *ListHttpsBasicConfigurationsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBody) SetRequestId(v string) *ListHttpsBasicConfigurationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBody) SetTotalCount(v int32) *ListHttpsBasicConfigurationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBody) SetTotalPage(v int32) *ListHttpsBasicConfigurationsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListHttpsBasicConfigurationsResponseBodyConfigs struct {
+	// example:
+	//
+	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// strict
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// example:
+	//
+	// 395386449776640
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// example:
+	//
+	// on
+	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// example:
+	//
+	// on
+	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// on
+	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// on
+	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// example:
+	//
+	// on
+	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// example:
+	//
+	// on
+	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// example:
+	//
+	// on
+	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s ListHttpsBasicConfigurationsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsBasicConfigurationsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetCiphersuite(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetCiphersuiteGroup(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetConfigId(v int64) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetConfigType(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetHttp2(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Http2 = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetHttp3(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Http3 = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetHttps(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Https = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetOcspStapling(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetRule(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetRuleEnable(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetRuleName(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetSequence(v int32) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetTls10(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetTls11(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetTls12(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponseBodyConfigs) SetTls13(v string) *ListHttpsBasicConfigurationsResponseBodyConfigs {
+	s.Tls13 = &v
+	return s
+}
+
+type ListHttpsBasicConfigurationsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHttpsBasicConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHttpsBasicConfigurationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHttpsBasicConfigurationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHttpsBasicConfigurationsResponse) SetHeaders(v map[string]*string) *ListHttpsBasicConfigurationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponse) SetStatusCode(v int32) *ListHttpsBasicConfigurationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHttpsBasicConfigurationsResponse) SetBody(v *ListHttpsBasicConfigurationsResponseBody) *ListHttpsBasicConfigurationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstanceQuotasRequest struct {
 	// The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -29062,6 +37836,141 @@ func (s *ListListsResponse) SetBody(v *ListListsResponseBody) *ListListsResponse
 	return s
 }
 
+type ListLoadBalancerOriginStatusRequest struct {
+	// This parameter is required.
+	LoadBalancerIds *string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty"`
+	PoolType        *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ListLoadBalancerOriginStatus
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListLoadBalancerOriginStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancerOriginStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancerOriginStatusRequest) SetLoadBalancerIds(v string) *ListLoadBalancerOriginStatusRequest {
+	s.LoadBalancerIds = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusRequest) SetPoolType(v string) *ListLoadBalancerOriginStatusRequest {
+	s.PoolType = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusRequest) SetSiteId(v int64) *ListLoadBalancerOriginStatusRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListLoadBalancerOriginStatusResponseBody struct {
+	OriginStatus []*ListLoadBalancerOriginStatusResponseBodyOriginStatus `json:"OriginStatus,omitempty" xml:"OriginStatus,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListLoadBalancerOriginStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancerOriginStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBody) SetOriginStatus(v []*ListLoadBalancerOriginStatusResponseBodyOriginStatus) *ListLoadBalancerOriginStatusResponseBody {
+	s.OriginStatus = v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBody) SetRequestId(v string) *ListLoadBalancerOriginStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListLoadBalancerOriginStatusResponseBodyOriginStatus struct {
+	LoadBalancerId *int64  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OriginId       *int64  `json:"OriginId,omitempty" xml:"OriginId,omitempty"`
+	PoolId         *int64  `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
+	PoolType       *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLoadBalancerOriginStatusResponseBodyOriginStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancerOriginStatusResponseBodyOriginStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBodyOriginStatus) SetLoadBalancerId(v int64) *ListLoadBalancerOriginStatusResponseBodyOriginStatus {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBodyOriginStatus) SetOriginId(v int64) *ListLoadBalancerOriginStatusResponseBodyOriginStatus {
+	s.OriginId = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBodyOriginStatus) SetPoolId(v int64) *ListLoadBalancerOriginStatusResponseBodyOriginStatus {
+	s.PoolId = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBodyOriginStatus) SetPoolType(v string) *ListLoadBalancerOriginStatusResponseBodyOriginStatus {
+	s.PoolType = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBodyOriginStatus) SetReason(v string) *ListLoadBalancerOriginStatusResponseBodyOriginStatus {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponseBodyOriginStatus) SetStatus(v string) *ListLoadBalancerOriginStatusResponseBodyOriginStatus {
+	s.Status = &v
+	return s
+}
+
+type ListLoadBalancerOriginStatusResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLoadBalancerOriginStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLoadBalancerOriginStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancerOriginStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancerOriginStatusResponse) SetHeaders(v map[string]*string) *ListLoadBalancerOriginStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponse) SetStatusCode(v int32) *ListLoadBalancerOriginStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLoadBalancerOriginStatusResponse) SetBody(v *ListLoadBalancerOriginStatusResponseBody) *ListLoadBalancerOriginStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ListLoadBalancerRegionsRequest struct {
 	// The page number.
 	//
@@ -29280,6 +38189,764 @@ func (s *ListLoadBalancerRegionsResponse) SetStatusCode(v int32) *ListLoadBalanc
 }
 
 func (s *ListLoadBalancerRegionsResponse) SetBody(v *ListLoadBalancerRegionsResponseBody) *ListLoadBalancerRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListLoadBalancersRequest struct {
+	// example:
+	//
+	// fuzzy
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// example:
+	//
+	// lb.example.com
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// id
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// ListLoadBalancers
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 21655860979****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListLoadBalancersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersRequest) SetMatchType(v string) *ListLoadBalancersRequest {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetName(v string) *ListLoadBalancersRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetOrderBy(v string) *ListLoadBalancersRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetPageNumber(v int32) *ListLoadBalancersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetPageSize(v int32) *ListLoadBalancersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetSiteId(v int64) *ListLoadBalancersRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListLoadBalancersResponseBody struct {
+	// The load balancers returned.
+	LoadBalancers []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBody) SetLoadBalancers(v []*ListLoadBalancersResponseBodyLoadBalancers) *ListLoadBalancersResponseBody {
+	s.LoadBalancers = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBody) SetPageNumber(v int32) *ListLoadBalancersResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBody) SetPageSize(v int32) *ListLoadBalancersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBody) SetRequestId(v string) *ListLoadBalancersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBody) SetTotalCount(v int32) *ListLoadBalancersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBody) SetTotalPage(v int32) *ListLoadBalancersResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancers struct {
+	AdaptiveRouting *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
+	DefaultPools    []*int64                                                   `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 96228666776****
+	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// example:
+	//
+	// 998676487607104
+	Id      *int64                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	Monitor *ListLoadBalancersResponseBodyLoadBalancersMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	// example:
+	//
+	// lb.example.com
+	Name           *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RandomSteering *ListLoadBalancersResponseBodyLoadBalancersRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RegionPools interface{}                                        `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	Rules       []*ListLoadBalancersResponseBodyLoadBalancersRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The session persistence mode. Valid values:
+	//
+	// 	- off: disables session persistence.
+	//
+	// 	- ip: enables session persistence by IP address.
+	//
+	// 	- cookie: enables session persistence by cookie.
+	//
+	// example:
+	//
+	// ip
+	SessionAffinity           *string                                                              `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	SessionAffinityAttributes *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1159101787****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// healthy
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// order
+	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancers) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetAdaptiveRouting(v *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.AdaptiveRouting = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetDefaultPools(v []*int64) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.DefaultPools = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetDescription(v string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Description = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetEnabled(v bool) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetFallbackPool(v int64) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.FallbackPool = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetId(v int64) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Id = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetMonitor(v *ListLoadBalancersResponseBodyLoadBalancersMonitor) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Monitor = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetName(v string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetRandomSteering(v *ListLoadBalancersResponseBodyLoadBalancersRandomSteering) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.RandomSteering = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetRegionPools(v interface{}) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.RegionPools = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetRules(v []*ListLoadBalancersResponseBodyLoadBalancersRules) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Rules = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSessionAffinity(v string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.SessionAffinity = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSessionAffinityAttributes(v *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.SessionAffinityAttributes = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSiteId(v int64) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetStatus(v string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Status = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSteeringPolicy(v string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.SteeringPolicy = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSubRegionPools(v interface{}) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.SubRegionPools = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetTtl(v int32) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Ttl = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting struct {
+	// example:
+	//
+	// true
+	FailoverAcrossPools *bool `json:"FailoverAcrossPools,omitempty" xml:"FailoverAcrossPools,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) SetFailoverAcrossPools(v bool) *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting {
+	s.FailoverAcrossPools = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersMonitor struct {
+	// example:
+	//
+	// 5
+	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	// example:
+	//
+	// 3
+	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	// example:
+	//
+	// 200,202
+	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	// example:
+	//
+	// true
+	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "host": [
+	//
+	//             "example1.com",
+	//
+	//             "example2.com"
+	//
+	//         ]
+	//
+	//     }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// GET
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// /
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 5
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// HTTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersMonitor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersMonitor) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetConsecutiveDown(v int32) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.ConsecutiveDown = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetConsecutiveUp(v int32) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.ConsecutiveUp = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetExpectedCodes(v string) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.ExpectedCodes = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetFollowRedirects(v bool) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.FollowRedirects = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetHeader(v interface{}) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.Header = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetInterval(v int32) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.Interval = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetMethod(v string) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.Method = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetPath(v string) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.Path = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetPort(v int32) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.Port = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetTimeout(v int32) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetType(v string) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.Type = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersRandomSteering struct {
+	// example:
+	//
+	// 50
+	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersRandomSteering) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersRandomSteering) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRandomSteering) SetDefaultWeight(v int32) *ListLoadBalancersResponseBodyLoadBalancersRandomSteering {
+	s.DefaultWeight = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRandomSteering) SetPoolWeights(v map[string]*int32) *ListLoadBalancersResponseBodyLoadBalancersRandomSteering {
+	s.PoolWeights = v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersRules struct {
+	FixedResponse *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//             "adaptive_routing": {
+	//
+	//                 "failover_across_pools": true
+	//
+	//             },
+	//
+	//             "sub_region_pools": {
+	//
+	//                 "GB": [
+	//
+	//                     96228666776****
+	//
+	//                 ],
+	//
+	//                 "US": [
+	//
+	//                     96228666776****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "default_pools": [
+	//
+	//                 96228666776****,
+	//
+	//                 96228666776****
+	//
+	//             ],
+	//
+	//             "fallback_pool": 96228666776****,
+	//
+	//             "location_strategy": {
+	//
+	//                 "mode": "resolver_ip",
+	//
+	//                 "prefer_ecs": "always"
+	//
+	//             },
+	//
+	//             "random_steering": {
+	//
+	//                 "default_weight": 30,
+	//
+	//                 "pool_weights": {
+	//
+	//                     "96228666776****": 70,
+	//
+	//                     "96228666776****": 80
+	//
+	//                 }
+	//
+	//             },
+	//
+	//             "region_pools": {
+	//
+	//                 "ENAM": [
+	//
+	//                     96228666776****,
+	//
+	//                     92843536908****
+	//
+	//                 ],
+	//
+	//                 "WNAM": [
+	//
+	//                     92843536908****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "session_affinity": "cookie",
+	//
+	//             "session_affinity_attributes": {
+	//
+	//                 "drain_duration": 100,
+	//
+	//                 "headers": ["none"],
+	//
+	//                 "require_all_headers": false,
+	//
+	//                 "samesite": "Auto",
+	//
+	//                 "secure": "Auto",
+	//
+	//                 "zero_downtime_failover": "sticky"
+	//
+	//             },
+	//
+	//             "session_affinity_ttl": 1800,
+	//
+	//             "steering_policy": "dynamic_latency",
+	//
+	//             "ttl": 30
+	//
+	//         }
+	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	// example:
+	//
+	// http.request.uri.path contains "/testing"
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// r2
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// true
+	Terminates *bool `json:"Terminates,omitempty" xml:"Terminates,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetFixedResponse(v *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) *ListLoadBalancersResponseBodyLoadBalancersRules {
+	s.FixedResponse = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetOverrides(v interface{}) *ListLoadBalancersResponseBodyLoadBalancersRules {
+	s.Overrides = v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetRule(v string) *ListLoadBalancersResponseBodyLoadBalancersRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetRuleEnable(v string) *ListLoadBalancersResponseBodyLoadBalancersRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetRuleName(v string) *ListLoadBalancersResponseBodyLoadBalancersRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetSequence(v int32) *ListLoadBalancersResponseBodyLoadBalancersRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetTerminates(v bool) *ListLoadBalancersResponseBodyLoadBalancersRules {
+	s.Terminates = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse struct {
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// http://www.example.com/index.html
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// Hello World.
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) SetContentType(v string) *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse {
+	s.ContentType = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) SetLocation(v string) *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse {
+	s.Location = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) SetMessageBody(v string) *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse {
+	s.MessageBody = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) SetStatusCode(v int32) *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes struct {
+	// example:
+	//
+	// Lax
+	SameSite *string `json:"SameSite,omitempty" xml:"SameSite,omitempty"`
+	// example:
+	//
+	// Always
+	Secure *string `json:"Secure,omitempty" xml:"Secure,omitempty"`
+	// example:
+	//
+	// sticky
+	ZeroDowntimeFailover *string `json:"ZeroDowntimeFailover,omitempty" xml:"ZeroDowntimeFailover,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) SetSameSite(v string) *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes {
+	s.SameSite = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) SetSecure(v string) *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes {
+	s.Secure = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) SetZeroDowntimeFailover(v string) *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes {
+	s.ZeroDowntimeFailover = &v
+	return s
+}
+
+type ListLoadBalancersResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLoadBalancersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLoadBalancersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponse) SetHeaders(v map[string]*string) *ListLoadBalancersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLoadBalancersResponse) SetStatusCode(v int32) *ListLoadBalancersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponse) SetBody(v *ListLoadBalancersResponseBody) *ListLoadBalancersResponse {
 	s.Body = v
 	return s
 }
@@ -29821,6 +39488,310 @@ func (s *ListOriginPoolsResponse) SetStatusCode(v int32) *ListOriginPoolsRespons
 }
 
 func (s *ListOriginPoolsResponse) SetBody(v *ListOriginPoolsResponseBody) *ListOriginPoolsResponse {
+	s.Body = v
+	return s
+}
+
+type ListOriginRulesRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListOriginRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginRulesRequest) SetConfigId(v int64) *ListOriginRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListOriginRulesRequest) SetConfigType(v string) *ListOriginRulesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListOriginRulesRequest) SetPageNumber(v int32) *ListOriginRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginRulesRequest) SetPageSize(v int32) *ListOriginRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginRulesRequest) SetRuleName(v string) *ListOriginRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListOriginRulesRequest) SetSiteId(v int64) *ListOriginRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListOriginRulesRequest) SetSiteVersion(v int32) *ListOriginRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListOriginRulesResponseBody struct {
+	Configs []*ListOriginRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListOriginRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginRulesResponseBody) SetConfigs(v []*ListOriginRulesResponseBodyConfigs) *ListOriginRulesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListOriginRulesResponseBody) SetPageNumber(v int32) *ListOriginRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBody) SetPageSize(v int32) *ListOriginRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBody) SetRequestId(v string) *ListOriginRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBody) SetTotalCount(v int32) *ListOriginRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBody) SetTotalPage(v int32) *ListOriginRulesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListOriginRulesResponseBodyConfigs struct {
+	// example:
+	//
+	// 395386449776640
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// test.example.com
+	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// example:
+	//
+	// 8080
+	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// example:
+	//
+	// 4433
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// example:
+	//
+	// http
+	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// example:
+	//
+	// on
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListOriginRulesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginRulesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetConfigId(v int64) *ListOriginRulesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetConfigType(v string) *ListOriginRulesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetDnsRecord(v string) *ListOriginRulesResponseBodyConfigs {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginHost(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginHttpPort(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginHttpsPort(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginScheme(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginSni(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetRange(v string) *ListOriginRulesResponseBodyConfigs {
+	s.Range = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetRule(v string) *ListOriginRulesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetRuleEnable(v string) *ListOriginRulesResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetRuleName(v string) *ListOriginRulesResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetSequence(v int32) *ListOriginRulesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListOriginRulesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListOriginRulesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOriginRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOriginRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginRulesResponse) SetHeaders(v map[string]*string) *ListOriginRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOriginRulesResponse) SetStatusCode(v int32) *ListOriginRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOriginRulesResponse) SetBody(v *ListOriginRulesResponseBody) *ListOriginRulesResponse {
 	s.Body = v
 	return s
 }
@@ -30815,6 +40786,560 @@ func (s *ListRecordsResponse) SetBody(v *ListRecordsResponseBody) *ListRecordsRe
 	return s
 }
 
+type ListRedirectRulesRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListRedirectRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRedirectRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRedirectRulesRequest) SetConfigId(v int64) *ListRedirectRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListRedirectRulesRequest) SetConfigType(v string) *ListRedirectRulesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListRedirectRulesRequest) SetPageNumber(v int32) *ListRedirectRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRedirectRulesRequest) SetPageSize(v int32) *ListRedirectRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRedirectRulesRequest) SetRuleName(v string) *ListRedirectRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRedirectRulesRequest) SetSiteId(v int64) *ListRedirectRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListRedirectRulesRequest) SetSiteVersion(v int32) *ListRedirectRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListRedirectRulesResponseBody struct {
+	Configs []*ListRedirectRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListRedirectRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRedirectRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRedirectRulesResponseBody) SetConfigs(v []*ListRedirectRulesResponseBodyConfigs) *ListRedirectRulesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBody) SetPageNumber(v int32) *ListRedirectRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBody) SetPageSize(v int32) *ListRedirectRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBody) SetRequestId(v string) *ListRedirectRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBody) SetTotalCount(v int32) *ListRedirectRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBody) SetTotalPage(v int32) *ListRedirectRulesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListRedirectRulesResponseBodyConfigs struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListRedirectRulesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRedirectRulesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetConfigId(v int64) *ListRedirectRulesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetConfigType(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetReserveQueryString(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetRule(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetRuleEnable(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetRuleName(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetSequence(v int32) *ListRedirectRulesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListRedirectRulesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetStatusCode(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetTargetUrl(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponseBodyConfigs) SetType(v string) *ListRedirectRulesResponseBodyConfigs {
+	s.Type = &v
+	return s
+}
+
+type ListRedirectRulesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRedirectRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRedirectRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRedirectRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRedirectRulesResponse) SetHeaders(v map[string]*string) *ListRedirectRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRedirectRulesResponse) SetStatusCode(v int32) *ListRedirectRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRedirectRulesResponse) SetBody(v *ListRedirectRulesResponseBody) *ListRedirectRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRewriteUrlRulesRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListRewriteUrlRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRewriteUrlRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRewriteUrlRulesRequest) SetConfigId(v int64) *ListRewriteUrlRulesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesRequest) SetConfigType(v string) *ListRewriteUrlRulesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesRequest) SetPageNumber(v int32) *ListRewriteUrlRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesRequest) SetPageSize(v int32) *ListRewriteUrlRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesRequest) SetRuleName(v string) *ListRewriteUrlRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesRequest) SetSiteId(v int64) *ListRewriteUrlRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesRequest) SetSiteVersion(v int32) *ListRewriteUrlRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListRewriteUrlRulesResponseBody struct {
+	Configs []*ListRewriteUrlRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListRewriteUrlRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRewriteUrlRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRewriteUrlRulesResponseBody) SetConfigs(v []*ListRewriteUrlRulesResponseBodyConfigs) *ListRewriteUrlRulesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBody) SetPageNumber(v int32) *ListRewriteUrlRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBody) SetPageSize(v int32) *ListRewriteUrlRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBody) SetRequestId(v string) *ListRewriteUrlRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBody) SetTotalCount(v int32) *ListRewriteUrlRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBody) SetTotalPage(v int32) *ListRewriteUrlRulesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListRewriteUrlRulesResponseBodyConfigs struct {
+	// example:
+	//
+	// 39538644977****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// example=123
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// example:
+	//
+	// static
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	// example:
+	//
+	// static
+	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// /image.example.com/index.html
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s ListRewriteUrlRulesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRewriteUrlRulesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetConfigId(v int64) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetConfigType(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetQueryString(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.QueryString = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetRewriteQueryStringType(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetRewriteUriType(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetRule(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetRuleEnable(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetRuleName(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetSequence(v int32) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponseBodyConfigs) SetUri(v string) *ListRewriteUrlRulesResponseBodyConfigs {
+	s.Uri = &v
+	return s
+}
+
+type ListRewriteUrlRulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRewriteUrlRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRewriteUrlRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRewriteUrlRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRewriteUrlRulesResponse) SetHeaders(v map[string]*string) *ListRewriteUrlRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponse) SetStatusCode(v int32) *ListRewriteUrlRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRewriteUrlRulesResponse) SetBody(v *ListRewriteUrlRulesResponseBody) *ListRewriteUrlRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListRoutineCanaryAreasResponseBody struct {
 	// The regions for canary release.
 	CanaryAreas []*string `json:"CanaryAreas,omitempty" xml:"CanaryAreas,omitempty" type:"Repeated"`
@@ -31735,11 +42260,11 @@ type ListSitesRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The service location. Valid values:
 	//
-	// 	- **domestic**: the Chinese mainland
+	// 	- **domestic**: the Chinese Mainland
 	//
-	// 	- **global**: global
+	// 	- **global**: global (including the Chinese Mainland)
 	//
-	// 	- **overseas**: outside the Chinese mainland
+	// 	- **overseas**: outside the Chinese Mainland
 	//
 	// example:
 	//
@@ -31775,7 +42300,7 @@ type ListSitesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The plan type. Valid values:
 	//
-	// 	- **basicplan**: Entrance (coming soon)
+	// 	- **basicplan**: Entrance
 	//
 	// 	- **standardplan**: Pro
 	//
@@ -31937,11 +42462,11 @@ type ListSitesShrinkRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The service location. Valid values:
 	//
-	// 	- **domestic**: the Chinese mainland
+	// 	- **domestic**: the Chinese Mainland
 	//
-	// 	- **global**: global
+	// 	- **global**: global (including the Chinese Mainland)
 	//
-	// 	- **overseas**: outside the Chinese mainland
+	// 	- **overseas**: outside the Chinese Mainland
 	//
 	// example:
 	//
@@ -31977,7 +42502,7 @@ type ListSitesShrinkRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The plan type. Valid values:
 	//
-	// 	- **basicplan**: Entrance (coming soon)
+	// 	- **basicplan**: Entrance
 	//
 	// 	- **standardplan**: Pro
 	//
@@ -33614,7 +44139,7 @@ type ListWafManagedRulesRequest struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+	// The ID of the WAF rule.
 	//
 	// This parameter is required.
 	//
@@ -33785,7 +44310,7 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+	// The ID of the WAF rule.
 	//
 	// This parameter is required.
 	//
@@ -38352,6 +48877,602 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateCacheRuleRequest struct {
+	// example:
+	//
+	// 8880
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// example:
+	//
+	// no_cache
+	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// example:
+	//
+	// cache_all
+	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// example:
+	//
+	// on
+	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// example:
+	//
+	// bypass_cache_reserve
+	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// example:
+	//
+	// cookiename
+	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// example:
+	//
+	// headername
+	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// follow_origin
+	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// example:
+	//
+	// 300
+	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// example:
+	//
+	// cookiename
+	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// example:
+	//
+	// headername
+	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// example:
+	//
+	// example
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// example:
+	//
+	// ignore_all
+	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// on
+	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// on
+	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// example:
+	//
+	// on
+	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// example:
+	//
+	// on
+	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// example:
+	//
+	// on
+	UserLanguage *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s UpdateCacheRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCacheRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCacheRuleRequest) SetAdditionalCacheablePorts(v string) *UpdateCacheRuleRequest {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetBrowserCacheMode(v string) *UpdateCacheRuleRequest {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetBrowserCacheTtl(v string) *UpdateCacheRuleRequest {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetBypassCache(v string) *UpdateCacheRuleRequest {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetCacheDeceptionArmor(v string) *UpdateCacheRuleRequest {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetCacheReserveEligibility(v string) *UpdateCacheRuleRequest {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetCheckPresenceCookie(v string) *UpdateCacheRuleRequest {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetCheckPresenceHeader(v string) *UpdateCacheRuleRequest {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetConfigId(v int64) *UpdateCacheRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetEdgeCacheMode(v string) *UpdateCacheRuleRequest {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetEdgeCacheTtl(v string) *UpdateCacheRuleRequest {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetEdgeStatusCodeCacheTtl(v string) *UpdateCacheRuleRequest {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetIncludeCookie(v string) *UpdateCacheRuleRequest {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetIncludeHeader(v string) *UpdateCacheRuleRequest {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetQueryString(v string) *UpdateCacheRuleRequest {
+	s.QueryString = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetQueryStringMode(v string) *UpdateCacheRuleRequest {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetRule(v string) *UpdateCacheRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetRuleEnable(v string) *UpdateCacheRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetRuleName(v string) *UpdateCacheRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetServeStale(v string) *UpdateCacheRuleRequest {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetSiteId(v int64) *UpdateCacheRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetSortQueryStringForCache(v string) *UpdateCacheRuleRequest {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetUserDeviceType(v string) *UpdateCacheRuleRequest {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetUserGeo(v string) *UpdateCacheRuleRequest {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetUserLanguage(v string) *UpdateCacheRuleRequest {
+	s.UserLanguage = &v
+	return s
+}
+
+type UpdateCacheRuleResponseBody struct {
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCacheRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCacheRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCacheRuleResponseBody) SetRequestId(v string) *UpdateCacheRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCacheRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCacheRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCacheRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCacheRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCacheRuleResponse) SetHeaders(v map[string]*string) *UpdateCacheRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCacheRuleResponse) SetStatusCode(v int32) *UpdateCacheRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCacheRuleResponse) SetBody(v *UpdateCacheRuleResponseBody) *UpdateCacheRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCacheTagRequest struct {
+	// example:
+	//
+	// on
+	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// example
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s UpdateCacheTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCacheTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCacheTagRequest) SetCaseInsensitive(v string) *UpdateCacheTagRequest {
+	s.CaseInsensitive = &v
+	return s
+}
+
+func (s *UpdateCacheTagRequest) SetSiteId(v int64) *UpdateCacheTagRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateCacheTagRequest) SetSiteVersion(v int32) *UpdateCacheTagRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *UpdateCacheTagRequest) SetTagName(v string) *UpdateCacheTagRequest {
+	s.TagName = &v
+	return s
+}
+
+type UpdateCacheTagResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCacheTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCacheTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCacheTagResponseBody) SetRequestId(v string) *UpdateCacheTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCacheTagResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCacheTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCacheTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCacheTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCacheTagResponse) SetHeaders(v map[string]*string) *UpdateCacheTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCacheTagResponse) SetStatusCode(v int32) *UpdateCacheTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCacheTagResponse) SetBody(v *UpdateCacheTagResponseBody) *UpdateCacheTagResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCnameFlatteningRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// flatten_all
+	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateCnameFlatteningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCnameFlatteningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCnameFlatteningRequest) SetFlattenMode(v string) *UpdateCnameFlatteningRequest {
+	s.FlattenMode = &v
+	return s
+}
+
+func (s *UpdateCnameFlatteningRequest) SetSiteId(v int64) *UpdateCnameFlatteningRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateCnameFlatteningResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCnameFlatteningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCnameFlatteningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCnameFlatteningResponseBody) SetRequestId(v string) *UpdateCnameFlatteningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCnameFlatteningResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCnameFlatteningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCnameFlatteningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCnameFlatteningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCnameFlatteningResponse) SetHeaders(v map[string]*string) *UpdateCnameFlatteningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCnameFlatteningResponse) SetStatusCode(v int32) *UpdateCnameFlatteningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCnameFlatteningResponse) SetBody(v *UpdateCnameFlatteningResponseBody) *UpdateCnameFlatteningResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCompressionRuleRequest struct {
+	// example:
+	//
+	// on
+	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateCompressionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompressionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompressionRuleRequest) SetBrotli(v string) *UpdateCompressionRuleRequest {
+	s.Brotli = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetConfigId(v int64) *UpdateCompressionRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetGzip(v string) *UpdateCompressionRuleRequest {
+	s.Gzip = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetRule(v string) *UpdateCompressionRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetRuleEnable(v string) *UpdateCompressionRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetRuleName(v string) *UpdateCompressionRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetSiteId(v int64) *UpdateCompressionRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateCompressionRuleResponseBody struct {
+	// example:
+	//
+	// CE8EB0DE-3267-53D1-AB83-F36377D63FD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCompressionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompressionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompressionRuleResponseBody) SetRequestId(v string) *UpdateCompressionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCompressionRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCompressionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCompressionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompressionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompressionRuleResponse) SetHeaders(v map[string]*string) *UpdateCompressionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCompressionRuleResponse) SetStatusCode(v int32) *UpdateCompressionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleResponse) SetBody(v *UpdateCompressionRuleResponseBody) *UpdateCompressionRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateCustomScenePolicyRequest struct {
 	// The time when the policy expires.
 	//
@@ -38564,6 +49685,1014 @@ func (s *UpdateCustomScenePolicyResponse) SetBody(v *UpdateCustomScenePolicyResp
 	return s
 }
 
+type UpdateDevelopmentModeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateDevelopmentModeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevelopmentModeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevelopmentModeRequest) SetEnable(v string) *UpdateDevelopmentModeRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateDevelopmentModeRequest) SetSiteId(v int64) *UpdateDevelopmentModeRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateDevelopmentModeResponseBody struct {
+	// example:
+	//
+	// 65C66B7B-671A-8297-9187-2R5477247B76
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDevelopmentModeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevelopmentModeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevelopmentModeResponseBody) SetRequestId(v string) *UpdateDevelopmentModeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDevelopmentModeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDevelopmentModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDevelopmentModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevelopmentModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevelopmentModeResponse) SetHeaders(v map[string]*string) *UpdateDevelopmentModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDevelopmentModeResponse) SetStatusCode(v int32) *UpdateDevelopmentModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDevelopmentModeResponse) SetBody(v *UpdateDevelopmentModeResponseBody) *UpdateDevelopmentModeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHttpRequestHeaderModificationRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId                  *int64                                                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	RequestHeaderModification []*UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetConfigId(v int64) *UpdateHttpRequestHeaderModificationRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetRequestHeaderModification(v []*UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) *UpdateHttpRequestHeaderModificationRuleRequest {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetRule(v string) *UpdateHttpRequestHeaderModificationRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetRuleEnable(v string) *UpdateHttpRequestHeaderModificationRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetRuleName(v string) *UpdateHttpRequestHeaderModificationRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetSiteId(v int64) *UpdateHttpRequestHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// headerName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// headerValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetName(v string) *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetOperation(v string) *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetValue(v string) *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type UpdateHttpRequestHeaderModificationRuleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId                        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	RequestHeaderModificationShrink *string `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetConfigId(v int64) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetRequestHeaderModificationShrink(v string) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.RequestHeaderModificationShrink = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetRule(v string) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleEnable(v string) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleName(v string) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetSiteId(v int64) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateHttpRequestHeaderModificationRuleResponseBody struct {
+	// example:
+	//
+	// 2430E05E-1340-5773-B5E1-B743929F46F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleResponseBody) SetRequestId(v string) *UpdateHttpRequestHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateHttpRequestHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHttpRequestHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpRequestHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *UpdateHttpRequestHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleResponse) SetStatusCode(v int32) *UpdateHttpRequestHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleResponse) SetBody(v *UpdateHttpRequestHeaderModificationRuleResponseBody) *UpdateHttpRequestHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHttpResponseHeaderModificationRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId                   *int64                                                                       `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ResponseHeaderModification []*UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetConfigId(v int64) *UpdateHttpResponseHeaderModificationRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetResponseHeaderModification(v []*UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) *UpdateHttpResponseHeaderModificationRuleRequest {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetRule(v string) *UpdateHttpResponseHeaderModificationRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetRuleEnable(v string) *UpdateHttpResponseHeaderModificationRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetRuleName(v string) *UpdateHttpResponseHeaderModificationRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetSiteId(v int64) *UpdateHttpResponseHeaderModificationRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// headerName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// add
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// headerValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetName(v string) *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetOperation(v string) *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetValue(v string) *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type UpdateHttpResponseHeaderModificationRuleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId                         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetConfigId(v int64) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetResponseHeaderModificationShrink(v string) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.ResponseHeaderModificationShrink = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetRule(v string) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleEnable(v string) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleName(v string) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetSiteId(v int64) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateHttpResponseHeaderModificationRuleResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleResponseBody) SetRequestId(v string) *UpdateHttpResponseHeaderModificationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateHttpResponseHeaderModificationRuleResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHttpResponseHeaderModificationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpResponseHeaderModificationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleResponse) SetHeaders(v map[string]*string) *UpdateHttpResponseHeaderModificationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleResponse) SetStatusCode(v int32) *UpdateHttpResponseHeaderModificationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleResponse) SetBody(v *UpdateHttpResponseHeaderModificationRuleResponseBody) *UpdateHttpResponseHeaderModificationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHttpsApplicationConfigurationRequest struct {
+	// example:
+	//
+	// on
+	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// example:
+	//
+	// 86400
+	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// example:
+	//
+	// 3600
+	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// example:
+	//
+	// on
+	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// example:
+	//
+	// on
+	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// example:
+	//
+	// 301
+	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateHttpsApplicationConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpsApplicationConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetAltSvc(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetAltSvcClear(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetAltSvcMa(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetAltSvcPersist(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetConfigId(v int64) *UpdateHttpsApplicationConfigurationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHsts(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.Hsts = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHstsIncludeSubdomains(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHstsMaxAge(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHstsPreload(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHttpsForce(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHttpsForceCode(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetRule(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetRuleEnable(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetRuleName(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetSiteId(v int64) *UpdateHttpsApplicationConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateHttpsApplicationConfigurationResponseBody struct {
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateHttpsApplicationConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpsApplicationConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpsApplicationConfigurationResponseBody) SetRequestId(v string) *UpdateHttpsApplicationConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateHttpsApplicationConfigurationResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHttpsApplicationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateHttpsApplicationConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpsApplicationConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpsApplicationConfigurationResponse) SetHeaders(v map[string]*string) *UpdateHttpsApplicationConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationResponse) SetStatusCode(v int32) *UpdateHttpsApplicationConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationResponse) SetBody(v *UpdateHttpsApplicationConfigurationResponseBody) *UpdateHttpsApplicationConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHttpsBasicConfigurationRequest struct {
+	// example:
+	//
+	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// all
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// example:
+	//
+	// on
+	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// example:
+	//
+	// on
+	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// on
+	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1231231221****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// on
+	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// example:
+	//
+	// on
+	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// example:
+	//
+	// on
+	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// example:
+	//
+	// on
+	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s UpdateHttpsBasicConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpsBasicConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetCiphersuite(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetCiphersuiteGroup(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetConfigId(v int64) *UpdateHttpsBasicConfigurationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetHttp2(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Http2 = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetHttp3(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Http3 = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetHttps(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Https = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetOcspStapling(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetRule(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetRuleEnable(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetRuleName(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetSiteId(v int64) *UpdateHttpsBasicConfigurationRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetTls10(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetTls11(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetTls12(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationRequest) SetTls13(v string) *UpdateHttpsBasicConfigurationRequest {
+	s.Tls13 = &v
+	return s
+}
+
+type UpdateHttpsBasicConfigurationResponseBody struct {
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateHttpsBasicConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpsBasicConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpsBasicConfigurationResponseBody) SetRequestId(v string) *UpdateHttpsBasicConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateHttpsBasicConfigurationResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHttpsBasicConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateHttpsBasicConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpsBasicConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpsBasicConfigurationResponse) SetHeaders(v map[string]*string) *UpdateHttpsBasicConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationResponse) SetStatusCode(v int32) *UpdateHttpsBasicConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHttpsBasicConfigurationResponse) SetBody(v *UpdateHttpsBasicConfigurationResponseBody) *UpdateHttpsBasicConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIPv6Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateIPv6Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIPv6Request) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIPv6Request) SetEnable(v string) *UpdateIPv6Request {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateIPv6Request) SetSiteId(v int64) *UpdateIPv6Request {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateIPv6ResponseBody struct {
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIPv6ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIPv6ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIPv6ResponseBody) SetRequestId(v string) *UpdateIPv6ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIPv6Response struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIPv6ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateIPv6Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIPv6Response) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIPv6Response) SetHeaders(v map[string]*string) *UpdateIPv6Response {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIPv6Response) SetStatusCode(v int32) *UpdateIPv6Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIPv6Response) SetBody(v *UpdateIPv6ResponseBody) *UpdateIPv6Response {
+	s.Body = v
+	return s
+}
+
 type UpdateKvNamespaceRequest struct {
 	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
 	//
@@ -38700,6 +50829,1046 @@ func (s *UpdateKvNamespaceResponse) SetStatusCode(v int32) *UpdateKvNamespaceRes
 }
 
 func (s *UpdateKvNamespaceResponse) SetBody(v *UpdateKvNamespaceResponseBody) *UpdateKvNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateListRequest struct {
+	// The new description of the list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a custom list
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The items in the updated list. The value is a JSON array.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a custom list
+	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The new name of the list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateListRequest) SetDescription(v string) *UpdateListRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateListRequest) SetId(v int64) *UpdateListRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateListRequest) SetItems(v []*string) *UpdateListRequest {
+	s.Items = v
+	return s
+}
+
+func (s *UpdateListRequest) SetName(v string) *UpdateListRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateListShrinkRequest struct {
+	// The new description of the list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a custom list
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The items in the updated list. The value is a JSON array.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a custom list
+	ItemsShrink *string `json:"Items,omitempty" xml:"Items,omitempty"`
+	// The new name of the list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateListShrinkRequest) SetDescription(v string) *UpdateListShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateListShrinkRequest) SetId(v int64) *UpdateListShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateListShrinkRequest) SetItemsShrink(v string) *UpdateListShrinkRequest {
+	s.ItemsShrink = &v
+	return s
+}
+
+func (s *UpdateListShrinkRequest) SetName(v string) *UpdateListShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateListResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateListResponseBody) SetRequestId(v string) *UpdateListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateListResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateListResponse) SetHeaders(v map[string]*string) *UpdateListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateListResponse) SetStatusCode(v int32) *UpdateListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateListResponse) SetBody(v *UpdateListResponseBody) *UpdateListResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateLoadBalancerRequest struct {
+	AdaptiveRouting *UpdateLoadBalancerRequestAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
+	DefaultPools    []*int64                                  `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	Description     *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 96228666776****
+	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95913670174****
+	Id             *int64                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Monitor        *UpdateLoadBalancerRequestMonitor        `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	RandomSteering *UpdateLoadBalancerRequestRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// if can be null:
+	// false
+	Rules []*UpdateLoadBalancerRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Session persistence. Valid values:
+	//
+	// 	- off:disables session persistence.
+	//
+	// 	- ip: enables session persistence by IP address.
+	//
+	// 	- cookie: disables session persistence.
+	//
+	// example:
+	//
+	// ip
+	SessionAffinity           *string                                             `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	SessionAffinityAttributes *UpdateLoadBalancerRequestSessionAffinityAttributes `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UpdateLoadBalancer
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// order
+	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// example:
+	//
+	// 300
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s UpdateLoadBalancerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerRequest) SetAdaptiveRouting(v *UpdateLoadBalancerRequestAdaptiveRouting) *UpdateLoadBalancerRequest {
+	s.AdaptiveRouting = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetDefaultPools(v []*int64) *UpdateLoadBalancerRequest {
+	s.DefaultPools = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetDescription(v string) *UpdateLoadBalancerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetFallbackPool(v int64) *UpdateLoadBalancerRequest {
+	s.FallbackPool = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetId(v int64) *UpdateLoadBalancerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetMonitor(v *UpdateLoadBalancerRequestMonitor) *UpdateLoadBalancerRequest {
+	s.Monitor = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetRandomSteering(v *UpdateLoadBalancerRequestRandomSteering) *UpdateLoadBalancerRequest {
+	s.RandomSteering = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetRegionPools(v interface{}) *UpdateLoadBalancerRequest {
+	s.RegionPools = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetRules(v []*UpdateLoadBalancerRequestRules) *UpdateLoadBalancerRequest {
+	s.Rules = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetSessionAffinity(v string) *UpdateLoadBalancerRequest {
+	s.SessionAffinity = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetSessionAffinityAttributes(v *UpdateLoadBalancerRequestSessionAffinityAttributes) *UpdateLoadBalancerRequest {
+	s.SessionAffinityAttributes = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetSiteId(v int64) *UpdateLoadBalancerRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetSteeringPolicy(v string) *UpdateLoadBalancerRequest {
+	s.SteeringPolicy = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetSubRegionPools(v interface{}) *UpdateLoadBalancerRequest {
+	s.SubRegionPools = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequest) SetTtl(v int32) *UpdateLoadBalancerRequest {
+	s.Ttl = &v
+	return s
+}
+
+type UpdateLoadBalancerRequestAdaptiveRouting struct {
+	// example:
+	//
+	// false
+	FailoverAcrossPools *bool `json:"FailoverAcrossPools,omitempty" xml:"FailoverAcrossPools,omitempty"`
+}
+
+func (s UpdateLoadBalancerRequestAdaptiveRouting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerRequestAdaptiveRouting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerRequestAdaptiveRouting) SetFailoverAcrossPools(v bool) *UpdateLoadBalancerRequestAdaptiveRouting {
+	s.FailoverAcrossPools = &v
+	return s
+}
+
+type UpdateLoadBalancerRequestMonitor struct {
+	// example:
+	//
+	// 5
+	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	// example:
+	//
+	// 3
+	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	// example:
+	//
+	// 200,202
+	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	// example:
+	//
+	// true
+	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "host": [
+	//
+	//             "example1.com",
+	//
+	//             "example2.com"
+	//
+	//         ]
+	//
+	//     }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// example:
+	//
+	// 100
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// GET
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// /health
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 5
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// HTTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateLoadBalancerRequestMonitor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerRequestMonitor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetConsecutiveDown(v int32) *UpdateLoadBalancerRequestMonitor {
+	s.ConsecutiveDown = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetConsecutiveUp(v int32) *UpdateLoadBalancerRequestMonitor {
+	s.ConsecutiveUp = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetExpectedCodes(v string) *UpdateLoadBalancerRequestMonitor {
+	s.ExpectedCodes = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetFollowRedirects(v bool) *UpdateLoadBalancerRequestMonitor {
+	s.FollowRedirects = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetHeader(v interface{}) *UpdateLoadBalancerRequestMonitor {
+	s.Header = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetInterval(v int32) *UpdateLoadBalancerRequestMonitor {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetMethod(v string) *UpdateLoadBalancerRequestMonitor {
+	s.Method = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetPath(v string) *UpdateLoadBalancerRequestMonitor {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetPort(v int32) *UpdateLoadBalancerRequestMonitor {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetTimeout(v int32) *UpdateLoadBalancerRequestMonitor {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestMonitor) SetType(v string) *UpdateLoadBalancerRequestMonitor {
+	s.Type = &v
+	return s
+}
+
+type UpdateLoadBalancerRequestRandomSteering struct {
+	// example:
+	//
+	// 50
+	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+}
+
+func (s UpdateLoadBalancerRequestRandomSteering) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerRequestRandomSteering) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerRequestRandomSteering) SetDefaultWeight(v int32) *UpdateLoadBalancerRequestRandomSteering {
+	s.DefaultWeight = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRandomSteering) SetPoolWeights(v map[string]*int32) *UpdateLoadBalancerRequestRandomSteering {
+	s.PoolWeights = v
+	return s
+}
+
+type UpdateLoadBalancerRequestRules struct {
+	FixedResponse *UpdateLoadBalancerRequestRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//             "adaptive_routing": {
+	//
+	//                 "failover_across_pools": true
+	//
+	//             },
+	//
+	//             "sub_region_pools": {
+	//
+	//                 "AL,AT": [
+	//
+	//                     92298024898****,
+	//
+	//                     92304347804****
+	//
+	//                 ],
+	//
+	//                 "BG,BY": [
+	//
+	//                     92298024898****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "default_pools": [
+	//
+	//                 92298024898****,
+	//
+	//                 92304347804****
+	//
+	//             ],
+	//
+	//             "fallback_pool": 92298024898****,
+	//
+	//             "location_strategy": {
+	//
+	//                 "mode": "resolver_ip",
+	//
+	//                 "prefer_ecs": "always"
+	//
+	//             },
+	//
+	//             "random_steering": {
+	//
+	//                 "default_weight": 0.3,
+	//
+	//                 "pool_weights": {
+	//
+	//                     "92298024898****": 0.7,
+	//
+	//                     "92304347804****": 0.8
+	//
+	//                 }
+	//
+	//             },
+	//
+	//             "region_pools": {
+	//
+	//                 "CN,SEAS": [
+	//
+	//                     92298024898****,
+	//
+	//                     92304347804****
+	//
+	//                 ],
+	//
+	//                 "SAF,SAS": [
+	//
+	//                     92304347804****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "session_affinity": "ip",
+	//
+	//             "steering_policy": "geo",
+	//
+	//             "ttl": 30
+	//
+	//         }
+	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	// example:
+	//
+	// http.request.method eq "GET"
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// true
+	Terminates *bool `json:"Terminates,omitempty" xml:"Terminates,omitempty"`
+}
+
+func (s UpdateLoadBalancerRequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerRequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerRequestRules) SetFixedResponse(v *UpdateLoadBalancerRequestRulesFixedResponse) *UpdateLoadBalancerRequestRules {
+	s.FixedResponse = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRules) SetOverrides(v interface{}) *UpdateLoadBalancerRequestRules {
+	s.Overrides = v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRules) SetRule(v string) *UpdateLoadBalancerRequestRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRules) SetRuleEnable(v string) *UpdateLoadBalancerRequestRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRules) SetRuleName(v string) *UpdateLoadBalancerRequestRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRules) SetSequence(v int32) *UpdateLoadBalancerRequestRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRules) SetTerminates(v bool) *UpdateLoadBalancerRequestRules {
+	s.Terminates = &v
+	return s
+}
+
+type UpdateLoadBalancerRequestRulesFixedResponse struct {
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// http://www.example.com/index.html
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// Hello World!
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateLoadBalancerRequestRulesFixedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerRequestRulesFixedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerRequestRulesFixedResponse) SetContentType(v string) *UpdateLoadBalancerRequestRulesFixedResponse {
+	s.ContentType = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRulesFixedResponse) SetLocation(v string) *UpdateLoadBalancerRequestRulesFixedResponse {
+	s.Location = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRulesFixedResponse) SetMessageBody(v string) *UpdateLoadBalancerRequestRulesFixedResponse {
+	s.MessageBody = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestRulesFixedResponse) SetStatusCode(v int32) *UpdateLoadBalancerRequestRulesFixedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateLoadBalancerRequestSessionAffinityAttributes struct {
+	// example:
+	//
+	// Lax
+	SameSite *string `json:"SameSite,omitempty" xml:"SameSite,omitempty"`
+	// example:
+	//
+	// Always
+	Secure *string `json:"Secure,omitempty" xml:"Secure,omitempty"`
+	// example:
+	//
+	// sticky
+	ZeroDowntimeFailover *string `json:"ZeroDowntimeFailover,omitempty" xml:"ZeroDowntimeFailover,omitempty"`
+}
+
+func (s UpdateLoadBalancerRequestSessionAffinityAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerRequestSessionAffinityAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerRequestSessionAffinityAttributes) SetSameSite(v string) *UpdateLoadBalancerRequestSessionAffinityAttributes {
+	s.SameSite = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestSessionAffinityAttributes) SetSecure(v string) *UpdateLoadBalancerRequestSessionAffinityAttributes {
+	s.Secure = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerRequestSessionAffinityAttributes) SetZeroDowntimeFailover(v string) *UpdateLoadBalancerRequestSessionAffinityAttributes {
+	s.ZeroDowntimeFailover = &v
+	return s
+}
+
+type UpdateLoadBalancerShrinkRequest struct {
+	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
+	DefaultPoolsShrink    *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 96228666776****
+	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95913670174****
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MonitorShrink        *string `json:"Monitor,omitempty" xml:"Monitor,omitempty"`
+	RandomSteeringShrink *string `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// if can be null:
+	// false
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// Session persistence. Valid values:
+	//
+	// 	- off:disables session persistence.
+	//
+	// 	- ip: enables session persistence by IP address.
+	//
+	// 	- cookie: disables session persistence.
+	//
+	// example:
+	//
+	// ip
+	SessionAffinity                 *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	SessionAffinityAttributesShrink *string `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UpdateLoadBalancer
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// order
+	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// example:
+	//
+	// 300
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s UpdateLoadBalancerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetAdaptiveRoutingShrink(v string) *UpdateLoadBalancerShrinkRequest {
+	s.AdaptiveRoutingShrink = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetDefaultPoolsShrink(v string) *UpdateLoadBalancerShrinkRequest {
+	s.DefaultPoolsShrink = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetDescription(v string) *UpdateLoadBalancerShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetFallbackPool(v int64) *UpdateLoadBalancerShrinkRequest {
+	s.FallbackPool = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetId(v int64) *UpdateLoadBalancerShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetMonitorShrink(v string) *UpdateLoadBalancerShrinkRequest {
+	s.MonitorShrink = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetRandomSteeringShrink(v string) *UpdateLoadBalancerShrinkRequest {
+	s.RandomSteeringShrink = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetRegionPools(v interface{}) *UpdateLoadBalancerShrinkRequest {
+	s.RegionPools = v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetRulesShrink(v string) *UpdateLoadBalancerShrinkRequest {
+	s.RulesShrink = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetSessionAffinity(v string) *UpdateLoadBalancerShrinkRequest {
+	s.SessionAffinity = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetSessionAffinityAttributesShrink(v string) *UpdateLoadBalancerShrinkRequest {
+	s.SessionAffinityAttributesShrink = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetSiteId(v int64) *UpdateLoadBalancerShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetSteeringPolicy(v string) *UpdateLoadBalancerShrinkRequest {
+	s.SteeringPolicy = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetSubRegionPools(v interface{}) *UpdateLoadBalancerShrinkRequest {
+	s.SubRegionPools = v
+	return s
+}
+
+func (s *UpdateLoadBalancerShrinkRequest) SetTtl(v int32) *UpdateLoadBalancerShrinkRequest {
+	s.Ttl = &v
+	return s
+}
+
+type UpdateLoadBalancerResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLoadBalancerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerResponseBody) SetRequestId(v string) *UpdateLoadBalancerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLoadBalancerResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLoadBalancerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLoadBalancerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerResponse) SetHeaders(v map[string]*string) *UpdateLoadBalancerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLoadBalancerResponse) SetStatusCode(v int32) *UpdateLoadBalancerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerResponse) SetBody(v *UpdateLoadBalancerResponseBody) *UpdateLoadBalancerResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateManagedTransformRequest struct {
+	// example:
+	//
+	// on
+	AddClientGeolocationHeader *string `json:"AddClientGeolocationHeader,omitempty" xml:"AddClientGeolocationHeader,omitempty"`
+	// example:
+	//
+	// on
+	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s UpdateManagedTransformRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateManagedTransformRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedTransformRequest) SetAddClientGeolocationHeader(v string) *UpdateManagedTransformRequest {
+	s.AddClientGeolocationHeader = &v
+	return s
+}
+
+func (s *UpdateManagedTransformRequest) SetAddRealClientIpHeader(v string) *UpdateManagedTransformRequest {
+	s.AddRealClientIpHeader = &v
+	return s
+}
+
+func (s *UpdateManagedTransformRequest) SetSiteId(v int64) *UpdateManagedTransformRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateManagedTransformRequest) SetSiteVersion(v int32) *UpdateManagedTransformRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type UpdateManagedTransformResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateManagedTransformResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateManagedTransformResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedTransformResponseBody) SetRequestId(v string) *UpdateManagedTransformResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateManagedTransformResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateManagedTransformResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateManagedTransformResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateManagedTransformResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedTransformResponse) SetHeaders(v map[string]*string) *UpdateManagedTransformResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateManagedTransformResponse) SetStatusCode(v int32) *UpdateManagedTransformResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateManagedTransformResponse) SetBody(v *UpdateManagedTransformResponseBody) *UpdateManagedTransformResponse {
 	s.Body = v
 	return s
 }
@@ -39096,6 +52265,178 @@ func (s *UpdateOriginProtectionIpWhiteListResponse) SetStatusCode(v int32) *Upda
 }
 
 func (s *UpdateOriginProtectionIpWhiteListResponse) SetBody(v *UpdateOriginProtectionIpWhiteListResponseBody) *UpdateOriginProtectionIpWhiteListResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateOriginRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// test.example.com
+	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// example:
+	//
+	// 8080
+	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// example:
+	//
+	// 4433
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// example:
+	//
+	// http
+	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// example:
+	//
+	// origin.example.com
+	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// example:
+	//
+	// on
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateOriginRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginRuleRequest) SetConfigId(v int64) *UpdateOriginRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetDnsRecord(v string) *UpdateOriginRuleRequest {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetOriginHost(v string) *UpdateOriginRuleRequest {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetOriginHttpPort(v string) *UpdateOriginRuleRequest {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetOriginHttpsPort(v string) *UpdateOriginRuleRequest {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetOriginScheme(v string) *UpdateOriginRuleRequest {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetOriginSni(v string) *UpdateOriginRuleRequest {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetRange(v string) *UpdateOriginRuleRequest {
+	s.Range = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetRule(v string) *UpdateOriginRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetRuleEnable(v string) *UpdateOriginRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetRuleName(v string) *UpdateOriginRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetSiteId(v int64) *UpdateOriginRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateOriginRuleResponseBody struct {
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateOriginRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginRuleResponseBody) SetRequestId(v string) *UpdateOriginRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateOriginRuleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateOriginRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateOriginRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginRuleResponse) SetHeaders(v map[string]*string) *UpdateOriginRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOriginRuleResponse) SetStatusCode(v int32) *UpdateOriginRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateOriginRuleResponse) SetBody(v *UpdateOriginRuleResponseBody) *UpdateOriginRuleResponse {
 	s.Body = v
 	return s
 }
@@ -39821,6 +53162,299 @@ func (s *UpdateRecordResponse) SetBody(v *UpdateRecordResponseBody) *UpdateRecor
 	return s
 }
 
+type UpdateRedirectRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateRedirectRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRedirectRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRedirectRuleRequest) SetConfigId(v int64) *UpdateRedirectRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetReserveQueryString(v string) *UpdateRedirectRuleRequest {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetRule(v string) *UpdateRedirectRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetRuleEnable(v string) *UpdateRedirectRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetRuleName(v string) *UpdateRedirectRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetSiteId(v int64) *UpdateRedirectRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetStatusCode(v string) *UpdateRedirectRuleRequest {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetTargetUrl(v string) *UpdateRedirectRuleRequest {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetType(v string) *UpdateRedirectRuleRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdateRedirectRuleResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRedirectRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRedirectRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRedirectRuleResponseBody) SetRequestId(v string) *UpdateRedirectRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRedirectRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRedirectRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateRedirectRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRedirectRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRedirectRuleResponse) SetHeaders(v map[string]*string) *UpdateRedirectRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRedirectRuleResponse) SetStatusCode(v int32) *UpdateRedirectRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleResponse) SetBody(v *UpdateRedirectRuleResponseBody) *UpdateRedirectRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRewriteUrlRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// example=123
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// example:
+	//
+	// static
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// static
+	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// example=123
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// /image/example.jpg
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s UpdateRewriteUrlRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRewriteUrlRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetConfigId(v int64) *UpdateRewriteUrlRuleRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetQueryString(v string) *UpdateRewriteUrlRuleRequest {
+	s.QueryString = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetRewriteQueryStringType(v string) *UpdateRewriteUrlRuleRequest {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetRewriteUriType(v string) *UpdateRewriteUrlRuleRequest {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetRule(v string) *UpdateRewriteUrlRuleRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetRuleEnable(v string) *UpdateRewriteUrlRuleRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetRuleName(v string) *UpdateRewriteUrlRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetSiteId(v int64) *UpdateRewriteUrlRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetUri(v string) *UpdateRewriteUrlRuleRequest {
+	s.Uri = &v
+	return s
+}
+
+type UpdateRewriteUrlRuleResponseBody struct {
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRewriteUrlRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRewriteUrlRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRewriteUrlRuleResponseBody) SetRequestId(v string) *UpdateRewriteUrlRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRewriteUrlRuleResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRewriteUrlRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateRewriteUrlRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRewriteUrlRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRewriteUrlRuleResponse) SetHeaders(v map[string]*string) *UpdateRewriteUrlRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleResponse) SetStatusCode(v int32) *UpdateRewriteUrlRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleResponse) SetBody(v *UpdateRewriteUrlRuleResponseBody) *UpdateRewriteUrlRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateScheduledPreloadExecutionRequest struct {
 	// The end time of the prefetch plan.
 	//
@@ -40034,6 +53668,88 @@ func (s *UpdateScheduledPreloadExecutionResponse) SetStatusCode(v int32) *Update
 }
 
 func (s *UpdateScheduledPreloadExecutionResponse) SetBody(v *UpdateScheduledPreloadExecutionResponseBody) *UpdateScheduledPreloadExecutionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSeoBypassRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateSeoBypassRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSeoBypassRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSeoBypassRequest) SetEnable(v string) *UpdateSeoBypassRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateSeoBypassRequest) SetSiteId(v int64) *UpdateSeoBypassRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateSeoBypassResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSeoBypassResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSeoBypassResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSeoBypassResponseBody) SetRequestId(v string) *UpdateSeoBypassResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSeoBypassResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSeoBypassResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSeoBypassResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSeoBypassResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSeoBypassResponse) SetHeaders(v map[string]*string) *UpdateSeoBypassResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSeoBypassResponse) SetStatusCode(v int32) *UpdateSeoBypassResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSeoBypassResponse) SetBody(v *UpdateSeoBypassResponseBody) *UpdateSeoBypassResponse {
 	s.Body = v
 	return s
 }
@@ -40615,6 +54331,88 @@ func (s *UpdateSiteDeliveryTaskStatusResponse) SetBody(v *UpdateSiteDeliveryTask
 	return s
 }
 
+type UpdateSiteNameExclusiveRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateSiteNameExclusiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteNameExclusiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteNameExclusiveRequest) SetEnable(v string) *UpdateSiteNameExclusiveRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateSiteNameExclusiveRequest) SetSiteId(v int64) *UpdateSiteNameExclusiveRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateSiteNameExclusiveResponseBody struct {
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSiteNameExclusiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteNameExclusiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteNameExclusiveResponseBody) SetRequestId(v string) *UpdateSiteNameExclusiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSiteNameExclusiveResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSiteNameExclusiveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSiteNameExclusiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteNameExclusiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteNameExclusiveResponse) SetHeaders(v map[string]*string) *UpdateSiteNameExclusiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSiteNameExclusiveResponse) SetStatusCode(v int32) *UpdateSiteNameExclusiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSiteNameExclusiveResponse) SetBody(v *UpdateSiteNameExclusiveResponseBody) *UpdateSiteNameExclusiveResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSiteVanityNSRequest struct {
 	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
 	//
@@ -40697,6 +54495,88 @@ func (s *UpdateSiteVanityNSResponse) SetStatusCode(v int32) *UpdateSiteVanityNSR
 }
 
 func (s *UpdateSiteVanityNSResponse) SetBody(v *UpdateSiteVanityNSResponseBody) *UpdateSiteVanityNSResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTieredCacheRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// edge_smart
+	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateTieredCacheRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTieredCacheRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTieredCacheRequest) SetCacheArchitectureMode(v string) *UpdateTieredCacheRequest {
+	s.CacheArchitectureMode = &v
+	return s
+}
+
+func (s *UpdateTieredCacheRequest) SetSiteId(v int64) *UpdateTieredCacheRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateTieredCacheResponseBody struct {
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTieredCacheResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTieredCacheResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTieredCacheResponseBody) SetRequestId(v string) *UpdateTieredCacheResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTieredCacheResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTieredCacheResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTieredCacheResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTieredCacheResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTieredCacheResponse) SetHeaders(v map[string]*string) *UpdateTieredCacheResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTieredCacheResponse) SetStatusCode(v int32) *UpdateTieredCacheResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTieredCacheResponse) SetBody(v *UpdateTieredCacheResponseBody) *UpdateTieredCacheResponse {
 	s.Body = v
 	return s
 }
@@ -42516,13 +56396,24 @@ func (client *Client) ActivateClientCertificateWithOptions(request *ActivateClie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ActivateClientCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActivateClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActivateClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42536,6 +56427,77 @@ func (client *Client) ActivateClientCertificate(request *ActivateClientCertifica
 	runtime := &util.RuntimeOptions{}
 	_result = &ActivateClientCertificateResponse{}
 	_body, _err := client.ActivateClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启版本管理
+//
+// @param request - ActivateVersionManagementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateVersionManagementResponse
+func (client *Client) ActivateVersionManagementWithOptions(request *ActivateVersionManagementRequest, runtime *util.RuntimeOptions) (_result *ActivateVersionManagementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ActivateVersionManagement"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActivateVersionManagementResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActivateVersionManagementResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 开启版本管理
+//
+// @param request - ActivateVersionManagementRequest
+//
+// @return ActivateVersionManagementResponse
+func (client *Client) ActivateVersionManagement(request *ActivateVersionManagementRequest) (_result *ActivateVersionManagementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ActivateVersionManagementResponse{}
+	_body, _err := client.ActivateVersionManagementWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42572,13 +56534,24 @@ func (client *Client) ApplyCertificateWithOptions(request *ApplyCertificateReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42648,13 +56621,24 @@ func (client *Client) BatchCreateRecordsWithOptions(tmpReq *BatchCreateRecordsRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchCreateRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchCreateRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchCreateRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42726,13 +56710,24 @@ func (client *Client) BatchDeleteKvWithOptions(tmpReq *BatchDeleteKvRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchDeleteKvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchDeleteKvResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchDeleteKvResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42862,13 +56857,24 @@ func (client *Client) BatchDeleteKvWithHighCapacityWithOptions(request *BatchDel
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchDeleteKvWithHighCapacityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchDeleteKvWithHighCapacityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchDeleteKvWithHighCapacityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43121,13 +57127,24 @@ func (client *Client) BatchGetExpressionFieldsWithOptions(tmpReq *BatchGetExpres
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchGetExpressionFieldsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchGetExpressionFieldsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchGetExpressionFieldsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43193,13 +57210,24 @@ func (client *Client) BatchPutKvWithOptions(tmpReq *BatchPutKvRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchPutKvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchPutKvResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchPutKvResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43345,13 +57373,24 @@ func (client *Client) BatchPutKvWithHighCapacityWithOptions(request *BatchPutKvW
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchPutKvWithHighCapacityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchPutKvWithHighCapacityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchPutKvWithHighCapacityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43626,13 +57665,24 @@ func (client *Client) BlockObjectWithOptions(tmpReq *BlockObjectRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BlockObjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BlockObjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BlockObjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43686,13 +57736,24 @@ func (client *Client) CheckSiteNameWithOptions(request *CheckSiteNameRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckSiteNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckSiteNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckSiteNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43742,13 +57803,24 @@ func (client *Client) CheckSiteProjectNameWithOptions(request *CheckSiteProjectN
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckSiteProjectNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckSiteProjectNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckSiteProjectNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43798,13 +57870,24 @@ func (client *Client) CheckUserProjectNameWithOptions(request *CheckUserProjectN
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckUserProjectNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckUserProjectNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckUserProjectNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43862,13 +57945,24 @@ func (client *Client) CommitRoutineStagingCodeWithOptions(request *CommitRoutine
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CommitRoutineStagingCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CommitRoutineStagingCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CommitRoutineStagingCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43882,6 +57976,173 @@ func (client *Client) CommitRoutineStagingCode(request *CommitRoutineStagingCode
 	runtime := &util.RuntimeOptions{}
 	_result = &CommitRoutineStagingCodeResponse{}
 	_body, _err := client.CommitRoutineStagingCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增站点缓存配置
+//
+// @param request - CreateCacheRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCacheRuleResponse
+func (client *Client) CreateCacheRuleWithOptions(request *CreateCacheRuleRequest, runtime *util.RuntimeOptions) (_result *CreateCacheRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalCacheablePorts)) {
+		query["AdditionalCacheablePorts"] = request.AdditionalCacheablePorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BrowserCacheMode)) {
+		query["BrowserCacheMode"] = request.BrowserCacheMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BrowserCacheTtl)) {
+		query["BrowserCacheTtl"] = request.BrowserCacheTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BypassCache)) {
+		query["BypassCache"] = request.BypassCache
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheDeceptionArmor)) {
+		query["CacheDeceptionArmor"] = request.CacheDeceptionArmor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheReserveEligibility)) {
+		query["CacheReserveEligibility"] = request.CacheReserveEligibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckPresenceCookie)) {
+		query["CheckPresenceCookie"] = request.CheckPresenceCookie
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckPresenceHeader)) {
+		query["CheckPresenceHeader"] = request.CheckPresenceHeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgeCacheMode)) {
+		query["EdgeCacheMode"] = request.EdgeCacheMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgeCacheTtl)) {
+		query["EdgeCacheTtl"] = request.EdgeCacheTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgeStatusCodeCacheTtl)) {
+		query["EdgeStatusCodeCacheTtl"] = request.EdgeStatusCodeCacheTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeCookie)) {
+		query["IncludeCookie"] = request.IncludeCookie
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeHeader)) {
+		query["IncludeHeader"] = request.IncludeHeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryString)) {
+		query["QueryString"] = request.QueryString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryStringMode)) {
+		query["QueryStringMode"] = request.QueryStringMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServeStale)) {
+		query["ServeStale"] = request.ServeStale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortQueryStringForCache)) {
+		query["SortQueryStringForCache"] = request.SortQueryStringForCache
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDeviceType)) {
+		query["UserDeviceType"] = request.UserDeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGeo)) {
+		query["UserGeo"] = request.UserGeo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserLanguage)) {
+		query["UserLanguage"] = request.UserLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCacheRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCacheRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCacheRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增站点缓存配置
+//
+// @param request - CreateCacheRuleRequest
+//
+// @return CreateCacheRuleResponse
+func (client *Client) CreateCacheRule(request *CreateCacheRuleRequest) (_result *CreateCacheRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCacheRuleResponse{}
+	_body, _err := client.CreateCacheRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43936,13 +58197,24 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateClientCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43956,6 +58228,101 @@ func (client *Client) CreateClientCertificate(request *CreateClientCertificateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClientCertificateResponse{}
 	_body, _err := client.CreateClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增压缩规则
+//
+// @param request - CreateCompressionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCompressionRuleResponse
+func (client *Client) CreateCompressionRuleWithOptions(request *CreateCompressionRuleRequest, runtime *util.RuntimeOptions) (_result *CreateCompressionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Brotli)) {
+		query["Brotli"] = request.Brotli
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gzip)) {
+		query["Gzip"] = request.Gzip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCompressionRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCompressionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCompressionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增压缩规则
+//
+// @param request - CreateCompressionRuleRequest
+//
+// @return CreateCompressionRuleResponse
+func (client *Client) CreateCompressionRule(request *CreateCompressionRuleRequest) (_result *CreateCompressionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCompressionRuleResponse{}
+	_body, _err := client.CreateCompressionRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44012,13 +58379,24 @@ func (client *Client) CreateCustomScenePolicyWithOptions(request *CreateCustomSc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCustomScenePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCustomScenePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCustomScenePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44124,13 +58502,24 @@ func (client *Client) CreateEdgeContainerAppWithOptions(request *CreateEdgeConta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEdgeContainerAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEdgeContainerAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEdgeContainerAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44192,13 +58581,24 @@ func (client *Client) CreateEdgeContainerAppRecordWithOptions(request *CreateEdg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEdgeContainerAppRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEdgeContainerAppRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEdgeContainerAppRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44270,13 +58670,24 @@ func (client *Client) CreateEdgeContainerAppVersionWithOptions(tmpReq *CreateEdg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEdgeContainerAppVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEdgeContainerAppVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEdgeContainerAppVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44290,6 +58701,450 @@ func (client *Client) CreateEdgeContainerAppVersion(request *CreateEdgeContainer
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEdgeContainerAppVersionResponse{}
 	_body, _err := client.CreateEdgeContainerAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增HTTP请求头规则
+//
+// @param tmpReq - CreateHttpRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpRequestHeaderModificationRuleResponse
+func (client *Client) CreateHttpRequestHeaderModificationRuleWithOptions(tmpReq *CreateHttpRequestHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateHttpRequestHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHttpRequestHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RequestHeaderModification)) {
+		request.RequestHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestHeaderModification, tea.String("RequestHeaderModification"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RequestHeaderModificationShrink)) {
+		query["RequestHeaderModification"] = request.RequestHeaderModificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHttpRequestHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增HTTP请求头规则
+//
+// @param request - CreateHttpRequestHeaderModificationRuleRequest
+//
+// @return CreateHttpRequestHeaderModificationRuleResponse
+func (client *Client) CreateHttpRequestHeaderModificationRule(request *CreateHttpRequestHeaderModificationRuleRequest) (_result *CreateHttpRequestHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHttpRequestHeaderModificationRuleResponse{}
+	_body, _err := client.CreateHttpRequestHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增HTTP响应头规则
+//
+// @param tmpReq - CreateHttpResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpResponseHeaderModificationRuleResponse
+func (client *Client) CreateHttpResponseHeaderModificationRuleWithOptions(tmpReq *CreateHttpResponseHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateHttpResponseHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHttpResponseHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResponseHeaderModification)) {
+		request.ResponseHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResponseHeaderModification, tea.String("ResponseHeaderModification"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResponseHeaderModificationShrink)) {
+		query["ResponseHeaderModification"] = request.ResponseHeaderModificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHttpResponseHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增HTTP响应头规则
+//
+// @param request - CreateHttpResponseHeaderModificationRuleRequest
+//
+// @return CreateHttpResponseHeaderModificationRuleResponse
+func (client *Client) CreateHttpResponseHeaderModificationRule(request *CreateHttpResponseHeaderModificationRuleRequest) (_result *CreateHttpResponseHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHttpResponseHeaderModificationRuleResponse{}
+	_body, _err := client.CreateHttpResponseHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增站点HTTPS应用配置
+//
+// @param request - CreateHttpsApplicationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpsApplicationConfigurationResponse
+func (client *Client) CreateHttpsApplicationConfigurationWithOptions(request *CreateHttpsApplicationConfigurationRequest, runtime *util.RuntimeOptions) (_result *CreateHttpsApplicationConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AltSvc)) {
+		query["AltSvc"] = request.AltSvc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AltSvcClear)) {
+		query["AltSvcClear"] = request.AltSvcClear
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AltSvcMa)) {
+		query["AltSvcMa"] = request.AltSvcMa
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AltSvcPersist)) {
+		query["AltSvcPersist"] = request.AltSvcPersist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hsts)) {
+		query["Hsts"] = request.Hsts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HstsIncludeSubdomains)) {
+		query["HstsIncludeSubdomains"] = request.HstsIncludeSubdomains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HstsMaxAge)) {
+		query["HstsMaxAge"] = request.HstsMaxAge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HstsPreload)) {
+		query["HstsPreload"] = request.HstsPreload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsForce)) {
+		query["HttpsForce"] = request.HttpsForce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsForceCode)) {
+		query["HttpsForceCode"] = request.HttpsForceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHttpsApplicationConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHttpsApplicationConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHttpsApplicationConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增站点HTTPS应用配置
+//
+// @param request - CreateHttpsApplicationConfigurationRequest
+//
+// @return CreateHttpsApplicationConfigurationResponse
+func (client *Client) CreateHttpsApplicationConfiguration(request *CreateHttpsApplicationConfigurationRequest) (_result *CreateHttpsApplicationConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHttpsApplicationConfigurationResponse{}
+	_body, _err := client.CreateHttpsApplicationConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增站点HTTPS基础配置
+//
+// @param request - CreateHttpsBasicConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpsBasicConfigurationResponse
+func (client *Client) CreateHttpsBasicConfigurationWithOptions(request *CreateHttpsBasicConfigurationRequest, runtime *util.RuntimeOptions) (_result *CreateHttpsBasicConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ciphersuite)) {
+		query["Ciphersuite"] = request.Ciphersuite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CiphersuiteGroup)) {
+		query["CiphersuiteGroup"] = request.CiphersuiteGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2)) {
+		query["Http2"] = request.Http2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http3)) {
+		query["Http3"] = request.Http3
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Https)) {
+		query["Https"] = request.Https
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OcspStapling)) {
+		query["OcspStapling"] = request.OcspStapling
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls10)) {
+		query["Tls10"] = request.Tls10
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls11)) {
+		query["Tls11"] = request.Tls11
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls12)) {
+		query["Tls12"] = request.Tls12
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls13)) {
+		query["Tls13"] = request.Tls13
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHttpsBasicConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHttpsBasicConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHttpsBasicConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增站点HTTPS基础配置
+//
+// @param request - CreateHttpsBasicConfigurationRequest
+//
+// @return CreateHttpsBasicConfigurationResponse
+func (client *Client) CreateHttpsBasicConfiguration(request *CreateHttpsBasicConfigurationRequest) (_result *CreateHttpsBasicConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHttpsBasicConfigurationResponse{}
+	_body, _err := client.CreateHttpsBasicConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44334,13 +59189,24 @@ func (client *Client) CreateKvNamespaceWithOptions(request *CreateKvNamespaceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateKvNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateKvNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateKvNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44412,13 +59278,24 @@ func (client *Client) CreateListWithOptions(tmpReq *CreateListRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44432,6 +59309,159 @@ func (client *Client) CreateList(request *CreateListRequest) (_result *CreateLis
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateListResponse{}
 	_body, _err := client.CreateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增负载均衡器
+//
+// @param tmpReq - CreateLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLoadBalancerResponse
+func (client *Client) CreateLoadBalancerWithOptions(tmpReq *CreateLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLoadBalancerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AdaptiveRouting)) {
+		request.AdaptiveRoutingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdaptiveRouting, tea.String("AdaptiveRouting"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultPools)) {
+		request.DefaultPoolsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultPools, tea.String("DefaultPools"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Monitor)) {
+		request.MonitorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Monitor, tea.String("Monitor"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RandomSteering)) {
+		request.RandomSteeringShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RandomSteering, tea.String("RandomSteering"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SessionAffinityAttributes)) {
+		request.SessionAffinityAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionAffinityAttributes, tea.String("SessionAffinityAttributes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdaptiveRoutingShrink)) {
+		query["AdaptiveRouting"] = request.AdaptiveRoutingShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultPoolsShrink)) {
+		query["DefaultPools"] = request.DefaultPoolsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackPool)) {
+		query["FallbackPool"] = request.FallbackPool
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorShrink)) {
+		query["Monitor"] = request.MonitorShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RandomSteeringShrink)) {
+		query["RandomSteering"] = request.RandomSteeringShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionPools)) {
+		query["RegionPools"] = request.RegionPools
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		query["Rules"] = request.RulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionAffinity)) {
+		query["SessionAffinity"] = request.SessionAffinity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionAffinityAttributesShrink)) {
+		query["SessionAffinityAttributes"] = request.SessionAffinityAttributesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SteeringPolicy)) {
+		query["SteeringPolicy"] = request.SteeringPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubRegionPools)) {
+		query["SubRegionPools"] = request.SubRegionPools
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		query["Ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLoadBalancer"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增负载均衡器
+//
+// @param request - CreateLoadBalancerRequest
+//
+// @return CreateLoadBalancerResponse
+func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_result *CreateLoadBalancerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLoadBalancerResponse{}
+	_body, _err := client.CreateLoadBalancerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44490,13 +59520,24 @@ func (client *Client) CreateOriginPoolWithOptions(tmpReq *CreateOriginPoolReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOriginPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOriginPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOriginPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44550,13 +59591,24 @@ func (client *Client) CreateOriginProtectionWithOptions(request *CreateOriginPro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOriginProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOriginProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOriginProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44570,6 +59622,121 @@ func (client *Client) CreateOriginProtection(request *CreateOriginProtectionRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOriginProtectionResponse{}
 	_body, _err := client.CreateOriginProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增站点回源规则配置
+//
+// @param request - CreateOriginRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOriginRuleResponse
+func (client *Client) CreateOriginRuleWithOptions(request *CreateOriginRuleRequest, runtime *util.RuntimeOptions) (_result *CreateOriginRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DnsRecord)) {
+		query["DnsRecord"] = request.DnsRecord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginHost)) {
+		query["OriginHost"] = request.OriginHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginHttpPort)) {
+		query["OriginHttpPort"] = request.OriginHttpPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginHttpsPort)) {
+		query["OriginHttpsPort"] = request.OriginHttpsPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginScheme)) {
+		query["OriginScheme"] = request.OriginScheme
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginSni)) {
+		query["OriginSni"] = request.OriginSni
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Range)) {
+		query["Range"] = request.Range
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOriginRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOriginRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOriginRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增站点回源规则配置
+//
+// @param request - CreateOriginRuleRequest
+//
+// @return CreateOriginRuleResponse
+func (client *Client) CreateOriginRule(request *CreateOriginRuleRequest) (_result *CreateOriginRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOriginRuleResponse{}
+	_body, _err := client.CreateOriginRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44622,13 +59789,24 @@ func (client *Client) CreatePageWithOptions(request *CreatePageRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44732,13 +59910,24 @@ func (client *Client) CreateRecordWithOptions(tmpReq *CreateRecordRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44752,6 +59941,212 @@ func (client *Client) CreateRecord(request *CreateRecordRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRecordResponse{}
 	_body, _err := client.CreateRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增重定向规则
+//
+// @param request - CreateRedirectRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRedirectRuleResponse
+func (client *Client) CreateRedirectRuleWithOptions(request *CreateRedirectRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRedirectRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReserveQueryString)) {
+		query["ReserveQueryString"] = request.ReserveQueryString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusCode)) {
+		query["StatusCode"] = request.StatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUrl)) {
+		query["TargetUrl"] = request.TargetUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRedirectRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRedirectRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRedirectRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增重定向规则
+//
+// @param request - CreateRedirectRuleRequest
+//
+// @return CreateRedirectRuleResponse
+func (client *Client) CreateRedirectRule(request *CreateRedirectRuleRequest) (_result *CreateRedirectRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRedirectRuleResponse{}
+	_body, _err := client.CreateRedirectRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增重写Url规则
+//
+// @param request - CreateRewriteUrlRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRewriteUrlRuleResponse
+func (client *Client) CreateRewriteUrlRuleWithOptions(request *CreateRewriteUrlRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRewriteUrlRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueryString)) {
+		query["QueryString"] = request.QueryString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RewriteQueryStringType)) {
+		query["RewriteQueryStringType"] = request.RewriteQueryStringType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RewriteUriType)) {
+		query["RewriteUriType"] = request.RewriteUriType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		query["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRewriteUrlRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRewriteUrlRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRewriteUrlRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增重写Url规则
+//
+// @param request - CreateRewriteUrlRuleRequest
+//
+// @return CreateRewriteUrlRuleResponse
+func (client *Client) CreateRewriteUrlRule(request *CreateRewriteUrlRuleRequest) (_result *CreateRewriteUrlRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRewriteUrlRuleResponse{}
+	_body, _err := client.CreateRewriteUrlRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44800,13 +60195,24 @@ func (client *Client) CreateRoutineWithOptions(request *CreateRoutineRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRoutineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRoutineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRoutineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44868,13 +60274,24 @@ func (client *Client) CreateRoutineRelatedRecordWithOptions(request *CreateRouti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRoutineRelatedRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRoutineRelatedRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRoutineRelatedRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44940,13 +60357,24 @@ func (client *Client) CreateRoutineRelatedRouteWithOptions(request *CreateRoutin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRoutineRelatedRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRoutineRelatedRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRoutineRelatedRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45012,13 +60440,24 @@ func (client *Client) CreateScheduledPreloadExecutionsWithOptions(tmpReq *Create
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateScheduledPreloadExecutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateScheduledPreloadExecutionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateScheduledPreloadExecutionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45088,13 +60527,24 @@ func (client *Client) CreateScheduledPreloadJobWithOptions(request *CreateSchedu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateScheduledPreloadJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateScheduledPreloadJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateScheduledPreloadJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45170,13 +60620,24 @@ func (client *Client) CreateSiteWithOptions(request *CreateSiteRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSiteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSiteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSiteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45270,13 +60731,24 @@ func (client *Client) CreateSiteCustomLogWithOptions(tmpReq *CreateSiteCustomLog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSiteCustomLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSiteCustomLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSiteCustomLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45404,13 +60876,24 @@ func (client *Client) CreateSiteDeliveryTaskWithOptions(tmpReq *CreateSiteDelive
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSiteDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSiteDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSiteDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45550,13 +61033,24 @@ func (client *Client) CreateUserDeliveryTaskWithOptions(tmpReq *CreateUserDelive
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateUserDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateUserDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateUserDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45700,13 +61194,24 @@ func (client *Client) CreateWaitingRoomWithOptions(tmpReq *CreateWaitingRoomRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateWaitingRoomResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWaitingRoomResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWaitingRoomResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45836,13 +61341,24 @@ func (client *Client) CreateWaitingRoomEventWithOptions(request *CreateWaitingRo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateWaitingRoomEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWaitingRoomEventResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWaitingRoomEventResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45912,13 +61428,24 @@ func (client *Client) CreateWaitingRoomRuleWithOptions(request *CreateWaitingRoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateWaitingRoomRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWaitingRoomRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWaitingRoomRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45932,6 +61459,152 @@ func (client *Client) CreateWaitingRoomRule(request *CreateWaitingRoomRuleReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWaitingRoomRuleResponse{}
 	_body, _err := client.CreateWaitingRoomRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭版本管理
+//
+// @param request - DeactivateVersionManagementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeactivateVersionManagementResponse
+func (client *Client) DeactivateVersionManagementWithOptions(request *DeactivateVersionManagementRequest, runtime *util.RuntimeOptions) (_result *DeactivateVersionManagementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeactivateVersionManagement"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeactivateVersionManagementResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeactivateVersionManagementResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 关闭版本管理
+//
+// @param request - DeactivateVersionManagementRequest
+//
+// @return DeactivateVersionManagementResponse
+func (client *Client) DeactivateVersionManagement(request *DeactivateVersionManagementRequest) (_result *DeactivateVersionManagementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeactivateVersionManagementResponse{}
+	_body, _err := client.DeactivateVersionManagementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除缓存配置
+//
+// @param request - DeleteCacheRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCacheRuleResponse
+func (client *Client) DeleteCacheRuleWithOptions(request *DeleteCacheRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteCacheRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCacheRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCacheRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCacheRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除缓存配置
+//
+// @param request - DeleteCacheRuleRequest
+//
+// @return DeleteCacheRuleResponse
+func (client *Client) DeleteCacheRule(request *DeleteCacheRuleRequest) (_result *DeleteCacheRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCacheRuleResponse{}
+	_body, _err := client.DeleteCacheRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45968,13 +61641,24 @@ func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46024,13 +61708,24 @@ func (client *Client) DeleteClientCaCertificateWithOptions(request *DeleteClient
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteClientCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteClientCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteClientCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46080,13 +61775,24 @@ func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteClientCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46100,6 +61806,81 @@ func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClientCertificateResponse{}
 	_body, _err := client.DeleteClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the compression rule configuration for a website.
+//
+// @param request - DeleteCompressionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCompressionRuleResponse
+func (client *Client) DeleteCompressionRuleWithOptions(request *DeleteCompressionRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteCompressionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCompressionRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCompressionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCompressionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes the compression rule configuration for a website.
+//
+// @param request - DeleteCompressionRuleRequest
+//
+// @return DeleteCompressionRuleResponse
+func (client *Client) DeleteCompressionRule(request *DeleteCompressionRuleRequest) (_result *DeleteCompressionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCompressionRuleResponse{}
+	_body, _err := client.DeleteCompressionRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46140,13 +61921,24 @@ func (client *Client) DeleteCustomScenePolicyWithOptions(request *DeleteCustomSc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomScenePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomScenePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomScenePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46200,13 +61992,24 @@ func (client *Client) DeleteEdgeContainerAppWithOptions(request *DeleteEdgeConta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEdgeContainerAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEdgeContainerAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEdgeContainerAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46268,13 +62071,24 @@ func (client *Client) DeleteEdgeContainerAppRecordWithOptions(request *DeleteEdg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEdgeContainerAppRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEdgeContainerAppRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEdgeContainerAppRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46332,13 +62146,24 @@ func (client *Client) DeleteEdgeContainerAppVersionWithOptions(request *DeleteEd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEdgeContainerAppVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEdgeContainerAppVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEdgeContainerAppVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46352,6 +62177,306 @@ func (client *Client) DeleteEdgeContainerAppVersion(request *DeleteEdgeContainer
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEdgeContainerAppVersionResponse{}
 	_body, _err := client.DeleteEdgeContainerAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the configuration of modifying HTTP request headers for a website.
+//
+// @param request - DeleteHttpRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpRequestHeaderModificationRuleResponse
+func (client *Client) DeleteHttpRequestHeaderModificationRuleWithOptions(request *DeleteHttpRequestHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteHttpRequestHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHttpRequestHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes the configuration of modifying HTTP request headers for a website.
+//
+// @param request - DeleteHttpRequestHeaderModificationRuleRequest
+//
+// @return DeleteHttpRequestHeaderModificationRuleResponse
+func (client *Client) DeleteHttpRequestHeaderModificationRule(request *DeleteHttpRequestHeaderModificationRuleRequest) (_result *DeleteHttpRequestHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHttpRequestHeaderModificationRuleResponse{}
+	_body, _err := client.DeleteHttpRequestHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the configuration of modifying HTTP response headers for a website.
+//
+// @param request - DeleteHttpResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpResponseHeaderModificationRuleResponse
+func (client *Client) DeleteHttpResponseHeaderModificationRuleWithOptions(request *DeleteHttpResponseHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteHttpResponseHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHttpResponseHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes the configuration of modifying HTTP response headers for a website.
+//
+// @param request - DeleteHttpResponseHeaderModificationRuleRequest
+//
+// @return DeleteHttpResponseHeaderModificationRuleResponse
+func (client *Client) DeleteHttpResponseHeaderModificationRule(request *DeleteHttpResponseHeaderModificationRuleRequest) (_result *DeleteHttpResponseHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHttpResponseHeaderModificationRuleResponse{}
+	_body, _err := client.DeleteHttpResponseHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除HTTPS应用配置
+//
+// @param request - DeleteHttpsApplicationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpsApplicationConfigurationResponse
+func (client *Client) DeleteHttpsApplicationConfigurationWithOptions(request *DeleteHttpsApplicationConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteHttpsApplicationConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHttpsApplicationConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHttpsApplicationConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHttpsApplicationConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除HTTPS应用配置
+//
+// @param request - DeleteHttpsApplicationConfigurationRequest
+//
+// @return DeleteHttpsApplicationConfigurationResponse
+func (client *Client) DeleteHttpsApplicationConfiguration(request *DeleteHttpsApplicationConfigurationRequest) (_result *DeleteHttpsApplicationConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHttpsApplicationConfigurationResponse{}
+	_body, _err := client.DeleteHttpsApplicationConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除HTTPS基础配置
+//
+// @param request - DeleteHttpsBasicConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpsBasicConfigurationResponse
+func (client *Client) DeleteHttpsBasicConfigurationWithOptions(request *DeleteHttpsBasicConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteHttpsBasicConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHttpsBasicConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHttpsBasicConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHttpsBasicConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除HTTPS基础配置
+//
+// @param request - DeleteHttpsBasicConfigurationRequest
+//
+// @return DeleteHttpsBasicConfigurationResponse
+func (client *Client) DeleteHttpsBasicConfiguration(request *DeleteHttpsBasicConfigurationRequest) (_result *DeleteHttpsBasicConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHttpsBasicConfigurationResponse{}
+	_body, _err := client.DeleteHttpsBasicConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46388,13 +62513,24 @@ func (client *Client) DeleteKvWithOptions(request *DeleteKvRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteKvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteKvResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteKvResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46448,13 +62584,24 @@ func (client *Client) DeleteKvNamespaceWithOptions(request *DeleteKvNamespaceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteKvNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteKvNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteKvNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46508,13 +62655,24 @@ func (client *Client) DeleteListWithOptions(request *DeleteListRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46528,6 +62686,81 @@ func (client *Client) DeleteList(request *DeleteListRequest) (_result *DeleteLis
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteListResponse{}
 	_body, _err := client.DeleteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除负载均衡器
+//
+// @param request - DeleteLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLoadBalancerResponse
+func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *DeleteLoadBalancerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLoadBalancer"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除负载均衡器
+//
+// @param request - DeleteLoadBalancerRequest
+//
+// @return DeleteLoadBalancerResponse
+func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_result *DeleteLoadBalancerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLoadBalancerResponse{}
+	_body, _err := client.DeleteLoadBalancerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46572,13 +62805,24 @@ func (client *Client) DeleteOriginPoolWithOptions(request *DeleteOriginPoolReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteOriginPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteOriginPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteOriginPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46632,13 +62876,24 @@ func (client *Client) DeleteOriginProtectionWithOptions(request *DeleteOriginPro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteOriginProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteOriginProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteOriginProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46652,6 +62907,81 @@ func (client *Client) DeleteOriginProtection(request *DeleteOriginProtectionRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOriginProtectionResponse{}
 	_body, _err := client.DeleteOriginProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除回源规则配置
+//
+// @param request - DeleteOriginRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOriginRuleResponse
+func (client *Client) DeleteOriginRuleWithOptions(request *DeleteOriginRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteOriginRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOriginRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteOriginRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteOriginRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除回源规则配置
+//
+// @param request - DeleteOriginRuleRequest
+//
+// @return DeleteOriginRuleResponse
+func (client *Client) DeleteOriginRule(request *DeleteOriginRuleRequest) (_result *DeleteOriginRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOriginRuleResponse{}
+	_body, _err := client.DeleteOriginRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46692,13 +63022,24 @@ func (client *Client) DeletePageWithOptions(request *DeletePageRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46752,13 +63093,24 @@ func (client *Client) DeleteRecordWithOptions(request *DeleteRecordRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46772,6 +63124,156 @@ func (client *Client) DeleteRecord(request *DeleteRecordRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRecordResponse{}
 	_body, _err := client.DeleteRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a URL redirect rule for a website.
+//
+// @param request - DeleteRedirectRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRedirectRuleResponse
+func (client *Client) DeleteRedirectRuleWithOptions(request *DeleteRedirectRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteRedirectRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRedirectRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRedirectRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRedirectRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes a URL redirect rule for a website.
+//
+// @param request - DeleteRedirectRuleRequest
+//
+// @return DeleteRedirectRuleResponse
+func (client *Client) DeleteRedirectRule(request *DeleteRedirectRuleRequest) (_result *DeleteRedirectRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRedirectRuleResponse{}
+	_body, _err := client.DeleteRedirectRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a URL rewrite rule for a website.
+//
+// @param request - DeleteRewriteUrlRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRewriteUrlRuleResponse
+func (client *Client) DeleteRewriteUrlRuleWithOptions(request *DeleteRewriteUrlRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteRewriteUrlRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRewriteUrlRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRewriteUrlRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRewriteUrlRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes a URL rewrite rule for a website.
+//
+// @param request - DeleteRewriteUrlRuleRequest
+//
+// @return DeleteRewriteUrlRuleResponse
+func (client *Client) DeleteRewriteUrlRule(request *DeleteRewriteUrlRuleRequest) (_result *DeleteRewriteUrlRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRewriteUrlRuleResponse{}
+	_body, _err := client.DeleteRewriteUrlRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46812,13 +63314,24 @@ func (client *Client) DeleteRoutineWithOptions(request *DeleteRoutineRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRoutineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRoutineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRoutineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46876,13 +63389,24 @@ func (client *Client) DeleteRoutineCodeVersionWithOptions(request *DeleteRoutine
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRoutineCodeVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRoutineCodeVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRoutineCodeVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46950,13 +63474,24 @@ func (client *Client) DeleteRoutineRelatedRecordWithOptions(request *DeleteRouti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRoutineRelatedRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRoutineRelatedRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRoutineRelatedRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47022,13 +63557,24 @@ func (client *Client) DeleteRoutineRelatedRouteWithOptions(request *DeleteRoutin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRoutineRelatedRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRoutineRelatedRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRoutineRelatedRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47082,13 +63628,24 @@ func (client *Client) DeleteScheduledPreloadExecutionWithOptions(request *Delete
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteScheduledPreloadExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteScheduledPreloadExecutionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteScheduledPreloadExecutionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47142,13 +63699,24 @@ func (client *Client) DeleteScheduledPreloadJobWithOptions(request *DeleteSchedu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteScheduledPreloadJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteScheduledPreloadJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteScheduledPreloadJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47210,13 +63778,24 @@ func (client *Client) DeleteSiteWithOptions(request *DeleteSiteRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSiteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSiteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSiteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47274,13 +63853,24 @@ func (client *Client) DeleteSiteDeliveryTaskWithOptions(request *DeleteSiteDeliv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSiteDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSiteDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSiteDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47344,13 +63934,24 @@ func (client *Client) DeleteUserDeliveryTaskWithOptions(request *DeleteUserDeliv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteUserDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteUserDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteUserDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47418,13 +64019,24 @@ func (client *Client) DeleteWaitingRoomWithOptions(request *DeleteWaitingRoomReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteWaitingRoomResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWaitingRoomResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWaitingRoomResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47482,13 +64094,24 @@ func (client *Client) DeleteWaitingRoomEventWithOptions(request *DeleteWaitingRo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteWaitingRoomEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWaitingRoomEventResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWaitingRoomEventResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47546,13 +64169,24 @@ func (client *Client) DeleteWaitingRoomRuleWithOptions(request *DeleteWaitingRoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteWaitingRoomRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWaitingRoomRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWaitingRoomRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47614,13 +64248,24 @@ func (client *Client) DescribeCustomScenePoliciesWithOptions(request *DescribeCu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCustomScenePoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCustomScenePoliciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCustomScenePoliciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47694,13 +64339,24 @@ func (client *Client) DescribeDDoSAllEventListWithOptions(request *DescribeDDoSA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDDoSAllEventListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDDoSAllEventListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDDoSAllEventListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47750,13 +64406,24 @@ func (client *Client) DescribeDDoSBpsListWithOptions(request *DescribeDDoSBpsLis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDDoSBpsListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDDoSBpsListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDDoSBpsListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47826,13 +64493,24 @@ func (client *Client) DescribeDDoSL7QpsListWithOptions(request *DescribeDDoSL7Qp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDDoSL7QpsListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDDoSL7QpsListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDDoSL7QpsListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47886,13 +64564,24 @@ func (client *Client) DescribeHttpDDoSAttackIntelligentProtectionWithOptions(req
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHttpDDoSAttackIntelligentProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHttpDDoSAttackIntelligentProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHttpDDoSAttackIntelligentProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47946,13 +64635,24 @@ func (client *Client) DescribeHttpDDoSAttackProtectionWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHttpDDoSAttackProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHttpDDoSAttackProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHttpDDoSAttackProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47995,13 +64695,24 @@ func (client *Client) DescribeKvAccountStatusWithOptions(runtime *util.RuntimeOp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeKvAccountStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeKvAccountStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeKvAccountStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48049,13 +64760,24 @@ func (client *Client) DescribePreloadTasksWithOptions(request *DescribePreloadTa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePreloadTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePreloadTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePreloadTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48105,13 +64827,24 @@ func (client *Client) DescribePurgeTasksWithOptions(request *DescribePurgeTasksR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePurgeTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePurgeTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePurgeTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48165,13 +64898,24 @@ func (client *Client) DisableCustomScenePolicyWithOptions(request *DisableCustom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableCustomScenePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableCustomScenePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableCustomScenePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48241,13 +64985,24 @@ func (client *Client) EditSiteWafSettingsWithOptions(tmpReq *EditSiteWafSettings
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EditSiteWafSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EditSiteWafSettingsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EditSiteWafSettingsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48301,13 +65056,24 @@ func (client *Client) EnableCustomScenePolicyWithOptions(request *EnableCustomSc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableCustomScenePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableCustomScenePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableCustomScenePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48357,13 +65123,24 @@ func (client *Client) ExportRecordsWithOptions(request *ExportRecordsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExportRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExportRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExportRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48406,13 +65183,24 @@ func (client *Client) GetCacheReserveSpecificationWithOptions(runtime *util.Runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCacheReserveSpecificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCacheReserveSpecificationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCacheReserveSpecificationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48424,6 +65212,140 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCacheReserveSpecificationResponse{}
 	_body, _err := client.GetCacheReserveSpecificationWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单条缓存配置
+//
+// @param request - GetCacheRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCacheRuleResponse
+func (client *Client) GetCacheRuleWithOptions(request *GetCacheRuleRequest, runtime *util.RuntimeOptions) (_result *GetCacheRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCacheRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCacheRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCacheRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询单条缓存配置
+//
+// @param request - GetCacheRuleRequest
+//
+// @return GetCacheRuleResponse
+func (client *Client) GetCacheRule(request *GetCacheRuleRequest) (_result *GetCacheRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCacheRuleResponse{}
+	_body, _err := client.GetCacheRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the cache tag configuration of your website. You can call this operation when you need to specify tags in the Cache-Tag response header to use the purge by cache tag feature.
+//
+// @param request - GetCacheTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCacheTagResponse
+func (client *Client) GetCacheTagWithOptions(request *GetCacheTagRequest, runtime *util.RuntimeOptions) (_result *GetCacheTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCacheTag"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCacheTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCacheTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the cache tag configuration of your website. You can call this operation when you need to specify tags in the Cache-Tag response header to use the purge by cache tag feature.
+//
+// @param request - GetCacheTagRequest
+//
+// @return GetCacheTagResponse
+func (client *Client) GetCacheTag(request *GetCacheTagRequest) (_result *GetCacheTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCacheTagResponse{}
+	_body, _err := client.GetCacheTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48460,13 +65382,24 @@ func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48516,13 +65449,24 @@ func (client *Client) GetCertificateQuotaWithOptions(request *GetCertificateQuot
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCertificateQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCertificateQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCertificateQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48572,13 +65516,24 @@ func (client *Client) GetClientCaCertificateWithOptions(request *GetClientCaCert
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetClientCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetClientCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetClientCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48628,13 +65583,24 @@ func (client *Client) GetClientCertificateWithOptions(request *GetClientCertific
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetClientCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48684,13 +65650,24 @@ func (client *Client) GetClientCertificateHostnamesWithOptions(request *GetClien
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetClientCertificateHostnamesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetClientCertificateHostnamesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetClientCertificateHostnamesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48704,6 +65681,207 @@ func (client *Client) GetClientCertificateHostnames(request *GetClientCertificat
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClientCertificateHostnamesResponse{}
 	_body, _err := client.GetClientCertificateHostnamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the CNAME flattening configuration of a website
+//
+// @param request - GetCnameFlatteningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCnameFlatteningResponse
+func (client *Client) GetCnameFlatteningWithOptions(request *GetCnameFlatteningRequest, runtime *util.RuntimeOptions) (_result *GetCnameFlatteningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCnameFlattening"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCnameFlatteningResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCnameFlatteningResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the CNAME flattening configuration of a website
+//
+// @param request - GetCnameFlatteningRequest
+//
+// @return GetCnameFlatteningResponse
+func (client *Client) GetCnameFlattening(request *GetCnameFlatteningRequest) (_result *GetCnameFlatteningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCnameFlatteningResponse{}
+	_body, _err := client.GetCnameFlatteningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询压缩规则详情
+//
+// @param request - GetCompressionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCompressionRuleResponse
+func (client *Client) GetCompressionRuleWithOptions(request *GetCompressionRuleRequest, runtime *util.RuntimeOptions) (_result *GetCompressionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCompressionRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCompressionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCompressionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询压缩规则详情
+//
+// @param request - GetCompressionRuleRequest
+//
+// @return GetCompressionRuleResponse
+func (client *Client) GetCompressionRule(request *GetCompressionRuleRequest) (_result *GetCompressionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCompressionRuleResponse{}
+	_body, _err := client.GetCompressionRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the development mode configuration of your website.
+//
+// @param request - GetDevelopmentModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDevelopmentModeResponse
+func (client *Client) GetDevelopmentModeWithOptions(request *GetDevelopmentModeRequest, runtime *util.RuntimeOptions) (_result *GetDevelopmentModeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDevelopmentMode"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDevelopmentModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDevelopmentModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the development mode configuration of your website.
+//
+// @param request - GetDevelopmentModeRequest
+//
+// @return GetDevelopmentModeResponse
+func (client *Client) GetDevelopmentMode(request *GetDevelopmentModeRequest) (_result *GetDevelopmentModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDevelopmentModeResponse{}
+	_body, _err := client.GetDevelopmentModeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48744,13 +65922,24 @@ func (client *Client) GetEdgeContainerAppWithOptions(request *GetEdgeContainerAp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEdgeContainerAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48808,13 +65997,24 @@ func (client *Client) GetEdgeContainerAppStatusWithOptions(request *GetEdgeConta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEdgeContainerAppStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerAppStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerAppStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48864,13 +66064,24 @@ func (client *Client) GetEdgeContainerAppVersionWithOptions(request *GetEdgeCont
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEdgeContainerAppVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerAppVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerAppVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48920,13 +66131,24 @@ func (client *Client) GetEdgeContainerDeployRegionsWithOptions(request *GetEdgeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEdgeContainerDeployRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerDeployRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerDeployRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48976,13 +66198,24 @@ func (client *Client) GetEdgeContainerLogsWithOptions(request *GetEdgeContainerL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEdgeContainerLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49032,13 +66265,24 @@ func (client *Client) GetEdgeContainerStagingDeployStatusWithOptions(request *Ge
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEdgeContainerStagingDeployStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerStagingDeployStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerStagingDeployStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49092,13 +66336,24 @@ func (client *Client) GetEdgeContainerTerminalWithOptions(request *GetEdgeContai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEdgeContainerTerminalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerTerminalResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerTerminalResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49112,6 +66367,341 @@ func (client *Client) GetEdgeContainerTerminal(request *GetEdgeContainerTerminal
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEdgeContainerTerminalResponse{}
 	_body, _err := client.GetEdgeContainerTerminalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration details of an HTTP request header modification rule for a website.
+//
+// @param request - GetHttpRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHttpRequestHeaderModificationRuleResponse
+func (client *Client) GetHttpRequestHeaderModificationRuleWithOptions(request *GetHttpRequestHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *GetHttpRequestHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHttpRequestHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the configuration details of an HTTP request header modification rule for a website.
+//
+// @param request - GetHttpRequestHeaderModificationRuleRequest
+//
+// @return GetHttpRequestHeaderModificationRuleResponse
+func (client *Client) GetHttpRequestHeaderModificationRule(request *GetHttpRequestHeaderModificationRuleRequest) (_result *GetHttpRequestHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHttpRequestHeaderModificationRuleResponse{}
+	_body, _err := client.GetHttpRequestHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration details of an HTTP response header modification rule for a website.
+//
+// @param request - GetHttpResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHttpResponseHeaderModificationRuleResponse
+func (client *Client) GetHttpResponseHeaderModificationRuleWithOptions(request *GetHttpResponseHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *GetHttpResponseHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHttpResponseHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the configuration details of an HTTP response header modification rule for a website.
+//
+// @param request - GetHttpResponseHeaderModificationRuleRequest
+//
+// @return GetHttpResponseHeaderModificationRuleResponse
+func (client *Client) GetHttpResponseHeaderModificationRule(request *GetHttpResponseHeaderModificationRuleRequest) (_result *GetHttpResponseHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHttpResponseHeaderModificationRuleResponse{}
+	_body, _err := client.GetHttpResponseHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单条HTTPS应用配置
+//
+// @param request - GetHttpsApplicationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHttpsApplicationConfigurationResponse
+func (client *Client) GetHttpsApplicationConfigurationWithOptions(request *GetHttpsApplicationConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetHttpsApplicationConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHttpsApplicationConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHttpsApplicationConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHttpsApplicationConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询单条HTTPS应用配置
+//
+// @param request - GetHttpsApplicationConfigurationRequest
+//
+// @return GetHttpsApplicationConfigurationResponse
+func (client *Client) GetHttpsApplicationConfiguration(request *GetHttpsApplicationConfigurationRequest) (_result *GetHttpsApplicationConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHttpsApplicationConfigurationResponse{}
+	_body, _err := client.GetHttpsApplicationConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单条HTTPS基础配置
+//
+// @param request - GetHttpsBasicConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHttpsBasicConfigurationResponse
+func (client *Client) GetHttpsBasicConfigurationWithOptions(request *GetHttpsBasicConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetHttpsBasicConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHttpsBasicConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHttpsBasicConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHttpsBasicConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询单条HTTPS基础配置
+//
+// @param request - GetHttpsBasicConfigurationRequest
+//
+// @return GetHttpsBasicConfigurationResponse
+func (client *Client) GetHttpsBasicConfiguration(request *GetHttpsBasicConfigurationRequest) (_result *GetHttpsBasicConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHttpsBasicConfigurationResponse{}
+	_body, _err := client.GetHttpsBasicConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点IPv6配置
+//
+// @param request - GetIPv6Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIPv6Response
+func (client *Client) GetIPv6WithOptions(request *GetIPv6Request, runtime *util.RuntimeOptions) (_result *GetIPv6Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIPv6"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetIPv6Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetIPv6Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询站点IPv6配置
+//
+// @param request - GetIPv6Request
+//
+// @return GetIPv6Response
+func (client *Client) GetIPv6(request *GetIPv6Request) (_result *GetIPv6Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIPv6Response{}
+	_body, _err := client.GetIPv6WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49148,13 +66738,24 @@ func (client *Client) GetKvWithOptions(request *GetKvRequest, runtime *util.Runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetKvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetKvResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetKvResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49197,13 +66798,24 @@ func (client *Client) GetKvAccountWithOptions(runtime *util.RuntimeOptions) (_re
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetKvAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetKvAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetKvAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49251,13 +66863,24 @@ func (client *Client) GetKvNamespaceWithOptions(request *GetKvNamespaceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetKvNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetKvNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetKvNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49311,13 +66934,24 @@ func (client *Client) GetListWithOptions(request *GetListRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49331,6 +66965,140 @@ func (client *Client) GetList(request *GetListRequest) (_result *GetListResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetListResponse{}
 	_body, _err := client.GetListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询特定负载均衡器
+//
+// @param request - GetLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLoadBalancerResponse
+func (client *Client) GetLoadBalancerWithOptions(request *GetLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *GetLoadBalancerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLoadBalancer"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询特定负载均衡器
+//
+// @param request - GetLoadBalancerRequest
+//
+// @return GetLoadBalancerResponse
+func (client *Client) GetLoadBalancer(request *GetLoadBalancerRequest) (_result *GetLoadBalancerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLoadBalancerResponse{}
+	_body, _err := client.GetLoadBalancerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the configuration of managed transforms for your website.
+//
+// @param request - GetManagedTransformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetManagedTransformResponse
+func (client *Client) GetManagedTransformWithOptions(request *GetManagedTransformRequest, runtime *util.RuntimeOptions) (_result *GetManagedTransformResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetManagedTransform"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetManagedTransformResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetManagedTransformResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Query the configuration of managed transforms for your website.
+//
+// @param request - GetManagedTransformRequest
+//
+// @return GetManagedTransformResponse
+func (client *Client) GetManagedTransform(request *GetManagedTransformRequest) (_result *GetManagedTransformResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetManagedTransformResponse{}
+	_body, _err := client.GetManagedTransformWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49367,13 +67135,24 @@ func (client *Client) GetOriginPoolWithOptions(request *GetOriginPoolRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOriginPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOriginPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOriginPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49423,13 +67202,24 @@ func (client *Client) GetOriginProtectionWithOptions(request *GetOriginProtectio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOriginProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOriginProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOriginProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49443,6 +67233,73 @@ func (client *Client) GetOriginProtection(request *GetOriginProtectionRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOriginProtectionResponse{}
 	_body, _err := client.GetOriginProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单条回源规则配置
+//
+// @param request - GetOriginRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOriginRuleResponse
+func (client *Client) GetOriginRuleWithOptions(request *GetOriginRuleRequest, runtime *util.RuntimeOptions) (_result *GetOriginRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOriginRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOriginRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOriginRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询单条回源规则配置
+//
+// @param request - GetOriginRuleRequest
+//
+// @return GetOriginRuleResponse
+func (client *Client) GetOriginRule(request *GetOriginRuleRequest) (_result *GetOriginRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOriginRuleResponse{}
+	_body, _err := client.GetOriginRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49483,13 +67340,24 @@ func (client *Client) GetPageWithOptions(request *GetPageRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49539,13 +67407,24 @@ func (client *Client) GetPurgeQuotaWithOptions(request *GetPurgeQuotaRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPurgeQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPurgeQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPurgeQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49595,13 +67474,24 @@ func (client *Client) GetRealtimeDeliveryFieldWithOptions(request *GetRealtimeDe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRealtimeDeliveryFieldResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRealtimeDeliveryFieldResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRealtimeDeliveryFieldResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49651,13 +67541,24 @@ func (client *Client) GetRecordWithOptions(request *GetRecordRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49671,6 +67572,140 @@ func (client *Client) GetRecord(request *GetRecordRequest) (_result *GetRecordRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRecordResponse{}
 	_body, _err := client.GetRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration details of a URL redirect rule for a website.
+//
+// @param request - GetRedirectRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRedirectRuleResponse
+func (client *Client) GetRedirectRuleWithOptions(request *GetRedirectRuleRequest, runtime *util.RuntimeOptions) (_result *GetRedirectRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRedirectRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRedirectRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRedirectRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the configuration details of a URL redirect rule for a website.
+//
+// @param request - GetRedirectRuleRequest
+//
+// @return GetRedirectRuleResponse
+func (client *Client) GetRedirectRule(request *GetRedirectRuleRequest) (_result *GetRedirectRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRedirectRuleResponse{}
+	_body, _err := client.GetRedirectRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration details of a URL rewrite rule.
+//
+// @param request - GetRewriteUrlRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRewriteUrlRuleResponse
+func (client *Client) GetRewriteUrlRuleWithOptions(request *GetRewriteUrlRuleRequest, runtime *util.RuntimeOptions) (_result *GetRewriteUrlRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRewriteUrlRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRewriteUrlRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRewriteUrlRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the configuration details of a URL rewrite rule.
+//
+// @param request - GetRewriteUrlRuleRequest
+//
+// @return GetRewriteUrlRuleResponse
+func (client *Client) GetRewriteUrlRule(request *GetRewriteUrlRuleRequest) (_result *GetRewriteUrlRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRewriteUrlRuleResponse{}
+	_body, _err := client.GetRewriteUrlRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49711,13 +67746,24 @@ func (client *Client) GetRoutineWithOptions(request *GetRoutineRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRoutineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRoutineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRoutineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49781,13 +67827,24 @@ func (client *Client) GetRoutineStagingCodeUploadInfoWithOptions(request *GetRou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRoutineStagingCodeUploadInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRoutineStagingCodeUploadInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRoutineStagingCodeUploadInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49836,13 +67893,24 @@ func (client *Client) GetRoutineStagingEnvIpWithOptions(runtime *util.RuntimeOpt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRoutineStagingEnvIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRoutineStagingEnvIpResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRoutineStagingEnvIpResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49883,13 +67951,24 @@ func (client *Client) GetRoutineUserInfoWithOptions(runtime *util.RuntimeOptions
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRoutineUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRoutineUserInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRoutineUserInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49937,13 +68016,24 @@ func (client *Client) GetScheduledPreloadJobWithOptions(request *GetScheduledPre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetScheduledPreloadJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetScheduledPreloadJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetScheduledPreloadJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49957,6 +68047,73 @@ func (client *Client) GetScheduledPreloadJob(request *GetScheduledPreloadJobRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetScheduledPreloadJobResponse{}
 	_body, _err := client.GetScheduledPreloadJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration for search engine crawler of a website.
+//
+// @param request - GetSeoBypassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSeoBypassResponse
+func (client *Client) GetSeoBypassWithOptions(request *GetSeoBypassRequest, runtime *util.RuntimeOptions) (_result *GetSeoBypassResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSeoBypass"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSeoBypassResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSeoBypassResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the configuration for search engine crawler of a website.
+//
+// @param request - GetSeoBypassRequest
+//
+// @return GetSeoBypassResponse
+func (client *Client) GetSeoBypass(request *GetSeoBypassRequest) (_result *GetSeoBypassResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSeoBypassResponse{}
+	_body, _err := client.GetSeoBypassWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49993,13 +68150,24 @@ func (client *Client) GetSiteWithOptions(request *GetSiteRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSiteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50049,13 +68217,24 @@ func (client *Client) GetSiteCurrentNSWithOptions(request *GetSiteCurrentNSReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSiteCurrentNSResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteCurrentNSResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteCurrentNSResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50113,13 +68292,24 @@ func (client *Client) GetSiteCustomLogWithOptions(request *GetSiteCustomLogReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSiteCustomLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteCustomLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteCustomLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50177,13 +68367,24 @@ func (client *Client) GetSiteDeliveryTaskWithOptions(request *GetSiteDeliveryTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSiteDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50249,13 +68450,24 @@ func (client *Client) GetSiteLogDeliveryQuotaWithOptions(request *GetSiteLogDeli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSiteLogDeliveryQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteLogDeliveryQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteLogDeliveryQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50285,6 +68497,73 @@ func (client *Client) GetSiteLogDeliveryQuota(request *GetSiteLogDeliveryQuotaRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSiteLogDeliveryQuotaResponse{}
 	_body, _err := client.GetSiteLogDeliveryQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点名称独占配置
+//
+// @param request - GetSiteNameExclusiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSiteNameExclusiveResponse
+func (client *Client) GetSiteNameExclusiveWithOptions(request *GetSiteNameExclusiveRequest, runtime *util.RuntimeOptions) (_result *GetSiteNameExclusiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSiteNameExclusive"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteNameExclusiveResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteNameExclusiveResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询站点名称独占配置
+//
+// @param request - GetSiteNameExclusiveRequest
+//
+// @return GetSiteNameExclusiveResponse
+func (client *Client) GetSiteNameExclusive(request *GetSiteNameExclusiveRequest) (_result *GetSiteNameExclusiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSiteNameExclusiveResponse{}
+	_body, _err := client.GetSiteNameExclusiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50333,13 +68612,24 @@ func (client *Client) GetSiteWafSettingsWithOptions(request *GetSiteWafSettingsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSiteWafSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteWafSettingsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteWafSettingsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50353,6 +68643,73 @@ func (client *Client) GetSiteWafSettings(request *GetSiteWafSettingsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSiteWafSettingsResponse{}
 	_body, _err := client.GetSiteWafSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tiered cache configuration of your website.
+//
+// @param request - GetTieredCacheRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTieredCacheResponse
+func (client *Client) GetTieredCacheWithOptions(request *GetTieredCacheRequest, runtime *util.RuntimeOptions) (_result *GetTieredCacheResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTieredCache"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTieredCacheResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTieredCacheResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the tiered cache configuration of your website.
+//
+// @param request - GetTieredCacheRequest
+//
+// @return GetTieredCacheResponse
+func (client *Client) GetTieredCache(request *GetTieredCacheRequest) (_result *GetTieredCacheResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTieredCacheResponse{}
+	_body, _err := client.GetTieredCacheWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50389,13 +68746,24 @@ func (client *Client) GetUploadTaskWithOptions(request *GetUploadTaskRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUploadTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUploadTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUploadTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50453,13 +68821,24 @@ func (client *Client) GetUserDeliveryTaskWithOptions(request *GetUserDeliveryTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50521,13 +68900,24 @@ func (client *Client) GetUserLogDeliveryQuotaWithOptions(request *GetUserLogDeli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserLogDeliveryQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserLogDeliveryQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserLogDeliveryQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50574,13 +68964,24 @@ func (client *Client) GetWafBotAppKeyWithOptions(runtime *util.RuntimeOptions) (
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetWafBotAppKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWafBotAppKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWafBotAppKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50644,13 +69045,24 @@ func (client *Client) GetWafFilterWithOptions(request *GetWafFilterRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetWafFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWafFilterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWafFilterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50704,13 +69116,24 @@ func (client *Client) GetWafQuotaWithOptions(request *GetWafQuotaRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetWafQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWafQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWafQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50760,13 +69183,24 @@ func (client *Client) ListCacheReserveInstancesWithOptions(request *ListCacheRes
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCacheReserveInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCacheReserveInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCacheReserveInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50780,6 +69214,73 @@ func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstanc
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCacheReserveInstancesResponse{}
 	_body, _err := client.ListCacheReserveInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多条缓存配置
+//
+// @param request - ListCacheRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCacheRulesResponse
+func (client *Client) ListCacheRulesWithOptions(request *ListCacheRulesRequest, runtime *util.RuntimeOptions) (_result *ListCacheRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCacheRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCacheRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCacheRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询多条缓存配置
+//
+// @param request - ListCacheRulesRequest
+//
+// @return ListCacheRulesResponse
+func (client *Client) ListCacheRules(request *ListCacheRulesRequest) (_result *ListCacheRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCacheRulesResponse{}
+	_body, _err := client.ListCacheRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50816,13 +69317,24 @@ func (client *Client) ListCertificatesWithOptions(request *ListCertificatesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCertificatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCertificatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCertificatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50872,13 +69384,24 @@ func (client *Client) ListCiphersWithOptions(request *ListCiphersRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCiphersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCiphersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCiphersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50928,13 +69451,24 @@ func (client *Client) ListClientCaCertificatesWithOptions(request *ListClientCaC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListClientCaCertificatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListClientCaCertificatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListClientCaCertificatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50984,13 +69518,24 @@ func (client *Client) ListClientCertificatesWithOptions(request *ListClientCerti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListClientCertificatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListClientCertificatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListClientCertificatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51004,6 +69549,73 @@ func (client *Client) ListClientCertificates(request *ListClientCertificatesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClientCertificatesResponse{}
 	_body, _err := client.ListClientCertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries compression rules that are configured for a website.
+//
+// @param request - ListCompressionRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCompressionRulesResponse
+func (client *Client) ListCompressionRulesWithOptions(request *ListCompressionRulesRequest, runtime *util.RuntimeOptions) (_result *ListCompressionRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCompressionRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCompressionRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCompressionRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries compression rules that are configured for a website.
+//
+// @param request - ListCompressionRulesRequest
+//
+// @return ListCompressionRulesResponse
+func (client *Client) ListCompressionRules(request *ListCompressionRulesRequest) (_result *ListCompressionRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCompressionRulesResponse{}
+	_body, _err := client.ListCompressionRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51040,13 +69652,24 @@ func (client *Client) ListEdgeContainerAppRecordsWithOptions(request *ListEdgeCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEdgeContainerAppRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEdgeContainerAppRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEdgeContainerAppRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51096,13 +69719,24 @@ func (client *Client) ListEdgeContainerAppVersionsWithOptions(request *ListEdgeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEdgeContainerAppVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEdgeContainerAppVersionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEdgeContainerAppVersionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51176,13 +69810,24 @@ func (client *Client) ListEdgeContainerAppsWithOptions(request *ListEdgeContaine
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEdgeContainerAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEdgeContainerAppsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEdgeContainerAppsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51232,13 +69877,24 @@ func (client *Client) ListEdgeContainerRecordsWithOptions(request *ListEdgeConta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEdgeContainerRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEdgeContainerRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEdgeContainerRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51281,13 +69937,24 @@ func (client *Client) ListEdgeRoutinePlansWithOptions(runtime *util.RuntimeOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEdgeRoutinePlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEdgeRoutinePlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEdgeRoutinePlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51339,13 +70006,24 @@ func (client *Client) ListEdgeRoutineRecordsWithOptions(request *ListEdgeRoutine
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEdgeRoutineRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEdgeRoutineRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEdgeRoutineRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51363,6 +70041,274 @@ func (client *Client) ListEdgeRoutineRecords(request *ListEdgeRoutineRecordsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEdgeRoutineRecordsResponse{}
 	_body, _err := client.ListEdgeRoutineRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP请求头规则列表
+//
+// @param request - ListHttpRequestHeaderModificationRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHttpRequestHeaderModificationRulesResponse
+func (client *Client) ListHttpRequestHeaderModificationRulesWithOptions(request *ListHttpRequestHeaderModificationRulesRequest, runtime *util.RuntimeOptions) (_result *ListHttpRequestHeaderModificationRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHttpRequestHeaderModificationRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListHttpRequestHeaderModificationRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListHttpRequestHeaderModificationRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询HTTP请求头规则列表
+//
+// @param request - ListHttpRequestHeaderModificationRulesRequest
+//
+// @return ListHttpRequestHeaderModificationRulesResponse
+func (client *Client) ListHttpRequestHeaderModificationRules(request *ListHttpRequestHeaderModificationRulesRequest) (_result *ListHttpRequestHeaderModificationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHttpRequestHeaderModificationRulesResponse{}
+	_body, _err := client.ListHttpRequestHeaderModificationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP响应头规则列表
+//
+// @param request - ListHttpResponseHeaderModificationRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHttpResponseHeaderModificationRulesResponse
+func (client *Client) ListHttpResponseHeaderModificationRulesWithOptions(request *ListHttpResponseHeaderModificationRulesRequest, runtime *util.RuntimeOptions) (_result *ListHttpResponseHeaderModificationRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHttpResponseHeaderModificationRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListHttpResponseHeaderModificationRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListHttpResponseHeaderModificationRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询HTTP响应头规则列表
+//
+// @param request - ListHttpResponseHeaderModificationRulesRequest
+//
+// @return ListHttpResponseHeaderModificationRulesResponse
+func (client *Client) ListHttpResponseHeaderModificationRules(request *ListHttpResponseHeaderModificationRulesRequest) (_result *ListHttpResponseHeaderModificationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHttpResponseHeaderModificationRulesResponse{}
+	_body, _err := client.ListHttpResponseHeaderModificationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多条HTTPS应用配置
+//
+// @param request - ListHttpsApplicationConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHttpsApplicationConfigurationsResponse
+func (client *Client) ListHttpsApplicationConfigurationsWithOptions(request *ListHttpsApplicationConfigurationsRequest, runtime *util.RuntimeOptions) (_result *ListHttpsApplicationConfigurationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHttpsApplicationConfigurations"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListHttpsApplicationConfigurationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListHttpsApplicationConfigurationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询多条HTTPS应用配置
+//
+// @param request - ListHttpsApplicationConfigurationsRequest
+//
+// @return ListHttpsApplicationConfigurationsResponse
+func (client *Client) ListHttpsApplicationConfigurations(request *ListHttpsApplicationConfigurationsRequest) (_result *ListHttpsApplicationConfigurationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHttpsApplicationConfigurationsResponse{}
+	_body, _err := client.ListHttpsApplicationConfigurationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多条HTTPS基础配置
+//
+// @param request - ListHttpsBasicConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHttpsBasicConfigurationsResponse
+func (client *Client) ListHttpsBasicConfigurationsWithOptions(request *ListHttpsBasicConfigurationsRequest, runtime *util.RuntimeOptions) (_result *ListHttpsBasicConfigurationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHttpsBasicConfigurations"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListHttpsBasicConfigurationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListHttpsBasicConfigurationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询多条HTTPS基础配置
+//
+// @param request - ListHttpsBasicConfigurationsRequest
+//
+// @return ListHttpsBasicConfigurationsResponse
+func (client *Client) ListHttpsBasicConfigurations(request *ListHttpsBasicConfigurationsRequest) (_result *ListHttpsBasicConfigurationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHttpsBasicConfigurationsResponse{}
+	_body, _err := client.ListHttpsBasicConfigurationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51399,13 +70345,24 @@ func (client *Client) ListInstanceQuotasWithOptions(request *ListInstanceQuotasR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstanceQuotasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstanceQuotasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstanceQuotasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51455,13 +70412,24 @@ func (client *Client) ListInstanceQuotasWithUsageWithOptions(request *ListInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstanceQuotasWithUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstanceQuotasWithUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstanceQuotasWithUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51511,13 +70479,24 @@ func (client *Client) ListKvsWithOptions(request *ListKvsRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListKvsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListKvsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListKvsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51585,13 +70564,24 @@ func (client *Client) ListListsWithOptions(tmpReq *ListListsRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListListsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListListsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListListsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51605,6 +70595,73 @@ func (client *Client) ListLists(request *ListListsRequest) (_result *ListListsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListListsResponse{}
 	_body, _err := client.ListListsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询负载均衡器里各源站状态
+//
+// @param request - ListLoadBalancerOriginStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLoadBalancerOriginStatusResponse
+func (client *Client) ListLoadBalancerOriginStatusWithOptions(request *ListLoadBalancerOriginStatusRequest, runtime *util.RuntimeOptions) (_result *ListLoadBalancerOriginStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLoadBalancerOriginStatus"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLoadBalancerOriginStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLoadBalancerOriginStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询负载均衡器里各源站状态
+//
+// @param request - ListLoadBalancerOriginStatusRequest
+//
+// @return ListLoadBalancerOriginStatusResponse
+func (client *Client) ListLoadBalancerOriginStatus(request *ListLoadBalancerOriginStatusRequest) (_result *ListLoadBalancerOriginStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLoadBalancerOriginStatusResponse{}
+	_body, _err := client.ListLoadBalancerOriginStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51645,13 +70702,24 @@ func (client *Client) ListLoadBalancerRegionsWithOptions(request *ListLoadBalanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLoadBalancerRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLoadBalancerRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLoadBalancerRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51669,6 +70737,73 @@ func (client *Client) ListLoadBalancerRegions(request *ListLoadBalancerRegionsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLoadBalancerRegionsResponse{}
 	_body, _err := client.ListLoadBalancerRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询负载均衡器列表
+//
+// @param request - ListLoadBalancersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLoadBalancersResponse
+func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersRequest, runtime *util.RuntimeOptions) (_result *ListLoadBalancersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLoadBalancers"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLoadBalancersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLoadBalancersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询负载均衡器列表
+//
+// @param request - ListLoadBalancersRequest
+//
+// @return ListLoadBalancersResponse
+func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_result *ListLoadBalancersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLoadBalancersResponse{}
+	_body, _err := client.ListLoadBalancersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51713,13 +70848,24 @@ func (client *Client) ListManagedRulesGroupsWithOptions(request *ListManagedRule
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListManagedRulesGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListManagedRulesGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListManagedRulesGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51769,13 +70915,24 @@ func (client *Client) ListOriginPoolsWithOptions(request *ListOriginPoolsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListOriginPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOriginPoolsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOriginPoolsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51789,6 +70946,73 @@ func (client *Client) ListOriginPools(request *ListOriginPoolsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOriginPoolsResponse{}
 	_body, _err := client.ListOriginPoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多条回源规则配置
+//
+// @param request - ListOriginRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOriginRulesResponse
+func (client *Client) ListOriginRulesWithOptions(request *ListOriginRulesRequest, runtime *util.RuntimeOptions) (_result *ListOriginRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOriginRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOriginRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOriginRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询多条回源规则配置
+//
+// @param request - ListOriginRulesRequest
+//
+// @return ListOriginRulesResponse
+func (client *Client) ListOriginRules(request *ListOriginRulesRequest) (_result *ListOriginRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOriginRulesResponse{}
+	_body, _err := client.ListOriginRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51843,13 +71067,24 @@ func (client *Client) ListPagesWithOptions(tmpReq *ListPagesRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51903,13 +71138,24 @@ func (client *Client) ListRecordsWithOptions(request *ListRecordsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51927,6 +71173,140 @@ func (client *Client) ListRecords(request *ListRecordsRequest) (_result *ListRec
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRecordsResponse{}
 	_body, _err := client.ListRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询重定向规则列表
+//
+// @param request - ListRedirectRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRedirectRulesResponse
+func (client *Client) ListRedirectRulesWithOptions(request *ListRedirectRulesRequest, runtime *util.RuntimeOptions) (_result *ListRedirectRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRedirectRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRedirectRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRedirectRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询重定向规则列表
+//
+// @param request - ListRedirectRulesRequest
+//
+// @return ListRedirectRulesResponse
+func (client *Client) ListRedirectRules(request *ListRedirectRulesRequest) (_result *ListRedirectRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRedirectRulesResponse{}
+	_body, _err := client.ListRedirectRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询重写Url规则列表
+//
+// @param request - ListRewriteUrlRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRewriteUrlRulesResponse
+func (client *Client) ListRewriteUrlRulesWithOptions(request *ListRewriteUrlRulesRequest, runtime *util.RuntimeOptions) (_result *ListRewriteUrlRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRewriteUrlRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRewriteUrlRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRewriteUrlRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询重写Url规则列表
+//
+// @param request - ListRewriteUrlRulesRequest
+//
+// @return ListRewriteUrlRulesResponse
+func (client *Client) ListRewriteUrlRules(request *ListRewriteUrlRulesRequest) (_result *ListRewriteUrlRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRewriteUrlRulesResponse{}
+	_body, _err := client.ListRewriteUrlRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51956,13 +71336,24 @@ func (client *Client) ListRoutineCanaryAreasWithOptions(runtime *util.RuntimeOpt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRoutineCanaryAreasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRoutineCanaryAreasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRoutineCanaryAreasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52007,13 +71398,24 @@ func (client *Client) ListRoutineOptionalSpecsWithOptions(runtime *util.RuntimeO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRoutineOptionalSpecsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRoutineOptionalSpecsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRoutineOptionalSpecsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52065,13 +71467,24 @@ func (client *Client) ListScheduledPreloadExecutionsWithOptions(request *ListSch
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListScheduledPreloadExecutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListScheduledPreloadExecutionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListScheduledPreloadExecutionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52121,13 +71534,24 @@ func (client *Client) ListScheduledPreloadJobsWithOptions(request *ListScheduled
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListScheduledPreloadJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListScheduledPreloadJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListScheduledPreloadJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52177,13 +71601,24 @@ func (client *Client) ListSiteDeliveryTasksWithOptions(request *ListSiteDelivery
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSiteDeliveryTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSiteDeliveryTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSiteDeliveryTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52239,13 +71674,24 @@ func (client *Client) ListSitesWithOptions(tmpReq *ListSitesRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSitesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSitesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSitesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52327,13 +71773,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52383,13 +71840,24 @@ func (client *Client) ListUploadTasksWithOptions(request *ListUploadTasksRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUploadTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUploadTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUploadTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52439,13 +71907,24 @@ func (client *Client) ListUserDeliveryTasksWithOptions(request *ListUserDelivery
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUserDeliveryTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUserDeliveryTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUserDeliveryTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52495,13 +71974,24 @@ func (client *Client) ListUserRatePlanInstancesWithOptions(request *ListUserRate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUserRatePlanInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUserRatePlanInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUserRatePlanInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52589,13 +72079,24 @@ func (client *Client) ListWafManagedRulesWithOptions(tmpReq *ListWafManagedRules
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWafManagedRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWafManagedRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWafManagedRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52653,13 +72154,24 @@ func (client *Client) ListWafPhasesWithOptions(request *ListWafPhasesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWafPhasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWafPhasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWafPhasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52727,13 +72239,24 @@ func (client *Client) ListWafTemplateRulesWithOptions(tmpReq *ListWafTemplateRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWafTemplateRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWafTemplateRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWafTemplateRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52791,13 +72314,24 @@ func (client *Client) ListWafUsageOfRulesWithOptions(request *ListWafUsageOfRule
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWafUsageOfRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWafUsageOfRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWafUsageOfRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52851,13 +72385,24 @@ func (client *Client) ListWaitingRoomEventsWithOptions(request *ListWaitingRoomE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWaitingRoomEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWaitingRoomEventsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWaitingRoomEventsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52915,13 +72460,24 @@ func (client *Client) ListWaitingRoomRulesWithOptions(request *ListWaitingRoomRu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWaitingRoomRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWaitingRoomRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWaitingRoomRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52979,13 +72535,24 @@ func (client *Client) ListWaitingRoomsWithOptions(request *ListWaitingRoomsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWaitingRoomsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWaitingRoomsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWaitingRoomsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53061,13 +72628,24 @@ func (client *Client) PreloadCachesWithOptions(tmpReq *PreloadCachesRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreloadCachesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreloadCachesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreloadCachesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53161,13 +72739,24 @@ func (client *Client) PublishEdgeContainerAppVersionWithOptions(tmpReq *PublishE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PublishEdgeContainerAppVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PublishEdgeContainerAppVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PublishEdgeContainerAppVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53243,13 +72832,24 @@ func (client *Client) PublishRoutineCodeVersionWithOptions(tmpReq *PublishRoutin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PublishRoutineCodeVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PublishRoutineCodeVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PublishRoutineCodeVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53325,13 +72925,24 @@ func (client *Client) PurgeCachesWithOptions(tmpReq *PurgeCachesRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PurgeCachesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PurgeCachesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PurgeCachesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53407,13 +73018,24 @@ func (client *Client) PutKvWithOptions(request *PutKvRequest, runtime *util.Runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutKvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutKvResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutKvResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53549,13 +73171,24 @@ func (client *Client) PutKvWithHighCapacityWithOptions(request *PutKvWithHighCap
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutKvWithHighCapacityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutKvWithHighCapacityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutKvWithHighCapacityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53794,13 +73427,24 @@ func (client *Client) RebuildEdgeContainerAppStagingEnvWithOptions(request *Rebu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebuildEdgeContainerAppStagingEnvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebuildEdgeContainerAppStagingEnvResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebuildEdgeContainerAppStagingEnvResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53854,13 +73498,24 @@ func (client *Client) ResetScheduledPreloadJobWithOptions(request *ResetSchedule
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetScheduledPreloadJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetScheduledPreloadJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetScheduledPreloadJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53910,13 +73565,24 @@ func (client *Client) RevokeClientCertificateWithOptions(request *RevokeClientCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeClientCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53980,13 +73646,24 @@ func (client *Client) RollbackEdgeContainerAppVersionWithOptions(request *Rollba
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackEdgeContainerAppVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackEdgeContainerAppVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackEdgeContainerAppVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54082,13 +73759,24 @@ func (client *Client) SetCertificateWithOptions(request *SetCertificateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54158,13 +73846,24 @@ func (client *Client) SetClientCertificateHostnamesWithOptions(tmpReq *SetClient
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetClientCertificateHostnamesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetClientCertificateHostnamesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetClientCertificateHostnamesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54226,13 +73925,24 @@ func (client *Client) SetHttpDDoSAttackIntelligentProtectionWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetHttpDDoSAttackIntelligentProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetHttpDDoSAttackIntelligentProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetHttpDDoSAttackIntelligentProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54290,13 +74000,24 @@ func (client *Client) SetHttpDDoSAttackProtectionWithOptions(request *SetHttpDDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetHttpDDoSAttackProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetHttpDDoSAttackProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetHttpDDoSAttackProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54350,13 +74071,24 @@ func (client *Client) StartScheduledPreloadExecutionWithOptions(request *StartSc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartScheduledPreloadExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartScheduledPreloadExecutionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartScheduledPreloadExecutionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54410,13 +74142,24 @@ func (client *Client) StopScheduledPreloadExecutionWithOptions(request *StopSche
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopScheduledPreloadExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopScheduledPreloadExecutionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopScheduledPreloadExecutionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54494,13 +74237,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54514,6 +74268,426 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改缓存配置
+//
+// @param request - UpdateCacheRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCacheRuleResponse
+func (client *Client) UpdateCacheRuleWithOptions(request *UpdateCacheRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateCacheRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalCacheablePorts)) {
+		query["AdditionalCacheablePorts"] = request.AdditionalCacheablePorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BrowserCacheMode)) {
+		query["BrowserCacheMode"] = request.BrowserCacheMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BrowserCacheTtl)) {
+		query["BrowserCacheTtl"] = request.BrowserCacheTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BypassCache)) {
+		query["BypassCache"] = request.BypassCache
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheDeceptionArmor)) {
+		query["CacheDeceptionArmor"] = request.CacheDeceptionArmor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheReserveEligibility)) {
+		query["CacheReserveEligibility"] = request.CacheReserveEligibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckPresenceCookie)) {
+		query["CheckPresenceCookie"] = request.CheckPresenceCookie
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckPresenceHeader)) {
+		query["CheckPresenceHeader"] = request.CheckPresenceHeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgeCacheMode)) {
+		query["EdgeCacheMode"] = request.EdgeCacheMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgeCacheTtl)) {
+		query["EdgeCacheTtl"] = request.EdgeCacheTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgeStatusCodeCacheTtl)) {
+		query["EdgeStatusCodeCacheTtl"] = request.EdgeStatusCodeCacheTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeCookie)) {
+		query["IncludeCookie"] = request.IncludeCookie
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeHeader)) {
+		query["IncludeHeader"] = request.IncludeHeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryString)) {
+		query["QueryString"] = request.QueryString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryStringMode)) {
+		query["QueryStringMode"] = request.QueryStringMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServeStale)) {
+		query["ServeStale"] = request.ServeStale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortQueryStringForCache)) {
+		query["SortQueryStringForCache"] = request.SortQueryStringForCache
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDeviceType)) {
+		query["UserDeviceType"] = request.UserDeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGeo)) {
+		query["UserGeo"] = request.UserGeo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserLanguage)) {
+		query["UserLanguage"] = request.UserLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCacheRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCacheRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCacheRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改缓存配置
+//
+// @param request - UpdateCacheRuleRequest
+//
+// @return UpdateCacheRuleResponse
+func (client *Client) UpdateCacheRule(request *UpdateCacheRuleRequest) (_result *UpdateCacheRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCacheRuleResponse{}
+	_body, _err := client.UpdateCacheRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点缓存Tag配置
+//
+// @param request - UpdateCacheTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCacheTagResponse
+func (client *Client) UpdateCacheTagWithOptions(request *UpdateCacheTagRequest, runtime *util.RuntimeOptions) (_result *UpdateCacheTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CaseInsensitive)) {
+		query["CaseInsensitive"] = request.CaseInsensitive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCacheTag"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCacheTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCacheTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点缓存Tag配置
+//
+// @param request - UpdateCacheTagRequest
+//
+// @return UpdateCacheTagResponse
+func (client *Client) UpdateCacheTag(request *UpdateCacheTagRequest) (_result *UpdateCacheTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCacheTagResponse{}
+	_body, _err := client.UpdateCacheTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点cname拉平配置
+//
+// @param request - UpdateCnameFlatteningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCnameFlatteningResponse
+func (client *Client) UpdateCnameFlatteningWithOptions(request *UpdateCnameFlatteningRequest, runtime *util.RuntimeOptions) (_result *UpdateCnameFlatteningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlattenMode)) {
+		query["FlattenMode"] = request.FlattenMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCnameFlattening"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCnameFlatteningResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCnameFlatteningResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点cname拉平配置
+//
+// @param request - UpdateCnameFlatteningRequest
+//
+// @return UpdateCnameFlatteningResponse
+func (client *Client) UpdateCnameFlattening(request *UpdateCnameFlatteningRequest) (_result *UpdateCnameFlatteningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCnameFlatteningResponse{}
+	_body, _err := client.UpdateCnameFlatteningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改压缩规则
+//
+// @param request - UpdateCompressionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCompressionRuleResponse
+func (client *Client) UpdateCompressionRuleWithOptions(request *UpdateCompressionRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateCompressionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Brotli)) {
+		query["Brotli"] = request.Brotli
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gzip)) {
+		query["Gzip"] = request.Gzip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCompressionRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCompressionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCompressionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改压缩规则
+//
+// @param request - UpdateCompressionRuleRequest
+//
+// @return UpdateCompressionRuleResponse
+func (client *Client) UpdateCompressionRule(request *UpdateCompressionRuleRequest) (_result *UpdateCompressionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCompressionRuleResponse{}
+	_body, _err := client.UpdateCompressionRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54574,13 +74748,24 @@ func (client *Client) UpdateCustomScenePolicyWithOptions(request *UpdateCustomSc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCustomScenePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCustomScenePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCustomScenePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54594,6 +74779,604 @@ func (client *Client) UpdateCustomScenePolicy(request *UpdateCustomScenePolicyRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCustomScenePolicyResponse{}
 	_body, _err := client.UpdateCustomScenePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点开发者模式配置
+//
+// @param request - UpdateDevelopmentModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDevelopmentModeResponse
+func (client *Client) UpdateDevelopmentModeWithOptions(request *UpdateDevelopmentModeRequest, runtime *util.RuntimeOptions) (_result *UpdateDevelopmentModeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDevelopmentMode"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDevelopmentModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDevelopmentModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点开发者模式配置
+//
+// @param request - UpdateDevelopmentModeRequest
+//
+// @return UpdateDevelopmentModeResponse
+func (client *Client) UpdateDevelopmentMode(request *UpdateDevelopmentModeRequest) (_result *UpdateDevelopmentModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDevelopmentModeResponse{}
+	_body, _err := client.UpdateDevelopmentModeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改HTTP请求头规则
+//
+// @param tmpReq - UpdateHttpRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHttpRequestHeaderModificationRuleResponse
+func (client *Client) UpdateHttpRequestHeaderModificationRuleWithOptions(tmpReq *UpdateHttpRequestHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateHttpRequestHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHttpRequestHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RequestHeaderModification)) {
+		request.RequestHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestHeaderModification, tea.String("RequestHeaderModification"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestHeaderModificationShrink)) {
+		query["RequestHeaderModification"] = request.RequestHeaderModificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHttpRequestHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHttpRequestHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改HTTP请求头规则
+//
+// @param request - UpdateHttpRequestHeaderModificationRuleRequest
+//
+// @return UpdateHttpRequestHeaderModificationRuleResponse
+func (client *Client) UpdateHttpRequestHeaderModificationRule(request *UpdateHttpRequestHeaderModificationRuleRequest) (_result *UpdateHttpRequestHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHttpRequestHeaderModificationRuleResponse{}
+	_body, _err := client.UpdateHttpRequestHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改HTTP响应头规则
+//
+// @param tmpReq - UpdateHttpResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHttpResponseHeaderModificationRuleResponse
+func (client *Client) UpdateHttpResponseHeaderModificationRuleWithOptions(tmpReq *UpdateHttpResponseHeaderModificationRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateHttpResponseHeaderModificationRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHttpResponseHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResponseHeaderModification)) {
+		request.ResponseHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResponseHeaderModification, tea.String("ResponseHeaderModification"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseHeaderModificationShrink)) {
+		query["ResponseHeaderModification"] = request.ResponseHeaderModificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHttpResponseHeaderModificationRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHttpResponseHeaderModificationRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改HTTP响应头规则
+//
+// @param request - UpdateHttpResponseHeaderModificationRuleRequest
+//
+// @return UpdateHttpResponseHeaderModificationRuleResponse
+func (client *Client) UpdateHttpResponseHeaderModificationRule(request *UpdateHttpResponseHeaderModificationRuleRequest) (_result *UpdateHttpResponseHeaderModificationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHttpResponseHeaderModificationRuleResponse{}
+	_body, _err := client.UpdateHttpResponseHeaderModificationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改HTTPS应用配置
+//
+// @param request - UpdateHttpsApplicationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHttpsApplicationConfigurationResponse
+func (client *Client) UpdateHttpsApplicationConfigurationWithOptions(request *UpdateHttpsApplicationConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateHttpsApplicationConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AltSvc)) {
+		query["AltSvc"] = request.AltSvc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AltSvcClear)) {
+		query["AltSvcClear"] = request.AltSvcClear
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AltSvcMa)) {
+		query["AltSvcMa"] = request.AltSvcMa
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AltSvcPersist)) {
+		query["AltSvcPersist"] = request.AltSvcPersist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hsts)) {
+		query["Hsts"] = request.Hsts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HstsIncludeSubdomains)) {
+		query["HstsIncludeSubdomains"] = request.HstsIncludeSubdomains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HstsMaxAge)) {
+		query["HstsMaxAge"] = request.HstsMaxAge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HstsPreload)) {
+		query["HstsPreload"] = request.HstsPreload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsForce)) {
+		query["HttpsForce"] = request.HttpsForce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsForceCode)) {
+		query["HttpsForceCode"] = request.HttpsForceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHttpsApplicationConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHttpsApplicationConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHttpsApplicationConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改HTTPS应用配置
+//
+// @param request - UpdateHttpsApplicationConfigurationRequest
+//
+// @return UpdateHttpsApplicationConfigurationResponse
+func (client *Client) UpdateHttpsApplicationConfiguration(request *UpdateHttpsApplicationConfigurationRequest) (_result *UpdateHttpsApplicationConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHttpsApplicationConfigurationResponse{}
+	_body, _err := client.UpdateHttpsApplicationConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改HTTPS基础配置
+//
+// @param request - UpdateHttpsBasicConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHttpsBasicConfigurationResponse
+func (client *Client) UpdateHttpsBasicConfigurationWithOptions(request *UpdateHttpsBasicConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateHttpsBasicConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ciphersuite)) {
+		query["Ciphersuite"] = request.Ciphersuite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CiphersuiteGroup)) {
+		query["CiphersuiteGroup"] = request.CiphersuiteGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2)) {
+		query["Http2"] = request.Http2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http3)) {
+		query["Http3"] = request.Http3
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Https)) {
+		query["Https"] = request.Https
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OcspStapling)) {
+		query["OcspStapling"] = request.OcspStapling
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls10)) {
+		query["Tls10"] = request.Tls10
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls11)) {
+		query["Tls11"] = request.Tls11
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls12)) {
+		query["Tls12"] = request.Tls12
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tls13)) {
+		query["Tls13"] = request.Tls13
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHttpsBasicConfiguration"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHttpsBasicConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHttpsBasicConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改HTTPS基础配置
+//
+// @param request - UpdateHttpsBasicConfigurationRequest
+//
+// @return UpdateHttpsBasicConfigurationResponse
+func (client *Client) UpdateHttpsBasicConfiguration(request *UpdateHttpsBasicConfigurationRequest) (_result *UpdateHttpsBasicConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHttpsBasicConfigurationResponse{}
+	_body, _err := client.UpdateHttpsBasicConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点IPv6配置
+//
+// @param request - UpdateIPv6Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIPv6Response
+func (client *Client) UpdateIPv6WithOptions(request *UpdateIPv6Request, runtime *util.RuntimeOptions) (_result *UpdateIPv6Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIPv6"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateIPv6Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateIPv6Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点IPv6配置
+//
+// @param request - UpdateIPv6Request
+//
+// @return UpdateIPv6Response
+func (client *Client) UpdateIPv6(request *UpdateIPv6Request) (_result *UpdateIPv6Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIPv6Response{}
+	_body, _err := client.UpdateIPv6WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54638,13 +75421,24 @@ func (client *Client) UpdateKvNamespaceWithOptions(request *UpdateKvNamespaceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateKvNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateKvNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateKvNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54658,6 +75452,331 @@ func (client *Client) UpdateKvNamespace(request *UpdateKvNamespaceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateKvNamespaceResponse{}
 	_body, _err := client.UpdateKvNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a custom list.
+//
+// @param tmpReq - UpdateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateListResponse
+func (client *Client) UpdateListWithOptions(tmpReq *UpdateListRequest, runtime *util.RuntimeOptions) (_result *UpdateListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Items)) {
+		request.ItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Items, tea.String("Items"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemsShrink)) {
+		body["Items"] = request.ItemsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateList"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Updates a custom list.
+//
+// @param request - UpdateListRequest
+//
+// @return UpdateListResponse
+func (client *Client) UpdateList(request *UpdateListRequest) (_result *UpdateListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateListResponse{}
+	_body, _err := client.UpdateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改负载均衡器
+//
+// @param tmpReq - UpdateLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLoadBalancerResponse
+func (client *Client) UpdateLoadBalancerWithOptions(tmpReq *UpdateLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateLoadBalancerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AdaptiveRouting)) {
+		request.AdaptiveRoutingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdaptiveRouting, tea.String("AdaptiveRouting"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultPools)) {
+		request.DefaultPoolsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultPools, tea.String("DefaultPools"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Monitor)) {
+		request.MonitorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Monitor, tea.String("Monitor"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RandomSteering)) {
+		request.RandomSteeringShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RandomSteering, tea.String("RandomSteering"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SessionAffinityAttributes)) {
+		request.SessionAffinityAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionAffinityAttributes, tea.String("SessionAffinityAttributes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdaptiveRoutingShrink)) {
+		query["AdaptiveRouting"] = request.AdaptiveRoutingShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultPoolsShrink)) {
+		query["DefaultPools"] = request.DefaultPoolsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackPool)) {
+		query["FallbackPool"] = request.FallbackPool
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorShrink)) {
+		query["Monitor"] = request.MonitorShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RandomSteeringShrink)) {
+		query["RandomSteering"] = request.RandomSteeringShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionPools)) {
+		query["RegionPools"] = request.RegionPools
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		query["Rules"] = request.RulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionAffinity)) {
+		query["SessionAffinity"] = request.SessionAffinity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionAffinityAttributesShrink)) {
+		query["SessionAffinityAttributes"] = request.SessionAffinityAttributesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SteeringPolicy)) {
+		query["SteeringPolicy"] = request.SteeringPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubRegionPools)) {
+		query["SubRegionPools"] = request.SubRegionPools
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		query["Ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLoadBalancer"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改负载均衡器
+//
+// @param request - UpdateLoadBalancerRequest
+//
+// @return UpdateLoadBalancerResponse
+func (client *Client) UpdateLoadBalancer(request *UpdateLoadBalancerRequest) (_result *UpdateLoadBalancerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLoadBalancerResponse{}
+	_body, _err := client.UpdateLoadBalancerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点托管转换配置
+//
+// @param request - UpdateManagedTransformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateManagedTransformResponse
+func (client *Client) UpdateManagedTransformWithOptions(request *UpdateManagedTransformRequest, runtime *util.RuntimeOptions) (_result *UpdateManagedTransformResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddClientGeolocationHeader)) {
+		query["AddClientGeolocationHeader"] = request.AddClientGeolocationHeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddRealClientIpHeader)) {
+		query["AddRealClientIpHeader"] = request.AddRealClientIpHeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateManagedTransform"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateManagedTransformResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateManagedTransformResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点托管转换配置
+//
+// @param request - UpdateManagedTransformRequest
+//
+// @return UpdateManagedTransformResponse
+func (client *Client) UpdateManagedTransform(request *UpdateManagedTransformRequest) (_result *UpdateManagedTransformResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateManagedTransformResponse{}
+	_body, _err := client.UpdateManagedTransformWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54716,13 +75835,24 @@ func (client *Client) UpdateOriginPoolWithOptions(tmpReq *UpdateOriginPoolReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateOriginPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateOriginPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateOriginPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54780,13 +75910,24 @@ func (client *Client) UpdateOriginProtectionWithOptions(request *UpdateOriginPro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateOriginProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateOriginProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateOriginProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54840,13 +75981,24 @@ func (client *Client) UpdateOriginProtectionIpWhiteListWithOptions(request *Upda
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateOriginProtectionIpWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateOriginProtectionIpWhiteListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateOriginProtectionIpWhiteListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54860,6 +76012,121 @@ func (client *Client) UpdateOriginProtectionIpWhiteList(request *UpdateOriginPro
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOriginProtectionIpWhiteListResponse{}
 	_body, _err := client.UpdateOriginProtectionIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点回源规则配置
+//
+// @param request - UpdateOriginRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOriginRuleResponse
+func (client *Client) UpdateOriginRuleWithOptions(request *UpdateOriginRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateOriginRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DnsRecord)) {
+		query["DnsRecord"] = request.DnsRecord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginHost)) {
+		query["OriginHost"] = request.OriginHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginHttpPort)) {
+		query["OriginHttpPort"] = request.OriginHttpPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginHttpsPort)) {
+		query["OriginHttpsPort"] = request.OriginHttpsPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginScheme)) {
+		query["OriginScheme"] = request.OriginScheme
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginSni)) {
+		query["OriginSni"] = request.OriginSni
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Range)) {
+		query["Range"] = request.Range
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOriginRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateOriginRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateOriginRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点回源规则配置
+//
+// @param request - UpdateOriginRuleRequest
+//
+// @return UpdateOriginRuleResponse
+func (client *Client) UpdateOriginRule(request *UpdateOriginRuleRequest) (_result *UpdateOriginRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateOriginRuleResponse{}
+	_body, _err := client.UpdateOriginRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54916,13 +76183,24 @@ func (client *Client) UpdatePageWithOptions(request *UpdatePageRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55034,13 +76312,24 @@ func (client *Client) UpdateRecordWithOptions(tmpReq *UpdateRecordRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55070,6 +76359,212 @@ func (client *Client) UpdateRecord(request *UpdateRecordRequest) (_result *Updat
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRecordResponse{}
 	_body, _err := client.UpdateRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新重定向规则
+//
+// @param request - UpdateRedirectRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRedirectRuleResponse
+func (client *Client) UpdateRedirectRuleWithOptions(request *UpdateRedirectRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateRedirectRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReserveQueryString)) {
+		query["ReserveQueryString"] = request.ReserveQueryString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusCode)) {
+		query["StatusCode"] = request.StatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUrl)) {
+		query["TargetUrl"] = request.TargetUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRedirectRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRedirectRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRedirectRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新重定向规则
+//
+// @param request - UpdateRedirectRuleRequest
+//
+// @return UpdateRedirectRuleResponse
+func (client *Client) UpdateRedirectRule(request *UpdateRedirectRuleRequest) (_result *UpdateRedirectRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRedirectRuleResponse{}
+	_body, _err := client.UpdateRedirectRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改重写Url规则
+//
+// @param request - UpdateRewriteUrlRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRewriteUrlRuleResponse
+func (client *Client) UpdateRewriteUrlRuleWithOptions(request *UpdateRewriteUrlRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateRewriteUrlRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryString)) {
+		query["QueryString"] = request.QueryString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RewriteQueryStringType)) {
+		query["RewriteQueryStringType"] = request.RewriteQueryStringType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RewriteUriType)) {
+		query["RewriteUriType"] = request.RewriteUriType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		query["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRewriteUrlRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRewriteUrlRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRewriteUrlRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改重写Url规则
+//
+// @param request - UpdateRewriteUrlRuleRequest
+//
+// @return UpdateRewriteUrlRuleResponse
+func (client *Client) UpdateRewriteUrlRule(request *UpdateRewriteUrlRuleRequest) (_result *UpdateRewriteUrlRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRewriteUrlRuleResponse{}
+	_body, _err := client.UpdateRewriteUrlRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55128,13 +76623,24 @@ func (client *Client) UpdateScheduledPreloadExecutionWithOptions(request *Update
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateScheduledPreloadExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateScheduledPreloadExecutionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateScheduledPreloadExecutionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55148,6 +76654,81 @@ func (client *Client) UpdateScheduledPreloadExecution(request *UpdateScheduledPr
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateScheduledPreloadExecutionResponse{}
 	_body, _err := client.UpdateScheduledPreloadExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点放行搜索引擎爬虫配置
+//
+// @param request - UpdateSeoBypassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSeoBypassResponse
+func (client *Client) UpdateSeoBypassWithOptions(request *UpdateSeoBypassRequest, runtime *util.RuntimeOptions) (_result *UpdateSeoBypassResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSeoBypass"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSeoBypassResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSeoBypassResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点放行搜索引擎爬虫配置
+//
+// @param request - UpdateSeoBypassRequest
+//
+// @return UpdateSeoBypassResponse
+func (client *Client) UpdateSeoBypass(request *UpdateSeoBypassRequest) (_result *UpdateSeoBypassResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSeoBypassResponse{}
+	_body, _err := client.UpdateSeoBypassWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55200,13 +76781,24 @@ func (client *Client) UpdateSiteAccessTypeWithOptions(request *UpdateSiteAccessT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSiteAccessTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSiteAccessTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSiteAccessTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55272,13 +76864,24 @@ func (client *Client) UpdateSiteCoverageWithOptions(request *UpdateSiteCoverageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSiteCoverageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSiteCoverageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSiteCoverageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55358,13 +76961,24 @@ func (client *Client) UpdateSiteCustomLogWithOptions(tmpReq *UpdateSiteCustomLog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSiteCustomLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSiteCustomLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSiteCustomLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55434,13 +77048,24 @@ func (client *Client) UpdateSiteDeliveryTaskWithOptions(request *UpdateSiteDeliv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSiteDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSiteDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSiteDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55490,13 +77115,24 @@ func (client *Client) UpdateSiteDeliveryTaskStatusWithOptions(request *UpdateSit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSiteDeliveryTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSiteDeliveryTaskStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSiteDeliveryTaskStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55510,6 +77146,81 @@ func (client *Client) UpdateSiteDeliveryTaskStatus(request *UpdateSiteDeliveryTa
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSiteDeliveryTaskStatusResponse{}
 	_body, _err := client.UpdateSiteDeliveryTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点名称独占配置
+//
+// @param request - UpdateSiteNameExclusiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSiteNameExclusiveResponse
+func (client *Client) UpdateSiteNameExclusiveWithOptions(request *UpdateSiteNameExclusiveRequest, runtime *util.RuntimeOptions) (_result *UpdateSiteNameExclusiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSiteNameExclusive"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSiteNameExclusiveResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSiteNameExclusiveResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点名称独占配置
+//
+// @param request - UpdateSiteNameExclusiveRequest
+//
+// @return UpdateSiteNameExclusiveResponse
+func (client *Client) UpdateSiteNameExclusive(request *UpdateSiteNameExclusiveRequest) (_result *UpdateSiteNameExclusiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSiteNameExclusiveResponse{}
+	_body, _err := client.UpdateSiteNameExclusiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55554,13 +77265,24 @@ func (client *Client) UpdateSiteVanityNSWithOptions(request *UpdateSiteVanityNSR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSiteVanityNSResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSiteVanityNSResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSiteVanityNSResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55574,6 +77296,81 @@ func (client *Client) UpdateSiteVanityNS(request *UpdateSiteVanityNSRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSiteVanityNSResponse{}
 	_body, _err := client.UpdateSiteVanityNSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点多级缓存配置
+//
+// @param request - UpdateTieredCacheRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTieredCacheResponse
+func (client *Client) UpdateTieredCacheWithOptions(request *UpdateTieredCacheRequest, runtime *util.RuntimeOptions) (_result *UpdateTieredCacheResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheArchitectureMode)) {
+		query["CacheArchitectureMode"] = request.CacheArchitectureMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTieredCache"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTieredCacheResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTieredCacheResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点多级缓存配置
+//
+// @param request - UpdateTieredCacheRequest
+//
+// @return UpdateTieredCacheResponse
+func (client *Client) UpdateTieredCache(request *UpdateTieredCacheRequest) (_result *UpdateTieredCacheResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTieredCacheResponse{}
+	_body, _err := client.UpdateTieredCacheWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55630,13 +77427,24 @@ func (client *Client) UpdateUserDeliveryTaskWithOptions(request *UpdateUserDeliv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateUserDeliveryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateUserDeliveryTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateUserDeliveryTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55692,13 +77500,24 @@ func (client *Client) UpdateUserDeliveryTaskStatusWithOptions(request *UpdateUse
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateUserDeliveryTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateUserDeliveryTaskStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateUserDeliveryTaskStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55832,13 +77651,24 @@ func (client *Client) UpdateWaitingRoomWithOptions(tmpReq *UpdateWaitingRoomRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateWaitingRoomResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWaitingRoomResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWaitingRoomResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55968,13 +77798,24 @@ func (client *Client) UpdateWaitingRoomEventWithOptions(request *UpdateWaitingRo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateWaitingRoomEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWaitingRoomEventResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWaitingRoomEventResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56048,13 +77889,24 @@ func (client *Client) UpdateWaitingRoomRuleWithOptions(request *UpdateWaitingRoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateWaitingRoomRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWaitingRoomRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWaitingRoomRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56122,13 +77974,24 @@ func (client *Client) UploadClientCaCertificateWithOptions(request *UploadClient
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadClientCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadClientCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadClientCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56200,13 +78063,24 @@ func (client *Client) UploadFileWithOptions(request *UploadFileRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56383,13 +78257,24 @@ func (client *Client) VerifySiteWithOptions(request *VerifySiteRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VerifySiteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VerifySiteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VerifySiteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
