@@ -194,6 +194,7 @@ type GetOrderInfoResponseBodyData struct {
 	CurrentConcurrency *int32  `json:"currentConcurrency,omitempty" xml:"currentConcurrency,omitempty"`
 	CurrentDays        *int32  `json:"currentDays,omitempty" xml:"currentDays,omitempty"`
 	InstanceId         *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	IsReleased         *bool   `json:"isReleased,omitempty" xml:"isReleased,omitempty"`
 	LicenseKey         *string `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
 	Remark             *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	TotalDays          *int32  `json:"totalDays,omitempty" xml:"totalDays,omitempty"`
@@ -224,6 +225,11 @@ func (s *GetOrderInfoResponseBodyData) SetCurrentDays(v int32) *GetOrderInfoResp
 
 func (s *GetOrderInfoResponseBodyData) SetInstanceId(v string) *GetOrderInfoResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetOrderInfoResponseBodyData) SetIsReleased(v bool) *GetOrderInfoResponseBodyData {
+	s.IsReleased = &v
 	return s
 }
 
@@ -458,13 +464,24 @@ func (client *Client) GetOpenStatusWithOptions(runtime *util.RuntimeOptions) (_r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOpenStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOpenStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOpenStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @return GetOpenStatusResponse
@@ -479,6 +496,10 @@ func (client *Client) GetOpenStatus() (_result *GetOpenStatusResponse, _err erro
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取在线license列表
+//
 // @param request - GetOrderInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -516,15 +537,30 @@ func (client *Client) GetOrderInfoWithOptions(request *GetOrderInfoRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOrderInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOrderInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOrderInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 获取在线license列表
+//
 // @param request - GetOrderInfoRequest
 //
 // @return GetOrderInfoResponse
@@ -580,13 +616,24 @@ func (client *Client) GetOrderUsageWithOptions(request *GetOrderUsageRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOrderUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOrderUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOrderUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetOrderUsageRequest
