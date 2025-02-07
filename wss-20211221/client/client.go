@@ -2,7 +2,6 @@
 package client
 
 import (
-	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -256,6 +255,7 @@ func (s *DescribeDeliveryAddressResponse) SetBody(v *DescribeDeliveryAddressResp
 }
 
 type DescribePackageDeductionsRequest struct {
+	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	PackageIds  []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
 	// example:
@@ -272,6 +272,7 @@ type DescribePackageDeductionsRequest struct {
 	//
 	// CorePackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribePackageDeductionsRequest) String() string {
@@ -280,6 +281,11 @@ func (s DescribePackageDeductionsRequest) String() string {
 
 func (s DescribePackageDeductionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePackageDeductionsRequest) SetEndTime(v int64) *DescribePackageDeductionsRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *DescribePackageDeductionsRequest) SetInstanceIds(v []*string) *DescribePackageDeductionsRequest {
@@ -307,6 +313,11 @@ func (s *DescribePackageDeductionsRequest) SetResourceType(v string) *DescribePa
 	return s
 }
 
+func (s *DescribePackageDeductionsRequest) SetStartTime(v int64) *DescribePackageDeductionsRequest {
+	s.StartTime = &v
+	return s
+}
+
 type DescribePackageDeductionsResponseBody struct {
 	Deductions []*DescribePackageDeductionsResponseBodyDeductions `json:"Deductions,omitempty" xml:"Deductions,omitempty" type:"Repeated"`
 	// example:
@@ -324,7 +335,9 @@ type DescribePackageDeductionsResponseBody struct {
 	// example:
 	//
 	// 100
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount        *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalUsedCoreTime *float32 `json:"TotalUsedCoreTime,omitempty" xml:"TotalUsedCoreTime,omitempty"`
+	TotalUsedTime     *int64   `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
 }
 
 func (s DescribePackageDeductionsResponseBody) String() string {
@@ -357,6 +370,16 @@ func (s *DescribePackageDeductionsResponseBody) SetRequestId(v string) *Describe
 
 func (s *DescribePackageDeductionsResponseBody) SetTotalCount(v int64) *DescribePackageDeductionsResponseBody {
 	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBody) SetTotalUsedCoreTime(v float32) *DescribePackageDeductionsResponseBody {
+	s.TotalUsedCoreTime = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBody) SetTotalUsedTime(v int64) *DescribePackageDeductionsResponseBody {
+	s.TotalUsedTime = &v
 	return s
 }
 
@@ -514,6 +537,110 @@ func (s *DescribePackageDeductionsResponse) SetBody(v *DescribePackageDeductions
 	return s
 }
 
+type ModifyInstancePropertiesRequest struct {
+	// example:
+	//
+	// mdp-0c62ayep0nk4v****
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PackageUsedUpStrategy
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DurationPackage
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// Postpaid
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyInstancePropertiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstancePropertiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstancePropertiesRequest) SetInstanceId(v string) *ModifyInstancePropertiesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstancePropertiesRequest) SetInstanceIds(v []*string) *ModifyInstancePropertiesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ModifyInstancePropertiesRequest) SetKey(v string) *ModifyInstancePropertiesRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyInstancePropertiesRequest) SetResourceType(v string) *ModifyInstancePropertiesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ModifyInstancePropertiesRequest) SetValue(v string) *ModifyInstancePropertiesRequest {
+	s.Value = &v
+	return s
+}
+
+type ModifyInstancePropertiesResponseBody struct {
+	// example:
+	//
+	// 833C4D2C-09C7-5CE6-8159-06758B964970
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstancePropertiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstancePropertiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstancePropertiesResponseBody) SetRequestId(v string) *ModifyInstancePropertiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstancePropertiesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstancePropertiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstancePropertiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstancePropertiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstancePropertiesResponse) SetHeaders(v map[string]*string) *ModifyInstancePropertiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstancePropertiesResponse) SetStatusCode(v int32) *ModifyInstancePropertiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstancePropertiesResponse) SetBody(v *ModifyInstancePropertiesResponseBody) *ModifyInstancePropertiesResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -529,13 +656,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.ProductId = tea.String("wss")
-	gatewayClient, _err := gatewayclient.NewClient()
-	if _err != nil {
-		return _err
-	}
-
-	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -633,6 +753,10 @@ func (client *Client) DescribePackageDeductionsWithOptions(request *DescribePack
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -651,6 +775,10 @@ func (client *Client) DescribePackageDeductionsWithOptions(request *DescribePack
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -698,6 +826,85 @@ func (client *Client) DescribePackageDeductions(request *DescribePackageDeductio
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePackageDeductionsResponse{}
 	_body, _err := client.DescribePackageDeductionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyInstancePropertiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstancePropertiesResponse
+func (client *Client) ModifyInstancePropertiesWithOptions(request *ModifyInstancePropertiesRequest, runtime *util.RuntimeOptions) (_result *ModifyInstancePropertiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceProperties"),
+		Version:     tea.String("2021-12-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstancePropertiesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstancePropertiesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - ModifyInstancePropertiesRequest
+//
+// @return ModifyInstancePropertiesResponse
+func (client *Client) ModifyInstanceProperties(request *ModifyInstancePropertiesRequest) (_result *ModifyInstancePropertiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstancePropertiesResponse{}
+	_body, _err := client.ModifyInstancePropertiesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
