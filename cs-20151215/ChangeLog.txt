@@ -1,3 +1,6 @@
+2025-02-07 Version: v5.8.9
+- Generated golang 2015-12-15 for CS.
+
 2025-01-15 Version: v5.8.8
 - Update API CreateAutoscalingConfig: update param body.
 
