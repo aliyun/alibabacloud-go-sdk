@@ -703,7 +703,7 @@ func (s *ChangePasswordRequest) SetOldPassword(v string) *ChangePasswordRequest 
 }
 
 type ChangePasswordResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -778,9 +778,9 @@ func (s *CreateAccessKeyRequest) SetUserPrincipalName(v string) *CreateAccessKey
 }
 
 type CreateAccessKeyResponseBody struct {
-	// The information of the AccessKey pair.
+	// The information about the AccessKey pair.
 	AccessKey *CreateAccessKeyResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -807,13 +807,13 @@ func (s *CreateAccessKeyResponseBody) SetRequestId(v string) *CreateAccessKeyRes
 }
 
 type CreateAccessKeyResponseBodyAccessKey struct {
-	// The AccessKey ID provided to you by Alibaba Cloud.
+	// The AccessKey ID.
 	//
 	// example:
 	//
 	// LTAI4G3HaMmeHpay2gcq****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The AccessKey secret provided to you by Alibaba Cloud.
+	// The AccessKey secret.
 	//
 	// example:
 	//
@@ -1086,7 +1086,7 @@ type CreateApplicationRequest struct {
 	IsMultiTenant *bool `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
 	// The scope of application permissions.
 	//
-	// For more information about the application permission scope, see [Open authorization scope](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to obtain the permission scopes supported by different types of applications.
+	// For more information about the application permission scope, see [Open authorization scope](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to query the permissions that are supported by different types of applications.
 	//
 	// If you enter multiple permission scopes, separate them with semicolons (;).
 	//
@@ -1120,9 +1120,9 @@ type CreateApplicationRequest struct {
 	//
 	// You can specify one or more permissions for the `RequiredScopes` parameter. After you specify this parameter, the required permissions are automatically selected and cannot be revoked when a user grants permissions on the application.
 	//
-	// If you enter multiple permissions, separate them with semicolons (;).
+	// If you enter multiple permission scopes, separate them with semicolons (;).
 	//
-	// >  If the permission that you specify for the `RequiredScopes` parameter is not included in value of the `PredefinedScopes` parameter, the permission does not take effect.
+	// >  If the permission that you specify for the `RequiredScopes` parameter is not included in the value of the `PredefinedScopes` parameter, the permission does not take effect.
 	//
 	// example:
 	//
@@ -1511,7 +1511,7 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 type CreateGroupRequest struct {
 	// The description.
 	//
-	// The value can be up to 128 characters in length.
+	// The description can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -1559,9 +1559,9 @@ func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
 }
 
 type CreateGroupResponseBody struct {
-	// The information of the RAM user group.
+	// The information about the RAM user group.
 	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -1694,17 +1694,17 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 }
 
 type CreateLoginProfileRequest struct {
-	// Specifies whether multi-factor authentication (MFA) must be enabled. Valid values:
+	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
 	//
-	// 	- true: MFA must be enabled. The RAM user must bind an MFA device at the next logon.
+	// 	- true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
 	//
-	// 	- false: MFA is not enabled. This is the default value.
+	// 	- false (default): does not forcefully enable MFA for the RAM user.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// The password that is used to log on to the console.
+	// The password that the RAM user uses to log on to the console.
 	//
 	// The password must meet the complexity requirements.
 	//
@@ -1712,17 +1712,17 @@ type CreateLoginProfileRequest struct {
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user must reset the password at the next logon. Default value: false. Valid values:
+	// Specifies whether the RAM user is required to reset the password upon the next logon. Valid values:
 	//
 	// 	- true
 	//
-	// 	- false
+	// 	- false (default)
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The status of password-based logon. Valid values:
+	// Specifies whether to enable password-based logons to the console. Valid values:
 	//
 	// 	- Active: Password-based logon is enabled. This is the default value.
 	//
@@ -1778,7 +1778,7 @@ func (s *CreateLoginProfileRequest) SetUserPrincipalName(v string) *CreateLoginP
 type CreateLoginProfileResponseBody struct {
 	// The logon information.
 	LoginProfile *CreateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -1805,19 +1805,19 @@ func (s *CreateLoginProfileResponseBody) SetRequestId(v string) *CreateLoginProf
 }
 
 type CreateLoginProfileResponseBodyLoginProfile struct {
-	// Indicates whether MFA must be enabled.
+	// Indicates whether to forcefully enable MFA for the RAM user.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// Indicates whether the RAM user must reset the password at the next logon.
+	// Indicates whether the RAM user is required to reset the password upon the next logon.
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The status of password-based logon.
+	// Indicates whether to enable password-based logons to the console.
 	//
 	// example:
 	//
@@ -2191,9 +2191,9 @@ type CreateSAMLProviderRequest struct {
 	//
 	// This is a provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata file, which is Base64 encoded.
+	// The metadata file which is Base64-encoded.
 	//
-	// The file is provided by an IdP that supports SAML 2.0.
+	// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 	//
 	// example:
 	//
@@ -2201,7 +2201,7 @@ type CreateSAMLProviderRequest struct {
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
 	// The name of the IdP.
 	//
-	// The value can be up to 128 characters in length. The name can contain letters, digits,`  periods (.), hyphens (-), and underscores (_) `. The name cannot start or end with`  periods (.), hyphens (-), or underscores (_) `.
+	// The name can be up to 128 characters in length. The name can contain letters, digits, `periods (.), hyphens (-), and underscores (_)`. The name cannot start or end with `periods (.), hyphens (-), or underscores (_)`.
 	//
 	// This parameter is required.
 	//
@@ -2235,13 +2235,13 @@ func (s *CreateSAMLProviderRequest) SetSAMLProviderName(v string) *CreateSAMLPro
 }
 
 type CreateSAMLProviderResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A95A763D-F6B7-5242-83EB-AB45CE67F358
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the IdP.
+	// The information about the IdP.
 	SAMLProvider *CreateSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -2270,7 +2270,7 @@ type CreateSAMLProviderResponseBodySAMLProvider struct {
 	//
 	// acs:ram::177242285274****:saml-provider/test-provider
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -2288,7 +2288,7 @@ type CreateSAMLProviderResponseBodySAMLProvider struct {
 	//
 	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The update time.
+	// The update time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -2395,15 +2395,13 @@ type CreateUserRequest struct {
 	//
 	// 86-1868888****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The tag value.
-	//
-	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+	// The tags. You can specify up to 20 tags.
 	Tag []*CreateUserRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The logon name of the RAM user.
+	// The logon name of the Resource Access Management (RAM) user.
 	//
-	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to obtain the default domain name, see [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html).
+	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to query the default domain name, see [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html).
 	//
-	// The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be 1 to 64 characters in length.
+	// The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
 	//
 	// This parameter is required.
 	//
@@ -2452,17 +2450,17 @@ func (s *CreateUserRequest) SetUserPrincipalName(v string) *CreateUserRequest {
 }
 
 type CreateUserRequestTag struct {
-	// The key of tag N.
+	// The key of the tag.
 	//
-	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// operator
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The value of the tag.
 	//
-	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+	// The tag value can be an empty string. The tag value can be up to 128 characters in length. The tag value cannot start with `acs:` or contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -2761,13 +2759,13 @@ func (s *CreateVirtualMFADeviceRequest) SetVirtualMFADeviceName(v string) *Creat
 }
 
 type CreateVirtualMFADeviceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C609CC97-10FE-43EB-BE32-BDC219D8F1E4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the MFA device.
+	// The information about the MFA device.
 	VirtualMFADevice *CreateVirtualMFADeviceResponseBodyVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Struct"`
 }
 
@@ -2900,7 +2898,7 @@ func (s *DeleteAccessKeyRequest) SetUserPrincipalName(v string) *DeleteAccessKey
 }
 
 type DeleteAccessKeyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2988,7 +2986,7 @@ func (s *DeleteAppSecretRequest) SetAppSecretId(v string) *DeleteAppSecretReques
 }
 
 type DeleteAppSecretResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3063,7 +3061,7 @@ func (s *DeleteApplicationRequest) SetAppId(v string) *DeleteApplicationRequest 
 }
 
 type DeleteApplicationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3136,7 +3134,7 @@ func (s *DeleteGroupRequest) SetGroupName(v string) *DeleteGroupRequest {
 }
 
 type DeleteGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3211,7 +3209,7 @@ func (s *DeleteLoginProfileRequest) SetUserPrincipalName(v string) *DeleteLoginP
 }
 
 type DeleteLoginProfileResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3334,6 +3332,84 @@ func (s *DeleteOIDCProviderResponse) SetBody(v *DeleteOIDCProviderResponseBody) 
 	return s
 }
 
+type DeletePasskeyRequest struct {
+	// example:
+	//
+	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
+	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s DeletePasskeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePasskeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePasskeyRequest) SetPasskeyId(v string) *DeletePasskeyRequest {
+	s.PasskeyId = &v
+	return s
+}
+
+func (s *DeletePasskeyRequest) SetUserPrincipalName(v string) *DeletePasskeyRequest {
+	s.UserPrincipalName = &v
+	return s
+}
+
+type DeletePasskeyResponseBody struct {
+	// example:
+	//
+	// 8A1673AA-5DB3-5AFB-8758-AF9EC2889259
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePasskeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePasskeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePasskeyResponseBody) SetRequestId(v string) *DeletePasskeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePasskeyResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePasskeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePasskeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePasskeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePasskeyResponse) SetHeaders(v map[string]*string) *DeletePasskeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePasskeyResponse) SetStatusCode(v int32) *DeletePasskeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePasskeyResponse) SetBody(v *DeletePasskeyResponseBody) *DeletePasskeyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSAMLProviderRequest struct {
 	// The name of the IdP that you want to delete.
 	//
@@ -3359,7 +3435,7 @@ func (s *DeleteSAMLProviderRequest) SetSAMLProviderName(v string) *DeleteSAMLPro
 }
 
 type DeleteSAMLProviderResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3447,7 +3523,7 @@ func (s *DeleteUserRequest) SetUserPrincipalName(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3522,7 +3598,7 @@ func (s *DeleteVirtualMFADeviceRequest) SetSerialNumber(v string) *DeleteVirtual
 }
 
 type DeleteVirtualMFADeviceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3597,7 +3673,7 @@ func (s *DisableVirtualMFARequest) SetUserPrincipalName(v string) *DisableVirtua
 }
 
 type DisableVirtualMFAResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3648,7 +3724,7 @@ func (s *DisableVirtualMFAResponse) SetBody(v *DisableVirtualMFAResponseBody) *D
 }
 
 type GenerateCredentialReportResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3656,7 +3732,7 @@ type GenerateCredentialReportResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The generation status of the user credential report. Valid values:
 	//
-	// 	- STARTED: The user credential report starts to generate.
+	// 	- STARTED: The system starts to generate the user 
 	//
 	// 	- INPROGRESS: The user credential report is being generated.
 	//
@@ -3844,7 +3920,7 @@ func (s *GetAccessKeyLastUsedResponse) SetBody(v *GetAccessKeyLastUsedResponseBo
 }
 
 type GetAccountMFAInfoResponseBody struct {
-	// Indicates whether MFA is enabled. Valid values:
+	// Indicates whether MFA devices are enabled. Valid values:
 	//
 	// 	- true
 	//
@@ -3854,7 +3930,7 @@ type GetAccountMFAInfoResponseBody struct {
 	//
 	// false
 	IsMFAEnable *bool `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3910,9 +3986,9 @@ func (s *GetAccountMFAInfoResponse) SetBody(v *GetAccountMFAInfoResponseBody) *G
 }
 
 type GetAccountSecurityPracticeReportResponseBody struct {
-	// The information of the security report for the Alibaba Cloud account.
+	// The information about the security report for the Alibaba Cloud account.
 	AccountSecurityPracticeInfo *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo `json:"AccountSecurityPracticeInfo,omitempty" xml:"AccountSecurityPracticeInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3939,7 +4015,7 @@ func (s *GetAccountSecurityPracticeReportResponseBody) SetRequestId(v string) *G
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo struct {
-	// The information of the security report for the Alibaba Cloud account.
+	// The information about the security report for the Alibaba Cloud account.
 	AccountSecurityPracticeUserInfo *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo `json:"AccountSecurityPracticeUserInfo,omitempty" xml:"AccountSecurityPracticeUserInfo,omitempty" type:"Struct"`
 	// The security score of the Alibaba Cloud account.
 	//
@@ -3968,7 +4044,7 @@ func (s *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo struct {
-	// Indicates whether MFA is enabled. Valid values:
+	// Indicates whether multi-factor authentication (MFA) is enabled. Valid values:
 	//
 	// 	- true
 	//
@@ -4020,7 +4096,7 @@ type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAcco
 	//
 	// 0
 	SubUserWithOldAccessKey *int32 `json:"SubUserWithOldAccessKey,omitempty" xml:"SubUserWithOldAccessKey,omitempty"`
-	// The number of RAM users that have no AccessKey pairs.
+	// The number of Resource Access Management (RAM) users that have unused AccessKey pairs.
 	//
 	// example:
 	//
@@ -4117,7 +4193,7 @@ func (s *GetAccountSecurityPracticeReportResponse) SetBody(v *GetAccountSecurity
 }
 
 type GetAccountSummaryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -4146,7 +4222,7 @@ func (s *GetAccountSummaryResponseBody) SetSummaryMap(v *GetAccountSummaryRespon
 }
 
 type GetAccountSummaryResponseBodySummaryMap struct {
-	// The maximum number of AccessKey pairs that a RAM user can have.
+	// The maximum number of AccessKey pairs that a Resource Access Management (RAM) user can have.
 	//
 	// example:
 	//
@@ -4188,7 +4264,10 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 20
 	AttachedSystemPoliciesPerUserQuota *int32 `json:"AttachedSystemPoliciesPerUserQuota,omitempty" xml:"AttachedSystemPoliciesPerUserQuota,omitempty"`
-	ConditionsPerAKPolicyQuota         *int32 `json:"ConditionsPerAKPolicyQuota,omitempty" xml:"ConditionsPerAKPolicyQuota,omitempty"`
+	// example:
+	//
+	// 8
+	ConditionsPerAKPolicyQuota *int32 `json:"ConditionsPerAKPolicyQuota,omitempty" xml:"ConditionsPerAKPolicyQuota,omitempty"`
 	// The number of RAM user groups.
 	//
 	// example:
@@ -4206,7 +4285,10 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	// example:
 	//
 	// 50
-	GroupsQuota             *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
+	GroupsQuota *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
+	// example:
+	//
+	// 50
 	IPItemsPerAKPolicyQuota *int32 `json:"IPItemsPerAKPolicyQuota,omitempty" xml:"IPItemsPerAKPolicyQuota,omitempty"`
 	// The number of virtual multi-factor authentication (MFA) devices.
 	//
@@ -4950,7 +5032,7 @@ func (s *GetCredentialReportRequest) SetNextToken(v string) *GetCredentialReport
 }
 
 type GetCredentialReportResponseBody struct {
-	// The content of the user 
+	// The content of the user credential report.
 	//
 	// The report is Base64-encoded. After you decode the report, the credential report is in the CSV format.
 	//
@@ -5323,6 +5405,9 @@ func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileRes
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
+	// example:
+	//
+	// true
 	AutoDisableLoginStatus *string `json:"AutoDisableLoginStatus,omitempty" xml:"AutoDisableLoginStatus,omitempty"`
 	// The time of the most recent logon. The time is displayed in UTC.
 	//
@@ -6242,8 +6327,14 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays struct {
+	// example:
+	//
+	// 730
 	MaxIdleDaysForAccessKeys *int32 `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
-	MaxIdleDaysForUsers      *int32 `json:"MaxIdleDaysForUsers,omitempty" xml:"MaxIdleDaysForUsers,omitempty"`
+	// example:
+	//
+	// 730
+	MaxIdleDaysForUsers *int32 `json:"MaxIdleDaysForUsers,omitempty" xml:"MaxIdleDaysForUsers,omitempty"`
 }
 
 func (s GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) String() string {
@@ -6774,7 +6865,7 @@ func (s *GetUserMFAInfoResponse) SetBody(v *GetUserMFAInfoResponseBody) *GetUser
 }
 
 type GetUserSsoSettingsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6820,7 +6911,18 @@ type GetUserSsoSettingsResponseBodyUserSsoSettings struct {
 	// example:
 	//
 	// false
-	SsoEnabled         *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	// Indicates whether the Security Assertion Markup Language (SAML) SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the identity provider (IdP) for SSO must have a domain name as the suffix.
+	//
+	// 	- If the value of the parameter is `true`, the `<saml:NameID>` element **must*	- be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
+	//
+	// 	- If the value of the parameter is `false`, the `<saml:NameID>` element **must*	- be in the `username` format and **cannot*	- contain the `domain` suffix.
+	//
+	// The default value is `true`.
+	//
+	// example:
+	//
+	// true
 	SsoLoginWithDomain *bool `json:"SsoLoginWithDomain,omitempty" xml:"SsoLoginWithDomain,omitempty"`
 }
 
@@ -6882,6 +6984,8 @@ func (s *GetUserSsoSettingsResponse) SetBody(v *GetUserSsoSettingsResponseBody) 
 }
 
 type GetVerificationInfoRequest struct {
+	// The logon name of the RAM user.
+	//
 	// example:
 	//
 	// test@example.onaliyun.com
@@ -6902,11 +7006,15 @@ func (s *GetVerificationInfoRequest) SetUserPrincipalName(v string) *GetVerifica
 }
 
 type GetVerificationInfoResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
-	RequestId           *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the email.
 	SecurityEmailDevice *GetVerificationInfoResponseBodySecurityEmailDevice `json:"SecurityEmailDevice,omitempty" xml:"SecurityEmailDevice,omitempty" type:"Struct"`
+	// The information about the mobile phone.
 	SecurityPhoneDevice *GetVerificationInfoResponseBodySecurityPhoneDevice `json:"SecurityPhoneDevice,omitempty" xml:"SecurityPhoneDevice,omitempty" type:"Struct"`
 }
 
@@ -6934,10 +7042,18 @@ func (s *GetVerificationInfoResponseBody) SetSecurityPhoneDevice(v *GetVerificat
 }
 
 type GetVerificationInfoResponseBodySecurityEmailDevice struct {
+	// The email address.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The status of the email. Valid values:
+	//
+	// 	- active: The email is activated.
+	//
+	// 	- pending: The email is pending for activation.
+	//
 	// example:
 	//
 	// active
@@ -6963,14 +7079,24 @@ func (s *GetVerificationInfoResponseBodySecurityEmailDevice) SetStatus(v string)
 }
 
 type GetVerificationInfoResponseBodySecurityPhoneDevice struct {
+	// The international dialing code.
+	//
 	// example:
 	//
 	// 86
 	AreaCode *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
+	// The mobile phone number.
+	//
 	// example:
 	//
 	// 13900001234
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The status of the mobile phone. Valid values:
+	//
+	// 	- active: The mobile phone is activated.
+	//
+	// 	- pending: The mobile phone is pending for activation.
+	//
 	// example:
 	//
 	// active
@@ -7214,7 +7340,7 @@ func (s *ListAppSecretIdsRequest) SetAppId(v string) *ListAppSecretIdsRequest {
 type ListAppSecretIdsResponseBody struct {
 	// The details of the application secret.
 	AppSecrets *ListAppSecretIdsResponseBodyAppSecrets `json:"AppSecrets,omitempty" xml:"AppSecrets,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7695,13 +7821,13 @@ func (s *ListGroupsRequest) SetMaxItems(v int32) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	// The information of the RAM user groups.
+	// The information about the RAM user groups.
 	Groups *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// - true
+	// 	- true
 	//
-	// - false
+	// 	- false
 	//
 	// example:
 	//
@@ -7713,7 +7839,7 @@ type ListGroupsResponseBody struct {
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8305,6 +8431,128 @@ func (s *ListOIDCProvidersResponse) SetBody(v *ListOIDCProvidersResponseBody) *L
 	return s
 }
 
+type ListPasskeysRequest struct {
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s ListPasskeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPasskeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPasskeysRequest) SetUserPrincipalName(v string) *ListPasskeysRequest {
+	s.UserPrincipalName = &v
+	return s
+}
+
+type ListPasskeysResponseBody struct {
+	Passkeys []*ListPasskeysResponseBodyPasskeys `json:"Passkeys,omitempty" xml:"Passkeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPasskeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPasskeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPasskeysResponseBody) SetPasskeys(v []*ListPasskeysResponseBodyPasskeys) *ListPasskeysResponseBody {
+	s.Passkeys = v
+	return s
+}
+
+func (s *ListPasskeysResponseBody) SetRequestId(v string) *ListPasskeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPasskeysResponseBodyPasskeys struct {
+	// example:
+	//
+	// 1737450279
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// example:
+	//
+	// 1737450390
+	LastUseDate *string `json:"LastUseDate,omitempty" xml:"LastUseDate,omitempty"`
+	// example:
+	//
+	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
+	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// example:
+	//
+	// device1
+	PasskeyName *string `json:"PasskeyName,omitempty" xml:"PasskeyName,omitempty"`
+}
+
+func (s ListPasskeysResponseBodyPasskeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPasskeysResponseBodyPasskeys) GoString() string {
+	return s.String()
+}
+
+func (s *ListPasskeysResponseBodyPasskeys) SetCreateDate(v string) *ListPasskeysResponseBodyPasskeys {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListPasskeysResponseBodyPasskeys) SetLastUseDate(v string) *ListPasskeysResponseBodyPasskeys {
+	s.LastUseDate = &v
+	return s
+}
+
+func (s *ListPasskeysResponseBodyPasskeys) SetPasskeyId(v string) *ListPasskeysResponseBodyPasskeys {
+	s.PasskeyId = &v
+	return s
+}
+
+func (s *ListPasskeysResponseBodyPasskeys) SetPasskeyName(v string) *ListPasskeysResponseBodyPasskeys {
+	s.PasskeyName = &v
+	return s
+}
+
+type ListPasskeysResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPasskeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPasskeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPasskeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPasskeysResponse) SetHeaders(v map[string]*string) *ListPasskeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPasskeysResponse) SetStatusCode(v int32) *ListPasskeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPasskeysResponse) SetBody(v *ListPasskeysResponseBody) *ListPasskeysResponse {
+	s.Body = v
+	return s
+}
+
 type ListPredefinedScopesRequest struct {
 	// The type of the application. Valid values:
 	//
@@ -8336,9 +8584,9 @@ func (s *ListPredefinedScopesRequest) SetAppType(v string) *ListPredefinedScopes
 }
 
 type ListPredefinedScopesResponseBody struct {
-	// The information of application permissions.
+	// The information about application permissions.
 	PredefinedScopes *ListPredefinedScopesResponseBodyPredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8388,7 +8636,7 @@ type ListPredefinedScopesResponseBodyPredefinedScopesPredefinedScope struct {
 	//
 	// Obtain the OpenID of the user. This is the default permission that you cannot remove.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the scope.
+	// The name of the permission scope.
 	//
 	// example:
 	//
@@ -8489,19 +8737,19 @@ type ListSAMLProvidersResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2D8B70D3-E194-41C9-93C5-F6A10D716D24
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the IdP.
+	// The information about IdPs.
 	SAMLProviders *ListSAMLProvidersResponseBodySAMLProviders `json:"SAMLProviders,omitempty" xml:"SAMLProviders,omitempty" type:"Struct"`
 }
 
@@ -10453,7 +10701,7 @@ func (s *RemoveUserFromGroupRequest) SetUserPrincipalName(v string) *RemoveUserF
 }
 
 type RemoveUserFromGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -10506,11 +10754,11 @@ func (s *RemoveUserFromGroupResponse) SetBody(v *RemoveUserFromGroupResponseBody
 type SetDefaultDomainRequest struct {
 	// The default domain name.
 	//
-	// The name is in the format of `<AccountAlias>.onaliyun.com`. `<AccountAlias>` indicates the account alias. By default, the value of AccountAlias is the ID of the Alibaba Cloud account. The default domain name must end with `.onaliyun.com`.
+	// The default domain name is in the format of `<AccountAlias>.onaliyun.com`. `<AccountAlias>` indicates the account alias. By default, the value of AccountAlias is the ID of the Alibaba Cloud account. The default domain name must end with `.onaliyun.com`.
 	//
-	// The default domain name can contain up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The default domain name can contain up to 64 characters in length. The default domain name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
-	// >  The default domain name cannot start or end with a hyphen (-) and cannot have two consecutive hyphens (-).
+	// >  The default domain name cannot start or end with a hyphen (-) and cannot contain two consecutive hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -10540,7 +10788,7 @@ type SetDefaultDomainResponseBody struct {
 	//
 	// examplecompany.onaliyun.com
 	DefaultDomainName *string `json:"DefaultDomainName,omitempty" xml:"DefaultDomainName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -11498,8 +11746,14 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays struct {
+	// example:
+	//
+	// 730
 	MaxIdleDaysForAccessKeys *int32 `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
-	MaxIdleDaysForUsers      *int32 `json:"MaxIdleDaysForUsers,omitempty" xml:"MaxIdleDaysForUsers,omitempty"`
+	// example:
+	//
+	// 730
+	MaxIdleDaysForUsers *int32 `json:"MaxIdleDaysForUsers,omitempty" xml:"MaxIdleDaysForUsers,omitempty"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) String() string {
@@ -11598,22 +11852,33 @@ type SetUserSsoSettingsRequest struct {
 	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
 	// The metadata file, which is Base64-encoded.
 	//
-	// The file is provided by an IdP that supports SAML 2.0.
+	// The file is provided by an identity provider (IdP) that supports Security Assertion Markup Language (SAML) 2.0.
 	//
 	// example:
 	//
 	// PD94bWwgdmVy****
 	MetadataDocument *string `json:"MetadataDocument,omitempty" xml:"MetadataDocument,omitempty"`
-	// Specifies whether to enable SSO for the RAM user. Default value: false. Valid values:
+	// Specifies whether to enable SSO for the RAM user. Valid values:
 	//
 	// 	- true
 	//
-	// 	- false
+	// 	- false (default)
 	//
 	// example:
 	//
 	// true
-	SsoEnabled         *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	// Specifies whether the SAML SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the IdP for SSO must have a domain name as the suffix.
+	//
+	// 	- If the value of the parameter is `true`, the `<saml:NameID>` element **must*	- be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
+	//
+	// 	- If the value of the parameter is `false`, the `<saml:NameID>` element **must*	- be in the `username` format and **cannot*	- contain the `domain` suffix.
+	//
+	// Set the value to the default `true`.
+	//
+	// example:
+	//
+	// true
 	SsoLoginWithDomain *bool `json:"SsoLoginWithDomain,omitempty" xml:"SsoLoginWithDomain,omitempty"`
 }
 
@@ -11646,7 +11911,7 @@ func (s *SetUserSsoSettingsRequest) SetSsoLoginWithDomain(v bool) *SetUserSsoSet
 }
 
 type SetUserSsoSettingsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -11692,7 +11957,18 @@ type SetUserSsoSettingsResponseBodyUserSsoSettings struct {
 	// example:
 	//
 	// true
-	SsoEnabled         *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	// Indicates whether the SAML SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the IdP for SSO must have a domain name as the suffix.
+	//
+	// 	- If the value of the parameter is `true`, the `<saml:NameID>` element **must*	- be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
+	//
+	// 	- If the value of the parameter is `false`, the `<saml:NameID>` element **must*	- be in the `username` format and **cannot*	- contain the `domain` suffix.
+	//
+	// The default value is `true`.
+	//
+	// example:
+	//
+	// true
 	SsoLoginWithDomain *bool `json:"SsoLoginWithDomain,omitempty" xml:"SsoLoginWithDomain,omitempty"`
 }
 
@@ -11756,15 +12032,15 @@ func (s *SetUserSsoSettingsResponse) SetBody(v *SetUserSsoSettingsResponseBody) 
 type TagResourcesRequest struct {
 	// The ID of resource N.
 	//
-	// Valid values of N: 1 to 50. If ResourceType is set to user, the resource ID is the ID of the RAM user.
+	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource ID is the ID of the RAM user.
 	//
-	// > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
+	// >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The name of resource N.
 	//
-	// Valid values of N: 1 to 50. If ResourceType is set to user, the resource name is the name of the RAM user.
+	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource name is the name of the RAM user.
 	//
-	// > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
+	// >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
 	//
 	// example:
 	//
@@ -11772,13 +12048,15 @@ type TagResourcesRequest struct {
 	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
 	// The type of the resource. Valid value:
 	//
-	// 	- user: a RAM user
+	// 	- user: a Resource Access Management (RAM) user.
 	//
 	// example:
 	//
 	// user
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag value.
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with aliyun or acs: and cannot contain `http://` or `https://`.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -11813,7 +12091,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 type TagResourcesRequestTag struct {
 	// The key of tag N.
 	//
-	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -11821,7 +12099,7 @@ type TagResourcesRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
 	//
-	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be a up to128 characters in length and cannot contain `http://` or `https://`.
+	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -11848,7 +12126,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -11923,9 +12201,9 @@ func (s *UnbindMFADeviceRequest) SetUserPrincipalName(v string) *UnbindMFADevice
 }
 
 type UnbindMFADeviceResponseBody struct {
-	// The information of the MFA device.
+	// The information about the MFA device.
 	MFADevice *UnbindMFADeviceResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -12184,7 +12462,7 @@ func (s *UpdateAccessKeyRequest) SetUserPrincipalName(v string) *UpdateAccessKey
 }
 
 type UpdateAccessKeyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -12697,7 +12975,7 @@ type UpdateGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The new description.
 	//
-	// The value can be up to 128 characters in length.
+	// The description can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -12750,9 +13028,9 @@ func (s *UpdateGroupRequest) SetNewGroupName(v string) *UpdateGroupRequest {
 }
 
 type UpdateGroupResponseBody struct {
-	// The information of the RAM user group.
+	// The information about the RAM user group.
 	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -12885,11 +13163,11 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 }
 
 type UpdateLoginProfileRequest struct {
-	// Specifies whether multi-factor authentication (MFA) must be enabled. Valid values:
+	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
 	//
-	// 	- true. The value true indicates that the RAM user must bind an MFA device at the next logon.
+	// 	- true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
 	//
-	// 	- false.
+	// 	- false: does not forcefully enable MFA for the RAM user.
 	//
 	// example:
 	//
@@ -12897,13 +13175,13 @@ type UpdateLoginProfileRequest struct {
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
 	// The new password that is used to log on to the console.
 	//
-	// The password must meet the complexity requirements.
+	// The new password must meet the complexity requirements.
 	//
 	// example:
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user must reset the password at the next logon. Valid values:
+	// Specifies whether the RAM user is required to reset the password upon the next logon. Valid values:
 	//
 	// 	- true
 	//
@@ -12913,11 +13191,11 @@ type UpdateLoginProfileRequest struct {
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The status of password-based logon. Valid values:
+	// Specifies whether to enable password-based logons to the console. Valid values:
 	//
-	// 	- Active
+	// 	- Active: enables password-based logons to the console.
 	//
-	// 	- Inactive
+	// 	- Inactive: disables password-based logons to the console.
 	//
 	// example:
 	//
@@ -12967,9 +13245,9 @@ func (s *UpdateLoginProfileRequest) SetUserPrincipalName(v string) *UpdateLoginP
 }
 
 type UpdateLoginProfileResponseBody struct {
-	// The logon information.
+	// The console logon configurations.
 	LoginProfile *UpdateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -12996,6 +13274,9 @@ func (s *UpdateLoginProfileResponseBody) SetRequestId(v string) *UpdateLoginProf
 }
 
 type UpdateLoginProfileResponseBodyLoginProfile struct {
+	// example:
+	//
+	// true
 	AutoDisableLoginStatus *string `json:"AutoDisableLoginStatus,omitempty" xml:"AutoDisableLoginStatus,omitempty"`
 	// Indicates whether MFA must be enabled.
 	//
@@ -13003,19 +13284,19 @@ type UpdateLoginProfileResponseBodyLoginProfile struct {
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// Indicates whether the RAM user must reset the password at the next logon.
+	// Indicates whether the RAM user is required to reset the password upon the next logon.
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The status of password-based logon.
+	// Indicates whether to enable password-based logons to the console.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
@@ -13349,6 +13630,93 @@ func (s *UpdateOIDCProviderResponse) SetBody(v *UpdateOIDCProviderResponseBody) 
 	return s
 }
 
+type UpdatePasskeyRequest struct {
+	// example:
+	//
+	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
+	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// example:
+	//
+	// device1
+	PasskeyName *string `json:"PasskeyName,omitempty" xml:"PasskeyName,omitempty"`
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s UpdatePasskeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePasskeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePasskeyRequest) SetPasskeyId(v string) *UpdatePasskeyRequest {
+	s.PasskeyId = &v
+	return s
+}
+
+func (s *UpdatePasskeyRequest) SetPasskeyName(v string) *UpdatePasskeyRequest {
+	s.PasskeyName = &v
+	return s
+}
+
+func (s *UpdatePasskeyRequest) SetUserPrincipalName(v string) *UpdatePasskeyRequest {
+	s.UserPrincipalName = &v
+	return s
+}
+
+type UpdatePasskeyResponseBody struct {
+	// example:
+	//
+	// 85836703-8D4F-485F-9726-4D1C730F957E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePasskeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePasskeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePasskeyResponseBody) SetRequestId(v string) *UpdatePasskeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePasskeyResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePasskeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePasskeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePasskeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePasskeyResponse) SetHeaders(v map[string]*string) *UpdatePasskeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePasskeyResponse) SetStatusCode(v int32) *UpdatePasskeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePasskeyResponse) SetBody(v *UpdatePasskeyResponseBody) *UpdatePasskeyResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSAMLProviderRequest struct {
 	// The new description.
 	//
@@ -13400,7 +13768,7 @@ func (s *UpdateSAMLProviderRequest) SetSAMLProviderName(v string) *UpdateSAMLPro
 }
 
 type UpdateSAMLProviderResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -13562,7 +13930,7 @@ type UpdateUserRequest struct {
 	//
 	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
 	//
-	// The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be 1 to 64 characters in length.
+	// The value of `NewUserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
 	//
 	// example:
 	//
@@ -13701,11 +14069,11 @@ type UpdateUserResponseBodyUser struct {
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
 	// The source of the RAM user. Valid values:
 	//
-	// - Manual: The RAM user is manually created in the RAM console.
+	// 	- Manual: The RAM user is manually created in the RAM console.
 	//
-	// - SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+	// 	- SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
 	//
-	// - CloudSSO: The RAM user is mapped from a CloudSSO user.
+	// 	- CloudSSO: The RAM user is mapped from a CloudSSO user.
 	//
 	// example:
 	//
@@ -13902,13 +14270,24 @@ func (client *Client) AddClientIdToOIDCProviderWithOptions(request *AddClientIdT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddClientIdToOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddClientIdToOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddClientIdToOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13972,13 +14351,24 @@ func (client *Client) AddFingerprintToOIDCProviderWithOptions(request *AddFinger
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddFingerprintToOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddFingerprintToOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddFingerprintToOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14042,13 +14432,24 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddUserToGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddUserToGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddUserToGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14114,13 +14515,24 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BindMFADeviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BindMFADeviceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BindMFADeviceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14143,11 +14555,11 @@ func (client *Client) BindMFADevice(request *BindMFADeviceRequest) (_result *Bin
 
 // Summary:
 //
-// 修改RAM用户的登录密码
+// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
 //
 // @param request - ChangePasswordRequest
 //
@@ -14182,22 +14594,33 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangePasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangePasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangePasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改RAM用户的登录密码
+// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
 //
 // @param request - ChangePasswordRequest
 //
@@ -14215,7 +14638,7 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 
 // Summary:
 //
-// 创建主账号或RAM用户访问密钥
+// Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - CreateAccessKeyRequest
 //
@@ -14246,18 +14669,29 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccessKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccessKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccessKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建主账号或RAM用户访问密钥
+// Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - CreateAccessKeyRequest
 //
@@ -14306,13 +14740,24 @@ func (client *Client) CreateAppSecretWithOptions(request *CreateAppSecretRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAppSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAppSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAppSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14402,13 +14847,24 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14431,7 +14887,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Creates a RAM user group.
+// Creates a Resource Access Management (RAM) user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -14470,18 +14926,29 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Creates a RAM user group.
+// Creates a Resource Access Management (RAM) user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -14499,7 +14966,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// 开启指定RAM用户的控制台登录
+// Enables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -14546,18 +15013,29 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLoginProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoginProfileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoginProfileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 开启指定RAM用户的控制台登录
+// Enables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -14644,13 +15122,24 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14691,7 +15180,7 @@ func (client *Client) CreateOIDCProvider(request *CreateOIDCProviderRequest) (_r
 
 // Summary:
 //
-// 创建角色SSO身份提供商
+// Creates an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - CreateSAMLProviderRequest
 //
@@ -14730,18 +15219,29 @@ func (client *Client) CreateSAMLProviderWithOptions(request *CreateSAMLProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSAMLProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSAMLProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSAMLProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建角色SSO身份提供商
+// Creates an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - CreateSAMLProviderRequest
 //
@@ -14814,13 +15314,24 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14847,7 +15358,7 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 
 // Summary:
 //
-// 创建多因素认证设备
+// Creates a virtual multi-factor authentication (MFA) device.
 //
 // @param request - CreateVirtualMFADeviceRequest
 //
@@ -14878,18 +15389,29 @@ func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVirtualMFADeviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVirtualMFADeviceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVirtualMFADeviceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建多因素认证设备
+// Creates a virtual multi-factor authentication (MFA) device.
 //
 // @param request - CreateVirtualMFADeviceRequest
 //
@@ -14907,7 +15429,7 @@ func (client *Client) CreateVirtualMFADevice(request *CreateVirtualMFADeviceRequ
 
 // Summary:
 //
-// 删除用户的访问密钥
+// Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - DeleteAccessKeyRequest
 //
@@ -14942,18 +15464,29 @@ func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccessKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccessKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccessKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除用户的访问密钥
+// Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - DeleteAccessKeyRequest
 //
@@ -14971,7 +15504,7 @@ func (client *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (_result 
 
 // Summary:
 //
-// Delete the application secret for the specified application.
+// Deletes the application secret of an application.
 //
 // @param request - DeleteAppSecretRequest
 //
@@ -15006,18 +15539,29 @@ func (client *Client) DeleteAppSecretWithOptions(request *DeleteAppSecretRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAppSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAppSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAppSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Delete the application secret for the specified application.
+// Deletes the application secret of an application.
 //
 // @param request - DeleteAppSecretRequest
 //
@@ -15066,13 +15610,24 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15095,7 +15650,7 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 
 // Summary:
 //
-// 删除指定的用户组
+// Deletes a Resource Access Management (RAM) user group.
 //
 // Description:
 //
@@ -15130,18 +15685,29 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除指定的用户组
+// Deletes a Resource Access Management (RAM) user group.
 //
 // Description:
 //
@@ -15163,7 +15729,7 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 
 // Summary:
 //
-// 关闭指定RAM用户的控制台登录
+// Disables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - DeleteLoginProfileRequest
 //
@@ -15194,18 +15760,29 @@ func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLoginProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLoginProfileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLoginProfileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 关闭指定RAM用户的控制台登录
+// Disables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - DeleteLoginProfileRequest
 //
@@ -15260,13 +15837,24 @@ func (client *Client) DeleteOIDCProviderWithOptions(request *DeleteOIDCProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15295,7 +15883,82 @@ func (client *Client) DeleteOIDCProvider(request *DeleteOIDCProviderRequest) (_r
 
 // Summary:
 //
-// 删除指定的角色SSO身份提供商
+// 删除Passkey
+//
+// @param request - DeletePasskeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePasskeyResponse
+func (client *Client) DeletePasskeyWithOptions(request *DeletePasskeyRequest, runtime *util.RuntimeOptions) (_result *DeletePasskeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PasskeyId)) {
+		query["PasskeyId"] = request.PasskeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePasskey"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePasskeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePasskeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除Passkey
+//
+// @param request - DeletePasskeyRequest
+//
+// @return DeletePasskeyResponse
+func (client *Client) DeletePasskey(request *DeletePasskeyRequest) (_result *DeletePasskeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePasskeyResponse{}
+	_body, _err := client.DeletePasskeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - DeleteSAMLProviderRequest
 //
@@ -15326,18 +15989,29 @@ func (client *Client) DeleteSAMLProviderWithOptions(request *DeleteSAMLProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSAMLProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSAMLProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSAMLProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除指定的角色SSO身份提供商
+// Deletes an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - DeleteSAMLProviderRequest
 //
@@ -15355,7 +16029,7 @@ func (client *Client) DeleteSAMLProvider(request *DeleteSAMLProviderRequest) (_r
 
 // Summary:
 //
-// 删除RAM用户
+// Deletes a Resource Access Management (RAM) user.
 //
 // @param request - DeleteUserRequest
 //
@@ -15390,18 +16064,29 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除RAM用户
+// Deletes a Resource Access Management (RAM) user.
 //
 // @param request - DeleteUserRequest
 //
@@ -15419,7 +16104,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// 删除多因素认证设备
+// Deletes a multi-factor authentication (MFA) device.
 //
 // @param request - DeleteVirtualMFADeviceRequest
 //
@@ -15450,18 +16135,29 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVirtualMFADeviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVirtualMFADeviceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVirtualMFADeviceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除多因素认证设备
+// Deletes a multi-factor authentication (MFA) device.
 //
 // @param request - DeleteVirtualMFADeviceRequest
 //
@@ -15479,7 +16175,7 @@ func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequ
 
 // Summary:
 //
-// 解绑并删除多因素认证设备
+// Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - DisableVirtualMFARequest
 //
@@ -15510,18 +16206,29 @@ func (client *Client) DisableVirtualMFAWithOptions(request *DisableVirtualMFAReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableVirtualMFAResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableVirtualMFAResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableVirtualMFAResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 解绑并删除多因素认证设备
+// Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - DisableVirtualMFARequest
 //
@@ -15539,7 +16246,7 @@ func (client *Client) DisableVirtualMFA(request *DisableVirtualMFARequest) (_res
 
 // Summary:
 //
-// Generates a user credential report.
+// Generates the user credential report of an Alibaba Cloud account.
 //
 // @param request - GenerateCredentialReportRequest
 //
@@ -15559,18 +16266,29 @@ func (client *Client) GenerateCredentialReportWithOptions(runtime *util.RuntimeO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateCredentialReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateCredentialReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateCredentialReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Generates a user credential report.
+// Generates the user credential report of an Alibaba Cloud account.
 //
 // @return GenerateCredentialReportResponse
 func (client *Client) GenerateCredentialReport() (_result *GenerateCredentialReportResponse, _err error) {
@@ -15621,13 +16339,24 @@ func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccessKeyLastUsedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccessKeyLastUsedResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccessKeyLastUsedResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15650,7 +16379,7 @@ func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest)
 
 // Summary:
 //
-// 查询主账号多因素认证设备信息
+// Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
 //
 // @param request - GetAccountMFAInfoRequest
 //
@@ -15670,18 +16399,29 @@ func (client *Client) GetAccountMFAInfoWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccountMFAInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccountMFAInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccountMFAInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询主账号多因素认证设备信息
+// Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
 //
 // @return GetAccountMFAInfoResponse
 func (client *Client) GetAccountMFAInfo() (_result *GetAccountMFAInfoResponse, _err error) {
@@ -15697,7 +16437,7 @@ func (client *Client) GetAccountMFAInfo() (_result *GetAccountMFAInfoResponse, _
 
 // Summary:
 //
-// 查询阿里云账号的安全报告
+// Queries the security report of an Alibaba Cloud account.
 //
 // @param request - GetAccountSecurityPracticeReportRequest
 //
@@ -15717,18 +16457,29 @@ func (client *Client) GetAccountSecurityPracticeReportWithOptions(runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccountSecurityPracticeReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccountSecurityPracticeReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccountSecurityPracticeReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询阿里云账号的安全报告
+// Queries the security report of an Alibaba Cloud account.
 //
 // @return GetAccountSecurityPracticeReportResponse
 func (client *Client) GetAccountSecurityPracticeReport() (_result *GetAccountSecurityPracticeReportResponse, _err error) {
@@ -15744,7 +16495,7 @@ func (client *Client) GetAccountSecurityPracticeReport() (_result *GetAccountSec
 
 // Summary:
 //
-// 查询主账号概览信息
+// Queries the overview information about an Alibaba Cloud account.
 //
 // @param request - GetAccountSummaryRequest
 //
@@ -15764,18 +16515,29 @@ func (client *Client) GetAccountSummaryWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccountSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccountSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccountSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询主账号概览信息
+// Queries the overview information about an Alibaba Cloud account.
 //
 // @return GetAccountSummaryResponse
 func (client *Client) GetAccountSummary() (_result *GetAccountSummaryResponse, _err error) {
@@ -15826,13 +16588,24 @@ func (client *Client) GetAppSecretWithOptions(request *GetAppSecretRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAppSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAppSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAppSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15890,13 +16663,24 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15958,13 +16742,24 @@ func (client *Client) GetCredentialReportWithOptions(request *GetCredentialRepor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCredentialReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCredentialReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCredentialReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16007,13 +16802,24 @@ func (client *Client) GetDefaultDomainWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDefaultDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDefaultDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDefaultDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16065,13 +16871,24 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16125,13 +16942,24 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLoginProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLoginProfileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLoginProfileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16191,13 +17019,24 @@ func (client *Client) GetOIDCProviderWithOptions(request *GetOIDCProviderRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16246,13 +17085,24 @@ func (client *Client) GetPasswordPolicyWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPasswordPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPasswordPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPasswordPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16304,13 +17154,24 @@ func (client *Client) GetSAMLProviderWithOptions(request *GetSAMLProviderRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSAMLProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSAMLProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSAMLProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16353,13 +17214,24 @@ func (client *Client) GetSecurityPreferenceWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSecurityPreferenceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSecurityPreferenceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSecurityPreferenceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16423,13 +17295,24 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16487,13 +17370,24 @@ func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserMFAInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserMFAInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserMFAInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16516,7 +17410,7 @@ func (client *Client) GetUserMFAInfo(request *GetUserMFAInfoRequest) (_result *G
 
 // Summary:
 //
-// 查询用户SSO身份提供商信息
+// Queries the configurations of user-based single sign-on (SSO).
 //
 // @param request - GetUserSsoSettingsRequest
 //
@@ -16536,18 +17430,29 @@ func (client *Client) GetUserSsoSettingsWithOptions(runtime *util.RuntimeOptions
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserSsoSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserSsoSettingsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserSsoSettingsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询用户SSO身份提供商信息
+// Queries the configurations of user-based single sign-on (SSO).
 //
 // @return GetUserSsoSettingsResponse
 func (client *Client) GetUserSsoSettings() (_result *GetUserSsoSettingsResponse, _err error) {
@@ -16563,7 +17468,7 @@ func (client *Client) GetUserSsoSettings() (_result *GetUserSsoSettingsResponse,
 
 // Summary:
 //
-// 获取用户安全认证的信息
+// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -16594,18 +17499,29 @@ func (client *Client) GetVerificationInfoWithOptions(request *GetVerificationInf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVerificationInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVerificationInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVerificationInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取用户安全认证的信息
+// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -16654,13 +17570,24 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAccessKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAccessKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAccessKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16714,13 +17641,24 @@ func (client *Client) ListAppSecretIdsWithOptions(request *ListAppSecretIdsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAppSecretIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAppSecretIdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAppSecretIdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16767,13 +17705,24 @@ func (client *Client) ListApplicationsWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListApplicationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListApplicationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListApplicationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16798,7 +17747,7 @@ func (client *Client) ListApplications() (_result *ListApplicationsResponse, _er
 
 // Summary:
 //
-// Queries RAM user groups.
+// Queries Resource Access Management (RAM) user groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -16833,18 +17782,29 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries RAM user groups.
+// Queries Resource Access Management (RAM) user groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -16893,13 +17853,24 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListGroupsForUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListGroupsForUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListGroupsForUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16963,13 +17934,24 @@ func (client *Client) ListOIDCProvidersWithOptions(request *ListOIDCProvidersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListOIDCProvidersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOIDCProvidersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOIDCProvidersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16989,6 +17971,77 @@ func (client *Client) ListOIDCProviders(request *ListOIDCProvidersRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOIDCProvidersResponse{}
 	_body, _err := client.ListOIDCProvidersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Passkey
+//
+// @param request - ListPasskeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPasskeysResponse
+func (client *Client) ListPasskeysWithOptions(request *ListPasskeysRequest, runtime *util.RuntimeOptions) (_result *ListPasskeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPasskeys"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPasskeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPasskeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询Passkey
+//
+// @param request - ListPasskeysRequest
+//
+// @return ListPasskeysResponse
+func (client *Client) ListPasskeys(request *ListPasskeysRequest) (_result *ListPasskeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPasskeysResponse{}
+	_body, _err := client.ListPasskeysWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17029,13 +18082,24 @@ func (client *Client) ListPredefinedScopesWithOptions(request *ListPredefinedSco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPredefinedScopesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPredefinedScopesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPredefinedScopesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17058,7 +18122,7 @@ func (client *Client) ListPredefinedScopes(request *ListPredefinedScopesRequest)
 
 // Summary:
 //
-// 查询角色SSO身份提供商列表
+// Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
 //
 // @param request - ListSAMLProvidersRequest
 //
@@ -17093,18 +18157,29 @@ func (client *Client) ListSAMLProvidersWithOptions(request *ListSAMLProvidersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSAMLProvidersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSAMLProvidersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSAMLProvidersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询角色SSO身份提供商列表
+// Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
 //
 // @param request - ListSAMLProvidersRequest
 //
@@ -17185,13 +18260,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17277,13 +18363,24 @@ func (client *Client) ListUserBasicInfosWithOptions(request *ListUserBasicInfosR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUserBasicInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUserBasicInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUserBasicInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17367,13 +18464,24 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUsersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUsersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17445,13 +18553,24 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUsersForGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUsersForGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUsersForGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17509,13 +18628,24 @@ func (client *Client) ListVirtualMFADevicesWithOptions(request *ListVirtualMFADe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVirtualMFADevicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVirtualMFADevicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVirtualMFADevicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17579,13 +18709,24 @@ func (client *Client) RemoveClientIdFromOIDCProviderWithOptions(request *RemoveC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveClientIdFromOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveClientIdFromOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveClientIdFromOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17655,13 +18796,24 @@ func (client *Client) RemoveFingerprintFromOIDCProviderWithOptions(request *Remo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveFingerprintFromOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveFingerprintFromOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveFingerprintFromOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17690,7 +18842,7 @@ func (client *Client) RemoveFingerprintFromOIDCProvider(request *RemoveFingerpri
 
 // Summary:
 //
-// 将RAM用户从用户组中移除
+// Removes a Resource Access Management (RAM) user from a RAM user group.
 //
 // @param request - RemoveUserFromGroupRequest
 //
@@ -17725,18 +18877,29 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveUserFromGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveUserFromGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveUserFromGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 将RAM用户从用户组中移除
+// Removes a Resource Access Management (RAM) user from a RAM user group.
 //
 // @param request - RemoveUserFromGroupRequest
 //
@@ -17754,7 +18917,7 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 
 // Summary:
 //
-// Configures the default domain name.
+// Configures the default domain name for an Alibaba Cloud account.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -17785,18 +18948,29 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDefaultDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDefaultDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDefaultDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Configures the default domain name.
+// Configures the default domain name for an Alibaba Cloud account.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -17885,13 +19059,24 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetPasswordPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetPasswordPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetPasswordPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17997,13 +19182,24 @@ func (client *Client) SetSecurityPreferenceWithOptions(tmpReq *SetSecurityPrefer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetSecurityPreferenceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetSecurityPreferenceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetSecurityPreferenceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18032,7 +19228,7 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 
 // Summary:
 //
-// 设置用户SSO身份提供商信息
+// Configures information about user-based single sign-on (SSO).
 //
 // @param request - SetUserSsoSettingsRequest
 //
@@ -18075,18 +19271,29 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetUserSsoSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetUserSsoSettingsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetUserSsoSettingsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 设置用户SSO身份提供商信息
+// Configures information about user-based single sign-on (SSO).
 //
 // @param request - SetUserSsoSettingsRequest
 //
@@ -18147,13 +19354,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18176,7 +19394,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 为RAM用户解绑多因素认证设备
+// Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindMFADeviceRequest
 //
@@ -18207,18 +19425,29 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnbindMFADeviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindMFADeviceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindMFADeviceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 为RAM用户解绑多因素认证设备
+// Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindMFADeviceRequest
 //
@@ -18283,13 +19512,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18312,7 +19552,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 修改访问密钥状态
+// Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - UpdateAccessKeyRequest
 //
@@ -18351,18 +19591,29 @@ func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAccessKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAccessKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAccessKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改访问密钥状态
+// Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - UpdateAccessKeyRequest
 //
@@ -18443,13 +19694,24 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18472,7 +19734,7 @@ func (client *Client) UpdateApplication(request *UpdateApplicationRequest) (_res
 
 // Summary:
 //
-// Modifies the information of a RAM user group.
+// Modifies information about a Resource Access Management (RAM) user group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -18515,18 +19777,29 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Modifies the information of a RAM user group.
+// Modifies information about a Resource Access Management (RAM) user group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -18544,7 +19817,7 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 
 // Summary:
 //
-// 修改RAM用户的控制台登录信息
+// Modifies the console logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - UpdateLoginProfileRequest
 //
@@ -18591,18 +19864,29 @@ func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLoginProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLoginProfileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLoginProfileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改RAM用户的控制台登录信息
+// Modifies the console logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - UpdateLoginProfileRequest
 //
@@ -18669,13 +19953,24 @@ func (client *Client) UpdateOIDCProviderWithOptions(request *UpdateOIDCProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateOIDCProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateOIDCProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateOIDCProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18704,7 +19999,86 @@ func (client *Client) UpdateOIDCProvider(request *UpdateOIDCProviderRequest) (_r
 
 // Summary:
 //
-// 修改角色SSO身份提供商信息
+// 更新Passkey
+//
+// @param request - UpdatePasskeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePasskeyResponse
+func (client *Client) UpdatePasskeyWithOptions(request *UpdatePasskeyRequest, runtime *util.RuntimeOptions) (_result *UpdatePasskeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PasskeyId)) {
+		query["PasskeyId"] = request.PasskeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasskeyName)) {
+		query["PasskeyName"] = request.PasskeyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePasskey"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePasskeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePasskeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新Passkey
+//
+// @param request - UpdatePasskeyRequest
+//
+// @return UpdatePasskeyResponse
+func (client *Client) UpdatePasskey(request *UpdatePasskeyRequest) (_result *UpdatePasskeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePasskeyResponse{}
+	_body, _err := client.UpdatePasskeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // Description:
 //
@@ -18747,18 +20121,29 @@ func (client *Client) UpdateSAMLProviderWithOptions(request *UpdateSAMLProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSAMLProviderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSAMLProviderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSAMLProviderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改角色SSO身份提供商信息
+// Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // Description:
 //
@@ -18839,13 +20224,24 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
