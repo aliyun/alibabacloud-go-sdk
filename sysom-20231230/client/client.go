@@ -6296,6 +6296,10 @@ func (s *ListInstanceStatusResponse) SetBody(v *ListInstanceStatusResponseBody) 
 type ListInstancesRequest struct {
 	// example:
 	//
+	// xxxxx
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
 	// 1
 	Current  *int64  `json:"current,omitempty" xml:"current,omitempty"`
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
@@ -6319,6 +6323,11 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequest) SetClusterId(v string) *ListInstancesRequest {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *ListInstancesRequest) SetCurrent(v int64) *ListInstancesRequest {
@@ -10734,6 +10743,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Current)) {
 		query["current"] = request.Current
 	}
