@@ -268,10 +268,6 @@ func (s *CheckInstancePolicyResponse) SetBody(v *CheckInstancePolicyResponseBody
 type CreateInstanceRequest struct {
 	// The type of the instance.
 	//
-	// 	- SSD: high-performance instance
-	//
-	// 	- HYBRID: capacity instance
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -912,7 +908,12 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// 2019-12-23T07:24:33Z
-	CreateTime           *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The upper limit for the VCUs of the instance.
+	//
+	// example:
+	//
+	// 6
 	ElasticVCUUpperLimit *float32 `json:"ElasticVCUUpperLimit,omitempty" xml:"ElasticVCUUpperLimit,omitempty"`
 	// The description of the instance.
 	//
@@ -953,6 +954,10 @@ type GetInstanceResponseBody struct {
 	// 	- true: ZRS is enabled for the instance.
 	//
 	// 	- false: Locally redundant storage (LRS) is enabled for the instance.
+	//
+	// example:
+	//
+	// true
 	IsMultiAZ *bool `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
 	// The network type of the instance. Valid values:
 	//
@@ -1350,16 +1355,11 @@ type ListInstancesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The instance status.
 	//
-	// 	- normal: The instance is running as expected.
-	//
-	// 	- forbidden: The instance is disabled.
-	//
-	// 	- Deleting: The instance is being deleted.
-	//
 	// example:
 	//
 	// normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -1400,6 +1400,34 @@ func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 	return s
 }
 
+func (s *ListInstancesRequest) SetTag(v []*ListInstancesRequestTag) *ListInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesRequestTag) SetKey(v string) *ListInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
 type ListInstancesShrinkRequest struct {
 	// The name of the instance. Fuzzy search is supported.
 	//
@@ -1429,16 +1457,11 @@ type ListInstancesShrinkRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The instance status.
 	//
-	// 	- normal: The instance is running as expected.
-	//
-	// 	- forbidden: The instance is disabled.
-	//
-	// 	- Deleting: The instance is being deleted.
-	//
 	// example:
 	//
 	// normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListInstancesShrinkRequest) String() string {
@@ -1476,6 +1499,11 @@ func (s *ListInstancesShrinkRequest) SetResourceGroupId(v string) *ListInstances
 
 func (s *ListInstancesShrinkRequest) SetStatus(v string) *ListInstancesShrinkRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetTagShrink(v string) *ListInstancesShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -1567,6 +1595,12 @@ type ListInstancesResponseBodyInstances struct {
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
 	// The instance status.
 	//
+	// 	- normal: The instance works as expected.
+	//
+	// 	- forbidden: The instance is disabled.
+	//
+	// 	- deleting: The instance is being deleted.
+	//
 	// example:
 	//
 	// normal
@@ -1576,6 +1610,10 @@ type ListInstancesResponseBodyInstances struct {
 	// 	- true: ZRS is enabled for the instance.
 	//
 	// 	- false: Locally redundant storage (LRS) is enabled for the instance.
+	//
+	// example:
+	//
+	// true
 	IsMultiAZ *bool `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
 	// The billing method.
 	//
@@ -2157,11 +2195,7 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the resources. Default value: false. Valid values:
-	//
-	// 	- true: removes all tags from the resources.
-	//
-	// 	- false: removes the tags that are specified by the TagKeys parameter from the resources.
+	// Specifies whether to remove all tags from the resources. Default value: false.
 	//
 	// example:
 	//
@@ -2748,13 +2782,24 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2816,13 +2861,24 @@ func (client *Client) CheckInstancePolicyWithOptions(request *CheckInstancePolic
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckInstancePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckInstancePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckInstancePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2924,13 +2980,24 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3004,13 +3071,24 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3086,13 +3164,24 @@ func (client *Client) DeleteInstancePolicyWithOptions(request *DeleteInstancePol
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstancePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstancePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstancePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3156,13 +3245,24 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3220,13 +3320,24 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3270,6 +3381,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		request.InstanceNameListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceNameList, tea.String("InstanceNameList"), tea.String("simple"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		query["InstanceName"] = request.InstanceName
@@ -3295,6 +3410,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		query["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3310,13 +3429,24 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3400,13 +3530,24 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3472,13 +3613,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3552,13 +3704,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3640,13 +3803,24 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3716,13 +3890,24 @@ func (client *Client) UpdateInstanceElasticVCUUpperLimitWithOptions(request *Upd
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceElasticVCUUpperLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceElasticVCUUpperLimitResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceElasticVCUUpperLimitResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3796,13 +3981,24 @@ func (client *Client) UpdateInstancePolicyWithOptions(request *UpdateInstancePol
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstancePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstancePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstancePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
