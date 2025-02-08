@@ -248,7 +248,8 @@ type CreateQueueRequest struct {
 	// example:
 	//
 	// 0
-	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DelaySeconds *int64                       `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DlqPolicy    *CreateQueueRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
 	// 	- true: enabled.
@@ -309,6 +310,11 @@ func (s *CreateQueueRequest) SetDelaySeconds(v int64) *CreateQueueRequest {
 	return s
 }
 
+func (s *CreateQueueRequest) SetDlqPolicy(v *CreateQueueRequestDlqPolicy) *CreateQueueRequest {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *CreateQueueRequest) SetEnableLogging(v bool) *CreateQueueRequest {
 	s.EnableLogging = &v
 	return s
@@ -344,6 +350,35 @@ func (s *CreateQueueRequest) SetVisibilityTimeout(v int64) *CreateQueueRequest {
 	return s
 }
 
+type CreateQueueRequestDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceiveCount       *int32  `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+}
+
+func (s CreateQueueRequestDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQueueRequestDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQueueRequestDlqPolicy) SetDeadLetterTargetQueue(v string) *CreateQueueRequestDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *CreateQueueRequestDlqPolicy) SetEnabled(v bool) *CreateQueueRequestDlqPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateQueueRequestDlqPolicy) SetMaxReceiveCount(v int32) *CreateQueueRequestDlqPolicy {
+	s.MaxReceiveCount = &v
+	return s
+}
+
 type CreateQueueRequestTag struct {
 	// example:
 	//
@@ -369,6 +404,143 @@ func (s *CreateQueueRequestTag) SetKey(v string) *CreateQueueRequestTag {
 }
 
 func (s *CreateQueueRequestTag) SetValue(v string) *CreateQueueRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateQueueShrinkRequest struct {
+	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+	//
+	// example:
+	//
+	// 0
+	DelaySeconds    *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
+	// Specifies whether to enable the log management feature. Valid values:
+	//
+	// 	- true: enabled.
+	//
+	// 	- false: disabled.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	//
+	// example:
+	//
+	// 65536
+	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	//
+	// example:
+	//
+	// 345600
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+	//
+	// example:
+	//
+	// 0
+	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// The name of the queue.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	QueueName *string                        `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Tag       []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	//
+	// example:
+	//
+	// 60
+	VisibilityTimeout *int64 `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
+}
+
+func (s CreateQueueShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQueueShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQueueShrinkRequest) SetDelaySeconds(v int64) *CreateQueueShrinkRequest {
+	s.DelaySeconds = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetDlqPolicyShrink(v string) *CreateQueueShrinkRequest {
+	s.DlqPolicyShrink = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetEnableLogging(v bool) *CreateQueueShrinkRequest {
+	s.EnableLogging = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetMaximumMessageSize(v int64) *CreateQueueShrinkRequest {
+	s.MaximumMessageSize = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetMessageRetentionPeriod(v int64) *CreateQueueShrinkRequest {
+	s.MessageRetentionPeriod = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetPollingWaitSeconds(v int64) *CreateQueueShrinkRequest {
+	s.PollingWaitSeconds = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetQueueName(v string) *CreateQueueShrinkRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetTag(v []*CreateQueueShrinkRequestTag) *CreateQueueShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetVisibilityTimeout(v int64) *CreateQueueShrinkRequest {
+	s.VisibilityTimeout = &v
+	return s
+}
+
+type CreateQueueShrinkRequestTag struct {
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateQueueShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQueueShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQueueShrinkRequestTag) SetKey(v string) *CreateQueueShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequestTag) SetValue(v string) *CreateQueueShrinkRequestTag {
 	s.Value = &v
 	return s
 }
@@ -1640,7 +1812,8 @@ type GetQueueAttributesResponseBodyData struct {
 	// example:
 	//
 	// 30
-	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DelaySeconds *int64                                       `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DlqPolicy    *GetQueueAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
@@ -1724,6 +1897,11 @@ func (s *GetQueueAttributesResponseBodyData) SetDelaySeconds(v int64) *GetQueueA
 	return s
 }
 
+func (s *GetQueueAttributesResponseBodyData) SetDlqPolicy(v *GetQueueAttributesResponseBodyDataDlqPolicy) *GetQueueAttributesResponseBodyData {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *GetQueueAttributesResponseBodyData) SetInactiveMessages(v int64) *GetQueueAttributesResponseBodyData {
 	s.InactiveMessages = &v
 	return s
@@ -1766,6 +1944,35 @@ func (s *GetQueueAttributesResponseBodyData) SetTags(v []*GetQueueAttributesResp
 
 func (s *GetQueueAttributesResponseBodyData) SetVisibilityTimeout(v int64) *GetQueueAttributesResponseBodyData {
 	s.VisibilityTimeout = &v
+	return s
+}
+
+type GetQueueAttributesResponseBodyDataDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceiveCount       *string `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+}
+
+func (s GetQueueAttributesResponseBodyDataDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueAttributesResponseBodyDataDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueAttributesResponseBodyDataDlqPolicy) SetDeadLetterTargetQueue(v string) *GetQueueAttributesResponseBodyDataDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *GetQueueAttributesResponseBodyDataDlqPolicy) SetEnabled(v bool) *GetQueueAttributesResponseBodyDataDlqPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetQueueAttributesResponseBodyDataDlqPolicy) SetMaxReceiveCount(v string) *GetQueueAttributesResponseBodyDataDlqPolicy {
+	s.MaxReceiveCount = &v
 	return s
 }
 
@@ -1943,7 +2150,8 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	// example:
 	//
 	// 1449554806
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DlqPolicy  *GetSubscriptionAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The endpoint to which the messages are pushed.
 	//
 	// example:
@@ -2017,6 +2225,11 @@ func (s *GetSubscriptionAttributesResponseBodyData) SetCreateTime(v int64) *GetS
 	return s
 }
 
+func (s *GetSubscriptionAttributesResponseBodyData) SetDlqPolicy(v *GetSubscriptionAttributesResponseBodyDataDlqPolicy) *GetSubscriptionAttributesResponseBodyData {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *GetSubscriptionAttributesResponseBodyData) SetEndpoint(v string) *GetSubscriptionAttributesResponseBodyData {
 	s.Endpoint = &v
 	return s
@@ -2054,6 +2267,29 @@ func (s *GetSubscriptionAttributesResponseBodyData) SetTopicName(v string) *GetS
 
 func (s *GetSubscriptionAttributesResponseBodyData) SetTopicOwner(v string) *GetSubscriptionAttributesResponseBodyData {
 	s.TopicOwner = &v
+	return s
+}
+
+type GetSubscriptionAttributesResponseBodyDataDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s GetSubscriptionAttributesResponseBodyDataDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSubscriptionAttributesResponseBodyDataDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetSubscriptionAttributesResponseBodyDataDlqPolicy) SetDeadLetterTargetQueue(v string) *GetSubscriptionAttributesResponseBodyDataDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *GetSubscriptionAttributesResponseBodyDataDlqPolicy) SetEnabled(v bool) *GetSubscriptionAttributesResponseBodyDataDlqPolicy {
+	s.Enabled = &v
 	return s
 }
 
@@ -2628,7 +2864,8 @@ type ListQueueResponseBodyDataPageData struct {
 	// example:
 	//
 	// 30
-	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DelaySeconds *int64                                      `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DlqPolicy    *ListQueueResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
@@ -2713,6 +2950,11 @@ func (s *ListQueueResponseBodyDataPageData) SetDelaySeconds(v int64) *ListQueueR
 	return s
 }
 
+func (s *ListQueueResponseBodyDataPageData) SetDlqPolicy(v *ListQueueResponseBodyDataPageDataDlqPolicy) *ListQueueResponseBodyDataPageData {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *ListQueueResponseBodyDataPageData) SetInactiveMessages(v int64) *ListQueueResponseBodyDataPageData {
 	s.InactiveMessages = &v
 	return s
@@ -2755,6 +2997,35 @@ func (s *ListQueueResponseBodyDataPageData) SetTags(v []*ListQueueResponseBodyDa
 
 func (s *ListQueueResponseBodyDataPageData) SetVisibilityTimeout(v int64) *ListQueueResponseBodyDataPageData {
 	s.VisibilityTimeout = &v
+	return s
+}
+
+type ListQueueResponseBodyDataPageDataDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceiveCount       *string `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+}
+
+func (s ListQueueResponseBodyDataPageDataDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueueResponseBodyDataPageDataDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueueResponseBodyDataPageDataDlqPolicy) SetDeadLetterTargetQueue(v string) *ListQueueResponseBodyDataPageDataDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *ListQueueResponseBodyDataPageDataDlqPolicy) SetEnabled(v bool) *ListQueueResponseBodyDataPageDataDlqPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListQueueResponseBodyDataPageDataDlqPolicy) SetMaxReceiveCount(v string) *ListQueueResponseBodyDataPageDataDlqPolicy {
+	s.MaxReceiveCount = &v
 	return s
 }
 
@@ -3027,7 +3298,8 @@ type ListSubscriptionByTopicResponseBodyDataPageData struct {
 	// example:
 	//
 	// 1449554806
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DlqPolicy  *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The endpoint to which the messages are pushed.
 	//
 	// example:
@@ -3101,6 +3373,11 @@ func (s *ListSubscriptionByTopicResponseBodyDataPageData) SetCreateTime(v int64)
 	return s
 }
 
+func (s *ListSubscriptionByTopicResponseBodyDataPageData) SetDlqPolicy(v *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy) *ListSubscriptionByTopicResponseBodyDataPageData {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *ListSubscriptionByTopicResponseBodyDataPageData) SetEndpoint(v string) *ListSubscriptionByTopicResponseBodyDataPageData {
 	s.Endpoint = &v
 	return s
@@ -3138,6 +3415,29 @@ func (s *ListSubscriptionByTopicResponseBodyDataPageData) SetTopicName(v string)
 
 func (s *ListSubscriptionByTopicResponseBodyDataPageData) SetTopicOwner(v string) *ListSubscriptionByTopicResponseBodyDataPageData {
 	s.TopicOwner = &v
+	return s
+}
+
+type ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy) SetDeadLetterTargetQueue(v string) *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy) SetEnabled(v bool) *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy {
+	s.Enabled = &v
 	return s
 }
 
@@ -3182,8 +3482,9 @@ type ListTopicRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tag      []*ListTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tags.
+	Tag []*ListTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The name of the topic.
 	//
 	// example:
@@ -3221,10 +3522,14 @@ func (s *ListTopicRequest) SetTopicName(v string) *ListTopicRequest {
 }
 
 type ListTopicRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test
@@ -3757,7 +4062,8 @@ type SetQueueAttributesRequest struct {
 	// example:
 	//
 	// 0
-	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DelaySeconds *int64                              `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DlqPolicy    *SetQueueAttributesRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
 	// 	- true: enabled.
@@ -3815,6 +4121,11 @@ func (s *SetQueueAttributesRequest) SetDelaySeconds(v int64) *SetQueueAttributes
 	return s
 }
 
+func (s *SetQueueAttributesRequest) SetDlqPolicy(v *SetQueueAttributesRequestDlqPolicy) *SetQueueAttributesRequest {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *SetQueueAttributesRequest) SetEnableLogging(v bool) *SetQueueAttributesRequest {
 	s.EnableLogging = &v
 	return s
@@ -3841,6 +4152,135 @@ func (s *SetQueueAttributesRequest) SetQueueName(v string) *SetQueueAttributesRe
 }
 
 func (s *SetQueueAttributesRequest) SetVisibilityTimeout(v int64) *SetQueueAttributesRequest {
+	s.VisibilityTimeout = &v
+	return s
+}
+
+type SetQueueAttributesRequestDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceiveCount       *int32  `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+}
+
+func (s SetQueueAttributesRequestDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetQueueAttributesRequestDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *SetQueueAttributesRequestDlqPolicy) SetDeadLetterTargetQueue(v string) *SetQueueAttributesRequestDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *SetQueueAttributesRequestDlqPolicy) SetEnabled(v bool) *SetQueueAttributesRequestDlqPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *SetQueueAttributesRequestDlqPolicy) SetMaxReceiveCount(v int32) *SetQueueAttributesRequestDlqPolicy {
+	s.MaxReceiveCount = &v
+	return s
+}
+
+type SetQueueAttributesShrinkRequest struct {
+	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+	//
+	// example:
+	//
+	// 0
+	DelaySeconds    *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
+	// Specifies whether to enable the log management feature. Valid values:
+	//
+	// 	- true: enabled.
+	//
+	// 	- false: disabled. Default value: false.
+	//
+	// example:
+	//
+	// True
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	//
+	// example:
+	//
+	// 1024
+	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	//
+	// example:
+	//
+	// 120
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+	//
+	// example:
+	//
+	// 0
+	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// The name of the queue.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testqueue
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	//
+	// example:
+	//
+	// 60
+	VisibilityTimeout *int64 `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
+}
+
+func (s SetQueueAttributesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetQueueAttributesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetDelaySeconds(v int64) *SetQueueAttributesShrinkRequest {
+	s.DelaySeconds = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetDlqPolicyShrink(v string) *SetQueueAttributesShrinkRequest {
+	s.DlqPolicyShrink = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetEnableLogging(v bool) *SetQueueAttributesShrinkRequest {
+	s.EnableLogging = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetMaximumMessageSize(v int64) *SetQueueAttributesShrinkRequest {
+	s.MaximumMessageSize = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetMessageRetentionPeriod(v int64) *SetQueueAttributesShrinkRequest {
+	s.MessageRetentionPeriod = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetPollingWaitSeconds(v int64) *SetQueueAttributesShrinkRequest {
+	s.PollingWaitSeconds = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetQueueName(v string) *SetQueueAttributesShrinkRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetVisibilityTimeout(v int64) *SetQueueAttributesShrinkRequest {
 	s.VisibilityTimeout = &v
 	return s
 }
@@ -3988,6 +4428,7 @@ func (s *SetQueueAttributesResponse) SetBody(v *SetQueueAttributesResponseBody) 
 }
 
 type SetSubscriptionAttributesRequest struct {
+	DlqPolicy *SetSubscriptionAttributesRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
 	//
 	// 	- BACKOFF_RETRY
@@ -4024,6 +4465,11 @@ func (s SetSubscriptionAttributesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetSubscriptionAttributesRequest) SetDlqPolicy(v *SetSubscriptionAttributesRequestDlqPolicy) *SetSubscriptionAttributesRequest {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *SetSubscriptionAttributesRequest) SetNotifyStrategy(v string) *SetSubscriptionAttributesRequest {
 	s.NotifyStrategy = &v
 	return s
@@ -4035,6 +4481,87 @@ func (s *SetSubscriptionAttributesRequest) SetSubscriptionName(v string) *SetSub
 }
 
 func (s *SetSubscriptionAttributesRequest) SetTopicName(v string) *SetSubscriptionAttributesRequest {
+	s.TopicName = &v
+	return s
+}
+
+type SetSubscriptionAttributesRequestDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s SetSubscriptionAttributesRequestDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSubscriptionAttributesRequestDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *SetSubscriptionAttributesRequestDlqPolicy) SetDeadLetterTargetQueue(v string) *SetSubscriptionAttributesRequestDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesRequestDlqPolicy) SetEnabled(v bool) *SetSubscriptionAttributesRequestDlqPolicy {
+	s.Enabled = &v
+	return s
+}
+
+type SetSubscriptionAttributesShrinkRequest struct {
+	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
+	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	//
+	// 	- BACKOFF_RETRY
+	//
+	// 	- EXPONENTIAL_DECAY_RETRY
+	//
+	// example:
+	//
+	// BACKOFF_RETRY
+	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The name of the subscription.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySubscription
+	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+}
+
+func (s SetSubscriptionAttributesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSubscriptionAttributesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSubscriptionAttributesShrinkRequest) SetDlqPolicyShrink(v string) *SetSubscriptionAttributesShrinkRequest {
+	s.DlqPolicyShrink = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesShrinkRequest) SetNotifyStrategy(v string) *SetSubscriptionAttributesShrinkRequest {
+	s.NotifyStrategy = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesShrinkRequest) SetSubscriptionName(v string) *SetSubscriptionAttributesShrinkRequest {
+	s.SubscriptionName = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesShrinkRequest) SetTopicName(v string) *SetSubscriptionAttributesShrinkRequest {
 	s.TopicName = &v
 	return s
 }
@@ -4374,6 +4901,7 @@ func (s *SetTopicAttributesResponse) SetBody(v *SetTopicAttributesResponseBody) 
 }
 
 type SubscribeRequest struct {
+	DlqPolicy *SubscribeRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The receiver endpoint. The format of the endpoint varies based on the terminal type.
 	//
 	// 	- If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
@@ -4466,6 +4994,11 @@ func (s SubscribeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SubscribeRequest) SetDlqPolicy(v *SubscribeRequestDlqPolicy) *SubscribeRequest {
+	s.DlqPolicy = v
+	return s
+}
+
 func (s *SubscribeRequest) SetEndpoint(v string) *SubscribeRequest {
 	s.Endpoint = &v
 	return s
@@ -4497,6 +5030,163 @@ func (s *SubscribeRequest) SetSubscriptionName(v string) *SubscribeRequest {
 }
 
 func (s *SubscribeRequest) SetTopicName(v string) *SubscribeRequest {
+	s.TopicName = &v
+	return s
+}
+
+type SubscribeRequestDlqPolicy struct {
+	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s SubscribeRequestDlqPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeRequestDlqPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeRequestDlqPolicy) SetDeadLetterTargetQueue(v string) *SubscribeRequestDlqPolicy {
+	s.DeadLetterTargetQueue = &v
+	return s
+}
+
+func (s *SubscribeRequestDlqPolicy) SetEnabled(v bool) *SubscribeRequestDlqPolicy {
+	s.Enabled = &v
+	return s
+}
+
+type SubscribeShrinkRequest struct {
+	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
+	// The receiver endpoint. The format of the endpoint varies based on the terminal type.
+	//
+	// 	- If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
+	//
+	// 	- If you set PushType to queue, set Endpoint to a `queue name`.
+	//
+	// 	- If you set PushType to mpush, set Endpoint to an `AppKey`.
+	//
+	// 	- If you set PushType to alisms, set Endpoint to a `mobile number`.
+	//
+	// 	- If you set PushType to email, set Endpoint to an `email address`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://example.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
+	//
+	// By default, no tag is specified to filter messages.
+	//
+	// example:
+	//
+	// important
+	MessageTag *string `json:"MessageTag,omitempty" xml:"MessageTag,omitempty"`
+	// The content format of the messages that are pushed to the endpoint. Valid values:
+	//
+	// 	- XML
+	//
+	// 	- JSON
+	//
+	// 	- SIMPLIFIED
+	//
+	// example:
+	//
+	// XML
+	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
+	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	//
+	// 	- BACKOFF_RETRY
+	//
+	// 	- EXPONENTIAL_DECAY_RETRY
+	//
+	// example:
+	//
+	// BACKOFF_RETRY
+	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The terminal type. Valid values:
+	//
+	// 	- http: HTTP services
+	//
+	// 	- queue: queues
+	//
+	// 	- mpush: mobile devices
+	//
+	// 	- alisms: Alibaba Cloud Short Message Service (SMS)
+	//
+	// 	- email: emails
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// queue
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// The name of the subscription.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testSubscription
+	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+}
+
+func (s SubscribeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeShrinkRequest) SetDlqPolicyShrink(v string) *SubscribeShrinkRequest {
+	s.DlqPolicyShrink = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetEndpoint(v string) *SubscribeShrinkRequest {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetMessageTag(v string) *SubscribeShrinkRequest {
+	s.MessageTag = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetNotifyContentFormat(v string) *SubscribeShrinkRequest {
+	s.NotifyContentFormat = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetNotifyStrategy(v string) *SubscribeShrinkRequest {
+	s.NotifyStrategy = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetPushType(v string) *SubscribeShrinkRequest {
+	s.PushType = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetSubscriptionName(v string) *SubscribeShrinkRequest {
+	s.SubscriptionName = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetTopicName(v string) *SubscribeShrinkRequest {
 	s.TopicName = &v
 	return s
 }
@@ -4880,13 +5570,24 @@ func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AuthorizeEndpointAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AuthorizeEndpointAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AuthorizeEndpointAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4911,19 +5612,29 @@ func (client *Client) AuthorizeEndpointAcl(request *AuthorizeEndpointAclRequest)
 //
 // Creates a queue.
 //
-// @param request - CreateQueueRequest
+// @param tmpReq - CreateQueueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateQueueResponse
-func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtime *util.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime *util.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateQueueShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DlqPolicy)) {
+		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DelaySeconds)) {
 		query["DelaySeconds"] = request.DelaySeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DlqPolicyShrink)) {
+		query["DlqPolicy"] = request.DlqPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableLogging)) {
@@ -4968,13 +5679,24 @@ func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateQueueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateQueueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5042,13 +5764,24 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTopicResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTopicResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5102,13 +5835,24 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteQueueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteQueueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5162,13 +5906,24 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTopicResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTopicResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5222,13 +5977,24 @@ func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableEndpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableEndpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5282,13 +6048,24 @@ func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableEndpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableEndpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5342,13 +6119,24 @@ func (client *Client) GetEndpointAttributeWithOptions(request *GetEndpointAttrib
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEndpointAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEndpointAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEndpointAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5406,13 +6194,24 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueueAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueueAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueueAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5470,13 +6269,24 @@ func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscript
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSubscriptionAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSubscriptionAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSubscriptionAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5534,13 +6344,24 @@ func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTopicAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTopicAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTopicAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5606,13 +6427,24 @@ func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListQueueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListQueueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5678,13 +6510,24 @@ func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscripti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSubscriptionByTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSubscriptionByTopicResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSubscriptionByTopicResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5750,13 +6593,24 @@ func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTopicResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTopicResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5824,13 +6678,24 @@ func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeEndpointAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeEndpointAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeEndpointAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5855,19 +6720,29 @@ func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_res
 //
 // Modifies a queue.
 //
-// @param request - SetQueueAttributesRequest
+// @param tmpReq - SetQueueAttributesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetQueueAttributesResponse
-func (client *Client) SetQueueAttributesWithOptions(request *SetQueueAttributesRequest, runtime *util.RuntimeOptions) (_result *SetQueueAttributesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRequest, runtime *util.RuntimeOptions) (_result *SetQueueAttributesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SetQueueAttributesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DlqPolicy)) {
+		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DelaySeconds)) {
 		query["DelaySeconds"] = request.DelaySeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DlqPolicyShrink)) {
+		query["DlqPolicy"] = request.DlqPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableLogging)) {
@@ -5908,13 +6783,24 @@ func (client *Client) SetQueueAttributesWithOptions(request *SetQueueAttributesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetQueueAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetQueueAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetQueueAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5939,17 +6825,27 @@ func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_r
 //
 // Modifies the attributes of a subscription.
 //
-// @param request - SetSubscriptionAttributesRequest
+// @param tmpReq - SetSubscriptionAttributesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetSubscriptionAttributesResponse
-func (client *Client) SetSubscriptionAttributesWithOptions(request *SetSubscriptionAttributesRequest, runtime *util.RuntimeOptions) (_result *SetSubscriptionAttributesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscriptionAttributesRequest, runtime *util.RuntimeOptions) (_result *SetSubscriptionAttributesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SetSubscriptionAttributesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DlqPolicy)) {
+		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DlqPolicyShrink)) {
+		query["DlqPolicy"] = request.DlqPolicyShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NotifyStrategy)) {
 		query["NotifyStrategy"] = request.NotifyStrategy
 	}
@@ -5976,13 +6872,24 @@ func (client *Client) SetSubscriptionAttributesWithOptions(request *SetSubscript
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetSubscriptionAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetSubscriptionAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetSubscriptionAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6044,13 +6951,24 @@ func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetTopicAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetTopicAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetTopicAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6075,17 +6993,27 @@ func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_r
 //
 // Creates a subscription to a topic.
 //
-// @param request - SubscribeRequest
+// @param tmpReq - SubscribeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubscribeResponse
-func (client *Client) SubscribeWithOptions(request *SubscribeRequest, runtime *util.RuntimeOptions) (_result *SubscribeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *util.RuntimeOptions) (_result *SubscribeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SubscribeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DlqPolicy)) {
+		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DlqPolicyShrink)) {
+		query["DlqPolicy"] = request.DlqPolicyShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
 		query["Endpoint"] = request.Endpoint
 	}
@@ -6128,13 +7056,24 @@ func (client *Client) SubscribeWithOptions(request *SubscribeRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubscribeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubscribeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubscribeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6192,13 +7131,24 @@ func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnsubscribeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnsubscribeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnsubscribeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
