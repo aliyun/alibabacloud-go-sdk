@@ -7117,6 +7117,131 @@ func (s *CreateHttpsBasicConfigurationResponse) SetBody(v *CreateHttpsBasicConfi
 	return s
 }
 
+type CreateImageTransformRequest struct {
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// (http.request.uri.path.file_name eq \\"jpg\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateImageTransformRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageTransformRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageTransformRequest) SetEnable(v string) *CreateImageTransformRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateImageTransformRequest) SetRule(v string) *CreateImageTransformRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateImageTransformRequest) SetRuleEnable(v string) *CreateImageTransformRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateImageTransformRequest) SetRuleName(v string) *CreateImageTransformRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateImageTransformRequest) SetSiteId(v int64) *CreateImageTransformRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateImageTransformRequest) SetSiteVersion(v int32) *CreateImageTransformRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateImageTransformResponseBody struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateImageTransformResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageTransformResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageTransformResponseBody) SetConfigId(v int64) *CreateImageTransformResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateImageTransformResponseBody) SetRequestId(v string) *CreateImageTransformResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateImageTransformResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateImageTransformResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateImageTransformResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageTransformResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageTransformResponse) SetHeaders(v map[string]*string) *CreateImageTransformResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateImageTransformResponse) SetStatusCode(v int32) *CreateImageTransformResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateImageTransformResponse) SetBody(v *CreateImageTransformResponseBody) *CreateImageTransformResponse {
+	s.Body = v
+	return s
+}
+
 type CreateKvNamespaceRequest struct {
 	// The description of the namespace.
 	//
@@ -8009,6 +8134,167 @@ func (s *CreateLoadBalancerResponse) SetStatusCode(v int32) *CreateLoadBalancerR
 }
 
 func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) *CreateLoadBalancerResponse {
+	s.Body = v
+	return s
+}
+
+type CreateNetworkOptimizationRequest struct {
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// example:
+	//
+	// on
+	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 340035003106221
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// 100
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s CreateNetworkOptimizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkOptimizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkOptimizationRequest) SetGrpc(v string) *CreateNetworkOptimizationRequest {
+	s.Grpc = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetHttp2Origin(v string) *CreateNetworkOptimizationRequest {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetRule(v string) *CreateNetworkOptimizationRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetRuleEnable(v string) *CreateNetworkOptimizationRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetRuleName(v string) *CreateNetworkOptimizationRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetSiteId(v int64) *CreateNetworkOptimizationRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetSiteVersion(v int32) *CreateNetworkOptimizationRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetSmartRouting(v string) *CreateNetworkOptimizationRequest {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetUploadMaxFilesize(v string) *CreateNetworkOptimizationRequest {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetWebsocket(v string) *CreateNetworkOptimizationRequest {
+	s.Websocket = &v
+	return s
+}
+
+type CreateNetworkOptimizationResponseBody struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNetworkOptimizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkOptimizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkOptimizationResponseBody) SetConfigId(v int64) *CreateNetworkOptimizationResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationResponseBody) SetRequestId(v string) *CreateNetworkOptimizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNetworkOptimizationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNetworkOptimizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateNetworkOptimizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkOptimizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkOptimizationResponse) SetHeaders(v map[string]*string) *CreateNetworkOptimizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetworkOptimizationResponse) SetStatusCode(v int32) *CreateNetworkOptimizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationResponse) SetBody(v *CreateNetworkOptimizationResponseBody) *CreateNetworkOptimizationResponse {
 	s.Body = v
 	return s
 }
@@ -15148,6 +15434,94 @@ func (s *DeleteHttpsBasicConfigurationResponse) SetBody(v *DeleteHttpsBasicConfi
 	return s
 }
 
+type DeleteImageTransformRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListImageTransforms](~~ListImageTransforms~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteImageTransformRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteImageTransformRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteImageTransformRequest) SetConfigId(v int64) *DeleteImageTransformRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteImageTransformRequest) SetSiteId(v int64) *DeleteImageTransformRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteImageTransformResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteImageTransformResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteImageTransformResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteImageTransformResponseBody) SetRequestId(v string) *DeleteImageTransformResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteImageTransformResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteImageTransformResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteImageTransformResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteImageTransformResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteImageTransformResponse) SetHeaders(v map[string]*string) *DeleteImageTransformResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteImageTransformResponse) SetStatusCode(v int32) *DeleteImageTransformResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteImageTransformResponse) SetBody(v *DeleteImageTransformResponseBody) *DeleteImageTransformResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteKvRequest struct {
 	// The name of the key that you want to delete.
 	//
@@ -15458,6 +15832,88 @@ func (s *DeleteLoadBalancerResponse) SetStatusCode(v int32) *DeleteLoadBalancerR
 }
 
 func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) *DeleteLoadBalancerResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNetworkOptimizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816**********
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteNetworkOptimizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkOptimizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkOptimizationRequest) SetConfigId(v int64) *DeleteNetworkOptimizationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteNetworkOptimizationRequest) SetSiteId(v int64) *DeleteNetworkOptimizationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteNetworkOptimizationResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNetworkOptimizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkOptimizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkOptimizationResponseBody) SetRequestId(v string) *DeleteNetworkOptimizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNetworkOptimizationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNetworkOptimizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNetworkOptimizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkOptimizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkOptimizationResponse) SetHeaders(v map[string]*string) *DeleteNetworkOptimizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNetworkOptimizationResponse) SetStatusCode(v int32) *DeleteNetworkOptimizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNetworkOptimizationResponse) SetBody(v *DeleteNetworkOptimizationResponseBody) *DeleteNetworkOptimizationResponse {
 	s.Body = v
 	return s
 }
@@ -24336,6 +24792,194 @@ func (s *GetIPv6Response) SetBody(v *GetIPv6ResponseBody) *GetIPv6Response {
 	return s
 }
 
+type GetImageTransformRequest struct {
+	// The configuration ID, which can be obtained by calling the [ListImageTransforms](~~ListImageTransforms~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetImageTransformRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageTransformRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageTransformRequest) SetConfigId(v int64) *GetImageTransformRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetImageTransformRequest) SetSiteId(v int64) *GetImageTransformRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetImageTransformResponseBody struct {
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Indicates whether the image transformations feature is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule content, which is a policy or conditional expression.
+	//
+	// example:
+	//
+	// (http.request.uri.path.file_name eq \\"jpg\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 2
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetImageTransformResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageTransformResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageTransformResponseBody) SetConfigId(v int64) *GetImageTransformResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetConfigType(v string) *GetImageTransformResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetEnable(v string) *GetImageTransformResponseBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetRequestId(v string) *GetImageTransformResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetRule(v string) *GetImageTransformResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetRuleEnable(v string) *GetImageTransformResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetRuleName(v string) *GetImageTransformResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetSequence(v int32) *GetImageTransformResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetSiteVersion(v int32) *GetImageTransformResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetImageTransformResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageTransformResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetImageTransformResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageTransformResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageTransformResponse) SetHeaders(v map[string]*string) *GetImageTransformResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetImageTransformResponse) SetStatusCode(v int32) *GetImageTransformResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetImageTransformResponse) SetBody(v *GetImageTransformResponseBody) *GetImageTransformResponse {
+	s.Body = v
+	return s
+}
+
 type GetKvRequest struct {
 	// Specifies whether to decode the value by using Base 64. If you call the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation and set the Base64 parameter to true, set this parameter to true to read the original content.
 	//
@@ -25751,6 +26395,196 @@ func (s *GetManagedTransformResponse) SetStatusCode(v int32) *GetManagedTransfor
 }
 
 func (s *GetManagedTransformResponse) SetBody(v *GetManagedTransformResponseBody) *GetManagedTransformResponse {
+	s.Body = v
+	return s
+}
+
+type GetNetworkOptimizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12312312213212
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetNetworkOptimizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkOptimizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkOptimizationRequest) SetConfigId(v int64) *GetNetworkOptimizationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationRequest) SetSiteId(v int64) *GetNetworkOptimizationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetNetworkOptimizationResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// example:
+	//
+	// on
+	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 2
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// 500
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s GetNetworkOptimizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkOptimizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetConfigId(v int64) *GetNetworkOptimizationResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetConfigType(v string) *GetNetworkOptimizationResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetGrpc(v string) *GetNetworkOptimizationResponseBody {
+	s.Grpc = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetHttp2Origin(v string) *GetNetworkOptimizationResponseBody {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetRequestId(v string) *GetNetworkOptimizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetRule(v string) *GetNetworkOptimizationResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetRuleEnable(v string) *GetNetworkOptimizationResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetRuleName(v string) *GetNetworkOptimizationResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetSequence(v int32) *GetNetworkOptimizationResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetSiteVersion(v int32) *GetNetworkOptimizationResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetSmartRouting(v string) *GetNetworkOptimizationResponseBody {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetUploadMaxFilesize(v string) *GetNetworkOptimizationResponseBody {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponseBody) SetWebsocket(v string) *GetNetworkOptimizationResponseBody {
+	s.Websocket = &v
+	return s
+}
+
+type GetNetworkOptimizationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNetworkOptimizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetNetworkOptimizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkOptimizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkOptimizationResponse) SetHeaders(v map[string]*string) *GetNetworkOptimizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponse) SetStatusCode(v int32) *GetNetworkOptimizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNetworkOptimizationResponse) SetBody(v *GetNetworkOptimizationResponseBody) *GetNetworkOptimizationResponse {
 	s.Body = v
 	return s
 }
@@ -29903,6 +30737,86 @@ func (s *GetSiteNameExclusiveResponse) SetStatusCode(v int32) *GetSiteNameExclus
 }
 
 func (s *GetSiteNameExclusiveResponse) SetBody(v *GetSiteNameExclusiveResponseBody) *GetSiteNameExclusiveResponse {
+	s.Body = v
+	return s
+}
+
+type GetSitePauseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetSitePauseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSitePauseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSitePauseRequest) SetSiteId(v int64) *GetSitePauseRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetSitePauseResponseBody struct {
+	// example:
+	//
+	// true
+	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSitePauseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSitePauseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSitePauseResponseBody) SetPaused(v bool) *GetSitePauseResponseBody {
+	s.Paused = &v
+	return s
+}
+
+func (s *GetSitePauseResponseBody) SetRequestId(v string) *GetSitePauseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSitePauseResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSitePauseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSitePauseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSitePauseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSitePauseResponse) SetHeaders(v map[string]*string) *GetSitePauseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSitePauseResponse) SetStatusCode(v int32) *GetSitePauseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSitePauseResponse) SetBody(v *GetSitePauseResponseBody) *GetSitePauseResponse {
 	s.Body = v
 	return s
 }
@@ -36678,6 +37592,256 @@ func (s *ListHttpsBasicConfigurationsResponse) SetBody(v *ListHttpsBasicConfigur
 	return s
 }
 
+type ListImageTransformsRequest struct {
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListImageTransformsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageTransformsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageTransformsRequest) SetConfigId(v int64) *ListImageTransformsRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListImageTransformsRequest) SetConfigType(v string) *ListImageTransformsRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListImageTransformsRequest) SetPageNumber(v int32) *ListImageTransformsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListImageTransformsRequest) SetPageSize(v int32) *ListImageTransformsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListImageTransformsRequest) SetRuleName(v string) *ListImageTransformsRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListImageTransformsRequest) SetSiteId(v int64) *ListImageTransformsRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListImageTransformsRequest) SetSiteVersion(v int32) *ListImageTransformsRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListImageTransformsResponseBody struct {
+	Configs []*ListImageTransformsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListImageTransformsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageTransformsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageTransformsResponseBody) SetConfigs(v []*ListImageTransformsResponseBodyConfigs) *ListImageTransformsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListImageTransformsResponseBody) SetPageNumber(v int32) *ListImageTransformsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBody) SetPageSize(v int32) *ListImageTransformsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBody) SetRequestId(v string) *ListImageTransformsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBody) SetTotalCount(v int32) *ListImageTransformsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBody) SetTotalPage(v int32) *ListImageTransformsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListImageTransformsResponseBodyConfigs struct {
+	// example:
+	//
+	// 395386449776640
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// (http.request.uri.path.file_name eq \\"jpg\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListImageTransformsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageTransformsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetConfigId(v int64) *ListImageTransformsResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetConfigType(v string) *ListImageTransformsResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetEnable(v string) *ListImageTransformsResponseBodyConfigs {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetRule(v string) *ListImageTransformsResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetRuleEnable(v string) *ListImageTransformsResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetRuleName(v string) *ListImageTransformsResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetSequence(v int32) *ListImageTransformsResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetSiteVersion(v int32) *ListImageTransformsResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListImageTransformsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListImageTransformsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListImageTransformsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageTransformsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageTransformsResponse) SetHeaders(v map[string]*string) *ListImageTransformsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListImageTransformsResponse) SetStatusCode(v int32) *ListImageTransformsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListImageTransformsResponse) SetBody(v *ListImageTransformsResponseBody) *ListImageTransformsResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstanceQuotasRequest struct {
 	// The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -39104,6 +40268,292 @@ func (s *ListManagedRulesGroupsResponse) SetStatusCode(v int32) *ListManagedRule
 }
 
 func (s *ListManagedRulesGroupsResponse) SetBody(v *ListManagedRulesGroupsResponseBody) *ListManagedRulesGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListNetworkOptimizationsRequest struct {
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1231231221****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListNetworkOptimizationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkOptimizationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkOptimizationsRequest) SetConfigId(v int64) *ListNetworkOptimizationsRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsRequest) SetConfigType(v string) *ListNetworkOptimizationsRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsRequest) SetPageNumber(v int32) *ListNetworkOptimizationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsRequest) SetPageSize(v int32) *ListNetworkOptimizationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsRequest) SetRuleName(v string) *ListNetworkOptimizationsRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsRequest) SetSiteId(v int64) *ListNetworkOptimizationsRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsRequest) SetSiteVersion(v int32) *ListNetworkOptimizationsRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListNetworkOptimizationsResponseBody struct {
+	Configs []*ListNetworkOptimizationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListNetworkOptimizationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkOptimizationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkOptimizationsResponseBody) SetConfigs(v []*ListNetworkOptimizationsResponseBodyConfigs) *ListNetworkOptimizationsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBody) SetPageNumber(v int32) *ListNetworkOptimizationsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBody) SetPageSize(v int32) *ListNetworkOptimizationsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBody) SetRequestId(v string) *ListNetworkOptimizationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBody) SetTotalCount(v int32) *ListNetworkOptimizationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBody) SetTotalPage(v int32) *ListNetworkOptimizationsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListNetworkOptimizationsResponseBodyConfigs struct {
+	// example:
+	//
+	// 395386449776640
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// example:
+	//
+	// on
+	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// 500
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s ListNetworkOptimizationsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkOptimizationsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetConfigId(v int64) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetConfigType(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetGrpc(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.Grpc = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetHttp2Origin(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetRule(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetRuleEnable(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetRuleName(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetSequence(v int32) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetSiteVersion(v int32) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetSmartRouting(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetUploadMaxFilesize(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponseBodyConfigs) SetWebsocket(v string) *ListNetworkOptimizationsResponseBodyConfigs {
+	s.Websocket = &v
+	return s
+}
+
+type ListNetworkOptimizationsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNetworkOptimizationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNetworkOptimizationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkOptimizationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkOptimizationsResponse) SetHeaders(v map[string]*string) *ListNetworkOptimizationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponse) SetStatusCode(v int32) *ListNetworkOptimizationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNetworkOptimizationsResponse) SetBody(v *ListNetworkOptimizationsResponseBody) *ListNetworkOptimizationsResponse {
 	s.Body = v
 	return s
 }
@@ -50693,6 +52143,124 @@ func (s *UpdateIPv6Response) SetBody(v *UpdateIPv6ResponseBody) *UpdateIPv6Respo
 	return s
 }
 
+type UpdateImageTransformRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// (http.request.uri.path.file_name eq \\"jpg\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateImageTransformRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateImageTransformRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateImageTransformRequest) SetConfigId(v int64) *UpdateImageTransformRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateImageTransformRequest) SetEnable(v string) *UpdateImageTransformRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateImageTransformRequest) SetRule(v string) *UpdateImageTransformRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateImageTransformRequest) SetRuleEnable(v string) *UpdateImageTransformRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateImageTransformRequest) SetRuleName(v string) *UpdateImageTransformRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateImageTransformRequest) SetSiteId(v int64) *UpdateImageTransformRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateImageTransformResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateImageTransformResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateImageTransformResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateImageTransformResponseBody) SetRequestId(v string) *UpdateImageTransformResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateImageTransformResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateImageTransformResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateImageTransformResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateImageTransformResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateImageTransformResponse) SetHeaders(v map[string]*string) *UpdateImageTransformResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateImageTransformResponse) SetStatusCode(v int32) *UpdateImageTransformResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateImageTransformResponse) SetBody(v *UpdateImageTransformResponseBody) *UpdateImageTransformResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateKvNamespaceRequest struct {
 	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
 	//
@@ -51869,6 +53437,160 @@ func (s *UpdateManagedTransformResponse) SetStatusCode(v int32) *UpdateManagedTr
 }
 
 func (s *UpdateManagedTransformResponse) SetBody(v *UpdateManagedTransformResponseBody) *UpdateManagedTransformResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateNetworkOptimizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// example:
+	//
+	// on
+	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// 100
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s UpdateNetworkOptimizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNetworkOptimizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetConfigId(v int64) *UpdateNetworkOptimizationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetGrpc(v string) *UpdateNetworkOptimizationRequest {
+	s.Grpc = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetHttp2Origin(v string) *UpdateNetworkOptimizationRequest {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetRule(v string) *UpdateNetworkOptimizationRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetRuleEnable(v string) *UpdateNetworkOptimizationRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetRuleName(v string) *UpdateNetworkOptimizationRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetSiteId(v int64) *UpdateNetworkOptimizationRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetSmartRouting(v string) *UpdateNetworkOptimizationRequest {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetUploadMaxFilesize(v string) *UpdateNetworkOptimizationRequest {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetWebsocket(v string) *UpdateNetworkOptimizationRequest {
+	s.Websocket = &v
+	return s
+}
+
+type UpdateNetworkOptimizationResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateNetworkOptimizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNetworkOptimizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNetworkOptimizationResponseBody) SetRequestId(v string) *UpdateNetworkOptimizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateNetworkOptimizationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNetworkOptimizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateNetworkOptimizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNetworkOptimizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNetworkOptimizationResponse) SetHeaders(v map[string]*string) *UpdateNetworkOptimizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationResponse) SetStatusCode(v int32) *UpdateNetworkOptimizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationResponse) SetBody(v *UpdateNetworkOptimizationResponseBody) *UpdateNetworkOptimizationResponse {
 	s.Body = v
 	return s
 }
@@ -54409,6 +56131,88 @@ func (s *UpdateSiteNameExclusiveResponse) SetStatusCode(v int32) *UpdateSiteName
 }
 
 func (s *UpdateSiteNameExclusiveResponse) SetBody(v *UpdateSiteNameExclusiveResponseBody) *UpdateSiteNameExclusiveResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSitePauseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateSitePauseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSitePauseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSitePauseRequest) SetPaused(v bool) *UpdateSitePauseRequest {
+	s.Paused = &v
+	return s
+}
+
+func (s *UpdateSitePauseRequest) SetSiteId(v int64) *UpdateSitePauseRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateSitePauseResponseBody struct {
+	// example:
+	//
+	// 6abd807e-ed2a-44de-ac54-ac38a62472e6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSitePauseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSitePauseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSitePauseResponseBody) SetRequestId(v string) *UpdateSitePauseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSitePauseResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSitePauseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSitePauseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSitePauseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSitePauseResponse) SetHeaders(v map[string]*string) *UpdateSitePauseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSitePauseResponse) SetStatusCode(v int32) *UpdateSitePauseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSitePauseResponse) SetBody(v *UpdateSitePauseResponseBody) *UpdateSitePauseResponse {
 	s.Body = v
 	return s
 }
@@ -59154,6 +60958,97 @@ func (client *Client) CreateHttpsBasicConfiguration(request *CreateHttpsBasicCon
 
 // Summary:
 //
+// 新增站点图片转换配置
+//
+// @param request - CreateImageTransformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageTransformResponse
+func (client *Client) CreateImageTransformWithOptions(request *CreateImageTransformRequest, runtime *util.RuntimeOptions) (_result *CreateImageTransformResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageTransform"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateImageTransformResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateImageTransformResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增站点图片转换配置
+//
+// @param request - CreateImageTransformRequest
+//
+// @return CreateImageTransformResponse
+func (client *Client) CreateImageTransform(request *CreateImageTransformRequest) (_result *CreateImageTransformResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateImageTransformResponse{}
+	_body, _err := client.CreateImageTransformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Create a namespace in your Alibaba Cloud account.
 //
 // @param request - CreateKvNamespaceRequest
@@ -59462,6 +61357,113 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerResponse{}
 	_body, _err := client.CreateLoadBalancerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增站点网络优化配置
+//
+// @param request - CreateNetworkOptimizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNetworkOptimizationResponse
+func (client *Client) CreateNetworkOptimizationWithOptions(request *CreateNetworkOptimizationRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkOptimizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Grpc)) {
+		query["Grpc"] = request.Grpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2Origin)) {
+		query["Http2Origin"] = request.Http2Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmartRouting)) {
+		query["SmartRouting"] = request.SmartRouting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadMaxFilesize)) {
+		query["UploadMaxFilesize"] = request.UploadMaxFilesize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Websocket)) {
+		query["Websocket"] = request.Websocket
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNetworkOptimization"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetworkOptimizationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetworkOptimizationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增站点网络优化配置
+//
+// @param request - CreateNetworkOptimizationRequest
+//
+// @return CreateNetworkOptimizationResponse
+func (client *Client) CreateNetworkOptimization(request *CreateNetworkOptimizationRequest) (_result *CreateNetworkOptimizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNetworkOptimizationResponse{}
+	_body, _err := client.CreateNetworkOptimizationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62486,6 +64488,81 @@ func (client *Client) DeleteHttpsBasicConfiguration(request *DeleteHttpsBasicCon
 
 // Summary:
 //
+// Deletes the configuration of image transformations for a website.
+//
+// @param request - DeleteImageTransformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteImageTransformResponse
+func (client *Client) DeleteImageTransformWithOptions(request *DeleteImageTransformRequest, runtime *util.RuntimeOptions) (_result *DeleteImageTransformResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImageTransform"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteImageTransformResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteImageTransformResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes the configuration of image transformations for a website.
+//
+// @param request - DeleteImageTransformRequest
+//
+// @return DeleteImageTransformResponse
+func (client *Client) DeleteImageTransform(request *DeleteImageTransformRequest) (_result *DeleteImageTransformResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteImageTransformResponse{}
+	_body, _err := client.DeleteImageTransformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a key-value pair from a namespace.
 //
 // @param request - DeleteKvRequest
@@ -62761,6 +64838,81 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLoadBalancerResponse{}
 	_body, _err := client.DeleteLoadBalancerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网络优化配置
+//
+// @param request - DeleteNetworkOptimizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNetworkOptimizationResponse
+func (client *Client) DeleteNetworkOptimizationWithOptions(request *DeleteNetworkOptimizationRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkOptimizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNetworkOptimization"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNetworkOptimizationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNetworkOptimizationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除网络优化配置
+//
+// @param request - DeleteNetworkOptimizationRequest
+//
+// @return DeleteNetworkOptimizationResponse
+func (client *Client) DeleteNetworkOptimization(request *DeleteNetworkOptimizationRequest) (_result *DeleteNetworkOptimizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNetworkOptimizationResponse{}
+	_body, _err := client.DeleteNetworkOptimizationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66711,6 +68863,73 @@ func (client *Client) GetIPv6(request *GetIPv6Request) (_result *GetIPv6Response
 
 // Summary:
 //
+// Queries the configuration of image transformations for a website.
+//
+// @param request - GetImageTransformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageTransformResponse
+func (client *Client) GetImageTransformWithOptions(request *GetImageTransformRequest, runtime *util.RuntimeOptions) (_result *GetImageTransformResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageTransform"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetImageTransformResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetImageTransformResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the configuration of image transformations for a website.
+//
+// @param request - GetImageTransformRequest
+//
+// @return GetImageTransformResponse
+func (client *Client) GetImageTransform(request *GetImageTransformRequest) (_result *GetImageTransformResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetImageTransformResponse{}
+	_body, _err := client.GetImageTransformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the value of a key in a key-value pair.
 //
 // @param request - GetKvRequest
@@ -67099,6 +69318,73 @@ func (client *Client) GetManagedTransform(request *GetManagedTransformRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetManagedTransformResponse{}
 	_body, _err := client.GetManagedTransformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单条网络优化配置
+//
+// @param request - GetNetworkOptimizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkOptimizationResponse
+func (client *Client) GetNetworkOptimizationWithOptions(request *GetNetworkOptimizationRequest, runtime *util.RuntimeOptions) (_result *GetNetworkOptimizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNetworkOptimization"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNetworkOptimizationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNetworkOptimizationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询单条网络优化配置
+//
+// @param request - GetNetworkOptimizationRequest
+//
+// @return GetNetworkOptimizationResponse
+func (client *Client) GetNetworkOptimization(request *GetNetworkOptimizationRequest) (_result *GetNetworkOptimizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetNetworkOptimizationResponse{}
+	_body, _err := client.GetNetworkOptimizationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68564,6 +70850,73 @@ func (client *Client) GetSiteNameExclusive(request *GetSiteNameExclusiveRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSiteNameExclusiveResponse{}
 	_body, _err := client.GetSiteNameExclusiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点暂停配置
+//
+// @param request - GetSitePauseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSitePauseResponse
+func (client *Client) GetSitePauseWithOptions(request *GetSitePauseRequest, runtime *util.RuntimeOptions) (_result *GetSitePauseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSitePause"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSitePauseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSitePauseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询站点暂停配置
+//
+// @param request - GetSitePauseRequest
+//
+// @return GetSitePauseResponse
+func (client *Client) GetSitePause(request *GetSitePauseRequest) (_result *GetSitePauseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSitePauseResponse{}
+	_body, _err := client.GetSitePauseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -70318,6 +72671,73 @@ func (client *Client) ListHttpsBasicConfigurations(request *ListHttpsBasicConfig
 
 // Summary:
 //
+// 查询多条站点图片转换配置
+//
+// @param request - ListImageTransformsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageTransformsResponse
+func (client *Client) ListImageTransformsWithOptions(request *ListImageTransformsRequest, runtime *util.RuntimeOptions) (_result *ListImageTransformsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListImageTransforms"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListImageTransformsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListImageTransformsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询多条站点图片转换配置
+//
+// @param request - ListImageTransformsRequest
+//
+// @return ListImageTransformsResponse
+func (client *Client) ListImageTransforms(request *ListImageTransformsRequest) (_result *ListImageTransformsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListImageTransformsResponse{}
+	_body, _err := client.ListImageTransformsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the quota details in a subscription plan.
 //
 // @param request - ListInstanceQuotasRequest
@@ -70879,6 +73299,73 @@ func (client *Client) ListManagedRulesGroups(request *ListManagedRulesGroupsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListManagedRulesGroupsResponse{}
 	_body, _err := client.ListManagedRulesGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多条网络优化配置
+//
+// @param request - ListNetworkOptimizationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkOptimizationsResponse
+func (client *Client) ListNetworkOptimizationsWithOptions(request *ListNetworkOptimizationsRequest, runtime *util.RuntimeOptions) (_result *ListNetworkOptimizationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNetworkOptimizations"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNetworkOptimizationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNetworkOptimizationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询多条网络优化配置
+//
+// @param request - ListNetworkOptimizationsRequest
+//
+// @return ListNetworkOptimizationsResponse
+func (client *Client) ListNetworkOptimizations(request *ListNetworkOptimizationsRequest) (_result *ListNetworkOptimizationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNetworkOptimizationsResponse{}
+	_body, _err := client.ListNetworkOptimizationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75386,6 +77873,97 @@ func (client *Client) UpdateIPv6(request *UpdateIPv6Request) (_result *UpdateIPv
 
 // Summary:
 //
+// 修改站点图片转换配置
+//
+// @param request - UpdateImageTransformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateImageTransformResponse
+func (client *Client) UpdateImageTransformWithOptions(request *UpdateImageTransformRequest, runtime *util.RuntimeOptions) (_result *UpdateImageTransformResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateImageTransform"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateImageTransformResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateImageTransformResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点图片转换配置
+//
+// @param request - UpdateImageTransformRequest
+//
+// @return UpdateImageTransformResponse
+func (client *Client) UpdateImageTransform(request *UpdateImageTransformRequest) (_result *UpdateImageTransformResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateImageTransformResponse{}
+	_body, _err := client.UpdateImageTransformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the name of a namespace in Edge KV.
 //
 // @param request - UpdateKvNamespaceRequest
@@ -75777,6 +78355,113 @@ func (client *Client) UpdateManagedTransform(request *UpdateManagedTransformRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateManagedTransformResponse{}
 	_body, _err := client.UpdateManagedTransformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改网络优化配置
+//
+// @param request - UpdateNetworkOptimizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNetworkOptimizationResponse
+func (client *Client) UpdateNetworkOptimizationWithOptions(request *UpdateNetworkOptimizationRequest, runtime *util.RuntimeOptions) (_result *UpdateNetworkOptimizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Grpc)) {
+		query["Grpc"] = request.Grpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2Origin)) {
+		query["Http2Origin"] = request.Http2Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmartRouting)) {
+		query["SmartRouting"] = request.SmartRouting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadMaxFilesize)) {
+		query["UploadMaxFilesize"] = request.UploadMaxFilesize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Websocket)) {
+		query["Websocket"] = request.Websocket
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNetworkOptimization"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateNetworkOptimizationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateNetworkOptimizationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改网络优化配置
+//
+// @param request - UpdateNetworkOptimizationRequest
+//
+// @return UpdateNetworkOptimizationResponse
+func (client *Client) UpdateNetworkOptimization(request *UpdateNetworkOptimizationRequest) (_result *UpdateNetworkOptimizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNetworkOptimizationResponse{}
+	_body, _err := client.UpdateNetworkOptimizationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -77221,6 +79906,81 @@ func (client *Client) UpdateSiteNameExclusive(request *UpdateSiteNameExclusiveRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSiteNameExclusiveResponse{}
 	_body, _err := client.UpdateSiteNameExclusiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点暂停配置
+//
+// @param request - UpdateSitePauseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSitePauseResponse
+func (client *Client) UpdateSitePauseWithOptions(request *UpdateSitePauseRequest, runtime *util.RuntimeOptions) (_result *UpdateSitePauseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Paused)) {
+		query["Paused"] = request.Paused
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSitePause"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSitePauseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSitePauseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点暂停配置
+//
+// @param request - UpdateSitePauseRequest
+//
+// @return UpdateSitePauseResponse
+func (client *Client) UpdateSitePause(request *UpdateSitePauseRequest) (_result *UpdateSitePauseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSitePauseResponse{}
+	_body, _err := client.UpdateSitePauseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
