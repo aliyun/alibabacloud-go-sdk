@@ -9,6 +9,359 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateMultiOrderRequest struct {
+	OrderItems []*CreateMultiOrderRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// create
+	OrderType  *string            `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Properties map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+}
+
+func (s CreateMultiOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderRequest) SetOrderItems(v []*CreateMultiOrderRequestOrderItems) *CreateMultiOrderRequest {
+	s.OrderItems = v
+	return s
+}
+
+func (s *CreateMultiOrderRequest) SetOrderType(v string) *CreateMultiOrderRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequest) SetProperties(v map[string]*string) *CreateMultiOrderRequest {
+	s.Properties = v
+	return s
+}
+
+type CreateMultiOrderRequestOrderItems struct {
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew  *bool                                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Components []*CreateMultiOrderRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Year
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	PromotionId *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DurationPackage
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s CreateMultiOrderRequestOrderItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderRequestOrderItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetAmount(v int32) *CreateMultiOrderRequestOrderItems {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetAutoPay(v bool) *CreateMultiOrderRequestOrderItems {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetAutoRenew(v bool) *CreateMultiOrderRequestOrderItems {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetComponents(v []*CreateMultiOrderRequestOrderItemsComponents) *CreateMultiOrderRequestOrderItems {
+	s.Components = v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetPeriod(v int32) *CreateMultiOrderRequestOrderItems {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetPeriodUnit(v string) *CreateMultiOrderRequestOrderItems {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetPromotionId(v string) *CreateMultiOrderRequestOrderItems {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetResourceIds(v []*string) *CreateMultiOrderRequestOrderItems {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetResourceType(v string) *CreateMultiOrderRequestOrderItems {
+	s.ResourceType = &v
+	return s
+}
+
+type CreateMultiOrderRequestOrderItemsComponents struct {
+	// example:
+	//
+	// RegionId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateMultiOrderRequestOrderItemsComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderRequestOrderItemsComponents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderRequestOrderItemsComponents) SetKey(v string) *CreateMultiOrderRequestOrderItemsComponents {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItemsComponents) SetValue(v string) *CreateMultiOrderRequestOrderItemsComponents {
+	s.Value = &v
+	return s
+}
+
+type CreateMultiOrderShrinkRequest struct {
+	OrderItems []*CreateMultiOrderShrinkRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// create
+	OrderType        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+}
+
+func (s CreateMultiOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderShrinkRequest) SetOrderItems(v []*CreateMultiOrderShrinkRequestOrderItems) *CreateMultiOrderShrinkRequest {
+	s.OrderItems = v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequest) SetOrderType(v string) *CreateMultiOrderShrinkRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequest) SetPropertiesShrink(v string) *CreateMultiOrderShrinkRequest {
+	s.PropertiesShrink = &v
+	return s
+}
+
+type CreateMultiOrderShrinkRequestOrderItems struct {
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew  *bool                                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Components []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Year
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	PromotionId *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DurationPackage
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s CreateMultiOrderShrinkRequestOrderItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderShrinkRequestOrderItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetAmount(v int32) *CreateMultiOrderShrinkRequestOrderItems {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetAutoPay(v bool) *CreateMultiOrderShrinkRequestOrderItems {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetAutoRenew(v bool) *CreateMultiOrderShrinkRequestOrderItems {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetComponents(v []*CreateMultiOrderShrinkRequestOrderItemsComponents) *CreateMultiOrderShrinkRequestOrderItems {
+	s.Components = v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetPeriod(v int32) *CreateMultiOrderShrinkRequestOrderItems {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetPeriodUnit(v string) *CreateMultiOrderShrinkRequestOrderItems {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetPromotionId(v string) *CreateMultiOrderShrinkRequestOrderItems {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetResourceIds(v []*string) *CreateMultiOrderShrinkRequestOrderItems {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetResourceType(v string) *CreateMultiOrderShrinkRequestOrderItems {
+	s.ResourceType = &v
+	return s
+}
+
+type CreateMultiOrderShrinkRequestOrderItemsComponents struct {
+	// example:
+	//
+	// RegionId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateMultiOrderShrinkRequestOrderItemsComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderShrinkRequestOrderItemsComponents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItemsComponents) SetKey(v string) *CreateMultiOrderShrinkRequestOrderItemsComponents {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItemsComponents) SetValue(v string) *CreateMultiOrderShrinkRequestOrderItemsComponents {
+	s.Value = &v
+	return s
+}
+
+type CreateMultiOrderResponseBody struct {
+	OrderIds []*int64 `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 833C4D2C-09C7-5CE6-8159-06758B964970
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateMultiOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderResponseBody) SetOrderIds(v []*int64) *CreateMultiOrderResponseBody {
+	s.OrderIds = v
+	return s
+}
+
+func (s *CreateMultiOrderResponseBody) SetRequestId(v string) *CreateMultiOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateMultiOrderResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMultiOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMultiOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiOrderResponse) SetHeaders(v map[string]*string) *CreateMultiOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMultiOrderResponse) SetStatusCode(v int32) *CreateMultiOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMultiOrderResponse) SetBody(v *CreateMultiOrderResponseBody) *CreateMultiOrderResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDeliveryAddressResponseBody struct {
 	Addresses []*DescribeDeliveryAddressResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// example:
@@ -681,6 +1034,83 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - CreateMultiOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultiOrderResponse
+func (client *Client) CreateMultiOrderWithOptions(tmpReq *CreateMultiOrderRequest, runtime *util.RuntimeOptions) (_result *CreateMultiOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMultiOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Properties)) {
+		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, tea.String("Properties"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderItems)) {
+		query["OrderItems"] = request.OrderItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertiesShrink)) {
+		query["Properties"] = request.PropertiesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMultiOrder"),
+		Version:     tea.String("2021-12-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMultiOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMultiOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - CreateMultiOrderRequest
+//
+// @return CreateMultiOrderResponse
+func (client *Client) CreateMultiOrder(request *CreateMultiOrderRequest) (_result *CreateMultiOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMultiOrderResponse{}
+	_body, _err := client.CreateMultiOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
