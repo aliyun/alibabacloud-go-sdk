@@ -2,7 +2,6 @@
 package client
 
 import (
-	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -597,9 +596,9 @@ type CreateTagsRequestTagKeyValueParamList struct {
 	//
 	// Business environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The key of tag N.
+	// The value of tag N.
 	//
-	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
 	//
 	// Valid values of N: 1 to 10.
 	//
@@ -609,7 +608,7 @@ type CreateTagsRequestTagKeyValueParamList struct {
 	//
 	// Environment
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The information about the tag value.
+	// The information about the tag values.
 	TagValueParamList []*CreateTagsRequestTagKeyValueParamListTagValueParamList `json:"TagValueParamList,omitempty" xml:"TagValueParamList,omitempty" type:"Repeated"`
 }
 
@@ -1886,8 +1885,9 @@ type GetEffectivePolicyRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	TagKeys              []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 	// The ID of the object.
 	//
 	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required.
@@ -1942,6 +1942,11 @@ func (s *GetEffectivePolicyRequest) SetResourceOwnerAccount(v string) *GetEffect
 	return s
 }
 
+func (s *GetEffectivePolicyRequest) SetTagKeys(v []*string) *GetEffectivePolicyRequest {
+	s.TagKeys = v
+	return s
+}
+
 func (s *GetEffectivePolicyRequest) SetTargetId(v string) *GetEffectivePolicyRequest {
 	s.TargetId = &v
 	return s
@@ -1958,7 +1963,8 @@ type GetEffectivePolicyResponseBody struct {
 	// example:
 	//
 	// {\\"tags\\":{\\"costcenter\\":{\\"tag_value\\":[\\"Beijing\\",\\"Shanghai\\"],\\"tag_key\\":\\"CostCenter\\"}}}
-	EffectivePolicy *string `json:"EffectivePolicy,omitempty" xml:"EffectivePolicy,omitempty"`
+	EffectivePolicy   *string                                            `json:"EffectivePolicy,omitempty" xml:"EffectivePolicy,omitempty"`
+	PolicyAttachments []*GetEffectivePolicyResponseBodyPolicyAttachments `json:"PolicyAttachments,omitempty" xml:"PolicyAttachments,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
@@ -1980,8 +1986,89 @@ func (s *GetEffectivePolicyResponseBody) SetEffectivePolicy(v string) *GetEffect
 	return s
 }
 
+func (s *GetEffectivePolicyResponseBody) SetPolicyAttachments(v []*GetEffectivePolicyResponseBodyPolicyAttachments) *GetEffectivePolicyResponseBody {
+	s.PolicyAttachments = v
+	return s
+}
+
 func (s *GetEffectivePolicyResponseBody) SetRequestId(v string) *GetEffectivePolicyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type GetEffectivePolicyResponseBodyPolicyAttachments struct {
+	PolicyList []*GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
+	PolicyType *string                                                      `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	TagKey     *string                                                      `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+}
+
+func (s GetEffectivePolicyResponseBodyPolicyAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEffectivePolicyResponseBodyPolicyAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachments) SetPolicyList(v []*GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) *GetEffectivePolicyResponseBodyPolicyAttachments {
+	s.PolicyList = v
+	return s
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachments) SetPolicyType(v string) *GetEffectivePolicyResponseBodyPolicyAttachments {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachments) SetTagKey(v string) *GetEffectivePolicyResponseBodyPolicyAttachments {
+	s.TagKey = &v
+	return s
+}
+
+type GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList struct {
+	AttachSeq  *int32  `json:"AttachSeq,omitempty" xml:"AttachSeq,omitempty"`
+	AttachTime *string `json:"AttachTime,omitempty" xml:"AttachTime,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) SetAttachSeq(v int32) *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList {
+	s.AttachSeq = &v
+	return s
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) SetAttachTime(v string) *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList {
+	s.AttachTime = &v
+	return s
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) SetPolicyId(v string) *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) SetPolicyName(v string) *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) SetTargetId(v string) *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList {
+	s.TargetId = &v
+	return s
+}
+
+func (s *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList) SetTargetType(v string) *GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList {
+	s.TargetType = &v
 	return s
 }
 
@@ -3321,7 +3408,7 @@ type ListResourcesByTagRequestTagFilter struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. This parameter specifies a filter condition for the query.
 	//
-	// The tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -3666,6 +3753,11 @@ func (s *ListSupportResourceTypesResponseBody) SetSupportResourceTypes(v []*List
 }
 
 type ListSupportResourceTypesResponseBodySupportResourceTypes struct {
+	// The resource ARN template.
+	//
+	// example:
+	//
+	// acs:ecs:*:*:instance/${ResourceId}
 	ArnTemplate *string `json:"ArnTemplate,omitempty" xml:"ArnTemplate,omitempty"`
 	// The service code.
 	//
@@ -3804,11 +3896,9 @@ type ListTagKeysRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The type of the query. Valid values:
 	//
-	// 	- EQUAL: exact match. This is the default value.
+	// 	- EQUAL (default): exact match
 	//
-	// 	- PREFIX: prefix-based fuzzy match.
-	//
-	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
+	// 	- PREFIX: prefix-based fuzzy match
 	//
 	// example:
 	//
@@ -3931,11 +4021,9 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysRequestTagFilter struct {
-	// The tag key.
+	// The tag key for a fuzzy query.
 	//
 	// This parameter is used together with the `FuzzyType` parameter.
-	//
-	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
 	//
 	// example:
 	//
@@ -4371,11 +4459,9 @@ type ListTagValuesRequest struct {
 	TagFilter *ListTagValuesRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Struct"`
 	// The type of the query. Valid values:
 	//
-	// 	- EQUAL: exact match. This is the default value.
+	// 	- EQUAL (default): exact match
 	//
-	// 	- PREFIX: prefix-based fuzzy match.
-	//
-	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
+	// 	- PREFIX: prefix-based fuzzy match
 	//
 	// example:
 	//
@@ -4506,11 +4592,9 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesRequestTagFilter struct {
-	// The tag value.
+	// The tag value for a fuzzy query.
 	//
 	// This parameter is used together with the `FuzzyType` parameter.
-	//
-	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
 	//
 	// example:
 	//
@@ -5357,7 +5441,9 @@ type UntagResourcesRequest struct {
 	// arn:acs:vpc:cn-hangzhou:123456789****:vpc/vpc-bp19dd90tkt6tz7wu****
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// A tag key.
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 10.
 	//
 	// This parameter is required.
 	//
@@ -5563,54 +5649,39 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.ProductId = tea.String("Tag")
-	gatewayClient, _err := gatewayclient.NewClient()
-	if _err != nil {
-		return _err
-	}
-
-	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-qingdao":                  tea.String("tag.aliyuncs.com"),
-		"cn-beijing":                  tea.String("tag.aliyuncs.com"),
-		"cn-hangzhou":                 tea.String("tag.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("tag.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("tag.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("tag.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("tag.aliyuncs.com"),
-		"us-west-1":                   tea.String("tag.aliyuncs.com"),
-		"us-east-1":                   tea.String("tag.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("tag.aliyuncs.com"),
+		"us-west-1":                   tea.String("tag.us-east-1.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("tag.cn-hangzhou.aliyuncs.com"),
 		"cn-shanghai-finance-1":       tea.String("tag.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("tag.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("tag.aliyuncs.com"),
 		"cn-beijing-gov-1":            tea.String("tag.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("tag.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("tag.cn-hangzhou.aliyuncs.com"),
 		"cn-edge-1":                   tea.String("tag.aliyuncs.com"),
-		"cn-fujian":                   tea.String("tag.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("tag.aliyuncs.com"),
+		"cn-fujian":                   tea.String("tag.cn-hangzhou.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("tag.cn-north-2-gov-1.aliyuncs.com"),
 		"cn-hangzhou-bj-b01":          tea.String("tag.aliyuncs.com"),
 		"cn-hangzhou-internal-prod-1": tea.String("tag.aliyuncs.com"),
 		"cn-hangzhou-internal-test-1": tea.String("tag.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("tag.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("tag.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("tag.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("tag.cn-hangzhou.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("tag.cn-hangzhou.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("tag.cn-hangzhou.aliyuncs.com"),
 		"cn-hongkong-finance-pop":     tea.String("tag.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("tag.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("tag.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("tag.cn-qingdao-nebula.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("tag.cn-hangzhou.aliyuncs.com"),
 		"cn-shanghai-et2-b01":         tea.String("tag.aliyuncs.com"),
 		"cn-shanghai-inner":           tea.String("tag.aliyuncs.com"),
 		"cn-shanghai-internal-test-1": tea.String("tag.aliyuncs.com"),
 		"cn-shenzhen-inner":           tea.String("tag.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("tag.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("tag.cn-hangzhou.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("tag.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("tag.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("tag.aliyuncs.com"),
 		"cn-zhangbei":                 tea.String("tag.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("tag.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("tag.cn-hangzhou.aliyuncs.com"),
 		"cn-zhangjiakou-na62-a01":     tea.String("tag.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("tag.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("tag.cn-qingdao-nebula.aliyuncs.com"),
 		"eu-west-1-oxs":               tea.String("tag.cn-shenzhen-cloudstone.aliyuncs.com"),
 		"rus-west-1-pop":              tea.String("tag.aliyuncs.com"),
 	}
@@ -6043,7 +6114,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates preset tags.
+// Creates predefined tags.
 //
 // Description:
 //
@@ -6120,7 +6191,7 @@ func (client *Client) CreateTagsWithOptions(request *CreateTagsRequest, runtime 
 
 // Summary:
 //
-// Creates preset tags.
+// Creates predefined tags.
 //
 // Description:
 //
@@ -6983,6 +7054,10 @@ func (client *Client) GetEffectivePolicyWithOptions(request *GetEffectivePolicyR
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
+		query["TagKeys"] = request.TagKeys
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
 		query["TargetId"] = request.TargetId
 	}
@@ -7723,7 +7798,7 @@ func (client *Client) ListResourcesByTag(request *ListResourcesByTagRequest) (_r
 //
 // Description:
 //
-// ### [](#)Call examples
+// ### [](#)Call example
 //
 // 	- Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
 //
@@ -7822,7 +7897,7 @@ func (client *Client) ListSupportResourceTypesWithOptions(request *ListSupportRe
 //
 // Description:
 //
-// ### [](#)Call examples
+// ### [](#)Call example
 //
 // 	- Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
 //
