@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -17,18 +14,37 @@ type AcceptVpcPeerConnectionRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses **request ID** as the **client token**. The **request ID** may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the VPC peering connection to be accepted by the accepter VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcc-guzvyqlj0n6e10****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the resource group.
 	//
-	// For more information about resource groups, see [What is a resource group?](~~94475~~)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -68,6 +84,10 @@ func (s *AcceptVpcPeerConnectionRequest) SetResourceOwnerAccount(v string) *Acce
 
 type AcceptVpcPeerConnectionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -116,48 +136,119 @@ func (s *AcceptVpcPeerConnectionResponse) SetBody(v *AcceptVpcPeerConnectionResp
 type CreateVpcPeerConnectionRequest struct {
 	// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
 	//
-	// *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-	// *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+	// 	- To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
 	//
-	// >  If the accepter is a RAM user, set **AcceptingAliUid** to the ID of the Alibaba Cloud account that created the RAM user.
+	// 	- To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+	//
+	// >  If the accepter is a RAM user, set **AcceptingAliUid*	- to the ID of the Alibaba Cloud account that created the RAM user.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1210123456123456
 	AcceptingAliUid *int64 `json:"AcceptingAliUid,omitempty" xml:"AcceptingAliUid,omitempty"`
 	// The region ID of the accepter VPC of the VPC peering connection that you want to create.
 	//
-	// *   To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
-	// *   To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
+	// 	- To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
+	//
+	// 	- To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	AcceptingRegionId *string `json:"AcceptingRegionId,omitempty" xml:"AcceptingRegionId,omitempty"`
 	// The ID of the accepter VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp1vzjkp2q1xgnind****
 	AcceptingVpcId *string `json:"AcceptingVpcId,omitempty" xml:"AcceptingVpcId,omitempty"`
 	// The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
+	//
+	// example:
+	//
+	// 100
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the VPC peering connection.
 	//
 	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The link type of the VPC peering connection that you want to create. Valid values:
+	//
+	// - Platinum.
+	//
+	// - Gold: default value.
+	//
+	// >
+	//
+	// > - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+	//
+	// example:
+	//
+	// Gold
+	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
 	// The name of the VPC peering connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	//
+	// example:
+	//
+	// vpcpeer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region where you want to create a VPC peering connection.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	//
-	// For more information about resource groups, see [Resource groups](~~94475~~).
+	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the requester VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp1gsk7h12ew7oegk****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -204,6 +295,11 @@ func (s *CreateVpcPeerConnectionRequest) SetDryRun(v bool) *CreateVpcPeerConnect
 	return s
 }
 
+func (s *CreateVpcPeerConnectionRequest) SetLinkType(v string) *CreateVpcPeerConnectionRequest {
+	s.LinkType = &v
+	return s
+}
+
 func (s *CreateVpcPeerConnectionRequest) SetName(v string) *CreateVpcPeerConnectionRequest {
 	s.Name = &v
 	return s
@@ -226,8 +322,16 @@ func (s *CreateVpcPeerConnectionRequest) SetVpcId(v string) *CreateVpcPeerConnec
 
 type CreateVpcPeerConnectionResponseBody struct {
 	// The ID of the instance on which the VPC peering connection is created.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -283,19 +387,39 @@ type DeleteVpcPeerConnectionRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. The value of **RequestId*	- for each API request may be different.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to check the request without performing the operation. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to forcefully delete the VPC peering connection. Valid values:
 	//
-	// *   **false** (default): no.
-	// *   **true**: yes. If you forcefully delete the VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+	// 	- **false*	- (default): no.
+	//
+	// 	- **true**: yes. If you forcefully delete the VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+	//
+	// example:
+	//
+	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The ID of the VPC peering connection that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -329,6 +453,10 @@ func (s *DeleteVpcPeerConnectionRequest) SetInstanceId(v string) *DeleteVpcPeerC
 
 type DeleteVpcPeerConnectionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -375,7 +503,13 @@ func (s *DeleteVpcPeerConnectionResponse) SetBody(v *DeleteVpcPeerConnectionResp
 }
 
 type GetVpcPeerConnectionAttributeRequest struct {
-	// The ID of the VPC peering connection that you want to query.
+	// The ID of the VPC peering connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -400,59 +534,134 @@ func (s *GetVpcPeerConnectionAttributeRequest) SetResourceOwnerAccount(v string)
 
 type GetVpcPeerConnectionAttributeResponseBody struct {
 	// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
+	//
+	// example:
+	//
+	// 283117732402483989
 	AcceptingOwnerUid *int64 `json:"AcceptingOwnerUid,omitempty" xml:"AcceptingOwnerUid,omitempty"`
 	// The region ID of the accepter VPC.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	AcceptingRegionId *string `json:"AcceptingRegionId,omitempty" xml:"AcceptingRegionId,omitempty"`
 	// The details of the accepter VPC.
 	AcceptingVpc *GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc `json:"AcceptingVpc,omitempty" xml:"AcceptingVpc,omitempty" type:"Struct"`
-	// The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+	// The bandwidth of the VPC peering connection. Unit: Mbit /s. The value is an integer greater than 0.
 	//
-	// >  If the value is set to **-1**, it indicates that no limit is imposed on the bandwidth.
+	// >  A value of -1 indicates that the bandwidth is unlimited.
 	//
 	// Default value:
 	//
-	// *   The default bandwidth of an inter-region VPC peering connection is **1024** Mbit/s.
-	// *   The default bandwidth of an intra-region VPC peering connection is **-1** Mbit/s.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The business status of the VPC peering connection. Valid values:
+	// 	- The default bandwidth value of an inter-region VPC peering connection is 1,024 Mbit/s.
 	//
-	// *   **Normal**
-	// *   **FinancialLocked**
+	// 	- The default bandwidth value of an intra-region VPC peering connection is -1 Mbit/s, which indicates that the bandwidth is unlimited.
+	//
+	// example:
+	//
+	// 1024
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The status of the VPC peering connection. Valid values:
+	//
+	// 	- **Normal**
+	//
+	// 	- **FinancialLocked**
+	//
+	// example:
+	//
+	// Normal
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
 	// The description of the VPC peering connection.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the VPC peering connection was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	// The time when the VPC peering connection was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ss` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-04-24T09:02:36Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The expiration time of the VPC peering connection.
 	//
-	// The expiration time is returned only when the **Status** of the VPC peering connection is **Accepting** or **Expired**. Otherwise, **null** is returned.
+	// A valid expiration time is returned only when the **Status*	- of the VPC peering connection is **Accepting*	- or **Expired**. Otherwise, **null*	- is returned.
+	//
+	// example:
+	//
+	// 2022-05-01T09:02:36Z
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	// The time when the VPC peering connection was modified. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	// The time when the VPC peering connection was modified. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ss` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-04-24T19:20:45Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the VPC peering connection.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The link type of the VPC peering connection.
+	//
+	// example:
+	//
+	// Gold
+	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
 	// The name of the VPC peering connection.
+	//
+	// example:
+	//
+	// vpcpeer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the Alibaba Cloud account to which the requester VPC belongs.
+	//
+	// example:
+	//
+	// 253460731706911258
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the requester VPC.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3AC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmz7hy5z267ni
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the VPC peering connection. Valid values:
 	//
-	// *   **Creating**
-	// *   **Accepting**
-	// *   **Updating**
-	// *   **Rejected**
-	// *   **Expired**
-	// *   **Activated**
-	// *   **Deleting**
-	// *   **Deleted**
+	// 	- **Creating**
 	//
-	// For more information about the status of VPC peering connections, see [Overview of VPC peering connections](~~418507~~).
+	// 	- **Accepting**
+	//
+	// 	- **Updating**
+	//
+	// 	- **Rejected**
+	//
+	// 	- **Expired**
+	//
+	// 	- **Activated**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
+	// For more information about the status of VPC peering connections, see [Overview](https://help.aliyun.com/document_detail/418507.html).
+	//
+	// example:
+	//
+	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag list.
 	Tags []*GetVpcPeerConnectionAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -518,6 +727,11 @@ func (s *GetVpcPeerConnectionAttributeResponseBody) SetInstanceId(v string) *Get
 	return s
 }
 
+func (s *GetVpcPeerConnectionAttributeResponseBody) SetLinkType(v string) *GetVpcPeerConnectionAttributeResponseBody {
+	s.LinkType = &v
+	return s
+}
+
 func (s *GetVpcPeerConnectionAttributeResponseBody) SetName(v string) *GetVpcPeerConnectionAttributeResponseBody {
 	s.Name = &v
 	return s
@@ -564,6 +778,10 @@ type GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc struct {
 	// The IPv6 CIDR block of the accepter VPC.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The ID of the accepter VPC.
+	//
+	// example:
+	//
+	// vpc-bp1vzjkp2q1xgnind****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -592,8 +810,16 @@ func (s *GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc) SetVpcId(v strin
 
 type GetVpcPeerConnectionAttributeResponseBodyTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -621,6 +847,10 @@ type GetVpcPeerConnectionAttributeResponseBodyVpc struct {
 	// The IPv6 CIDR block of the requester VPC.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The ID of the requester VPC.
+	//
+	// example:
+	//
+	// vpc-bp1gsk7h12ew7oegk****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -677,23 +907,46 @@ func (s *GetVpcPeerConnectionAttributeResponse) SetBody(v *GetVpcPeerConnectionA
 }
 
 type ListTagResourcesRequest struct {
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned in the last call.
+	// 	- If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	//
+	// 	- If a next query is to be sent, set the value to the value of **NextToken*	- that is returned in the last call.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Deprecated
+	//
 	// The resource ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeerConnection
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// Deprecated
+	//
 	// The tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -737,17 +990,25 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
+	// >  You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value**.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the resource. You can specify up to 20 tag values. It can be an empty string.
+	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
+	// >  You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value**.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -771,13 +1032,26 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   If **NextToken** is empty, it indicates that no next query is to be sent.
-	// *   If **NextToken** is returned, the value indicates the token that is used for the next query.
+	// 	- If **NextToken*	- is empty, it indicates that no next query is to be sent.
+	//
+	// 	- If **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DE65F6B7-7566-4802-9007-96F2494AC512
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resources to which the tags are added.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
@@ -813,14 +1087,34 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 
 type ListTagResourcesResponseBodyTagResources struct {
 	// The region of the requester VPC.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// pcc-bp16qjewdsunr41m1****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. The value is set to **PeerConnection**, which indicates a VPC peering connection.
+	//
+	// example:
+	//
+	// PeerConnection
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// FinanceDept
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -888,25 +1182,50 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ListVpcPeerConnectionsRequest struct {
 	// The ID of the VPC peering connection that you want to query.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the VPC peering connection that you want to query.
+	//
+	// example:
+	//
+	// vpcpeer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of NextToken.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region where you want to query VPC peering connections.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	//
-	// For more information about resource groups, see [What is a resource group?](~~94475~~)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+	//
+	// example:
+	//
+	// rg-acfm2ggeub5uf3y
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The tag list.
 	Tags []*ListVpcPeerConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
 	VpcId []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
@@ -961,13 +1280,21 @@ func (s *ListVpcPeerConnectionsRequest) SetVpcId(v []*string) *ListVpcPeerConnec
 }
 
 type ListVpcPeerConnectionsRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag key can be an empty string.
+	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -991,25 +1318,50 @@ func (s *ListVpcPeerConnectionsRequestTags) SetValue(v string) *ListVpcPeerConne
 
 type ListVpcPeerConnectionsShrinkRequest struct {
 	// The ID of the VPC peering connection that you want to query.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the VPC peering connection that you want to query.
+	//
+	// example:
+	//
+	// vpcpeer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of NextToken.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region where you want to query VPC peering connections.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	//
-	// For more information about resource groups, see [What is a resource group?](~~94475~~)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+	//
+	// example:
+	//
+	// rg-acfm2ggeub5uf3y
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The tag list.
 	Tags []*ListVpcPeerConnectionsShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
 	VpcIdShrink *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -1064,13 +1416,21 @@ func (s *ListVpcPeerConnectionsShrinkRequest) SetVpcIdShrink(v string) *ListVpcP
 }
 
 type ListVpcPeerConnectionsShrinkRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag key can be an empty string.
+	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1093,16 +1453,33 @@ func (s *ListVpcPeerConnectionsShrinkRequestTags) SetValue(v string) *ListVpcPee
 }
 
 type ListVpcPeerConnectionsResponseBody struct {
-	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next queries are sent.
-	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+	// 	- If no value is returned for **NextToken**, no next queries are sent.
+	//
+	// 	- If the value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED39DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The details of the VPC peering connections.
 	VpcPeerConnects []*ListVpcPeerConnectionsResponseBodyVpcPeerConnects `json:"VpcPeerConnects,omitempty" xml:"VpcPeerConnects,omitempty" type:"Repeated"`
@@ -1143,8 +1520,16 @@ func (s *ListVpcPeerConnectionsResponseBody) SetVpcPeerConnects(v []*ListVpcPeer
 
 type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
+	//
+	// example:
+	//
+	// 253460731706911258
 	AcceptingOwnerUid *int64 `json:"AcceptingOwnerUid,omitempty" xml:"AcceptingOwnerUid,omitempty"`
 	// The region ID of the accepter VPC.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	AcceptingRegionId *string `json:"AcceptingRegionId,omitempty" xml:"AcceptingRegionId,omitempty"`
 	// The details of the accepter VPC.
 	AcceptingVpc *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc `json:"AcceptingVpc,omitempty" xml:"AcceptingVpc,omitempty" type:"Struct"`
@@ -1154,46 +1539,109 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	//
 	// Default value:
 	//
-	// *   The default bandwidth of an inter-region VPC peering connection is **1024** Mbit/s.
-	// *   The default bandwidth of an intra-region VPC peering connection is **-1** Mbit/s.
+	// 	- The default bandwidth of an inter-region VPC peering connection is **1024*	- Mbit/s.
+	//
+	// 	- The default bandwidth of an intra-region VPC peering connection is **-1*	- Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The business status of the VPC peering connection. Valid values:
 	//
-	// *   **Normal**
-	// *   **FinancialLocked**
+	// 	- **Normal**
+	//
+	// 	- **FinancialLocked**
+	//
+	// example:
+	//
+	// Normal
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
 	// The description of the VPC peering connection.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the VPC peering connection was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	//
+	// example:
+	//
+	// 2022-04-24T09:02:36Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The expiration time of the VPC peering connection. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
 	//
-	// The expiration time is returned only when the **Status** of the VPC peering connection is **Accepting** or **Expired**. Otherwise, **null** is returned.
+	// The expiration time is returned only when the **Status*	- of the VPC peering connection is **Accepting*	- or **Expired**. Otherwise, **null*	- is returned.
+	//
+	// example:
+	//
+	// 2022-05-01T09:02:36Z
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
 	// The time when the VPC peering connection was modified. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	//
+	// example:
+	//
+	// 2022-04-24T19:20:45Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the VPC peering connection.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The link type of the VPC peering connection.
+	//
+	// example:
+	//
+	// Gold
+	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
 	// The name of the VPC peering connection.
+	//
+	// example:
+	//
+	// vpcpeer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the Alibaba Cloud account to which the requester VPC belongs.
+	//
+	// example:
+	//
+	// 253460731706911258
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the requester VPC.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek2gvbs746gt4q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the VPC peering connection. Valid values:
 	//
-	// *   **Creating**
-	// *   **Accepting**
-	// *   **Updating**
-	// *   **Rejected**
-	// *   **Expired**
-	// *   **Activated**
-	// *   **Deleting**
-	// *   **Deleted**
+	// 	- **Creating**
 	//
-	// For more information about the status of VPC peering connections, see [Overview of VPC peering connections](~~418507~~).
+	// 	- **Accepting**
+	//
+	// 	- **Updating**
+	//
+	// 	- **Rejected**
+	//
+	// 	- **Expired**
+	//
+	// 	- **Activated**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
+	// For more information about the status of VPC peering connections, see [Overview of VPC peering connections](https://help.aliyun.com/document_detail/418507.html).
+	//
+	// example:
+	//
+	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag list.
 	Tags []*ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -1259,6 +1707,11 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetInstanceId(v stri
 	return s
 }
 
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetLinkType(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
+	s.LinkType = &v
+	return s
+}
+
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetName(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
 	s.Name = &v
 	return s
@@ -1300,6 +1753,10 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc struct {
 	// The IPv6 CIDR block of the accepter VPC.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The ID of the accepter VPC.
+	//
+	// example:
+	//
+	// vpc-bp1vzjkp2q1xgnind****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -1328,8 +1785,16 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc) SetVpcId
 
 type ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1357,6 +1822,10 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc struct {
 	// The IPv6 CIDR block of the requester VPC.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The ID of the requester VPC.
+	//
+	// example:
+	//
+	// vpc-bp1gsk7h12ew7oegk****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -1414,27 +1883,68 @@ func (s *ListVpcPeerConnectionsResponse) SetBody(v *ListVpcPeerConnectionsRespon
 
 type ModifyVpcPeerConnectionRequest struct {
 	// The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+	//
+	// example:
+	//
+	// 100
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new description of the VPC peering connection.
 	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// newdescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to only precheck the request. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **true**: checks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the VPC peering connection whose name or description you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Type of connection. Valid values:
+	//
+	// - Platinum.
+	//
+	// - Gold: default value.
+	//
+	// >
+	//
+	// > - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+	//
+	// example:
+	//
+	// Gold
+	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
 	// The new name of the VPC peering connection.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// vpcpeername
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1471,6 +1981,11 @@ func (s *ModifyVpcPeerConnectionRequest) SetInstanceId(v string) *ModifyVpcPeerC
 	return s
 }
 
+func (s *ModifyVpcPeerConnectionRequest) SetLinkType(v string) *ModifyVpcPeerConnectionRequest {
+	s.LinkType = &v
+	return s
+}
+
 func (s *ModifyVpcPeerConnectionRequest) SetName(v string) *ModifyVpcPeerConnectionRequest {
 	s.Name = &v
 	return s
@@ -1478,6 +1993,10 @@ func (s *ModifyVpcPeerConnectionRequest) SetName(v string) *ModifyVpcPeerConnect
 
 type ModifyVpcPeerConnectionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 880C99E1-449B-524A-B81F-1EC53D2A7EAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1526,15 +2045,39 @@ func (s *ModifyVpcPeerConnectionResponse) SetBody(v *ModifyVpcPeerConnectionResp
 type MoveResourceGroupRequest struct {
 	// The ID of the new resource group.
 	//
-	// >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~).
-	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The ID of the region to which the resource belongs.
+	// >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfm3peow3k****
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The region ID of the resource.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the VPC peering connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcc-gu32s92f9ytsk9****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeerConnection
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -1568,11 +2111,20 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 
 type MoveResourceGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1628,14 +2180,29 @@ type RejectVpcPeerConnectionRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. The value of **RequestId*	- for each API request may be different.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to check the request without performing the operation. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the VPC peering connection to be rejected by the acceptor VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcc-lnk0m24khwvtkm0****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -1670,6 +2237,10 @@ func (s *RejectVpcPeerConnectionRequest) SetResourceOwnerAccount(v string) *Reje
 
 type RejectVpcPeerConnectionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4EC47282-1B74-4534-BD2E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1720,17 +2291,37 @@ type TagResourcesRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The region ID of the resource to which you want to create and add tags.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of resources.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeerConnection
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1768,13 +2359,21 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag. You must enter at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key. You must specify at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You must enter at least one tag value and at most 20 tag values. It can be an empty string.
+	// The tag value. You must specify at least one tag value and can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1798,11 +2397,20 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C46FF5A8-C5F0-4024-8262-B16B639225A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1856,24 +2464,49 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UnTagResourcesRequest struct {
 	// Specifies whether to remove all tags from the specified resource. Valid values:
 	//
-	// *   **true**: removes all tags from the specified resource.
-	// *   **false**: does not remove all tags from the specified resource. This is the default value.
+	// 	- **true**: removes all tags from the specified resource.
+	//
+	// 	- **false**: does not remove all tags from the specified resource. This is the default value.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The region ID of the tag.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of resources.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeerConnection
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The key of the tag that you want to remove. You can specify at most 20 tag keys. It can be an empty string.
+	//
+	// It can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -1917,11 +2550,20 @@ func (s *UnTagResourcesRequest) SetTagKey(v []*string) *UnTagResourcesRequest {
 
 type UnTagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C46FF5A8-C5F0-4024-8262-B16B639225A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the tags are removed. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2019,17 +2661,27 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * *   For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
- * *   **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of the task.
- *     *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
- *     *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
- * *   You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
- *
- * @param request AcceptVpcPeerConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AcceptVpcPeerConnectionResponse
- */
+// Summary:
+//
+// 接收VPC对等连接
+//
+// Description:
+//
+//   For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
+//
+// 	- **AcceptVpcPeerConnection*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
+//
+//     	- If a VPC peering connection is in the **Updating*	- state, the VPC peering connection is being activated.
+//
+//     	- If a VPC peering connection is in the **Activated*	- state, the VPC peering connection is activated.
+//
+// 	- You cannot repeatedly call the **AcceptVpcPeerConnection*	- operation within a specific period of time.
+//
+// @param request - AcceptVpcPeerConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AcceptVpcPeerConnectionResponse
 func (client *Client) AcceptVpcPeerConnectionWithOptions(request *AcceptVpcPeerConnectionRequest, runtime *util.RuntimeOptions) (_result *AcceptVpcPeerConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2070,25 +2722,45 @@ func (client *Client) AcceptVpcPeerConnectionWithOptions(request *AcceptVpcPeerC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AcceptVpcPeerConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AcceptVpcPeerConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AcceptVpcPeerConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * *   For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
- * *   **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of the task.
- *     *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
- *     *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
- * *   You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
- *
- * @param request AcceptVpcPeerConnectionRequest
- * @return AcceptVpcPeerConnectionResponse
- */
+// Summary:
+//
+// 接收VPC对等连接
+//
+// Description:
+//
+//   For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
+//
+// 	- **AcceptVpcPeerConnection*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
+//
+//     	- If a VPC peering connection is in the **Updating*	- state, the VPC peering connection is being activated.
+//
+//     	- If a VPC peering connection is in the **Activated*	- state, the VPC peering connection is activated.
+//
+// 	- You cannot repeatedly call the **AcceptVpcPeerConnection*	- operation within a specific period of time.
+//
+// @param request - AcceptVpcPeerConnectionRequest
+//
+// @return AcceptVpcPeerConnectionResponse
 func (client *Client) AcceptVpcPeerConnection(request *AcceptVpcPeerConnectionRequest) (_result *AcceptVpcPeerConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AcceptVpcPeerConnectionResponse{}
@@ -2100,24 +2772,41 @@ func (client *Client) AcceptVpcPeerConnection(request *AcceptVpcPeerConnectionRe
 	return _result, _err
 }
 
-/**
- * Before you create a VPC peering connection, make sure that the following requirements are met:
- * *   Cloud Data Transfer (CDT) is activated to manage the billing of intra-border data transfers. To activate CDT, call the [OpenCdtService](~~337842~~) operation.
- * *   **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and an **instance ID** and runs the task in the background. You can call the [GetVpcPeerConnectionAttribute](~~426095~~) operation to query the status of the task.
- *     *   If a VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
- *     *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is created.
- *     *   If a VPC peering connection is in the **Accepting** state, the VPC peering connection is created across accounts and the accepter is accepting the VPC peering connection.
- * *   You cannot repeatedly call the **CreateVpcPeerConnection** operation within a specific period of time.
- *
- * @param request CreateVpcPeerConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateVpcPeerConnectionResponse
- */
+// Summary:
+//
+// Creates a VPC peering connection
+//
+// Description:
+//
+// Before you create a VPC peering connection, take note of the following items:
+//
+// 	- **CreateVpcPeerConnection*	- is an asynchronous operation. After a request is sent, the system returns an **instance ID*	- and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
+//
+//     	- If the VPC peering connection is in the **Creating*	- state, the VPC peering connection is being created.
+//
+//     	- If the VPC peering connection is in the **Activated*	- state, the VPC peering connection is created.
+//
+//     	- If the VPC peering connection is in the **Accepting*	- state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
+//
+// 	- You cannot repeatedly call **CreateVpcPeerConnection*	- within the specified period of time.
+//
+// When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
+//
+// @param request - CreateVpcPeerConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpcPeerConnectionResponse
 func (client *Client) CreateVpcPeerConnectionWithOptions(request *CreateVpcPeerConnectionRequest, runtime *util.RuntimeOptions) (_result *CreateVpcPeerConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LinkType)) {
+		query["LinkType"] = request.LinkType
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptingAliUid)) {
 		body["AcceptingAliUid"] = request.AcceptingAliUid
@@ -2164,7 +2853,8 @@ func (client *Client) CreateVpcPeerConnectionWithOptions(request *CreateVpcPeerC
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateVpcPeerConnection"),
@@ -2177,27 +2867,49 @@ func (client *Client) CreateVpcPeerConnectionWithOptions(request *CreateVpcPeerC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVpcPeerConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVpcPeerConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVpcPeerConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * Before you create a VPC peering connection, make sure that the following requirements are met:
- * *   Cloud Data Transfer (CDT) is activated to manage the billing of intra-border data transfers. To activate CDT, call the [OpenCdtService](~~337842~~) operation.
- * *   **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and an **instance ID** and runs the task in the background. You can call the [GetVpcPeerConnectionAttribute](~~426095~~) operation to query the status of the task.
- *     *   If a VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
- *     *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is created.
- *     *   If a VPC peering connection is in the **Accepting** state, the VPC peering connection is created across accounts and the accepter is accepting the VPC peering connection.
- * *   You cannot repeatedly call the **CreateVpcPeerConnection** operation within a specific period of time.
- *
- * @param request CreateVpcPeerConnectionRequest
- * @return CreateVpcPeerConnectionResponse
- */
+// Summary:
+//
+// Creates a VPC peering connection
+//
+// Description:
+//
+// Before you create a VPC peering connection, take note of the following items:
+//
+// 	- **CreateVpcPeerConnection*	- is an asynchronous operation. After a request is sent, the system returns an **instance ID*	- and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
+//
+//     	- If the VPC peering connection is in the **Creating*	- state, the VPC peering connection is being created.
+//
+//     	- If the VPC peering connection is in the **Activated*	- state, the VPC peering connection is created.
+//
+//     	- If the VPC peering connection is in the **Accepting*	- state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
+//
+// 	- You cannot repeatedly call **CreateVpcPeerConnection*	- within the specified period of time.
+//
+// When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
+//
+// @param request - CreateVpcPeerConnectionRequest
+//
+// @return CreateVpcPeerConnectionResponse
 func (client *Client) CreateVpcPeerConnection(request *CreateVpcPeerConnectionRequest) (_result *CreateVpcPeerConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVpcPeerConnectionResponse{}
@@ -2209,19 +2921,31 @@ func (client *Client) CreateVpcPeerConnection(request *CreateVpcPeerConnectionRe
 	return _result, _err
 }
 
-/**
- * *   You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
- *     *   If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
- *     *   If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
- * *   The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
- *     *   If a VPC peering connection is in the **Deleting** state, it is being deleted.
- *     *   If a VPC peering connection is in the **Deleted** state, it is deleted.
- * *   You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
- *
- * @param request DeleteVpcPeerConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteVpcPeerConnectionResponse
- */
+// Summary:
+//
+// 删除VPC对等连接
+//
+// Description:
+//
+//   You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
+//
+//     	- If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+//
+//     	- If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
+//
+// 	- The **DeleteVpcPeerConnection*	- operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+//
+//     	- If a VPC peering connection is in the **Deleting*	- state, it is being deleted.
+//
+//     	- If a VPC peering connection is in the **Deleted*	- state, it is deleted.
+//
+// 	- You cannot repeatedly call the **DeleteVpcPeerConnection*	- operation for the same VPC peering connection within the specified period of time.
+//
+// @param request - DeleteVpcPeerConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVpcPeerConnectionResponse
 func (client *Client) DeleteVpcPeerConnectionWithOptions(request *DeleteVpcPeerConnectionRequest, runtime *util.RuntimeOptions) (_result *DeleteVpcPeerConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2258,27 +2982,49 @@ func (client *Client) DeleteVpcPeerConnectionWithOptions(request *DeleteVpcPeerC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVpcPeerConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVpcPeerConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVpcPeerConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * *   You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
- *     *   If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
- *     *   If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
- * *   The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
- *     *   If a VPC peering connection is in the **Deleting** state, it is being deleted.
- *     *   If a VPC peering connection is in the **Deleted** state, it is deleted.
- * *   You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
- *
- * @param request DeleteVpcPeerConnectionRequest
- * @return DeleteVpcPeerConnectionResponse
- */
+// Summary:
+//
+// 删除VPC对等连接
+//
+// Description:
+//
+//   You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
+//
+//     	- If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+//
+//     	- If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
+//
+// 	- The **DeleteVpcPeerConnection*	- operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+//
+//     	- If a VPC peering connection is in the **Deleting*	- state, it is being deleted.
+//
+//     	- If a VPC peering connection is in the **Deleted*	- state, it is deleted.
+//
+// 	- You cannot repeatedly call the **DeleteVpcPeerConnection*	- operation for the same VPC peering connection within the specified period of time.
+//
+// @param request - DeleteVpcPeerConnectionRequest
+//
+// @return DeleteVpcPeerConnectionResponse
 func (client *Client) DeleteVpcPeerConnection(request *DeleteVpcPeerConnectionRequest) (_result *DeleteVpcPeerConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVpcPeerConnectionResponse{}
@@ -2290,6 +3036,15 @@ func (client *Client) DeleteVpcPeerConnection(request *DeleteVpcPeerConnectionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a virtual private cloud (VPC) peering connection.
+//
+// @param request - GetVpcPeerConnectionAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVpcPeerConnectionAttributeResponse
 func (client *Client) GetVpcPeerConnectionAttributeWithOptions(request *GetVpcPeerConnectionAttributeRequest, runtime *util.RuntimeOptions) (_result *GetVpcPeerConnectionAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2318,15 +3073,33 @@ func (client *Client) GetVpcPeerConnectionAttributeWithOptions(request *GetVpcPe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVpcPeerConnectionAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVpcPeerConnectionAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVpcPeerConnectionAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the details of a virtual private cloud (VPC) peering connection.
+//
+// @param request - GetVpcPeerConnectionAttributeRequest
+//
+// @return GetVpcPeerConnectionAttributeResponse
 func (client *Client) GetVpcPeerConnectionAttribute(request *GetVpcPeerConnectionAttributeRequest) (_result *GetVpcPeerConnectionAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVpcPeerConnectionAttributeResponse{}
@@ -2338,16 +3111,25 @@ func (client *Client) GetVpcPeerConnectionAttribute(request *GetVpcPeerConnectio
 	return _result, _err
 }
 
-/**
- * *   Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
- * *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
- * *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
- * *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
- *
- * @param request ListTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagResourcesResponse
- */
+// Summary:
+//
+// Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
+//
+// Description:
+//
+//   Set **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object to be queried.
+//
+// 	- **Tag.N*	- is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
+//
+// 	- If you set **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+//
+// 	- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2392,24 +3174,43 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * *   Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
- * *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
- * *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
- * *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
- *
- * @param request ListTagResourcesRequest
- * @return ListTagResourcesResponse
- */
+// Summary:
+//
+// Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
+//
+// Description:
+//
+//   Set **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object to be queried.
+//
+// 	- **Tag.N*	- is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
+//
+// 	- If you set **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+//
+// 	- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -2421,6 +3222,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries virtual private cloud (VPC) peering connections.
+//
+// @param tmpReq - ListVpcPeerConnectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcPeerConnectionsResponse
 func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConnectionsRequest, runtime *util.RuntimeOptions) (_result *ListVpcPeerConnectionsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2481,15 +3291,33 @@ func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConne
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVpcPeerConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVpcPeerConnectionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVpcPeerConnectionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries virtual private cloud (VPC) peering connections.
+//
+// @param request - ListVpcPeerConnectionsRequest
+//
+// @return ListVpcPeerConnectionsResponse
 func (client *Client) ListVpcPeerConnections(request *ListVpcPeerConnectionsRequest) (_result *ListVpcPeerConnectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcPeerConnectionsResponse{}
@@ -2501,21 +3329,35 @@ func (client *Client) ListVpcPeerConnections(request *ListVpcPeerConnectionsRequ
 	return _result, _err
 }
 
-/**
- * *   The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
- *     *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
- *     *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
- * *   You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
- *
- * @param request ModifyVpcPeerConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyVpcPeerConnectionResponse
- */
+// Summary:
+//
+// Modifies the description or name of a virtual private cloud (VPC) peering connection.
+//
+// Description:
+//
+//   The **ModifyVpcPeerConnection*	- operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+//
+//     	- If a VPC peering connection is in the **Updating*	- state, the VPC peering connection is being modified.
+//
+//     	- If a VPC peering connection is in the **Activated*	- state, the VPC peering connection is modified.
+//
+// 	- You cannot repeatedly call the **ModifyVpcPeerConnection*	- operation for the same VPC peering connection within the specified period of time.
+//
+// @param request - ModifyVpcPeerConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVpcPeerConnectionResponse
 func (client *Client) ModifyVpcPeerConnectionWithOptions(request *ModifyVpcPeerConnectionRequest, runtime *util.RuntimeOptions) (_result *ModifyVpcPeerConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LinkType)) {
+		query["LinkType"] = request.LinkType
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
 		body["Bandwidth"] = request.Bandwidth
@@ -2542,7 +3384,8 @@ func (client *Client) ModifyVpcPeerConnectionWithOptions(request *ModifyVpcPeerC
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyVpcPeerConnection"),
@@ -2555,24 +3398,43 @@ func (client *Client) ModifyVpcPeerConnectionWithOptions(request *ModifyVpcPeerC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyVpcPeerConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyVpcPeerConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyVpcPeerConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * *   The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
- *     *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
- *     *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
- * *   You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
- *
- * @param request ModifyVpcPeerConnectionRequest
- * @return ModifyVpcPeerConnectionResponse
- */
+// Summary:
+//
+// Modifies the description or name of a virtual private cloud (VPC) peering connection.
+//
+// Description:
+//
+//   The **ModifyVpcPeerConnection*	- operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+//
+//     	- If a VPC peering connection is in the **Updating*	- state, the VPC peering connection is being modified.
+//
+//     	- If a VPC peering connection is in the **Activated*	- state, the VPC peering connection is modified.
+//
+// 	- You cannot repeatedly call the **ModifyVpcPeerConnection*	- operation for the same VPC peering connection within the specified period of time.
+//
+// @param request - ModifyVpcPeerConnectionRequest
+//
+// @return ModifyVpcPeerConnectionResponse
 func (client *Client) ModifyVpcPeerConnection(request *ModifyVpcPeerConnectionRequest) (_result *ModifyVpcPeerConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyVpcPeerConnectionResponse{}
@@ -2584,6 +3446,15 @@ func (client *Client) ModifyVpcPeerConnection(request *ModifyVpcPeerConnectionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
+//
+// @param request - MoveResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2620,15 +3491,33 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
+//
+// @param request - MoveResourceGroupRequest
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveResourceGroupResponse{}
@@ -2640,14 +3529,21 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
-/**
- * *   An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
- * *   You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
- *
- * @param request RejectVpcPeerConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RejectVpcPeerConnectionResponse
- */
+// Summary:
+//
+// 拒绝VPC对等连接
+//
+// Description:
+//
+//   An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected*	- state.
+//
+// 	- You cannot repeatedly call the **RejectVpcPeerConnection*	- operation for the same VPC peering connection within the specified period of time.
+//
+// @param request - RejectVpcPeerConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RejectVpcPeerConnectionResponse
 func (client *Client) RejectVpcPeerConnectionWithOptions(request *RejectVpcPeerConnectionRequest, runtime *util.RuntimeOptions) (_result *RejectVpcPeerConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2684,22 +3580,39 @@ func (client *Client) RejectVpcPeerConnectionWithOptions(request *RejectVpcPeerC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RejectVpcPeerConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RejectVpcPeerConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RejectVpcPeerConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * *   An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
- * *   You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
- *
- * @param request RejectVpcPeerConnectionRequest
- * @return RejectVpcPeerConnectionResponse
- */
+// Summary:
+//
+// 拒绝VPC对等连接
+//
+// Description:
+//
+//   An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected*	- state.
+//
+// 	- You cannot repeatedly call the **RejectVpcPeerConnection*	- operation for the same VPC peering connection within the specified period of time.
+//
+// @param request - RejectVpcPeerConnectionRequest
+//
+// @return RejectVpcPeerConnectionResponse
 func (client *Client) RejectVpcPeerConnection(request *RejectVpcPeerConnectionRequest) (_result *RejectVpcPeerConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RejectVpcPeerConnectionResponse{}
@@ -2711,20 +3624,33 @@ func (client *Client) RejectVpcPeerConnection(request *RejectVpcPeerConnectionRe
 	return _result, _err
 }
 
-/**
- * Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
- * *   The keys of tags that are added to the same instance must be unique.
- * *   You cannot create tags without adding them to instances. All tags must be added to instances.
- * *   Tag information is not shared across regions.
- *     For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
- * *   For the same account and region, tags added to different VPC peering connections are shared.
- *     For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
- * *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
- *
- * @param request TagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Creates tags and adds them to a virtual private cloud (VPC) peering connection.
+//
+// Description:
+//
+// Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
+//
+// 	- The keys of tags that are added to the same instance must be unique.
+//
+// 	- You cannot create tags without adding them to instances. All tags must be added to instances.
+//
+// 	- Tag information is not shared across regions.
+//
+//     For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
+//
+// 	- For the same account and region, tags added to different VPC peering connections are shared.
+//
+//     For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
+//
+// 	- You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2765,28 +3691,51 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
- * *   The keys of tags that are added to the same instance must be unique.
- * *   You cannot create tags without adding them to instances. All tags must be added to instances.
- * *   Tag information is not shared across regions.
- *     For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
- * *   For the same account and region, tags added to different VPC peering connections are shared.
- *     For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
- * *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
- *
- * @param request TagResourcesRequest
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Creates tags and adds them to a virtual private cloud (VPC) peering connection.
+//
+// Description:
+//
+// Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
+//
+// 	- The keys of tags that are added to the same instance must be unique.
+//
+// 	- You cannot create tags without adding them to instances. All tags must be added to instances.
+//
+// 	- Tag information is not shared across regions.
+//
+//     For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
+//
+// 	- For the same account and region, tags added to different VPC peering connections are shared.
+//
+//     For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
+//
+// 	- You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -2798,6 +3747,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from specified Virtual Private Cloud (VPC) peering connections.
+//
+// @param request - UnTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnTagResourcesResponse
 func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, runtime *util.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2842,15 +3800,33 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Removes tags from specified Virtual Private Cloud (VPC) peering connections.
+//
+// @param request - UnTagResourcesRequest
+//
+// @return UnTagResourcesResponse
 func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnTagResourcesResponse{}
