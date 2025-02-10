@@ -1,3 +1,6 @@
+2025-02-10 Version: v5.0.4
+- Generated golang 2020-04-15 for Privatelink.
+
 2024-12-19 Version: v5.0.3
 - Update API DescribeRegions: add param ServiceResourceType.
 - Update API DescribeRegions: update response param.
