@@ -7561,15 +7561,21 @@ type CreateLoadBalancerRequest struct {
 	//
 	// true
 	AdaptiveRouting *CreateLoadBalancerRequestAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
 	Description  *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// order
@@ -7609,6 +7615,8 @@ type CreateLoadBalancerRequest struct {
 	SessionAffinityAttributes *CreateLoadBalancerRequestSessionAffinityAttributes `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty" type:"Struct"`
 	// This parameter is required.
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ip
@@ -7939,15 +7947,21 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// true
 	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// order
@@ -7987,6 +8001,8 @@ type CreateLoadBalancerShrinkRequest struct {
 	SessionAffinityAttributesShrink *string `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty"`
 	// This parameter is required.
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ip
@@ -48162,6 +48178,7 @@ func (s *PurgeCachesRequest) SetType(v string) *PurgeCachesRequest {
 }
 
 type PurgeCachesRequestContent struct {
+	CacheKeys []*PurgeCachesRequestContentCacheKeys `json:"CacheKeys,omitempty" xml:"CacheKeys,omitempty" type:"Repeated"`
 	// The cache tags that are used to purge the cache. This parameter is required if Type is set to cachetag.
 	CacheTags []*string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
 	// The directories that are used to purge the cache. This parameter is required if Type is set to directory.
@@ -48186,6 +48203,11 @@ func (s PurgeCachesRequestContent) String() string {
 
 func (s PurgeCachesRequestContent) GoString() string {
 	return s.String()
+}
+
+func (s *PurgeCachesRequestContent) SetCacheKeys(v []*PurgeCachesRequestContentCacheKeys) *PurgeCachesRequestContent {
+	s.CacheKeys = v
+	return s
 }
 
 func (s *PurgeCachesRequestContent) SetCacheTags(v []*string) *PurgeCachesRequestContent {
@@ -48215,6 +48237,29 @@ func (s *PurgeCachesRequestContent) SetIgnoreParams(v []*string) *PurgeCachesReq
 
 func (s *PurgeCachesRequestContent) SetPurgeAll(v bool) *PurgeCachesRequestContent {
 	s.PurgeAll = &v
+	return s
+}
+
+type PurgeCachesRequestContentCacheKeys struct {
+	Headers map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	Url     *string            `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s PurgeCachesRequestContentCacheKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PurgeCachesRequestContentCacheKeys) GoString() string {
+	return s.String()
+}
+
+func (s *PurgeCachesRequestContentCacheKeys) SetHeaders(v map[string]*string) *PurgeCachesRequestContentCacheKeys {
+	s.Headers = v
+	return s
+}
+
+func (s *PurgeCachesRequestContentCacheKeys) SetUrl(v string) *PurgeCachesRequestContentCacheKeys {
+	s.Url = &v
 	return s
 }
 
