@@ -4249,7 +4249,8 @@ type InstallAgentForClusterRequest struct {
 	// example:
 	//
 	// c9d7f3fc3d42942afbcb65c1100ffb19d
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	ClusterId       *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	GrayscaleConfig *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
 }
 
 func (s InstallAgentForClusterRequest) String() string {
@@ -4272,6 +4273,11 @@ func (s *InstallAgentForClusterRequest) SetAgentVersion(v string) *InstallAgentF
 
 func (s *InstallAgentForClusterRequest) SetClusterId(v string) *InstallAgentForClusterRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *InstallAgentForClusterRequest) SetGrayscaleConfig(v string) *InstallAgentForClusterRequest {
+	s.GrayscaleConfig = &v
 	return s
 }
 
@@ -9752,6 +9758,10 @@ func (client *Client) InstallAgentForClusterWithOptions(request *InstallAgentFor
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		body["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrayscaleConfig)) {
+		body["grayscale_config"] = request.GrayscaleConfig
 	}
 
 	req := &openapi.OpenApiRequest{
