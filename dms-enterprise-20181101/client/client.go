@@ -7602,6 +7602,7 @@ type CreateDataImportOrderRequestParam struct {
 	//
 	// This parameter is required.
 	DbItemList []*CreateDataImportOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+	ExecMode   *string                                        `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
 	// The encoding algorithm to be used by the destination database. Valid values:
 	//
 	// 	- **AUTO**: automatic identification
@@ -7723,6 +7724,11 @@ func (s *CreateDataImportOrderRequestParam) SetCsvFirstRowIsColumnDef(v bool) *C
 
 func (s *CreateDataImportOrderRequestParam) SetDbItemList(v []*CreateDataImportOrderRequestParamDbItemList) *CreateDataImportOrderRequestParam {
 	s.DbItemList = v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetExecMode(v string) *CreateDataImportOrderRequestParam {
+	s.ExecMode = &v
 	return s
 }
 
@@ -9370,6 +9376,470 @@ func (s *CreateDatabaseExportOrderResponse) SetStatusCode(v int32) *CreateDataba
 }
 
 func (s *CreateDatabaseExportOrderResponse) SetBody(v *CreateDatabaseExportOrderResponseBody) *CreateDatabaseExportOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDifyInstanceRequest struct {
+	AdbpgInstanceMode *string `json:"AdbpgInstanceMode,omitempty" xml:"AdbpgInstanceMode,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	DataRegion           *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	DatabaseOption       *string `json:"DatabaseOption,omitempty" xml:"DatabaseOption,omitempty"`
+	DbEngineType         *string `json:"DbEngineType,omitempty" xml:"DbEngineType,omitempty"`
+	DbEngineVersion      *string `json:"DbEngineVersion,omitempty" xml:"DbEngineVersion,omitempty"`
+	DbInstanceAccount    *string `json:"DbInstanceAccount,omitempty" xml:"DbInstanceAccount,omitempty"`
+	DbInstanceCategory   *string `json:"DbInstanceCategory,omitempty" xml:"DbInstanceCategory,omitempty"`
+	DbInstanceClass      *string `json:"DbInstanceClass,omitempty" xml:"DbInstanceClass,omitempty"`
+	DbInstancePassword   *string `json:"DbInstancePassword,omitempty" xml:"DbInstancePassword,omitempty"`
+	DbResourceId         *int32  `json:"DbResourceId,omitempty" xml:"DbResourceId,omitempty"`
+	DbStorageSize        *string `json:"DbStorageSize,omitempty" xml:"DbStorageSize,omitempty"`
+	DbStorageType        *string `json:"DbStorageType,omitempty" xml:"DbStorageType,omitempty"`
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	KvStoreAccount       *string `json:"KvStoreAccount,omitempty" xml:"KvStoreAccount,omitempty"`
+	KvStoreEngineVersion *string `json:"KvStoreEngineVersion,omitempty" xml:"KvStoreEngineVersion,omitempty"`
+	KvStoreInstanceClass *string `json:"KvStoreInstanceClass,omitempty" xml:"KvStoreInstanceClass,omitempty"`
+	KvStoreNodeType      *string `json:"KvStoreNodeType,omitempty" xml:"KvStoreNodeType,omitempty"`
+	KvStoreOption        *string `json:"KvStoreOption,omitempty" xml:"KvStoreOption,omitempty"`
+	KvStorePassword      *string `json:"KvStorePassword,omitempty" xml:"KvStorePassword,omitempty"`
+	KvStoreResourceId    *int32  `json:"KvStoreResourceId,omitempty" xml:"KvStoreResourceId,omitempty"`
+	KvStoreType          *string `json:"KvStoreType,omitempty" xml:"KvStoreType,omitempty"`
+	OssPath              *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	OssResourceId        *int32  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	PayPeriod            *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
+	PayPeriodType        *string `json:"PayPeriodType,omitempty" xml:"PayPeriodType,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Replicas             *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// This parameter is required.
+	ResourceQuota *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
+	// This parameter is required.
+	SecurityGroupId         *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
+	SegNodeNum              *int32  `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	StorageType             *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// This parameter is required.
+	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VectordbAccount       *string `json:"VectordbAccount,omitempty" xml:"VectordbAccount,omitempty"`
+	VectordbCategory      *string `json:"VectordbCategory,omitempty" xml:"VectordbCategory,omitempty"`
+	VectordbEngineVersion *string `json:"VectordbEngineVersion,omitempty" xml:"VectordbEngineVersion,omitempty"`
+	VectordbInstanceSpec  *string `json:"VectordbInstanceSpec,omitempty" xml:"VectordbInstanceSpec,omitempty"`
+	VectordbOption        *string `json:"VectordbOption,omitempty" xml:"VectordbOption,omitempty"`
+	VectordbPassword      *string `json:"VectordbPassword,omitempty" xml:"VectordbPassword,omitempty"`
+	VectordbResourceId    *int32  `json:"VectordbResourceId,omitempty" xml:"VectordbResourceId,omitempty"`
+	VectordbStorageSize   *string `json:"VectordbStorageSize,omitempty" xml:"VectordbStorageSize,omitempty"`
+	VectordbStorageType   *string `json:"VectordbStorageType,omitempty" xml:"VectordbStorageType,omitempty"`
+	VectordbType          *string `json:"VectordbType,omitempty" xml:"VectordbType,omitempty"`
+	// This parameter is required.
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	WorkspaceId          *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName        *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	WorkspaceOption      *string `json:"WorkspaceOption,omitempty" xml:"WorkspaceOption,omitempty"`
+	// This parameter is required.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateDifyInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDifyInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDifyInstanceRequest) SetAdbpgInstanceMode(v string) *CreateDifyInstanceRequest {
+	s.AdbpgInstanceMode = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetClientToken(v string) *CreateDifyInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDataRegion(v string) *CreateDifyInstanceRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDatabaseOption(v string) *CreateDifyInstanceRequest {
+	s.DatabaseOption = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbEngineType(v string) *CreateDifyInstanceRequest {
+	s.DbEngineType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbEngineVersion(v string) *CreateDifyInstanceRequest {
+	s.DbEngineVersion = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbInstanceAccount(v string) *CreateDifyInstanceRequest {
+	s.DbInstanceAccount = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbInstanceCategory(v string) *CreateDifyInstanceRequest {
+	s.DbInstanceCategory = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbInstanceClass(v string) *CreateDifyInstanceRequest {
+	s.DbInstanceClass = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbInstancePassword(v string) *CreateDifyInstanceRequest {
+	s.DbInstancePassword = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbResourceId(v int32) *CreateDifyInstanceRequest {
+	s.DbResourceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbStorageSize(v string) *CreateDifyInstanceRequest {
+	s.DbStorageSize = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDbStorageType(v string) *CreateDifyInstanceRequest {
+	s.DbStorageType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetDryRun(v bool) *CreateDifyInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStoreAccount(v string) *CreateDifyInstanceRequest {
+	s.KvStoreAccount = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStoreEngineVersion(v string) *CreateDifyInstanceRequest {
+	s.KvStoreEngineVersion = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStoreInstanceClass(v string) *CreateDifyInstanceRequest {
+	s.KvStoreInstanceClass = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStoreNodeType(v string) *CreateDifyInstanceRequest {
+	s.KvStoreNodeType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStoreOption(v string) *CreateDifyInstanceRequest {
+	s.KvStoreOption = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStorePassword(v string) *CreateDifyInstanceRequest {
+	s.KvStorePassword = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStoreResourceId(v int32) *CreateDifyInstanceRequest {
+	s.KvStoreResourceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetKvStoreType(v string) *CreateDifyInstanceRequest {
+	s.KvStoreType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetOssPath(v string) *CreateDifyInstanceRequest {
+	s.OssPath = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetOssResourceId(v int32) *CreateDifyInstanceRequest {
+	s.OssResourceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetPayPeriod(v int32) *CreateDifyInstanceRequest {
+	s.PayPeriod = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetPayPeriodType(v string) *CreateDifyInstanceRequest {
+	s.PayPeriodType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetPayType(v string) *CreateDifyInstanceRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetReplicas(v int32) *CreateDifyInstanceRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetResourceQuota(v string) *CreateDifyInstanceRequest {
+	s.ResourceQuota = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetSecurityGroupId(v string) *CreateDifyInstanceRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetSegDiskPerformanceLevel(v string) *CreateDifyInstanceRequest {
+	s.SegDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetSegNodeNum(v int32) *CreateDifyInstanceRequest {
+	s.SegNodeNum = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetStorageType(v string) *CreateDifyInstanceRequest {
+	s.StorageType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVSwitchId(v string) *CreateDifyInstanceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbAccount(v string) *CreateDifyInstanceRequest {
+	s.VectordbAccount = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbCategory(v string) *CreateDifyInstanceRequest {
+	s.VectordbCategory = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbEngineVersion(v string) *CreateDifyInstanceRequest {
+	s.VectordbEngineVersion = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbInstanceSpec(v string) *CreateDifyInstanceRequest {
+	s.VectordbInstanceSpec = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbOption(v string) *CreateDifyInstanceRequest {
+	s.VectordbOption = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbPassword(v string) *CreateDifyInstanceRequest {
+	s.VectordbPassword = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbResourceId(v int32) *CreateDifyInstanceRequest {
+	s.VectordbResourceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbStorageSize(v string) *CreateDifyInstanceRequest {
+	s.VectordbStorageSize = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbStorageType(v string) *CreateDifyInstanceRequest {
+	s.VectordbStorageType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVectordbType(v string) *CreateDifyInstanceRequest {
+	s.VectordbType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetVpcId(v string) *CreateDifyInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetWorkspaceDescription(v string) *CreateDifyInstanceRequest {
+	s.WorkspaceDescription = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetWorkspaceId(v string) *CreateDifyInstanceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetWorkspaceName(v string) *CreateDifyInstanceRequest {
+	s.WorkspaceName = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetWorkspaceOption(v string) *CreateDifyInstanceRequest {
+	s.WorkspaceOption = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetZoneId(v string) *CreateDifyInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateDifyInstanceResponseBody struct {
+	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *CreateDifyInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDifyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDifyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDifyInstanceResponseBody) SetCode(v string) *CreateDifyInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBody) SetData(v *CreateDifyInstanceResponseBodyData) *CreateDifyInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBody) SetErrorCode(v string) *CreateDifyInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBody) SetHttpStatusCode(v int32) *CreateDifyInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBody) SetMessage(v string) *CreateDifyInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBody) SetRequestId(v string) *CreateDifyInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBody) SetSuccess(v bool) *CreateDifyInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDifyInstanceResponseBodyData struct {
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ResourceQuota   *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateDifyInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDifyInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetInstanceId(v string) *CreateDifyInstanceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetReplicas(v int32) *CreateDifyInstanceResponseBodyData {
+	s.Replicas = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetResourceQuota(v string) *CreateDifyInstanceResponseBodyData {
+	s.ResourceQuota = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetSecurityGroupId(v string) *CreateDifyInstanceResponseBodyData {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetStatus(v string) *CreateDifyInstanceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetVSwitchId(v string) *CreateDifyInstanceResponseBodyData {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetVpcId(v string) *CreateDifyInstanceResponseBodyData {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetWorkspaceId(v string) *CreateDifyInstanceResponseBodyData {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetZoneId(v string) *CreateDifyInstanceResponseBodyData {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateDifyInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDifyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDifyInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDifyInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDifyInstanceResponse) SetHeaders(v map[string]*string) *CreateDifyInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDifyInstanceResponse) SetStatusCode(v int32) *CreateDifyInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponse) SetBody(v *CreateDifyInstanceResponseBody) *CreateDifyInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -15767,6 +16237,140 @@ func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
 }
 
 func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDifyDefaultVpcRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DataRegion  *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DescribeDifyDefaultVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDifyDefaultVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDifyDefaultVpcRequest) SetClientToken(v string) *DescribeDifyDefaultVpcRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcRequest) SetDataRegion(v string) *DescribeDifyDefaultVpcRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcRequest) SetWorkspaceId(v string) *DescribeDifyDefaultVpcRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DescribeDifyDefaultVpcResponseBody struct {
+	Code           *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DescribeDifyDefaultVpcResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeDifyDefaultVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDifyDefaultVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDifyDefaultVpcResponseBody) SetCode(v string) *DescribeDifyDefaultVpcResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponseBody) SetData(v *DescribeDifyDefaultVpcResponseBodyData) *DescribeDifyDefaultVpcResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponseBody) SetErrorCode(v string) *DescribeDifyDefaultVpcResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponseBody) SetHttpStatusCode(v int32) *DescribeDifyDefaultVpcResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponseBody) SetMessage(v string) *DescribeDifyDefaultVpcResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponseBody) SetRequestId(v string) *DescribeDifyDefaultVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponseBody) SetSuccess(v bool) *DescribeDifyDefaultVpcResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeDifyDefaultVpcResponseBodyData struct {
+	DefaultVpcId *string `json:"DefaultVpcId,omitempty" xml:"DefaultVpcId,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DescribeDifyDefaultVpcResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDifyDefaultVpcResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDifyDefaultVpcResponseBodyData) SetDefaultVpcId(v string) *DescribeDifyDefaultVpcResponseBodyData {
+	s.DefaultVpcId = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponseBodyData) SetWorkspaceId(v string) *DescribeDifyDefaultVpcResponseBodyData {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DescribeDifyDefaultVpcResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDifyDefaultVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDifyDefaultVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDifyDefaultVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDifyDefaultVpcResponse) SetHeaders(v map[string]*string) *DescribeDifyDefaultVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponse) SetStatusCode(v int32) *DescribeDifyDefaultVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDifyDefaultVpcResponse) SetBody(v *DescribeDifyDefaultVpcResponseBody) *DescribeDifyDefaultVpcResponse {
 	s.Body = v
 	return s
 }
@@ -71918,6 +72522,309 @@ func (client *Client) CreateDatabaseExportOrder(request *CreateDatabaseExportOrd
 
 // Summary:
 //
+// 用于创建DIFY实例及相关资源，支持自定义配置。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+//
+// - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+//
+// - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+//
+// - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+//
+// - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+//
+// - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+//
+// - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+//
+// @param request - CreateDifyInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDifyInstanceResponse
+func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDifyInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdbpgInstanceMode)) {
+		query["AdbpgInstanceMode"] = request.AdbpgInstanceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseOption)) {
+		query["DatabaseOption"] = request.DatabaseOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbEngineType)) {
+		query["DbEngineType"] = request.DbEngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbEngineVersion)) {
+		query["DbEngineVersion"] = request.DbEngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceAccount)) {
+		query["DbInstanceAccount"] = request.DbInstanceAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceCategory)) {
+		query["DbInstanceCategory"] = request.DbInstanceCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceClass)) {
+		query["DbInstanceClass"] = request.DbInstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstancePassword)) {
+		query["DbInstancePassword"] = request.DbInstancePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbResourceId)) {
+		query["DbResourceId"] = request.DbResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbStorageSize)) {
+		query["DbStorageSize"] = request.DbStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbStorageType)) {
+		query["DbStorageType"] = request.DbStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStoreAccount)) {
+		query["KvStoreAccount"] = request.KvStoreAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStoreEngineVersion)) {
+		query["KvStoreEngineVersion"] = request.KvStoreEngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStoreInstanceClass)) {
+		query["KvStoreInstanceClass"] = request.KvStoreInstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStoreNodeType)) {
+		query["KvStoreNodeType"] = request.KvStoreNodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStoreOption)) {
+		query["KvStoreOption"] = request.KvStoreOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStorePassword)) {
+		query["KvStorePassword"] = request.KvStorePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStoreResourceId)) {
+		query["KvStoreResourceId"] = request.KvStoreResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KvStoreType)) {
+		query["KvStoreType"] = request.KvStoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssPath)) {
+		query["OssPath"] = request.OssPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssResourceId)) {
+		query["OssResourceId"] = request.OssResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayPeriod)) {
+		query["PayPeriod"] = request.PayPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayPeriodType)) {
+		query["PayPeriodType"] = request.PayPeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceQuota)) {
+		query["ResourceQuota"] = request.ResourceQuota
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SegDiskPerformanceLevel)) {
+		query["SegDiskPerformanceLevel"] = request.SegDiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SegNodeNum)) {
+		query["SegNodeNum"] = request.SegNodeNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbAccount)) {
+		query["VectordbAccount"] = request.VectordbAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbCategory)) {
+		query["VectordbCategory"] = request.VectordbCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbEngineVersion)) {
+		query["VectordbEngineVersion"] = request.VectordbEngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbInstanceSpec)) {
+		query["VectordbInstanceSpec"] = request.VectordbInstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbOption)) {
+		query["VectordbOption"] = request.VectordbOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbPassword)) {
+		query["VectordbPassword"] = request.VectordbPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbResourceId)) {
+		query["VectordbResourceId"] = request.VectordbResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbStorageSize)) {
+		query["VectordbStorageSize"] = request.VectordbStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbStorageType)) {
+		query["VectordbStorageType"] = request.VectordbStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectordbType)) {
+		query["VectordbType"] = request.VectordbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceDescription)) {
+		query["WorkspaceDescription"] = request.WorkspaceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceName)) {
+		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceOption)) {
+		query["WorkspaceOption"] = request.WorkspaceOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDifyInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDifyInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDifyInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 用于创建DIFY实例及相关资源，支持自定义配置。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+//
+// - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+//
+// - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+//
+// - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+//
+// - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+//
+// - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+//
+// - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+//
+// @param request - CreateDifyInstanceRequest
+//
+// @return CreateDifyInstanceResponse
+func (client *Client) CreateDifyInstance(request *CreateDifyInstanceRequest) (_result *CreateDifyInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDifyInstanceResponse{}
+	_body, _err := client.CreateDifyInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建无锁变更工单
 //
 // Description:
@@ -75014,6 +75921,121 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
 	_body, _err := client.DeleteUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于创建DIFY实例及相关资源，支持自定义配置。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+//
+// - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+//
+// - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+//
+// - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+//
+// - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+//
+// - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+//
+// - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+//
+// @param request - DescribeDifyDefaultVpcRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDifyDefaultVpcResponse
+func (client *Client) DescribeDifyDefaultVpcWithOptions(request *DescribeDifyDefaultVpcRequest, runtime *util.RuntimeOptions) (_result *DescribeDifyDefaultVpcResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDifyDefaultVpc"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDifyDefaultVpcResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDifyDefaultVpcResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 用于创建DIFY实例及相关资源，支持自定义配置。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+//
+// - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+//
+// - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+//
+// - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+//
+// - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+//
+// - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+//
+// - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+//
+// @param request - DescribeDifyDefaultVpcRequest
+//
+// @return DescribeDifyDefaultVpcResponse
+func (client *Client) DescribeDifyDefaultVpc(request *DescribeDifyDefaultVpcRequest) (_result *DescribeDifyDefaultVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDifyDefaultVpcResponse{}
+	_body, _err := client.DescribeDifyDefaultVpcWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
