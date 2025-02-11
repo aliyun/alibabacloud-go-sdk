@@ -7470,6 +7470,7 @@ type CreateDesktopsRequest struct {
 	// cn-hangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SavingPlanId     *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
 	// The tags that you want to add to the cloud desktop.
 	Tag          []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -7650,6 +7651,11 @@ func (s *CreateDesktopsRequest) SetRegionId(v string) *CreateDesktopsRequest {
 
 func (s *CreateDesktopsRequest) SetResourceGroupId(v string) *CreateDesktopsRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetSavingPlanId(v string) *CreateDesktopsRequest {
+	s.SavingPlanId = &v
 	return s
 }
 
@@ -8381,6 +8387,7 @@ type CreateDesktopsShrinkRequest struct {
 	// cn-hangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SavingPlanId     *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
 	// The tags that you want to add to the cloud desktop.
 	Tag          []*CreateDesktopsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -8561,6 +8568,11 @@ func (s *CreateDesktopsShrinkRequest) SetRegionId(v string) *CreateDesktopsShrin
 
 func (s *CreateDesktopsShrinkRequest) SetResourceGroupId(v string) *CreateDesktopsShrinkRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetSavingPlanId(v string) *CreateDesktopsShrinkRequest {
+	s.SavingPlanId = &v
 	return s
 }
 
@@ -58747,6 +58759,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SavingPlanId)) {
+		query["SavingPlanId"] = request.SavingPlanId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotPolicyId)) {
