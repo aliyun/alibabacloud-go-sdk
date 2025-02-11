@@ -3976,6 +3976,289 @@ func (s *GetResourcesResponse) SetBody(v *GetResourcesResponseBody) *GetResource
 	return s
 }
 
+type GetServiceFuncStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// This parameter is required.
+	Params *GetServiceFuncStatusRequestParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// livetrace
+	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
+}
+
+func (s GetServiceFuncStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceFuncStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceFuncStatusRequest) SetChannel(v string) *GetServiceFuncStatusRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusRequest) SetParams(v *GetServiceFuncStatusRequestParams) *GetServiceFuncStatusRequest {
+	s.Params = v
+	return s
+}
+
+func (s *GetServiceFuncStatusRequest) SetServiceName(v string) *GetServiceFuncStatusRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type GetServiceFuncStatusRequestParams struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mullprof
+	FunctionName *string `json:"function_name,omitempty" xml:"function_name,omitempty"`
+	// example:
+	//
+	// i-2zei55fwj8nnu31h3z46
+	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// example:
+	//
+	// 1338904783509062
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetServiceFuncStatusRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceFuncStatusRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceFuncStatusRequestParams) SetFunctionName(v string) *GetServiceFuncStatusRequestParams {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusRequestParams) SetInstance(v string) *GetServiceFuncStatusRequestParams {
+	s.Instance = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusRequestParams) SetUid(v string) *GetServiceFuncStatusRequestParams {
+	s.Uid = &v
+	return s
+}
+
+type GetServiceFuncStatusShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// This parameter is required.
+	ParamsShrink *string `json:"params,omitempty" xml:"params,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// livetrace
+	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
+}
+
+func (s GetServiceFuncStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceFuncStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceFuncStatusShrinkRequest) SetChannel(v string) *GetServiceFuncStatusShrinkRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusShrinkRequest) SetParamsShrink(v string) *GetServiceFuncStatusShrinkRequest {
+	s.ParamsShrink = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusShrinkRequest) SetServiceName(v string) *GetServiceFuncStatusShrinkRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type GetServiceFuncStatusResponseBody struct {
+	// example:
+	//
+	// Success
+	Code    *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data    *GetServiceFuncStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2D693121-C925-5154-8DF6-C09A8B369822
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetServiceFuncStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceFuncStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceFuncStatusResponseBody) SetCode(v string) *GetServiceFuncStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBody) SetData(v *GetServiceFuncStatusResponseBodyData) *GetServiceFuncStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBody) SetMessage(v string) *GetServiceFuncStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBody) SetRequestId(v string) *GetServiceFuncStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetServiceFuncStatusResponseBodyData struct {
+	Args *GetServiceFuncStatusResponseBodyDataArgs `json:"args,omitempty" xml:"args,omitempty" type:"Struct"`
+}
+
+func (s GetServiceFuncStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceFuncStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceFuncStatusResponseBodyData) SetArgs(v *GetServiceFuncStatusResponseBodyDataArgs) *GetServiceFuncStatusResponseBodyData {
+	s.Args = v
+	return s
+}
+
+type GetServiceFuncStatusResponseBodyDataArgs struct {
+	// example:
+	//
+	// java
+	AddCmd *string `json:"add_cmd,omitempty" xml:"add_cmd,omitempty"`
+	// example:
+	//
+	// true
+	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// /tmp/sysom/java-profiler
+	JavaStorePath *string `json:"java_store_path,omitempty" xml:"java_store_path,omitempty"`
+	// example:
+	//
+	// true
+	Locks *string `json:"locks,omitempty" xml:"locks,omitempty"`
+	// example:
+	//
+	// -1
+	Loop *int32 `json:"loop,omitempty" xml:"loop,omitempty"`
+	// example:
+	//
+	// true
+	Mem *string `json:"mem,omitempty" xml:"mem,omitempty"`
+	// example:
+	//
+	// true
+	SystemProfiling *string `json:"system_profiling,omitempty" xml:"system_profiling,omitempty"`
+}
+
+func (s GetServiceFuncStatusResponseBodyDataArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceFuncStatusResponseBodyDataArgs) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceFuncStatusResponseBodyDataArgs) SetAddCmd(v string) *GetServiceFuncStatusResponseBodyDataArgs {
+	s.AddCmd = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBodyDataArgs) SetCpu(v string) *GetServiceFuncStatusResponseBodyDataArgs {
+	s.Cpu = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBodyDataArgs) SetJavaStorePath(v string) *GetServiceFuncStatusResponseBodyDataArgs {
+	s.JavaStorePath = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBodyDataArgs) SetLocks(v string) *GetServiceFuncStatusResponseBodyDataArgs {
+	s.Locks = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBodyDataArgs) SetLoop(v int32) *GetServiceFuncStatusResponseBodyDataArgs {
+	s.Loop = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBodyDataArgs) SetMem(v string) *GetServiceFuncStatusResponseBodyDataArgs {
+	s.Mem = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponseBodyDataArgs) SetSystemProfiling(v string) *GetServiceFuncStatusResponseBodyDataArgs {
+	s.SystemProfiling = &v
+	return s
+}
+
+type GetServiceFuncStatusResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceFuncStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetServiceFuncStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceFuncStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceFuncStatusResponse) SetHeaders(v map[string]*string) *GetServiceFuncStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponse) SetStatusCode(v int32) *GetServiceFuncStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceFuncStatusResponse) SetBody(v *GetServiceFuncStatusResponseBody) *GetServiceFuncStatusResponse {
+	s.Body = v
+	return s
+}
+
 type InitialSysomRequest struct {
 	CheckOnly *bool `json:"check_only,omitempty" xml:"check_only,omitempty"`
 }
@@ -5395,7 +5678,8 @@ type ListClusterAgentInstallRecordsResponseBodyData struct {
 	// example:
 	//
 	// 2024-12-25T15:08:19
-	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	GrayscaleConfig *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
@@ -5425,6 +5709,11 @@ func (s *ListClusterAgentInstallRecordsResponseBodyData) SetClusterId(v string) 
 
 func (s *ListClusterAgentInstallRecordsResponseBodyData) SetCreatedAt(v string) *ListClusterAgentInstallRecordsResponseBodyData {
 	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListClusterAgentInstallRecordsResponseBodyData) SetGrayscaleConfig(v string) *ListClusterAgentInstallRecordsResponseBodyData {
+	s.GrayscaleConfig = &v
 	return s
 }
 
@@ -7373,6 +7662,310 @@ func (s *UpdateEventsAttentionResponse) SetStatusCode(v int32) *UpdateEventsAtte
 }
 
 func (s *UpdateEventsAttentionResponse) SetBody(v *UpdateEventsAttentionResponseBody) *UpdateEventsAttentionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFuncSwitchRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// This parameter is required.
+	Params *UpdateFuncSwitchRecordRequestParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// livetrace
+	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
+}
+
+func (s UpdateFuncSwitchRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFuncSwitchRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFuncSwitchRecordRequest) SetChannel(v string) *UpdateFuncSwitchRecordRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequest) SetParams(v *UpdateFuncSwitchRecordRequestParams) *UpdateFuncSwitchRecordRequest {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequest) SetServiceName(v string) *UpdateFuncSwitchRecordRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type UpdateFuncSwitchRecordRequestParams struct {
+	Args *UpdateFuncSwitchRecordRequestParamsArgs `json:"args,omitempty" xml:"args,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mullprof
+	FunctionName *string `json:"function_name,omitempty" xml:"function_name,omitempty"`
+	// example:
+	//
+	// i-2zei55fwj8nnu31h3z46
+	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// example:
+	//
+	// restart
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// example:
+	//
+	// 1664516888213680
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s UpdateFuncSwitchRecordRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFuncSwitchRecordRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFuncSwitchRecordRequestParams) SetArgs(v *UpdateFuncSwitchRecordRequestParamsArgs) *UpdateFuncSwitchRecordRequestParams {
+	s.Args = v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParams) SetFunctionName(v string) *UpdateFuncSwitchRecordRequestParams {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParams) SetInstance(v string) *UpdateFuncSwitchRecordRequestParams {
+	s.Instance = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParams) SetOp(v string) *UpdateFuncSwitchRecordRequestParams {
+	s.Op = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParams) SetUid(v string) *UpdateFuncSwitchRecordRequestParams {
+	s.Uid = &v
+	return s
+}
+
+type UpdateFuncSwitchRecordRequestParamsArgs struct {
+	// example:
+	//
+	// java
+	AddCmd *string `json:"add_cmd,omitempty" xml:"add_cmd,omitempty"`
+	// example:
+	//
+	// true
+	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// /tmp/sysom/java-profiler
+	JavaStorePath *string `json:"java_store_path,omitempty" xml:"java_store_path,omitempty"`
+	// example:
+	//
+	// true
+	Locks *string `json:"locks,omitempty" xml:"locks,omitempty"`
+	// example:
+	//
+	// -1
+	Loop *int32 `json:"loop,omitempty" xml:"loop,omitempty"`
+	// example:
+	//
+	// true
+	Mem *string `json:"mem,omitempty" xml:"mem,omitempty"`
+	// example:
+	//
+	// true
+	SystemProfiling *string `json:"system_profiling,omitempty" xml:"system_profiling,omitempty"`
+}
+
+func (s UpdateFuncSwitchRecordRequestParamsArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFuncSwitchRecordRequestParamsArgs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFuncSwitchRecordRequestParamsArgs) SetAddCmd(v string) *UpdateFuncSwitchRecordRequestParamsArgs {
+	s.AddCmd = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParamsArgs) SetCpu(v string) *UpdateFuncSwitchRecordRequestParamsArgs {
+	s.Cpu = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParamsArgs) SetJavaStorePath(v string) *UpdateFuncSwitchRecordRequestParamsArgs {
+	s.JavaStorePath = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParamsArgs) SetLocks(v string) *UpdateFuncSwitchRecordRequestParamsArgs {
+	s.Locks = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParamsArgs) SetLoop(v int32) *UpdateFuncSwitchRecordRequestParamsArgs {
+	s.Loop = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParamsArgs) SetMem(v string) *UpdateFuncSwitchRecordRequestParamsArgs {
+	s.Mem = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordRequestParamsArgs) SetSystemProfiling(v string) *UpdateFuncSwitchRecordRequestParamsArgs {
+	s.SystemProfiling = &v
+	return s
+}
+
+type UpdateFuncSwitchRecordShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// This parameter is required.
+	ParamsShrink *string `json:"params,omitempty" xml:"params,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// livetrace
+	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
+}
+
+func (s UpdateFuncSwitchRecordShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFuncSwitchRecordShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFuncSwitchRecordShrinkRequest) SetChannel(v string) *UpdateFuncSwitchRecordShrinkRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordShrinkRequest) SetParamsShrink(v string) *UpdateFuncSwitchRecordShrinkRequest {
+	s.ParamsShrink = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordShrinkRequest) SetServiceName(v string) *UpdateFuncSwitchRecordShrinkRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type UpdateFuncSwitchRecordResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data *UpdateFuncSwitchRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// result: code=1 msg=(Request failed, status_code != 200)
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2D693121-C925-5154-8DF6-C09A8B369822
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateFuncSwitchRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFuncSwitchRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFuncSwitchRecordResponseBody) SetCode(v string) *UpdateFuncSwitchRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordResponseBody) SetData(v *UpdateFuncSwitchRecordResponseBodyData) *UpdateFuncSwitchRecordResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordResponseBody) SetMessage(v string) *UpdateFuncSwitchRecordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordResponseBody) SetRequestId(v string) *UpdateFuncSwitchRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateFuncSwitchRecordResponseBodyData struct {
+	// example:
+	//
+	// 63fc5acb99e642d793f42912612e8001
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s UpdateFuncSwitchRecordResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFuncSwitchRecordResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFuncSwitchRecordResponseBodyData) SetTaskId(v string) *UpdateFuncSwitchRecordResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateFuncSwitchRecordResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFuncSwitchRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateFuncSwitchRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFuncSwitchRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFuncSwitchRecordResponse) SetHeaders(v map[string]*string) *UpdateFuncSwitchRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordResponse) SetStatusCode(v int32) *UpdateFuncSwitchRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFuncSwitchRecordResponse) SetBody(v *UpdateFuncSwitchRecordResponseBody) *UpdateFuncSwitchRecordResponse {
 	s.Body = v
 	return s
 }
@@ -9571,6 +10164,95 @@ func (client *Client) GetResources(request *GetResourcesRequest) (_result *GetRe
 
 // Summary:
 //
+// 获取功能模块配置
+//
+// @param tmpReq - GetServiceFuncStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceFuncStatusResponse
+func (client *Client) GetServiceFuncStatusWithOptions(tmpReq *GetServiceFuncStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceFuncStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetServiceFuncStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Params)) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, tea.String("params"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Channel)) {
+		query["channel"] = request.Channel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamsShrink)) {
+		query["params"] = request.ParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["service_name"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceFuncStatus"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/func-switch/get-service-func-status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceFuncStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceFuncStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取功能模块配置
+//
+// @param request - GetServiceFuncStatusRequest
+//
+// @return GetServiceFuncStatusResponse
+func (client *Client) GetServiceFuncStatus(request *GetServiceFuncStatusRequest) (_result *GetServiceFuncStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetServiceFuncStatusResponse{}
+	_body, _err := client.GetServiceFuncStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 初始化SysOM，确保角色存在
 //
 // @param request - InitialSysomRequest
@@ -11314,6 +11996,95 @@ func (client *Client) UpdateEventsAttention(request *UpdateEventsAttentionReques
 	headers := make(map[string]*string)
 	_result = &UpdateEventsAttentionResponse{}
 	_body, _err := client.UpdateEventsAttentionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取功能模块配置
+//
+// @param tmpReq - UpdateFuncSwitchRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFuncSwitchRecordResponse
+func (client *Client) UpdateFuncSwitchRecordWithOptions(tmpReq *UpdateFuncSwitchRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFuncSwitchRecordResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateFuncSwitchRecordShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Params)) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, tea.String("params"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Channel)) {
+		query["channel"] = request.Channel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamsShrink)) {
+		query["params"] = request.ParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["service_name"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFuncSwitchRecord"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/func-switch/update-service-func-switch"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateFuncSwitchRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateFuncSwitchRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取功能模块配置
+//
+// @param request - UpdateFuncSwitchRecordRequest
+//
+// @return UpdateFuncSwitchRecordResponse
+func (client *Client) UpdateFuncSwitchRecord(request *UpdateFuncSwitchRecordRequest) (_result *UpdateFuncSwitchRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFuncSwitchRecordResponse{}
+	_body, _err := client.UpdateFuncSwitchRecordWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
