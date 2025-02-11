@@ -1,3 +1,9 @@
+2025-02-11 Version: v2.0.0
+- Support API ListAppServices.
+- Update API DeployApplication: add param SwimlanePvtzDiscoverySvc.
+- Update API DescribeApplicationConfig: update response param.
+
+
 2025-01-13 Version: v1.25.6
 - Update API CreateApplication: add param ResourceType.
 - Update API CreateIngress: add param AddressType.
