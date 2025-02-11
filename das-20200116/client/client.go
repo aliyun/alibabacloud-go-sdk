@@ -8382,11 +8382,15 @@ func (s *DescribeInstanceDasProResponse) SetBody(v *DescribeInstanceDasProRespon
 }
 
 type DescribeSlowLogHistogramAsyncRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1662518540764
 	EndTime *int64                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Filters []*DescribeSlowLogHistogramAsyncRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rm-2ze8g2am97624****
@@ -8395,6 +8399,8 @@ type DescribeSlowLogHistogramAsyncRequest struct {
 	//
 	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1596177993000
@@ -8597,6 +8603,7 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyData) SetTimestamp(v int64) *D
 type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	AvgCPUTime               []*float64                                               `json:"AvgCPUTime,omitempty" xml:"AvgCPUTime,omitempty" type:"Repeated"`
 	AvgDocExamined           []*float64                                               `json:"AvgDocExamined,omitempty" xml:"AvgDocExamined,omitempty" type:"Repeated"`
+	AvgFrows                 []*float64                                               `json:"AvgFrows,omitempty" xml:"AvgFrows,omitempty" type:"Repeated"`
 	AvgIOWrites              []*float64                                               `json:"AvgIOWrites,omitempty" xml:"AvgIOWrites,omitempty" type:"Repeated"`
 	AvgKeysExamined          []*float64                                               `json:"AvgKeysExamined,omitempty" xml:"AvgKeysExamined,omitempty" type:"Repeated"`
 	AvgLastRowsCountAffected []*float64                                               `json:"AvgLastRowsCountAffected,omitempty" xml:"AvgLastRowsCountAffected,omitempty" type:"Repeated"`
@@ -8604,13 +8611,16 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	AvgLogicalIOReads        []*float64                                               `json:"AvgLogicalIOReads,omitempty" xml:"AvgLogicalIOReads,omitempty" type:"Repeated"`
 	AvgPhysicalIOReads       []*float64                                               `json:"AvgPhysicalIOReads,omitempty" xml:"AvgPhysicalIOReads,omitempty" type:"Repeated"`
 	AvgReturnNum             []*float64                                               `json:"AvgReturnNum,omitempty" xml:"AvgReturnNum,omitempty" type:"Repeated"`
+	AvgRows                  []*float64                                               `json:"AvgRows,omitempty" xml:"AvgRows,omitempty" type:"Repeated"`
 	AvgRowsCountAffected     []*float64                                               `json:"AvgRowsCountAffected,omitempty" xml:"AvgRowsCountAffected,omitempty" type:"Repeated"`
 	AvgRowsExamined          []*float64                                               `json:"AvgRowsExamined,omitempty" xml:"AvgRowsExamined,omitempty" type:"Repeated"`
 	AvgRowsSent              []*float64                                               `json:"AvgRowsSent,omitempty" xml:"AvgRowsSent,omitempty" type:"Repeated"`
 	AvgRt                    []*float64                                               `json:"AvgRt,omitempty" xml:"AvgRt,omitempty" type:"Repeated"`
+	AvgScnt                  []*float64                                               `json:"AvgScnt,omitempty" xml:"AvgScnt,omitempty" type:"Repeated"`
 	CPUTime                  []*float64                                               `json:"CPUTime,omitempty" xml:"CPUTime,omitempty" type:"Repeated"`
 	Count                    []*int64                                                 `json:"Count,omitempty" xml:"Count,omitempty" type:"Repeated"`
 	DocExamined              []*int64                                                 `json:"DocExamined,omitempty" xml:"DocExamined,omitempty" type:"Repeated"`
+	Frows                    []*int64                                                 `json:"Frows,omitempty" xml:"Frows,omitempty" type:"Repeated"`
 	IOWrites                 []*int64                                                 `json:"IOWrites,omitempty" xml:"IOWrites,omitempty" type:"Repeated"`
 	Item                     []*DescribeSlowLogHistogramAsyncResponseBodyDataDataItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
 	KeysExamined             []*int64                                                 `json:"KeysExamined,omitempty" xml:"KeysExamined,omitempty" type:"Repeated"`
@@ -8619,6 +8629,7 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	LogicalIOReads           []*int64                                                 `json:"LogicalIOReads,omitempty" xml:"LogicalIOReads,omitempty" type:"Repeated"`
 	MaxCPUTime               []*float64                                               `json:"MaxCPUTime,omitempty" xml:"MaxCPUTime,omitempty" type:"Repeated"`
 	MaxDocExamined           []*int64                                                 `json:"MaxDocExamined,omitempty" xml:"MaxDocExamined,omitempty" type:"Repeated"`
+	MaxFrows                 []*int64                                                 `json:"MaxFrows,omitempty" xml:"MaxFrows,omitempty" type:"Repeated"`
 	MaxIOWrites              []*int64                                                 `json:"MaxIOWrites,omitempty" xml:"MaxIOWrites,omitempty" type:"Repeated"`
 	MaxKeysExamined          []*int64                                                 `json:"MaxKeysExamined,omitempty" xml:"MaxKeysExamined,omitempty" type:"Repeated"`
 	MaxLastRowsCountAffected []*int64                                                 `json:"MaxLastRowsCountAffected,omitempty" xml:"MaxLastRowsCountAffected,omitempty" type:"Repeated"`
@@ -8626,16 +8637,20 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	MaxLogicalIOReads        []*int64                                                 `json:"MaxLogicalIOReads,omitempty" xml:"MaxLogicalIOReads,omitempty" type:"Repeated"`
 	MaxPhysicalIOReads       []*int64                                                 `json:"MaxPhysicalIOReads,omitempty" xml:"MaxPhysicalIOReads,omitempty" type:"Repeated"`
 	MaxReturnNum             []*int64                                                 `json:"MaxReturnNum,omitempty" xml:"MaxReturnNum,omitempty" type:"Repeated"`
+	MaxRows                  []*int64                                                 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty" type:"Repeated"`
 	MaxRowsCountAffected     []*int64                                                 `json:"MaxRowsCountAffected,omitempty" xml:"MaxRowsCountAffected,omitempty" type:"Repeated"`
 	MaxRowsExamined          []*int64                                                 `json:"MaxRowsExamined,omitempty" xml:"MaxRowsExamined,omitempty" type:"Repeated"`
 	MaxRowsSent              []*int64                                                 `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty" type:"Repeated"`
 	MaxRt                    []*float64                                               `json:"MaxRt,omitempty" xml:"MaxRt,omitempty" type:"Repeated"`
+	MaxScnt                  []*int64                                                 `json:"MaxScnt,omitempty" xml:"MaxScnt,omitempty" type:"Repeated"`
 	PhysicalIOReads          []*int64                                                 `json:"PhysicalIOReads,omitempty" xml:"PhysicalIOReads,omitempty" type:"Repeated"`
 	ReturnNum                []*int64                                                 `json:"ReturnNum,omitempty" xml:"ReturnNum,omitempty" type:"Repeated"`
+	Rows                     []*int64                                                 `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 	RowsCountAffected        []*int64                                                 `json:"RowsCountAffected,omitempty" xml:"RowsCountAffected,omitempty" type:"Repeated"`
 	RowsExamined             []*int64                                                 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty" type:"Repeated"`
 	RowsSent                 []*int64                                                 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty" type:"Repeated"`
 	Rt                       []*float64                                               `json:"Rt,omitempty" xml:"Rt,omitempty" type:"Repeated"`
+	Scnt                     []*int64                                                 `json:"Scnt,omitempty" xml:"Scnt,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -8659,6 +8674,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgCPUTime(v []*f
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgDocExamined(v []*float64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.AvgDocExamined = v
+	return s
+}
+
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgFrows(v []*float64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.AvgFrows = v
 	return s
 }
 
@@ -8697,6 +8717,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgReturnNum(v []
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgRows(v []*float64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.AvgRows = v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgRowsCountAffected(v []*float64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.AvgRowsCountAffected = v
 	return s
@@ -8717,6 +8742,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgRt(v []*float6
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetAvgScnt(v []*float64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.AvgScnt = v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetCPUTime(v []*float64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.CPUTime = v
 	return s
@@ -8729,6 +8759,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetCount(v []*int64)
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetDocExamined(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.DocExamined = v
+	return s
+}
+
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetFrows(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.Frows = v
 	return s
 }
 
@@ -8772,6 +8807,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxDocExamined(v 
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxFrows(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.MaxFrows = v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxIOWrites(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.MaxIOWrites = v
 	return s
@@ -8807,6 +8847,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxReturnNum(v []
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxRows(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.MaxRows = v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxRowsCountAffected(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.MaxRowsCountAffected = v
 	return s
@@ -8827,6 +8872,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxRt(v []*float6
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetMaxScnt(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.MaxScnt = v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetPhysicalIOReads(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.PhysicalIOReads = v
 	return s
@@ -8834,6 +8884,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetPhysicalIOReads(v
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetReturnNum(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.ReturnNum = v
+	return s
+}
+
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetRows(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.Rows = v
 	return s
 }
 
@@ -8854,6 +8909,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetRowsSent(v []*int
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetRt(v []*float64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.Rt = v
+	return s
+}
+
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetScnt(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.Scnt = v
 	return s
 }
 
@@ -8973,11 +9033,15 @@ type DescribeSlowLogStatisticRequest struct {
 	//
 	// true
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1608888296000
 	EndTime *int64                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Filters []*DescribeSlowLogStatisticRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rm-2ze1jdv45i7l6****
@@ -8998,6 +9062,8 @@ type DescribeSlowLogStatisticRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1568269711000
@@ -9344,11 +9410,13 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	// example:
 	//
 	// -
-	AvgCPUTime *float64 `json:"AvgCPUTime,omitempty" xml:"AvgCPUTime,omitempty"`
+	AvgCPUTime        *float64 `json:"AvgCPUTime,omitempty" xml:"AvgCPUTime,omitempty"`
+	AvgCPUTimeSeconds *float64 `json:"AvgCPUTimeSeconds,omitempty" xml:"AvgCPUTimeSeconds,omitempty"`
 	// example:
 	//
 	// 10000
 	AvgDocExamined *float64 `json:"AvgDocExamined,omitempty" xml:"AvgDocExamined,omitempty"`
+	AvgFrows       *float64 `json:"AvgFrows,omitempty" xml:"AvgFrows,omitempty"`
 	// example:
 	//
 	// 1000
@@ -9389,6 +9457,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 1
 	AvgReturnNum *float64 `json:"AvgReturnNum,omitempty" xml:"AvgReturnNum,omitempty"`
+	AvgRows      *float64 `json:"AvgRows,omitempty" xml:"AvgRows,omitempty"`
 	// example:
 	//
 	// 1000
@@ -9401,10 +9470,12 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 2.0
 	AvgRowsSent *float64 `json:"AvgRowsSent,omitempty" xml:"AvgRowsSent,omitempty"`
+	AvgScnt     *float64 `json:"AvgScnt,omitempty" xml:"AvgScnt,omitempty"`
 	// example:
 	//
 	// -
-	CPUTime *float64 `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
+	CPUTime        *float64 `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
+	CPUTimeSeconds *float64 `json:"CPUTimeSeconds,omitempty" xml:"CPUTimeSeconds,omitempty"`
 	// example:
 	//
 	// SELECT b?.id,b?.t?,b?.id,b?.t? FROM testtb? b? JOIN testtb? b? ON b?.id=b?.id WHERE b?.t? LIKE ? ORDER BY b?.t? DESC
@@ -9437,6 +9508,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 1
 	DocsExamined *int64                                                     `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
+	Frows        *int64                                                     `json:"Frows,omitempty" xml:"Frows,omitempty"`
 	Histogram    *DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram `json:"Histogram,omitempty" xml:"Histogram,omitempty" type:"Struct"`
 	// example:
 	//
@@ -9481,11 +9553,13 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	// example:
 	//
 	// -
-	MaxCPUTime *float64 `json:"MaxCPUTime,omitempty" xml:"MaxCPUTime,omitempty"`
+	MaxCPUTime        *float64 `json:"MaxCPUTime,omitempty" xml:"MaxCPUTime,omitempty"`
+	MaxCPUTimeSeconds *float64 `json:"MaxCPUTimeSeconds,omitempty" xml:"MaxCPUTimeSeconds,omitempty"`
 	// example:
 	//
 	// 1000000
 	MaxDocExamined *int64 `json:"MaxDocExamined,omitempty" xml:"MaxDocExamined,omitempty"`
+	MaxFrows       *int64 `json:"MaxFrows,omitempty" xml:"MaxFrows,omitempty"`
 	// example:
 	//
 	// 1000
@@ -9526,6 +9600,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 1
 	MaxReturnNum *int64 `json:"MaxReturnNum,omitempty" xml:"MaxReturnNum,omitempty"`
+	MaxRows      *int64 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty"`
 	// example:
 	//
 	// 1000
@@ -9538,6 +9613,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 256
 	MaxRowsSent *int64 `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty"`
+	MaxScnt     *int64 `json:"MaxScnt,omitempty" xml:"MaxScnt,omitempty"`
 	// example:
 	//
 	// database.collection
@@ -9587,6 +9663,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 1
 	ReturnNum *int64 `json:"ReturnNum,omitempty" xml:"ReturnNum,omitempty"`
+	Rows      *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
 	// example:
 	//
 	// 1000
@@ -9607,6 +9684,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// HTTP
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Scnt   *int64  `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
 	// SQL ID。
 	//
 	// example:
@@ -9659,8 +9737,18 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgCPUTime(v float
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgCPUTimeSeconds(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.AvgCPUTimeSeconds = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgDocExamined(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.AvgDocExamined = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgFrows(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.AvgFrows = &v
 	return s
 }
 
@@ -9714,6 +9802,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgReturnNum(v flo
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgRows(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.AvgRows = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgRowsCountAffected(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.AvgRowsCountAffected = &v
 	return s
@@ -9729,8 +9822,18 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgRowsSent(v floa
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgScnt(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.AvgScnt = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetCPUTime(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.CPUTime = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetCPUTimeSeconds(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.CPUTimeSeconds = &v
 	return s
 }
 
@@ -9771,6 +9874,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetDocExamined(v int6
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetDocsExamined(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.DocsExamined = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetFrows(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.Frows = &v
 	return s
 }
 
@@ -9834,8 +9942,18 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxCPUTime(v float
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxCPUTimeSeconds(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.MaxCPUTimeSeconds = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxDocExamined(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.MaxDocExamined = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxFrows(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.MaxFrows = &v
 	return s
 }
 
@@ -9889,6 +10007,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxReturnNum(v int
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRows(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.MaxRows = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRowsCountAffected(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.MaxRowsCountAffected = &v
 	return s
@@ -9901,6 +10024,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRowsExamined(v 
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRowsSent(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.MaxRowsSent = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxScnt(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.MaxScnt = &v
 	return s
 }
 
@@ -9969,6 +10097,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetReturnNum(v int64)
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetRows(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.Rows = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetRowsCountAffected(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.RowsCountAffected = &v
 	return s
@@ -9991,6 +10124,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetSQLText(v string) 
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetScheme(v string) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.Scheme = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetScnt(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.Scnt = &v
 	return s
 }
 
@@ -10476,7 +10614,12 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	// example:
 	//
 	// true
-	SqlLogEnable *bool   `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	SqlLogEnable *bool `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	SqlLogSource *string `json:"SqlLogSource,omitempty" xml:"SqlLogSource,omitempty"`
 	// The state of data migration. Valid values:
 	//
@@ -10496,7 +10639,12 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// 1683712800000
 	SqlLogVisibleTime *int64 `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
-	SupportMigration  *bool  `json:"SupportMigration,omitempty" xml:"SupportMigration,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
+	SupportMigration *bool `json:"SupportMigration,omitempty" xml:"SupportMigration,omitempty"`
 	// The latest version of DAS Enterprise Edition that supports the database instance. Valid values:
 	//
 	// 	- **SQL_LOG_V0**: DAS Enterprise Edition V0.
@@ -38463,13 +38611,24 @@ func (client *Client) AddHDMInstanceWithOptions(request *AddHDMInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddHDMInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddHDMInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddHDMInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38557,13 +38716,24 @@ func (client *Client) CreateCacheAnalysisJobWithOptions(request *CreateCacheAnal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCacheAnalysisJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCacheAnalysisJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCacheAnalysisJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38747,13 +38917,24 @@ func (client *Client) CreateCloudBenchTasksWithOptions(request *CreateCloudBench
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCloudBenchTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCloudBenchTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCloudBenchTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38845,13 +39026,24 @@ func (client *Client) CreateDiagnosticReportWithOptions(request *CreateDiagnosti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDiagnosticReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDiagnosticReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDiagnosticReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -38955,13 +39147,24 @@ func (client *Client) CreateKillInstanceSessionTaskWithOptions(request *CreateKi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateKillInstanceSessionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateKillInstanceSessionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateKillInstanceSessionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39039,13 +39242,24 @@ func (client *Client) CreateKillInstanceSessionTaskWithMaintainUserWithOptions(r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateKillInstanceSessionTaskWithMaintainUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateKillInstanceSessionTaskWithMaintainUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateKillInstanceSessionTaskWithMaintainUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39103,13 +39317,24 @@ func (client *Client) CreateLatestDeadLockAnalysisWithOptions(request *CreateLat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLatestDeadLockAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLatestDeadLockAnalysisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLatestDeadLockAnalysisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39197,13 +39422,24 @@ func (client *Client) CreateQueryOptimizeTagWithOptions(request *CreateQueryOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateQueryOptimizeTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateQueryOptimizeTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateQueryOptimizeTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39305,13 +39541,24 @@ func (client *Client) CreateRequestDiagnosisWithOptions(request *CreateRequestDi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRequestDiagnosisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRequestDiagnosisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRequestDiagnosisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39427,13 +39674,24 @@ func (client *Client) CreateSqlLogTaskWithOptions(request *CreateSqlLogTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSqlLogTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSqlLogTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSqlLogTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39519,13 +39777,24 @@ func (client *Client) CreateStorageAnalysisTaskWithOptions(request *CreateStorag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateStorageAnalysisTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateStorageAnalysisTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateStorageAnalysisTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39593,13 +39862,24 @@ func (client *Client) DeleteCloudBenchTaskWithOptions(request *DeleteCloudBenchT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCloudBenchTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCloudBenchTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCloudBenchTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39665,13 +39945,24 @@ func (client *Client) DeleteStopGatewayWithOptions(request *DeleteStopGatewayReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteStopGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteStopGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteStopGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39741,13 +40032,24 @@ func (client *Client) DescribeAutoScalingConfigWithOptions(request *DescribeAuto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAutoScalingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAutoScalingConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAutoScalingConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39813,13 +40115,24 @@ func (client *Client) DescribeAutoScalingHistoryWithOptions(request *DescribeAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAutoScalingHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAutoScalingHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAutoScalingHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39897,13 +40210,24 @@ func (client *Client) DescribeCacheAnalysisJobWithOptions(request *DescribeCache
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCacheAnalysisJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCacheAnalysisJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCacheAnalysisJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -39995,13 +40319,24 @@ func (client *Client) DescribeCacheAnalysisJobsWithOptions(request *DescribeCach
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCacheAnalysisJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCacheAnalysisJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCacheAnalysisJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40089,13 +40424,24 @@ func (client *Client) DescribeCloudBenchTasksWithOptions(request *DescribeCloudB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudBenchTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudBenchTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudBenchTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40157,13 +40503,24 @@ func (client *Client) DescribeCloudbenchTaskWithOptions(request *DescribeCloudbe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudbenchTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudbenchTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudbenchTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40225,13 +40582,24 @@ func (client *Client) DescribeCloudbenchTaskConfigWithOptions(request *DescribeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudbenchTaskConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudbenchTaskConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudbenchTaskConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40321,13 +40689,24 @@ func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDiagnosticReportListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDiagnosticReportListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDiagnosticReportListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40423,13 +40802,24 @@ func (client *Client) DescribeHotBigKeysWithOptions(request *DescribeHotBigKeysR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHotBigKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHotBigKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHotBigKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40523,13 +40913,24 @@ func (client *Client) DescribeHotKeysWithOptions(request *DescribeHotKeysRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHotKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHotKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHotKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40611,13 +41012,24 @@ func (client *Client) DescribeInstanceDasProWithOptions(request *DescribeInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceDasProResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceDasProResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceDasProResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40697,13 +41109,24 @@ func (client *Client) DescribeSlowLogHistogramAsyncWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlowLogHistogramAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlowLogHistogramAsyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlowLogHistogramAsyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40797,13 +41220,24 @@ func (client *Client) DescribeSlowLogStatisticWithOptions(request *DescribeSlowL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlowLogStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlowLogStatisticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlowLogStatisticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40865,13 +41299,24 @@ func (client *Client) DescribeSqlLogConfigWithOptions(request *DescribeSqlLogCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSqlLogConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlLogConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlLogConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40971,13 +41416,24 @@ func (client *Client) DescribeSqlLogRecordsWithOptions(request *DescribeSqlLogRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSqlLogRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlLogRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlLogRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41047,13 +41503,24 @@ func (client *Client) DescribeSqlLogStatisticWithOptions(request *DescribeSqlLog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSqlLogStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlLogStatisticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlLogStatisticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41135,13 +41602,24 @@ func (client *Client) DescribeSqlLogTaskWithOptions(request *DescribeSqlLogTaskR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSqlLogTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlLogTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlLogTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41235,13 +41713,24 @@ func (client *Client) DescribeSqlLogTasksWithOptions(request *DescribeSqlLogTask
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSqlLogTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlLogTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlLogTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41337,13 +41826,24 @@ func (client *Client) DescribeTopBigKeysWithOptions(request *DescribeTopBigKeysR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTopBigKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTopBigKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTopBigKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41449,13 +41949,24 @@ func (client *Client) DescribeTopHotKeysWithOptions(request *DescribeTopHotKeysR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTopHotKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTopHotKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTopHotKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41539,13 +42050,24 @@ func (client *Client) DisableAllSqlConcurrencyControlRulesWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableAllSqlConcurrencyControlRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableAllSqlConcurrencyControlRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableAllSqlConcurrencyControlRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41615,13 +42137,24 @@ func (client *Client) DisableAutoResourceOptimizeRulesWithOptions(request *Disab
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableAutoResourceOptimizeRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableAutoResourceOptimizeRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableAutoResourceOptimizeRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41687,13 +42220,24 @@ func (client *Client) DisableAutoThrottleRulesWithOptions(request *DisableAutoTh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableAutoThrottleRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableAutoThrottleRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableAutoThrottleRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41765,13 +42309,24 @@ func (client *Client) DisableDasProWithOptions(request *DisableDasProRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableDasProResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableDasProResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableDasProResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41853,13 +42408,24 @@ func (client *Client) DisableInstanceDasConfigWithOptions(request *DisableInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableInstanceDasConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableInstanceDasConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableInstanceDasConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41939,13 +42505,24 @@ func (client *Client) DisableSqlConcurrencyControlWithOptions(request *DisableSq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableSqlConcurrencyControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableSqlConcurrencyControlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableSqlConcurrencyControlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42023,13 +42600,24 @@ func (client *Client) EnableDasProWithOptions(request *EnableDasProRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableDasProResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableDasProResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableDasProResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42119,13 +42707,24 @@ func (client *Client) EnableSqlConcurrencyControlWithOptions(request *EnableSqlC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableSqlConcurrencyControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableSqlConcurrencyControlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableSqlConcurrencyControlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42213,13 +42812,24 @@ func (client *Client) GetAsyncErrorRequestListByCodeWithOptions(request *GetAsyn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAsyncErrorRequestListByCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAsyncErrorRequestListByCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAsyncErrorRequestListByCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42307,13 +42917,24 @@ func (client *Client) GetAsyncErrorRequestStatByCodeWithOptions(request *GetAsyn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAsyncErrorRequestStatByCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAsyncErrorRequestStatByCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAsyncErrorRequestStatByCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42403,13 +43024,24 @@ func (client *Client) GetAsyncErrorRequestStatResultWithOptions(request *GetAsyn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAsyncErrorRequestStatResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAsyncErrorRequestStatResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAsyncErrorRequestStatResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42491,13 +43123,24 @@ func (client *Client) GetAutoIncrementUsageStatisticWithOptions(request *GetAuto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAutoIncrementUsageStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAutoIncrementUsageStatisticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAutoIncrementUsageStatisticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42573,13 +43216,24 @@ func (client *Client) GetAutoResourceOptimizeRulesWithOptions(request *GetAutoRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAutoResourceOptimizeRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAutoResourceOptimizeRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAutoResourceOptimizeRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42659,13 +43313,24 @@ func (client *Client) GetAutoThrottleRulesWithOptions(request *GetAutoThrottleRu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAutoThrottleRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAutoThrottleRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAutoThrottleRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42751,13 +43416,24 @@ func (client *Client) GetAutonomousNotifyEventContentWithOptions(request *GetAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAutonomousNotifyEventContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAutonomousNotifyEventContentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAutonomousNotifyEventContentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42871,13 +43547,24 @@ func (client *Client) GetAutonomousNotifyEventsInRangeWithOptions(request *GetAu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAutonomousNotifyEventsInRangeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAutonomousNotifyEventsInRangeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAutonomousNotifyEventsInRangeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42975,13 +43662,24 @@ func (client *Client) GetBlockingDetailListWithOptions(request *GetBlockingDetai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetBlockingDetailListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetBlockingDetailListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetBlockingDetailListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43057,13 +43755,24 @@ func (client *Client) GetDBInstanceConnectivityDiagnosisWithOptions(request *Get
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDBInstanceConnectivityDiagnosisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDBInstanceConnectivityDiagnosisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDBInstanceConnectivityDiagnosisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43143,13 +43852,24 @@ func (client *Client) GetDasProServiceUsageWithOptions(request *GetDasProService
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDasProServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDasProServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDasProServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43335,13 +44055,24 @@ func (client *Client) GetDasSQLLogHotDataWithOptions(request *GetDasSQLLogHotDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDasSQLLogHotDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDasSQLLogHotDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDasSQLLogHotDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43419,13 +44150,24 @@ func (client *Client) GetDeadLockDetailWithOptions(request *GetDeadLockDetailReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeadLockDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeadLockDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeadLockDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43507,13 +44249,24 @@ func (client *Client) GetDeadLockDetailListWithOptions(request *GetDeadLockDetai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeadLockDetailListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeadLockDetailListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeadLockDetailListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43599,13 +44352,24 @@ func (client *Client) GetDeadLockHistoryWithOptions(request *GetDeadLockHistoryR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeadLockHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeadLockHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeadLockHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43675,13 +44439,24 @@ func (client *Client) GetDeadlockHistogramWithOptions(request *GetDeadlockHistog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeadlockHistogramResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeadlockHistogramResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeadlockHistogramResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43759,13 +44534,24 @@ func (client *Client) GetEndpointSwitchTaskWithOptions(request *GetEndpointSwitc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEndpointSwitchTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEndpointSwitchTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEndpointSwitchTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetEndpointSwitchTaskRequest
@@ -43843,13 +44629,24 @@ func (client *Client) GetErrorRequestSampleWithOptions(request *GetErrorRequestS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetErrorRequestSampleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetErrorRequestSampleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetErrorRequestSampleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43921,13 +44718,24 @@ func (client *Client) GetEventSubscriptionWithOptions(request *GetEventSubscript
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEventSubscriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEventSubscriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEventSubscriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44039,13 +44847,24 @@ func (client *Client) GetFullRequestOriginStatByInstanceIdWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFullRequestOriginStatByInstanceIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFullRequestOriginStatByInstanceIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFullRequestOriginStatByInstanceIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44137,13 +44956,24 @@ func (client *Client) GetFullRequestSampleByInstanceIdWithOptions(request *GetFu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFullRequestSampleByInstanceIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFullRequestSampleByInstanceIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFullRequestSampleByInstanceIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44273,13 +45103,24 @@ func (client *Client) GetFullRequestStatResultByInstanceIdWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFullRequestStatResultByInstanceIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFullRequestStatResultByInstanceIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFullRequestStatResultByInstanceIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44369,13 +45210,24 @@ func (client *Client) GetHDMAliyunResourceSyncResultWithOptions(request *GetHDMA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetHDMAliyunResourceSyncResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHDMAliyunResourceSyncResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHDMAliyunResourceSyncResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetHDMAliyunResourceSyncResultRequest
@@ -44445,13 +45297,24 @@ func (client *Client) GetHDMLastAliyunResourceSyncResultWithOptions(request *Get
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetHDMLastAliyunResourceSyncResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHDMLastAliyunResourceSyncResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHDMLastAliyunResourceSyncResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetHDMLastAliyunResourceSyncResultRequest
@@ -44543,13 +45406,24 @@ func (client *Client) GetInstanceInspectionsWithOptions(request *GetInstanceInsp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceInspectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceInspectionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceInspectionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44681,13 +45555,24 @@ func (client *Client) GetInstanceMissingIndexListWithOptions(request *GetInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceMissingIndexListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceMissingIndexListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceMissingIndexListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44783,13 +45668,24 @@ func (client *Client) GetInstanceSqlOptimizeStatisticWithOptions(request *GetIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceSqlOptimizeStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceSqlOptimizeStatisticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceSqlOptimizeStatisticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44869,13 +45765,24 @@ func (client *Client) GetKillInstanceSessionTaskResultWithOptions(request *GetKi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetKillInstanceSessionTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetKillInstanceSessionTaskResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetKillInstanceSessionTaskResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44957,13 +45864,24 @@ func (client *Client) GetMongoDBCurrentOpWithOptions(request *GetMongoDBCurrentO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMongoDBCurrentOpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMongoDBCurrentOpResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMongoDBCurrentOpResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45043,13 +45961,24 @@ func (client *Client) GetMySQLAllSessionAsyncWithOptions(request *GetMySQLAllSes
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMySQLAllSessionAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMySQLAllSessionAsyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMySQLAllSessionAsyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45129,13 +46058,24 @@ func (client *Client) GetPartitionsHeatmapWithOptions(request *GetPartitionsHeat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPartitionsHeatmapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPartitionsHeatmapResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPartitionsHeatmapResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45221,13 +46161,24 @@ func (client *Client) GetPfsMetricTrendsWithOptions(request *GetPfsMetricTrendsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPfsMetricTrendsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPfsMetricTrendsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPfsMetricTrendsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45321,13 +46272,24 @@ func (client *Client) GetPfsSqlSampleWithOptions(request *GetPfsSqlSampleRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPfsSqlSampleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPfsSqlSampleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPfsSqlSampleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45441,13 +46403,24 @@ func (client *Client) GetPfsSqlSummariesWithOptions(request *GetPfsSqlSummariesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPfsSqlSummariesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPfsSqlSummariesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPfsSqlSummariesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45525,13 +46498,24 @@ func (client *Client) GetQueryOptimizeDataStatsWithOptions(request *GetQueryOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeDataStatsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeDataStatsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeDataStatsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45613,13 +46597,24 @@ func (client *Client) GetQueryOptimizeDataTopWithOptions(request *GetQueryOptimi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeDataTopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeDataTopResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeDataTopResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45701,13 +46696,24 @@ func (client *Client) GetQueryOptimizeDataTrendWithOptions(request *GetQueryOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeDataTrendResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeDataTrendResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeDataTrendResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45789,13 +46795,24 @@ func (client *Client) GetQueryOptimizeExecErrorSampleWithOptions(request *GetQue
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeExecErrorSampleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeExecErrorSampleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeExecErrorSampleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45875,13 +46892,24 @@ func (client *Client) GetQueryOptimizeExecErrorStatsWithOptions(request *GetQuer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeExecErrorStatsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeExecErrorStatsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeExecErrorStatsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45961,13 +46989,24 @@ func (client *Client) GetQueryOptimizeRuleListWithOptions(request *GetQueryOptim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeRuleListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeRuleListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeRuleListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46047,13 +47086,24 @@ func (client *Client) GetQueryOptimizeShareUrlWithOptions(request *GetQueryOptim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeShareUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeShareUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeShareUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46131,13 +47181,24 @@ func (client *Client) GetQueryOptimizeSolutionWithOptions(request *GetQueryOptim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeSolutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeSolutionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeSolutionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46215,13 +47276,24 @@ func (client *Client) GetQueryOptimizeTagWithOptions(request *GetQueryOptimizeTa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetQueryOptimizeTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetQueryOptimizeTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetQueryOptimizeTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46301,13 +47373,24 @@ func (client *Client) GetRedisAllSessionWithOptions(request *GetRedisAllSessionR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRedisAllSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRedisAllSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRedisAllSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46411,13 +47494,24 @@ func (client *Client) GetRequestDiagnosisPageWithOptions(request *GetRequestDiag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRequestDiagnosisPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRequestDiagnosisPageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRequestDiagnosisPageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46533,13 +47627,24 @@ func (client *Client) GetRequestDiagnosisResultWithOptions(request *GetRequestDi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRequestDiagnosisResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRequestDiagnosisResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRequestDiagnosisResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46637,13 +47742,24 @@ func (client *Client) GetRunningSqlConcurrencyControlRulesWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRunningSqlConcurrencyControlRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRunningSqlConcurrencyControlRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRunningSqlConcurrencyControlRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46721,13 +47837,24 @@ func (client *Client) GetSqlConcurrencyControlKeywordsFromSqlTextWithOptions(req
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSqlConcurrencyControlKeywordsFromSqlTextResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSqlConcurrencyControlKeywordsFromSqlTextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSqlConcurrencyControlKeywordsFromSqlTextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46809,13 +47936,24 @@ func (client *Client) GetSqlConcurrencyControlRulesHistoryWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSqlConcurrencyControlRulesHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSqlConcurrencyControlRulesHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSqlConcurrencyControlRulesHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46911,13 +48049,24 @@ func (client *Client) GetSqlOptimizeAdviceWithOptions(request *GetSqlOptimizeAdv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSqlOptimizeAdviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSqlOptimizeAdviceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSqlOptimizeAdviceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47005,13 +48154,24 @@ func (client *Client) GetStorageAnalysisResultWithOptions(request *GetStorageAna
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStorageAnalysisResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStorageAnalysisResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStorageAnalysisResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47091,13 +48251,24 @@ func (client *Client) KillInstanceAllSessionWithOptions(request *KillInstanceAll
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &KillInstanceAllSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &KillInstanceAllSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &KillInstanceAllSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47207,13 +48378,24 @@ func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAutoScalingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAutoScalingConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAutoScalingConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47325,13 +48507,24 @@ func (client *Client) ModifySqlLogConfigWithOptions(request *ModifySqlLogConfigR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySqlLogConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySqlLogConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySqlLogConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47399,13 +48592,24 @@ func (client *Client) RunCloudBenchTaskWithOptions(request *RunCloudBenchTaskReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunCloudBenchTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunCloudBenchTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunCloudBenchTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47513,13 +48717,24 @@ func (client *Client) SetEventSubscriptionWithOptions(request *SetEventSubscript
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetEventSubscriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetEventSubscriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetEventSubscriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47613,13 +48828,24 @@ func (client *Client) UpdateAutoResourceOptimizeRulesAsyncWithOptions(request *U
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAutoResourceOptimizeRulesAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAutoResourceOptimizeRulesAsyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAutoResourceOptimizeRulesAsyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47707,13 +48933,24 @@ func (client *Client) UpdateAutoSqlOptimizeStatusWithOptions(request *UpdateAuto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAutoSqlOptimizeStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAutoSqlOptimizeStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAutoSqlOptimizeStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47839,13 +49076,24 @@ func (client *Client) UpdateAutoThrottleRulesAsyncWithOptions(request *UpdateAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAutoThrottleRulesAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAutoThrottleRulesAsyncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAutoThrottleRulesAsyncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
