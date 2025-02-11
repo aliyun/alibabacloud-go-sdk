@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/sae-20190506/v2
+module github.com/alibabacloud-go/sae-20190506/v3
 
 go 1.14
 

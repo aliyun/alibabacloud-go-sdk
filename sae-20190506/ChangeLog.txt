@@ -1,3 +1,9 @@
+2025-02-11 Version: v3.0.0
+- Support API ListAppServices.
+- Update API DeployApplication: add param SwimlanePvtzDiscoverySvc.
+- Update API DescribeApplicationConfig: update response param.
+
+
 2025-02-11 Version: v2.0.0
 - Support API ListAppServices.
 - Update API DeployApplication: add param SwimlanePvtzDiscoverySvc.
