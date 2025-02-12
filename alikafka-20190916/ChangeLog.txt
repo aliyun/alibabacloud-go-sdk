@@ -1,3 +1,7 @@
+2025-02-12 Version: v3.11.0
+- Support API DescribeAclResourceName.
+
+
 2025-01-06 Version: v3.10.1
 - Update API ConvertPostPayOrder: add param PaidType.
 - Update API UpgradePrePayOrder: update param DiskSize.
