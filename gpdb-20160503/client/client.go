@@ -2409,6 +2409,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 2C16G
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	MasterAISpec *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
 	// Master resources, with the following values:
 	//
 	// - 2 CU
@@ -2758,6 +2759,11 @@ func (s *CreateDBInstanceRequest) SetInstanceNetworkType(v string) *CreateDBInst
 
 func (s *CreateDBInstanceRequest) SetInstanceSpec(v string) *CreateDBInstanceRequest {
 	s.InstanceSpec = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetMasterAISpec(v string) *CreateDBInstanceRequest {
+	s.MasterAISpec = &v
 	return s
 }
 
@@ -12454,6 +12460,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MasterAISpec      *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
 	// Master resources.
 	//
 	// example:
@@ -12569,7 +12576,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// 4
-	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	SegNodeNum    *int32  `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	SegmentAISpec *string `json:"SegmentAISpec,omitempty" xml:"SegmentAISpec,omitempty"`
 	// Number of compute groups.
 	//
 	// > This parameter applies only to storage-reserved mode instances.
@@ -12865,6 +12873,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMai
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMasterAISpec(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.MasterAISpec = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMasterCU(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MasterCU = &v
 	return s
@@ -12947,6 +12960,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSeg
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegNodeNum(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.SegNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegmentAISpec(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.SegmentAISpec = &v
 	return s
 }
 
@@ -37285,6 +37303,7 @@ type ModifyMasterSpecRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	MasterAISpec *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
 	// The specifications of coordinator node resources. Valid values:
 	//
 	// 	- 2 CU
@@ -37328,6 +37347,11 @@ func (s *ModifyMasterSpecRequest) SetDBInstanceDescription(v string) *ModifyMast
 
 func (s *ModifyMasterSpecRequest) SetDBInstanceId(v string) *ModifyMasterSpecRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyMasterSpecRequest) SetMasterAISpec(v string) *ModifyMasterSpecRequest {
+	s.MasterAISpec = &v
 	return s
 }
 
@@ -48462,6 +48486,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
 		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterAISpec)) {
+		query["MasterAISpec"] = request.MasterAISpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterCU)) {
@@ -62577,6 +62605,10 @@ func (client *Client) ModifyMasterSpecWithOptions(request *ModifyMasterSpecReque
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterAISpec)) {
+		query["MasterAISpec"] = request.MasterAISpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterCU)) {
