@@ -308,8 +308,9 @@ type CreateJobRequest struct {
 	// example:
 	//
 	// testjob
-	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	JobName        *string                         `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobScheduler   *string                         `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	SecurityPolicy *CreateJobRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
 	// This parameter is required.
 	Tasks []*CreateJobRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
@@ -339,6 +340,11 @@ func (s *CreateJobRequest) SetJobName(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetJobScheduler(v string) *CreateJobRequest {
 	s.JobScheduler = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetSecurityPolicy(v *CreateJobRequestSecurityPolicy) *CreateJobRequest {
+	s.SecurityPolicy = v
 	return s
 }
 
@@ -423,6 +429,40 @@ func (s *CreateJobRequestDeploymentPolicyTag) SetKey(v string) *CreateJobRequest
 
 func (s *CreateJobRequestDeploymentPolicyTag) SetValue(v string) *CreateJobRequestDeploymentPolicyTag {
 	s.Value = &v
+	return s
+}
+
+type CreateJobRequestSecurityPolicy struct {
+	SecurityGroup *CreateJobRequestSecurityPolicySecurityGroup `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty" type:"Struct"`
+}
+
+func (s CreateJobRequestSecurityPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequestSecurityPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestSecurityPolicy) SetSecurityGroup(v *CreateJobRequestSecurityPolicySecurityGroup) *CreateJobRequestSecurityPolicy {
+	s.SecurityGroup = v
+	return s
+}
+
+type CreateJobRequestSecurityPolicySecurityGroup struct {
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateJobRequestSecurityPolicySecurityGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequestSecurityPolicySecurityGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestSecurityPolicySecurityGroup) SetSecurityGroupIds(v []*string) *CreateJobRequestSecurityPolicySecurityGroup {
+	s.SecurityGroupIds = v
 	return s
 }
 
@@ -821,8 +861,9 @@ type CreateJobShrinkRequest struct {
 	// example:
 	//
 	// testjob
-	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobScheduler         *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
 	// This parameter is required.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 }
@@ -852,6 +893,11 @@ func (s *CreateJobShrinkRequest) SetJobName(v string) *CreateJobShrinkRequest {
 
 func (s *CreateJobShrinkRequest) SetJobScheduler(v string) *CreateJobShrinkRequest {
 	s.JobScheduler = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetSecurityPolicyShrink(v string) *CreateJobShrinkRequest {
+	s.SecurityPolicyShrink = &v
 	return s
 }
 
@@ -2935,11 +2981,11 @@ type ListExecutorsRequest struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 50
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListExecutorsRequest) String() string {
@@ -2955,12 +3001,12 @@ func (s *ListExecutorsRequest) SetFilter(v *ListExecutorsRequestFilter) *ListExe
 	return s
 }
 
-func (s *ListExecutorsRequest) SetPageNumber(v string) *ListExecutorsRequest {
+func (s *ListExecutorsRequest) SetPageNumber(v int32) *ListExecutorsRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListExecutorsRequest) SetPageSize(v string) *ListExecutorsRequest {
+func (s *ListExecutorsRequest) SetPageSize(v int32) *ListExecutorsRequest {
 	s.PageSize = &v
 	return s
 }
@@ -3026,11 +3072,11 @@ type ListExecutorsShrinkRequest struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 50
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListExecutorsShrinkRequest) String() string {
@@ -3046,12 +3092,12 @@ func (s *ListExecutorsShrinkRequest) SetFilterShrink(v string) *ListExecutorsShr
 	return s
 }
 
-func (s *ListExecutorsShrinkRequest) SetPageNumber(v string) *ListExecutorsShrinkRequest {
+func (s *ListExecutorsShrinkRequest) SetPageNumber(v int32) *ListExecutorsShrinkRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListExecutorsShrinkRequest) SetPageSize(v string) *ListExecutorsShrinkRequest {
+func (s *ListExecutorsShrinkRequest) SetPageSize(v int32) *ListExecutorsShrinkRequest {
 	s.PageSize = &v
 	return s
 }
@@ -3061,11 +3107,11 @@ type ListExecutorsResponseBody struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 50
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
@@ -3089,12 +3135,12 @@ func (s *ListExecutorsResponseBody) SetExecutors(v []*ListExecutorsResponseBodyE
 	return s
 }
 
-func (s *ListExecutorsResponseBody) SetPageNumber(v string) *ListExecutorsResponseBody {
+func (s *ListExecutorsResponseBody) SetPageNumber(v int32) *ListExecutorsResponseBody {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListExecutorsResponseBody) SetPageSize(v string) *ListExecutorsResponseBody {
+func (s *ListExecutorsResponseBody) SetPageSize(v int32) *ListExecutorsResponseBody {
 	s.PageSize = &v
 	return s
 }
@@ -3110,6 +3156,7 @@ func (s *ListExecutorsResponseBody) SetTotalCount(v string) *ListExecutorsRespon
 }
 
 type ListExecutorsResponseBodyExecutors struct {
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// example:
 	//
 	// 0
@@ -3126,6 +3173,7 @@ type ListExecutorsResponseBodyExecutors struct {
 	//
 	// job-xxxx-task0-1
 	ExecutorId        *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ExpirationTime    *string   `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
 	HostName          []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
 	Image             *string   `json:"Image,omitempty" xml:"Image,omitempty"`
@@ -3166,6 +3214,11 @@ func (s ListExecutorsResponseBodyExecutors) GoString() string {
 	return s.String()
 }
 
+func (s *ListExecutorsResponseBodyExecutors) SetAppName(v string) *ListExecutorsResponseBodyExecutors {
+	s.AppName = &v
+	return s
+}
+
 func (s *ListExecutorsResponseBodyExecutors) SetArrayIndex(v int32) *ListExecutorsResponseBodyExecutors {
 	s.ArrayIndex = &v
 	return s
@@ -3183,6 +3236,11 @@ func (s *ListExecutorsResponseBodyExecutors) SetEndTime(v string) *ListExecutors
 
 func (s *ListExecutorsResponseBodyExecutors) SetExecutorId(v string) *ListExecutorsResponseBodyExecutors {
 	s.ExecutorId = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetExpirationTime(v string) *ListExecutorsResponseBodyExecutors {
+	s.ExpirationTime = &v
 	return s
 }
 
@@ -3679,11 +3737,11 @@ type ListJobExecutorsRequest struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
 	// task0
@@ -3703,12 +3761,12 @@ func (s *ListJobExecutorsRequest) SetJobId(v string) *ListJobExecutorsRequest {
 	return s
 }
 
-func (s *ListJobExecutorsRequest) SetPageNumber(v string) *ListJobExecutorsRequest {
+func (s *ListJobExecutorsRequest) SetPageNumber(v int32) *ListJobExecutorsRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListJobExecutorsRequest) SetPageSize(v string) *ListJobExecutorsRequest {
+func (s *ListJobExecutorsRequest) SetPageSize(v int32) *ListJobExecutorsRequest {
 	s.PageSize = &v
 	return s
 }
@@ -3728,11 +3786,11 @@ type ListJobExecutorsResponseBody struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
@@ -3770,12 +3828,12 @@ func (s *ListJobExecutorsResponseBody) SetJobId(v string) *ListJobExecutorsRespo
 	return s
 }
 
-func (s *ListJobExecutorsResponseBody) SetPageNumber(v string) *ListJobExecutorsResponseBody {
+func (s *ListJobExecutorsResponseBody) SetPageNumber(v int32) *ListJobExecutorsResponseBody {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListJobExecutorsResponseBody) SetPageSize(v string) *ListJobExecutorsResponseBody {
+func (s *ListJobExecutorsResponseBody) SetPageSize(v int32) *ListJobExecutorsResponseBody {
 	s.PageSize = &v
 	return s
 }
@@ -3862,6 +3920,7 @@ type ListJobExecutorsResponseBodyExecutors struct {
 	// 2024-02-20 10:04:18
 	EndTime           *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecutorId        *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ExpirationTime    *string   `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
 	HostName          []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
 	IpAddress         []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
@@ -3902,6 +3961,11 @@ func (s *ListJobExecutorsResponseBodyExecutors) SetEndTime(v string) *ListJobExe
 
 func (s *ListJobExecutorsResponseBodyExecutors) SetExecutorId(v string) *ListJobExecutorsResponseBodyExecutors {
 	s.ExecutorId = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetExpirationTime(v string) *ListJobExecutorsResponseBodyExecutors {
+	s.ExpirationTime = &v
 	return s
 }
 
@@ -3997,11 +4061,11 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 50
-	PageSize *string                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SortBy   *ListJobsRequestSortBy `json:"SortBy,omitempty" xml:"SortBy,omitempty" type:"Struct"`
 }
 
@@ -4018,12 +4082,12 @@ func (s *ListJobsRequest) SetFilter(v *ListJobsRequestFilter) *ListJobsRequest {
 	return s
 }
 
-func (s *ListJobsRequest) SetPageNumber(v string) *ListJobsRequest {
+func (s *ListJobsRequest) SetPageNumber(v int32) *ListJobsRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListJobsRequest) SetPageSize(v string) *ListJobsRequest {
+func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
 	s.PageSize = &v
 	return s
 }
@@ -4123,11 +4187,11 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 50
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SortByShrink *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
@@ -4144,12 +4208,12 @@ func (s *ListJobsShrinkRequest) SetFilterShrink(v string) *ListJobsShrinkRequest
 	return s
 }
 
-func (s *ListJobsShrinkRequest) SetPageNumber(v string) *ListJobsShrinkRequest {
+func (s *ListJobsShrinkRequest) SetPageNumber(v int32) *ListJobsShrinkRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListJobsShrinkRequest) SetPageSize(v string) *ListJobsShrinkRequest {
+func (s *ListJobsShrinkRequest) SetPageSize(v int32) *ListJobsShrinkRequest {
 	s.PageSize = &v
 	return s
 }
@@ -4213,6 +4277,7 @@ func (s *ListJobsResponseBody) SetTotalCount(v int32) *ListJobsResponseBody {
 }
 
 type ListJobsResponseBodyJobList struct {
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// example:
 	//
 	// 2024-01-25 12:29:21
@@ -4266,6 +4331,11 @@ func (s ListJobsResponseBodyJobList) String() string {
 
 func (s ListJobsResponseBodyJobList) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobsResponseBodyJobList) SetAppName(v string) *ListJobsResponseBodyJobList {
+	s.AppName = &v
+	return s
 }
 
 func (s *ListJobsResponseBodyJobList) SetCreateTime(v string) *ListJobsResponseBodyJobList {
@@ -5390,13 +5460,24 @@ func (client *Client) AddImageWithOptions(tmpReq *AddImageRequest, runtime *util
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5437,6 +5518,10 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 		request.DeploymentPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeploymentPolicy, tea.String("DeploymentPolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityPolicy)) {
+		request.SecurityPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityPolicy, tea.String("SecurityPolicy"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tasks)) {
 		request.TasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tasks, tea.String("Tasks"), tea.String("json"))
 	}
@@ -5458,6 +5543,10 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 		query["JobScheduler"] = request.JobScheduler
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyShrink)) {
+		query["SecurityPolicy"] = request.SecurityPolicyShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TasksShrink)) {
 		query["Tasks"] = request.TasksShrink
 	}
@@ -5476,13 +5565,24 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5550,13 +5650,24 @@ func (client *Client) CreatePoolWithOptions(tmpReq *CreatePoolRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5624,13 +5735,24 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5684,13 +5806,24 @@ func (client *Client) DeletePoolWithOptions(request *DeletePoolRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5762,13 +5895,24 @@ func (client *Client) DescribeJobMetricDataWithOptions(tmpReq *DescribeJobMetric
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeJobMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeJobMetricDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeJobMetricDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5836,13 +5980,24 @@ func (client *Client) DescribeJobMetricLastWithOptions(tmpReq *DescribeJobMetric
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeJobMetricLastResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeJobMetricLastResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeJobMetricLastResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5912,13 +6067,24 @@ func (client *Client) GetAppVersionsWithOptions(request *GetAppVersionsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAppVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAppVersionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAppVersionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5980,13 +6146,24 @@ func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6040,13 +6217,24 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6100,13 +6288,24 @@ func (client *Client) GetPoolWithOptions(request *GetPoolRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6174,13 +6373,24 @@ func (client *Client) ListExecutorsWithOptions(tmpReq *ListExecutorsRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListExecutorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListExecutorsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListExecutorsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6268,13 +6478,24 @@ func (client *Client) ListImagesWithOptions(tmpReq *ListImagesRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6340,13 +6561,24 @@ func (client *Client) ListJobExecutorsWithOptions(request *ListJobExecutorsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListJobExecutorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListJobExecutorsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListJobExecutorsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6422,13 +6654,24 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *util
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6496,13 +6739,24 @@ func (client *Client) ListPoolsWithOptions(tmpReq *ListPoolsRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPoolsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPoolsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6572,13 +6826,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6636,13 +6901,24 @@ func (client *Client) RemoveImageWithOptions(request *RemoveImageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6704,13 +6980,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6776,13 +7063,24 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6850,13 +7148,24 @@ func (client *Client) UpdatePoolWithOptions(tmpReq *UpdatePoolRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
