@@ -3935,6 +3935,75 @@ func (s *BlockObjectResponse) SetBody(v *BlockObjectResponseBody) *BlockObjectRe
 	return s
 }
 
+type CheckAssumeSlrRoleResponseBody struct {
+	// example:
+	//
+	// aliuid:xxx assumeOssRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// true
+	IsExist *string `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckAssumeSlrRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAssumeSlrRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAssumeSlrRoleResponseBody) SetErrorMsg(v string) *CheckAssumeSlrRoleResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CheckAssumeSlrRoleResponseBody) SetIsExist(v string) *CheckAssumeSlrRoleResponseBody {
+	s.IsExist = &v
+	return s
+}
+
+func (s *CheckAssumeSlrRoleResponseBody) SetRequestId(v string) *CheckAssumeSlrRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckAssumeSlrRoleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckAssumeSlrRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckAssumeSlrRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAssumeSlrRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAssumeSlrRoleResponse) SetHeaders(v map[string]*string) *CheckAssumeSlrRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckAssumeSlrRoleResponse) SetStatusCode(v int32) *CheckAssumeSlrRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckAssumeSlrRoleResponse) SetBody(v *CheckAssumeSlrRoleResponseBody) *CheckAssumeSlrRoleResponse {
+	s.Body = v
+	return s
+}
+
 type CheckSiteNameRequest struct {
 	// The website name.
 	//
@@ -4943,7 +5012,8 @@ type CreateCompressionRuleRequest struct {
 	// example:
 	//
 	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	Zstd        *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
 }
 
 func (s CreateCompressionRuleRequest) String() string {
@@ -4986,6 +5056,11 @@ func (s *CreateCompressionRuleRequest) SetSiteId(v int64) *CreateCompressionRule
 
 func (s *CreateCompressionRuleRequest) SetSiteVersion(v int32) *CreateCompressionRuleRequest {
 	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetZstd(v string) *CreateCompressionRuleRequest {
+	s.Zstd = &v
 	return s
 }
 
@@ -12150,6 +12225,57 @@ func (s *CreateSiteDeliveryTaskResponse) SetBody(v *CreateSiteDeliveryTaskRespon
 	return s
 }
 
+type CreateSlrRoleForRealtimeLogResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSlrRoleForRealtimeLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlrRoleForRealtimeLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlrRoleForRealtimeLogResponseBody) SetRequestId(v string) *CreateSlrRoleForRealtimeLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSlrRoleForRealtimeLogResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSlrRoleForRealtimeLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSlrRoleForRealtimeLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlrRoleForRealtimeLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlrRoleForRealtimeLogResponse) SetHeaders(v map[string]*string) *CreateSlrRoleForRealtimeLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSlrRoleForRealtimeLogResponse) SetStatusCode(v int32) *CreateSlrRoleForRealtimeLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSlrRoleForRealtimeLogResponse) SetBody(v *CreateSlrRoleForRealtimeLogResponseBody) *CreateSlrRoleForRealtimeLogResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUserDeliveryTaskRequest struct {
 	// The log category. Valid values:
 	//
@@ -13648,7 +13774,8 @@ type CreateWaitingRoomResponseBody struct {
 	// example:
 	//
 	// 85H66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 }
 
 func (s CreateWaitingRoomResponseBody) String() string {
@@ -13661,6 +13788,11 @@ func (s CreateWaitingRoomResponseBody) GoString() string {
 
 func (s *CreateWaitingRoomResponseBody) SetRequestId(v string) *CreateWaitingRoomResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWaitingRoomResponseBody) SetWaitingRoomId(v string) *CreateWaitingRoomResponseBody {
+	s.WaitingRoomId = &v
 	return s
 }
 
@@ -13992,7 +14124,8 @@ type CreateWaitingRoomEventResponseBody struct {
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WaitingRoomEventId *int64  `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
 }
 
 func (s CreateWaitingRoomEventResponseBody) String() string {
@@ -14005,6 +14138,11 @@ func (s CreateWaitingRoomEventResponseBody) GoString() string {
 
 func (s *CreateWaitingRoomEventResponseBody) SetRequestId(v string) *CreateWaitingRoomEventResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWaitingRoomEventResponseBody) SetWaitingRoomEventId(v int64) *CreateWaitingRoomEventResponseBody {
+	s.WaitingRoomEventId = &v
 	return s
 }
 
@@ -14123,7 +14261,8 @@ type CreateWaitingRoomRuleResponseBody struct {
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WaitingRoomRuleId *int64  `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
 }
 
 func (s CreateWaitingRoomRuleResponseBody) String() string {
@@ -14136,6 +14275,11 @@ func (s CreateWaitingRoomRuleResponseBody) GoString() string {
 
 func (s *CreateWaitingRoomRuleResponseBody) SetRequestId(v string) *CreateWaitingRoomRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWaitingRoomRuleResponseBody) SetWaitingRoomRuleId(v int64) *CreateWaitingRoomRuleResponseBody {
+	s.WaitingRoomRuleId = &v
 	return s
 }
 
@@ -21828,7 +21972,8 @@ type GetCompressionRuleResponseBody struct {
 	// example:
 	//
 	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	Zstd        *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
 }
 
 func (s GetCompressionRuleResponseBody) String() string {
@@ -21886,6 +22031,11 @@ func (s *GetCompressionRuleResponseBody) SetSequence(v int32) *GetCompressionRul
 
 func (s *GetCompressionRuleResponseBody) SetSiteVersion(v int32) *GetCompressionRuleResponseBody {
 	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetCompressionRuleResponseBody) SetZstd(v string) *GetCompressionRuleResponseBody {
+	s.Zstd = &v
 	return s
 }
 
@@ -34303,7 +34453,8 @@ type ListCompressionRulesResponseBodyConfigs struct {
 	// example:
 	//
 	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	Zstd        *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
 }
 
 func (s ListCompressionRulesResponseBodyConfigs) String() string {
@@ -34356,6 +34507,11 @@ func (s *ListCompressionRulesResponseBodyConfigs) SetSequence(v int32) *ListComp
 
 func (s *ListCompressionRulesResponseBodyConfigs) SetSiteVersion(v int32) *ListCompressionRulesResponseBodyConfigs {
 	s.SiteVersion = &v
+	return s
+}
+
+func (s *ListCompressionRulesResponseBodyConfigs) SetZstd(v string) *ListCompressionRulesResponseBodyConfigs {
+	s.Zstd = &v
 	return s
 }
 
@@ -45145,7 +45301,8 @@ type ListUserRatePlanInstancesRequest struct {
 	// example:
 	//
 	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
 func (s ListUserRatePlanInstancesRequest) String() string {
@@ -45193,6 +45350,11 @@ func (s *ListUserRatePlanInstancesRequest) SetSortOrder(v string) *ListUserRateP
 
 func (s *ListUserRatePlanInstancesRequest) SetStatus(v string) *ListUserRatePlanInstancesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetSubscribeType(v string) *ListUserRatePlanInstancesRequest {
+	s.SubscribeType = &v
 	return s
 }
 
@@ -45364,7 +45526,8 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	// example:
 	//
 	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
 func (s ListUserRatePlanInstancesResponseBodyInstanceInfo) String() string {
@@ -45492,6 +45655,11 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetStaticRequest(v s
 
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetStatus(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
 	s.Status = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSubscribeType(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.SubscribeType = &v
 	return s
 }
 
@@ -50873,7 +51041,8 @@ type UpdateCompressionRuleRequest struct {
 	// example:
 	//
 	// 5407498413****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	Zstd   *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
 }
 
 func (s UpdateCompressionRuleRequest) String() string {
@@ -50916,6 +51085,11 @@ func (s *UpdateCompressionRuleRequest) SetRuleName(v string) *UpdateCompressionR
 
 func (s *UpdateCompressionRuleRequest) SetSiteId(v int64) *UpdateCompressionRuleRequest {
 	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetZstd(v string) *UpdateCompressionRuleRequest {
+	s.Zstd = &v
 	return s
 }
 
@@ -59554,6 +59728,64 @@ func (client *Client) BlockObject(request *BlockObjectRequest) (_result *BlockOb
 
 // Summary:
 //
+// 检查实时日志slr角色是否已创建
+//
+// @param request - CheckAssumeSlrRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAssumeSlrRoleResponse
+func (client *Client) CheckAssumeSlrRoleWithOptions(runtime *util.RuntimeOptions) (_result *CheckAssumeSlrRoleResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("CheckAssumeSlrRole"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckAssumeSlrRoleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckAssumeSlrRoleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 检查实时日志slr角色是否已创建
+//
+// @return CheckAssumeSlrRoleResponse
+func (client *Client) CheckAssumeSlrRole() (_result *CheckAssumeSlrRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckAssumeSlrRoleResponse{}
+	_body, _err := client.CheckAssumeSlrRoleWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks whether a specified website name is available.
 //
 // @param request - CheckSiteNameRequest
@@ -60125,6 +60357,10 @@ func (client *Client) CreateCompressionRuleWithOptions(request *CreateCompressio
 
 	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
 		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zstd)) {
+		query["Zstd"] = request.Zstd
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -62954,6 +63190,64 @@ func (client *Client) CreateSiteDeliveryTask(request *CreateSiteDeliveryTaskRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSiteDeliveryTaskResponse{}
 	_body, _err := client.CreateSiteDeliveryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个实时日志slr角色
+//
+// @param request - CreateSlrRoleForRealtimeLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSlrRoleForRealtimeLogResponse
+func (client *Client) CreateSlrRoleForRealtimeLogWithOptions(runtime *util.RuntimeOptions) (_result *CreateSlrRoleForRealtimeLogResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSlrRoleForRealtimeLog"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSlrRoleForRealtimeLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSlrRoleForRealtimeLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建一个实时日志slr角色
+//
+// @return CreateSlrRoleForRealtimeLogResponse
+func (client *Client) CreateSlrRoleForRealtimeLog() (_result *CreateSlrRoleForRealtimeLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSlrRoleForRealtimeLogResponse{}
+	_body, _err := client.CreateSlrRoleForRealtimeLogWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -77173,6 +77467,10 @@ func (client *Client) UpdateCompressionRuleWithOptions(request *UpdateCompressio
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zstd)) {
+		query["Zstd"] = request.Zstd
 	}
 
 	req := &openapi.OpenApiRequest{
