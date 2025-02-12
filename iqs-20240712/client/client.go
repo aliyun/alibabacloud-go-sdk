@@ -725,6 +725,325 @@ func (s *CommonQueryBySceneResponse) SetBody(v *QueryResult) *CommonQueryByScene
 	return s
 }
 
+type DrivingDirectionRequest struct {
+	// example:
+	//
+	// 39.896463
+	DestinationLatitude *string `json:"destinationLatitude,omitempty" xml:"destinationLatitude,omitempty"`
+	// example:
+	//
+	// 116.46424
+	DestinationLongitude *string `json:"destinationLongitude,omitempty" xml:"destinationLongitude,omitempty"`
+	// example:
+	//
+	// 39.995197
+	OriginLatitude *string `json:"originLatitude,omitempty" xml:"originLatitude,omitempty"`
+	// example:
+	//
+	// 116.466485
+	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+}
+
+func (s DrivingDirectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DrivingDirectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DrivingDirectionRequest) SetDestinationLatitude(v string) *DrivingDirectionRequest {
+	s.DestinationLatitude = &v
+	return s
+}
+
+func (s *DrivingDirectionRequest) SetDestinationLongitude(v string) *DrivingDirectionRequest {
+	s.DestinationLongitude = &v
+	return s
+}
+
+func (s *DrivingDirectionRequest) SetOriginLatitude(v string) *DrivingDirectionRequest {
+	s.OriginLatitude = &v
+	return s
+}
+
+func (s *DrivingDirectionRequest) SetOriginLongitude(v string) *DrivingDirectionRequest {
+	s.OriginLongitude = &v
+	return s
+}
+
+type DrivingDirectionResponseBody struct {
+	Data []*DrivingDirectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ECB2144C-E277-5434-80E6-12D26678D364
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DrivingDirectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DrivingDirectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DrivingDirectionResponseBody) SetData(v []*DrivingDirectionResponseBodyData) *DrivingDirectionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DrivingDirectionResponseBody) SetRequestId(v string) *DrivingDirectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBody) SetSuccess(v bool) *DrivingDirectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DrivingDirectionResponseBodyData struct {
+	Cost *DrivingDirectionResponseBodyDataCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
+	// example:
+	//
+	// 445
+	DistanceMeter *string                                  `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	Restriction   *string                                  `json:"restriction,omitempty" xml:"restriction,omitempty"`
+	Steps         []*DrivingDirectionResponseBodyDataSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
+}
+
+func (s DrivingDirectionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DrivingDirectionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DrivingDirectionResponseBodyData) SetCost(v *DrivingDirectionResponseBodyDataCost) *DrivingDirectionResponseBodyData {
+	s.Cost = v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyData) SetDistanceMeter(v string) *DrivingDirectionResponseBodyData {
+	s.DistanceMeter = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyData) SetRestriction(v string) *DrivingDirectionResponseBodyData {
+	s.Restriction = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyData) SetSteps(v []*DrivingDirectionResponseBodyDataSteps) *DrivingDirectionResponseBodyData {
+	s.Steps = v
+	return s
+}
+
+type DrivingDirectionResponseBodyDataCost struct {
+	// example:
+	//
+	// 1231
+	DurationSecond *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
+	// example:
+	//
+	// 6
+	TaxiFee           *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
+	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
+	TollRoads         *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
+	// example:
+	//
+	// 23
+	Tolls         *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
+	TrafficLights *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
+	TransitFee    *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
+}
+
+func (s DrivingDirectionResponseBodyDataCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DrivingDirectionResponseBodyDataCost) GoString() string {
+	return s.String()
+}
+
+func (s *DrivingDirectionResponseBodyDataCost) SetDurationSecond(v string) *DrivingDirectionResponseBodyDataCost {
+	s.DurationSecond = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataCost) SetTaxiFee(v string) *DrivingDirectionResponseBodyDataCost {
+	s.TaxiFee = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataCost) SetTollDistanceMeter(v string) *DrivingDirectionResponseBodyDataCost {
+	s.TollDistanceMeter = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataCost) SetTollRoads(v string) *DrivingDirectionResponseBodyDataCost {
+	s.TollRoads = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataCost) SetTolls(v string) *DrivingDirectionResponseBodyDataCost {
+	s.Tolls = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataCost) SetTrafficLights(v string) *DrivingDirectionResponseBodyDataCost {
+	s.TrafficLights = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataCost) SetTransitFee(v string) *DrivingDirectionResponseBodyDataCost {
+	s.TransitFee = &v
+	return s
+}
+
+type DrivingDirectionResponseBodyDataSteps struct {
+	Cost        *DrivingDirectionResponseBodyDataStepsCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
+	Instruction *string                                    `json:"instruction,omitempty" xml:"instruction,omitempty"`
+	Orientation *string                                    `json:"orientation,omitempty" xml:"orientation,omitempty"`
+	RoadName    *string                                    `json:"roadName,omitempty" xml:"roadName,omitempty"`
+	// example:
+	//
+	// 500
+	StepDistanceMeter *string `json:"stepDistanceMeter,omitempty" xml:"stepDistanceMeter,omitempty"`
+}
+
+func (s DrivingDirectionResponseBodyDataSteps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DrivingDirectionResponseBodyDataSteps) GoString() string {
+	return s.String()
+}
+
+func (s *DrivingDirectionResponseBodyDataSteps) SetCost(v *DrivingDirectionResponseBodyDataStepsCost) *DrivingDirectionResponseBodyDataSteps {
+	s.Cost = v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataSteps) SetInstruction(v string) *DrivingDirectionResponseBodyDataSteps {
+	s.Instruction = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataSteps) SetOrientation(v string) *DrivingDirectionResponseBodyDataSteps {
+	s.Orientation = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataSteps) SetRoadName(v string) *DrivingDirectionResponseBodyDataSteps {
+	s.RoadName = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataSteps) SetStepDistanceMeter(v string) *DrivingDirectionResponseBodyDataSteps {
+	s.StepDistanceMeter = &v
+	return s
+}
+
+type DrivingDirectionResponseBodyDataStepsCost struct {
+	// example:
+	//
+	// 27647
+	DurationSecond    *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
+	TaxiFee           *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
+	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
+	// example:
+	//
+	// xxx
+	TollRoads *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
+	Tolls     *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
+	// example:
+	//
+	// 5
+	TrafficLights *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
+	TransitFee    *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
+}
+
+func (s DrivingDirectionResponseBodyDataStepsCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DrivingDirectionResponseBodyDataStepsCost) GoString() string {
+	return s.String()
+}
+
+func (s *DrivingDirectionResponseBodyDataStepsCost) SetDurationSecond(v string) *DrivingDirectionResponseBodyDataStepsCost {
+	s.DurationSecond = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataStepsCost) SetTaxiFee(v string) *DrivingDirectionResponseBodyDataStepsCost {
+	s.TaxiFee = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataStepsCost) SetTollDistanceMeter(v string) *DrivingDirectionResponseBodyDataStepsCost {
+	s.TollDistanceMeter = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataStepsCost) SetTollRoads(v string) *DrivingDirectionResponseBodyDataStepsCost {
+	s.TollRoads = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataStepsCost) SetTolls(v string) *DrivingDirectionResponseBodyDataStepsCost {
+	s.Tolls = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataStepsCost) SetTrafficLights(v string) *DrivingDirectionResponseBodyDataStepsCost {
+	s.TrafficLights = &v
+	return s
+}
+
+func (s *DrivingDirectionResponseBodyDataStepsCost) SetTransitFee(v string) *DrivingDirectionResponseBodyDataStepsCost {
+	s.TransitFee = &v
+	return s
+}
+
+type DrivingDirectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DrivingDirectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DrivingDirectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DrivingDirectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DrivingDirectionResponse) SetHeaders(v map[string]*string) *DrivingDirectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DrivingDirectionResponse) SetStatusCode(v int32) *DrivingDirectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DrivingDirectionResponse) SetBody(v *DrivingDirectionResponseBody) *DrivingDirectionResponse {
+	s.Body = v
+	return s
+}
+
 type DrivingDirectionNovaRequest struct {
 	CarType *string `json:"carType,omitempty" xml:"carType,omitempty"`
 	// example:
@@ -5318,6 +5637,93 @@ func (client *Client) CommonQueryByScene(request *CommonQueryBySceneRequest) (_r
 	headers := make(map[string]*string)
 	_result = &CommonQueryBySceneResponse{}
 	_body, _err := client.CommonQueryBySceneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据起终点坐标检索符合条件的驾车路线规划方案
+//
+// @param request - DrivingDirectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DrivingDirectionResponse
+func (client *Client) DrivingDirectionWithOptions(request *DrivingDirectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DrivingDirectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationLatitude)) {
+		query["destinationLatitude"] = request.DestinationLatitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationLongitude)) {
+		query["destinationLongitude"] = request.DestinationLongitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginLatitude)) {
+		query["originLatitude"] = request.OriginLatitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginLongitude)) {
+		query["originLongitude"] = request.OriginLongitude
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DrivingDirection"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ipaas/v1/direction/driving"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DrivingDirectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DrivingDirectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 根据起终点坐标检索符合条件的驾车路线规划方案
+//
+// @param request - DrivingDirectionRequest
+//
+// @return DrivingDirectionResponse
+func (client *Client) DrivingDirection(request *DrivingDirectionRequest) (_result *DrivingDirectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DrivingDirectionResponse{}
+	_body, _err := client.DrivingDirectionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
