@@ -7881,6 +7881,29 @@ func (s *DeleteIndexResponse) SetStatusCode(v int32) *DeleteIndexResponse {
 	return s
 }
 
+type DeleteIngestProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteIngestProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIngestProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIngestProcessorResponse) SetHeaders(v map[string]*string) *DeleteIngestProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIngestProcessorResponse) SetStatusCode(v int32) *DeleteIngestProcessorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteLogStoreResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -10235,6 +10258,35 @@ func (s *GetIndexResponse) SetStatusCode(v int32) *GetIndexResponse {
 }
 
 func (s *GetIndexResponse) SetBody(v *GetIndexResponseBody) *GetIndexResponse {
+	s.Body = v
+	return s
+}
+
+type GetIngestProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IngestProcessor   `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIngestProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIngestProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIngestProcessorResponse) SetHeaders(v map[string]*string) *GetIngestProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIngestProcessorResponse) SetStatusCode(v int32) *GetIngestProcessorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIngestProcessorResponse) SetBody(v *IngestProcessor) *GetIngestProcessorResponse {
 	s.Body = v
 	return s
 }
@@ -13721,6 +13773,114 @@ func (s *ListETLsResponse) SetBody(v *ListETLsResponseBody) *ListETLsResponse {
 	return s
 }
 
+type ListIngestProcessorsRequest struct {
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// parse-nginx-log
+	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+	// example:
+	//
+	// 200
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListIngestProcessorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIngestProcessorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIngestProcessorsRequest) SetDisplayName(v string) *ListIngestProcessorsRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListIngestProcessorsRequest) SetOffset(v int32) *ListIngestProcessorsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListIngestProcessorsRequest) SetProcessorName(v string) *ListIngestProcessorsRequest {
+	s.ProcessorName = &v
+	return s
+}
+
+func (s *ListIngestProcessorsRequest) SetSize(v int32) *ListIngestProcessorsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListIngestProcessorsResponseBody struct {
+	// example:
+	//
+	// 5
+	Count      *int32             `json:"count,omitempty" xml:"count,omitempty"`
+	Processors []*IngestProcessor `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListIngestProcessorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIngestProcessorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIngestProcessorsResponseBody) SetCount(v int32) *ListIngestProcessorsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListIngestProcessorsResponseBody) SetProcessors(v []*IngestProcessor) *ListIngestProcessorsResponseBody {
+	s.Processors = v
+	return s
+}
+
+func (s *ListIngestProcessorsResponseBody) SetTotal(v int32) *ListIngestProcessorsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListIngestProcessorsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIngestProcessorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIngestProcessorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIngestProcessorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIngestProcessorsResponse) SetHeaders(v map[string]*string) *ListIngestProcessorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIngestProcessorsResponse) SetStatusCode(v int32) *ListIngestProcessorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIngestProcessorsResponse) SetBody(v *ListIngestProcessorsResponseBody) *ListIngestProcessorsResponse {
+	s.Body = v
+	return s
+}
+
 type ListLogStoresRequest struct {
 	// The name of the Logstore. Fuzzy match is supported. For example, if you enter test, Logstores whose name contains test are returned.
 	//
@@ -15619,6 +15779,60 @@ func (s *PutAnnotationDataResponse) SetStatusCode(v int32) *PutAnnotationDataRes
 	return s
 }
 
+type PutIngestProcessorRequest struct {
+	// This parameter is required.
+	Configuration *IngestProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                       `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s PutIngestProcessorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutIngestProcessorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutIngestProcessorRequest) SetConfiguration(v *IngestProcessorConfiguration) *PutIngestProcessorRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *PutIngestProcessorRequest) SetDescription(v string) *PutIngestProcessorRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *PutIngestProcessorRequest) SetDisplayName(v string) *PutIngestProcessorRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type PutIngestProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s PutIngestProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutIngestProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutIngestProcessorResponse) SetHeaders(v map[string]*string) *PutIngestProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutIngestProcessorResponse) SetStatusCode(v int32) *PutIngestProcessorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type PutLogsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The compression format. lz4 and gzip are supported.
@@ -17271,6 +17485,51 @@ func (s *UpdateLogStoreMeteringModeResponse) SetStatusCode(v int32) *UpdateLogSt
 	return s
 }
 
+type UpdateLogStoreProcessorRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// parse-nginx-log
+	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+}
+
+func (s UpdateLogStoreProcessorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogStoreProcessorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogStoreProcessorRequest) SetProcessorName(v string) *UpdateLogStoreProcessorRequest {
+	s.ProcessorName = &v
+	return s
+}
+
+type UpdateLogStoreProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateLogStoreProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogStoreProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogStoreProcessorResponse) SetHeaders(v map[string]*string) *UpdateLogStoreProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLogStoreProcessorResponse) SetStatusCode(v int32) *UpdateLogStoreProcessorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateLoggingRequest struct {
 	// The configurations of service logs.
 	//
@@ -17816,6 +18075,51 @@ func (s *UpdateMetricStoreMeteringModeResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *UpdateMetricStoreMeteringModeResponse) SetStatusCode(v int32) *UpdateMetricStoreMeteringModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateMetricStoreProcessorRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// filter-metrics
+	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+}
+
+func (s UpdateMetricStoreProcessorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetricStoreProcessorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetricStoreProcessorRequest) SetProcessorName(v string) *UpdateMetricStoreProcessorRequest {
+	s.ProcessorName = &v
+	return s
+}
+
+type UpdateMetricStoreProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateMetricStoreProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetricStoreProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetricStoreProcessorResponse) SetHeaders(v map[string]*string) *UpdateMetricStoreProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMetricStoreProcessorResponse) SetStatusCode(v int32) *UpdateMetricStoreProcessorResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -19020,6 +19324,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("Sls")
 	gatewayClient, _err := gatewayclient.NewClient()
 	if _err != nil {
 		return _err
@@ -22704,6 +23009,59 @@ func (client *Client) DeleteIndex(project *string, logstore *string) (_result *D
 
 // Summary:
 //
+// 删除写入处理器。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIngestProcessorResponse
+func (client *Client) DeleteIngestProcessorWithOptions(project *string, processorName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIngestProcessorResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIngestProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ingestprocessors/" + tea.StringValue(processorName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteIngestProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除写入处理器。
+//
+// @return DeleteIngestProcessorResponse
+func (client *Client) DeleteIngestProcessor(project *string, processorName *string) (_result *DeleteIngestProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIngestProcessorResponse{}
+	_body, _err := client.DeleteIngestProcessorWithOptions(project, processorName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Logstore, including all shards and indexes in the Logstore.
 //
 // Description:
@@ -25184,6 +25542,59 @@ func (client *Client) GetIndex(project *string, logstore *string) (_result *GetI
 	headers := make(map[string]*string)
 	_result = &GetIndexResponse{}
 	_body, _err := client.GetIndexWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询写入处理器信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIngestProcessorResponse
+func (client *Client) GetIngestProcessorWithOptions(project *string, processorName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIngestProcessorResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIngestProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ingestprocessors/" + tea.StringValue(processorName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIngestProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询写入处理器信息。
+//
+// @return GetIngestProcessorResponse
+func (client *Client) GetIngestProcessor(project *string, processorName *string) (_result *GetIngestProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetIngestProcessorResponse{}
+	_body, _err := client.GetIngestProcessorWithOptions(project, processorName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27786,6 +28197,85 @@ func (client *Client) ListETLs(project *string, request *ListETLsRequest) (_resu
 
 // Summary:
 //
+// 列出符合条件的写入处理器信息。
+//
+// @param request - ListIngestProcessorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIngestProcessorsResponse
+func (client *Client) ListIngestProcessorsWithOptions(project *string, request *ListIngestProcessorsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIngestProcessorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessorName)) {
+		query["processorName"] = request.ProcessorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIngestProcessors"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ingestprocessors"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIngestProcessorsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出符合条件的写入处理器信息。
+//
+// @param request - ListIngestProcessorsRequest
+//
+// @return ListIngestProcessorsResponse
+func (client *Client) ListIngestProcessors(project *string, request *ListIngestProcessorsRequest) (_result *ListIngestProcessorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIngestProcessorsResponse{}
+	_body, _err := client.ListIngestProcessorsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all Logstores or Logstores that match specific conditions in a project.
 //
 // Description:
@@ -29271,6 +29761,81 @@ func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotatio
 	headers := make(map[string]*string)
 	_result = &PutAnnotationDataResponse{}
 	_body, _err := client.PutAnnotationDataWithOptions(datasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或更新写入处理器。
+//
+// @param request - PutIngestProcessorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutIngestProcessorResponse
+func (client *Client) PutIngestProcessorWithOptions(project *string, processorName *string, request *PutIngestProcessorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutIngestProcessorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutIngestProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ingestprocessors/" + tea.StringValue(processorName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PutIngestProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或更新写入处理器。
+//
+// @param request - PutIngestProcessorRequest
+//
+// @return PutIngestProcessorResponse
+func (client *Client) PutIngestProcessor(project *string, processorName *string, request *PutIngestProcessorRequest) (_result *PutIngestProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutIngestProcessorResponse{}
+	_body, _err := client.PutIngestProcessorWithOptions(project, processorName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31578,6 +32143,73 @@ func (client *Client) UpdateLogStoreMeteringMode(project *string, logstore *stri
 
 // Summary:
 //
+// 更新LogStore关联的写入处理器。
+//
+// @param request - UpdateLogStoreProcessorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLogStoreProcessorResponse
+func (client *Client) UpdateLogStoreProcessorWithOptions(project *string, logstore *string, request *UpdateLogStoreProcessorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogStoreProcessorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProcessorName)) {
+		body["processorName"] = request.ProcessorName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogStoreProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/processor"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateLogStoreProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新LogStore关联的写入处理器。
+//
+// @param request - UpdateLogStoreProcessorRequest
+//
+// @return UpdateLogStoreProcessorResponse
+func (client *Client) UpdateLogStoreProcessor(project *string, logstore *string, request *UpdateLogStoreProcessorRequest) (_result *UpdateLogStoreProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLogStoreProcessorResponse{}
+	_body, _err := client.UpdateLogStoreProcessorWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the service log configurations of a project.
 //
 // Description:
@@ -32113,6 +32745,73 @@ func (client *Client) UpdateMetricStoreMeteringMode(project *string, metricStore
 
 // Summary:
 //
+// 更新MetricStore关联的写入处理器。
+//
+// @param request - UpdateMetricStoreProcessorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMetricStoreProcessorResponse
+func (client *Client) UpdateMetricStoreProcessorWithOptions(project *string, metricstore *string, request *UpdateMetricStoreProcessorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMetricStoreProcessorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProcessorName)) {
+		body["processorName"] = request.ProcessorName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMetricStoreProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/metricstores/" + tea.StringValue(metricstore) + "/processor"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateMetricStoreProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新MetricStore关联的写入处理器。
+//
+// @param request - UpdateMetricStoreProcessorRequest
+//
+// @return UpdateMetricStoreProcessorResponse
+func (client *Client) UpdateMetricStoreProcessor(project *string, metricstore *string, request *UpdateMetricStoreProcessorRequest) (_result *UpdateMetricStoreProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMetricStoreProcessorResponse{}
+	_body, _err := client.UpdateMetricStoreProcessorWithOptions(project, metricstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新OSS投递任务
 //
 // @param request - UpdateOSSExportRequest
@@ -32263,7 +32962,7 @@ func (client *Client) UpdateOSSHDFSExport(project *string, ossExportName *string
 
 // Summary:
 //
-// 更新oss导入任务
+// Updates an Object Storage Service (OSS) data import job.
 //
 // @param request - UpdateOSSIngestionRequest
 //
@@ -32323,7 +33022,7 @@ func (client *Client) UpdateOSSIngestionWithOptions(project *string, ossIngestio
 
 // Summary:
 //
-// 更新oss导入任务
+// Updates an Object Storage Service (OSS) data import job.
 //
 // @param request - UpdateOSSIngestionRequest
 //

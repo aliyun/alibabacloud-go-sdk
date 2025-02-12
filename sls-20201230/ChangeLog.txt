@@ -1,3 +1,12 @@
+2025-02-12 Version: v6.8.0
+- Support API DeleteIngestProcessor.
+- Support API GetIngestProcessor.
+- Support API ListIngestProcessors.
+- Support API PutIngestProcessor.
+- Support API UpdateLogStoreProcessor.
+- Support API UpdateMetricStoreProcessor.
+
+
 2025-01-15 Version: v6.7.1
 - Update API CreateMetricStore: update param body.
 - Update API GetMetricStore: update response param.
