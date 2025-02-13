@@ -310,9 +310,6 @@ type CreateInstanceRequest struct {
 	// if can be null:
 	// true
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	// if can be null:
-	// true
-	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -348,12 +345,6 @@ type CreateInstanceRequest struct {
 	//
 	// vpc-2ze9xoh8qyt1rnxfmfcdi
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-beijing-g
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -401,11 +392,6 @@ func (s *CreateInstanceRequest) SetHaResourceSpec(v *CreateInstanceRequestHaReso
 
 func (s *CreateInstanceRequest) SetHaVSwitchIds(v []*string) *CreateInstanceRequest {
 	s.HaVSwitchIds = v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetHaZoneId(v string) *CreateInstanceRequest {
-	s.HaZoneId = &v
 	return s
 }
 
@@ -466,11 +452,6 @@ func (s *CreateInstanceRequest) SetVSwitchIds(v []*string) *CreateInstanceReques
 
 func (s *CreateInstanceRequest) SetVpcId(v string) *CreateInstanceRequest {
 	s.VpcId = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetZoneId(v string) *CreateInstanceRequest {
-	s.ZoneId = &v
 	return s
 }
 
@@ -618,9 +599,6 @@ type CreateInstanceShrinkRequest struct {
 	// if can be null:
 	// true
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	// if can be null:
-	// true
-	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -656,12 +634,6 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// vpc-2ze9xoh8qyt1rnxfmfcdi
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-beijing-g
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateInstanceShrinkRequest) String() string {
@@ -709,11 +681,6 @@ func (s *CreateInstanceShrinkRequest) SetHaResourceSpecShrink(v string) *CreateI
 
 func (s *CreateInstanceShrinkRequest) SetHaVSwitchIdsShrink(v string) *CreateInstanceShrinkRequest {
 	s.HaVSwitchIdsShrink = &v
-	return s
-}
-
-func (s *CreateInstanceShrinkRequest) SetHaZoneId(v string) *CreateInstanceShrinkRequest {
-	s.HaZoneId = &v
 	return s
 }
 
@@ -774,11 +741,6 @@ func (s *CreateInstanceShrinkRequest) SetVSwitchIdsShrink(v string) *CreateInsta
 
 func (s *CreateInstanceShrinkRequest) SetVpcId(v string) *CreateInstanceShrinkRequest {
 	s.VpcId = &v
-	return s
-}
-
-func (s *CreateInstanceShrinkRequest) SetZoneId(v string) *CreateInstanceShrinkRequest {
-	s.ZoneId = &v
 	return s
 }
 
@@ -1536,6 +1498,7 @@ func (s *DescribeInstancesResponseBody) SetTotalPage(v int32) *DescribeInstances
 }
 
 type DescribeInstancesResponseBodyInstances struct {
+	Ansm             *bool   `json:"Ansm,omitempty" xml:"Ansm,omitempty"`
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	AskClusterId     *string `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
 	// example:
@@ -1546,14 +1509,17 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// RUNNING
-	ClusterStatus        *string                                                       `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	ClusterUsedResources []*DescribeInstancesResponseBodyInstancesClusterUsedResources `json:"ClusterUsedResources,omitempty" xml:"ClusterUsedResources,omitempty" type:"Repeated"`
-	ClusterUsedStorage   *DescribeInstancesResponseBodyInstancesClusterUsedStorage     `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
-	Ha                   *bool                                                         `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaResourceSpec       *DescribeInstancesResponseBodyInstancesHaResourceSpec         `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds         []*string                                                     `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaVSwitchInfo        []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo        `json:"HaVSwitchInfo,omitempty" xml:"HaVSwitchInfo,omitempty" type:"Repeated"`
-	HaZoneId             *string                                                       `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	ClusterStatus        *string                                                     `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	ClusterUsedResources *DescribeInstancesResponseBodyInstancesClusterUsedResources `json:"ClusterUsedResources,omitempty" xml:"ClusterUsedResources,omitempty" type:"Struct"`
+	ClusterUsedStorage   *DescribeInstancesResponseBodyInstancesClusterUsedStorage   `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
+	Elastic              *bool                                                       `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
+	ElasticOrderState    *string                                                     `json:"ElasticOrderState,omitempty" xml:"ElasticOrderState,omitempty"`
+	ElasticResourceSpec  *DescribeInstancesResponseBodyInstancesElasticResourceSpec  `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
+	Ha                   *bool                                                       `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec       *DescribeInstancesResponseBodyInstancesHaResourceSpec       `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds         []*string                                                   `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaVSwitchInfo        []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo      `json:"HaVSwitchInfo,omitempty" xml:"HaVSwitchInfo,omitempty" type:"Repeated"`
+	HaZoneId             *string                                                     `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	HostAliases []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
 	// example:
@@ -1615,6 +1581,11 @@ func (s DescribeInstancesResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetAnsm(v bool) *DescribeInstancesResponseBodyInstances {
+	s.Ansm = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetArchitectureType(v string) *DescribeInstancesResponseBodyInstances {
 	s.ArchitectureType = &v
 	return s
@@ -1640,13 +1611,28 @@ func (s *DescribeInstancesResponseBodyInstances) SetClusterStatus(v string) *Des
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetClusterUsedResources(v []*DescribeInstancesResponseBodyInstancesClusterUsedResources) *DescribeInstancesResponseBodyInstances {
+func (s *DescribeInstancesResponseBodyInstances) SetClusterUsedResources(v *DescribeInstancesResponseBodyInstancesClusterUsedResources) *DescribeInstancesResponseBodyInstances {
 	s.ClusterUsedResources = v
 	return s
 }
 
 func (s *DescribeInstancesResponseBodyInstances) SetClusterUsedStorage(v *DescribeInstancesResponseBodyInstancesClusterUsedStorage) *DescribeInstancesResponseBodyInstances {
 	s.ClusterUsedStorage = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetElastic(v bool) *DescribeInstancesResponseBodyInstances {
+	s.Elastic = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetElasticOrderState(v string) *DescribeInstancesResponseBodyInstances {
+	s.ElasticOrderState = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetElasticResourceSpec(v *DescribeInstancesResponseBodyInstancesElasticResourceSpec) *DescribeInstancesResponseBodyInstances {
+	s.ElasticResourceSpec = v
 	return s
 }
 
@@ -1969,14 +1955,20 @@ func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbList
 }
 
 type DescribeInstancesResponseBodyInstancesClusterUsedResources struct {
-	ClusterId      *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Ha             *bool    `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaUsedCpu      *float32 `json:"HaUsedCpu,omitempty" xml:"HaUsedCpu,omitempty"`
-	HaUsedMemory   *float32 `json:"HaUsedMemory,omitempty" xml:"HaUsedMemory,omitempty"`
-	HaUsedResource *float32 `json:"HaUsedResource,omitempty" xml:"HaUsedResource,omitempty"`
-	UsedCpu        *float32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
-	UsedMemory     *float32 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
-	UsedResource   *float32 `json:"UsedResource,omitempty" xml:"UsedResource,omitempty"`
+	ClusterId              *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ElasticUsedCpu         *float32 `json:"ElasticUsedCpu,omitempty" xml:"ElasticUsedCpu,omitempty"`
+	ElasticUsedMemory      *float32 `json:"ElasticUsedMemory,omitempty" xml:"ElasticUsedMemory,omitempty"`
+	ElasticUsedResource    *float32 `json:"ElasticUsedResource,omitempty" xml:"ElasticUsedResource,omitempty"`
+	GuaranteedUsedCpu      *float32 `json:"GuaranteedUsedCpu,omitempty" xml:"GuaranteedUsedCpu,omitempty"`
+	GuaranteedUsedMemory   *float32 `json:"GuaranteedUsedMemory,omitempty" xml:"GuaranteedUsedMemory,omitempty"`
+	GuaranteedUsedResource *float32 `json:"GuaranteedUsedResource,omitempty" xml:"GuaranteedUsedResource,omitempty"`
+	Ha                     *bool    `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaUsedCpu              *float32 `json:"HaUsedCpu,omitempty" xml:"HaUsedCpu,omitempty"`
+	HaUsedMemory           *float32 `json:"HaUsedMemory,omitempty" xml:"HaUsedMemory,omitempty"`
+	HaUsedResource         *float32 `json:"HaUsedResource,omitempty" xml:"HaUsedResource,omitempty"`
+	UsedCpu                *float32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+	UsedMemory             *float32 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+	UsedResource           *float32 `json:"UsedResource,omitempty" xml:"UsedResource,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesClusterUsedResources) String() string {
@@ -1989,6 +1981,36 @@ func (s DescribeInstancesResponseBodyInstancesClusterUsedResources) GoString() s
 
 func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetClusterId(v string) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetElasticUsedCpu(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.ElasticUsedCpu = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetElasticUsedMemory(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.ElasticUsedMemory = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetElasticUsedResource(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.ElasticUsedResource = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetGuaranteedUsedCpu(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.GuaranteedUsedCpu = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetGuaranteedUsedMemory(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.GuaranteedUsedMemory = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetGuaranteedUsedResource(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.GuaranteedUsedResource = &v
 	return s
 }
 
@@ -2047,6 +2069,29 @@ func (s *DescribeInstancesResponseBodyInstancesClusterUsedStorage) SetClusterId(
 
 func (s *DescribeInstancesResponseBodyInstancesClusterUsedStorage) SetUsedStorage(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedStorage {
 	s.UsedStorage = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesElasticResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesElasticResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesElasticResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesElasticResourceSpec) SetCpu(v int32) *DescribeInstancesResponseBodyInstancesElasticResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesElasticResourceSpec) SetMemoryGB(v int32) *DescribeInstancesResponseBodyInstancesElasticResourceSpec {
+	s.MemoryGB = &v
 	return s
 }
 
@@ -2689,6 +2734,7 @@ func (s *DescribeNamespacesResponseBody) SetTotalPage(v int32) *DescribeNamespac
 }
 
 type DescribeNamespacesResponseBodyNamespaces struct {
+	ElasticResourceSpec *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1629879567394
@@ -2696,8 +2742,9 @@ type DescribeNamespacesResponseBodyNamespaces struct {
 	// example:
 	//
 	// 1629879567394
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Ha          *bool  `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	GmtModified            *int64                                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GuaranteedResourceSpec *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty" type:"Struct"`
+	Ha                     *bool                                                           `json:"Ha,omitempty" xml:"Ha,omitempty"`
 	// example:
 	//
 	// ns-1
@@ -2719,6 +2766,11 @@ func (s DescribeNamespacesResponseBodyNamespaces) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeNamespacesResponseBodyNamespaces) SetElasticResourceSpec(v *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec) *DescribeNamespacesResponseBodyNamespaces {
+	s.ElasticResourceSpec = v
+	return s
+}
+
 func (s *DescribeNamespacesResponseBodyNamespaces) SetGmtCreate(v int64) *DescribeNamespacesResponseBodyNamespaces {
 	s.GmtCreate = &v
 	return s
@@ -2726,6 +2778,11 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetGmtCreate(v int64) *Descri
 
 func (s *DescribeNamespacesResponseBodyNamespaces) SetGmtModified(v int64) *DescribeNamespacesResponseBodyNamespaces {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyNamespaces) SetGuaranteedResourceSpec(v *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec) *DescribeNamespacesResponseBodyNamespaces {
+	s.GuaranteedResourceSpec = v
 	return s
 }
 
@@ -2756,6 +2813,52 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetStatus(v string) *Describe
 
 func (s *DescribeNamespacesResponseBodyNamespaces) SetTags(v []*DescribeNamespacesResponseBodyNamespacesTags) *DescribeNamespacesResponseBodyNamespaces {
 	s.Tags = v
+	return s
+}
+
+type DescribeNamespacesResponseBodyNamespacesElasticResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s DescribeNamespacesResponseBodyNamespacesElasticResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespacesResponseBodyNamespacesElasticResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec) SetCpu(v int32) *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec) SetMemoryGB(v int32) *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+type DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec) SetCpu(v int32) *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec) SetMemoryGB(v int32) *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec {
+	s.MemoryGB = &v
 	return s
 }
 
@@ -4363,10 +4466,6 @@ type QueryCreateInstancePriceRequest struct {
 	//
 	// vpc-2ze9xoh8qyt1rnxfmfcdi
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-i
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryCreateInstancePriceRequest) String() string {
@@ -4454,11 +4553,6 @@ func (s *QueryCreateInstancePriceRequest) SetVSwitchIds(v []*string) *QueryCreat
 
 func (s *QueryCreateInstancePriceRequest) SetVpcId(v string) *QueryCreateInstancePriceRequest {
 	s.VpcId = &v
-	return s
-}
-
-func (s *QueryCreateInstancePriceRequest) SetZoneId(v string) *QueryCreateInstancePriceRequest {
-	s.ZoneId = &v
 	return s
 }
 
@@ -4602,10 +4696,6 @@ type QueryCreateInstancePriceShrinkRequest struct {
 	//
 	// vpc-2ze9xoh8qyt1rnxfmfcdi
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-i
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryCreateInstancePriceShrinkRequest) String() string {
@@ -4693,11 +4783,6 @@ func (s *QueryCreateInstancePriceShrinkRequest) SetVSwitchIdsShrink(v string) *Q
 
 func (s *QueryCreateInstancePriceShrinkRequest) SetVpcId(v string) *QueryCreateInstancePriceShrinkRequest {
 	s.VpcId = &v
-	return s
-}
-
-func (s *QueryCreateInstancePriceShrinkRequest) SetZoneId(v string) *QueryCreateInstancePriceShrinkRequest {
-	s.ZoneId = &v
 	return s
 }
 
@@ -4994,15 +5079,13 @@ type QueryModifyInstancePriceRequest struct {
 	// if can be null:
 	// true
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	// if can be null:
-	// true
-	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -5010,7 +5093,8 @@ type QueryModifyInstancePriceRequest struct {
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// This parameter is required.
-	ResourceSpec *QueryModifyInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	ResourceSpec     *QueryModifyInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	UsePromotionCode *bool                                        `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 }
 
 func (s QueryModifyInstancePriceRequest) String() string {
@@ -5036,13 +5120,13 @@ func (s *QueryModifyInstancePriceRequest) SetHaVSwitchIds(v []*string) *QueryMod
 	return s
 }
 
-func (s *QueryModifyInstancePriceRequest) SetHaZoneId(v string) *QueryModifyInstancePriceRequest {
-	s.HaZoneId = &v
+func (s *QueryModifyInstancePriceRequest) SetInstanceId(v string) *QueryModifyInstancePriceRequest {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *QueryModifyInstancePriceRequest) SetInstanceId(v string) *QueryModifyInstancePriceRequest {
-	s.InstanceId = &v
+func (s *QueryModifyInstancePriceRequest) SetPromotionCode(v string) *QueryModifyInstancePriceRequest {
+	s.PromotionCode = &v
 	return s
 }
 
@@ -5053,6 +5137,11 @@ func (s *QueryModifyInstancePriceRequest) SetRegion(v string) *QueryModifyInstan
 
 func (s *QueryModifyInstancePriceRequest) SetResourceSpec(v *QueryModifyInstancePriceRequestResourceSpec) *QueryModifyInstancePriceRequest {
 	s.ResourceSpec = v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequest) SetUsePromotionCode(v bool) *QueryModifyInstancePriceRequest {
+	s.UsePromotionCode = &v
 	return s
 }
 
@@ -5120,15 +5209,13 @@ type QueryModifyInstancePriceShrinkRequest struct {
 	// if can be null:
 	// true
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	// if can be null:
-	// true
-	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -5137,6 +5224,7 @@ type QueryModifyInstancePriceShrinkRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	UsePromotionCode   *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 }
 
 func (s QueryModifyInstancePriceShrinkRequest) String() string {
@@ -5162,13 +5250,13 @@ func (s *QueryModifyInstancePriceShrinkRequest) SetHaVSwitchIdsShrink(v string) 
 	return s
 }
 
-func (s *QueryModifyInstancePriceShrinkRequest) SetHaZoneId(v string) *QueryModifyInstancePriceShrinkRequest {
-	s.HaZoneId = &v
+func (s *QueryModifyInstancePriceShrinkRequest) SetInstanceId(v string) *QueryModifyInstancePriceShrinkRequest {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *QueryModifyInstancePriceShrinkRequest) SetInstanceId(v string) *QueryModifyInstancePriceShrinkRequest {
-	s.InstanceId = &v
+func (s *QueryModifyInstancePriceShrinkRequest) SetPromotionCode(v string) *QueryModifyInstancePriceShrinkRequest {
+	s.PromotionCode = &v
 	return s
 }
 
@@ -5179,6 +5267,11 @@ func (s *QueryModifyInstancePriceShrinkRequest) SetRegion(v string) *QueryModify
 
 func (s *QueryModifyInstancePriceShrinkRequest) SetResourceSpecShrink(v string) *QueryModifyInstancePriceShrinkRequest {
 	s.ResourceSpecShrink = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceShrinkRequest) SetUsePromotionCode(v bool) *QueryModifyInstancePriceShrinkRequest {
+	s.UsePromotionCode = &v
 	return s
 }
 
@@ -6344,13 +6437,24 @@ func (client *Client) ConvertInstanceWithOptions(tmpReq *ConvertInstanceRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConvertInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConvertInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConvertInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6444,10 +6548,6 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 		body["HaVSwitchIds"] = request.HaVSwitchIdsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.HaZoneId)) {
-		body["HaZoneId"] = request.HaZoneId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
 	}
@@ -6496,10 +6596,6 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 		body["VpcId"] = request.VpcId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		body["ZoneId"] = request.ZoneId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -6514,13 +6610,24 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6596,13 +6703,24 @@ func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6660,13 +6778,24 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6728,13 +6857,24 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6790,13 +6930,24 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6852,13 +7003,24 @@ func (client *Client) DescribeNamespacesWithOptions(tmpReq *DescribeNamespacesRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNamespacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNamespacesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNamespacesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6901,13 +7063,24 @@ func (client *Client) DescribeSupportedRegionsWithOptions(runtime *util.RuntimeO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSupportedRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSupportedRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSupportedRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6955,13 +7128,24 @@ func (client *Client) DescribeSupportedZonesWithOptions(request *DescribeSupport
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSupportedZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSupportedZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSupportedZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7031,13 +7215,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7132,13 +7327,24 @@ func (client *Client) ModifyPrepayInstanceSpecWithOptions(tmpReq *ModifyPrepayIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyPrepayInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyPrepayInstanceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyPrepayInstanceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
@@ -7216,13 +7422,24 @@ func (client *Client) ModifyPrepayNamespaceSpecWithOptions(tmpReq *ModifyPrepayN
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyPrepayNamespaceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyPrepayNamespaceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyPrepayNamespaceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Deprecated: OpenAPI ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
@@ -7305,13 +7522,24 @@ func (client *Client) QueryConvertInstancePriceWithOptions(tmpReq *QueryConvertI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryConvertInstancePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryConvertInstancePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryConvertInstancePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7429,10 +7657,6 @@ func (client *Client) QueryCreateInstancePriceWithOptions(tmpReq *QueryCreateIns
 		body["VpcId"] = request.VpcId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		body["ZoneId"] = request.ZoneId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -7447,13 +7671,24 @@ func (client *Client) QueryCreateInstancePriceWithOptions(tmpReq *QueryCreateIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryCreateInstancePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryCreateInstancePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryCreateInstancePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7515,12 +7750,12 @@ func (client *Client) QueryModifyInstancePriceWithOptions(tmpReq *QueryModifyIns
 		body["HaVSwitchIds"] = request.HaVSwitchIdsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.HaZoneId)) {
-		body["HaZoneId"] = request.HaZoneId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromotionCode)) {
+		body["PromotionCode"] = request.PromotionCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -7529,6 +7764,10 @@ func (client *Client) QueryModifyInstancePriceWithOptions(tmpReq *QueryModifyIns
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceSpecShrink)) {
 		body["ResourceSpec"] = request.ResourceSpecShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsePromotionCode)) {
+		body["UsePromotionCode"] = request.UsePromotionCode
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7545,13 +7784,24 @@ func (client *Client) QueryModifyInstancePriceWithOptions(tmpReq *QueryModifyIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryModifyInstancePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryModifyInstancePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryModifyInstancePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7617,13 +7867,24 @@ func (client *Client) QueryRenewInstancePriceWithOptions(request *QueryRenewInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryRenewInstancePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryRenewInstancePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryRenewInstancePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7689,13 +7950,24 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenewInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7761,13 +8033,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7837,13 +8120,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
