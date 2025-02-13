@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -18,18 +15,130 @@ import (
 )
 
 type AddImageRequest struct {
-	CategoryId    *int32  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Crop          *bool   `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The category of the image. For more information, see [Category reference](https://help.aliyun.com/document_detail/179184.html).
+	//
+	// > 	- For product image search, if you specify a category for an image, the specified category prevails. If you do not specify a category for an image, the system predicts the category, and returns the prediction result in the response.
+	//
+	// >	- For generic image search, only 88888888 may be returned for this parameter in the response regardless of whether a category is specified.
+	//
+	// example:
+	//
+	// 88888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Specifies whether to identify the subject in the image and search for images based on the subject identification result. Default value: true. Valid values:
+	//
+	// 	- true: The system identifies the subject in the image, and searches for images based on the subject identification result. The subject identification result is included in the response.
+	//
+	// 	- false: The system does not identify the subject in the image, and searches for images based on the entire image.
+	//
+	// example:
+	//
+	// true
+	Crop *bool `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The user-defined content. The value can be up to 4,096 characters in length.
+	//
+	// > If you specify this parameter, the response includes this parameter and its value. You can add text such as an image description.
+	//
+	// example:
+	//
+	// zidingyi
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IntAttr       *int32  `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
-	IntAttr2      *int32  `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
-	PicContent    *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
-	PicName       *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId     *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StrAttr       *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
-	StrAttr2      *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length. If an Image Search instance is purchased, you can log on to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance. If no Image Search instance is purchased, you must purchase an instance. For more information, see [Activate Image Search](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
+	//
+	// > The instance name is not the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// example:
+	//
+	// 22
+	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// example:
+	//
+	// 22
+	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// The image file. The image file is encoded in Base64.
+	//
+	// 	- The file size of the image cannot exceed 4 MB.
+	//
+	// 	- The following image formats are supported: PNG, JPG, JPEG, BMP, GIF, WebP, TIFF, and PPM.
+	//
+	// 	- The transmission timeout period cannot exceed 5 seconds.
+	//
+	// 	- For product and generic image searches, the length and width of the image must range from 100 pixels to 4,096 pixels.
+	//
+	// 	- The image cannot contain rotation settings.
+	//
+	// > 	- If you use SDKs to call this operation, you do not need to specify **PicContent**. The SDKs encapsulate this parameter and automatically encode its value in Base64. For more information about how to use Image Search SDK for Java, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
+	//
+	// >	- If you use OpenAPI Explorer to call this operation, you can select only the **2019-03-25*	- version. If you call this operation of other versions, the value of **PicContent*	- cannot be encoded in Base64.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
+	PicContent *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
+	// The name of the image. The name can be up to 512 characters in length.
+	//
+	// > 	- An image is uniquely identified by the values of ProductId and PicName.
+	//
+	// >	- If you add an image whose product ID (ProductId) and image name (PicName) are the same as those of an existing image, the newly added image overwrites the existing image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2092061_1.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The ID of the product. The ID can be up to 512 characters in length.
+	//
+	// > A product may have multiple images.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The subject area of the image, in the format of `x1,x2,y1,y2`. `x1 and y1` represent the position in the upper-left corner, in pixels. `x2 and y2` represent the position in the lower-right corner, in pixels.
+	//
+	// > 	- If you specify Region, the system searches for images based on the value of Region regardless of the value of Crop.
+	//
+	// >	- The value of Region does not have a unit. The value is generated based on the length and width of the image. If the length and width of the image are scaled, the value of Region must be proportionally adjusted.
+	//
+	// example:
+	//
+	// 280,486,232,351
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// > The value cannot contain the following special characters: \\ ¥ $ & %
+	//
+	// example:
+	//
+	// ss
+	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// > The value cannot contain the following special characters: \\ ¥ $ & %
+	//
+	// example:
+	//
+	// ss
+	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
 }
 
 func (s AddImageRequest) String() string {
@@ -70,6 +179,16 @@ func (s *AddImageRequest) SetIntAttr2(v int32) *AddImageRequest {
 	return s
 }
 
+func (s *AddImageRequest) SetIntAttr3(v int32) *AddImageRequest {
+	s.IntAttr3 = &v
+	return s
+}
+
+func (s *AddImageRequest) SetIntAttr4(v int32) *AddImageRequest {
+	s.IntAttr4 = &v
+	return s
+}
+
 func (s *AddImageRequest) SetPicContent(v string) *AddImageRequest {
 	s.PicContent = &v
 	return s
@@ -100,19 +219,141 @@ func (s *AddImageRequest) SetStrAttr2(v string) *AddImageRequest {
 	return s
 }
 
+func (s *AddImageRequest) SetStrAttr3(v string) *AddImageRequest {
+	s.StrAttr3 = &v
+	return s
+}
+
+func (s *AddImageRequest) SetStrAttr4(v string) *AddImageRequest {
+	s.StrAttr4 = &v
+	return s
+}
+
 type AddImageAdvanceRequest struct {
-	CategoryId       *int32    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Crop             *bool     `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	CustomContent    *string   `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
-	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IntAttr          *int32    `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
-	IntAttr2         *int32    `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	// The category of the image. For more information, see [Category reference](https://help.aliyun.com/document_detail/179184.html).
+	//
+	// > 	- For product image search, if you specify a category for an image, the specified category prevails. If you do not specify a category for an image, the system predicts the category, and returns the prediction result in the response.
+	//
+	// >	- For generic image search, only 88888888 may be returned for this parameter in the response regardless of whether a category is specified.
+	//
+	// example:
+	//
+	// 88888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Specifies whether to identify the subject in the image and search for images based on the subject identification result. Default value: true. Valid values:
+	//
+	// 	- true: The system identifies the subject in the image, and searches for images based on the subject identification result. The subject identification result is included in the response.
+	//
+	// 	- false: The system does not identify the subject in the image, and searches for images based on the entire image.
+	//
+	// example:
+	//
+	// true
+	Crop *bool `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The user-defined content. The value can be up to 4,096 characters in length.
+	//
+	// > If you specify this parameter, the response includes this parameter and its value. You can add text such as an image description.
+	//
+	// example:
+	//
+	// zidingyi
+	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length. If an Image Search instance is purchased, you can log on to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance. If no Image Search instance is purchased, you must purchase an instance. For more information, see [Activate Image Search](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
+	//
+	// > The instance name is not the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// example:
+	//
+	// 22
+	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// example:
+	//
+	// 22
+	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// The image file. The image file is encoded in Base64.
+	//
+	// 	- The file size of the image cannot exceed 4 MB.
+	//
+	// 	- The following image formats are supported: PNG, JPG, JPEG, BMP, GIF, WebP, TIFF, and PPM.
+	//
+	// 	- The transmission timeout period cannot exceed 5 seconds.
+	//
+	// 	- For product and generic image searches, the length and width of the image must range from 100 pixels to 4,096 pixels.
+	//
+	// 	- The image cannot contain rotation settings.
+	//
+	// > 	- If you use SDKs to call this operation, you do not need to specify **PicContent**. The SDKs encapsulate this parameter and automatically encode its value in Base64. For more information about how to use Image Search SDK for Java, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
+	//
+	// >	- If you use OpenAPI Explorer to call this operation, you can select only the **2019-03-25*	- version. If you call this operation of other versions, the value of **PicContent*	- cannot be encoded in Base64.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
 	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
-	PicName          *string   `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId        *string   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	StrAttr          *string   `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
-	StrAttr2         *string   `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The name of the image. The name can be up to 512 characters in length.
+	//
+	// > 	- An image is uniquely identified by the values of ProductId and PicName.
+	//
+	// >	- If you add an image whose product ID (ProductId) and image name (PicName) are the same as those of an existing image, the newly added image overwrites the existing image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2092061_1.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The ID of the product. The ID can be up to 512 characters in length.
+	//
+	// > A product may have multiple images.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The subject area of the image, in the format of `x1,x2,y1,y2`. `x1 and y1` represent the position in the upper-left corner, in pixels. `x2 and y2` represent the position in the lower-right corner, in pixels.
+	//
+	// > 	- If you specify Region, the system searches for images based on the value of Region regardless of the value of Crop.
+	//
+	// >	- The value of Region does not have a unit. The value is generated based on the length and width of the image. If the length and width of the image are scaled, the value of Region must be proportionally adjusted.
+	//
+	// example:
+	//
+	// 280,486,232,351
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// > The value cannot contain the following special characters: \\ ¥ $ & %
+	//
+	// example:
+	//
+	// ss
+	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+	//
+	// > The value cannot contain the following special characters: \\ ¥ $ & %
+	//
+	// example:
+	//
+	// ss
+	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
 }
 
 func (s AddImageAdvanceRequest) String() string {
@@ -153,6 +394,16 @@ func (s *AddImageAdvanceRequest) SetIntAttr2(v int32) *AddImageAdvanceRequest {
 	return s
 }
 
+func (s *AddImageAdvanceRequest) SetIntAttr3(v int32) *AddImageAdvanceRequest {
+	s.IntAttr3 = &v
+	return s
+}
+
+func (s *AddImageAdvanceRequest) SetIntAttr4(v int32) *AddImageAdvanceRequest {
+	s.IntAttr4 = &v
+	return s
+}
+
 func (s *AddImageAdvanceRequest) SetPicContentObject(v io.Reader) *AddImageAdvanceRequest {
 	s.PicContentObject = v
 	return s
@@ -183,12 +434,49 @@ func (s *AddImageAdvanceRequest) SetStrAttr2(v string) *AddImageAdvanceRequest {
 	return s
 }
 
+func (s *AddImageAdvanceRequest) SetStrAttr3(v string) *AddImageAdvanceRequest {
+	s.StrAttr3 = &v
+	return s
+}
+
+func (s *AddImageAdvanceRequest) SetStrAttr4(v string) *AddImageAdvanceRequest {
+	s.StrAttr4 = &v
+	return s
+}
+
 type AddImageResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	PicInfo   *AddImageResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The code returned.
+	//
+	// 	- A value of 0 indicates that the request was successful.
+	//
+	// 	- Values other than 0 indicate that the request failed.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request failed.
+	//
+	// > No value is returned if the request was successful, and an error message is returned if the request failed.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The results of category prediction and subject identification.
+	PicInfo *AddImageResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E0845DE6-52AF-4B50-9F15-51ED4044E6AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddImageResponseBody) String() string {
@@ -225,8 +513,18 @@ func (s *AddImageResponseBody) SetSuccess(v bool) *AddImageResponseBody {
 }
 
 type AddImageResponseBodyPicInfo struct {
-	CategoryId *int32  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The result of category prediction. If a category is specified in the request, the specified category prevails.
+	//
+	// example:
+	//
+	// 88888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The result of subject identification. The subject area of the image is in the format of `x1,x2,y1,y2`. `x1 and y1` represent the position in the upper-left corner, in pixels. `x2 and y2` represent the position in the lower-right corner, in pixels. If a subject area is specified in the request, the specified subject area prevails.
+	//
+	// example:
+	//
+	// 94,691,206,650
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s AddImageResponseBodyPicInfo) String() string {
@@ -248,9 +546,9 @@ func (s *AddImageResponseBodyPicInfo) SetRegion(v string) *AddImageResponseBodyP
 }
 
 type AddImageResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddImageResponse) String() string {
@@ -276,10 +574,267 @@ func (s *AddImageResponse) SetBody(v *AddImageResponseBody) *AddImageResponse {
 	return s
 }
 
-type DeleteImageRequest struct {
+type CompareSimilarByImageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PicName      *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId    *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
+	PrimaryPicContent *string `json:"PrimaryPicContent,omitempty" xml:"PrimaryPicContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
+	SecondaryPicContent *string `json:"SecondaryPicContent,omitempty" xml:"SecondaryPicContent,omitempty"`
+}
+
+func (s CompareSimilarByImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareSimilarByImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareSimilarByImageRequest) SetInstanceName(v string) *CompareSimilarByImageRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CompareSimilarByImageRequest) SetPrimaryPicContent(v string) *CompareSimilarByImageRequest {
+	s.PrimaryPicContent = &v
+	return s
+}
+
+func (s *CompareSimilarByImageRequest) SetSecondaryPicContent(v string) *CompareSimilarByImageRequest {
+	s.SecondaryPicContent = &v
+	return s
+}
+
+type CompareSimilarByImageAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
+	PrimaryPicContentObject io.Reader `json:"PrimaryPicContent,omitempty" xml:"PrimaryPicContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
+	SecondaryPicContentObject io.Reader `json:"SecondaryPicContent,omitempty" xml:"SecondaryPicContent,omitempty"`
+}
+
+func (s CompareSimilarByImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareSimilarByImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareSimilarByImageAdvanceRequest) SetInstanceName(v string) *CompareSimilarByImageAdvanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CompareSimilarByImageAdvanceRequest) SetPrimaryPicContentObject(v io.Reader) *CompareSimilarByImageAdvanceRequest {
+	s.PrimaryPicContentObject = v
+	return s
+}
+
+func (s *CompareSimilarByImageAdvanceRequest) SetSecondaryPicContentObject(v io.Reader) *CompareSimilarByImageAdvanceRequest {
+	s.SecondaryPicContentObject = v
+	return s
+}
+
+type CompareSimilarByImageResponseBody struct {
+	AccessDeniedDetail *CompareSimilarByImageResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// B3137727-7D6E-488C-BA21-0E034C38A879
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0.85
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CompareSimilarByImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareSimilarByImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CompareSimilarByImageResponseBody) SetAccessDeniedDetail(v *CompareSimilarByImageResponseBodyAccessDeniedDetail) *CompareSimilarByImageResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBody) SetCode(v int32) *CompareSimilarByImageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBody) SetMsg(v string) *CompareSimilarByImageResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBody) SetRequestId(v string) *CompareSimilarByImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBody) SetScore(v float64) *CompareSimilarByImageResponseBody {
+	s.Score = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBody) SetSuccess(v bool) *CompareSimilarByImageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CompareSimilarByImageResponseBodyAccessDeniedDetail struct {
+	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s CompareSimilarByImageResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareSimilarByImageResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CompareSimilarByImageResponseBodyAccessDeniedDetail) SetAuthAction(v string) *CompareSimilarByImageResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *CompareSimilarByImageResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *CompareSimilarByImageResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *CompareSimilarByImageResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *CompareSimilarByImageResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *CompareSimilarByImageResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponseBodyAccessDeniedDetail) SetPolicyType(v string) *CompareSimilarByImageResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+type CompareSimilarByImageResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompareSimilarByImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CompareSimilarByImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareSimilarByImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CompareSimilarByImageResponse) SetHeaders(v map[string]*string) *CompareSimilarByImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CompareSimilarByImageResponse) SetStatusCode(v int32) *CompareSimilarByImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CompareSimilarByImageResponse) SetBody(v *CompareSimilarByImageResponseBody) *CompareSimilarByImageResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteImageRequest struct {
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
+	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsDeleteByFilter *bool   `json:"IsDeleteByFilter,omitempty" xml:"IsDeleteByFilter,omitempty"`
+	// The name of the image.
+	//
+	// 	- If this parameter is not set, the system deletes all the images that correspond to the specified ProductId parameter.
+	//
+	// 	- If this parameter is set, the system deletes only the image that is specified by the ProductId and PicName parameters.
+	//
+	// example:
+	//
+	// 2092061_1.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The ID of the commodity.
+	//
+	// >  A commodity may have multiple images.
+	//
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 }
 
 func (s DeleteImageRequest) String() string {
@@ -290,8 +845,18 @@ func (s DeleteImageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteImageRequest) SetFilter(v string) *DeleteImageRequest {
+	s.Filter = &v
+	return s
+}
+
 func (s *DeleteImageRequest) SetInstanceName(v string) *DeleteImageRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *DeleteImageRequest) SetIsDeleteByFilter(v bool) *DeleteImageRequest {
+	s.IsDeleteByFilter = &v
 	return s
 }
 
@@ -306,11 +871,36 @@ func (s *DeleteImageRequest) SetProductId(v string) *DeleteImageRequest {
 }
 
 type DeleteImageResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DeleteImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned.
+	//
+	// 	- A value of 0 indicates that the operation is successful.
+	//
+	// 	- Values other than 0 indicate errors.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the deleted images.
+	Data *DeleteImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0703956F-9BCC-48FA-99F7-96C0BF449C69
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteImageResponseBody) String() string {
@@ -347,6 +937,11 @@ func (s *DeleteImageResponseBody) SetSuccess(v bool) *DeleteImageResponseBody {
 }
 
 type DeleteImageResponseBodyData struct {
+	// The name (PicName) of the deleted image.
+	//
+	// example:
+	//
+	// 5555.jpg
 	PicNames []*string `json:"PicNames,omitempty" xml:"PicNames,omitempty" type:"Repeated"`
 }
 
@@ -364,9 +959,9 @@ func (s *DeleteImageResponseBodyData) SetPicNames(v []*string) *DeleteImageRespo
 }
 
 type DeleteImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -393,6 +988,13 @@ func (s *DeleteImageResponse) SetBody(v *DeleteImageResponseBody) *DeleteImageRe
 }
 
 type DetailRequest struct {
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// imagesearchName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -410,9 +1012,20 @@ func (s *DetailRequest) SetInstanceName(v string) *DetailRequest {
 }
 
 type DetailResponseBody struct {
-	Instance  *DetailResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details about the instance.
+	Instance *DetailResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 36C43E96-8F68-44AA-B1AF-B1F7AB94A6C1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DetailResponseBody) String() string {
@@ -439,13 +1052,55 @@ func (s *DetailResponseBody) SetSuccess(v bool) *DetailResponseBody {
 }
 
 type DetailResponseBodyInstance struct {
-	Capacity      *int32  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Qps           *int32  `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ServiceType   *int32  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	TotalCount    *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UtcCreate     *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	// The capacity of the plan. Unit: × 10,000 images.
+	//
+	// example:
+	//
+	// 10
+	Capacity *int32 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// imagesearchName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of queries per second supported by the plan.
+	//
+	// example:
+	//
+	// 1
+	Qps *int32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// The information about the region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The Image Search model.
+	//
+	// 0: commodity search. 1: generic image search.
+	//
+	// example:
+	//
+	// 0
+	ServiceType *int32 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The number of images.
+	//
+	// example:
+	//
+	// 10063
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The time when the instance was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1620382716000
+	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	// The time when the instance expires. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1623081600000
 	UtcExpireTime *string `json:"UtcExpireTime,omitempty" xml:"UtcExpireTime,omitempty"`
 }
 
@@ -498,9 +1153,9 @@ func (s *DetailResponseBodyInstance) SetUtcExpireTime(v string) *DetailResponseB
 }
 
 type DetailResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetailResponse) String() string {
@@ -527,6 +1182,13 @@ func (s *DetailResponse) SetBody(v *DetailResponseBody) *DetailResponse {
 }
 
 type DumpMetaRequest struct {
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// imagesearchName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -544,9 +1206,20 @@ func (s *DumpMetaRequest) SetInstanceName(v string) *DumpMetaRequest {
 }
 
 type DumpMetaResponseBody struct {
-	Data      *DumpMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the export task.
+	Data *DumpMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 36C43E96-8F68-44AA-B1AF-B1F7AB94A6C1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DumpMetaResponseBody) String() string {
@@ -573,8 +1246,24 @@ func (s *DumpMetaResponseBody) SetSuccess(v bool) *DumpMetaResponseBody {
 }
 
 type DumpMetaResponseBodyData struct {
+	// The status of the export task.
+	//
+	// 	- PROCESSING: in progress
+	//
+	// 	- FAIL: failed
+	//
+	// 	- SUCCESS: successful
+	//
+	// example:
+	//
+	// PROCESSING
 	DumpMetaStatus *string `json:"DumpMetaStatus,omitempty" xml:"DumpMetaStatus,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the export task.
+	//
+	// example:
+	//
+	// 500
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DumpMetaResponseBodyData) String() string {
@@ -596,9 +1285,9 @@ func (s *DumpMetaResponseBodyData) SetId(v string) *DumpMetaResponseBodyData {
 }
 
 type DumpMetaResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DumpMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DumpMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DumpMetaResponse) String() string {
@@ -625,10 +1314,32 @@ func (s *DumpMetaResponse) SetBody(v *DumpMetaResponseBody) *DumpMetaResponse {
 }
 
 type DumpMetaListRequest struct {
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the export task.
+	//
+	// example:
+	//
+	// 500
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of images to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DumpMetaListRequest) String() string {
@@ -660,8 +1371,14 @@ func (s *DumpMetaListRequest) SetPageSize(v int32) *DumpMetaListRequest {
 }
 
 type DumpMetaListResponseBody struct {
-	Data      *DumpMetaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the task that is used to export metadata.
+	Data *DumpMetaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// B3137727-7D6E-488C-BA21-0E034C38A879
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DumpMetaListResponseBody) String() string {
@@ -683,10 +1400,26 @@ func (s *DumpMetaListResponseBody) SetRequestId(v string) *DumpMetaListResponseB
 }
 
 type DumpMetaListResponseBodyData struct {
+	// A list of tasks that are used to export metadata.
 	DumpMetaList []*DumpMetaListResponseBodyDataDumpMetaList `json:"DumpMetaList,omitempty" xml:"DumpMetaList,omitempty" type:"Repeated"`
-	PageNumber   *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount   *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of tasks.
+	//
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DumpMetaListResponseBodyData) String() string {
@@ -718,13 +1451,58 @@ func (s *DumpMetaListResponseBodyData) SetTotalCount(v int64) *DumpMetaListRespo
 }
 
 type DumpMetaListResponseBodyDataDumpMetaList struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MetaUrl     *string `json:"MetaUrl,omitempty" xml:"MetaUrl,omitempty"`
-	Msg         *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UtcCreate   *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	UtcModified *int64  `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+	// The error code returned.
+	//
+	// 	- A value of 0 indicates that the operation is successful.
+	//
+	// 	- Values other than 0 indicate errors.
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// 500
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The address where you can download the metadata. The address is valid for 2 hours.
+	//
+	// example:
+	//
+	// https://imagesearchname.oss-cn-shanghai.aliyuncs.com/xxx
+	MetaUrl *string `json:"MetaUrl,omitempty" xml:"MetaUrl,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The status of the export task.
+	//
+	// 	- PROCESSING: in progress
+	//
+	// 	- FAIL: failed
+	//
+	// 	- SUCCESS: successful
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the task was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1629095713000
+	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	// The time when the task was updated. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1629095760000
+	UtcModified *int64 `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
 }
 
 func (s DumpMetaListResponseBodyDataDumpMetaList) String() string {
@@ -771,9 +1549,9 @@ func (s *DumpMetaListResponseBodyDataDumpMetaList) SetUtcModified(v int64) *Dump
 }
 
 type DumpMetaListResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DumpMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DumpMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DumpMetaListResponse) String() string {
@@ -800,10 +1578,38 @@ func (s *DumpMetaListResponse) SetBody(v *DumpMetaListResponseBody) *DumpMetaLis
 }
 
 type IncreaseInstanceRequest struct {
-	BucketName      *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The name of the Object Storage Service (OSS) bucket.
+	//
+	// >  The bucket must be in the same region as the Image Search instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bucketName
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The callback address.
+	//
+	// example:
+	//
+	// http://xxxxx
 	CallbackAddress *string `json:"CallbackAddress,omitempty" xml:"CallbackAddress,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// imagesearchName
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The absolute path to the increment.meta file in the bucket. The path must start with a forward slash (/) and cannot end with a forward slash (/).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /xxx/xxx
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s IncreaseInstanceRequest) String() string {
@@ -835,9 +1641,20 @@ func (s *IncreaseInstanceRequest) SetPath(v string) *IncreaseInstanceRequest {
 }
 
 type IncreaseInstanceResponseBody struct {
-	Data      *IncreaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the task.
+	Data *IncreaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 36C43E96-8F68-44AA-B1AF-B1F7AB94A6C1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s IncreaseInstanceResponseBody) String() string {
@@ -864,7 +1681,23 @@ func (s *IncreaseInstanceResponseBody) SetSuccess(v bool) *IncreaseInstanceRespo
 }
 
 type IncreaseInstanceResponseBodyData struct {
-	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// 500
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the task.
+	//
+	// 	- PROCESSING: in progress
+	//
+	// 	- FAIL: failed
+	//
+	// 	- SUCCESS: successful
+	//
+	// example:
+	//
+	// PROCESSING
 	IncrementStatus *string `json:"IncrementStatus,omitempty" xml:"IncrementStatus,omitempty"`
 }
 
@@ -887,9 +1720,9 @@ func (s *IncreaseInstanceResponseBodyData) SetIncrementStatus(v string) *Increas
 }
 
 type IncreaseInstanceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IncreaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IncreaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IncreaseInstanceResponse) String() string {
@@ -916,12 +1749,44 @@ func (s *IncreaseInstanceResponse) SetBody(v *IncreaseInstanceResponseBody) *Inc
 }
 
 type IncreaseListRequest struct {
-	BucketName   *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the Object Storage Service (OSS) bucket.
+	//
+	// example:
+	//
+	// bucketName
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The ID of the batch task.
+	//
+	// example:
+	//
+	// 500
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of images to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The absolute path to the increment.meta file in the bucket. The path must start with a forward slash (/) and cannot end with a forward slash (/).
+	//
+	// example:
+	//
+	// /xxx/xxx
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s IncreaseListRequest) String() string {
@@ -963,8 +1828,14 @@ func (s *IncreaseListRequest) SetPath(v string) *IncreaseListRequest {
 }
 
 type IncreaseListResponseBody struct {
-	Data      *IncreaseListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the batch task.
+	Data *IncreaseListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// B3137727-7D6E-488C-BA21-0E034C38A879
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s IncreaseListResponseBody) String() string {
@@ -986,10 +1857,26 @@ func (s *IncreaseListResponseBody) SetRequestId(v string) *IncreaseListResponseB
 }
 
 type IncreaseListResponseBodyData struct {
+	// A list of batch tasks.
 	Increments *IncreaseListResponseBodyDataIncrements `json:"Increments,omitempty" xml:"Increments,omitempty" type:"Struct"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of tasks.
+	//
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s IncreaseListResponseBodyData) String() string {
@@ -1038,16 +1925,76 @@ func (s *IncreaseListResponseBodyDataIncrements) SetInstance(v []*IncreaseListRe
 }
 
 type IncreaseListResponseBodyDataIncrementsInstance struct {
-	BucketName      *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The name of the Object Storage Service (OSS) bucket.
+	//
+	// example:
+	//
+	// bucketName
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The callback address.
+	//
+	// example:
+	//
+	// http://xxxxx
 	CallbackAddress *string `json:"CallbackAddress,omitempty" xml:"CallbackAddress,omitempty"`
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorUrl        *string `json:"ErrorUrl,omitempty" xml:"ErrorUrl,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Msg             *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UtcCreate       *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	UtcModified     *int64  `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+	// The error code returned.
+	//
+	// 	- A value of 0 indicates that the operation is successful.
+	//
+	// 	- Values other than 0 indicate errors.
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The address where you can download the result. The address is valid for 2 hours.
+	//
+	// example:
+	//
+	// https://imagesearchname.oss-cn-shanghai.aliyuncs.com/xxx
+	ErrorUrl *string `json:"ErrorUrl,omitempty" xml:"ErrorUrl,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// 500
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// sucess
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The absolute path to the increment.meta file in the bucket. The path must start with a forward slash (/) and cannot end with a forward slash (/).
+	//
+	// example:
+	//
+	// /xx/xx
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The status of the batch task.
+	//
+	// 	- PROCESSING: in progress
+	//
+	// 	- FAIL: failed
+	//
+	// 	- SUCCESS: successful
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the task was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1629095713000
+	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	// The time when the task was updated. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1629095760000
+	UtcModified *int64 `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
 }
 
 func (s IncreaseListResponseBodyDataIncrementsInstance) String() string {
@@ -1109,9 +2056,9 @@ func (s *IncreaseListResponseBodyDataIncrementsInstance) SetUtcModified(v int64)
 }
 
 type IncreaseListResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IncreaseListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IncreaseListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IncreaseListResponse) String() string {
@@ -1138,13 +2085,67 @@ func (s *IncreaseListResponse) SetBody(v *IncreaseListResponseBody) *IncreaseLis
 }
 
 type SearchImageByNameRequest struct {
-	CategoryId   *int32  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The category of the product. For more information, see [Category references](https://help.aliyun.com/document_detail/179184.html).
+	//
+	// 	- For product search: If a category is specified, the specified category prevails. If no category is specified, the system estimates and selects a category. The category selected by the system is included in the response.
+	//
+	// 	- For generic search: The parameter value is set to 88888888 regardless of whether a category is specified.
+	//
+	// example:
+	//
+	// 88888888
+	CategoryId        *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	DistinctProductId *bool  `json:"DistinctProductId,omitempty" xml:"DistinctProductId,omitempty"`
+	// The filter conditions. int_attr supports the following operators: >, >=, <, <=, and =. str_attr supports the following operators: = and !=. You can set the logical operator between conditions to AND or OR.
+	//
+	// Examples:
+	//
+	// 	- int_attr>=100
+	//
+	// 	- str_attr!="value1"
+	//
+	// 	- int_attr=1000 AND str_attr="value1"
+	//
+	// example:
+	//
+	// int_attr>=100
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Num          *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
-	PicName      *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId    *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Start        *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The number of images to return on each page. Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The name of the image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2092061_1.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The ID of the product.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The number of the image to return. Valid values: 0 to 499. Default value: 0.
+	//
+	// example:
+	//
+	// 0
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s SearchImageByNameRequest) String() string {
@@ -1157,6 +2158,11 @@ func (s SearchImageByNameRequest) GoString() string {
 
 func (s *SearchImageByNameRequest) SetCategoryId(v int32) *SearchImageByNameRequest {
 	s.CategoryId = &v
+	return s
+}
+
+func (s *SearchImageByNameRequest) SetDistinctProductId(v bool) *SearchImageByNameRequest {
+	s.DistinctProductId = &v
 	return s
 }
 
@@ -1191,13 +2197,40 @@ func (s *SearchImageByNameRequest) SetStart(v int32) *SearchImageByNameRequest {
 }
 
 type SearchImageByNameResponseBody struct {
-	Auctions  []*SearchImageByNameResponseBodyAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Head      *SearchImageByNameResponseBodyHead       `json:"Head,omitempty" xml:"Head,omitempty" type:"Struct"`
-	Msg       *string                                  `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	PicInfo   *SearchImageByNameResponseBodyPicInfo    `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The product descriptions returned.
+	Auctions []*SearchImageByNameResponseBodyAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
+	// The error code returned.
+	//
+	// 	- A value of 0 indicates that the operation is successful.
+	//
+	// 	- Values other than 0 indicate errors.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The summary of the search result.
+	Head *SearchImageByNameResponseBodyHead `json:"Head,omitempty" xml:"Head,omitempty" type:"Struct"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The information such as the system-selected category and result of subject recognition.
+	PicInfo *SearchImageByNameResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 36C43E96-8F68-44AA-B1AF-B1F7AB94A6C1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SearchImageByNameResponseBody) String() string {
@@ -1244,16 +2277,76 @@ func (s *SearchImageByNameResponseBody) SetSuccess(v bool) *SearchImageByNameRes
 }
 
 type SearchImageByNameResponseBodyAuctions struct {
-	CategoryId     *int32   `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CustomContent  *string  `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
-	IntAttr        *int32   `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
-	IntAttr2       *int32   `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
-	PicName        *string  `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId      *string  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	SortExprValues *string  `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
-	StrAttr        *string  `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
-	StrAttr2       *string  `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The category of the image.
+	//
+	// example:
+	//
+	// 20
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The user-defined content.
+	//
+	// example:
+	//
+	// zidingyi
+	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	// The attribute, which is an integer.
+	//
+	// example:
+	//
+	// 2
+	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// example:
+	//
+	// 20
+	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// The name of the image.
+	//
+	// example:
+	//
+	// 2092061_1.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The ID of the product.
+	//
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The similarity score of the returned image. Valid values: 0 to 1.
+	//
+	// >  To use this feature, you must upgrade the SDK to version 3.1.1.
+	//
+	// example:
+	//
+	// 1
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The score information about the image.
+	//
+	// > 	- This parameter is not supported. We recommend that you use the Score parameter.
+	//
+	// >	- The SortExprValues parameter indicates a 2-tuple in which values are separated by a semicolon (;). The first value indicates the correlation score of the returned image. A greater value indicates a higher correlation with the sample image. Different algorithms are used.
+	//
+	// >	- If the value of CategoryId is within the value range from 0 to 2, the value range of SortExprValues is from 0 to 7.33136443711219e+24.
+	//
+	// >	- If the value of CategoryId is not within the value range from 0 to 2, the value range of SortExprValues is from 0 to 5.37633353624177e+24. If the returned image is identical with the sample image, the highest correlation score is generated.
+	//
+	// example:
+	//
+	// 5.37633353624177e+24;0
+	SortExprValues *string `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
+	// The attribute, which is a string.
+	//
+	// example:
+	//
+	// ss
+	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// example:
+	//
+	// test
+	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
 }
 
 func (s SearchImageByNameResponseBodyAuctions) String() string {
@@ -1281,6 +2374,16 @@ func (s *SearchImageByNameResponseBodyAuctions) SetIntAttr(v int32) *SearchImage
 
 func (s *SearchImageByNameResponseBodyAuctions) SetIntAttr2(v int32) *SearchImageByNameResponseBodyAuctions {
 	s.IntAttr2 = &v
+	return s
+}
+
+func (s *SearchImageByNameResponseBodyAuctions) SetIntAttr3(v int32) *SearchImageByNameResponseBodyAuctions {
+	s.IntAttr3 = &v
+	return s
+}
+
+func (s *SearchImageByNameResponseBodyAuctions) SetIntAttr4(v int32) *SearchImageByNameResponseBodyAuctions {
+	s.IntAttr4 = &v
 	return s
 }
 
@@ -1314,9 +2417,34 @@ func (s *SearchImageByNameResponseBodyAuctions) SetStrAttr2(v string) *SearchIma
 	return s
 }
 
+func (s *SearchImageByNameResponseBodyAuctions) SetStrAttr3(v string) *SearchImageByNameResponseBodyAuctions {
+	s.StrAttr3 = &v
+	return s
+}
+
+func (s *SearchImageByNameResponseBodyAuctions) SetStrAttr4(v string) *SearchImageByNameResponseBodyAuctions {
+	s.StrAttr4 = &v
+	return s
+}
+
 type SearchImageByNameResponseBodyHead struct {
-	DocsFound  *int32 `json:"DocsFound,omitempty" xml:"DocsFound,omitempty"`
+	// The number of images returned.
+	//
+	// example:
+	//
+	// 10
+	DocsFound *int32 `json:"DocsFound,omitempty" xml:"DocsFound,omitempty"`
+	// The number of images that match the search conditions on the Image Search instance.
+	//
+	// example:
+	//
+	// 10000
 	DocsReturn *int32 `json:"DocsReturn,omitempty" xml:"DocsReturn,omitempty"`
+	// The time it takes to complete the search process. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 95
 	SearchTime *int32 `json:"SearchTime,omitempty" xml:"SearchTime,omitempty"`
 }
 
@@ -1344,10 +2472,26 @@ func (s *SearchImageByNameResponseBodyHead) SetSearchTime(v int32) *SearchImageB
 }
 
 type SearchImageByNameResponseBodyPicInfo struct {
+	// The categories that are supported by the system.
 	AllCategories []*SearchImageByNameResponseBodyPicInfoAllCategories `json:"AllCategories,omitempty" xml:"AllCategories,omitempty" type:"Repeated"`
-	CategoryId    *int32                                               `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	MultiRegion   []*SearchImageByNameResponseBodyPicInfoMultiRegion   `json:"MultiRegion,omitempty" xml:"MultiRegion,omitempty" type:"Repeated"`
-	Region        *string                                              `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The category selected by the system.
+	//
+	// If a category is specified in the request, the specified category prevails.
+	//
+	// example:
+	//
+	// 20
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The recognized subjects.
+	MultiRegion []*SearchImageByNameResponseBodyPicInfoMultiRegion `json:"MultiRegion,omitempty" xml:"MultiRegion,omitempty" type:"Repeated"`
+	// The result of subject recognition.
+	//
+	// The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+	//
+	// example:
+	//
+	// 280,486,232,351
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s SearchImageByNameResponseBodyPicInfo) String() string {
@@ -1379,7 +2523,17 @@ func (s *SearchImageByNameResponseBodyPicInfo) SetRegion(v string) *SearchImageB
 }
 
 type SearchImageByNameResponseBodyPicInfoAllCategories struct {
-	Id   *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the category.
+	//
+	// example:
+	//
+	// other
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// 88888888
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1402,6 +2556,13 @@ func (s *SearchImageByNameResponseBodyPicInfoAllCategories) SetName(v string) *S
 }
 
 type SearchImageByNameResponseBodyPicInfoMultiRegion struct {
+	// The result of subject recognition.
+	//
+	// The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+	//
+	// example:
+	//
+	// 280,486,232,351
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -1419,9 +2580,9 @@ func (s *SearchImageByNameResponseBodyPicInfoMultiRegion) SetRegion(v string) *S
 }
 
 type SearchImageByNameResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchImageByNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchImageByNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchImageByNameResponse) String() string {
@@ -1448,14 +2609,91 @@ func (s *SearchImageByNameResponse) SetBody(v *SearchImageByNameResponseBody) *S
 }
 
 type SearchImageByPicRequest struct {
-	CategoryId   *int32  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Crop         *bool   `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The category of the product. For more information, see [Category references](https://help.aliyun.com/document_detail/179184.html).
+	//
+	// 	- For product search: If a category is specified, the specified category prevails. If no category is specified, the system estimates and selects a category. The category selected by the system is included in the response.
+	//
+	// 	- For generic search: The parameter value is set to 88888888 regardless of whether a category is specified.
+	//
+	// example:
+	//
+	// 88888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Specifies whether to recognize the subject in the image and search for images based on the recognized subject. Valid values: true and false. Default value: true.
+	//
+	// 	- true: The system recognizes the subject in the image, and searches for images based on the recognized subject. The recognition result is included in the response.
+	//
+	// 	- false: The system does not recognize the subject of the image, and searches for images based on the entire image.
+	//
+	// example:
+	//
+	// true
+	Crop              *bool `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	DistinctProductId *bool `json:"DistinctProductId,omitempty" xml:"DistinctProductId,omitempty"`
+	// The filter conditions. int_attr supports the following operators: >, >=, <, <=, and =. str_attr supports the following operators: = and !=. You can set the logical operator between conditions to AND or OR.
+	//
+	// Examples:
+	//
+	// 	- int_attr>=100
+	//
+	// 	- str_attr!="value1"
+	//
+	// 	- Example: int_attr=1000 AND str_attr="value1"
+	//
+	// example:
+	//
+	// int_attr=1000 AND str_attr="value1"
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Num          *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
-	PicContent   *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Start        *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The number of images to return on each page. Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The image file. The image file is encoded in Base64.
+	//
+	// 	- The file size of the image cannot exceed 4 MB.
+	//
+	// 	- The following image formats are supported: PNG, JPG, JPEG, BMP, GIF, WebP, TIFF, and PPM.
+	//
+	// 	- The transmission timeout period cannot exceed 5 seconds.
+	//
+	// 	- For brand image searches, the length and the width of the image must range from 200 pixels to 4,096 pixels.
+	//
+	// 	- For cloth image searches, the length and the width of the image must range from 448 pixels to 4,096 pixels.
+	//
+	// 	- For product and generic image searches, the length and the width of the image must range from 100 pixels to 4,096 pixels.
+	//
+	// 	- The image cannot contain rotation settings.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
+	PicContent *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
+	// The subject area of the image. Specify the subject area in the following format: `x1,x2,y1,y2`. `x1 and y1` represent the upper-left corner pixel. `x2 and y2` represent the lower-right corner pixel.
+	//
+	// >	- If you set the Region parameter, the system searches for images based on the value of Region regardless of the value of the Crop parameter.
+	//
+	// example:
+	//
+	// 280,486,232,351
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The number of the image to return. Valid values: 0 to 499. Default value: 0.
+	//
+	// example:
+	//
+	// 0
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s SearchImageByPicRequest) String() string {
@@ -1473,6 +2711,11 @@ func (s *SearchImageByPicRequest) SetCategoryId(v int32) *SearchImageByPicReques
 
 func (s *SearchImageByPicRequest) SetCrop(v bool) *SearchImageByPicRequest {
 	s.Crop = &v
+	return s
+}
+
+func (s *SearchImageByPicRequest) SetDistinctProductId(v bool) *SearchImageByPicRequest {
+	s.DistinctProductId = &v
 	return s
 }
 
@@ -1507,14 +2750,91 @@ func (s *SearchImageByPicRequest) SetStart(v int32) *SearchImageByPicRequest {
 }
 
 type SearchImageByPicAdvanceRequest struct {
-	CategoryId       *int32    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Crop             *bool     `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	Filter           *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Num              *int32    `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The category of the product. For more information, see [Category references](https://help.aliyun.com/document_detail/179184.html).
+	//
+	// 	- For product search: If a category is specified, the specified category prevails. If no category is specified, the system estimates and selects a category. The category selected by the system is included in the response.
+	//
+	// 	- For generic search: The parameter value is set to 88888888 regardless of whether a category is specified.
+	//
+	// example:
+	//
+	// 88888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Specifies whether to recognize the subject in the image and search for images based on the recognized subject. Valid values: true and false. Default value: true.
+	//
+	// 	- true: The system recognizes the subject in the image, and searches for images based on the recognized subject. The recognition result is included in the response.
+	//
+	// 	- false: The system does not recognize the subject of the image, and searches for images based on the entire image.
+	//
+	// example:
+	//
+	// true
+	Crop              *bool `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	DistinctProductId *bool `json:"DistinctProductId,omitempty" xml:"DistinctProductId,omitempty"`
+	// The filter conditions. int_attr supports the following operators: >, >=, <, <=, and =. str_attr supports the following operators: = and !=. You can set the logical operator between conditions to AND or OR.
+	//
+	// Examples:
+	//
+	// 	- int_attr>=100
+	//
+	// 	- str_attr!="value1"
+	//
+	// 	- Example: int_attr=1000 AND str_attr="value1"
+	//
+	// example:
+	//
+	// int_attr=1000 AND str_attr="value1"
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The number of images to return on each page. Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The image file. The image file is encoded in Base64.
+	//
+	// 	- The file size of the image cannot exceed 4 MB.
+	//
+	// 	- The following image formats are supported: PNG, JPG, JPEG, BMP, GIF, WebP, TIFF, and PPM.
+	//
+	// 	- The transmission timeout period cannot exceed 5 seconds.
+	//
+	// 	- For brand image searches, the length and the width of the image must range from 200 pixels to 4,096 pixels.
+	//
+	// 	- For cloth image searches, the length and the width of the image must range from 448 pixels to 4,096 pixels.
+	//
+	// 	- For product and generic image searches, the length and the width of the image must range from 100 pixels to 4,096 pixels.
+	//
+	// 	- The image cannot contain rotation settings.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAANSUhEUgAAAPcAAAEVCAYAAAA8d3NuAAAAAXNSR0IArs......RK5CYII=
 	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
-	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	Start            *int32    `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The subject area of the image. Specify the subject area in the following format: `x1,x2,y1,y2`. `x1 and y1` represent the upper-left corner pixel. `x2 and y2` represent the lower-right corner pixel.
+	//
+	// >	- If you set the Region parameter, the system searches for images based on the value of Region regardless of the value of the Crop parameter.
+	//
+	// example:
+	//
+	// 280,486,232,351
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The number of the image to return. Valid values: 0 to 499. Default value: 0.
+	//
+	// example:
+	//
+	// 0
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s SearchImageByPicAdvanceRequest) String() string {
@@ -1532,6 +2852,11 @@ func (s *SearchImageByPicAdvanceRequest) SetCategoryId(v int32) *SearchImageByPi
 
 func (s *SearchImageByPicAdvanceRequest) SetCrop(v bool) *SearchImageByPicAdvanceRequest {
 	s.Crop = &v
+	return s
+}
+
+func (s *SearchImageByPicAdvanceRequest) SetDistinctProductId(v bool) *SearchImageByPicAdvanceRequest {
+	s.DistinctProductId = &v
 	return s
 }
 
@@ -1566,13 +2891,40 @@ func (s *SearchImageByPicAdvanceRequest) SetStart(v int32) *SearchImageByPicAdva
 }
 
 type SearchImageByPicResponseBody struct {
-	Auctions  []*SearchImageByPicResponseBodyAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Head      *SearchImageByPicResponseBodyHead       `json:"Head,omitempty" xml:"Head,omitempty" type:"Struct"`
-	Msg       *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	PicInfo   *SearchImageByPicResponseBodyPicInfo    `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The product descriptions returned.
+	Auctions []*SearchImageByPicResponseBodyAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
+	// The error code returned.
+	//
+	// 	- A value of 0 indicates that the operation is successful.
+	//
+	// 	- Values other than 0 indicate errors.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The summary of the search result.
+	Head *SearchImageByPicResponseBodyHead `json:"Head,omitempty" xml:"Head,omitempty" type:"Struct"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The information such as the system-selected category and result of subject recognition.
+	PicInfo *SearchImageByPicResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// B3137727-7D6E-488C-BA21-0E034C38A879
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SearchImageByPicResponseBody) String() string {
@@ -1619,16 +2971,76 @@ func (s *SearchImageByPicResponseBody) SetSuccess(v bool) *SearchImageByPicRespo
 }
 
 type SearchImageByPicResponseBodyAuctions struct {
-	CategoryId     *int32   `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CustomContent  *string  `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
-	IntAttr        *int32   `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
-	IntAttr2       *int32   `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
-	PicName        *string  `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId      *string  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	SortExprValues *string  `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
-	StrAttr        *string  `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
-	StrAttr2       *string  `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The category of the image.
+	//
+	// example:
+	//
+	// 8888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The user-defined content.
+	//
+	// example:
+	//
+	// zidingyi
+	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	// The attribute, which is an integer.
+	//
+	// example:
+	//
+	// 2
+	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// example:
+	//
+	// 20
+	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// The name of the image.
+	//
+	// example:
+	//
+	// 2092061_1.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The ID of the product.
+	//
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The similarity score of the searched image. Valid values: 0 to 1.
+	//
+	// >  To use this feature, you must upgrade the SDK to version 3.1.1.
+	//
+	// example:
+	//
+	// 1
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The score information about the image.
+	//
+	// > 	- This parameter is not supported. We recommend that you use the Score parameter.
+	//
+	// >	- The SortExprValues parameter indicates a 2-tuple in which values are separated by a semicolon (;). The first value indicates the correlation score of the returned image. A greater value indicates a higher correlation with the sample image. Different algorithms are used.
+	//
+	// >	- If the value of CategoryId is within the value range from 0 to 2, the value range of SortExprValues is from 0 to 7.33136443711219e+24.
+	//
+	// >	- If the value of CategoryId is not within the value range from 0 to 2, the value range of SortExprValues is from 0 to 5.37633353624177e+24. If the returned image is identical with the sample image, the highest correlation score is generated.
+	//
+	// example:
+	//
+	// 5.37633353624177e+24;0
+	SortExprValues *string `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
+	// The attribute, which is a string.
+	//
+	// example:
+	//
+	// 2
+	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// example:
+	//
+	// test
+	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
 }
 
 func (s SearchImageByPicResponseBodyAuctions) String() string {
@@ -1656,6 +3068,16 @@ func (s *SearchImageByPicResponseBodyAuctions) SetIntAttr(v int32) *SearchImageB
 
 func (s *SearchImageByPicResponseBodyAuctions) SetIntAttr2(v int32) *SearchImageByPicResponseBodyAuctions {
 	s.IntAttr2 = &v
+	return s
+}
+
+func (s *SearchImageByPicResponseBodyAuctions) SetIntAttr3(v int32) *SearchImageByPicResponseBodyAuctions {
+	s.IntAttr3 = &v
+	return s
+}
+
+func (s *SearchImageByPicResponseBodyAuctions) SetIntAttr4(v int32) *SearchImageByPicResponseBodyAuctions {
+	s.IntAttr4 = &v
 	return s
 }
 
@@ -1689,9 +3111,34 @@ func (s *SearchImageByPicResponseBodyAuctions) SetStrAttr2(v string) *SearchImag
 	return s
 }
 
+func (s *SearchImageByPicResponseBodyAuctions) SetStrAttr3(v string) *SearchImageByPicResponseBodyAuctions {
+	s.StrAttr3 = &v
+	return s
+}
+
+func (s *SearchImageByPicResponseBodyAuctions) SetStrAttr4(v string) *SearchImageByPicResponseBodyAuctions {
+	s.StrAttr4 = &v
+	return s
+}
+
 type SearchImageByPicResponseBodyHead struct {
-	DocsFound  *int32 `json:"DocsFound,omitempty" xml:"DocsFound,omitempty"`
+	// The number of images returned.
+	//
+	// example:
+	//
+	// 10
+	DocsFound *int32 `json:"DocsFound,omitempty" xml:"DocsFound,omitempty"`
+	// The number of images that match the search conditions on the Image Search instance.
+	//
+	// example:
+	//
+	// 10000
 	DocsReturn *int32 `json:"DocsReturn,omitempty" xml:"DocsReturn,omitempty"`
+	// The time it takes to complete the search process. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 95
 	SearchTime *int32 `json:"SearchTime,omitempty" xml:"SearchTime,omitempty"`
 }
 
@@ -1719,10 +3166,24 @@ func (s *SearchImageByPicResponseBodyHead) SetSearchTime(v int32) *SearchImageBy
 }
 
 type SearchImageByPicResponseBodyPicInfo struct {
+	// The categories that are supported by the system.
 	AllCategories []*SearchImageByPicResponseBodyPicInfoAllCategories `json:"AllCategories,omitempty" xml:"AllCategories,omitempty" type:"Repeated"`
-	CategoryId    *int32                                              `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	MultiRegion   []*SearchImageByPicResponseBodyPicInfoMultiRegion   `json:"MultiRegion,omitempty" xml:"MultiRegion,omitempty" type:"Repeated"`
-	Region        *string                                             `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The category selected by the system. If a category is specified in the request, the specified category prevails.
+	//
+	// example:
+	//
+	// 88888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The recognized subjects.
+	//
+	// >  To use this feature, you must upgrade the SDK to version 3.1.1.
+	MultiRegion []*SearchImageByPicResponseBodyPicInfoMultiRegion `json:"MultiRegion,omitempty" xml:"MultiRegion,omitempty" type:"Repeated"`
+	// The result of subject recognition. The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+	//
+	// example:
+	//
+	// 280,486,232,351
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s SearchImageByPicResponseBodyPicInfo) String() string {
@@ -1754,7 +3215,17 @@ func (s *SearchImageByPicResponseBodyPicInfo) SetRegion(v string) *SearchImageBy
 }
 
 type SearchImageByPicResponseBodyPicInfoAllCategories struct {
-	Id   *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the category.
+	//
+	// example:
+	//
+	// 88888888
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// other
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1777,6 +3248,11 @@ func (s *SearchImageByPicResponseBodyPicInfoAllCategories) SetName(v string) *Se
 }
 
 type SearchImageByPicResponseBodyPicInfoMultiRegion struct {
+	// The result of subject recognition. The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+	//
+	// example:
+	//
+	// 280,486,232,351
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -1794,9 +3270,9 @@ func (s *SearchImageByPicResponseBodyPicInfoMultiRegion) SetRegion(v string) *Se
 }
 
 type SearchImageByPicResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchImageByPicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchImageByPicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchImageByPicResponse) String() string {
@@ -1823,14 +3299,68 @@ func (s *SearchImageByPicResponse) SetBody(v *SearchImageByPicResponseBody) *Sea
 }
 
 type UpdateImageRequest struct {
+	// The user-defined content. The value can be up to 4,096 characters in length.
+	//
+	// >  If you set this parameter, the response includes this parameter and its value. You can add text such as an image description.
+	//
+	// example:
+	//
+	// zidingyi
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IntAttr       *int32  `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
-	IntAttr2      *int32  `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
-	PicName       *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId     *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	StrAttr       *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
-	StrAttr2      *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The name of the Image Search instance. The name can be up to 20 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you set this parameter, the response includes this parameter and its value.
+	//
+	// example:
+	//
+	// 2
+	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// example:
+	//
+	// 20
+	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// The name of the image. The name can be up to 512 characters in length.
+	//
+	// > 	- An image is uniquely identified by the values of the ProductId and PicName parameters.
+	//
+	// >	- If you add an image whose product ID (ProductId) and image name (PicName) are the same as those of an existing image, the newly added image overwrites the existing image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namexxx.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The ID of the product. The ID can be up to 512 characters in length.
+	//
+	// >  A product may have multiple images.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images. If you set this parameter, the response includes this parameter and its value.
+	//
+	// example:
+	//
+	// ss
+	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// example:
+	//
+	// test
+	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
 }
 
 func (s UpdateImageRequest) String() string {
@@ -1861,6 +3391,16 @@ func (s *UpdateImageRequest) SetIntAttr2(v int32) *UpdateImageRequest {
 	return s
 }
 
+func (s *UpdateImageRequest) SetIntAttr3(v int32) *UpdateImageRequest {
+	s.IntAttr3 = &v
+	return s
+}
+
+func (s *UpdateImageRequest) SetIntAttr4(v int32) *UpdateImageRequest {
+	s.IntAttr4 = &v
+	return s
+}
+
 func (s *UpdateImageRequest) SetPicName(v string) *UpdateImageRequest {
 	s.PicName = &v
 	return s
@@ -1881,11 +3421,45 @@ func (s *UpdateImageRequest) SetStrAttr2(v string) *UpdateImageRequest {
 	return s
 }
 
+func (s *UpdateImageRequest) SetStrAttr3(v string) *UpdateImageRequest {
+	s.StrAttr3 = &v
+	return s
+}
+
+func (s *UpdateImageRequest) SetStrAttr4(v string) *UpdateImageRequest {
+	s.StrAttr4 = &v
+	return s
+}
+
 type UpdateImageResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error code returned.
+	//
+	// 	- A value of 0 indicates that the operation is successful.
+	//
+	// 	- Values other than 0 indicate errors.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// E0845DE6-52AF-4B50-9F15-51ED4044E6AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateImageResponseBody) String() string {
@@ -1917,9 +3491,9 @@ func (s *UpdateImageResponseBody) SetSuccess(v bool) *UpdateImageResponseBody {
 }
 
 type UpdateImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateImageResponse) String() string {
@@ -1992,6 +3566,25 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an image to an Image Search instance.
+//
+// Description:
+//
+// You can call this operation to add an image to an Image Search instance.
+//
+// > If you want to obtain more information about the service and technical support, click [Online Consulting](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or join the DingTalk group (ID 35035130).
+//
+// ## QPS limits
+//
+// By default, the concurrency limit for adding an image to instances whose image capacity specifications are 0.1 million images is 1. This means that the system can process up to one request of adding an image every second. By default, the concurrency limit for adding an image to instances of other image capacity specifications is 5. This means that the system can process up to five requests of adding an image every second.
+//
+// @param request - AddImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddImageResponse
 func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *util.RuntimeOptions) (_result *AddImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2022,6 +3615,14 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *uti
 		body["IntAttr2"] = request.IntAttr2
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IntAttr3)) {
+		body["IntAttr3"] = request.IntAttr3
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntAttr4)) {
+		body["IntAttr4"] = request.IntAttr4
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PicContent)) {
 		body["PicContent"] = request.PicContent
 	}
@@ -2046,6 +3647,14 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *uti
 		body["StrAttr2"] = request.StrAttr2
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StrAttr3)) {
+		body["StrAttr3"] = request.StrAttr3
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrAttr4)) {
+		body["StrAttr4"] = request.StrAttr4
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -2060,15 +3669,43 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Adds an image to an Image Search instance.
+//
+// Description:
+//
+// You can call this operation to add an image to an Image Search instance.
+//
+// > If you want to obtain more information about the service and technical support, click [Online Consulting](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or join the DingTalk group (ID 35035130).
+//
+// ## QPS limits
+//
+// By default, the concurrency limit for adding an image to instances whose image capacity specifications are 0.1 million images is 1. This means that the system can process up to one request of adding an image every second. By default, the concurrency limit for adding an image to instances of other image capacity specifications is 5. This means that the system can process up to five requests of adding an image every second.
+//
+// @param request - AddImageRequest
+//
+// @return AddImageResponse
 func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddImageResponse{}
@@ -2099,7 +3736,7 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2127,12 +3764,17 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2186,7 +3828,16 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 	return _result, _err
 }
 
-func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtime *util.RuntimeOptions) (_result *DeleteImageResponse, _err error) {
+// Summary:
+//
+// 对比图片相似值
+//
+// @param request - CompareSimilarByImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompareSimilarByImageResponse
+func (client *Client) CompareSimilarByImageWithOptions(request *CompareSimilarByImageRequest, runtime *util.RuntimeOptions) (_result *CompareSimilarByImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2194,6 +3845,251 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryPicContent)) {
+		body["PrimaryPicContent"] = request.PrimaryPicContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryPicContent)) {
+		body["SecondaryPicContent"] = request.SecondaryPicContent
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompareSimilarByImage"),
+		Version:     tea.String("2020-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CompareSimilarByImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CompareSimilarByImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 对比图片相似值
+//
+// @param request - CompareSimilarByImageRequest
+//
+// @return CompareSimilarByImageResponse
+func (client *Client) CompareSimilarByImage(request *CompareSimilarByImageRequest) (_result *CompareSimilarByImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CompareSimilarByImageResponse{}
+	_body, _err := client.CompareSimilarByImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompareSimilarByImageAdvance(request *CompareSimilarByImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *CompareSimilarByImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ImageSearch"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	compareSimilarByImageReq := &CompareSimilarByImageRequest{}
+	openapiutil.Convert(request, compareSimilarByImageReq)
+	if !tea.BoolValue(util.IsUnset(request.PrimaryPicContentObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.PrimaryPicContentObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		compareSimilarByImageReq.PrimaryPicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryPicContentObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.SecondaryPicContentObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		compareSimilarByImageReq.SecondaryPicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	compareSimilarByImageResp, _err := client.CompareSimilarByImageWithOptions(compareSimilarByImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = compareSimilarByImageResp
+	return _result, _err
+}
+
+// Summary:
+//
+// This topic describes the syntax of the DeleteImage operation and provides examples of this operation. You can call this operation to delete images from an Image Search instance.
+//
+// Description:
+//
+// This operation deletes images from an Image Search instance.
+//
+// >  A success response is returned even if the specified image does not exist on the instance. Therefore, you cannot determine whether the image exists on the instance based on the response.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+//
+// @param request - DeleteImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteImageResponse
+func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtime *util.RuntimeOptions) (_result *DeleteImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		body["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDeleteByFilter)) {
+		body["IsDeleteByFilter"] = request.IsDeleteByFilter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PicName)) {
@@ -2218,15 +4114,43 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the DeleteImage operation and provides examples of this operation. You can call this operation to delete images from an Image Search instance.
+//
+// Description:
+//
+// This operation deletes images from an Image Search instance.
+//
+// >  A success response is returned even if the specified image does not exist on the instance. Therefore, you cannot determine whether the image exists on the instance based on the response.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+//
+// @param request - DeleteImageRequest
+//
+// @return DeleteImageResponse
 func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteImageResponse{}
@@ -2238,6 +4162,23 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the Detail operation and provides examples of this operation. You can call this operation to query instance details.
+//
+// Description:
+//
+// This operation queries instance details.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process only 1 request every second.
+//
+// @param request - DetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetailResponse
 func (client *Client) DetailWithOptions(request *DetailRequest, runtime *util.RuntimeOptions) (_result *DetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2262,15 +4203,41 @@ func (client *Client) DetailWithOptions(request *DetailRequest, runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the Detail operation and provides examples of this operation. You can call this operation to query instance details.
+//
+// Description:
+//
+// This operation queries instance details.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process only 1 request every second.
+//
+// @param request - DetailRequest
+//
+// @return DetailResponse
 func (client *Client) Detail(request *DetailRequest) (_result *DetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetailResponse{}
@@ -2282,6 +4249,23 @@ func (client *Client) Detail(request *DetailRequest) (_result *DetailResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the DumpMeta operation and provides examples of this operation. You can call this operation to create a task for exporting metadata from an Image Search instance.
+//
+// Description:
+//
+// This operation creates a task for exporting metadata from an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - DumpMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DumpMetaResponse
 func (client *Client) DumpMetaWithOptions(request *DumpMetaRequest, runtime *util.RuntimeOptions) (_result *DumpMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2306,15 +4290,41 @@ func (client *Client) DumpMetaWithOptions(request *DumpMetaRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DumpMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DumpMetaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DumpMetaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the DumpMeta operation and provides examples of this operation. You can call this operation to create a task for exporting metadata from an Image Search instance.
+//
+// Description:
+//
+// This operation creates a task for exporting metadata from an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - DumpMetaRequest
+//
+// @return DumpMetaResponse
 func (client *Client) DumpMeta(request *DumpMetaRequest) (_result *DumpMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DumpMetaResponse{}
@@ -2326,6 +4336,23 @@ func (client *Client) DumpMeta(request *DumpMetaRequest) (_result *DumpMetaRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the DumpMetaList operation and provides examples of this operation. You can call this operation to query tasks that are used for exporting metadata from an Image Search instance.
+//
+// Description:
+//
+// This operation queries tasks that are used for exporting metadata from an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - DumpMetaListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DumpMetaListResponse
 func (client *Client) DumpMetaListWithOptions(request *DumpMetaListRequest, runtime *util.RuntimeOptions) (_result *DumpMetaListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2362,15 +4389,41 @@ func (client *Client) DumpMetaListWithOptions(request *DumpMetaListRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DumpMetaListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DumpMetaListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DumpMetaListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the DumpMetaList operation and provides examples of this operation. You can call this operation to query tasks that are used for exporting metadata from an Image Search instance.
+//
+// Description:
+//
+// This operation queries tasks that are used for exporting metadata from an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - DumpMetaListRequest
+//
+// @return DumpMetaListResponse
 func (client *Client) DumpMetaList(request *DumpMetaListRequest) (_result *DumpMetaListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DumpMetaListResponse{}
@@ -2382,6 +4435,23 @@ func (client *Client) DumpMetaList(request *DumpMetaListRequest) (_result *DumpM
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the IncreaseInstance operation and provides examples of this operation. You can call this operation to create a batch task on an Image Search instance.
+//
+// Description:
+//
+// This operation creates a batch task on an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - IncreaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IncreaseInstanceResponse
 func (client *Client) IncreaseInstanceWithOptions(request *IncreaseInstanceRequest, runtime *util.RuntimeOptions) (_result *IncreaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2418,15 +4488,41 @@ func (client *Client) IncreaseInstanceWithOptions(request *IncreaseInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &IncreaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &IncreaseInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &IncreaseInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the IncreaseInstance operation and provides examples of this operation. You can call this operation to create a batch task on an Image Search instance.
+//
+// Description:
+//
+// This operation creates a batch task on an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - IncreaseInstanceRequest
+//
+// @return IncreaseInstanceResponse
 func (client *Client) IncreaseInstance(request *IncreaseInstanceRequest) (_result *IncreaseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IncreaseInstanceResponse{}
@@ -2438,6 +4534,23 @@ func (client *Client) IncreaseInstance(request *IncreaseInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the IncreaseList operation and provides examples of this operation. You can call this operation to query batch tasks on an Image Search instance.
+//
+// Description:
+//
+// This operation queries batch tasks on an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - IncreaseListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IncreaseListResponse
 func (client *Client) IncreaseListWithOptions(request *IncreaseListRequest, runtime *util.RuntimeOptions) (_result *IncreaseListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2482,15 +4595,41 @@ func (client *Client) IncreaseListWithOptions(request *IncreaseListRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &IncreaseListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &IncreaseListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &IncreaseListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the IncreaseList operation and provides examples of this operation. You can call this operation to query batch tasks on an Image Search instance.
+//
+// Description:
+//
+// This operation queries batch tasks on an Image Search instance.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+//
+// @param request - IncreaseListRequest
+//
+// @return IncreaseListResponse
 func (client *Client) IncreaseList(request *IncreaseListRequest) (_result *IncreaseListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IncreaseListResponse{}
@@ -2502,6 +4641,23 @@ func (client *Client) IncreaseList(request *IncreaseListRequest) (_result *Incre
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the SearchByName operation and provides examples of this operation. You can call this operation to search for images by image name on an Image Search instance.
+//
+// Description:
+//
+// This operation searches for images by image name on an Image Search instance.
+//
+// ## QPS limits
+//
+// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+//
+// @param request - SearchImageByNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchImageByNameResponse
 func (client *Client) SearchImageByNameWithOptions(request *SearchImageByNameRequest, runtime *util.RuntimeOptions) (_result *SearchImageByNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2510,6 +4666,10 @@ func (client *Client) SearchImageByNameWithOptions(request *SearchImageByNameReq
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
 		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistinctProductId)) {
+		body["DistinctProductId"] = request.DistinctProductId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
@@ -2550,15 +4710,41 @@ func (client *Client) SearchImageByNameWithOptions(request *SearchImageByNameReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchImageByNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchImageByNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchImageByNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the SearchByName operation and provides examples of this operation. You can call this operation to search for images by image name on an Image Search instance.
+//
+// Description:
+//
+// This operation searches for images by image name on an Image Search instance.
+//
+// ## QPS limits
+//
+// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+//
+// @param request - SearchImageByNameRequest
+//
+// @return SearchImageByNameResponse
 func (client *Client) SearchImageByName(request *SearchImageByNameRequest) (_result *SearchImageByNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchImageByNameResponse{}
@@ -2570,6 +4756,27 @@ func (client *Client) SearchImageByName(request *SearchImageByNameRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the SearchByPic operation and provides examples of this operation. You can call this operation to search for images by image on an Image Search Instance.
+//
+// Description:
+//
+// This operation searches for images by image name on an Image Search instance.
+//
+// ## QPS limits
+//
+// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+//
+// ## SDK release notes
+//
+// The Image Search SDK has been upgraded to version 3.1.1, which supports multi-subject recognition and similarity scores. For more information, see [Image Search SDK for Java](/help/en/image-search/latest/version-v3-java-sdk).
+//
+// @param request - SearchImageByPicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchImageByPicResponse
 func (client *Client) SearchImageByPicWithOptions(request *SearchImageByPicRequest, runtime *util.RuntimeOptions) (_result *SearchImageByPicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2582,6 +4789,10 @@ func (client *Client) SearchImageByPicWithOptions(request *SearchImageByPicReque
 
 	if !tea.BoolValue(util.IsUnset(request.Crop)) {
 		body["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistinctProductId)) {
+		body["DistinctProductId"] = request.DistinctProductId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
@@ -2622,15 +4833,45 @@ func (client *Client) SearchImageByPicWithOptions(request *SearchImageByPicReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchImageByPicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchImageByPicResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchImageByPicResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the SearchByPic operation and provides examples of this operation. You can call this operation to search for images by image on an Image Search Instance.
+//
+// Description:
+//
+// This operation searches for images by image name on an Image Search instance.
+//
+// ## QPS limits
+//
+// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+//
+// ## SDK release notes
+//
+// The Image Search SDK has been upgraded to version 3.1.1, which supports multi-subject recognition and similarity scores. For more information, see [Image Search SDK for Java](/help/en/image-search/latest/version-v3-java-sdk).
+//
+// @param request - SearchImageByPicRequest
+//
+// @return SearchImageByPicResponse
 func (client *Client) SearchImageByPic(request *SearchImageByPicRequest) (_result *SearchImageByPicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchImageByPicResponse{}
@@ -2661,7 +4902,7 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2689,12 +4930,17 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2748,11 +4994,49 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// This topic describes the syntax of the UpdateImage operation and provides examples of this operation. You can call this operation to update image information on an Image Search instance.
+//
+// Description:
+//
+// This operation updates image information on an Image Search instance.
+//
+// > 	- Limits are imposed on the instance creation time.
+//
+// >	- This operation is supported by instances that are created in the Singapore (Singapore) region after December 2021. This operation is not supported in other regions.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+//
+// @param request - UpdateImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateImageResponse
 func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtime *util.RuntimeOptions) (_result *UpdateImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntAttr3)) {
+		query["IntAttr3"] = request.IntAttr3
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntAttr4)) {
+		query["IntAttr4"] = request.IntAttr4
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrAttr3)) {
+		query["StrAttr3"] = request.StrAttr3
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrAttr4)) {
+		query["StrAttr4"] = request.StrAttr4
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustomContent)) {
 		body["CustomContent"] = request.CustomContent
@@ -2787,7 +5071,8 @@ func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtim
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateImage"),
@@ -2800,15 +5085,45 @@ func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// This topic describes the syntax of the UpdateImage operation and provides examples of this operation. You can call this operation to update image information on an Image Search instance.
+//
+// Description:
+//
+// This operation updates image information on an Image Search instance.
+//
+// > 	- Limits are imposed on the instance creation time.
+//
+// >	- This operation is supported by instances that are created in the Singapore (Singapore) region after December 2021. This operation is not supported in other regions.
+//
+// ## QPS limits
+//
+// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+//
+// @param request - UpdateImageRequest
+//
+// @return UpdateImageResponse
 func (client *Client) UpdateImage(request *UpdateImageRequest) (_result *UpdateImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateImageResponse{}
