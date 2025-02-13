@@ -7643,6 +7643,7 @@ type CreateLoadBalancerRequest struct {
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
 	Description  *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Enabled      *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -7685,9 +7686,8 @@ type CreateLoadBalancerRequest struct {
 	//   ]
 	//
 	// }
-	Rules                     []*CreateLoadBalancerRequestRules                   `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SessionAffinity           *string                                             `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	SessionAffinityAttributes *CreateLoadBalancerRequestSessionAffinityAttributes `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty" type:"Struct"`
+	Rules           []*CreateLoadBalancerRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	SessionAffinity *string                           `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
 	// This parameter is required.
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// This parameter is required.
@@ -7723,6 +7723,11 @@ func (s *CreateLoadBalancerRequest) SetDescription(v string) *CreateLoadBalancer
 	return s
 }
 
+func (s *CreateLoadBalancerRequest) SetEnabled(v bool) *CreateLoadBalancerRequest {
+	s.Enabled = &v
+	return s
+}
+
 func (s *CreateLoadBalancerRequest) SetFallbackPool(v int64) *CreateLoadBalancerRequest {
 	s.FallbackPool = &v
 	return s
@@ -7755,11 +7760,6 @@ func (s *CreateLoadBalancerRequest) SetRules(v []*CreateLoadBalancerRequestRules
 
 func (s *CreateLoadBalancerRequest) SetSessionAffinity(v string) *CreateLoadBalancerRequest {
 	s.SessionAffinity = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetSessionAffinityAttributes(v *CreateLoadBalancerRequestSessionAffinityAttributes) *CreateLoadBalancerRequest {
-	s.SessionAffinityAttributes = v
 	return s
 }
 
@@ -7988,35 +7988,6 @@ func (s *CreateLoadBalancerRequestRulesFixedResponse) SetStatusCode(v int32) *Cr
 	return s
 }
 
-type CreateLoadBalancerRequestSessionAffinityAttributes struct {
-	SameSite             *string `json:"SameSite,omitempty" xml:"SameSite,omitempty"`
-	Secure               *string `json:"Secure,omitempty" xml:"Secure,omitempty"`
-	ZeroDowntimeFailover *string `json:"ZeroDowntimeFailover,omitempty" xml:"ZeroDowntimeFailover,omitempty"`
-}
-
-func (s CreateLoadBalancerRequestSessionAffinityAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLoadBalancerRequestSessionAffinityAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLoadBalancerRequestSessionAffinityAttributes) SetSameSite(v string) *CreateLoadBalancerRequestSessionAffinityAttributes {
-	s.SameSite = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequestSessionAffinityAttributes) SetSecure(v string) *CreateLoadBalancerRequestSessionAffinityAttributes {
-	s.Secure = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequestSessionAffinityAttributes) SetZeroDowntimeFailover(v string) *CreateLoadBalancerRequestSessionAffinityAttributes {
-	s.ZeroDowntimeFailover = &v
-	return s
-}
-
 type CreateLoadBalancerShrinkRequest struct {
 	// example:
 	//
@@ -8029,6 +8000,7 @@ type CreateLoadBalancerShrinkRequest struct {
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Enabled            *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -8071,9 +8043,8 @@ type CreateLoadBalancerShrinkRequest struct {
 	//   ]
 	//
 	// }
-	RulesShrink                     *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	SessionAffinity                 *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	SessionAffinityAttributesShrink *string `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty"`
+	RulesShrink     *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
 	// This parameter is required.
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// This parameter is required.
@@ -8109,6 +8080,11 @@ func (s *CreateLoadBalancerShrinkRequest) SetDescription(v string) *CreateLoadBa
 	return s
 }
 
+func (s *CreateLoadBalancerShrinkRequest) SetEnabled(v bool) *CreateLoadBalancerShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
 func (s *CreateLoadBalancerShrinkRequest) SetFallbackPool(v int64) *CreateLoadBalancerShrinkRequest {
 	s.FallbackPool = &v
 	return s
@@ -8141,11 +8117,6 @@ func (s *CreateLoadBalancerShrinkRequest) SetRulesShrink(v string) *CreateLoadBa
 
 func (s *CreateLoadBalancerShrinkRequest) SetSessionAffinity(v string) *CreateLoadBalancerShrinkRequest {
 	s.SessionAffinity = &v
-	return s
-}
-
-func (s *CreateLoadBalancerShrinkRequest) SetSessionAffinityAttributesShrink(v string) *CreateLoadBalancerShrinkRequest {
-	s.SessionAffinityAttributesShrink = &v
 	return s
 }
 
@@ -39716,8 +39687,7 @@ type ListLoadBalancersResponseBodyLoadBalancers struct {
 	// example:
 	//
 	// ip
-	SessionAffinity           *string                                                              `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	SessionAffinityAttributes *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty" type:"Struct"`
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
 	// example:
 	//
 	// 1159101787****
@@ -39805,11 +39775,6 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetRules(v []*ListLoadBalan
 
 func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSessionAffinity(v string) *ListLoadBalancersResponseBodyLoadBalancers {
 	s.SessionAffinity = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSessionAffinityAttributes(v *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) *ListLoadBalancersResponseBodyLoadBalancers {
-	s.SessionAffinityAttributes = v
 	return s
 }
 
@@ -40217,44 +40182,6 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) SetMessag
 
 func (s *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse) SetStatusCode(v int32) *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse {
 	s.StatusCode = &v
-	return s
-}
-
-type ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes struct {
-	// example:
-	//
-	// Lax
-	SameSite *string `json:"SameSite,omitempty" xml:"SameSite,omitempty"`
-	// example:
-	//
-	// Always
-	Secure *string `json:"Secure,omitempty" xml:"Secure,omitempty"`
-	// example:
-	//
-	// sticky
-	ZeroDowntimeFailover *string `json:"ZeroDowntimeFailover,omitempty" xml:"ZeroDowntimeFailover,omitempty"`
-}
-
-func (s ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) SetSameSite(v string) *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes {
-	s.SameSite = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) SetSecure(v string) *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes {
-	s.Secure = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes) SetZeroDowntimeFailover(v string) *ListLoadBalancersResponseBodyLoadBalancersSessionAffinityAttributes {
-	s.ZeroDowntimeFailover = &v
 	return s
 }
 
@@ -49485,12 +49412,6 @@ type SetCertificateRequest struct {
 	//
 	// cas
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Specifies whether to update the certificate.
-	//
-	// example:
-	//
-	// true
-	Update *bool `json:"Update,omitempty" xml:"Update,omitempty"`
 }
 
 func (s SetCertificateRequest) String() string {
@@ -49548,11 +49469,6 @@ func (s *SetCertificateRequest) SetSiteId(v int64) *SetCertificateRequest {
 
 func (s *SetCertificateRequest) SetType(v string) *SetCertificateRequest {
 	s.Type = &v
-	return s
-}
-
-func (s *SetCertificateRequest) SetUpdate(v bool) *SetCertificateRequest {
-	s.Update = &v
 	return s
 }
 
@@ -52801,6 +52717,7 @@ type UpdateLoadBalancerRequest struct {
 	AdaptiveRouting *UpdateLoadBalancerRequestAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
 	DefaultPools    []*int64                                  `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
 	Description     *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Enabled         *bool                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// example:
 	//
 	// 96228666776****
@@ -52847,8 +52764,7 @@ type UpdateLoadBalancerRequest struct {
 	// example:
 	//
 	// ip
-	SessionAffinity           *string                                             `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	SessionAffinityAttributes *UpdateLoadBalancerRequestSessionAffinityAttributes `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty" type:"Struct"`
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -52892,6 +52808,11 @@ func (s *UpdateLoadBalancerRequest) SetDescription(v string) *UpdateLoadBalancer
 	return s
 }
 
+func (s *UpdateLoadBalancerRequest) SetEnabled(v bool) *UpdateLoadBalancerRequest {
+	s.Enabled = &v
+	return s
+}
+
 func (s *UpdateLoadBalancerRequest) SetFallbackPool(v int64) *UpdateLoadBalancerRequest {
 	s.FallbackPool = &v
 	return s
@@ -52924,11 +52845,6 @@ func (s *UpdateLoadBalancerRequest) SetRules(v []*UpdateLoadBalancerRequestRules
 
 func (s *UpdateLoadBalancerRequest) SetSessionAffinity(v string) *UpdateLoadBalancerRequest {
 	s.SessionAffinity = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerRequest) SetSessionAffinityAttributes(v *UpdateLoadBalancerRequestSessionAffinityAttributes) *UpdateLoadBalancerRequest {
-	s.SessionAffinityAttributes = v
 	return s
 }
 
@@ -53318,48 +53234,11 @@ func (s *UpdateLoadBalancerRequestRulesFixedResponse) SetStatusCode(v int32) *Up
 	return s
 }
 
-type UpdateLoadBalancerRequestSessionAffinityAttributes struct {
-	// example:
-	//
-	// Lax
-	SameSite *string `json:"SameSite,omitempty" xml:"SameSite,omitempty"`
-	// example:
-	//
-	// Always
-	Secure *string `json:"Secure,omitempty" xml:"Secure,omitempty"`
-	// example:
-	//
-	// sticky
-	ZeroDowntimeFailover *string `json:"ZeroDowntimeFailover,omitempty" xml:"ZeroDowntimeFailover,omitempty"`
-}
-
-func (s UpdateLoadBalancerRequestSessionAffinityAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateLoadBalancerRequestSessionAffinityAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateLoadBalancerRequestSessionAffinityAttributes) SetSameSite(v string) *UpdateLoadBalancerRequestSessionAffinityAttributes {
-	s.SameSite = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerRequestSessionAffinityAttributes) SetSecure(v string) *UpdateLoadBalancerRequestSessionAffinityAttributes {
-	s.Secure = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerRequestSessionAffinityAttributes) SetZeroDowntimeFailover(v string) *UpdateLoadBalancerRequestSessionAffinityAttributes {
-	s.ZeroDowntimeFailover = &v
-	return s
-}
-
 type UpdateLoadBalancerShrinkRequest struct {
 	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
 	DefaultPoolsShrink    *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
 	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// example:
 	//
 	// 96228666776****
@@ -53406,8 +53285,7 @@ type UpdateLoadBalancerShrinkRequest struct {
 	// example:
 	//
 	// ip
-	SessionAffinity                 *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	SessionAffinityAttributesShrink *string `json:"SessionAffinityAttributes,omitempty" xml:"SessionAffinityAttributes,omitempty"`
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -53451,6 +53329,11 @@ func (s *UpdateLoadBalancerShrinkRequest) SetDescription(v string) *UpdateLoadBa
 	return s
 }
 
+func (s *UpdateLoadBalancerShrinkRequest) SetEnabled(v bool) *UpdateLoadBalancerShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
 func (s *UpdateLoadBalancerShrinkRequest) SetFallbackPool(v int64) *UpdateLoadBalancerShrinkRequest {
 	s.FallbackPool = &v
 	return s
@@ -53483,11 +53366,6 @@ func (s *UpdateLoadBalancerShrinkRequest) SetRulesShrink(v string) *UpdateLoadBa
 
 func (s *UpdateLoadBalancerShrinkRequest) SetSessionAffinity(v string) *UpdateLoadBalancerShrinkRequest {
 	s.SessionAffinity = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerShrinkRequest) SetSessionAffinityAttributesShrink(v string) *UpdateLoadBalancerShrinkRequest {
-	s.SessionAffinityAttributesShrink = &v
 	return s
 }
 
@@ -61528,10 +61406,6 @@ func (client *Client) CreateLoadBalancerWithOptions(tmpReq *CreateLoadBalancerRe
 		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.SessionAffinityAttributes)) {
-		request.SessionAffinityAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionAffinityAttributes, tea.String("SessionAffinityAttributes"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdaptiveRoutingShrink)) {
 		query["AdaptiveRouting"] = request.AdaptiveRoutingShrink
@@ -61543,6 +61417,10 @@ func (client *Client) CreateLoadBalancerWithOptions(tmpReq *CreateLoadBalancerRe
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FallbackPool)) {
@@ -61571,10 +61449,6 @@ func (client *Client) CreateLoadBalancerWithOptions(tmpReq *CreateLoadBalancerRe
 
 	if !tea.BoolValue(util.IsUnset(request.SessionAffinity)) {
 		query["SessionAffinity"] = request.SessionAffinity
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionAffinityAttributesShrink)) {
-		query["SessionAffinityAttributes"] = request.SessionAffinityAttributesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -76566,10 +76440,6 @@ func (client *Client) SetCertificateWithOptions(request *SetCertificateRequest, 
 		body["Type"] = request.Type
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Update)) {
-		body["Update"] = request.Update
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
@@ -78505,10 +78375,6 @@ func (client *Client) UpdateLoadBalancerWithOptions(tmpReq *UpdateLoadBalancerRe
 		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.SessionAffinityAttributes)) {
-		request.SessionAffinityAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionAffinityAttributes, tea.String("SessionAffinityAttributes"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdaptiveRoutingShrink)) {
 		query["AdaptiveRouting"] = request.AdaptiveRoutingShrink
@@ -78520,6 +78386,10 @@ func (client *Client) UpdateLoadBalancerWithOptions(tmpReq *UpdateLoadBalancerRe
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FallbackPool)) {
@@ -78548,10 +78418,6 @@ func (client *Client) UpdateLoadBalancerWithOptions(tmpReq *UpdateLoadBalancerRe
 
 	if !tea.BoolValue(util.IsUnset(request.SessionAffinity)) {
 		query["SessionAffinity"] = request.SessionAffinity
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionAffinityAttributesShrink)) {
-		query["SessionAffinityAttributes"] = request.SessionAffinityAttributesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
