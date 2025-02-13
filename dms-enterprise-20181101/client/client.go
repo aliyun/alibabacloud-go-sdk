@@ -167,6 +167,148 @@ func (s *DLDatabase) SetParameters(v map[string]interface{}) *DLDatabase {
 	return s
 }
 
+type DLFunction struct {
+	CatalogName  *string          `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	ClassName    *string          `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	CreateTime   *int32           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId    *int64           `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	DbName       *string          `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	FunctionName *string          `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	FunctionType *string          `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	ModifierId   *int64           `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	OwnerName    *string          `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerType    *string          `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	ResourceUris []*DLResourceUri `json:"ResourceUris,omitempty" xml:"ResourceUris,omitempty" type:"Repeated"`
+}
+
+func (s DLFunction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLFunction) GoString() string {
+	return s.String()
+}
+
+func (s *DLFunction) SetCatalogName(v string) *DLFunction {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *DLFunction) SetClassName(v string) *DLFunction {
+	s.ClassName = &v
+	return s
+}
+
+func (s *DLFunction) SetCreateTime(v int32) *DLFunction {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DLFunction) SetCreatorId(v int64) *DLFunction {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *DLFunction) SetDbName(v string) *DLFunction {
+	s.DbName = &v
+	return s
+}
+
+func (s *DLFunction) SetFunctionName(v string) *DLFunction {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *DLFunction) SetFunctionType(v string) *DLFunction {
+	s.FunctionType = &v
+	return s
+}
+
+func (s *DLFunction) SetModifierId(v int64) *DLFunction {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *DLFunction) SetOwnerName(v string) *DLFunction {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *DLFunction) SetOwnerType(v string) *DLFunction {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *DLFunction) SetResourceUris(v []*DLResourceUri) *DLFunction {
+	s.ResourceUris = v
+	return s
+}
+
+type DLFunctionInput struct {
+	ClassName    *string          `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	CreateTime   *int32           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId    *int64           `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	FunctionName *string          `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	FunctionType *string          `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	ModifierId   *int64           `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	OwnerName    *string          `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerType    *string          `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	ResourceUris []*DLResourceUri `json:"ResourceUris,omitempty" xml:"ResourceUris,omitempty" type:"Repeated"`
+}
+
+func (s DLFunctionInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLFunctionInput) GoString() string {
+	return s.String()
+}
+
+func (s *DLFunctionInput) SetClassName(v string) *DLFunctionInput {
+	s.ClassName = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetCreateTime(v int32) *DLFunctionInput {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetCreatorId(v int64) *DLFunctionInput {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetFunctionName(v string) *DLFunctionInput {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetFunctionType(v string) *DLFunctionInput {
+	s.FunctionType = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetModifierId(v int64) *DLFunctionInput {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetOwnerName(v string) *DLFunctionInput {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetOwnerType(v string) *DLFunctionInput {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *DLFunctionInput) SetResourceUris(v []*DLResourceUri) *DLFunctionInput {
+	s.ResourceUris = v
+	return s
+}
+
 type DLOrder struct {
 	Col   *string `json:"Col,omitempty" xml:"Col,omitempty"`
 	Order *int32  `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -287,6 +429,29 @@ func (s *DLPartitionInput) SetStorageDescriptor(v *DLStorageDescriptor) *DLParti
 
 func (s *DLPartitionInput) SetValues(v []*string) *DLPartitionInput {
 	s.Values = v
+	return s
+}
+
+type DLResourceUri struct {
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DLResourceUri) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLResourceUri) GoString() string {
+	return s.String()
+}
+
+func (s *DLResourceUri) SetResourceType(v string) *DLResourceUri {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DLResourceUri) SetUri(v string) *DLResourceUri {
+	s.Uri = &v
 	return s
 }
 
@@ -65645,6 +65810,7 @@ type UpdateDataLakeTableRequest struct {
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// This parameter is required.
 	TableInput *OpenStructDLTableInput `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
+	TableName  *string                 `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// example:
 	//
 	// 3***
@@ -65679,6 +65845,11 @@ func (s *UpdateDataLakeTableRequest) SetTableInput(v *OpenStructDLTableInput) *U
 	return s
 }
 
+func (s *UpdateDataLakeTableRequest) SetTableName(v string) *UpdateDataLakeTableRequest {
+	s.TableName = &v
+	return s
+}
+
 func (s *UpdateDataLakeTableRequest) SetTid(v int64) *UpdateDataLakeTableRequest {
 	s.Tid = &v
 	return s
@@ -65705,6 +65876,7 @@ type UpdateDataLakeTableShrinkRequest struct {
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// This parameter is required.
 	TableInputShrink *string `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
+	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// example:
 	//
 	// 3***
@@ -65736,6 +65908,11 @@ func (s *UpdateDataLakeTableShrinkRequest) SetDbName(v string) *UpdateDataLakeTa
 
 func (s *UpdateDataLakeTableShrinkRequest) SetTableInputShrink(v string) *UpdateDataLakeTableShrinkRequest {
 	s.TableInputShrink = &v
+	return s
+}
+
+func (s *UpdateDataLakeTableShrinkRequest) SetTableName(v string) *UpdateDataLakeTableShrinkRequest {
+	s.TableName = &v
 	return s
 }
 
@@ -69298,7 +69475,8 @@ type UpdateUserRequest struct {
 	// example:
 	//
 	// 123456789
-	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Uid       *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	UidString *string `json:"UidString,omitempty" xml:"UidString,omitempty"`
 	// The nickname of the user.
 	//
 	// example:
@@ -69342,6 +69520,11 @@ func (s *UpdateUserRequest) SetTid(v int64) *UpdateUserRequest {
 
 func (s *UpdateUserRequest) SetUid(v int64) *UpdateUserRequest {
 	s.Uid = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetUidString(v string) *UpdateUserRequest {
+	s.UidString = &v
 	return s
 }
 
@@ -91644,6 +91827,10 @@ func (client *Client) UpdateDataLakeTableWithOptions(tmpReq *UpdateDataLakeTable
 		query["DbName"] = request.DbName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
 	}
@@ -93423,6 +93610,10 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Uid)) {
 		query["Uid"] = request.Uid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UidString)) {
+		query["UidString"] = request.UidString
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserNick)) {
