@@ -272,6 +272,7 @@ type BicyclingDirectionNovaRequest struct {
 	//
 	// 117.466485
 	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+	ShowPolyline    *bool   `json:"showPolyline,omitempty" xml:"showPolyline,omitempty"`
 }
 
 func (s BicyclingDirectionNovaRequest) String() string {
@@ -299,6 +300,11 @@ func (s *BicyclingDirectionNovaRequest) SetOriginLatitude(v string) *BicyclingDi
 
 func (s *BicyclingDirectionNovaRequest) SetOriginLongitude(v string) *BicyclingDirectionNovaRequest {
 	s.OriginLongitude = &v
+	return s
+}
+
+func (s *BicyclingDirectionNovaRequest) SetShowPolyline(v bool) *BicyclingDirectionNovaRequest {
+	s.ShowPolyline = &v
 	return s
 }
 
@@ -1033,6 +1039,7 @@ type DrivingDirectionNovaRequest struct {
 	// 116.466485
 	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
 	Plate           *string `json:"plate,omitempty" xml:"plate,omitempty"`
+	ShowPolyline    *bool   `json:"showPolyline,omitempty" xml:"showPolyline,omitempty"`
 }
 
 func (s DrivingDirectionNovaRequest) String() string {
@@ -1070,6 +1077,11 @@ func (s *DrivingDirectionNovaRequest) SetOriginLongitude(v string) *DrivingDirec
 
 func (s *DrivingDirectionNovaRequest) SetPlate(v string) *DrivingDirectionNovaRequest {
 	s.Plate = &v
+	return s
+}
+
+func (s *DrivingDirectionNovaRequest) SetShowPolyline(v bool) *DrivingDirectionNovaRequest {
+	s.ShowPolyline = &v
 	return s
 }
 
@@ -1440,6 +1452,7 @@ type ElectrobikeDirectionNovaRequest struct {
 	//
 	// 116.345456
 	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+	ShowPolyline    *bool   `json:"showPolyline,omitempty" xml:"showPolyline,omitempty"`
 }
 
 func (s ElectrobikeDirectionNovaRequest) String() string {
@@ -1467,6 +1480,11 @@ func (s *ElectrobikeDirectionNovaRequest) SetOriginLatitude(v string) *Electrobi
 
 func (s *ElectrobikeDirectionNovaRequest) SetOriginLongitude(v string) *ElectrobikeDirectionNovaRequest {
 	s.OriginLongitude = &v
+	return s
+}
+
+func (s *ElectrobikeDirectionNovaRequest) SetShowPolyline(v bool) *ElectrobikeDirectionNovaRequest {
+	s.ShowPolyline = &v
 	return s
 }
 
@@ -3449,6 +3467,7 @@ type TransitIntegratedDirectionRequest struct {
 	//
 	// 116.466485
 	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+	ShowPolyline    *bool   `json:"showPolyline,omitempty" xml:"showPolyline,omitempty"`
 }
 
 func (s TransitIntegratedDirectionRequest) String() string {
@@ -3486,6 +3505,11 @@ func (s *TransitIntegratedDirectionRequest) SetOriginLatitude(v string) *Transit
 
 func (s *TransitIntegratedDirectionRequest) SetOriginLongitude(v string) *TransitIntegratedDirectionRequest {
 	s.OriginLongitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionRequest) SetShowPolyline(v bool) *TransitIntegratedDirectionRequest {
+	s.ShowPolyline = &v
 	return s
 }
 
@@ -4793,6 +4817,7 @@ type WalkingDirectionNovaRequest struct {
 	//
 	// 116.466485
 	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+	ShowPolyline    *bool   `json:"showPolyline,omitempty" xml:"showPolyline,omitempty"`
 }
 
 func (s WalkingDirectionNovaRequest) String() string {
@@ -4820,6 +4845,11 @@ func (s *WalkingDirectionNovaRequest) SetOriginLatitude(v string) *WalkingDirect
 
 func (s *WalkingDirectionNovaRequest) SetOriginLongitude(v string) *WalkingDirectionNovaRequest {
 	s.OriginLongitude = &v
+	return s
+}
+
+func (s *WalkingDirectionNovaRequest) SetShowPolyline(v bool) *WalkingDirectionNovaRequest {
+	s.ShowPolyline = &v
 	return s
 }
 
@@ -5253,6 +5283,10 @@ func (client *Client) BicyclingDirectionNovaWithOptions(request *BicyclingDirect
 		query["originLongitude"] = request.OriginLongitude
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShowPolyline)) {
+		query["showPolyline"] = request.ShowPolyline
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5505,6 +5539,10 @@ func (client *Client) DrivingDirectionNovaWithOptions(request *DrivingDirectionN
 		query["plate"] = request.Plate
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShowPolyline)) {
+		query["showPolyline"] = request.ShowPolyline
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5590,6 +5628,10 @@ func (client *Client) ElectrobikeDirectionNovaWithOptions(request *ElectrobikeDi
 
 	if !tea.BoolValue(util.IsUnset(request.OriginLongitude)) {
 		query["originLongitude"] = request.OriginLongitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowPolyline)) {
+		query["showPolyline"] = request.ShowPolyline
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6467,6 +6509,10 @@ func (client *Client) TransitIntegratedDirectionWithOptions(request *TransitInte
 		query["originLongitude"] = request.OriginLongitude
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShowPolyline)) {
+		query["showPolyline"] = request.ShowPolyline
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -6552,6 +6598,10 @@ func (client *Client) WalkingDirectionNovaWithOptions(request *WalkingDirectionN
 
 	if !tea.BoolValue(util.IsUnset(request.OriginLongitude)) {
 		query["originLongitude"] = request.OriginLongitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowPolyline)) {
+		query["showPolyline"] = request.ShowPolyline
 	}
 
 	req := &openapi.OpenApiRequest{
