@@ -92,10 +92,9 @@ func (s *AkSkIdentityConfig) SetType(v string) *AkSkIdentityConfig {
 }
 
 type ApiKeyIdentityConfig struct {
-	Apikey       *string                           `json:"apikey,omitempty" xml:"apikey,omitempty"`
-	ApikeySource *ApiKeyIdentityConfigApikeySource `json:"apikeySource,omitempty" xml:"apikeySource,omitempty" type:"Struct"`
-	GenerateMode *string                           `json:"generateMode,omitempty" xml:"generateMode,omitempty"`
-	Type         *string                           `json:"type,omitempty" xml:"type,omitempty"`
+	ApikeySource *ApiKeyIdentityConfigApikeySource  `json:"apikeySource,omitempty" xml:"apikeySource,omitempty" type:"Struct"`
+	Credentials  []*ApiKeyIdentityConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
+	Type         *string                            `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ApiKeyIdentityConfig) String() string {
@@ -106,18 +105,13 @@ func (s ApiKeyIdentityConfig) GoString() string {
 	return s.String()
 }
 
-func (s *ApiKeyIdentityConfig) SetApikey(v string) *ApiKeyIdentityConfig {
-	s.Apikey = &v
-	return s
-}
-
 func (s *ApiKeyIdentityConfig) SetApikeySource(v *ApiKeyIdentityConfigApikeySource) *ApiKeyIdentityConfig {
 	s.ApikeySource = v
 	return s
 }
 
-func (s *ApiKeyIdentityConfig) SetGenerateMode(v string) *ApiKeyIdentityConfig {
-	s.GenerateMode = &v
+func (s *ApiKeyIdentityConfig) SetCredentials(v []*ApiKeyIdentityConfigCredentials) *ApiKeyIdentityConfig {
+	s.Credentials = v
 	return s
 }
 
@@ -146,6 +140,29 @@ func (s *ApiKeyIdentityConfigApikeySource) SetSource(v string) *ApiKeyIdentityCo
 
 func (s *ApiKeyIdentityConfigApikeySource) SetValue(v string) *ApiKeyIdentityConfigApikeySource {
 	s.Value = &v
+	return s
+}
+
+type ApiKeyIdentityConfigCredentials struct {
+	Apikey       *string `json:"apikey,omitempty" xml:"apikey,omitempty"`
+	GenerateMode *string `json:"generateMode,omitempty" xml:"generateMode,omitempty"`
+}
+
+func (s ApiKeyIdentityConfigCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiKeyIdentityConfigCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *ApiKeyIdentityConfigCredentials) SetApikey(v string) *ApiKeyIdentityConfigCredentials {
+	s.Apikey = &v
+	return s
+}
+
+func (s *ApiKeyIdentityConfigCredentials) SetGenerateMode(v string) *ApiKeyIdentityConfigCredentials {
+	s.GenerateMode = &v
 	return s
 }
 
@@ -450,6 +467,29 @@ func (s *Attachment) SetPolicyAttachmentId(v string) *Attachment {
 	return s
 }
 
+type AuthConfig struct {
+	AuthMode *string `json:"authMode,omitempty" xml:"authMode,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+}
+
+func (s AuthConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AuthConfig) SetAuthMode(v string) *AuthConfig {
+	s.AuthMode = &v
+	return s
+}
+
+func (s *AuthConfig) SetAuthType(v string) *AuthConfig {
+	s.AuthType = &v
+	return s
+}
+
 type AuthorizationResourceInfo struct {
 	EnvironmentId    *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
@@ -584,6 +624,35 @@ func (s CheckServiceLinkedRoleResult) GoString() string {
 
 func (s *CheckServiceLinkedRoleResult) SetExisted(v bool) *CheckServiceLinkedRoleResult {
 	s.Existed = &v
+	return s
+}
+
+type ConsumerInfo struct {
+	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	Enable     *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ConsumerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConsumerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ConsumerInfo) SetConsumerId(v string) *ConsumerInfo {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *ConsumerInfo) SetEnable(v bool) *ConsumerInfo {
+	s.Enable = &v
+	return s
+}
+
+func (s *ConsumerInfo) SetName(v string) *ConsumerInfo {
+	s.Name = &v
 	return s
 }
 
@@ -848,13 +917,15 @@ func (s *GatewayLogConfigSlsConfig) SetEnable(v bool) *GatewayLogConfigSlsConfig
 }
 
 type HttpApiApiInfo struct {
-	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	AiProtocols []*string   `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	AuthConfig  *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// example:
 	//
 	// /v1
 	BasePath      *string                       `json:"basePath,omitempty" xml:"basePath,omitempty"`
 	DeployConfigs []*HttpApiDeployConfig        `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	Description   *string                       `json:"description,omitempty" xml:"description,omitempty"`
+	EnabelAuth    *bool                         `json:"enabelAuth,omitempty" xml:"enabelAuth,omitempty"`
 	Environments  []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -890,6 +961,11 @@ func (s *HttpApiApiInfo) SetAiProtocols(v []*string) *HttpApiApiInfo {
 	return s
 }
 
+func (s *HttpApiApiInfo) SetAuthConfig(v *AuthConfig) *HttpApiApiInfo {
+	s.AuthConfig = v
+	return s
+}
+
 func (s *HttpApiApiInfo) SetBasePath(v string) *HttpApiApiInfo {
 	s.BasePath = &v
 	return s
@@ -902,6 +978,11 @@ func (s *HttpApiApiInfo) SetDeployConfigs(v []*HttpApiDeployConfig) *HttpApiApiI
 
 func (s *HttpApiApiInfo) SetDescription(v string) *HttpApiApiInfo {
 	s.Description = &v
+	return s
+}
+
+func (s *HttpApiApiInfo) SetEnabelAuth(v bool) *HttpApiApiInfo {
+	s.EnabelAuth = &v
 	return s
 }
 
@@ -1617,10 +1698,12 @@ func (s *HttpApiMockContract) SetResponseContent(v string) *HttpApiMockContract 
 }
 
 type HttpApiOperation struct {
+	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// example:
 	//
 	// 获取用户信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1652,8 +1735,18 @@ func (s HttpApiOperation) GoString() string {
 	return s.String()
 }
 
+func (s *HttpApiOperation) SetAuthConfig(v *AuthConfig) *HttpApiOperation {
+	s.AuthConfig = v
+	return s
+}
+
 func (s *HttpApiOperation) SetDescription(v string) *HttpApiOperation {
 	s.Description = &v
+	return s
+}
+
+func (s *HttpApiOperation) SetEnableAuth(v bool) *HttpApiOperation {
+	s.EnableAuth = &v
 	return s
 }
 
@@ -1688,6 +1781,7 @@ func (s *HttpApiOperation) SetResponse(v *HttpApiResponseContract) *HttpApiOpera
 }
 
 type HttpApiOperationInfo struct {
+	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// example:
 	//
 	// 1719386834548
@@ -1696,6 +1790,7 @@ type HttpApiOperationInfo struct {
 	//
 	// 获取用户信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// example:
 	//
 	// GET
@@ -1725,6 +1820,11 @@ func (s HttpApiOperationInfo) GoString() string {
 	return s.String()
 }
 
+func (s *HttpApiOperationInfo) SetAuthConfig(v *AuthConfig) *HttpApiOperationInfo {
+	s.AuthConfig = v
+	return s
+}
+
 func (s *HttpApiOperationInfo) SetCreateTimestamp(v int64) *HttpApiOperationInfo {
 	s.CreateTimestamp = &v
 	return s
@@ -1732,6 +1832,11 @@ func (s *HttpApiOperationInfo) SetCreateTimestamp(v int64) *HttpApiOperationInfo
 
 func (s *HttpApiOperationInfo) SetDescription(v string) *HttpApiOperationInfo {
 	s.Description = &v
+	return s
+}
+
+func (s *HttpApiOperationInfo) SetEnableAuth(v bool) *HttpApiOperationInfo {
+	s.EnableAuth = &v
 	return s
 }
 
@@ -4041,8 +4146,8 @@ func (s *SubDomainInfo) SetProtocol(v string) *SubDomainInfo {
 }
 
 type TlsCipherSuitesConfig struct {
-	CipherSuites []*TlsCipherSuitesConfigCipherSuites `json:"cipherSuites,omitempty" xml:"cipherSuites,omitempty" type:"Repeated"`
-	ConfigType   *string                              `json:"configType,omitempty" xml:"configType,omitempty"`
+	ConfigType     *string                                `json:"configType,omitempty" xml:"configType,omitempty"`
+	TlsCipherSuite []*TlsCipherSuitesConfigTlsCipherSuite `json:"tlsCipherSuite,omitempty" xml:"tlsCipherSuite,omitempty" type:"Repeated"`
 }
 
 func (s TlsCipherSuitesConfig) String() string {
@@ -4053,35 +4158,35 @@ func (s TlsCipherSuitesConfig) GoString() string {
 	return s.String()
 }
 
-func (s *TlsCipherSuitesConfig) SetCipherSuites(v []*TlsCipherSuitesConfigCipherSuites) *TlsCipherSuitesConfig {
-	s.CipherSuites = v
-	return s
-}
-
 func (s *TlsCipherSuitesConfig) SetConfigType(v string) *TlsCipherSuitesConfig {
 	s.ConfigType = &v
 	return s
 }
 
-type TlsCipherSuitesConfigCipherSuites struct {
+func (s *TlsCipherSuitesConfig) SetTlsCipherSuite(v []*TlsCipherSuitesConfigTlsCipherSuite) *TlsCipherSuitesConfig {
+	s.TlsCipherSuite = v
+	return s
+}
+
+type TlsCipherSuitesConfigTlsCipherSuite struct {
 	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
 	SupportVersions []*string `json:"supportVersions,omitempty" xml:"supportVersions,omitempty" type:"Repeated"`
 }
 
-func (s TlsCipherSuitesConfigCipherSuites) String() string {
+func (s TlsCipherSuitesConfigTlsCipherSuite) String() string {
 	return tea.Prettify(s)
 }
 
-func (s TlsCipherSuitesConfigCipherSuites) GoString() string {
+func (s TlsCipherSuitesConfigTlsCipherSuite) GoString() string {
 	return s.String()
 }
 
-func (s *TlsCipherSuitesConfigCipherSuites) SetName(v string) *TlsCipherSuitesConfigCipherSuites {
+func (s *TlsCipherSuitesConfigTlsCipherSuite) SetName(v string) *TlsCipherSuitesConfigTlsCipherSuite {
 	s.Name = &v
 	return s
 }
 
-func (s *TlsCipherSuitesConfigCipherSuites) SetSupportVersions(v []*string) *TlsCipherSuitesConfigCipherSuites {
+func (s *TlsCipherSuitesConfigTlsCipherSuite) SetSupportVersions(v []*string) *TlsCipherSuitesConfigTlsCipherSuite {
 	s.SupportVersions = v
 	return s
 }
@@ -4199,6 +4304,102 @@ func (s *AddGatewaySecurityGroupRuleResponse) SetBody(v *AddGatewaySecurityGroup
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	// example:
+	//
+	// rg-aekzdrfx2xdnaja
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// gw-ct4i14um1hkn0tpqfae0
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// gateway
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// apig
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetService(v string) *ChangeResourceGroupRequest {
+	s.Service = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	// example:
+	//
+	// 59F86F37-787A-52DB-9475-DB5A255517F0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDomainRequest struct {
 	// CA Certificate Identifier.
 	//
@@ -4243,8 +4444,14 @@ type CreateDomainRequest struct {
 	// example:
 	//
 	// HTTP
-	Protocol              *string                `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	ResourceGroupId       *string                `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzoiafjtr7zyq
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The TLS cipher suites config.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
 	// Maximum TLS protocol version, supports up to TLS 1.3.
 	//
@@ -4450,7 +4657,12 @@ type CreateEnvironmentRequest struct {
 	// example:
 	//
 	// test
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmycs5expl7oq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
@@ -4590,13 +4802,16 @@ func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *C
 }
 
 type CreateHttpApiRequest struct {
-	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	// The AI protocols list.
+	AiProtocols []*string   `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	AuthConfig  *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// Base path of the API, which must start with a \\"/\\".
 	//
 	// example:
 	//
 	// /v1
-	BasePath      *string                `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	// The deploy configs.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// Description of the API.
 	//
@@ -4604,6 +4819,7 @@ type CreateHttpApiRequest struct {
 	//
 	// 测试专用API。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// Configuration information for the HTTP Ingress API.
 	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
 	// Name of the API.
@@ -4615,8 +4831,13 @@ type CreateHttpApiRequest struct {
 	// test-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// List of API access protocols.
-	Protocols       []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	ResourceGroupId *string   `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzgvmlotionbi
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Type of the HTTP API.
 	//
 	// - Http
@@ -4648,6 +4869,11 @@ func (s *CreateHttpApiRequest) SetAiProtocols(v []*string) *CreateHttpApiRequest
 	return s
 }
 
+func (s *CreateHttpApiRequest) SetAuthConfig(v *AuthConfig) *CreateHttpApiRequest {
+	s.AuthConfig = v
+	return s
+}
+
 func (s *CreateHttpApiRequest) SetBasePath(v string) *CreateHttpApiRequest {
 	s.BasePath = &v
 	return s
@@ -4660,6 +4886,11 @@ func (s *CreateHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *Creat
 
 func (s *CreateHttpApiRequest) SetDescription(v string) *CreateHttpApiRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateHttpApiRequest) SetEnableAuth(v bool) *CreateHttpApiRequest {
+	s.EnableAuth = &v
 	return s
 }
 
@@ -5010,6 +5241,586 @@ func (s *CreateHttpApiOperationResponse) SetBody(v *CreateHttpApiOperationRespon
 	return s
 }
 
+type CreateHttpApiRouteRequest struct {
+	// Backend service configuration for the route.
+	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	// Route description.
+	//
+	// example:
+	//
+	// 用户登陆路由。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Domain IDs.
+	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// Environment ID.
+	//
+	// example:
+	//
+	// env-cpqnr6tlhtgubcv***
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Route match rules.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// Route name.
+	//
+	// example:
+	//
+	// login
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateHttpApiRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteRequest) SetBackendConfig(v *CreateHttpApiRouteRequestBackendConfig) *CreateHttpApiRouteRequest {
+	s.BackendConfig = v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetDescription(v string) *CreateHttpApiRouteRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetDomainIds(v []*string) *CreateHttpApiRouteRequest {
+	s.DomainIds = v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetEnvironmentId(v string) *CreateHttpApiRouteRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetMatch(v *HttpRouteMatch) *CreateHttpApiRouteRequest {
+	s.Match = v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetName(v string) *CreateHttpApiRouteRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateHttpApiRouteRequestBackendConfig struct {
+	// Backend service scenario.
+	//
+	// - SingleService: Single service.
+	//
+	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
+	//
+	// - Mock: Mock service.
+	//
+	// - Redirect: Redirect service.
+	//
+	// example:
+	//
+	// SingleService
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// List of backend services.
+	Services []*CreateHttpApiRouteRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+}
+
+func (s CreateHttpApiRouteRequestBackendConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRouteRequestBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfig) SetScene(v string) *CreateHttpApiRouteRequestBackendConfig {
+	s.Scene = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfig) SetServices(v []*CreateHttpApiRouteRequestBackendConfigServices) *CreateHttpApiRouteRequestBackendConfig {
+	s.Services = v
+	return s
+}
+
+type CreateHttpApiRouteRequestBackendConfigServices struct {
+	// Service port, not provided for dynamic ports.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Service protocol:
+	//
+	// - HTTP.
+	//
+	// - HTTPS.
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Service ID.
+	//
+	// example:
+	//
+	// svc-crbgq0dlhtgr***
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Service version, valid only in label-based scenarios.
+	//
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Percentage value of traffic distribution.
+	//
+	// example:
+	//
+	// 49
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s CreateHttpApiRouteRequestBackendConfigServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRouteRequestBackendConfigServices) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetPort(v int32) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetProtocol(v string) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetServiceId(v string) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetVersion(v string) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.Version = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetWeight(v int32) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.Weight = &v
+	return s
+}
+
+type CreateHttpApiRouteResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
+	Data *CreateHttpApiRouteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 3ACFC7A7-45A9-58CF-B2D5-765B60254695
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateHttpApiRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteResponseBody) SetCode(v string) *CreateHttpApiRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteResponseBody) SetData(v *CreateHttpApiRouteResponseBodyData) *CreateHttpApiRouteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateHttpApiRouteResponseBody) SetMessage(v string) *CreateHttpApiRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteResponseBody) SetRequestId(v string) *CreateHttpApiRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHttpApiRouteResponseBodyData struct {
+	// Route ID。
+	//
+	// example:
+	//
+	// hr-cr82undlhtgrlej***
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+}
+
+func (s CreateHttpApiRouteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRouteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteResponseBodyData) SetRouteId(v string) *CreateHttpApiRouteResponseBodyData {
+	s.RouteId = &v
+	return s
+}
+
+type CreateHttpApiRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHttpApiRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHttpApiRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteResponse) SetHeaders(v map[string]*string) *CreateHttpApiRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHttpApiRouteResponse) SetStatusCode(v int32) *CreateHttpApiRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteResponse) SetBody(v *CreateHttpApiRouteResponseBody) *CreateHttpApiRouteResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Timeout
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"unitNum":1,"timeUnit":"s","enable":true}
+	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-policy
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreatePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyRequest) SetClassName(v string) *CreatePolicyRequest {
+	s.ClassName = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetConfig(v string) *CreatePolicyRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetDescription(v string) *CreatePolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetName(v string) *CreatePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+type CreatePolicyResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreatePolicyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 393E2630-DBE7-5221-AB35-9E7406754***
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreatePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponseBody) SetCode(v string) *CreatePolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetData(v *CreatePolicyResponseBodyData) *CreatePolicyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetMessage(v string) *CreatePolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePolicyResponseBodyData struct {
+	// example:
+	//
+	// p-cq7l5s5lhtgi6qasr***
+	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+}
+
+func (s CreatePolicyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponseBodyData) SetPolicyId(v string) *CreatePolicyResponseBodyData {
+	s.PolicyId = &v
+	return s
+}
+
+type CreatePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponse) SetHeaders(v map[string]*string) *CreatePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetStatusCode(v int32) *CreatePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePolicyAttachmentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// api-cu07jj6m1hkokaus***
+	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HttpApi
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// env-cquqsollhtgid***
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-cq7l5s5lhtgi6qas***
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-cq787etlhtghrptjg***
+	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+}
+
+func (s CreatePolicyAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyAttachmentRequest) SetAttachResourceId(v string) *CreatePolicyAttachmentRequest {
+	s.AttachResourceId = &v
+	return s
+}
+
+func (s *CreatePolicyAttachmentRequest) SetAttachResourceType(v string) *CreatePolicyAttachmentRequest {
+	s.AttachResourceType = &v
+	return s
+}
+
+func (s *CreatePolicyAttachmentRequest) SetEnvironmentId(v string) *CreatePolicyAttachmentRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreatePolicyAttachmentRequest) SetGatewayId(v string) *CreatePolicyAttachmentRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreatePolicyAttachmentRequest) SetPolicyId(v string) *CreatePolicyAttachmentRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type CreatePolicyAttachmentResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreatePolicyAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 585657D2-1C20-5B8A-AF17-D727C64***
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreatePolicyAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyAttachmentResponseBody) SetCode(v string) *CreatePolicyAttachmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePolicyAttachmentResponseBody) SetData(v *CreatePolicyAttachmentResponseBodyData) *CreatePolicyAttachmentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePolicyAttachmentResponseBody) SetMessage(v string) *CreatePolicyAttachmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePolicyAttachmentResponseBody) SetRequestId(v string) *CreatePolicyAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePolicyAttachmentResponseBodyData struct {
+	// example:
+	//
+	// pr-cqooju5lhtgquuj6***
+	PolicyAttachmentId *string `json:"policyAttachmentId,omitempty" xml:"policyAttachmentId,omitempty"`
+}
+
+func (s CreatePolicyAttachmentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyAttachmentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyAttachmentResponseBodyData) SetPolicyAttachmentId(v string) *CreatePolicyAttachmentResponseBodyData {
+	s.PolicyAttachmentId = &v
+	return s
+}
+
+type CreatePolicyAttachmentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePolicyAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyAttachmentResponse) SetHeaders(v map[string]*string) *CreatePolicyAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePolicyAttachmentResponse) SetStatusCode(v int32) *CreatePolicyAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePolicyAttachmentResponse) SetBody(v *CreatePolicyAttachmentResponseBody) *CreatePolicyAttachmentResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDomainResponseBody struct {
 	// Response code.
 	//
@@ -5229,6 +6040,101 @@ func (s *DeleteGatewayResponse) SetBody(v *DeleteGatewayResponseBody) *DeleteGat
 	return s
 }
 
+type DeleteGatewaySecurityGroupRuleRequest struct {
+	// Whether to cascade delete the security group rules.
+	//
+	// example:
+	//
+	// true
+	CascadingDelete *bool `json:"cascadingDelete,omitempty" xml:"cascadingDelete,omitempty"`
+}
+
+func (s DeleteGatewaySecurityGroupRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewaySecurityGroupRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewaySecurityGroupRuleRequest) SetCascadingDelete(v bool) *DeleteGatewaySecurityGroupRuleRequest {
+	s.CascadingDelete = &v
+	return s
+}
+
+type DeleteGatewaySecurityGroupRuleResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 8F94B3CC-F4BA-511E-8367-ECBBE486E595
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteGatewaySecurityGroupRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewaySecurityGroupRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewaySecurityGroupRuleResponseBody) SetCode(v string) *DeleteGatewaySecurityGroupRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteGatewaySecurityGroupRuleResponseBody) SetMessage(v string) *DeleteGatewaySecurityGroupRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGatewaySecurityGroupRuleResponseBody) SetRequestId(v string) *DeleteGatewaySecurityGroupRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewaySecurityGroupRuleResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGatewaySecurityGroupRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteGatewaySecurityGroupRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewaySecurityGroupRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewaySecurityGroupRuleResponse) SetHeaders(v map[string]*string) *DeleteGatewaySecurityGroupRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewaySecurityGroupRuleResponse) SetStatusCode(v int32) *DeleteGatewaySecurityGroupRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewaySecurityGroupRuleResponse) SetBody(v *DeleteGatewaySecurityGroupRuleResponseBody) *DeleteGatewaySecurityGroupRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteHttpApiResponseBody struct {
 	// Response status code.
 	//
@@ -5375,6 +6281,825 @@ func (s *DeleteHttpApiOperationResponse) SetBody(v *DeleteHttpApiOperationRespon
 	return s
 }
 
+type DeleteHttpApiRouteResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0F138FFC-6E2B-56C1-9BAB-A67462E339D1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteHttpApiRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpApiRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpApiRouteResponseBody) SetCode(v string) *DeleteHttpApiRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHttpApiRouteResponseBody) SetMessage(v string) *DeleteHttpApiRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHttpApiRouteResponseBody) SetRequestId(v string) *DeleteHttpApiRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHttpApiRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHttpApiRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHttpApiRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHttpApiRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHttpApiRouteResponse) SetHeaders(v map[string]*string) *DeleteHttpApiRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHttpApiRouteResponse) SetStatusCode(v int32) *DeleteHttpApiRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHttpApiRouteResponse) SetBody(v *DeleteHttpApiRouteResponseBody) *DeleteHttpApiRouteResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePolicyResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 393E2630-DBE7-5221-AB35-9E7406754***
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeletePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponseBody) SetCode(v string) *DeletePolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePolicyResponseBody) SetMessage(v string) *DeletePolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponse) SetHeaders(v map[string]*string) *DeletePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetStatusCode(v int32) *DeletePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetBody(v *DeletePolicyResponseBody) *DeletePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePolicyAttachmentResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// CE857A85-251D-5018-8103-A38957D71***
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeletePolicyAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyAttachmentResponseBody) SetCode(v string) *DeletePolicyAttachmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePolicyAttachmentResponseBody) SetMessage(v string) *DeletePolicyAttachmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePolicyAttachmentResponseBody) SetRequestId(v string) *DeletePolicyAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePolicyAttachmentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePolicyAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyAttachmentResponse) SetHeaders(v map[string]*string) *DeletePolicyAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyAttachmentResponse) SetStatusCode(v int32) *DeletePolicyAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicyAttachmentResponse) SetBody(v *DeletePolicyAttachmentResponseBody) *DeletePolicyAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeployHttpApiRequest struct {
+	RestApiConfig *DeployHttpApiRequestRestApiConfig `json:"restApiConfig,omitempty" xml:"restApiConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// hr-cr82undlhtgrl***
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+}
+
+func (s DeployHttpApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployHttpApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiRequest) SetRestApiConfig(v *DeployHttpApiRequestRestApiConfig) *DeployHttpApiRequest {
+	s.RestApiConfig = v
+	return s
+}
+
+func (s *DeployHttpApiRequest) SetRouteId(v string) *DeployHttpApiRequest {
+	s.RouteId = &v
+	return s
+}
+
+type DeployHttpApiRequestRestApiConfig struct {
+	Description *string                                       `json:"description,omitempty" xml:"description,omitempty"`
+	Environment *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	// example:
+	//
+	// apr-xxx
+	RevisionId *string `json:"revisionId,omitempty" xml:"revisionId,omitempty"`
+}
+
+func (s DeployHttpApiRequestRestApiConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployHttpApiRequestRestApiConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiRequestRestApiConfig) SetDescription(v string) *DeployHttpApiRequestRestApiConfig {
+	s.Description = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfig) SetEnvironment(v *DeployHttpApiRequestRestApiConfigEnvironment) *DeployHttpApiRequestRestApiConfig {
+	s.Environment = v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfig) SetRevisionId(v string) *DeployHttpApiRequestRestApiConfig {
+	s.RevisionId = &v
+	return s
+}
+
+type DeployHttpApiRequestRestApiConfigEnvironment struct {
+	// example:
+	//
+	// SingleService
+	BackendScene    *string   `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
+	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// env-cpqnr6tlhtgubc***
+	EnvironmentId  *string                                                       `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	ServiceConfigs []*DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+}
+
+func (s DeployHttpApiRequestRestApiConfigEnvironment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployHttpApiRequestRestApiConfigEnvironment) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironment) SetBackendScene(v string) *DeployHttpApiRequestRestApiConfigEnvironment {
+	s.BackendScene = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironment) SetCustomDomainIds(v []*string) *DeployHttpApiRequestRestApiConfigEnvironment {
+	s.CustomDomainIds = v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironment) SetEnvironmentId(v string) *DeployHttpApiRequestRestApiConfigEnvironment {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironment) SetServiceConfigs(v []*DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) *DeployHttpApiRequestRestApiConfigEnvironment {
+	s.ServiceConfigs = v
+	return s
+}
+
+type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// svc-cr6pk4tlhtgm58e***
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// 49
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetMatch(v *HttpApiBackendMatchConditions) *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs {
+	s.Match = v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetPort(v int32) *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs {
+	s.Port = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetProtocol(v string) *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetServiceId(v string) *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetVersion(v string) *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs {
+	s.Version = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetWeight(v int32) *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs {
+	s.Weight = &v
+	return s
+}
+
+type DeployHttpApiResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 0C2D1C68-0D93-5561-8EE6-FDB7BF067A30
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeployHttpApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployHttpApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiResponseBody) SetCode(v string) *DeployHttpApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeployHttpApiResponseBody) SetMessage(v string) *DeployHttpApiResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeployHttpApiResponseBody) SetRequestId(v string) *DeployHttpApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeployHttpApiResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployHttpApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployHttpApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiResponse) SetHeaders(v map[string]*string) *DeployHttpApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployHttpApiResponse) SetStatusCode(v int32) *DeployHttpApiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployHttpApiResponse) SetBody(v *DeployHttpApiResponseBody) *DeployHttpApiResponse {
+	s.Body = v
+	return s
+}
+
+type ExportHttpApiResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// API definition information.
+	Data *ExportHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 4BACB05C-3FE2-588F-9148-700C5C026B74
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ExportHttpApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportHttpApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportHttpApiResponseBody) SetCode(v string) *ExportHttpApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportHttpApiResponseBody) SetData(v *ExportHttpApiResponseBodyData) *ExportHttpApiResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExportHttpApiResponseBody) SetMessage(v string) *ExportHttpApiResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportHttpApiResponseBody) SetRequestId(v string) *ExportHttpApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportHttpApiResponseBodyData struct {
+	// Base64编码的API定义。
+	//
+	// example:
+	//
+	// b3BlbmFwaTogMy4wLjAKaW5mbzoKICAgIHRpdGxlOiBkZW1vCiAgICBkZXNjcmlwdGlvbjogdGhpc2lzZGVtbwogICAgdmVyc2lvbjogIiIKcGF0aHM6CiAgICAvdXNlci97dXNlcklkfToKICAgICAgICBnZXQ6CiAgICAgICAgICAgIHN1bW1hcnk6IOiOt+WPlueUqOaIt+S/oeaBrwogICAgICAgICAgICBkZXNjcmlwdGlvbjog6I635Y+W55So5oi35L+h5oGvCiAgICAgICAgICAgIG9wZXJhdGlvbklkOiBHZXRVc2VySW5mbwogICAgICAgICAgICByZXNwb25zZXM6CiAgICAgICAgICAgICAgICAiMjAwIjoKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjog5oiQ5YqfCiAgICAgICAgICAgICAgICAgICAgY29udGVudDoKICAgICAgICAgICAgICAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04OgogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2NoZW1hOiBudWxsCnNlcnZlcnM6CiAgICAtIHVybDogaHR0cDovL2FwaS5leGFtcGxlLmNvbS92MQo=
+	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
+}
+
+func (s ExportHttpApiResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportHttpApiResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExportHttpApiResponseBodyData) SetSpecContentBase64(v string) *ExportHttpApiResponseBodyData {
+	s.SpecContentBase64 = &v
+	return s
+}
+
+type ExportHttpApiResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportHttpApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportHttpApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportHttpApiResponse) SetHeaders(v map[string]*string) *ExportHttpApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportHttpApiResponse) SetStatusCode(v int32) *ExportHttpApiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportHttpApiResponse) SetBody(v *ExportHttpApiResponseBody) *ExportHttpApiResponse {
+	s.Body = v
+	return s
+}
+
+type GetDashboardRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string                    `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
+	ApiId          *string                    `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	Filter         *GetDashboardRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// PLUGIN
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// pls-dn82a9djd8z****
+	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// example:
+	//
+	// SLS
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s GetDashboardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDashboardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDashboardRequest) SetAcceptLanguage(v string) *GetDashboardRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetDashboardRequest) SetApiId(v string) *GetDashboardRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *GetDashboardRequest) SetFilter(v *GetDashboardRequestFilter) *GetDashboardRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *GetDashboardRequest) SetName(v string) *GetDashboardRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDashboardRequest) SetPluginClassId(v string) *GetDashboardRequest {
+	s.PluginClassId = &v
+	return s
+}
+
+func (s *GetDashboardRequest) SetSource(v string) *GetDashboardRequest {
+	s.Source = &v
+	return s
+}
+
+type GetDashboardRequestFilter struct {
+	// example:
+	//
+	// test-route
+	RouteName *string `json:"routeName,omitempty" xml:"routeName,omitempty"`
+}
+
+func (s GetDashboardRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDashboardRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetDashboardRequestFilter) SetRouteName(v string) *GetDashboardRequestFilter {
+	s.RouteName = &v
+	return s
+}
+
+type GetDashboardShrinkRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
+	ApiId          *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	FilterShrink   *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// example:
+	//
+	// PLUGIN
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// pls-dn82a9djd8z****
+	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// example:
+	//
+	// SLS
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s GetDashboardShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDashboardShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDashboardShrinkRequest) SetAcceptLanguage(v string) *GetDashboardShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetDashboardShrinkRequest) SetApiId(v string) *GetDashboardShrinkRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *GetDashboardShrinkRequest) SetFilterShrink(v string) *GetDashboardShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *GetDashboardShrinkRequest) SetName(v string) *GetDashboardShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDashboardShrinkRequest) SetPluginClassId(v string) *GetDashboardShrinkRequest {
+	s.PluginClassId = &v
+	return s
+}
+
+func (s *GetDashboardShrinkRequest) SetSource(v string) *GetDashboardShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+type GetDashboardResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                        `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetDashboardResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Ok
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32AF2C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDashboardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDashboardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDashboardResponseBody) SetCode(v int32) *GetDashboardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDashboardResponseBody) SetData(v *GetDashboardResponseBodyData) *GetDashboardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDashboardResponseBody) SetErrorCode(v string) *GetDashboardResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDashboardResponseBody) SetMessage(v string) *GetDashboardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDashboardResponseBody) SetRequestId(v string) *GetDashboardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDashboardResponseBody) SetSuccess(v bool) *GetDashboardResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDashboardResponseBodyData struct {
+	// example:
+	//
+	// gw-co370icmjeu****
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// PLUGIN
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// APIG Plugin
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://sls.console.aliyun.com/lognext/project/xxxxx
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetDashboardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDashboardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDashboardResponseBodyData) SetGatewayId(v string) *GetDashboardResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GetDashboardResponseBodyData) SetName(v string) *GetDashboardResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDashboardResponseBodyData) SetTitle(v string) *GetDashboardResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *GetDashboardResponseBodyData) SetUrl(v string) *GetDashboardResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type GetDashboardResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDashboardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDashboardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDashboardResponse) SetHeaders(v map[string]*string) *GetDashboardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDashboardResponse) SetStatusCode(v int32) *GetDashboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDashboardResponse) SetBody(v *GetDashboardResponseBody) *GetDashboardResponse {
+	s.Body = v
+	return s
+}
+
 type GetDomainRequest struct {
 	WithStatistics *bool `json:"withStatistics,omitempty" xml:"withStatistics,omitempty"`
 }
@@ -5449,19 +7174,9 @@ type GetDomainResponseBodyData struct {
 	// example:
 	//
 	// RSA
-	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	// Cloud Shield CA certificate identity.
-	//
-	// example:
-	//
-	// 223576-cn-hangzhou
-	CaCertIndentifier *string `json:"caCertIndentifier,omitempty" xml:"caCertIndentifier,omitempty"`
-	// Cloud Shield certificate identity.
-	//
-	// example:
-	//
-	// 123576-cn-hangzhou
-	CertIndentifier *string `json:"certIndentifier,omitempty" xml:"certIndentifier,omitempty"`
+	Algorithm        *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
+	CertIdentifier   *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
 	// Certificate name
 	//
 	// example:
@@ -5580,13 +7295,13 @@ func (s *GetDomainResponseBodyData) SetAlgorithm(v string) *GetDomainResponseBod
 	return s
 }
 
-func (s *GetDomainResponseBodyData) SetCaCertIndentifier(v string) *GetDomainResponseBodyData {
-	s.CaCertIndentifier = &v
+func (s *GetDomainResponseBodyData) SetCaCertIdentifier(v string) *GetDomainResponseBodyData {
+	s.CaCertIdentifier = &v
 	return s
 }
 
-func (s *GetDomainResponseBodyData) SetCertIndentifier(v string) *GetDomainResponseBodyData {
-	s.CertIndentifier = &v
+func (s *GetDomainResponseBodyData) SetCertIdentifier(v string) *GetDomainResponseBodyData {
+	s.CertIdentifier = &v
 	return s
 }
 
@@ -5738,8 +7453,17 @@ func (s *GetDomainResponse) SetBody(v *GetDomainResponseBody) *GetDomainResponse
 }
 
 type GetEnvironmentRequest struct {
+	// Indicates whether to return online resource info.
+	//
+	// example:
+	//
+	// true
 	WithStatistics *bool `json:"withStatistics,omitempty" xml:"withStatistics,omitempty"`
 	// Option for vpc info.
+	//
+	// example:
+	//
+	// true
 	WithVpcInfo *bool `json:"withVpcInfo,omitempty" xml:"withVpcInfo,omitempty"`
 }
 
@@ -5850,9 +7574,15 @@ type GetEnvironmentResponseBodyData struct {
 	// example:
 	//
 	// test
-	Name            *string                                       `json:"name,omitempty" xml:"name,omitempty"`
-	ResourceGroupId *string                                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	StatisticsInfo  *GetEnvironmentResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzzzntl5njbpi
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Related resource information.
+	StatisticsInfo *GetEnvironmentResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
 	// List of subdomains.
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	// Update timestamp.
@@ -5927,8 +7657,14 @@ func (s *GetEnvironmentResponseBodyData) SetUpdateTimestamp(v int64) *GetEnviron
 }
 
 type GetEnvironmentResponseBodyDataStatisticsInfo struct {
+	// The array of related resource information.
 	ResourceStatistics []*ResourceStatistic `json:"resourceStatistics,omitempty" xml:"resourceStatistics,omitempty" type:"Repeated"`
-	TotalCount         *int32               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 4
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s GetEnvironmentResponseBodyDataStatisticsInfo) String() string {
@@ -6081,7 +7817,12 @@ type GetGatewayResponseBodyData struct {
 	// example:
 	//
 	// 2
-	Replicas        *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	Replicas *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek2s3cvc4jzfxi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The security group of the gateway.
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
@@ -6116,8 +7857,9 @@ type GetGatewayResponseBodyData struct {
 	// example:
 	//
 	// Running
-	Status *string                           `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The resource tags.
+	Tags []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// Target version of the gateway. When it is inconsistent with the current version, an upgrade can be performed.
 	//
 	// example:
@@ -6491,7 +8233,17 @@ func (s *GetGatewayResponseBodyDataSecurityGroup) SetSecurityGroupId(v string) *
 }
 
 type GetGatewayResponseBodyDataTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key of the resource.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value of the resource.
+	//
+	// example:
+	//
+	// zhangsan
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -6842,15 +8594,22 @@ func (s *GetHttpApiOperationResponse) SetBody(v *GetHttpApiOperationResponseBody
 }
 
 type GetHttpApiRouteResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string    `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Route detail data.
 	Data *HttpRoute `json:"data,omitempty" xml:"data,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 3ACFC7A7-45A9-58CF-B2D5-765B60254695
@@ -6914,6 +8673,1060 @@ func (s *GetHttpApiRouteResponse) SetBody(v *GetHttpApiRouteResponseBody) *GetHt
 	return s
 }
 
+type GetPolicyResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string           `json:"code,omitempty" xml:"code,omitempty"`
+	Data *PolicyDetailInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32A***
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBody) SetCode(v string) *GetPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetData(v *PolicyDetailInfo) *GetPolicyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetMessage(v string) *GetPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPolicyResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponse) SetHeaders(v map[string]*string) *GetPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPolicyResponse) SetStatusCode(v int32) *GetPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type GetPolicyAttachmentResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetPolicyAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2C3B9A12-3868-5EB9-fBEA-F99E03DD1***
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetPolicyAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAttachmentResponseBody) SetCode(v string) *GetPolicyAttachmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBody) SetData(v *GetPolicyAttachmentResponseBodyData) *GetPolicyAttachmentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBody) SetMessage(v string) *GetPolicyAttachmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBody) SetRequestId(v string) *GetPolicyAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPolicyAttachmentResponseBodyData struct {
+	// example:
+	//
+	// op-csbkd9llhtgqhqua***
+	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// example:
+	//
+	// Operation
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// example:
+	//
+	// {"unitNum":1,"timeUnit":"s","enable":true}
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// example:
+	//
+	// env-cq7l5s5lhtgi6qa***
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// gw-cq2vundlhtg***
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// pr-cqoojualhtgquuj***
+	PolicyAttachmentId *string `json:"policyAttachmentId,omitempty" xml:"policyAttachmentId,omitempty"`
+	// example:
+	//
+	// p-cq7l5s5bblhtgi6qas***
+	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+}
+
+func (s GetPolicyAttachmentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAttachmentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAttachmentResponseBodyData) SetAttachResourceId(v string) *GetPolicyAttachmentResponseBodyData {
+	s.AttachResourceId = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBodyData) SetAttachResourceType(v string) *GetPolicyAttachmentResponseBodyData {
+	s.AttachResourceType = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBodyData) SetConfig(v string) *GetPolicyAttachmentResponseBodyData {
+	s.Config = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBodyData) SetEnvironmentId(v string) *GetPolicyAttachmentResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBodyData) SetGatewayId(v string) *GetPolicyAttachmentResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBodyData) SetPolicyAttachmentId(v string) *GetPolicyAttachmentResponseBodyData {
+	s.PolicyAttachmentId = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponseBodyData) SetPolicyId(v string) *GetPolicyAttachmentResponseBodyData {
+	s.PolicyId = &v
+	return s
+}
+
+type GetPolicyAttachmentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPolicyAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAttachmentResponse) SetHeaders(v map[string]*string) *GetPolicyAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponse) SetStatusCode(v int32) *GetPolicyAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPolicyAttachmentResponse) SetBody(v *GetPolicyAttachmentResponseBody) *GetPolicyAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type GetResourceOverviewResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetResourceOverviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD19A442-93C5-5C97-AFA0-B9C57EBD781B
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetResourceOverviewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceOverviewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewResponseBody) SetCode(v string) *GetResourceOverviewResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBody) SetData(v *GetResourceOverviewResponseBodyData) *GetResourceOverviewResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBody) SetMessage(v string) *GetResourceOverviewResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBody) SetRequestId(v string) *GetResourceOverviewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetResourceOverviewResponseBodyData struct {
+	Api     *GetResourceOverviewResponseBodyDataApi     `json:"api,omitempty" xml:"api,omitempty" type:"Struct"`
+	Gateway *GetResourceOverviewResponseBodyDataGateway `json:"gateway,omitempty" xml:"gateway,omitempty" type:"Struct"`
+}
+
+func (s GetResourceOverviewResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceOverviewResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewResponseBodyData) SetApi(v *GetResourceOverviewResponseBodyDataApi) *GetResourceOverviewResponseBodyData {
+	s.Api = v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyData) SetGateway(v *GetResourceOverviewResponseBodyDataGateway) *GetResourceOverviewResponseBodyData {
+	s.Gateway = v
+	return s
+}
+
+type GetResourceOverviewResponseBodyDataApi struct {
+	// example:
+	//
+	// 1
+	PublishedCount *int64 `json:"publishedCount,omitempty" xml:"publishedCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s GetResourceOverviewResponseBodyDataApi) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceOverviewResponseBodyDataApi) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewResponseBodyDataApi) SetPublishedCount(v int64) *GetResourceOverviewResponseBodyDataApi {
+	s.PublishedCount = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataApi) SetTotalCount(v int64) *GetResourceOverviewResponseBodyDataApi {
+	s.TotalCount = &v
+	return s
+}
+
+type GetResourceOverviewResponseBodyDataGateway struct {
+	// example:
+	//
+	// 1
+	RunningCount *int64 `json:"runningCount,omitempty" xml:"runningCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s GetResourceOverviewResponseBodyDataGateway) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceOverviewResponseBodyDataGateway) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewResponseBodyDataGateway) SetRunningCount(v int64) *GetResourceOverviewResponseBodyDataGateway {
+	s.RunningCount = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataGateway) SetTotalCount(v int64) *GetResourceOverviewResponseBodyDataGateway {
+	s.TotalCount = &v
+	return s
+}
+
+type GetResourceOverviewResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetResourceOverviewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceOverviewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewResponse) SetHeaders(v map[string]*string) *GetResourceOverviewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceOverviewResponse) SetStatusCode(v int32) *GetResourceOverviewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponse) SetBody(v *GetResourceOverviewResponseBody) *GetResourceOverviewResponse {
+	s.Body = v
+	return s
+}
+
+type GetTraceConfigRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
+}
+
+func (s GetTraceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceConfigRequest) SetAcceptLanguage(v string) *GetTraceConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type GetTraceConfigResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetTraceConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32AF2C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetTraceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceConfigResponseBody) SetCode(v int32) *GetTraceConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTraceConfigResponseBody) SetData(v *GetTraceConfigResponseBodyData) *GetTraceConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTraceConfigResponseBody) SetMessage(v string) *GetTraceConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTraceConfigResponseBody) SetRequestId(v string) *GetTraceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTraceConfigResponseBody) SetSuccess(v bool) *GetTraceConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTraceConfigResponseBodyData struct {
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 50
+	SampleRatio *int32 `json:"sampleRatio,omitempty" xml:"sampleRatio,omitempty"`
+	// example:
+	//
+	// ss-co370icmjeu****
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 8090
+	ServicePort *string `json:"servicePort,omitempty" xml:"servicePort,omitempty"`
+	// example:
+	//
+	// SKYWALKING
+	TraceType *string `json:"traceType,omitempty" xml:"traceType,omitempty"`
+}
+
+func (s GetTraceConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceConfigResponseBodyData) SetEnable(v bool) *GetTraceConfigResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetTraceConfigResponseBodyData) SetSampleRatio(v int32) *GetTraceConfigResponseBodyData {
+	s.SampleRatio = &v
+	return s
+}
+
+func (s *GetTraceConfigResponseBodyData) SetServiceId(v string) *GetTraceConfigResponseBodyData {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetTraceConfigResponseBodyData) SetServicePort(v string) *GetTraceConfigResponseBodyData {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *GetTraceConfigResponseBodyData) SetTraceType(v string) *GetTraceConfigResponseBodyData {
+	s.TraceType = &v
+	return s
+}
+
+type GetTraceConfigResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTraceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTraceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceConfigResponse) SetHeaders(v map[string]*string) *GetTraceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTraceConfigResponse) SetStatusCode(v int32) *GetTraceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTraceConfigResponse) SetBody(v *GetTraceConfigResponseBody) *GetTraceConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ImportHttpApiRequest struct {
+	// The description of the imported API. If not provided, it will be extracted from the API definition. The length is limited to 255 bytes.
+	//
+	// example:
+	//
+	// 测试专用API
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Pre-import check. If enabled, only the check will be performed without importing the API.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The name of the imported API. If not provided, it will be extracted from the API definition file. If the API name and version configuration already exist, this import will update the existing API definition based on the `strategy` field.
+	//
+	// example:
+	//
+	// import-test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm3q4zjh7fkki
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Base64 encoded API definition, supporting OAS2.0 and OAS3.0 specifications, in YAML or JSON format. It has a higher priority than the `specFileUrl` parameter. If the file size exceeds 10MB, please use the `specFileUrl` parameter to transfer.
+	//
+	// example:
+	//
+	// b3BlbmFwaTogMy4wLjAKaW5mbzoKICAgIHRpdGxlOiBkZW1vCiAgICBkZXNjcmlwdGlvbjogdGhpc2lzZGVtbwogICAgdmVyc2lvbjogIiIKcGF0aHM6CiAgICAvdXNlci97dXNlcklkfToKICAgICAgICBnZXQ6CiAgICAgICAgICAgIHN1bW1hcnk6IOiOt+WPlueUqOaIt+S/oeaBrwogICAgICAgICAgICBkZXNjcmlwdGlvbjog6I635Y+W55So5oi35L+h5oGvCiAgICAgICAgICAgIG9wZXJhdGlvbklkOiBHZXRVc2VySW5mbwogICAgICAgICAgICByZXNwb25zZXM6CiAgICAgICAgICAgICAgICAiMjAwIjoKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjog5oiQ5YqfCiAgICAgICAgICAgICAgICAgICAgY29udGVudDoKICAgICAgICAgICAgICAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04OgogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2NoZW1hOiBudWxsCnNlcnZlcnM6CiAgICAtIHVybDogaHR0cDovL2FwaS5leGFtcGxlLmNvbS92MQo=
+	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
+	// Download URL for the API definition file, which must be accessible from the public network or via an internal OSS download address within the same region. The file URL must have download permissions. For non-publicly readable OSS file links, refer to the documentation at https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects, and provide a URL with download permissions. Currently, only API definition files stored on OSS are supported.
+	//
+	// example:
+	//
+	// https://my-bucket.oss-cn-hangzhou.aliyuncs.com/my-api/api.yaml
+	SpecFileUrl *string `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
+	// The oss config info.
+	SpecOssConfig *ImportHttpApiRequestSpecOssConfig `json:"specOssConfig,omitempty" xml:"specOssConfig,omitempty" type:"Struct"`
+	// When the imported API name and version management match an existing API, you need to specify an update strategy.
+	//
+	// - SpecOnly: Completely based on the imported file.
+	//
+	// - SpecFirst: Prioritize the imported file, add new interfaces and update existing ones, while keeping interfaces not mentioned in the file unchanged.
+	//
+	// - ExistFirst: Prioritize the existing API, only add new interfaces without updating existing ones.
+	//
+	// If not specified, the default strategy is ExistFirst.
+	//
+	// example:
+	//
+	// ExistFirst
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+	// If this field is specified, this import will update the specified API instead of importing or searching for an existing API based on the API name and version management configuration. The target API must be of REST type.
+	//
+	// example:
+	//
+	// api-xxxx
+	TargetHttpApiId *string `json:"targetHttpApiId,omitempty" xml:"targetHttpApiId,omitempty"`
+	// API versioning configuration. If versioning is enabled, and the version number and API name match an existing API, this import will be treated as an update. If versioning is not enabled, and the API name matches an existing API, this import will also be treated as an update.
+	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
+}
+
+func (s ImportHttpApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiRequest) SetDescription(v string) *ImportHttpApiRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetDryRun(v bool) *ImportHttpApiRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetName(v string) *ImportHttpApiRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetResourceGroupId(v string) *ImportHttpApiRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetSpecContentBase64(v string) *ImportHttpApiRequest {
+	s.SpecContentBase64 = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetSpecFileUrl(v string) *ImportHttpApiRequest {
+	s.SpecFileUrl = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetSpecOssConfig(v *ImportHttpApiRequestSpecOssConfig) *ImportHttpApiRequest {
+	s.SpecOssConfig = v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetStrategy(v string) *ImportHttpApiRequest {
+	s.Strategy = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetTargetHttpApiId(v string) *ImportHttpApiRequest {
+	s.TargetHttpApiId = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *ImportHttpApiRequest {
+	s.VersionConfig = v
+	return s
+}
+
+type ImportHttpApiRequestSpecOssConfig struct {
+	// The name of the Object Storage Service (OSS) bucket that stores the dictionary file.
+	//
+	// example:
+	//
+	// api-1
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The file path.
+	//
+	// example:
+	//
+	// /test/swagger.json
+	ObjectKey *string `json:"objectKey,omitempty" xml:"objectKey,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ImportHttpApiRequestSpecOssConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiRequestSpecOssConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiRequestSpecOssConfig) SetBucketName(v string) *ImportHttpApiRequestSpecOssConfig {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ImportHttpApiRequestSpecOssConfig) SetObjectKey(v string) *ImportHttpApiRequestSpecOssConfig {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *ImportHttpApiRequestSpecOssConfig) SetRegionId(v string) *ImportHttpApiRequestSpecOssConfig {
+	s.RegionId = &v
+	return s
+}
+
+type ImportHttpApiResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// API information.
+	Data *ImportHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// CE857A85-251D-5018-8103-A38957D71E20
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ImportHttpApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBody) SetCode(v string) *ImportHttpApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBody) SetData(v *ImportHttpApiResponseBodyData) *ImportHttpApiResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBody) SetMessage(v string) *ImportHttpApiResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBody) SetRequestId(v string) *ImportHttpApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportHttpApiResponseBodyData struct {
+	// Pre-import check result.
+	DryRunInfo *ImportHttpApiResponseBodyDataDryRunInfo `json:"dryRunInfo,omitempty" xml:"dryRunInfo,omitempty" type:"Struct"`
+	// HTTP API ID.
+	//
+	// example:
+	//
+	// api-xxx
+	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
+	// API name.
+	//
+	// example:
+	//
+	// import-test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ImportHttpApiResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyData) SetDryRunInfo(v *ImportHttpApiResponseBodyDataDryRunInfo) *ImportHttpApiResponseBodyData {
+	s.DryRunInfo = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyData) SetHttpApiId(v string) *ImportHttpApiResponseBodyData {
+	s.HttpApiId = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyData) SetName(v string) *ImportHttpApiResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type ImportHttpApiResponseBodyDataDryRunInfo struct {
+	// Error messages. If there are any error messages, the API cannot be imported successfully.
+	ErrorMessages []*string `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
+	// 已存在的API信息。若该字段非空，则导入动作将更新该API。
+	ExistHttpApiInfo *HttpApiApiInfo `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty"`
+	// List of data structures that failed the precheck.
+	FailureComponents []*ImportHttpApiResponseBodyDataDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
+	// List of APIs that failed the precheck.
+	FailureOperations []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
+	// List of data structures that passed the precheck.
+	SuccessComponents []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents `json:"successComponents,omitempty" xml:"successComponents,omitempty" type:"Repeated"`
+	// List of successfully pre-checked interfaces.
+	SuccessOperations []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations `json:"successOperations,omitempty" xml:"successOperations,omitempty" type:"Repeated"`
+	// Warning messages. If there are any warning messages, some interfaces or data interfaces may not be imported successfully.
+	WarningMessages []*string `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetErrorMessages(v []*string) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.ErrorMessages = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetExistHttpApiInfo(v *HttpApiApiInfo) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.ExistHttpApiInfo = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetFailureComponents(v []*ImportHttpApiResponseBodyDataDryRunInfoFailureComponents) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.FailureComponents = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetFailureOperations(v []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.FailureOperations = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetSuccessComponents(v []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.SuccessComponents = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetSuccessOperations(v []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.SuccessOperations = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetWarningMessages(v []*string) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.WarningMessages = v
+	return s
+}
+
+type ImportHttpApiResponseBodyDataDryRunInfoFailureComponents struct {
+	// Error message.
+	//
+	// example:
+	//
+	// 数据结构定义有误。
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 数据结构名称。
+	//
+	// example:
+	//
+	// orderDTO
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoFailureComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoFailureComponents) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureComponents) SetErrorMessage(v string) *ImportHttpApiResponseBodyDataDryRunInfoFailureComponents {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureComponents) SetName(v string) *ImportHttpApiResponseBodyDataDryRunInfoFailureComponents {
+	s.Name = &v
+	return s
+}
+
+type ImportHttpApiResponseBodyDataDryRunInfoFailureOperations struct {
+	// Error message
+	//
+	// example:
+	//
+	// 缺少响应定义。
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// API method.
+	//
+	// example:
+	//
+	// GET
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// API path.
+	//
+	// example:
+	//
+	// /v1/orders
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) SetErrorMessage(v string) *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) SetMethod(v string) *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations {
+	s.Method = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) SetPath(v string) *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations {
+	s.Path = &v
+	return s
+}
+
+type ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents struct {
+	// Action to be executed after the precheck.
+	//
+	// - Create: Create
+	//
+	// - Update: Update
+	//
+	// example:
+	//
+	// Create
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// Data structure name.
+	//
+	// example:
+	//
+	// userDTO
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) SetAction(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents {
+	s.Action = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) SetName(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents {
+	s.Name = &v
+	return s
+}
+
+type ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations struct {
+	// Action to be executed after the precheck.
+	//
+	// - Create: Create
+	//
+	// - Update: Update
+	//
+	// example:
+	//
+	// Create
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// API method.
+	//
+	// example:
+	//
+	// POST
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// API name.
+	//
+	// example:
+	//
+	// CreateUser
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// API path.
+	//
+	// example:
+	//
+	// /v1/users
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) SetAction(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations {
+	s.Action = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) SetMethod(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations {
+	s.Method = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) SetName(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) SetPath(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations {
+	s.Path = &v
+	return s
+}
+
+type ImportHttpApiResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportHttpApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHttpApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponse) SetHeaders(v map[string]*string) *ImportHttpApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportHttpApiResponse) SetStatusCode(v int32) *ImportHttpApiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportHttpApiResponse) SetBody(v *ImportHttpApiResponseBody) *ImportHttpApiResponse {
+	s.Body = v
+	return s
+}
+
 type ListDomainsRequest struct {
 	// Gateway Id.
 	//
@@ -6938,7 +9751,12 @@ type ListDomainsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
@@ -7142,7 +9960,12 @@ type ListEnvironmentsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-aek2sy66mftleiq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
@@ -7321,7 +10144,7 @@ func (s *ListEnvironmentsResponse) SetBody(v *ListEnvironmentsResponseBody) *Lis
 }
 
 type ListGatewaysRequest struct {
-	// Query exactly by gateway ID.
+	// Query exactly by Gateway ID.
 	//
 	// example:
 	//
@@ -7333,7 +10156,7 @@ type ListGatewaysRequest struct {
 	//
 	// dev
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// Query exactly by gateway name.
+	// Query exactly by Gateway name.
 	//
 	// example:
 	//
@@ -7350,9 +10173,15 @@ type ListGatewaysRequest struct {
 	// example:
 	//
 	// 10
-	PageSize        *int32                     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ResourceGroupId *string                    `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tags            []*ListGatewaysRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-aekz3wes3hnre5a
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Filter list by tags
+	Tag []*ListGatewaysRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
 func (s ListGatewaysRequest) String() string {
@@ -7393,36 +10222,46 @@ func (s *ListGatewaysRequest) SetResourceGroupId(v string) *ListGatewaysRequest 
 	return s
 }
 
-func (s *ListGatewaysRequest) SetTags(v []*ListGatewaysRequestTags) *ListGatewaysRequest {
-	s.Tags = v
+func (s *ListGatewaysRequest) SetTag(v []*ListGatewaysRequestTag) *ListGatewaysRequest {
+	s.Tag = v
 	return s
 }
 
-type ListGatewaysRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+type ListGatewaysRequestTag struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// zhangsan
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s ListGatewaysRequestTags) String() string {
+func (s ListGatewaysRequestTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListGatewaysRequestTags) GoString() string {
+func (s ListGatewaysRequestTag) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewaysRequestTags) SetKey(v string) *ListGatewaysRequestTags {
+func (s *ListGatewaysRequestTag) SetKey(v string) *ListGatewaysRequestTag {
 	s.Key = &v
 	return s
 }
 
-func (s *ListGatewaysRequestTags) SetValue(v string) *ListGatewaysRequestTags {
+func (s *ListGatewaysRequestTag) SetValue(v string) *ListGatewaysRequestTag {
 	s.Value = &v
 	return s
 }
 
 type ListGatewaysShrinkRequest struct {
-	// Query exactly by gateway ID.
+	// Query exactly by Gateway ID.
 	//
 	// example:
 	//
@@ -7434,7 +10273,7 @@ type ListGatewaysShrinkRequest struct {
 	//
 	// dev
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// Query exactly by gateway name.
+	// Query exactly by Gateway name.
 	//
 	// example:
 	//
@@ -7451,9 +10290,15 @@ type ListGatewaysShrinkRequest struct {
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-aekz3wes3hnre5a
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// Filter list by tags
+	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s ListGatewaysShrinkRequest) String() string {
@@ -7494,8 +10339,8 @@ func (s *ListGatewaysShrinkRequest) SetResourceGroupId(v string) *ListGatewaysSh
 	return s
 }
 
-func (s *ListGatewaysShrinkRequest) SetTagsShrink(v string) *ListGatewaysShrinkRequest {
-	s.TagsShrink = &v
+func (s *ListGatewaysShrinkRequest) SetTagShrink(v string) *ListGatewaysShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -7506,7 +10351,7 @@ type ListGatewaysResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Result of the gateway list query.
+	// Result of gateway list query.
 	Data *ListGatewaysResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Response message.
 	//
@@ -7626,7 +10471,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// Expiration timestamp for the prepaid (annual or monthly) plan. Unit: milliseconds.
+	// Expiration timestamp for prepaid (annual or monthly) subscriptions. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -7651,7 +10496,12 @@ type ListGatewaysResponseBodyDataItems struct {
 	// example:
 	//
 	// 2
-	Replicas        *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	Replicas *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The Security Group.
 	SecurityGroup *ListGatewaysResponseBodyDataItemsSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
@@ -7686,9 +10536,11 @@ type ListGatewaysResponseBodyDataItems struct {
 	// example:
 	//
 	// Running
-	Status *string                                  `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Target version of the gateway. When it is inconsistent with `version`, a version upgrade can be performed.
+	Status         *string          `json:"status,omitempty" xml:"status,omitempty"`
+	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
+	// Array of tags.
+	Tags []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Target version of the gateway. When it is inconsistent with the current `version`, an upgrade can be performed.
 	//
 	// example:
 	//
@@ -7699,16 +10551,19 @@ type ListGatewaysResponseBodyDataItems struct {
 	// example:
 	//
 	// 1719386834548
-	UpdateTimestamp *int64                                    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-	VSwitch         *ListGatewaysResponseBodyDataItemsVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// The vSwtich.
+	VSwitch *ListGatewaysResponseBodyDataItemsVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
 	// Gateway version.
 	//
 	// example:
 	//
 	// 2.0.2
-	Version *string                                   `json:"version,omitempty" xml:"version,omitempty"`
-	Vpc     *ListGatewaysResponseBodyDataItemsVpc     `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
-	Zones   []*ListGatewaysResponseBodyDataItemsZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The VPC.
+	Vpc *ListGatewaysResponseBodyDataItemsVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
+	// The Zones.
+	Zones []*ListGatewaysResponseBodyDataItemsZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
 func (s ListGatewaysResponseBodyDataItems) String() string {
@@ -7776,6 +10631,11 @@ func (s *ListGatewaysResponseBodyDataItems) SetSpec(v string) *ListGatewaysRespo
 
 func (s *ListGatewaysResponseBodyDataItems) SetStatus(v string) *ListGatewaysResponseBodyDataItems {
 	s.Status = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetSubDomainInfos(v []*SubDomainInfo) *ListGatewaysResponseBodyDataItems {
+	s.SubDomainInfos = v
 	return s
 }
 
@@ -7853,7 +10713,7 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	//
 	// nlb-xqwioje1c91r***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
-	// Mode of load balancer provision for the gateway:
+	// Load balancer provision mode for the gateway:
 	//
 	// - Managed: Managed by the Cloud Native API Gateway.
 	//
@@ -7977,6 +10837,10 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) SetProtocol(v stri
 
 type ListGatewaysResponseBodyDataItemsSecurityGroup struct {
 	// The Security Group ID.
+	//
+	// example:
+	//
+	// sg-xxxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 }
 
@@ -7994,8 +10858,18 @@ func (s *ListGatewaysResponseBodyDataItemsSecurityGroup) SetSecurityGroupId(v st
 }
 
 type ListGatewaysResponseBodyDataItemsTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// zhangsan
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListGatewaysResponseBodyDataItemsTags) String() string {
@@ -8006,13 +10880,13 @@ func (s ListGatewaysResponseBodyDataItemsTags) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewaysResponseBodyDataItemsTags) SetTagKey(v string) *ListGatewaysResponseBodyDataItemsTags {
-	s.TagKey = &v
+func (s *ListGatewaysResponseBodyDataItemsTags) SetKey(v string) *ListGatewaysResponseBodyDataItemsTags {
+	s.Key = &v
 	return s
 }
 
-func (s *ListGatewaysResponseBodyDataItemsTags) SetTagValue(v string) *ListGatewaysResponseBodyDataItemsTags {
-	s.TagValue = &v
+func (s *ListGatewaysResponseBodyDataItemsTags) SetValue(v string) *ListGatewaysResponseBodyDataItemsTags {
+	s.Value = &v
 	return s
 }
 
@@ -8067,7 +10941,7 @@ type ListGatewaysResponseBodyDataItemsZones struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-hangzhou-f
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -8194,7 +11068,12 @@ type ListHttpApiOperationsRequest struct {
 	// example:
 	//
 	// cs-xxx
-	WithConsumerInfoById           *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	// Plugin ID, use this plugin ID to retrieve the plugin release information.
+	//
+	// example:
+	//
+	// pl-xxx
 	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
 }
 
@@ -8448,6 +11327,7 @@ type ListHttpApisRequest struct {
 	WithConsumerInfoById           *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
 	WithEnvironmentInfo            *bool   `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
 	WithEnvironmentInfoById        *string `json:"withEnvironmentInfoById,omitempty" xml:"withEnvironmentInfoById,omitempty"`
+	WithIngressInfo                *bool   `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
 	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
 }
 
@@ -8516,6 +11396,11 @@ func (s *ListHttpApisRequest) SetWithEnvironmentInfo(v bool) *ListHttpApisReques
 
 func (s *ListHttpApisRequest) SetWithEnvironmentInfoById(v string) *ListHttpApisRequest {
 	s.WithEnvironmentInfoById = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetWithIngressInfo(v bool) *ListHttpApisRequest {
+	s.WithIngressInfo = &v
 	return s
 }
 
@@ -8655,19 +11540,529 @@ func (s *ListHttpApisResponse) SetBody(v *ListHttpApisResponseBody) *ListHttpApi
 	return s
 }
 
+type ListPolicyClassesRequest struct {
+	// example:
+	//
+	// Operation
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// example:
+	//
+	// InBound
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// FlowControl
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListPolicyClassesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyClassesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyClassesRequest) SetAttachResourceType(v string) *ListPolicyClassesRequest {
+	s.AttachResourceType = &v
+	return s
+}
+
+func (s *ListPolicyClassesRequest) SetDirection(v string) *ListPolicyClassesRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *ListPolicyClassesRequest) SetPageNumber(v int32) *ListPolicyClassesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPolicyClassesRequest) SetPageSize(v int32) *ListPolicyClassesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPolicyClassesRequest) SetType(v string) *ListPolicyClassesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListPolicyClassesResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListPolicyClassesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 23B45FA9-7208-5E55-B5CE-B6B2567DD822
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListPolicyClassesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyClassesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyClassesResponseBody) SetCode(v string) *ListPolicyClassesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPolicyClassesResponseBody) SetData(v *ListPolicyClassesResponseBodyData) *ListPolicyClassesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPolicyClassesResponseBody) SetMessage(v string) *ListPolicyClassesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPolicyClassesResponseBody) SetRequestId(v string) *ListPolicyClassesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPolicyClassesResponseBodyData struct {
+	Items []*PolicyClassInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListPolicyClassesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyClassesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyClassesResponseBodyData) SetItems(v []*PolicyClassInfo) *ListPolicyClassesResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *ListPolicyClassesResponseBodyData) SetPageNumber(v int32) *ListPolicyClassesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPolicyClassesResponseBodyData) SetPageSize(v int32) *ListPolicyClassesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPolicyClassesResponseBodyData) SetTotalSize(v int32) *ListPolicyClassesResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListPolicyClassesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPolicyClassesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPolicyClassesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyClassesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyClassesResponse) SetHeaders(v map[string]*string) *ListPolicyClassesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPolicyClassesResponse) SetStatusCode(v int32) *ListPolicyClassesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPolicyClassesResponse) SetBody(v *ListPolicyClassesResponseBody) *ListPolicyClassesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSslCertsRequest struct {
+	// example:
+	//
+	// ali
+	CertNameLike *string `json:"certNameLike,omitempty" xml:"certNameLike,omitempty"`
+	// example:
+	//
+	// fun.iot.evideocloud.com.cn
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListSslCertsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSslCertsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSslCertsRequest) SetCertNameLike(v string) *ListSslCertsRequest {
+	s.CertNameLike = &v
+	return s
+}
+
+func (s *ListSslCertsRequest) SetDomainName(v string) *ListSslCertsRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ListSslCertsRequest) SetPageNumber(v int32) *ListSslCertsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSslCertsRequest) SetPageSize(v int32) *ListSslCertsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListSslCertsResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListSslCertsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// AADF7197-3384-52AF-A2DE-A66696734129
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListSslCertsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSslCertsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSslCertsResponseBody) SetCode(v string) *ListSslCertsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSslCertsResponseBody) SetData(v *ListSslCertsResponseBodyData) *ListSslCertsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSslCertsResponseBody) SetMessage(v string) *ListSslCertsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSslCertsResponseBody) SetRequestId(v string) *ListSslCertsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSslCertsResponseBodyData struct {
+	Items []*SslCertMetaInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 2
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListSslCertsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSslCertsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSslCertsResponseBodyData) SetItems(v []*SslCertMetaInfo) *ListSslCertsResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *ListSslCertsResponseBodyData) SetPageNumber(v int32) *ListSslCertsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSslCertsResponseBodyData) SetPageSize(v int32) *ListSslCertsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSslCertsResponseBodyData) SetTotalSize(v int32) *ListSslCertsResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListSslCertsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSslCertsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSslCertsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSslCertsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSslCertsResponse) SetHeaders(v map[string]*string) *ListSslCertsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSslCertsResponse) SetStatusCode(v int32) *ListSslCertsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSslCertsResponse) SetBody(v *ListSslCertsResponseBody) *ListSslCertsResponse {
+	s.Body = v
+	return s
+}
+
+type ListZonesResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                    `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// E8079207-B651-592A-A565-23E9EE5673B0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListZonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListZonesResponseBody) SetCode(v string) *ListZonesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListZonesResponseBody) SetData(v *ListZonesResponseBodyData) *ListZonesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListZonesResponseBody) SetMessage(v string) *ListZonesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListZonesResponseBody) SetRequestId(v string) *ListZonesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListZonesResponseBodyData struct {
+	Items []*ListZonesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s ListZonesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZonesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListZonesResponseBodyData) SetItems(v []*ListZonesResponseBodyDataItems) *ListZonesResponseBodyData {
+	s.Items = v
+	return s
+}
+
+type ListZonesResponseBodyDataItems struct {
+	// example:
+	//
+	// cn-shenzhen-c
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ListZonesResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZonesResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListZonesResponseBodyDataItems) SetZoneId(v string) *ListZonesResponseBodyDataItems {
+	s.ZoneId = &v
+	return s
+}
+
+type ListZonesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListZonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListZonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListZonesResponse) SetHeaders(v map[string]*string) *ListZonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListZonesResponse) SetStatusCode(v int32) *ListZonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListZonesResponse) SetBody(v *ListZonesResponseBody) *ListZonesResponse {
+	s.Body = v
+	return s
+}
+
+type RestartGatewayResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RestartGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartGatewayResponseBody) SetCode(v string) *RestartGatewayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RestartGatewayResponseBody) SetMessage(v string) *RestartGatewayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RestartGatewayResponseBody) SetRequestId(v string) *RestartGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestartGatewayResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestartGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartGatewayResponse) SetHeaders(v map[string]*string) *RestartGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartGatewayResponse) SetStatusCode(v int32) *RestartGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartGatewayResponse) SetBody(v *RestartGatewayResponseBody) *RestartGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDomainRequest struct {
-	// Cloud Shield CA certificate identifier.
-	//
-	// example:
-	//
-	// 123455-cn-hangzhou
-	CaCertIndentifier *string `json:"caCertIndentifier,omitempty" xml:"caCertIndentifier,omitempty"`
-	// Cloud Shield certificate identifier.
-	//
-	// example:
-	//
-	// 123458-cn-hangzhou
-	CertIndentifier *string `json:"certIndentifier,omitempty" xml:"certIndentifier,omitempty"`
+	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
+	CertIdentifier   *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
 	// Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
 	//
 	// example:
@@ -8691,7 +12086,8 @@ type UpdateDomainRequest struct {
 	// example:
 	//
 	// HTTP
-	Protocol              *string                `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// TLS Cipher Suite Configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
 	// Maximum TLS protocol version, supports up to TLS 1.3.
 	//
@@ -8715,13 +12111,13 @@ func (s UpdateDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDomainRequest) SetCaCertIndentifier(v string) *UpdateDomainRequest {
-	s.CaCertIndentifier = &v
+func (s *UpdateDomainRequest) SetCaCertIdentifier(v string) *UpdateDomainRequest {
+	s.CaCertIdentifier = &v
 	return s
 }
 
-func (s *UpdateDomainRequest) SetCertIndentifier(v string) *UpdateDomainRequest {
-	s.CertIndentifier = &v
+func (s *UpdateDomainRequest) SetCertIdentifier(v string) *UpdateDomainRequest {
+	s.CertIdentifier = &v
 	return s
 }
 
@@ -8965,8 +12361,200 @@ func (s *UpdateEnvironmentResponse) SetBody(v *UpdateEnvironmentResponseBody) *U
 	return s
 }
 
+type UpdateGatewayFeatureRequest struct {
+	// Parameter value.
+	//
+	// example:
+	//
+	// "true"
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateGatewayFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayFeatureRequest) SetValue(v string) *UpdateGatewayFeatureRequest {
+	s.Value = &v
+	return s
+}
+
+type UpdateGatewayFeatureResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 043360DA-ED3B-5386-9B7A-D94DECF99A30
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateGatewayFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayFeatureResponseBody) SetCode(v string) *UpdateGatewayFeatureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayFeatureResponseBody) SetMessage(v string) *UpdateGatewayFeatureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayFeatureResponseBody) SetRequestId(v string) *UpdateGatewayFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGatewayFeatureResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGatewayFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGatewayFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayFeatureResponse) SetHeaders(v map[string]*string) *UpdateGatewayFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayFeatureResponse) SetStatusCode(v int32) *UpdateGatewayFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayFeatureResponse) SetBody(v *UpdateGatewayFeatureResponseBody) *UpdateGatewayFeatureResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayNameRequest struct {
+	// Gateway name.
+	//
+	// example:
+	//
+	// dev-itemcenter-router
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateGatewayNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayNameRequest) SetName(v string) *UpdateGatewayNameRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateGatewayNameResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateGatewayNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayNameResponseBody) SetCode(v string) *UpdateGatewayNameResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayNameResponseBody) SetMessage(v string) *UpdateGatewayNameResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayNameResponseBody) SetRequestId(v string) *UpdateGatewayNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGatewayNameResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGatewayNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGatewayNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayNameResponse) SetHeaders(v map[string]*string) *UpdateGatewayNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayNameResponse) SetStatusCode(v int32) *UpdateGatewayNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayNameResponse) SetBody(v *UpdateGatewayNameResponseBody) *UpdateGatewayNameResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateHttpApiRequest struct {
-	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	// List of AI protocols.
+	AiProtocols []*string   `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	AuthConfig  *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// Base path of the API, which must start with a \\"/\\".
 	//
 	// This parameter is required.
@@ -8974,7 +12562,8 @@ type UpdateHttpApiRequest struct {
 	// example:
 	//
 	// /v1
-	BasePath      *string                `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	// List of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// API description.
 	//
@@ -8982,6 +12571,7 @@ type UpdateHttpApiRequest struct {
 	//
 	// 更新API描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// Configuration information for the HTTP Ingress API.
 	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
 	// List of API access protocols.
@@ -9003,6 +12593,11 @@ func (s *UpdateHttpApiRequest) SetAiProtocols(v []*string) *UpdateHttpApiRequest
 	return s
 }
 
+func (s *UpdateHttpApiRequest) SetAuthConfig(v *AuthConfig) *UpdateHttpApiRequest {
+	s.AuthConfig = v
+	return s
+}
+
 func (s *UpdateHttpApiRequest) SetBasePath(v string) *UpdateHttpApiRequest {
 	s.BasePath = &v
 	return s
@@ -9015,6 +12610,11 @@ func (s *UpdateHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *Updat
 
 func (s *UpdateHttpApiRequest) SetDescription(v string) *UpdateHttpApiRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateHttpApiRequest) SetEnableAuth(v bool) *UpdateHttpApiRequest {
+	s.EnableAuth = &v
 	return s
 }
 
@@ -9263,6 +12863,433 @@ func (s *UpdateHttpApiOperationResponse) SetBody(v *UpdateHttpApiOperationRespon
 	return s
 }
 
+type UpdateHttpApiRouteRequest struct {
+	// Backend service configuration for the route.
+	BackendConfig *UpdateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	// Route description.
+	//
+	// example:
+	//
+	// test route
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// List of domain IDs.
+	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// Environment ID.
+	//
+	// example:
+	//
+	// env-cquqsollhtgid***
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Route match rule.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+}
+
+func (s UpdateHttpApiRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpApiRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpApiRouteRequest) SetBackendConfig(v *UpdateHttpApiRouteRequestBackendConfig) *UpdateHttpApiRouteRequest {
+	s.BackendConfig = v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetDescription(v string) *UpdateHttpApiRouteRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetDomainIds(v []*string) *UpdateHttpApiRouteRequest {
+	s.DomainIds = v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetEnvironmentId(v string) *UpdateHttpApiRouteRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetMatch(v *HttpRouteMatch) *UpdateHttpApiRouteRequest {
+	s.Match = v
+	return s
+}
+
+type UpdateHttpApiRouteRequestBackendConfig struct {
+	// Backend service scenario.
+	//
+	// example:
+	//
+	// SingleService
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// List of backend services.
+	Services []*UpdateHttpApiRouteRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+}
+
+func (s UpdateHttpApiRouteRequestBackendConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpApiRouteRequestBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfig) SetScene(v string) *UpdateHttpApiRouteRequestBackendConfig {
+	s.Scene = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfig) SetServices(v []*UpdateHttpApiRouteRequestBackendConfigServices) *UpdateHttpApiRouteRequestBackendConfig {
+	s.Services = v
+	return s
+}
+
+type UpdateHttpApiRouteRequestBackendConfigServices struct {
+	// Service port, do not pass in for dynamic ports.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Service protocol:
+	//
+	// - HTTP.
+	//
+	// - HTTPS.
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Service ID.
+	//
+	// example:
+	//
+	// svc-cr6pk4tlhtgm58e***
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Service version.
+	//
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Percentage value of traffic ratio.
+	//
+	// example:
+	//
+	// 49
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s UpdateHttpApiRouteRequestBackendConfigServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpApiRouteRequestBackendConfigServices) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetPort(v int32) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetProtocol(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetServiceId(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetVersion(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.Version = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetWeight(v int32) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.Weight = &v
+	return s
+}
+
+type UpdateHttpApiRouteResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// CBEEB8C1-108E-50F0-9BEA-DED79553C309
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateHttpApiRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpApiRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpApiRouteResponseBody) SetCode(v string) *UpdateHttpApiRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteResponseBody) SetMessage(v string) *UpdateHttpApiRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteResponseBody) SetRequestId(v string) *UpdateHttpApiRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateHttpApiRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHttpApiRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateHttpApiRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpApiRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpApiRouteResponse) SetHeaders(v map[string]*string) *UpdateHttpApiRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHttpApiRouteResponse) SetStatusCode(v int32) *UpdateHttpApiRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteResponse) SetBody(v *UpdateHttpApiRouteResponseBody) *UpdateHttpApiRouteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"unitNum":1,"timeUnit":"s","enable":true}
+	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// celue-timeout-test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdatePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyRequest) SetConfig(v string) *UpdatePolicyRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdatePolicyRequest) SetDescription(v string) *UpdatePolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdatePolicyRequest) SetName(v string) *UpdatePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdatePolicyResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C67DED2B-F19B-5BEC-88C1-D6EB854C***
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdatePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyResponseBody) SetCode(v string) *UpdatePolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePolicyResponseBody) SetMessage(v string) *UpdatePolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePolicyResponseBody) SetRequestId(v string) *UpdatePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyResponse) SetHeaders(v map[string]*string) *UpdatePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePolicyResponse) SetStatusCode(v int32) *UpdatePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePolicyResponse) SetBody(v *UpdatePolicyResponseBody) *UpdatePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeGatewayRequest struct {
+	// Gateway version.
+	//
+	// example:
+	//
+	// 2.0.2
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s UpgradeGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeGatewayRequest) SetVersion(v string) *UpgradeGatewayRequest {
+	s.Version = &v
+	return s
+}
+
+type UpgradeGatewayResponseBody struct {
+	// Response status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 043360DA-ED3B-5386-9B7A-D94DECF99A30
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpgradeGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeGatewayResponseBody) SetCode(v string) *UpgradeGatewayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpgradeGatewayResponseBody) SetMessage(v string) *UpgradeGatewayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeGatewayResponseBody) SetRequestId(v string) *UpgradeGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeGatewayResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpgradeGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeGatewayResponse) SetHeaders(v map[string]*string) *UpgradeGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeGatewayResponse) SetStatusCode(v int32) *UpgradeGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeGatewayResponse) SetBody(v *UpgradeGatewayResponseBody) *UpgradeGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -9354,13 +13381,24 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddGatewaySecurityGroupRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddGatewaySecurityGroupRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddGatewaySecurityGroupRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9375,6 +13413,93 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 	headers := make(map[string]*string)
 	_result = &AddGatewaySecurityGroupRuleResponse{}
 	_body, _err := client.AddGatewaySecurityGroupRuleWithOptions(gatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		query["Service"] = request.Service
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/move-resource-group"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9458,13 +13583,24 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9490,6 +13626,8 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateEnvironment is deprecated
+//
 // Summary:
 //
 // CreateEnvironment
@@ -9505,6 +13643,7 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEnvironmentResponse
+// Deprecated
 func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9546,15 +13685,28 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEnvironmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEnvironmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI CreateEnvironment is deprecated
+//
 // Summary:
 //
 // CreateEnvironment
@@ -9566,6 +13718,7 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 // @param request - CreateEnvironmentRequest
 //
 // @return CreateEnvironmentResponse
+// Deprecated
 func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9599,6 +13752,10 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 		body["aiProtocols"] = request.AiProtocols
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AuthConfig)) {
+		body["authConfig"] = request.AuthConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BasePath)) {
 		body["basePath"] = request.BasePath
 	}
@@ -9609,6 +13766,10 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAuth)) {
+		body["enableAuth"] = request.EnableAuth
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IngressConfig)) {
@@ -9650,13 +13811,24 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9714,13 +13886,24 @@ func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHttpApiOperationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHttpApiOperationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9735,6 +13918,279 @@ func (client *Client) CreateHttpApiOperation(httpApiId *string, request *CreateH
 	headers := make(map[string]*string)
 	_result = &CreateHttpApiOperationResponse{}
 	_body, _err := client.CreateHttpApiOperationWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Create a route for HttpApi
+//
+// @param request - CreateHttpApiRouteRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpApiRouteResponse
+func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *CreateHttpApiRouteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateHttpApiRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendConfig)) {
+		body["backendConfig"] = request.BackendConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainIds)) {
+		body["domainIds"] = request.DomainIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Match)) {
+		body["match"] = request.Match
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHttpApiRoute"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/routes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHttpApiRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHttpApiRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Create a route for HttpApi
+//
+// @param request - CreateHttpApiRouteRequest
+//
+// @return CreateHttpApiRouteResponse
+func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpApiRouteRequest) (_result *CreateHttpApiRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateHttpApiRouteResponse{}
+	_body, _err := client.CreateHttpApiRouteWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建策略
+//
+// @param request - CreatePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyResponse
+func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassName)) {
+		body["className"] = request.ClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicy"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/policies"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建策略
+//
+// @param request - CreatePolicyRequest
+//
+// @return CreatePolicyResponse
+func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CreatePolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建策略资源挂载
+//
+// @param request - CreatePolicyAttachmentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyAttachmentResponse
+func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAttachmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePolicyAttachmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceId)) {
+		body["attachResourceId"] = request.AttachResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceType)) {
+		body["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["policyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicyAttachment"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/policy-attachments"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePolicyAttachmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePolicyAttachmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建策略资源挂载
+//
+// @param request - CreatePolicyAttachmentRequest
+//
+// @return CreatePolicyAttachmentResponse
+func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequest) (_result *CreatePolicyAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePolicyAttachmentResponse{}
+	_body, _err := client.CreatePolicyAttachmentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9766,13 +14222,24 @@ func (client *Client) DeleteDomainWithOptions(domainId *string, headers map[stri
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9792,6 +14259,8 @@ func (client *Client) DeleteDomain(domainId *string) (_result *DeleteDomainRespo
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteEnvironment is deprecated
+//
 // Summary:
 //
 // DeleteEnvironment
@@ -9801,6 +14270,7 @@ func (client *Client) DeleteDomain(domainId *string) (_result *DeleteDomainRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEnvironmentResponse
+// Deprecated
 func (client *Client) DeleteEnvironmentWithOptions(environmentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9816,20 +14286,34 @@ func (client *Client) DeleteEnvironmentWithOptions(environmentId *string, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEnvironmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEnvironmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI DeleteEnvironment is deprecated
+//
 // Summary:
 //
 // DeleteEnvironment
 //
 // @return DeleteEnvironmentResponse
+// Deprecated
 func (client *Client) DeleteEnvironment(environmentId *string) (_result *DeleteEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9866,13 +14350,24 @@ func (client *Client) DeleteGatewayWithOptions(gatewayId *string, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9885,6 +14380,81 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 	headers := make(map[string]*string)
 	_result = &DeleteGatewayResponse{}
 	_body, _err := client.DeleteGatewayWithOptions(gatewayId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete the security group rule of a gateway
+//
+// @param request - DeleteGatewaySecurityGroupRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewaySecurityGroupRuleResponse
+func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *string, securityGroupRuleId *string, request *DeleteGatewaySecurityGroupRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewaySecurityGroupRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CascadingDelete)) {
+		query["cascadingDelete"] = request.CascadingDelete
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewaySecurityGroupRule"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/security-group-rules/" + tea.StringValue(openapiutil.GetEncodeParam(securityGroupRuleId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGatewaySecurityGroupRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGatewaySecurityGroupRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Delete the security group rule of a gateway
+//
+// @param request - DeleteGatewaySecurityGroupRuleRequest
+//
+// @return DeleteGatewaySecurityGroupRuleResponse
+func (client *Client) DeleteGatewaySecurityGroupRule(gatewayId *string, securityGroupRuleId *string, request *DeleteGatewaySecurityGroupRuleRequest) (_result *DeleteGatewaySecurityGroupRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteGatewaySecurityGroupRuleResponse{}
+	_body, _err := client.DeleteGatewaySecurityGroupRuleWithOptions(gatewayId, securityGroupRuleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9916,13 +14486,24 @@ func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9966,13 +14547,24 @@ func (client *Client) DeleteHttpApiOperationWithOptions(httpApiId *string, opera
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHttpApiOperationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHttpApiOperationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9985,6 +14577,430 @@ func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *str
 	headers := make(map[string]*string)
 	_result = &DeleteHttpApiOperationResponse{}
 	_body, _err := client.DeleteHttpApiOperationWithOptions(httpApiId, operationId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete the route of an HttpApi
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpApiRouteResponse
+func (client *Client) DeleteHttpApiRouteWithOptions(httpApiId *string, routeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteHttpApiRouteResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHttpApiRoute"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/routes/" + tea.StringValue(openapiutil.GetEncodeParam(routeId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHttpApiRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHttpApiRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Delete the route of an HttpApi
+//
+// @return DeleteHttpApiRouteResponse
+func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_result *DeleteHttpApiRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteHttpApiRouteResponse{}
+	_body, _err := client.DeleteHttpApiRouteWithOptions(httpApiId, routeId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除策略
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyResponse
+func (client *Client) DeletePolicyWithOptions(policyId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicy"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/policies/" + tea.StringValue(openapiutil.GetEncodeParam(policyId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除策略
+//
+// @return DeletePolicyResponse
+func (client *Client) DeletePolicy(policyId *string) (_result *DeletePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.DeletePolicyWithOptions(policyId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除策略资源挂载
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyAttachmentResponse
+func (client *Client) DeletePolicyAttachmentWithOptions(policyAttachmentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePolicyAttachmentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicyAttachment"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/policy-attachments/" + tea.StringValue(openapiutil.GetEncodeParam(policyAttachmentId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePolicyAttachmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePolicyAttachmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除策略资源挂载
+//
+// @return DeletePolicyAttachmentResponse
+func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_result *DeletePolicyAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePolicyAttachmentResponse{}
+	_body, _err := client.DeletePolicyAttachmentWithOptions(policyAttachmentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 部署HttpApi
+//
+// @param request - DeployHttpApiRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployHttpApiResponse
+func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *DeployHttpApiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployHttpApiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RestApiConfig)) {
+		body["restApiConfig"] = request.RestApiConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		body["routeId"] = request.RouteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployHttpApi"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/deploy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeployHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeployHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 部署HttpApi
+//
+// @param request - DeployHttpApiRequest
+//
+// @return DeployHttpApiResponse
+func (client *Client) DeployHttpApi(httpApiId *string, request *DeployHttpApiRequest) (_result *DeployHttpApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeployHttpApiResponse{}
+	_body, _err := client.DeployHttpApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Export HTTP API
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportHttpApiResponse
+func (client *Client) ExportHttpApiWithOptions(httpApiId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportHttpApiResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportHttpApi"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/export"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExportHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExportHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Export HTTP API
+//
+// @return ExportHttpApiResponse
+func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExportHttpApiResponse{}
+	_body, _err := client.ExportHttpApiWithOptions(httpApiId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取监控/日志大盘接口
+//
+// @param tmpReq - GetDashboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDashboardResponse
+func (client *Client) GetDashboardWithOptions(gatewayId *string, tmpReq *GetDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetDashboardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["acceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["apiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginClassId)) {
+		query["pluginClassId"] = request.PluginClassId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDashboard"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/dashboards"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDashboardResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDashboardResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取监控/日志大盘接口
+//
+// @param request - GetDashboardRequest
+//
+// @return GetDashboardResponse
+func (client *Client) GetDashboard(gatewayId *string, request *GetDashboardRequest) (_result *GetDashboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDashboardResponse{}
+	_body, _err := client.GetDashboardWithOptions(gatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10028,13 +15044,24 @@ func (client *Client) GetDomainWithOptions(domainId *string, request *GetDomainR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10056,6 +15083,8 @@ func (client *Client) GetDomain(domainId *string, request *GetDomainRequest) (_r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetEnvironment is deprecated
+//
 // Summary:
 //
 // GetEnvironment
@@ -10067,6 +15096,7 @@ func (client *Client) GetDomain(domainId *string, request *GetDomainRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEnvironmentResponse
+// Deprecated
 func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *GetEnvironmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10096,15 +15126,28 @@ func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEnvironmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEnvironmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI GetEnvironment is deprecated
+//
 // Summary:
 //
 // GetEnvironment
@@ -10112,6 +15155,7 @@ func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *
 // @param request - GetEnvironmentRequest
 //
 // @return GetEnvironmentResponse
+// Deprecated
 func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironmentRequest) (_result *GetEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10148,13 +15192,24 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10198,13 +15253,24 @@ func (client *Client) GetHttpApiWithOptions(httpApiId *string, headers map[strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10248,13 +15314,24 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHttpApiOperationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHttpApiOperationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10276,7 +15353,7 @@ func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string
 
 // Summary:
 //
-// 获取HttpApi的路由详情
+// Get the details of an HttpApi route
 //
 // @param headers - map
 //
@@ -10298,18 +15375,29 @@ func (client *Client) GetHttpApiRouteWithOptions(httpApiId *string, routeId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetHttpApiRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetHttpApiRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetHttpApiRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取HttpApi的路由详情
+// Get the details of an HttpApi route
 //
 // @return GetHttpApiRouteResponse
 func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_result *GetHttpApiRouteResponse, _err error) {
@@ -10317,6 +15405,375 @@ func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_resu
 	headers := make(map[string]*string)
 	_result = &GetHttpApiRouteResponse{}
 	_body, _err := client.GetHttpApiRouteWithOptions(httpApiId, routeId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// GetPolicy
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicyResponse
+func (client *Client) GetPolicyWithOptions(policyId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicy"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/policies/" + tea.StringValue(openapiutil.GetEncodeParam(policyId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// GetPolicy
+//
+// @return GetPolicyResponse
+func (client *Client) GetPolicy(policyId *string) (_result *GetPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPolicyResponse{}
+	_body, _err := client.GetPolicyWithOptions(policyId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询策略资源挂载
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicyAttachmentResponse
+func (client *Client) GetPolicyAttachmentWithOptions(policyAttachmentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPolicyAttachmentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicyAttachment"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/policy-attachments/" + tea.StringValue(openapiutil.GetEncodeParam(policyAttachmentId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPolicyAttachmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPolicyAttachmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询策略资源挂载
+//
+// @return GetPolicyAttachmentResponse
+func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *GetPolicyAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPolicyAttachmentResponse{}
+	_body, _err := client.GetPolicyAttachmentWithOptions(policyAttachmentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取资源概览信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceOverviewResponse
+func (client *Client) GetResourceOverviewWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceOverviewResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceOverview"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/overview/resources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceOverviewResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceOverviewResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取资源概览信息
+//
+// @return GetResourceOverviewResponse
+func (client *Client) GetResourceOverview() (_result *GetResourceOverviewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetResourceOverviewResponse{}
+	_body, _err := client.GetResourceOverviewWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取链路追踪配置
+//
+// @param request - GetTraceConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTraceConfigResponse
+func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetTraceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTraceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["acceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTraceConfig"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/trace"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTraceConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTraceConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取链路追踪配置
+//
+// @param request - GetTraceConfigRequest
+//
+// @return GetTraceConfigResponse
+func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigRequest) (_result *GetTraceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTraceConfigResponse{}
+	_body, _err := client.GetTraceConfigWithOptions(gatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Import HttpApi
+//
+// @param request - ImportHttpApiRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportHttpApiResponse
+func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportHttpApiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecContentBase64)) {
+		body["specContentBase64"] = request.SpecContentBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecFileUrl)) {
+		body["specFileUrl"] = request.SpecFileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecOssConfig)) {
+		body["specOssConfig"] = request.SpecOssConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		body["strategy"] = request.Strategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetHttpApiId)) {
+		body["targetHttpApiId"] = request.TargetHttpApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionConfig)) {
+		body["versionConfig"] = request.VersionConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportHttpApi"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/import"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Import HttpApi
+//
+// @param request - ImportHttpApiRequest
+//
+// @return ImportHttpApiResponse
+func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *ImportHttpApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ImportHttpApiResponse{}
+	_body, _err := client.ImportHttpApiWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10376,13 +15833,24 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10404,6 +15872,8 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListEnvironments is deprecated
+//
 // Summary:
 //
 // ListEnvironments
@@ -10415,6 +15885,7 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentsResponse
+// Deprecated
 func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10464,15 +15935,28 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEnvironmentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEnvironmentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI ListEnvironments is deprecated
+//
 // Summary:
 //
 // ListEnvironments
@@ -10480,6 +15964,7 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 // @param request - ListEnvironmentsRequest
 //
 // @return ListEnvironmentsResponse
+// Deprecated
 func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_result *ListEnvironmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10510,8 +15995,8 @@ func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, heade
 	}
 	request := &ListGatewaysShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
-		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("tag"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -10539,8 +16024,8 @@ func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, heade
 		query["resourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
-		query["tags"] = request.TagsShrink
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10558,13 +16043,24 @@ func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListGatewaysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListGatewaysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10658,13 +16154,24 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListHttpApiOperationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListHttpApiOperationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListHttpApiOperationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10751,6 +16258,10 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 		query["withEnvironmentInfoById"] = request.WithEnvironmentInfoById
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WithIngressInfo)) {
+		query["withIngressInfo"] = request.WithIngressInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WithPluginAttachmentByPluginId)) {
 		query["withPluginAttachmentByPluginId"] = request.WithPluginAttachmentByPluginId
 	}
@@ -10770,13 +16281,24 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListHttpApisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListHttpApisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListHttpApisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10791,6 +16313,306 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 	headers := make(map[string]*string)
 	_result = &ListHttpApisResponse{}
 	_body, _err := client.ListHttpApisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListPolicyClasses。
+//
+// @param request - ListPolicyClassesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicyClassesResponse
+func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPolicyClassesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceType)) {
+		query["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicyClasses"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/policy-classes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPolicyClassesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPolicyClassesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// ListPolicyClasses。
+//
+// @param request - ListPolicyClassesRequest
+//
+// @return ListPolicyClassesResponse
+func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_result *ListPolicyClassesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPolicyClassesResponse{}
+	_body, _err := client.ListPolicyClassesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListSslCerts。
+//
+// @param request - ListSslCertsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSslCertsResponse
+func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSslCertsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertNameLike)) {
+		query["certNameLike"] = request.CertNameLike
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["domainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSslCerts"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/ssl/certs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSslCertsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSslCertsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// ListSslCerts。
+//
+// @param request - ListSslCertsRequest
+//
+// @return ListSslCertsResponse
+func (client *Client) ListSslCerts(request *ListSslCertsRequest) (_result *ListSslCertsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSslCertsResponse{}
+	_body, _err := client.ListSslCertsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云原生API网关region下的可用区
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListZonesResponse
+func (client *Client) ListZonesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListZonesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListZones"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/zones"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取云原生API网关region下的可用区
+//
+// @return ListZonesResponse
+func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListZonesResponse{}
+	_body, _err := client.ListZonesWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Gateway Restart
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartGatewayResponse
+func (client *Client) RestartGatewayWithOptions(gatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestartGatewayResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartGateway"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/restart"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Gateway Restart
+//
+// @return RestartGatewayResponse
+func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RestartGatewayResponse{}
+	_body, _err := client.RestartGatewayWithOptions(gatewayId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10815,12 +16637,12 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CaCertIndentifier)) {
-		body["caCertIndentifier"] = request.CaCertIndentifier
+	if !tea.BoolValue(util.IsUnset(request.CaCertIdentifier)) {
+		body["caCertIdentifier"] = request.CaCertIdentifier
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CertIndentifier)) {
-		body["certIndentifier"] = request.CertIndentifier
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		body["certIdentifier"] = request.CertIdentifier
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ForceHttps)) {
@@ -10862,13 +16684,24 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10890,6 +16723,8 @@ func (client *Client) UpdateDomain(domainId *string, request *UpdateDomainReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateEnvironment is deprecated
+//
 // Summary:
 //
 // UpdateEnvironment
@@ -10901,6 +16736,7 @@ func (client *Client) UpdateDomain(domainId *string, request *UpdateDomainReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEnvironmentResponse
+// Deprecated
 func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, request *UpdateEnvironmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10930,15 +16766,28 @@ func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateEnvironmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateEnvironmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Deprecated: OpenAPI UpdateEnvironment is deprecated
+//
 // Summary:
 //
 // UpdateEnvironment
@@ -10946,11 +16795,162 @@ func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, reques
 // @param request - UpdateEnvironmentRequest
 //
 // @return UpdateEnvironmentResponse
+// Deprecated
 func (client *Client) UpdateEnvironment(environmentId *string, request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateEnvironmentResponse{}
 	_body, _err := client.UpdateEnvironmentWithOptions(environmentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get the feature configuration of the gateway
+//
+// @param request - UpdateGatewayFeatureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayFeatureResponse
+func (client *Client) UpdateGatewayFeatureWithOptions(gatewayId *string, name *string, request *UpdateGatewayFeatureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGatewayFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayFeature"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-features/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGatewayFeatureResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGatewayFeatureResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Get the feature configuration of the gateway
+//
+// @param request - UpdateGatewayFeatureRequest
+//
+// @return UpdateGatewayFeatureResponse
+func (client *Client) UpdateGatewayFeature(gatewayId *string, name *string, request *UpdateGatewayFeatureRequest) (_result *UpdateGatewayFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGatewayFeatureResponse{}
+	_body, _err := client.UpdateGatewayFeatureWithOptions(gatewayId, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Change the name of a gateway instance
+//
+// @param request - UpdateGatewayNameRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayNameResponse
+func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *UpdateGatewayNameRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGatewayNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayName"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/name"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGatewayNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGatewayNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Change the name of a gateway instance
+//
+// @param request - UpdateGatewayNameRequest
+//
+// @return UpdateGatewayNameResponse
+func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewayNameRequest) (_result *UpdateGatewayNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGatewayNameResponse{}
+	_body, _err := client.UpdateGatewayNameWithOptions(gatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10979,6 +16979,10 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 		body["aiProtocols"] = request.AiProtocols
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AuthConfig)) {
+		body["authConfig"] = request.AuthConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BasePath)) {
 		body["basePath"] = request.BasePath
 	}
@@ -10989,6 +16993,10 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAuth)) {
+		body["enableAuth"] = request.EnableAuth
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IngressConfig)) {
@@ -11018,13 +17026,24 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11082,13 +17101,24 @@ func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, opera
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHttpApiOperationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHttpApiOperationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11103,6 +17133,255 @@ func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *str
 	headers := make(map[string]*string)
 	_result = &UpdateHttpApiOperationResponse{}
 	_body, _err := client.UpdateHttpApiOperationWithOptions(httpApiId, operationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Update the route of HttpApi
+//
+// @param request - UpdateHttpApiRouteRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHttpApiRouteResponse
+func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *string, request *UpdateHttpApiRouteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateHttpApiRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendConfig)) {
+		body["backendConfig"] = request.BackendConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainIds)) {
+		body["domainIds"] = request.DomainIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Match)) {
+		body["match"] = request.Match
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHttpApiRoute"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/routes/" + tea.StringValue(openapiutil.GetEncodeParam(routeId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateHttpApiRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateHttpApiRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Update the route of HttpApi
+//
+// @param request - UpdateHttpApiRouteRequest
+//
+// @return UpdateHttpApiRouteResponse
+func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, request *UpdateHttpApiRouteRequest) (_result *UpdateHttpApiRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateHttpApiRouteResponse{}
+	_body, _err := client.UpdateHttpApiRouteWithOptions(httpApiId, routeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新策略
+//
+// @param request - UpdatePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolicyResponse
+func (client *Client) UpdatePolicyWithOptions(policyId *string, request *UpdatePolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePolicy"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/policies/" + tea.StringValue(openapiutil.GetEncodeParam(policyId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新策略
+//
+// @param request - UpdatePolicyRequest
+//
+// @return UpdatePolicyResponse
+func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyRequest) (_result *UpdatePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePolicyResponse{}
+	_body, _err := client.UpdatePolicyWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Upgrade the gateway version
+//
+// @param request - UpgradeGatewayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeGatewayResponse
+func (client *Client) UpgradeGatewayWithOptions(gatewayId *string, request *UpgradeGatewayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpgradeGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeGateway"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/upgrade"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Upgrade the gateway version
+//
+// @param request - UpgradeGatewayRequest
+//
+// @return UpgradeGatewayResponse
+func (client *Client) UpgradeGateway(gatewayId *string, request *UpgradeGatewayRequest) (_result *UpgradeGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpgradeGatewayResponse{}
+	_body, _err := client.UpgradeGatewayWithOptions(gatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
