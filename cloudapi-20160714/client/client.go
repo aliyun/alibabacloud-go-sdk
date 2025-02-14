@@ -9460,6 +9460,13 @@ type DescribeApiResponseBodyServiceConfigFunctionComputeConfig struct {
 	//
 	// fcservicename
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The name of the trigger.
+	//
+	// You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
+	//
+	// example:
+	//
+	// test1
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 }
 
@@ -11540,6 +11547,11 @@ func (s *DescribeApiGroupVpcWhitelistResponse) SetBody(v *DescribeApiGroupVpcWhi
 }
 
 type DescribeApiGroupsRequest struct {
+	// The root path of the API.
+	//
+	// example:
+	//
+	// /edmdgp/service20250116management01/v1
 	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
 	// Specifies whether to enable tag verification.
 	//
@@ -21977,6 +21989,13 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctio
 	//
 	// myservice
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The name of the trigger.
+	//
+	// You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
+	//
+	// example:
+	//
+	// test1
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 }
 
@@ -39098,6 +39117,8 @@ type ListPrivateDNSRequest struct {
 	//
 	// api.demo.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The internal domain name resolution type. Valid values:
 	//
@@ -39121,6 +39142,16 @@ func (s ListPrivateDNSRequest) GoString() string {
 
 func (s *ListPrivateDNSRequest) SetIntranetDomain(v string) *ListPrivateDNSRequest {
 	s.IntranetDomain = &v
+	return s
+}
+
+func (s *ListPrivateDNSRequest) SetPageNumber(v int32) *ListPrivateDNSRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPrivateDNSRequest) SetPageSize(v int32) *ListPrivateDNSRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -62798,6 +62829,14 @@ func (client *Client) ListPrivateDNSWithOptions(request *ListPrivateDNSRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IntranetDomain)) {
 		query["IntranetDomain"] = request.IntranetDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
