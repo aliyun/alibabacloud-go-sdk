@@ -155,6 +155,7 @@ func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) 
 }
 
 type AIAgentTemplateConfigAvatarChat3D struct {
+	AsrLanguageId            *string                                        `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence            *int32                                         `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	AvatarId                 *string                                        `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	BailianAppParams         *string                                        `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
@@ -183,6 +184,11 @@ func (s AIAgentTemplateConfigAvatarChat3D) String() string {
 
 func (s AIAgentTemplateConfigAvatarChat3D) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetAsrLanguageId(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.AsrLanguageId = &v
+	return s
 }
 
 func (s *AIAgentTemplateConfigAvatarChat3D) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigAvatarChat3D {
@@ -309,6 +315,7 @@ func (s *AIAgentTemplateConfigAvatarChat3DLlmHistory) SetRole(v string) *AIAgent
 }
 
 type AIAgentTemplateConfigVisionChat struct {
+	AsrLanguageId            *string                                      `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence            *int32                                       `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	BailianAppParams         *string                                      `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
 	EnableIntelligentSegment *bool                                        `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
@@ -336,6 +343,11 @@ func (s AIAgentTemplateConfigVisionChat) String() string {
 
 func (s AIAgentTemplateConfigVisionChat) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetAsrLanguageId(v string) *AIAgentTemplateConfigVisionChat {
+	s.AsrLanguageId = &v
+	return s
 }
 
 func (s *AIAgentTemplateConfigVisionChat) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigVisionChat {
@@ -457,6 +469,7 @@ func (s *AIAgentTemplateConfigVisionChatLlmHistory) SetRole(v string) *AIAgentTe
 }
 
 type AIAgentTemplateConfigVoiceChat struct {
+	AsrLanguageId            *string                                     `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence            *int32                                      `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	AvatarUrl                *string                                     `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	AvatarUrlType            *string                                     `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
@@ -486,6 +499,11 @@ func (s AIAgentTemplateConfigVoiceChat) String() string {
 
 func (s AIAgentTemplateConfigVoiceChat) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetAsrLanguageId(v string) *AIAgentTemplateConfigVoiceChat {
+	s.AsrLanguageId = &v
+	return s
 }
 
 func (s *AIAgentTemplateConfigVoiceChat) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigVoiceChat {
@@ -1407,6 +1425,7 @@ func (s *LicenseInstanceAppDTO) SetUserId(v int64) *LicenseInstanceAppDTO {
 type LicenseInstanceAppDTOLicenseConfigs struct {
 	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	FeatureIds      *string `json:"FeatureIds,omitempty" xml:"FeatureIds,omitempty"`
+	IsTrial         *bool   `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
 	SdkId           *int32  `json:"SdkId,omitempty" xml:"SdkId,omitempty"`
 	SdkName         *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
 	Subscription    *string `json:"Subscription,omitempty" xml:"Subscription,omitempty"`
@@ -1429,6 +1448,11 @@ func (s *LicenseInstanceAppDTOLicenseConfigs) SetBusinessType(v string) *License
 
 func (s *LicenseInstanceAppDTOLicenseConfigs) SetFeatureIds(v string) *LicenseInstanceAppDTOLicenseConfigs {
 	s.FeatureIds = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetIsTrial(v bool) *LicenseInstanceAppDTOLicenseConfigs {
+	s.IsTrial = &v
 	return s
 }
 
@@ -2660,6 +2684,361 @@ func (s *VodPackagingGroup) SetGroupName(v string) *VodPackagingGroup {
 	return s
 }
 
+type AddAdInsertionRequest struct {
+	// 内容URL前缀
+	//
+	// example:
+	//
+	// ON
+	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
+	// 广告策略服务器URL
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://ads.com/ad1?param1=[palyer_params.p1]
+	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
+	// 广告分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	CdnAdSegmentUrlPrefix *string `json:"CdnAdSegmentUrlPrefix,omitempty" xml:"CdnAdSegmentUrlPrefix,omitempty"`
+	// 视频内容分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	CdnContentSegmentUrlPrefix *string `json:"CdnContentSegmentUrlPrefix,omitempty" xml:"CdnContentSegmentUrlPrefix,omitempty"`
+	// example:
+	//
+	// ****0311a423d11a5f7dee713535****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 动态配置别名
+	//
+	// example:
+	//
+	// { "player_params.p1": { "1": "abc" } }
+	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
+	// 内容URL前缀
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://source.com/
+	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 个性化配置阈值
+	//
+	// example:
+	//
+	// 5
+	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
+	// slate广告URL
+	//
+	// example:
+	//
+	// http://storage.com/slate1.mp4
+	SlateAdUrl *string `json:"SlateAdUrl,omitempty" xml:"SlateAdUrl,omitempty"`
+}
+
+func (s AddAdInsertionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAdInsertionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAdInsertionRequest) SetAdMarkerPassthrough(v string) *AddAdInsertionRequest {
+	s.AdMarkerPassthrough = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetAdsUrl(v string) *AddAdInsertionRequest {
+	s.AdsUrl = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetCdnAdSegmentUrlPrefix(v string) *AddAdInsertionRequest {
+	s.CdnAdSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetCdnContentSegmentUrlPrefix(v string) *AddAdInsertionRequest {
+	s.CdnContentSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetClientToken(v string) *AddAdInsertionRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetConfigAliases(v string) *AddAdInsertionRequest {
+	s.ConfigAliases = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetContentUrlPrefix(v string) *AddAdInsertionRequest {
+	s.ContentUrlPrefix = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetName(v string) *AddAdInsertionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetPersonalizationThreshold(v int32) *AddAdInsertionRequest {
+	s.PersonalizationThreshold = &v
+	return s
+}
+
+func (s *AddAdInsertionRequest) SetSlateAdUrl(v string) *AddAdInsertionRequest {
+	s.SlateAdUrl = &v
+	return s
+}
+
+type AddAdInsertionResponseBody struct {
+	Config *AddAdInsertionResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddAdInsertionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAdInsertionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddAdInsertionResponseBody) SetConfig(v *AddAdInsertionResponseBodyConfig) *AddAdInsertionResponseBody {
+	s.Config = v
+	return s
+}
+
+func (s *AddAdInsertionResponseBody) SetRequestId(v string) *AddAdInsertionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddAdInsertionResponseBodyConfig struct {
+	// 广告标记透传
+	//
+	// example:
+	//
+	// ON
+	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
+	// 广告策略服务器URL
+	//
+	// example:
+	//
+	// http://ads.com/ad1?param1=[palyer_params.p1]
+	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
+	// CDN配置
+	CdnConfig *AddAdInsertionResponseBodyConfigCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
+	// 动态配置别名
+	//
+	// example:
+	//
+	// { "player_params.p1": { "1": "abc" } }
+	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
+	// 内容URL前缀
+	//
+	// example:
+	//
+	// https://source.com/
+	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
+	// 创建时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 修改时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// 清单播放端点配置
+	ManifestEndpointConfig *AddAdInsertionResponseBodyConfigManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
+	// 广告插入配置名称
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 个性化配置阈值
+	//
+	// example:
+	//
+	// 5
+	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
+	// slate广告URL
+	//
+	// example:
+	//
+	// http://storage.com/slate1.mp4
+	SlateAdUrl *string `json:"SlateAdUrl,omitempty" xml:"SlateAdUrl,omitempty"`
+}
+
+func (s AddAdInsertionResponseBodyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAdInsertionResponseBodyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetAdMarkerPassthrough(v string) *AddAdInsertionResponseBodyConfig {
+	s.AdMarkerPassthrough = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetAdsUrl(v string) *AddAdInsertionResponseBodyConfig {
+	s.AdsUrl = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetCdnConfig(v *AddAdInsertionResponseBodyConfigCdnConfig) *AddAdInsertionResponseBodyConfig {
+	s.CdnConfig = v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetConfigAliases(v string) *AddAdInsertionResponseBodyConfig {
+	s.ConfigAliases = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetContentUrlPrefix(v string) *AddAdInsertionResponseBodyConfig {
+	s.ContentUrlPrefix = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetCreateTime(v string) *AddAdInsertionResponseBodyConfig {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetLastModified(v string) *AddAdInsertionResponseBodyConfig {
+	s.LastModified = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetManifestEndpointConfig(v *AddAdInsertionResponseBodyConfigManifestEndpointConfig) *AddAdInsertionResponseBodyConfig {
+	s.ManifestEndpointConfig = v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetName(v string) *AddAdInsertionResponseBodyConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetPersonalizationThreshold(v int32) *AddAdInsertionResponseBodyConfig {
+	s.PersonalizationThreshold = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfig) SetSlateAdUrl(v string) *AddAdInsertionResponseBodyConfig {
+	s.SlateAdUrl = &v
+	return s
+}
+
+type AddAdInsertionResponseBodyConfigCdnConfig struct {
+	// 广告分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
+	// 视频内容分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	ContentSegmentUrlPrefix *string `json:"ContentSegmentUrlPrefix,omitempty" xml:"ContentSegmentUrlPrefix,omitempty"`
+}
+
+func (s AddAdInsertionResponseBodyConfigCdnConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAdInsertionResponseBodyConfigCdnConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AddAdInsertionResponseBodyConfigCdnConfig) SetAdSegmentUrlPrefix(v string) *AddAdInsertionResponseBodyConfigCdnConfig {
+	s.AdSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *AddAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefix(v string) *AddAdInsertionResponseBodyConfigCdnConfig {
+	s.ContentSegmentUrlPrefix = &v
+	return s
+}
+
+type AddAdInsertionResponseBodyConfigManifestEndpointConfig struct {
+	// HLS清单播放端点前缀
+	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
+}
+
+func (s AddAdInsertionResponseBodyConfigManifestEndpointConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAdInsertionResponseBodyConfigManifestEndpointConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AddAdInsertionResponseBodyConfigManifestEndpointConfig) SetHlsPrefix(v string) *AddAdInsertionResponseBodyConfigManifestEndpointConfig {
+	s.HlsPrefix = &v
+	return s
+}
+
+type AddAdInsertionResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddAdInsertionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddAdInsertionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAdInsertionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddAdInsertionResponse) SetHeaders(v map[string]*string) *AddAdInsertionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddAdInsertionResponse) SetStatusCode(v int32) *AddAdInsertionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddAdInsertionResponse) SetBody(v *AddAdInsertionResponseBody) *AddAdInsertionResponse {
+	s.Body = v
+	return s
+}
+
 type AddCategoryRequest struct {
 	// The category name.
 	//
@@ -3512,58 +3891,78 @@ func (s *AddFavoritePublicMediaResponse) SetBody(v *AddFavoritePublicMediaRespon
 }
 
 type AddMediaConnectFlowInputRequest struct {
+	// IP whitelist, in CIDR format, separated by commas if multiple IP ranges are specified
+	//
 	// example:
 	//
 	// 19.168.1.1/32,18.168.1.1/16
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Input URL, required when the input type is RTMP-PULL/SRT-Listener
+	//
 	// example:
 	//
 	// rtmp://pull.test.alivecdn.com/live/alitest
 	InputFromUrl *string `json:"InputFromUrl,omitempty" xml:"InputFromUrl,omitempty"`
+	// Input name
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// AliTestInput
 	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
+	// Input type
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RTMP-PUSH
 	InputProtocol *string `json:"InputProtocol,omitempty" xml:"InputProtocol,omitempty"`
+	// Input bitrate, in bps
+	//
 	// example:
 	//
 	// 2000000
 	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	// Paired Flow ID, required when the input type is Flow
+	//
 	// example:
 	//
 	// 805fbdd0-575e-4146-b35d-ec7f63937b20
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
+	// Output name of the paired Flow, required when the input type is Flow
+	//
 	// example:
 	//
 	// AliTestOutput
 	PairOutputName *string `json:"PairOutputName,omitempty" xml:"PairOutputName,omitempty"`
+	// SRT latency, required when the input type is SRT-Listener/SRT-Caller
+	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// SRT encryption key, required when the input type is SRT-Listener/SRT-Caller
+	//
 	// example:
 	//
 	// BETTERG08S01
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
+	// SRT encryption length, required when the input type is SRT-Listener/SRT-Caller
+	//
 	// example:
 	//
 	// 32
 	SrtPbkeyLen *string `json:"SrtPbkeyLen,omitempty" xml:"SrtPbkeyLen,omitempty"`
-	// example:
-	//
-	// 32
-	SrtPbkeylen *string `json:"SrtPbkeylen,omitempty" xml:"SrtPbkeylen,omitempty"`
-	// example:
-	//
-	// BETTERG08S01
-	SrtPbkeyssen *string `json:"SrtPbkeyssen,omitempty" xml:"SrtPbkeyssen,omitempty"`
 }
 
 func (s AddMediaConnectFlowInputRequest) String() string {
@@ -3629,26 +4028,23 @@ func (s *AddMediaConnectFlowInputRequest) SetSrtPbkeyLen(v string) *AddMediaConn
 	return s
 }
 
-func (s *AddMediaConnectFlowInputRequest) SetSrtPbkeylen(v string) *AddMediaConnectFlowInputRequest {
-	s.SrtPbkeylen = &v
-	return s
-}
-
-func (s *AddMediaConnectFlowInputRequest) SetSrtPbkeyssen(v string) *AddMediaConnectFlowInputRequest {
-	s.SrtPbkeyssen = &v
-	return s
-}
-
 type AddMediaConnectFlowInputResponseBody struct {
+	// Response body
 	Content *AddMediaConnectFlowInputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Description of the API call
+	//
 	// example:
 	//
-	// ok
+	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 请求ID
+	//
 	// example:
 	//
 	// 11357BE8-4C54-58EA-890A-5AB646EDE4B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
 	// example:
 	//
 	// 0
@@ -3684,6 +4080,8 @@ func (s *AddMediaConnectFlowInputResponseBody) SetRetCode(v int32) *AddMediaConn
 }
 
 type AddMediaConnectFlowInputResponseBodyContent struct {
+	// Input URL
+	//
 	// example:
 	//
 	// rtmp://1.2.3.4:1935/live/AliTestInput_8666ec062190f00e263012666319a5be
@@ -3733,50 +4131,74 @@ func (s *AddMediaConnectFlowInputResponse) SetBody(v *AddMediaConnectFlowInputRe
 }
 
 type AddMediaConnectFlowOutputRequest struct {
+	// IP whitelist, in CIDR format, separated by commas if multiple IP segments are provided
+	//
 	// example:
 	//
 	// 83.17.231.31/32
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Output name
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// AliTestOutput
 	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
+	// Output protocol
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RTMP-PULL
 	OutputProtocol *string `json:"OutputProtocol,omitempty" xml:"OutputProtocol,omitempty"`
+	// Output address, required when the output type is RTMP-PUSH/SRT-Caller mode
+	//
 	// example:
 	//
 	// rtmp://push.test.alivecdn.com/live/alitest
 	OutputToUrl *string `json:"OutputToUrl,omitempty" xml:"OutputToUrl,omitempty"`
-	// example:
+	// Paired Flow instance ID, required when the output type is Flow
 	//
-	// 8666ec062190f00e263012666319a5be
-	PairChannelId *string `json:"PairChannelId,omitempty" xml:"PairChannelId,omitempty"`
 	// example:
 	//
 	// 8666ec062190f00e263012666319a5be
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
+	// Input name of the paired Flow, required when the output type is Flow
+	//
 	// example:
 	//
 	// AliTestInput
 	PairInputName *string `json:"PairInputName,omitempty" xml:"PairInputName,omitempty"`
+	// Maximum number of players
+	//
 	// example:
 	//
 	// 5
 	PlayerLimit *int32 `json:"PlayerLimit,omitempty" xml:"PlayerLimit,omitempty"`
+	// SRT latency, required only when the input type is SRT-Listener/SRT-Caller
+	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// SRT passphrase, required only when the input type is SRT-Listener/SRT-Caller
+	//
 	// example:
 	//
 	// BETTERG08S01
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
+	// SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+	//
 	// example:
 	//
 	// 32
@@ -3816,11 +4238,6 @@ func (s *AddMediaConnectFlowOutputRequest) SetOutputToUrl(v string) *AddMediaCon
 	return s
 }
 
-func (s *AddMediaConnectFlowOutputRequest) SetPairChannelId(v string) *AddMediaConnectFlowOutputRequest {
-	s.PairChannelId = &v
-	return s
-}
-
 func (s *AddMediaConnectFlowOutputRequest) SetPairFlowId(v string) *AddMediaConnectFlowOutputRequest {
 	s.PairFlowId = &v
 	return s
@@ -3852,19 +4269,26 @@ func (s *AddMediaConnectFlowOutputRequest) SetSrtPbkeyLen(v string) *AddMediaCon
 }
 
 type AddMediaConnectFlowOutputResponseBody struct {
+	// Response body
 	Content *AddMediaConnectFlowOutputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Description of the API call
+	//
 	// example:
 	//
 	// ok
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 请求ID
+	//
 	// example:
 	//
 	// 11AA9E73-FBA0-58DC-97BA-D606D847BCB6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
 	// example:
 	//
 	// 0
-	RetCode *string `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
 }
 
 func (s AddMediaConnectFlowOutputResponseBody) String() string {
@@ -3890,12 +4314,14 @@ func (s *AddMediaConnectFlowOutputResponseBody) SetRequestId(v string) *AddMedia
 	return s
 }
 
-func (s *AddMediaConnectFlowOutputResponseBody) SetRetCode(v string) *AddMediaConnectFlowOutputResponseBody {
+func (s *AddMediaConnectFlowOutputResponseBody) SetRetCode(v int32) *AddMediaConnectFlowOutputResponseBody {
 	s.RetCode = &v
 	return s
 }
 
 type AddMediaConnectFlowOutputResponseBodyContent struct {
+	// Output address
+	//
 	// example:
 	//
 	// srt://1.2.3.4:1025
@@ -4527,6 +4953,218 @@ func (s *AlterSearchIndexResponse) SetStatusCode(v int32) *AlterSearchIndexRespo
 }
 
 func (s *AlterSearchIndexResponse) SetBody(v *AlterSearchIndexResponseBody) *AlterSearchIndexResponse {
+	s.Body = v
+	return s
+}
+
+type BatchCreateVodPackagingAssetRequest struct {
+	Assets []*BatchCreateVodPackagingAssetRequestAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s BatchCreateVodPackagingAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateVodPackagingAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateVodPackagingAssetRequest) SetAssets(v []*BatchCreateVodPackagingAssetRequestAssets) *BatchCreateVodPackagingAssetRequest {
+	s.Assets = v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetRequest) SetGroupName(v string) *BatchCreateVodPackagingAssetRequest {
+	s.GroupName = &v
+	return s
+}
+
+type BatchCreateVodPackagingAssetRequestAssets struct {
+	// example:
+	//
+	// 30min_movie
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// example:
+	//
+	// movie
+	ContentId *string                                         `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	Input     *BatchCreateVodPackagingAssetRequestAssetsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+}
+
+func (s BatchCreateVodPackagingAssetRequestAssets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateVodPackagingAssetRequestAssets) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateVodPackagingAssetRequestAssets) SetAssetName(v string) *BatchCreateVodPackagingAssetRequestAssets {
+	s.AssetName = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetRequestAssets) SetContentId(v string) *BatchCreateVodPackagingAssetRequestAssets {
+	s.ContentId = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetRequestAssets) SetInput(v *BatchCreateVodPackagingAssetRequestAssetsInput) *BatchCreateVodPackagingAssetRequestAssets {
+	s.Input = v
+	return s
+}
+
+type BatchCreateVodPackagingAssetRequestAssetsInput struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s BatchCreateVodPackagingAssetRequestAssetsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateVodPackagingAssetRequestAssetsInput) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateVodPackagingAssetRequestAssetsInput) SetMedia(v string) *BatchCreateVodPackagingAssetRequestAssetsInput {
+	s.Media = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetRequestAssetsInput) SetType(v string) *BatchCreateVodPackagingAssetRequestAssetsInput {
+	s.Type = &v
+	return s
+}
+
+type BatchCreateVodPackagingAssetShrinkRequest struct {
+	AssetsShrink *string `json:"Assets,omitempty" xml:"Assets,omitempty"`
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s BatchCreateVodPackagingAssetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateVodPackagingAssetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateVodPackagingAssetShrinkRequest) SetAssetsShrink(v string) *BatchCreateVodPackagingAssetShrinkRequest {
+	s.AssetsShrink = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetShrinkRequest) SetGroupName(v string) *BatchCreateVodPackagingAssetShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+type BatchCreateVodPackagingAssetResponseBody struct {
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultList []*BatchCreateVodPackagingAssetResponseBodyResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateVodPackagingAssetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateVodPackagingAssetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateVodPackagingAssetResponseBody) SetGroupName(v string) *BatchCreateVodPackagingAssetResponseBody {
+	s.GroupName = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetResponseBody) SetRequestId(v string) *BatchCreateVodPackagingAssetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetResponseBody) SetResultList(v []*BatchCreateVodPackagingAssetResponseBodyResultList) *BatchCreateVodPackagingAssetResponseBody {
+	s.ResultList = v
+	return s
+}
+
+type BatchCreateVodPackagingAssetResponseBodyResultList struct {
+	Asset *VodPackagingAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	// example:
+	//
+	// InvalidParameter.PackagingAssetAlreadyExists
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The specified packagingAsset "inputMovie" already exists
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s BatchCreateVodPackagingAssetResponseBodyResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateVodPackagingAssetResponseBodyResultList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateVodPackagingAssetResponseBodyResultList) SetAsset(v *VodPackagingAsset) *BatchCreateVodPackagingAssetResponseBodyResultList {
+	s.Asset = v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetResponseBodyResultList) SetCode(v string) *BatchCreateVodPackagingAssetResponseBodyResultList {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetResponseBodyResultList) SetMessage(v string) *BatchCreateVodPackagingAssetResponseBodyResultList {
+	s.Message = &v
+	return s
+}
+
+type BatchCreateVodPackagingAssetResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCreateVodPackagingAssetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchCreateVodPackagingAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateVodPackagingAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateVodPackagingAssetResponse) SetHeaders(v map[string]*string) *BatchCreateVodPackagingAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetResponse) SetStatusCode(v int32) *BatchCreateVodPackagingAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchCreateVodPackagingAssetResponse) SetBody(v *BatchCreateVodPackagingAssetResponseBody) *BatchCreateVodPackagingAssetResponse {
 	s.Body = v
 	return s
 }
@@ -8288,7 +8926,21 @@ func (s *CreateLiveTranscodeTemplateResponse) SetBody(v *CreateLiveTranscodeTemp
 }
 
 type CreateMediaConnectFlowRequest struct {
-	FlowName   *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// Flow instance name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliTestFlow
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// Region to which the Flow instance belongs
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ap-southeast-1
 	FlowRegion *string `json:"FlowRegion,omitempty" xml:"FlowRegion,omitempty"`
 }
 
@@ -8311,10 +8963,26 @@ func (s *CreateMediaConnectFlowRequest) SetFlowRegion(v string) *CreateMediaConn
 }
 
 type CreateMediaConnectFlowResponseBody struct {
-	Content     *CreateMediaConnectFlowResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Description *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RetCode     *int32                                     `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// Response body
+	Content *CreateMediaConnectFlowResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Description information returned by the interface
+	//
+	// example:
+	//
+	// OK
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 86D92F9D-65E8-58A2-85D1-9DEEECC172E8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
+	// example:
+	//
+	// 0
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
 }
 
 func (s CreateMediaConnectFlowResponseBody) String() string {
@@ -8346,6 +9014,11 @@ func (s *CreateMediaConnectFlowResponseBody) SetRetCode(v int32) *CreateMediaCon
 }
 
 type CreateMediaConnectFlowResponseBodyContent struct {
+	// Flow instance ID
+	//
+	// example:
+	//
+	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -9662,6 +10335,560 @@ func (s *CreateUploadStreamResponse) SetBody(v *CreateUploadStreamResponseBody) 
 	return s
 }
 
+type CreateVodPackagingAssetRequest struct {
+	// example:
+	//
+	// hls_3s
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// example:
+	//
+	// movie
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// example:
+	//
+	// HLS 3 second packaging
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// vod_hls
+	GroupName *string                              `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Input     *CreateVodPackagingAssetRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+}
+
+func (s CreateVodPackagingAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingAssetRequest) SetAssetName(v string) *CreateVodPackagingAssetRequest {
+	s.AssetName = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetRequest) SetContentId(v string) *CreateVodPackagingAssetRequest {
+	s.ContentId = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetRequest) SetDescription(v string) *CreateVodPackagingAssetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetRequest) SetGroupName(v string) *CreateVodPackagingAssetRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetRequest) SetInput(v *CreateVodPackagingAssetRequestInput) *CreateVodPackagingAssetRequest {
+	s.Input = v
+	return s
+}
+
+type CreateVodPackagingAssetRequestInput struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateVodPackagingAssetRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingAssetRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingAssetRequestInput) SetMedia(v string) *CreateVodPackagingAssetRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetRequestInput) SetType(v string) *CreateVodPackagingAssetRequestInput {
+	s.Type = &v
+	return s
+}
+
+type CreateVodPackagingAssetShrinkRequest struct {
+	// example:
+	//
+	// hls_3s
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// example:
+	//
+	// movie
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// example:
+	//
+	// HLS 3 second packaging
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// vod_hls
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+}
+
+func (s CreateVodPackagingAssetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingAssetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingAssetShrinkRequest) SetAssetName(v string) *CreateVodPackagingAssetShrinkRequest {
+	s.AssetName = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetShrinkRequest) SetContentId(v string) *CreateVodPackagingAssetShrinkRequest {
+	s.ContentId = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetShrinkRequest) SetDescription(v string) *CreateVodPackagingAssetShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetShrinkRequest) SetGroupName(v string) *CreateVodPackagingAssetShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetShrinkRequest) SetInputShrink(v string) *CreateVodPackagingAssetShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+type CreateVodPackagingAssetResponseBody struct {
+	Asset *VodPackagingAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	// example:
+	//
+	// 25818875-5F78-4A13-BEF6-D7393642CA58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateVodPackagingAssetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingAssetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingAssetResponseBody) SetAsset(v *VodPackagingAsset) *CreateVodPackagingAssetResponseBody {
+	s.Asset = v
+	return s
+}
+
+func (s *CreateVodPackagingAssetResponseBody) SetRequestId(v string) *CreateVodPackagingAssetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateVodPackagingAssetResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVodPackagingAssetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVodPackagingAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingAssetResponse) SetHeaders(v map[string]*string) *CreateVodPackagingAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVodPackagingAssetResponse) SetStatusCode(v int32) *CreateVodPackagingAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVodPackagingAssetResponse) SetBody(v *CreateVodPackagingAssetResponseBody) *CreateVodPackagingAssetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVodPackagingConfigurationRequest struct {
+	// example:
+	//
+	// hls_3s
+	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+	// example:
+	//
+	// HLS 3s vod packaging
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// vod_hls
+	GroupName     *string                                              `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PackageConfig *CreateVodPackagingConfigurationRequestPackageConfig `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// HLS
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s CreateVodPackagingConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingConfigurationRequest) SetConfigurationName(v string) *CreateVodPackagingConfigurationRequest {
+	s.ConfigurationName = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequest) SetDescription(v string) *CreateVodPackagingConfigurationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequest) SetGroupName(v string) *CreateVodPackagingConfigurationRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequest) SetPackageConfig(v *CreateVodPackagingConfigurationRequestPackageConfig) *CreateVodPackagingConfigurationRequest {
+	s.PackageConfig = v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequest) SetProtocol(v string) *CreateVodPackagingConfigurationRequest {
+	s.Protocol = &v
+	return s
+}
+
+type CreateVodPackagingConfigurationRequestPackageConfig struct {
+	// if can be null:
+	// true
+	DrmProvider *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider `json:"DrmProvider,omitempty" xml:"DrmProvider,omitempty" type:"Struct"`
+	// example:
+	//
+	// index
+	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// example:
+	//
+	// 6
+	SegmentDuration *int64                                                              `json:"SegmentDuration,omitempty" xml:"SegmentDuration,omitempty"`
+	StreamSelection *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection `json:"StreamSelection,omitempty" xml:"StreamSelection,omitempty" type:"Struct"`
+}
+
+func (s CreateVodPackagingConfigurationRequestPackageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingConfigurationRequestPackageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfig) SetDrmProvider(v *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) *CreateVodPackagingConfigurationRequestPackageConfig {
+	s.DrmProvider = v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfig) SetManifestName(v string) *CreateVodPackagingConfigurationRequestPackageConfig {
+	s.ManifestName = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfig) SetSegmentDuration(v int64) *CreateVodPackagingConfigurationRequestPackageConfig {
+	s.SegmentDuration = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfig) SetStreamSelection(v *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection) *CreateVodPackagingConfigurationRequestPackageConfig {
+	s.StreamSelection = v
+	return s
+}
+
+type CreateVodPackagingConfigurationRequestPackageConfigDrmProvider struct {
+	// example:
+	//
+	// AES_128
+	EncryptionMethod *string `json:"EncryptionMethod,omitempty" xml:"EncryptionMethod,omitempty"`
+	// example:
+	//
+	// 00001111222233334444555566667777
+	IV        *string   `json:"IV,omitempty" xml:"IV,omitempty"`
+	SystemIds []*string `json:"SystemIds,omitempty" xml:"SystemIds,omitempty" type:"Repeated"`
+	Url       *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) SetEncryptionMethod(v string) *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider {
+	s.EncryptionMethod = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) SetIV(v string) *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider {
+	s.IV = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) SetSystemIds(v []*string) *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider {
+	s.SystemIds = v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) SetUrl(v string) *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider {
+	s.Url = &v
+	return s
+}
+
+type CreateVodPackagingConfigurationRequestPackageConfigStreamSelection struct {
+	// example:
+	//
+	// 1000000000
+	MaxVideoBitsPerSecond *int64 `json:"MaxVideoBitsPerSecond,omitempty" xml:"MaxVideoBitsPerSecond,omitempty"`
+	// example:
+	//
+	// 100000
+	MinVideoBitsPerSecond *int64 `json:"MinVideoBitsPerSecond,omitempty" xml:"MinVideoBitsPerSecond,omitempty"`
+	// example:
+	//
+	// ORIGINAL
+	StreamOrder *string `json:"StreamOrder,omitempty" xml:"StreamOrder,omitempty"`
+}
+
+func (s CreateVodPackagingConfigurationRequestPackageConfigStreamSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingConfigurationRequestPackageConfigStreamSelection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection) SetMaxVideoBitsPerSecond(v int64) *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection {
+	s.MaxVideoBitsPerSecond = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection) SetMinVideoBitsPerSecond(v int64) *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection {
+	s.MinVideoBitsPerSecond = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection) SetStreamOrder(v string) *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection {
+	s.StreamOrder = &v
+	return s
+}
+
+type CreateVodPackagingConfigurationShrinkRequest struct {
+	// example:
+	//
+	// hls_3s
+	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+	// example:
+	//
+	// HLS 3s vod packaging
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// vod_hls
+	GroupName           *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PackageConfigShrink *string `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty"`
+	// example:
+	//
+	// HLS
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s CreateVodPackagingConfigurationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingConfigurationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingConfigurationShrinkRequest) SetConfigurationName(v string) *CreateVodPackagingConfigurationShrinkRequest {
+	s.ConfigurationName = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationShrinkRequest) SetDescription(v string) *CreateVodPackagingConfigurationShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationShrinkRequest) SetGroupName(v string) *CreateVodPackagingConfigurationShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationShrinkRequest) SetPackageConfigShrink(v string) *CreateVodPackagingConfigurationShrinkRequest {
+	s.PackageConfigShrink = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationShrinkRequest) SetProtocol(v string) *CreateVodPackagingConfigurationShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+type CreateVodPackagingConfigurationResponseBody struct {
+	PackagingConfiguration *VodPackagingConfiguration `json:"PackagingConfiguration,omitempty" xml:"PackagingConfiguration,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateVodPackagingConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingConfigurationResponseBody) SetPackagingConfiguration(v *VodPackagingConfiguration) *CreateVodPackagingConfigurationResponseBody {
+	s.PackagingConfiguration = v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationResponseBody) SetRequestId(v string) *CreateVodPackagingConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateVodPackagingConfigurationResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVodPackagingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVodPackagingConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingConfigurationResponse) SetHeaders(v map[string]*string) *CreateVodPackagingConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationResponse) SetStatusCode(v int32) *CreateVodPackagingConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVodPackagingConfigurationResponse) SetBody(v *CreateVodPackagingConfigurationResponseBody) *CreateVodPackagingConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVodPackagingGroupRequest struct {
+	// example:
+	//
+	// vod hls packaging
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s CreateVodPackagingGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingGroupRequest) SetDescription(v string) *CreateVodPackagingGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVodPackagingGroupRequest) SetGroupName(v string) *CreateVodPackagingGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+type CreateVodPackagingGroupResponseBody struct {
+	PackagingGroup *VodPackagingGroup `json:"PackagingGroup,omitempty" xml:"PackagingGroup,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateVodPackagingGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingGroupResponseBody) SetPackagingGroup(v *VodPackagingGroup) *CreateVodPackagingGroupResponseBody {
+	s.PackagingGroup = v
+	return s
+}
+
+func (s *CreateVodPackagingGroupResponseBody) SetRequestId(v string) *CreateVodPackagingGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateVodPackagingGroupResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVodPackagingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVodPackagingGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVodPackagingGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVodPackagingGroupResponse) SetHeaders(v map[string]*string) *CreateVodPackagingGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVodPackagingGroupResponse) SetStatusCode(v int32) *CreateVodPackagingGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVodPackagingGroupResponse) SetBody(v *CreateVodPackagingGroupResponseBody) *CreateVodPackagingGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DecryptKMSDataKeyRequest struct {
 	// The ciphertext that you want to decrypt.
 	//
@@ -9773,6 +11000,161 @@ func (s *DecryptKMSDataKeyResponse) SetStatusCode(v int32) *DecryptKMSDataKeyRes
 }
 
 func (s *DecryptKMSDataKeyResponse) SetBody(v *DecryptKMSDataKeyResponseBody) *DecryptKMSDataKeyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAIAgentDialogueRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f27f9b9be28642a88e18*******
+	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6d594e7f55624c47a48789******
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s DeleteAIAgentDialogueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAIAgentDialogueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAIAgentDialogueRequest) SetDialogueId(v string) *DeleteAIAgentDialogueRequest {
+	s.DialogueId = &v
+	return s
+}
+
+func (s *DeleteAIAgentDialogueRequest) SetSessionId(v string) *DeleteAIAgentDialogueRequest {
+	s.SessionId = &v
+	return s
+}
+
+type DeleteAIAgentDialogueResponseBody struct {
+	// example:
+	//
+	// 7B117AF5-2A1******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAIAgentDialogueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAIAgentDialogueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAIAgentDialogueResponseBody) SetRequestId(v string) *DeleteAIAgentDialogueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAIAgentDialogueResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAIAgentDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAIAgentDialogueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAIAgentDialogueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAIAgentDialogueResponse) SetHeaders(v map[string]*string) *DeleteAIAgentDialogueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAIAgentDialogueResponse) SetStatusCode(v int32) *DeleteAIAgentDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAIAgentDialogueResponse) SetBody(v *DeleteAIAgentDialogueResponseBody) *DeleteAIAgentDialogueResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAdInsertionRequest struct {
+	// 代表资源一级ID的资源属性字段
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeleteAdInsertionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAdInsertionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAdInsertionRequest) SetName(v string) *DeleteAdInsertionRequest {
+	s.Name = &v
+	return s
+}
+
+type DeleteAdInsertionResponseBody struct {
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAdInsertionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAdInsertionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAdInsertionResponseBody) SetRequestId(v string) *DeleteAdInsertionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAdInsertionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAdInsertionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAdInsertionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAdInsertionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAdInsertionResponse) SetHeaders(v map[string]*string) *DeleteAdInsertionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAdInsertionResponse) SetStatusCode(v int32) *DeleteAdInsertionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAdInsertionResponse) SetBody(v *DeleteAdInsertionResponseBody) *DeleteAdInsertionResponse {
 	s.Body = v
 	return s
 }
@@ -11504,6 +12886,10 @@ func (s *DeleteLiveTranscodeTemplateResponse) SetBody(v *DeleteLiveTranscodeTemp
 }
 
 type DeleteMediaConnectFlowRequest struct {
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0381f478-7d53-4076-9d5f-27680a6f73e7
@@ -11524,18 +12910,26 @@ func (s *DeleteMediaConnectFlowRequest) SetFlowId(v string) *DeleteMediaConnectF
 }
 
 type DeleteMediaConnectFlowResponseBody struct {
+	// Response body
+	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Description of the API call
+	//
 	// example:
 	//
-	// ok
+	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 5AEC17BD-D80B-5F78-BE1B-F07DFA0C8622
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, where `0` indicates success
+	//
 	// example:
 	//
 	// 0
@@ -11595,6 +12989,235 @@ func (s *DeleteMediaConnectFlowResponse) SetStatusCode(v int32) *DeleteMediaConn
 }
 
 func (s *DeleteMediaConnectFlowResponse) SetBody(v *DeleteMediaConnectFlowResponseBody) *DeleteMediaConnectFlowResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMediaConnectFlowInputRequest struct {
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0381f478-7d53-4076-9d5f-27680a6f73e7
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s DeleteMediaConnectFlowInputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaConnectFlowInputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaConnectFlowInputRequest) SetFlowId(v string) *DeleteMediaConnectFlowInputRequest {
+	s.FlowId = &v
+	return s
+}
+
+type DeleteMediaConnectFlowInputResponseBody struct {
+	// Response body
+	//
+	// example:
+	//
+	// ""
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Description of the API call
+	//
+	// example:
+	//
+	// OK
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 请求ID
+	//
+	// example:
+	//
+	// C0C02296-113C-5838-8FE9-8F3A32998DDC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
+	// example:
+	//
+	// 0
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+}
+
+func (s DeleteMediaConnectFlowInputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaConnectFlowInputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaConnectFlowInputResponseBody) SetContent(v string) *DeleteMediaConnectFlowInputResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowInputResponseBody) SetDescription(v string) *DeleteMediaConnectFlowInputResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowInputResponseBody) SetRequestId(v string) *DeleteMediaConnectFlowInputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowInputResponseBody) SetRetCode(v int32) *DeleteMediaConnectFlowInputResponseBody {
+	s.RetCode = &v
+	return s
+}
+
+type DeleteMediaConnectFlowInputResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMediaConnectFlowInputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMediaConnectFlowInputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaConnectFlowInputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaConnectFlowInputResponse) SetHeaders(v map[string]*string) *DeleteMediaConnectFlowInputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowInputResponse) SetStatusCode(v int32) *DeleteMediaConnectFlowInputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowInputResponse) SetBody(v *DeleteMediaConnectFlowInputResponseBody) *DeleteMediaConnectFlowInputResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMediaConnectFlowOutputRequest struct {
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Output name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliTestOutput
+	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
+}
+
+func (s DeleteMediaConnectFlowOutputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaConnectFlowOutputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaConnectFlowOutputRequest) SetFlowId(v string) *DeleteMediaConnectFlowOutputRequest {
+	s.FlowId = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowOutputRequest) SetOutputName(v string) *DeleteMediaConnectFlowOutputRequest {
+	s.OutputName = &v
+	return s
+}
+
+type DeleteMediaConnectFlowOutputResponseBody struct {
+	// Response body
+	//
+	// example:
+	//
+	// ""
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Description of the API call
+	//
+	// example:
+	//
+	// OK
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// DF73E08E-F807-50F5-A2BD-B76391EAE8FF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
+	// example:
+	//
+	// 0
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+}
+
+func (s DeleteMediaConnectFlowOutputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaConnectFlowOutputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaConnectFlowOutputResponseBody) SetContent(v string) *DeleteMediaConnectFlowOutputResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowOutputResponseBody) SetDescription(v string) *DeleteMediaConnectFlowOutputResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowOutputResponseBody) SetRequestId(v string) *DeleteMediaConnectFlowOutputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowOutputResponseBody) SetRetCode(v int32) *DeleteMediaConnectFlowOutputResponseBody {
+	s.RetCode = &v
+	return s
+}
+
+type DeleteMediaConnectFlowOutputResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMediaConnectFlowOutputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMediaConnectFlowOutputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaConnectFlowOutputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaConnectFlowOutputResponse) SetHeaders(v map[string]*string) *DeleteMediaConnectFlowOutputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowOutputResponse) SetStatusCode(v int32) *DeleteMediaConnectFlowOutputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowOutputResponse) SetBody(v *DeleteMediaConnectFlowOutputResponseBody) *DeleteMediaConnectFlowOutputResponse {
 	s.Body = v
 	return s
 }
@@ -12594,6 +14217,213 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 	return s
 }
 
+type DeleteVodPackagingAssetRequest struct {
+	// example:
+	//
+	// 30min_movie
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+}
+
+func (s DeleteVodPackagingAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingAssetRequest) SetAssetName(v string) *DeleteVodPackagingAssetRequest {
+	s.AssetName = &v
+	return s
+}
+
+type DeleteVodPackagingAssetResponseBody struct {
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVodPackagingAssetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingAssetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingAssetResponseBody) SetRequestId(v string) *DeleteVodPackagingAssetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVodPackagingAssetResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVodPackagingAssetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVodPackagingAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingAssetResponse) SetHeaders(v map[string]*string) *DeleteVodPackagingAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVodPackagingAssetResponse) SetStatusCode(v int32) *DeleteVodPackagingAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVodPackagingAssetResponse) SetBody(v *DeleteVodPackagingAssetResponseBody) *DeleteVodPackagingAssetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVodPackagingConfigurationRequest struct {
+	// example:
+	//
+	// hls_3s
+	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+}
+
+func (s DeleteVodPackagingConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingConfigurationRequest) SetConfigurationName(v string) *DeleteVodPackagingConfigurationRequest {
+	s.ConfigurationName = &v
+	return s
+}
+
+type DeleteVodPackagingConfigurationResponseBody struct {
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVodPackagingConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingConfigurationResponseBody) SetRequestId(v string) *DeleteVodPackagingConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVodPackagingConfigurationResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVodPackagingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVodPackagingConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingConfigurationResponse) SetHeaders(v map[string]*string) *DeleteVodPackagingConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVodPackagingConfigurationResponse) SetStatusCode(v int32) *DeleteVodPackagingConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVodPackagingConfigurationResponse) SetBody(v *DeleteVodPackagingConfigurationResponseBody) *DeleteVodPackagingConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVodPackagingGroupRequest struct {
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s DeleteVodPackagingGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingGroupRequest) SetGroupName(v string) *DeleteVodPackagingGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+type DeleteVodPackagingGroupResponseBody struct {
+	// example:
+	//
+	// 13cbb83e-043c-4728-ac35-*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVodPackagingGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingGroupResponseBody) SetRequestId(v string) *DeleteVodPackagingGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVodPackagingGroupResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVodPackagingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVodPackagingGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVodPackagingGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVodPackagingGroupResponse) SetHeaders(v map[string]*string) *DeleteVodPackagingGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVodPackagingGroupResponse) SetStatusCode(v int32) *DeleteVodPackagingGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVodPackagingGroupResponse) SetBody(v *DeleteVodPackagingGroupResponseBody) *DeleteVodPackagingGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAIAgentInstanceRequest struct {
 	// This parameter is required.
 	//
@@ -12651,6 +14481,7 @@ type DescribeAIAgentInstanceResponseBodyInstance struct {
 	//
 	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
 	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	SessionId     *string               `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// example:
 	//
 	// Finished
@@ -12680,6 +14511,11 @@ func (s *DescribeAIAgentInstanceResponseBodyInstance) SetCallLogUrl(v string) *D
 
 func (s *DescribeAIAgentInstanceResponseBodyInstance) SetRuntimeConfig(v *AIAgentRuntimeConfig) *DescribeAIAgentInstanceResponseBodyInstance {
 	s.RuntimeConfig = v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetSessionId(v string) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.SessionId = &v
 	return s
 }
 
@@ -14519,6 +16355,7 @@ type GenerateAIAgentCallRequest struct {
 	//
 	// 3600
 	Expire         *int64                 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	SessionId      *string                `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	UserData       *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// example:
@@ -14542,6 +16379,11 @@ func (s *GenerateAIAgentCallRequest) SetAIAgentId(v string) *GenerateAIAgentCall
 
 func (s *GenerateAIAgentCallRequest) SetExpire(v int64) *GenerateAIAgentCallRequest {
 	s.Expire = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallRequest) SetSessionId(v string) *GenerateAIAgentCallRequest {
+	s.SessionId = &v
 	return s
 }
 
@@ -14571,6 +16413,7 @@ type GenerateAIAgentCallShrinkRequest struct {
 	//
 	// 3600
 	Expire               *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// example:
@@ -14594,6 +16437,11 @@ func (s *GenerateAIAgentCallShrinkRequest) SetAIAgentId(v string) *GenerateAIAge
 
 func (s *GenerateAIAgentCallShrinkRequest) SetExpire(v int64) *GenerateAIAgentCallShrinkRequest {
 	s.Expire = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetSessionId(v string) *GenerateAIAgentCallShrinkRequest {
+	s.SessionId = &v
 	return s
 }
 
@@ -14804,6 +16652,431 @@ func (s *GenerateKMSDataKeyResponse) SetStatusCode(v int32) *GenerateKMSDataKeyR
 }
 
 func (s *GenerateKMSDataKeyResponse) SetBody(v *GenerateKMSDataKeyResponseBody) *GenerateKMSDataKeyResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateMessageChatTokenRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 19de81b3b3d94abda22******
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// 3600
+	Expire *int32 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// YOURUSERID
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GenerateMessageChatTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateMessageChatTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateMessageChatTokenRequest) SetAIAgentId(v string) *GenerateMessageChatTokenRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenRequest) SetExpire(v int32) *GenerateMessageChatTokenRequest {
+	s.Expire = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenRequest) SetRole(v string) *GenerateMessageChatTokenRequest {
+	s.Role = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenRequest) SetUserId(v string) *GenerateMessageChatTokenRequest {
+	s.UserId = &v
+	return s
+}
+
+type GenerateMessageChatTokenResponseBody struct {
+	// example:
+	//
+	// ***********
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// H4sIAAAAAAAE******************
+	AppSign *string `json:"AppSign,omitempty" xml:"AppSign,omitempty"`
+	// example:
+	//
+	// AK-***********
+	Nonce *string `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
+	// example:
+	//
+	// req_1234567890abcdef
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// admin
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// 1700000000
+	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// acet**********
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// YOURUSERID
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GenerateMessageChatTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateMessageChatTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetAppId(v string) *GenerateMessageChatTokenResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetAppSign(v string) *GenerateMessageChatTokenResponseBody {
+	s.AppSign = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetNonce(v string) *GenerateMessageChatTokenResponseBody {
+	s.Nonce = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetRequestId(v string) *GenerateMessageChatTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetRole(v string) *GenerateMessageChatTokenResponseBody {
+	s.Role = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetTimeStamp(v int64) *GenerateMessageChatTokenResponseBody {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetToken(v string) *GenerateMessageChatTokenResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponseBody) SetUserId(v string) *GenerateMessageChatTokenResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GenerateMessageChatTokenResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateMessageChatTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateMessageChatTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateMessageChatTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateMessageChatTokenResponse) SetHeaders(v map[string]*string) *GenerateMessageChatTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponse) SetStatusCode(v int32) *GenerateMessageChatTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateMessageChatTokenResponse) SetBody(v *GenerateMessageChatTokenResponseBody) *GenerateMessageChatTokenResponse {
+	s.Body = v
+	return s
+}
+
+type GetAdInsertionRequest struct {
+	// 代表资源一级ID的资源属性字段
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetAdInsertionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdInsertionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdInsertionRequest) SetName(v string) *GetAdInsertionRequest {
+	s.Name = &v
+	return s
+}
+
+type GetAdInsertionResponseBody struct {
+	Config *GetAdInsertionResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAdInsertionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdInsertionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdInsertionResponseBody) SetConfig(v *GetAdInsertionResponseBodyConfig) *GetAdInsertionResponseBody {
+	s.Config = v
+	return s
+}
+
+func (s *GetAdInsertionResponseBody) SetRequestId(v string) *GetAdInsertionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAdInsertionResponseBodyConfig struct {
+	// 广告标记透传
+	//
+	// example:
+	//
+	// ON
+	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
+	// 广告策略服务器URL
+	//
+	// example:
+	//
+	// http://ads.com/ad1?param1=[palyer_params.p1]
+	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
+	// CDN配置
+	CdnConfig *GetAdInsertionResponseBodyConfigCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
+	// 动态配置别名
+	//
+	// example:
+	//
+	// {
+	//
+	//       "player_params.p1": {
+	//
+	//             "1": "abc"
+	//
+	//       }
+	//
+	// }
+	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
+	// 内容URL前缀
+	//
+	// example:
+	//
+	// https://source.com/
+	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
+	// 创建时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 修改时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// 清单播放端点配置
+	ManifestEndpointConfig *GetAdInsertionResponseBodyConfigManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
+	// 广告插入配置名称
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 个性化配置阈值
+	//
+	// example:
+	//
+	// 5
+	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
+	// slate广告URL
+	//
+	// example:
+	//
+	// http://storage.com/slate1.mp4
+	SlateAdUrl *string `json:"SlateAdUrl,omitempty" xml:"SlateAdUrl,omitempty"`
+}
+
+func (s GetAdInsertionResponseBodyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdInsertionResponseBodyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetAdMarkerPassthrough(v string) *GetAdInsertionResponseBodyConfig {
+	s.AdMarkerPassthrough = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetAdsUrl(v string) *GetAdInsertionResponseBodyConfig {
+	s.AdsUrl = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetCdnConfig(v *GetAdInsertionResponseBodyConfigCdnConfig) *GetAdInsertionResponseBodyConfig {
+	s.CdnConfig = v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetConfigAliases(v string) *GetAdInsertionResponseBodyConfig {
+	s.ConfigAliases = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetContentUrlPrefix(v string) *GetAdInsertionResponseBodyConfig {
+	s.ContentUrlPrefix = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetCreateTime(v string) *GetAdInsertionResponseBodyConfig {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetLastModified(v string) *GetAdInsertionResponseBodyConfig {
+	s.LastModified = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetManifestEndpointConfig(v *GetAdInsertionResponseBodyConfigManifestEndpointConfig) *GetAdInsertionResponseBodyConfig {
+	s.ManifestEndpointConfig = v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetName(v string) *GetAdInsertionResponseBodyConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetPersonalizationThreshold(v int32) *GetAdInsertionResponseBodyConfig {
+	s.PersonalizationThreshold = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfig) SetSlateAdUrl(v string) *GetAdInsertionResponseBodyConfig {
+	s.SlateAdUrl = &v
+	return s
+}
+
+type GetAdInsertionResponseBodyConfigCdnConfig struct {
+	// 广告分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
+	// 视频内容分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	ContentSegmentUrlPrefix *string `json:"ContentSegmentUrlPrefix,omitempty" xml:"ContentSegmentUrlPrefix,omitempty"`
+}
+
+func (s GetAdInsertionResponseBodyConfigCdnConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdInsertionResponseBodyConfigCdnConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdInsertionResponseBodyConfigCdnConfig) SetAdSegmentUrlPrefix(v string) *GetAdInsertionResponseBodyConfigCdnConfig {
+	s.AdSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *GetAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefix(v string) *GetAdInsertionResponseBodyConfigCdnConfig {
+	s.ContentSegmentUrlPrefix = &v
+	return s
+}
+
+type GetAdInsertionResponseBodyConfigManifestEndpointConfig struct {
+	// HLS清单播放端点前缀
+	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
+}
+
+func (s GetAdInsertionResponseBodyConfigManifestEndpointConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdInsertionResponseBodyConfigManifestEndpointConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdInsertionResponseBodyConfigManifestEndpointConfig) SetHlsPrefix(v string) *GetAdInsertionResponseBodyConfigManifestEndpointConfig {
+	s.HlsPrefix = &v
+	return s
+}
+
+type GetAdInsertionResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAdInsertionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAdInsertionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdInsertionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdInsertionResponse) SetHeaders(v map[string]*string) *GetAdInsertionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAdInsertionResponse) SetStatusCode(v int32) *GetAdInsertionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAdInsertionResponse) SetBody(v *GetAdInsertionResponseBody) *GetAdInsertionResponse {
 	s.Body = v
 	return s
 }
@@ -21375,6 +23648,10 @@ func (s *GetLiveTranscodeTemplateResponse) SetBody(v *GetLiveTranscodeTemplateRe
 }
 
 type GetMediaConnectFlowRequest struct {
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
@@ -21395,15 +23672,22 @@ func (s *GetMediaConnectFlowRequest) SetFlowId(v string) *GetMediaConnectFlowReq
 }
 
 type GetMediaConnectFlowResponseBody struct {
+	// Response body
 	Content *GetMediaConnectFlowResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Interface call description information
+	//
 	// example:
 	//
-	// ok
+	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 请求ID
+	//
 	// example:
 	//
 	// FB503AEF-118E-1516-89E2-7B227EA1AC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return status code, 0 indicates success
+	//
 	// example:
 	//
 	// 0
@@ -21439,25 +23723,35 @@ func (s *GetMediaConnectFlowResponseBody) SetRetcode(v int32) *GetMediaConnectFl
 }
 
 type GetMediaConnectFlowResponseBodyContent struct {
+	// Flow creation time
+	//
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Flow instance ID
+	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Flow instance name
+	//
 	// example:
 	//
-	// WorkTypeAfterRefresh
+	// AliTestFlow
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// Flow status
+	//
 	// example:
 	//
-	// Enabled
+	// online
 	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
+	// Flow start time
+	//
 	// example:
 	//
-	// 2020-05-11T02:40Z
+	// 2024-07-18T01:39:24Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -21519,6 +23813,491 @@ func (s *GetMediaConnectFlowResponse) SetStatusCode(v int32) *GetMediaConnectFlo
 }
 
 func (s *GetMediaConnectFlowResponse) SetBody(v *GetMediaConnectFlowResponseBody) *GetMediaConnectFlowResponse {
+	s.Body = v
+	return s
+}
+
+type GetMediaConnectFlowInputRequest struct {
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s GetMediaConnectFlowInputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowInputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowInputRequest) SetFlowId(v string) *GetMediaConnectFlowInputRequest {
+	s.FlowId = &v
+	return s
+}
+
+type GetMediaConnectFlowInputResponseBody struct {
+	// Response body
+	Content *GetMediaConnectFlowInputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Interface call description
+	//
+	// example:
+	//
+	// OK
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 请求ID
+	//
+	// example:
+	//
+	// D4C231DF-103A-55FF-8D09-E699552457DE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
+	// example:
+	//
+	// 0
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+}
+
+func (s GetMediaConnectFlowInputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowInputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowInputResponseBody) SetContent(v *GetMediaConnectFlowInputResponseBodyContent) *GetMediaConnectFlowInputResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBody) SetDescription(v string) *GetMediaConnectFlowInputResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBody) SetRequestId(v string) *GetMediaConnectFlowInputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBody) SetRetCode(v int32) *GetMediaConnectFlowInputResponseBody {
+	s.RetCode = &v
+	return s
+}
+
+type GetMediaConnectFlowInputResponseBodyContent struct {
+	// IP whitelist, in CIDR format, multiple IP segments separated by commas
+	//
+	// example:
+	//
+	// 10.211.0.0/17
+	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
+	// Flow creation time
+	//
+	// example:
+	//
+	// 2024-07-18T01:29:24Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Input name
+	//
+	// example:
+	//
+	// AliTestInput
+	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
+	// Input type
+	//
+	// example:
+	//
+	// RTMP-PUSH
+	InputProtocol *string `json:"InputProtocol,omitempty" xml:"InputProtocol,omitempty"`
+	// Input URL
+	//
+	// example:
+	//
+	// rtmp://1.2.3.4:1935/live/AliTestInput_8666ec062190f00e263012666319a5be
+	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// Input bitrate, in bps
+	//
+	// example:
+	//
+	// 2000000
+	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	// Peer Flow instance ID, required when the output type is Flow
+	//
+	// example:
+	//
+	// 05c3adf4-aa0e-421d-a991-48ceae3e642e
+	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
+	// Peer Flow output name, required only when the input type is Flow
+	//
+	// example:
+	//
+	// AliTestOutput
+	PairOutputName *string `json:"PairOutputName,omitempty" xml:"PairOutputName,omitempty"`
+	// SRT latency, in ms, required only when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 1000
+	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// FICUBPX4Q77DYHRF
+	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
+	// SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 32
+	SrtPbkeyLen *int32 `json:"SrtPbkeyLen,omitempty" xml:"SrtPbkeyLen,omitempty"`
+}
+
+func (s GetMediaConnectFlowInputResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowInputResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetCidrs(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.Cidrs = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetCreateTime(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetInputName(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.InputName = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetInputProtocol(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.InputProtocol = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetInputUrl(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.InputUrl = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetMaxBitrate(v int32) *GetMediaConnectFlowInputResponseBodyContent {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetPairFlowId(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.PairFlowId = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetPairOutputName(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.PairOutputName = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetSrtLatency(v int32) *GetMediaConnectFlowInputResponseBodyContent {
+	s.SrtLatency = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetSrtPassphrase(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.SrtPassphrase = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetSrtPbkeyLen(v int32) *GetMediaConnectFlowInputResponseBodyContent {
+	s.SrtPbkeyLen = &v
+	return s
+}
+
+type GetMediaConnectFlowInputResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaConnectFlowInputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMediaConnectFlowInputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowInputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowInputResponse) SetHeaders(v map[string]*string) *GetMediaConnectFlowInputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponse) SetStatusCode(v int32) *GetMediaConnectFlowInputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponse) SetBody(v *GetMediaConnectFlowInputResponseBody) *GetMediaConnectFlowInputResponse {
+	s.Body = v
+	return s
+}
+
+type GetMediaConnectFlowOutputRequest struct {
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0381f478-7d53-4076-9d5f-27680a6f73e7
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Output name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliTestOutput
+	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
+}
+
+func (s GetMediaConnectFlowOutputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowOutputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowOutputRequest) SetFlowId(v string) *GetMediaConnectFlowOutputRequest {
+	s.FlowId = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputRequest) SetOutputName(v string) *GetMediaConnectFlowOutputRequest {
+	s.OutputName = &v
+	return s
+}
+
+type GetMediaConnectFlowOutputResponseBody struct {
+	// Response body
+	Content *GetMediaConnectFlowOutputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// API call description
+	//
+	// example:
+	//
+	// OK
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 0DB23DCE-0D69-598B-AA7C-7268D55E2F89
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
+	// example:
+	//
+	// 0
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+}
+
+func (s GetMediaConnectFlowOutputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowOutputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowOutputResponseBody) SetContent(v *GetMediaConnectFlowOutputResponseBodyContent) *GetMediaConnectFlowOutputResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBody) SetDescription(v string) *GetMediaConnectFlowOutputResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBody) SetRequestId(v string) *GetMediaConnectFlowOutputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBody) SetRetCode(v int32) *GetMediaConnectFlowOutputResponseBody {
+	s.RetCode = &v
+	return s
+}
+
+type GetMediaConnectFlowOutputResponseBodyContent struct {
+	// IP whitelist in CIDR format, multiple IP segments separated by commas
+	//
+	// example:
+	//
+	// 10.211.0.0/17
+	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
+	// Flow creation time
+	//
+	// example:
+	//
+	// 2024-07-18T01:29:24Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Output name
+	//
+	// example:
+	//
+	// AliTestInput
+	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
+	// Output protocol
+	//
+	// example:
+	//
+	// SRT-PULL
+	OutputProtocol *string `json:"OutputProtocol,omitempty" xml:"OutputProtocol,omitempty"`
+	// Output URL
+	//
+	// example:
+	//
+	// srt://1.2.3.4:1025
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// Peer Flow instance ID, required when the output type is Flow
+	//
+	// example:
+	//
+	// 805fbdd0-575e-4146-b35d-ec7f63937b20
+	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
+	// Peer Flow\\"s input name, required when the output type is Flow
+	//
+	// example:
+	//
+	// AliTestInput
+	PairInputName *string `json:"PairInputName,omitempty" xml:"PairInputName,omitempty"`
+	// Player limit
+	//
+	// example:
+	//
+	// 5
+	PlayerLimit *int32 `json:"PlayerLimit,omitempty" xml:"PlayerLimit,omitempty"`
+	// SRT latency, in milliseconds, required only when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 1000
+	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// FICUBPX4Q77DYHRF
+	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
+	// SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 32
+	SrtPbkeyLen *int32 `json:"SrtPbkeyLen,omitempty" xml:"SrtPbkeyLen,omitempty"`
+}
+
+func (s GetMediaConnectFlowOutputResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowOutputResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetCidrs(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.Cidrs = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetCreateTime(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetOutputName(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.OutputName = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetOutputProtocol(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.OutputProtocol = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetOutputUrl(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.OutputUrl = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetPairFlowId(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.PairFlowId = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetPairInputName(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.PairInputName = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetPlayerLimit(v int32) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.PlayerLimit = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetSrtLatency(v int32) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.SrtLatency = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetSrtPassphrase(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.SrtPassphrase = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetSrtPbkeyLen(v int32) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.SrtPbkeyLen = &v
+	return s
+}
+
+type GetMediaConnectFlowOutputResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaConnectFlowOutputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMediaConnectFlowOutputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaConnectFlowOutputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaConnectFlowOutputResponse) SetHeaders(v map[string]*string) *GetMediaConnectFlowOutputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponse) SetStatusCode(v int32) *GetMediaConnectFlowOutputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponse) SetBody(v *GetMediaConnectFlowOutputResponseBody) *GetMediaConnectFlowOutputResponse {
 	s.Body = v
 	return s
 }
@@ -33450,6 +36229,351 @@ func (s *GetVideoListResponse) SetBody(v *GetVideoListResponseBody) *GetVideoLis
 	return s
 }
 
+type GetVodPackagingAssetRequest struct {
+	// example:
+	//
+	// 30min_movie
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+}
+
+func (s GetVodPackagingAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingAssetRequest) SetAssetName(v string) *GetVodPackagingAssetRequest {
+	s.AssetName = &v
+	return s
+}
+
+type GetVodPackagingAssetResponseBody struct {
+	Asset *GetVodPackagingAssetResponseBodyAsset `json:"Asset,omitempty" xml:"Asset,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0622C702-41BE-467E-AF2E-883D4517962E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetVodPackagingAssetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingAssetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingAssetResponseBody) SetAsset(v *GetVodPackagingAssetResponseBodyAsset) *GetVodPackagingAssetResponseBody {
+	s.Asset = v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBody) SetRequestId(v string) *GetVodPackagingAssetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetVodPackagingAssetResponseBodyAsset struct {
+	// example:
+	//
+	// 30min_movie
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// example:
+	//
+	// movie
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// example:
+	//
+	// 2024-11-21T06:45:32Z
+	CreateTime      *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EgressEndpoints []*GetVodPackagingAssetResponseBodyAssetEgressEndpoints `json:"EgressEndpoints,omitempty" xml:"EgressEndpoints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vod_hls
+	GroupName *string                                     `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Input     *GetVodPackagingAssetResponseBodyAssetInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+}
+
+func (s GetVodPackagingAssetResponseBodyAsset) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingAssetResponseBodyAsset) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingAssetResponseBodyAsset) SetAssetName(v string) *GetVodPackagingAssetResponseBodyAsset {
+	s.AssetName = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAsset) SetContentId(v string) *GetVodPackagingAssetResponseBodyAsset {
+	s.ContentId = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAsset) SetCreateTime(v string) *GetVodPackagingAssetResponseBodyAsset {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAsset) SetEgressEndpoints(v []*GetVodPackagingAssetResponseBodyAssetEgressEndpoints) *GetVodPackagingAssetResponseBodyAsset {
+	s.EgressEndpoints = v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAsset) SetGroupName(v string) *GetVodPackagingAssetResponseBodyAsset {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAsset) SetInput(v *GetVodPackagingAssetResponseBodyAssetInput) *GetVodPackagingAssetResponseBodyAsset {
+	s.Input = v
+	return s
+}
+
+type GetVodPackagingAssetResponseBodyAssetEgressEndpoints struct {
+	// example:
+	//
+	// hls_3s
+	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+	// example:
+	//
+	// Playable
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetVodPackagingAssetResponseBodyAssetEgressEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingAssetResponseBodyAssetEgressEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingAssetResponseBodyAssetEgressEndpoints) SetConfigurationName(v string) *GetVodPackagingAssetResponseBodyAssetEgressEndpoints {
+	s.ConfigurationName = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAssetEgressEndpoints) SetStatus(v string) *GetVodPackagingAssetResponseBodyAssetEgressEndpoints {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAssetEgressEndpoints) SetUrl(v string) *GetVodPackagingAssetResponseBodyAssetEgressEndpoints {
+	s.Url = &v
+	return s
+}
+
+type GetVodPackagingAssetResponseBodyAssetInput struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetVodPackagingAssetResponseBodyAssetInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingAssetResponseBodyAssetInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingAssetResponseBodyAssetInput) SetMedia(v string) *GetVodPackagingAssetResponseBodyAssetInput {
+	s.Media = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponseBodyAssetInput) SetType(v string) *GetVodPackagingAssetResponseBodyAssetInput {
+	s.Type = &v
+	return s
+}
+
+type GetVodPackagingAssetResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVodPackagingAssetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVodPackagingAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingAssetResponse) SetHeaders(v map[string]*string) *GetVodPackagingAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponse) SetStatusCode(v int32) *GetVodPackagingAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVodPackagingAssetResponse) SetBody(v *GetVodPackagingAssetResponseBody) *GetVodPackagingAssetResponse {
+	s.Body = v
+	return s
+}
+
+type GetVodPackagingConfigurationRequest struct {
+	// example:
+	//
+	// hls_3s
+	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+}
+
+func (s GetVodPackagingConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingConfigurationRequest) SetConfigurationName(v string) *GetVodPackagingConfigurationRequest {
+	s.ConfigurationName = &v
+	return s
+}
+
+type GetVodPackagingConfigurationResponseBody struct {
+	PackagingConfiguration *VodPackagingConfiguration `json:"PackagingConfiguration,omitempty" xml:"PackagingConfiguration,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetVodPackagingConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingConfigurationResponseBody) SetPackagingConfiguration(v *VodPackagingConfiguration) *GetVodPackagingConfigurationResponseBody {
+	s.PackagingConfiguration = v
+	return s
+}
+
+func (s *GetVodPackagingConfigurationResponseBody) SetRequestId(v string) *GetVodPackagingConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetVodPackagingConfigurationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVodPackagingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVodPackagingConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingConfigurationResponse) SetHeaders(v map[string]*string) *GetVodPackagingConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVodPackagingConfigurationResponse) SetStatusCode(v int32) *GetVodPackagingConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVodPackagingConfigurationResponse) SetBody(v *GetVodPackagingConfigurationResponseBody) *GetVodPackagingConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type GetVodPackagingGroupRequest struct {
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s GetVodPackagingGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingGroupRequest) SetGroupName(v string) *GetVodPackagingGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+type GetVodPackagingGroupResponseBody struct {
+	PackagingGroup *VodPackagingGroup `json:"PackagingGroup,omitempty" xml:"PackagingGroup,omitempty"`
+	// example:
+	//
+	// ****36-3C1E-4417-BDB2-1E034F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetVodPackagingGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingGroupResponseBody) SetPackagingGroup(v *VodPackagingGroup) *GetVodPackagingGroupResponseBody {
+	s.PackagingGroup = v
+	return s
+}
+
+func (s *GetVodPackagingGroupResponseBody) SetRequestId(v string) *GetVodPackagingGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetVodPackagingGroupResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVodPackagingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVodPackagingGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVodPackagingGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVodPackagingGroupResponse) SetHeaders(v map[string]*string) *GetVodPackagingGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVodPackagingGroupResponse) SetStatusCode(v int32) *GetVodPackagingGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVodPackagingGroupResponse) SetBody(v *GetVodPackagingGroupResponseBody) *GetVodPackagingGroupResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkflowTaskRequest struct {
 	// The ID of the workflow task.
 	//
@@ -33894,6 +37018,185 @@ func (s *InsertMediaToSearchLibResponse) SetBody(v *InsertMediaToSearchLibRespon
 	return s
 }
 
+type ListAIAgentDialoguesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17358082464030
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f27f9b9be28642a88e18****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListAIAgentDialoguesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentDialoguesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentDialoguesRequest) SetEndTime(v int64) *ListAIAgentDialoguesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesRequest) SetOrder(v string) *ListAIAgentDialoguesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesRequest) SetPageNumber(v int64) *ListAIAgentDialoguesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesRequest) SetPageSize(v int32) *ListAIAgentDialoguesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesRequest) SetSessionId(v string) *ListAIAgentDialoguesRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesRequest) SetStartTime(v int64) *ListAIAgentDialoguesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListAIAgentDialoguesResponseBody struct {
+	Dialogues []*ListAIAgentDialoguesResponseBodyDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7B117AF5-***************
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAIAgentDialoguesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentDialoguesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentDialoguesResponseBody) SetDialogues(v []*ListAIAgentDialoguesResponseBodyDialogues) *ListAIAgentDialoguesResponseBody {
+	s.Dialogues = v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBody) SetRequestId(v string) *ListAIAgentDialoguesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAIAgentDialoguesResponseBodyDialogues struct {
+	// example:
+	//
+	// 19de81b3b3d94abda22****
+	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	// example:
+	//
+	// user
+	Producer *string `json:"Producer,omitempty" xml:"Producer,omitempty"`
+	// example:
+	//
+	// f27f9b9be28642a88e18****
+	RoundId *string `json:"RoundId,omitempty" xml:"RoundId,omitempty"`
+	Text    *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 1734511087000
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s ListAIAgentDialoguesResponseBodyDialogues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentDialoguesResponseBodyDialogues) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetDialogueId(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.DialogueId = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetProducer(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.Producer = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetRoundId(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.RoundId = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetText(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.Text = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetTime(v int64) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.Time = &v
+	return s
+}
+
+type ListAIAgentDialoguesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAIAgentDialoguesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAIAgentDialoguesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentDialoguesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentDialoguesResponse) SetHeaders(v map[string]*string) *ListAIAgentDialoguesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponse) SetStatusCode(v int32) *ListAIAgentDialoguesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponse) SetBody(v *ListAIAgentDialoguesResponseBody) *ListAIAgentDialoguesResponse {
+	s.Body = v
+	return s
+}
+
 type ListAIAgentInstanceRequest struct {
 	// This parameter is required.
 	//
@@ -34059,6 +37362,389 @@ func (s *ListAIAgentInstanceResponse) SetStatusCode(v int32) *ListAIAgentInstanc
 }
 
 func (s *ListAIAgentInstanceResponse) SetBody(v *ListAIAgentInstanceResponseBody) *ListAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ListAdInsertionsRequest struct {
+	// 按广告名称查询，支持模糊匹配
+	//
+	// example:
+	//
+	// ad
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+	//
+	// example:
+	//
+	// ******8EqYpQbZ6Eh7+Zz8DxVYoQ*****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 分页参数，页码
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 分页参数，页宽
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+	//
+	// example:
+	//
+	// asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListAdInsertionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAdInsertionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAdInsertionsRequest) SetKeyword(v string) *ListAdInsertionsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListAdInsertionsRequest) SetMaxResults(v int32) *ListAdInsertionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAdInsertionsRequest) SetNextToken(v string) *ListAdInsertionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAdInsertionsRequest) SetPageNo(v int64) *ListAdInsertionsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListAdInsertionsRequest) SetPageSize(v int64) *ListAdInsertionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAdInsertionsRequest) SetSortBy(v string) *ListAdInsertionsRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListAdInsertionsResponseBody struct {
+	Configs []*ListAdInsertionsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+	//
+	// example:
+	//
+	// ******8EqYpQbZ6Eh7+Zz8DxVYoQ*****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 分页参数，页码
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 分页参数，页宽
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+	//
+	// example:
+	//
+	// asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// 总记录数
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAdInsertionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAdInsertionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAdInsertionsResponseBody) SetConfigs(v []*ListAdInsertionsResponseBodyConfigs) *ListAdInsertionsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBody) SetMaxResults(v int32) *ListAdInsertionsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBody) SetNextToken(v string) *ListAdInsertionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBody) SetPageNo(v int64) *ListAdInsertionsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBody) SetPageSize(v int64) *ListAdInsertionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBody) SetRequestId(v string) *ListAdInsertionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBody) SetSortBy(v string) *ListAdInsertionsResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBody) SetTotalCount(v int64) *ListAdInsertionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAdInsertionsResponseBodyConfigs struct {
+	// 广告标记透传
+	//
+	// example:
+	//
+	// ON
+	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
+	// 广告策略服务器URL
+	//
+	// example:
+	//
+	// http://ads.com/ad1?param1=[palyer_params.p1]
+	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
+	// CDN配置
+	CdnConfig *ListAdInsertionsResponseBodyConfigsCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
+	// 动态配置别名
+	//
+	// example:
+	//
+	// {
+	//
+	//       "player_params.p1": {
+	//
+	//             "1": "abc"
+	//
+	//       }
+	//
+	// }
+	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
+	// 内容URL前缀
+	//
+	// example:
+	//
+	// https://source.com/
+	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
+	// 创建时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 修改时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// 清单播放端点配置
+	ManifestEndpointConfig *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
+	// 广告插入配置名称
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 个性化配置阈值
+	//
+	// example:
+	//
+	// 5
+	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
+	// slate广告URL
+	//
+	// example:
+	//
+	// http://storage.com/slate1.mp4
+	SlateAdUrl *string `json:"SlateAdUrl,omitempty" xml:"SlateAdUrl,omitempty"`
+}
+
+func (s ListAdInsertionsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAdInsertionsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetAdMarkerPassthrough(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.AdMarkerPassthrough = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetAdsUrl(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.AdsUrl = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetCdnConfig(v *ListAdInsertionsResponseBodyConfigsCdnConfig) *ListAdInsertionsResponseBodyConfigs {
+	s.CdnConfig = v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetConfigAliases(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.ConfigAliases = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetContentUrlPrefix(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.ContentUrlPrefix = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetCreateTime(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetLastModified(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.LastModified = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetManifestEndpointConfig(v *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) *ListAdInsertionsResponseBodyConfigs {
+	s.ManifestEndpointConfig = v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetName(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetPersonalizationThreshold(v int32) *ListAdInsertionsResponseBodyConfigs {
+	s.PersonalizationThreshold = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigs) SetSlateAdUrl(v string) *ListAdInsertionsResponseBodyConfigs {
+	s.SlateAdUrl = &v
+	return s
+}
+
+type ListAdInsertionsResponseBodyConfigsCdnConfig struct {
+	// 广告分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
+	// 视频内容分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	ContentSegmentUrlPrefix *string `json:"ContentSegmentUrlPrefix,omitempty" xml:"ContentSegmentUrlPrefix,omitempty"`
+}
+
+func (s ListAdInsertionsResponseBodyConfigsCdnConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAdInsertionsResponseBodyConfigsCdnConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListAdInsertionsResponseBodyConfigsCdnConfig) SetAdSegmentUrlPrefix(v string) *ListAdInsertionsResponseBodyConfigsCdnConfig {
+	s.AdSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponseBodyConfigsCdnConfig) SetContentSegmentUrlPrefix(v string) *ListAdInsertionsResponseBodyConfigsCdnConfig {
+	s.ContentSegmentUrlPrefix = &v
+	return s
+}
+
+type ListAdInsertionsResponseBodyConfigsManifestEndpointConfig struct {
+	// HLS清单播放端点前缀
+	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
+}
+
+func (s ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) SetHlsPrefix(v string) *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig {
+	s.HlsPrefix = &v
+	return s
+}
+
+type ListAdInsertionsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAdInsertionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAdInsertionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAdInsertionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAdInsertionsResponse) SetHeaders(v map[string]*string) *ListAdInsertionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAdInsertionsResponse) SetStatusCode(v int32) *ListAdInsertionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAdInsertionsResponse) SetBody(v *ListAdInsertionsResponseBody) *ListAdInsertionsResponse {
 	s.Body = v
 	return s
 }
@@ -49220,6 +52906,517 @@ func (s *ListTranscodeJobsResponse) SetBody(v *ListTranscodeJobsResponseBody) *L
 	return s
 }
 
+type ListVodPackagingAssetsRequest struct {
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// movie
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListVodPackagingAssetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingAssetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingAssetsRequest) SetGroupName(v string) *ListVodPackagingAssetsRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsRequest) SetKeyword(v string) *ListVodPackagingAssetsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsRequest) SetPageNo(v int32) *ListVodPackagingAssetsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsRequest) SetPageSize(v int32) *ListVodPackagingAssetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsRequest) SetSortBy(v string) *ListVodPackagingAssetsRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListVodPackagingAssetsResponseBody struct {
+	Assets []*ListVodPackagingAssetsResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListVodPackagingAssetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingAssetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingAssetsResponseBody) SetAssets(v []*ListVodPackagingAssetsResponseBodyAssets) *ListVodPackagingAssetsResponseBody {
+	s.Assets = v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBody) SetPageNo(v int32) *ListVodPackagingAssetsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBody) SetPageSize(v int32) *ListVodPackagingAssetsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBody) SetRequestId(v string) *ListVodPackagingAssetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBody) SetSortBy(v string) *ListVodPackagingAssetsResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBody) SetTotalCount(v int32) *ListVodPackagingAssetsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListVodPackagingAssetsResponseBodyAssets struct {
+	// example:
+	//
+	// 30min_movie
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// example:
+	//
+	// 2024-11-21T06:45:32Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// movie 30min
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// vod_hls
+	GroupName *string                                        `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Input     *ListVodPackagingAssetsResponseBodyAssetsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+}
+
+func (s ListVodPackagingAssetsResponseBodyAssets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingAssetsResponseBodyAssets) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingAssetsResponseBodyAssets) SetAssetName(v string) *ListVodPackagingAssetsResponseBodyAssets {
+	s.AssetName = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBodyAssets) SetCreateTime(v string) *ListVodPackagingAssetsResponseBodyAssets {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBodyAssets) SetDescription(v string) *ListVodPackagingAssetsResponseBodyAssets {
+	s.Description = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBodyAssets) SetGroupName(v string) *ListVodPackagingAssetsResponseBodyAssets {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBodyAssets) SetInput(v *ListVodPackagingAssetsResponseBodyAssetsInput) *ListVodPackagingAssetsResponseBodyAssets {
+	s.Input = v
+	return s
+}
+
+type ListVodPackagingAssetsResponseBodyAssetsInput struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListVodPackagingAssetsResponseBodyAssetsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingAssetsResponseBodyAssetsInput) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingAssetsResponseBodyAssetsInput) SetMedia(v string) *ListVodPackagingAssetsResponseBodyAssetsInput {
+	s.Media = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponseBodyAssetsInput) SetType(v string) *ListVodPackagingAssetsResponseBodyAssetsInput {
+	s.Type = &v
+	return s
+}
+
+type ListVodPackagingAssetsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVodPackagingAssetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVodPackagingAssetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingAssetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingAssetsResponse) SetHeaders(v map[string]*string) *ListVodPackagingAssetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponse) SetStatusCode(v int32) *ListVodPackagingAssetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVodPackagingAssetsResponse) SetBody(v *ListVodPackagingAssetsResponseBody) *ListVodPackagingAssetsResponse {
+	s.Body = v
+	return s
+}
+
+type ListVodPackagingConfigurationsRequest struct {
+	// example:
+	//
+	// vod_hls
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// hls
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListVodPackagingConfigurationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingConfigurationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingConfigurationsRequest) SetGroupName(v string) *ListVodPackagingConfigurationsRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsRequest) SetKeyword(v string) *ListVodPackagingConfigurationsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsRequest) SetPageNo(v int64) *ListVodPackagingConfigurationsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsRequest) SetPageSize(v int64) *ListVodPackagingConfigurationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsRequest) SetSortBy(v string) *ListVodPackagingConfigurationsRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListVodPackagingConfigurationsResponseBody struct {
+	PackagingConfigurations []*VodPackagingConfiguration `json:"PackagingConfigurations,omitempty" xml:"PackagingConfigurations,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListVodPackagingConfigurationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingConfigurationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingConfigurationsResponseBody) SetPackagingConfigurations(v []*VodPackagingConfiguration) *ListVodPackagingConfigurationsResponseBody {
+	s.PackagingConfigurations = v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsResponseBody) SetPageNo(v int64) *ListVodPackagingConfigurationsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsResponseBody) SetPageSize(v int64) *ListVodPackagingConfigurationsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsResponseBody) SetRequestId(v string) *ListVodPackagingConfigurationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsResponseBody) SetSortBy(v string) *ListVodPackagingConfigurationsResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsResponseBody) SetTotalCount(v int32) *ListVodPackagingConfigurationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListVodPackagingConfigurationsResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVodPackagingConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVodPackagingConfigurationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingConfigurationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingConfigurationsResponse) SetHeaders(v map[string]*string) *ListVodPackagingConfigurationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsResponse) SetStatusCode(v int32) *ListVodPackagingConfigurationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVodPackagingConfigurationsResponse) SetBody(v *ListVodPackagingConfigurationsResponseBody) *ListVodPackagingConfigurationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListVodPackagingGroupsRequest struct {
+	// example:
+	//
+	// hls
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListVodPackagingGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingGroupsRequest) SetKeyword(v string) *ListVodPackagingGroupsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsRequest) SetPageNo(v int64) *ListVodPackagingGroupsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsRequest) SetPageSize(v int64) *ListVodPackagingGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsRequest) SetSortBy(v string) *ListVodPackagingGroupsRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListVodPackagingGroupsResponseBody struct {
+	PackagingGroups []*VodPackagingGroup `json:"PackagingGroups,omitempty" xml:"PackagingGroups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListVodPackagingGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingGroupsResponseBody) SetPackagingGroups(v []*VodPackagingGroup) *ListVodPackagingGroupsResponseBody {
+	s.PackagingGroups = v
+	return s
+}
+
+func (s *ListVodPackagingGroupsResponseBody) SetPageNo(v int32) *ListVodPackagingGroupsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsResponseBody) SetPageSize(v int32) *ListVodPackagingGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsResponseBody) SetRequestId(v string) *ListVodPackagingGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsResponseBody) SetSortBy(v string) *ListVodPackagingGroupsResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsResponseBody) SetTotalCount(v int64) *ListVodPackagingGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListVodPackagingGroupsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVodPackagingGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVodPackagingGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVodPackagingGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVodPackagingGroupsResponse) SetHeaders(v map[string]*string) *ListVodPackagingGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVodPackagingGroupsResponse) SetStatusCode(v int32) *ListVodPackagingGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVodPackagingGroupsResponse) SetBody(v *ListVodPackagingGroupsResponseBody) *ListVodPackagingGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type QueryCopyrightExtractJobRequest struct {
 	// This parameter is required.
 	//
@@ -59136,6 +63333,84 @@ func (s *SendAIAgentSpeechResponse) SetBody(v *SendAIAgentSpeechResponseBody) *S
 	return s
 }
 
+type SendAIAgentTextRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f27f9b9be28642a88e18****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SendAIAgentTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentTextRequest) SetInstanceId(v string) *SendAIAgentTextRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SendAIAgentTextRequest) SetText(v string) *SendAIAgentTextRequest {
+	s.Text = &v
+	return s
+}
+
+type SendAIAgentTextResponseBody struct {
+	// example:
+	//
+	// DB488837-3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendAIAgentTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentTextResponseBody) SetRequestId(v string) *SendAIAgentTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendAIAgentTextResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendAIAgentTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SendAIAgentTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentTextResponse) SetHeaders(v map[string]*string) *SendAIAgentTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendAIAgentTextResponse) SetStatusCode(v int32) *SendAIAgentTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendAIAgentTextResponse) SetBody(v *SendAIAgentTextResponseBody) *SendAIAgentTextResponse {
+	s.Body = v
+	return s
+}
+
 type SendLiveSnapshotJobCommandRequest struct {
 	// The operation command.
 	//
@@ -59863,6 +64138,7 @@ type StartAIAgentInstanceRequest struct {
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
 	// This parameter is required.
 	RuntimeConfig  *AIAgentRuntimeConfig  `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	SessionId      *string                `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
 	//
@@ -59888,6 +64164,11 @@ func (s *StartAIAgentInstanceRequest) SetRuntimeConfig(v *AIAgentRuntimeConfig) 
 	return s
 }
 
+func (s *StartAIAgentInstanceRequest) SetSessionId(v string) *StartAIAgentInstanceRequest {
+	s.SessionId = &v
+	return s
+}
+
 func (s *StartAIAgentInstanceRequest) SetTemplateConfig(v *AIAgentTemplateConfig) *StartAIAgentInstanceRequest {
 	s.TemplateConfig = v
 	return s
@@ -59907,6 +64188,7 @@ type StartAIAgentInstanceShrinkRequest struct {
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
 	// This parameter is required.
 	RuntimeConfigShrink  *string `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
 	//
@@ -59929,6 +64211,11 @@ func (s *StartAIAgentInstanceShrinkRequest) SetAIAgentId(v string) *StartAIAgent
 
 func (s *StartAIAgentInstanceShrinkRequest) SetRuntimeConfigShrink(v string) *StartAIAgentInstanceShrinkRequest {
 	s.RuntimeConfigShrink = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceShrinkRequest) SetSessionId(v string) *StartAIAgentInstanceShrinkRequest {
+	s.SessionId = &v
 	return s
 }
 
@@ -60695,7 +64982,8 @@ type SubmitASRJobRequest struct {
 	// example:
 	//
 	// 00:00:10
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration      *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
 	// The input file. You can specify an Object Storage Service (OSS) URL or the ID of a media asset in the media asset library.
 	//
 	// example:
@@ -60743,6 +65031,11 @@ func (s *SubmitASRJobRequest) SetDescription(v string) *SubmitASRJobRequest {
 
 func (s *SubmitASRJobRequest) SetDuration(v string) *SubmitASRJobRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *SubmitASRJobRequest) SetEditingConfig(v string) *SubmitASRJobRequest {
+	s.EditingConfig = &v
 	return s
 }
 
@@ -63187,6 +67480,158 @@ func (s *SubmitDynamicImageJobResponse) SetStatusCode(v int32) *SubmitDynamicIma
 }
 
 func (s *SubmitDynamicImageJobResponse) SetBody(v *SubmitDynamicImageJobResponseBody) *SubmitDynamicImageJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitHighlightExtractionJobRequest struct {
+	// example:
+	//
+	// ****12e8864746a0a398****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"MediaArray": [{
+	//
+	// 		"MediaId": "ceb72f00e****1ef8216e7e6c64a6302"
+	//
+	// 	}, {
+	//
+	// 		"MediaId": "ce450c40e****1ef8216e7e6c64a6302"
+	//
+	// 	}, {
+	//
+	// 		"MediaId": "ce49a020e****1ef81c1e6f6d5686302"
+	//
+	// 	}, {
+	//
+	// 		"MediaId": "d047e120e****1ef81c1e6f6d5686302"
+	//
+	// 	}, {
+	//
+	// 		"MediaId": "cfe2ddc0e****1ef81c1e6f6d5686302"
+	//
+	// 	}],
+	//
+	// 	"Strategy": {
+	//
+	// 		"Count": 5,
+	//
+	// 		"ClipDuration": 15
+	//
+	// 	}
+	//
+	// }
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"NeedExport": true,
+	//
+	// 	"OutputMediaTarget": "oss-object",
+	//
+	// 	"Bucket": "test-bucket",
+	//
+	// 	"ObjectKey": "path/to/test_{index}.mp4",
+	//
+	// 	"Width": 1920,
+	//
+	// 	"Height": 1080,
+	//
+	// 	"ExportAsNewMedia": false
+	//
+	// }
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitHighlightExtractionJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitHighlightExtractionJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHighlightExtractionJobRequest) SetClientToken(v string) *SubmitHighlightExtractionJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitHighlightExtractionJobRequest) SetInputConfig(v string) *SubmitHighlightExtractionJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitHighlightExtractionJobRequest) SetOutputConfig(v string) *SubmitHighlightExtractionJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitHighlightExtractionJobRequest) SetUserData(v string) *SubmitHighlightExtractionJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitHighlightExtractionJobResponseBody struct {
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitHighlightExtractionJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitHighlightExtractionJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHighlightExtractionJobResponseBody) SetJobId(v string) *SubmitHighlightExtractionJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitHighlightExtractionJobResponseBody) SetRequestId(v string) *SubmitHighlightExtractionJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitHighlightExtractionJobResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitHighlightExtractionJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitHighlightExtractionJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitHighlightExtractionJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHighlightExtractionJobResponse) SetHeaders(v map[string]*string) *SubmitHighlightExtractionJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitHighlightExtractionJobResponse) SetStatusCode(v int32) *SubmitHighlightExtractionJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitHighlightExtractionJobResponse) SetBody(v *SubmitHighlightExtractionJobResponseBody) *SubmitHighlightExtractionJobResponse {
 	s.Body = v
 	return s
 }
@@ -76399,7 +80844,12 @@ type SubmitVideoTranslationJobRequest struct {
 	// example:
 	//
 	// {"MediaURL": "https://your-bucket.oss-cn-shanghai.aliyuncs.com/your-object.mp4"}
-	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	OutputConfig     *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	Signature        *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	SignatureMehtod  *string `json:"SignatureMehtod,omitempty" xml:"SignatureMehtod,omitempty"`
+	SignatureNonce   *string `json:"SignatureNonce,omitempty" xml:"SignatureNonce,omitempty"`
+	SignatureType    *string `json:"SignatureType,omitempty" xml:"SignatureType,omitempty"`
+	SignatureVersion *string `json:"SignatureVersion,omitempty" xml:"SignatureVersion,omitempty"`
 	// 	- The job title.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// 	- The user-defined data.
@@ -76442,6 +80892,31 @@ func (s *SubmitVideoTranslationJobRequest) SetInputConfig(v string) *SubmitVideo
 
 func (s *SubmitVideoTranslationJobRequest) SetOutputConfig(v string) *SubmitVideoTranslationJobRequest {
 	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetSignature(v string) *SubmitVideoTranslationJobRequest {
+	s.Signature = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetSignatureMehtod(v string) *SubmitVideoTranslationJobRequest {
+	s.SignatureMehtod = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetSignatureNonce(v string) *SubmitVideoTranslationJobRequest {
+	s.SignatureNonce = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetSignatureType(v string) *SubmitVideoTranslationJobRequest {
+	s.SignatureType = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetSignatureVersion(v string) *SubmitVideoTranslationJobRequest {
+	s.SignatureVersion = &v
 	return s
 }
 
@@ -76779,6 +81254,352 @@ func (s *UpdateAIAgentInstanceResponse) SetStatusCode(v int32) *UpdateAIAgentIns
 }
 
 func (s *UpdateAIAgentInstanceResponse) SetBody(v *UpdateAIAgentInstanceResponseBody) *UpdateAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAdInsertionRequest struct {
+	// 内容URL前缀
+	//
+	// example:
+	//
+	// ON
+	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
+	// 广告策略服务器URL
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://ads.com/ad1?param1=[palyer_params.p1]
+	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
+	// 广告分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	CdnAdSegmentUrlPrefix *string `json:"CdnAdSegmentUrlPrefix,omitempty" xml:"CdnAdSegmentUrlPrefix,omitempty"`
+	// 视频内容分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	CdnContentSegmentUrlPrefix *string `json:"CdnContentSegmentUrlPrefix,omitempty" xml:"CdnContentSegmentUrlPrefix,omitempty"`
+	// 动态配置别名
+	//
+	// example:
+	//
+	// { "player_params.p1": { "1": "abc" } }
+	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
+	// 内容URL前缀
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://source.com/
+	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 个性化配置阈值
+	//
+	// example:
+	//
+	// 5
+	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
+	// slate广告URL
+	//
+	// example:
+	//
+	// http://storage.com/slate1.mp4
+	SlateAdUrl *string `json:"SlateAdUrl,omitempty" xml:"SlateAdUrl,omitempty"`
+}
+
+func (s UpdateAdInsertionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAdInsertionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAdInsertionRequest) SetAdMarkerPassthrough(v string) *UpdateAdInsertionRequest {
+	s.AdMarkerPassthrough = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetAdsUrl(v string) *UpdateAdInsertionRequest {
+	s.AdsUrl = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetCdnAdSegmentUrlPrefix(v string) *UpdateAdInsertionRequest {
+	s.CdnAdSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetCdnContentSegmentUrlPrefix(v string) *UpdateAdInsertionRequest {
+	s.CdnContentSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetConfigAliases(v string) *UpdateAdInsertionRequest {
+	s.ConfigAliases = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetContentUrlPrefix(v string) *UpdateAdInsertionRequest {
+	s.ContentUrlPrefix = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetName(v string) *UpdateAdInsertionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetPersonalizationThreshold(v int32) *UpdateAdInsertionRequest {
+	s.PersonalizationThreshold = &v
+	return s
+}
+
+func (s *UpdateAdInsertionRequest) SetSlateAdUrl(v string) *UpdateAdInsertionRequest {
+	s.SlateAdUrl = &v
+	return s
+}
+
+type UpdateAdInsertionResponseBody struct {
+	Config *UpdateAdInsertionResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// ****63E8B7C7-4812-46AD-0FA56029AC86****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAdInsertionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAdInsertionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAdInsertionResponseBody) SetConfig(v *UpdateAdInsertionResponseBodyConfig) *UpdateAdInsertionResponseBody {
+	s.Config = v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBody) SetRequestId(v string) *UpdateAdInsertionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAdInsertionResponseBodyConfig struct {
+	// 广告标记透传
+	//
+	// example:
+	//
+	// ON
+	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
+	// 广告策略服务器URL
+	//
+	// example:
+	//
+	// http://ads.com/ad1?param1=[palyer_params.p1]
+	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
+	// CDN配置
+	CdnConfig *UpdateAdInsertionResponseBodyConfigCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
+	// 动态配置别名
+	//
+	// example:
+	//
+	// { "player_params.p1": { "1": "abc" } }
+	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
+	// 内容URL前缀
+	//
+	// example:
+	//
+	// https://source.com/
+	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
+	// 创建时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 修改时间
+	//
+	// example:
+	//
+	// 2024-06-13T08:26:09Z
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// 清单播放端点配置
+	ManifestEndpointConfig *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
+	// 广告插入配置名称
+	//
+	// example:
+	//
+	// my_ad
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 个性化配置阈值
+	//
+	// example:
+	//
+	// 5
+	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
+	// slate广告URL
+	//
+	// example:
+	//
+	// http://storage.com/slate1.mp4
+	SlateAdUrl *string `json:"SlateAdUrl,omitempty" xml:"SlateAdUrl,omitempty"`
+}
+
+func (s UpdateAdInsertionResponseBodyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAdInsertionResponseBodyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetAdMarkerPassthrough(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.AdMarkerPassthrough = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetAdsUrl(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.AdsUrl = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetCdnConfig(v *UpdateAdInsertionResponseBodyConfigCdnConfig) *UpdateAdInsertionResponseBodyConfig {
+	s.CdnConfig = v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetConfigAliases(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.ConfigAliases = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetContentUrlPrefix(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.ContentUrlPrefix = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetCreateTime(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetLastModified(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.LastModified = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetManifestEndpointConfig(v *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) *UpdateAdInsertionResponseBodyConfig {
+	s.ManifestEndpointConfig = v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetName(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetPersonalizationThreshold(v int32) *UpdateAdInsertionResponseBodyConfig {
+	s.PersonalizationThreshold = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfig) SetSlateAdUrl(v string) *UpdateAdInsertionResponseBodyConfig {
+	s.SlateAdUrl = &v
+	return s
+}
+
+type UpdateAdInsertionResponseBodyConfigCdnConfig struct {
+	// 广告分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
+	// 视频内容分片的CDN前缀
+	//
+	// example:
+	//
+	// http://cdn.com/
+	ContentSegmentUrlPrefix *string `json:"ContentSegmentUrlPrefix,omitempty" xml:"ContentSegmentUrlPrefix,omitempty"`
+}
+
+func (s UpdateAdInsertionResponseBodyConfigCdnConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAdInsertionResponseBodyConfigCdnConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAdInsertionResponseBodyConfigCdnConfig) SetAdSegmentUrlPrefix(v string) *UpdateAdInsertionResponseBodyConfigCdnConfig {
+	s.AdSegmentUrlPrefix = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefix(v string) *UpdateAdInsertionResponseBodyConfigCdnConfig {
+	s.ContentSegmentUrlPrefix = &v
+	return s
+}
+
+type UpdateAdInsertionResponseBodyConfigManifestEndpointConfig struct {
+	// HLS清单播放端点前缀
+	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
+}
+
+func (s UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) SetHlsPrefix(v string) *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig {
+	s.HlsPrefix = &v
+	return s
+}
+
+type UpdateAdInsertionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAdInsertionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAdInsertionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAdInsertionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAdInsertionResponse) SetHeaders(v map[string]*string) *UpdateAdInsertionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAdInsertionResponse) SetStatusCode(v int32) *UpdateAdInsertionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAdInsertionResponse) SetBody(v *UpdateAdInsertionResponseBody) *UpdateAdInsertionResponse {
 	s.Body = v
 	return s
 }
@@ -79488,11 +84309,384 @@ func (s *UpdateLiveTranscodeTemplateResponse) SetBody(v *UpdateLiveTranscodeTemp
 	return s
 }
 
-type UpdateMediaConnectFlowStatusRequest struct {
+type UpdateMediaConnectFlowInputRequest struct {
+	// IP whitelist
+	//
+	// example:
+	//
+	// 19.168.1.1/32,18.168.1.1/16
+	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Input URL, modifiable when the input type is RTMP-PULL/SRT-Listener
+	//
+	// example:
+	//
+	// rtmp://pull.test.alivecdn.com/live/alitest
+	InputFromUrl *string `json:"InputFromUrl,omitempty" xml:"InputFromUrl,omitempty"`
+	// Input bitrate
+	//
+	// example:
+	//
+	// 2000000
+	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	// SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 1000
+	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// FICUBPX4Q77DYHRF
+	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
+	// SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 32
+	SrtPbkeyLen *int32 `json:"SrtPbkeyLen,omitempty" xml:"SrtPbkeyLen,omitempty"`
+}
+
+func (s UpdateMediaConnectFlowInputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaConnectFlowInputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetCidrs(v string) *UpdateMediaConnectFlowInputRequest {
+	s.Cidrs = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetFlowId(v string) *UpdateMediaConnectFlowInputRequest {
+	s.FlowId = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetInputFromUrl(v string) *UpdateMediaConnectFlowInputRequest {
+	s.InputFromUrl = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetMaxBitrate(v int32) *UpdateMediaConnectFlowInputRequest {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetSrtLatency(v int32) *UpdateMediaConnectFlowInputRequest {
+	s.SrtLatency = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetSrtPassphrase(v string) *UpdateMediaConnectFlowInputRequest {
+	s.SrtPassphrase = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetSrtPbkeyLen(v int32) *UpdateMediaConnectFlowInputRequest {
+	s.SrtPbkeyLen = &v
+	return s
+}
+
+type UpdateMediaConnectFlowInputResponseBody struct {
+	// Response body
+	//
+	// example:
+	//
+	// ""
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Description of the API call
+	//
+	// example:
+	//
+	// OK
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 请求 ID
+	//
+	// example:
+	//
+	// 52451256-FFEA-5D2E-AA60-EE7053000F22
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
+	// example:
+	//
+	// 0
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+}
+
+func (s UpdateMediaConnectFlowInputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaConnectFlowInputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaConnectFlowInputResponseBody) SetContent(v string) *UpdateMediaConnectFlowInputResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputResponseBody) SetDescription(v string) *UpdateMediaConnectFlowInputResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputResponseBody) SetRequestId(v string) *UpdateMediaConnectFlowInputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputResponseBody) SetRetCode(v int32) *UpdateMediaConnectFlowInputResponseBody {
+	s.RetCode = &v
+	return s
+}
+
+type UpdateMediaConnectFlowInputResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMediaConnectFlowInputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMediaConnectFlowInputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaConnectFlowInputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaConnectFlowInputResponse) SetHeaders(v map[string]*string) *UpdateMediaConnectFlowInputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputResponse) SetStatusCode(v int32) *UpdateMediaConnectFlowInputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputResponse) SetBody(v *UpdateMediaConnectFlowInputResponseBody) *UpdateMediaConnectFlowInputResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMediaConnectFlowOutputRequest struct {
+	// IP whitelist
+	//
+	// example:
+	//
+	// 19.168.1.1/32,18.168.1.1/16
+	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Output name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliTestOutput
+	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
+	// Output address, modifiable when the output type is RTMP-PUSH/SRT-Caller mode
+	//
+	// example:
+	//
+	// rtmp://push.test.alivecdn.com/live/alitest
+	OutputToUrl *string `json:"OutputToUrl,omitempty" xml:"OutputToUrl,omitempty"`
+	// Player limit
+	//
+	// example:
+	//
+	// 5
+	PlayerLimit *string `json:"PlayerLimit,omitempty" xml:"PlayerLimit,omitempty"`
+	// SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 1000
+	SrtLatency *string `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// FICUBPX4Q77DYHRF
+	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
+	// SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+	//
+	// example:
+	//
+	// 32
+	SrtPbkeyLen *string `json:"SrtPbkeyLen,omitempty" xml:"SrtPbkeyLen,omitempty"`
+}
+
+func (s UpdateMediaConnectFlowOutputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaConnectFlowOutputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetCidrs(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.Cidrs = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetFlowId(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.FlowId = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetOutputName(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.OutputName = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetOutputToUrl(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.OutputToUrl = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetPlayerLimit(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.PlayerLimit = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetSrtLatency(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.SrtLatency = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetSrtPassphrase(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.SrtPassphrase = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputRequest) SetSrtPbkeyLen(v string) *UpdateMediaConnectFlowOutputRequest {
+	s.SrtPbkeyLen = &v
+	return s
+}
+
+type UpdateMediaConnectFlowOutputResponseBody struct {
+	// Response body
+	//
+	// example:
+	//
+	// ""
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Description of the API call
+	//
+	// example:
+	//
+	// OK
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// D737D0BC-4CB5-55AA-8119-B540C95DFE6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned error code, 0 indicates success
+	//
+	// example:
+	//
+	// 0
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+}
+
+func (s UpdateMediaConnectFlowOutputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaConnectFlowOutputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaConnectFlowOutputResponseBody) SetContent(v string) *UpdateMediaConnectFlowOutputResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputResponseBody) SetDescription(v string) *UpdateMediaConnectFlowOutputResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputResponseBody) SetRequestId(v string) *UpdateMediaConnectFlowOutputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputResponseBody) SetRetCode(v int32) *UpdateMediaConnectFlowOutputResponseBody {
+	s.RetCode = &v
+	return s
+}
+
+type UpdateMediaConnectFlowOutputResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMediaConnectFlowOutputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMediaConnectFlowOutputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaConnectFlowOutputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaConnectFlowOutputResponse) SetHeaders(v map[string]*string) *UpdateMediaConnectFlowOutputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputResponse) SetStatusCode(v int32) *UpdateMediaConnectFlowOutputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowOutputResponse) SetBody(v *UpdateMediaConnectFlowOutputResponseBody) *UpdateMediaConnectFlowOutputResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMediaConnectFlowStatusRequest struct {
+	// Flow instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Flow status:
+	//
+	// - online: Start Flow
+	//
+	// - offline: Stop Flow
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// online
@@ -79518,22 +84712,30 @@ func (s *UpdateMediaConnectFlowStatusRequest) SetStatus(v string) *UpdateMediaCo
 }
 
 type UpdateMediaConnectFlowStatusResponseBody struct {
+	// Response body
+	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Description of the API call
+	//
 	// example:
 	//
 	// ok
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 20B3A1B6-4BD2-5DE6-BCBC-098C9B4F4E91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回的错误码，0表示成功
+	//
 	// example:
 	//
 	// 0
-	RetCode *string `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
 }
 
 func (s UpdateMediaConnectFlowStatusResponseBody) String() string {
@@ -79559,7 +84761,7 @@ func (s *UpdateMediaConnectFlowStatusResponseBody) SetRequestId(v string) *Updat
 	return s
 }
 
-func (s *UpdateMediaConnectFlowStatusResponseBody) SetRetCode(v string) *UpdateMediaConnectFlowStatusResponseBody {
+func (s *UpdateMediaConnectFlowStatusResponseBody) SetRetCode(v int32) *UpdateMediaConnectFlowStatusResponseBody {
 	s.RetCode = &v
 	return s
 }
@@ -81413,6 +86615,113 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加广告插入配置
+//
+// @param request - AddAdInsertionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAdInsertionResponse
+func (client *Client) AddAdInsertionWithOptions(request *AddAdInsertionRequest, runtime *util.RuntimeOptions) (_result *AddAdInsertionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdMarkerPassthrough)) {
+		body["AdMarkerPassthrough"] = request.AdMarkerPassthrough
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdsUrl)) {
+		body["AdsUrl"] = request.AdsUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CdnAdSegmentUrlPrefix)) {
+		body["CdnAdSegmentUrlPrefix"] = request.CdnAdSegmentUrlPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CdnContentSegmentUrlPrefix)) {
+		body["CdnContentSegmentUrlPrefix"] = request.CdnContentSegmentUrlPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigAliases)) {
+		body["ConfigAliases"] = request.ConfigAliases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentUrlPrefix)) {
+		body["ContentUrlPrefix"] = request.ContentUrlPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonalizationThreshold)) {
+		body["PersonalizationThreshold"] = request.PersonalizationThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlateAdUrl)) {
+		body["SlateAdUrl"] = request.SlateAdUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAdInsertion"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddAdInsertionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddAdInsertionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 添加广告插入配置
+//
+// @param request - AddAdInsertionRequest
+//
+// @return AddAdInsertionResponse
+func (client *Client) AddAdInsertion(request *AddAdInsertionRequest) (_result *AddAdInsertionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddAdInsertionResponse{}
+	_body, _err := client.AddAdInsertionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a category.
 //
 // Description:
@@ -81646,7 +86955,25 @@ func (client *Client) AddFavoritePublicMedia(request *AddFavoritePublicMediaRequ
 
 // Summary:
 //
-// 为MediaConnect实例添加input
+// Add input for MediaConnect instance
+//
+// Description:
+//
+// - If the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - A Flow instance can only have one Input.
+//
+// ### Description of Input Types
+//
+// - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
+//
+// - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
+//
+// - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
+//
+// - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
+//
+// - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
 //
 // @param request - AddMediaConnectFlowInputRequest
 //
@@ -81703,14 +87030,6 @@ func (client *Client) AddMediaConnectFlowInputWithOptions(request *AddMediaConne
 		query["SrtPbkeyLen"] = request.SrtPbkeyLen
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SrtPbkeylen)) {
-		query["SrtPbkeylen"] = request.SrtPbkeylen
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SrtPbkeyssen)) {
-		query["SrtPbkeyssen"] = request.SrtPbkeyssen
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -81747,7 +87066,25 @@ func (client *Client) AddMediaConnectFlowInputWithOptions(request *AddMediaConne
 
 // Summary:
 //
-// 为MediaConnect实例添加input
+// Add input for MediaConnect instance
+//
+// Description:
+//
+// - If the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - A Flow instance can only have one Input.
+//
+// ### Description of Input Types
+//
+// - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
+//
+// - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
+//
+// - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
+//
+// - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
+//
+// - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
 //
 // @param request - AddMediaConnectFlowInputRequest
 //
@@ -81765,7 +87102,29 @@ func (client *Client) AddMediaConnectFlowInput(request *AddMediaConnectFlowInput
 
 // Summary:
 //
-// 为MediaConnect实例添加output
+// Add output for MediaConnect instance
+//
+// Description:
+//
+// - If the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - A Flow instance can have up to 4 outputs.
+//
+// - The output names under the same Flow instance cannot be duplicated.
+//
+// - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
+//
+// ### Description of Output Types
+//
+// - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
+//
+// - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
+//
+// - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
+//
+// - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
+//
+// - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
 //
 // @param request - AddMediaConnectFlowOutputRequest
 //
@@ -81796,10 +87155,6 @@ func (client *Client) AddMediaConnectFlowOutputWithOptions(request *AddMediaConn
 
 	if !tea.BoolValue(util.IsUnset(request.OutputToUrl)) {
 		query["OutputToUrl"] = request.OutputToUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PairChannelId)) {
-		query["PairChannelId"] = request.PairChannelId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PairFlowId)) {
@@ -81862,7 +87217,29 @@ func (client *Client) AddMediaConnectFlowOutputWithOptions(request *AddMediaConn
 
 // Summary:
 //
-// 为MediaConnect实例添加output
+// Add output for MediaConnect instance
+//
+// Description:
+//
+// - If the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - A Flow instance can have up to 4 outputs.
+//
+// - The output names under the same Flow instance cannot be duplicated.
+//
+// - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
+//
+// ### Description of Output Types
+//
+// - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
+//
+// - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
+//
+// - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
+//
+// - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
+//
+// - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
 //
 // @param request - AddMediaConnectFlowOutputRequest
 //
@@ -82146,6 +87523,87 @@ func (client *Client) AlterSearchIndex(request *AlterSearchIndexRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &AlterSearchIndexResponse{}
 	_body, _err := client.AlterSearchIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量创建vod打包资产
+//
+// @param tmpReq - BatchCreateVodPackagingAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateVodPackagingAssetResponse
+func (client *Client) BatchCreateVodPackagingAssetWithOptions(tmpReq *BatchCreateVodPackagingAssetRequest, runtime *util.RuntimeOptions) (_result *BatchCreateVodPackagingAssetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchCreateVodPackagingAssetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Assets)) {
+		request.AssetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Assets, tea.String("Assets"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetsShrink)) {
+		query["Assets"] = request.AssetsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateVodPackagingAsset"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchCreateVodPackagingAssetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchCreateVodPackagingAssetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量创建vod打包资产
+//
+// @param request - BatchCreateVodPackagingAssetRequest
+//
+// @return BatchCreateVodPackagingAssetResponse
+func (client *Client) BatchCreateVodPackagingAsset(request *BatchCreateVodPackagingAssetRequest) (_result *BatchCreateVodPackagingAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateVodPackagingAssetResponse{}
+	_body, _err := client.BatchCreateVodPackagingAssetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -83595,7 +89053,13 @@ func (client *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTe
 
 // Summary:
 //
-// 创建MediaConnect Flow
+// Create MediaConnect Flow
+//
+// Description:
+//
+// - The name of the Flow cannot be duplicated within the same region.
+//
+// - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
 //
 // @param request - CreateMediaConnectFlowRequest
 //
@@ -83652,7 +89116,13 @@ func (client *Client) CreateMediaConnectFlowWithOptions(request *CreateMediaConn
 
 // Summary:
 //
-// 创建MediaConnect Flow
+// Create MediaConnect Flow
+//
+// Description:
+//
+// - The name of the Flow cannot be duplicated within the same region.
+//
+// - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
 //
 // @param request - CreateMediaConnectFlowRequest
 //
@@ -84406,6 +89876,267 @@ func (client *Client) CreateUploadStream(request *CreateUploadStreamRequest) (_r
 
 // Summary:
 //
+// 创建vod打包资产
+//
+// @param tmpReq - CreateVodPackagingAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVodPackagingAssetResponse
+func (client *Client) CreateVodPackagingAssetWithOptions(tmpReq *CreateVodPackagingAssetRequest, runtime *util.RuntimeOptions) (_result *CreateVodPackagingAssetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateVodPackagingAssetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetName)) {
+		query["AssetName"] = request.AssetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentId)) {
+		query["ContentId"] = request.ContentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVodPackagingAsset"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVodPackagingAssetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVodPackagingAssetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建vod打包资产
+//
+// @param request - CreateVodPackagingAssetRequest
+//
+// @return CreateVodPackagingAssetResponse
+func (client *Client) CreateVodPackagingAsset(request *CreateVodPackagingAssetRequest) (_result *CreateVodPackagingAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVodPackagingAssetResponse{}
+	_body, _err := client.CreateVodPackagingAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建点播打包配置
+//
+// @param tmpReq - CreateVodPackagingConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVodPackagingConfigurationResponse
+func (client *Client) CreateVodPackagingConfigurationWithOptions(tmpReq *CreateVodPackagingConfigurationRequest, runtime *util.RuntimeOptions) (_result *CreateVodPackagingConfigurationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateVodPackagingConfigurationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PackageConfig)) {
+		request.PackageConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PackageConfig, tea.String("PackageConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationName)) {
+		query["ConfigurationName"] = request.ConfigurationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageConfigShrink)) {
+		query["PackageConfig"] = request.PackageConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVodPackagingConfiguration"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVodPackagingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVodPackagingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建点播打包配置
+//
+// @param request - CreateVodPackagingConfigurationRequest
+//
+// @return CreateVodPackagingConfigurationResponse
+func (client *Client) CreateVodPackagingConfiguration(request *CreateVodPackagingConfigurationRequest) (_result *CreateVodPackagingConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVodPackagingConfigurationResponse{}
+	_body, _err := client.CreateVodPackagingConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建点播打包组
+//
+// @param request - CreateVodPackagingGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVodPackagingGroupResponse
+func (client *Client) CreateVodPackagingGroupWithOptions(request *CreateVodPackagingGroupRequest, runtime *util.RuntimeOptions) (_result *CreateVodPackagingGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVodPackagingGroup"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVodPackagingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVodPackagingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建点播打包组
+//
+// @param request - CreateVodPackagingGroupRequest
+//
+// @return CreateVodPackagingGroupResponse
+func (client *Client) CreateVodPackagingGroup(request *CreateVodPackagingGroupRequest) (_result *CreateVodPackagingGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVodPackagingGroupResponse{}
+	_body, _err := client.CreateVodPackagingGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Decrypts the ciphertext specified by CiphertextBlob in the Key Management Service (KMS) data key.
 //
 // @param request - DecryptKMSDataKeyRequest
@@ -84468,6 +90199,152 @@ func (client *Client) DecryptKMSDataKey(request *DecryptKMSDataKeyRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DecryptKMSDataKeyResponse{}
 	_body, _err := client.DecryptKMSDataKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除智能体的对话历史记录。
+//
+// @param request - DeleteAIAgentDialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAIAgentDialogueResponse
+func (client *Client) DeleteAIAgentDialogueWithOptions(request *DeleteAIAgentDialogueRequest, runtime *util.RuntimeOptions) (_result *DeleteAIAgentDialogueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DialogueId)) {
+		query["DialogueId"] = request.DialogueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAIAgentDialogue"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAIAgentDialogueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAIAgentDialogueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除智能体的对话历史记录。
+//
+// @param request - DeleteAIAgentDialogueRequest
+//
+// @return DeleteAIAgentDialogueResponse
+func (client *Client) DeleteAIAgentDialogue(request *DeleteAIAgentDialogueRequest) (_result *DeleteAIAgentDialogueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAIAgentDialogueResponse{}
+	_body, _err := client.DeleteAIAgentDialogueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除广告插入配置
+//
+// @param request - DeleteAdInsertionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAdInsertionResponse
+func (client *Client) DeleteAdInsertionWithOptions(request *DeleteAdInsertionRequest, runtime *util.RuntimeOptions) (_result *DeleteAdInsertionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAdInsertion"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAdInsertionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAdInsertionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除广告插入配置
+//
+// @param request - DeleteAdInsertionRequest
+//
+// @return DeleteAdInsertionResponse
+func (client *Client) DeleteAdInsertion(request *DeleteAdInsertionRequest) (_result *DeleteAdInsertionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAdInsertionResponse{}
+	_body, _err := client.DeleteAdInsertionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -85837,7 +91714,15 @@ func (client *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTe
 
 // Summary:
 //
-// 根据实例id删除MediaConnect实例
+// Delete MediaConnect instance by instance ID
+//
+// Description:
+//
+// - When the input Flow instance ID does not exist, the interface will return an error.
+//
+// - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
+//
+// - You cannot delete a Flow instance that is in the online state.
 //
 // @param request - DeleteMediaConnectFlowRequest
 //
@@ -85890,7 +91775,15 @@ func (client *Client) DeleteMediaConnectFlowWithOptions(request *DeleteMediaConn
 
 // Summary:
 //
-// 根据实例id删除MediaConnect实例
+// Delete MediaConnect instance by instance ID
+//
+// Description:
+//
+// - When the input Flow instance ID does not exist, the interface will return an error.
+//
+// - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
+//
+// - You cannot delete a Flow instance that is in the online state.
 //
 // @param request - DeleteMediaConnectFlowRequest
 //
@@ -85899,6 +91792,180 @@ func (client *Client) DeleteMediaConnectFlow(request *DeleteMediaConnectFlowRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMediaConnectFlowResponse{}
 	_body, _err := client.DeleteMediaConnectFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete the input of a specific MediaConnect instance
+//
+// Description:
+//
+// - If the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - When the Flow instance status is online, the input cannot be deleted.
+//
+// - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+//
+// @param request - DeleteMediaConnectFlowInputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMediaConnectFlowInputResponse
+func (client *Client) DeleteMediaConnectFlowInputWithOptions(request *DeleteMediaConnectFlowInputRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaConnectFlowInputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaConnectFlowInput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMediaConnectFlowInputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMediaConnectFlowInputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Delete the input of a specific MediaConnect instance
+//
+// Description:
+//
+// - If the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - When the Flow instance status is online, the input cannot be deleted.
+//
+// - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+//
+// @param request - DeleteMediaConnectFlowInputRequest
+//
+// @return DeleteMediaConnectFlowInputResponse
+func (client *Client) DeleteMediaConnectFlowInput(request *DeleteMediaConnectFlowInputRequest) (_result *DeleteMediaConnectFlowInputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaConnectFlowInputResponse{}
+	_body, _err := client.DeleteMediaConnectFlowInputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete a specific MediaConnect output
+//
+// Description:
+//
+// - When the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - When the Flow instance status is online, the output cannot be deleted.
+//
+// @param request - DeleteMediaConnectFlowOutputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMediaConnectFlowOutputResponse
+func (client *Client) DeleteMediaConnectFlowOutputWithOptions(request *DeleteMediaConnectFlowOutputRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaConnectFlowOutputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputName)) {
+		query["OutputName"] = request.OutputName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaConnectFlowOutput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMediaConnectFlowOutputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMediaConnectFlowOutputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Delete a specific MediaConnect output
+//
+// Description:
+//
+// - When the provided Flow instance ID does not exist, the interface will return an error.
+//
+// - When the Flow instance status is online, the output cannot be deleted.
+//
+// @param request - DeleteMediaConnectFlowOutputRequest
+//
+// @return DeleteMediaConnectFlowOutputResponse
+func (client *Client) DeleteMediaConnectFlowOutput(request *DeleteMediaConnectFlowOutputRequest) (_result *DeleteMediaConnectFlowOutputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaConnectFlowOutputResponse{}
+	_body, _err := client.DeleteMediaConnectFlowOutputWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -86677,6 +92744,219 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTemplateResponse{}
 	_body, _err := client.DeleteTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除点播打包资产
+//
+// @param request - DeleteVodPackagingAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVodPackagingAssetResponse
+func (client *Client) DeleteVodPackagingAssetWithOptions(request *DeleteVodPackagingAssetRequest, runtime *util.RuntimeOptions) (_result *DeleteVodPackagingAssetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetName)) {
+		query["AssetName"] = request.AssetName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVodPackagingAsset"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVodPackagingAssetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVodPackagingAssetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除点播打包资产
+//
+// @param request - DeleteVodPackagingAssetRequest
+//
+// @return DeleteVodPackagingAssetResponse
+func (client *Client) DeleteVodPackagingAsset(request *DeleteVodPackagingAssetRequest) (_result *DeleteVodPackagingAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVodPackagingAssetResponse{}
+	_body, _err := client.DeleteVodPackagingAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除点播打包配置
+//
+// @param request - DeleteVodPackagingConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVodPackagingConfigurationResponse
+func (client *Client) DeleteVodPackagingConfigurationWithOptions(request *DeleteVodPackagingConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteVodPackagingConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationName)) {
+		query["ConfigurationName"] = request.ConfigurationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVodPackagingConfiguration"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVodPackagingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVodPackagingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除点播打包配置
+//
+// @param request - DeleteVodPackagingConfigurationRequest
+//
+// @return DeleteVodPackagingConfigurationResponse
+func (client *Client) DeleteVodPackagingConfiguration(request *DeleteVodPackagingConfigurationRequest) (_result *DeleteVodPackagingConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVodPackagingConfigurationResponse{}
+	_body, _err := client.DeleteVodPackagingConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除点播打包组
+//
+// @param request - DeleteVodPackagingGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVodPackagingGroupResponse
+func (client *Client) DeleteVodPackagingGroupWithOptions(request *DeleteVodPackagingGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteVodPackagingGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVodPackagingGroup"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVodPackagingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVodPackagingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除点播打包组
+//
+// @param request - DeleteVodPackagingGroupRequest
+//
+// @return DeleteVodPackagingGroupResponse
+func (client *Client) DeleteVodPackagingGroup(request *DeleteVodPackagingGroupRequest) (_result *DeleteVodPackagingGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVodPackagingGroupResponse{}
+	_body, _err := client.DeleteVodPackagingGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -87657,6 +93937,10 @@ func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCall
 		query["Expire"] = request.Expire
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateConfigShrink)) {
 		query["TemplateConfig"] = request.TemplateConfigShrink
 	}
@@ -87772,6 +94056,160 @@ func (client *Client) GenerateKMSDataKey() (_result *GenerateKMSDataKeyResponse,
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateKMSDataKeyResponse{}
 	_body, _err := client.GenerateKMSDataKeyWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成直播互动消息所需的token
+//
+// @param request - GenerateMessageChatTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateMessageChatTokenResponse
+func (client *Client) GenerateMessageChatTokenWithOptions(request *GenerateMessageChatTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateMessageChatTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expire)) {
+		query["Expire"] = request.Expire
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateMessageChatToken"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateMessageChatTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateMessageChatTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 生成直播互动消息所需的token
+//
+// @param request - GenerateMessageChatTokenRequest
+//
+// @return GenerateMessageChatTokenResponse
+func (client *Client) GenerateMessageChatToken(request *GenerateMessageChatTokenRequest) (_result *GenerateMessageChatTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateMessageChatTokenResponse{}
+	_body, _err := client.GenerateMessageChatTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取广告插入配置
+//
+// @param request - GetAdInsertionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAdInsertionResponse
+func (client *Client) GetAdInsertionWithOptions(request *GetAdInsertionRequest, runtime *util.RuntimeOptions) (_result *GetAdInsertionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAdInsertion"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAdInsertionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAdInsertionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取广告插入配置
+//
+// @param request - GetAdInsertionRequest
+//
+// @return GetAdInsertionResponse
+func (client *Client) GetAdInsertion(request *GetAdInsertionRequest) (_result *GetAdInsertionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAdInsertionResponse{}
+	_body, _err := client.GetAdInsertionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -89748,7 +96186,13 @@ func (client *Client) GetLiveTranscodeTemplate(request *GetLiveTranscodeTemplate
 
 // Summary:
 //
-// 根据实例Id获取对应MediaConnect的详细信息
+// Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+//
+// Description:
+//
+// - When the input Flow instance ID does not exist, the interface will return an error.
+//
+// - The StartTime returned by the interface is only valid when the Flow status is online.
 //
 // @param request - GetMediaConnectFlowRequest
 //
@@ -89801,7 +96245,13 @@ func (client *Client) GetMediaConnectFlowWithOptions(request *GetMediaConnectFlo
 
 // Summary:
 //
-// 根据实例Id获取对应MediaConnect的详细信息
+// Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+//
+// Description:
+//
+// - When the input Flow instance ID does not exist, the interface will return an error.
+//
+// - The StartTime returned by the interface is only valid when the Flow status is online.
 //
 // @param request - GetMediaConnectFlowRequest
 //
@@ -89810,6 +96260,168 @@ func (client *Client) GetMediaConnectFlow(request *GetMediaConnectFlowRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMediaConnectFlowResponse{}
 	_body, _err := client.GetMediaConnectFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get input information under a MediaConnect instance
+//
+// Description:
+//
+// - When the provided Flow instance ID does not exist, the interface will return an error.
+//
+// @param request - GetMediaConnectFlowInputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMediaConnectFlowInputResponse
+func (client *Client) GetMediaConnectFlowInputWithOptions(request *GetMediaConnectFlowInputRequest, runtime *util.RuntimeOptions) (_result *GetMediaConnectFlowInputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaConnectFlowInput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaConnectFlowInputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaConnectFlowInputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Get input information under a MediaConnect instance
+//
+// Description:
+//
+// - When the provided Flow instance ID does not exist, the interface will return an error.
+//
+// @param request - GetMediaConnectFlowInputRequest
+//
+// @return GetMediaConnectFlowInputResponse
+func (client *Client) GetMediaConnectFlowInput(request *GetMediaConnectFlowInputRequest) (_result *GetMediaConnectFlowInputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaConnectFlowInputResponse{}
+	_body, _err := client.GetMediaConnectFlowInputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieve detailed information of a specific output based on outputName
+//
+// Description:
+//
+// - When the provided Flow instance ID does not exist, the interface will return an error.
+//
+// @param request - GetMediaConnectFlowOutputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMediaConnectFlowOutputResponse
+func (client *Client) GetMediaConnectFlowOutputWithOptions(request *GetMediaConnectFlowOutputRequest, runtime *util.RuntimeOptions) (_result *GetMediaConnectFlowOutputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputName)) {
+		query["OutputName"] = request.OutputName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaConnectFlowOutput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaConnectFlowOutputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaConnectFlowOutputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Retrieve detailed information of a specific output based on outputName
+//
+// Description:
+//
+// - When the provided Flow instance ID does not exist, the interface will return an error.
+//
+// @param request - GetMediaConnectFlowOutputRequest
+//
+// @return GetMediaConnectFlowOutputResponse
+func (client *Client) GetMediaConnectFlowOutput(request *GetMediaConnectFlowOutputRequest) (_result *GetMediaConnectFlowOutputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaConnectFlowOutputResponse{}
+	_body, _err := client.GetMediaConnectFlowOutputWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -91659,6 +98271,219 @@ func (client *Client) GetVideoList(request *GetVideoListRequest) (_result *GetVi
 
 // Summary:
 //
+// 查询点播打包资产
+//
+// @param request - GetVodPackagingAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVodPackagingAssetResponse
+func (client *Client) GetVodPackagingAssetWithOptions(request *GetVodPackagingAssetRequest, runtime *util.RuntimeOptions) (_result *GetVodPackagingAssetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetName)) {
+		query["AssetName"] = request.AssetName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVodPackagingAsset"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVodPackagingAssetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVodPackagingAssetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询点播打包资产
+//
+// @param request - GetVodPackagingAssetRequest
+//
+// @return GetVodPackagingAssetResponse
+func (client *Client) GetVodPackagingAsset(request *GetVodPackagingAssetRequest) (_result *GetVodPackagingAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVodPackagingAssetResponse{}
+	_body, _err := client.GetVodPackagingAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询打包模板配置
+//
+// @param request - GetVodPackagingConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVodPackagingConfigurationResponse
+func (client *Client) GetVodPackagingConfigurationWithOptions(request *GetVodPackagingConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetVodPackagingConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationName)) {
+		query["ConfigurationName"] = request.ConfigurationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVodPackagingConfiguration"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVodPackagingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVodPackagingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询打包模板配置
+//
+// @param request - GetVodPackagingConfigurationRequest
+//
+// @return GetVodPackagingConfigurationResponse
+func (client *Client) GetVodPackagingConfiguration(request *GetVodPackagingConfigurationRequest) (_result *GetVodPackagingConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVodPackagingConfigurationResponse{}
+	_body, _err := client.GetVodPackagingConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取点播打包组
+//
+// @param request - GetVodPackagingGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVodPackagingGroupResponse
+func (client *Client) GetVodPackagingGroupWithOptions(request *GetVodPackagingGroupRequest, runtime *util.RuntimeOptions) (_result *GetVodPackagingGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVodPackagingGroup"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVodPackagingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVodPackagingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取点播打包组
+//
+// @param request - GetVodPackagingGroupRequest
+//
+// @return GetVodPackagingGroupResponse
+func (client *Client) GetVodPackagingGroup(request *GetVodPackagingGroupRequest) (_result *GetVodPackagingGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVodPackagingGroupResponse{}
+	_body, _err := client.GetVodPackagingGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a workflow task by task ID, including the workflow ID and the status and result of the task. You can query only the workflow task data of the last year.
 //
 // @param request - GetWorkflowTaskRequest
@@ -91817,6 +98642,97 @@ func (client *Client) InsertMediaToSearchLib(request *InsertMediaToSearchLibRequ
 
 // Summary:
 //
+// 列出智能体的对话历史记录。
+//
+// @param request - ListAIAgentDialoguesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAIAgentDialoguesResponse
+func (client *Client) ListAIAgentDialoguesWithOptions(request *ListAIAgentDialoguesRequest, runtime *util.RuntimeOptions) (_result *ListAIAgentDialoguesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAIAgentDialogues"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAIAgentDialoguesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAIAgentDialoguesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 列出智能体的对话历史记录。
+//
+// @param request - ListAIAgentDialoguesRequest
+//
+// @return ListAIAgentDialoguesResponse
+func (client *Client) ListAIAgentDialogues(request *ListAIAgentDialoguesRequest) (_result *ListAIAgentDialoguesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAIAgentDialoguesResponse{}
+	_body, _err := client.ListAIAgentDialoguesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出实例
 //
 // @param request - ListAIAgentInstanceRequest
@@ -91895,6 +98811,97 @@ func (client *Client) ListAIAgentInstance(request *ListAIAgentInstanceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAIAgentInstanceResponse{}
 	_body, _err := client.ListAIAgentInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取广告插入配置列表
+//
+// @param request - ListAdInsertionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAdInsertionsResponse
+func (client *Client) ListAdInsertionsWithOptions(request *ListAdInsertionsRequest, runtime *util.RuntimeOptions) (_result *ListAdInsertionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAdInsertions"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAdInsertionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAdInsertionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取广告插入配置列表
+//
+// @param request - ListAdInsertionsRequest
+//
+// @return ListAdInsertionsResponse
+func (client *Client) ListAdInsertions(request *ListAdInsertionsRequest) (_result *ListAdInsertionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAdInsertionsResponse{}
+	_body, _err := client.ListAdInsertionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -95831,6 +102838,263 @@ func (client *Client) ListTranscodeJobs(request *ListTranscodeJobsRequest) (_res
 
 // Summary:
 //
+// 列举点播打包资产
+//
+// @param request - ListVodPackagingAssetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVodPackagingAssetsResponse
+func (client *Client) ListVodPackagingAssetsWithOptions(request *ListVodPackagingAssetsRequest, runtime *util.RuntimeOptions) (_result *ListVodPackagingAssetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVodPackagingAssets"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVodPackagingAssetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVodPackagingAssetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 列举点播打包资产
+//
+// @param request - ListVodPackagingAssetsRequest
+//
+// @return ListVodPackagingAssetsResponse
+func (client *Client) ListVodPackagingAssets(request *ListVodPackagingAssetsRequest) (_result *ListVodPackagingAssetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVodPackagingAssetsResponse{}
+	_body, _err := client.ListVodPackagingAssetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举点播打包配置列表
+//
+// @param request - ListVodPackagingConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVodPackagingConfigurationsResponse
+func (client *Client) ListVodPackagingConfigurationsWithOptions(request *ListVodPackagingConfigurationsRequest, runtime *util.RuntimeOptions) (_result *ListVodPackagingConfigurationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVodPackagingConfigurations"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVodPackagingConfigurationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVodPackagingConfigurationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 列举点播打包配置列表
+//
+// @param request - ListVodPackagingConfigurationsRequest
+//
+// @return ListVodPackagingConfigurationsResponse
+func (client *Client) ListVodPackagingConfigurations(request *ListVodPackagingConfigurationsRequest) (_result *ListVodPackagingConfigurationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVodPackagingConfigurationsResponse{}
+	_body, _err := client.ListVodPackagingConfigurationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举点播打包组
+//
+// @param request - ListVodPackagingGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVodPackagingGroupsResponse
+func (client *Client) ListVodPackagingGroupsWithOptions(request *ListVodPackagingGroupsRequest, runtime *util.RuntimeOptions) (_result *ListVodPackagingGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVodPackagingGroups"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVodPackagingGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVodPackagingGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 列举点播打包组
+//
+// @param request - ListVodPackagingGroupsRequest
+//
+// @return ListVodPackagingGroupsResponse
+func (client *Client) ListVodPackagingGroups(request *ListVodPackagingGroupsRequest) (_result *ListVodPackagingGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVodPackagingGroupsResponse{}
+	_body, _err := client.ListVodPackagingGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询版权水印提取任务
 //
 // @param request - QueryCopyrightExtractJobRequest
@@ -98264,6 +105528,81 @@ func (client *Client) SendAIAgentSpeech(request *SendAIAgentSpeechRequest) (_res
 
 // Summary:
 //
+// 传入消息作为LLM输入。
+//
+// @param request - SendAIAgentTextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendAIAgentTextResponse
+func (client *Client) SendAIAgentTextWithOptions(request *SendAIAgentTextRequest, runtime *util.RuntimeOptions) (_result *SendAIAgentTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendAIAgentText"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SendAIAgentTextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SendAIAgentTextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 传入消息作为LLM输入。
+//
+// @param request - SendAIAgentTextRequest
+//
+// @return SendAIAgentTextResponse
+func (client *Client) SendAIAgentText(request *SendAIAgentTextRequest) (_result *SendAIAgentTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendAIAgentTextResponse{}
+	_body, _err := client.SendAIAgentTextWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sends a command to process a live stream snapshot job.
 //
 // @param request - SendLiveSnapshotJobCommandRequest
@@ -98852,6 +106191,10 @@ func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstan
 		query["RuntimeConfig"] = request.RuntimeConfigShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateConfigShrink)) {
 		query["TemplateConfig"] = request.TemplateConfigShrink
 	}
@@ -99405,6 +106748,10 @@ func (client *Client) SubmitASRJobWithOptions(request *SubmitASRJobRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Duration)) {
 		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EditingConfig)) {
+		query["EditingConfig"] = request.EditingConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputFile)) {
@@ -100508,6 +107855,91 @@ func (client *Client) SubmitDynamicImageJob(request *SubmitDynamicImageJobReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitDynamicImageJobResponse{}
 	_body, _err := client.SubmitDynamicImageJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交高光提取任务
+//
+// @param request - SubmitHighlightExtractionJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitHighlightExtractionJobResponse
+func (client *Client) SubmitHighlightExtractionJobWithOptions(request *SubmitHighlightExtractionJobRequest, runtime *util.RuntimeOptions) (_result *SubmitHighlightExtractionJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		body["InputConfig"] = request.InputConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitHighlightExtractionJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitHighlightExtractionJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitHighlightExtractionJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 提交高光提取任务
+//
+// @param request - SubmitHighlightExtractionJobRequest
+//
+// @return SubmitHighlightExtractionJobResponse
+func (client *Client) SubmitHighlightExtractionJob(request *SubmitHighlightExtractionJobRequest) (_result *SubmitHighlightExtractionJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitHighlightExtractionJobResponse{}
+	_body, _err := client.SubmitHighlightExtractionJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -102923,6 +110355,26 @@ func (client *Client) SubmitVideoTranslationJobWithOptions(request *SubmitVideoT
 		query["OutputConfig"] = request.OutputConfig
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Signature)) {
+		query["Signature"] = request.Signature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureMehtod)) {
+		query["SignatureMehtod"] = request.SignatureMehtod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureNonce)) {
+		query["SignatureNonce"] = request.SignatureNonce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureType)) {
+		query["SignatureType"] = request.SignatureType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureVersion)) {
+		query["SignatureVersion"] = request.SignatureVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		query["Title"] = request.Title
 	}
@@ -103144,6 +110596,109 @@ func (client *Client) UpdateAIAgentInstance(request *UpdateAIAgentInstanceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAIAgentInstanceResponse{}
 	_body, _err := client.UpdateAIAgentInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新广告插入配置
+//
+// @param request - UpdateAdInsertionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAdInsertionResponse
+func (client *Client) UpdateAdInsertionWithOptions(request *UpdateAdInsertionRequest, runtime *util.RuntimeOptions) (_result *UpdateAdInsertionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdMarkerPassthrough)) {
+		body["AdMarkerPassthrough"] = request.AdMarkerPassthrough
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdsUrl)) {
+		body["AdsUrl"] = request.AdsUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CdnAdSegmentUrlPrefix)) {
+		body["CdnAdSegmentUrlPrefix"] = request.CdnAdSegmentUrlPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CdnContentSegmentUrlPrefix)) {
+		body["CdnContentSegmentUrlPrefix"] = request.CdnContentSegmentUrlPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigAliases)) {
+		body["ConfigAliases"] = request.ConfigAliases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentUrlPrefix)) {
+		body["ContentUrlPrefix"] = request.ContentUrlPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonalizationThreshold)) {
+		body["PersonalizationThreshold"] = request.PersonalizationThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlateAdUrl)) {
+		body["SlateAdUrl"] = request.SlateAdUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAdInsertion"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAdInsertionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAdInsertionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新广告插入配置
+//
+// @param request - UpdateAdInsertionRequest
+//
+// @return UpdateAdInsertionResponse
+func (client *Client) UpdateAdInsertion(request *UpdateAdInsertionRequest) (_result *UpdateAdInsertionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAdInsertionResponse{}
+	_body, _err := client.UpdateAdInsertionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -104407,7 +111962,225 @@ func (client *Client) UpdateLiveTranscodeTemplate(request *UpdateLiveTranscodeTe
 
 // Summary:
 //
-// 修改MediaConnect实例状态
+// Modify the input information of a specific MediaConnect flow
+//
+// Description:
+//
+// - The input can only be modified when the Flow instance status is offline.
+//
+// - The input type cannot be modified.
+//
+// @param request - UpdateMediaConnectFlowInputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMediaConnectFlowInputResponse
+func (client *Client) UpdateMediaConnectFlowInputWithOptions(request *UpdateMediaConnectFlowInputRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaConnectFlowInputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cidrs)) {
+		query["Cidrs"] = request.Cidrs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputFromUrl)) {
+		query["InputFromUrl"] = request.InputFromUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxBitrate)) {
+		query["MaxBitrate"] = request.MaxBitrate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrtLatency)) {
+		query["SrtLatency"] = request.SrtLatency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrtPassphrase)) {
+		query["SrtPassphrase"] = request.SrtPassphrase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrtPbkeyLen)) {
+		query["SrtPbkeyLen"] = request.SrtPbkeyLen
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaConnectFlowInput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMediaConnectFlowInputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMediaConnectFlowInputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modify the input information of a specific MediaConnect flow
+//
+// Description:
+//
+// - The input can only be modified when the Flow instance status is offline.
+//
+// - The input type cannot be modified.
+//
+// @param request - UpdateMediaConnectFlowInputRequest
+//
+// @return UpdateMediaConnectFlowInputResponse
+func (client *Client) UpdateMediaConnectFlowInput(request *UpdateMediaConnectFlowInputRequest) (_result *UpdateMediaConnectFlowInputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaConnectFlowInputResponse{}
+	_body, _err := client.UpdateMediaConnectFlowInputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify information of a specific output in MediaConnect
+//
+// Description:
+//
+// - The output can only be modified when the Flow instance status is offline.
+//
+// - The output type cannot be modified.
+//
+// @param request - UpdateMediaConnectFlowOutputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMediaConnectFlowOutputResponse
+func (client *Client) UpdateMediaConnectFlowOutputWithOptions(request *UpdateMediaConnectFlowOutputRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaConnectFlowOutputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cidrs)) {
+		query["Cidrs"] = request.Cidrs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputName)) {
+		query["OutputName"] = request.OutputName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputToUrl)) {
+		query["OutputToUrl"] = request.OutputToUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayerLimit)) {
+		query["PlayerLimit"] = request.PlayerLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrtLatency)) {
+		query["SrtLatency"] = request.SrtLatency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrtPassphrase)) {
+		query["SrtPassphrase"] = request.SrtPassphrase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrtPbkeyLen)) {
+		query["SrtPbkeyLen"] = request.SrtPbkeyLen
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaConnectFlowOutput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMediaConnectFlowOutputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMediaConnectFlowOutputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modify information of a specific output in MediaConnect
+//
+// Description:
+//
+// - The output can only be modified when the Flow instance status is offline.
+//
+// - The output type cannot be modified.
+//
+// @param request - UpdateMediaConnectFlowOutputRequest
+//
+// @return UpdateMediaConnectFlowOutputResponse
+func (client *Client) UpdateMediaConnectFlowOutput(request *UpdateMediaConnectFlowOutputRequest) (_result *UpdateMediaConnectFlowOutputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaConnectFlowOutputResponse{}
+	_body, _err := client.UpdateMediaConnectFlowOutputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify MediaConnect Instance Status
 //
 // @param request - UpdateMediaConnectFlowStatusRequest
 //
@@ -104464,7 +112237,7 @@ func (client *Client) UpdateMediaConnectFlowStatusWithOptions(request *UpdateMed
 
 // Summary:
 //
-// 修改MediaConnect实例状态
+// Modify MediaConnect Instance Status
 //
 // @param request - UpdateMediaConnectFlowStatusRequest
 //
