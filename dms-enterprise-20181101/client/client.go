@@ -8380,6 +8380,226 @@ func (s *CreateDataLakeDatabaseResponse) SetBody(v *CreateDataLakeDatabaseRespon
 	return s
 }
 
+type CreateDataLakeFunctionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	FunctionInput *DLFunctionInput `json:"FunctionInput,omitempty" xml:"FunctionInput,omitempty"`
+	// example:
+	//
+	// 3****
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 12****
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateDataLakeFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataLakeFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataLakeFunctionRequest) SetCatalogName(v string) *CreateDataLakeFunctionRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionRequest) SetDataRegion(v string) *CreateDataLakeFunctionRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionRequest) SetDbName(v string) *CreateDataLakeFunctionRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionRequest) SetFunctionInput(v *DLFunctionInput) *CreateDataLakeFunctionRequest {
+	s.FunctionInput = v
+	return s
+}
+
+func (s *CreateDataLakeFunctionRequest) SetTid(v int64) *CreateDataLakeFunctionRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionRequest) SetWorkspaceId(v int64) *CreateDataLakeFunctionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateDataLakeFunctionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	FunctionInputShrink *string `json:"FunctionInput,omitempty" xml:"FunctionInput,omitempty"`
+	// example:
+	//
+	// 3****
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 12****
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateDataLakeFunctionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataLakeFunctionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataLakeFunctionShrinkRequest) SetCatalogName(v string) *CreateDataLakeFunctionShrinkRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionShrinkRequest) SetDataRegion(v string) *CreateDataLakeFunctionShrinkRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionShrinkRequest) SetDbName(v string) *CreateDataLakeFunctionShrinkRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionShrinkRequest) SetFunctionInputShrink(v string) *CreateDataLakeFunctionShrinkRequest {
+	s.FunctionInputShrink = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionShrinkRequest) SetTid(v int64) *CreateDataLakeFunctionShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionShrinkRequest) SetWorkspaceId(v int64) *CreateDataLakeFunctionShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateDataLakeFunctionResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Function     *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	// example:
+	//
+	// EE214ECD-4330-503A-82F0-FFB039757DC8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataLakeFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataLakeFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataLakeFunctionResponseBody) SetErrorCode(v string) *CreateDataLakeFunctionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionResponseBody) SetErrorMessage(v string) *CreateDataLakeFunctionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionResponseBody) SetFunction(v *DLFunction) *CreateDataLakeFunctionResponseBody {
+	s.Function = v
+	return s
+}
+
+func (s *CreateDataLakeFunctionResponseBody) SetRequestId(v string) *CreateDataLakeFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionResponseBody) SetSuccess(v bool) *CreateDataLakeFunctionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataLakeFunctionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataLakeFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataLakeFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataLakeFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataLakeFunctionResponse) SetHeaders(v map[string]*string) *CreateDataLakeFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataLakeFunctionResponse) SetStatusCode(v int32) *CreateDataLakeFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataLakeFunctionResponse) SetBody(v *CreateDataLakeFunctionResponseBody) *CreateDataLakeFunctionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataLakePartitionRequest struct {
 	// This parameter is required.
 	//
@@ -14276,6 +14496,155 @@ func (s *DeleteDataLakeDatabaseResponse) SetStatusCode(v int32) *DeleteDataLakeD
 }
 
 func (s *DeleteDataLakeDatabaseResponse) SetBody(v *DeleteDataLakeDatabaseResponseBody) *DeleteDataLakeDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataLakeFunctionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_funciton
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 12****
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DeleteDataLakeFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataLakeFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataLakeFunctionRequest) SetCatalogName(v string) *DeleteDataLakeFunctionRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionRequest) SetDataRegion(v string) *DeleteDataLakeFunctionRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionRequest) SetDbName(v string) *DeleteDataLakeFunctionRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionRequest) SetFunctionName(v string) *DeleteDataLakeFunctionRequest {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionRequest) SetTid(v int64) *DeleteDataLakeFunctionRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionRequest) SetWorkspaceId(v int64) *DeleteDataLakeFunctionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteDataLakeFunctionResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// B4B07137-F6AE-4756-8474-7F92BB6C4E04
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataLakeFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataLakeFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataLakeFunctionResponseBody) SetErrorCode(v string) *DeleteDataLakeFunctionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionResponseBody) SetErrorMessage(v string) *DeleteDataLakeFunctionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionResponseBody) SetRequestId(v string) *DeleteDataLakeFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionResponseBody) SetSuccess(v bool) *DeleteDataLakeFunctionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataLakeFunctionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataLakeFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDataLakeFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataLakeFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataLakeFunctionResponse) SetHeaders(v map[string]*string) *DeleteDataLakeFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionResponse) SetStatusCode(v int32) *DeleteDataLakeFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataLakeFunctionResponse) SetBody(v *DeleteDataLakeFunctionResponseBody) *DeleteDataLakeFunctionResponse {
 	s.Body = v
 	return s
 }
@@ -24990,6 +25359,161 @@ func (s *GetDataLakeDatabaseResponse) SetStatusCode(v int32) *GetDataLakeDatabas
 }
 
 func (s *GetDataLakeDatabaseResponse) SetBody(v *GetDataLakeDatabaseResponseBody) *GetDataLakeDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataLakeFunctionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_funciton
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 12****
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetDataLakeFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeFunctionRequest) SetCatalogName(v string) *GetDataLakeFunctionRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionRequest) SetDataRegion(v string) *GetDataLakeFunctionRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionRequest) SetDbName(v string) *GetDataLakeFunctionRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionRequest) SetFunctionName(v string) *GetDataLakeFunctionRequest {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionRequest) SetTid(v int64) *GetDataLakeFunctionRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionRequest) SetWorkspaceId(v int64) *GetDataLakeFunctionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetDataLakeFunctionResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Function     *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	// example:
+	//
+	// D911009F-3E95-5AFD-8CF1-73F7B4F15D6E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataLakeFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeFunctionResponseBody) SetErrorCode(v string) *GetDataLakeFunctionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionResponseBody) SetErrorMessage(v string) *GetDataLakeFunctionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionResponseBody) SetFunction(v *DLFunction) *GetDataLakeFunctionResponseBody {
+	s.Function = v
+	return s
+}
+
+func (s *GetDataLakeFunctionResponseBody) SetRequestId(v string) *GetDataLakeFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionResponseBody) SetSuccess(v bool) *GetDataLakeFunctionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataLakeFunctionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataLakeFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataLakeFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeFunctionResponse) SetHeaders(v map[string]*string) *GetDataLakeFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataLakeFunctionResponse) SetStatusCode(v int32) *GetDataLakeFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataLakeFunctionResponse) SetBody(v *GetDataLakeFunctionResponseBody) *GetDataLakeFunctionResponse {
 	s.Body = v
 	return s
 }
@@ -42819,6 +43343,370 @@ func (s *ListDataLakeDatabaseResponse) SetStatusCode(v int32) *ListDataLakeDatab
 }
 
 func (s *ListDataLakeDatabaseResponse) SetBody(v *ListDataLakeDatabaseResponseBody) *ListDataLakeDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataLakeFunctionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// .*
+	FunctionNamePattern *string `json:"FunctionNamePattern,omitempty" xml:"FunctionNamePattern,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// f056501ada12c1cc
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataLakeFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeFunctionRequest) SetCatalogName(v string) *ListDataLakeFunctionRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionRequest) SetDataRegion(v string) *ListDataLakeFunctionRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionRequest) SetDbName(v string) *ListDataLakeFunctionRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionRequest) SetFunctionNamePattern(v string) *ListDataLakeFunctionRequest {
+	s.FunctionNamePattern = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionRequest) SetMaxResults(v int32) *ListDataLakeFunctionRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionRequest) SetNextToken(v string) *ListDataLakeFunctionRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionRequest) SetTid(v int64) *ListDataLakeFunctionRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataLakeFunctionResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FunctionList []*DLFunction `json:"FunctionList,omitempty" xml:"FunctionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// f056501ada12c1cc
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDataLakeFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeFunctionResponseBody) SetErrorCode(v string) *ListDataLakeFunctionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponseBody) SetErrorMessage(v string) *ListDataLakeFunctionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponseBody) SetFunctionList(v []*DLFunction) *ListDataLakeFunctionResponseBody {
+	s.FunctionList = v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponseBody) SetMaxResults(v int32) *ListDataLakeFunctionResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponseBody) SetNextToken(v string) *ListDataLakeFunctionResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponseBody) SetRequestId(v string) *ListDataLakeFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponseBody) SetSuccess(v bool) *ListDataLakeFunctionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDataLakeFunctionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataLakeFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataLakeFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeFunctionResponse) SetHeaders(v map[string]*string) *ListDataLakeFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponse) SetStatusCode(v int32) *ListDataLakeFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionResponse) SetBody(v *ListDataLakeFunctionResponseBody) *ListDataLakeFunctionResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataLakeFunctionNameRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// .*
+	FunctionNamePattern *string `json:"FunctionNamePattern,omitempty" xml:"FunctionNamePattern,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// f056501ada12c1cc
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataLakeFunctionNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeFunctionNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetCatalogName(v string) *ListDataLakeFunctionNameRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetDataRegion(v string) *ListDataLakeFunctionNameRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetDbName(v string) *ListDataLakeFunctionNameRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetFunctionNamePattern(v string) *ListDataLakeFunctionNameRequest {
+	s.FunctionNamePattern = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetMaxResults(v int32) *ListDataLakeFunctionNameRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetNextToken(v string) *ListDataLakeFunctionNameRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetTid(v int64) *ListDataLakeFunctionNameRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataLakeFunctionNameResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage     *string   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FunctionNameList []*string `json:"FunctionNameList,omitempty" xml:"FunctionNameList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// f056501ada12c1cc
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// F1C78D32-1AFD-58AD-9DD2-C8A0896969DD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDataLakeFunctionNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeFunctionNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeFunctionNameResponseBody) SetErrorCode(v string) *ListDataLakeFunctionNameResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponseBody) SetErrorMessage(v string) *ListDataLakeFunctionNameResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponseBody) SetFunctionNameList(v []*string) *ListDataLakeFunctionNameResponseBody {
+	s.FunctionNameList = v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponseBody) SetMaxResults(v int32) *ListDataLakeFunctionNameResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponseBody) SetNextToken(v string) *ListDataLakeFunctionNameResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponseBody) SetRequestId(v string) *ListDataLakeFunctionNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponseBody) SetSuccess(v bool) *ListDataLakeFunctionNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDataLakeFunctionNameResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataLakeFunctionNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataLakeFunctionNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeFunctionNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeFunctionNameResponse) SetHeaders(v map[string]*string) *ListDataLakeFunctionNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponse) SetStatusCode(v int32) *ListDataLakeFunctionNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameResponse) SetBody(v *ListDataLakeFunctionNameResponseBody) *ListDataLakeFunctionNameResponse {
 	s.Body = v
 	return s
 }
@@ -65571,6 +66459,248 @@ func (s *UpdateDataLakeDatabaseResponse) SetBody(v *UpdateDataLakeDatabaseRespon
 	return s
 }
 
+type UpdateDataLakeFunctionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	FunctionInput *DLFunctionInput `json:"FunctionInput,omitempty" xml:"FunctionInput,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_funciton
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 12****
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateDataLakeFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataLakeFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataLakeFunctionRequest) SetCatalogName(v string) *UpdateDataLakeFunctionRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionRequest) SetDataRegion(v string) *UpdateDataLakeFunctionRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionRequest) SetDbName(v string) *UpdateDataLakeFunctionRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionRequest) SetFunctionInput(v *DLFunctionInput) *UpdateDataLakeFunctionRequest {
+	s.FunctionInput = v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionRequest) SetFunctionName(v string) *UpdateDataLakeFunctionRequest {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionRequest) SetTid(v int64) *UpdateDataLakeFunctionRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionRequest) SetWorkspaceId(v int64) *UpdateDataLakeFunctionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateDataLakeFunctionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	FunctionInputShrink *string `json:"FunctionInput,omitempty" xml:"FunctionInput,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_funciton
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 12****
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateDataLakeFunctionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataLakeFunctionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataLakeFunctionShrinkRequest) SetCatalogName(v string) *UpdateDataLakeFunctionShrinkRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionShrinkRequest) SetDataRegion(v string) *UpdateDataLakeFunctionShrinkRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionShrinkRequest) SetDbName(v string) *UpdateDataLakeFunctionShrinkRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionShrinkRequest) SetFunctionInputShrink(v string) *UpdateDataLakeFunctionShrinkRequest {
+	s.FunctionInputShrink = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionShrinkRequest) SetFunctionName(v string) *UpdateDataLakeFunctionShrinkRequest {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionShrinkRequest) SetTid(v int64) *UpdateDataLakeFunctionShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionShrinkRequest) SetWorkspaceId(v int64) *UpdateDataLakeFunctionShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateDataLakeFunctionResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Function     *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	// example:
+	//
+	// C1D39814-9808-47F8-AFE0-AF167239AC9B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDataLakeFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataLakeFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataLakeFunctionResponseBody) SetErrorCode(v string) *UpdateDataLakeFunctionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionResponseBody) SetErrorMessage(v string) *UpdateDataLakeFunctionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionResponseBody) SetFunction(v *DLFunction) *UpdateDataLakeFunctionResponseBody {
+	s.Function = v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionResponseBody) SetRequestId(v string) *UpdateDataLakeFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionResponseBody) SetSuccess(v bool) *UpdateDataLakeFunctionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDataLakeFunctionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDataLakeFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDataLakeFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataLakeFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataLakeFunctionResponse) SetHeaders(v map[string]*string) *UpdateDataLakeFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionResponse) SetStatusCode(v int32) *UpdateDataLakeFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDataLakeFunctionResponse) SetBody(v *UpdateDataLakeFunctionResponseBody) *UpdateDataLakeFunctionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDataLakePartitionRequest struct {
 	// This parameter is required.
 	//
@@ -72301,6 +73431,105 @@ func (client *Client) CreateDataLakeDatabase(request *CreateDataLakeDatabaseRequ
 
 // Summary:
 //
+// 新建湖仓自定义函数
+//
+// @param tmpReq - CreateDataLakeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataLakeFunctionResponse
+func (client *Client) CreateDataLakeFunctionWithOptions(tmpReq *CreateDataLakeFunctionRequest, runtime *util.RuntimeOptions) (_result *CreateDataLakeFunctionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataLakeFunctionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FunctionInput)) {
+		request.FunctionInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FunctionInput, tea.String("FunctionInput"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FunctionInputShrink)) {
+		body["FunctionInput"] = request.FunctionInputShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataLakeFunction"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDataLakeFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDataLakeFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新建湖仓自定义函数
+//
+// @param request - CreateDataLakeFunctionRequest
+//
+// @return CreateDataLakeFunctionResponse
+func (client *Client) CreateDataLakeFunction(request *CreateDataLakeFunctionRequest) (_result *CreateDataLakeFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataLakeFunctionResponse{}
+	_body, _err := client.CreateDataLakeFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新建湖仓表分区
 //
 // @param tmpReq - CreateDataLakePartitionRequest
@@ -74847,6 +76076,97 @@ func (client *Client) DeleteDataLakeDatabase(request *DeleteDataLakeDatabaseRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataLakeDatabaseResponse{}
 	_body, _err := client.DeleteDataLakeDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除湖仓自定义函数
+//
+// @param request - DeleteDataLakeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataLakeFunctionResponse
+func (client *Client) DeleteDataLakeFunctionWithOptions(request *DeleteDataLakeFunctionRequest, runtime *util.RuntimeOptions) (_result *DeleteDataLakeFunctionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataLakeFunction"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataLakeFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataLakeFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除湖仓自定义函数
+//
+// @param request - DeleteDataLakeFunctionRequest
+//
+// @return DeleteDataLakeFunctionResponse
+func (client *Client) DeleteDataLakeFunction(request *DeleteDataLakeFunctionRequest) (_result *DeleteDataLakeFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataLakeFunctionResponse{}
+	_body, _err := client.DeleteDataLakeFunctionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -78693,6 +80013,97 @@ func (client *Client) GetDataLakeDatabase(request *GetDataLakeDatabaseRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataLakeDatabaseResponse{}
 	_body, _err := client.GetDataLakeDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取湖仓自定义函数详细信息
+//
+// @param request - GetDataLakeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataLakeFunctionResponse
+func (client *Client) GetDataLakeFunctionWithOptions(request *GetDataLakeFunctionRequest, runtime *util.RuntimeOptions) (_result *GetDataLakeFunctionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataLakeFunction"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDataLakeFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDataLakeFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取湖仓自定义函数详细信息
+//
+// @param request - GetDataLakeFunctionRequest
+//
+// @return GetDataLakeFunctionResponse
+func (client *Client) GetDataLakeFunction(request *GetDataLakeFunctionRequest) (_result *GetDataLakeFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataLakeFunctionResponse{}
+	_body, _err := client.GetDataLakeFunctionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -84000,6 +85411,196 @@ func (client *Client) ListDataLakeDatabase(request *ListDataLakeDatabaseRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataLakeDatabaseResponse{}
 	_body, _err := client.ListDataLakeDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据湖函数列表
+//
+// @param request - ListDataLakeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataLakeFunctionResponse
+func (client *Client) ListDataLakeFunctionWithOptions(request *ListDataLakeFunctionRequest, runtime *util.RuntimeOptions) (_result *ListDataLakeFunctionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNamePattern)) {
+		query["FunctionNamePattern"] = request.FunctionNamePattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataLakeFunction"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataLakeFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataLakeFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取数据湖函数列表
+//
+// @param request - ListDataLakeFunctionRequest
+//
+// @return ListDataLakeFunctionResponse
+func (client *Client) ListDataLakeFunction(request *ListDataLakeFunctionRequest) (_result *ListDataLakeFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataLakeFunctionResponse{}
+	_body, _err := client.ListDataLakeFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据湖函数名列表
+//
+// @param request - ListDataLakeFunctionNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataLakeFunctionNameResponse
+func (client *Client) ListDataLakeFunctionNameWithOptions(request *ListDataLakeFunctionNameRequest, runtime *util.RuntimeOptions) (_result *ListDataLakeFunctionNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNamePattern)) {
+		query["FunctionNamePattern"] = request.FunctionNamePattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataLakeFunctionName"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataLakeFunctionNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataLakeFunctionNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取数据湖函数名列表
+//
+// @param request - ListDataLakeFunctionNameRequest
+//
+// @return ListDataLakeFunctionNameResponse
+func (client *Client) ListDataLakeFunctionName(request *ListDataLakeFunctionNameRequest) (_result *ListDataLakeFunctionNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataLakeFunctionNameResponse{}
+	_body, _err := client.ListDataLakeFunctionNameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -91688,6 +93289,109 @@ func (client *Client) UpdateDataLakeDatabase(request *UpdateDataLakeDatabaseRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDataLakeDatabaseResponse{}
 	_body, _err := client.UpdateDataLakeDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新湖仓自定义函数
+//
+// @param tmpReq - UpdateDataLakeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataLakeFunctionResponse
+func (client *Client) UpdateDataLakeFunctionWithOptions(tmpReq *UpdateDataLakeFunctionRequest, runtime *util.RuntimeOptions) (_result *UpdateDataLakeFunctionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDataLakeFunctionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FunctionInput)) {
+		request.FunctionInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FunctionInput, tea.String("FunctionInput"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FunctionInputShrink)) {
+		body["FunctionInput"] = request.FunctionInputShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataLakeFunction"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDataLakeFunctionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDataLakeFunctionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新湖仓自定义函数
+//
+// @param request - UpdateDataLakeFunctionRequest
+//
+// @return UpdateDataLakeFunctionResponse
+func (client *Client) UpdateDataLakeFunction(request *UpdateDataLakeFunctionRequest) (_result *UpdateDataLakeFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDataLakeFunctionResponse{}
+	_body, _err := client.UpdateDataLakeFunctionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
