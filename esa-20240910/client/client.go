@@ -19606,6 +19606,95 @@ func (s *DescribePurgeTasksResponse) SetBody(v *DescribePurgeTasksResponseBody) 
 	return s
 }
 
+type DescribeRatePlanInstanceStatusRequest struct {
+	// example:
+	//
+	// xcdn-91fknmb80f0g***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeRatePlanInstanceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRatePlanInstanceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRatePlanInstanceStatusRequest) SetInstanceId(v string) *DescribeRatePlanInstanceStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeRatePlanInstanceStatusResponseBody struct {
+	// example:
+	//
+	// xcdn-91fknmb80f0g***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// running
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 60423A7F-A83D-1E24-B80E-86DD25790759
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRatePlanInstanceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRatePlanInstanceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRatePlanInstanceStatusResponseBody) SetInstanceId(v string) *DescribeRatePlanInstanceStatusResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRatePlanInstanceStatusResponseBody) SetInstanceStatus(v string) *DescribeRatePlanInstanceStatusResponseBody {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeRatePlanInstanceStatusResponseBody) SetRequestId(v string) *DescribeRatePlanInstanceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRatePlanInstanceStatusResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRatePlanInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRatePlanInstanceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRatePlanInstanceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRatePlanInstanceStatusResponse) SetHeaders(v map[string]*string) *DescribeRatePlanInstanceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRatePlanInstanceStatusResponse) SetStatusCode(v int32) *DescribeRatePlanInstanceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRatePlanInstanceStatusResponse) SetBody(v *DescribeRatePlanInstanceStatusResponseBody) *DescribeRatePlanInstanceStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DisableCustomScenePolicyRequest struct {
 	// The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
 	//
@@ -48188,6 +48277,164 @@ func (s *PublishRoutineCodeVersionResponse) SetBody(v *PublishRoutineCodeVersion
 	return s
 }
 
+type PurchaseRatePlanRequest struct {
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// domestic
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// entranceplan
+	PlanCode *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
+	// example:
+	//
+	// basic
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// example:
+	//
+	// test.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// CNAME
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s PurchaseRatePlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PurchaseRatePlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PurchaseRatePlanRequest) SetAutoPay(v bool) *PurchaseRatePlanRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetAutoRenew(v bool) *PurchaseRatePlanRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetChargeType(v string) *PurchaseRatePlanRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetCoverage(v string) *PurchaseRatePlanRequest {
+	s.Coverage = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetPeriod(v int32) *PurchaseRatePlanRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetPlanCode(v string) *PurchaseRatePlanRequest {
+	s.PlanCode = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetPlanName(v string) *PurchaseRatePlanRequest {
+	s.PlanName = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetSiteName(v string) *PurchaseRatePlanRequest {
+	s.SiteName = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetType(v string) *PurchaseRatePlanRequest {
+	s.Type = &v
+	return s
+}
+
+type PurchaseRatePlanResponseBody struct {
+	// example:
+	//
+	// xcdn-ads11w
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 123123
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 30423A7F-A83D-1E24-B80E-86DD25790758
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PurchaseRatePlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PurchaseRatePlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PurchaseRatePlanResponseBody) SetInstanceId(v string) *PurchaseRatePlanResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *PurchaseRatePlanResponseBody) SetOrderId(v string) *PurchaseRatePlanResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *PurchaseRatePlanResponseBody) SetRequestId(v string) *PurchaseRatePlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PurchaseRatePlanResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PurchaseRatePlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PurchaseRatePlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PurchaseRatePlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PurchaseRatePlanResponse) SetHeaders(v map[string]*string) *PurchaseRatePlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PurchaseRatePlanResponse) SetStatusCode(v int32) *PurchaseRatePlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PurchaseRatePlanResponse) SetBody(v *PurchaseRatePlanResponseBody) *PurchaseRatePlanResponse {
+	s.Body = v
+	return s
+}
+
 type PurgeCachesRequest struct {
 	// The content to purge.
 	Content *PurgeCachesRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
@@ -52396,146 +52643,6 @@ func (s *UpdateImageTransformResponse) SetBody(v *UpdateImageTransformResponseBo
 	return s
 }
 
-type UpdateKvNamespaceRequest struct {
-	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// ns1
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The new name of the namespace.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// new_ns
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s UpdateKvNamespaceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateKvNamespaceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateKvNamespaceRequest) SetNamespace(v string) *UpdateKvNamespaceRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *UpdateKvNamespaceRequest) SetTitle(v string) *UpdateKvNamespaceRequest {
-	s.Title = &v
-	return s
-}
-
-type UpdateKvNamespaceResponseBody struct {
-	// The description of the namespace.
-	//
-	// example:
-	//
-	// this is a test ns.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The updated name of the namespace.
-	//
-	// example:
-	//
-	// new_ns1
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the namespace.
-	//
-	// example:
-	//
-	// 643355322374688768
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the namespace. Valid values:
-	//
-	// 	- **online**: normal.
-	//
-	// 	- **delete**: pending deletion.
-	//
-	// 	- **deleting**: being deleted.
-	//
-	// 	- **deleted**: deleted.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s UpdateKvNamespaceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateKvNamespaceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateKvNamespaceResponseBody) SetDescription(v string) *UpdateKvNamespaceResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateKvNamespaceResponseBody) SetNamespace(v string) *UpdateKvNamespaceResponseBody {
-	s.Namespace = &v
-	return s
-}
-
-func (s *UpdateKvNamespaceResponseBody) SetNamespaceId(v string) *UpdateKvNamespaceResponseBody {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *UpdateKvNamespaceResponseBody) SetRequestId(v string) *UpdateKvNamespaceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateKvNamespaceResponseBody) SetStatus(v string) *UpdateKvNamespaceResponseBody {
-	s.Status = &v
-	return s
-}
-
-type UpdateKvNamespaceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateKvNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateKvNamespaceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateKvNamespaceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateKvNamespaceResponse) SetHeaders(v map[string]*string) *UpdateKvNamespaceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateKvNamespaceResponse) SetStatusCode(v int32) *UpdateKvNamespaceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateKvNamespaceResponse) SetBody(v *UpdateKvNamespaceResponseBody) *UpdateKvNamespaceResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateListRequest struct {
 	// The new description of the list.
 	//
@@ -54387,6 +54494,137 @@ func (s *UpdatePageResponse) SetStatusCode(v int32) *UpdatePageResponse {
 }
 
 func (s *UpdatePageResponse) SetBody(v *UpdatePageResponseBody) *UpdatePageResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRatePlanSpecRequest struct {
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// xcdn-91fknmb80f0g
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// UPGRADE
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// entranceplan
+	TargetPlanCode *string `json:"TargetPlanCode,omitempty" xml:"TargetPlanCode,omitempty"`
+	// example:
+	//
+	// basic
+	TargetPlanName *string `json:"TargetPlanName,omitempty" xml:"TargetPlanName,omitempty"`
+}
+
+func (s UpdateRatePlanSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRatePlanSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRatePlanSpecRequest) SetAutoPay(v bool) *UpdateRatePlanSpecRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecRequest) SetChargeType(v string) *UpdateRatePlanSpecRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecRequest) SetInstanceId(v string) *UpdateRatePlanSpecRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecRequest) SetOrderType(v string) *UpdateRatePlanSpecRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecRequest) SetTargetPlanCode(v string) *UpdateRatePlanSpecRequest {
+	s.TargetPlanCode = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecRequest) SetTargetPlanName(v string) *UpdateRatePlanSpecRequest {
+	s.TargetPlanName = &v
+	return s
+}
+
+type UpdateRatePlanSpecResponseBody struct {
+	// example:
+	//
+	// xcdn-as23ds***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2223332122***
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 30423A7F-A83D-1E24-B80E-86DD25790758
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRatePlanSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRatePlanSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRatePlanSpecResponseBody) SetInstanceId(v string) *UpdateRatePlanSpecResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecResponseBody) SetOrderId(v string) *UpdateRatePlanSpecResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecResponseBody) SetRequestId(v string) *UpdateRatePlanSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRatePlanSpecResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRatePlanSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateRatePlanSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRatePlanSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRatePlanSpecResponse) SetHeaders(v map[string]*string) *UpdateRatePlanSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRatePlanSpecResponse) SetStatusCode(v int32) *UpdateRatePlanSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRatePlanSpecResponse) SetBody(v *UpdateRatePlanSpecResponseBody) *UpdateRatePlanSpecResponse {
 	s.Body = v
 	return s
 }
@@ -67232,6 +67470,77 @@ func (client *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (_r
 
 // Summary:
 //
+// 查询套餐实例状态
+//
+// @param request - DescribeRatePlanInstanceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRatePlanInstanceStatusResponse
+func (client *Client) DescribeRatePlanInstanceStatusWithOptions(request *DescribeRatePlanInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeRatePlanInstanceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRatePlanInstanceStatus"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRatePlanInstanceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRatePlanInstanceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询套餐实例状态
+//
+// @param request - DescribeRatePlanInstanceStatusRequest
+//
+// @return DescribeRatePlanInstanceStatusResponse
+func (client *Client) DescribeRatePlanInstanceStatus(request *DescribeRatePlanInstanceStatusRequest) (_result *DescribeRatePlanInstanceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRatePlanInstanceStatusResponse{}
+	_body, _err := client.DescribeRatePlanInstanceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables a scenario-specific policy.
 //
 // @param request - DisableCustomScenePolicyRequest
@@ -75572,6 +75881,109 @@ func (client *Client) PublishRoutineCodeVersion(request *PublishRoutineCodeVersi
 
 // Summary:
 //
+// 新购套餐
+//
+// @param request - PurchaseRatePlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PurchaseRatePlanResponse
+func (client *Client) PurchaseRatePlanWithOptions(request *PurchaseRatePlanRequest, runtime *util.RuntimeOptions) (_result *PurchaseRatePlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Coverage)) {
+		query["Coverage"] = request.Coverage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanCode)) {
+		query["PlanCode"] = request.PlanCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanName)) {
+		query["PlanName"] = request.PlanName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteName)) {
+		query["SiteName"] = request.SiteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PurchaseRatePlan"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PurchaseRatePlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PurchaseRatePlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新购套餐
+//
+// @param request - PurchaseRatePlanRequest
+//
+// @return PurchaseRatePlanResponse
+func (client *Client) PurchaseRatePlan(request *PurchaseRatePlanRequest) (_result *PurchaseRatePlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PurchaseRatePlanResponse{}
+	_body, _err := client.PurchaseRatePlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
 //
 // @param tmpReq - PurgeCachesRequest
@@ -78177,81 +78589,6 @@ func (client *Client) UpdateImageTransform(request *UpdateImageTransformRequest)
 
 // Summary:
 //
-// Updates the name of a namespace in Edge KV.
-//
-// @param request - UpdateKvNamespaceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateKvNamespaceResponse
-func (client *Client) UpdateKvNamespaceWithOptions(request *UpdateKvNamespaceRequest, runtime *util.RuntimeOptions) (_result *UpdateKvNamespaceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		query["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Title)) {
-		query["Title"] = request.Title
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateKvNamespace"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateKvNamespaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateKvNamespaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Updates the name of a namespace in Edge KV.
-//
-// @param request - UpdateKvNamespaceRequest
-//
-// @return UpdateKvNamespaceResponse
-func (client *Client) UpdateKvNamespace(request *UpdateKvNamespaceRequest) (_result *UpdateKvNamespaceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateKvNamespaceResponse{}
-	_body, _err := client.UpdateKvNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Updates a custom list.
 //
 // @param tmpReq - UpdateListRequest
@@ -79108,6 +79445,97 @@ func (client *Client) UpdatePage(request *UpdatePageRequest) (_result *UpdatePag
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePageResponse{}
 	_body, _err := client.UpdatePageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 套餐变配
+//
+// @param request - UpdateRatePlanSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRatePlanSpecResponse
+func (client *Client) UpdateRatePlanSpecWithOptions(request *UpdateRatePlanSpecRequest, runtime *util.RuntimeOptions) (_result *UpdateRatePlanSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetPlanCode)) {
+		query["TargetPlanCode"] = request.TargetPlanCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetPlanName)) {
+		query["TargetPlanName"] = request.TargetPlanName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRatePlanSpec"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRatePlanSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRatePlanSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 套餐变配
+//
+// @param request - UpdateRatePlanSpecRequest
+//
+// @return UpdateRatePlanSpecResponse
+func (client *Client) UpdateRatePlanSpec(request *UpdateRatePlanSpecRequest) (_result *UpdateRatePlanSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRatePlanSpecResponse{}
+	_body, _err := client.UpdateRatePlanSpecWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
