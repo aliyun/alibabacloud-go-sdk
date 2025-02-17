@@ -2217,6 +2217,7 @@ func (s *CreateCollectionResponse) SetBody(v *CreateCollectionResponseBody) *Cre
 }
 
 type CreateDBInstanceRequest struct {
+	AINodeSpecInfos []*CreateDBInstanceRequestAINodeSpecInfos `json:"AINodeSpecInfos,omitempty" xml:"AINodeSpecInfos,omitempty" type:"Repeated"`
 	// Backup set ID.
 	//
 	// > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) interface to view the backup set IDs of all backup sets under the target instance.
@@ -2677,6 +2678,11 @@ func (s CreateDBInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDBInstanceRequest) SetAINodeSpecInfos(v []*CreateDBInstanceRequestAINodeSpecInfos) *CreateDBInstanceRequest {
+	s.AINodeSpecInfos = v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetBackupId(v string) *CreateDBInstanceRequest {
 	s.BackupId = &v
 	return s
@@ -2894,6 +2900,29 @@ func (s *CreateDBInstanceRequest) SetVectorConfigurationStatus(v string) *Create
 
 func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type CreateDBInstanceRequestAINodeSpecInfos struct {
+	AINodeNum  *string `json:"AINodeNum,omitempty" xml:"AINodeNum,omitempty"`
+	AINodeSpec *string `json:"AINodeSpec,omitempty" xml:"AINodeSpec,omitempty"`
+}
+
+func (s CreateDBInstanceRequestAINodeSpecInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceRequestAINodeSpecInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceRequestAINodeSpecInfos) SetAINodeNum(v string) *CreateDBInstanceRequestAINodeSpecInfos {
+	s.AINodeNum = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequestAINodeSpecInfos) SetAINodeSpec(v string) *CreateDBInstanceRequestAINodeSpecInfos {
+	s.AINodeSpec = &v
 	return s
 }
 
@@ -37318,8 +37347,6 @@ type ModifyMasterSpecRequest struct {
 	//
 	// >  You are charged for coordinator node resources of more than 8 compute units (CUs).
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 8 CU
@@ -48420,6 +48447,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AINodeSpecInfos)) {
+		query["AINodeSpecInfos"] = request.AINodeSpecInfos
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
 		query["BackupId"] = request.BackupId
 	}

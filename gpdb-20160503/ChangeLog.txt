@@ -1,3 +1,11 @@
+2025-02-17 Version: v4.5.2
+- Update API CreateDBInstance: add param AINodeSpecInfos.
+- Update API CreateDBInstance: add param MasterAISpec.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API ModifyMasterSpec: add param MasterAISpec.
+- Update API ModifyMasterSpec: update param MasterCU.
+
+
 2025-02-12 Version: v4.5.1
 - Update API CreateDBInstance: add param MasterAISpec.
 - Update API DescribeDBInstanceAttribute: update response param.
