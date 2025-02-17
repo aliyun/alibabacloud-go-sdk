@@ -9,37 +9,263 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ActivateFlowLogRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the flow log.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// flowlog-m5evbtbpt****
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+}
+
+func (s ActivateFlowLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateFlowLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateFlowLogRequest) SetClientToken(v string) *ActivateFlowLogRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ActivateFlowLogRequest) SetDryRun(v bool) *ActivateFlowLogRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ActivateFlowLogRequest) SetEcrId(v string) *ActivateFlowLogRequest {
+	s.EcrId = &v
+	return s
+}
+
+func (s *ActivateFlowLogRequest) SetFlowLogId(v string) *ActivateFlowLogRequest {
+	s.FlowLogId = &v
+	return s
+}
+
+type ActivateFlowLogResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 05130E79-588D-5C40-A718-C4863A59****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ActivateFlowLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateFlowLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateFlowLogResponseBody) SetAccessDeniedDetail(v string) *ActivateFlowLogResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponseBody) SetCode(v string) *ActivateFlowLogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponseBody) SetDynamicCode(v string) *ActivateFlowLogResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponseBody) SetDynamicMessage(v string) *ActivateFlowLogResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponseBody) SetHttpStatusCode(v int32) *ActivateFlowLogResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponseBody) SetMessage(v string) *ActivateFlowLogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponseBody) SetRequestId(v string) *ActivateFlowLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponseBody) SetSuccess(v bool) *ActivateFlowLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ActivateFlowLogResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActivateFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ActivateFlowLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateFlowLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateFlowLogResponse) SetHeaders(v map[string]*string) *ActivateFlowLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ActivateFlowLogResponse) SetStatusCode(v int32) *ActivateFlowLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ActivateFlowLogResponse) SetBody(v *ActivateFlowLogResponseBody) *ActivateFlowLogResponse {
+	s.Body = v
+	return s
+}
+
 type AttachExpressConnectRouterChildInstanceRequest struct {
+	// The VBR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VBR belongs.
+	//
+	// >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+	//
 	// example:
 	//
 	// 190550144868****
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// The region ID of the VBR.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	// The type of the network instance. Set the value to **VBR**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VBR
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -81,6 +307,11 @@ func (s *AttachExpressConnectRouterChildInstanceRequest) SetClientToken(v string
 	return s
 }
 
+func (s *AttachExpressConnectRouterChildInstanceRequest) SetDescription(v string) *AttachExpressConnectRouterChildInstanceRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *AttachExpressConnectRouterChildInstanceRequest) SetDryRun(v bool) *AttachExpressConnectRouterChildInstanceRequest {
 	s.DryRun = &v
 	return s
@@ -92,34 +323,56 @@ func (s *AttachExpressConnectRouterChildInstanceRequest) SetEcrId(v string) *Att
 }
 
 type AttachExpressConnectRouterChildInstanceResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -204,20 +457,36 @@ func (s *AttachExpressConnectRouterChildInstanceResponse) SetBody(v *AttachExpre
 }
 
 type CheckAddRegionToExpressConnectRouterRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- true: performs only a dry run.
+	//
+	// 	- false (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the region for which you want to check whether the CDT service is enabled for the ECR feature.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -255,54 +524,106 @@ func (s *CheckAddRegionToExpressConnectRouterRequest) SetFreshRegionId(v string)
 }
 
 type CheckAddRegionToExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether the ECR is used to establish connections between regions in the Chinese mainland and regions outside China. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	AnyCrossBorderLink *bool `json:"AnyCrossBorderLink,omitempty" xml:"AnyCrossBorderLink,omitempty"`
+	// Indicates whether the ECR is used to establish connections between regions in the Chinese mainland. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	AnyInterRegionLink *bool `json:"AnyInterRegionLink,omitempty" xml:"AnyInterRegionLink,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsInstanceId**, the request parameter **DtsInstanceId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Indicates whether the cross-border CDT service is activated for the account to which the ECR belongs. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	IsCdtCrossBorderEnabled *bool `json:"IsCdtCrossBorderEnabled,omitempty" xml:"IsCdtCrossBorderEnabled,omitempty"`
+	// Indicates whether the CDT service is activated for the account to which the ECR belongs. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	IsCdtInterRegionEnabled *bool `json:"IsCdtInterRegionEnabled,omitempty" xml:"IsCdtInterRegionEnabled,omitempty"`
+	// Indicates whether the account to which the ECR belongs can create cross-border connections. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	IsUserAllowedToCreateCrossBorderLink *bool `json:"IsUserAllowedToCreateCrossBorderLink,omitempty" xml:"IsUserAllowedToCreateCrossBorderLink,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -412,33 +733,56 @@ func (s *CheckAddRegionToExpressConnectRouterResponse) SetBody(v *CheckAddRegion
 }
 
 type CreateExpressConnectRouterRequest struct {
+	// The autonomous system number (ASN) of the ECR. Valid values: 45104, 64512 to 65534, and 4200000000 to 4294967294. Default value: 45104. The value 65025 is reserved by Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 45104
 	AlibabaSideAsn *int64 `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the ECR.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The name of the ECR.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group to which the ECR belongs.
+	//
 	// example:
 	//
 	// rg-acfmvvajg5q****
-	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*CreateExpressConnectRouterRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The information about the tags.
+	//
+	// You can specify at most 20 tags in each call.
+	Tag []*CreateExpressConnectRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateExpressConnectRouterRequest) String() string {
@@ -479,67 +823,105 @@ func (s *CreateExpressConnectRouterRequest) SetResourceGroupId(v string) *Create
 	return s
 }
 
-func (s *CreateExpressConnectRouterRequest) SetTags(v []*CreateExpressConnectRouterRequestTags) *CreateExpressConnectRouterRequest {
-	s.Tags = v
+func (s *CreateExpressConnectRouterRequest) SetTag(v []*CreateExpressConnectRouterRequestTag) *CreateExpressConnectRouterRequest {
+	s.Tag = v
 	return s
 }
 
-type CreateExpressConnectRouterRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+type CreateExpressConnectRouterRequestTag struct {
+	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s CreateExpressConnectRouterRequestTags) String() string {
+func (s CreateExpressConnectRouterRequestTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateExpressConnectRouterRequestTags) GoString() string {
+func (s CreateExpressConnectRouterRequestTag) GoString() string {
 	return s.String()
 }
 
-func (s *CreateExpressConnectRouterRequestTags) SetKey(v string) *CreateExpressConnectRouterRequestTags {
+func (s *CreateExpressConnectRouterRequestTag) SetKey(v string) *CreateExpressConnectRouterRequestTag {
 	s.Key = &v
 	return s
 }
 
-func (s *CreateExpressConnectRouterRequestTags) SetValue(v string) *CreateExpressConnectRouterRequestTags {
+func (s *CreateExpressConnectRouterRequestTag) SetValue(v string) *CreateExpressConnectRouterRequestTag {
 	s.Value = &v
 	return s
 }
 
 type CreateExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.Name
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of Name ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The ECR ID.
+	//
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the ECR is created. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -629,47 +1011,86 @@ func (s *CreateExpressConnectRouterResponse) SetBody(v *CreateExpressConnectRout
 }
 
 type CreateExpressConnectRouterAssociationRequest struct {
-	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	// The allowed route prefixes.
+	AllowedPrefixes     []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	AllowedPrefixesMode *string   `json:"AllowedPrefixesMode,omitempty" xml:"AllowedPrefixesMode,omitempty"`
+	// The region ID of the resource to be associated.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AssociationRegionId *string `json:"AssociationRegionId,omitempty" xml:"AssociationRegionId,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	//
 	// example:
 	//
 	// cen-of3o1the3i4gwb****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to initiate an association on the TR when the ECR is associated with the TR. Valid values:
+	//
+	// 	- **true**: You do not need to initiate an association on the TR.
+	//
+	// 	- **false**: You need to initiate an association on the TR.
+	//
 	// example:
 	//
 	// true
-	CreateAttachment *bool `json:"CreateAttachment,omitempty" xml:"CreateAttachment,omitempty"`
+	CreateAttachment *bool   `json:"CreateAttachment,omitempty" xml:"CreateAttachment,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The TR ID.
+	//
 	// example:
 	//
 	// tr-2ze4i71c6be454e2l****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the TR. Default value: ID of the Alibaba Cloud account that logs in.
+	//
+	// >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+	//
 	// example:
 	//
 	// 189159362009****
 	TransitRouterOwnerId *int64 `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp1h37fchc6jmfyln****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the VPC. Default value: ID of the Alibaba Cloud account that logs in.
+	//
+	// >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+	//
 	// example:
 	//
 	// 132193271328****
@@ -686,6 +1107,11 @@ func (s CreateExpressConnectRouterAssociationRequest) GoString() string {
 
 func (s *CreateExpressConnectRouterAssociationRequest) SetAllowedPrefixes(v []*string) *CreateExpressConnectRouterAssociationRequest {
 	s.AllowedPrefixes = v
+	return s
+}
+
+func (s *CreateExpressConnectRouterAssociationRequest) SetAllowedPrefixesMode(v string) *CreateExpressConnectRouterAssociationRequest {
+	s.AllowedPrefixesMode = &v
 	return s
 }
 
@@ -706,6 +1132,11 @@ func (s *CreateExpressConnectRouterAssociationRequest) SetClientToken(v string) 
 
 func (s *CreateExpressConnectRouterAssociationRequest) SetCreateAttachment(v bool) *CreateExpressConnectRouterAssociationRequest {
 	s.CreateAttachment = &v
+	return s
+}
+
+func (s *CreateExpressConnectRouterAssociationRequest) SetDescription(v string) *CreateExpressConnectRouterAssociationRequest {
+	s.Description = &v
 	return s
 }
 
@@ -740,38 +1171,62 @@ func (s *CreateExpressConnectRouterAssociationRequest) SetVpcOwnerId(v int64) *C
 }
 
 type CreateExpressConnectRouterAssociationResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The ID of the association between the ECR and the VPC or TR.
+	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -860,7 +1315,240 @@ func (s *CreateExpressConnectRouterAssociationResponse) SetBody(v *CreateExpress
 	return s
 }
 
-type DeleteExpressConnectRouterRequest struct {
+type CreateFlowLogRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// myFlowlog
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// myFlowlog
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// example:
+	//
+	// vbr-xxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// VBR
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// flowlog-logstore
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// example:
+	//
+	// flowlog-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 1:4096
+	SamplingRate *string `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+}
+
+func (s CreateFlowLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowLogRequest) SetClientToken(v string) *CreateFlowLogRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetDescription(v string) *CreateFlowLogRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetDryRun(v bool) *CreateFlowLogRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetEcrId(v string) *CreateFlowLogRequest {
+	s.EcrId = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetFlowLogName(v string) *CreateFlowLogRequest {
+	s.FlowLogName = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetInstanceId(v string) *CreateFlowLogRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetInstanceType(v string) *CreateFlowLogRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetInterval(v int32) *CreateFlowLogRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetLogStoreName(v string) *CreateFlowLogRequest {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetProjectName(v string) *CreateFlowLogRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetSamplingRate(v string) *CreateFlowLogRequest {
+	s.SamplingRate = &v
+	return s
+}
+
+type CreateFlowLogResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// flowlog-m5evbtbpt****
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateFlowLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowLogResponseBody) SetAccessDeniedDetail(v string) *CreateFlowLogResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetCode(v string) *CreateFlowLogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetDynamicCode(v string) *CreateFlowLogResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetDynamicMessage(v string) *CreateFlowLogResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetFlowLogId(v string) *CreateFlowLogResponseBody {
+	s.FlowLogId = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetHttpStatusCode(v int32) *CreateFlowLogResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetMessage(v string) *CreateFlowLogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetRequestId(v string) *CreateFlowLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetSuccess(v bool) *CreateFlowLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFlowLogResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFlowLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowLogResponse) SetHeaders(v map[string]*string) *CreateFlowLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowLogResponse) SetStatusCode(v int32) *CreateFlowLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFlowLogResponse) SetBody(v *CreateFlowLogResponseBody) *CreateFlowLogResponse {
+	s.Body = v
+	return s
+}
+
+type DeactivateFlowLogRequest struct {
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
@@ -869,6 +1557,183 @@ type DeleteExpressConnectRouterRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// flowlog-m5evbtbpt****
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+}
+
+func (s DeactivateFlowLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeactivateFlowLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeactivateFlowLogRequest) SetClientToken(v string) *DeactivateFlowLogRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeactivateFlowLogRequest) SetDryRun(v bool) *DeactivateFlowLogRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeactivateFlowLogRequest) SetEcrId(v string) *DeactivateFlowLogRequest {
+	s.EcrId = &v
+	return s
+}
+
+func (s *DeactivateFlowLogRequest) SetFlowLogId(v string) *DeactivateFlowLogRequest {
+	s.FlowLogId = &v
+	return s
+}
+
+type DeactivateFlowLogResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeactivateFlowLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeactivateFlowLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeactivateFlowLogResponseBody) SetAccessDeniedDetail(v string) *DeactivateFlowLogResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponseBody) SetCode(v string) *DeactivateFlowLogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponseBody) SetDynamicCode(v string) *DeactivateFlowLogResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponseBody) SetDynamicMessage(v string) *DeactivateFlowLogResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponseBody) SetHttpStatusCode(v int32) *DeactivateFlowLogResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponseBody) SetMessage(v string) *DeactivateFlowLogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponseBody) SetRequestId(v string) *DeactivateFlowLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponseBody) SetSuccess(v bool) *DeactivateFlowLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeactivateFlowLogResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeactivateFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeactivateFlowLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeactivateFlowLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeactivateFlowLogResponse) SetHeaders(v map[string]*string) *DeactivateFlowLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeactivateFlowLogResponse) SetStatusCode(v int32) *DeactivateFlowLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeactivateFlowLogResponse) SetBody(v *DeactivateFlowLogResponseBody) *DeactivateFlowLogResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteExpressConnectRouterRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -901,34 +1766,56 @@ func (s *DeleteExpressConnectRouterRequest) SetEcrId(v string) *DeleteExpressCon
 }
 
 type DeleteExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -1013,24 +1900,46 @@ func (s *DeleteExpressConnectRouterResponse) SetBody(v *DeleteExpressConnectRout
 }
 
 type DeleteExpressConnectRouterAssociationRequest struct {
+	// The ID of the association between the ECR and the VPC or TR.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to delete the association between the ECR and the VPC or TR. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	DeleteAttachment *bool `json:"DeleteAttachment,omitempty" xml:"DeleteAttachment,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1073,34 +1982,56 @@ func (s *DeleteExpressConnectRouterAssociationRequest) SetEcrId(v string) *Delet
 }
 
 type DeleteExpressConnectRouterAssociationResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -1184,14 +2115,14 @@ func (s *DeleteExpressConnectRouterAssociationResponse) SetBody(v *DeleteExpress
 	return s
 }
 
-type DescribeDisabledExpressConnectRouterRouteEntriesRequest struct {
+type DeleteFlowlogRequest struct {
 	// example:
 	//
-	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
+	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// example:
 	//
-	// true
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// This parameter is required.
 	//
@@ -1199,10 +2130,195 @@ type DescribeDisabledExpressConnectRouterRouteEntriesRequest struct {
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// flowlog-m5evbtbpt****
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+}
+
+func (s DeleteFlowlogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowlogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowlogRequest) SetClientToken(v string) *DeleteFlowlogRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteFlowlogRequest) SetDryRun(v bool) *DeleteFlowlogRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteFlowlogRequest) SetEcrId(v string) *DeleteFlowlogRequest {
+	s.EcrId = &v
+	return s
+}
+
+func (s *DeleteFlowlogRequest) SetFlowLogId(v string) *DeleteFlowlogRequest {
+	s.FlowLogId = &v
+	return s
+}
+
+type DeleteFlowlogResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteFlowlogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowlogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowlogResponseBody) SetAccessDeniedDetail(v string) *DeleteFlowlogResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponseBody) SetCode(v string) *DeleteFlowlogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponseBody) SetDynamicCode(v string) *DeleteFlowlogResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponseBody) SetDynamicMessage(v string) *DeleteFlowlogResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponseBody) SetHttpStatusCode(v int32) *DeleteFlowlogResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponseBody) SetMessage(v string) *DeleteFlowlogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponseBody) SetRequestId(v string) *DeleteFlowlogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponseBody) SetSuccess(v bool) *DeleteFlowlogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFlowlogResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFlowlogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowlogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowlogResponse) SetHeaders(v map[string]*string) *DeleteFlowlogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFlowlogResponse) SetStatusCode(v int32) *DeleteFlowlogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFlowlogResponse) SetBody(v *DeleteFlowlogResponseBody) *DeleteFlowlogResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDisabledExpressConnectRouterRouteEntriesRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// FFv4fzkNPW8Z+cZ+DBXXQ3Gmf3XlCgpBH43oaTYTAAcGc708Zb+pDyAGVJBo/MKsyrtZfPnX9Ztf02vgdIDyaNe8UuZdf/JJk069qxGKzqSKg=
@@ -1243,47 +2359,80 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) SetNextToken(v
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
-	Code                   *string                                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The routes that are queried.
 	DisabledRouteEntryList []*DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEntryList `json:"DisabledRouteEntryList,omitempty" xml:"DisabledRouteEntryList,omitempty" type:"Repeated"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsInstanceId**, the request parameter **DtsInstanceId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
+	//
 	// example:
 	//
 	// 6
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If NextToken is empty, no next page exists.
+	//
+	// 	- If a value of NextToken is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// gAAAAABkDTaRFnmxUoMLVOn8YTIgYFeL2ch8j0sJs8VCIU8SS5438m3D9X1VqspCcaUEHRN9I_AfVwMhZHAhcNivifK_OtQxJQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether routes are disabled by the ECR. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of routes.
+	//
 	// example:
 	//
 	// 2
@@ -1359,22 +2508,32 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesResponseBody) SetTotalC
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEntryList struct {
+	// The destination CIDR block of the route.
+	//
 	// example:
 	//
 	// 192.168.100.110/32
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// The ECR ID.
+	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The time when the route entry was created.
+	//
 	// example:
 	//
 	// 1682317345
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the next-hop instance.
+	//
 	// example:
 	//
 	// br-hp3u4u5f03tfuljis****
 	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// The region ID of the next-hop instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1444,35 +2603,62 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesResponse) SetBody(v *De
 }
 
 type DescribeExpressConnectRouterRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the ECR.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// e0a2dbeb69a8beeeb8194e92b702df3fd3e7bfe6ce7bfc16e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource group to which the ECR belongs.
+	//
 	// example:
 	//
 	// rg-aek2aq7f4va****
-	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagModels       []*DescribeExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource tags. You can specify up to 20 tags.
+	Tag []*DescribeExpressConnectRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeExpressConnectRouterRequest) String() string {
@@ -1518,82 +2704,125 @@ func (s *DescribeExpressConnectRouterRequest) SetResourceGroupId(v string) *Desc
 	return s
 }
 
-func (s *DescribeExpressConnectRouterRequest) SetTagModels(v []*DescribeExpressConnectRouterRequestTagModels) *DescribeExpressConnectRouterRequest {
-	s.TagModels = v
+func (s *DescribeExpressConnectRouterRequest) SetTag(v []*DescribeExpressConnectRouterRequestTag) *DescribeExpressConnectRouterRequest {
+	s.Tag = v
 	return s
 }
 
-type DescribeExpressConnectRouterRequestTagModels struct {
+type DescribeExpressConnectRouterRequestTag struct {
+	// The tag keys.
+	//
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
 	// example:
 	//
-	// ecr-tag
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// A tag value.
+	//
+	// A tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:`.
+	//
 	// example:
 	//
-	// testTagValueKZqhJi
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s DescribeExpressConnectRouterRequestTagModels) String() string {
+func (s DescribeExpressConnectRouterRequestTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeExpressConnectRouterRequestTagModels) GoString() string {
+func (s DescribeExpressConnectRouterRequestTag) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExpressConnectRouterRequestTagModels) SetTagKey(v string) *DescribeExpressConnectRouterRequestTagModels {
-	s.TagKey = &v
+func (s *DescribeExpressConnectRouterRequestTag) SetKey(v string) *DescribeExpressConnectRouterRequestTag {
+	s.Key = &v
 	return s
 }
 
-func (s *DescribeExpressConnectRouterRequestTagModels) SetTagValue(v string) *DescribeExpressConnectRouterRequestTagModels {
-	s.TagValue = &v
+func (s *DescribeExpressConnectRouterRequestTag) SetValue(v string) *DescribeExpressConnectRouterRequestTag {
+	s.Value = &v
 	return s
 }
 
 type DescribeExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.Name
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of Name ***	- is illegal.
-	DynamicMessage *string                                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	EcrList        []*DescribeExpressConnectRouterResponseBodyEcrList `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The ECRs.
+	EcrList []*DescribeExpressConnectRouterResponseBodyEcrList `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If NextToken is empty, no next page exists.
+	//
+	// 	- If a value of NextToken is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// AAAAAdDWBF2w6Olxc+cMPjUtUMpttDGZkffvHCfhBKKNEyCVaq+WUEzuUWpp9+QOApNf6g==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of ECRs.
+	//
 	// example:
 	//
 	// 2
@@ -1669,47 +2898,88 @@ func (s *DescribeExpressConnectRouterResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrList struct {
+	// The autonomous system number (ASN) of the ECR.
+	//
 	// example:
 	//
 	// 45104
 	AlibabaSideAsn *int64 `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
+	// The business state of the ECR. Valid values:
+	//
+	// 	- **Normal:*	- The ECR is running as expected.
+	//
+	// 	- **FinancialLocked**: The ECR is locked due to overdue payments.
+	//
 	// example:
 	//
 	// Normal
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// The description of the ECR.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ECR ID.
+	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The time when the ECR was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-02-16T01:44:50Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the ECR was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-02-16T01:44:50Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the ECR.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the ECR.
+	//
 	// example:
 	//
 	// 170646818729****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group to which the ECR belongs.
+	//
 	// example:
 	//
 	// rg-aekzuscospt****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The deployment state of the ECR. Valid values:
+	//
+	// 	- **ACTIVE**: The ECR is created.
+	//
+	// 	- **UPDATING**: The ECR is being modified.
+	//
+	// 	- **ASSOCIATING**: The ECR is being associated with resources.
+	//
+	// 	- **DISSOCIATING**: The resource is being disassociated from resources.
+	//
+	// 	- **LOCKED_ATTACHING**: The ECR is locked because it is being associated with an external system.
+	//
+	// 	- **LOCKED_DETACHING**: The ECR is locked because it is being disassociated from an external system.
+	//
+	// 	- **RECLAIMING**: The ECR is waiting to release resources.
+	//
+	// 	- **DELETING**: The ECR is being deleted.
+	//
 	// example:
 	//
 	// Active
-	Status *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeExpressConnectRouterResponseBodyEcrListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*DescribeExpressConnectRouterResponseBodyEcrListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeExpressConnectRouterResponseBodyEcrList) String() string {
@@ -1776,38 +3046,14 @@ func (s *DescribeExpressConnectRouterResponseBodyEcrList) SetTags(v []*DescribeE
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrListTags struct {
-	// example:
+	// The tag key.
 	//
-	// 181614792955****
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// example:
-	//
-	// 0
-	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// example:
-	//
-	// 000000100089****
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// cn-shanghai
-	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// example:
-	//
-	// rg-aek2aq7f4va****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// example:
-	//
-	// ECR
-	ResuorceType *string `json:"ResuorceType,omitempty" xml:"ResuorceType,omitempty"`
-	// example:
-	//
-	// 0
-	Scope *int32 `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test
@@ -1820,41 +3066,6 @@ func (s DescribeExpressConnectRouterResponseBodyEcrListTags) String() string {
 
 func (s DescribeExpressConnectRouterResponseBodyEcrListTags) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetAliUid(v int64) *DescribeExpressConnectRouterResponseBodyEcrListTags {
-	s.AliUid = &v
-	return s
-}
-
-func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetCategory(v int32) *DescribeExpressConnectRouterResponseBodyEcrListTags {
-	s.Category = &v
-	return s
-}
-
-func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetId(v int64) *DescribeExpressConnectRouterResponseBodyEcrListTags {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetRegionNo(v string) *DescribeExpressConnectRouterResponseBodyEcrListTags {
-	s.RegionNo = &v
-	return s
-}
-
-func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetResourceId(v string) *DescribeExpressConnectRouterResponseBodyEcrListTags {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetResuorceType(v string) *DescribeExpressConnectRouterResponseBodyEcrListTags {
-	s.ResuorceType = &v
-	return s
-}
-
-func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetScope(v int32) *DescribeExpressConnectRouterResponseBodyEcrListTags {
-	s.Scope = &v
-	return s
 }
 
 func (s *DescribeExpressConnectRouterResponseBodyEcrListTags) SetTagKey(v string) *DescribeExpressConnectRouterResponseBodyEcrListTags {
@@ -1897,25 +3108,56 @@ func (s *DescribeExpressConnectRouterResponse) SetBody(v *DescribeExpressConnect
 }
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
+	// The ID of the association between the ECR and the virtual private cloud (VPC) or transit router (TR).
+	//
+	// >  You must specify either **InstanceId*	- or **AssociationId**.
+	//
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the network instance that is associated with the ECR.
+	//
+	// >  You must specify either **InstanceId*	- or **AssociationId**.
+	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **TR**
+	//
 	// example:
 	//
 	// VPC
@@ -1961,35 +3203,58 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetInstanceTyp
 }
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
-	AccessDeniedDetail       *string                                                                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The historical route prefixes.
 	AllowedPrefixHistoryList []*DescribeExpressConnectRouterAllowedPrefixHistoryResponseBodyAllowedPrefixHistoryList `json:"AllowedPrefixHistoryList,omitempty" xml:"AllowedPrefixHistoryList,omitempty" type:"Repeated"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -2050,7 +3315,10 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryResponseBody) SetSucces
 }
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryResponseBodyAllowedPrefixHistoryList struct {
+	// The route prefix.
 	AllowedPrefix []*string `json:"AllowedPrefix,omitempty" xml:"AllowedPrefix,omitempty" type:"Repeated"`
+	// The time when the historical route prefix entry was created.
+	//
 	// example:
 	//
 	// 1673751163000
@@ -2105,48 +3373,86 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryResponse) SetBody(v *De
 }
 
 type DescribeExpressConnectRouterAssociationRequest struct {
+	// The ID of the association between the ECR and the VPC or TR.
+	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The type of the associated resource. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **TR**
+	//
 	// example:
 	//
 	// VPC
 	AssociationNodeType *string `json:"AssociationNodeType,omitempty" xml:"AssociationNodeType,omitempty"`
+	// The region ID of the VPC or TR.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	AssociationRegionId *string `json:"AssociationRegionId,omitempty" xml:"AssociationRegionId,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	//
 	// example:
 	//
 	// cen-of3o1the3i4gwb****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The TR ID.
+	//
 	// example:
 	//
 	// tr-2ze4i71c6be454e2l****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp1h37fchc6jmfyln****
@@ -2217,47 +3523,80 @@ func (s *DescribeExpressConnectRouterAssociationRequest) SetVpcId(v string) *Des
 }
 
 type DescribeExpressConnectRouterAssociationResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
-	AccessDeniedDetail *string                                                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AssociationList    []*DescribeExpressConnectRouterAssociationResponseBodyAssociationList `json:"AssociationList,omitempty" xml:"AssociationList,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The associated resources.
+	AssociationList []*DescribeExpressConnectRouterAssociationResponseBodyAssociationList `json:"AssociationList,omitempty" xml:"AssociationList,omitempty" type:"Repeated"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of DynamicMessage is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of associated resources.
+	//
 	// example:
 	//
 	// 1
@@ -2333,55 +3672,102 @@ func (s *DescribeExpressConnectRouterAssociationResponseBody) SetTotalCount(v in
 }
 
 type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {
-	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	// The allowed route prefixes.
+	AllowedPrefixes     []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	AllowedPrefixesMode *string   `json:"AllowedPrefixesMode,omitempty" xml:"AllowedPrefixesMode,omitempty"`
+	// The ID of the association between the ECR and the VPC or TR.
+	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The type of the associated resource. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **TR**
+	//
 	// example:
 	//
 	// VPC
 	AssociationNodeType *string `json:"AssociationNodeType,omitempty" xml:"AssociationNodeType,omitempty"`
+	// The ID of the CEN instance.
+	//
 	// example:
 	//
 	// cen-5510frtx8zi54q****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenId       *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ECR ID.
+	//
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The time when the association was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the association was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the resource.
+	//
 	// example:
 	//
 	// 167509154715****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The deployment state of the associated resource. Valid values:
+	//
+	// 	- **CREATING**: The resource is being created.
+	//
+	// 	- **ACTIVE**: The resource is created.
+	//
+	// 	- **INACTIVE**: The TR is pending to be associated with the ECR.
+	//
+	// 	- **ASSOCIATING**: The resource is being associated.
+	//
+	// 	- **DISSOCIATING**: The resource is being disassociated.
+	//
+	// 	- **UPDATING**: The resource is being modified.
+	//
+	// 	- **DELETING**: The resource is being deleted.
+	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The TR ID.
+	//
 	// example:
 	//
 	// tr-2ze4i71c6be454e2l****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the TR.
+	//
 	// example:
 	//
 	// 189159362009****
 	TransitRouterOwnerId *int64 `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-2zeeaxet4i2j1a7n7****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	//
 	// example:
 	//
 	// 146757288406****
@@ -2401,6 +3787,11 @@ func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Set
 	return s
 }
 
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetAllowedPrefixesMode(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
+	s.AllowedPrefixesMode = &v
+	return s
+}
+
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetAssociationId(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
 	s.AssociationId = &v
 	return s
@@ -2413,6 +3804,11 @@ func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Set
 
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetCenId(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
 	s.CenId = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetDescription(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
+	s.Description = &v
 	return s
 }
 
@@ -2496,40 +3892,70 @@ func (s *DescribeExpressConnectRouterAssociationResponse) SetBody(v *DescribeExp
 }
 
 type DescribeExpressConnectRouterChildInstanceRequest struct {
+	// The ID of the association between the ECR and the virtual private cloud (VPC) or transit router (TR).
+	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The ID of the network instance to be queried.
+	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The region ID of the network instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	// The type of network instance. Set the value to VBR.
+	//
 	// example:
 	//
 	// VBR
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If NextToken is empty, no next page exists.
+	//
+	// 	- If a value of NextToken is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
@@ -2590,47 +4016,80 @@ func (s *DescribeExpressConnectRouterChildInstanceRequest) SetNextToken(v string
 }
 
 type DescribeExpressConnectRouterChildInstanceResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
-	AccessDeniedDetail *string                                                                   `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	ChildInstanceList  []*DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList `json:"ChildInstanceList,omitempty" xml:"ChildInstanceList,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The VBRs.
+	ChildInstanceList []*DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList `json:"ChildInstanceList,omitempty" xml:"ChildInstanceList,omitempty" type:"Repeated"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of associated resources.
+	//
 	// example:
 	//
 	// 1
@@ -2706,43 +4165,86 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBody) SetTotalCount(v 
 }
 
 type DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList struct {
+	// The ID of the association between the ECR and the VPC or TR.
+	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The VBR ID.
+	//
 	// example:
 	//
 	// vbr-gw8vjq2zjux3ifsc9****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the VBR.
+	//
 	// example:
 	//
 	// 112101171212****
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// The region ID of the VBR.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	// The type of the VBR. The value is **VBR**.
+	//
 	// example:
 	//
 	// VBR
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	EcrId             *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The description of the ECR.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ECR ID.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The time when the association was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the association was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the VBR.
+	//
 	// example:
 	//
 	// 167509154715****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the VBR.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The deployment state of the associated resource. Valid values:
+	//
+	// - **CREATING**: The resource is being created.
+	//
+	// - **ACTIVE**: The resource is created.
+	//
+	// - **ASSOCIATING**: The resource is being associated.
+	//
+	// - **DISSOCIATING**: The resource is being disassociated.
+	//
+	// - **UPDATING**: The resource is being modified.
+	//
+	// - **DELETING**: The resource is being deleted.
+	//
 	// example:
 	//
 	// ACTIVE
@@ -2779,6 +4281,11 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList)
 
 func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) SetChildInstanceType(v string) *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList {
 	s.ChildInstanceType = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) SetDescription(v string) *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList {
+	s.Description = &v
 	return s
 }
 
@@ -2842,14 +4349,28 @@ func (s *DescribeExpressConnectRouterChildInstanceResponse) SetBody(v *DescribeE
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2882,35 +4403,58 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) SetEcrId(v s
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode             *int32                                                                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The cross-region forwarding modes.
 	InterRegionTransitModeList []*DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionTransitModeList `json:"InterRegionTransitModeList,omitempty" xml:"InterRegionTransitModeList,omitempty" type:"Repeated"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -2971,10 +4515,18 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeResponseBody) SetSucc
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionTransitModeList struct {
+	// The cross-region forwarding mode of the ECR. Valid values:
+	//
+	// 	- **ECMP**: the load balancing mode.
+	//
+	// 	- **NearBy**: the nearby forwarding mode.
+	//
 	// example:
 	//
 	// ECMP
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The region ID of the ECR.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3029,14 +4581,28 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeResponse) SetBody(v *
 }
 
 type DescribeExpressConnectRouterRegionRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- true: performs only a dry run.
+	//
+	// 	- false (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the ECR that you want to query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3069,35 +4635,58 @@ func (s *DescribeExpressConnectRouterRegionRequest) SetEcrId(v string) *Describe
 }
 
 type DescribeExpressConnectRouterRegionResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
-	Message      *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The region in which the ECR feature is activated.
 	RegionIdList []*string `json:"RegionIdList,omitempty" xml:"RegionIdList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -3187,44 +4776,76 @@ func (s *DescribeExpressConnectRouterRegionResponse) SetBody(v *DescribeExpressC
 }
 
 type DescribeExpressConnectRouterRouteEntriesRequest struct {
+	// The Autonomous System (AS) path of the route.
+	//
 	// example:
 	//
 	// [64993,64512]
 	AsPath *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The community value that is carried in the Border Gateway Protocol (BGP) route.
+	//
 	// example:
 	//
 	// 9001:9263
 	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
+	// The destination CIDR block of the route that you want to query.
+	//
 	// example:
 	//
 	// 172.20.47.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the next-hop instance.
+	//
 	// example:
 	//
 	// br-hp3u4u5f03tfuljis****
 	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// The region ID of the ECR.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3290,47 +4911,80 @@ func (s *DescribeExpressConnectRouterRouteEntriesRequest) SetQueryRegionId(v str
 }
 
 type DescribeExpressConnectRouterRouteEntriesResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10
+	//
 	// example:
 	//
 	// 6
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// gAAAAABkWwFTUMNCdWC0VMYOIylA56Hx6JUfCZlk5hQ5g_fnKmetN6303tqq5UJ2ouJzyT2fDOdzb-NqyEB5jcY8Z2euX7qHDA==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
-	RequestId        *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The route entries.
 	RouteEntriesList []*DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList `json:"RouteEntriesList,omitempty" xml:"RouteEntriesList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of route entries.
+	//
 	// example:
 	//
 	// 2
@@ -3406,26 +5060,39 @@ func (s *DescribeExpressConnectRouterRouteEntriesResponseBody) SetTotalCount(v i
 }
 
 type DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList struct {
+	// The AS path of the route.
+	//
 	// example:
 	//
 	// [64993,64512]
 	AsPath *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
+	// The community value that is carried in the BGP route.
+	//
 	// example:
 	//
 	// 9001:9263
 	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
+	// The destination CIDR block of the route.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	Med                  *int64  `json:"Med,omitempty" xml:"Med,omitempty"`
+	// The ID of the next-hop instance.
+	//
 	// example:
 	//
 	// br-hp3u4u5f03tfuljis****
 	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// The region ID of the next-hop instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	NexthopInstanceRegionId *string `json:"NexthopInstanceRegionId,omitempty" xml:"NexthopInstanceRegionId,omitempty"`
+	// The state of the ECR.
+	//
 	// example:
 	//
 	// ACTIVE
@@ -3452,6 +5119,11 @@ func (s *DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList) S
 
 func (s *DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList) SetDestinationCidrBlock(v string) *DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList {
 	s.DestinationCidrBlock = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList) SetMed(v int64) *DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList {
+	s.Med = &v
 	return s
 }
 
@@ -3499,7 +5171,7 @@ func (s *DescribeExpressConnectRouterRouteEntriesResponse) SetBody(v *DescribeEx
 	return s
 }
 
-type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
+type DescribeFlowLogsRequest struct {
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
@@ -3512,37 +5184,504 @@ type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
 	//
 	// example:
 	//
-	// ecr-mezk2idmsd0vx2****
+	// ecr-a5xqrgbeidz1w8****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// flowlog-jqnr0veifo5d****
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	// example:
+	//
+	// same-flowlog
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
-	// 129845258050****
-	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// myFlowlog
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	// example:
 	//
-	// cn-hangzhou
-	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// gAAAAABkWw*******
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// myFlowlog
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s DescribeFlowLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsRequest) SetClientToken(v string) *DescribeFlowLogsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetDryRun(v bool) *DescribeFlowLogsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetEcrId(v string) *DescribeFlowLogsRequest {
+	s.EcrId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetFlowLogId(v string) *DescribeFlowLogsRequest {
+	s.FlowLogId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetFlowLogName(v string) *DescribeFlowLogsRequest {
+	s.FlowLogName = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetInstanceId(v string) *DescribeFlowLogsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetLogStoreName(v string) *DescribeFlowLogsRequest {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetMaxResults(v int32) *DescribeFlowLogsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetNextToken(v string) *DescribeFlowLogsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetProjectName(v string) *DescribeFlowLogsRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type DescribeFlowLogsResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string                                 `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	FlowLogs       []*DescribeFlowLogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 11
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeFlowLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsResponseBody) SetAccessDeniedDetail(v string) *DescribeFlowLogsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetCode(v string) *DescribeFlowLogsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetDynamicCode(v string) *DescribeFlowLogsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetDynamicMessage(v string) *DescribeFlowLogsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetFlowLogs(v []*DescribeFlowLogsResponseBodyFlowLogs) *DescribeFlowLogsResponseBody {
+	s.FlowLogs = v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetHttpStatusCode(v int32) *DescribeFlowLogsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetMaxResults(v int32) *DescribeFlowLogsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetMessage(v string) *DescribeFlowLogsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetNextToken(v string) *DescribeFlowLogsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetRequestId(v string) *DescribeFlowLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetSuccess(v bool) *DescribeFlowLogsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBody) SetTotalCount(v int32) *DescribeFlowLogsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeFlowLogsResponseBodyFlowLogs struct {
+	// example:
+	//
+	// 2023-09-21T04:20Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// myFlowlog
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// ecr-h4cop1khw98*****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// flowlog-leypqehtgtia2*****
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	// example:
+	//
+	// myFlowlog
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// example:
+	//
+	// vbr-9dpty76irpf4u15*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
 	// VBR
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// example:
 	//
+	// 600
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// FlowLogStore
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// example:
+	//
+	// FlowLogProject
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aekzb3xwrexc4ry
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1:4096
+	SamplingRate *string `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeFlowLogsResponseBodyFlowLogsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetCreationTime(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetDescription(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetEcrId(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.EcrId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetFlowLogId(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.FlowLogId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetFlowLogName(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.FlowLogName = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetInstanceId(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetInstanceType(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetInterval(v int32) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetLogStoreName(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetProjectName(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetRegionId(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetResourceGroupId(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetSamplingRate(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.SamplingRate = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetSlsRegionId(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.SlsRegionId = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetStatus(v string) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogs) SetTags(v []*DescribeFlowLogsResponseBodyFlowLogsTags) *DescribeFlowLogsResponseBodyFlowLogs {
+	s.Tags = v
+	return s
+}
+
+type DescribeFlowLogsResponseBodyFlowLogsTags struct {
+	// example:
+	//
+	// TagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TagValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsTags) SetKey(v string) *DescribeFlowLogsResponseBodyFlowLogsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsTags) SetValue(v string) *DescribeFlowLogsResponseBodyFlowLogsTags {
+	s.Value = &v
+	return s
+}
+
+type DescribeFlowLogsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFlowLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeFlowLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsResponse) SetHeaders(v map[string]*string) *DescribeFlowLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFlowLogsResponse) SetStatusCode(v int32) *DescribeFlowLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponse) SetBody(v *DescribeFlowLogsResponseBody) *DescribeFlowLogsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
+	CallerType *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the network instance.
+	//
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the network instance.
+	//
+	// example:
+	//
+	// 129845258050****
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// The region ID of the network instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// 	- **VBR**
+	//
+	// 	- **VPC**
+	//
+	// example:
+	//
+	// VBR
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+	//
+	// example:
+	//
 	// 6
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// gAAAAABkyGzFbZR2NnxnyVk0EiL7F3qMBtBim8Es0mugRT3qb8yEHAMaHGanzuaHUmiEq9QRmok0RgxJAINBOJZa5KPjopEu_Q==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource group to which the network instance belongs.
+	//
 	// example:
 	//
 	// rg-aek2tsvbnfe****
-	ResourceGroupId *string                                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagModels       []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	TagModels []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceGrantedToExpressConnectRouterRequest) String() string {
@@ -3551,6 +5690,11 @@ func (s DescribeInstanceGrantedToExpressConnectRouterRequest) String() string {
 
 func (s DescribeInstanceGrantedToExpressConnectRouterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetCallerType(v string) *DescribeInstanceGrantedToExpressConnectRouterRequest {
+	s.CallerType = &v
+	return s
 }
 
 func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetClientToken(v string) *DescribeInstanceGrantedToExpressConnectRouterRequest {
@@ -3609,10 +5753,18 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetTagModels(v []
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterRequestTagModels struct {
+	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	//
 	// example:
 	//
 	// key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value. You can specify up to 20 tag values. The tag value cannot be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+	//
 	// example:
 	//
 	// value
@@ -3638,47 +5790,80 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequestTagModels) SetTagVa
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.Name
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of Name ***	- is illegal.
-	DynamicMessage         *string                                                                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The network instances whose permissions are granted to the ECR.
 	EcrGrantedInstanceList []*DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList `json:"EcrGrantedInstanceList,omitempty" xml:"EcrGrantedInstanceList,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+	//
 	// example:
 	//
 	// 6
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFlMqGuJ10uN3l+FX/cBrGDNXUOUifNeOuAJlT4dc3vsWD6DsNSFAC2FtpeH5QOSG2WFdyRoun7gSLCm5o69YnAQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of network instances whose permissions are granted to the ECR.
+	//
 	// example:
 	//
 	// 10
@@ -3754,42 +5939,67 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterResponseBody) SetTotalCoun
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList struct {
+	// The ECR ID.
+	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId          *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrOwnerAliUid *string `json:"EcrOwnerAliUid,omitempty" xml:"EcrOwnerAliUid,omitempty"`
+	// The time when the network instance was created.
+	//
 	// example:
 	//
 	// 1669023139000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the network instance was modified.
+	//
 	// example:
 	//
 	// 1669023139000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The authorization ID.
+	//
 	// example:
 	//
 	// gr-8gdelo13mi99g1****
 	GrantId *string `json:"GrantId,omitempty" xml:"GrantId,omitempty"`
+	// The ID of the network instance.
+	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The ID of the Alibaba Cloud enterprise account that owns the network instance.
+	//
 	// example:
 	//
 	// 26842
 	NodeOwnerBid *string `json:"NodeOwnerBid,omitempty" xml:"NodeOwnerBid,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the network instance.
+	//
 	// example:
 	//
 	// 129845258050****
 	NodeOwnerUid *int64 `json:"NodeOwnerUid,omitempty" xml:"NodeOwnerUid,omitempty"`
+	// The region ID of the network instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	NodeRegionId *string `json:"NodeRegionId,omitempty" xml:"NodeRegionId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// 	- **VBR**
+	//
+	// 	- **VPC**
+	//
 	// example:
 	//
 	// VBR
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The state of the network instance.
+	//
 	// example:
 	//
 	// Active
@@ -3806,6 +6016,11 @@ func (s DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInsta
 
 func (s *DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList) SetEcrId(v string) *DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList {
 	s.EcrId = &v
+	return s
+}
+
+func (s *DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList) SetEcrOwnerAliUid(v string) *DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList {
+	s.EcrOwnerAliUid = &v
 	return s
 }
 
@@ -3884,26 +6099,44 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterResponse) SetBody(v *Descr
 }
 
 type DetachExpressConnectRouterChildInstanceRequest struct {
+	// The VBR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The type of the network instance. Set the value to **VBR**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VBR
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3946,34 +6179,56 @@ func (s *DetachExpressConnectRouterChildInstanceRequest) SetEcrId(v string) *Det
 }
 
 type DetachExpressConnectRouterChildInstanceResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -4058,26 +6313,44 @@ func (s *DetachExpressConnectRouterChildInstanceResponse) SetBody(v *DetachExpre
 }
 
 type DisableExpressConnectRouterRouteEntriesRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The destination CIDR block of the route entry in the route table of the ECR.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10.153.32.16/28
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the next-hop instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4120,34 +6393,56 @@ func (s *DisableExpressConnectRouterRouteEntriesRequest) SetNexthopInstanceId(v 
 }
 
 type DisableExpressConnectRouterRouteEntriesResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -4232,26 +6527,44 @@ func (s *DisableExpressConnectRouterRouteEntriesResponse) SetBody(v *DisableExpr
 }
 
 type EnableExpressConnectRouterRouteEntriesRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The destination CIDR block of the route entry in the route table of the ECR.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10.153.32.16/28
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the next-hop instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4294,34 +6607,56 @@ func (s *EnableExpressConnectRouterRouteEntriesRequest) SetNexthopInstanceId(v s
 }
 
 type EnableExpressConnectRouterRouteEntriesResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -4406,14 +6741,28 @@ func (s *EnableExpressConnectRouterRouteEntriesResponse) SetBody(v *EnableExpres
 }
 
 type ForceDeleteExpressConnectRouterRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4446,34 +6795,56 @@ func (s *ForceDeleteExpressConnectRouterRequest) SetEcrId(v string) *ForceDelete
 }
 
 type ForceDeleteExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -4558,38 +6929,64 @@ func (s *ForceDeleteExpressConnectRouterResponse) SetBody(v *ForceDeleteExpressC
 }
 
 type GrantInstanceToExpressConnectRouterRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the ECR to which you want to grant permissions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 121012345612****
 	EcrOwnerAliUid *int64 `json:"EcrOwnerAliUid,omitempty" xml:"EcrOwnerAliUid,omitempty"`
+	// The ID of the network instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the network instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// 	- **VBR**
+	//
+	// 	- **VPC**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4642,34 +7039,56 @@ func (s *GrantInstanceToExpressConnectRouterRequest) SetInstanceType(v string) *
 }
 
 type GrantInstanceToExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -4754,10 +7173,24 @@ func (s *GrantInstanceToExpressConnectRouterResponse) SetBody(v *GrantInstanceTo
 }
 
 type ListExpressConnectRouterSupportedRegionRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// 	- **TR**
+	//
+	// 	- **VBR**
+	//
+	// 	- **VPC**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4785,26 +7218,41 @@ func (s *ListExpressConnectRouterSupportedRegionRequest) SetNodeType(v string) *
 }
 
 type ListExpressConnectRouterSupportedRegionResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
-	Success               *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The regions in which the ECR feature is activated.
 	SupportedRegionIdList []*string `json:"SupportedRegionIdList,omitempty" xml:"SupportedRegionIdList,omitempty" type:"Repeated"`
 }
 
@@ -4876,23 +7324,38 @@ func (s *ListExpressConnectRouterSupportedRegionResponse) SetBody(v *ListExpress
 }
 
 type ListTagResourcesRequest struct {
+	// The maximum number of entries to return for a single request. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ECR IDs.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to EXPRESSCONNECTROUTER.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EXPRESSCONNECTROUTER
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	//
+	// You can bind up to 20 tags to an ECR.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -4929,10 +7392,20 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// You can specify up to 20 tag keys in each call.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`. The tag value can be an empty string.
+	//
+	// You can specify up to 20 tag values in each call.
+	//
 	// example:
 	//
 	// TestValue
@@ -4958,31 +7431,54 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	// The total number of records that meet the query conditions.
+	//
 	// example:
 	//
 	// 2
@@ -5038,18 +7534,26 @@ func (s *ListTagResourcesResponseBody) SetTotalCount(v int32) *ListTagResourcesR
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// ecr-897j0jooxyr1aq****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. The value is **EXPRESSCONNECTROUTER**.
+	//
 	// example:
 	//
 	// EXPRESSCONNECTROUTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// TestValue
@@ -5114,24 +7618,42 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyExpressConnectRouterRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the ECR.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The name of the ECR.
+	//
 	// example:
 	//
 	// test
@@ -5172,34 +7694,56 @@ func (s *ModifyExpressConnectRouterRequest) SetName(v string) *ModifyExpressConn
 }
 
 type ModifyExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.Name
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of Name ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -5284,21 +7828,39 @@ func (s *ModifyExpressConnectRouterResponse) SetBody(v *ModifyExpressConnectRout
 }
 
 type ModifyExpressConnectRouterAssociationAllowedPrefixRequest struct {
-	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	// The allowed route prefixes.
+	AllowedPrefixes     []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	AllowedPrefixesMode *string   `json:"AllowedPrefixesMode,omitempty" xml:"AllowedPrefixesMode,omitempty"`
+	// The ID of the association between the ECR and the VPC or TR.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5318,6 +7880,11 @@ func (s ModifyExpressConnectRouterAssociationAllowedPrefixRequest) GoString() st
 
 func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetAllowedPrefixes(v []*string) *ModifyExpressConnectRouterAssociationAllowedPrefixRequest {
 	s.AllowedPrefixes = v
+	return s
+}
+
+func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetAllowedPrefixesMode(v string) *ModifyExpressConnectRouterAssociationAllowedPrefixRequest {
+	s.AllowedPrefixesMode = &v
 	return s
 }
 
@@ -5347,34 +7914,56 @@ func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetOwnerAcco
 }
 
 type ModifyExpressConnectRouterAssociationAllowedPrefixResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -5459,20 +8048,35 @@ func (s *ModifyExpressConnectRouterAssociationAllowedPrefixResponse) SetBody(v *
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
-	EcrId           *string                                                                   `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The cross-region forwarding modes.
 	TransitModeList []*ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList `json:"TransitModeList,omitempty" xml:"TransitModeList,omitempty" type:"Repeated"`
 }
 
@@ -5505,10 +8109,18 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) SetTransitMode
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList struct {
+	// The cross-domain forwarding mode of the ECR. Valid values:
+	//
+	// 	- **ECMP**: the load balancing mode.
+	//
+	// 	- **NearBy**: the nearby forwarding mode.
+	//
 	// example:
 	//
 	// ECMP
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The region ID of the ECR.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5534,34 +8146,56 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList)
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -5645,11 +8279,15 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeResponse) SetBody(v *Mo
 	return s
 }
 
-type MoveResourceGroupRequest struct {
+type ModifyFlowLogAttributeRequest struct {
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// myFlowlog
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// false
@@ -5658,14 +8296,223 @@ type MoveResourceGroupRequest struct {
 	//
 	// example:
 	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// flowlog-m5evbtbpt****
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	// example:
+	//
+	// myFlowlog
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// example:
+	//
+	// 600
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 1:4096
+	SamplingRate *string `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+}
+
+func (s ModifyFlowLogAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowLogAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetClientToken(v string) *ModifyFlowLogAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetDescription(v string) *ModifyFlowLogAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetDryRun(v bool) *ModifyFlowLogAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetEcrId(v string) *ModifyFlowLogAttributeRequest {
+	s.EcrId = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetFlowLogId(v string) *ModifyFlowLogAttributeRequest {
+	s.FlowLogId = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetFlowLogName(v string) *ModifyFlowLogAttributeRequest {
+	s.FlowLogName = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetInterval(v int32) *ModifyFlowLogAttributeRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetSamplingRate(v string) *ModifyFlowLogAttributeRequest {
+	s.SamplingRate = &v
+	return s
+}
+
+type ModifyFlowLogAttributeResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyFlowLogAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowLogAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetAccessDeniedDetail(v string) *ModifyFlowLogAttributeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetCode(v string) *ModifyFlowLogAttributeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetDynamicCode(v string) *ModifyFlowLogAttributeResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetDynamicMessage(v string) *ModifyFlowLogAttributeResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetHttpStatusCode(v int32) *ModifyFlowLogAttributeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetMessage(v string) *ModifyFlowLogAttributeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetRequestId(v string) *ModifyFlowLogAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponseBody) SetSuccess(v bool) *ModifyFlowLogAttributeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyFlowLogAttributeResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFlowLogAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyFlowLogAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowLogAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowLogAttributeResponse) SetHeaders(v map[string]*string) *ModifyFlowLogAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponse) SetStatusCode(v int32) *ModifyFlowLogAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponse) SetBody(v *ModifyFlowLogAttributeResponseBody) *ModifyFlowLogAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type MoveResourceGroupRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the new resource group. For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html) topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
 	// rg-acfmvt3xpr5****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-897j0jooxyr1aq****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Set the value to EXPRESSCONNECTROUTER.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5708,18 +8555,30 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 }
 
 type MoveResourceGroupResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -5784,38 +8643,64 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type RevokeInstanceFromExpressConnectRouterRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the ECR from which you want to revoke permissions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 121012345612****
 	EcrOwnerAliUid *int64 `json:"EcrOwnerAliUid,omitempty" xml:"EcrOwnerAliUid,omitempty"`
+	// The ID of the network instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the network instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// 	- **VBR**
+	//
+	// 	- **VPC**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5868,34 +8753,56 @@ func (s *RevokeInstanceFromExpressConnectRouterRequest) SetInstanceType(v string
 }
 
 type RevokeInstanceFromExpressConnectRouterResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -5980,14 +8887,28 @@ func (s *RevokeInstanceFromExpressConnectRouterResponse) SetBody(v *RevokeInstan
 }
 
 type SynchronizeExpressConnectRouterInterRegionBandwidthRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6020,34 +8941,56 @@ func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) SetEcrId(v 
 }
 
 type SynchronizeExpressConnectRouterInterRegionBandwidthResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	//
+	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsInstanceId**, the request parameter **DtsInstanceId*	- is invalid.
+	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -6132,22 +9075,40 @@ func (s *SynchronizeExpressConnectRouterInterRegionBandwidthResponse) SetBody(v 
 }
 
 type TagResourcesRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR IDs.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to **EXPRESSCONNECTROUTER**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EXPRESSCONNECTROUTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags to be added.
+	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -6186,10 +9147,20 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// You can specify up to 20 tag keys in each call.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`. The tag value can be an empty string.
+	//
+	// You can add up to 20 tag values in each call.
+	//
 	// example:
 	//
 	// TestValue
@@ -6215,18 +9186,30 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -6291,27 +9274,52 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
+	// Specifies whether to remove all tags. This parameter is valid only when the TagKey.N parameter is not specified. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ECR IDs.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to **EXPRESSCONNECTROUTER**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EXPRESSCONNECTROUTER
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of the tags that you want to remove from the ECRs.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -6353,18 +9361,30 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -6475,6 +9495,97 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables log delivery.
+//
+// @param request - ActivateFlowLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateFlowLogResponse
+func (client *Client) ActivateFlowLogWithOptions(request *ActivateFlowLogRequest, runtime *util.RuntimeOptions) (_result *ActivateFlowLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrId)) {
+		body["EcrId"] = request.EcrId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		body["FlowLogId"] = request.FlowLogId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ActivateFlowLog"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActivateFlowLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActivateFlowLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Enables log delivery.
+//
+// @param request - ActivateFlowLogRequest
+//
+// @return ActivateFlowLogResponse
+func (client *Client) ActivateFlowLog(request *ActivateFlowLogRequest) (_result *ActivateFlowLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ActivateFlowLogResponse{}
+	_body, _err := client.ActivateFlowLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates a virtual border router (VBR) with an Express Connect router (ECR).
+//
+// Description:
+//
+// Before you call the **AttachExpressConnectRouterChildInstance*	- operation to associate a VBR with an ECR, make sure that the ECR is in the **Active*	- state.
+//
 // @param request - AttachExpressConnectRouterChildInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6506,6 +9617,10 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithOptions(request
 		body["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		body["DryRun"] = request.DryRun
 	}
@@ -6528,15 +9643,34 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachExpressConnectRouterChildInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachExpressConnectRouterChildInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Associates a virtual border router (VBR) with an Express Connect router (ECR).
+//
+// Description:
+//
+// Before you call the **AttachExpressConnectRouterChildInstance*	- operation to associate a VBR with an ECR, make sure that the ECR is in the **Active*	- state.
+//
 // @param request - AttachExpressConnectRouterChildInstanceRequest
 //
 // @return AttachExpressConnectRouterChildInstanceResponse
@@ -6551,6 +9685,10 @@ func (client *Client) AttachExpressConnectRouterChildInstance(request *AttachExp
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
+//
 // @param request - CheckAddRegionToExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6592,15 +9730,30 @@ func (client *Client) CheckAddRegionToExpressConnectRouterWithOptions(request *C
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckAddRegionToExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckAddRegionToExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckAddRegionToExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
+//
 // @param request - CheckAddRegionToExpressConnectRouterRequest
 //
 // @return CheckAddRegionToExpressConnectRouterResponse
@@ -6615,6 +9768,14 @@ func (client *Client) CheckAddRegionToExpressConnectRouter(request *CheckAddRegi
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an Express Connect Router (ECR).
+//
+// Description:
+//
+// After you create an ECR, it enters the **Active*	- state.
+//
 // @param request - CreateExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6650,8 +9811,8 @@ func (client *Client) CreateExpressConnectRouterWithOptions(request *CreateExpre
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		body["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6668,15 +9829,34 @@ func (client *Client) CreateExpressConnectRouterWithOptions(request *CreateExpre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an Express Connect Router (ECR).
+//
+// Description:
+//
+// After you create an ECR, it enters the **Active*	- state.
+//
 // @param request - CreateExpressConnectRouterRequest
 //
 // @return CreateExpressConnectRouterResponse
@@ -6691,6 +9871,10 @@ func (client *Client) CreateExpressConnectRouter(request *CreateExpressConnectRo
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
+//
 // @param request - CreateExpressConnectRouterAssociationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6704,6 +9888,10 @@ func (client *Client) CreateExpressConnectRouterAssociationWithOptions(request *
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AllowedPrefixes)) {
 		body["AllowedPrefixes"] = request.AllowedPrefixes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowedPrefixesMode)) {
+		body["AllowedPrefixesMode"] = request.AllowedPrefixesMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AssociationRegionId)) {
@@ -6720,6 +9908,10 @@ func (client *Client) CreateExpressConnectRouterAssociationWithOptions(request *
 
 	if !tea.BoolValue(util.IsUnset(request.CreateAttachment)) {
 		body["CreateAttachment"] = request.CreateAttachment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
@@ -6760,15 +9952,30 @@ func (client *Client) CreateExpressConnectRouterAssociationWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateExpressConnectRouterAssociationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateExpressConnectRouterAssociationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
+//
 // @param request - CreateExpressConnectRouterAssociationRequest
 //
 // @return CreateExpressConnectRouterAssociationResponse
@@ -6783,6 +9990,214 @@ func (client *Client) CreateExpressConnectRouterAssociation(request *CreateExpre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建流日志
+//
+// @param request - CreateFlowLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFlowLogResponse
+func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, runtime *util.RuntimeOptions) (_result *CreateFlowLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SamplingRate)) {
+		query["SamplingRate"] = request.SamplingRate
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrId)) {
+		body["EcrId"] = request.EcrId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogName)) {
+		body["FlowLogName"] = request.FlowLogName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFlowLog"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFlowLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFlowLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建流日志
+//
+// @param request - CreateFlowLogRequest
+//
+// @return CreateFlowLogResponse
+func (client *Client) CreateFlowLog(request *CreateFlowLogRequest) (_result *CreateFlowLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFlowLogResponse{}
+	_body, _err := client.CreateFlowLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止流日志
+//
+// @param request - DeactivateFlowLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeactivateFlowLogResponse
+func (client *Client) DeactivateFlowLogWithOptions(request *DeactivateFlowLogRequest, runtime *util.RuntimeOptions) (_result *DeactivateFlowLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrId)) {
+		body["EcrId"] = request.EcrId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		body["FlowLogId"] = request.FlowLogId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeactivateFlowLog"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeactivateFlowLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeactivateFlowLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 停止流日志
+//
+// @param request - DeactivateFlowLogRequest
+//
+// @return DeactivateFlowLogResponse
+func (client *Client) DeactivateFlowLog(request *DeactivateFlowLogRequest) (_result *DeactivateFlowLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeactivateFlowLogResponse{}
+	_body, _err := client.DeactivateFlowLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an Express Connect router (ECR).
+//
+// Description:
+//
+// Take note of the following items:
+//
+// 	- Before you call this operation, make sure that all resources are disassociated from the ECR.
+//
+// 	- You can delete only ECRs that are in the **Active*	- state.
+//
 // @param request - DeleteExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6820,15 +10235,38 @@ func (client *Client) DeleteExpressConnectRouterWithOptions(request *DeleteExpre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an Express Connect router (ECR).
+//
+// Description:
+//
+// Take note of the following items:
+//
+// 	- Before you call this operation, make sure that all resources are disassociated from the ECR.
+//
+// 	- You can delete only ECRs that are in the **Active*	- state.
+//
 // @param request - DeleteExpressConnectRouterRequest
 //
 // @return DeleteExpressConnectRouterResponse
@@ -6843,6 +10281,10 @@ func (client *Client) DeleteExpressConnectRouter(request *DeleteExpressConnectRo
 	return _result, _err
 }
 
+// Summary:
+//
+// Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
+//
 // @param request - DeleteExpressConnectRouterAssociationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6888,15 +10330,30 @@ func (client *Client) DeleteExpressConnectRouterAssociationWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteExpressConnectRouterAssociationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteExpressConnectRouterAssociationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
+//
 // @param request - DeleteExpressConnectRouterAssociationRequest
 //
 // @return DeleteExpressConnectRouterAssociationResponse
@@ -6911,6 +10368,95 @@ func (client *Client) DeleteExpressConnectRouterAssociation(request *DeleteExpre
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除流日志
+//
+// @param request - DeleteFlowlogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFlowlogResponse
+func (client *Client) DeleteFlowlogWithOptions(request *DeleteFlowlogRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowlogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrId)) {
+		body["EcrId"] = request.EcrId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFlowlog"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFlowlogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFlowlogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除流日志
+//
+// @param request - DeleteFlowlogRequest
+//
+// @return DeleteFlowlogResponse
+func (client *Client) DeleteFlowlog(request *DeleteFlowlogRequest) (_result *DeleteFlowlogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFlowlogResponse{}
+	_body, _err := client.DeleteFlowlogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the route entries that are disabled on an Express Connect router (ECR).
+//
 // @param request - DescribeDisabledExpressConnectRouterRouteEntriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6956,15 +10502,30 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithOption
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDisabledExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDisabledExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDisabledExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the route entries that are disabled on an Express Connect router (ECR).
+//
 // @param request - DescribeDisabledExpressConnectRouterRouteEntriesRequest
 //
 // @return DescribeDisabledExpressConnectRouterRouteEntriesResponse
@@ -6979,6 +10540,10 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntries(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Express Connect routers (ECRs).
+//
 // @param request - DescribeExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7018,8 +10583,8 @@ func (client *Client) DescribeExpressConnectRouterWithOptions(request *DescribeE
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagModels)) {
-		body["TagModels"] = request.TagModels
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7036,15 +10601,30 @@ func (client *Client) DescribeExpressConnectRouterWithOptions(request *DescribeE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of Express Connect routers (ECRs).
+//
 // @param request - DescribeExpressConnectRouterRequest
 //
 // @return DescribeExpressConnectRouterResponse
@@ -7059,6 +10639,10 @@ func (client *Client) DescribeExpressConnectRouter(request *DescribeExpressConne
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical route prefixes of an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterAllowedPrefixHistoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7108,15 +10692,30 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithOption
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpressConnectRouterAllowedPrefixHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpressConnectRouterAllowedPrefixHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpressConnectRouterAllowedPrefixHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the historical route prefixes of an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterAllowedPrefixHistoryRequest
 //
 // @return DescribeExpressConnectRouterAllowedPrefixHistoryResponse
@@ -7131,6 +10730,10 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistory(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterAssociationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7200,15 +10803,30 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpressConnectRouterAssociationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpressConnectRouterAssociationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterAssociationRequest
 //
 // @return DescribeExpressConnectRouterAssociationResponse
@@ -7223,6 +10841,10 @@ func (client *Client) DescribeExpressConnectRouterAssociation(request *DescribeE
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterChildInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7284,15 +10906,30 @@ func (client *Client) DescribeExpressConnectRouterChildInstanceWithOptions(reque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpressConnectRouterChildInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpressConnectRouterChildInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterChildInstanceRequest
 //
 // @return DescribeExpressConnectRouterChildInstanceResponse
@@ -7307,6 +10944,10 @@ func (client *Client) DescribeExpressConnectRouterChildInstance(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cross-region forwarding modes of an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterInterRegionTransitModeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7344,15 +10985,30 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpressConnectRouterInterRegionTransitModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpressConnectRouterInterRegionTransitModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpressConnectRouterInterRegionTransitModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the cross-region forwarding modes of an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterInterRegionTransitModeRequest
 //
 // @return DescribeExpressConnectRouterInterRegionTransitModeResponse
@@ -7367,6 +11023,10 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitMode(request
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
+//
 // @param request - DescribeExpressConnectRouterRegionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7404,15 +11064,30 @@ func (client *Client) DescribeExpressConnectRouterRegionWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpressConnectRouterRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpressConnectRouterRegionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpressConnectRouterRegionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
+//
 // @param request - DescribeExpressConnectRouterRegionRequest
 //
 // @return DescribeExpressConnectRouterRegionResponse
@@ -7427,6 +11102,10 @@ func (client *Client) DescribeExpressConnectRouterRegion(request *DescribeExpres
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the route entries of an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterRouteEntriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7492,15 +11171,30 @@ func (client *Client) DescribeExpressConnectRouterRouteEntriesWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the route entries of an Express Connect router (ECR).
+//
 // @param request - DescribeExpressConnectRouterRouteEntriesRequest
 //
 // @return DescribeExpressConnectRouterRouteEntriesResponse
@@ -7515,6 +11209,119 @@ func (client *Client) DescribeExpressConnectRouterRouteEntries(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流日志
+//
+// @param request - DescribeFlowLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFlowLogsResponse
+func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogName)) {
+		query["FlowLogName"] = request.FlowLogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrId)) {
+		body["EcrId"] = request.EcrId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFlowLogs"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFlowLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFlowLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询流日志
+//
+// @param request - DescribeFlowLogsRequest
+//
+// @return DescribeFlowLogsResponse
+func (client *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (_result *DescribeFlowLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFlowLogsResponse{}
+	_body, _err := client.DescribeFlowLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the network instances whose permissions are granted to an Express Connect router (ECR).
+//
 // @param request - DescribeInstanceGrantedToExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7526,6 +11333,10 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithOptions(r
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerType)) {
+		body["CallerType"] = request.CallerType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
@@ -7584,15 +11395,30 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithOptions(r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceGrantedToExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceGrantedToExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceGrantedToExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the network instances whose permissions are granted to an Express Connect router (ECR).
+//
 // @param request - DescribeInstanceGrantedToExpressConnectRouterRequest
 //
 // @return DescribeInstanceGrantedToExpressConnectRouterResponse
@@ -7607,6 +11433,14 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouter(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
+//
+// Description:
+//
+// Before you call the **DetachExpressConnectRouterChildInstance*	- operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active*	- state.
+//
 // @param request - DetachExpressConnectRouterChildInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7652,15 +11486,34 @@ func (client *Client) DetachExpressConnectRouterChildInstanceWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachExpressConnectRouterChildInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachExpressConnectRouterChildInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
+//
+// Description:
+//
+// Before you call the **DetachExpressConnectRouterChildInstance*	- operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active*	- state.
+//
 // @param request - DetachExpressConnectRouterChildInstanceRequest
 //
 // @return DetachExpressConnectRouterChildInstanceResponse
@@ -7675,6 +11528,10 @@ func (client *Client) DetachExpressConnectRouterChildInstance(request *DetachExp
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables route entries of an Express Connect router (ECR).
+//
 // @param request - DisableExpressConnectRouterRouteEntriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7720,15 +11577,30 @@ func (client *Client) DisableExpressConnectRouterRouteEntriesWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Disables route entries of an Express Connect router (ECR).
+//
 // @param request - DisableExpressConnectRouterRouteEntriesRequest
 //
 // @return DisableExpressConnectRouterRouteEntriesResponse
@@ -7743,6 +11615,10 @@ func (client *Client) DisableExpressConnectRouterRouteEntries(request *DisableEx
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables route entries of an Express Connect router (ECR).
+//
 // @param request - EnableExpressConnectRouterRouteEntriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7788,15 +11664,30 @@ func (client *Client) EnableExpressConnectRouterRouteEntriesWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableExpressConnectRouterRouteEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Enables route entries of an Express Connect router (ECR).
+//
 // @param request - EnableExpressConnectRouterRouteEntriesRequest
 //
 // @return EnableExpressConnectRouterRouteEntriesResponse
@@ -7811,6 +11702,16 @@ func (client *Client) EnableExpressConnectRouterRouteEntries(request *EnableExpr
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
+//
+// Description:
+//
+//   If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
+//
+// 	- You can delete only ECRs that are in the **Active*	- state.
+//
 // @param request - ForceDeleteExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7848,15 +11749,36 @@ func (client *Client) ForceDeleteExpressConnectRouterWithOptions(request *ForceD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ForceDeleteExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ForceDeleteExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ForceDeleteExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
+//
+// Description:
+//
+//   If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
+//
+// 	- You can delete only ECRs that are in the **Active*	- state.
+//
 // @param request - ForceDeleteExpressConnectRouterRequest
 //
 // @return ForceDeleteExpressConnectRouterResponse
@@ -7871,6 +11793,14 @@ func (client *Client) ForceDeleteExpressConnectRouter(request *ForceDeleteExpres
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
+//
+// Description:
+//
+// When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
+//
 // @param request - GrantInstanceToExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7924,15 +11854,34 @@ func (client *Client) GrantInstanceToExpressConnectRouterWithOptions(request *Gr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GrantInstanceToExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GrantInstanceToExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GrantInstanceToExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
+//
+// Description:
+//
+// When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
+//
 // @param request - GrantInstanceToExpressConnectRouterRequest
 //
 // @return GrantInstanceToExpressConnectRouterResponse
@@ -7947,6 +11896,10 @@ func (client *Client) GrantInstanceToExpressConnectRouter(request *GrantInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of regions in which the Express Connect router (ECR) feature is activated.
+//
 // @param request - ListExpressConnectRouterSupportedRegionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7980,15 +11933,30 @@ func (client *Client) ListExpressConnectRouterSupportedRegionWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListExpressConnectRouterSupportedRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListExpressConnectRouterSupportedRegionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListExpressConnectRouterSupportedRegionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of regions in which the Express Connect router (ECR) feature is activated.
+//
 // @param request - ListExpressConnectRouterSupportedRegionRequest
 //
 // @return ListExpressConnectRouterSupportedRegionResponse
@@ -8003,6 +11971,10 @@ func (client *Client) ListExpressConnectRouterSupportedRegion(request *ListExpre
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tags that are added to an Express Connect router (ECR).
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8048,15 +12020,30 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of tags that are added to an Express Connect router (ECR).
+//
 // @param request - ListTagResourcesRequest
 //
 // @return ListTagResourcesResponse
@@ -8071,6 +12058,14 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the properties such as the name of an Express Connect router (ECR).
+//
+// Description:
+//
+// You can modify only properties of ECRs in the **Active*	- state.
+//
 // @param request - ModifyExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8116,15 +12111,34 @@ func (client *Client) ModifyExpressConnectRouterWithOptions(request *ModifyExpre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the properties such as the name of an Express Connect router (ECR).
+//
+// Description:
+//
+// You can modify only properties of ECRs in the **Active*	- state.
+//
 // @param request - ModifyExpressConnectRouterRequest
 //
 // @return ModifyExpressConnectRouterResponse
@@ -8139,6 +12153,10 @@ func (client *Client) ModifyExpressConnectRouter(request *ModifyExpressConnectRo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
+//
 // @param request - ModifyExpressConnectRouterAssociationAllowedPrefixRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8152,6 +12170,10 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithOpti
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AllowedPrefixes)) {
 		body["AllowedPrefixes"] = request.AllowedPrefixes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowedPrefixesMode)) {
+		body["AllowedPrefixesMode"] = request.AllowedPrefixesMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AssociationId)) {
@@ -8188,15 +12210,30 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyExpressConnectRouterAssociationAllowedPrefixResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyExpressConnectRouterAssociationAllowedPrefixResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyExpressConnectRouterAssociationAllowedPrefixResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
+//
 // @param request - ModifyExpressConnectRouterAssociationAllowedPrefixRequest
 //
 // @return ModifyExpressConnectRouterAssociationAllowedPrefixResponse
@@ -8211,6 +12248,10 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefix(request
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the cross-region forwarding mode of an Express Connect router (ECR).
+//
 // @param request - ModifyExpressConnectRouterInterRegionTransitModeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8252,15 +12293,30 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithOption
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyExpressConnectRouterInterRegionTransitModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyExpressConnectRouterInterRegionTransitModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyExpressConnectRouterInterRegionTransitModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the cross-region forwarding mode of an Express Connect router (ECR).
+//
 // @param request - ModifyExpressConnectRouterInterRegionTransitModeRequest
 //
 // @return ModifyExpressConnectRouterInterRegionTransitModeResponse
@@ -8275,6 +12331,111 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitMode(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改流日志
+//
+// @param request - ModifyFlowLogAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFlowLogAttributeResponse
+func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SamplingRate)) {
+		query["SamplingRate"] = request.SamplingRate
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrId)) {
+		body["EcrId"] = request.EcrId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogName)) {
+		body["FlowLogName"] = request.FlowLogName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyFlowLogAttribute"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFlowLogAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFlowLogAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改流日志
+//
+// @param request - ModifyFlowLogAttributeRequest
+//
+// @return ModifyFlowLogAttributeResponse
+func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequest) (_result *ModifyFlowLogAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyFlowLogAttributeResponse{}
+	_body, _err := client.ModifyFlowLogAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the resource group to which an Express Connect router (ECR) belongs.
+//
 // @param request - MoveResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8320,15 +12481,30 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the resource group to which an Express Connect router (ECR) belongs.
+//
 // @param request - MoveResourceGroupRequest
 //
 // @return MoveResourceGroupResponse
@@ -8343,6 +12519,10 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
+//
 // @param request - RevokeInstanceFromExpressConnectRouterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8396,15 +12576,30 @@ func (client *Client) RevokeInstanceFromExpressConnectRouterWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeInstanceFromExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeInstanceFromExpressConnectRouterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeInstanceFromExpressConnectRouterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
+//
 // @param request - RevokeInstanceFromExpressConnectRouterRequest
 //
 // @return RevokeInstanceFromExpressConnectRouterResponse
@@ -8419,6 +12614,14 @@ func (client *Client) RevokeInstanceFromExpressConnectRouter(request *RevokeInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
+//
+// Description:
+//
+// Updates are allowed only when the ECR is in the **Active*	- state.
+//
 // @param request - SynchronizeExpressConnectRouterInterRegionBandwidthRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8456,15 +12659,34 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithOpt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SynchronizeExpressConnectRouterInterRegionBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SynchronizeExpressConnectRouterInterRegionBandwidthResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SynchronizeExpressConnectRouterInterRegionBandwidthResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
+//
+// Description:
+//
+// Updates are allowed only when the ECR is in the **Active*	- state.
+//
 // @param request - SynchronizeExpressConnectRouterInterRegionBandwidthRequest
 //
 // @return SynchronizeExpressConnectRouterInterRegionBandwidthResponse
@@ -8479,6 +12701,10 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidth(reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
+//
 // @param request - TagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8524,15 +12750,30 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
+//
 // @param request - TagResourcesRequest
 //
 // @return TagResourcesResponse
@@ -8547,6 +12788,10 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from an Express Connect router (ECR).
+//
 // @param request - UntagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8596,15 +12841,30 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Removes tags from an Express Connect router (ECR).
+//
 // @param request - UntagResourcesRequest
 //
 // @return UntagResourcesResponse
