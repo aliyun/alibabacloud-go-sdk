@@ -2240,6 +2240,109 @@ func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesRespon
 	return s
 }
 
+type DeployServiceInstanceRequest struct {
+	// Ensures idempotency of the request. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Region ID. Allowed values:
+	//
+	// - cn-hangzhou: East China 1 (Hangzhou).
+	//
+	// - ap-southeast-1: Singapore.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-b58c874912fc4294****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s DeployServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployServiceInstanceRequest) SetClientToken(v string) *DeployServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeployServiceInstanceRequest) SetRegionId(v string) *DeployServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeployServiceInstanceRequest) SetServiceInstanceId(v string) *DeployServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type DeployServiceInstanceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeployServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployServiceInstanceResponseBody) SetRequestId(v string) *DeployServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeployServiceInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployServiceInstanceResponse) SetHeaders(v map[string]*string) *DeployServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployServiceInstanceResponse) SetStatusCode(v int32) *DeployServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployServiceInstanceResponse) SetBody(v *DeployServiceInstanceResponseBody) *DeployServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The region ID.
 	//
@@ -5132,6 +5235,403 @@ func (s *GetServiceInstanceResponse) SetStatusCode(v int32) *GetServiceInstanceR
 }
 
 func (s *GetServiceInstanceResponse) SetBody(v *GetServiceInstanceResponseBody) *GetServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceInstanceSubscriptionEstimateCostRequest struct {
+	// Ensures idempotence of the request. Generate a parameter value from your client to ensure its uniqueness across different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Order type. Possible value: Renewal.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Renewal
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The renewal duration for all prepaid resources of the service instance. The unit is specified by PeriodUnit.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The time unit for the renewal duration of all prepaid resources of the service instance, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource renewal configuration.
+	ResourcePeriod []*GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod `json:"ResourcePeriod,omitempty" xml:"ResourcePeriod,omitempty" type:"Repeated"`
+	// Service instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-d6ab3a63ccbb4b17****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetClientToken(v string) *GetServiceInstanceSubscriptionEstimateCostRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetOrderType(v string) *GetServiceInstanceSubscriptionEstimateCostRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetPeriod(v int32) *GetServiceInstanceSubscriptionEstimateCostRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetPeriodUnit(v string) *GetServiceInstanceSubscriptionEstimateCostRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetRegionId(v string) *GetServiceInstanceSubscriptionEstimateCostRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetResourcePeriod(v []*GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod) *GetServiceInstanceSubscriptionEstimateCostRequest {
+	s.ResourcePeriod = v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetServiceInstanceId(v string) *GetServiceInstanceSubscriptionEstimateCostRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod struct {
+	// Renewal duration. The unit is specified by PeriodUnit.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The time unit for the resource renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// Resource ARN (Aliyun Resource Name).
+	//
+	// example:
+	//
+	// acs:ecs:cn-guangzhou:1361753504587228:instance/i-7xv9pgeqvhxg10jji3vd
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod) SetPeriod(v int32) *GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod {
+	s.Period = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod) SetPeriodUnit(v string) *GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod) SetResourceArn(v string) *GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod {
+	s.ResourceArn = &v
+	return s
+}
+
+type GetServiceInstanceSubscriptionEstimateCostResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 464C8CB6-A548-5206-B83C-D32A8E43EC21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of resource price information.
+	ResourcePrices []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices `json:"ResourcePrices,omitempty" xml:"ResourcePrices,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBody) SetRequestId(v string) *GetServiceInstanceSubscriptionEstimateCostResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBody) SetResourcePrices(v []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) *GetServiceInstanceSubscriptionEstimateCostResponseBody {
+	s.ResourcePrices = v
+	return s
+}
+
+type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices struct {
+	// Currency. Valid values:
+	//
+	// - CNY: Chinese Yuan.
+	//
+	// - USD: US Dollar.
+	//
+	// - JPY: Japanese Yen.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The price details of the pricing module.
+	DetailInfos []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos `json:"DetailInfos,omitempty" xml:"DetailInfos,omitempty" type:"Repeated"`
+	// Discount.
+	//
+	// example:
+	//
+	// 100
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// Original price.
+	//
+	// example:
+	//
+	// 900
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// Renewal duration. The unit is specified by PeriodUnit.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The time unit for the renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// Resource ARN (Aliyun Resource Name).
+	//
+	// example:
+	//
+	// acs:ecs:cn-hongkong:1488317743351199:instance/i-j6c6f3lbky38o8rpeqw2
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	// Promotion details.
+	Rules []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Discounted price.
+	//
+	// example:
+	//
+	// 500
+	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetCurrency(v string) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetDetailInfos(v []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.DetailInfos = v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetDiscountAmount(v float32) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetOriginalAmount(v float32) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetPeriod(v int32) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.Period = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetPeriodUnit(v string) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetResourceArn(v string) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.ResourceArn = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetRules(v []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.Rules = v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) SetTradeAmount(v float32) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices {
+	s.TradeAmount = &v
+	return s
+}
+
+type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos struct {
+	// Discount amount.
+	//
+	// example:
+	//
+	// 100
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// Original price.
+	//
+	// example:
+	//
+	// 900
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// Pricing module identifier.
+	//
+	// example:
+	//
+	// instance
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// Discounted price.
+	//
+	// example:
+	//
+	// 500
+	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos) SetDiscountAmount(v float32) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos) SetOriginalAmount(v float32) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos) SetResource(v string) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos {
+	s.Resource = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos) SetTradeAmount(v float32) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos {
+	s.TradeAmount = &v
+	return s
+}
+
+type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules struct {
+	// Promotion description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Promotion name.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Promotion ID.
+	//
+	// example:
+	//
+	// 1021199213
+	RuleDescId *int64 `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules) SetDescription(v string) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules {
+	s.Description = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules) SetName(v string) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules) SetRuleDescId(v int64) *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules {
+	s.RuleDescId = &v
+	return s
+}
+
+type GetServiceInstanceSubscriptionEstimateCostResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceInstanceSubscriptionEstimateCostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceSubscriptionEstimateCostResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponse) SetHeaders(v map[string]*string) *GetServiceInstanceSubscriptionEstimateCostResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponse) SetStatusCode(v int32) *GetServiceInstanceSubscriptionEstimateCostResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceInstanceSubscriptionEstimateCostResponse) SetBody(v *GetServiceInstanceSubscriptionEstimateCostResponseBody) *GetServiceInstanceSubscriptionEstimateCostResponse {
 	s.Body = v
 	return s
 }
@@ -8253,6 +8753,7 @@ type ListServiceUsagesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The service applications.
 	ServiceUsages []*ListServiceUsagesResponseBodyServiceUsages `json:"ServiceUsages,omitempty" xml:"ServiceUsages,omitempty" type:"Repeated"`
+	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServiceUsagesResponseBody) String() string {
@@ -8280,6 +8781,11 @@ func (s *ListServiceUsagesResponseBody) SetRequestId(v string) *ListServiceUsage
 
 func (s *ListServiceUsagesResponseBody) SetServiceUsages(v []*ListServiceUsagesResponseBodyServiceUsages) *ListServiceUsagesResponseBody {
 	s.ServiceUsages = v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBody) SetTotalCount(v int32) *ListServiceUsagesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -9612,6 +10118,278 @@ func (s *ListTagValuesResponse) SetStatusCode(v int32) *ListTagValuesResponse {
 }
 
 func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagValuesResponse {
+	s.Body = v
+	return s
+}
+
+type RenewServiceInstanceResourcesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The renewal duration for all prepaid resources in the service instance. The unit is specified by PeriodUnit.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The time unit for the renewal duration of all prepaid resources in the service instance, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of resource renewals.
+	ResourcePeriod []*RenewServiceInstanceResourcesRequestResourcePeriod `json:"ResourcePeriod,omitempty" xml:"ResourcePeriod,omitempty" type:"Repeated"`
+	// Service instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-b58c874912fc4294****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s RenewServiceInstanceResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewServiceInstanceResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewServiceInstanceResourcesRequest) SetClientToken(v string) *RenewServiceInstanceResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesRequest) SetPeriod(v int32) *RenewServiceInstanceResourcesRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesRequest) SetPeriodUnit(v string) *RenewServiceInstanceResourcesRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesRequest) SetRegionId(v string) *RenewServiceInstanceResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesRequest) SetResourcePeriod(v []*RenewServiceInstanceResourcesRequestResourcePeriod) *RenewServiceInstanceResourcesRequest {
+	s.ResourcePeriod = v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesRequest) SetServiceInstanceId(v string) *RenewServiceInstanceResourcesRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type RenewServiceInstanceResourcesRequestResourcePeriod struct {
+	// The renewal duration for the resource. The unit is specified by PeriodUnit.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The time unit for the renewal duration of the resource, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// Resource ARN (Aliyun Resource Name).
+	//
+	// example:
+	//
+	// acs:ecs:cn-hongkong:1488317743351199:instance/i-j6c6f3lbky38o8rpeqw2
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+}
+
+func (s RenewServiceInstanceResourcesRequestResourcePeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewServiceInstanceResourcesRequestResourcePeriod) GoString() string {
+	return s.String()
+}
+
+func (s *RenewServiceInstanceResourcesRequestResourcePeriod) SetPeriod(v int32) *RenewServiceInstanceResourcesRequestResourcePeriod {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesRequestResourcePeriod) SetPeriodUnit(v string) *RenewServiceInstanceResourcesRequestResourcePeriod {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesRequestResourcePeriod) SetResourceArn(v string) *RenewServiceInstanceResourcesRequestResourcePeriod {
+	s.ResourceArn = &v
+	return s
+}
+
+type RenewServiceInstanceResourcesResponseBody struct {
+	// Details of failed renewals.
+	FailureDetails []*RenewServiceInstanceResourcesResponseBodyFailureDetails `json:"FailureDetails,omitempty" xml:"FailureDetails,omitempty" type:"Repeated"`
+	// Renewal result.
+	RenewalResult *RenewServiceInstanceResourcesResponseBodyRenewalResult `json:"RenewalResult,omitempty" xml:"RenewalResult,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenewServiceInstanceResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewServiceInstanceResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewServiceInstanceResourcesResponseBody) SetFailureDetails(v []*RenewServiceInstanceResourcesResponseBodyFailureDetails) *RenewServiceInstanceResourcesResponseBody {
+	s.FailureDetails = v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponseBody) SetRenewalResult(v *RenewServiceInstanceResourcesResponseBodyRenewalResult) *RenewServiceInstanceResourcesResponseBody {
+	s.RenewalResult = v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponseBody) SetRequestId(v string) *RenewServiceInstanceResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenewServiceInstanceResourcesResponseBodyFailureDetails struct {
+	// Error code.
+	//
+	// example:
+	//
+	// InvalidPeriod
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// Error message
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Resource ARN (Aliyun Resource Name).
+	//
+	// example:
+	//
+	// acs:ecs:cn-hongkong:1488317743351199:instance/i-j6c6f3lbky38o8rpeqw2
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+}
+
+func (s RenewServiceInstanceResourcesResponseBodyFailureDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewServiceInstanceResourcesResponseBodyFailureDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RenewServiceInstanceResourcesResponseBodyFailureDetails) SetErrorCode(v string) *RenewServiceInstanceResourcesResponseBodyFailureDetails {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponseBodyFailureDetails) SetErrorMessage(v string) *RenewServiceInstanceResourcesResponseBodyFailureDetails {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponseBodyFailureDetails) SetResourceArn(v string) *RenewServiceInstanceResourcesResponseBodyFailureDetails {
+	s.ResourceArn = &v
+	return s
+}
+
+type RenewServiceInstanceResourcesResponseBodyRenewalResult struct {
+	// Number of failed renewals.
+	//
+	// example:
+	//
+	// 1
+	Failed *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// Number of successfully renewed resources.
+	//
+	// example:
+	//
+	// 9
+	Succeeded *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	// Number of renewed resources.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s RenewServiceInstanceResourcesResponseBodyRenewalResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewServiceInstanceResourcesResponseBodyRenewalResult) GoString() string {
+	return s.String()
+}
+
+func (s *RenewServiceInstanceResourcesResponseBodyRenewalResult) SetFailed(v int32) *RenewServiceInstanceResourcesResponseBodyRenewalResult {
+	s.Failed = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponseBodyRenewalResult) SetSucceeded(v int32) *RenewServiceInstanceResourcesResponseBodyRenewalResult {
+	s.Succeeded = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponseBodyRenewalResult) SetTotalCount(v int32) *RenewServiceInstanceResourcesResponseBodyRenewalResult {
+	s.TotalCount = &v
+	return s
+}
+
+type RenewServiceInstanceResourcesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewServiceInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RenewServiceInstanceResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewServiceInstanceResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewServiceInstanceResourcesResponse) SetHeaders(v map[string]*string) *RenewServiceInstanceResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponse) SetStatusCode(v int32) *RenewServiceInstanceResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewServiceInstanceResourcesResponse) SetBody(v *RenewServiceInstanceResourcesResponseBody) *RenewServiceInstanceResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -11372,13 +12150,24 @@ func (client *Client) CancelServiceUsageWithOptions(request *CancelServiceUsageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11444,13 +12233,24 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11524,13 +12324,24 @@ func (client *Client) CheckServiceDeployableWithOptions(request *CheckServiceDep
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckServiceDeployableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckServiceDeployableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckServiceDeployableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11608,13 +12419,24 @@ func (client *Client) ContinueDeployServiceInstanceWithOptions(request *Continue
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ContinueDeployServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ContinueDeployServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ContinueDeployServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11750,13 +12572,24 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11824,13 +12657,24 @@ func (client *Client) CreateServiceUsageWithOptions(tmpReq *CreateServiceUsageRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11892,13 +12736,24 @@ func (client *Client) DeleteServiceInstancesWithOptions(request *DeleteServiceIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteServiceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteServiceInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteServiceInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11912,6 +12767,85 @@ func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServiceInstancesResponse{}
 	_body, _err := client.DeleteServiceInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deploy service instance in Created status.
+//
+// @param request - DeployServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployServiceInstanceResponse
+func (client *Client) DeployServiceInstanceWithOptions(request *DeployServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *DeployServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployServiceInstance"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeployServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeployServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deploy service instance in Created status.
+//
+// @param request - DeployServiceInstanceRequest
+//
+// @return DeployServiceInstanceResponse
+func (client *Client) DeployServiceInstance(request *DeployServiceInstanceRequest) (_result *DeployServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeployServiceInstanceResponse{}
+	_body, _err := client.DeployServiceInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11952,13 +12886,24 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12032,13 +12977,24 @@ func (client *Client) GenerateServicePolicyWithOptions(request *GenerateServiceP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateServicePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateServicePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateServicePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12112,13 +13068,24 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12222,13 +13189,24 @@ func (client *Client) GetServiceEstimateCostWithOptions(tmpReq *GetServiceEstima
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceEstimateCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceEstimateCostResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceEstimateCostResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12290,13 +13268,24 @@ func (client *Client) GetServiceInstanceWithOptions(request *GetServiceInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12310,6 +13299,101 @@ func (client *Client) GetServiceInstance(request *GetServiceInstanceRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceInstanceResponse{}
 	_body, _err := client.GetServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query renewal prices for prepaid resources of private deployment service instance. You can query renewal prices for all prepaid resources included in a service instance, or query renewal prices for specified resources. Only one of the two methods can be used.
+//
+// @param request - GetServiceInstanceSubscriptionEstimateCostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceInstanceSubscriptionEstimateCostResponse
+func (client *Client) GetServiceInstanceSubscriptionEstimateCostWithOptions(request *GetServiceInstanceSubscriptionEstimateCostRequest, runtime *util.RuntimeOptions) (_result *GetServiceInstanceSubscriptionEstimateCostResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcePeriod)) {
+		query["ResourcePeriod"] = request.ResourcePeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceInstanceSubscriptionEstimateCost"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceInstanceSubscriptionEstimateCostResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceInstanceSubscriptionEstimateCostResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Query renewal prices for prepaid resources of private deployment service instance. You can query renewal prices for all prepaid resources included in a service instance, or query renewal prices for specified resources. Only one of the two methods can be used.
+//
+// @param request - GetServiceInstanceSubscriptionEstimateCostRequest
+//
+// @return GetServiceInstanceSubscriptionEstimateCostResponse
+func (client *Client) GetServiceInstanceSubscriptionEstimateCost(request *GetServiceInstanceSubscriptionEstimateCostRequest) (_result *GetServiceInstanceSubscriptionEstimateCostResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceInstanceSubscriptionEstimateCostResponse{}
+	_body, _err := client.GetServiceInstanceSubscriptionEstimateCostWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12376,13 +13460,24 @@ func (client *Client) GetServiceProvisionsWithOptions(tmpReq *GetServiceProvisio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceProvisionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceProvisionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceProvisionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12476,13 +13571,24 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceTemplateParameterConstraintsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceTemplateParameterConstraintsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceTemplateParameterConstraintsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12536,13 +13642,24 @@ func (client *Client) GetUserInformationWithOptions(request *GetUserInformationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserInformationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserInformationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserInformationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12585,13 +13702,24 @@ func (client *Client) ListServiceCategoriesWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceCategoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceCategoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12671,13 +13799,24 @@ func (client *Client) ListServiceInstanceLogsWithOptions(request *ListServiceIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceInstanceLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstanceLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstanceLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12771,13 +13910,24 @@ func (client *Client) ListServiceInstanceResourcesWithOptions(request *ListServi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceInstanceResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstanceResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstanceResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12843,13 +13993,24 @@ func (client *Client) ListServiceInstanceUpgradeHistoryWithOptions(request *List
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceInstanceUpgradeHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstanceUpgradeHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstanceUpgradeHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12923,13 +14084,24 @@ func (client *Client) ListServiceInstancesWithOptions(request *ListServiceInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -12991,13 +14163,24 @@ func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceUsagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceUsagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceUsagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13083,13 +14266,24 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13151,13 +14345,24 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13227,13 +14432,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13299,13 +14515,24 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13319,6 +14546,97 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
 	_body, _err := client.ListTagValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Renew the prepaid resources included in the private deployment service instance. You can renew all prepaid resources under the specified service instance ID, or you can renew the specified resources. Only one of the two renewal methods can be used.
+//
+// @param request - RenewServiceInstanceResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewServiceInstanceResourcesResponse
+func (client *Client) RenewServiceInstanceResourcesWithOptions(request *RenewServiceInstanceResourcesRequest, runtime *util.RuntimeOptions) (_result *RenewServiceInstanceResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcePeriod)) {
+		query["ResourcePeriod"] = request.ResourcePeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewServiceInstanceResources"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewServiceInstanceResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewServiceInstanceResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Renew the prepaid resources included in the private deployment service instance. You can renew all prepaid resources under the specified service instance ID, or you can renew the specified resources. Only one of the two renewal methods can be used.
+//
+// @param request - RenewServiceInstanceResourcesRequest
+//
+// @return RenewServiceInstanceResourcesResponse
+func (client *Client) RenewServiceInstanceResources(request *RenewServiceInstanceResourcesRequest) (_result *RenewServiceInstanceResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewServiceInstanceResourcesResponse{}
+	_body, _err := client.RenewServiceInstanceResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13367,13 +14685,24 @@ func (client *Client) RestartServiceInstanceWithOptions(request *RestartServiceI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13435,13 +14764,24 @@ func (client *Client) RollbackServiceInstanceWithOptions(request *RollbackServic
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13503,13 +14843,24 @@ func (client *Client) StartServiceInstanceWithOptions(request *StartServiceInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13571,13 +14922,24 @@ func (client *Client) StopServiceInstanceWithOptions(request *StopServiceInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13643,13 +15005,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13719,13 +15092,24 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13787,13 +15171,24 @@ func (client *Client) UpdateServiceInstanceAttributesWithOptions(request *Update
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceInstanceAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceInstanceAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceInstanceAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13887,13 +15282,24 @@ func (client *Client) UpdateServiceInstanceSpecWithOptions(tmpReq *UpdateService
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceInstanceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceInstanceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -13967,13 +15373,24 @@ func (client *Client) UpdateServiceUsageWithOptions(tmpReq *UpdateServiceUsageRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14031,13 +15448,24 @@ func (client *Client) UpdateUserInformationWithOptions(request *UpdateUserInform
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateUserInformationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateUserInformationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateUserInformationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -14117,13 +15545,24 @@ func (client *Client) UpgradeServiceInstanceWithOptions(tmpReq *UpgradeServiceIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
