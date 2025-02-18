@@ -148,24 +148,40 @@ func (s *AccessPageSetAclResponse) SetBody(v *AccessPageSetAclResponseBody) *Acc
 }
 
 type ApproveOtaTaskRequest struct {
+	// The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the region where the delivery group resides. You can call the [ListRegions](https://help.aliyun.com/document_detail/428500.html) operation to query the list of regions supported by App Streaming.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The type of the OTA update task.
+	//
+	// Valid values:
+	//
+	// 	- Fota: update of the system components of Alibaba Cloud Workspace
+	//
+	// 	- AppUpdate
+	//
+	// 	- ImageUpdate
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Fota
 	OtaType *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
+	// The start time of the OTA update task. The time follows the ISO 8601 standard.
+	//
 	// This parameter is required.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
@@ -174,6 +190,10 @@ type ApproveOtaTaskRequest struct {
 	//
 	// 2022-08-04T14:36:00+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the OTA update task. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	//
+	// >  Each successful call to the `ApproveOtaTask` operation causes a value change of this parameter.`` Before you call this operation, call the `ListAppInstanceGroup` operation again to obtain the latest value of this parameter.``
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -216,14 +236,20 @@ func (s *ApproveOtaTaskRequest) SetTaskId(v string) *ApproveOtaTaskRequest {
 }
 
 type ApproveOtaTaskResponseBody struct {
+	// The execution result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OtaTask.Running
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message. If the value of `Code` is `success`, this parameter is not returned.
+	//
 	// example:
 	//
 	// The task is running and cannot be sumitted.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -1916,18 +1942,28 @@ func (s *CreateAppInstanceGroupResponse) SetBody(v *CreateAppInstanceGroupRespon
 }
 
 type CreateImageFromAppInstanceGroupRequest struct {
+	// The image name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_name
 	AppCenterImageName *string `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
+	// The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1960,10 +1996,14 @@ func (s *CreateImageFromAppInstanceGroupRequest) SetProductType(v string) *Creat
 }
 
 type CreateImageFromAppInstanceGroupResponseBody struct {
+	// The image ID.
+	//
 	// example:
 	//
 	// img-bp13mu****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -2113,12 +2153,20 @@ func (s *DeleteAccessPageResponse) SetBody(v *DeleteAccessPageResponseBody) *Del
 }
 
 type DeleteAppInstanceGroupRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2146,6 +2194,8 @@ func (s *DeleteAppInstanceGroupRequest) SetProductType(v string) *DeleteAppInsta
 }
 
 type DeleteAppInstanceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -2195,17 +2245,27 @@ func (s *DeleteAppInstanceGroupResponse) SetBody(v *DeleteAppInstanceGroupRespon
 }
 
 type DeleteAppInstancesRequest struct {
+	// The ID of the delivery group. You can call the [listAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The IDs of application instances.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// false
 	AppInstanceIds []*string `json:"AppInstanceIds,omitempty" xml:"AppInstanceIds,omitempty" type:"Repeated"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2238,7 +2298,10 @@ func (s *DeleteAppInstancesRequest) SetProductType(v string) *DeleteAppInstances
 }
 
 type DeleteAppInstancesResponseBody struct {
+	// The data returned.
 	DeleteAppInstanceModels []*DeleteAppInstancesResponseBodyDeleteAppInstanceModels `json:"DeleteAppInstanceModels,omitempty" xml:"DeleteAppInstanceModels,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -2264,18 +2327,32 @@ func (s *DeleteAppInstancesResponseBody) SetRequestId(v string) *DeleteAppInstan
 }
 
 type DeleteAppInstancesResponseBodyDeleteAppInstanceModels struct {
+	// The ID of the application instance.
+	//
 	// example:
 	//
 	// ai-gbuea*****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The parameter ProductType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Specifies whether the application instance is deleted.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -3195,40 +3272,86 @@ func (s *GetAppInstanceGroupResponse) SetBody(v *GetAppInstanceGroupResponseBody
 }
 
 type GetConnectionTicketRequest struct {
+	// The application ID.
+	//
+	// >  This parameter is required for the first call to this operation and optional for subsequent calls to the operation.
+	//
 	// example:
 	//
 	// ca-e4s0puhmwi7v****
-	AppId                  *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The delivery groups.
+	//
+	// >
+	//
+	// 	- If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups.
+	//
+	// 	- This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
 	AppInstanceGroupIdList []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
+	// The ID of the application instance.
+	//
+	// >
+	//
+	// 	- If you configure this parameter, the system attempts to assign only the specified application instance.
+	//
+	// 	- If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
+	//
 	// example:
 	//
 	// ai-1rznfnrvsa99d****
-	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The ID of the persistent session.
+	//
+	// example:
+	//
+	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/zh/wuying-appstreaming/user-guide/create-an-application?#how-to-get-installation-and-startup-para).
+	//
 	// example:
 	//
 	// /q /n
 	AppStartParam *string `json:"AppStartParam,omitempty" xml:"AppStartParam,omitempty"`
+	// The application version. If you configure this parameter, only an application of the specified version is started. If you do not configure this parameter, an application of a random authorized version is started.
+	//
 	// example:
 	//
 	// 1.0.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The region ID.
+	//
+	// >  If you configure this parameter, the system assigns application instances only among the delivery groups that reside in the specified region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The ID of the convenience account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The product type.
+	//
+	// Valid values:
+	//
+	// 	- CloudApp: App Streaming
+	//
+	// 	- AndroidCloud: Cloud Phone
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The task ID.
+	//
+	// >  This parameter is required for calls other than the first call to this operation. You can use this parameter to query the task status and connection credential.
+	//
 	// example:
 	//
 	// 28778acb-a469-4bc0-8e0f****
@@ -3294,36 +3417,76 @@ func (s *GetConnectionTicketRequest) SetTaskId(v string) *GetConnectionTicketReq
 }
 
 type GetConnectionTicketResponseBody struct {
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-53fvrq1oan****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the application instance.
+	//
 	// example:
 	//
 	// ai-7ybdeiyoeh5e****
-	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The ID of the persistent session.
+	//
+	// example:
+	//
+	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The operating system.
+	//
+	// Valid value:
+	//
+	// 	- Windows: the Windows operating system
+	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// f3d1b31c-605e-4d04-a896****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task status.
+	//
+	// Valid values:
+	//
+	// 	- Finished: The task is complete.
+	//
+	// 	- Failed: The task failed.
+	//
+	// 	- Running: The task is being executed.
+	//
 	// example:
 	//
 	// Running
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 148871678899****
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The credential that is used to connect to App Streaming.
+	//
+	// >  This parameter is displayed for calls other than the first call to this operation.
+	//
 	// example:
 	//
 	// DQpbRGVza3RvcF0NCkZvcmNlVGxzVHlwZT0xDQpHV1Rva2VuUGFydDE9MDAva09ROW1FUTU3dU****
@@ -3418,12 +3581,20 @@ func (s *GetConnectionTicketResponse) SetBody(v *GetConnectionTicketResponseBody
 }
 
 type GetDebugAppInstanceRequest struct {
+	// The ID of the delivery group. You can call the `listAppInstanceGroup` operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3451,28 +3622,48 @@ func (s *GetDebugAppInstanceRequest) SetProductType(v string) *GetDebugAppInstan
 }
 
 type GetDebugAppInstanceResponseBody struct {
+	// The application ID.
+	//
+	// example:
+	//
+	// __DEBUG_APP
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the application instance.
+	//
 	// example:
 	//
 	// ai-7ybdeiyoeh5e****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The ID of the application version.
+	//
 	// example:
 	//
 	// 1.1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The authorization code. This authorization code is valid for 3 minutes and can be used only once, regardless of whether the authentication succeeds. If multiple authentication codes are generated for a user, only the latest authentication code takes effect.
+	//
 	// example:
 	//
 	// e4e169bea1cc48e8afac53**********
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// __debug__
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetDebugAppInstanceResponseBody) String() string {
@@ -3548,6 +3739,8 @@ func (s *GetDebugAppInstanceResponse) SetBody(v *GetDebugAppInstanceResponseBody
 }
 
 type GetOtaTaskByTaskIdRequest struct {
+	// The ID of the OTA update task. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3570,23 +3763,34 @@ func (s *GetOtaTaskByTaskIdRequest) SetTaskId(v string) *GetOtaTaskByTaskIdReque
 }
 
 type GetOtaTaskByTaskIdResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// OtaTask.Running
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The task is running and cannot be sumitted.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The OTA version.
+	//
 	// example:
 	//
 	// 0.0.1-R-20220708.110604
-	OtaVersion  *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	// The version description.
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution time of the OTA update task. The time follows the ISO 8601 standard.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
@@ -3663,40 +3867,110 @@ func (s *GetOtaTaskByTaskIdResponse) SetBody(v *GetOtaTaskByTaskIdResponseBody) 
 }
 
 type GetResourcePriceRequest struct {
+	// The number of resources to purchase.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The type ID of the sessions that you purchase. You can call the `ListAppInstanceType` operation to obtain the ID.
+	//
+	// You must specify one of AppInstanceType and NodeInstanceType. If you specify both of the parameters, the value of NodeInstanceType takes effect.
+	//
 	// example:
 	//
 	// appstreaming.general
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	//
+	// Valid values:
+	//
+	// 	- cn-shanghai: China (Shanghai).
+	//
+	// 	- cn-hangzhou: China (Hangzhou)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PostPaid: pay-as-you-go
+	//
+	// 	- PrePaid: subscription
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The ID of the resource type that you purchase. You can call the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) to obtain the ID.
+	//
+	// You must specify one of AppInstanceType and NodeInstanceType. If you specify both of the parameters, the value of NodeInstanceType takes effect.
+	//
+	// Valid values:
+	//
+	// 	- appstreaming.vgpu.8c16g.4g: WUYING - Graphics - 8 vCPUs, 16 GiB Memory, 4 GiB GPU Memory
+	//
+	// 	- appstreaming.general.8c16g: WUYING - General - 8 vCPUs, 16 GiB Memory
+	//
+	// 	- appstreaming.general.4c8g: WUYING - General - 4 vCPUs, 8 GiB Memory
+	//
+	// 	- appstreaming.vgpu.14c93g.12g: WUYING - Graphics - 14 vCPUs, 93 GiB Memory, 12 GiB GPU Memory.
+	//
+	// 	- appstreaming.vgpu.8c31g.16g: WUYING - Graphics - 8 vCPUs, 31 GiB Memory, 16 GiB GPU Memory
+	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+	//
+	// 	- 1 Week
+	//
+	// 	- 1 Month
+	//
+	// 	- 2 Month
+	//
+	// 	- 3 Month
+	//
+	// 	- 6 Month
+	//
+	// 	- 1 Year
+	//
+	// 	- 2 Year
+	//
+	// 	- 3 Year
+	//
+	// >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3754,16 +4028,28 @@ func (s *GetResourcePriceRequest) SetProductType(v string) *GetResourcePriceRequ
 }
 
 type GetResourcePriceResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The parameter ProductType is invalid.
-	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	PriceList  []*GetResourcePriceResponseBodyPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
-	PriceModel *GetResourcePriceResponseBodyPriceModel  `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The price objects.
+	//
+	// This parameter is returned only if a value is specified for AppInstanceType.
+	PriceList []*GetResourcePriceResponseBodyPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
+	// The price object.
+	//
+	// This parameter is returned only if a value is specified for NodeInstanceType.
+	PriceModel *GetResourcePriceResponseBodyPriceModel `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -3804,12 +4090,22 @@ func (s *GetResourcePriceResponseBody) SetRequestId(v string) *GetResourcePriceR
 }
 
 type GetResourcePriceResponseBodyPriceList struct {
+	// The price details.
 	Price *GetResourcePriceResponseBodyPriceListPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price type.
+	//
+	// Valid values:
+	//
+	// 	- Connected: in use
+	//
+	// 	- Standby: pending for use.
+	//
 	// example:
 	//
 	// Standby
-	PriceType *string                                       `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
-	Rules     []*GetResourcePriceResponseBodyPriceListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+	// The price calculation rules.
+	Rules []*GetResourcePriceResponseBodyPriceListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s GetResourcePriceResponseBodyPriceList) String() string {
@@ -3836,19 +4132,28 @@ func (s *GetResourcePriceResponseBodyPriceList) SetRules(v []*GetResourcePriceRe
 }
 
 type GetResourcePriceResponseBodyPriceListPrice struct {
+	// The currency type.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	//
 	// example:
 	//
 	// 999.0
 	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 6700
-	OriginalPrice *string                                                 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Promotions    []*GetResourcePriceResponseBodyPriceListPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The coupon metadata.
+	Promotions []*GetResourcePriceResponseBodyPriceListPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	//
 	// example:
 	//
 	// 5278.0
@@ -3889,16 +4194,30 @@ func (s *GetResourcePriceResponseBodyPriceListPrice) SetTradePrice(v string) *Ge
 }
 
 type GetResourcePriceResponseBodyPriceListPricePromotions struct {
+	// The coupon code.
+	//
 	// example:
 	//
 	// coupon****
-	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 1847709****
-	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The coupon name.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the coupon was used.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -3939,7 +4258,10 @@ func (s *GetResourcePriceResponseBodyPriceListPricePromotions) SetSelected(v boo
 }
 
 type GetResourcePriceResponseBodyPriceListRules struct {
+	// The description of the price calculation rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the price calculation rule.
+	//
 	// example:
 	//
 	// 260904273633****
@@ -3965,7 +4287,9 @@ func (s *GetResourcePriceResponseBodyPriceListRules) SetRuleId(v int64) *GetReso
 }
 
 type GetResourcePriceResponseBodyPriceModel struct {
-	Price *GetResourcePriceResponseBodyPriceModelPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price details.
+	Price *GetResourcePriceResponseBodyPriceModelPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price calculation rules.
 	Rules []*GetResourcePriceResponseBodyPriceModelRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -3988,19 +4312,28 @@ func (s *GetResourcePriceResponseBodyPriceModel) SetRules(v []*GetResourcePriceR
 }
 
 type GetResourcePriceResponseBodyPriceModelPrice struct {
+	// The currency type.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	//
 	// example:
 	//
 	// 1.00
 	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 11.00
-	OriginalPrice *string                                                  `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Promotions    []*GetResourcePriceResponseBodyPriceModelPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The coupon metadata.
+	Promotions []*GetResourcePriceResponseBodyPriceModelPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	//
 	// example:
 	//
 	// 10.00
@@ -4041,16 +4374,30 @@ func (s *GetResourcePriceResponseBodyPriceModelPrice) SetTradePrice(v string) *G
 }
 
 type GetResourcePriceResponseBodyPriceModelPricePromotions struct {
+	// The coupon code.
+	//
 	// example:
 	//
 	// coupon****
-	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 17440009****
-	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The coupon name.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the coupon was used.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -4091,7 +4438,10 @@ func (s *GetResourcePriceResponseBodyPriceModelPricePromotions) SetSelected(v bo
 }
 
 type GetResourcePriceResponseBodyPriceModelRules struct {
+	// The description of the price calculation rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the price calculation rule.
+	//
 	// example:
 	//
 	// 102002100393****
@@ -4146,24 +4496,54 @@ func (s *GetResourcePriceResponse) SetBody(v *GetResourcePriceResponseBody) *Get
 }
 
 type GetResourceRenewPriceRequest struct {
+	// The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+	//
+	// 	- 1 Week
+	//
+	// 	- 1 Month
+	//
+	// 	- 2 Month
+	//
+	// 	- 3 Month
+	//
+	// 	- 6 Month
+	//
+	// 	- 1 Year
+	//
+	// 	- 2 Year
+	//
+	// 	- 3 Year
+	//
+	// >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4201,7 +4581,10 @@ func (s *GetResourceRenewPriceRequest) SetProductType(v string) *GetResourceRene
 }
 
 type GetResourceRenewPriceResponseBody struct {
+	// The price object.
 	Data *GetResourceRenewPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -4227,7 +4610,9 @@ func (s *GetResourceRenewPriceResponseBody) SetRequestId(v string) *GetResourceR
 }
 
 type GetResourceRenewPriceResponseBodyData struct {
-	Price *GetResourceRenewPriceResponseBodyDataPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price details.
+	Price *GetResourceRenewPriceResponseBodyDataPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price calculation rules.
 	Rules []*GetResourceRenewPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -4250,19 +4635,28 @@ func (s *GetResourceRenewPriceResponseBodyData) SetRules(v []*GetResourceRenewPr
 }
 
 type GetResourceRenewPriceResponseBodyDataPrice struct {
+	// The currency type.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	//
 	// example:
 	//
 	// 1
 	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 11
-	OriginalPrice *string                                                 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Promotions    []*GetResourceRenewPriceResponseBodyDataPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The coupon description.
+	Promotions []*GetResourceRenewPriceResponseBodyDataPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	//
 	// example:
 	//
 	// 10
@@ -4303,16 +4697,30 @@ func (s *GetResourceRenewPriceResponseBodyDataPrice) SetTradePrice(v string) *Ge
 }
 
 type GetResourceRenewPriceResponseBodyDataPricePromotions struct {
+	// The coupon code.
+	//
 	// example:
 	//
 	// coupon****
-	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 139965*****
-	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The coupon name.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the coupon was used.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -4353,7 +4761,10 @@ func (s *GetResourceRenewPriceResponseBodyDataPricePromotions) SetSelected(v boo
 }
 
 type GetResourceRenewPriceResponseBodyDataRules struct {
+	// The description of the price calculation rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the price calculation rule.
+	//
 	// example:
 	//
 	// 20002****
@@ -5507,31 +5918,51 @@ func (s *ListAppInstanceGroupResponse) SetBody(v *ListAppInstanceGroupResponseBo
 }
 
 type ListAppInstancesRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-4p5f8tj16yb8b****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the application instance.
+	//
 	// example:
 	//
 	// ai-azn3kmwruh1vl****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The IDs of the application instances. Up to 100 IDs can be specified.
+	//
 	// if can be null:
 	// false
 	AppInstanceIdList []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
+	// Specifies whether to query the information about deleted application instances. If you set this parameter to true, you must configure AppInstanceIdList. Otherwise, a parameter error is reported.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	IncludeDeleted *bool `json:"IncludeDeleted,omitempty" xml:"IncludeDeleted,omitempty"`
+	// The number of the page to return. Default value: `1`. We recommend that you configure this parameter.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The value cannot be greater than `100`. Default value: `20`. We recommend that you configure this parameter.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the application instances.
+	//
 	// if can be null:
 	// false
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
@@ -5581,19 +6012,28 @@ func (s *ListAppInstancesRequest) SetStatus(v []*string) *ListAppInstancesReques
 }
 
 type ListAppInstancesResponseBody struct {
+	// The IDs of the application instances.
 	AppInstanceModels []*ListAppInstancesResponseBodyAppInstanceModels `json:"AppInstanceModels,omitempty" xml:"AppInstanceModels,omitempty" type:"Repeated"`
+	// The page number of the returned page. We recommend that you configure this parameter.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page. The value cannot be greater than `100`. We recommend that you configure this parameter.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 18
@@ -5634,31 +6074,54 @@ func (s *ListAppInstancesResponseBody) SetTotalCount(v int32) *ListAppInstancesR
 }
 
 type ListAppInstancesResponseBodyAppInstanceModels struct {
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-dk8p95irqfst9****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the application instance.
+	//
 	// example:
 	//
 	// ai-8dl7dzchklmka****
-	AppInstanceId *string                                                `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	BindInfo      *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The information about the binding between the application instance and end users.
+	BindInfo   *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
+	ChargeType *string                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the application instance was created.
+	//
 	// example:
 	//
 	// 2023-03-07T20:29:19.000+08:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the application instance was updated.
+	//
 	// example:
 	//
 	// 2023-03-07T20:29:19.000+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The public IP address associated with the primary NIC. This value is returned only if `StrategyType` is set to `Mixed`.
+	//
 	// example:
 	//
 	// 10.13.13.211
 	MainEthPublicIp *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The session status. This parameter is returned only if the application instance is in the `RUNNING` state.
+	//
+	// Valid values:
+	//
+	// 	- disconnect: disconnected
+	//
+	// 	- connect: connected
+	//
 	// example:
 	//
 	// connect
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// The status of the application instance.
+	//
 	// example:
 	//
 	// BOUND
@@ -5688,6 +6151,11 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetBindInfo(v *ListAppIn
 	return s
 }
 
+func (s *ListAppInstancesResponseBodyAppInstanceModels) SetChargeType(v string) *ListAppInstancesResponseBodyAppInstanceModels {
+	s.ChargeType = &v
+	return s
+}
+
 func (s *ListAppInstancesResponseBodyAppInstanceModels) SetGmtCreate(v string) *ListAppInstancesResponseBodyAppInstanceModels {
 	s.GmtCreate = &v
 	return s
@@ -5703,6 +6171,11 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetMainEthPublicIp(v str
 	return s
 }
 
+func (s *ListAppInstancesResponseBodyAppInstanceModels) SetNodeId(v string) *ListAppInstancesResponseBodyAppInstanceModels {
+	s.NodeId = &v
+	return s
+}
+
 func (s *ListAppInstancesResponseBodyAppInstanceModels) SetSessionStatus(v string) *ListAppInstancesResponseBodyAppInstanceModels {
 	s.SessionStatus = &v
 	return s
@@ -5714,10 +6187,14 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetStatus(v string) *Lis
 }
 
 type ListAppInstancesResponseBodyAppInstanceModelsBindInfo struct {
+	// The ID of the end user that is bound to the application instance.
+	//
 	// example:
 	//
 	// app.test
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The use duration of the application instance. Unit: seconds.
+	//
 	// example:
 	//
 	// 2000
@@ -6005,7 +6482,13 @@ func (s *ListBindInfoResponse) SetBody(v *ListBindInfoResponseBody) *ListBindInf
 }
 
 type ListNodeInstanceTypeRequest struct {
-	// 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](https://help.aliyun.com/document_detail/426036.html)。
+	// The ID of the region where the resource resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	//
+	// Valid values:
+	//
+	// 	- cn-shanghai: China (Shanghai)
+	//
+	// 	- cn-hangzhou: China (Hangzhou)
 	//
 	// example:
 	//
@@ -6014,37 +6497,59 @@ type ListNodeInstanceTypeRequest struct {
 	Cpu         *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Gpu         *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	GpuMemory   *int32   `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// 语言类型。
+	// The language that you want to use.
+	//
+	// Valid values:
+	//
+	// 	- en-US: English (US)
+	//
+	// 	- zh-CN: Simplified Chinese
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	Memory   *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The resource type that you want to query. If you do not configure this parameter, all resource types are returned.
+	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType       *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
 	OrderBy                *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 支持的操作系统类型。
+	// The operating system that is supported.
+	//
+	// Valid value:
+	//
+	// 	- Windows: the Windows operating system
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6133,16 +6638,28 @@ func (s *ListNodeInstanceTypeRequest) SetSortType(v string) *ListNodeInstanceTyp
 }
 
 type ListNodeInstanceTypeResponseBody struct {
+	// The resource types.
 	NodeInstanceTypeModels []*ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels `json:"NodeInstanceTypeModels,omitempty" xml:"NodeInstanceTypeModels,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on each page.
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 6
@@ -6183,53 +6700,69 @@ func (s *ListNodeInstanceTypeResponseBody) SetTotalCount(v int32) *ListNodeInsta
 }
 
 type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 4
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 2
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// 显卡内存大小，单位为MB。
+	// The GPU size. Unit: MB.
 	//
 	// example:
 	//
 	// 8192
 	GpuMemory *int64 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// 最大并发会话数，即单个资源可同时连接的会话数。如果同时连接的会话数过多，可能导致应用的使用体验下降。取值范围因资源规格不同而不同。各资源规格对应的取值范围分别是：
+	// The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
 	//
-	// - appstreaming.general.4c8g：1\\~2；
+	// 	- appstreaming.general.4c8g: 1 to 2
 	//
-	// - appstreaming.general.8c16g：1\\~4；
+	// 	- appstreaming.general.8c16g: 1 to 4
 	//
-	// - appstreaming.vgpu.8c16g.4g：1\\~4；
+	// 	- appstreaming.vgpu.8c16g.4g: 1 to 4
 	//
-	// - appstreaming.vgpu.8c31g.16g：1\\~4；
+	// 	- appstreaming.vgpu.8c31g.16g: 1 to 4
 	//
-	// - appstreaming.vgpu.14c93g.12g：1\\~6；
+	// 	- appstreaming.vgpu.14c93g.12g: 1 to 6
 	//
 	// example:
 	//
 	// 4
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	// The memory size. Unit: MB.
+	//
 	// example:
 	//
 	// 8192
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The ID of the resource type.
+	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// The resource type family.
+	//
+	// Valid values:
+	//
+	// 	- appstreaming.general: WUYING - General
+	//
+	// 	- appstreaming.vgpu: WUYING - Graphics
+	//
 	// example:
 	//
 	// appstreaming.vgpu
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
-	// 资源规格名称。
+	// The name of the resource type.
 	//
 	// example:
 	//
-	// 无影-通用型_4核8G
+	// WUYING - General - 4 vCPUs 8 GB Memory
 	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
 }
 
@@ -6311,24 +6844,36 @@ func (s *ListNodeInstanceTypeResponse) SetBody(v *ListNodeInstanceTypeResponseBo
 }
 
 type ListOtaTaskRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-53fvrq1oanz6c****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The type of the OTA update task.
+	//
+	// Valid values:
+	//
+	// 	- Fota: update of the system components of Alibaba Cloud Workspace
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Fota
 	OtaType *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
+	// The page number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6366,19 +6911,28 @@ func (s *ListOtaTaskRequest) SetPageSize(v int32) *ListOtaTaskRequest {
 }
 
 type ListOtaTaskResponseBody struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskList  []*ListOtaTaskResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The OTA update tasks.
+	TaskList []*ListOtaTaskResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	// The total number of OTA update tasks.
+	//
 	// example:
 	//
 	// 6
@@ -6419,18 +6973,40 @@ func (s *ListOtaTaskResponseBody) SetTotalCount(v int32) *ListOtaTaskResponseBod
 }
 
 type ListOtaTaskResponseBodyTaskList struct {
+	// The OTA version.
+	//
 	// example:
 	//
 	// 0.0.1-R-20220708.110604
 	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	// The task status.
+	//
+	// Valid values:
+	//
+	// 	- FAILED
+	//
+	// 	- RUNNING
+	//
+	// 	- TERMINATED
+	//
+	// 	- PART_FINISHED
+	//
+	// 	- STANDBY
+	//
+	// 	- FINISHED
+	//
 	// example:
 	//
 	// RUNNING
 	TaskDisplayStatus *string `json:"TaskDisplayStatus,omitempty" xml:"TaskDisplayStatus,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ota-be7jzm29wrrz5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The start time of the OTA update task. The time follows the ISO 8601 standard.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
@@ -6983,10 +7559,13 @@ func (s *ListSessionPackagesResponse) SetBody(v *ListSessionPackagesResponseBody
 }
 
 type ListTenantConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user configurations.
 	TenantConfigModel *ListTenantConfigResponseBodyTenantConfigModel `json:"TenantConfigModel,omitempty" xml:"TenantConfigModel,omitempty" type:"Struct"`
 }
 
@@ -7009,6 +7588,14 @@ func (s *ListTenantConfigResponseBody) SetTenantConfigModel(v *ListTenantConfigR
 }
 
 type ListTenantConfigResponseBodyTenantConfigModel struct {
+	// Indicates whether the resource expiration reminder feature is enabled.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -7058,12 +7645,20 @@ func (s *ListTenantConfigResponse) SetBody(v *ListTenantConfigResponseBody) *Lis
 }
 
 type LogOffAllSessionsInAppInstanceGroupRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7091,14 +7686,20 @@ func (s *LogOffAllSessionsInAppInstanceGroupRequest) SetProductType(v string) *L
 }
 
 type LogOffAllSessionsInAppInstanceGroupResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The parameter ProductType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -7158,30 +7759,63 @@ func (s *LogOffAllSessionsInAppInstanceGroupResponse) SetBody(v *LogOffAllSessio
 }
 
 type ModifyAppInstanceGroupAttributeRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
-	AppInstanceGroupId   *string                                         `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceGroupName *string                                         `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	Network              *ModifyAppInstanceGroupAttributeRequestNetwork  `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	NodePool             *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	PerSessionPerApp     *bool                                           `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	PreOpenAppId         *string                                         `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
-	PreOpenMode          *string                                         `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The name of the delivery group.
+	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	// The network settings.
+	//
+	// >  If you want to use this parameter, submit a ticket.
+	Network *ModifyAppInstanceGroupAttributeRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The information about the resource group.
+	NodePool         *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	PerSessionPerApp *bool                                           `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
+	// The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
+	//
+	// example:
+	//
+	// ca-b2ronxxd****
+	PreOpenAppId *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	// The pre-open mode.
+	//
+	// Valid values:
+	//
+	// 	- SINGLE_APP: enables the pre-open mode for a single application.
+	//
+	// 	- OFF: disables the pre-open mode. This is the default value.
+	//
+	// example:
+	//
+	// OFF
+	PreOpenMode *string `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
-	ProductType    *string                                               `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The security policy.
 	SecurityPolicy *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
+	// The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+	//
 	// example:
 	//
 	// 15
-	SessionTimeout *int32                                               `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	StoragePolicy  *ModifyAppInstanceGroupAttributeRequestStoragePolicy `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
+	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// The storage policy.
+	StoragePolicy *ModifyAppInstanceGroupAttributeRequestStoragePolicy `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
 }
 
 func (s ModifyAppInstanceGroupAttributeRequest) String() string {
@@ -7248,6 +7882,7 @@ func (s *ModifyAppInstanceGroupAttributeRequest) SetStoragePolicy(v *ModifyAppIn
 }
 
 type ModifyAppInstanceGroupAttributeRequestNetwork struct {
+	// The domain name rules.
 	DomainRules []*ModifyAppInstanceGroupAttributeRequestNetworkDomainRules `json:"DomainRules,omitempty" xml:"DomainRules,omitempty" type:"Repeated"`
 }
 
@@ -7265,7 +7900,23 @@ func (s *ModifyAppInstanceGroupAttributeRequestNetwork) SetDomainRules(v []*Modi
 }
 
 type ModifyAppInstanceGroupAttributeRequestNetworkDomainRules struct {
+	// The domain name.
+	//
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The policy used for the domain name.
+	//
+	// Valid values:
+	//
+	// 	- allow
+	//
+	// 	- block
+	//
+	// example:
+	//
+	// block
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
@@ -7288,10 +7939,24 @@ func (s *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) SetPolicy(v s
 }
 
 type ModifyAppInstanceGroupAttributeRequestNodePool struct {
+	// The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
+	//
+	// 	- appstreaming.general.4c8g: 1 to 2
+	//
+	// 	- appstreaming.general.8c16g: 1 to 4
+	//
+	// 	- appstreaming.vgpu.8c16g.4g: 1 to 4
+	//
+	// 	- appstreaming.vgpu.8c31g.16g: 1 to 4
+	//
+	// 	- appstreaming.vgpu.14c93g.12g: 1 to 6
+	//
 	// example:
 	//
 	// 2
 	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-ew7va2g1wl3vm****
@@ -7317,10 +7982,26 @@ func (s *ModifyAppInstanceGroupAttributeRequestNodePool) SetNodePoolId(v string)
 }
 
 type ModifyAppInstanceGroupAttributeRequestSecurityPolicy struct {
+	// Specifies whether to reset after unbinding from a delivery group.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	ResetAfterUnbind *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
+	// Specifies whether to skip user permission verification.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false: This is the default value.
+	//
 	// example:
 	//
 	// false
@@ -7346,7 +8027,9 @@ func (s *ModifyAppInstanceGroupAttributeRequestSecurityPolicy) SetSkipUserAuthCh
 }
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicy struct {
+	// The storage types.
 	StorageTypeList   []*string                                                             `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
+	UserProfile       *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile       `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
 	UserProfileFollow *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow `json:"UserProfileFollow,omitempty" xml:"UserProfileFollow,omitempty" type:"Struct"`
 }
 
@@ -7363,8 +8046,36 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetStorageTypeList
 	return s
 }
 
+func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetUserProfile(v *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile) *ModifyAppInstanceGroupAttributeRequestStoragePolicy {
+	s.UserProfile = v
+	return s
+}
+
 func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetUserProfileFollow(v *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow) *ModifyAppInstanceGroupAttributeRequestStoragePolicy {
 	s.UserProfileFollow = v
+	return s
+}
+
+type ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile struct {
+	FileSystemId      *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	UserProfileSwitch *bool   `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile) SetFileSystemId(v string) *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile) SetUserProfileSwitch(v bool) *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile {
+	s.UserProfileSwitch = &v
 	return s
 }
 
@@ -7392,29 +8103,62 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow) S
 }
 
 type ModifyAppInstanceGroupAttributeShrinkRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
-	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The name of the delivery group.
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	NetworkShrink        *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	NodePoolShrink       *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
-	PerSessionPerApp     *bool   `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	PreOpenAppId         *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
-	PreOpenMode          *string `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
+	// The network settings.
+	//
+	// >  If you want to use this parameter, submit a ticket.
+	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The information about the resource group.
+	NodePoolShrink   *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
+	PerSessionPerApp *bool   `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
+	// The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
+	//
+	// example:
+	//
+	// ca-b2ronxxd****
+	PreOpenAppId *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	// The pre-open mode.
+	//
+	// Valid values:
+	//
+	// 	- SINGLE_APP: enables the pre-open mode for a single application.
+	//
+	// 	- OFF: disables the pre-open mode. This is the default value.
+	//
+	// example:
+	//
+	// OFF
+	PreOpenMode *string `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
-	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
+	// The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+	//
 	// example:
 	//
 	// 15
-	SessionTimeout      *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// The storage policy.
 	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
 }
 
@@ -7482,14 +8226,20 @@ func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetStoragePolicyShrink(v 
 }
 
 type ModifyAppInstanceGroupAttributeResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The parameter ProductType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -8130,6 +8880,14 @@ func (s *ModifyNodePoolAttributeResponse) SetBody(v *ModifyNodePoolAttributeResp
 }
 
 type ModifyTenantConfigRequest struct {
+	// Specifies whether to enable the resource expiration reminder feature.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -8150,6 +8908,8 @@ func (s *ModifyTenantConfigRequest) SetAppInstanceGroupExpireRemind(v bool) *Mod
 }
 
 type ModifyTenantConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -8199,20 +8959,32 @@ func (s *ModifyTenantConfigResponse) SetBody(v *ModifyTenantConfigResponseBody) 
 }
 
 type PageListAppInstanceGroupUserRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The number of the page to return. We recommend that you configure this parameter.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to be return on each page. The value cannot be greater than `100`. We recommend that you configure this parameter.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8250,11 +9022,14 @@ func (s *PageListAppInstanceGroupUserRequest) SetProductType(v string) *PageList
 }
 
 type PageListAppInstanceGroupUserResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users     []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The users.
+	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s PageListAppInstanceGroupUserResponseBody) String() string {
@@ -8305,30 +9080,74 @@ func (s *PageListAppInstanceGroupUserResponse) SetBody(v *PageListAppInstanceGro
 }
 
 type RenewAppInstanceGroupRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// Specifies whether to enable automatic payment.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false: manual payment. This is the default value.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+	//
+	// 	- 1 Week
+	//
+	// 	- 1 Month
+	//
+	// 	- 2 Month
+	//
+	// 	- 3 Month
+	//
+	// 	- 6 Month
+	//
+	// 	- 1 Year
+	//
+	// 	- 2 Year
+	//
+	// 	- 3 Year
+	//
+	// >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 17440009****
@@ -8374,18 +9193,26 @@ func (s *RenewAppInstanceGroupRequest) SetPromotionId(v string) *RenewAppInstanc
 }
 
 type RenewAppInstanceGroupResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The parameter ProductType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 123456****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -8450,23 +9277,40 @@ func (s *RenewAppInstanceGroupResponse) SetBody(v *RenewAppInstanceGroupResponse
 }
 
 type UnbindRequest struct {
+	// The ID of the delivery group. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+	//
 	// example:
 	//
 	// ai-d297eyf83g5ni****
-	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The ID of the persistent session. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+	//
+	// example:
+	//
+	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// The username.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8509,6 +9353,8 @@ func (s *UnbindRequest) SetProductType(v string) *UnbindRequest {
 }
 
 type UnbindResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -8558,24 +9404,42 @@ func (s *UnbindResponse) SetBody(v *UnbindResponseBody) *UnbindResponse {
 }
 
 type UpdateAppInstanceGroupImageRequest struct {
+	// The image ID of the application. You can obtain the ID from the Images page in the App Streaming console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	//
+	// Valid values:
+	//
+	// 	- cn-shanghai: China (Shanghai).
+	//
+	// 	- cn-hangzhou: China (Hangzhou)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8613,14 +9477,20 @@ func (s *UpdateAppInstanceGroupImageRequest) SetProductType(v string) *UpdateApp
 }
 
 type UpdateAppInstanceGroupImageResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The parameter ProductType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -8776,13 +9646,24 @@ func (client *Client) AccessPageSetAclWithOptions(request *AccessPageSetAclReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AccessPageSetAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AccessPageSetAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AccessPageSetAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8805,7 +9686,7 @@ func (client *Client) AccessPageSetAcl(request *AccessPageSetAclRequest) (_resul
 
 // Summary:
 //
-// 同意Ota升级
+// Sets the execution time of an over-the-air (OTA) update task.
 //
 // @param request - ApproveOtaTaskRequest
 //
@@ -8852,18 +9733,29 @@ func (client *Client) ApproveOtaTaskWithOptions(request *ApproveOtaTaskRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApproveOtaTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApproveOtaTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApproveOtaTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 同意Ota升级
+// Sets the execution time of an over-the-air (OTA) update task.
 //
 // @param request - ApproveOtaTaskRequest
 //
@@ -8940,13 +9832,24 @@ func (client *Client) AskSessionPackagePriceWithOptions(request *AskSessionPacka
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AskSessionPackagePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AskSessionPackagePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AskSessionPackagePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9025,13 +9928,24 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(tmpReq *AuthorizeInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AuthorizeInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AuthorizeInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AuthorizeInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9125,13 +10039,24 @@ func (client *Client) BuySessionPackageWithOptions(request *BuySessionPackageReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BuySessionPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BuySessionPackageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BuySessionPackageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9205,13 +10130,24 @@ func (client *Client) CreateAccessPageWithOptions(request *CreateAccessPageReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccessPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccessPageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccessPageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9389,13 +10325,24 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAppInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAppInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9418,7 +10365,7 @@ func (client *Client) CreateAppInstanceGroup(request *CreateAppInstanceGroupRequ
 
 // Summary:
 //
-// CreateImageFromAppInstanceGroup
+// Creates a new image by debugging the delivery group.
 //
 // @param request - CreateImageFromAppInstanceGroupRequest
 //
@@ -9457,18 +10404,29 @@ func (client *Client) CreateImageFromAppInstanceGroupWithOptions(request *Create
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateImageFromAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateImageFromAppInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateImageFromAppInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// CreateImageFromAppInstanceGroup
+// Creates a new image by debugging the delivery group.
 //
 // @param request - CreateImageFromAppInstanceGroupRequest
 //
@@ -9517,13 +10475,24 @@ func (client *Client) DeleteAccessPageWithOptions(request *DeleteAccessPageReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccessPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccessPageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccessPageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9546,7 +10515,11 @@ func (client *Client) DeleteAccessPage(request *DeleteAccessPageRequest) (_resul
 
 // Summary:
 //
-// 实例组释放接口
+// Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
+//
+// Description:
+//
+// >  You cannot call this operation to delete a subscription delivery group.
 //
 // @param request - DeleteAppInstanceGroupRequest
 //
@@ -9581,18 +10554,33 @@ func (client *Client) DeleteAppInstanceGroupWithOptions(request *DeleteAppInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAppInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAppInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 实例组释放接口
+// Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
+//
+// Description:
+//
+// >  You cannot call this operation to delete a subscription delivery group.
 //
 // @param request - DeleteAppInstanceGroupRequest
 //
@@ -9610,7 +10598,11 @@ func (client *Client) DeleteAppInstanceGroup(request *DeleteAppInstanceGroupRequ
 
 // Summary:
 //
-// 删除实例
+// Deletes an application instance.
+//
+// Description:
+//
+// Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
 //
 // @param request - DeleteAppInstancesRequest
 //
@@ -9649,18 +10641,33 @@ func (client *Client) DeleteAppInstancesWithOptions(request *DeleteAppInstancesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAppInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAppInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAppInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除实例
+// Deletes an application instance.
+//
+// Description:
+//
+// Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
 //
 // @param request - DeleteAppInstancesRequest
 //
@@ -9717,13 +10724,24 @@ func (client *Client) GetAccessPageSessionWithOptions(request *GetAccessPageSess
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccessPageSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccessPageSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccessPageSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9781,13 +10799,24 @@ func (client *Client) GetAppInstanceGroupWithOptions(request *GetAppInstanceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAppInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAppInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9810,7 +10839,15 @@ func (client *Client) GetAppInstanceGroup(request *GetAppInstanceGroupRequest) (
 
 // Summary:
 //
-// 获取连接ticket，Open API
+// Queries the credential that is used to connect to App Streaming.
+//
+// Description:
+//
+// You must call this operation at least twice to obtain a connection credential.
+//
+// The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
+//
+// In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -9877,18 +10914,37 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConnectionTicketResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConnectionTicketResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取连接ticket，Open API
+// Queries the credential that is used to connect to App Streaming.
+//
+// Description:
+//
+// You must call this operation at least twice to obtain a connection credential.
+//
+// The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
+//
+// In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -9906,7 +10962,7 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 
 // Summary:
 //
-// GetDebugAppInstance
+// Queries information that is used to debug an application instance.
 //
 // @param request - GetDebugAppInstanceRequest
 //
@@ -9941,18 +10997,29 @@ func (client *Client) GetDebugAppInstanceWithOptions(request *GetDebugAppInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDebugAppInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDebugAppInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDebugAppInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// GetDebugAppInstance
+// Queries information that is used to debug an application instance.
 //
 // @param request - GetDebugAppInstanceRequest
 //
@@ -9970,7 +11037,7 @@ func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (
 
 // Summary:
 //
-// 获取ota任务明细
+// Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
 //
 // @param request - GetOtaTaskByTaskIdRequest
 //
@@ -10001,18 +11068,29 @@ func (client *Client) GetOtaTaskByTaskIdWithOptions(request *GetOtaTaskByTaskIdR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOtaTaskByTaskIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOtaTaskByTaskIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOtaTaskByTaskIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取ota任务明细
+// Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
 //
 // @param request - GetOtaTaskByTaskIdRequest
 //
@@ -10030,7 +11108,7 @@ func (client *Client) GetOtaTaskByTaskId(request *GetOtaTaskByTaskIdRequest) (_r
 
 // Summary:
 //
-// 云应用资源询价接口
+// Queries resource prices.
 //
 // @param request - GetResourcePriceRequest
 //
@@ -10089,18 +11167,29 @@ func (client *Client) GetResourcePriceWithOptions(request *GetResourcePriceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourcePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourcePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourcePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 云应用资源询价接口
+// Queries resource prices.
 //
 // @param request - GetResourcePriceRequest
 //
@@ -10118,7 +11207,7 @@ func (client *Client) GetResourcePrice(request *GetResourcePriceRequest) (_resul
 
 // Summary:
 //
-// 云应用资源询价接口
+// Queries the renewal prices of App Streaming resources.
 //
 // @param request - GetResourceRenewPriceRequest
 //
@@ -10161,18 +11250,29 @@ func (client *Client) GetResourceRenewPriceWithOptions(request *GetResourceRenew
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceRenewPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceRenewPriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceRenewPriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 云应用资源询价接口
+// Queries the renewal prices of App Streaming resources.
 //
 // @param request - GetResourceRenewPriceRequest
 //
@@ -10241,13 +11341,24 @@ func (client *Client) ListAccessPagesWithOptions(request *ListAccessPagesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAccessPagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAccessPagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAccessPagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10343,13 +11454,24 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAppInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAppInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10372,7 +11494,7 @@ func (client *Client) ListAppInstanceGroup(request *ListAppInstanceGroupRequest)
 
 // Summary:
 //
-// 查询交付组内实例列表
+// Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
 //
 // @param request - ListAppInstancesRequest
 //
@@ -10429,18 +11551,29 @@ func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAppInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAppInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAppInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询交付组内实例列表
+// Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
 //
 // @param request - ListAppInstancesRequest
 //
@@ -10513,13 +11646,24 @@ func (client *Client) ListBindInfoWithOptions(request *ListBindInfoRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListBindInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListBindInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListBindInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10542,7 +11686,7 @@ func (client *Client) ListBindInfo(request *ListBindInfoRequest) (_result *ListB
 
 // Summary:
 //
-// 获取资源规格
+// Queries the resource types that are available for purchase when you create a delivery group.
 //
 // @param request - ListNodeInstanceTypeRequest
 //
@@ -10625,18 +11769,29 @@ func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNodeInstanceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNodeInstanceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNodeInstanceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取资源规格
+// Queries the resource types that are available for purchase when you create a delivery group.
 //
 // @param request - ListNodeInstanceTypeRequest
 //
@@ -10654,7 +11809,7 @@ func (client *Client) ListNodeInstanceType(request *ListNodeInstanceTypeRequest)
 
 // Summary:
 //
-// 升级历史记录
+// Queries the information about over-the-air (OTA) update tasks.
 //
 // @param request - ListOtaTaskRequest
 //
@@ -10697,18 +11852,29 @@ func (client *Client) ListOtaTaskWithOptions(request *ListOtaTaskRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListOtaTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOtaTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOtaTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 升级历史记录
+// Queries the information about over-the-air (OTA) update tasks.
 //
 // @param request - ListOtaTaskRequest
 //
@@ -10761,13 +11927,24 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10845,13 +12022,24 @@ func (client *Client) ListSessionPackagesWithOptions(request *ListSessionPackage
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSessionPackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSessionPackagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSessionPackagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10872,6 +12060,10 @@ func (client *Client) ListSessionPackages(request *ListSessionPackagesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
+//
 // @param request - ListTenantConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10890,15 +12082,30 @@ func (client *Client) ListTenantConfigWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTenantConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTenantConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTenantConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
+//
 // @return ListTenantConfigResponse
 func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -10913,7 +12120,11 @@ func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _er
 
 // Summary:
 //
-// 注销交付下所有会话
+// Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
+//
+// Description:
+//
+// >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
 //
 // @param request - LogOffAllSessionsInAppInstanceGroupRequest
 //
@@ -10948,18 +12159,33 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithOptions(request *Lo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 注销交付下所有会话
+// Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
+//
+// Description:
+//
+// >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
 //
 // @param request - LogOffAllSessionsInAppInstanceGroupRequest
 //
@@ -10977,7 +12203,7 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroup(request *LogOffAllSess
 
 // Summary:
 //
-// 修改云应用交付组
+// Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
 //
 // @param tmpReq - ModifyAppInstanceGroupAttributeRequest
 //
@@ -11068,18 +12294,29 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAppInstanceGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAppInstanceGroupAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAppInstanceGroupAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改云应用交付组
+// Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
 //
 // @param request - ModifyAppInstanceGroupAttributeRequest
 //
@@ -11142,13 +12379,24 @@ func (client *Client) ModifyAppPolicyWithOptions(tmpReq *ModifyAppPolicyRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAppPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAppPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAppPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11220,13 +12468,24 @@ func (client *Client) ModifyNodePoolAttributeWithOptions(tmpReq *ModifyNodePoolA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyNodePoolAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyNodePoolAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyNodePoolAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ModifyNodePoolAttributeRequest
@@ -11243,6 +12502,10 @@ func (client *Client) ModifyNodePoolAttribute(request *ModifyNodePoolAttributeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
+//
 // @param request - ModifyTenantConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11272,15 +12535,30 @@ func (client *Client) ModifyTenantConfigWithOptions(request *ModifyTenantConfigR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
+//
 // @param request - ModifyTenantConfigRequest
 //
 // @return ModifyTenantConfigResponse
@@ -11297,7 +12575,7 @@ func (client *Client) ModifyTenantConfig(request *ModifyTenantConfigRequest) (_r
 
 // Summary:
 //
-// 获取授权用户列表
+// Queries the assigned users that are added to a delivery group by page.
 //
 // @param request - PageListAppInstanceGroupUserRequest
 //
@@ -11340,18 +12618,29 @@ func (client *Client) PageListAppInstanceGroupUserWithOptions(request *PageListA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PageListAppInstanceGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PageListAppInstanceGroupUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PageListAppInstanceGroupUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取授权用户列表
+// Queries the assigned users that are added to a delivery group by page.
 //
 // @param request - PageListAppInstanceGroupUserRequest
 //
@@ -11369,7 +12658,11 @@ func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceG
 
 // Summary:
 //
-// 资源续费接口
+// Renews a delivery group.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
 //
 // @param request - RenewAppInstanceGroupRequest
 //
@@ -11420,18 +12713,33 @@ func (client *Client) RenewAppInstanceGroupWithOptions(request *RenewAppInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenewAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewAppInstanceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewAppInstanceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 资源续费接口
+// Renews a delivery group.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
 //
 // @param request - RenewAppInstanceGroupRequest
 //
@@ -11449,7 +12757,7 @@ func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupReques
 
 // Summary:
 //
-// 解除用户绑定
+// Unbinds a user and a session.
 //
 // @param request - UnbindRequest
 //
@@ -11496,18 +12804,29 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnbindResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 解除用户绑定
+// Unbinds a user and a session.
 //
 // @param request - UnbindRequest
 //
@@ -11525,7 +12844,15 @@ func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _
 
 // Summary:
 //
-// 更新镜像
+// Updates the image of a delivery group.
+//
+// Description:
+//
+// *
+//
+// **Warning*	- After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
+//
+// >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
 //
 // @param request - UpdateAppInstanceGroupImageRequest
 //
@@ -11568,18 +12895,37 @@ func (client *Client) UpdateAppInstanceGroupImageWithOptions(request *UpdateAppI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAppInstanceGroupImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAppInstanceGroupImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAppInstanceGroupImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 更新镜像
+// Updates the image of a delivery group.
+//
+// Description:
+//
+// *
+//
+// **Warning*	- After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
+//
+// >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
 //
 // @param request - UpdateAppInstanceGroupImageRequest
 //
