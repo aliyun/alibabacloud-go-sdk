@@ -56,6 +56,29 @@ func (s *Addon) SetVersion(v string) *Addon {
 	return s
 }
 
+type ContainerdConfig struct {
+	InsecureRegistries []*string `json:"insecureRegistries,omitempty" xml:"insecureRegistries,omitempty" type:"Repeated"`
+	RegistryMirrors    []*string `json:"registryMirrors,omitempty" xml:"registryMirrors,omitempty" type:"Repeated"`
+}
+
+func (s ContainerdConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContainerdConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ContainerdConfig) SetInsecureRegistries(v []*string) *ContainerdConfig {
+	s.InsecureRegistries = v
+	return s
+}
+
+func (s *ContainerdConfig) SetRegistryMirrors(v []*string) *ContainerdConfig {
+	s.RegistryMirrors = v
+	return s
+}
+
 type DataDisk struct {
 	// example:
 	//
@@ -26819,7 +26842,7 @@ func (s *ModifyClusterNodePoolResponse) SetBody(v *ModifyClusterNodePoolResponse
 }
 
 type ModifyClusterTagsRequest struct {
-	// The data of the labels that you want to modify.
+	// The data of the tags that you want to modify.
 	Body []*Tag `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
@@ -26860,11 +26883,12 @@ func (s *ModifyClusterTagsResponse) SetStatusCode(v int32) *ModifyClusterTagsRes
 }
 
 type ModifyNodePoolNodeConfigRequest struct {
-	// The kubelet configuration.
+	ContainerdConfig *ContainerdConfig `json:"containerd_config,omitempty" xml:"containerd_config,omitempty"`
+	// The parameters of the kubelet.
 	KubeletConfig *KubeletConfig `json:"kubelet_config,omitempty" xml:"kubelet_config,omitempty"`
 	// The OS configuration.
 	OsConfig *ModifyNodePoolNodeConfigRequestOsConfig `json:"os_config,omitempty" xml:"os_config,omitempty" type:"Struct"`
-	// The rotation configuration.
+	// The rolling policy configuration.
 	RollingPolicy *ModifyNodePoolNodeConfigRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 }
 
@@ -26874,6 +26898,11 @@ func (s ModifyNodePoolNodeConfigRequest) String() string {
 
 func (s ModifyNodePoolNodeConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyNodePoolNodeConfigRequest) SetContainerdConfig(v *ContainerdConfig) *ModifyNodePoolNodeConfigRequest {
+	s.ContainerdConfig = v
+	return s
 }
 
 func (s *ModifyNodePoolNodeConfigRequest) SetKubeletConfig(v *KubeletConfig) *ModifyNodePoolNodeConfigRequest {
@@ -27527,6 +27556,8 @@ func (s *RemoveNodePoolNodesResponse) SetBody(v *RemoveNodePoolNodesResponseBody
 }
 
 type RepairClusterNodePoolRequest struct {
+	// Deprecated
+	//
 	// Specifies whether to restart the instance of the node.
 	//
 	// example:
@@ -28675,8 +28706,16 @@ func (s *ScanClusterVulsResponse) SetBody(v *ScanClusterVulsResponseBody) *ScanC
 
 type StartAlertRequest struct {
 	// The name of the alert rule set to be enabled.
+	//
+	// example:
+	//
+	// sample
 	AlertRuleGroupName *string `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
 	// The name of the alert rule to be enabled. If you do not specify an alert rule name, the alert rule set is enabled.
+	//
+	// example:
+	//
+	// sample
 	AlertRuleName *string `json:"alert_rule_name,omitempty" xml:"alert_rule_name,omitempty"`
 }
 
@@ -28762,8 +28801,16 @@ func (s *StartAlertResponse) SetBody(v *StartAlertResponseBody) *StartAlertRespo
 
 type StopAlertRequest struct {
 	// The name of the alert rule set to be disabled.
+	//
+	// example:
+	//
+	// sample
 	AlertRuleGroupName *string `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
 	// The name of the alert rule to be disabled. If you do not specify an alert rule name, the alert rule set is disabled.
+	//
+	// example:
+	//
+	// sample
 	AlertRuleName *string `json:"alert_rule_name,omitempty" xml:"alert_rule_name,omitempty"`
 }
 
@@ -38989,7 +39036,7 @@ func (client *Client) ModifyClusterNodePool(ClusterId *string, NodepoolId *strin
 
 // Summary:
 //
-// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
+// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
 //
 // @param request - ModifyClusterTagsRequest
 //
@@ -39040,7 +39087,7 @@ func (client *Client) ModifyClusterTagsWithOptions(ClusterId *string, request *M
 
 // Summary:
 //
-// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
+// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
 //
 // @param request - ModifyClusterTagsRequest
 //
@@ -39078,6 +39125,10 @@ func (client *Client) ModifyNodePoolNodeConfigWithOptions(ClusterId *string, Nod
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContainerdConfig)) {
+		body["containerd_config"] = request.ContainerdConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KubeletConfig)) {
 		body["kubelet_config"] = request.KubeletConfig
 	}
@@ -40633,6 +40684,10 @@ func (client *Client) ScanClusterVuls(clusterId *string) (_result *ScanClusterVu
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用告警
+//
 // @param request - StartAlertRequest
 //
 // @param headers - map
@@ -40689,6 +40744,10 @@ func (client *Client) StartAlertWithOptions(ClusterId *string, request *StartAle
 
 }
 
+// Summary:
+//
+// 启用告警
+//
 // @param request - StartAlertRequest
 //
 // @return StartAlertResponse
