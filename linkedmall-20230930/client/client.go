@@ -399,6 +399,79 @@ func (s *DeliveryInfo) SetServiceType(v int64) *DeliveryInfo {
 	return s
 }
 
+type DistributeProductCommand struct {
+	LmShopId  *string                `json:"lmShopId,omitempty" xml:"lmShopId,omitempty"`
+	Products  []*DistributionProduct `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 2024-12-01 10:01:00
+	RequestTime *string `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
+	RequestUser *string `json:"requestUser,omitempty" xml:"requestUser,omitempty"`
+}
+
+func (s DistributeProductCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DistributeProductCommand) GoString() string {
+	return s.String()
+}
+
+func (s *DistributeProductCommand) SetLmShopId(v string) *DistributeProductCommand {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *DistributeProductCommand) SetProducts(v []*DistributionProduct) *DistributeProductCommand {
+	s.Products = v
+	return s
+}
+
+func (s *DistributeProductCommand) SetRequestId(v string) *DistributeProductCommand {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DistributeProductCommand) SetRequestTime(v string) *DistributeProductCommand {
+	s.RequestTime = &v
+	return s
+}
+
+func (s *DistributeProductCommand) SetRequestUser(v string) *DistributeProductCommand {
+	s.RequestUser = &v
+	return s
+}
+
+type DistributeProductResult struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DistributeProductResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DistributeProductResult) GoString() string {
+	return s.String()
+}
+
+func (s *DistributeProductResult) SetCode(v string) *DistributeProductResult {
+	s.Code = &v
+	return s
+}
+
+func (s *DistributeProductResult) SetMessage(v string) *DistributeProductResult {
+	s.Message = &v
+	return s
+}
+
+func (s *DistributeProductResult) SetRequestId(v string) *DistributeProductResult {
+	s.RequestId = &v
+	return s
+}
+
 type DistributionMaxRefundFee struct {
 	// example:
 	//
@@ -425,6 +498,184 @@ func (s *DistributionMaxRefundFee) SetMaxRefundFee(v int64) *DistributionMaxRefu
 
 func (s *DistributionMaxRefundFee) SetMinRefundFee(v int64) *DistributionMaxRefundFee {
 	s.MinRefundFee = &v
+	return s
+}
+
+type DistributionProduct struct {
+	CategoryChain         *string            `json:"categoryChain,omitempty" xml:"categoryChain,omitempty"`
+	CategoryLeafId        *int64             `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
+	CategoryLeafName      *string            `json:"categoryLeafName,omitempty" xml:"categoryLeafName,omitempty"`
+	ChannelCode           *string            `json:"channelCode,omitempty" xml:"channelCode,omitempty"`
+	DistributeStatus      *string            `json:"distributeStatus,omitempty" xml:"distributeStatus,omitempty"`
+	PicUrl                *string            `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	ProductId             *string            `json:"productId,omitempty" xml:"productId,omitempty"`
+	SellerId              *string            `json:"sellerId,omitempty" xml:"sellerId,omitempty"`
+	ShortTitle            *string            `json:"shortTitle,omitempty" xml:"shortTitle,omitempty"`
+	Skus                  []*DistributionSku `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
+	Title                 *string            `json:"title,omitempty" xml:"title,omitempty"`
+	WhiteBackgroundPicUrl *string            `json:"whiteBackgroundPicUrl,omitempty" xml:"whiteBackgroundPicUrl,omitempty"`
+}
+
+func (s DistributionProduct) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DistributionProduct) GoString() string {
+	return s.String()
+}
+
+func (s *DistributionProduct) SetCategoryChain(v string) *DistributionProduct {
+	s.CategoryChain = &v
+	return s
+}
+
+func (s *DistributionProduct) SetCategoryLeafId(v int64) *DistributionProduct {
+	s.CategoryLeafId = &v
+	return s
+}
+
+func (s *DistributionProduct) SetCategoryLeafName(v string) *DistributionProduct {
+	s.CategoryLeafName = &v
+	return s
+}
+
+func (s *DistributionProduct) SetChannelCode(v string) *DistributionProduct {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *DistributionProduct) SetDistributeStatus(v string) *DistributionProduct {
+	s.DistributeStatus = &v
+	return s
+}
+
+func (s *DistributionProduct) SetPicUrl(v string) *DistributionProduct {
+	s.PicUrl = &v
+	return s
+}
+
+func (s *DistributionProduct) SetProductId(v string) *DistributionProduct {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DistributionProduct) SetSellerId(v string) *DistributionProduct {
+	s.SellerId = &v
+	return s
+}
+
+func (s *DistributionProduct) SetShortTitle(v string) *DistributionProduct {
+	s.ShortTitle = &v
+	return s
+}
+
+func (s *DistributionProduct) SetSkus(v []*DistributionSku) *DistributionProduct {
+	s.Skus = v
+	return s
+}
+
+func (s *DistributionProduct) SetTitle(v string) *DistributionProduct {
+	s.Title = &v
+	return s
+}
+
+func (s *DistributionProduct) SetWhiteBackgroundPicUrl(v string) *DistributionProduct {
+	s.WhiteBackgroundPicUrl = &v
+	return s
+}
+
+type DistributionSku struct {
+	AliasTitle   *string `json:"aliasTitle,omitempty" xml:"aliasTitle,omitempty"`
+	BarCode      *string `json:"barCode,omitempty" xml:"barCode,omitempty"`
+	CreditPeriod *int32  `json:"creditPeriod,omitempty" xml:"creditPeriod,omitempty"`
+	DxPrice      *int64  `json:"dxPrice,omitempty" xml:"dxPrice,omitempty"`
+	HasCredit    *bool   `json:"hasCredit,omitempty" xml:"hasCredit,omitempty"`
+	HasInvoice   *bool   `json:"hasInvoice,omitempty" xml:"hasInvoice,omitempty"`
+	JxPrice      *int64  `json:"jxPrice,omitempty" xml:"jxPrice,omitempty"`
+	PicUrl       *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	Quantity     *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	SkuId        *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	SkuStatus    *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
+	TaxCode      *string `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
+	TaxRate      *int32  `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
+	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s DistributionSku) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DistributionSku) GoString() string {
+	return s.String()
+}
+
+func (s *DistributionSku) SetAliasTitle(v string) *DistributionSku {
+	s.AliasTitle = &v
+	return s
+}
+
+func (s *DistributionSku) SetBarCode(v string) *DistributionSku {
+	s.BarCode = &v
+	return s
+}
+
+func (s *DistributionSku) SetCreditPeriod(v int32) *DistributionSku {
+	s.CreditPeriod = &v
+	return s
+}
+
+func (s *DistributionSku) SetDxPrice(v int64) *DistributionSku {
+	s.DxPrice = &v
+	return s
+}
+
+func (s *DistributionSku) SetHasCredit(v bool) *DistributionSku {
+	s.HasCredit = &v
+	return s
+}
+
+func (s *DistributionSku) SetHasInvoice(v bool) *DistributionSku {
+	s.HasInvoice = &v
+	return s
+}
+
+func (s *DistributionSku) SetJxPrice(v int64) *DistributionSku {
+	s.JxPrice = &v
+	return s
+}
+
+func (s *DistributionSku) SetPicUrl(v string) *DistributionSku {
+	s.PicUrl = &v
+	return s
+}
+
+func (s *DistributionSku) SetQuantity(v int32) *DistributionSku {
+	s.Quantity = &v
+	return s
+}
+
+func (s *DistributionSku) SetSkuId(v string) *DistributionSku {
+	s.SkuId = &v
+	return s
+}
+
+func (s *DistributionSku) SetSkuStatus(v string) *DistributionSku {
+	s.SkuStatus = &v
+	return s
+}
+
+func (s *DistributionSku) SetTaxCode(v string) *DistributionSku {
+	s.TaxCode = &v
+	return s
+}
+
+func (s *DistributionSku) SetTaxRate(v int32) *DistributionSku {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *DistributionSku) SetTitle(v string) *DistributionSku {
+	s.Title = &v
 	return s
 }
 
@@ -718,6 +969,41 @@ func (s *GeneralBillPageResult) SetRequestId(v string) *GeneralBillPageResult {
 
 func (s *GeneralBillPageResult) SetTotal(v int32) *GeneralBillPageResult {
 	s.Total = &v
+	return s
+}
+
+type GetDistributionProductResult struct {
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	Products  []*DistributionProduct `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetDistributionProductResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDistributionProductResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDistributionProductResult) SetCode(v string) *GetDistributionProductResult {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDistributionProductResult) SetMessage(v string) *GetDistributionProductResult {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDistributionProductResult) SetProducts(v []*DistributionProduct) *GetDistributionProductResult {
+	s.Products = v
+	return s
+}
+
+func (s *GetDistributionProductResult) SetRequestId(v string) *GetDistributionProductResult {
+	s.RequestId = &v
 	return s
 }
 
@@ -1766,6 +2052,7 @@ type Product struct {
 	// 100+
 	FuzzyQuantity *string      `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
 	Images        []*string    `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	InGroup       *bool        `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
 	LimitRules    []*LimitRule `json:"limitRules,omitempty" xml:"limitRules,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -1870,6 +2157,11 @@ func (s *Product) SetFuzzyQuantity(v string) *Product {
 
 func (s *Product) SetImages(v []*string) *Product {
 	s.Images = v
+	return s
+}
+
+func (s *Product) SetInGroup(v bool) *Product {
+	s.InGroup = &v
 	return s
 }
 
@@ -3573,7 +3865,8 @@ type Sku struct {
 	// example:
 	//
 	// true
-	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	CanSell             *bool  `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	DiscountRetailPrice *int64 `json:"discountRetailPrice,omitempty" xml:"discountRetailPrice,omitempty"`
 	// example:
 	//
 	// 110000
@@ -3649,6 +3942,11 @@ func (s *Sku) SetBarcode(v string) *Sku {
 
 func (s *Sku) SetCanSell(v bool) *Sku {
 	s.CanSell = &v
+	return s
+}
+
+func (s *Sku) SetDiscountRetailPrice(v int64) *Sku {
+	s.DiscountRetailPrice = &v
 	return s
 }
 
@@ -3992,6 +4290,85 @@ func (s *SkuSpec) SetValueAlias(v string) *SkuSpec {
 
 func (s *SkuSpec) SetValueId(v int64) *SkuSpec {
 	s.ValueId = &v
+	return s
+}
+
+type StopDistributionCommand struct {
+	LmShopId  *string `json:"lmShopId,omitempty" xml:"lmShopId,omitempty"`
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 2024-12-01 10:01:00
+	RequestTime *string `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
+	RequestUser *string `json:"requestUser,omitempty" xml:"requestUser,omitempty"`
+}
+
+func (s StopDistributionCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDistributionCommand) GoString() string {
+	return s.String()
+}
+
+func (s *StopDistributionCommand) SetLmShopId(v string) *StopDistributionCommand {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *StopDistributionCommand) SetProductId(v string) *StopDistributionCommand {
+	s.ProductId = &v
+	return s
+}
+
+func (s *StopDistributionCommand) SetRequestId(v string) *StopDistributionCommand {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopDistributionCommand) SetRequestTime(v string) *StopDistributionCommand {
+	s.RequestTime = &v
+	return s
+}
+
+func (s *StopDistributionCommand) SetRequestUser(v string) *StopDistributionCommand {
+	s.RequestUser = &v
+	return s
+}
+
+type StopDistributionResult struct {
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	Products  []*DistributionProduct `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s StopDistributionResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDistributionResult) GoString() string {
+	return s.String()
+}
+
+func (s *StopDistributionResult) SetCode(v string) *StopDistributionResult {
+	s.Code = &v
+	return s
+}
+
+func (s *StopDistributionResult) SetMessage(v string) *StopDistributionResult {
+	s.Message = &v
+	return s
+}
+
+func (s *StopDistributionResult) SetProducts(v []*DistributionProduct) *StopDistributionResult {
+	s.Products = v
+	return s
+}
+
+func (s *StopDistributionResult) SetRequestId(v string) *StopDistributionResult {
+	s.RequestId = &v
 	return s
 }
 
@@ -4936,6 +5313,745 @@ func (s *RenderRefundOrderResponse) SetBody(v *RefundRenderResult) *RenderRefund
 	return s
 }
 
+type SearchProductsRequest struct {
+	BrandName   *string   `json:"brandName,omitempty" xml:"brandName,omitempty"`
+	CategoryIds []*string `json:"categoryIds,omitempty" xml:"categoryIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	CreateEndTime *string `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	CreateStartTime       *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
+	DistributionHighPrice *int64  `json:"distributionHighPrice,omitempty" xml:"distributionHighPrice,omitempty"`
+	// example:
+	//
+	// 244（2.44%）
+	DistributionHighPriceRatio *int64 `json:"distributionHighPriceRatio,omitempty" xml:"distributionHighPriceRatio,omitempty"`
+	DistributionLowPrice       *int64 `json:"distributionLowPrice,omitempty" xml:"distributionLowPrice,omitempty"`
+	// example:
+	//
+	// 133（1.33%）
+	DistributionLowPriceRatio *int64 `json:"distributionLowPriceRatio,omitempty" xml:"distributionLowPriceRatio,omitempty"`
+	HighMarkPrice             *int64 `json:"highMarkPrice,omitempty" xml:"highMarkPrice,omitempty"`
+	HighPrice                 *int64 `json:"highPrice,omitempty" xml:"highPrice,omitempty"`
+	// example:
+	//
+	// true
+	InGroup *bool `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	InGroupEndTime *string `json:"inGroupEndTime,omitempty" xml:"inGroupEndTime,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	InGroupStartTime *string `json:"inGroupStartTime,omitempty" xml:"inGroupStartTime,omitempty"`
+	// example:
+	//
+	// Low
+	InventoryRiskLevel *string `json:"inventoryRiskLevel,omitempty" xml:"inventoryRiskLevel,omitempty"`
+	// example:
+	//
+	// xxx-xxxxx
+	LmItemId     *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
+	LowMarkPrice *int64  `json:"lowMarkPrice,omitempty" xml:"lowMarkPrice,omitempty"`
+	LowPrice     *int64  `json:"lowPrice,omitempty" xml:"lowPrice,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	ModifyEndTime *string `json:"modifyEndTime,omitempty" xml:"modifyEndTime,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	ModifyStartTime *string `json:"modifyStartTime,omitempty" xml:"modifyStartTime,omitempty"`
+	OrderBy         *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// ASC
+	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// Taobao
+	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// example:
+	//
+	// xxxxxxx
+	ProductId   *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	// example:
+	//
+	// Sellable
+	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
+	// example:
+	//
+	// PIDxxxx
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// example:
+	//
+	// Rate0
+	TaxRate *string `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
+	// example:
+	//
+	// JingXiao
+	TradeModeAndCredit *string `json:"tradeModeAndCredit,omitempty" xml:"tradeModeAndCredit,omitempty"`
+}
+
+func (s SearchProductsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchProductsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchProductsRequest) SetBrandName(v string) *SearchProductsRequest {
+	s.BrandName = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetCategoryIds(v []*string) *SearchProductsRequest {
+	s.CategoryIds = v
+	return s
+}
+
+func (s *SearchProductsRequest) SetCreateEndTime(v string) *SearchProductsRequest {
+	s.CreateEndTime = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetCreateStartTime(v string) *SearchProductsRequest {
+	s.CreateStartTime = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetDistributionHighPrice(v int64) *SearchProductsRequest {
+	s.DistributionHighPrice = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetDistributionHighPriceRatio(v int64) *SearchProductsRequest {
+	s.DistributionHighPriceRatio = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetDistributionLowPrice(v int64) *SearchProductsRequest {
+	s.DistributionLowPrice = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetDistributionLowPriceRatio(v int64) *SearchProductsRequest {
+	s.DistributionLowPriceRatio = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetHighMarkPrice(v int64) *SearchProductsRequest {
+	s.HighMarkPrice = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetHighPrice(v int64) *SearchProductsRequest {
+	s.HighPrice = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetInGroup(v bool) *SearchProductsRequest {
+	s.InGroup = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetInGroupEndTime(v string) *SearchProductsRequest {
+	s.InGroupEndTime = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetInGroupStartTime(v string) *SearchProductsRequest {
+	s.InGroupStartTime = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetInventoryRiskLevel(v string) *SearchProductsRequest {
+	s.InventoryRiskLevel = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetLmItemId(v string) *SearchProductsRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetLowMarkPrice(v int64) *SearchProductsRequest {
+	s.LowMarkPrice = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetLowPrice(v int64) *SearchProductsRequest {
+	s.LowPrice = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetModifyEndTime(v string) *SearchProductsRequest {
+	s.ModifyEndTime = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetModifyStartTime(v string) *SearchProductsRequest {
+	s.ModifyStartTime = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetOrderBy(v string) *SearchProductsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetOrderDirection(v string) *SearchProductsRequest {
+	s.OrderDirection = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetPageNumber(v int32) *SearchProductsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetPageSize(v int32) *SearchProductsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetPlatform(v string) *SearchProductsRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetProductId(v string) *SearchProductsRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetProductName(v string) *SearchProductsRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetProductStatus(v string) *SearchProductsRequest {
+	s.ProductStatus = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetPurchaserId(v string) *SearchProductsRequest {
+	s.PurchaserId = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetTaxRate(v string) *SearchProductsRequest {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetTradeModeAndCredit(v string) *SearchProductsRequest {
+	s.TradeModeAndCredit = &v
+	return s
+}
+
+type SearchProductsResponseBody struct {
+	Products []*SearchProductsResponseBodyProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s SearchProductsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchProductsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchProductsResponseBody) SetProducts(v []*SearchProductsResponseBodyProducts) *SearchProductsResponseBody {
+	s.Products = v
+	return s
+}
+
+func (s *SearchProductsResponseBody) SetTotal(v int32) *SearchProductsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SearchProductsResponseBodyProducts struct {
+	BandName         *string `json:"bandName,omitempty" xml:"bandName,omitempty"`
+	CanNotSellReason *string `json:"canNotSellReason,omitempty" xml:"canNotSellReason,omitempty"`
+	// example:
+	//
+	// true
+	CanSell       *bool                                              `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	CategoryChain []*SearchProductsResponseBodyProductsCategoryChain `json:"categoryChain,omitempty" xml:"categoryChain,omitempty" type:"Repeated"`
+	Credit        []*string                                          `json:"credit,omitempty" xml:"credit,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ￥-9998.95 ~ ￥-9977.90
+	DiffPrice *string `json:"diffPrice,omitempty" xml:"diffPrice,omitempty"`
+	// example:
+	//
+	// ￥0.05 ~ ￥21.10
+	DistributionPrice *string `json:"distributionPrice,omitempty" xml:"distributionPrice,omitempty"`
+	// example:
+	//
+	// -100.00% ~ -99.79%
+	DistributionPriceRatio *string `json:"distributionPriceRatio,omitempty" xml:"distributionPriceRatio,omitempty"`
+	// example:
+	//
+	// Taobao
+	ExternalPlatformType *string `json:"externalPlatformType,omitempty" xml:"externalPlatformType,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// true
+	InGroup *bool `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
+	// example:
+	//
+	// 2025-01-02 12:23:34
+	//
+	// (yyyy-MM-dd HH:mm:ss)
+	InGroupTime *string `json:"inGroupTime,omitempty" xml:"inGroupTime,omitempty"`
+	// example:
+	//
+	// Low
+	InventoryRiskLevel *string `json:"inventoryRiskLevel,omitempty" xml:"inventoryRiskLevel,omitempty"`
+	// example:
+	//
+	// HasInvoice
+	InvoiceType *string `json:"invoiceType,omitempty" xml:"invoiceType,omitempty"`
+	// example:
+	//
+	// xxx-xxxxx
+	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/xxx.jpg
+	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	// example:
+	//
+	// ￥9999.00 ~ ￥9999.00
+	PlatformPrice *string `json:"platformPrice,omitempty" xml:"platformPrice,omitempty"`
+	// example:
+	//
+	// ￥9999.00 ~ ￥9999.00
+	PlatformReservePrice *string `json:"platformReservePrice,omitempty" xml:"platformReservePrice,omitempty"`
+	// example:
+	//
+	// xxxxx
+	ProductId   *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	// example:
+	//
+	// xxx
+	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
+	// example:
+	//
+	// 100
+	SoldQuantity *string `json:"soldQuantity,omitempty" xml:"soldQuantity,omitempty"`
+	// example:
+	//
+	// 3040203000000000000
+	TaxCode *string `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
+	TaxRate *int64  `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
+	// example:
+	//
+	// JingXiao
+	TradeMode *string `json:"tradeMode,omitempty" xml:"tradeMode,omitempty"`
+}
+
+func (s SearchProductsResponseBodyProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchProductsResponseBodyProducts) GoString() string {
+	return s.String()
+}
+
+func (s *SearchProductsResponseBodyProducts) SetBandName(v string) *SearchProductsResponseBodyProducts {
+	s.BandName = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetCanNotSellReason(v string) *SearchProductsResponseBodyProducts {
+	s.CanNotSellReason = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetCanSell(v bool) *SearchProductsResponseBodyProducts {
+	s.CanSell = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetCategoryChain(v []*SearchProductsResponseBodyProductsCategoryChain) *SearchProductsResponseBodyProducts {
+	s.CategoryChain = v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetCredit(v []*string) *SearchProductsResponseBodyProducts {
+	s.Credit = v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetDiffPrice(v string) *SearchProductsResponseBodyProducts {
+	s.DiffPrice = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetDistributionPrice(v string) *SearchProductsResponseBodyProducts {
+	s.DistributionPrice = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetDistributionPriceRatio(v string) *SearchProductsResponseBodyProducts {
+	s.DistributionPriceRatio = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetExternalPlatformType(v string) *SearchProductsResponseBodyProducts {
+	s.ExternalPlatformType = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetGmtCreate(v string) *SearchProductsResponseBodyProducts {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetGmtModified(v string) *SearchProductsResponseBodyProducts {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetInGroup(v bool) *SearchProductsResponseBodyProducts {
+	s.InGroup = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetInGroupTime(v string) *SearchProductsResponseBodyProducts {
+	s.InGroupTime = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetInventoryRiskLevel(v string) *SearchProductsResponseBodyProducts {
+	s.InventoryRiskLevel = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetInvoiceType(v string) *SearchProductsResponseBodyProducts {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetLmItemId(v string) *SearchProductsResponseBodyProducts {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetPicUrl(v string) *SearchProductsResponseBodyProducts {
+	s.PicUrl = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetPlatformPrice(v string) *SearchProductsResponseBodyProducts {
+	s.PlatformPrice = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetPlatformReservePrice(v string) *SearchProductsResponseBodyProducts {
+	s.PlatformReservePrice = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetProductId(v string) *SearchProductsResponseBodyProducts {
+	s.ProductId = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetProductName(v string) *SearchProductsResponseBodyProducts {
+	s.ProductName = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetShopName(v string) *SearchProductsResponseBodyProducts {
+	s.ShopName = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetSoldQuantity(v string) *SearchProductsResponseBodyProducts {
+	s.SoldQuantity = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetTaxCode(v string) *SearchProductsResponseBodyProducts {
+	s.TaxCode = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetTaxRate(v int64) *SearchProductsResponseBodyProducts {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProducts) SetTradeMode(v string) *SearchProductsResponseBodyProducts {
+	s.TradeMode = &v
+	return s
+}
+
+type SearchProductsResponseBodyProductsCategoryChain struct {
+	// example:
+	//
+	// 201792301
+	CategoryId *int64 `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
+	// example:
+	//
+	// 1
+	Level *bool   `json:"level,omitempty" xml:"level,omitempty"`
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 0
+	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
+}
+
+func (s SearchProductsResponseBodyProductsCategoryChain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchProductsResponseBodyProductsCategoryChain) GoString() string {
+	return s.String()
+}
+
+func (s *SearchProductsResponseBodyProductsCategoryChain) SetCategoryId(v int64) *SearchProductsResponseBodyProductsCategoryChain {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProductsCategoryChain) SetLevel(v bool) *SearchProductsResponseBodyProductsCategoryChain {
+	s.Level = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProductsCategoryChain) SetName(v string) *SearchProductsResponseBodyProductsCategoryChain {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProductsCategoryChain) SetParentId(v int64) *SearchProductsResponseBodyProductsCategoryChain {
+	s.ParentId = &v
+	return s
+}
+
+type SearchProductsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchProductsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchProductsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchProductsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchProductsResponse) SetHeaders(v map[string]*string) *SearchProductsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchProductsResponse) SetStatusCode(v int32) *SearchProductsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchProductsResponse) SetBody(v *SearchProductsResponseBody) *SearchProductsResponse {
+	s.Body = v
+	return s
+}
+
+type SelectionGroupAddProductRequest struct {
+	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PIDxxxxx
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+}
+
+func (s SelectionGroupAddProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectionGroupAddProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SelectionGroupAddProductRequest) SetProductIds(v []*string) *SelectionGroupAddProductRequest {
+	s.ProductIds = v
+	return s
+}
+
+func (s *SelectionGroupAddProductRequest) SetPurchaserId(v string) *SelectionGroupAddProductRequest {
+	s.PurchaserId = &v
+	return s
+}
+
+type SelectionGroupAddProductResponseBody struct {
+	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+}
+
+func (s SelectionGroupAddProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectionGroupAddProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SelectionGroupAddProductResponseBody) SetProductIds(v []*string) *SelectionGroupAddProductResponseBody {
+	s.ProductIds = v
+	return s
+}
+
+type SelectionGroupAddProductResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SelectionGroupAddProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SelectionGroupAddProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectionGroupAddProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SelectionGroupAddProductResponse) SetHeaders(v map[string]*string) *SelectionGroupAddProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SelectionGroupAddProductResponse) SetStatusCode(v int32) *SelectionGroupAddProductResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SelectionGroupAddProductResponse) SetBody(v *SelectionGroupAddProductResponseBody) *SelectionGroupAddProductResponse {
+	s.Body = v
+	return s
+}
+
+type SelectionGroupRemoveProductRequest struct {
+	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PIDxxxxx
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+}
+
+func (s SelectionGroupRemoveProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectionGroupRemoveProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SelectionGroupRemoveProductRequest) SetProductIds(v []*string) *SelectionGroupRemoveProductRequest {
+	s.ProductIds = v
+	return s
+}
+
+func (s *SelectionGroupRemoveProductRequest) SetPurchaserId(v string) *SelectionGroupRemoveProductRequest {
+	s.PurchaserId = &v
+	return s
+}
+
+type SelectionGroupRemoveProductResponseBody struct {
+	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+}
+
+func (s SelectionGroupRemoveProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectionGroupRemoveProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SelectionGroupRemoveProductResponseBody) SetProductIds(v []*string) *SelectionGroupRemoveProductResponseBody {
+	s.ProductIds = v
+	return s
+}
+
+type SelectionGroupRemoveProductResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SelectionGroupRemoveProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SelectionGroupRemoveProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectionGroupRemoveProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SelectionGroupRemoveProductResponse) SetHeaders(v map[string]*string) *SelectionGroupRemoveProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SelectionGroupRemoveProductResponse) SetStatusCode(v int32) *SelectionGroupRemoveProductResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SelectionGroupRemoveProductResponse) SetBody(v *SelectionGroupRemoveProductResponseBody) *SelectionGroupRemoveProductResponse {
+	s.Body = v
+	return s
+}
+
 type SplitPurchaseOrderRequest struct {
 	Body *PurchaseOrderRenderQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5109,13 +6225,24 @@ func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelRefundOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelRefundOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5166,13 +6293,24 @@ func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfirmDisburseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfirmDisburseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfirmDisburseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5225,13 +6363,24 @@ func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsS
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateGoodsShippingNoticeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateGoodsShippingNoticeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateGoodsShippingNoticeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5284,13 +6433,24 @@ func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrde
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePurchaseOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePurchaseOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePurchaseOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5343,13 +6503,24 @@ func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRefundOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRefundOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5395,13 +6566,24 @@ func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5445,13 +6627,24 @@ func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPurchaseOrderStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPurchaseOrderStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPurchaseOrderStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5495,13 +6688,24 @@ func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers m
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPurchaserShopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPurchaserShopResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPurchaserShopResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5545,13 +6749,24 @@ func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRefundOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRefundOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5611,13 +6826,24 @@ func (client *Client) GetSelectionProductWithOptions(productId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSelectionProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSelectionProductResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSelectionProductResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5679,13 +6905,24 @@ func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSelectionProductSaleInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSelectionProductSaleInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSelectionProductSaleInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5738,13 +6975,24 @@ func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCategoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCategoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5790,13 +7038,24 @@ func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLogisticsOrdersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLogisticsOrdersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLogisticsOrdersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5856,13 +7115,24 @@ func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPurchaserShopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPurchaserShopsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPurchaserShopsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5915,13 +7185,24 @@ func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSele
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSelectionProductSaleInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSelectionProductSaleInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSelectionProductSaleInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5987,13 +7268,24 @@ func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionPro
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSelectionProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSelectionProductsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSelectionProductsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6046,13 +7338,24 @@ func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSelectionSkuSaleInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSelectionSkuSaleInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSelectionSkuSaleInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6105,13 +7408,24 @@ func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivis
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryChildDivisionCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryChildDivisionCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryChildDivisionCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6164,13 +7478,24 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryOrdersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryOrdersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryOrdersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6223,13 +7548,24 @@ func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrde
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenderPurchaseOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenderPurchaseOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenderPurchaseOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6282,13 +7618,24 @@ func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenderRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenderRefundOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenderRefundOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6303,6 +7650,355 @@ func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_res
 	headers := make(map[string]*string)
 	_result = &RenderRefundOrderResponse{}
 	_body, _err := client.RenderRefundOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索商品
+//
+// @param request - SearchProductsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchProductsResponse
+func (client *Client) SearchProductsWithOptions(request *SearchProductsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchProductsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrandName)) {
+		body["brandName"] = request.BrandName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryIds)) {
+		body["categoryIds"] = request.CategoryIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateEndTime)) {
+		body["createEndTime"] = request.CreateEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateStartTime)) {
+		body["createStartTime"] = request.CreateStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionHighPrice)) {
+		body["distributionHighPrice"] = request.DistributionHighPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionHighPriceRatio)) {
+		body["distributionHighPriceRatio"] = request.DistributionHighPriceRatio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionLowPrice)) {
+		body["distributionLowPrice"] = request.DistributionLowPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionLowPriceRatio)) {
+		body["distributionLowPriceRatio"] = request.DistributionLowPriceRatio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HighMarkPrice)) {
+		body["highMarkPrice"] = request.HighMarkPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HighPrice)) {
+		body["highPrice"] = request.HighPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InGroup)) {
+		body["inGroup"] = request.InGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InGroupEndTime)) {
+		body["inGroupEndTime"] = request.InGroupEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InGroupStartTime)) {
+		body["inGroupStartTime"] = request.InGroupStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InventoryRiskLevel)) {
+		body["inventoryRiskLevel"] = request.InventoryRiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmItemId)) {
+		body["lmItemId"] = request.LmItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LowMarkPrice)) {
+		body["lowMarkPrice"] = request.LowMarkPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LowPrice)) {
+		body["lowPrice"] = request.LowPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyEndTime)) {
+		body["modifyEndTime"] = request.ModifyEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyStartTime)) {
+		body["modifyStartTime"] = request.ModifyStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		body["orderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderDirection)) {
+		body["orderDirection"] = request.OrderDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		body["platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		body["productName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductStatus)) {
+		body["productStatus"] = request.ProductStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaserId)) {
+		body["purchaserId"] = request.PurchaserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaxRate)) {
+		body["taxRate"] = request.TaxRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TradeModeAndCredit)) {
+		body["tradeModeAndCredit"] = request.TradeModeAndCredit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchProducts"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/searchProduct"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchProductsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchProductsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 搜索商品
+//
+// @param request - SearchProductsRequest
+//
+// @return SearchProductsResponse
+func (client *Client) SearchProducts(request *SearchProductsRequest) (_result *SearchProductsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchProductsResponse{}
+	_body, _err := client.SearchProductsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 入库操作
+//
+// @param request - SelectionGroupAddProductRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SelectionGroupAddProductResponse
+func (client *Client) SelectionGroupAddProductWithOptions(request *SelectionGroupAddProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SelectionGroupAddProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductIds)) {
+		body["productIds"] = request.ProductIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaserId)) {
+		body["purchaserId"] = request.PurchaserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SelectionGroupAddProduct"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/addProduct"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SelectionGroupAddProductResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SelectionGroupAddProductResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 入库操作
+//
+// @param request - SelectionGroupAddProductRequest
+//
+// @return SelectionGroupAddProductResponse
+func (client *Client) SelectionGroupAddProduct(request *SelectionGroupAddProductRequest) (_result *SelectionGroupAddProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SelectionGroupAddProductResponse{}
+	_body, _err := client.SelectionGroupAddProductWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 出库操作
+//
+// @param request - SelectionGroupRemoveProductRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SelectionGroupRemoveProductResponse
+func (client *Client) SelectionGroupRemoveProductWithOptions(request *SelectionGroupRemoveProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SelectionGroupRemoveProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductIds)) {
+		body["productIds"] = request.ProductIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaserId)) {
+		body["purchaserId"] = request.PurchaserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SelectionGroupRemoveProduct"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/removeProduct"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SelectionGroupRemoveProductResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SelectionGroupRemoveProductResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 出库操作
+//
+// @param request - SelectionGroupRemoveProductRequest
+//
+// @return SelectionGroupRemoveProductResponse
+func (client *Client) SelectionGroupRemoveProduct(request *SelectionGroupRemoveProductRequest) (_result *SelectionGroupRemoveProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SelectionGroupRemoveProductResponse{}
+	_body, _err := client.SelectionGroupRemoveProductWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6341,13 +8037,24 @@ func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SplitPurchaseOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SplitPurchaseOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SplitPurchaseOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
