@@ -30436,6 +30436,7 @@ type GetSiteResponseBodySiteModel struct {
 	//
 	// male1-1.ialicdn.com,female1-1.ialicdn.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
+	OfflineReason  *string `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
 	// The plan name.
 	//
 	// example:
@@ -30543,6 +30544,11 @@ func (s *GetSiteResponseBodySiteModel) SetInstanceId(v string) *GetSiteResponseB
 
 func (s *GetSiteResponseBodySiteModel) SetNameServerList(v string) *GetSiteResponseBodySiteModel {
 	s.NameServerList = &v
+	return s
+}
+
+func (s *GetSiteResponseBodySiteModel) SetOfflineReason(v string) *GetSiteResponseBodySiteModel {
+	s.OfflineReason = &v
 	return s
 }
 
@@ -44976,6 +44982,7 @@ type ListSitesResponseBodySites struct {
 	//
 	// male1-1.ialicdn.com,female1-1.ialicdn.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
+	OfflineReason  *string `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
 	// The plan name.
 	//
 	// example:
@@ -45081,6 +45088,11 @@ func (s *ListSitesResponseBodySites) SetInstanceId(v string) *ListSitesResponseB
 
 func (s *ListSitesResponseBodySites) SetNameServerList(v string) *ListSitesResponseBodySites {
 	s.NameServerList = &v
+	return s
+}
+
+func (s *ListSitesResponseBodySites) SetOfflineReason(v string) *ListSitesResponseBodySites {
+	s.OfflineReason = &v
 	return s
 }
 
