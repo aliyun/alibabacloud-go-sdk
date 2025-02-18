@@ -10,7 +10,7 @@ English | [简体中文](README-CN.md)
 If you use `go mod` to manage your dependence, you can use the following command:
 
 ```sh
-$ go get github.com/alibabacloud-go/maxcompute-20220104
+$ go get github.com/alibabacloud-go/maxcompute-20220104/v2
 ```
 
 ## Issues
