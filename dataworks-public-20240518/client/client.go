@@ -15600,7 +15600,7 @@ func (s *GetDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *GetDa
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
-	// The ID of the data source used by the quality monitoring task.
+	// The ID of the data source used for the monitor.
 	//
 	// example:
 	//
@@ -18491,7 +18491,7 @@ func (s *GetJobStatusResponse) SetBody(v *GetJobStatusResponseBody) *GetJobStatu
 }
 
 type GetNetworkRequest struct {
-	// The ID of the network resource.
+	// The network ID.
 	//
 	// This parameter is required.
 	//
@@ -18517,7 +18517,7 @@ func (s *GetNetworkRequest) SetId(v int64) *GetNetworkRequest {
 type GetNetworkResponseBody struct {
 	// The information about the network resource.
 	Network *GetNetworkResponseBodyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID.
 	//
 	// example:
 	//
@@ -18555,31 +18555,31 @@ func (s *GetNetworkResponseBody) SetSuccess(v bool) *GetNetworkResponseBody {
 }
 
 type GetNetworkResponseBodyNetwork struct {
-	// The creation time, which is a 64-bit timestamp.
+	// The time when the network resource was created. The value is a 64-bit timestamp.
 	//
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the network resource.
+	// The ID of the user who creates the network resource.
 	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The ID of the network resource.
+	// The network ID.
 	//
 	// example:
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The unique identifier of the common resource group to which it belongs.
+	// The ID of the serverless resource group.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the security group for the network resource.
+	// The security group ID.
 	//
 	// example:
 	//
@@ -18601,13 +18601,13 @@ type GetNetworkResponseBodyNetwork struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VPC ID of the network resource.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The switch ID of the network resource.
+	// The VSwitch ID.
 	//
 	// example:
 	//
@@ -18701,7 +18701,7 @@ type GetNodeRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
 	//
@@ -18967,6 +18967,10 @@ type GetNodeResponseBodyNode struct {
 	//
 	// }
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// example:
+	//
+	// 700006680527
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetNodeResponseBodyNode) String() string {
@@ -19009,6 +19013,11 @@ func (s *GetNodeResponseBodyNode) SetProjectId(v int64) *GetNodeResponseBodyNode
 
 func (s *GetNodeResponseBodyNode) SetSpec(v string) *GetNodeResponseBodyNode {
 	s.Spec = &v
+	return s
+}
+
+func (s *GetNodeResponseBodyNode) SetTaskId(v int64) *GetNodeResponseBodyNode {
+	s.TaskId = &v
 	return s
 }
 
@@ -19641,7 +19650,7 @@ type GetProjectRoleResponseBodyProjectRole struct {
 	//
 	// 10002
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the role in the DataWorks workspace.
+	// The type of the role in the DataWorks workspace. Valid values:
 	//
 	// 	- UserCustom: user-defined role
 	//
@@ -20102,9 +20111,9 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// 	- Deleted: The resource group is released or destroyed.
 	//
-	// 	- Creating: The resource group is being started.
+	// 	- Creating: The resource group is being created.
 	//
-	// 	- CreateFailed: The resource group fails to be started.
+	// 	- CreateFailed: The resource group fails to be created.
 	//
 	// 	- Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
 	//
@@ -20115,6 +20124,10 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	// 	- DeleteFailed: The resource group fails to be released or destroyed.
 	//
 	// 	- Timeout: The operations that are performed on the resource group time out.
+	//
+	// 	- Freezed: The resource group is frozen.
+	//
+	// 	- Starting: The resource group is being started.
 	//
 	// example:
 	//
@@ -20296,7 +20309,7 @@ func (s *GetResourceGroupResponse) SetBody(v *GetResourceGroupResponseBody) *Get
 }
 
 type GetRouteRequest struct {
-	// The ID of the route.
+	// The route ID.
 	//
 	// This parameter is required.
 	//
@@ -20320,7 +20333,7 @@ func (s *GetRouteRequest) SetId(v int64) *GetRouteRequest {
 }
 
 type GetRouteResponseBody struct {
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID.
 	//
 	// example:
 	//
@@ -20360,19 +20373,19 @@ func (s *GetRouteResponseBody) SetSuccess(v bool) *GetRouteResponseBody {
 }
 
 type GetRouteResponseBodyRoute struct {
-	// The creation time, which is a 64-bit timestamp.
+	// The time when the route was created. The value is a 64-bit timestamp.
 	//
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The destination route CIDR.
+	// The CIDR block of the destination-based route.
 	//
 	// example:
 	//
 	// 192.168.0.0/16
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The ID of the route.
+	// The route ID.
 	//
 	// example:
 	//
@@ -20390,7 +20403,7 @@ type GetRouteResponseBodyRoute struct {
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The unique identifier of the network resource to which it belongs.
+	// The network resource ID.
 	//
 	// example:
 	//
@@ -20887,13 +20900,13 @@ type GetTaskResponseBodyTaskDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream task. (This field is returned when `same cycle dependence` and input content is set).
+	// The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The Id of the upstream task. (This field is returned when the input content is not set for `cross-cycle dependency other nodes` and `same-cycle dependency`, otherwise it is not returned).
+	// The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
 	//
 	// example:
 	//
@@ -22730,7 +22743,7 @@ type GetWorkflowResponseBody struct {
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The infromation about the workflow.
+	// The information about the workflow.
 	Workflow *GetWorkflowResponseBodyWorkflow `json:"Workflow,omitempty" xml:"Workflow,omitempty" type:"Struct"`
 }
 
@@ -23500,6 +23513,10 @@ type GetWorkflowDefinitionRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// false
+	IncludeScriptContent *bool `json:"IncludeScriptContent,omitempty" xml:"IncludeScriptContent,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -23520,6 +23537,11 @@ func (s GetWorkflowDefinitionRequest) GoString() string {
 
 func (s *GetWorkflowDefinitionRequest) SetId(v int64) *GetWorkflowDefinitionRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *GetWorkflowDefinitionRequest) SetIncludeScriptContent(v bool) *GetWorkflowDefinitionRequest {
+	s.IncludeScriptContent = &v
 	return s
 }
 
@@ -23746,6 +23768,10 @@ type GetWorkflowDefinitionResponseBodyWorkflowDefinition struct {
 	//
 	// }
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// example:
+	//
+	// 700006657495
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s GetWorkflowDefinitionResponseBodyWorkflowDefinition) String() string {
@@ -23788,6 +23814,11 @@ func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetProjectId(v int
 
 func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetSpec(v string) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
 	s.Spec = &v
+	return s
+}
+
+func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetWorkflowId(v int64) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
+	s.WorkflowId = &v
 	return s
 }
 
@@ -23874,7 +23905,7 @@ func (s *GetWorkflowInstanceResponseBody) SetWorkflowInstance(v *GetWorkflowInst
 }
 
 type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
-	// The business date.
+	// The data timestamp.
 	//
 	// example:
 	//
@@ -23966,7 +23997,17 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the workflow instance.
+	// The type of the workflow instance. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- Manual
+	//
+	// 	- SmokeTest
+	//
+	// 	- SupplementData
+	//
+	// 	- ManualWorkflow
 	//
 	// example:
 	//
@@ -28366,7 +28407,7 @@ type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEval
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the task.
+	// The name of the monitor.
 	//
 	// This parameter is required.
 	//
