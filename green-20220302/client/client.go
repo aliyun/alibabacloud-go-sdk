@@ -385,7 +385,8 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	// example:
 	//
 	// This is a title.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
 	// The details of the labels.
 	//
 	// example:
@@ -440,6 +441,11 @@ func (s DescribeFileModerationResultResponseBodyDataPageResultTextResult) GoStri
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetDescriptions(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.Descriptions = &v
 	return s
 }
 
@@ -617,6 +623,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) Set
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The details of the labels.
 	//
 	// example:
@@ -637,6 +644,11 @@ func (s DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLa
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels {
+	s.Description = &v
+	return s
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) SetLabel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels {
@@ -3969,6 +3981,435 @@ func (s *ImageModerationResponse) SetBody(v *ImageModerationResponseBody) *Image
 	return s
 }
 
+type ManualCallbackRequest struct {
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// abc
+	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {\\"Result\\": [{\\"Confidence\\": 100.0, \\"CustomizedHit\\": [{\\"KeyWords\\": u\\"\\u4fdd\\u969c,\\u6700\\u5927,\\u9ad8\\u7ea7\\", \\"LibName\\": u\\"\\u4f18\\u8def\\u654f\\u611f\\u8bcd\\"}], \\"Label\\": \\"customized\\"}]}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+}
+
+func (s ManualCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ManualCallbackRequest) SetChannel(v string) *ManualCallbackRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *ManualCallbackRequest) SetChecksum(v string) *ManualCallbackRequest {
+	s.Checksum = &v
+	return s
+}
+
+func (s *ManualCallbackRequest) SetCode(v string) *ManualCallbackRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *ManualCallbackRequest) SetData(v string) *ManualCallbackRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *ManualCallbackRequest) SetMsg(v string) *ManualCallbackRequest {
+	s.Msg = &v
+	return s
+}
+
+func (s *ManualCallbackRequest) SetReqId(v string) *ManualCallbackRequest {
+	s.ReqId = &v
+	return s
+}
+
+type ManualCallbackResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ManualCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ManualCallbackResponseBody) SetCode(v int32) *ManualCallbackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ManualCallbackResponseBody) SetMessage(v string) *ManualCallbackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ManualCallbackResponseBody) SetRequestId(v string) *ManualCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ManualCallbackResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ManualCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ManualCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ManualCallbackResponse) SetHeaders(v map[string]*string) *ManualCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ManualCallbackResponse) SetStatusCode(v int32) *ManualCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ManualCallbackResponse) SetBody(v *ManualCallbackResponseBody) *ManualCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type ManualModerationRequest struct {
+	// example:
+	//
+	// imageManualCheck
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {"url": "https://talesofai.oss-cn-shanghai.aliyuncs.com/xxx.mp4", "dataId": "data1234"}
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s ManualModerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationRequest) SetService(v string) *ManualModerationRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *ManualModerationRequest) SetServiceParameters(v string) *ManualModerationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type ManualModerationResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ManualModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ManualModerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResponseBody) SetCode(v int32) *ManualModerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ManualModerationResponseBody) SetData(v *ManualModerationResponseBodyData) *ManualModerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ManualModerationResponseBody) SetMessage(v string) *ManualModerationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ManualModerationResponseBody) SetRequestId(v string) *ManualModerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ManualModerationResponseBodyData struct {
+	// example:
+	//
+	// 2a5389eb-4ff8-4584-ac99-644e2a539aa1
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// xxxxx-xxxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ManualModerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResponseBodyData) SetDataId(v string) *ManualModerationResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *ManualModerationResponseBodyData) SetTaskId(v string) *ManualModerationResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ManualModerationResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ManualModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ManualModerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResponse) SetHeaders(v map[string]*string) *ManualModerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ManualModerationResponse) SetStatusCode(v int32) *ManualModerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ManualModerationResponse) SetBody(v *ManualModerationResponseBody) *ManualModerationResponse {
+	s.Body = v
+	return s
+}
+
+type ManualModerationResultRequest struct {
+	// example:
+	//
+	// {\\"TaskId\\":\\"e5f2d886-4c23-440d-999c-bd98acde11b6\\"}
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s ManualModerationResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResultRequest) SetServiceParameters(v string) *ManualModerationResultRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type ManualModerationResultResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ManualModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ManualModerationResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResultResponseBody) SetCode(v int32) *ManualModerationResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ManualModerationResultResponseBody) SetData(v *ManualModerationResultResponseBodyData) *ManualModerationResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ManualModerationResultResponseBody) SetMessage(v string) *ManualModerationResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ManualModerationResultResponseBody) SetRequestId(v string) *ManualModerationResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ManualModerationResultResponseBodyData struct {
+	// example:
+	//
+	// data1234
+	DataId *string                                         `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Result []*ManualModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// example:
+	//
+	// xxxxx-xxxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ManualModerationResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResultResponseBodyData) SetDataId(v string) *ManualModerationResultResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *ManualModerationResultResponseBodyData) SetResult(v []*ManualModerationResultResponseBodyDataResult) *ManualModerationResultResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ManualModerationResultResponseBodyData) SetRiskLevel(v string) *ManualModerationResultResponseBodyData {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ManualModerationResultResponseBodyData) SetTaskId(v string) *ManualModerationResultResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ManualModerationResultResponseBodyDataResult struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s ManualModerationResultResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResultResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResultResponseBodyDataResult) SetDescription(v string) *ManualModerationResultResponseBodyDataResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ManualModerationResultResponseBodyDataResult) SetLabel(v string) *ManualModerationResultResponseBodyDataResult {
+	s.Label = &v
+	return s
+}
+
+type ManualModerationResultResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ManualModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ManualModerationResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualModerationResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ManualModerationResultResponse) SetHeaders(v map[string]*string) *ManualModerationResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ManualModerationResultResponse) SetStatusCode(v int32) *ManualModerationResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ManualModerationResultResponse) SetBody(v *ManualModerationResultResponseBody) *ManualModerationResultResponse {
+	s.Body = v
+	return s
+}
+
 type TextModerationRequest struct {
 	// The type of the moderation service.
 	//
@@ -5070,6 +5511,7 @@ func (s *VideoModerationResultResponseBodyDataAudioResult) SetSliceDetails(v []*
 }
 
 type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The voice label.
 	//
 	// example:
@@ -5092,6 +5534,11 @@ func (s VideoModerationResultResponseBodyDataAudioResultAudioSummarys) GoString(
 	return s.String()
 }
 
+func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetDescription(v string) *VideoModerationResultResponseBodyDataAudioResultAudioSummarys {
+	s.Description = &v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetLabel(v string) *VideoModerationResultResponseBodyDataAudioResultAudioSummarys {
 	s.Label = &v
 	return s
@@ -5103,6 +5550,7 @@ func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetLabel
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
+	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
 	// The end time of the text after voice-to-text conversion. Unit: seconds.
 	//
 	// example:
@@ -5183,6 +5631,11 @@ func (s VideoModerationResultResponseBodyDataAudioResultSliceDetails) String() s
 
 func (s VideoModerationResultResponseBodyDataAudioResultSliceDetails) GoString() string {
 	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetDescriptions(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.Descriptions = &v
+	return s
 }
 
 func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetEndTime(v int64) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
@@ -5988,6 +6441,7 @@ func (s *VoiceModerationResultResponseBodyData) SetUrl(v string) *VoiceModeratio
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {
+	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
 	// The end time of the audio segment in seconds.
 	//
 	// example:
@@ -6074,6 +6528,11 @@ func (s VoiceModerationResultResponseBodyDataSliceDetails) String() string {
 
 func (s VoiceModerationResultResponseBodyDataSliceDetails) GoString() string {
 	return s.String()
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetDescriptions(v string) *VoiceModerationResultResponseBodyDataSliceDetails {
+	s.Descriptions = &v
+	return s
 }
 
 func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetEndTime(v int64) *VoiceModerationResultResponseBodyDataSliceDetails {
@@ -6274,13 +6733,24 @@ func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFileModerationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFileModerationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFileModerationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6340,13 +6810,24 @@ func (client *Client) DescribeImageModerationResultWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeImageModerationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeImageModerationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeImageModerationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6410,13 +6891,24 @@ func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeImageResultExtResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeImageResultExtResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeImageResultExtResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6459,13 +6951,24 @@ func (client *Client) DescribeUploadTokenWithOptions(runtime *util.RuntimeOption
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeUploadTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeUploadTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeUploadTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6525,13 +7028,24 @@ func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeUrlModerationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeUrlModerationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeUrlModerationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6597,13 +7111,24 @@ func (client *Client) FileModerationWithOptions(request *FileModerationRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &FileModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &FileModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &FileModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6661,13 +7186,24 @@ func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImageAsyncModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImageAsyncModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImageAsyncModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6725,13 +7261,24 @@ func (client *Client) ImageBatchModerationWithOptions(request *ImageBatchModerat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImageBatchModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImageBatchModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImageBatchModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6793,13 +7340,24 @@ func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImageModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImageModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImageModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6817,6 +7375,243 @@ func (client *Client) ImageModeration(request *ImageModerationRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ImageModerationResponse{}
 	_body, _err := client.ImageModerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容安全人审结果回调接口
+//
+// @param request - ManualCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManualCallbackResponse
+func (client *Client) ManualCallbackWithOptions(request *ManualCallbackRequest, runtime *util.RuntimeOptions) (_result *ManualCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Channel)) {
+		body["Channel"] = request.Channel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Checksum)) {
+		body["Checksum"] = request.Checksum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Msg)) {
+		body["Msg"] = request.Msg
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		body["ReqId"] = request.ReqId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ManualCallback"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ManualCallbackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ManualCallbackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 内容安全人审结果回调接口
+//
+// @param request - ManualCallbackRequest
+//
+// @return ManualCallbackResponse
+func (client *Client) ManualCallback(request *ManualCallbackRequest) (_result *ManualCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ManualCallbackResponse{}
+	_body, _err := client.ManualCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容安全人审提交请求接口
+//
+// @param request - ManualModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManualModerationResponse
+func (client *Client) ManualModerationWithOptions(request *ManualModerationRequest, runtime *util.RuntimeOptions) (_result *ManualModerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ManualModeration"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ManualModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ManualModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 内容安全人审提交请求接口
+//
+// @param request - ManualModerationRequest
+//
+// @return ManualModerationResponse
+func (client *Client) ManualModeration(request *ManualModerationRequest) (_result *ManualModerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ManualModerationResponse{}
+	_body, _err := client.ManualModerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取人审结果
+//
+// @param request - ManualModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManualModerationResultResponse
+func (client *Client) ManualModerationResultWithOptions(request *ManualModerationResultRequest, runtime *util.RuntimeOptions) (_result *ManualModerationResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ManualModerationResult"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ManualModerationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ManualModerationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取人审结果
+//
+// @param request - ManualModerationResultRequest
+//
+// @return ManualModerationResultResponse
+func (client *Client) ManualModerationResult(request *ManualModerationResultRequest) (_result *ManualModerationResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ManualModerationResultResponse{}
+	_body, _err := client.ManualModerationResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6861,13 +7656,24 @@ func (client *Client) TextModerationWithOptions(request *TextModerationRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TextModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TextModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TextModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6929,13 +7735,24 @@ func (client *Client) TextModerationPlusWithOptions(request *TextModerationPlusR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TextModerationPlusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TextModerationPlusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TextModerationPlusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6997,13 +7814,24 @@ func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UrlAsyncModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UrlAsyncModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UrlAsyncModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7061,13 +7889,24 @@ func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VideoModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VideoModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VideoModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7125,13 +7964,24 @@ func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VideoModerationCancelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VideoModerationCancelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VideoModerationCancelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7193,13 +8043,24 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VideoModerationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VideoModerationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VideoModerationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7261,13 +8122,24 @@ func (client *Client) VoiceModerationWithOptions(request *VoiceModerationRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VoiceModerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VoiceModerationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VoiceModerationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7325,13 +8197,24 @@ func (client *Client) VoiceModerationCancelWithOptions(request *VoiceModerationC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VoiceModerationCancelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VoiceModerationCancelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VoiceModerationCancelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7389,13 +8272,24 @@ func (client *Client) VoiceModerationResultWithOptions(request *VoiceModerationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VoiceModerationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VoiceModerationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VoiceModerationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
