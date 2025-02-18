@@ -1,3 +1,8 @@
+2025-02-18 Version: v4.0.0
+- Update API GetUserCertificateDetail: update response param.
+- Update API UploadUserCertificate: update response param.
+
+
 2024-12-11 Version: v3.0.4
 - Generated golang 2020-04-07 for cas.
 

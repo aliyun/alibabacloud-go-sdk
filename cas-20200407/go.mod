@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/cas-20200407/v3
+module github.com/alibabacloud-go/cas-20200407/v4
 
 go 1.14
 
