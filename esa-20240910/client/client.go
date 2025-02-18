@@ -5125,7 +5125,7 @@ func (s *CreateCompressionRuleResponse) SetBody(v *CreateCompressionRuleResponse
 type CreateCustomScenePolicyRequest struct {
 	// The time when the policy expires.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// This parameter is required.
 	//
@@ -5149,7 +5149,7 @@ type CreateCustomScenePolicyRequest struct {
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
 	// The time when the policy takes effect.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// This parameter is required.
 	//
@@ -17717,7 +17717,7 @@ func (s *DeleteWaitingRoomRuleResponse) SetBody(v *DeleteWaitingRoomRuleResponse
 }
 
 type DescribeCustomScenePoliciesRequest struct {
-	// The page number. Valid values: 1 to 100000.
+	// The number of the page to return. Valid values: **1 to 100000**.
 	//
 	// This parameter is required.
 	//
@@ -17725,13 +17725,13 @@ type DescribeCustomScenePoliciesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: 5, 10, and 20.
+	// The number of entries per page. Default value: **10**. Valid values: **5**, **10**, or **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the policy, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -18719,6 +18719,266 @@ func (s *DescribeDDoSL7QpsListResponse) SetStatusCode(v int32) *DescribeDDoSL7Qp
 }
 
 func (s *DescribeDDoSL7QpsListResponse) SetBody(v *DescribeDDoSL7QpsListResponseBody) *DescribeDDoSL7QpsListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEdgeContainerAppStatsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-xxxx
+	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// example:
+	//
+	// 2024-09-02T16:04:05Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pod_ready_rate
+	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// example:
+	//
+	// telecom,unicom,cmcc
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// huizhou
+	Locate *string `json:"Locate,omitempty" xml:"Locate,omitempty"`
+	// example:
+	//
+	// 2024-09-02T15:04:05Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// t-xxxx
+	Tenant *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
+}
+
+func (s DescribeEdgeContainerAppStatsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEdgeContainerAppStatsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEdgeContainerAppStatsRequest) SetApp(v string) *DescribeEdgeContainerAppStatsRequest {
+	s.App = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsRequest) SetEndTime(v string) *DescribeEdgeContainerAppStatsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsRequest) SetFields(v string) *DescribeEdgeContainerAppStatsRequest {
+	s.Fields = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsRequest) SetIsp(v string) *DescribeEdgeContainerAppStatsRequest {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsRequest) SetLocate(v string) *DescribeEdgeContainerAppStatsRequest {
+	s.Locate = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsRequest) SetStartTime(v string) *DescribeEdgeContainerAppStatsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsRequest) SetTenant(v string) *DescribeEdgeContainerAppStatsRequest {
+	s.Tenant = &v
+	return s
+}
+
+type DescribeEdgeContainerAppStatsResponseBody struct {
+	CpuUsageSecondsQuotaRateAvg *float64                                           `json:"CpuUsageSecondsQuotaRateAvg,omitempty" xml:"CpuUsageSecondsQuotaRateAvg,omitempty"`
+	CpuUsageSecondsTotalAvg     *float64                                           `json:"CpuUsageSecondsTotalAvg,omitempty" xml:"CpuUsageSecondsTotalAvg,omitempty"`
+	FsReadsBytesAvgAvg          *float64                                           `json:"FsReadsBytesAvgAvg,omitempty" xml:"FsReadsBytesAvgAvg,omitempty"`
+	FsWritesBytesAvgAvg         *float64                                           `json:"FsWritesBytesAvgAvg,omitempty" xml:"FsWritesBytesAvgAvg,omitempty"`
+	MemoryRssAvg                *float64                                           `json:"MemoryRssAvg,omitempty" xml:"MemoryRssAvg,omitempty"`
+	MemoryRssQuotaRateAvg       *float64                                           `json:"MemoryRssQuotaRateAvg,omitempty" xml:"MemoryRssQuotaRateAvg,omitempty"`
+	PodReadyRateAvg             *float64                                           `json:"PodReadyRateAvg,omitempty" xml:"PodReadyRateAvg,omitempty"`
+	Points                      []*DescribeEdgeContainerAppStatsResponseBodyPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEdgeContainerAppStatsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEdgeContainerAppStatsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetCpuUsageSecondsQuotaRateAvg(v float64) *DescribeEdgeContainerAppStatsResponseBody {
+	s.CpuUsageSecondsQuotaRateAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetCpuUsageSecondsTotalAvg(v float64) *DescribeEdgeContainerAppStatsResponseBody {
+	s.CpuUsageSecondsTotalAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetFsReadsBytesAvgAvg(v float64) *DescribeEdgeContainerAppStatsResponseBody {
+	s.FsReadsBytesAvgAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetFsWritesBytesAvgAvg(v float64) *DescribeEdgeContainerAppStatsResponseBody {
+	s.FsWritesBytesAvgAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetMemoryRssAvg(v float64) *DescribeEdgeContainerAppStatsResponseBody {
+	s.MemoryRssAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetMemoryRssQuotaRateAvg(v float64) *DescribeEdgeContainerAppStatsResponseBody {
+	s.MemoryRssQuotaRateAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetPodReadyRateAvg(v float64) *DescribeEdgeContainerAppStatsResponseBody {
+	s.PodReadyRateAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetPoints(v []*DescribeEdgeContainerAppStatsResponseBodyPoints) *DescribeEdgeContainerAppStatsResponseBody {
+	s.Points = v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBody) SetRequestId(v string) *DescribeEdgeContainerAppStatsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEdgeContainerAppStatsResponseBodyPoints struct {
+	// example:
+	//
+	// 0.1
+	ContainerCpuUsageSecondsQuotaRate *float64 `json:"ContainerCpuUsageSecondsQuotaRate,omitempty" xml:"ContainerCpuUsageSecondsQuotaRate,omitempty"`
+	// example:
+	//
+	// 2
+	ContainerCpuUsageSecondsTotal *float64 `json:"ContainerCpuUsageSecondsTotal,omitempty" xml:"ContainerCpuUsageSecondsTotal,omitempty"`
+	// example:
+	//
+	// 0
+	ContainerFsReadsBytesAvg *float64 `json:"ContainerFsReadsBytesAvg,omitempty" xml:"ContainerFsReadsBytesAvg,omitempty"`
+	// example:
+	//
+	// 0
+	ContainerFsWritesBytesAvg *float64 `json:"ContainerFsWritesBytesAvg,omitempty" xml:"ContainerFsWritesBytesAvg,omitempty"`
+	// example:
+	//
+	// 0.1
+	ContainerMemoryRss *float64 `json:"ContainerMemoryRss,omitempty" xml:"ContainerMemoryRss,omitempty"`
+	// example:
+	//
+	// 1
+	ContainerMemoryRssQuotaRate *float64 `json:"ContainerMemoryRssQuotaRate,omitempty" xml:"ContainerMemoryRssQuotaRate,omitempty"`
+	// example:
+	//
+	// 100
+	PodReadyRate *float64 `json:"PodReadyRate,omitempty" xml:"PodReadyRate,omitempty"`
+	// example:
+	//
+	// 2024-01-18T15:04:05Z
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeEdgeContainerAppStatsResponseBodyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEdgeContainerAppStatsResponseBodyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetContainerCpuUsageSecondsQuotaRate(v float64) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.ContainerCpuUsageSecondsQuotaRate = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetContainerCpuUsageSecondsTotal(v float64) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.ContainerCpuUsageSecondsTotal = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetContainerFsReadsBytesAvg(v float64) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.ContainerFsReadsBytesAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetContainerFsWritesBytesAvg(v float64) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.ContainerFsWritesBytesAvg = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetContainerMemoryRss(v float64) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.ContainerMemoryRss = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetContainerMemoryRssQuotaRate(v float64) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.ContainerMemoryRssQuotaRate = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetPodReadyRate(v float64) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.PodReadyRate = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponseBodyPoints) SetTime(v string) *DescribeEdgeContainerAppStatsResponseBodyPoints {
+	s.Time = &v
+	return s
+}
+
+type DescribeEdgeContainerAppStatsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEdgeContainerAppStatsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeEdgeContainerAppStatsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEdgeContainerAppStatsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEdgeContainerAppStatsResponse) SetHeaders(v map[string]*string) *DescribeEdgeContainerAppStatsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponse) SetStatusCode(v int32) *DescribeEdgeContainerAppStatsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEdgeContainerAppStatsResponse) SetBody(v *DescribeEdgeContainerAppStatsResponseBody) *DescribeEdgeContainerAppStatsResponse {
 	s.Body = v
 	return s
 }
@@ -22581,6 +22841,90 @@ func (s *GetEdgeContainerAppResponse) SetStatusCode(v int32) *GetEdgeContainerAp
 }
 
 func (s *GetEdgeContainerAppResponse) SetBody(v *GetEdgeContainerAppResponseBody) *GetEdgeContainerAppResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerAppLogRiverRequest struct {
+	// example:
+	//
+	// app-880688675****88
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetEdgeContainerAppLogRiverRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppLogRiverRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppLogRiverRequest) SetAppId(v string) *GetEdgeContainerAppLogRiverRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetEdgeContainerAppLogRiverResponseBody struct {
+	// example:
+	//
+	// /root/hello.log
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Stdout    *bool   `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
+}
+
+func (s GetEdgeContainerAppLogRiverResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppLogRiverResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppLogRiverResponseBody) SetPath(v string) *GetEdgeContainerAppLogRiverResponseBody {
+	s.Path = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppLogRiverResponseBody) SetRequestId(v string) *GetEdgeContainerAppLogRiverResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppLogRiverResponseBody) SetStdout(v bool) *GetEdgeContainerAppLogRiverResponseBody {
+	s.Stdout = &v
+	return s
+}
+
+type GetEdgeContainerAppLogRiverResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerAppLogRiverResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerAppLogRiverResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppLogRiverResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppLogRiverResponse) SetHeaders(v map[string]*string) *GetEdgeContainerAppLogRiverResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerAppLogRiverResponse) SetStatusCode(v int32) *GetEdgeContainerAppLogRiverResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppLogRiverResponse) SetBody(v *GetEdgeContainerAppLogRiverResponseBody) *GetEdgeContainerAppLogRiverResponse {
 	s.Body = v
 	return s
 }
@@ -36896,32 +37240,52 @@ func (s *ListHttpRequestHeaderModificationRulesResponse) SetBody(v *ListHttpRequ
 }
 
 type ListHttpResponseHeaderModificationRulesRequest struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type to query. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: queries rule configurations.
+	//
+	// If this parameter is left empty, all configuration types are returned.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page. Default value: 500. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website configurations.
+	//
 	// example:
 	//
 	// 0
@@ -36972,23 +37336,34 @@ func (s *ListHttpResponseHeaderModificationRulesRequest) SetSiteVersion(v int32)
 }
 
 type ListHttpResponseHeaderModificationRulesResponseBody struct {
+	// The configuration list of modifying a response header.
 	Configs []*ListHttpResponseHeaderModificationRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 14
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -37034,31 +37409,54 @@ func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetTotalPage(v int
 }
 
 type ListHttpResponseHeaderModificationRulesResponseBodyConfigs struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
 	// example:
 	//
 	// rule
-	ConfigType                 *string                                                                                 `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The configurations of modifying response headers. You can add, delete, or modify a response header.
 	ResponseHeaderModification []*ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// The rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website configurations.
+	//
 	// example:
 	//
 	// 0
@@ -37114,14 +37512,26 @@ func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetSiteVers
 }
 
 type ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification struct {
+	// The name of the response header.
+	//
 	// example:
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The action. Valid values:
+	//
+	// 	- add: adds a response header.
+	//
+	// 	- del: deletes a response header.
+	//
+	// 	- modify: modifies a response header.
+	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The value of the response header.
+	//
 	// example:
 	//
 	// headerValue
@@ -37825,32 +38235,52 @@ func (s *ListHttpsBasicConfigurationsResponse) SetBody(v *ListHttpsBasicConfigur
 }
 
 type ListImageTransformsRequest struct {
+	// The configuration ID, which can be obtained by calling the ListImageTransforms operation.[](~~2869056~~)
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type to query. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: rule configurations.
+	//
+	// This parameter takes effect only when parameter functionName is specified. If this parameter is left empty, all configuration types are returned.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 500. Default value: 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule name. This parameter takes effect only when parameter functionName is specified.
+	//
 	// example:
 	//
 	// test1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
 	// example:
 	//
 	// 1
@@ -37901,23 +38331,34 @@ func (s *ListImageTransformsRequest) SetSiteVersion(v int32) *ListImageTransform
 }
 
 type ListImageTransformsResponseBody struct {
+	// The configurations.
 	Configs []*ListImageTransformsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 16
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -37963,34 +38404,62 @@ func (s *ListImageTransformsResponseBody) SetTotalPage(v int32) *ListImageTransf
 }
 
 type ListImageTransformsResponseBodyConfigs struct {
+	// The configuration ID,
+	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Indicates whether cache reserve is enabled. Indicates whether the task name is valid. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The rule content, which is a policy or conditional expression.
+	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website.
+	//
 	// example:
 	//
 	// 1
@@ -38937,6 +39406,8 @@ type ListListsRequestQueryArgs struct {
 	//
 	// 10.1.1.1
 	ItemLike *string `json:"ItemLike,omitempty" xml:"ItemLike,omitempty"`
+	// The type of the custom list.
+	//
 	// example:
 	//
 	// ip
@@ -42425,32 +42896,50 @@ func (s *ListRecordsResponse) SetBody(v *ListRecordsResponseBody) *ListRecordsRe
 }
 
 type ListRedirectRulesRequest struct {
+	// The configuration ID,
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website configurations.
+	//
 	// example:
 	//
 	// 0
@@ -42501,23 +42990,34 @@ func (s *ListRedirectRulesRequest) SetSiteVersion(v int32) *ListRedirectRulesReq
 }
 
 type ListRedirectRulesResponseBody struct {
+	// The configuration list of the the URL redirect rule.
 	Configs []*ListRedirectRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -42563,46 +43063,92 @@ func (s *ListRedirectRulesResponseBody) SetTotalPage(v int32) *ListRedirectRules
 }
 
 type ListRedirectRulesResponseBodyConfigs struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Indicates whether the feature of retaining the query string is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	// The rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version of the website configurations.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The response code that you want to use to indicate URL redirection. Valid values:
+	//
+	// 	- 301
+	//
+	// 	- 302
+	//
+	// 	- 303
+	//
+	// 	- 307
+	//
+	// 	- 308
+	//
 	// example:
 	//
 	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The destination URL to which requests are redirected.
+	//
 	// example:
 	//
 	// http://www.exapmle.com/index.html
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The redirect type. Valid values:
+	//
+	// 	- static
+	//
 	// example:
 	//
 	// static
@@ -42702,32 +43248,52 @@ func (s *ListRedirectRulesResponse) SetBody(v *ListRedirectRulesResponseBody) *L
 }
 
 type ListRewriteUrlRulesRequest struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type to query. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: rule configurations.
+	//
+	// If this parameter is left empty, all configuration types are returned. This parameter takes effect only when parameter functionName is specified.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
 	// example:
 	//
 	// 0
@@ -42778,23 +43344,34 @@ func (s *ListRewriteUrlRulesRequest) SetSiteVersion(v int32) *ListRewriteUrlRule
 }
 
 type ListRewriteUrlRulesResponseBody struct {
+	// The URL rewrite configuration list.
 	Configs []*ListRewriteUrlRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 8
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -42840,46 +43417,80 @@ func (s *ListRewriteUrlRulesResponseBody) SetTotalPage(v int32) *ListRewriteUrlR
 }
 
 type ListRewriteUrlRulesResponseBodyConfigs struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 39538644977****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The desired query string to which you want to rewrite the query string in the original request.
+	//
 	// example:
 	//
 	// example=123
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The query string rewrite method. Valid values:
+	//
+	// 	- static
+	//
 	// example:
 	//
 	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	// The path rewrite method. Valid values:
+	//
+	// 	- static
+	//
 	// example:
 	//
 	// static
 	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// The rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website configurations.
+	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The desired URI to which you want to rewrite the path in the original request.
+	//
 	// example:
 	//
 	// /image.example.com/index.html
@@ -51595,6 +52206,111 @@ func (s *UpdateDevelopmentModeResponse) SetStatusCode(v int32) *UpdateDevelopmen
 }
 
 func (s *UpdateDevelopmentModeResponse) SetBody(v *UpdateDevelopmentModeResponseBody) *UpdateDevelopmentModeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEdgeContainerAppLogRiverRequest struct {
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// /root/hello.log
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// true
+	Stdout *bool `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
+}
+
+func (s UpdateEdgeContainerAppLogRiverRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEdgeContainerAppLogRiverRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEdgeContainerAppLogRiverRequest) SetAppId(v string) *UpdateEdgeContainerAppLogRiverRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateEdgeContainerAppLogRiverRequest) SetPath(v string) *UpdateEdgeContainerAppLogRiverRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateEdgeContainerAppLogRiverRequest) SetStdout(v bool) *UpdateEdgeContainerAppLogRiverRequest {
+	s.Stdout = &v
+	return s
+}
+
+type UpdateEdgeContainerAppLogRiverResponseBody struct {
+	// example:
+	//
+	// /root/hello.log
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 42DE97FA-45D2-5615-9A31-55D9EC0D7563
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Stdout *bool `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
+}
+
+func (s UpdateEdgeContainerAppLogRiverResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEdgeContainerAppLogRiverResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEdgeContainerAppLogRiverResponseBody) SetPath(v string) *UpdateEdgeContainerAppLogRiverResponseBody {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateEdgeContainerAppLogRiverResponseBody) SetRequestId(v string) *UpdateEdgeContainerAppLogRiverResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateEdgeContainerAppLogRiverResponseBody) SetStdout(v bool) *UpdateEdgeContainerAppLogRiverResponseBody {
+	s.Stdout = &v
+	return s
+}
+
+type UpdateEdgeContainerAppLogRiverResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEdgeContainerAppLogRiverResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateEdgeContainerAppLogRiverResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEdgeContainerAppLogRiverResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEdgeContainerAppLogRiverResponse) SetHeaders(v map[string]*string) *UpdateEdgeContainerAppLogRiverResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEdgeContainerAppLogRiverResponse) SetStatusCode(v int32) *UpdateEdgeContainerAppLogRiverResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEdgeContainerAppLogRiverResponse) SetBody(v *UpdateEdgeContainerAppLogRiverResponseBody) *UpdateEdgeContainerAppLogRiverResponse {
 	s.Body = v
 	return s
 }
@@ -67136,6 +67852,73 @@ func (client *Client) DescribeDDoSL7QpsList(request *DescribeDDoSL7QpsListReques
 
 // Summary:
 //
+// 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+//
+// @param request - DescribeEdgeContainerAppStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEdgeContainerAppStatsResponse
+func (client *Client) DescribeEdgeContainerAppStatsWithOptions(request *DescribeEdgeContainerAppStatsRequest, runtime *util.RuntimeOptions) (_result *DescribeEdgeContainerAppStatsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEdgeContainerAppStats"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEdgeContainerAppStatsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEdgeContainerAppStatsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+//
+// @param request - DescribeEdgeContainerAppStatsRequest
+//
+// @return DescribeEdgeContainerAppStatsResponse
+func (client *Client) DescribeEdgeContainerAppStats(request *DescribeEdgeContainerAppStatsRequest) (_result *DescribeEdgeContainerAppStatsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEdgeContainerAppStatsResponse{}
+	_body, _err := client.DescribeEdgeContainerAppStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the configuration of smart HTTP DDoS protection for a website.
 //
 // @param request - DescribeHttpDDoSAttackIntelligentProtectionRequest
@@ -68627,6 +69410,73 @@ func (client *Client) GetEdgeContainerApp(request *GetEdgeContainerAppRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEdgeContainerAppResponse{}
 	_body, _err := client.GetEdgeContainerAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用日志采集配置
+//
+// @param request - GetEdgeContainerAppLogRiverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerAppLogRiverResponse
+func (client *Client) GetEdgeContainerAppLogRiverWithOptions(request *GetEdgeContainerAppLogRiverRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerAppLogRiverResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerAppLogRiver"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerAppLogRiverResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerAppLogRiverResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取边缘容器应用日志采集配置
+//
+// @param request - GetEdgeContainerAppLogRiverRequest
+//
+// @return GetEdgeContainerAppLogRiverResponse
+func (client *Client) GetEdgeContainerAppLogRiver(request *GetEdgeContainerAppLogRiverRequest) (_result *GetEdgeContainerAppLogRiverResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerAppLogRiverResponse{}
+	_body, _err := client.GetEdgeContainerAppLogRiverWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -72992,7 +73842,7 @@ func (client *Client) ListHttpRequestHeaderModificationRules(request *ListHttpRe
 
 // Summary:
 //
-// 查询HTTP响应头规则列表
+// Queries the configuration details of an HTTP response header modification rule for a website.
 //
 // @param request - ListHttpResponseHeaderModificationRulesRequest
 //
@@ -73041,7 +73891,7 @@ func (client *Client) ListHttpResponseHeaderModificationRulesWithOptions(request
 
 // Summary:
 //
-// 查询HTTP响应头规则列表
+// Queries the configuration details of an HTTP response header modification rule for a website.
 //
 // @param request - ListHttpResponseHeaderModificationRulesRequest
 //
@@ -73193,7 +74043,7 @@ func (client *Client) ListHttpsBasicConfigurations(request *ListHttpsBasicConfig
 
 // Summary:
 //
-// 查询多条站点图片转换配置
+// Queries the details of image conversion configurations for multiple websites.
 //
 // @param request - ListImageTransformsRequest
 //
@@ -73242,7 +74092,7 @@ func (client *Client) ListImageTransformsWithOptions(request *ListImageTransform
 
 // Summary:
 //
-// 查询多条站点图片转换配置
+// Queries the details of image conversion configurations for multiple websites.
 //
 // @param request - ListImageTransformsRequest
 //
@@ -74191,7 +75041,7 @@ func (client *Client) ListRecords(request *ListRecordsRequest) (_result *ListRec
 
 // Summary:
 //
-// 查询重定向规则列表
+// Queries the configuration details of a URL redirect rule for a website.
 //
 // @param request - ListRedirectRulesRequest
 //
@@ -74240,7 +75090,7 @@ func (client *Client) ListRedirectRulesWithOptions(request *ListRedirectRulesReq
 
 // Summary:
 //
-// 查询重定向规则列表
+// Queries the configuration details of a URL redirect rule for a website.
 //
 // @param request - ListRedirectRulesRequest
 //
@@ -74258,7 +75108,7 @@ func (client *Client) ListRedirectRules(request *ListRedirectRulesRequest) (_res
 
 // Summary:
 //
-// 查询重写Url规则列表
+// Queries the details of rewrite URL configurations.
 //
 // @param request - ListRewriteUrlRulesRequest
 //
@@ -74307,7 +75157,7 @@ func (client *Client) ListRewriteUrlRulesWithOptions(request *ListRewriteUrlRule
 
 // Summary:
 //
-// 查询重写Url规则列表
+// Queries the details of rewrite URL configurations.
 //
 // @param request - ListRewriteUrlRulesRequest
 //
@@ -77966,6 +78816,85 @@ func (client *Client) UpdateDevelopmentMode(request *UpdateDevelopmentModeReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDevelopmentModeResponse{}
 	_body, _err := client.UpdateDevelopmentModeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新边缘容器应用日志采集配置
+//
+// @param request - UpdateEdgeContainerAppLogRiverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEdgeContainerAppLogRiverResponse
+func (client *Client) UpdateEdgeContainerAppLogRiverWithOptions(request *UpdateEdgeContainerAppLogRiverRequest, runtime *util.RuntimeOptions) (_result *UpdateEdgeContainerAppLogRiverResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stdout)) {
+		query["Stdout"] = request.Stdout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEdgeContainerAppLogRiver"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateEdgeContainerAppLogRiverResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateEdgeContainerAppLogRiverResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新边缘容器应用日志采集配置
+//
+// @param request - UpdateEdgeContainerAppLogRiverRequest
+//
+// @return UpdateEdgeContainerAppLogRiverResponse
+func (client *Client) UpdateEdgeContainerAppLogRiver(request *UpdateEdgeContainerAppLogRiverRequest) (_result *UpdateEdgeContainerAppLogRiverResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateEdgeContainerAppLogRiverResponse{}
+	_body, _err := client.UpdateEdgeContainerAppLogRiverWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
