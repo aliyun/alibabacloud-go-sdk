@@ -17719,8 +17719,6 @@ func (s *DeleteWaitingRoomRuleResponse) SetBody(v *DeleteWaitingRoomRuleResponse
 type DescribeCustomScenePoliciesRequest struct {
 	// The number of the page to return. Valid values: **1 to 100000**.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
