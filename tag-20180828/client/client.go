@@ -346,6 +346,138 @@ func (s *CloseCreatedByResponse) SetBody(v *CloseCreatedByResponseBody) *CloseCr
 	return s
 }
 
+type CreateAssociatedResourceRulesRequest struct {
+	CreateRulesList []*CreateAssociatedResourceRulesRequestCreateRulesList `json:"CreateRulesList,omitempty" xml:"CreateRulesList,omitempty" type:"Repeated"`
+	OwnerAccount    *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+}
+
+func (s CreateAssociatedResourceRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAssociatedResourceRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAssociatedResourceRulesRequest) SetCreateRulesList(v []*CreateAssociatedResourceRulesRequestCreateRulesList) *CreateAssociatedResourceRulesRequest {
+	s.CreateRulesList = v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesRequest) SetOwnerAccount(v string) *CreateAssociatedResourceRulesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesRequest) SetOwnerId(v int64) *CreateAssociatedResourceRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesRequest) SetRegionId(v string) *CreateAssociatedResourceRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesRequest) SetResourceOwnerAccount(v string) *CreateAssociatedResourceRulesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+type CreateAssociatedResourceRulesRequestCreateRulesList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule:AttachEni-DetachEni-TagInstance:Ecs-Instance:Ecs-Eni
+	SettingName *string `json:"SettingName,omitempty" xml:"SettingName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enable
+	Status  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateAssociatedResourceRulesRequestCreateRulesList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAssociatedResourceRulesRequestCreateRulesList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAssociatedResourceRulesRequestCreateRulesList) SetSettingName(v string) *CreateAssociatedResourceRulesRequestCreateRulesList {
+	s.SettingName = &v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesRequestCreateRulesList) SetStatus(v string) *CreateAssociatedResourceRulesRequestCreateRulesList {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesRequestCreateRulesList) SetTagKeys(v []*string) *CreateAssociatedResourceRulesRequestCreateRulesList {
+	s.TagKeys = v
+	return s
+}
+
+type CreateAssociatedResourceRulesResponseBody struct {
+	// example:
+	//
+	// 33BD6957-D7B0-500C-ADA1-300414EDCE89
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAssociatedResourceRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAssociatedResourceRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAssociatedResourceRulesResponseBody) SetRequestId(v string) *CreateAssociatedResourceRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAssociatedResourceRulesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAssociatedResourceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAssociatedResourceRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAssociatedResourceRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAssociatedResourceRulesResponse) SetHeaders(v map[string]*string) *CreateAssociatedResourceRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesResponse) SetStatusCode(v int32) *CreateAssociatedResourceRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAssociatedResourceRulesResponse) SetBody(v *CreateAssociatedResourceRulesResponseBody) *CreateAssociatedResourceRulesResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePolicyRequest struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
@@ -721,6 +853,102 @@ func (s *CreateTagsResponse) SetStatusCode(v int32) *CreateTagsResponse {
 }
 
 func (s *CreateTagsResponse) SetBody(v *CreateTagsResponseBody) *CreateTagsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAssociatedResourceRuleRequest struct {
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// example:
+	//
+	// rule:AttachEni-DetachEni-TagInstance:Ecs-Instance:Ecs-Eni
+	SettingName *string `json:"SettingName,omitempty" xml:"SettingName,omitempty"`
+}
+
+func (s DeleteAssociatedResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAssociatedResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAssociatedResourceRuleRequest) SetOwnerAccount(v string) *DeleteAssociatedResourceRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAssociatedResourceRuleRequest) SetOwnerId(v int64) *DeleteAssociatedResourceRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAssociatedResourceRuleRequest) SetRegionId(v string) *DeleteAssociatedResourceRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteAssociatedResourceRuleRequest) SetResourceOwnerAccount(v string) *DeleteAssociatedResourceRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAssociatedResourceRuleRequest) SetSettingName(v string) *DeleteAssociatedResourceRuleRequest {
+	s.SettingName = &v
+	return s
+}
+
+type DeleteAssociatedResourceRuleResponseBody struct {
+	// example:
+	//
+	// BB532282-94F5-5F56-877F-32D5E2A04F3F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAssociatedResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAssociatedResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAssociatedResourceRuleResponseBody) SetRequestId(v string) *DeleteAssociatedResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAssociatedResourceRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAssociatedResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAssociatedResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAssociatedResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAssociatedResourceRuleResponse) SetHeaders(v map[string]*string) *DeleteAssociatedResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAssociatedResourceRuleResponse) SetStatusCode(v int32) *DeleteAssociatedResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAssociatedResourceRuleResponse) SetBody(v *DeleteAssociatedResourceRuleResponseBody) *DeleteAssociatedResourceRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2454,6 +2682,178 @@ func (s *GetPolicyEnableStatusResponse) SetStatusCode(v int32) *GetPolicyEnableS
 }
 
 func (s *GetPolicyEnableStatusResponse) SetBody(v *GetPolicyEnableStatusResponseBody) *GetPolicyEnableStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ListAssociatedResourceRulesRequest struct {
+	// example:
+	//
+	// 50
+	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	SettingName          []*string `json:"SettingName,omitempty" xml:"SettingName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Enable
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListAssociatedResourceRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssociatedResourceRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetMaxResult(v int32) *ListAssociatedResourceRulesRequest {
+	s.MaxResult = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetNextToken(v string) *ListAssociatedResourceRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetOwnerAccount(v string) *ListAssociatedResourceRulesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetOwnerId(v int64) *ListAssociatedResourceRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetRegionId(v string) *ListAssociatedResourceRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetResourceOwnerAccount(v string) *ListAssociatedResourceRulesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetSettingName(v []*string) *ListAssociatedResourceRulesRequest {
+	s.SettingName = v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesRequest) SetStatus(v string) *ListAssociatedResourceRulesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListAssociatedResourceRulesResponseBody struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 6E27F22C-EDA3-132E-A53F-77DE3BC2343D
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     []*ListAssociatedResourceRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s ListAssociatedResourceRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssociatedResourceRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssociatedResourceRulesResponseBody) SetNextToken(v string) *ListAssociatedResourceRulesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesResponseBody) SetRequestId(v string) *ListAssociatedResourceRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesResponseBody) SetRules(v []*ListAssociatedResourceRulesResponseBodyRules) *ListAssociatedResourceRulesResponseBody {
+	s.Rules = v
+	return s
+}
+
+type ListAssociatedResourceRulesResponseBodyRules struct {
+	// example:
+	//
+	// rule:UpdateLoadBalancerZones-UpdateLoadBalancerAddressTypeConfig-TagAlb:Alb-LoadBalancer:Vpc-Eip
+	SettingName *string `json:"SettingName,omitempty" xml:"SettingName,omitempty"`
+	// example:
+	//
+	// Disable/Enable
+	Status  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s ListAssociatedResourceRulesResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssociatedResourceRulesResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssociatedResourceRulesResponseBodyRules) SetSettingName(v string) *ListAssociatedResourceRulesResponseBodyRules {
+	s.SettingName = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesResponseBodyRules) SetStatus(v string) *ListAssociatedResourceRulesResponseBodyRules {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesResponseBodyRules) SetTagKeys(v []*string) *ListAssociatedResourceRulesResponseBodyRules {
+	s.TagKeys = v
+	return s
+}
+
+type ListAssociatedResourceRulesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAssociatedResourceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAssociatedResourceRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssociatedResourceRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssociatedResourceRulesResponse) SetHeaders(v map[string]*string) *ListAssociatedResourceRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesResponse) SetStatusCode(v int32) *ListAssociatedResourceRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAssociatedResourceRulesResponse) SetBody(v *ListAssociatedResourceRulesResponseBody) *ListAssociatedResourceRulesResponse {
 	s.Body = v
 	return s
 }
@@ -5634,6 +6034,119 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateAssociatedResourceRuleRequest struct {
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule:AssociateEip-UnassociateEip-TagInstance:Ecs-Instance:Vpc-Eip
+	SettingName *string `json:"SettingName,omitempty" xml:"SettingName,omitempty"`
+	// example:
+	//
+	// Enable
+	Status  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAssociatedResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAssociatedResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAssociatedResourceRuleRequest) SetOwnerAccount(v string) *UpdateAssociatedResourceRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleRequest) SetOwnerId(v int64) *UpdateAssociatedResourceRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleRequest) SetRegionId(v string) *UpdateAssociatedResourceRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleRequest) SetResourceOwnerAccount(v string) *UpdateAssociatedResourceRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleRequest) SetSettingName(v string) *UpdateAssociatedResourceRuleRequest {
+	s.SettingName = &v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleRequest) SetStatus(v string) *UpdateAssociatedResourceRuleRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleRequest) SetTagKeys(v []*string) *UpdateAssociatedResourceRuleRequest {
+	s.TagKeys = v
+	return s
+}
+
+type UpdateAssociatedResourceRuleResponseBody struct {
+	// example:
+	//
+	// 94E16BB6-3FB6-1297-B5B2-ED2250F437CD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAssociatedResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAssociatedResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAssociatedResourceRuleResponseBody) SetRequestId(v string) *UpdateAssociatedResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAssociatedResourceRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAssociatedResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAssociatedResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAssociatedResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAssociatedResourceRuleResponse) SetHeaders(v map[string]*string) *UpdateAssociatedResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleResponse) SetStatusCode(v int32) *UpdateAssociatedResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAssociatedResourceRuleResponse) SetBody(v *UpdateAssociatedResourceRuleResponseBody) *UpdateAssociatedResourceRuleResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -5999,6 +6512,93 @@ func (client *Client) CloseCreatedBy(request *CloseCreatedByRequest) (_result *C
 
 // Summary:
 //
+// 创建关联资源打TAG规则
+//
+// @param request - CreateAssociatedResourceRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAssociatedResourceRulesResponse
+func (client *Client) CreateAssociatedResourceRulesWithOptions(request *CreateAssociatedResourceRulesRequest, runtime *util.RuntimeOptions) (_result *CreateAssociatedResourceRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateRulesList)) {
+		query["CreateRulesList"] = request.CreateRulesList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAssociatedResourceRules"),
+		Version:     tea.String("2018-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAssociatedResourceRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAssociatedResourceRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建关联资源打TAG规则
+//
+// @param request - CreateAssociatedResourceRulesRequest
+//
+// @return CreateAssociatedResourceRulesResponse
+func (client *Client) CreateAssociatedResourceRules(request *CreateAssociatedResourceRulesRequest) (_result *CreateAssociatedResourceRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAssociatedResourceRulesResponse{}
+	_body, _err := client.CreateAssociatedResourceRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a tag policy.
 //
 // Description:
@@ -6208,6 +6808,93 @@ func (client *Client) CreateTags(request *CreateTagsRequest) (_result *CreateTag
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTagsResponse{}
 	_body, _err := client.CreateTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除关联资源打TAG规则
+//
+// @param request - DeleteAssociatedResourceRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAssociatedResourceRuleResponse
+func (client *Client) DeleteAssociatedResourceRuleWithOptions(request *DeleteAssociatedResourceRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAssociatedResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettingName)) {
+		query["SettingName"] = request.SettingName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAssociatedResourceRule"),
+		Version:     tea.String("2018-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAssociatedResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAssociatedResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除关联资源打TAG规则
+//
+// @param request - DeleteAssociatedResourceRuleRequest
+//
+// @return DeleteAssociatedResourceRuleResponse
+func (client *Client) DeleteAssociatedResourceRule(request *DeleteAssociatedResourceRuleRequest) (_result *DeleteAssociatedResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAssociatedResourceRuleResponse{}
+	_body, _err := client.DeleteAssociatedResourceRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7317,6 +8004,105 @@ func (client *Client) GetPolicyEnableStatus(request *GetPolicyEnableStatusReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPolicyEnableStatusResponse{}
 	_body, _err := client.GetPolicyEnableStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户已设置的关联资源打TAG规则
+//
+// @param request - ListAssociatedResourceRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAssociatedResourceRulesResponse
+func (client *Client) ListAssociatedResourceRulesWithOptions(request *ListAssociatedResourceRulesRequest, runtime *util.RuntimeOptions) (_result *ListAssociatedResourceRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResult)) {
+		query["MaxResult"] = request.MaxResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettingName)) {
+		query["SettingName"] = request.SettingName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAssociatedResourceRules"),
+		Version:     tea.String("2018-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAssociatedResourceRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAssociatedResourceRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 用户已设置的关联资源打TAG规则
+//
+// @param request - ListAssociatedResourceRulesRequest
+//
+// @return ListAssociatedResourceRulesResponse
+func (client *Client) ListAssociatedResourceRules(request *ListAssociatedResourceRulesRequest) (_result *ListAssociatedResourceRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAssociatedResourceRulesResponse{}
+	_body, _err := client.ListAssociatedResourceRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8800,6 +9586,101 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新关联资源打TAG规则
+//
+// @param request - UpdateAssociatedResourceRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAssociatedResourceRuleResponse
+func (client *Client) UpdateAssociatedResourceRuleWithOptions(request *UpdateAssociatedResourceRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateAssociatedResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettingName)) {
+		query["SettingName"] = request.SettingName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
+		query["TagKeys"] = request.TagKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAssociatedResourceRule"),
+		Version:     tea.String("2018-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAssociatedResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAssociatedResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新关联资源打TAG规则
+//
+// @param request - UpdateAssociatedResourceRuleRequest
+//
+// @return UpdateAssociatedResourceRuleResponse
+func (client *Client) UpdateAssociatedResourceRule(request *UpdateAssociatedResourceRuleRequest) (_result *UpdateAssociatedResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAssociatedResourceRuleResponse{}
+	_body, _err := client.UpdateAssociatedResourceRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
