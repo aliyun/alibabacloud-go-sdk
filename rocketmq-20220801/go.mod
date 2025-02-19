@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/rocketmq-20220801
+module github.com/alibabacloud-go/rocketmq-20220801/v2
 
 go 1.14
 
