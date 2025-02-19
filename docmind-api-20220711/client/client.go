@@ -1142,6 +1142,8 @@ type SubmitConvertImageToExcelJobRequest struct {
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToExcelJobRequest) String() string {
@@ -1172,6 +1174,16 @@ func (s *SubmitConvertImageToExcelJobRequest) SetImageUrls(v []*string) *SubmitC
 	return s
 }
 
+func (s *SubmitConvertImageToExcelJobRequest) SetOssBucket(v string) *SubmitConvertImageToExcelJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToExcelJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToExcelJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertImageToExcelJobShrinkRequest struct {
 	ForceMergeExcel *bool `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 	// example:
@@ -1180,6 +1192,8 @@ type SubmitConvertImageToExcelJobShrinkRequest struct {
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToExcelJobShrinkRequest) String() string {
@@ -1207,6 +1221,16 @@ func (s *SubmitConvertImageToExcelJobShrinkRequest) SetImageNamesShrink(v string
 
 func (s *SubmitConvertImageToExcelJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToExcelJobShrinkRequest {
 	s.ImageUrlsShrink = &v
+	return s
+}
+
+func (s *SubmitConvertImageToExcelJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToExcelJobShrinkRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToExcelJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToExcelJobShrinkRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -1310,6 +1334,8 @@ type SubmitConvertImageToMarkdownJobRequest struct {
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToMarkdownJobRequest) String() string {
@@ -1335,6 +1361,16 @@ func (s *SubmitConvertImageToMarkdownJobRequest) SetImageUrls(v []*string) *Subm
 	return s
 }
 
+func (s *SubmitConvertImageToMarkdownJobRequest) SetOssBucket(v string) *SubmitConvertImageToMarkdownJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToMarkdownJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertImageToMarkdownJobShrinkRequest struct {
 	// example:
 	//
@@ -1342,6 +1378,8 @@ type SubmitConvertImageToMarkdownJobShrinkRequest struct {
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToMarkdownJobShrinkRequest) String() string {
@@ -1364,6 +1402,16 @@ func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageNamesShrink(v str
 
 func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
 	s.ImageUrlsShrink = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -1467,6 +1515,8 @@ type SubmitConvertImageToPdfJobRequest struct {
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToPdfJobRequest) String() string {
@@ -1492,6 +1542,16 @@ func (s *SubmitConvertImageToPdfJobRequest) SetImageUrls(v []*string) *SubmitCon
 	return s
 }
 
+func (s *SubmitConvertImageToPdfJobRequest) SetOssBucket(v string) *SubmitConvertImageToPdfJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToPdfJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToPdfJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertImageToPdfJobShrinkRequest struct {
 	// example:
 	//
@@ -1499,6 +1559,8 @@ type SubmitConvertImageToPdfJobShrinkRequest struct {
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToPdfJobShrinkRequest) String() string {
@@ -1521,6 +1583,16 @@ func (s *SubmitConvertImageToPdfJobShrinkRequest) SetImageNamesShrink(v string) 
 
 func (s *SubmitConvertImageToPdfJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToPdfJobShrinkRequest {
 	s.ImageUrlsShrink = &v
+	return s
+}
+
+func (s *SubmitConvertImageToPdfJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToPdfJobShrinkRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToPdfJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToPdfJobShrinkRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -1624,6 +1696,8 @@ type SubmitConvertImageToWordJobRequest struct {
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToWordJobRequest) String() string {
@@ -1649,6 +1723,16 @@ func (s *SubmitConvertImageToWordJobRequest) SetImageUrls(v []*string) *SubmitCo
 	return s
 }
 
+func (s *SubmitConvertImageToWordJobRequest) SetOssBucket(v string) *SubmitConvertImageToWordJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToWordJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToWordJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertImageToWordJobShrinkRequest struct {
 	// example:
 	//
@@ -1656,6 +1740,8 @@ type SubmitConvertImageToWordJobShrinkRequest struct {
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertImageToWordJobShrinkRequest) String() string {
@@ -1678,6 +1764,16 @@ func (s *SubmitConvertImageToWordJobShrinkRequest) SetImageNamesShrink(v string)
 
 func (s *SubmitConvertImageToWordJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToWordJobShrinkRequest {
 	s.ImageUrlsShrink = &v
+	return s
+}
+
+func (s *SubmitConvertImageToWordJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToWordJobShrinkRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertImageToWordJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToWordJobShrinkRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -1785,6 +1881,8 @@ type SubmitConvertPdfToExcelJobRequest struct {
 	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 	ForceMergeExcel       *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	OssBucket             *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint           *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobRequest) String() string {
@@ -1815,6 +1913,16 @@ func (s *SubmitConvertPdfToExcelJobRequest) SetForceMergeExcel(v bool) *SubmitCo
 	return s
 }
 
+func (s *SubmitConvertPdfToExcelJobRequest) SetOssBucket(v string) *SubmitConvertPdfToExcelJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToExcelJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToExcelJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertPdfToExcelJobAdvanceRequest struct {
 	// example:
 	//
@@ -1826,6 +1934,8 @@ type SubmitConvertPdfToExcelJobAdvanceRequest struct {
 	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 	ForceMergeExcel       *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	OssBucket             *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint           *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobAdvanceRequest) String() string {
@@ -1853,6 +1963,16 @@ func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetForceExportInnerImage(v bo
 
 func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetForceMergeExcel(v bool) *SubmitConvertPdfToExcelJobAdvanceRequest {
 	s.ForceMergeExcel = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToExcelJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToExcelJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -1957,7 +2077,9 @@ type SubmitConvertPdfToImageJobRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToImageJobRequest) String() string {
@@ -1978,6 +2100,16 @@ func (s *SubmitConvertPdfToImageJobRequest) SetFileUrl(v string) *SubmitConvertP
 	return s
 }
 
+func (s *SubmitConvertPdfToImageJobRequest) SetOssBucket(v string) *SubmitConvertPdfToImageJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToImageJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToImageJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertPdfToImageJobAdvanceRequest struct {
 	// example:
 	//
@@ -1987,6 +2119,8 @@ type SubmitConvertPdfToImageJobAdvanceRequest struct {
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToImageJobAdvanceRequest) String() string {
@@ -2004,6 +2138,16 @@ func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetFileName(v string) *Submit
 
 func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToImageJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToImageJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToImageJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -2108,7 +2252,9 @@ type SubmitConvertPdfToMarkdownJobRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToMarkdownJobRequest) String() string {
@@ -2129,6 +2275,16 @@ func (s *SubmitConvertPdfToMarkdownJobRequest) SetFileUrl(v string) *SubmitConve
 	return s
 }
 
+func (s *SubmitConvertPdfToMarkdownJobRequest) SetOssBucket(v string) *SubmitConvertPdfToMarkdownJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToMarkdownJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertPdfToMarkdownJobAdvanceRequest struct {
 	// example:
 	//
@@ -2138,6 +2294,8 @@ type SubmitConvertPdfToMarkdownJobAdvanceRequest struct {
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToMarkdownJobAdvanceRequest) String() string {
@@ -2155,6 +2313,16 @@ func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetFileName(v string) *Sub
 
 func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -2261,6 +2429,8 @@ type SubmitConvertPdfToWordJobRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
+	OssBucket             *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint           *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToWordJobRequest) String() string {
@@ -2286,6 +2456,16 @@ func (s *SubmitConvertPdfToWordJobRequest) SetForceExportInnerImage(v bool) *Sub
 	return s
 }
 
+func (s *SubmitConvertPdfToWordJobRequest) SetOssBucket(v string) *SubmitConvertPdfToWordJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToWordJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToWordJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitConvertPdfToWordJobAdvanceRequest struct {
 	// example:
 	//
@@ -2296,6 +2476,8 @@ type SubmitConvertPdfToWordJobAdvanceRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
+	OssBucket             *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint           *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitConvertPdfToWordJobAdvanceRequest) String() string {
@@ -2318,6 +2500,16 @@ func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFileUrlObject(v io.Reader) 
 
 func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToWordJobAdvanceRequest {
 	s.ForceExportInnerImage = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToWordJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToWordJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -2428,6 +2620,8 @@ type SubmitDigitalDocStructureJobRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ImageStrategy      *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	RevealMarkdown     *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
 	UseUrlResponseBody *bool   `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
 }
@@ -2460,6 +2654,16 @@ func (s *SubmitDigitalDocStructureJobRequest) SetImageStrategy(v string) *Submit
 	return s
 }
 
+func (s *SubmitDigitalDocStructureJobRequest) SetOssBucket(v string) *SubmitDigitalDocStructureJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobRequest) SetOssEndpoint(v string) *SubmitDigitalDocStructureJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 func (s *SubmitDigitalDocStructureJobRequest) SetRevealMarkdown(v bool) *SubmitDigitalDocStructureJobRequest {
 	s.RevealMarkdown = &v
 	return s
@@ -2484,6 +2688,8 @@ type SubmitDigitalDocStructureJobAdvanceRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ImageStrategy      *string   `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	RevealMarkdown     *bool     `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
 	UseUrlResponseBody *bool     `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
 }
@@ -2513,6 +2719,16 @@ func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reade
 
 func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetImageStrategy(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
 	s.ImageStrategy = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetOssBucket(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -2626,6 +2842,8 @@ type SubmitDocParserJobRequest struct {
 	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
 	LlmEnhancement     *bool   `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitDocParserJobRequest) String() string {
@@ -2661,6 +2879,16 @@ func (s *SubmitDocParserJobRequest) SetLlmEnhancement(v bool) *SubmitDocParserJo
 	return s
 }
 
+func (s *SubmitDocParserJobRequest) SetOssBucket(v string) *SubmitDocParserJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequest) SetOssEndpoint(v string) *SubmitDocParserJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitDocParserJobAdvanceRequest struct {
 	// example:
 	//
@@ -2676,6 +2904,8 @@ type SubmitDocParserJobAdvanceRequest struct {
 	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
 	LlmEnhancement     *bool     `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitDocParserJobAdvanceRequest) String() string {
@@ -2708,6 +2938,16 @@ func (s *SubmitDocParserJobAdvanceRequest) SetFormulaEnhancement(v bool) *Submit
 
 func (s *SubmitDocParserJobAdvanceRequest) SetLlmEnhancement(v bool) *SubmitDocParserJobAdvanceRequest {
 	s.LlmEnhancement = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetOssBucket(v string) *SubmitDocParserJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocParserJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -2819,6 +3059,8 @@ type SubmitDocStructureJobRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	StructureType      *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 
@@ -2855,6 +3097,16 @@ func (s *SubmitDocStructureJobRequest) SetFormulaEnhancement(v bool) *SubmitDocS
 	return s
 }
 
+func (s *SubmitDocStructureJobRequest) SetOssBucket(v string) *SubmitDocStructureJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDocStructureJobRequest) SetOssEndpoint(v string) *SubmitDocStructureJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 func (s *SubmitDocStructureJobRequest) SetStructureType(v string) *SubmitDocStructureJobRequest {
 	s.StructureType = &v
 	return s
@@ -2875,6 +3127,8 @@ type SubmitDocStructureJobAdvanceRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	StructureType      *string   `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 
@@ -2908,6 +3162,16 @@ func (s *SubmitDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reader) *Sub
 
 func (s *SubmitDocStructureJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitDocStructureJobAdvanceRequest {
 	s.FormulaEnhancement = &v
+	return s
+}
+
+func (s *SubmitDocStructureJobAdvanceRequest) SetOssBucket(v string) *SubmitDocStructureJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDocStructureJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocStructureJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -3018,7 +3282,9 @@ type SubmitDocumentExtractJobRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitDocumentExtractJobRequest) String() string {
@@ -3044,6 +3310,16 @@ func (s *SubmitDocumentExtractJobRequest) SetFileUrl(v string) *SubmitDocumentEx
 	return s
 }
 
+func (s *SubmitDocumentExtractJobRequest) SetOssBucket(v string) *SubmitDocumentExtractJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDocumentExtractJobRequest) SetOssEndpoint(v string) *SubmitDocumentExtractJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitDocumentExtractJobAdvanceRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// example:
@@ -3054,6 +3330,8 @@ type SubmitDocumentExtractJobAdvanceRequest struct {
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitDocumentExtractJobAdvanceRequest) String() string {
@@ -3076,6 +3354,16 @@ func (s *SubmitDocumentExtractJobAdvanceRequest) SetFileNameExtension(v string) 
 
 func (s *SubmitDocumentExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocumentExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitDocumentExtractJobAdvanceRequest) SetOssBucket(v string) *SubmitDocumentExtractJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitDocumentExtractJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocumentExtractJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -3181,7 +3469,9 @@ type SubmitTableUnderstandingJobRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitTableUnderstandingJobRequest) String() string {
@@ -3207,6 +3497,16 @@ func (s *SubmitTableUnderstandingJobRequest) SetFileUrl(v string) *SubmitTableUn
 	return s
 }
 
+func (s *SubmitTableUnderstandingJobRequest) SetOssBucket(v string) *SubmitTableUnderstandingJobRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitTableUnderstandingJobRequest) SetOssEndpoint(v string) *SubmitTableUnderstandingJobRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
 type SubmitTableUnderstandingJobAdvanceRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// example:
@@ -3217,6 +3517,8 @@ type SubmitTableUnderstandingJobAdvanceRequest struct {
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
 func (s SubmitTableUnderstandingJobAdvanceRequest) String() string {
@@ -3239,6 +3541,16 @@ func (s *SubmitTableUnderstandingJobAdvanceRequest) SetFileNameExtension(v strin
 
 func (s *SubmitTableUnderstandingJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitTableUnderstandingJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitTableUnderstandingJobAdvanceRequest) SetOssBucket(v string) *SubmitTableUnderstandingJobAdvanceRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *SubmitTableUnderstandingJobAdvanceRequest) SetOssEndpoint(v string) *SubmitTableUnderstandingJobAdvanceRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -3495,13 +3807,24 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithOptions(tmpReq 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3563,13 +3886,24 @@ func (client *Client) GetDocParserResultWithOptions(request *GetDocParserResultR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDocParserResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDocParserResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDocParserResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3635,13 +3969,24 @@ func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDocStructureResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDocStructureResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDocStructureResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3695,13 +4040,24 @@ func (client *Client) GetDocumentCompareResultWithOptions(request *GetDocumentCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDocumentCompareResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDocumentCompareResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDocumentCompareResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3755,13 +4111,24 @@ func (client *Client) GetDocumentConvertResultWithOptions(request *GetDocumentCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDocumentConvertResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDocumentConvertResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDocumentConvertResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3815,13 +4182,24 @@ func (client *Client) GetDocumentExtractResultWithOptions(request *GetDocumentEx
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDocumentExtractResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDocumentExtractResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDocumentExtractResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3875,13 +4253,24 @@ func (client *Client) GetPageNumWithOptions(request *GetPageNumRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPageNumResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPageNumResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPageNumResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3935,13 +4324,24 @@ func (client *Client) GetTableUnderstandingResultWithOptions(request *GetTableUn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTableUnderstandingResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTableUnderstandingResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTableUnderstandingResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3995,13 +4395,24 @@ func (client *Client) QueryDocParserStatusWithOptions(request *QueryDocParserSta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryDocParserStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryDocParserStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryDocParserStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4063,6 +4474,14 @@ func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConv
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4077,13 +4496,24 @@ func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertImageToExcelJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertImageToExcelJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertImageToExcelJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4141,6 +4571,14 @@ func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitC
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4155,13 +4593,24 @@ func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertImageToMarkdownJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertImageToMarkdownJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertImageToMarkdownJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4219,6 +4668,14 @@ func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConver
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4233,13 +4690,24 @@ func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConver
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertImageToPdfJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertImageToPdfJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertImageToPdfJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4297,6 +4765,14 @@ func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConve
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4311,13 +4787,24 @@ func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConve
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertImageToWordJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertImageToWordJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertImageToWordJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4369,6 +4856,14 @@ func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConve
 		query["ForceMergeExcel"] = request.ForceMergeExcel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4383,13 +4878,24 @@ func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConve
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertPdfToExcelJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertPdfToExcelJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertPdfToExcelJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4544,6 +5050,14 @@ func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConve
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4558,13 +5072,24 @@ func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConve
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertPdfToImageJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertPdfToImageJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertPdfToImageJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4719,6 +5244,14 @@ func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitCo
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4733,13 +5266,24 @@ func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertPdfToMarkdownJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertPdfToMarkdownJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertPdfToMarkdownJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4898,6 +5442,14 @@ func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConver
 		query["ForceExportInnerImage"] = request.ForceExportInnerImage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4912,13 +5464,24 @@ func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConver
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitConvertPdfToWordJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitConvertPdfToWordJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitConvertPdfToWordJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5081,6 +5644,14 @@ func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDig
 		query["ImageStrategy"] = request.ImageStrategy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RevealMarkdown)) {
 		query["RevealMarkdown"] = request.RevealMarkdown
 	}
@@ -5103,13 +5674,24 @@ func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDig
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitDigitalDocStructureJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitDigitalDocStructureJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitDigitalDocStructureJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5276,6 +5858,14 @@ func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobR
 		query["LlmEnhancement"] = request.LlmEnhancement
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5290,13 +5880,24 @@ func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitDocParserJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitDocParserJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitDocParserJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5463,6 +6064,14 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 		query["FormulaEnhancement"] = request.FormulaEnhancement
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StructureType)) {
 		query["StructureType"] = request.StructureType
 	}
@@ -5481,13 +6090,24 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitDocStructureJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitDocStructureJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitDocStructureJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5646,6 +6266,14 @@ func (client *Client) SubmitDocumentExtractJobWithOptions(request *SubmitDocumen
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5660,13 +6288,24 @@ func (client *Client) SubmitDocumentExtractJobWithOptions(request *SubmitDocumen
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitDocumentExtractJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitDocumentExtractJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitDocumentExtractJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5825,6 +6464,14 @@ func (client *Client) SubmitTableUnderstandingJobWithOptions(request *SubmitTabl
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5839,13 +6486,24 @@ func (client *Client) SubmitTableUnderstandingJobWithOptions(request *SubmitTabl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitTableUnderstandingJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitTableUnderstandingJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitTableUnderstandingJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
