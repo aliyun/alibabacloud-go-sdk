@@ -9582,6 +9582,7 @@ type ListQuotaWorkloadsRequest struct {
 	//
 	// 29043893812,23829093093
 	UserIds                  *string          `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	WithHistoricalData       *bool            `json:"WithHistoricalData,omitempty" xml:"WithHistoricalData,omitempty"`
 	WorkloadCreatedTimeRange *TimeRangeFilter `json:"WorkloadCreatedTimeRange,omitempty" xml:"WorkloadCreatedTimeRange,omitempty"`
 	// example:
 	//
@@ -9671,6 +9672,11 @@ func (s *ListQuotaWorkloadsRequest) SetSubQuotaIds(v string) *ListQuotaWorkloads
 
 func (s *ListQuotaWorkloadsRequest) SetUserIds(v string) *ListQuotaWorkloadsRequest {
 	s.UserIds = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetWithHistoricalData(v bool) *ListQuotaWorkloadsRequest {
+	s.WithHistoricalData = &v
 	return s
 }
 
@@ -15547,6 +15553,10 @@ func (client *Client) ListQuotaWorkloadsWithOptions(QuotaId *string, request *Li
 
 	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
 		query["UserIds"] = request.UserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithHistoricalData)) {
+		query["WithHistoricalData"] = request.WithHistoricalData
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkloadCreatedTimeRange)) {

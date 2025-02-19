@@ -1,3 +1,7 @@
+2025-02-19 Version: v2.1.2
+- Update API ListQuotaWorkloads: add param WithHistoricalData.
+
+
 2025-01-23 Version: v2.1.1
 - Generated golang 2022-01-12 for PaiStudio.
 
