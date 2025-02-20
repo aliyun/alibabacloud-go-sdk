@@ -494,6 +494,7 @@ func (s *CreateDBResponse) SetBody(v *CreateDBResponseBody) *CreateDBResponse {
 }
 
 type CreateDBInstanceRequest struct {
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// example:
 	//
 	// AB
@@ -524,7 +525,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// 8
-	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleMin           *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	SourceDBInstanceId *string `json:"SourceDBInstanceId,omitempty" xml:"SourceDBInstanceId,omitempty"`
 	// VPC ID。
 	//
 	// example:
@@ -547,6 +549,11 @@ func (s CreateDBInstanceRequest) String() string {
 
 func (s CreateDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBInstanceRequest) SetBackupSetId(v string) *CreateDBInstanceRequest {
+	s.BackupSetId = &v
+	return s
 }
 
 func (s *CreateDBInstanceRequest) SetClientToken(v string) *CreateDBInstanceRequest {
@@ -594,6 +601,11 @@ func (s *CreateDBInstanceRequest) SetScaleMin(v string) *CreateDBInstanceRequest
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetSourceDBInstanceId(v string) *CreateDBInstanceRequest {
+	s.SourceDBInstanceId = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetVpcId(v string) *CreateDBInstanceRequest {
 	s.VpcId = &v
 	return s
@@ -636,6 +648,7 @@ func (s *CreateDBInstanceRequestMultiZone) SetZoneId(v string) *CreateDBInstance
 }
 
 type CreateDBInstanceShrinkRequest struct {
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// example:
 	//
 	// AB
@@ -666,7 +679,8 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// 8
-	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleMin           *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	SourceDBInstanceId *string `json:"SourceDBInstanceId,omitempty" xml:"SourceDBInstanceId,omitempty"`
 	// VPC ID。
 	//
 	// example:
@@ -689,6 +703,11 @@ func (s CreateDBInstanceShrinkRequest) String() string {
 
 func (s CreateDBInstanceShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetBackupSetId(v string) *CreateDBInstanceShrinkRequest {
+	s.BackupSetId = &v
+	return s
 }
 
 func (s *CreateDBInstanceShrinkRequest) SetClientToken(v string) *CreateDBInstanceShrinkRequest {
@@ -733,6 +752,11 @@ func (s *CreateDBInstanceShrinkRequest) SetScaleMax(v string) *CreateDBInstanceS
 
 func (s *CreateDBInstanceShrinkRequest) SetScaleMin(v string) *CreateDBInstanceShrinkRequest {
 	s.ScaleMin = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetSourceDBInstanceId(v string) *CreateDBInstanceShrinkRequest {
+	s.SourceDBInstanceId = &v
 	return s
 }
 
@@ -6295,6 +6319,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupSetId)) {
+		query["BackupSetId"] = request.BackupSetId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -6329,6 +6357,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !tea.BoolValue(util.IsUnset(request.ScaleMin)) {
 		query["ScaleMin"] = request.ScaleMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDBInstanceId)) {
+		query["SourceDBInstanceId"] = request.SourceDBInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
