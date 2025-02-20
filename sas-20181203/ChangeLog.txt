@@ -1,4 +1,4 @@
-2025-02-17 Version: v4.2.0
+2025-02-20 Version: v4.3.0
 - Support API AddCloudVendorTrialConfig.
 - Support API AddProtectVpcList.
 - Support API CreateBatchUploadUrl.
@@ -19,6 +19,7 @@
 - Support API GetDockerhubImageRiskRankInfo.
 - Support API GetDockerhubImageRiskStatistic.
 - Support API GetFunctionTrialStatus.
+- Support API GetInstallCodeForUuid.
 - Support API GetInstanceAlarmStatistics.
 - Support API GetPublishCron.
 - Support API GetRegistryScanDayNum.
@@ -49,8 +50,15 @@
 - Support API UpdateStrictEventName.
 - Support API UpdateWhiteList.
 - Support API VerifyCheckCustomConfig.
+- Update API AddContainerDefenseRule: update param Whitelist.
+- Update API DescribeGroupedVul: update response param.
 - Update API DescribeImageEventOperationPage: update response param.
+- Update API DescribeVulWhitelist: add param Lang.
+- Update API GetContainerDefenseRuleDetail: update response param.
 - Update API GetImageEventOperation: update response param.
+- Update API ListVulAutoRepairConfig: add param Lang.
+- Update API ModifyBackupPolicyStatus: update param PolicyVersion.
+- Update API ModifyContainerDefenseRule: update param Whitelist.
 
 
 2025-01-14 Version: v4.0.3
