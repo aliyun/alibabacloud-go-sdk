@@ -14435,6 +14435,7 @@ func (s *CreateTodoTaskShrinkHeaders) SetAccountContextShrink(v string) *CreateT
 
 type CreateTodoTaskRequest struct {
 	TenantContext    *CreateTodoTaskRequestTenantContext      `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	ActionList       []*CreateTodoTaskRequestActionList       `json:"actionList,omitempty" xml:"actionList,omitempty" type:"Repeated"`
 	ContentFieldList []*CreateTodoTaskRequestContentFieldList `json:"contentFieldList,omitempty" xml:"contentFieldList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -14486,6 +14487,11 @@ func (s CreateTodoTaskRequest) GoString() string {
 
 func (s *CreateTodoTaskRequest) SetTenantContext(v *CreateTodoTaskRequestTenantContext) *CreateTodoTaskRequest {
 	s.TenantContext = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetActionList(v []*CreateTodoTaskRequestActionList) *CreateTodoTaskRequest {
+	s.ActionList = v
 	return s
 }
 
@@ -14574,6 +14580,82 @@ func (s *CreateTodoTaskRequestTenantContext) SetTenantId(v string) *CreateTodoTa
 	return s
 }
 
+type CreateTodoTaskRequestActionList struct {
+	ActionKey       *string                               `json:"actionKey,omitempty" xml:"actionKey,omitempty"`
+	ActionType      *int32                                `json:"actionType,omitempty" xml:"actionType,omitempty"`
+	ButtonStyleType *int32                                `json:"buttonStyleType,omitempty" xml:"buttonStyleType,omitempty"`
+	Param           *CreateTodoTaskRequestActionListParam `json:"param,omitempty" xml:"param,omitempty" type:"Struct"`
+	PcUrl           *string                               `json:"pcUrl,omitempty" xml:"pcUrl,omitempty"`
+	Title           *string                               `json:"title,omitempty" xml:"title,omitempty"`
+	Url             *string                               `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateTodoTaskRequestActionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskRequestActionList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequestActionList) SetActionKey(v string) *CreateTodoTaskRequestActionList {
+	s.ActionKey = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestActionList) SetActionType(v int32) *CreateTodoTaskRequestActionList {
+	s.ActionType = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestActionList) SetButtonStyleType(v int32) *CreateTodoTaskRequestActionList {
+	s.ButtonStyleType = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestActionList) SetParam(v *CreateTodoTaskRequestActionListParam) *CreateTodoTaskRequestActionList {
+	s.Param = v
+	return s
+}
+
+func (s *CreateTodoTaskRequestActionList) SetPcUrl(v string) *CreateTodoTaskRequestActionList {
+	s.PcUrl = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestActionList) SetTitle(v string) *CreateTodoTaskRequestActionList {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestActionList) SetUrl(v string) *CreateTodoTaskRequestActionList {
+	s.Url = &v
+	return s
+}
+
+type CreateTodoTaskRequestActionListParam struct {
+	Body   *string            `json:"body,omitempty" xml:"body,omitempty"`
+	Header map[string]*string `json:"header,omitempty" xml:"header,omitempty"`
+}
+
+func (s CreateTodoTaskRequestActionListParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskRequestActionListParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequestActionListParam) SetBody(v string) *CreateTodoTaskRequestActionListParam {
+	s.Body = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestActionListParam) SetHeader(v map[string]*string) *CreateTodoTaskRequestActionListParam {
+	s.Header = v
+	return s
+}
+
 type CreateTodoTaskRequestContentFieldList struct {
 	// fieldKey
 	//
@@ -14658,6 +14740,7 @@ func (s *CreateTodoTaskRequestNotifyConfigs) SetDingNotify(v string) *CreateTodo
 
 type CreateTodoTaskShrinkRequest struct {
 	TenantContextShrink    *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	ActionListShrink       *string `json:"actionList,omitempty" xml:"actionList,omitempty"`
 	ContentFieldListShrink *string `json:"contentFieldList,omitempty" xml:"contentFieldList,omitempty"`
 	// example:
 	//
@@ -14709,6 +14792,11 @@ func (s CreateTodoTaskShrinkRequest) GoString() string {
 
 func (s *CreateTodoTaskShrinkRequest) SetTenantContextShrink(v string) *CreateTodoTaskShrinkRequest {
 	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetActionListShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.ActionListShrink = &v
 	return s
 }
 
@@ -70656,6 +70744,245 @@ func (s *SubscribeCalendarResponse) SetBody(v *SubscribeCalendarResponseBody) *S
 	return s
 }
 
+type SubscribeEventHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SubscribeEventHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SubscribeEventHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventHeaders) SetCommonHeaders(v map[string]*string) *SubscribeEventHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SubscribeEventHeaders) SetAccountContext(v *SubscribeEventHeadersAccountContext) *SubscribeEventHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SubscribeEventHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SubscribeEventHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventHeadersAccountContext) SetAccountId(v string) *SubscribeEventHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SubscribeEventShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SubscribeEventShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventShrinkHeaders) SetCommonHeaders(v map[string]*string) *SubscribeEventShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SubscribeEventShrinkHeaders) SetAccountContextShrink(v string) *SubscribeEventShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SubscribeEventRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SPACE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233456
+	ScopeId       *string                             `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	TenantContext *SubscribeEventRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s SubscribeEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventRequest) SetScope(v string) *SubscribeEventRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *SubscribeEventRequest) SetScopeId(v string) *SubscribeEventRequest {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *SubscribeEventRequest) SetTenantContext(v *SubscribeEventRequestTenantContext) *SubscribeEventRequest {
+	s.TenantContext = v
+	return s
+}
+
+type SubscribeEventRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s SubscribeEventRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventRequestTenantContext) SetTenantId(v string) *SubscribeEventRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type SubscribeEventShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SPACE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233456
+	ScopeId             *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s SubscribeEventShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventShrinkRequest) SetScope(v string) *SubscribeEventShrinkRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *SubscribeEventShrinkRequest) SetScopeId(v string) *SubscribeEventShrinkRequest {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *SubscribeEventShrinkRequest) SetTenantContextShrink(v string) *SubscribeEventShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type SubscribeEventResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SubscribeEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventResponseBody) SetRequestId(v string) *SubscribeEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubscribeEventResponseBody) SetSuccess(v bool) *SubscribeEventResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SubscribeEventResponseBody) SetVendorRequestId(v string) *SubscribeEventResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SubscribeEventResponseBody) SetVendorType(v string) *SubscribeEventResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SubscribeEventResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubscribeEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubscribeEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeEventResponse) SetHeaders(v map[string]*string) *SubscribeEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubscribeEventResponse) SetStatusCode(v int32) *SubscribeEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubscribeEventResponse) SetBody(v *SubscribeEventResponseBody) *SubscribeEventResponse {
+	s.Body = v
+	return s
+}
+
 type SyncDingTypeHeaders struct {
 	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *SyncDingTypeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -71619,6 +71946,245 @@ func (s *UnsubscribeCalendarResponse) SetStatusCode(v int32) *UnsubscribeCalenda
 }
 
 func (s *UnsubscribeCalendarResponse) SetBody(v *UnsubscribeCalendarResponseBody) *UnsubscribeCalendarResponse {
+	s.Body = v
+	return s
+}
+
+type UnsubscribeEventHeaders struct {
+	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UnsubscribeEventHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UnsubscribeEventHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventHeaders) SetCommonHeaders(v map[string]*string) *UnsubscribeEventHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UnsubscribeEventHeaders) SetAccountContext(v *UnsubscribeEventHeadersAccountContext) *UnsubscribeEventHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UnsubscribeEventHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UnsubscribeEventHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventHeadersAccountContext) SetAccountId(v string) *UnsubscribeEventHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UnsubscribeEventShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UnsubscribeEventShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventShrinkHeaders) SetCommonHeaders(v map[string]*string) *UnsubscribeEventShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UnsubscribeEventShrinkHeaders) SetAccountContextShrink(v string) *UnsubscribeEventShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UnsubscribeEventRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SPACE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23456
+	ScopeId       *string                               `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	TenantContext *UnsubscribeEventRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s UnsubscribeEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventRequest) SetScope(v string) *UnsubscribeEventRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *UnsubscribeEventRequest) SetScopeId(v string) *UnsubscribeEventRequest {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *UnsubscribeEventRequest) SetTenantContext(v *UnsubscribeEventRequestTenantContext) *UnsubscribeEventRequest {
+	s.TenantContext = v
+	return s
+}
+
+type UnsubscribeEventRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UnsubscribeEventRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventRequestTenantContext) SetTenantId(v string) *UnsubscribeEventRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UnsubscribeEventShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SPACE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23456
+	ScopeId             *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s UnsubscribeEventShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventShrinkRequest) SetScope(v string) *UnsubscribeEventShrinkRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *UnsubscribeEventShrinkRequest) SetScopeId(v string) *UnsubscribeEventShrinkRequest {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *UnsubscribeEventShrinkRequest) SetTenantContextShrink(v string) *UnsubscribeEventShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type UnsubscribeEventResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UnsubscribeEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventResponseBody) SetRequestId(v string) *UnsubscribeEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnsubscribeEventResponseBody) SetSuccess(v bool) *UnsubscribeEventResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UnsubscribeEventResponseBody) SetVendorRequestId(v string) *UnsubscribeEventResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UnsubscribeEventResponseBody) SetVendorType(v string) *UnsubscribeEventResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UnsubscribeEventResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnsubscribeEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnsubscribeEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeEventResponse) SetHeaders(v map[string]*string) *UnsubscribeEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnsubscribeEventResponse) SetStatusCode(v int32) *UnsubscribeEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnsubscribeEventResponse) SetBody(v *UnsubscribeEventResponseBody) *UnsubscribeEventResponse {
 	s.Body = v
 	return s
 }
@@ -81685,6 +82251,10 @@ func (client *Client) CreateTodoTaskWithOptions(tmpReq *CreateTodoTaskRequest, t
 		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ActionList)) {
+		request.ActionListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionList, tea.String("actionList"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ContentFieldList)) {
 		request.ContentFieldListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContentFieldList, tea.String("contentFieldList"), tea.String("json"))
 	}
@@ -81713,6 +82283,10 @@ func (client *Client) CreateTodoTaskWithOptions(tmpReq *CreateTodoTaskRequest, t
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
 		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActionListShrink)) {
+		body["actionList"] = request.ActionListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ContentFieldListShrink)) {
@@ -99463,6 +100037,110 @@ func (client *Client) SubscribeCalendar(request *SubscribeCalendarRequest) (_res
 
 // Summary:
 //
+// 订阅文件变更事件
+//
+// @param tmpReq - SubscribeEventRequest
+//
+// @param tmpHeader - SubscribeEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubscribeEventResponse
+func (client *Client) SubscribeEventWithOptions(tmpReq *SubscribeEventRequest, tmpHeader *SubscribeEventHeaders, runtime *util.RuntimeOptions) (_result *SubscribeEventResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubscribeEventShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &SubscribeEventShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeId)) {
+		body["ScopeId"] = request.ScopeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubscribeEvent"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/subscribeEvent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubscribeEventResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubscribeEventResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 订阅文件变更事件
+//
+// @param request - SubscribeEventRequest
+//
+// @return SubscribeEventResponse
+func (client *Client) SubscribeEvent(request *SubscribeEventRequest) (_result *SubscribeEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SubscribeEventHeaders{}
+	_result = &SubscribeEventResponse{}
+	_body, _err := client.SubscribeEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 同步钉钉账号类型
 //
 // @param tmpReq - SyncDingTypeRequest
@@ -99886,6 +100564,110 @@ func (client *Client) UnsubscribeCalendar(request *UnsubscribeCalendarRequest) (
 	headers := &UnsubscribeCalendarHeaders{}
 	_result = &UnsubscribeCalendarResponse{}
 	_body, _err := client.UnsubscribeCalendarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消订阅文件变更事件
+//
+// @param tmpReq - UnsubscribeEventRequest
+//
+// @param tmpHeader - UnsubscribeEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnsubscribeEventResponse
+func (client *Client) UnsubscribeEventWithOptions(tmpReq *UnsubscribeEventRequest, tmpHeader *UnsubscribeEventHeaders, runtime *util.RuntimeOptions) (_result *UnsubscribeEventResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UnsubscribeEventShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UnsubscribeEventShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeId)) {
+		body["ScopeId"] = request.ScopeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnsubscribeEvent"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/unsubscribeEvent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnsubscribeEventResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnsubscribeEventResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 取消订阅文件变更事件
+//
+// @param request - UnsubscribeEventRequest
+//
+// @return UnsubscribeEventResponse
+func (client *Client) UnsubscribeEvent(request *UnsubscribeEventRequest) (_result *UnsubscribeEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UnsubscribeEventHeaders{}
+	_result = &UnsubscribeEventResponse{}
+	_body, _err := client.UnsubscribeEventWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
