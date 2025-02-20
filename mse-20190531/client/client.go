@@ -26247,7 +26247,8 @@ type GetGatewayConfigResponseBodyData struct {
 	// example:
 	//
 	// false
-	EnableHttp3 *bool `json:"EnableHttp3,omitempty" xml:"EnableHttp3,omitempty"`
+	EnableHttp3                   *bool                                                          `json:"EnableHttp3,omitempty" xml:"EnableHttp3,omitempty"`
+	EnableK8sSourceWorkloadFilter *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter `json:"EnableK8sSourceWorkloadFilter,omitempty" xml:"EnableK8sSourceWorkloadFilter,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -26259,7 +26260,8 @@ type GetGatewayConfigResponseBodyData struct {
 	// example:
 	//
 	// true
-	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	EnableWaf             *bool                                                  `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	EnableXffTrustedCidrs *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs `json:"EnableXffTrustedCidrs,omitempty" xml:"EnableXffTrustedCidrs,omitempty" type:"Struct"`
 	// example:
 	//
 	// gw-61f465fa2dd044069e2208c4912*****
@@ -26374,6 +26376,11 @@ func (s *GetGatewayConfigResponseBodyData) SetEnableHttp3(v bool) *GetGatewayCon
 	return s
 }
 
+func (s *GetGatewayConfigResponseBodyData) SetEnableK8sSourceWorkloadFilter(v *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) *GetGatewayConfigResponseBodyData {
+	s.EnableK8sSourceWorkloadFilter = v
+	return s
+}
+
 func (s *GetGatewayConfigResponseBodyData) SetEnableProxyProtocol(v bool) *GetGatewayConfigResponseBodyData {
 	s.EnableProxyProtocol = &v
 	return s
@@ -26386,6 +26393,11 @@ func (s *GetGatewayConfigResponseBodyData) SetEnableSlashMerge(v bool) *GetGatew
 
 func (s *GetGatewayConfigResponseBodyData) SetEnableWaf(v bool) *GetGatewayConfigResponseBodyData {
 	s.EnableWaf = &v
+	return s
+}
+
+func (s *GetGatewayConfigResponseBodyData) SetEnableXffTrustedCidrs(v *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs) *GetGatewayConfigResponseBodyData {
+	s.EnableXffTrustedCidrs = v
 	return s
 }
 
@@ -26461,6 +26473,64 @@ func (s *GetGatewayConfigResponseBodyData) SetXtraceDetails(v *GetGatewayConfigR
 
 func (s *GetGatewayConfigResponseBodyData) SetZipAlgorithm(v string) *GetGatewayConfigResponseBodyData {
 	s.ZipAlgorithm = &v
+	return s
+}
+
+type GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter struct {
+	Enable     *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	FilterOpt  *string `json:"FilterOpt,omitempty" xml:"FilterOpt,omitempty"`
+	LabelKey   *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+}
+
+func (s GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) SetEnable(v bool) *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) SetFilterOpt(v string) *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter {
+	s.FilterOpt = &v
+	return s
+}
+
+func (s *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) SetLabelKey(v string) *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter {
+	s.LabelKey = &v
+	return s
+}
+
+func (s *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) SetLabelValue(v string) *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter {
+	s.LabelValue = &v
+	return s
+}
+
+type GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs struct {
+	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	IpListContent *string `json:"IpListContent,omitempty" xml:"IpListContent,omitempty"`
+}
+
+func (s GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs) SetEnable(v bool) *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs) SetIpListContent(v string) *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs {
+	s.IpListContent = &v
 	return s
 }
 
@@ -40292,7 +40362,8 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	// example:
 	//
 	// {\\\\"desc\\\\":\\\\"The engine version is outdated and a large number of features are not supported. Upgrade the engine to the latest version at the earliest opportunity. \\\\"}
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
 	// The ID.
 	//
 	// example:
@@ -40350,7 +40421,8 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	// example:
 	//
 	// The engine version is outdated.
-	RiskName *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	RiskName   *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	RiskNameEn *string `json:"RiskNameEn,omitempty" xml:"RiskNameEn,omitempty"`
 	// The type of the risk.
 	//
 	// example:
@@ -40362,13 +40434,15 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	// example:
 	//
 	// {\\\\"desc\\\\":\\\\"The engine version is outdated and a large number of features are not supported.\\\\",\\\\"links\\\\":[{\\\\"type\\\\":\\\\"url\\\\",\\\\"value\\\\":\\\\"https://xxxx"\\\\",\\\\"desc\\\\":\\\\"Release notes\\\\"}]}
-	Situation *string `json:"Situation,omitempty" xml:"Situation,omitempty"`
+	Situation   *string `json:"Situation,omitempty" xml:"Situation,omitempty"`
+	SituationEn *string `json:"SituationEn,omitempty" xml:"SituationEn,omitempty"`
 	// The suggestion.
 	//
 	// example:
 	//
 	// {"desc": "Upgrade to the latest version at the earliest opportunity.", "links":[{"type": "upgrade", "desc": "Click to upgrade"}]}
-	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Suggestion   *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	SuggestionEn *string `json:"SuggestionEn,omitempty" xml:"SuggestionEn,omitempty"`
 	// The ID of the associated parent task.
 	//
 	// example:
@@ -40399,6 +40473,11 @@ func (s ListClusterHealthCheckTaskResponseBodyDataResultRiskList) GoString() str
 
 func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetDescription(v string) *ListClusterHealthCheckTaskResponseBodyDataResultRiskList {
 	s.Description = &v
+	return s
+}
+
+func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetDescriptionEn(v string) *ListClusterHealthCheckTaskResponseBodyDataResultRiskList {
+	s.DescriptionEn = &v
 	return s
 }
 
@@ -40442,6 +40521,11 @@ func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetRiskName(v
 	return s
 }
 
+func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetRiskNameEn(v string) *ListClusterHealthCheckTaskResponseBodyDataResultRiskList {
+	s.RiskNameEn = &v
+	return s
+}
+
 func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetRiskType(v string) *ListClusterHealthCheckTaskResponseBodyDataResultRiskList {
 	s.RiskType = &v
 	return s
@@ -40452,8 +40536,18 @@ func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetSituation(
 	return s
 }
 
+func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetSituationEn(v string) *ListClusterHealthCheckTaskResponseBodyDataResultRiskList {
+	s.SituationEn = &v
+	return s
+}
+
 func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetSuggestion(v string) *ListClusterHealthCheckTaskResponseBodyDataResultRiskList {
 	s.Suggestion = &v
+	return s
+}
+
+func (s *ListClusterHealthCheckTaskResponseBodyDataResultRiskList) SetSuggestionEn(v string) *ListClusterHealthCheckTaskResponseBodyDataResultRiskList {
+	s.SuggestionEn = &v
 	return s
 }
 
