@@ -9568,7 +9568,8 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	// example:
 	//
 	// 10000
-	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress *int32                                                    `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Report   *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
 	// The type of the data source. Valid values:
 	//
 	// 	- **ECS_FILE**: ECS files
@@ -9835,6 +9836,11 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetProgress(v int32
 	return s
 }
 
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetReport(v *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.Report = v
+	return s
+}
+
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetSourceType(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
 	s.SourceType = &v
 	return s
@@ -10054,6 +10060,47 @@ func (s DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths) GoString() stri
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths) SetPath(v []*string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths {
 	s.Path = v
+	return s
+}
+
+type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport struct {
+	FailedFiles      *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	ReportTaskStatus *string `json:"ReportTaskStatus,omitempty" xml:"ReportTaskStatus,omitempty"`
+	SkippedFiles     *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
+	SuccessFiles     *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
+	TotalFiles       *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
+}
+
+func (s DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) SetFailedFiles(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport {
+	s.FailedFiles = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) SetReportTaskStatus(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport {
+	s.ReportTaskStatus = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) SetSkippedFiles(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport {
+	s.SkippedFiles = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) SetSuccessFiles(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport {
+	s.SuccessFiles = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) SetTotalFiles(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport {
+	s.TotalFiles = &v
 	return s
 }
 
@@ -18676,6 +18723,9 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	//
 	// 1000
 	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	// if can be null:
+	// true
+	CanBeDeleted *bool `json:"CanBeDeleted,omitempty" xml:"CanBeDeleted,omitempty"`
 	// The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
@@ -18883,6 +18933,11 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetBackupType(v string) *Des
 
 func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetBytesTotal(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
 	s.BytesTotal = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetCanBeDeleted(v bool) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.CanBeDeleted = &v
 	return s
 }
 
