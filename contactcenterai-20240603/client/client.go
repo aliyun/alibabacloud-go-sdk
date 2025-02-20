@@ -1102,6 +1102,271 @@ func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskRespo
 	return s
 }
 
+type CreateVocabRequest struct {
+	// example:
+	//
+	// nls
+	AudioModelCode *string `json:"audioModelCode,omitempty" xml:"audioModelCode,omitempty"`
+	// This parameter is required.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	WordWeightList []*CreateVocabRequestWordWeightList `json:"wordWeightList,omitempty" xml:"wordWeightList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-9****me1
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s CreateVocabRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVocabRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVocabRequest) SetAudioModelCode(v string) *CreateVocabRequest {
+	s.AudioModelCode = &v
+	return s
+}
+
+func (s *CreateVocabRequest) SetDescription(v string) *CreateVocabRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVocabRequest) SetName(v string) *CreateVocabRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateVocabRequest) SetWordWeightList(v []*CreateVocabRequestWordWeightList) *CreateVocabRequest {
+	s.WordWeightList = v
+	return s
+}
+
+func (s *CreateVocabRequest) SetWorkspaceId(v string) *CreateVocabRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateVocabRequestWordWeightList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+	// This parameter is required.
+	Word *string `json:"word,omitempty" xml:"word,omitempty"`
+}
+
+func (s CreateVocabRequestWordWeightList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVocabRequestWordWeightList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVocabRequestWordWeightList) SetWeight(v int32) *CreateVocabRequestWordWeightList {
+	s.Weight = &v
+	return s
+}
+
+func (s *CreateVocabRequestWordWeightList) SetWord(v string) *CreateVocabRequestWordWeightList {
+	s.Word = &v
+	return s
+}
+
+type CreateVocabResponseBody struct {
+	Data *CreateVocabResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 968A8634-FA2C-5381-9B3E-*******F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateVocabResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVocabResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVocabResponseBody) SetData(v *CreateVocabResponseBodyData) *CreateVocabResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateVocabResponseBody) SetRequestId(v string) *CreateVocabResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVocabResponseBody) SetSuccess(v string) *CreateVocabResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateVocabResponseBodyData struct {
+	// example:
+	//
+	// f3d82*******7
+	VocabularyId *string `json:"vocabularyId,omitempty" xml:"vocabularyId,omitempty"`
+}
+
+func (s CreateVocabResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVocabResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVocabResponseBodyData) SetVocabularyId(v string) *CreateVocabResponseBodyData {
+	s.VocabularyId = &v
+	return s
+}
+
+type CreateVocabResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVocabResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVocabResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVocabResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVocabResponse) SetHeaders(v map[string]*string) *CreateVocabResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVocabResponse) SetStatusCode(v int32) *CreateVocabResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVocabResponse) SetBody(v *CreateVocabResponseBody) *CreateVocabResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVocabRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ern*******rve
+	VocabularyId *string `json:"vocabularyId,omitempty" xml:"vocabularyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-0*****jlg8s
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s DeleteVocabRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVocabRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVocabRequest) SetVocabularyId(v string) *DeleteVocabRequest {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *DeleteVocabRequest) SetWorkspaceId(v string) *DeleteVocabRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteVocabResponseBody struct {
+	// example:
+	//
+	// true
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 968A8634-FA2C-5381-9B3E-*******F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteVocabResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVocabResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVocabResponseBody) SetData(v string) *DeleteVocabResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteVocabResponseBody) SetRequestId(v string) *DeleteVocabResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteVocabResponseBody) SetSuccess(v string) *DeleteVocabResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteVocabResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVocabResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVocabResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVocabResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVocabResponse) SetHeaders(v map[string]*string) *DeleteVocabResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVocabResponse) SetStatusCode(v int32) *DeleteVocabResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVocabResponse) SetBody(v *DeleteVocabResponseBody) *DeleteVocabResponse {
+	s.Body = v
+	return s
+}
+
 type GetTaskResultRequest struct {
 	RequiredFieldList []*string `json:"requiredFieldList,omitempty" xml:"requiredFieldList,omitempty" type:"Repeated"`
 	// example:
@@ -1314,6 +1579,335 @@ func (s *GetTaskResultResponse) SetStatusCode(v int32) *GetTaskResultResponse {
 }
 
 func (s *GetTaskResultResponse) SetBody(v *GetTaskResultResponseBody) *GetTaskResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetVocabRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dhbf***rbrdb
+	VocabularyId *string `json:"vocabularyId,omitempty" xml:"vocabularyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-9864***1
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s GetVocabRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVocabRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVocabRequest) SetVocabularyId(v string) *GetVocabRequest {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *GetVocabRequest) SetWorkspaceId(v string) *GetVocabRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetVocabResponseBody struct {
+	Data *GetVocabResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 968A8634-FA2C-5381-9B3E-*******F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetVocabResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVocabResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVocabResponseBody) SetData(v *GetVocabResponseBodyData) *GetVocabResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVocabResponseBody) SetRequestId(v string) *GetVocabResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVocabResponseBody) SetSuccess(v string) *GetVocabResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetVocabResponseBodyData struct {
+	// example:
+	//
+	// nls
+	AudioModelCode *string `json:"audioModelCode,omitempty" xml:"audioModelCode,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// rrbe***jrvrdd
+	VocabularyId   *string                                   `json:"vocabularyId,omitempty" xml:"vocabularyId,omitempty"`
+	WordWeightList []*GetVocabResponseBodyDataWordWeightList `json:"wordWeightList,omitempty" xml:"wordWeightList,omitempty" type:"Repeated"`
+}
+
+func (s GetVocabResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVocabResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVocabResponseBodyData) SetAudioModelCode(v string) *GetVocabResponseBodyData {
+	s.AudioModelCode = &v
+	return s
+}
+
+func (s *GetVocabResponseBodyData) SetDescription(v string) *GetVocabResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetVocabResponseBodyData) SetName(v string) *GetVocabResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetVocabResponseBodyData) SetVocabularyId(v string) *GetVocabResponseBodyData {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *GetVocabResponseBodyData) SetWordWeightList(v []*GetVocabResponseBodyDataWordWeightList) *GetVocabResponseBodyData {
+	s.WordWeightList = v
+	return s
+}
+
+type GetVocabResponseBodyDataWordWeightList struct {
+	// example:
+	//
+	// 1
+	Weight *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+	Word   *string `json:"word,omitempty" xml:"word,omitempty"`
+}
+
+func (s GetVocabResponseBodyDataWordWeightList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVocabResponseBodyDataWordWeightList) GoString() string {
+	return s.String()
+}
+
+func (s *GetVocabResponseBodyDataWordWeightList) SetWeight(v int32) *GetVocabResponseBodyDataWordWeightList {
+	s.Weight = &v
+	return s
+}
+
+func (s *GetVocabResponseBodyDataWordWeightList) SetWord(v string) *GetVocabResponseBodyDataWordWeightList {
+	s.Word = &v
+	return s
+}
+
+type GetVocabResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVocabResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVocabResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVocabResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVocabResponse) SetHeaders(v map[string]*string) *GetVocabResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVocabResponse) SetStatusCode(v int32) *GetVocabResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVocabResponse) SetBody(v *GetVocabResponseBody) *GetVocabResponse {
+	s.Body = v
+	return s
+}
+
+type ListVocabRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-jhfr****8v
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListVocabRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVocabRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVocabRequest) SetWorkspaceId(v string) *ListVocabRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListVocabResponseBody struct {
+	Data []*ListVocabResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 968A8634-FA2C-5381-9B3E-*******F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListVocabResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVocabResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVocabResponseBody) SetData(v []*ListVocabResponseBodyData) *ListVocabResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListVocabResponseBody) SetRequestId(v string) *ListVocabResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVocabResponseBody) SetSuccess(v string) *ListVocabResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListVocabResponseBodyData struct {
+	// example:
+	//
+	// nls
+	AudioModelCode *string `json:"audioModelCode,omitempty" xml:"audioModelCode,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// dv*****erverve
+	VocabularyId   *string                                    `json:"vocabularyId,omitempty" xml:"vocabularyId,omitempty"`
+	WordWeightList []*ListVocabResponseBodyDataWordWeightList `json:"wordWeightList,omitempty" xml:"wordWeightList,omitempty" type:"Repeated"`
+}
+
+func (s ListVocabResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVocabResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListVocabResponseBodyData) SetAudioModelCode(v string) *ListVocabResponseBodyData {
+	s.AudioModelCode = &v
+	return s
+}
+
+func (s *ListVocabResponseBodyData) SetDescription(v string) *ListVocabResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListVocabResponseBodyData) SetName(v string) *ListVocabResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListVocabResponseBodyData) SetVocabularyId(v string) *ListVocabResponseBodyData {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *ListVocabResponseBodyData) SetWordWeightList(v []*ListVocabResponseBodyDataWordWeightList) *ListVocabResponseBodyData {
+	s.WordWeightList = v
+	return s
+}
+
+type ListVocabResponseBodyDataWordWeightList struct {
+	// example:
+	//
+	// 3
+	Weight *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+	Word   *string `json:"word,omitempty" xml:"word,omitempty"`
+}
+
+func (s ListVocabResponseBodyDataWordWeightList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVocabResponseBodyDataWordWeightList) GoString() string {
+	return s.String()
+}
+
+func (s *ListVocabResponseBodyDataWordWeightList) SetWeight(v int32) *ListVocabResponseBodyDataWordWeightList {
+	s.Weight = &v
+	return s
+}
+
+func (s *ListVocabResponseBodyDataWordWeightList) SetWord(v string) *ListVocabResponseBodyDataWordWeightList {
+	s.Word = &v
+	return s
+}
+
+type ListVocabResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVocabResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVocabResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVocabResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVocabResponse) SetHeaders(v map[string]*string) *ListVocabResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVocabResponse) SetStatusCode(v int32) *ListVocabResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVocabResponse) SetBody(v *ListVocabResponseBody) *ListVocabResponse {
 	s.Body = v
 	return s
 }
@@ -1773,6 +2367,153 @@ func (s *RunCompletionMessageResponse) SetBody(v *RunCompletionMessageResponseBo
 	return s
 }
 
+type UpdateVocabRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dsvsv***dsvv
+	VocabularyId   *string                             `json:"vocabularyId,omitempty" xml:"vocabularyId,omitempty"`
+	WordWeightList []*UpdateVocabRequestWordWeightList `json:"wordWeightList,omitempty" xml:"wordWeightList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-jhfr****w8v
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s UpdateVocabRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVocabRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVocabRequest) SetDescription(v string) *UpdateVocabRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateVocabRequest) SetName(v string) *UpdateVocabRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateVocabRequest) SetVocabularyId(v string) *UpdateVocabRequest {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *UpdateVocabRequest) SetWordWeightList(v []*UpdateVocabRequestWordWeightList) *UpdateVocabRequest {
+	s.WordWeightList = v
+	return s
+}
+
+func (s *UpdateVocabRequest) SetWorkspaceId(v string) *UpdateVocabRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateVocabRequestWordWeightList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+	// This parameter is required.
+	Word *string `json:"word,omitempty" xml:"word,omitempty"`
+}
+
+func (s UpdateVocabRequestWordWeightList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVocabRequestWordWeightList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVocabRequestWordWeightList) SetWeight(v int32) *UpdateVocabRequestWordWeightList {
+	s.Weight = &v
+	return s
+}
+
+func (s *UpdateVocabRequestWordWeightList) SetWord(v string) *UpdateVocabRequestWordWeightList {
+	s.Word = &v
+	return s
+}
+
+type UpdateVocabResponseBody struct {
+	// example:
+	//
+	// true
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 968A8634-FA2C-5381-9B3E-*******F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateVocabResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVocabResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVocabResponseBody) SetData(v string) *UpdateVocabResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateVocabResponseBody) SetRequestId(v string) *UpdateVocabResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateVocabResponseBody) SetSuccess(v string) *UpdateVocabResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateVocabResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVocabResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateVocabResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVocabResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVocabResponse) SetHeaders(v map[string]*string) *UpdateVocabResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVocabResponse) SetStatusCode(v int32) *UpdateVocabResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateVocabResponse) SetBody(v *UpdateVocabResponseBody) *UpdateVocabResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2135,6 +2876,176 @@ func (client *Client) CreateTask(workspaceId *string, appId *string, request *Cr
 
 // Summary:
 //
+// 创建热词
+//
+// @param request - CreateVocabRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVocabResponse
+func (client *Client) CreateVocabWithOptions(request *CreateVocabRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVocabResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioModelCode)) {
+		body["audioModelCode"] = request.AudioModelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WordWeightList)) {
+		body["wordWeightList"] = request.WordWeightList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVocab"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/vocab/createVocab"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建热词
+//
+// @param request - CreateVocabRequest
+//
+// @return CreateVocabResponse
+func (client *Client) CreateVocab(request *CreateVocabRequest) (_result *CreateVocabResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVocabResponse{}
+	_body, _err := client.CreateVocabWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删删除热词
+//
+// @param request - DeleteVocabRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVocabResponse
+func (client *Client) DeleteVocabWithOptions(request *DeleteVocabRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVocabResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VocabularyId)) {
+		body["vocabularyId"] = request.VocabularyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVocab"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/vocab/deleteVocab"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删删除热词
+//
+// @param request - DeleteVocabRequest
+//
+// @return DeleteVocabResponse
+func (client *Client) DeleteVocab(request *DeleteVocabRequest) (_result *DeleteVocabResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteVocabResponse{}
+	_body, _err := client.DeleteVocabWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 语音文件调用大模型获取结果
 //
 // @param tmpReq - GetTaskResultRequest
@@ -2211,6 +3122,160 @@ func (client *Client) GetTaskResult(request *GetTaskResultRequest) (_result *Get
 	headers := make(map[string]*string)
 	_result = &GetTaskResultResponse{}
 	_body, _err := client.GetTaskResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取热词
+//
+// @param request - GetVocabRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVocabResponse
+func (client *Client) GetVocabWithOptions(request *GetVocabRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVocabResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VocabularyId)) {
+		body["vocabularyId"] = request.VocabularyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVocab"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/vocab/getVocab"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取热词
+//
+// @param request - GetVocabRequest
+//
+// @return GetVocabResponse
+func (client *Client) GetVocab(request *GetVocabRequest) (_result *GetVocabResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVocabResponse{}
+	_body, _err := client.GetVocabWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 热词列表
+//
+// @param request - ListVocabRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVocabResponse
+func (client *Client) ListVocabWithOptions(request *ListVocabRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVocabResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVocab"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/vocab/listVocab"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 热词列表
+//
+// @param request - ListVocabRequest
+//
+// @return ListVocabResponse
+func (client *Client) ListVocab(request *ListVocabRequest) (_result *ListVocabResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVocabResponse{}
+	_body, _err := client.ListVocabWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2389,6 +3454,97 @@ func (client *Client) RunCompletionMessage(workspaceId *string, appId *string, r
 	headers := make(map[string]*string)
 	_result = &RunCompletionMessageResponse{}
 	_body, _err := client.RunCompletionMessageWithOptions(workspaceId, appId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改热词
+//
+// @param request - UpdateVocabRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVocabResponse
+func (client *Client) UpdateVocabWithOptions(request *UpdateVocabRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateVocabResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VocabularyId)) {
+		body["vocabularyId"] = request.VocabularyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WordWeightList)) {
+		body["wordWeightList"] = request.WordWeightList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVocab"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/vocab/updateVocab"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVocabResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVocabResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改热词
+//
+// @param request - UpdateVocabRequest
+//
+// @return UpdateVocabResponse
+func (client *Client) UpdateVocab(request *UpdateVocabRequest) (_result *UpdateVocabResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateVocabResponse{}
+	_body, _err := client.UpdateVocabWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
