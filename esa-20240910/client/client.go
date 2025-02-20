@@ -1595,7 +1595,13 @@ func (s *ActivateClientCertificateResponse) SetBody(v *ActivateClientCertificate
 }
 
 type ActivateVersionManagementRequest struct {
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 11223***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -1613,6 +1619,11 @@ func (s *ActivateVersionManagementRequest) SetSiteId(v int64) *ActivateVersionMa
 }
 
 type ActivateVersionManagementResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1659,19 +1670,28 @@ func (s *ActivateVersionManagementResponse) SetBody(v *ActivateVersionManagement
 }
 
 type ApplyCertificateRequest struct {
+	// List of domains, separated by commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.example.com,blog.example.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// Site ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
-	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Certificate type. Possible values: lets_encrypt: Let\\"s Encrypt certificate; digicert_single: Digicert single domain certificate; digicert_wildcard: Digicert wildcard certificate.
+	//
+	// example:
+	//
+	// lets_encrypt
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ApplyCertificateRequest) String() string {
@@ -1698,15 +1718,22 @@ func (s *ApplyCertificateRequest) SetType(v string) *ApplyCertificateRequest {
 }
 
 type ApplyCertificateResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ApplyCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of free certificate application details.
+	Result []*ApplyCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Site name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// Number of certificates applied for, which is the same as the number of input domains.
+	//
 	// example:
 	//
 	// 2
@@ -1742,14 +1769,20 @@ func (s *ApplyCertificateResponseBody) SetTotalCount(v int64) *ApplyCertificateR
 }
 
 type ApplyCertificateResponseBodyResult struct {
+	// Certificate domain.
+	//
 	// example:
 	//
 	// *.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Certificate ID.
+	//
 	// example:
 	//
 	// 30000478
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Status of the certificate application.
+	//
 	// example:
 	//
 	// Applying
@@ -4470,104 +4503,208 @@ func (s *CommitRoutineStagingCodeResponse) SetBody(v *CommitRoutineStagingCodeRe
 }
 
 type CreateCacheRuleRequest struct {
+	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+	//
 	// example:
 	//
 	// 8880
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// Browser cache mode. Possible values:
+	//
+	// - no_cache: Do not cache.
+	//
+	// - follow_origin: Follow the origin server\\"s cache policy.
+	//
+	// - override_origin: Override the origin server\\"s cache policy.
+	//
 	// example:
 	//
 	// follow_origin
 	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// Browser cache expiration time in seconds.
+	//
 	// example:
 	//
 	// 300
 	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// Set the bypass cache mode. Possible values:
+	//
+	// - cache_all: Cache all requests.
+	//
+	// - bypass_all: Bypass cache for all requests.
+	//
 	// example:
 	//
 	// cache_all
 	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
+	//
+	// - bypass_cache_reserve: Requests bypass cache retention.
+	//
+	// - eligible_for_cache_reserve: Eligible for cache retention.
+	//
 	// example:
 	//
 	// bypass_cache_reserve
 	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
+	//
 	// example:
 	//
 	// cookiename
 	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
+	//
 	// example:
 	//
 	// headername
 	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// Edge cache mode. Possible values:
+	//
+	// - follow_origin: Follow the origin server\\"s cache policy (if it exists), otherwise use the default cache policy.
+	//
+	// - no_cache: Do not cache.
+	//
+	// - override_origin: Override the origin server\\"s cache policy.
+	//
+	// - follow_origin_bypass: Follow the origin server\\"s cache policy (if it exists), otherwise do not cache.
+	//
 	// example:
 	//
 	// follow_origin
 	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// Edge cache expiration time in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// Status code cache expiration time in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
+	//
 	// example:
 	//
 	// cookie_exapmle
 	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+	//
 	// example:
 	//
 	// example
 	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
+	//
 	// example:
 	//
 	// example
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The processing mode for query strings when generating the cache key. Possible values:
+	//
+	// - ignore_all: Ignore all.
+	//
+	// - exclude_query_string: Exclude specified query strings.
+	//
+	// - reserve_all: Default, reserve all.
+	//
+	// - include_query_string: Include specified query strings.
+	//
 	// example:
 	//
 	// reserve_all
 	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 340035003106221
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version for the configuration to take effect. The default is version 0.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Query string sorting, disabled by default. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// When generating the cache key, add the client device type. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// When generating the cache key, add the client\\"s geographic location. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// When generating cache keys, include the client\\"s language type. The value can be: - on: enabled. - off: disabled.
+	//
 	// example:
 	//
 	// on
@@ -4708,10 +4845,14 @@ func (s *CreateCacheRuleRequest) SetUserLanguage(v string) *CreateCacheRuleReque
 }
 
 type CreateCacheRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -4766,20 +4907,28 @@ func (s *CreateCacheRuleResponse) SetBody(v *CreateCacheRuleResponseBody) *Creat
 }
 
 type CreateClientCertificateRequest struct {
+	// The certificate signing request (CSR).
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
 	CSR *string `json:"CSR,omitempty" xml:"CSR,omitempty"`
+	// The type of the private key algorithm.
+	//
 	// example:
 	//
 	// RSA
 	PkeyType *string `json:"PkeyType,omitempty" xml:"PkeyType,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The validity period of the certificate. Unit: day.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4817,58 +4966,86 @@ func (s *CreateClientCertificateRequest) SetValidityDays(v int64) *CreateClientC
 }
 
 type CreateClientCertificateResponseBody struct {
+	// The ID of the CA certificate.
+	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1dbb
 	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The certificate content.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The Common Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
 	// example:
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID on ESA.
+	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The CA that issued the certificate.
+	//
 	// example:
 	//
 	// DCDN CA
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate expires.
+	//
 	// example:
 	//
 	// 2024-12-01T02:12:49Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
 	// example:
 	//
 	// 2023-12-01T02:12:49Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The private key of the certificate.
+	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the certificate.
+	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1daa
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The status of the certificate.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The validity period of the certificate. Unit: day.
+	//
 	// example:
 	//
 	// 365
@@ -4983,32 +5160,58 @@ func (s *CreateClientCertificateResponse) SetBody(v *CreateClientCertificateResp
 }
 
 type CreateCompressionRuleRequest struct {
+	// Brotli compression. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// Gzip compression. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Values:
+	//
+	// - **on**: Enable.
+	//
+	// - **off**: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1231231221***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
+	//
 	// example:
 	//
 	// 0
@@ -5065,10 +5268,14 @@ func (s *CreateCompressionRuleRequest) SetZstd(v string) *CreateCompressionRuleR
 }
 
 type CreateCompressionRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
@@ -6330,26 +6537,42 @@ func (s *CreateEdgeContainerAppVersionResponse) SetBody(v *CreateEdgeContainerAp
 }
 
 type CreateHttpRequestHeaderModificationRuleRequest struct {
+	// Modify request headers, supporting add, delete, and modify operations.
+	//
 	// This parameter is required.
 	RequestHeaderModification []*CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to apply the configuration to, defaulting to version 0.
+	//
 	// example:
 	//
 	// 0
@@ -6395,18 +6618,30 @@ func (s *CreateHttpRequestHeaderModificationRuleRequest) SetSiteVersion(v int32)
 }
 
 type CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {
+	// Request header name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// headername
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operation type. Possible values:
+	//
+	// - add: Add.
+	//
+	// - del: Delete.
+	//
+	// - modify: Modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// Request header value.
+	//
 	// example:
 	//
 	// headervalue
@@ -6437,26 +6672,42 @@ func (s *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification
 }
 
 type CreateHttpRequestHeaderModificationRuleShrinkRequest struct {
+	// Modify request headers, supporting add, delete, and modify operations.
+	//
 	// This parameter is required.
 	RequestHeaderModificationShrink *string `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to apply the configuration to, defaulting to version 0.
+	//
 	// example:
 	//
 	// 0
@@ -6502,10 +6753,14 @@ func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetSiteVersion(v 
 }
 
 type CreateHttpRequestHeaderModificationRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
@@ -6560,26 +6815,42 @@ func (s *CreateHttpRequestHeaderModificationRuleResponse) SetBody(v *CreateHttpR
 }
 
 type CreateHttpResponseHeaderModificationRuleRequest struct {
+	// Modify response headers, supporting add, delete, and modify operations.
+	//
 	// This parameter is required.
 	ResponseHeaderModification []*CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site where the configuration will take effect. The default is version 0.
+	//
 	// example:
 	//
 	// 0
@@ -6625,18 +6896,30 @@ func (s *CreateHttpResponseHeaderModificationRuleRequest) SetSiteVersion(v int32
 }
 
 type CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification struct {
+	// Response header name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// headername
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operation method. Possible values:
+	//
+	// - add: Add.
+	//
+	// - del: Delete.
+	//
+	// - modify: Modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// Response header value.
+	//
 	// example:
 	//
 	// headervalue
@@ -6667,26 +6950,42 @@ func (s *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModificati
 }
 
 type CreateHttpResponseHeaderModificationRuleShrinkRequest struct {
+	// Modify response headers, supporting add, delete, and modify operations.
+	//
 	// This parameter is required.
 	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site where the configuration will take effect. The default is version 0.
+	//
 	// example:
 	//
 	// 0
@@ -6732,10 +7031,14 @@ func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetSiteVersion(v
 }
 
 type CreateHttpResponseHeaderModificationRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
@@ -6790,64 +7093,134 @@ func (s *CreateHttpResponseHeaderModificationRuleResponse) SetBody(v *CreateHttp
 }
 
 type CreateHttpsApplicationConfigurationRequest struct {
+	// Alt-Svc feature switch. Default is disabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// Whether the Alt-Svc header includes the clear parameter. Default is disabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// Validity period of Alt-Svc in seconds. The default is 86400 seconds.
+	//
 	// example:
 	//
 	// 86400
 	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// Whether the Alt-Svc header includes the persist parameter. Default is disabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// Whether to enable HSTS. Default is disabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// Whether to include subdomains in HSTS. Default is disabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// HSTS expiration time in seconds.
+	//
 	// example:
 	//
 	// 3600
 	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// Whether to enable HSTS preloading. Default is disabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// Whether to enable forced HTTPS. Default is disabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// Status code for forced HTTPS redirection. Possible values:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 307
+	//
+	// - 308
+	//
 	// example:
 	//
 	// 301
 	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration will take effect. The default is version 0.
+	//
 	// example:
 	//
 	// 1
@@ -6938,10 +7311,14 @@ func (s *CreateHttpsApplicationConfigurationRequest) SetSiteVersion(v int32) *Cr
 }
 
 type CreateHttpsApplicationConfigurationResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -7193,28 +7570,48 @@ func (s *CreateHttpsBasicConfigurationResponse) SetBody(v *CreateHttpsBasicConfi
 }
 
 type CreateImageTransformRequest struct {
+	// Indicates whether image transformation is enabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Rule content, specifically the strategy or condition expression being implemented.
+	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Values:
+	//
+	// - **on**: Enabled.
+	//
+	// - **off**: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+	//
 	// example:
 	//
 	// 0
@@ -7260,10 +7657,14 @@ func (s *CreateImageTransformRequest) SetSiteVersion(v int32) *CreateImageTransf
 }
 
 type CreateImageTransformResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
@@ -8201,44 +8602,84 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateNetworkOptimizationRequest struct {
+	// Indicates whether to enable GRPC, disabled by default. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 340035003106221
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Indicates whether to enable smart routing service, disabled by default. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// Maximum file size for upload, in MB. Range: 100～500.
+	//
 	// example:
 	//
 	// 100
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// Indicates whether to enable Websocket, enabled by default. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
@@ -8304,10 +8745,14 @@ func (s *CreateNetworkOptimizationRequest) SetWebsocket(v string) *CreateNetwork
 }
 
 type CreateNetworkOptimizationResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -8362,15 +8807,33 @@ func (s *CreateNetworkOptimizationResponse) SetBody(v *CreateNetworkOptimization
 }
 
 type CreateOriginPoolRequest struct {
+	// Whether the origin address pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The name of the origin address pool, which must be unique within a site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CreateOriginPool
-	Name    *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	// pool1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Information about the origins added to the origin address pool, with multiple origins passed as an array.
 	Origins []*CreateOriginPoolRequestOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 21655860979****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -8403,13 +8866,62 @@ func (s *CreateOriginPoolRequest) SetSiteId(v int64) *CreateOriginPoolRequest {
 }
 
 type CreateOriginPoolRequestOrigins struct {
-	Address  *string                                 `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address of the origin, e.g., www.example.com.
+	//
+	// example:
+	//
+	// www.example.com
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Authentication information, required when the origin is OSS or S3 and needs authentication, including related configuration details.
 	AuthConf *CreateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	Enabled  *bool                                   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Header   interface{}                             `json:"Header,omitempty" xml:"Header,omitempty"`
-	Name     *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32                                  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// Whether the origin is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The request header to be included when fetching from the origin, only Host is supported.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "Host": [
+	//
+	//           "example.com"
+	//
+	//         ]
+	//
+	//       }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// The name of the origin, which must be unique within an origin address.
+	//
+	// example:
+	//
+	// origin1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the origin:
+	//
+	// - ip_domain: IP or domain name type origin;
+	//
+	// - OSS: OSS address origin;
+	//
+	// - S3: AWS S3 origin.
+	//
+	// example:
+	//
+	// ip_domain
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight, an integer between 0 and 100.
+	//
+	// example:
+	//
+	// 50
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateOriginPoolRequestOrigins) String() string {
@@ -8456,11 +8968,44 @@ func (s *CreateOriginPoolRequestOrigins) SetWeight(v int32) *CreateOriginPoolReq
 }
 
 type CreateOriginPoolRequestOriginsAuthConf struct {
+	// The access key required for private authentication.
+	//
+	// example:
+	//
+	// LTAI5tGLgmPe1wFwpX86****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The type of authentication.
+	//
+	// - public: Public read/write, used when the origin is OSS or S3 and is set to public read/write;
+	//
+	// - private_same_account: Private same account, used when the origin is OSS and the authentication type is private within the same account;
+	//
+	// - private_cross_account: Private cross-account, used when the origin is OSS and the authentication type is private across accounts;
+	//
+	// - private: Used when the origin is S3 and the authentication type is private.
+	//
+	// example:
+	//
+	// public
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The region of the origin required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// us-east-1
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The secret key required for private authentication.
+	//
+	// example:
+	//
+	// bd8tjba5lXxxxxiRXFIBvoCIfJI****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The signature version required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// v2
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateOriginPoolRequestOriginsAuthConf) String() string {
@@ -8497,15 +9042,33 @@ func (s *CreateOriginPoolRequestOriginsAuthConf) SetVersion(v string) *CreateOri
 }
 
 type CreateOriginPoolShrinkRequest struct {
+	// Whether the origin address pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The name of the origin address pool, which must be unique within a site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CreateOriginPool
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// pool1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Information about the origins added to the origin address pool, with multiple origins passed as an array.
 	OriginsShrink *string `json:"Origins,omitempty" xml:"Origins,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 21655860979****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -8538,8 +9101,17 @@ func (s *CreateOriginPoolShrinkRequest) SetSiteId(v int64) *CreateOriginPoolShri
 }
 
 type CreateOriginPoolResponseBody struct {
+	// The ID of the newly created origin address pool.
+	//
+	// example:
+	//
+	// 103852052519****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8666,52 +9238,92 @@ func (s *CreateOriginProtectionResponse) SetBody(v *CreateOriginProtectionRespon
 }
 
 type CreateOriginRuleRequest struct {
+	// Rewrite the DNS resolution record for the origin request.
+	//
 	// example:
 	//
 	// test.example.com
 	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// The HOST carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// Port of the origin server when using the HTTP protocol for origin requests.
+	//
 	// example:
 	//
 	// 8080
 	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// Port of the origin server when using the HTTPS protocol for origin requests.
+	//
 	// example:
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// Protocol used for the origin request. Possible values:
+	//
+	// - http: Use HTTP protocol for origin requests.
+	//
+	// - https: Use HTTPS protocol for origin requests.
+	//
+	// - follow: Follow the client\\"s protocol for origin requests.
+	//
 	// example:
 	//
 	// http
 	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// The SNI carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// Use range chunking for downloading files from the origin. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// - force: Force
+	//
 	// example:
 	//
 	// on
 	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 340035003106221
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site where the configuration takes effect. The default is version 0.
+	//
 	// example:
 	//
 	// 1
@@ -8787,10 +9399,14 @@ func (s *CreateOriginRuleRequest) SetSiteVersion(v int32) *CreateOriginRuleReque
 }
 
 type CreateOriginRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -9631,46 +10247,84 @@ func (s *CreateRecordResponse) SetBody(v *CreateRecordResponseBody) *CreateRecor
 }
 
 type CreateRedirectRuleRequest struct {
+	// Whether to preserve the query string. Allowed values:
+	//
+	// - on: Preserve.
+	//
+	// - off: Do not preserve.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	// The content of the rule.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The switch for the rule. Allowed values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0. vvvv
+	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The HTTP status code used by the node when responding to the client with the redirect address. Allowed values:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 303
+	//
+	// - 307
+	//
+	// - 308
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The target URL after redirection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://www.exapmle.com/index.html
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The type of redirection. Allowed values:
+	//
+	// - static: Static mode.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9733,10 +10387,14 @@ func (s *CreateRedirectRuleRequest) SetType(v string) *CreateRedirectRuleRequest
 }
 
 type CreateRedirectRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1FCB0DA6-9B6D-509D-B91C-B9B9F0780D0E
@@ -9791,10 +10449,16 @@ func (s *CreateRedirectRuleResponse) SetBody(v *CreateRedirectRuleResponseBody) 
 }
 
 type CreateRewriteUrlRuleRequest struct {
+	// Query string after rewriting.
+	//
 	// example:
 	//
 	// example=123
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// Query string rewrite type. Value range:
+	//
+	// - static: Static mode.
+	//
 	// if can be null:
 	// false
 	//
@@ -9802,6 +10466,10 @@ type CreateRewriteUrlRuleRequest struct {
 	//
 	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	// URI rewrite type. Value range:
+	//
+	// - static: Static mode.
+	//
 	// if can be null:
 	// false
 	//
@@ -9809,28 +10477,44 @@ type CreateRewriteUrlRuleRequest struct {
 	//
 	// static
 	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
+	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Target URI after rewriting.
+	//
 	// example:
 	//
 	// /image/example.jpg
@@ -9891,10 +10575,14 @@ func (s *CreateRewriteUrlRuleRequest) SetUri(v string) *CreateRewriteUrlRuleRequ
 }
 
 type CreateRewriteUrlRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 39237781679****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
@@ -14284,7 +14972,13 @@ func (s *CreateWaitingRoomRuleResponse) SetBody(v *CreateWaitingRoomRuleResponse
 }
 
 type DeactivateVersionManagementRequest struct {
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -14302,6 +14996,11 @@ func (s *DeactivateVersionManagementRequest) SetSiteId(v int64) *DeactivateVersi
 }
 
 type DeactivateVersionManagementResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// D61E4801-EAFF-4A63-AAE1-FBF6CE1CFD1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14348,12 +15047,16 @@ func (s *DeactivateVersionManagementResponse) SetBody(v *DeactivateVersionManage
 }
 
 type DeleteCacheRuleRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListCacheRules](~~ListCacheRules~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3528160*********
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14381,6 +15084,8 @@ func (s *DeleteCacheRuleRequest) SetSiteId(v int64) *DeleteCacheRuleRequest {
 }
 
 type DeleteCacheRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -14672,12 +15377,16 @@ func (s *DeleteClientCaCertificateResponse) SetBody(v *DeleteClientCaCertificate
 }
 
 type DeleteClientCertificateRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14705,18 +15414,26 @@ func (s *DeleteClientCertificateRequest) SetSiteId(v int64) *DeleteClientCertifi
 }
 
 type DeleteClientCertificateResponseBody struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -15402,12 +16119,16 @@ func (s *DeleteHttpResponseHeaderModificationRuleResponse) SetBody(v *DeleteHttp
 }
 
 type DeleteHttpsApplicationConfigurationRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [listHttpsApplicationConfigurations](https://help.aliyun.com/document_detail/2869087.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15435,6 +16156,8 @@ func (s *DeleteHttpsApplicationConfigurationRequest) SetSiteId(v int64) *DeleteH
 }
 
 type DeleteHttpsApplicationConfigurationResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 35C66C7B-671H-4297-9187-2C4477247A78
@@ -15484,12 +16207,16 @@ func (s *DeleteHttpsApplicationConfigurationResponse) SetBody(v *DeleteHttpsAppl
 }
 
 type DeleteHttpsBasicConfigurationRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](~~ListHttpsBasicConfigurations~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15517,6 +16244,8 @@ func (s *DeleteHttpsBasicConfigurationRequest) SetSiteId(v int64) *DeleteHttpsBa
 }
 
 type DeleteHttpsBasicConfigurationResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
@@ -15968,12 +16697,16 @@ func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) 
 }
 
 type DeleteNetworkOptimizationRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListNetworkOptimizations](~~ListNetworkOptimizations~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 352816**********
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16001,6 +16734,8 @@ func (s *DeleteNetworkOptimizationRequest) SetSiteId(v int64) *DeleteNetworkOpti
 }
 
 type DeleteNetworkOptimizationResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -16050,13 +16785,21 @@ func (s *DeleteNetworkOptimizationResponse) SetBody(v *DeleteNetworkOptimization
 }
 
 type DeleteOriginPoolRequest struct {
+	// The ID of the origin address pool, which can be obtained by calling the [ListOriginPools](~~ListOriginPools~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// DeleteOriginPool
+	// 103852052519****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 21655860979****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -16079,7 +16822,11 @@ func (s *DeleteOriginPoolRequest) SetSiteId(v int64) *DeleteOriginPoolRequest {
 }
 
 type DeleteOriginPoolResponseBody struct {
-	// Id of the request
+	// Request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16201,12 +16948,16 @@ func (s *DeleteOriginProtectionResponse) SetBody(v *DeleteOriginProtectionRespon
 }
 
 type DeleteOriginRuleRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListOriginRules](~~ListOriginRules~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 33793140540****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16234,6 +16985,8 @@ func (s *DeleteOriginRuleRequest) SetSiteId(v int64) *DeleteOriginRuleRequest {
 }
 
 type DeleteOriginRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -20406,12 +21159,16 @@ func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecifi
 }
 
 type GetCacheRuleRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListCacheRules](https://help.aliyun.com/document_detail/2866985.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20439,114 +21196,232 @@ func (s *GetCacheRuleRequest) SetSiteId(v int64) *GetCacheRuleRequest {
 }
 
 type GetCacheRuleResponseBody struct {
+	// Enable caching on the specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	//
 	// example:
 	//
 	// 2095
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// Browser cache mode. Value range:
+	//
+	// - no_cache: Do not cache.
+	//
+	// - follow_origin: Follow origin cache policy.
+	//
+	// - override_origin: Override origin cache policy.
+	//
 	// example:
 	//
 	// follow_origin
 	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// Browser cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// Set bypass cache mode. Value range:
+	//
+	// - cache_all: Cache all requests.
+	//
+	// - bypass_all: Bypass cache for all requests.
+	//
 	// example:
 	//
 	// cache_all
 	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// Cache deception defense. Used to defend against web cache deception attacks. Only the verified cache content will be cached. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// Cache reserve eligibility. Used to control whether user requests bypass the cache reserve node when returning to the origin. Value range:
+	//
+	// - bypass_cache_reserve: Requests bypass the cache reserve.
+	//
+	// - eligible_for_cache_reserve: Eligible for cache reserve.
+	//
 	// example:
 	//
 	// bypass_cache_reserve
 	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Supports multiple cookie names, separated by spaces.
+	//
 	// example:
 	//
 	// cookiename
 	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Supports multiple header names, separated by spaces.
+	//
 	// example:
 	//
 	// headername
 	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration;
+	//
+	// - rule: Query rule configuration;
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Edge cache mode. Value range:
+	//
+	// - follow_origin: Follow origin cache policy (if exists), otherwise use default cache policy.
+	//
+	// - no_cache: Do not cache.
+	//
+	// - override_origin: Override origin cache policy.
+	//
+	// - follow_origin_bypass: Follow origin cache policy (if exists), otherwise do not cache.
+	//
 	// example:
 	//
 	// follow_origin
 	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// Edge cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// Status code cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// When generating the cache key, include the specified cookie names and their values. Supports multiple values, separated by spaces.
+	//
 	// example:
 	//
 	// cookie_exapmle
 	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// When generating the cache key, include the specified header names and their values. Supports multiple values, separated by spaces.
+	//
 	// example:
 	//
 	// example
 	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// Query strings to be retained or deleted. Supports multiple values, separated by spaces.
+	//
 	// example:
 	//
 	// example
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The processing mode for query strings when generating cache keys. Value range:
+	//
+	// - ignore_all: Ignore all.
+	//
+	// - exclude_query_string: Exclude specified query strings.
+	//
+	// - reserve_all: Default, reserve all.
+	//
+	// - include_query_string: Include specified query strings.
+	//
 	// example:
 	//
 	// reserve_all
 	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Serve stale cache. When enabled, the node can still use the cached expired files to respond to user requests even if the origin server is unavailable. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Query string sorting. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// When generating the cache key, include the client device type. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// When generating the cache key, include the client\\"s geographic location. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// When generating the cache key, include the client\\"s language type. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
@@ -20854,7 +21729,7 @@ func (s *GetCacheTagResponse) SetBody(v *GetCacheTagResponseBody) *GetCacheTagRe
 }
 
 type GetCertificateRequest struct {
-	// The certificate ID.
+	// Certificate ID.
 	//
 	// This parameter is required.
 	//
@@ -20862,7 +21737,7 @@ type GetCertificateRequest struct {
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
 	//
@@ -20891,33 +21766,33 @@ func (s *GetCertificateRequest) SetSiteId(v int64) *GetCertificateRequest {
 }
 
 type GetCertificateResponseBody struct {
-	// The certificate content.
+	// Certificate content.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The certificate information.
+	// Certificate information.
 	Result *GetCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The website ID.
+	// Site ID.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// Site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The certificate status.
+	// Certificate status.
 	//
 	// example:
 	//
@@ -20964,118 +21839,123 @@ func (s *GetCertificateResponseBody) SetStatus(v string) *GetCertificateResponse
 }
 
 type GetCertificateResponseBodyResult struct {
+	// Certificate application error code.
+	//
 	// example:
 	//
 	// 2
 	ApplyCode *int64 `json:"ApplyCode,omitempty" xml:"ApplyCode,omitempty"`
+	// Certificate application error message.
+	//
 	// example:
 	//
 	// canceled
 	ApplyMessage *string `json:"ApplyMessage,omitempty" xml:"ApplyMessage,omitempty"`
-	// The certificate ID on Certificate Management Service.
+	// Cloud certificate ID.
 	//
 	// example:
 	//
 	// 30000478
 	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// The Common Name of the certificate.
+	// Common Name (CN) field of the certificate.
 	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate was created.
+	// Creation time.
 	//
 	// example:
 	//
 	// 2020-05-12 02:00:53
-	CreateTime *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DCV        []*GetCertificateResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
-	// The SHA-256 fingerprint of the certificate.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// DCV information.
+	DCV []*GetCertificateResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
+	// SHA256 fingerprint of the certificate.
 	//
 	// example:
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// The certificate ID on ESA.
+	// Certificate ID.
 	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// Certificate issuer.
 	//
 	// example:
 	//
 	// DigiCert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The Common Name of the CA that issued the certificate.
+	// Certificate issuing authority.
 	//
 	// example:
 	//
 	// DigiCert Global Root CA
 	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
-	// The certificate name.
+	// Certificate name.
 	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the certificate expires.
+	// End time of the certificate validity period.
 	//
 	// example:
 	//
 	// 2023-11-26T16:00:00Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate takes effect.
+	// Start time of the certificate validity period.
 	//
 	// example:
 	//
 	// 2023-11-26T16:00:00Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The public-key algorithm of the certificate.
+	// Certificate public key algorithm.
 	//
 	// example:
 	//
 	// ECDSA
 	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
-	// The region.
+	// Region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// Subject Alternative Name (SAN) of the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// Serial number of the certificate.
 	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1daa
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The signature algorithm of the certificate.
+	// Certificate signature algorithm.
 	//
 	// example:
 	//
 	// ECDSA-SHA1
 	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
-	// The certificate status.
+	// Certificate status.
 	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The certificate type.
+	// Certificate type.
 	//
 	// example:
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was updated.
+	// Update time.
 	//
 	// example:
 	//
@@ -21203,18 +22083,26 @@ type GetCertificateResponseBodyResultDCV struct {
 	//
 	// bababf7cdd1546a2ad04c0def1f4c980
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// DCV name. For the DNS type, it is the TXT record name; for the HTTP type, it is the URL.
+	//
 	// example:
 	//
 	// http://www.example.com/.well-known/acme-challenge/pH20CqwS5L3ZnvkhI436DCzadKFuG7QcUcvB_4KsAow
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Verification status.
+	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// DCV type. Possible values: DNS; HTTP.
+	//
 	// example:
 	//
 	// HTTP
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// DCV content.
+	//
 	// example:
 	//
 	// pH20CqwS5L3ZnvkhI436DCzadKFuG7QcUcvB_4KsAow.KfzYo4LH3EgOt7a73G-RqZkbR0eYtLfEUmtmqGmr4FQ
@@ -21284,12 +22172,16 @@ func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCert
 }
 
 type GetCertificateQuotaRequest struct {
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Certificate Quota type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21317,23 +22209,34 @@ func (s *GetCertificateQuotaRequest) SetType(v string) *GetCertificateQuotaReque
 }
 
 type GetCertificateQuotaResponseBody struct {
+	// Free certificate quota.
+	//
 	// example:
 	//
 	// 10
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// Usage of free certificate quota.
+	//
 	// example:
 	//
 	// 5
 	QuotaUsage *int64 `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of sites.
+	//
 	// example:
 	//
 	// 2
-	SiteCount *int64                                      `json:"SiteCount,omitempty" xml:"SiteCount,omitempty"`
+	SiteCount *int64 `json:"SiteCount,omitempty" xml:"SiteCount,omitempty"`
+	// List of site usage details.
 	SiteUsage []*GetCertificateQuotaResponseBodySiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
+	// Certificate Quota type.
+	//
 	// example:
 	//
 	// free
@@ -21379,14 +22282,20 @@ func (s *GetCertificateQuotaResponseBody) SetType(v string) *GetCertificateQuota
 }
 
 type GetCertificateQuotaResponseBodySiteUsage struct {
+	// Site ID.
+	//
 	// example:
 	//
 	// 165929521496928
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// Site usage.
+	//
 	// example:
 	//
 	// 5
@@ -21446,12 +22355,16 @@ func (s *GetCertificateQuotaResponse) SetBody(v *GetCertificateQuotaResponseBody
 }
 
 type GetClientCaCertificateRequest struct {
+	// The certificate ID, which can be obtained by calling the [ListClientCaCertificates](~~ListClientCaCertificates~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21479,23 +22392,34 @@ func (s *GetClientCaCertificateRequest) SetSiteId(v int64) *GetClientCaCertifica
 }
 
 type GetClientCaCertificateResponseBody struct {
+	// The certificate content.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetClientCaCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The certificate information.
+	Result *GetClientCaCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// OK
@@ -21541,54 +22465,80 @@ func (s *GetClientCaCertificateResponseBody) SetStatus(v string) *GetClientCaCer
 }
 
 type GetClientCaCertificateResponseBodyResult struct {
+	// The Common Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
 	// example:
 	//
 	// 2024-03-05 18:24:04
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
 	// example:
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
 	// example:
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
 	// example:
 	//
 	// 2024-03-05 18:24:04
@@ -22218,12 +23168,16 @@ func (s *GetCnameFlatteningResponse) SetBody(v *GetCnameFlatteningResponseBody) 
 }
 
 type GetCompressionRuleRequest struct {
+	// Configuration ID, which can be obtained by calling the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22251,47 +23205,92 @@ func (s *GetCompressionRuleRequest) SetSiteId(v int64) *GetCompressionRuleReques
 }
 
 type GetCompressionRuleResponseBody struct {
+	// Brotli compression. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type. Possible values:
+	//
+	// - global: Global configuration.
+	//
+	// - rule: Rule configuration.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Gzip compression. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 186C6DF2-D96A-5102-B04E-FB92C16C9867
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - **on**: Enabled.
+	//
+	// - **off**: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site configuration version.
+	//
 	// example:
 	//
 	// 0
-	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	Zstd        *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Zstd compression. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Zstd *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
 }
 
 func (s GetCompressionRuleResponseBody) String() string {
@@ -24820,12 +25819,16 @@ func (s *GetHttpResponseHeaderModificationRuleResponse) SetBody(v *GetHttpRespon
 }
 
 type GetHttpsApplicationConfigurationRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [listHttpsApplicationConfigurations](https://help.aliyun.com/document_detail/2869087.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24853,74 +25856,154 @@ func (s *GetHttpsApplicationConfigurationRequest) SetSiteId(v int64) *GetHttpsAp
 }
 
 type GetHttpsApplicationConfigurationResponseBody struct {
+	// Alt-Svc feature switch, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// Whether the Alt-Svc header includes the clear parameter, default is disabled. Values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// Alt-Svc validity period in seconds, default is 86400 seconds.
+	//
 	// example:
 	//
 	// 86400
 	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// Whether the Alt-Svc header includes the persist parameter, default is disabled. Values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Whether to enable HSTS, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// Whether to include subdomains in HSTS, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// HSTS expiration time in seconds.
+	//
 	// example:
 	//
 	// 3600
 	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// Whether to enable HSTS preload, default is off. Value range:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
 	// example:
 	//
 	// on
 	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// Whether to enable forced HTTPS, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// Forced HTTPS redirect status code. Value range:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 307
+	//
+	// - 308
+	//
 	// example:
 	//
 	// 301
 	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A3790430-3A06-535F-A424-0998BD9A6C9F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
@@ -25055,12 +26138,16 @@ func (s *GetHttpsApplicationConfigurationResponse) SetBody(v *GetHttpsApplicatio
 }
 
 type GetHttpsBasicConfigurationRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](https://help.aliyun.com/document_detail/2867470.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25088,70 +26175,150 @@ func (s *GetHttpsBasicConfigurationRequest) SetSiteId(v int64) *GetHttpsBasicCon
 }
 
 type GetHttpsBasicConfigurationResponseBody struct {
+	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	//
 	// example:
 	//
 	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// Cipher suite group, default is all cipher suites. Value range:
+	//
+	// - all: All cipher suites.
+	//
+	// - strict: Strong cipher suites.
+	//
+	// - custom: Custom cipher suites.
+	//
 	// example:
 	//
 	// all
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration;
+	//
+	// - rule: Query rule configuration;
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Whether to enable HTTP2, default is enabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// Whether to enable HTTP3, which is enabled by default. The value can be:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// Whether to enable HTTPS, default is enabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// Whether to enable OCSP, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Matching rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Whether to enable TLS1.0, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// Whether to enable TLS1.1, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// Whether to enable TLS1.2, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// Whether to enable TLS1.3, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
@@ -25281,6 +26448,8 @@ func (s *GetHttpsBasicConfigurationResponse) SetBody(v *GetHttpsBasicConfigurati
 }
 
 type GetIPv6Request struct {
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25303,10 +26472,18 @@ func (s *GetIPv6Request) SetSiteId(v int64) *GetIPv6Request {
 }
 
 type GetIPv6ResponseBody struct {
+	// IPv6 switch. Values:
+	//
+	// - **on**: Enabled.
+	//
+	// - **off**: Disabled.
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
@@ -26968,12 +28145,16 @@ func (s *GetManagedTransformResponse) SetBody(v *GetManagedTransformResponseBody
 }
 
 type GetNetworkOptimizationRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListNetworkOptimizations](~~ListNetworkOptimizations~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27001,54 +28182,104 @@ func (s *GetNetworkOptimizationRequest) SetSiteId(v int64) *GetNetworkOptimizati
 }
 
 type GetNetworkOptimizationResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Whether to enable GRPC, default is disabled. Value range:
+	//
+	// - on: Enabled
+	//
+	// - off: Disabled
+	//
 	// example:
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
+	//
+	// - on: Enabled
+	//
+	// - off: Disabled
+	//
 	// example:
 	//
 	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Values:
+	//
+	// - on: Enabled
+	//
+	// - off: Disabled
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 2
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Whether to enable smart routing service, default is disabled. Value range:
+	//
+	// - on: Enabled
+	//
+	// - off: Disabled
+	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// Maximum upload file size, in MB, value range: 100～500.
+	//
 	// example:
 	//
 	// 500
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// Whether to enable Websocket, default is enabled. Value range:
+	//
+	// - on: Enabled
+	//
+	// - off: Disabled
+	//
 	// example:
 	//
 	// on
@@ -27158,13 +28389,21 @@ func (s *GetNetworkOptimizationResponse) SetBody(v *GetNetworkOptimizationRespon
 }
 
 type GetOriginPoolRequest struct {
+	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// GetOriginPool
+	// 1038520525196928
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the site, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 216558609793952
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -27187,16 +28426,56 @@ func (s *GetOriginPoolRequest) SetSiteId(v int64) *GetOriginPoolRequest {
 }
 
 type GetOriginPoolResponseBody struct {
-	Enabled          *bool                                `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Id               *int64                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	Origins          []*GetOriginPoolResponseBodyOrigins  `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
-	RecordName       *string                              `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	ReferenceLBCount *int32                               `json:"ReferenceLBCount,omitempty" xml:"ReferenceLBCount,omitempty"`
-	References       *GetOriginPoolResponseBodyReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
-	// Id of the request
+	// Whether the origin pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Origin pool ID.
+	//
+	// example:
+	//
+	// 103852052519****
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the origin pool. The name is unique under a single site.
+	//
+	// example:
+	//
+	// pool1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Information about the origins added to the origin pool.
+	Origins []*GetOriginPoolResponseBodyOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	// The domain name assigned to the origin pool, which can be used as the origin address for records under the site.
+	//
+	// example:
+	//
+	// pool1.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The number of load balancers that reference this origin pool.
+	//
+	// example:
+	//
+	// 5
+	ReferenceLBCount *int32 `json:"ReferenceLBCount,omitempty" xml:"ReferenceLBCount,omitempty"`
+	// Reference information for the origin pool. The origin pool is considered referenced when it is configured in a load balancer or set as the origin for a record.
+	References *GetOriginPoolResponseBodyReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// ID of the site to which the origin pool belongs.
+	//
+	// example:
+	//
+	// 21655860979****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s GetOriginPoolResponseBody) String() string {
@@ -27253,14 +28532,68 @@ func (s *GetOriginPoolResponseBody) SetSiteId(v int64) *GetOriginPoolResponseBod
 }
 
 type GetOriginPoolResponseBodyOrigins struct {
-	Address  *string                                   `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address of the origin, e.g., www.example.com.
+	//
+	// example:
+	//
+	// www.example.com
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Authentication information. When the origin is an OSS or S3, and authentication is required, you need to provide the relevant configuration information.
 	AuthConf *GetOriginPoolResponseBodyOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	Enabled  *bool                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Header   interface{}                               `json:"Header,omitempty" xml:"Header,omitempty"`
-	Id       *int64                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32                                    `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// Whether the origin is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The request header to be included when fetching from the origin, only supports Host.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "Host": [
+	//
+	//           "example.com"
+	//
+	//         ]
+	//
+	//       }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// The ID of the origin.
+	//
+	// example:
+	//
+	// 99750209487****
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the origin.
+	//
+	// example:
+	//
+	// origin1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the origin:
+	//
+	// - ip_domain: IP or domain type origin;
+	//
+	// - OSS: OSS address origin;
+	//
+	// - S3: AWS S3 origin.
+	//
+	// example:
+	//
+	// ip_domain
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight, an integer between 0 and 100.
+	//
+	// example:
+	//
+	// 50
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s GetOriginPoolResponseBodyOrigins) String() string {
@@ -27312,11 +28645,44 @@ func (s *GetOriginPoolResponseBodyOrigins) SetWeight(v int32) *GetOriginPoolResp
 }
 
 type GetOriginPoolResponseBodyOriginsAuthConf struct {
+	// The AccessKey required when AuthType is set to private_cross_account or private.
+	//
+	// example:
+	//
+	// LTAI5tSpj224hDfLmXEx****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The type of authentication:
+	//
+	// - public: Public read/write, used when the origin is OSS or S3 and is publicly readable/writable;
+	//
+	// - private_same_account: Private same account, used when the origin is OSS and the authentication type is private within the same account;
+	//
+	// - private_cross_account: Private cross account, used when the origin is OSS and the authentication type is private across accounts;
+	//
+	// - private: Used when the origin is S3 and the authentication type is private.
+	//
+	// example:
+	//
+	// public
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The source Region to be passed when the origin is AWS S3.
+	//
+	// example:
+	//
+	// us-east-1
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The SecretKey required when AuthType is set to private_cross_account or private.
+	//
+	// example:
+	//
+	// tzXL8ub4GtjkjZOJhS****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The signature version required when the origin is an AWS S3.
+	//
+	// example:
+	//
+	// v4
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetOriginPoolResponseBodyOriginsAuthConf) String() string {
@@ -27353,8 +28719,11 @@ func (s *GetOriginPoolResponseBodyOriginsAuthConf) SetVersion(v string) *GetOrig
 }
 
 type GetOriginPoolResponseBodyReferences struct {
-	DnsRecords    []*GetOriginPoolResponseBodyReferencesDnsRecords    `json:"DnsRecords,omitempty" xml:"DnsRecords,omitempty" type:"Repeated"`
-	IPARecords    []*GetOriginPoolResponseBodyReferencesIPARecords    `json:"IPARecords,omitempty" xml:"IPARecords,omitempty" type:"Repeated"`
+	// List of layer 7 records using this origin pool as the origin.
+	DnsRecords []*GetOriginPoolResponseBodyReferencesDnsRecords `json:"DnsRecords,omitempty" xml:"DnsRecords,omitempty" type:"Repeated"`
+	// List of layer 4 records using this origin pool as the origin.
+	IPARecords []*GetOriginPoolResponseBodyReferencesIPARecords `json:"IPARecords,omitempty" xml:"IPARecords,omitempty" type:"Repeated"`
+	// List of load balancers using this origin pool.
 	LoadBalancers []*GetOriginPoolResponseBodyReferencesLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
 }
 
@@ -27382,7 +28751,17 @@ func (s *GetOriginPoolResponseBodyReferences) SetLoadBalancers(v []*GetOriginPoo
 }
 
 type GetOriginPoolResponseBodyReferencesDnsRecords struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Record ID.
+	//
+	// example:
+	//
+	// 104285288635****
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Record name.
+	//
+	// example:
+	//
+	// www.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -27405,7 +28784,17 @@ func (s *GetOriginPoolResponseBodyReferencesDnsRecords) SetName(v string) *GetOr
 }
 
 type GetOriginPoolResponseBodyReferencesIPARecords struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 记录ID。
+	//
+	// example:
+	//
+	// 104285288635****
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Record name.
+	//
+	// example:
+	//
+	// ipa.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -27428,7 +28817,17 @@ func (s *GetOriginPoolResponseBodyReferencesIPARecords) SetName(v string) *GetOr
 }
 
 type GetOriginPoolResponseBodyReferencesLoadBalancers struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID of the load balancer.
+	//
+	// example:
+	//
+	// 99874066052****
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the load balancer.
+	//
+	// example:
+	//
+	// lb1.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -27789,12 +29188,16 @@ func (s *GetOriginProtectionResponse) SetBody(v *GetOriginProtectionResponseBody
 }
 
 type GetOriginRuleRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListOriginRules](https://help.aliyun.com/document_detail/2866989.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 33793140540****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27822,62 +29225,112 @@ func (s *GetOriginRuleRequest) SetSiteId(v int64) *GetOriginRuleRequest {
 }
 
 type GetOriginRuleResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Rewrite the DNS resolution record for the origin request.
+	//
 	// example:
 	//
 	// test.example.com
 	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// HOST carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// Source site port accessed when using the HTTP protocol for origin.
+	//
 	// example:
 	//
 	// 8080
 	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// Source site port accessed when using the HTTPS protocol for origin.
+	//
 	// example:
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// Protocol used for the origin request. Value range:
+	//
+	// - http: Use HTTP protocol for origin.
+	//
+	// - https: Use HTTPS protocol for origin.
+	//
+	// - follow: Follow client protocol for origin.
+	//
 	// example:
 	//
 	// http
 	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// SNI carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// Use range chunking method for origin download. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// - force: Force.
+	//
 	// example:
 	//
 	// on
 	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
@@ -31236,6 +32689,8 @@ func (s *GetSiteLogDeliveryQuotaResponse) SetBody(v *GetSiteLogDeliveryQuotaResp
 }
 
 type GetSiteNameExclusiveRequest struct {
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31258,10 +32713,18 @@ func (s *GetSiteNameExclusiveRequest) SetSiteId(v int64) *GetSiteNameExclusiveRe
 }
 
 type GetSiteNameExclusiveResponseBody struct {
+	// Feature switch. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 35C66C7B-671H-4297-9187-2C4477247A78
@@ -31316,6 +32779,8 @@ func (s *GetSiteNameExclusiveResponse) SetBody(v *GetSiteNameExclusiveResponseBo
 }
 
 type GetSitePauseRequest struct {
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31338,10 +32803,18 @@ func (s *GetSitePauseRequest) SetSiteId(v int64) *GetSitePauseRequest {
 }
 
 type GetSitePauseResponseBody struct {
+	// Whether the acceleration has been paused. Value range:
+	//
+	// - true: The site acceleration has been paused.
+	//
+	// - false: The site is accelerating normally.
+	//
 	// example:
 	//
 	// true
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
@@ -33082,32 +34555,52 @@ func (s *ListCacheReserveInstancesResponse) SetBody(v *ListCacheReserveInstances
 }
 
 type ListCacheRulesRequest struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule-based configurations. Possible values:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule-based configuration.
+	//
+	// This parameter is optional; if not provided, it does not distinguish between global and rule-based configurations.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Page number, defaulting to 1 if not provided.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name, which can be used to find the rule with the specified name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version number. For sites with version management enabled, this parameter can specify the version for which the configuration is effective, defaulting to version 0.
+	//
 	// example:
 	//
 	// 1
@@ -33158,23 +34651,34 @@ func (s *ListCacheRulesRequest) SetSiteVersion(v int32) *ListCacheRulesRequest {
 }
 
 type ListCacheRulesResponseBody struct {
+	// Response body configuration.
 	Configs []*ListCacheRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -33220,110 +34724,218 @@ func (s *ListCacheRulesResponseBody) SetTotalPage(v int32) *ListCacheRulesRespon
 }
 
 type ListCacheRulesResponseBodyConfigs struct {
+	// Enable caching on specified ports. The value range is 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	//
 	// example:
 	//
 	// 2082
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// Browser cache mode. Possible values:
+	//
+	// - no_cache: Do not cache.
+	//
+	// - follow_origin: Follow origin cache policy.
+	//
+	// - override_origin: Override origin cache policy.
+	//
 	// example:
 	//
 	// no_cache
 	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// Browser cache expiration time in seconds.
+	//
 	// example:
 	//
 	// 300
 	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// Bypass cache mode. Possible values:
+	//
+	// - cache_all: Cache all requests.
+	//
+	// - bypass_all: Bypass cache for all requests.
+	//
 	// example:
 	//
 	// cache_all
 	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// Cache deception defense. Used to defend against web cache deception attacks, only the verified cache content will be cached. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// Cache reserve eligibility. Used to control whether user requests bypass the cache reserve node during origin pull. Possible values:
+	//
+	// - bypass_cache_reserve: Requests bypass the cache reserve.
+	//
+	// - eligible_for_cache_reserve: Eligible for cache reserve.
+	//
 	// example:
 	//
 	// bypass_cache_reserve
 	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// Check if the cookie exists when generating the cache key. If it exists, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
+	//
 	// example:
 	//
 	// cookiename
 	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// Check if the header exists when generating the cache key. If it exists, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
+	//
 	// example:
 	//
 	// headername
 	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule-based configurations. Possible values:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule-based configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Node cache mode. The value range includes: - follow_origin: Follow the origin\\"s cache strategy (if any), otherwise use the default cache strategy. - no_cache: Do not cache. - override_origin: Override the origin\\"s cache strategy. - follow_origin_bypass: Follow the origin\\"s cache strategy (if any), otherwise do not cache.
+	//
 	// example:
 	//
 	// follow_origin
 	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// Edge cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// Edge cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// Include the specified cookie names and their values when generating the cache key. Multiple values are supported, separated by spaces.
+	//
 	// example:
 	//
 	// cookie_exapmle
 	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// Include the specified header names and their values when generating the cache key. Multiple values are supported, separated by spaces.
+	//
 	// example:
 	//
 	// example
 	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// The query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
+	//
 	// example:
 	//
 	// example
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The processing mode for query strings when generating the cache key. Possible values:
+	//
+	// - ignore_all: Ignore all.
+	//
+	// - exclude_query_string: Exclude specified query strings.
+	//
+	// - reserve_all: Default, reserve all.
+	//
+	// - include_query_string: Include specified query strings.
+	//
 	// example:
 	//
 	// ignore_all
 	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Serve stale cache. When enabled, the node can still use the cached expired files to respond to user requests even if the origin server is unavailable. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Query string sorting. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// Include the client device type when generating the cache key. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// Include the client\\"s geographic location when generating the cache key. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// Include the client\\"s language type when generating the cache key. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
@@ -33503,24 +35115,34 @@ func (s *ListCacheRulesResponse) SetBody(v *ListCacheRulesResponseBody) *ListCac
 }
 
 type ListCertificatesRequest struct {
+	// Search keyword.
+	//
 	// example:
 	//
 	// example
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Page number of the returned data.
+	//
 	// example:
 	//
 	// 3
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Whether to return only valid certificates.
+	//
 	// example:
 	//
 	// 1
@@ -33561,27 +35183,40 @@ func (s *ListCertificatesRequest) SetValidOnly(v bool) *ListCertificatesRequest 
 }
 
 type ListCertificatesResponseBody struct {
+	// Page number of the returned data.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result array.
+	Result []*ListCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Site ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -33632,77 +35267,144 @@ func (s *ListCertificatesResponseBody) SetTotalCount(v int64) *ListCertificatesR
 }
 
 type ListCertificatesResponseBodyResult struct {
-	ApplyCode    *int64  `json:"ApplyCode,omitempty" xml:"ApplyCode,omitempty"`
+	// Certificate application error code.
+	//
+	// example:
+	//
+	// 2
+	ApplyCode *int64 `json:"ApplyCode,omitempty" xml:"ApplyCode,omitempty"`
+	// Certificate application error message.
+	//
+	// example:
+	//
+	// canceled
 	ApplyMessage *string `json:"ApplyMessage,omitempty" xml:"ApplyMessage,omitempty"`
+	// Cloud certificate ID.
+	//
 	// example:
 	//
 	// 30000569
 	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
+	// Common name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2022-06-24 07:48:51
-	CreateTime *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DCV        []*ListCertificatesResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// DCV information.
+	DCV []*ListCertificatesResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
+	// Certificate SHA256 fingerprint.
+	//
 	// example:
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// Certificate ID.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Certificate issuer.
+	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// Common name of the certificate issuer.
+	//
 	// example:
 	//
 	// GlobalSign Organization Validation CA - SHA256 - G3
 	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	// Certificate name.
+	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// End date of the certificate validity period.
+	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// Start date of the certificate validity period.
+	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// Certificate public key algorithm.
+	//
 	// example:
 	//
 	// RSA
 	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
+	// Region information.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Subject Alternative Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// Certificate serial number.
+	//
 	// example:
 	//
 	// babab022c5e9b27bf9c64d7f4b16****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// Certificate signature algorithm.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
+	// Certificate status.
+	//
+	// - OK: Normal.
+	//
+	// - Expired: The certificate has expired.
+	//
+	// - Expiring: The certificate is about to expire (within 30 days).
+	//
+	// - Issued: Free certificate - issued.
+	//
+	// - Applying: Free certificate - applying.
+	//
+	// - ApplyFailed: Free certificate - application failed.
+	//
+	// - Canceled: Free certificate - canceled.
+	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Certificate type.
+	//
+	// - cas: Cloud Shield certificate.
+	//
+	// - upload: Custom uploaded certificate.
+	//
+	// - free: Free certificate.
+	//
 	// example:
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 2023-04-20 06:18:42
@@ -33823,11 +35525,36 @@ func (s *ListCertificatesResponseBodyResult) SetUpdateTime(v string) *ListCertif
 }
 
 type ListCertificatesResponseBodyResultDCV struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// DCV ID.
+	//
+	// example:
+	//
+	// bababf7cdd1546a2ad04c0def1f4****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// DCV name. For DNS type, it is the TXT record name; for HTTP type, it is the URL.
+	//
+	// example:
+	//
+	// http://www.example.com/.well-known/acme-challenge/pH20CqwS5L3ZnvkhI436DCzadKFuG7QcUcvB_4KsAow
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Verification status.
+	//
+	// example:
+	//
+	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// DCV type. Possible values: DNS; HTTP.
+	//
+	// example:
+	//
+	// HTTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// DCV content.
+	//
+	// example:
+	//
+	// pH20CqwS5L3ZnvkhI436DCzadKFuG7QcUcvB_4KsAow.KfzYo4LH3EgOt7a73G-RqZkbR0eYtLfEUmtmqGmr4FQ
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListCertificatesResponseBodyResultDCV) String() string {
@@ -33893,6 +35620,8 @@ func (s *ListCertificatesResponse) SetBody(v *ListCertificatesResponseBody) *Lis
 }
 
 type ListCiphersRequest struct {
+	// The name of the cipher suite group, which can be: all, strict, custom.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33915,15 +35644,22 @@ func (s *ListCiphersRequest) SetCiphersGroup(v string) *ListCiphersRequest {
 }
 
 type ListCiphersResponseBody struct {
+	// Name of the cipher suite group.
+	//
 	// example:
 	//
 	// all
 	CiphersGroup *string `json:"CiphersGroup,omitempty" xml:"CiphersGroup,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result.
+	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Total number of cipher suites.
+	//
 	// example:
 	//
 	// 16
@@ -36959,32 +38695,50 @@ func (s *ListEdgeRoutineRecordsResponse) SetBody(v *ListEdgeRoutineRecordsRespon
 }
 
 type ListHttpRequestHeaderModificationRulesRequest struct {
+	// Configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Possible values:
+	//
+	// - global: Query global configuration;
+	//
+	// - rule: Query rule configuration;
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Page number, default is 1 if not provided.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, maximum is 500, default is 500 if not provided.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name, which can be used to find the rule with the specified name. It only takes effect when provided.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration.
+	//
 	// example:
 	//
 	// 0
@@ -37035,23 +38789,34 @@ func (s *ListHttpRequestHeaderModificationRulesRequest) SetSiteVersion(v int32) 
 }
 
 type ListHttpRequestHeaderModificationRulesResponseBody struct {
+	// List of HTTP request header modification configurations.
 	Configs []*ListHttpRequestHeaderModificationRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// Page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, default is **500**, range: **1~500**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 35C66C7B-671H-4297-9187-2C4477247A78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -37097,31 +38862,54 @@ func (s *ListHttpRequestHeaderModificationRulesResponseBody) SetTotalPage(v int3
 }
 
 type ListHttpRequestHeaderModificationRulesResponseBodyConfigs struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type. Possible values:
+	//
+	// - global: Global configuration;
+	//
+	// - rule: Rule configuration;
+	//
 	// example:
 	//
 	// global
-	ConfigType                *string                                                                               `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Modify request headers, supporting add, delete, and modify operations.
 	RequestHeaderModification []*ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Version number of the site configuration.
+	//
 	// example:
 	//
 	// 1
@@ -37177,14 +38965,26 @@ func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) SetSiteVersi
 }
 
 type ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification struct {
+	// Request header name.
+	//
 	// example:
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operation method. Value range:
+	//
+	// - add: Add.
+	//
+	// - del: Delete.
+	//
+	// - modify: Modify.
+	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The value of the request header.
+	//
 	// example:
 	//
 	// headerValue
@@ -37595,32 +39395,52 @@ func (s *ListHttpResponseHeaderModificationRulesResponse) SetBody(v *ListHttpRes
 }
 
 type ListHttpsApplicationConfigurationsRequest struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
+	// This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Page number, default is 1 if not provided.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, maximum is 500, default is 500 if not provided.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name, which can be used to find the rule with the specified name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration is effective, default is version 0.
+	//
 	// example:
 	//
 	// 1
@@ -37671,23 +39491,34 @@ func (s *ListHttpsApplicationConfigurationsRequest) SetSiteVersion(v int32) *Lis
 }
 
 type ListHttpsApplicationConfigurationsResponseBody struct {
+	// Response body configuration.
 	Configs []*ListHttpsApplicationConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The size of the page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 16
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -37733,70 +39564,144 @@ func (s *ListHttpsApplicationConfigurationsResponseBody) SetTotalPage(v int32) *
 }
 
 type ListHttpsApplicationConfigurationsResponseBodyConfigs struct {
+	// Alt-Svc feature switch, default is disabled. Values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// Whether the Alt-Svc header includes the clear parameter, default is disabled. Values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// The effective duration of Alt-Svc, in seconds. The default is 86400 seconds.
+	//
 	// example:
 	//
 	// 86400
 	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// Whether the Alt-Svc header contains the persist parameter, default is off. Values: - on: enabled. - off: disabled.
+	//
 	// example:
 	//
 	// on
 	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Indicates whether HSTS is enabled. The default is off. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// Indicates whether to include subdomains in HSTS. The default is off. Possible values:
+	//
+	// - on: Include subdomains.
+	//
+	// - off: Do not include subdomains.
+	//
 	// example:
 	//
 	// on
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// The expiration time of HSTS, in seconds.
+	//
 	// example:
 	//
 	// 3600
 	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// Indicates whether HSTS preloading is enabled. The default is off. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// Whether to enable forced HTTPS, default is disabled. Values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// Forced HTTPS redirect status code, value range:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 307
+	//
+	// - 308
+	//
 	// example:
 	//
 	// 301
 	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
@@ -37926,26 +39831,44 @@ func (s *ListHttpsApplicationConfigurationsResponse) SetBody(v *ListHttpsApplica
 }
 
 type ListHttpsBasicConfigurationsRequest struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
+	// This parameter is optional; if not provided, it will not distinguish between global and rule configurations.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Page number, default is 1 if not provided.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, maximum is 500, default is 500 if not provided.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name, which can be used to find the rule with the specified name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37993,23 +39916,34 @@ func (s *ListHttpsBasicConfigurationsRequest) SetSiteId(v int64) *ListHttpsBasic
 }
 
 type ListHttpsBasicConfigurationsResponseBody struct {
+	// Response body configuration.
 	Configs []*ListHttpsBasicConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The size of each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -38055,66 +39989,144 @@ func (s *ListHttpsBasicConfigurationsResponseBody) SetTotalPage(v int32) *ListHt
 }
 
 type ListHttpsBasicConfigurationsResponseBodyConfigs struct {
+	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	//
 	// example:
 	//
 	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// Cipher suite group, default is all cipher suites. Value range:
+	//
+	// - all: All cipher suites.
+	//
+	// - strict: Strong cipher suites.
+	//
+	// - custom: Custom cipher suites.
+	//
 	// example:
 	//
 	// strict
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Indicates whether HTTP2 is enabled. Default is on. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// Indicates whether HTTP3 is enabled. Default is on. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// Whether to enable HTTPS, default is enabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// Indicates whether OCSP is enabled. Default is off. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Whether to enable TLS1.0, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// Whether to enable TLS1.1, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// Whether to enable TLS1.2, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// Whether to enable TLS1.3, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
@@ -40936,32 +42948,52 @@ func (s *ListManagedRulesGroupsResponse) SetBody(v *ListManagedRulesGroupsRespon
 }
 
 type ListNetworkOptimizationsRequest struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
+	// This parameter is optional. If not provided, it will not distinguish between global and rule configurations.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Page number, defaulting to 1 if not provided.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name, which can be used to find the rule with the specified name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1231231221****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+	//
 	// example:
 	//
 	// 1
@@ -41012,23 +43044,34 @@ func (s *ListNetworkOptimizationsRequest) SetSiteVersion(v int32) *ListNetworkOp
 }
 
 type ListNetworkOptimizationsResponseBody struct {
+	// Response body configurations.
 	Configs []*ListNetworkOptimizationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The size of the page, i.e., the number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -41074,50 +43117,98 @@ func (s *ListNetworkOptimizationsResponseBody) SetTotalPage(v int32) *ListNetwor
 }
 
 type ListNetworkOptimizationsResponseBodyConfigs struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Whether to enable GRPC, defaulting to disabled. The value range is as follows:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// Whether to enable HTTP2 origin, defaulting to disabled. The value range is as follows:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. The value range is as follows:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Whether to enable smart routing service, defaulting to disabled. The value range is as follows:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// Maximum upload file size in MB, with a range from 100 to 500.
+	//
 	// example:
 	//
 	// 500
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// Whether to enable Websocket, defaulting to enabled. The value range is as follows:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
@@ -41222,15 +43313,51 @@ func (s *ListNetworkOptimizationsResponse) SetBody(v *ListNetworkOptimizationsRe
 }
 
 type ListOriginPoolsRequest struct {
-	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// Type of name match query, supporting the following two types, with exact match as the default.
+	//
+	// - fuzzy: Fuzzy query.
+	//
+	// - exact: Exact query.
+	//
 	// example:
 	//
-	// ListOriginPools
+	// exact
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// Name of the origin pool.
+	//
+	// example:
+	//
+	// pool1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Sorting, supports ascending and descending order by ID, default is descending by ID, which is positively correlated with creation time.
+	//
+	// - -id: Sort by ID in descending order.
+	//
+	// - id: Sort by ID in ascending order.
+	//
+	// example:
+	//
+	// id
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// Page number, default value is 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Page size, an integer greater than 0, with a maximum of 500. If the value exceeds 500, it will be set to 500.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 151538882642832
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -41273,12 +43400,38 @@ func (s *ListOriginPoolsRequest) SetSiteId(v int64) *ListOriginPoolsRequest {
 }
 
 type ListOriginPoolsResponseBody struct {
+	// List of origin pools.
 	OriginPools []*ListOriginPoolsResponseBodyOriginPools `json:"OriginPools,omitempty" xml:"OriginPools,omitempty" type:"Repeated"`
-	PageNumber  *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage   *int32                                    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count.
+	//
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
+	// example:
+	//
+	// 10
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListOriginPoolsResponseBody) String() string {
@@ -41320,14 +43473,50 @@ func (s *ListOriginPoolsResponseBody) SetTotalPage(v int32) *ListOriginPoolsResp
 }
 
 type ListOriginPoolsResponseBodyOriginPools struct {
-	Enabled          *bool                                             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Id               *int64                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	Origins          []*ListOriginPoolsResponseBodyOriginPoolsOrigins  `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
-	RecordName       *string                                           `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	ReferenceLBCount *int32                                            `json:"ReferenceLBCount,omitempty" xml:"ReferenceLBCount,omitempty"`
-	References       *ListOriginPoolsResponseBodyOriginPoolsReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
-	SiteId           *int64                                            `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Whether the origin pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// ID of the origin pool.
+	//
+	// example:
+	//
+	// 1038520525196928
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the origin pool, unique within a site.
+	//
+	// example:
+	//
+	// pool1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Information about the origins added to the origin pool.
+	Origins []*ListOriginPoolsResponseBodyOriginPoolsOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	// Domain name assigned to the origin pool, which can be used as the origin address for records under the site.
+	//
+	// example:
+	//
+	// pool1.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// Number of load balancers that reference this origin pool.
+	//
+	// example:
+	//
+	// 5
+	ReferenceLBCount *int32 `json:"ReferenceLBCount,omitempty" xml:"ReferenceLBCount,omitempty"`
+	// Reference information for the origin pool. The origin pool is considered referenced when it is configured in a load balancer or set as the origin for a record.
+	References *ListOriginPoolsResponseBodyOriginPoolsReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
+	// ID of the site to which the origin pool belongs.
+	//
+	// example:
+	//
+	// 216558609793952
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s ListOriginPoolsResponseBodyOriginPools) String() string {
@@ -41379,14 +43568,68 @@ func (s *ListOriginPoolsResponseBodyOriginPools) SetSiteId(v int64) *ListOriginP
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsOrigins struct {
-	Address  *string                                                `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Origin address, e.g., www.example.com.
+	//
+	// example:
+	//
+	// www.example.com
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Authentication information. When the origin is OSS or S3 and requires authentication, you need to provide related configuration information for authentication.
 	AuthConf *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	Enabled  *bool                                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Header   interface{}                                            `json:"Header,omitempty" xml:"Header,omitempty"`
-	Id       *int64                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32                                                 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// Whether the origin is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The request header to be carried during back-to-origin, only supports Host.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "Host": [
+	//
+	//           "example.com"
+	//
+	//         ]
+	//
+	//       }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// Origin ID.
+	//
+	// example:
+	//
+	// 997502094872132
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Origin name.
+	//
+	// example:
+	//
+	// origin1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Origin type:
+	//
+	// - ip_domain: IP or domain type origin;
+	//
+	// - OSS: OSS address origin;
+	//
+	// - S3: AWS S3 origin.
+	//
+	// example:
+	//
+	// S3
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Weight, an integer between 0 and 100.
+	//
+	// example:
+	//
+	// 50
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListOriginPoolsResponseBodyOriginPoolsOrigins) String() string {
@@ -41438,11 +43681,44 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetWeight(v int32) *List
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf struct {
+	// The AccessKey required for private authentication.
+	//
+	// example:
+	//
+	// LTAI5tMfEib****ahybCpZqp
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Authentication type.
+	//
+	// - public: Public read/write, used when the origin is OSS or S3 and it is set to public read/write;
+	//
+	// - private_same_account: Private same account, used when the origin is OSS and the authentication type is private within the same account;
+	//
+	// - private_cross_account: Private cross-account, used when the origin is OSS and the authentication type is private across accounts;
+	//
+	// - private: Used when the origin is S3 and the authentication type is private.
+	//
+	// example:
+	//
+	// public
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The Region of the origin required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// us-east-1
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The SecretKey required for private authentication.
+	//
+	// example:
+	//
+	// VIxuvJSA2****fgYoZ3nkp208dy5w7
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The signature version required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// v2
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) String() string {
@@ -41479,8 +43755,11 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) SetVersion(v str
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferences struct {
-	DnsRecords    []*ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords    `json:"DnsRecords,omitempty" xml:"DnsRecords,omitempty" type:"Repeated"`
-	IPARecords    []*ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords    `json:"IPARecords,omitempty" xml:"IPARecords,omitempty" type:"Repeated"`
+	// 使用此源地址池为源站的七层记录列表。
+	DnsRecords []*ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords `json:"DnsRecords,omitempty" xml:"DnsRecords,omitempty" type:"Repeated"`
+	// List of layer 4 records that use this origin pool as the origin.
+	IPARecords []*ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords `json:"IPARecords,omitempty" xml:"IPARecords,omitempty" type:"Repeated"`
+	// List of load balancers using this origin pool.
 	LoadBalancers []*ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
 }
 
@@ -41508,7 +43787,17 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsReferences) SetLoadBalancers(v []
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Record ID.
+	//
+	// example:
+	//
+	// 1042852886352704
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Record name.
+	//
+	// example:
+	//
+	// www.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -41531,7 +43820,17 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords) SetName(v s
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Record ID.
+	//
+	// example:
+	//
+	// 1042852886352704
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Record name.
+	//
+	// example:
+	//
+	// ipa.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -41554,7 +43853,17 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords) SetName(v s
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID of the load balancer.
+	//
+	// example:
+	//
+	// 998740660522624
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the load balancer.
+	//
+	// example:
+	//
+	// lb1.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -41606,32 +43915,52 @@ func (s *ListOriginPoolsResponse) SetBody(v *ListOriginPoolsResponseBody) *ListO
 }
 
 type ListOriginRulesRequest struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
+	// This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Page number, defaulting to 1 if not provided.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name, which can be used to find the rule with the specified name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+	//
 	// example:
 	//
 	// 1
@@ -41682,23 +44011,34 @@ func (s *ListOriginRulesRequest) SetSiteVersion(v int32) *ListOriginRulesRequest
 }
 
 type ListOriginRulesResponseBody struct {
+	// Response body configuration.
 	Configs []*ListOriginRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The size of each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -41744,58 +44084,106 @@ func (s *ListOriginRulesResponseBody) SetTotalPage(v int32) *ListOriginRulesResp
 }
 
 type ListOriginRulesResponseBodyConfigs struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Rewrite the DNS resolution record for the origin request.
+	//
 	// example:
 	//
 	// test.example.com
 	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// HOST carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// The origin server port accessed when using the HTTP protocol.
+	//
 	// example:
 	//
 	// 8080
 	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// The origin server port to access when using the HTTPS protocol for back-to-origin requests.
+	//
 	// example:
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// Protocol used for the origin request. Value range:
+	//
+	// - http: Use HTTP protocol for origin requests.
+	//
+	// - https: Use HTTPS protocol for origin requests.
+	//
+	// - follow: Follow the client\\"s protocol for origin requests.
+	//
 	// example:
 	//
 	// http
 	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// SNI carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// Use range slicing to download files from the origin. The value range is:
+	//
+	// - on: enabled
+	//
+	// - off: disabled
+	//
+	// - force: forced
+	//
 	// example:
 	//
 	// on
 	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enabled
+	//
+	// - off: Disabled
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site version number.
+	//
 	// example:
 	//
 	// 1
@@ -48899,7 +51287,8 @@ func (s *PublishRoutineCodeVersionResponse) SetBody(v *PublishRoutineCodeVersion
 }
 
 type PurchaseRatePlanRequest struct {
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	Amount  *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoPay *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// example:
 	//
 	// true
@@ -48940,6 +51329,11 @@ func (s PurchaseRatePlanRequest) String() string {
 
 func (s PurchaseRatePlanRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PurchaseRatePlanRequest) SetAmount(v int32) *PurchaseRatePlanRequest {
+	s.Amount = &v
+	return s
 }
 
 func (s *PurchaseRatePlanRequest) SetAutoPay(v bool) *PurchaseRatePlanRequest {
@@ -51325,106 +53719,214 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateCacheRuleRequest struct {
+	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	//
 	// example:
 	//
 	// 8880
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	// Browser cache mode. Value range:
+	//
+	// - no_cache: Do not cache.
+	//
+	// - follow_origin: Follow origin cache policy.
+	//
+	// - override_origin: Override origin cache policy.
+	//
 	// example:
 	//
 	// no_cache
 	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// Browser cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// Set bypass cache mode. Value range:
+	//
+	// - cache_all: Cache all requests.
+	//
+	// - bypass_all: Bypass cache for all requests.
+	//
 	// example:
 	//
 	// cache_all
 	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// Cache deception defense. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// Cache reservation eligibility. Used to control whether user requests bypass the cache reservation node during origin pull. Value range:
+	//
+	// - bypass_cache_reserve: Requests bypass cache reservation.
+	//
+	// - eligible_for_cache_reserve: Eligible for cache reservation.
+	//
 	// example:
 	//
 	// bypass_cache_reserve
 	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// Check if the cookie exists when generating cache keys, and if it does, add the cookie name (case-insensitive) to the cache key. Supports multiple cookie names, separated by spaces.
+	//
 	// example:
 	//
 	// cookiename
 	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// Check if the header exists when generating cache keys, and if it does, add the header name (case-insensitive) to the cache key. Supports multiple header names, separated by spaces.
+	//
 	// example:
 	//
 	// headername
 	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// Configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Edge cache mode. Value range:
+	//
+	// - follow_origin: Follow origin cache policy (if exists), otherwise use default cache policy.
+	//
+	// - no_cache: Do not cache.
+	//
+	// - override_origin: Override origin cache policy.
+	//
+	// - follow_origin_bypass: Follow origin cache policy (if exists), otherwise do not cache.
+	//
 	// example:
 	//
 	// follow_origin
 	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// Edge cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// Status code cache expiration time, in seconds.
+	//
 	// example:
 	//
 	// 300
 	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// Include specified cookie names and their values when generating cache keys, supporting multiple values separated by spaces.
+	//
 	// example:
 	//
 	// cookiename
 	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// Include specified header names and their values when generating cache keys, supporting multiple values separated by spaces.
+	//
 	// example:
 	//
 	// headername
 	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// Query strings to be reserved or excluded, supporting multiple values separated by spaces.
+	//
 	// example:
 	//
 	// example
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// Query string handling mode when generating cache keys. Values:
+	//
+	// - ignore_all: Ignore all.
+	//
+	// - exclude_query_string: Exclude specified query strings.
+	//
+	// - reserve_all: Default, reserve all.
+	//
+	// - include_query_string: Include specified query strings.
+	//
 	// example:
 	//
 	// ignore_all
 	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Query string sorting. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// Include client device type when generating cache keys. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// Include client geographic location when generating cache keys. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// When generating cache keys, include the client\\"s language type. Value range:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
 	// example:
 	//
 	// on
@@ -51565,6 +54067,8 @@ func (s *UpdateCacheRuleRequest) SetUserLanguage(v string) *UpdateCacheRuleReque
 }
 
 type UpdateCacheRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -51614,20 +54118,32 @@ func (s *UpdateCacheRuleResponse) SetBody(v *UpdateCacheRuleResponseBody) *Updat
 }
 
 type UpdateCacheTagRequest struct {
+	// Whether to ignore case. Value range:
+	//
+	// - on: Enabled, ignores case.
+	//
+	// - off: Disabled, does not ignore case.
+	//
 	// example:
 	//
 	// on
 	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site configuration, defaulting to version 0.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Custom Cache Tag name.
+	//
 	// example:
 	//
 	// example
@@ -51663,6 +54179,8 @@ func (s *UpdateCacheTagRequest) SetTagName(v string) *UpdateCacheTagRequest {
 }
 
 type UpdateCacheTagResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
@@ -51712,12 +54230,20 @@ func (s *UpdateCacheTagResponse) SetBody(v *UpdateCacheTagResponseBody) *UpdateC
 }
 
 type UpdateCnameFlatteningRequest struct {
+	// Flattening mode. Possible values:
+	//
+	// - flatten_all: Flatten all.
+	//
+	// - flatten_at_root: Flatten only the root domain. The default is to flatten the root domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flatten_all
 	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51745,6 +54271,8 @@ func (s *UpdateCnameFlatteningRequest) SetSiteId(v int64) *UpdateCnameFlattening
 }
 
 type UpdateCnameFlatteningResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
@@ -51794,32 +54322,58 @@ func (s *UpdateCnameFlatteningResponse) SetBody(v *UpdateCnameFlatteningResponse
 }
 
 type UpdateCompressionRuleRequest struct {
+	// Brotli compression. Value range:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
 	// example:
 	//
 	// on
 	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// Configuration ID. It can be obtained by calling the [ListCompressionRules](~~ListCompressionRules~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Gzip compression. Value range:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
 	// example:
 	//
 	// on
 	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule enable status, supports:
+	//
+	// - **on**: indicates enabled.
+	//
+	// - **off**: indicates disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51878,6 +54432,8 @@ func (s *UpdateCompressionRuleRequest) SetZstd(v string) *UpdateCompressionRuleR
 }
 
 type UpdateCompressionRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// CE8EB0DE-3267-53D1-AB83-F36377D63FD0
@@ -52326,25 +54882,40 @@ func (s *UpdateEdgeContainerAppLogRiverResponse) SetBody(v *UpdateEdgeContainerA
 }
 
 type UpdateHttpRequestHeaderModificationRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
-	ConfigId                  *int64                                                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Modify request headers, supporting add, delete, and modify operations.
 	RequestHeaderModification []*UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule enable status, supports:
+	//
+	// - **on**: indicates enabled.
+	//
+	// - **off**: indicates disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52392,18 +54963,30 @@ func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetSiteId(v int64) *Upd
 }
 
 type UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {
+	// Request header name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operation type. Value range:
+	//
+	// - add: Add.
+	//
+	// - del: Delete.
+	//
+	// - modify: Modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// Request header value.
+	//
 	// example:
 	//
 	// headerValue
@@ -52434,25 +55017,40 @@ func (s *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification
 }
 
 type UpdateHttpRequestHeaderModificationRuleShrinkRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
-	ConfigId                        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Modify request headers, supporting add, delete, and modify operations.
 	RequestHeaderModificationShrink *string `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule enable status, supports:
+	//
+	// - **on**: indicates enabled.
+	//
+	// - **off**: indicates disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52500,6 +55098,8 @@ func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetSiteId(v int64
 }
 
 type UpdateHttpRequestHeaderModificationRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 2430E05E-1340-5773-B5E1-B743929F46F2
@@ -52549,25 +55149,40 @@ func (s *UpdateHttpRequestHeaderModificationRuleResponse) SetBody(v *UpdateHttpR
 }
 
 type UpdateHttpResponseHeaderModificationRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
-	ConfigId                   *int64                                                                       `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Modify response headers, supporting add, delete, and modify operations.
 	ResponseHeaderModification []*UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule enable status, supports:
+	//
+	// - **on**: indicates enabled.
+	//
+	// - **off**: indicates disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52615,18 +55230,30 @@ func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetSiteId(v int64) *Up
 }
 
 type UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification struct {
+	// Response header name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operation method. Value range:
+	//
+	// - add: Add.
+	//
+	// - del: Delete
+	//
+	// - modify: Modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// Response header value.
+	//
 	// example:
 	//
 	// headerValue
@@ -52657,25 +55284,40 @@ func (s *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModificati
 }
 
 type UpdateHttpResponseHeaderModificationRuleShrinkRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
-	ConfigId                         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Modify response headers, supporting add, delete, and modify operations.
 	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule enable status, supports:
+	//
+	// - **on**: indicates enabled.
+	//
+	// - **off**: indicates disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52723,6 +55365,8 @@ func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetSiteId(v int6
 }
 
 type UpdateHttpResponseHeaderModificationRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
@@ -52772,64 +55416,134 @@ func (s *UpdateHttpResponseHeaderModificationRuleResponse) SetBody(v *UpdateHttp
 }
 
 type UpdateHttpsApplicationConfigurationRequest struct {
+	// Feature switch, default is disabled. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// Whether the Alt-Svc header includes the clear parameter, default is disabled. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// Alt-Svc validity period in seconds, default is 86400 seconds.
+	//
 	// example:
 	//
 	// 86400
 	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// Whether the Alt-Svc header includes the persist parameter, default is disabled. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// Configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Whether to enable HSTS, default is disabled. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// Whether to include subdomains in HSTS, default is disabled. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	// HSTS expiration time in seconds.
+	//
 	// example:
 	//
 	// 3600
 	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// Whether to enable HSTS preload, default is disabled. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// Whether to enable forced HTTPS, default is disabled. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// Forced HTTPS redirect status code. Values:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 307
+	//
+	// - 308
+	//
 	// example:
 	//
 	// 301
 	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52922,6 +55636,8 @@ func (s *UpdateHttpsApplicationConfigurationRequest) SetSiteId(v int64) *UpdateH
 }
 
 type UpdateHttpsApplicationConfigurationResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 35C66C7B-671H-4297-9187-2C4477247A78
@@ -52971,66 +55687,138 @@ func (s *UpdateHttpsApplicationConfigurationResponse) SetBody(v *UpdateHttpsAppl
 }
 
 type UpdateHttpsBasicConfigurationRequest struct {
+	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	//
 	// example:
 	//
 	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// Cipher suite group. Default is all cipher suites. Value range:
+	//
+	// - all: All cipher suites.
+	//
+	// - strict: Strong cipher suites.
+	//
+	// - custom: Custom cipher suites.
+	//
 	// example:
 	//
 	// all
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// Configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Whether to enable HTTP2. Default is enabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// Whether to enable HTTP3. Default is enabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// Whether to enable HTTPS. Default is enabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// Whether to enable OCSP. Default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1231231221****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Whether to enable TLS1.0. Default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// Whether to enable TLS1.1. Default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// Whether to enable TLS1.2. Default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// Whether to enable TLS1.3. Default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
@@ -53121,6 +55909,8 @@ func (s *UpdateHttpsBasicConfigurationRequest) SetTls13(v string) *UpdateHttpsBa
 }
 
 type UpdateHttpsBasicConfigurationResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
@@ -53170,12 +55960,20 @@ func (s *UpdateHttpsBasicConfigurationResponse) SetBody(v *UpdateHttpsBasicConfi
 }
 
 type UpdateIPv6Request struct {
+	// Switch. Values:
+	//
+	// - **on**: Enable.
+	//
+	// - **off**: Disable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Site ID, which can be obtained by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53203,6 +56001,8 @@ func (s *UpdateIPv6Request) SetSiteId(v int64) *UpdateIPv6Request {
 }
 
 type UpdateIPv6ResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
@@ -53252,28 +56052,48 @@ func (s *UpdateIPv6Response) SetBody(v *UpdateIPv6ResponseBody) *UpdateIPv6Respo
 }
 
 type UpdateImageTransformRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether to enable image transformation. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Rule content, which specifies the strategy or condition expression to be implemented.
+	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - **on**: Enabled.
+	//
+	// - **off**: Disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53321,6 +56141,8 @@ func (s *UpdateImageTransformRequest) SetSiteId(v int64) *UpdateImageTransformRe
 }
 
 type UpdateImageTransformResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -54274,20 +57096,36 @@ func (s *UpdateLoadBalancerResponse) SetBody(v *UpdateLoadBalancerResponseBody) 
 }
 
 type UpdateManagedTransformRequest struct {
+	// Add visitor geolocation header. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	AddClientGeolocationHeader *string `json:"AddClientGeolocationHeader,omitempty" xml:"AddClientGeolocationHeader,omitempty"`
+	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default is version 0.
+	//
 	// example:
 	//
 	// 0
@@ -54323,6 +57161,8 @@ func (s *UpdateManagedTransformRequest) SetSiteVersion(v int32) *UpdateManagedTr
 }
 
 type UpdateManagedTransformResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
@@ -54372,46 +57212,86 @@ func (s *UpdateManagedTransformResponse) SetBody(v *UpdateManagedTransformRespon
 }
 
 type UpdateNetworkOptimizationRequest struct {
+	// Configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Whether to enable GRPC, default is disabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Whether to enable smart routing service, default is disabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// Maximum upload file size, in MB, value range: 100～500.
+	//
 	// example:
 	//
 	// 100
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	// Whether to enable Websocket, default is enabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
 	// example:
 	//
 	// on
@@ -54477,6 +57357,8 @@ func (s *UpdateNetworkOptimizationRequest) SetWebsocket(v string) *UpdateNetwork
 }
 
 type UpdateNetworkOptimizationResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
@@ -54526,15 +57408,33 @@ func (s *UpdateNetworkOptimizationResponse) SetBody(v *UpdateNetworkOptimization
 }
 
 type UpdateOriginPoolRequest struct {
+	// Whether the origin pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](~~ListOriginPools~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// UpdateOriginPool
-	Id      *int64                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 1038520525196928
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Information about the origins added to the origin pool. Multiple origins are passed as an array.
 	Origins []*UpdateOriginPoolRequestOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 216558609793952
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -54567,13 +57467,62 @@ func (s *UpdateOriginPoolRequest) SetSiteId(v int64) *UpdateOriginPoolRequest {
 }
 
 type UpdateOriginPoolRequestOrigins struct {
-	Address  *string                                 `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address of the origin, e.g., www.example.com.
+	//
+	// example:
+	//
+	// www.example.com
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Authentication information. When the origin is OSS or S3 and requires authentication, you need to pass the related configuration information for authentication.
 	AuthConf *UpdateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	Enabled  *bool                                   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Header   interface{}                             `json:"Header,omitempty" xml:"Header,omitempty"`
-	Name     *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32                                  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// Whether the origin is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The request header to be included when fetching from the origin, supporting only Host.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "Host": [
+	//
+	//           "example.com"
+	//
+	//         ]
+	//
+	//       }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// The name of the origin, which must be unique under one origin pool.
+	//
+	// example:
+	//
+	// origin1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the origin:
+	//
+	// - ip_domain: IP or domain type origin;
+	//
+	// - OSS: OSS address origin;
+	//
+	// - S3: AWS S3 origin.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight, an integer between 0 and 100.
+	//
+	// example:
+	//
+	// 50
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateOriginPoolRequestOrigins) String() string {
@@ -54620,11 +57569,44 @@ func (s *UpdateOriginPoolRequestOrigins) SetWeight(v int32) *UpdateOriginPoolReq
 }
 
 type UpdateOriginPoolRequestOriginsAuthConf struct {
+	// The AccessKey required for private authentication.
+	//
+	// example:
+	//
+	// LTAI5t7fKVT****atQpfNes
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The type of authentication.
+	//
+	// - public: Public read/write, used when the origin is OSS or S3 and is set to public read/write;
+	//
+	// - private_same_account: Private same account, used when the origin is OSS and the authentication type is private within the same account;
+	//
+	// - private_cross_account: Private cross-account, used when the origin is OSS and the authentication type is private across accounts;
+	//
+	// - private: Used when the origin is S3 and the authentication type is private.
+	//
+	// example:
+	//
+	// public
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The region of the origin required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// us-east-1
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The SecretKey required for private authentication.
+	//
+	// example:
+	//
+	// VIxuvJSA2S0****YoZ3nkp208dy5w7
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The signature version required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// v2
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UpdateOriginPoolRequestOriginsAuthConf) String() string {
@@ -54661,15 +57643,33 @@ func (s *UpdateOriginPoolRequestOriginsAuthConf) SetVersion(v string) *UpdateOri
 }
 
 type UpdateOriginPoolShrinkRequest struct {
+	// Whether the origin pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](~~ListOriginPools~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// UpdateOriginPool
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 1038520525196928
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Information about the origins added to the origin pool. Multiple origins are passed as an array.
 	OriginsShrink *string `json:"Origins,omitempty" xml:"Origins,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 216558609793952
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -54702,8 +57702,17 @@ func (s *UpdateOriginPoolShrinkRequest) SetSiteId(v int64) *UpdateOriginPoolShri
 }
 
 type UpdateOriginPoolResponseBody struct {
+	// Source address pool ID.
+	//
+	// example:
+	//
+	// 1038520525196928
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -54922,52 +57931,92 @@ func (s *UpdateOriginProtectionIpWhiteListResponse) SetBody(v *UpdateOriginProte
 }
 
 type UpdateOriginRuleRequest struct {
+	// Configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Rewrite the DNS resolution record of the origin request.
+	//
 	// example:
 	//
 	// test.example.com
 	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// The HOST carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// The port of the origin server when using HTTP protocol for origin requests.
+	//
 	// example:
 	//
 	// 8080
 	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// The port of the origin server when using HTTPS protocol for origin requests.
+	//
 	// example:
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// Protocol used for the origin request. Possible values:
+	//
+	// - http: Use HTTP protocol for origin requests.
+	//
+	// - https: Use HTTPS protocol for origin requests.
+	//
+	// - follow: Follow the client\\"s protocol for origin requests.
+	//
 	// example:
 	//
 	// http
 	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// The SNI carried in the origin request.
+	//
 	// example:
 	//
 	// origin.example.com
 	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// Use range chunked transfer to download files from the origin. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// - force: Force.
+	//
 	// example:
 	//
 	// on
 	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -55045,6 +58094,8 @@ func (s *UpdateOriginRuleRequest) SetSiteId(v int64) *UpdateOriginRuleRequest {
 }
 
 type UpdateOriginRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
@@ -55946,42 +58997,80 @@ func (s *UpdateRecordResponse) SetBody(v *UpdateRecordResponseBody) *UpdateRecor
 }
 
 type UpdateRedirectRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Preserve query string. The value range is:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
 	// example:
 	//
 	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule enable status, supports:
+	//
+	// - **on**: indicates enabled.
+	//
+	// - **off**: indicates disabled.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The response status code used by the node when responding to the client with a redirect address. The value range is:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 303
+	//
+	// - 307
+	//
+	// - 308
+	//
 	// example:
 	//
 	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Target URL after redirection.
+	//
 	// example:
 	//
 	// http://www.exapmle.com/index.html
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// Redirect type. The value range is:
+	//
+	// - static: static mode.
+	//
 	// example:
 	//
 	// static
@@ -56042,6 +59131,8 @@ func (s *UpdateRedirectRuleRequest) SetType(v string) *UpdateRedirectRuleRequest
 }
 
 type UpdateRedirectRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
@@ -56091,20 +59182,32 @@ func (s *UpdateRedirectRuleResponse) SetBody(v *UpdateRedirectRuleResponseBody) 
 }
 
 type UpdateRewriteUrlRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Query string after rewriting.
+	//
 	// example:
 	//
 	// example=123
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// Query string rewrite type. Value range:
+	//
+	// - static: Static mode.
+	//
 	// example:
 	//
 	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	// URI rewrite type. Value range:
+	//
+	// - static: Static mode.
+	//
 	// if can be null:
 	// false
 	//
@@ -56112,24 +59215,38 @@ type UpdateRewriteUrlRuleRequest struct {
 	//
 	// static
 	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// example=123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Target URI after rewriting.
+	//
 	// example:
 	//
 	// /image/example.jpg
@@ -56190,6 +59307,8 @@ func (s *UpdateRewriteUrlRuleRequest) SetUri(v string) *UpdateRewriteUrlRuleRequ
 }
 
 type UpdateRewriteUrlRuleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
@@ -57115,12 +60234,20 @@ func (s *UpdateSiteDeliveryTaskStatusResponse) SetBody(v *UpdateSiteDeliveryTask
 }
 
 type UpdateSiteNameExclusiveRequest struct {
+	// Function switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -57148,6 +60275,8 @@ func (s *UpdateSiteNameExclusiveRequest) SetSiteId(v int64) *UpdateSiteNameExclu
 }
 
 type UpdateSiteNameExclusiveResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
@@ -57197,12 +60326,20 @@ func (s *UpdateSiteNameExclusiveResponse) SetBody(v *UpdateSiteNameExclusiveResp
 }
 
 type UpdateSitePauseRequest struct {
+	// Used to temporarily pause the proxy acceleration function of the entire site. When enabled, all DNS records will directly return their values to the client. Value range:
+	//
+	// - true: Pause site acceleration.
+	//
+	// - false: Normal site acceleration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -57230,6 +60367,8 @@ func (s *UpdateSitePauseRequest) SetSiteId(v int64) *UpdateSitePauseRequest {
 }
 
 type UpdateSitePauseResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 6abd807e-ed2a-44de-ac54-ac38a62472e6
@@ -57365,12 +60504,24 @@ func (s *UpdateSiteVanityNSResponse) SetBody(v *UpdateSiteVanityNSResponseBody) 
 }
 
 type UpdateTieredCacheRequest struct {
+	// Multi-level cache architecture mode. Possible values:
+	//
+	// - edge: Edge cache layer.
+	//
+	// - edge_smart: Edge cache layer + intelligent cache layer.
+	//
+	// - edge_regional: Edge cache layer + regional cache layer.
+	//
+	// - edge_regional_smart: Edge cache layer + regional cache layer + intelligent cache layer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// edge_smart
 	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
+	// Site ID, which can be obtained by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -57398,6 +60549,8 @@ func (s *UpdateTieredCacheRequest) SetSiteId(v int64) *UpdateTieredCacheRequest 
 }
 
 type UpdateTieredCacheResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
@@ -58711,16 +61864,22 @@ func (s *UpdateWaitingRoomRuleResponse) SetBody(v *UpdateWaitingRoomRuleResponse
 }
 
 type UploadClientCaCertificateRequest struct {
+	// The certificate content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -58753,46 +61912,68 @@ func (s *UploadClientCaCertificateRequest) SetSiteId(v int64) *UploadClientCaCer
 }
 
 type UploadClientCaCertificateResponseBody struct {
+	// The Common Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
 	// example:
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The CA that issued the certificate.
+	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate expires.
+	//
 	// example:
 	//
 	// 2024-12-01T02:13:07Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
 	// example:
 	//
 	// 2023-12-01T02:13:07Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the certificate.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b50d66
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The status of the certificate.
+	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The validity period of the certificate. Unit: day.
+	//
 	// example:
 	//
 	// 300
@@ -59301,7 +62482,7 @@ func (client *Client) ActivateClientCertificate(request *ActivateClientCertifica
 
 // Summary:
 //
-// 开启版本管理
+// Enable Version Management
 //
 // @param request - ActivateVersionManagementRequest
 //
@@ -59354,7 +62535,7 @@ func (client *Client) ActivateVersionManagementWithOptions(request *ActivateVers
 
 // Summary:
 //
-// 开启版本管理
+// Enable Version Management
 //
 // @param request - ActivateVersionManagementRequest
 //
@@ -59372,7 +62553,7 @@ func (client *Client) ActivateVersionManagement(request *ActivateVersionManageme
 
 // Summary:
 //
-// 申请免费证书
+// Apply for Free Certificate
 //
 // @param request - ApplyCertificateRequest
 //
@@ -59421,7 +62602,7 @@ func (client *Client) ApplyCertificateWithOptions(request *ApplyCertificateReque
 
 // Summary:
 //
-// 申请免费证书
+// Apply for Free Certificate
 //
 // @param request - ApplyCertificateRequest
 //
@@ -60908,7 +64089,7 @@ func (client *Client) CommitRoutineStagingCode(request *CommitRoutineStagingCode
 
 // Summary:
 //
-// 新增站点缓存配置
+// Create a new site cache configuration
 //
 // @param request - CreateCacheRuleRequest
 //
@@ -61057,7 +64238,7 @@ func (client *Client) CreateCacheRuleWithOptions(request *CreateCacheRuleRequest
 
 // Summary:
 //
-// 新增站点缓存配置
+// Create a new site cache configuration
 //
 // @param request - CreateCacheRuleRequest
 //
@@ -61075,7 +64256,7 @@ func (client *Client) CreateCacheRule(request *CreateCacheRuleRequest) (_result 
 
 // Summary:
 //
-// 创建客户端证书
+// Uses the ESA-managed certificate authority (CA) to issue client certificates.
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -61142,7 +64323,7 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 
 // Summary:
 //
-// 创建客户端证书
+// Uses the ESA-managed certificate authority (CA) to issue client certificates.
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -61160,7 +64341,7 @@ func (client *Client) CreateClientCertificate(request *CreateClientCertificateRe
 
 // Summary:
 //
-// 新增压缩规则
+// Add a compression rule
 //
 // @param request - CreateCompressionRuleRequest
 //
@@ -61241,7 +64422,7 @@ func (client *Client) CreateCompressionRuleWithOptions(request *CreateCompressio
 
 // Summary:
 //
-// 新增压缩规则
+// Add a compression rule
 //
 // @param request - CreateCompressionRuleRequest
 //
@@ -61637,7 +64818,7 @@ func (client *Client) CreateEdgeContainerAppVersion(request *CreateEdgeContainer
 
 // Summary:
 //
-// 新增HTTP请求头规则
+// Add HTTP Request Header Rule
 //
 // @param tmpReq - CreateHttpRequestHeaderModificationRuleRequest
 //
@@ -61716,7 +64897,7 @@ func (client *Client) CreateHttpRequestHeaderModificationRuleWithOptions(tmpReq 
 
 // Summary:
 //
-// 新增HTTP请求头规则
+// Add HTTP Request Header Rule
 //
 // @param request - CreateHttpRequestHeaderModificationRuleRequest
 //
@@ -61734,7 +64915,7 @@ func (client *Client) CreateHttpRequestHeaderModificationRule(request *CreateHtt
 
 // Summary:
 //
-// 新增HTTP响应头规则
+// Add HTTP Response Header Rule
 //
 // @param tmpReq - CreateHttpResponseHeaderModificationRuleRequest
 //
@@ -61813,7 +64994,7 @@ func (client *Client) CreateHttpResponseHeaderModificationRuleWithOptions(tmpReq
 
 // Summary:
 //
-// 新增HTTP响应头规则
+// Add HTTP Response Header Rule
 //
 // @param request - CreateHttpResponseHeaderModificationRuleRequest
 //
@@ -61831,7 +65012,7 @@ func (client *Client) CreateHttpResponseHeaderModificationRule(request *CreateHt
 
 // Summary:
 //
-// 新增站点HTTPS应用配置
+// Create a new site HTTPS application configuration
 //
 // @param request - CreateHttpsApplicationConfigurationRequest
 //
@@ -61940,7 +65121,7 @@ func (client *Client) CreateHttpsApplicationConfigurationWithOptions(request *Cr
 
 // Summary:
 //
-// 新增站点HTTPS应用配置
+// Create a new site HTTPS application configuration
 //
 // @param request - CreateHttpsApplicationConfigurationRequest
 //
@@ -62081,7 +65262,7 @@ func (client *Client) CreateHttpsBasicConfiguration(request *CreateHttpsBasicCon
 
 // Summary:
 //
-// 新增站点图片转换配置
+// Add Site Image Transformation Configuration
 //
 // @param request - CreateImageTransformRequest
 //
@@ -62154,7 +65335,7 @@ func (client *Client) CreateImageTransformWithOptions(request *CreateImageTransf
 
 // Summary:
 //
-// 新增站点图片转换配置
+// Add Site Image Transformation Configuration
 //
 // @param request - CreateImageTransformRequest
 //
@@ -62485,7 +65666,7 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 
 // Summary:
 //
-// 新增站点网络优化配置
+// Create a new site network optimization configuration
 //
 // @param request - CreateNetworkOptimizationRequest
 //
@@ -62574,7 +65755,7 @@ func (client *Client) CreateNetworkOptimizationWithOptions(request *CreateNetwor
 
 // Summary:
 //
-// 新增站点网络优化配置
+// Create a new site network optimization configuration
 //
 // @param request - CreateNetworkOptimizationRequest
 //
@@ -62592,7 +65773,11 @@ func (client *Client) CreateNetworkOptimization(request *CreateNetworkOptimizati
 
 // Summary:
 //
-// 新增源地址池
+// Add a new origin address pool
+//
+// Description:
+//
+// Multiple origins can be added under the origin address, supporting domain names, IPs, OSS, S3, and other types of origins. It supports authentication for OSS and S3 type origins.
 //
 // @param tmpReq - CreateOriginPoolRequest
 //
@@ -62663,7 +65848,11 @@ func (client *Client) CreateOriginPoolWithOptions(tmpReq *CreateOriginPoolReques
 
 // Summary:
 //
-// 新增源地址池
+// Add a new origin address pool
+//
+// Description:
+//
+// Multiple origins can be added under the origin address, supporting domain names, IPs, OSS, S3, and other types of origins. It supports authentication for OSS and S3 type origins.
 //
 // @param request - CreateOriginPoolRequest
 //
@@ -62752,7 +65941,7 @@ func (client *Client) CreateOriginProtection(request *CreateOriginProtectionRequ
 
 // Summary:
 //
-// 新增站点回源规则配置
+// Create a new origin rule configuration for the site
 //
 // @param request - CreateOriginRuleRequest
 //
@@ -62849,7 +66038,7 @@ func (client *Client) CreateOriginRuleWithOptions(request *CreateOriginRuleReque
 
 // Summary:
 //
-// 新增站点回源规则配置
+// Create a new origin rule configuration for the site
 //
 // @param request - CreateOriginRuleRequest
 //
@@ -63071,7 +66260,7 @@ func (client *Client) CreateRecord(request *CreateRecordRequest) (_result *Creat
 
 // Summary:
 //
-// 新增重定向规则
+// Add a Redirect Rule
 //
 // @param request - CreateRedirectRuleRequest
 //
@@ -63156,7 +66345,7 @@ func (client *Client) CreateRedirectRuleWithOptions(request *CreateRedirectRuleR
 
 // Summary:
 //
-// 新增重定向规则
+// Add a Redirect Rule
 //
 // @param request - CreateRedirectRuleRequest
 //
@@ -63174,7 +66363,7 @@ func (client *Client) CreateRedirectRule(request *CreateRedirectRuleRequest) (_r
 
 // Summary:
 //
-// 新增重写Url规则
+// Add Rewrite URL Rule
 //
 // @param request - CreateRewriteUrlRuleRequest
 //
@@ -63259,7 +66448,7 @@ func (client *Client) CreateRewriteUrlRuleWithOptions(request *CreateRewriteUrlR
 
 // Summary:
 //
-// 新增重写Url规则
+// Add Rewrite URL Rule
 //
 // @param request - CreateRewriteUrlRuleRequest
 //
@@ -64647,7 +67836,11 @@ func (client *Client) CreateWaitingRoomRule(request *CreateWaitingRoomRuleReques
 
 // Summary:
 //
-// 关闭版本管理
+// Disable version management
+//
+// Description:
+//
+// Can only be disabled when there is only version 0 and the default environment.
 //
 // @param request - DeactivateVersionManagementRequest
 //
@@ -64700,7 +67893,11 @@ func (client *Client) DeactivateVersionManagementWithOptions(request *Deactivate
 
 // Summary:
 //
-// 关闭版本管理
+// Disable version management
+//
+// Description:
+//
+// Can only be disabled when there is only version 0 and the default environment.
 //
 // @param request - DeactivateVersionManagementRequest
 //
@@ -64718,7 +67915,7 @@ func (client *Client) DeactivateVersionManagement(request *DeactivateVersionMana
 
 // Summary:
 //
-// 删除缓存配置
+// Delete Cache Configuration
 //
 // @param request - DeleteCacheRuleRequest
 //
@@ -64775,7 +67972,7 @@ func (client *Client) DeleteCacheRuleWithOptions(request *DeleteCacheRuleRequest
 
 // Summary:
 //
-// 删除缓存配置
+// Delete Cache Configuration
 //
 // @param request - DeleteCacheRuleRequest
 //
@@ -64927,7 +68124,7 @@ func (client *Client) DeleteClientCaCertificate(request *DeleteClientCaCertifica
 
 // Summary:
 //
-// 删除客户端证书
+// Deletes a revoked client certificate.
 //
 // @param request - DeleteClientCertificateRequest
 //
@@ -64976,7 +68173,7 @@ func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCe
 
 // Summary:
 //
-// 删除客户端证书
+// Deletes a revoked client certificate.
 //
 // @param request - DeleteClientCertificateRequest
 //
@@ -65515,7 +68712,7 @@ func (client *Client) DeleteHttpResponseHeaderModificationRule(request *DeleteHt
 
 // Summary:
 //
-// 删除HTTPS应用配置
+// Delete HTTPS Application Configuration
 //
 // @param request - DeleteHttpsApplicationConfigurationRequest
 //
@@ -65572,7 +68769,7 @@ func (client *Client) DeleteHttpsApplicationConfigurationWithOptions(request *De
 
 // Summary:
 //
-// 删除HTTPS应用配置
+// Delete HTTPS Application Configuration
 //
 // @param request - DeleteHttpsApplicationConfigurationRequest
 //
@@ -65590,7 +68787,7 @@ func (client *Client) DeleteHttpsApplicationConfiguration(request *DeleteHttpsAp
 
 // Summary:
 //
-// 删除HTTPS基础配置
+// Delete HTTPS Basic Configuration
 //
 // @param request - DeleteHttpsBasicConfigurationRequest
 //
@@ -65647,7 +68844,7 @@ func (client *Client) DeleteHttpsBasicConfigurationWithOptions(request *DeleteHt
 
 // Summary:
 //
-// 删除HTTPS基础配置
+// Delete HTTPS Basic Configuration
 //
 // @param request - DeleteHttpsBasicConfigurationRequest
 //
@@ -66024,7 +69221,7 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 
 // Summary:
 //
-// 删除网络优化配置
+// Delete Network Optimization Configuration
 //
 // @param request - DeleteNetworkOptimizationRequest
 //
@@ -66081,7 +69278,7 @@ func (client *Client) DeleteNetworkOptimizationWithOptions(request *DeleteNetwor
 
 // Summary:
 //
-// 删除网络优化配置
+// Delete Network Optimization Configuration
 //
 // @param request - DeleteNetworkOptimizationRequest
 //
@@ -66099,7 +69296,7 @@ func (client *Client) DeleteNetworkOptimization(request *DeleteNetworkOptimizati
 
 // Summary:
 //
-// 删除源地址池
+// Delete Origin Address Pool
 //
 // @param request - DeleteOriginPoolRequest
 //
@@ -66156,7 +69353,7 @@ func (client *Client) DeleteOriginPoolWithOptions(request *DeleteOriginPoolReque
 
 // Summary:
 //
-// 删除源地址池
+// Delete Origin Address Pool
 //
 // @param request - DeleteOriginPoolRequest
 //
@@ -66245,7 +69442,7 @@ func (client *Client) DeleteOriginProtection(request *DeleteOriginProtectionRequ
 
 // Summary:
 //
-// 删除回源规则配置
+// Delete Origin Rule Configuration
 //
 // @param request - DeleteOriginRuleRequest
 //
@@ -66302,7 +69499,7 @@ func (client *Client) DeleteOriginRuleWithOptions(request *DeleteOriginRuleReque
 
 // Summary:
 //
-// 删除回源规则配置
+// Delete Origin Rule Configuration
 //
 // @param request - DeleteOriginRuleRequest
 //
@@ -68688,7 +71885,7 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 
 // Summary:
 //
-// 查询单条缓存配置
+// Query a single cache configuration
 //
 // @param request - GetCacheRuleRequest
 //
@@ -68737,7 +71934,7 @@ func (client *Client) GetCacheRuleWithOptions(request *GetCacheRuleRequest, runt
 
 // Summary:
 //
-// 查询单条缓存配置
+// Query a single cache configuration
 //
 // @param request - GetCacheRuleRequest
 //
@@ -68822,7 +72019,7 @@ func (client *Client) GetCacheTag(request *GetCacheTagRequest) (_result *GetCach
 
 // Summary:
 //
-// Queries certificate information about a website.
+// Retrieve the certificate, private key, and certificate information
 //
 // @param request - GetCertificateRequest
 //
@@ -68871,7 +72068,7 @@ func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, 
 
 // Summary:
 //
-// Queries certificate information about a website.
+// Retrieve the certificate, private key, and certificate information
 //
 // @param request - GetCertificateRequest
 //
@@ -68889,7 +72086,7 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 
 // Summary:
 //
-// 查询证书quota及用量
+// Query certificate quota and usage
 //
 // @param request - GetCertificateQuotaRequest
 //
@@ -68938,7 +72135,7 @@ func (client *Client) GetCertificateQuotaWithOptions(request *GetCertificateQuot
 
 // Summary:
 //
-// 查询证书quota及用量
+// Query certificate quota and usage
 //
 // @param request - GetCertificateQuotaRequest
 //
@@ -68956,7 +72153,7 @@ func (client *Client) GetCertificateQuota(request *GetCertificateQuotaRequest) (
 
 // Summary:
 //
-// 获取客户端CA证书信息
+// Queries a client CA certificate.
 //
 // @param request - GetClientCaCertificateRequest
 //
@@ -69005,7 +72202,7 @@ func (client *Client) GetClientCaCertificateWithOptions(request *GetClientCaCert
 
 // Summary:
 //
-// 获取客户端CA证书信息
+// Queries a client CA certificate.
 //
 // @param request - GetClientCaCertificateRequest
 //
@@ -69224,7 +72421,7 @@ func (client *Client) GetCnameFlattening(request *GetCnameFlatteningRequest) (_r
 
 // Summary:
 //
-// 查询压缩规则详情
+// Query Compression Rule Details
 //
 // @param request - GetCompressionRuleRequest
 //
@@ -69273,7 +72470,7 @@ func (client *Client) GetCompressionRuleWithOptions(request *GetCompressionRuleR
 
 // Summary:
 //
-// 查询压缩规则详情
+// Query Compression Rule Details
 //
 // @param request - GetCompressionRuleRequest
 //
@@ -70044,7 +73241,7 @@ func (client *Client) GetHttpResponseHeaderModificationRule(request *GetHttpResp
 
 // Summary:
 //
-// 查询单条HTTPS应用配置
+// Query a Single HTTPS Application Configuration
 //
 // @param request - GetHttpsApplicationConfigurationRequest
 //
@@ -70093,7 +73290,7 @@ func (client *Client) GetHttpsApplicationConfigurationWithOptions(request *GetHt
 
 // Summary:
 //
-// 查询单条HTTPS应用配置
+// Query a Single HTTPS Application Configuration
 //
 // @param request - GetHttpsApplicationConfigurationRequest
 //
@@ -70111,7 +73308,7 @@ func (client *Client) GetHttpsApplicationConfiguration(request *GetHttpsApplicat
 
 // Summary:
 //
-// 查询单条HTTPS基础配置
+// Query a Single HTTPS Basic Configuration
 //
 // @param request - GetHttpsBasicConfigurationRequest
 //
@@ -70160,7 +73357,7 @@ func (client *Client) GetHttpsBasicConfigurationWithOptions(request *GetHttpsBas
 
 // Summary:
 //
-// 查询单条HTTPS基础配置
+// Query a Single HTTPS Basic Configuration
 //
 // @param request - GetHttpsBasicConfigurationRequest
 //
@@ -70178,7 +73375,7 @@ func (client *Client) GetHttpsBasicConfiguration(request *GetHttpsBasicConfigura
 
 // Summary:
 //
-// 查询站点IPv6配置
+// Query Site IPv6 Configuration
 //
 // @param request - GetIPv6Request
 //
@@ -70227,7 +73424,7 @@ func (client *Client) GetIPv6WithOptions(request *GetIPv6Request, runtime *util.
 
 // Summary:
 //
-// 查询站点IPv6配置
+// Query Site IPv6 Configuration
 //
 // @param request - GetIPv6Request
 //
@@ -70709,7 +73906,7 @@ func (client *Client) GetManagedTransform(request *GetManagedTransformRequest) (
 
 // Summary:
 //
-// 查询单条网络优化配置
+// Query a single network optimization configuration
 //
 // @param request - GetNetworkOptimizationRequest
 //
@@ -70758,7 +73955,7 @@ func (client *Client) GetNetworkOptimizationWithOptions(request *GetNetworkOptim
 
 // Summary:
 //
-// 查询单条网络优化配置
+// Query a single network optimization configuration
 //
 // @param request - GetNetworkOptimizationRequest
 //
@@ -70776,7 +73973,7 @@ func (client *Client) GetNetworkOptimization(request *GetNetworkOptimizationRequ
 
 // Summary:
 //
-// 查询特定源地址池
+// Query a specific origin pool
 //
 // @param request - GetOriginPoolRequest
 //
@@ -70825,7 +74022,7 @@ func (client *Client) GetOriginPoolWithOptions(request *GetOriginPoolRequest, ru
 
 // Summary:
 //
-// 查询特定源地址池
+// Query a specific origin pool
 //
 // @param request - GetOriginPoolRequest
 //
@@ -70910,7 +74107,7 @@ func (client *Client) GetOriginProtection(request *GetOriginProtectionRequest) (
 
 // Summary:
 //
-// 查询单条回源规则配置
+// Query a single origin rule configuration
 //
 // @param request - GetOriginRuleRequest
 //
@@ -70959,7 +74156,7 @@ func (client *Client) GetOriginRuleWithOptions(request *GetOriginRuleRequest, ru
 
 // Summary:
 //
-// 查询单条回源规则配置
+// Query a single origin rule configuration
 //
 // @param request - GetOriginRuleRequest
 //
@@ -72174,7 +75371,7 @@ func (client *Client) GetSiteLogDeliveryQuota(request *GetSiteLogDeliveryQuotaRe
 
 // Summary:
 //
-// 查询站点名称独占配置
+// Query Site Name Exclusive Configuration
 //
 // @param request - GetSiteNameExclusiveRequest
 //
@@ -72223,7 +75420,7 @@ func (client *Client) GetSiteNameExclusiveWithOptions(request *GetSiteNameExclus
 
 // Summary:
 //
-// 查询站点名称独占配置
+// Query Site Name Exclusive Configuration
 //
 // @param request - GetSiteNameExclusiveRequest
 //
@@ -72241,7 +75438,7 @@ func (client *Client) GetSiteNameExclusive(request *GetSiteNameExclusiveRequest)
 
 // Summary:
 //
-// 查询站点暂停配置
+// Query Site Pause Configuration
 //
 // @param request - GetSitePauseRequest
 //
@@ -72290,7 +75487,7 @@ func (client *Client) GetSitePauseWithOptions(request *GetSitePauseRequest, runt
 
 // Summary:
 //
-// 查询站点暂停配置
+// Query Site Pause Configuration
 //
 // @param request - GetSitePauseRequest
 //
@@ -72958,7 +76155,7 @@ func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstanc
 
 // Summary:
 //
-// 查询多条缓存配置
+// Query multiple cache configurations
 //
 // @param request - ListCacheRulesRequest
 //
@@ -73007,7 +76204,7 @@ func (client *Client) ListCacheRulesWithOptions(request *ListCacheRulesRequest, 
 
 // Summary:
 //
-// 查询多条缓存配置
+// Query multiple cache configurations
 //
 // @param request - ListCacheRulesRequest
 //
@@ -73025,7 +76222,7 @@ func (client *Client) ListCacheRules(request *ListCacheRulesRequest) (_result *L
 
 // Summary:
 //
-// 查询站点下证书列表
+// List certificates under a site
 //
 // @param request - ListCertificatesRequest
 //
@@ -73074,7 +76271,7 @@ func (client *Client) ListCertificatesWithOptions(request *ListCertificatesReque
 
 // Summary:
 //
-// 查询站点下证书列表
+// List certificates under a site
 //
 // @param request - ListCertificatesRequest
 //
@@ -73092,7 +76289,7 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// 查询TLS密码套件列表
+// Query TLS Cipher Suite List
 //
 // @param request - ListCiphersRequest
 //
@@ -73141,7 +76338,7 @@ func (client *Client) ListCiphersWithOptions(request *ListCiphersRequest, runtim
 
 // Summary:
 //
-// 查询TLS密码套件列表
+// Query TLS Cipher Suite List
 //
 // @param request - ListCiphersRequest
 //
@@ -73785,7 +76982,7 @@ func (client *Client) ListEdgeRoutineRecords(request *ListEdgeRoutineRecordsRequ
 
 // Summary:
 //
-// 查询HTTP请求头规则列表
+// List of HTTP Request Header Rules
 //
 // @param request - ListHttpRequestHeaderModificationRulesRequest
 //
@@ -73834,7 +77031,7 @@ func (client *Client) ListHttpRequestHeaderModificationRulesWithOptions(request 
 
 // Summary:
 //
-// 查询HTTP请求头规则列表
+// List of HTTP Request Header Rules
 //
 // @param request - ListHttpRequestHeaderModificationRulesRequest
 //
@@ -73919,7 +77116,7 @@ func (client *Client) ListHttpResponseHeaderModificationRules(request *ListHttpR
 
 // Summary:
 //
-// 查询多条HTTPS应用配置
+// Query multiple HTTPS application configurations
 //
 // @param request - ListHttpsApplicationConfigurationsRequest
 //
@@ -73968,7 +77165,7 @@ func (client *Client) ListHttpsApplicationConfigurationsWithOptions(request *Lis
 
 // Summary:
 //
-// 查询多条HTTPS应用配置
+// Query multiple HTTPS application configurations
 //
 // @param request - ListHttpsApplicationConfigurationsRequest
 //
@@ -73986,7 +77183,7 @@ func (client *Client) ListHttpsApplicationConfigurations(request *ListHttpsAppli
 
 // Summary:
 //
-// 查询多条HTTPS基础配置
+// Query multiple HTTPS basic configurations
 //
 // @param request - ListHttpsBasicConfigurationsRequest
 //
@@ -74035,7 +77232,7 @@ func (client *Client) ListHttpsBasicConfigurationsWithOptions(request *ListHttps
 
 // Summary:
 //
-// 查询多条HTTPS基础配置
+// Query multiple HTTPS basic configurations
 //
 // @param request - ListHttpsBasicConfigurationsRequest
 //
@@ -74690,7 +77887,7 @@ func (client *Client) ListManagedRulesGroups(request *ListManagedRulesGroupsRequ
 
 // Summary:
 //
-// 查询多条网络优化配置
+// Query multiple network optimization configurations
 //
 // @param request - ListNetworkOptimizationsRequest
 //
@@ -74739,7 +77936,7 @@ func (client *Client) ListNetworkOptimizationsWithOptions(request *ListNetworkOp
 
 // Summary:
 //
-// 查询多条网络优化配置
+// Query multiple network optimization configurations
 //
 // @param request - ListNetworkOptimizationsRequest
 //
@@ -74757,7 +77954,7 @@ func (client *Client) ListNetworkOptimizations(request *ListNetworkOptimizations
 
 // Summary:
 //
-// 查询源地址池列表
+// List Origin Pools
 //
 // @param request - ListOriginPoolsRequest
 //
@@ -74806,7 +78003,7 @@ func (client *Client) ListOriginPoolsWithOptions(request *ListOriginPoolsRequest
 
 // Summary:
 //
-// 查询源地址池列表
+// List Origin Pools
 //
 // @param request - ListOriginPoolsRequest
 //
@@ -74824,7 +78021,7 @@ func (client *Client) ListOriginPools(request *ListOriginPoolsRequest) (_result 
 
 // Summary:
 //
-// 查询多条回源规则配置
+// Query multiple origin rules configurations
 //
 // @param request - ListOriginRulesRequest
 //
@@ -74873,7 +78070,7 @@ func (client *Client) ListOriginRulesWithOptions(request *ListOriginRulesRequest
 
 // Summary:
 //
-// 查询多条回源规则配置
+// Query multiple origin rules configurations
 //
 // @param request - ListOriginRulesRequest
 //
@@ -76754,6 +79951,10 @@ func (client *Client) PurchaseRatePlanWithOptions(request *PurchaseRatePlanReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
 	}
@@ -78245,7 +81446,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 修改缓存配置
+// Modify cache configuration
 //
 // @param request - UpdateCacheRuleRequest
 //
@@ -78394,7 +81595,7 @@ func (client *Client) UpdateCacheRuleWithOptions(request *UpdateCacheRuleRequest
 
 // Summary:
 //
-// 修改缓存配置
+// Modify cache configuration
 //
 // @param request - UpdateCacheRuleRequest
 //
@@ -78412,7 +81613,7 @@ func (client *Client) UpdateCacheRule(request *UpdateCacheRuleRequest) (_result 
 
 // Summary:
 //
-// 修改站点缓存Tag配置
+// Modify Site Cache Tag Configuration
 //
 // @param request - UpdateCacheTagRequest
 //
@@ -78477,7 +81678,7 @@ func (client *Client) UpdateCacheTagWithOptions(request *UpdateCacheTagRequest, 
 
 // Summary:
 //
-// 修改站点缓存Tag配置
+// Modify Site Cache Tag Configuration
 //
 // @param request - UpdateCacheTagRequest
 //
@@ -78495,7 +81696,7 @@ func (client *Client) UpdateCacheTag(request *UpdateCacheTagRequest) (_result *U
 
 // Summary:
 //
-// 修改站点cname拉平配置
+// Modify site CNAME flattening configuration
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -78552,7 +81753,7 @@ func (client *Client) UpdateCnameFlatteningWithOptions(request *UpdateCnameFlatt
 
 // Summary:
 //
-// 修改站点cname拉平配置
+// Modify site CNAME flattening configuration
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -78570,7 +81771,7 @@ func (client *Client) UpdateCnameFlattening(request *UpdateCnameFlatteningReques
 
 // Summary:
 //
-// 修改压缩规则
+// Modify compression rule
 //
 // @param request - UpdateCompressionRuleRequest
 //
@@ -78651,7 +81852,7 @@ func (client *Client) UpdateCompressionRuleWithOptions(request *UpdateCompressio
 
 // Summary:
 //
-// 修改压缩规则
+// Modify compression rule
 //
 // @param request - UpdateCompressionRuleRequest
 //
@@ -78914,7 +82115,7 @@ func (client *Client) UpdateEdgeContainerAppLogRiver(request *UpdateEdgeContaine
 
 // Summary:
 //
-// 修改HTTP请求头规则
+// Modify HTTP Request Header Rules
 //
 // @param tmpReq - UpdateHttpRequestHeaderModificationRuleRequest
 //
@@ -78993,7 +82194,7 @@ func (client *Client) UpdateHttpRequestHeaderModificationRuleWithOptions(tmpReq 
 
 // Summary:
 //
-// 修改HTTP请求头规则
+// Modify HTTP Request Header Rules
 //
 // @param request - UpdateHttpRequestHeaderModificationRuleRequest
 //
@@ -79011,7 +82212,7 @@ func (client *Client) UpdateHttpRequestHeaderModificationRule(request *UpdateHtt
 
 // Summary:
 //
-// 修改HTTP响应头规则
+// Modify HTTP Response Header Rules
 //
 // @param tmpReq - UpdateHttpResponseHeaderModificationRuleRequest
 //
@@ -79090,7 +82291,7 @@ func (client *Client) UpdateHttpResponseHeaderModificationRuleWithOptions(tmpReq
 
 // Summary:
 //
-// 修改HTTP响应头规则
+// Modify HTTP Response Header Rules
 //
 // @param request - UpdateHttpResponseHeaderModificationRuleRequest
 //
@@ -79108,7 +82309,7 @@ func (client *Client) UpdateHttpResponseHeaderModificationRule(request *UpdateHt
 
 // Summary:
 //
-// 修改HTTPS应用配置
+// Modify HTTPS Application Configuration
 //
 // @param request - UpdateHttpsApplicationConfigurationRequest
 //
@@ -79217,7 +82418,7 @@ func (client *Client) UpdateHttpsApplicationConfigurationWithOptions(request *Up
 
 // Summary:
 //
-// 修改HTTPS应用配置
+// Modify HTTPS Application Configuration
 //
 // @param request - UpdateHttpsApplicationConfigurationRequest
 //
@@ -79235,7 +82436,7 @@ func (client *Client) UpdateHttpsApplicationConfiguration(request *UpdateHttpsAp
 
 // Summary:
 //
-// 修改HTTPS基础配置
+// Modify HTTPS Basic Configuration
 //
 // @param request - UpdateHttpsBasicConfigurationRequest
 //
@@ -79344,7 +82545,7 @@ func (client *Client) UpdateHttpsBasicConfigurationWithOptions(request *UpdateHt
 
 // Summary:
 //
-// 修改HTTPS基础配置
+// Modify HTTPS Basic Configuration
 //
 // @param request - UpdateHttpsBasicConfigurationRequest
 //
@@ -79362,7 +82563,7 @@ func (client *Client) UpdateHttpsBasicConfiguration(request *UpdateHttpsBasicCon
 
 // Summary:
 //
-// 修改站点IPv6配置
+// Modify Site IPv6 Configuration
 //
 // @param request - UpdateIPv6Request
 //
@@ -79419,7 +82620,7 @@ func (client *Client) UpdateIPv6WithOptions(request *UpdateIPv6Request, runtime 
 
 // Summary:
 //
-// 修改站点IPv6配置
+// Modify Site IPv6 Configuration
 //
 // @param request - UpdateIPv6Request
 //
@@ -79437,7 +82638,7 @@ func (client *Client) UpdateIPv6(request *UpdateIPv6Request) (_result *UpdateIPv
 
 // Summary:
 //
-// 修改站点图片转换配置
+// Modify Site Image Transformation Configuration
 //
 // @param request - UpdateImageTransformRequest
 //
@@ -79510,7 +82711,7 @@ func (client *Client) UpdateImageTransformWithOptions(request *UpdateImageTransf
 
 // Summary:
 //
-// 修改站点图片转换配置
+// Modify Site Image Transformation Configuration
 //
 // @param request - UpdateImageTransformRequest
 //
@@ -79766,7 +82967,7 @@ func (client *Client) UpdateLoadBalancer(request *UpdateLoadBalancerRequest) (_r
 
 // Summary:
 //
-// 修改站点托管转换配置
+// Modify Site Managed Transformation Configuration
 //
 // @param request - UpdateManagedTransformRequest
 //
@@ -79831,7 +83032,7 @@ func (client *Client) UpdateManagedTransformWithOptions(request *UpdateManagedTr
 
 // Summary:
 //
-// 修改站点托管转换配置
+// Modify Site Managed Transformation Configuration
 //
 // @param request - UpdateManagedTransformRequest
 //
@@ -79849,7 +83050,7 @@ func (client *Client) UpdateManagedTransform(request *UpdateManagedTransformRequ
 
 // Summary:
 //
-// 修改网络优化配置
+// Modify network optimization configuration
 //
 // @param request - UpdateNetworkOptimizationRequest
 //
@@ -79938,7 +83139,7 @@ func (client *Client) UpdateNetworkOptimizationWithOptions(request *UpdateNetwor
 
 // Summary:
 //
-// 修改网络优化配置
+// Modify network optimization configuration
 //
 // @param request - UpdateNetworkOptimizationRequest
 //
@@ -79956,7 +83157,7 @@ func (client *Client) UpdateNetworkOptimization(request *UpdateNetworkOptimizati
 
 // Summary:
 //
-// 修改监视器
+// Modify the Monitor
 //
 // @param tmpReq - UpdateOriginPoolRequest
 //
@@ -80027,7 +83228,7 @@ func (client *Client) UpdateOriginPoolWithOptions(tmpReq *UpdateOriginPoolReques
 
 // Summary:
 //
-// 修改监视器
+// Modify the Monitor
 //
 // @param request - UpdateOriginPoolRequest
 //
@@ -80191,7 +83392,7 @@ func (client *Client) UpdateOriginProtectionIpWhiteList(request *UpdateOriginPro
 
 // Summary:
 //
-// 修改站点回源规则配置
+// Modify Origin Rule Configuration for Site
 //
 // @param request - UpdateOriginRuleRequest
 //
@@ -80288,7 +83489,7 @@ func (client *Client) UpdateOriginRuleWithOptions(request *UpdateOriginRuleReque
 
 // Summary:
 //
-// 修改站点回源规则配置
+// Modify Origin Rule Configuration for Site
 //
 // @param request - UpdateOriginRuleRequest
 //
@@ -80629,7 +83830,7 @@ func (client *Client) UpdateRecord(request *UpdateRecordRequest) (_result *Updat
 
 // Summary:
 //
-// 更新重定向规则
+// Update Redirect Rule
 //
 // @param request - UpdateRedirectRuleRequest
 //
@@ -80714,7 +83915,7 @@ func (client *Client) UpdateRedirectRuleWithOptions(request *UpdateRedirectRuleR
 
 // Summary:
 //
-// 更新重定向规则
+// Update Redirect Rule
 //
 // @param request - UpdateRedirectRuleRequest
 //
@@ -80732,7 +83933,7 @@ func (client *Client) UpdateRedirectRule(request *UpdateRedirectRuleRequest) (_r
 
 // Summary:
 //
-// 修改重写Url规则
+// Modify Rewrite URL Rule
 //
 // @param request - UpdateRewriteUrlRuleRequest
 //
@@ -80817,7 +84018,7 @@ func (client *Client) UpdateRewriteUrlRuleWithOptions(request *UpdateRewriteUrlR
 
 // Summary:
 //
-// 修改重写Url规则
+// Modify Rewrite URL Rule
 //
 // @param request - UpdateRewriteUrlRuleRequest
 //
@@ -81416,7 +84617,7 @@ func (client *Client) UpdateSiteDeliveryTaskStatus(request *UpdateSiteDeliveryTa
 
 // Summary:
 //
-// 修改站点名称独占配置
+// Modify Site Name Exclusive Configuration
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -81473,7 +84674,7 @@ func (client *Client) UpdateSiteNameExclusiveWithOptions(request *UpdateSiteName
 
 // Summary:
 //
-// 修改站点名称独占配置
+// Modify Site Name Exclusive Configuration
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -81491,7 +84692,7 @@ func (client *Client) UpdateSiteNameExclusive(request *UpdateSiteNameExclusiveRe
 
 // Summary:
 //
-// 修改站点暂停配置
+// Modify Site Pause Configuration
 //
 // @param request - UpdateSitePauseRequest
 //
@@ -81548,7 +84749,7 @@ func (client *Client) UpdateSitePauseWithOptions(request *UpdateSitePauseRequest
 
 // Summary:
 //
-// 修改站点暂停配置
+// Modify Site Pause Configuration
 //
 // @param request - UpdateSitePauseRequest
 //
@@ -81641,7 +84842,7 @@ func (client *Client) UpdateSiteVanityNS(request *UpdateSiteVanityNSRequest) (_r
 
 // Summary:
 //
-// 修改站点多级缓存配置
+// Modify Multi-level Cache Configuration for Site
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -81698,7 +84899,7 @@ func (client *Client) UpdateTieredCacheWithOptions(request *UpdateTieredCacheReq
 
 // Summary:
 //
-// 修改站点多级缓存配置
+// Modify Multi-level Cache Configuration for Site
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -82269,7 +85470,7 @@ func (client *Client) UpdateWaitingRoomRule(request *UpdateWaitingRoomRuleReques
 
 // Summary:
 //
-// 上传客户端CA证书
+// Uploads a client certificate authority (CA) certificate.
 //
 // @param request - UploadClientCaCertificateRequest
 //
@@ -82332,7 +85533,7 @@ func (client *Client) UploadClientCaCertificateWithOptions(request *UploadClient
 
 // Summary:
 //
-// 上传客户端CA证书
+// Uploads a client certificate authority (CA) certificate.
 //
 // @param request - UploadClientCaCertificateRequest
 //
