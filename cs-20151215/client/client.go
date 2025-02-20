@@ -9374,6 +9374,10 @@ type DescribeClusterAttachScriptsRequest struct {
 	//
 	// amd64
 	Arch *string `json:"arch,omitempty" xml:"arch,omitempty"`
+	// example:
+	//
+	// 1740037333
+	Expired *int64 `json:"expired,omitempty" xml:"expired,omitempty"`
 	// Specifies whether to mount data disks to an existing instance when you add the instance to the cluster. You can add data disks to store container data and images. Valid values:
 	//
 	// 	- `true`: mounts data disks to the existing instance that you want to add. After a data disk is mounted, the original data on the disk is erased. Back up data before you mount a data disk.
@@ -9434,6 +9438,11 @@ func (s DescribeClusterAttachScriptsRequest) GoString() string {
 
 func (s *DescribeClusterAttachScriptsRequest) SetArch(v string) *DescribeClusterAttachScriptsRequest {
 	s.Arch = &v
+	return s
+}
+
+func (s *DescribeClusterAttachScriptsRequest) SetExpired(v int64) *DescribeClusterAttachScriptsRequest {
+	s.Expired = &v
 	return s
 }
 
@@ -34206,6 +34215,10 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(ClusterId *string,
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Arch)) {
 		body["arch"] = request.Arch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expired)) {
+		body["expired"] = request.Expired
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
