@@ -1,9 +1,5 @@
-2025-01-15 Version: v1.4.0
-- Support API ConfirmDjbhReport.
-- Support API DeleteDjbhReport.
-- Update API CreateServiceWorkOrder: add param IsMilestone.
-- Update API GetDocumentDownloadUrl: add param ReportType.
-- Update API GetDocumentPage: update response param.
+2025-02-20 Version: v1.4.1
+- Update API SendCustomEvent: add param EventMarkdown.
 
 
 2024-12-19 Version: v1.3.0
