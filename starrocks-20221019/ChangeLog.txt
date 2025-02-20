@@ -1,0 +1,6 @@
+2025-02-20 Version: v1.0.0
+- Update API ModifyCu: add param FastMode.
+- Update API ModifyDiskNumber: add param FastMode.
+- Update API UpgradeVersion: add param FastMode.
+
+
