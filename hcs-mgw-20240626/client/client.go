@@ -1859,6 +1859,9 @@ func (s *UpdateJobInfo) SetStatus(v string) *UpdateJobInfo {
 }
 
 type UpdateTunnelInfo struct {
+	// example:
+	//
+	// k1=v1;k2=v2
 	Tags      *string    `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	TunnelQos *TunnelQos `json:"TunnelQos,omitempty" xml:"TunnelQos,omitempty"`
 }
@@ -1955,6 +1958,7 @@ func (s *VerifyResp) SetHttpCode(v string) *VerifyResp {
 }
 
 type CreateAddressRequest struct {
+	// The details for creating the data address.
 	ImportAddress *CreateAddressInfo `json:"ImportAddress,omitempty" xml:"ImportAddress,omitempty"`
 }
 
@@ -1995,6 +1999,7 @@ func (s *CreateAddressResponse) SetStatusCode(v int32) *CreateAddressResponse {
 }
 
 type CreateAgentRequest struct {
+	// The details for creating the agent.
 	ImportAgent *CreateAgentInfo `json:"ImportAgent,omitempty" xml:"ImportAgent,omitempty"`
 }
 
@@ -2035,6 +2040,8 @@ func (s *CreateAgentResponse) SetStatusCode(v int32) *CreateAgentResponse {
 }
 
 type CreateJobRequest struct {
+	// The details for creating the migration task.
+	//
 	// This parameter is required.
 	ImportJob *CreateJobInfo `json:"ImportJob,omitempty" xml:"ImportJob,omitempty"`
 }
@@ -2076,6 +2083,7 @@ func (s *CreateJobResponse) SetStatusCode(v int32) *CreateJobResponse {
 }
 
 type CreateReportRequest struct {
+	// The details for creating the migration report.
 	CreateReport *CreateReportInfo `json:"CreateReport,omitempty" xml:"CreateReport,omitempty"`
 }
 
@@ -2116,6 +2124,7 @@ func (s *CreateReportResponse) SetStatusCode(v int32) *CreateReportResponse {
 }
 
 type CreateTunnelRequest struct {
+	// The details for creating the tunnel.
 	ImportTunnel *CreateTunnelInfo `json:"ImportTunnel,omitempty" xml:"ImportTunnel,omitempty"`
 }
 
@@ -2202,6 +2211,8 @@ func (s *DeleteAgentResponse) SetStatusCode(v int32) *DeleteAgentResponse {
 }
 
 type DeleteJobRequest struct {
+	// Specifies whether to force delete the subtask. If the task has subtasks and you set this parameter to true, the task and its subtasks are forcibly deleted. If this parameter is set to false, the task and its subtasks fail to be deleted.
+	//
 	// example:
 	//
 	// true
@@ -2268,7 +2279,11 @@ func (s *DeleteTunnelResponse) SetStatusCode(v int32) *DeleteTunnelResponse {
 }
 
 type GetAddressResponseBody struct {
-	// 222
+	// The details for obtaining the data address.
+	//
+	// Valid values:
+	//
+	// 	- 1:1
 	ImportAddress *GetAddressResp `json:"ImportAddress,omitempty" xml:"ImportAddress,omitempty"`
 }
 
@@ -2315,7 +2330,7 @@ func (s *GetAddressResponse) SetBody(v *GetAddressResponseBody) *GetAddressRespo
 }
 
 type GetAgentResponseBody struct {
-	// 2
+	// The details for obtaining the details of the agent.
 	ImportAgent *GetAgentResp `json:"ImportAgent,omitempty" xml:"ImportAgent,omitempty"`
 }
 
@@ -2362,7 +2377,7 @@ func (s *GetAgentResponse) SetBody(v *GetAgentResponseBody) *GetAgentResponse {
 }
 
 type GetAgentStatusResponseBody struct {
-	// 2
+	// The details for obtaining the status of the agent.
 	ImportAgentStatus *GetAgentStatusResp `json:"ImportAgentStatus,omitempty" xml:"ImportAgentStatus,omitempty"`
 }
 
@@ -2409,6 +2424,8 @@ func (s *GetAgentStatusResponse) SetBody(v *GetAgentStatusResponseBody) *GetAgen
 }
 
 type GetJobRequest struct {
+	// Specifies whether to obtain the details of the migration task by using the task ID.
+	//
 	// example:
 	//
 	// false
@@ -2429,6 +2446,7 @@ func (s *GetJobRequest) SetByVersion(v string) *GetJobRequest {
 }
 
 type GetJobResponseBody struct {
+	// The details for obtaining the details of the migration task.
 	ImportJob *GetJobResp `json:"ImportJob,omitempty" xml:"ImportJob,omitempty"`
 }
 
@@ -2475,6 +2493,8 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 }
 
 type GetJobResultRequest struct {
+	// The execution ID of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2497,7 +2517,7 @@ func (s *GetJobResultRequest) SetRuntimeId(v int32) *GetJobResultRequest {
 }
 
 type GetJobResultResponseBody struct {
-	// 1
+	// The details for obtaining the retries of the migration task.
 	ImportJobResult *GetJobResultResp `json:"ImportJobResult,omitempty" xml:"ImportJobResult,omitempty"`
 }
 
@@ -2544,10 +2564,14 @@ func (s *GetJobResultResponse) SetBody(v *GetJobResultResponseBody) *GetJobResul
 }
 
 type GetReportRequest struct {
+	// The execution ID of the migration task.
+	//
 	// example:
 	//
 	// 1
 	RuntimeId *int32 `json:"runtimeId,omitempty" xml:"runtimeId,omitempty"`
+	// The ID of the migration task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2575,6 +2599,7 @@ func (s *GetReportRequest) SetVersion(v string) *GetReportRequest {
 }
 
 type GetReportResponseBody struct {
+	// The details for obtaining the migration report.
 	GetReportResponse *GetReportResp `json:"GetReportResponse,omitempty" xml:"GetReportResponse,omitempty"`
 }
 
@@ -2621,6 +2646,7 @@ func (s *GetReportResponse) SetBody(v *GetReportResponseBody) *GetReportResponse
 }
 
 type GetTunnelResponseBody struct {
+	// The details for obtaining the details of the tunnel.
 	ImportTunnel *GetTunnelResp `json:"ImportTunnel,omitempty" xml:"ImportTunnel,omitempty"`
 }
 
@@ -2667,10 +2693,20 @@ func (s *GetTunnelResponse) SetBody(v *GetTunnelResponseBody) *GetTunnelResponse
 }
 
 type ListAddressRequest struct {
+	// Specifies the number of migration addresses to be returned.\\
+	//
+	// Valid values: 0 - 1000 (excluding 0).\\
+	//
+	// Default value: 1000.
+	//
 	// example:
 	//
 	// 100
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The marker after which the migration addresses are listed.\\
+	//
+	// By default, this parameter is left empty.
+	//
 	// example:
 	//
 	// test_marker
@@ -2696,6 +2732,7 @@ func (s *ListAddressRequest) SetMarker(v string) *ListAddressRequest {
 }
 
 type ListAddressResponseBody struct {
+	// The details of migration addresses.
 	ImportAddressList *ListAddressResp `json:"ImportAddressList,omitempty" xml:"ImportAddressList,omitempty"`
 }
 
@@ -2742,10 +2779,20 @@ func (s *ListAddressResponse) SetBody(v *ListAddressResponseBody) *ListAddressRe
 }
 
 type ListAgentRequest struct {
+	// Specifies the number of agents to be returned.\\
+	//
+	// Valid values: 0 - 1000.\\
+	//
+	// Default value: 1000.
+	//
 	// example:
 	//
 	// 100
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The marker after which the agents are listed.\\
+	//
+	// By default, this parameter is left empty.
+	//
 	// example:
 	//
 	// test_agent
@@ -2771,6 +2818,7 @@ func (s *ListAgentRequest) SetMarker(v string) *ListAgentRequest {
 }
 
 type ListAgentResponseBody struct {
+	// The details of the agents.
 	ImportAgentList *ListAgentResp `json:"ImportAgentList,omitempty" xml:"ImportAgentList,omitempty"`
 }
 
@@ -2817,18 +2865,34 @@ func (s *ListAgentResponse) SetBody(v *ListAgentResponseBody) *ListAgentResponse
 }
 
 type ListJobRequest struct {
+	// Specifies whether to return subtasks.\\
+	//
+	// Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// Specifies the number of migration tasks to be returned.\\
+	//
+	// Valid values: 0 - 1000 (excluding 0).\\
+	//
+	// Default value: 1000.
+	//
 	// example:
 	//
 	// 1000
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The marker after which the migration tasks are listed.\\
+	//
+	// By default, this parameter is left empty.
+	//
 	// example:
 	//
 	// test_marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// The name of the parent task. If this parameter is specified, all subtasks of the parent task are returned.
+	//
 	// example:
 	//
 	// test_parent_job_name
@@ -2864,6 +2928,7 @@ func (s *ListJobRequest) SetParentName(v string) *ListJobRequest {
 }
 
 type ListJobResponseBody struct {
+	// The queried migration tasks.
 	ImportJobList *ListJobResp `json:"ImportJobList,omitempty" xml:"ImportJobList,omitempty"`
 }
 
@@ -2910,11 +2975,26 @@ func (s *ListJobResponse) SetBody(v *ListJobResponseBody) *ListJobResponse {
 }
 
 type ListJobHistoryRequest struct {
+	// Specifies the number of running records of the migration task to be returned.\\
+	//
+	// Valid values: 0 - 1000.\\
+	//
+	// Default value: 1000.
+	//
 	// example:
 	//
 	// 100
-	Count  *int32  `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The marker after which the running history of the task is listed.\\
+	//
+	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// test_marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// The execution ID of the task. If you specify an execution ID, only the running history related to the execution ID is listed.
+	//
 	// example:
 	//
 	// 1
@@ -2945,6 +3025,7 @@ func (s *ListJobHistoryRequest) SetRuntimeId(v int32) *ListJobHistoryRequest {
 }
 
 type ListJobHistoryResponseBody struct {
+	// The running history of the migration task.
 	JobHistoryList *ListJobHistoryResp `json:"JobHistoryList,omitempty" xml:"JobHistoryList,omitempty"`
 }
 
@@ -2991,10 +3072,20 @@ func (s *ListJobHistoryResponse) SetBody(v *ListJobHistoryResponseBody) *ListJob
 }
 
 type ListTunnelRequest struct {
+	// Specifies the number of tunnels to be returned.\\
+	//
+	// Valid values: 0 - 1000.\\
+	//
+	// Default value: 1000.
+	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The marker after which tunnels are listed.\\
+	//
+	// By default, this parameter is left empty.
+	//
 	// example:
 	//
 	// 1
@@ -3020,7 +3111,7 @@ func (s *ListTunnelRequest) SetMarker(v string) *ListTunnelRequest {
 }
 
 type ListTunnelResponseBody struct {
-	// 2
+	// The details of the tunnels.
 	ImportTunnelList *ListTunnelResp `json:"ImportTunnelList,omitempty" xml:"ImportTunnelList,omitempty"`
 }
 
@@ -3067,6 +3158,7 @@ func (s *ListTunnelResponse) SetBody(v *ListTunnelResponseBody) *ListTunnelRespo
 }
 
 type UpdateAddressRequest struct {
+	// The details for updating the data address.
 	ImportAddress *UpdateAddressInfo `json:"ImportAddress,omitempty" xml:"ImportAddress,omitempty"`
 }
 
@@ -3107,6 +3199,7 @@ func (s *UpdateAddressResponse) SetStatusCode(v int32) *UpdateAddressResponse {
 }
 
 type UpdateJobRequest struct {
+	// The details for updating the task.
 	ImportJob *UpdateJobInfo `json:"ImportJob,omitempty" xml:"ImportJob,omitempty"`
 }
 
@@ -3147,6 +3240,7 @@ func (s *UpdateJobResponse) SetStatusCode(v int32) *UpdateJobResponse {
 }
 
 type UpdateTunnelRequest struct {
+	// The details for updating the tunnel.
 	ImportTunnel *UpdateTunnelInfo `json:"ImportTunnel,omitempty" xml:"ImportTunnel,omitempty"`
 }
 
@@ -3187,7 +3281,7 @@ func (s *UpdateTunnelResponse) SetStatusCode(v int32) *UpdateTunnelResponse {
 }
 
 type VerifyAddressResponseBody struct {
-	// 1
+	// 校验数据地址详情。
 	VerifyAddressResponse *VerifyAddressResp `json:"VerifyAddressResponse,omitempty" xml:"VerifyAddressResponse,omitempty"`
 }
 
@@ -3248,6 +3342,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("hcs-mgw")
 	gatewayClient, _err := gatewayclient.NewClient()
 	if _err != nil {
 		return _err
@@ -3260,7 +3355,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 
 // Summary:
 //
-// 创建数据地址。
+// Creates a data address.
+//
+// Description:
+//
+//   To create a data address, you must have the permission on mgw:CreateImportAddress.
+//
+// 	- If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
 //
 // @param request - CreateAddressRequest
 //
@@ -3308,7 +3409,13 @@ func (client *Client) CreateAddressWithOptions(userid *string, request *CreateAd
 
 // Summary:
 //
-// 创建数据地址。
+// Creates a data address.
+//
+// Description:
+//
+//   To create a data address, you must have the permission on mgw:CreateImportAddress.
+//
+// 	- If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
 //
 // @param request - CreateAddressRequest
 //
@@ -3327,7 +3434,15 @@ func (client *Client) CreateAddress(userid *string, request *CreateAddressReques
 
 // Summary:
 //
-// 创建代理。
+// The request boy for creating the agent.
+//
+// Description:
+//
+//   To create an agent, you must have the permission on mgw:CreateImportAgent.
+//
+// 	- If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+//
+// 	- Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
 //
 // @param request - CreateAgentRequest
 //
@@ -3375,7 +3490,15 @@ func (client *Client) CreateAgentWithOptions(userid *string, request *CreateAgen
 
 // Summary:
 //
-// 创建代理。
+// The request boy for creating the agent.
+//
+// Description:
+//
+//   To create an agent, you must have the permission on mgw:CreateImportAgent.
+//
+// 	- If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+//
+// 	- Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
 //
 // @param request - CreateAgentRequest
 //
@@ -3394,7 +3517,15 @@ func (client *Client) CreateAgent(userid *string, request *CreateAgentRequest) (
 
 // Summary:
 //
-// 创建迁移任务。
+// Creates a migration task.
+//
+// Description:
+//
+//   To create a migration task, you must have the permission on mgw:CreateImportJob.
+//
+// 	- Before you create a migration task, you must create data addresses.
+//
+// 	- A migration task can run multiple rounds. Each round has an execution ID.
 //
 // @param request - CreateJobRequest
 //
@@ -3442,7 +3573,15 @@ func (client *Client) CreateJobWithOptions(userid *string, request *CreateJobReq
 
 // Summary:
 //
-// 创建迁移任务。
+// Creates a migration task.
+//
+// Description:
+//
+//   To create a migration task, you must have the permission on mgw:CreateImportJob.
+//
+// 	- Before you create a migration task, you must create data addresses.
+//
+// 	- A migration task can run multiple rounds. Each round has an execution ID.
 //
 // @param request - CreateJobRequest
 //
@@ -3461,7 +3600,13 @@ func (client *Client) CreateJob(userid *string, request *CreateJobRequest) (_res
 
 // Summary:
 //
-// 创建迁移报告。
+// Creates a migration report.
+//
+// Description:
+//
+//   To create a migration report, you must have the permission on mgw:CreateImportReport.
+//
+// 	- If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
 //
 // @param request - CreateReportRequest
 //
@@ -3509,7 +3654,13 @@ func (client *Client) CreateReportWithOptions(userid *string, request *CreateRep
 
 // Summary:
 //
-// 创建迁移报告。
+// Creates a migration report.
+//
+// Description:
+//
+//   To create a migration report, you must have the permission on mgw:CreateImportReport.
+//
+// 	- If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
 //
 // @param request - CreateReportRequest
 //
@@ -3528,7 +3679,15 @@ func (client *Client) CreateReport(userid *string, request *CreateReportRequest)
 
 // Summary:
 //
-// 创建通道。
+// Creates a tunnel.
+//
+// Description:
+//
+//   To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+//
+// 	- When you use an agent to migrate data, the agent must be associated with a tunnel.
+//
+// 	- A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
 //
 // @param request - CreateTunnelRequest
 //
@@ -3576,7 +3735,15 @@ func (client *Client) CreateTunnelWithOptions(userid *string, request *CreateTun
 
 // Summary:
 //
-// 创建通道。
+// Creates a tunnel.
+//
+// Description:
+//
+//   To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+//
+// 	- When you use an agent to migrate data, the agent must be associated with a tunnel.
+//
+// 	- A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
 //
 // @param request - CreateTunnelRequest
 //
@@ -3595,7 +3762,11 @@ func (client *Client) CreateTunnel(userid *string, request *CreateTunnelRequest)
 
 // Summary:
 //
-// 删除数据地址。
+// Deletes a data address.
+//
+// Description:
+//
+//   To delete a data address, you must have the permission on mgw:DeleteImportAddress.
 //
 // @param headers - map
 //
@@ -3631,7 +3802,11 @@ func (client *Client) DeleteAddressWithOptions(userid *string, addressName *stri
 
 // Summary:
 //
-// 删除数据地址。
+// Deletes a data address.
+//
+// Description:
+//
+//   To delete a data address, you must have the permission on mgw:DeleteImportAddress.
 //
 // @return DeleteAddressResponse
 func (client *Client) DeleteAddress(userid *string, addressName *string) (_result *DeleteAddressResponse, _err error) {
@@ -3648,7 +3823,11 @@ func (client *Client) DeleteAddress(userid *string, addressName *string) (_resul
 
 // Summary:
 //
-// 删除代理。
+// Deletes an agent.
+//
+// Description:
+//
+//   To delete an agent, you must have the permission on mgw:DeleteImportAgent.
 //
 // @param headers - map
 //
@@ -3684,7 +3863,11 @@ func (client *Client) DeleteAgentWithOptions(userid *string, agentName *string, 
 
 // Summary:
 //
-// 删除代理。
+// Deletes an agent.
+//
+// Description:
+//
+//   To delete an agent, you must have the permission on mgw:DeleteImportAgent.
 //
 // @return DeleteAgentResponse
 func (client *Client) DeleteAgent(userid *string, agentName *string) (_result *DeleteAgentResponse, _err error) {
@@ -3701,7 +3884,13 @@ func (client *Client) DeleteAgent(userid *string, agentName *string) (_result *D
 
 // Summary:
 //
-// 删除迁移任务。
+// Deletes a migration task.
+//
+// Description:
+//
+//   To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+//
+// 	- The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
 //
 // @param request - DeleteJobRequest
 //
@@ -3749,7 +3938,13 @@ func (client *Client) DeleteJobWithOptions(userid *string, jobName *string, requ
 
 // Summary:
 //
-// 删除迁移任务。
+// Deletes a migration task.
+//
+// Description:
+//
+//   To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+//
+// 	- The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
 //
 // @param request - DeleteJobRequest
 //
@@ -3768,7 +3963,11 @@ func (client *Client) DeleteJob(userid *string, jobName *string, request *Delete
 
 // Summary:
 //
-// 删除通道。
+// Deletes a tunnel.
+//
+// Description:
+//
+//   To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
 //
 // @param headers - map
 //
@@ -3804,7 +4003,11 @@ func (client *Client) DeleteTunnelWithOptions(userid *string, tunnelId *string, 
 
 // Summary:
 //
-// 删除通道。
+// Deletes a tunnel.
+//
+// Description:
+//
+//   To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
 //
 // @return DeleteTunnelResponse
 func (client *Client) DeleteTunnel(userid *string, tunnelId *string) (_result *DeleteTunnelResponse, _err error) {
@@ -3821,7 +4024,11 @@ func (client *Client) DeleteTunnel(userid *string, tunnelId *string) (_result *D
 
 // Summary:
 //
-// 获取数据地址信息。
+// Obtains the details of a data address.
+//
+// Description:
+//
+//   To query the information about a data address, you must have the permission on mgw:GetImportAddress.
 //
 // @param headers - map
 //
@@ -3857,7 +4064,11 @@ func (client *Client) GetAddressWithOptions(userid *string, addressName *string,
 
 // Summary:
 //
-// 获取数据地址信息。
+// Obtains the details of a data address.
+//
+// Description:
+//
+//   To query the information about a data address, you must have the permission on mgw:GetImportAddress.
 //
 // @return GetAddressResponse
 func (client *Client) GetAddress(userid *string, addressName *string) (_result *GetAddressResponse, _err error) {
@@ -3874,7 +4085,11 @@ func (client *Client) GetAddress(userid *string, addressName *string) (_result *
 
 // Summary:
 //
-// 获取代理信息。
+// Obtains the details of an agent.
+//
+// Description:
+//
+//   To query the information about an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @param headers - map
 //
@@ -3910,7 +4125,11 @@ func (client *Client) GetAgentWithOptions(userid *string, agentName *string, hea
 
 // Summary:
 //
-// 获取代理信息。
+// Obtains the details of an agent.
+//
+// Description:
+//
+//   To query the information about an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @return GetAgentResponse
 func (client *Client) GetAgent(userid *string, agentName *string) (_result *GetAgentResponse, _err error) {
@@ -3927,7 +4146,11 @@ func (client *Client) GetAgent(userid *string, agentName *string) (_result *GetA
 
 // Summary:
 //
-// 获取代理状态。
+// Obtains the running status of an agent.
+//
+// Description:
+//
+//   To query the status of an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @param headers - map
 //
@@ -3963,7 +4186,11 @@ func (client *Client) GetAgentStatusWithOptions(userid *string, agentName *strin
 
 // Summary:
 //
-// 获取代理状态。
+// Obtains the running status of an agent.
+//
+// Description:
+//
+//   To query the status of an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @return GetAgentStatusResponse
 func (client *Client) GetAgentStatus(userid *string, agentName *string) (_result *GetAgentStatusResponse, _err error) {
@@ -3980,7 +4207,11 @@ func (client *Client) GetAgentStatus(userid *string, agentName *string) (_result
 
 // Summary:
 //
-// 获取迁移任务信息。
+// Obtains the details of a migration task.
+//
+// Description:
+//
+//   To query the information about a migration task, you must have the permission on mgw:GetImportJob.
 //
 // @param request - GetJobRequest
 //
@@ -4028,7 +4259,11 @@ func (client *Client) GetJobWithOptions(userid *string, jobName *string, request
 
 // Summary:
 //
-// 获取迁移任务信息。
+// Obtains the details of a migration task.
+//
+// Description:
+//
+//   To query the information about a migration task, you must have the permission on mgw:GetImportJob.
 //
 // @param request - GetJobRequest
 //
@@ -4047,7 +4282,13 @@ func (client *Client) GetJob(userid *string, jobName *string, request *GetJobReq
 
 // Summary:
 //
-// 获取迁移任务失败文件清单信息。
+// Obtains the list of files that fail to be migrated when files fail to be migrated during a migration task.
+//
+// Description:
+//
+//   To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+//
+// 	- If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
 //
 // @param request - GetJobResultRequest
 //
@@ -4095,7 +4336,13 @@ func (client *Client) GetJobResultWithOptions(userid *string, jobName *string, r
 
 // Summary:
 //
-// 获取迁移任务失败文件清单信息。
+// Obtains the list of files that fail to be migrated when files fail to be migrated during a migration task.
+//
+// Description:
+//
+//   To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+//
+// 	- If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
 //
 // @param request - GetJobResultRequest
 //
@@ -4114,7 +4361,13 @@ func (client *Client) GetJobResult(userid *string, jobName *string, request *Get
 
 // Summary:
 //
-// 获取迁移报告。
+// Obtains the details of a migration report.
+//
+// Description:
+//
+//   To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+//
+// 	- The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
 //
 // @param request - GetReportRequest
 //
@@ -4166,7 +4419,13 @@ func (client *Client) GetReportWithOptions(userid *string, request *GetReportReq
 
 // Summary:
 //
-// 获取迁移报告。
+// Obtains the details of a migration report.
+//
+// Description:
+//
+//   To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+//
+// 	- The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
 //
 // @param request - GetReportRequest
 //
@@ -4185,7 +4444,11 @@ func (client *Client) GetReport(userid *string, request *GetReportRequest) (_res
 
 // Summary:
 //
-// 获取通道信息。
+// Obtains the details of a tunnel.
+//
+// Description:
+//
+//   To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
 //
 // @param headers - map
 //
@@ -4221,7 +4484,11 @@ func (client *Client) GetTunnelWithOptions(userid *string, tunnelId *string, hea
 
 // Summary:
 //
-// 获取通道信息。
+// Obtains the details of a tunnel.
+//
+// Description:
+//
+//   To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
 //
 // @return GetTunnelResponse
 func (client *Client) GetTunnel(userid *string, tunnelId *string) (_result *GetTunnelResponse, _err error) {
@@ -4238,7 +4505,11 @@ func (client *Client) GetTunnel(userid *string, tunnelId *string) (_result *GetT
 
 // Summary:
 //
-// 列举数据地址。
+// Lists the data addresses created by a user in the specific region.
+//
+// Description:
+//
+//   To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
 //
 // @param request - ListAddressRequest
 //
@@ -4290,7 +4561,11 @@ func (client *Client) ListAddressWithOptions(userid *string, request *ListAddres
 
 // Summary:
 //
-// 列举数据地址。
+// Lists the data addresses created by a user in the specific region.
+//
+// Description:
+//
+//   To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
 //
 // @param request - ListAddressRequest
 //
@@ -4309,7 +4584,11 @@ func (client *Client) ListAddress(userid *string, request *ListAddressRequest) (
 
 // Summary:
 //
-// 列举代理。
+// Lists the agents created by a user in the specific region.
+//
+// Description:
+//
+//   To query a list of agents, you must have the permission on mgw:ListImportAgent.
 //
 // @param request - ListAgentRequest
 //
@@ -4361,7 +4640,11 @@ func (client *Client) ListAgentWithOptions(userid *string, request *ListAgentReq
 
 // Summary:
 //
-// 列举代理。
+// Lists the agents created by a user in the specific region.
+//
+// Description:
+//
+//   To query a list of agents, you must have the permission on mgw:ListImportAgent.
 //
 // @param request - ListAgentRequest
 //
@@ -4380,7 +4663,11 @@ func (client *Client) ListAgent(userid *string, request *ListAgentRequest) (_res
 
 // Summary:
 //
-// 列举迁移任务。
+// Lists the migration tasks created by a user in the specific region.
+//
+// Description:
+//
+//   To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
 //
 // @param request - ListJobRequest
 //
@@ -4440,7 +4727,11 @@ func (client *Client) ListJobWithOptions(userid *string, request *ListJobRequest
 
 // Summary:
 //
-// 列举迁移任务。
+// Lists the migration tasks created by a user in the specific region.
+//
+// Description:
+//
+//   To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
 //
 // @param request - ListJobRequest
 //
@@ -4459,7 +4750,15 @@ func (client *Client) ListJob(userid *string, request *ListJobRequest) (_result 
 
 // Summary:
 //
-// 列举迁移任务运行历史。
+// Lists the running history of a migration task.
+//
+// Description:
+//
+//   To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+//
+// 	- A migration task can run multiple rounds. A unique execution ID is generated for each round.
+//
+// 	- The execution history of a migration task records the change history of the task status.
 //
 // @param request - ListJobHistoryRequest
 //
@@ -4515,7 +4814,15 @@ func (client *Client) ListJobHistoryWithOptions(userid *string, jobName *string,
 
 // Summary:
 //
-// 列举迁移任务运行历史。
+// Lists the running history of a migration task.
+//
+// Description:
+//
+//   To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+//
+// 	- A migration task can run multiple rounds. A unique execution ID is generated for each round.
+//
+// 	- The execution history of a migration task records the change history of the task status.
 //
 // @param request - ListJobHistoryRequest
 //
@@ -4534,7 +4841,11 @@ func (client *Client) ListJobHistory(userid *string, jobName *string, request *L
 
 // Summary:
 //
-// 列举通道。
+// Lists tunnels.
+//
+// Description:
+//
+//   To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
 //
 // @param request - ListTunnelRequest
 //
@@ -4586,7 +4897,11 @@ func (client *Client) ListTunnelWithOptions(userid *string, request *ListTunnelR
 
 // Summary:
 //
-// 列举通道。
+// Lists tunnels.
+//
+// Description:
+//
+//   To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
 //
 // @param request - ListTunnelRequest
 //
@@ -4605,7 +4920,13 @@ func (client *Client) ListTunnel(userid *string, request *ListTunnelRequest) (_r
 
 // Summary:
 //
-// 更新数据地址。
+// Updates a data address.
+//
+// Description:
+//
+//   To update a data address, you must have the permission on mgw:UpdateImportAddress.
+//
+// 	- If the data address is associated with an agent, you can scale up or down the agent.
 //
 // @param request - UpdateAddressRequest
 //
@@ -4653,7 +4974,13 @@ func (client *Client) UpdateAddressWithOptions(userid *string, addressName *stri
 
 // Summary:
 //
-// 更新数据地址。
+// Updates a data address.
+//
+// Description:
+//
+//   To update a data address, you must have the permission on mgw:UpdateImportAddress.
+//
+// 	- If the data address is associated with an agent, you can scale up or down the agent.
 //
 // @param request - UpdateAddressRequest
 //
@@ -4672,7 +4999,13 @@ func (client *Client) UpdateAddress(userid *string, addressName *string, request
 
 // Summary:
 //
-// 更新迁移任务。
+// Updates the status or throttling of a task.
+//
+// Description:
+//
+//   To update a migration task, you must have the permission on mgw:UpdateImportJob.
+//
+// 	- You can update only the status or throttling settings of a task in a single request.
 //
 // @param request - UpdateJobRequest
 //
@@ -4720,7 +5053,13 @@ func (client *Client) UpdateJobWithOptions(userid *string, jobName *string, requ
 
 // Summary:
 //
-// 更新迁移任务。
+// Updates the status or throttling of a task.
+//
+// Description:
+//
+//   To update a migration task, you must have the permission on mgw:UpdateImportJob.
+//
+// 	- You can update only the status or throttling settings of a task in a single request.
 //
 // @param request - UpdateJobRequest
 //
@@ -4739,7 +5078,11 @@ func (client *Client) UpdateJob(userid *string, jobName *string, request *Update
 
 // Summary:
 //
-// 更新通道。
+// Updates a tunnel.
+//
+// Description:
+//
+//   To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
 //
 // @param request - UpdateTunnelRequest
 //
@@ -4787,7 +5130,11 @@ func (client *Client) UpdateTunnelWithOptions(userid *string, tunnelId *string, 
 
 // Summary:
 //
-// 更新通道。
+// Updates a tunnel.
+//
+// Description:
+//
+//   To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
 //
 // @param request - UpdateTunnelRequest
 //
@@ -4806,7 +5153,7 @@ func (client *Client) UpdateTunnel(userid *string, tunnelId *string, request *Up
 
 // Summary:
 //
-// 校验数据地址是否可用。
+// Verifies whether a data address is available.
 //
 // @param headers - map
 //
@@ -4842,7 +5189,7 @@ func (client *Client) VerifyAddressWithOptions(userid *string, addressName *stri
 
 // Summary:
 //
-// 校验数据地址是否可用。
+// Verifies whether a data address is available.
 //
 // @return VerifyAddressResponse
 func (client *Client) VerifyAddress(userid *string, addressName *string) (_result *VerifyAddressResponse, _err error) {
