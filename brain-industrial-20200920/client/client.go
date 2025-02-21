@@ -298,6 +298,1541 @@ func (s *ActivateLicenseResponse) SetBody(v *ActivateLicenseResponseBody) *Activ
 	return s
 }
 
+type CreateEssOptJobRequest struct {
+	// example:
+	//
+	// 1
+	Duration  *int32                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ElecPrice []*CreateEssOptJobRequestElecPrice `json:"ElecPrice,omitempty" xml:"ElecPrice,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FIFTEEN_MIN
+	Freq     *string                           `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	GenPrice []*CreateEssOptJobRequestGenPrice `json:"GenPrice,omitempty" xml:"GenPrice,omitempty" type:"Repeated"`
+	Location *CreateEssOptJobRequestLocation   `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// example:
+	//
+	// latest
+	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	// example:
+	//
+	// 2025-02-12
+	RunDate    *string                             `json:"RunDate,omitempty" xml:"RunDate,omitempty"`
+	SystemData []*CreateEssOptJobRequestSystemData `json:"SystemData,omitempty" xml:"SystemData,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// example:
+	//
+	// LOAD_ESS_SOLAR
+	TopoType *string `json:"TopoType,omitempty" xml:"TopoType,omitempty"`
+}
+
+func (s CreateEssOptJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobRequest) SetDuration(v int32) *CreateEssOptJobRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetElecPrice(v []*CreateEssOptJobRequestElecPrice) *CreateEssOptJobRequest {
+	s.ElecPrice = v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetFreq(v string) *CreateEssOptJobRequest {
+	s.Freq = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetGenPrice(v []*CreateEssOptJobRequestGenPrice) *CreateEssOptJobRequest {
+	s.GenPrice = v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetLocation(v *CreateEssOptJobRequestLocation) *CreateEssOptJobRequest {
+	s.Location = v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetModelVersion(v string) *CreateEssOptJobRequest {
+	s.ModelVersion = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetRunDate(v string) *CreateEssOptJobRequest {
+	s.RunDate = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetSystemData(v []*CreateEssOptJobRequestSystemData) *CreateEssOptJobRequest {
+	s.SystemData = v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetTimeZone(v string) *CreateEssOptJobRequest {
+	s.TimeZone = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequest) SetTopoType(v string) *CreateEssOptJobRequest {
+	s.TopoType = &v
+	return s
+}
+
+type CreateEssOptJobRequestElecPrice struct {
+	// example:
+	//
+	// 00:00:15
+	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// example:
+	//
+	// 0.5
+	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
+}
+
+func (s CreateEssOptJobRequestElecPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobRequestElecPrice) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobRequestElecPrice) SetDataTime(v string) *CreateEssOptJobRequestElecPrice {
+	s.DataTime = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequestElecPrice) SetPrice(v string) *CreateEssOptJobRequestElecPrice {
+	s.Price = &v
+	return s
+}
+
+type CreateEssOptJobRequestGenPrice struct {
+	// example:
+	//
+	// 00:00:15
+	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// example:
+	//
+	// 0.3
+	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
+}
+
+func (s CreateEssOptJobRequestGenPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobRequestGenPrice) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobRequestGenPrice) SetDataTime(v string) *CreateEssOptJobRequestGenPrice {
+	s.DataTime = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequestGenPrice) SetPrice(v string) *CreateEssOptJobRequestGenPrice {
+	s.Price = &v
+	return s
+}
+
+type CreateEssOptJobRequestLocation struct {
+	// example:
+	//
+	// 10.123
+	Altitude *float64 `json:"Altitude,omitempty" xml:"Altitude,omitempty"`
+	// example:
+	//
+	// 40.027
+	Latitude *float64 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// example:
+	//
+	// 120.042
+	Longitude *float64 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+}
+
+func (s CreateEssOptJobRequestLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobRequestLocation) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobRequestLocation) SetAltitude(v float64) *CreateEssOptJobRequestLocation {
+	s.Altitude = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequestLocation) SetLatitude(v float64) *CreateEssOptJobRequestLocation {
+	s.Latitude = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequestLocation) SetLongitude(v float64) *CreateEssOptJobRequestLocation {
+	s.Longitude = &v
+	return s
+}
+
+type CreateEssOptJobRequestSystemData struct {
+	HistoryData []map[string]interface{} `json:"HistoryData,omitempty" xml:"HistoryData,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SystemId     *string                `json:"SystemId,omitempty" xml:"SystemId,omitempty"`
+	SystemParams map[string]interface{} `json:"SystemParams,omitempty" xml:"SystemParams,omitempty"`
+	// example:
+	//
+	// ess
+	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+}
+
+func (s CreateEssOptJobRequestSystemData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobRequestSystemData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobRequestSystemData) SetHistoryData(v []map[string]interface{}) *CreateEssOptJobRequestSystemData {
+	s.HistoryData = v
+	return s
+}
+
+func (s *CreateEssOptJobRequestSystemData) SetSystemId(v string) *CreateEssOptJobRequestSystemData {
+	s.SystemId = &v
+	return s
+}
+
+func (s *CreateEssOptJobRequestSystemData) SetSystemParams(v map[string]interface{}) *CreateEssOptJobRequestSystemData {
+	s.SystemParams = v
+	return s
+}
+
+func (s *CreateEssOptJobRequestSystemData) SetSystemType(v string) *CreateEssOptJobRequestSystemData {
+	s.SystemType = &v
+	return s
+}
+
+type CreateEssOptJobShrinkRequest struct {
+	// example:
+	//
+	// 1
+	Duration        *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ElecPriceShrink *string `json:"ElecPrice,omitempty" xml:"ElecPrice,omitempty"`
+	// example:
+	//
+	// FIFTEEN_MIN
+	Freq           *string `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	GenPriceShrink *string `json:"GenPrice,omitempty" xml:"GenPrice,omitempty"`
+	LocationShrink *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// latest
+	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	// example:
+	//
+	// 2025-02-12
+	RunDate          *string `json:"RunDate,omitempty" xml:"RunDate,omitempty"`
+	SystemDataShrink *string `json:"SystemData,omitempty" xml:"SystemData,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// example:
+	//
+	// LOAD_ESS_SOLAR
+	TopoType *string `json:"TopoType,omitempty" xml:"TopoType,omitempty"`
+}
+
+func (s CreateEssOptJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetDuration(v int32) *CreateEssOptJobShrinkRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetElecPriceShrink(v string) *CreateEssOptJobShrinkRequest {
+	s.ElecPriceShrink = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetFreq(v string) *CreateEssOptJobShrinkRequest {
+	s.Freq = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetGenPriceShrink(v string) *CreateEssOptJobShrinkRequest {
+	s.GenPriceShrink = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetLocationShrink(v string) *CreateEssOptJobShrinkRequest {
+	s.LocationShrink = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetModelVersion(v string) *CreateEssOptJobShrinkRequest {
+	s.ModelVersion = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetRunDate(v string) *CreateEssOptJobShrinkRequest {
+	s.RunDate = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetSystemDataShrink(v string) *CreateEssOptJobShrinkRequest {
+	s.SystemDataShrink = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetTimeZone(v string) *CreateEssOptJobShrinkRequest {
+	s.TimeZone = &v
+	return s
+}
+
+func (s *CreateEssOptJobShrinkRequest) SetTopoType(v string) *CreateEssOptJobShrinkRequest {
+	s.TopoType = &v
+	return s
+}
+
+type CreateEssOptJobResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateEssOptJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 68738E75-43C1-5AE5-9F3A-AFEF576D7B5F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateEssOptJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobResponseBody) SetCode(v string) *CreateEssOptJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBody) SetData(v *CreateEssOptJobResponseBodyData) *CreateEssOptJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBody) SetMessage(v string) *CreateEssOptJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBody) SetRequestId(v string) *CreateEssOptJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBody) SetSuccess(v string) *CreateEssOptJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateEssOptJobResponseBodyData struct {
+	// example:
+	//
+	// True
+	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// 2024-12-22 00:00:21
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// ""
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8c0ca18a-246a-4acd-80ca-e16d8ff5ef33
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 25
+	Progress *int32                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Response *CreateEssOptJobResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateEssOptJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobResponseBodyData) SetCompleted(v bool) *CreateEssOptJobResponseBodyData {
+	s.Completed = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyData) SetCreateTime(v string) *CreateEssOptJobResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyData) SetError(v string) *CreateEssOptJobResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyData) SetJobId(v string) *CreateEssOptJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyData) SetProgress(v int32) *CreateEssOptJobResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyData) SetResponse(v *CreateEssOptJobResponseBodyDataResponse) *CreateEssOptJobResponseBodyData {
+	s.Response = v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyData) SetStatus(v string) *CreateEssOptJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type CreateEssOptJobResponseBodyDataResponse struct {
+	// example:
+	//
+	// {}
+	DebugInfo interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	// example:
+	//
+	// LoadForecast
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// {}
+	Result interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s CreateEssOptJobResponseBodyDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobResponseBodyDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobResponseBodyDataResponse) SetDebugInfo(v interface{}) *CreateEssOptJobResponseBodyDataResponse {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyDataResponse) SetJobType(v string) *CreateEssOptJobResponseBodyDataResponse {
+	s.JobType = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponseBodyDataResponse) SetResult(v interface{}) *CreateEssOptJobResponseBodyDataResponse {
+	s.Result = v
+	return s
+}
+
+type CreateEssOptJobResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEssOptJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEssOptJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEssOptJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEssOptJobResponse) SetHeaders(v map[string]*string) *CreateEssOptJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEssOptJobResponse) SetStatusCode(v int32) *CreateEssOptJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEssOptJobResponse) SetBody(v *CreateEssOptJobResponseBody) *CreateEssOptJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLoadForecastJobRequest struct {
+	// example:
+	//
+	// electricityMeter
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// FIFTEEN_MIN
+	Freq        *string                                    `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	HistoryData []*CreateLoadForecastJobRequestHistoryData `json:"HistoryData,omitempty" xml:"HistoryData,omitempty" type:"Repeated"`
+	// example:
+	//
+	// latest
+	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	// example:
+	//
+	// 2025-12-12
+	RunDate *string `json:"RunDate,omitempty" xml:"RunDate,omitempty"`
+	// example:
+	//
+	// load
+	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s CreateLoadForecastJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadForecastJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadForecastJobRequest) SetDeviceType(v string) *CreateLoadForecastJobRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequest) SetDuration(v int32) *CreateLoadForecastJobRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequest) SetFreq(v string) *CreateLoadForecastJobRequest {
+	s.Freq = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequest) SetHistoryData(v []*CreateLoadForecastJobRequestHistoryData) *CreateLoadForecastJobRequest {
+	s.HistoryData = v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequest) SetModelVersion(v string) *CreateLoadForecastJobRequest {
+	s.ModelVersion = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequest) SetRunDate(v string) *CreateLoadForecastJobRequest {
+	s.RunDate = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequest) SetSystemType(v string) *CreateLoadForecastJobRequest {
+	s.SystemType = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequest) SetTimeZone(v string) *CreateLoadForecastJobRequest {
+	s.TimeZone = &v
+	return s
+}
+
+type CreateLoadForecastJobRequestHistoryData struct {
+	// example:
+	//
+	// 2025-12-12 00:00:00
+	RunTime *string `json:"RunTime,omitempty" xml:"RunTime,omitempty"`
+	// example:
+	//
+	// 1.0
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateLoadForecastJobRequestHistoryData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadForecastJobRequestHistoryData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadForecastJobRequestHistoryData) SetRunTime(v string) *CreateLoadForecastJobRequestHistoryData {
+	s.RunTime = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobRequestHistoryData) SetValue(v float64) *CreateLoadForecastJobRequestHistoryData {
+	s.Value = &v
+	return s
+}
+
+type CreateLoadForecastJobShrinkRequest struct {
+	// example:
+	//
+	// electricityMeter
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// FIFTEEN_MIN
+	Freq              *string `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	HistoryDataShrink *string `json:"HistoryData,omitempty" xml:"HistoryData,omitempty"`
+	// example:
+	//
+	// latest
+	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	// example:
+	//
+	// 2025-12-12
+	RunDate *string `json:"RunDate,omitempty" xml:"RunDate,omitempty"`
+	// example:
+	//
+	// load
+	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s CreateLoadForecastJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadForecastJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetDeviceType(v string) *CreateLoadForecastJobShrinkRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetDuration(v int32) *CreateLoadForecastJobShrinkRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetFreq(v string) *CreateLoadForecastJobShrinkRequest {
+	s.Freq = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetHistoryDataShrink(v string) *CreateLoadForecastJobShrinkRequest {
+	s.HistoryDataShrink = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetModelVersion(v string) *CreateLoadForecastJobShrinkRequest {
+	s.ModelVersion = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetRunDate(v string) *CreateLoadForecastJobShrinkRequest {
+	s.RunDate = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetSystemType(v string) *CreateLoadForecastJobShrinkRequest {
+	s.SystemType = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobShrinkRequest) SetTimeZone(v string) *CreateLoadForecastJobShrinkRequest {
+	s.TimeZone = &v
+	return s
+}
+
+type CreateLoadForecastJobResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateLoadForecastJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 68738E75-43C1-5AE5-9F3A-AFEF576D7B5F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateLoadForecastJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadForecastJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadForecastJobResponseBody) SetCode(v string) *CreateLoadForecastJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBody) SetData(v *CreateLoadForecastJobResponseBodyData) *CreateLoadForecastJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBody) SetMessage(v string) *CreateLoadForecastJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBody) SetRequestId(v string) *CreateLoadForecastJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBody) SetSuccess(v string) *CreateLoadForecastJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateLoadForecastJobResponseBodyData struct {
+	// example:
+	//
+	// True
+	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// 2024-12-22 00:00:21
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// ""
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8c0ca18a-246a-4acd-80ca-e16d8ff5ef33
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 25
+	Progress *int32                                         `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Response *CreateLoadForecastJobResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateLoadForecastJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadForecastJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadForecastJobResponseBodyData) SetCompleted(v bool) *CreateLoadForecastJobResponseBodyData {
+	s.Completed = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyData) SetCreateTime(v string) *CreateLoadForecastJobResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyData) SetError(v string) *CreateLoadForecastJobResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyData) SetJobId(v string) *CreateLoadForecastJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyData) SetProgress(v int32) *CreateLoadForecastJobResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyData) SetResponse(v *CreateLoadForecastJobResponseBodyDataResponse) *CreateLoadForecastJobResponseBodyData {
+	s.Response = v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyData) SetStatus(v string) *CreateLoadForecastJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type CreateLoadForecastJobResponseBodyDataResponse struct {
+	// example:
+	//
+	// {}
+	DebugInfo interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	// example:
+	//
+	// PowerForecast
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// {}
+	Result interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s CreateLoadForecastJobResponseBodyDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadForecastJobResponseBodyDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadForecastJobResponseBodyDataResponse) SetDebugInfo(v interface{}) *CreateLoadForecastJobResponseBodyDataResponse {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyDataResponse) SetJobType(v string) *CreateLoadForecastJobResponseBodyDataResponse {
+	s.JobType = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponseBodyDataResponse) SetResult(v interface{}) *CreateLoadForecastJobResponseBodyDataResponse {
+	s.Result = v
+	return s
+}
+
+type CreateLoadForecastJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLoadForecastJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLoadForecastJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadForecastJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadForecastJobResponse) SetHeaders(v map[string]*string) *CreateLoadForecastJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponse) SetStatusCode(v int32) *CreateLoadForecastJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLoadForecastJobResponse) SetBody(v *CreateLoadForecastJobResponseBody) *CreateLoadForecastJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePowerForecastJobRequest struct {
+	// example:
+	//
+	// electricityMeter
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// FIFTEEN_MIN
+	Freq        *string                                     `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	HistoryData []*CreatePowerForecastJobRequestHistoryData `json:"HistoryData,omitempty" xml:"HistoryData,omitempty" type:"Repeated"`
+	Location    *CreatePowerForecastJobRequestLocation      `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// example:
+	//
+	// latest
+	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	// example:
+	//
+	// 2025-02-12
+	RunDate *string `json:"RunDate,omitempty" xml:"RunDate,omitempty"`
+	// example:
+	//
+	// load
+	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s CreatePowerForecastJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobRequest) SetDeviceType(v string) *CreatePowerForecastJobRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetDuration(v int32) *CreatePowerForecastJobRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetFreq(v string) *CreatePowerForecastJobRequest {
+	s.Freq = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetHistoryData(v []*CreatePowerForecastJobRequestHistoryData) *CreatePowerForecastJobRequest {
+	s.HistoryData = v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetLocation(v *CreatePowerForecastJobRequestLocation) *CreatePowerForecastJobRequest {
+	s.Location = v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetModelVersion(v string) *CreatePowerForecastJobRequest {
+	s.ModelVersion = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetRunDate(v string) *CreatePowerForecastJobRequest {
+	s.RunDate = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetSystemType(v string) *CreatePowerForecastJobRequest {
+	s.SystemType = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetTimeZone(v string) *CreatePowerForecastJobRequest {
+	s.TimeZone = &v
+	return s
+}
+
+type CreatePowerForecastJobRequestHistoryData struct {
+	// example:
+	//
+	// 2025-02-12 00:00:00
+	RunTime *string `json:"RunTime,omitempty" xml:"RunTime,omitempty"`
+	// example:
+	//
+	// 1.0
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePowerForecastJobRequestHistoryData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobRequestHistoryData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobRequestHistoryData) SetRunTime(v string) *CreatePowerForecastJobRequestHistoryData {
+	s.RunTime = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequestHistoryData) SetValue(v float64) *CreatePowerForecastJobRequestHistoryData {
+	s.Value = &v
+	return s
+}
+
+type CreatePowerForecastJobRequestLocation struct {
+	// example:
+	//
+	// 10.123
+	Altitude *float64 `json:"Altitude,omitempty" xml:"Altitude,omitempty"`
+	// example:
+	//
+	// 40.027
+	Latitude *float64 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// example:
+	//
+	// 120.042
+	Longitude *float64 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+}
+
+func (s CreatePowerForecastJobRequestLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobRequestLocation) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobRequestLocation) SetAltitude(v float64) *CreatePowerForecastJobRequestLocation {
+	s.Altitude = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequestLocation) SetLatitude(v float64) *CreatePowerForecastJobRequestLocation {
+	s.Latitude = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequestLocation) SetLongitude(v float64) *CreatePowerForecastJobRequestLocation {
+	s.Longitude = &v
+	return s
+}
+
+type CreatePowerForecastJobShrinkRequest struct {
+	// example:
+	//
+	// electricityMeter
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// FIFTEEN_MIN
+	Freq              *string `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	HistoryDataShrink *string `json:"HistoryData,omitempty" xml:"HistoryData,omitempty"`
+	LocationShrink    *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// latest
+	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	// example:
+	//
+	// 2025-02-12
+	RunDate *string `json:"RunDate,omitempty" xml:"RunDate,omitempty"`
+	// example:
+	//
+	// load
+	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s CreatePowerForecastJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetDeviceType(v string) *CreatePowerForecastJobShrinkRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetDuration(v int32) *CreatePowerForecastJobShrinkRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetFreq(v string) *CreatePowerForecastJobShrinkRequest {
+	s.Freq = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetHistoryDataShrink(v string) *CreatePowerForecastJobShrinkRequest {
+	s.HistoryDataShrink = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetLocationShrink(v string) *CreatePowerForecastJobShrinkRequest {
+	s.LocationShrink = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetModelVersion(v string) *CreatePowerForecastJobShrinkRequest {
+	s.ModelVersion = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetRunDate(v string) *CreatePowerForecastJobShrinkRequest {
+	s.RunDate = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetSystemType(v string) *CreatePowerForecastJobShrinkRequest {
+	s.SystemType = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetTimeZone(v string) *CreatePowerForecastJobShrinkRequest {
+	s.TimeZone = &v
+	return s
+}
+
+type CreatePowerForecastJobResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreatePowerForecastJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 68738E75-43C1-5AE5-9F3A-AFEF576D7B5F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreatePowerForecastJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobResponseBody) SetCode(v string) *CreatePowerForecastJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBody) SetData(v *CreatePowerForecastJobResponseBodyData) *CreatePowerForecastJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBody) SetMessage(v string) *CreatePowerForecastJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBody) SetRequestId(v string) *CreatePowerForecastJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBody) SetSuccess(v string) *CreatePowerForecastJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePowerForecastJobResponseBodyData struct {
+	// example:
+	//
+	// True
+	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// 2024-12-22 00:00:21
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// ""
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8c0ca18a-246a-4acd-80ca-e16d8ff5ef33
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 25
+	Progress *int32                                          `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Response *CreatePowerForecastJobResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreatePowerForecastJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobResponseBodyData) SetCompleted(v bool) *CreatePowerForecastJobResponseBodyData {
+	s.Completed = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyData) SetCreateTime(v string) *CreatePowerForecastJobResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyData) SetError(v string) *CreatePowerForecastJobResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyData) SetJobId(v string) *CreatePowerForecastJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyData) SetProgress(v int32) *CreatePowerForecastJobResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyData) SetResponse(v *CreatePowerForecastJobResponseBodyDataResponse) *CreatePowerForecastJobResponseBodyData {
+	s.Response = v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyData) SetStatus(v string) *CreatePowerForecastJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type CreatePowerForecastJobResponseBodyDataResponse struct {
+	// example:
+	//
+	// {}
+	DebugInfo interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	// example:
+	//
+	// LoadForecast
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// {}
+	Result interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s CreatePowerForecastJobResponseBodyDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobResponseBodyDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobResponseBodyDataResponse) SetDebugInfo(v interface{}) *CreatePowerForecastJobResponseBodyDataResponse {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyDataResponse) SetJobType(v string) *CreatePowerForecastJobResponseBodyDataResponse {
+	s.JobType = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponseBodyDataResponse) SetResult(v interface{}) *CreatePowerForecastJobResponseBodyDataResponse {
+	s.Result = v
+	return s
+}
+
+type CreatePowerForecastJobResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePowerForecastJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePowerForecastJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePowerForecastJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePowerForecastJobResponse) SetHeaders(v map[string]*string) *CreatePowerForecastJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponse) SetStatusCode(v int32) *CreatePowerForecastJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobResponse) SetBody(v *CreatePowerForecastJobResponseBody) *CreatePowerForecastJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetAivppAlgoJobRequest struct {
+	// example:
+	//
+	// 5854bfa6-f002-43c2-8e1d-e9b2c28f9384
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAivppAlgoJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAivppAlgoJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAivppAlgoJobRequest) SetJobId(v string) *GetAivppAlgoJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetAivppAlgoJobResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAivppAlgoJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 68738E75-43C1-5AE5-9F3A-AFEF576D7B5F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAivppAlgoJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAivppAlgoJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAivppAlgoJobResponseBody) SetCode(v string) *GetAivppAlgoJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBody) SetData(v *GetAivppAlgoJobResponseBodyData) *GetAivppAlgoJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBody) SetMessage(v string) *GetAivppAlgoJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBody) SetRequestId(v string) *GetAivppAlgoJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBody) SetSuccess(v string) *GetAivppAlgoJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAivppAlgoJobResponseBodyData struct {
+	// example:
+	//
+	// False
+	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// 2024-12-10 17:50:48
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// ""
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 5854bfa6-f002-43c2-8e1d-e9b2c28f9384
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 100
+	Progress *int32                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Response *GetAivppAlgoJobResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetAivppAlgoJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAivppAlgoJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAivppAlgoJobResponseBodyData) SetCompleted(v bool) *GetAivppAlgoJobResponseBodyData {
+	s.Completed = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyData) SetCreateTime(v string) *GetAivppAlgoJobResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyData) SetError(v string) *GetAivppAlgoJobResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyData) SetJobId(v string) *GetAivppAlgoJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyData) SetProgress(v int32) *GetAivppAlgoJobResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyData) SetResponse(v *GetAivppAlgoJobResponseBodyDataResponse) *GetAivppAlgoJobResponseBodyData {
+	s.Response = v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyData) SetStatus(v string) *GetAivppAlgoJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetAivppAlgoJobResponseBodyDataResponse struct {
+	// example:
+	//
+	// {}
+	DebugInfo interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	// example:
+	//
+	// PowerForecast
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// {}
+	Result interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s GetAivppAlgoJobResponseBodyDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAivppAlgoJobResponseBodyDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAivppAlgoJobResponseBodyDataResponse) SetDebugInfo(v interface{}) *GetAivppAlgoJobResponseBodyDataResponse {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyDataResponse) SetJobType(v string) *GetAivppAlgoJobResponseBodyDataResponse {
+	s.JobType = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponseBodyDataResponse) SetResult(v interface{}) *GetAivppAlgoJobResponseBodyDataResponse {
+	s.Result = v
+	return s
+}
+
+type GetAivppAlgoJobResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAivppAlgoJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAivppAlgoJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAivppAlgoJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAivppAlgoJobResponse) SetHeaders(v map[string]*string) *GetAivppAlgoJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponse) SetStatusCode(v int32) *GetAivppAlgoJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAivppAlgoJobResponse) SetBody(v *GetAivppAlgoJobResponseBody) *GetAivppAlgoJobResponse {
+	s.Body = v
+	return s
+}
+
 type GetLicenseRequest struct {
 	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -599,6 +2134,253 @@ func (s *GetLicenseResponse) SetStatusCode(v int32) *GetLicenseResponse {
 }
 
 func (s *GetLicenseResponse) SetBody(v *GetLicenseResponseBody) *GetLicenseResponse {
+	s.Body = v
+	return s
+}
+
+type ListAivppResourcesRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+}
+
+func (s ListAivppResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAivppResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAivppResourcesRequest) SetCurrentPage(v int32) *ListAivppResourcesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListAivppResourcesRequest) SetMaxResults(v int32) *ListAivppResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+type ListAivppResourcesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListAivppResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 37cc36b4344b182d36b45d95ae4ef03952ee5c24733ba461
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 68738E75-43C1-5AE5-9F3A-AFEF576D7B5F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAivppResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAivppResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAivppResourcesResponseBody) SetCode(v string) *ListAivppResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBody) SetData(v []*ListAivppResourcesResponseBodyData) *ListAivppResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBody) SetMaxResults(v int32) *ListAivppResourcesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBody) SetMessage(v string) *ListAivppResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBody) SetNextToken(v string) *ListAivppResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBody) SetRequestId(v string) *ListAivppResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBody) SetSuccess(v string) *ListAivppResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBody) SetTotalCount(v int32) *ListAivppResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAivppResourcesResponseBodyData struct {
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// 2034-03-09T17:47:11Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// i-bp154xh3gt3adb4xu1ue
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// api
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 1
+	LeftQuantity *string `json:"LeftQuantity,omitempty" xml:"LeftQuantity,omitempty"`
+	// example:
+	//
+	// 231287932080007
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1
+	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// LoadForecasting
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// example:
+	//
+	// 2024-09-08T01:16Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListAivppResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAivppResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetDetail(v string) *ListAivppResourcesResponseBodyData {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetExpireTime(v string) *ListAivppResourcesResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetInstanceId(v string) *ListAivppResourcesResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetInstanceType(v string) *ListAivppResourcesResponseBodyData {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetLeftQuantity(v string) *ListAivppResourcesResponseBodyData {
+	s.LeftQuantity = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetOrderId(v string) *ListAivppResourcesResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetQuantity(v string) *ListAivppResourcesResponseBodyData {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetSpecification(v string) *ListAivppResourcesResponseBodyData {
+	s.Specification = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetStartTime(v string) *ListAivppResourcesResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetStatus(v string) *ListAivppResourcesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetUserId(v string) *ListAivppResourcesResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ListAivppResourcesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAivppResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAivppResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAivppResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAivppResourcesResponse) SetHeaders(v map[string]*string) *ListAivppResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAivppResourcesResponse) SetStatusCode(v int32) *ListAivppResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponse) SetBody(v *ListAivppResourcesResponseBody) *ListAivppResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -1223,13 +3005,24 @@ func (client *Client) ActivateLicenseWithOptions(request *ActivateLicenseRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ActivateLicenseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActivateLicenseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActivateLicenseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1243,6 +3036,420 @@ func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ActivateLicenseResponse{}
 	_body, _err := client.ActivateLicenseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建储能运行优化任务
+//
+// @param tmpReq - CreateEssOptJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEssOptJobResponse
+func (client *Client) CreateEssOptJobWithOptions(tmpReq *CreateEssOptJobRequest, runtime *util.RuntimeOptions) (_result *CreateEssOptJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateEssOptJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ElecPrice)) {
+		request.ElecPriceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ElecPrice, tea.String("ElecPrice"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.GenPrice)) {
+		request.GenPriceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GenPrice, tea.String("GenPrice"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Location)) {
+		request.LocationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Location, tea.String("Location"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SystemData)) {
+		request.SystemDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemData, tea.String("SystemData"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElecPriceShrink)) {
+		body["ElecPrice"] = request.ElecPriceShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Freq)) {
+		body["Freq"] = request.Freq
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenPriceShrink)) {
+		body["GenPrice"] = request.GenPriceShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationShrink)) {
+		body["Location"] = request.LocationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelVersion)) {
+		body["ModelVersion"] = request.ModelVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunDate)) {
+		body["RunDate"] = request.RunDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDataShrink)) {
+		body["SystemData"] = request.SystemDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeZone)) {
+		body["TimeZone"] = request.TimeZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopoType)) {
+		body["TopoType"] = request.TopoType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEssOptJob"),
+		Version:     tea.String("2020-09-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEssOptJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEssOptJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建储能运行优化任务
+//
+// @param request - CreateEssOptJobRequest
+//
+// @return CreateEssOptJobResponse
+func (client *Client) CreateEssOptJob(request *CreateEssOptJobRequest) (_result *CreateEssOptJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEssOptJobResponse{}
+	_body, _err := client.CreateEssOptJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建用电负荷预测任务
+//
+// @param tmpReq - CreateLoadForecastJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLoadForecastJobResponse
+func (client *Client) CreateLoadForecastJobWithOptions(tmpReq *CreateLoadForecastJobRequest, runtime *util.RuntimeOptions) (_result *CreateLoadForecastJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLoadForecastJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HistoryData)) {
+		request.HistoryDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HistoryData, tea.String("HistoryData"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		body["DeviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Freq)) {
+		body["Freq"] = request.Freq
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoryDataShrink)) {
+		body["HistoryData"] = request.HistoryDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelVersion)) {
+		body["ModelVersion"] = request.ModelVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunDate)) {
+		body["RunDate"] = request.RunDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemType)) {
+		body["SystemType"] = request.SystemType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeZone)) {
+		body["TimeZone"] = request.TimeZone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLoadForecastJob"),
+		Version:     tea.String("2020-09-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadForecastJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadForecastJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建用电负荷预测任务
+//
+// @param request - CreateLoadForecastJobRequest
+//
+// @return CreateLoadForecastJobResponse
+func (client *Client) CreateLoadForecastJob(request *CreateLoadForecastJobRequest) (_result *CreateLoadForecastJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLoadForecastJobResponse{}
+	_body, _err := client.CreateLoadForecastJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建发电功率预测任务
+//
+// @param tmpReq - CreatePowerForecastJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePowerForecastJobResponse
+func (client *Client) CreatePowerForecastJobWithOptions(tmpReq *CreatePowerForecastJobRequest, runtime *util.RuntimeOptions) (_result *CreatePowerForecastJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePowerForecastJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HistoryData)) {
+		request.HistoryDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HistoryData, tea.String("HistoryData"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Location)) {
+		request.LocationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Location, tea.String("Location"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		body["DeviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Freq)) {
+		body["Freq"] = request.Freq
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoryDataShrink)) {
+		body["HistoryData"] = request.HistoryDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationShrink)) {
+		body["Location"] = request.LocationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelVersion)) {
+		body["ModelVersion"] = request.ModelVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunDate)) {
+		body["RunDate"] = request.RunDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemType)) {
+		body["SystemType"] = request.SystemType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeZone)) {
+		body["TimeZone"] = request.TimeZone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePowerForecastJob"),
+		Version:     tea.String("2020-09-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePowerForecastJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePowerForecastJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建发电功率预测任务
+//
+// @param request - CreatePowerForecastJobRequest
+//
+// @return CreatePowerForecastJobResponse
+func (client *Client) CreatePowerForecastJob(request *CreatePowerForecastJobRequest) (_result *CreatePowerForecastJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePowerForecastJobResponse{}
+	_body, _err := client.CreatePowerForecastJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询aivpp算法job
+//
+// @param request - GetAivppAlgoJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAivppAlgoJobResponse
+func (client *Client) GetAivppAlgoJobWithOptions(request *GetAivppAlgoJobRequest, runtime *util.RuntimeOptions) (_result *GetAivppAlgoJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAivppAlgoJob"),
+		Version:     tea.String("2020-09-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAivppAlgoJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAivppAlgoJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询aivpp算法job
+//
+// @param request - GetAivppAlgoJobRequest
+//
+// @return GetAivppAlgoJobResponse
+func (client *Client) GetAivppAlgoJob(request *GetAivppAlgoJobRequest) (_result *GetAivppAlgoJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAivppAlgoJobResponse{}
+	_body, _err := client.GetAivppAlgoJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1287,13 +3494,24 @@ func (client *Client) GetLicenseWithOptions(request *GetLicenseRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLicenseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLicenseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLicenseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1307,6 +3525,81 @@ func (client *Client) GetLicense(request *GetLicenseRequest) (_result *GetLicens
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLicenseResponse{}
 	_body, _err := client.GetLicenseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户AIVPP资源列表
+//
+// @param request - ListAivppResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAivppResourcesResponse
+func (client *Client) ListAivppResourcesWithOptions(request *ListAivppResourcesRequest, runtime *util.RuntimeOptions) (_result *ListAivppResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAivppResources"),
+		Version:     tea.String("2020-09-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAivppResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAivppResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取用户AIVPP资源列表
+//
+// @param request - ListAivppResourcesRequest
+//
+// @return ListAivppResourcesResponse
+func (client *Client) ListAivppResources(request *ListAivppResourcesRequest) (_result *ListAivppResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAivppResourcesResponse{}
+	_body, _err := client.ListAivppResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1355,13 +3648,24 @@ func (client *Client) ListLicensesWithOptions(request *ListLicensesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLicensesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLicensesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLicensesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1415,13 +3719,24 @@ func (client *Client) ListUserResourcesWithOptions(request *ListUserResourcesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUserResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUserResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUserResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1479,13 +3794,24 @@ func (client *Client) UpdateLicenseDescriptionWithOptions(request *UpdateLicense
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLicenseDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLicenseDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLicenseDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
