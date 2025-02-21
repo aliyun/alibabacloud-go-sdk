@@ -17137,8 +17137,9 @@ type StartCloudRecordRequest struct {
 	Images               []*StartCloudRecordRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	LayoutSpecifiedUsers *StartCloudRecordRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
 	// panes
-	Panes       []*StartCloudRecordRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor *StartCloudRecordRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	Panes                      []*StartCloudRecordRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                *StartCloudRecordRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser *bool                               `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
 	// storageConfig
 	//
 	// This parameter is required.
@@ -17210,6 +17211,11 @@ func (s *StartCloudRecordRequest) SetPanes(v []*StartCloudRecordRequestPanes) *S
 
 func (s *StartCloudRecordRequest) SetRegionColor(v *StartCloudRecordRequestRegionColor) *StartCloudRecordRequest {
 	s.RegionColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetReservePaneForNoCameraUser(v bool) *StartCloudRecordRequest {
+	s.ReservePaneForNoCameraUser = &v
 	return s
 }
 
@@ -17647,7 +17653,8 @@ type StartCloudRecordRequestPanes struct {
 	// example:
 	//
 	// 0
-	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// source
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// sourceType
@@ -17655,8 +17662,12 @@ type StartCloudRecordRequestPanes struct {
 	// example:
 	//
 	// video
-	SourceType *string                                 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*StartCloudRecordRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartCloudRecordRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                 `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *StartCloudRecordRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -17683,6 +17694,11 @@ func (s *StartCloudRecordRequestPanes) SetPaneId(v int32) *StartCloudRecordReque
 	return s
 }
 
+func (s *StartCloudRecordRequestPanes) SetReservePaneForOfflineUser(v bool) *StartCloudRecordRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *StartCloudRecordRequestPanes) SetSource(v string) *StartCloudRecordRequestPanes {
 	s.Source = &v
 	return s
@@ -17695,6 +17711,11 @@ func (s *StartCloudRecordRequestPanes) SetSourceType(v string) *StartCloudRecord
 
 func (s *StartCloudRecordRequestPanes) SetTexts(v []*StartCloudRecordRequestPanesTexts) *StartCloudRecordRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanes) SetVideoOrder(v string) *StartCloudRecordRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -18063,6 +18084,10 @@ type StartCloudRecordRequestStorageConfig struct {
 	//
 	// test-bucket-for-recording
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// https://aliyuns.dalian.oss.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// region
 	//
 	// This parameter is required.
@@ -18104,6 +18129,11 @@ func (s *StartCloudRecordRequestStorageConfig) SetAccessKey(v string) *StartClou
 
 func (s *StartCloudRecordRequestStorageConfig) SetBucket(v string) *StartCloudRecordRequestStorageConfig {
 	s.Bucket = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestStorageConfig) SetEndpoint(v string) *StartCloudRecordRequestStorageConfig {
+	s.Endpoint = &v
 	return s
 }
 
@@ -18340,8 +18370,9 @@ type StartCloudRecordShrinkRequest struct {
 	Images                     []*StartCloudRecordShrinkRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	LayoutSpecifiedUsersShrink *string                                `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
 	// panes
-	Panes       []*StartCloudRecordShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor *StartCloudRecordShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	Panes                      []*StartCloudRecordShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                *StartCloudRecordShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser *bool                                     `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
 	// storageConfig
 	//
 	// This parameter is required.
@@ -18413,6 +18444,11 @@ func (s *StartCloudRecordShrinkRequest) SetPanes(v []*StartCloudRecordShrinkRequ
 
 func (s *StartCloudRecordShrinkRequest) SetRegionColor(v *StartCloudRecordShrinkRequestRegionColor) *StartCloudRecordShrinkRequest {
 	s.RegionColor = v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequest) SetReservePaneForNoCameraUser(v bool) *StartCloudRecordShrinkRequest {
+	s.ReservePaneForNoCameraUser = &v
 	return s
 }
 
@@ -18825,7 +18861,8 @@ type StartCloudRecordShrinkRequestPanes struct {
 	// example:
 	//
 	// 0
-	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// source
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// sourceType
@@ -18833,8 +18870,12 @@ type StartCloudRecordShrinkRequestPanes struct {
 	// example:
 	//
 	// video
-	SourceType *string                                       `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*StartCloudRecordShrinkRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                                    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartCloudRecordShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                       `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *StartCloudRecordShrinkRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -18861,6 +18902,11 @@ func (s *StartCloudRecordShrinkRequestPanes) SetPaneId(v int32) *StartCloudRecor
 	return s
 }
 
+func (s *StartCloudRecordShrinkRequestPanes) SetReservePaneForOfflineUser(v bool) *StartCloudRecordShrinkRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *StartCloudRecordShrinkRequestPanes) SetSource(v string) *StartCloudRecordShrinkRequestPanes {
 	s.Source = &v
 	return s
@@ -18873,6 +18919,11 @@ func (s *StartCloudRecordShrinkRequestPanes) SetSourceType(v string) *StartCloud
 
 func (s *StartCloudRecordShrinkRequestPanes) SetTexts(v []*StartCloudRecordShrinkRequestPanesTexts) *StartCloudRecordShrinkRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanes) SetVideoOrder(v string) *StartCloudRecordShrinkRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -19241,6 +19292,10 @@ type StartCloudRecordShrinkRequestStorageConfig struct {
 	//
 	// test-bucket-for-recording
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// https://aliyuns.dalian.oss.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// region
 	//
 	// This parameter is required.
@@ -19282,6 +19337,11 @@ func (s *StartCloudRecordShrinkRequestStorageConfig) SetAccessKey(v string) *Sta
 
 func (s *StartCloudRecordShrinkRequestStorageConfig) SetBucket(v string) *StartCloudRecordShrinkRequestStorageConfig {
 	s.Bucket = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestStorageConfig) SetEndpoint(v string) *StartCloudRecordShrinkRequestStorageConfig {
+	s.Endpoint = &v
 	return s
 }
 
@@ -20872,11 +20932,17 @@ type StartStreamingOutRequest struct {
 	// example:
 	//
 	// 2
-	CropMode             *int32                                        `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	Images               []*StartStreamingOutRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LayoutSpecifiedUsers *StartStreamingOutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
-	Panes                []*StartStreamingOutRequestPanes              `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor          *StartStreamingOutRequestRegionColor          `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	CropMode                   *int32                                        `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	Images                     []*StartStreamingOutRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	LayoutSpecifiedUsers       *StartStreamingOutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
+	Panes                      []*StartStreamingOutRequestPanes              `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                *StartStreamingOutRequestRegionColor          `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser *bool                                         `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	StartWithoutChannel        *bool                                         `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	// example:
+	//
+	// 30
+	StartWithoutChannelWaitTime *int32 `json:"StartWithoutChannelWaitTime,omitempty" xml:"StartWithoutChannelWaitTime,omitempty"`
 	// example:
 	//
 	// 123
@@ -20946,6 +21012,21 @@ func (s *StartStreamingOutRequest) SetPanes(v []*StartStreamingOutRequestPanes) 
 
 func (s *StartStreamingOutRequest) SetRegionColor(v *StartStreamingOutRequestRegionColor) *StartStreamingOutRequest {
 	s.RegionColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetReservePaneForNoCameraUser(v bool) *StartStreamingOutRequest {
+	s.ReservePaneForNoCameraUser = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetStartWithoutChannel(v bool) *StartStreamingOutRequest {
+	s.StartWithoutChannel = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetStartWithoutChannelWaitTime(v int32) *StartStreamingOutRequest {
+	s.StartWithoutChannelWaitTime = &v
 	return s
 }
 
@@ -21381,7 +21462,8 @@ type StartStreamingOutRequestPanes struct {
 	// example:
 	//
 	// 0
-	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool   `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// example:
 	//
 	// 1811****
@@ -21389,8 +21471,12 @@ type StartStreamingOutRequestPanes struct {
 	// example:
 	//
 	// Video
-	SourceType *string                                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*StartStreamingOutRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartStreamingOutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                  `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *StartStreamingOutRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -21417,6 +21503,11 @@ func (s *StartStreamingOutRequestPanes) SetPaneId(v string) *StartStreamingOutRe
 	return s
 }
 
+func (s *StartStreamingOutRequestPanes) SetReservePaneForOfflineUser(v bool) *StartStreamingOutRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *StartStreamingOutRequestPanes) SetSource(v string) *StartStreamingOutRequestPanes {
 	s.Source = &v
 	return s
@@ -21429,6 +21520,11 @@ func (s *StartStreamingOutRequestPanes) SetSourceType(v string) *StartStreamingO
 
 func (s *StartStreamingOutRequestPanes) SetTexts(v []*StartStreamingOutRequestPanesTexts) *StartStreamingOutRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanes) SetVideoOrder(v string) *StartStreamingOutRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -21995,6 +22091,12 @@ type StartStreamingOutShrinkRequest struct {
 	LayoutSpecifiedUsersShrink *string                                    `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
 	Panes                      []*StartStreamingOutShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 	RegionColor                *StartStreamingOutShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser *bool                                      `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	StartWithoutChannel        *bool                                      `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	// example:
+	//
+	// 30
+	StartWithoutChannelWaitTime *int32 `json:"StartWithoutChannelWaitTime,omitempty" xml:"StartWithoutChannelWaitTime,omitempty"`
 	// example:
 	//
 	// 123
@@ -22064,6 +22166,21 @@ func (s *StartStreamingOutShrinkRequest) SetPanes(v []*StartStreamingOutShrinkRe
 
 func (s *StartStreamingOutShrinkRequest) SetRegionColor(v *StartStreamingOutShrinkRequestRegionColor) *StartStreamingOutShrinkRequest {
 	s.RegionColor = v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequest) SetReservePaneForNoCameraUser(v bool) *StartStreamingOutShrinkRequest {
+	s.ReservePaneForNoCameraUser = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequest) SetStartWithoutChannel(v bool) *StartStreamingOutShrinkRequest {
+	s.StartWithoutChannel = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequest) SetStartWithoutChannelWaitTime(v int32) *StartStreamingOutShrinkRequest {
+	s.StartWithoutChannelWaitTime = &v
 	return s
 }
 
@@ -22474,7 +22591,8 @@ type StartStreamingOutShrinkRequestPanes struct {
 	// example:
 	//
 	// 0
-	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool   `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// example:
 	//
 	// 1811****
@@ -22482,8 +22600,12 @@ type StartStreamingOutShrinkRequestPanes struct {
 	// example:
 	//
 	// Video
-	SourceType *string                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*StartStreamingOutShrinkRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                                     `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartStreamingOutShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                        `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *StartStreamingOutShrinkRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -22510,6 +22632,11 @@ func (s *StartStreamingOutShrinkRequestPanes) SetPaneId(v string) *StartStreamin
 	return s
 }
 
+func (s *StartStreamingOutShrinkRequestPanes) SetReservePaneForOfflineUser(v bool) *StartStreamingOutShrinkRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *StartStreamingOutShrinkRequestPanes) SetSource(v string) *StartStreamingOutShrinkRequestPanes {
 	s.Source = &v
 	return s
@@ -22522,6 +22649,11 @@ func (s *StartStreamingOutShrinkRequestPanes) SetSourceType(v string) *StartStre
 
 func (s *StartStreamingOutShrinkRequestPanes) SetTexts(v []*StartStreamingOutShrinkRequestPanesTexts) *StartStreamingOutShrinkRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanes) SetVideoOrder(v string) *StartStreamingOutShrinkRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -24465,7 +24597,8 @@ type UpdateCloudRecordRequestPanes struct {
 	// example:
 	//
 	// 0
-	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// example:
 	//
 	// 22
@@ -24473,8 +24606,12 @@ type UpdateCloudRecordRequestPanes struct {
 	// example:
 	//
 	// video
-	SourceType *string                                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*UpdateCloudRecordRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateCloudRecordRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                  `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *UpdateCloudRecordRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -24501,6 +24638,11 @@ func (s *UpdateCloudRecordRequestPanes) SetPaneId(v int32) *UpdateCloudRecordReq
 	return s
 }
 
+func (s *UpdateCloudRecordRequestPanes) SetReservePaneForOfflineUser(v bool) *UpdateCloudRecordRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *UpdateCloudRecordRequestPanes) SetSource(v string) *UpdateCloudRecordRequestPanes {
 	s.Source = &v
 	return s
@@ -24513,6 +24655,11 @@ func (s *UpdateCloudRecordRequestPanes) SetSourceType(v string) *UpdateCloudReco
 
 func (s *UpdateCloudRecordRequestPanes) SetTexts(v []*UpdateCloudRecordRequestPanesTexts) *UpdateCloudRecordRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetVideoOrder(v string) *UpdateCloudRecordRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -25496,7 +25643,8 @@ type UpdateCloudRecordShrinkRequestPanes struct {
 	// example:
 	//
 	// 0
-	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// example:
 	//
 	// 22
@@ -25504,8 +25652,12 @@ type UpdateCloudRecordShrinkRequestPanes struct {
 	// example:
 	//
 	// video
-	SourceType *string                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*UpdateCloudRecordShrinkRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                                     `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateCloudRecordShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                        `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *UpdateCloudRecordShrinkRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -25532,6 +25684,11 @@ func (s *UpdateCloudRecordShrinkRequestPanes) SetPaneId(v int32) *UpdateCloudRec
 	return s
 }
 
+func (s *UpdateCloudRecordShrinkRequestPanes) SetReservePaneForOfflineUser(v bool) *UpdateCloudRecordShrinkRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *UpdateCloudRecordShrinkRequestPanes) SetSource(v string) *UpdateCloudRecordShrinkRequestPanes {
 	s.Source = &v
 	return s
@@ -25544,6 +25701,11 @@ func (s *UpdateCloudRecordShrinkRequestPanes) SetSourceType(v string) *UpdateClo
 
 func (s *UpdateCloudRecordShrinkRequestPanes) SetTexts(v []*UpdateCloudRecordShrinkRequestPanesTexts) *UpdateCloudRecordShrinkRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanes) SetVideoOrder(v string) *UpdateCloudRecordShrinkRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -28214,7 +28376,8 @@ type UpdateStreamingOutRequestPanes struct {
 	// example:
 	//
 	// 1
-	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// example:
 	//
 	// 22
@@ -28222,8 +28385,12 @@ type UpdateStreamingOutRequestPanes struct {
 	// example:
 	//
 	// video
-	SourceType *string                                   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*UpdateStreamingOutRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateStreamingOutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                   `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *UpdateStreamingOutRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -28250,6 +28417,11 @@ func (s *UpdateStreamingOutRequestPanes) SetPaneId(v int32) *UpdateStreamingOutR
 	return s
 }
 
+func (s *UpdateStreamingOutRequestPanes) SetReservePaneForOfflineUser(v bool) *UpdateStreamingOutRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *UpdateStreamingOutRequestPanes) SetSource(v string) *UpdateStreamingOutRequestPanes {
 	s.Source = &v
 	return s
@@ -28262,6 +28434,11 @@ func (s *UpdateStreamingOutRequestPanes) SetSourceType(v string) *UpdateStreamin
 
 func (s *UpdateStreamingOutRequestPanes) SetTexts(v []*UpdateStreamingOutRequestPanesTexts) *UpdateStreamingOutRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetVideoOrder(v string) *UpdateStreamingOutRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -29243,7 +29420,8 @@ type UpdateStreamingOutShrinkRequestPanes struct {
 	// example:
 	//
 	// 1
-	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
 	// example:
 	//
 	// 22
@@ -29251,8 +29429,12 @@ type UpdateStreamingOutShrinkRequestPanes struct {
 	// example:
 	//
 	// video
-	SourceType *string                                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*UpdateStreamingOutShrinkRequestPanesTexts    `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateStreamingOutShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cameraFirst
+	VideoOrder *string                                         `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
 	Whiteboard *UpdateStreamingOutShrinkRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -29279,6 +29461,11 @@ func (s *UpdateStreamingOutShrinkRequestPanes) SetPaneId(v int32) *UpdateStreami
 	return s
 }
 
+func (s *UpdateStreamingOutShrinkRequestPanes) SetReservePaneForOfflineUser(v bool) *UpdateStreamingOutShrinkRequestPanes {
+	s.ReservePaneForOfflineUser = &v
+	return s
+}
+
 func (s *UpdateStreamingOutShrinkRequestPanes) SetSource(v string) *UpdateStreamingOutShrinkRequestPanes {
 	s.Source = &v
 	return s
@@ -29291,6 +29478,11 @@ func (s *UpdateStreamingOutShrinkRequestPanes) SetSourceType(v string) *UpdateSt
 
 func (s *UpdateStreamingOutShrinkRequestPanes) SetTexts(v []*UpdateStreamingOutShrinkRequestPanesTexts) *UpdateStreamingOutShrinkRequestPanes {
 	s.Texts = v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanes) SetVideoOrder(v string) *UpdateStreamingOutShrinkRequestPanes {
+	s.VideoOrder = &v
 	return s
 }
 
@@ -36890,6 +37082,10 @@ func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordReques
 		query["RegionColor"] = request.RegionColor
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReservePaneForNoCameraUser)) {
+		query["ReservePaneForNoCameraUser"] = request.ReservePaneForNoCameraUser
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StorageConfig)) {
 		query["StorageConfig"] = request.StorageConfig
 	}
@@ -37336,6 +37532,18 @@ func (client *Client) StartStreamingOutWithOptions(tmpReq *StartStreamingOutRequ
 
 	if !tea.BoolValue(util.IsUnset(request.RegionColor)) {
 		query["RegionColor"] = request.RegionColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReservePaneForNoCameraUser)) {
+		query["ReservePaneForNoCameraUser"] = request.ReservePaneForNoCameraUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartWithoutChannel)) {
+		query["StartWithoutChannel"] = request.StartWithoutChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartWithoutChannelWaitTime)) {
+		query["StartWithoutChannelWaitTime"] = request.StartWithoutChannelWaitTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
