@@ -9649,6 +9649,10 @@ type CreateRouteRequest struct {
 	//
 	// 1000
 	NetworkId *int64 `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// example:
+	//
+	// Serverless_res_group_524257424564736_6831777003XXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateRouteRequest) String() string {
@@ -9666,6 +9670,11 @@ func (s *CreateRouteRequest) SetDestinationCidr(v string) *CreateRouteRequest {
 
 func (s *CreateRouteRequest) SetNetworkId(v int64) *CreateRouteRequest {
 	s.NetworkId = &v
+	return s
+}
+
+func (s *CreateRouteRequest) SetResourceGroupId(v string) *CreateRouteRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -18967,6 +18976,8 @@ type GetNodeResponseBodyNode struct {
 	//
 	// }
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The Id of the scheduled task after the node is published.
+	//
 	// example:
 	//
 	// 700006680527
@@ -23513,6 +23524,8 @@ type GetWorkflowDefinitionRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 查询结果是否包含工作流内部节点的脚本内容（对于内容较多的节点，可能存在较长的网络传输延时）。
+	//
 	// example:
 	//
 	// false
@@ -23768,6 +23781,8 @@ type GetWorkflowDefinitionResponseBodyWorkflowDefinition struct {
 	//
 	// }
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The ID of the workflow on the scheduling side after publishing.
+	//
 	// example:
 	//
 	// 700006657495
@@ -39644,7 +39659,8 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	// example:
 	//
 	// rg-aek2kqofrgXXXXX
-	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceGroupId *string                                                                        `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
 	// The creation time, which is a 64-bit timestamp.
 	//
 	// example:
@@ -39756,6 +39772,11 @@ func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetAliyunRes
 	return s
 }
 
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetAliyunResourceTags(v []*ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
+	s.AliyunResourceTags = v
+	return s
+}
+
 func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetCreateTime(v int64) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.CreateTime = &v
 	return s
@@ -39813,6 +39834,35 @@ func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetSpec(v *L
 
 func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetStatus(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupList {
 	s.Status = &v
+	return s
+}
+
+type ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags struct {
+	// example:
+	//
+	// Key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// Value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags) SetKey(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags) SetValue(v string) *ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags {
+	s.Value = &v
 	return s
 }
 
@@ -60136,6 +60186,10 @@ func (client *Client) CreateRouteWithOptions(request *CreateRouteRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
 		body["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
