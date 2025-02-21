@@ -1,19 +1,6 @@
-2025-01-22 Version: v1.11.3
-- Update API CreatePrivateAccessPolicy: add param TriggerTemplateId.
-- Update API GetPrivateAccessPolicy: update response param.
-- Update API ListPrivateAccessPolices: update response param.
-- Update API UpdatePrivateAccessPolicy: add param TriggerTemplateId.
-
-
-2025-01-16 Version: v1.11.2
-- Update API GetUserDevice: update response param.
-- Update API ListUserDevices: add param AppVersions.
-- Update API ListUserDevices: update response param.
-
-
-2025-01-14 Version: v1.11.1
-- Update API CreateWmEmbedTask: update param CsvControl.
-- Update API CreateWmExtractTask: update param CsvControl.
+2025-02-21 Version: v1.11.4
+- Update API GetPrivateAccessApplication: update response param.
+- Update API UpdatePrivateAccessApplication: add param L7Config.
 
 
 2025-01-14 Version: v1.11.0

@@ -75,6 +75,424 @@ func (s *DisposalContent) SetProhibitActions(v []*string) *DisposalContent {
 	return s
 }
 
+type PAL7Config struct {
+	BypassConfig             *PAL7ConfigBypassConfig             `json:"BypassConfig,omitempty" xml:"BypassConfig,omitempty" type:"Struct"`
+	CertId                   *string                             `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	ClientIpConfig           *PAL7ConfigClientIpConfig           `json:"ClientIpConfig,omitempty" xml:"ClientIpConfig,omitempty" type:"Struct"`
+	ClientIpRestrictConfig   *PAL7ConfigClientIpRestrictConfig   `json:"ClientIpRestrictConfig,omitempty" xml:"ClientIpRestrictConfig,omitempty" type:"Struct"`
+	ClientTypeRestrictConfig *PAL7ConfigClientTypeRestrictConfig `json:"ClientTypeRestrictConfig,omitempty" xml:"ClientTypeRestrictConfig,omitempty" type:"Struct"`
+	DnsConfig                *PAL7ConfigDnsConfig                `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	IsNtlm                   *bool                               `json:"IsNtlm,omitempty" xml:"IsNtlm,omitempty"`
+	JsHookConfig             *PAL7ConfigJsHookConfig             `json:"JsHookConfig,omitempty" xml:"JsHookConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 逗号分隔的枚举值：automatic,custom
+	ProxyDomainTypes            []byte                                 `json:"ProxyDomainTypes,omitempty" xml:"ProxyDomainTypes,omitempty"`
+	RequestHeaderRewriteConfig  *PAL7ConfigRequestHeaderRewriteConfig  `json:"RequestHeaderRewriteConfig,omitempty" xml:"RequestHeaderRewriteConfig,omitempty" type:"Struct"`
+	RequestQueryRewriteConfig   *PAL7ConfigRequestQueryRewriteConfig   `json:"RequestQueryRewriteConfig,omitempty" xml:"RequestQueryRewriteConfig,omitempty" type:"Struct"`
+	ResponseHeaderRewriteConfig *PAL7ConfigResponseHeaderRewriteConfig `json:"ResponseHeaderRewriteConfig,omitempty" xml:"ResponseHeaderRewriteConfig,omitempty" type:"Struct"`
+	ResponseRewriteConfig       *PAL7ConfigResponseRewriteConfig       `json:"ResponseRewriteConfig,omitempty" xml:"ResponseRewriteConfig,omitempty" type:"Struct"`
+}
+
+func (s PAL7Config) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7Config) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7Config) SetBypassConfig(v *PAL7ConfigBypassConfig) *PAL7Config {
+	s.BypassConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetCertId(v string) *PAL7Config {
+	s.CertId = &v
+	return s
+}
+
+func (s *PAL7Config) SetClientIpConfig(v *PAL7ConfigClientIpConfig) *PAL7Config {
+	s.ClientIpConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetClientIpRestrictConfig(v *PAL7ConfigClientIpRestrictConfig) *PAL7Config {
+	s.ClientIpRestrictConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetClientTypeRestrictConfig(v *PAL7ConfigClientTypeRestrictConfig) *PAL7Config {
+	s.ClientTypeRestrictConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetDnsConfig(v *PAL7ConfigDnsConfig) *PAL7Config {
+	s.DnsConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetIsNtlm(v bool) *PAL7Config {
+	s.IsNtlm = &v
+	return s
+}
+
+func (s *PAL7Config) SetJsHookConfig(v *PAL7ConfigJsHookConfig) *PAL7Config {
+	s.JsHookConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetProxyDomainTypes(v []byte) *PAL7Config {
+	s.ProxyDomainTypes = v
+	return s
+}
+
+func (s *PAL7Config) SetRequestHeaderRewriteConfig(v *PAL7ConfigRequestHeaderRewriteConfig) *PAL7Config {
+	s.RequestHeaderRewriteConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetRequestQueryRewriteConfig(v *PAL7ConfigRequestQueryRewriteConfig) *PAL7Config {
+	s.RequestQueryRewriteConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetResponseHeaderRewriteConfig(v *PAL7ConfigResponseHeaderRewriteConfig) *PAL7Config {
+	s.ResponseHeaderRewriteConfig = v
+	return s
+}
+
+func (s *PAL7Config) SetResponseRewriteConfig(v *PAL7ConfigResponseRewriteConfig) *PAL7Config {
+	s.ResponseRewriteConfig = v
+	return s
+}
+
+type PAL7ConfigBypassConfig struct {
+	AppBypassFroms []*string                               `json:"AppBypassFroms,omitempty" xml:"AppBypassFroms,omitempty" type:"Repeated"`
+	Mode           *string                                 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	UrlBypassRules []*PAL7ConfigBypassConfigUrlBypassRules `json:"UrlBypassRules,omitempty" xml:"UrlBypassRules,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigBypassConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigBypassConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigBypassConfig) SetAppBypassFroms(v []*string) *PAL7ConfigBypassConfig {
+	s.AppBypassFroms = v
+	return s
+}
+
+func (s *PAL7ConfigBypassConfig) SetMode(v string) *PAL7ConfigBypassConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *PAL7ConfigBypassConfig) SetUrlBypassRules(v []*PAL7ConfigBypassConfigUrlBypassRules) *PAL7ConfigBypassConfig {
+	s.UrlBypassRules = v
+	return s
+}
+
+type PAL7ConfigBypassConfigUrlBypassRules struct {
+	Froms []*string `json:"Froms,omitempty" xml:"Froms,omitempty" type:"Repeated"`
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigBypassConfigUrlBypassRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigBypassConfigUrlBypassRules) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigBypassConfigUrlBypassRules) SetFroms(v []*string) *PAL7ConfigBypassConfigUrlBypassRules {
+	s.Froms = v
+	return s
+}
+
+func (s *PAL7ConfigBypassConfigUrlBypassRules) SetPaths(v []*string) *PAL7ConfigBypassConfigUrlBypassRules {
+	s.Paths = v
+	return s
+}
+
+type PAL7ConfigClientIpConfig struct {
+	ClientIpHeaders []*string `json:"ClientIpHeaders,omitempty" xml:"ClientIpHeaders,omitempty" type:"Repeated"`
+	TrustedProxies  []*string `json:"TrustedProxies,omitempty" xml:"TrustedProxies,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigClientIpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigClientIpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigClientIpConfig) SetClientIpHeaders(v []*string) *PAL7ConfigClientIpConfig {
+	s.ClientIpHeaders = v
+	return s
+}
+
+func (s *PAL7ConfigClientIpConfig) SetTrustedProxies(v []*string) *PAL7ConfigClientIpConfig {
+	s.TrustedProxies = v
+	return s
+}
+
+type PAL7ConfigClientIpRestrictConfig struct {
+	BlacklistFroms []*string `json:"BlacklistFroms,omitempty" xml:"BlacklistFroms,omitempty" type:"Repeated"`
+	// example:
+	//
+	// disabled,whitelist,blacklist
+	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	WhitelistFroms []*string `json:"WhitelistFroms,omitempty" xml:"WhitelistFroms,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigClientIpRestrictConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigClientIpRestrictConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigClientIpRestrictConfig) SetBlacklistFroms(v []*string) *PAL7ConfigClientIpRestrictConfig {
+	s.BlacklistFroms = v
+	return s
+}
+
+func (s *PAL7ConfigClientIpRestrictConfig) SetMode(v string) *PAL7ConfigClientIpRestrictConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *PAL7ConfigClientIpRestrictConfig) SetWhitelistFroms(v []*string) *PAL7ConfigClientIpRestrictConfig {
+	s.WhitelistFroms = v
+	return s
+}
+
+type PAL7ConfigClientTypeRestrictConfig struct {
+	BlacklistClients []*string `json:"BlacklistClients,omitempty" xml:"BlacklistClients,omitempty" type:"Repeated"`
+	// example:
+	//
+	// disabled,whitelist,blacklist
+	Mode             *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	WhitelistClients []*string `json:"WhitelistClients,omitempty" xml:"WhitelistClients,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigClientTypeRestrictConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigClientTypeRestrictConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigClientTypeRestrictConfig) SetBlacklistClients(v []*string) *PAL7ConfigClientTypeRestrictConfig {
+	s.BlacklistClients = v
+	return s
+}
+
+func (s *PAL7ConfigClientTypeRestrictConfig) SetMode(v string) *PAL7ConfigClientTypeRestrictConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *PAL7ConfigClientTypeRestrictConfig) SetWhitelistClients(v []*string) *PAL7ConfigClientTypeRestrictConfig {
+	s.WhitelistClients = v
+	return s
+}
+
+type PAL7ConfigDnsConfig struct {
+	DnsServers []*string `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigDnsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigDnsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigDnsConfig) SetDnsServers(v []*string) *PAL7ConfigDnsConfig {
+	s.DnsServers = v
+	return s
+}
+
+type PAL7ConfigJsHookConfig struct {
+	Mode         *string                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ReplaceRules []*PAL7ConfigReplaceRule `json:"ReplaceRules,omitempty" xml:"ReplaceRules,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigJsHookConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigJsHookConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigJsHookConfig) SetMode(v string) *PAL7ConfigJsHookConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *PAL7ConfigJsHookConfig) SetReplaceRules(v []*PAL7ConfigReplaceRule) *PAL7ConfigJsHookConfig {
+	s.ReplaceRules = v
+	return s
+}
+
+type PAL7ConfigRequestHeaderRewriteConfig struct {
+	Ops []*PAL7ConfigRewriteOp `json:"Ops,omitempty" xml:"Ops,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigRequestHeaderRewriteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigRequestHeaderRewriteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigRequestHeaderRewriteConfig) SetOps(v []*PAL7ConfigRewriteOp) *PAL7ConfigRequestHeaderRewriteConfig {
+	s.Ops = v
+	return s
+}
+
+type PAL7ConfigRequestQueryRewriteConfig struct {
+	Ops []*PAL7ConfigRewriteOp `json:"Ops,omitempty" xml:"Ops,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigRequestQueryRewriteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigRequestQueryRewriteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigRequestQueryRewriteConfig) SetOps(v []*PAL7ConfigRewriteOp) *PAL7ConfigRequestQueryRewriteConfig {
+	s.Ops = v
+	return s
+}
+
+type PAL7ConfigResponseHeaderRewriteConfig struct {
+	Ops []*PAL7ConfigRewriteOp `json:"Ops,omitempty" xml:"Ops,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigResponseHeaderRewriteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigResponseHeaderRewriteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigResponseHeaderRewriteConfig) SetOps(v []*PAL7ConfigRewriteOp) *PAL7ConfigResponseHeaderRewriteConfig {
+	s.Ops = v
+	return s
+}
+
+type PAL7ConfigResponseRewriteConfig struct {
+	Mode         *string                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ReplaceRules []*PAL7ConfigReplaceRule `json:"ReplaceRules,omitempty" xml:"ReplaceRules,omitempty" type:"Repeated"`
+}
+
+func (s PAL7ConfigResponseRewriteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigResponseRewriteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigResponseRewriteConfig) SetMode(v string) *PAL7ConfigResponseRewriteConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *PAL7ConfigResponseRewriteConfig) SetReplaceRules(v []*PAL7ConfigReplaceRule) *PAL7ConfigResponseRewriteConfig {
+	s.ReplaceRules = v
+	return s
+}
+
+type PAL7ConfigReplaceRule struct {
+	// example:
+	//
+	// aaa
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// bbb
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s PAL7ConfigReplaceRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigReplaceRule) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigReplaceRule) SetFrom(v string) *PAL7ConfigReplaceRule {
+	s.From = &v
+	return s
+}
+
+func (s *PAL7ConfigReplaceRule) SetTo(v string) *PAL7ConfigReplaceRule {
+	s.To = &v
+	return s
+}
+
+type PAL7ConfigRewriteOp struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+	// example:
+	//
+	// add,set,delete,replace
+	Op            *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueVariable *string `json:"ValueVariable,omitempty" xml:"ValueVariable,omitempty"`
+}
+
+func (s PAL7ConfigRewriteOp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PAL7ConfigRewriteOp) GoString() string {
+	return s.String()
+}
+
+func (s *PAL7ConfigRewriteOp) SetKey(v string) *PAL7ConfigRewriteOp {
+	s.Key = &v
+	return s
+}
+
+func (s *PAL7ConfigRewriteOp) SetOldValue(v string) *PAL7ConfigRewriteOp {
+	s.OldValue = &v
+	return s
+}
+
+func (s *PAL7ConfigRewriteOp) SetOp(v string) *PAL7ConfigRewriteOp {
+	s.Op = &v
+	return s
+}
+
+func (s *PAL7ConfigRewriteOp) SetValue(v string) *PAL7ConfigRewriteOp {
+	s.Value = &v
+	return s
+}
+
+func (s *PAL7ConfigRewriteOp) SetValueVariable(v string) *PAL7ConfigRewriteOp {
+	s.ValueVariable = &v
+	return s
+}
+
 type RecoveryContent struct {
 	AuthReportInterval *AuthReportInterval `json:"AuthReportInterval,omitempty" xml:"AuthReportInterval,omitempty"`
 	// This parameter is required.
@@ -165,6 +583,95 @@ func (s *Rule) SetRules(v []*Rule) *Rule {
 
 func (s *Rule) SetValues(v []*string) *Rule {
 	s.Values = v
+	return s
+}
+
+type UserCertificate struct {
+	// example:
+	//
+	// cert-aabbccdd
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// example:
+	//
+	// 用于测试
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// example:
+	//
+	// xxxx
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DnsNames    []*string `json:"DnsNames,omitempty" xml:"DnsNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1734492686
+	ExpTimeUnix *int64 `json:"ExpTimeUnix,omitempty" xml:"ExpTimeUnix,omitempty"`
+	// example:
+	//
+	// 1734523812
+	GmtCreateUnix *int64 `json:"GmtCreateUnix,omitempty" xml:"GmtCreateUnix,omitempty"`
+	// example:
+	//
+	// 1734523812
+	GmtModifiedUnix *int64 `json:"GmtModifiedUnix,omitempty" xml:"GmtModifiedUnix,omitempty"`
+	// example:
+	//
+	// 证书1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// xxxx
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+}
+
+func (s UserCertificate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserCertificate) GoString() string {
+	return s.String()
+}
+
+func (s *UserCertificate) SetCertId(v string) *UserCertificate {
+	s.CertId = &v
+	return s
+}
+
+func (s *UserCertificate) SetCertificate(v string) *UserCertificate {
+	s.Certificate = &v
+	return s
+}
+
+func (s *UserCertificate) SetDescription(v string) *UserCertificate {
+	s.Description = &v
+	return s
+}
+
+func (s *UserCertificate) SetDnsNames(v []*string) *UserCertificate {
+	s.DnsNames = v
+	return s
+}
+
+func (s *UserCertificate) SetExpTimeUnix(v int64) *UserCertificate {
+	s.ExpTimeUnix = &v
+	return s
+}
+
+func (s *UserCertificate) SetGmtCreateUnix(v int64) *UserCertificate {
+	s.GmtCreateUnix = &v
+	return s
+}
+
+func (s *UserCertificate) SetGmtModifiedUnix(v int64) *UserCertificate {
+	s.GmtModifiedUnix = &v
+	return s
+}
+
+func (s *UserCertificate) SetName(v string) *UserCertificate {
+	s.Name = &v
+	return s
+}
+
+func (s *UserCertificate) SetPrivateKey(v string) *UserCertificate {
+	s.PrivateKey = &v
 	return s
 }
 
@@ -6520,10 +7027,11 @@ type GetPrivateAccessApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// 2022-08-30 16:50:32
-	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7ProxyDomainAutomatic *string `json:"L7ProxyDomainAutomatic,omitempty" xml:"L7ProxyDomainAutomatic,omitempty"`
-	L7ProxyDomainCustom    *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	CreateTime             *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description            *string     `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7Config               *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	L7ProxyDomainAutomatic *string     `json:"L7ProxyDomainAutomatic,omitempty" xml:"L7ProxyDomainAutomatic,omitempty"`
+	L7ProxyDomainCustom    *string     `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// example:
 	//
 	// private_access_application_name
@@ -6576,6 +7084,11 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetCreateTime(v str
 
 func (s *GetPrivateAccessApplicationResponseBodyApplication) SetDescription(v string) *GetPrivateAccessApplicationResponseBodyApplication {
 	s.Description = &v
+	return s
+}
+
+func (s *GetPrivateAccessApplicationResponseBodyApplication) SetL7Config(v *PAL7Config) *GetPrivateAccessApplicationResponseBodyApplication {
+	s.L7Config = v
 	return s
 }
 
@@ -19024,10 +19537,11 @@ type UpdatePrivateAccessApplicationRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// if can be null:
 	// true
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	L7ProxyDomainCustom          *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
-	L7ProxyDomainPrivate         *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
+	Description                  *string     `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7Config                     *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	L7ProxyDomainAutomaticPrefix *string     `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	L7ProxyDomainCustom          *string     `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	L7ProxyDomainPrivate         *string     `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
 	// example:
 	//
 	// Cover
@@ -19066,6 +19580,11 @@ func (s *UpdatePrivateAccessApplicationRequest) SetApplicationId(v string) *Upda
 
 func (s *UpdatePrivateAccessApplicationRequest) SetDescription(v string) *UpdatePrivateAccessApplicationRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) SetL7Config(v *PAL7Config) *UpdatePrivateAccessApplicationRequest {
+	s.L7Config = v
 	return s
 }
 
@@ -19134,6 +19653,136 @@ func (s *UpdatePrivateAccessApplicationRequestPortRanges) SetBegin(v int32) *Upd
 }
 
 func (s *UpdatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *UpdatePrivateAccessApplicationRequestPortRanges {
+	s.End = &v
+	return s
+}
+
+type UpdatePrivateAccessApplicationShrinkRequest struct {
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pa-application-e12860ef6c48****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// if can be null:
+	// true
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7ConfigShrink               *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	L7ProxyDomainCustom          *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	L7ProxyDomainPrivate         *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
+	// example:
+	//
+	// Cover
+	ModifyType *string                                                  `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	PortRanges []*UpdatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// if can be null:
+	// true
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+}
+
+func (s UpdatePrivateAccessApplicationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateAccessApplicationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetAddresses(v []*string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.Addresses = v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetApplicationId(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetDescription(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetL7ConfigShrink(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.L7ConfigShrink = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetL7ProxyDomainAutomaticPrefix(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.L7ProxyDomainAutomaticPrefix = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetL7ProxyDomainCustom(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.L7ProxyDomainCustom = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetL7ProxyDomainPrivate(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.L7ProxyDomainPrivate = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetModifyType(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.ModifyType = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetPortRanges(v []*UpdatePrivateAccessApplicationShrinkRequestPortRanges) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.PortRanges = v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetProtocol(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetStatus(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.TagIds = v
+	return s
+}
+
+type UpdatePrivateAccessApplicationShrinkRequestPortRanges struct {
+	// example:
+	//
+	// 80
+	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+}
+
+func (s UpdatePrivateAccessApplicationShrinkRequestPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateAccessApplicationShrinkRequestPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequestPortRanges) SetBegin(v int32) *UpdatePrivateAccessApplicationShrinkRequestPortRanges {
+	s.Begin = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequestPortRanges) SetEnd(v int32) *UpdatePrivateAccessApplicationShrinkRequestPortRanges {
 	s.End = &v
 	return s
 }
@@ -28045,16 +28694,22 @@ func (client *Client) UpdateNacUserCertStatus(request *UpdateNacUserCertStatusRe
 //
 // 修改内网访问应用
 //
-// @param request - UpdatePrivateAccessApplicationRequest
+// @param tmpReq - UpdatePrivateAccessApplicationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrivateAccessApplicationResponse
-func (client *Client) UpdatePrivateAccessApplicationWithOptions(request *UpdatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessApplicationResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessApplicationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdatePrivateAccessApplicationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.L7Config)) {
+		request.L7ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.L7Config, tea.String("L7Config"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Addresses)) {
@@ -28067,6 +28722,10 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(request *UpdateP
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L7ConfigShrink)) {
+		body["L7Config"] = request.L7ConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.L7ProxyDomainAutomaticPrefix)) {
