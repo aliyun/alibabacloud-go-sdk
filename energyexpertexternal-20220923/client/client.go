@@ -642,6 +642,311 @@ func (s *OrgEmissionModuleEmissionList) SetRatio(v float64) *OrgEmissionModuleEm
 	return s
 }
 
+type AnalyzeVlRealtimeRequest struct {
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use in the form of a document URL, for a single document (supports up to 1000 pages and 100MB)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+	//
+	// > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：本地文件生成的FileInputStream
+	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// Language, parameters that can be passed
+	//
+	// - zh-CN: Chinese (default)
+	//
+	// - en-US: English
+	//
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page, configure the template, and then get the corresponding template ID.
+	//
+	// example:
+	//
+	// 572d24k0c95a
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s AnalyzeVlRealtimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeRequest) SetFileUrl(v string) *AnalyzeVlRealtimeRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeRequest) SetLanguage(v string) *AnalyzeVlRealtimeRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeRequest) SetTemplateId(v string) *AnalyzeVlRealtimeRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type AnalyzeVlRealtimeAdvanceRequest struct {
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use in the form of a document URL, for a single document (supports up to 1000 pages and 100MB)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+	//
+	// > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：本地文件生成的FileInputStream
+	FileUrlObject io.Reader `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// Language, parameters that can be passed
+	//
+	// - zh-CN: Chinese (default)
+	//
+	// - en-US: English
+	//
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page, configure the template, and then get the corresponding template ID.
+	//
+	// example:
+	//
+	// 572d24k0c95a
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s AnalyzeVlRealtimeAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeAdvanceRequest) SetFileUrlObject(v io.Reader) *AnalyzeVlRealtimeAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeAdvanceRequest) SetLanguage(v string) *AnalyzeVlRealtimeAdvanceRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeAdvanceRequest) SetTemplateId(v string) *AnalyzeVlRealtimeAdvanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type AnalyzeVlRealtimeResponseBody struct {
+	// Return result.
+	Data *AnalyzeVlRealtimeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s AnalyzeVlRealtimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeResponseBody) SetData(v *AnalyzeVlRealtimeResponseBodyData) *AnalyzeVlRealtimeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponseBody) SetRequestId(v string) *AnalyzeVlRealtimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AnalyzeVlRealtimeResponseBodyData struct {
+	// Document parsing result details
+	KvListInfo []*AnalyzeVlRealtimeResponseBodyDataKvListInfo `json:"kvListInfo,omitempty" xml:"kvListInfo,omitempty" type:"Repeated"`
+}
+
+func (s AnalyzeVlRealtimeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyData) SetKvListInfo(v []*AnalyzeVlRealtimeResponseBodyDataKvListInfo) *AnalyzeVlRealtimeResponseBodyData {
+	s.KvListInfo = v
+	return s
+}
+
+type AnalyzeVlRealtimeResponseBodyDataKvListInfo struct {
+	// Recall content
+	Context *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext `json:"context,omitempty" xml:"context,omitempty" type:"Struct"`
+	// Field Key name
+	//
+	// example:
+	//
+	// username
+	KeyName *string `json:"keyName,omitempty" xml:"keyName,omitempty"`
+	// Field key value
+	//
+	// example:
+	//
+	// bob
+	KeyValue *string `json:"keyValue,omitempty" xml:"keyValue,omitempty"`
+}
+
+func (s AnalyzeVlRealtimeResponseBodyDataKvListInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeResponseBodyDataKvListInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfo) SetContext(v *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) *AnalyzeVlRealtimeResponseBodyDataKvListInfo {
+	s.Context = v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfo) SetKeyName(v string) *AnalyzeVlRealtimeResponseBodyDataKvListInfo {
+	s.KeyName = &v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfo) SetKeyValue(v string) *AnalyzeVlRealtimeResponseBodyDataKvListInfo {
+	s.KeyValue = &v
+	return s
+}
+
+type AnalyzeVlRealtimeResponseBodyDataKvListInfoContext struct {
+	// Confidence
+	Confidence *AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence `json:"confidence,omitempty" xml:"confidence,omitempty" type:"Struct"`
+	// Key recall information details
+	Key []*ContentItem `json:"key,omitempty" xml:"key,omitempty" type:"Repeated"`
+	// Value recall information details
+	Value []*ContentItem `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
+}
+
+func (s AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) SetConfidence(v *AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence) *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext {
+	s.Confidence = v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) SetKey(v []*ContentItem) *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext {
+	s.Key = v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) SetValue(v []*ContentItem) *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext {
+	s.Value = v
+	return s
+}
+
+type AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence struct {
+	// Key confidence
+	//
+	// example:
+	//
+	// 0.9994202852249146
+	KeyConfidence *float64 `json:"keyConfidence,omitempty" xml:"keyConfidence,omitempty"`
+	// Value confidence
+	//
+	// example:
+	//
+	// 0.9794202852249146
+	ValueConfidence *float64 `json:"valueConfidence,omitempty" xml:"valueConfidence,omitempty"`
+}
+
+func (s AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence) SetKeyConfidence(v float64) *AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence {
+	s.KeyConfidence = &v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence) SetValueConfidence(v float64) *AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence {
+	s.ValueConfidence = &v
+	return s
+}
+
+type AnalyzeVlRealtimeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AnalyzeVlRealtimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AnalyzeVlRealtimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeVlRealtimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeVlRealtimeResponse) SetHeaders(v map[string]*string) *AnalyzeVlRealtimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponse) SetStatusCode(v int32) *AnalyzeVlRealtimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AnalyzeVlRealtimeResponse) SetBody(v *AnalyzeVlRealtimeResponseBody) *AnalyzeVlRealtimeResponse {
+	s.Body = v
+	return s
+}
+
 type BatchSaveInstructionStatusRequest struct {
 	// This parameter is required.
 	//
@@ -8781,6 +9086,208 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Document Results
+//
+// Description:
+//
+// Users obtain real-time VL results by uploading a document URL.
+//
+// @param request - AnalyzeVlRealtimeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeVlRealtimeResponse
+func (client *Client) AnalyzeVlRealtimeWithOptions(request *AnalyzeVlRealtimeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AnalyzeVlRealtimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["fileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["templateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AnalyzeVlRealtime"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aidoc/document/analyzeVlRealtime"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AnalyzeVlRealtimeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AnalyzeVlRealtimeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Get Document Results
+//
+// Description:
+//
+// Users obtain real-time VL results by uploading a document URL.
+//
+// @param request - AnalyzeVlRealtimeRequest
+//
+// @return AnalyzeVlRealtimeResponse
+func (client *Client) AnalyzeVlRealtime(request *AnalyzeVlRealtimeRequest) (_result *AnalyzeVlRealtimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AnalyzeVlRealtimeResponse{}
+	_body, _err := client.AnalyzeVlRealtimeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AnalyzeVlRealtimeAdvance(request *AnalyzeVlRealtimeAdvanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AnalyzeVlRealtimeResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("energyExpertExternal"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	analyzeVlRealtimeReq := &AnalyzeVlRealtimeRequest{}
+	openapiutil.Convert(request, analyzeVlRealtimeReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		analyzeVlRealtimeReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	analyzeVlRealtimeResp, _err := client.AnalyzeVlRealtimeWithOptions(analyzeVlRealtimeReq, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = analyzeVlRealtimeResp
 	return _result, _err
 }
 
