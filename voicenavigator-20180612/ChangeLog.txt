@@ -1,6 +1,9 @@
 2025-02-21 Version: v2.0.8
 - Generated golang 2018-06-12 for VoiceNavigator.
 
+2025-02-21 Version: v2.0.8
+- Generated golang 2018-06-12 for VoiceNavigator.
+
 2025-01-06 Version: v2.0.7
 - Update API GetAsrConfig: update response param.
 - Update API ModifyAsrConfig: add param Engine.
