@@ -10,10 +10,26 @@ import (
 )
 
 type DataImageRegionDistributeMapValue struct {
+	// The status of the image distribution task.
+	//
+	// Valid values:
+	//
+	// 	- AVAILABLE: The task is ready.
+	//
+	// 	- DELETE: The task is deleted.
+	//
+	// 	- INIT: The task is being initialized.
+	//
+	// 	- CREATE_FAILED: The task failed to be created.
+	//
+	// 	- CREATING: The task is being created.
+	//
 	// example:
 	//
 	// AVAILABLE
 	DistributeStatus *string `json:"DistributeStatus,omitempty" xml:"DistributeStatus,omitempty"`
+	// The distribution progress of the image.
+	//
 	// example:
 	//
 	// 100%
@@ -166,11 +182,16 @@ func (s *AttachKeyPairResponse) SetBody(v *AttachKeyPairResponseBody) *AttachKey
 }
 
 type AuthorizeAndroidInstanceRequest struct {
+	// List of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// User ID to be assigned.
+	//
 	// example:
 	//
 	// test
 	AuthorizeUserId *string `json:"AuthorizeUserId,omitempty" xml:"AuthorizeUserId,omitempty"`
+	// User ID to be unassigned.
+	//
 	// example:
 	//
 	// test
@@ -201,6 +222,8 @@ func (s *AuthorizeAndroidInstanceRequest) SetUnAuthorizeUserId(v string) *Author
 }
 
 type AuthorizeAndroidInstanceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 1A923337-44D9-5CAD-9A53-95084BD4****
@@ -250,19 +273,52 @@ func (s *AuthorizeAndroidInstanceResponse) SetBody(v *AuthorizeAndroidInstanceRe
 }
 
 type BackupFileRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
-	BackupAll             *bool     `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
-	BackupFileName        *string   `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
+	// Whether all data is to be backed up.
+	//
+	// example:
+	//
+	// true
+	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
+	// Backup file name.
+	//
+	// example:
+	//
+	// defaultBackupFile
+	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
+	// The OSS path of the backup file.
+	//
+	// >  To upload a backup file to an OSS bucket, you must obtain the name of the bucket. When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss://${bucketName}/${key}.
+	//
 	// This parameter is required.
-	BackupFilePath     *string   `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	SourceAppList      []*string `json:"SourceAppList,omitempty" xml:"SourceAppList,omitempty" type:"Repeated"`
+	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	// The description of the backup file.
+	//
+	// example:
+	//
+	// This is a backup file description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// List of apps to be backed up.
+	SourceAppList []*string `json:"SourceAppList,omitempty" xml:"SourceAppList,omitempty" type:"Repeated"`
+	// The paths to the source files.
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
+	// The endpoint of the OSS bucket to which you want to upload the backup file.
+	//
+	// > : When calling the DescribeBuckets operation to query buckets, retrieve the IntranetEndpoint value if the cloud phone and the OSS bucket are in the same region. If they are in different regions, retrieve the ExtranetEndpoint value instead.
+	//
 	// example:
 	//
 	// oss-cn-shanghai-internal.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
+	// The type of the backup.
+	//
+	// Valid values:
+	//
+	// 	- OSS: uploads the backup file to an OSS bucket.
+	//
 	// example:
 	//
 	// OSS
@@ -323,16 +379,30 @@ func (s *BackupFileRequest) SetUploadType(v string) *BackupFileRequest {
 }
 
 type BackupFileResponseBody struct {
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The objects that are returned.
+	//
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	Data []*BackupFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The batch task ID.
+	//
+	// example:
+	//
+	// t-22ex666a5mco5****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BackupFileResponseBody) String() string {
@@ -364,10 +434,30 @@ func (s *BackupFileResponseBody) SetTaskId(v string) *BackupFileResponseBody {
 }
 
 type BackupFileResponseBodyData struct {
+	// Instance id.
+	//
+	// example:
+	//
+	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	BackupFileId      *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	BackupFileName    *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Backup file id.
+	//
+	// example:
+	//
+	// bf-b0qbg3pbpjkn7****
+	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	// Backup file name.
+	//
+	// example:
+	//
+	// a-58ftsoo90p0qa****.ab
+	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// t-22ex666a5mco5****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BackupFileResponseBodyData) String() string {
@@ -611,11 +701,15 @@ func (s *BatchGetAcpConnectionTicketResponse) SetBody(v *BatchGetAcpConnectionTi
 }
 
 type CheckResourceStockRequest struct {
+	// Specification ID.
+	//
 	// example:
 	//
 	// acp.basic.small
 	AcpSpecId *string `json:"AcpSpecId,omitempty" xml:"AcpSpecId,omitempty"`
 	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -623,6 +717,8 @@ type CheckResourceStockRequest struct {
 	// cn-hangzhou
 	BizRegionId     *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	GpuAcceleration *bool   `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	// The availability zone of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -663,10 +759,13 @@ func (s *CheckResourceStockRequest) SetZoneId(v string) *CheckResourceStockReque
 }
 
 type CheckResourceStockResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 805D8FB6-512A-531C-9E4D-2A807D3C****
-	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of resource inventory.
 	ResourceStockModels []*CheckResourceStockResponseBodyResourceStockModels `json:"ResourceStockModels,omitempty" xml:"ResourceStockModels,omitempty" type:"Repeated"`
 }
 
@@ -689,14 +788,20 @@ func (s *CheckResourceStockResponseBody) SetResourceStockModels(v []*CheckResour
 }
 
 type CheckResourceStockResponseBodyResourceStockModels struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Inventory status of the instance group.
+	//
 	// example:
 	//
 	// Available
 	StockStatus *string `json:"StockStatus,omitempty" xml:"StockStatus,omitempty"`
+	// Zone ID.
+	//
 	// example:
 	//
 	// cn-shanghai-b
@@ -756,61 +861,177 @@ func (s *CheckResourceStockResponse) SetBody(v *CheckResourceStockResponseBody) 
 }
 
 type CreateAndroidInstanceGroupRequest struct {
+	// The number of instance groups. Default value: 1. Maximum value: 1.
+	//
+	// example:
+	//
+	// 8
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable automatic payment. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- true: enables automatic payment. Make sure that your Alibaba Cloud account has sufficient balance.
+	//
+	// 	- false: disables automatic payment. You must manually complete the payment.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- true: automatically renew resource upon expiration.
+	//
+	// 	- false: manually renew resources upon expiration.
+	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
+	//
+	// Valid values:
+	//
+	// 	- cn-shenzhen: China (Shenzhen).
+	//
+	// 	- cn-beijing: China (Beijing).
+	//
+	// 	- cn-shanghai: China (Shanghai).
+	//
+	// 	- cn-hongkong: China (Hong Kong).
+	//
+	// 	- ap-southeast-1: Singapore.
+	//
+	// 	- cn-hangzhou: China (Hangzhou).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// 	- PrePaid: subscription.
+	//
 	// example:
 	//
 	// PostPaid
-	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	GpuAcceleration *bool   `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. The value cannot exceed 100 characters in length.
+	//
+	// example:
+	//
+	// asadbuvwiabdbvchjsbj
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EnableIpv6  *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	// Specifies whether to enable GPU acceleration.
+	//
+	// 	- true
+	//
+	// 	- false (true)
+	//
+	// example:
+	//
+	// false
+	GpuAcceleration *bool `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	// The ID of the image. You can call the [DescribeImageList](https://help.aliyun.com/document_detail/2807324.html) operation to query images.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// imgc-06zyt9m93zwax****
-	ImageId           *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the instance group.
+	//
+	// > The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// defaultInstanceGroup
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// The specifications of the instance group. You can call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the available specifications.
+	//
+	// Valid values:
+	//
+	// 	- acp.perf.large: Performance (8 vCPUs, 16 GiB of memory, and 32 GiB of storage.
+	//
+	// 	- acp.basic.small: Lightweight (2 vCPUs, 4 GiB of memory, and 32 GiB of storage).
+	//
+	// 	- acp.std.large: Standard (4 vCPUs, 8 GiB of memory, and 32 GiB of storage).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
-	KeyPairId         *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	Ipv6Bandwidth     *int32  `json:"Ipv6Bandwidth,omitempty" xml:"Ipv6Bandwidth,omitempty"`
+	// The ID of the key pair. When you create an instance group and specify a valid key pair ID, all cloud phone instances within the group will automatically be bound to that key pair upon creation. This eliminates the need to manually call the operation to bind key pairs to individual cloud phone instances.
+	//
+	// Take note that binding key pairs to cloud phone instances is currently not supported during instance group resizing.
+	//
+	// example:
+	//
+	// kp-7o9xywwfutc1l****
+	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The number of cloud phones in the instance group. Maximum value: 100.
+	//
 	// example:
 	//
 	// 1
 	NumberOfInstances *int32 `json:"NumberOfInstances,omitempty" xml:"NumberOfInstances,omitempty"`
+	// The ID of the network.
+	//
+	// 	- This parameter is required if you assign a shared network to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **shared network**. If no shared network is available in the Cloud Phone console, you can leave this parameter empty. The system automatically creates one when you create an instance group.
+	//
+	// 	- This parameter is required if you assign a virtual private cloud (VPC) to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **VPC**. If no VPC is available in the Cloud Phone console, you must first create one.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-745976****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The subscription duration. The unit is specified by PeriodUnit.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration.
+	//
+	// Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// 	- Hour (Note that this unit is supported only by pay-as-you-go.)
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
+	//
 	// example:
 	//
 	// pg-b7bxrrwxkijjh****
-	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupId *string                                 `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	Tag           []*CreateAndroidInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
+	//
+	// 	- This parameter is not required if you assign a shared network to cloud phones.
+	//
+	// 	- This parameter is required if you assign a VPC to cloud phones. The vSwitch specified by this parameter is used to create cloud phones.
+	//
 	// example:
 	//
 	// vsw-uf61uvzhz8ejaw776****
@@ -855,6 +1076,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetClientToken(v string) *CreateAndr
 	return s
 }
 
+func (s *CreateAndroidInstanceGroupRequest) SetEnableIpv6(v bool) *CreateAndroidInstanceGroupRequest {
+	s.EnableIpv6 = &v
+	return s
+}
+
 func (s *CreateAndroidInstanceGroupRequest) SetGpuAcceleration(v bool) *CreateAndroidInstanceGroupRequest {
 	s.GpuAcceleration = &v
 	return s
@@ -872,6 +1098,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupName(v string) *Crea
 
 func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupSpec(v string) *CreateAndroidInstanceGroupRequest {
 	s.InstanceGroupSpec = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetIpv6Bandwidth(v int32) *CreateAndroidInstanceGroupRequest {
+	s.Ipv6Bandwidth = &v
 	return s
 }
 
@@ -905,18 +1136,52 @@ func (s *CreateAndroidInstanceGroupRequest) SetPolicyGroupId(v string) *CreateAn
 	return s
 }
 
+func (s *CreateAndroidInstanceGroupRequest) SetTag(v []*CreateAndroidInstanceGroupRequestTag) *CreateAndroidInstanceGroupRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateAndroidInstanceGroupRequest) SetVSwitchId(v string) *CreateAndroidInstanceGroupRequest {
 	s.VSwitchId = &v
 	return s
 }
 
+type CreateAndroidInstanceGroupRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAndroidInstanceGroupRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndroidInstanceGroupRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupRequestTag) SetKey(v string) *CreateAndroidInstanceGroupRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestTag) SetValue(v string) *CreateAndroidInstanceGroupRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateAndroidInstanceGroupResponseBody struct {
-	InstanceGroupIds   []*string                                                   `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// The IDs of the instance groups.
+	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// The instance groups.
 	InstanceGroupInfos []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 22365781890****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1A923337-44D9-5CAD-9A53-95084BD4****
@@ -952,8 +1217,14 @@ func (s *CreateAndroidInstanceGroupResponseBody) SetRequestId(v string) *CreateA
 }
 
 type CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos struct {
-	InstanceGroupId *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the instance group.
+	//
+	// example:
+	//
+	// ag-cuv4scs4obxch****
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The IDs of the instances.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) String() string {
@@ -1004,22 +1275,65 @@ func (s *CreateAndroidInstanceGroupResponse) SetBody(v *CreateAndroidInstanceGro
 }
 
 type CreateAppRequest struct {
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// Application Name 1
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId   *string                        `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	CustomAppInfo *CreateAppRequestCustomAppInfo `json:"CustomAppInfo,omitempty" xml:"CustomAppInfo,omitempty" type:"Struct"`
+	// The description of the application.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name used by the application file in OSS. This parameter, combined with `FilePath`, uniquely identifies the OSS path of the application file.
+	//
+	// >
+	//
+	// 	- Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+	//
+	// 	- If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
+	//
 	// example:
 	//
 	// testApp.apk
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The OSS bucket path to the application file. This parameter, combined with `FileName`, uniquely identifies the OSS path of the application file.
+	//
+	// >
+	//
+	// 	- Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+	//
+	// 	- If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The icon URL of the application.
+	//
 	// example:
 	//
-	// https://test.png
+	// https://www.example.com/icon.png
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// The parameters used for installing the application. By default, the `-r` parameter is included when you install an application.
+	//
 	// example:
 	//
 	// -d
 	InstallParam *string `json:"InstallParam,omitempty" xml:"InstallParam,omitempty"`
+	// The endpoint of the OSS bucket to which you want to upload the application file.
+	//
+	// >
+	//
+	// 	- Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+	//
+	// 	- If you do not specify `FileName` or `FilePath`, you must specify this parameter.
+	//
 	// example:
 	//
 	// http://testApp.apk
@@ -1041,6 +1355,11 @@ func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetBizRegionId(v string) *CreateAppRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetCustomAppInfo(v *CreateAppRequestCustomAppInfo) *CreateAppRequest {
+	s.CustomAppInfo = v
 	return s
 }
 
@@ -1074,11 +1393,181 @@ func (s *CreateAppRequest) SetOssAppUrl(v string) *CreateAppRequest {
 	return s
 }
 
+type CreateAppRequestCustomAppInfo struct {
+	ApkSize     *string `json:"ApkSize,omitempty" xml:"ApkSize,omitempty"`
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s CreateAppRequestCustomAppInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestCustomAppInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestCustomAppInfo) SetApkSize(v string) *CreateAppRequestCustomAppInfo {
+	s.ApkSize = &v
+	return s
+}
+
+func (s *CreateAppRequestCustomAppInfo) SetDownloadUrl(v string) *CreateAppRequestCustomAppInfo {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *CreateAppRequestCustomAppInfo) SetMd5(v string) *CreateAppRequestCustomAppInfo {
+	s.Md5 = &v
+	return s
+}
+
+func (s *CreateAppRequestCustomAppInfo) SetPackageName(v string) *CreateAppRequestCustomAppInfo {
+	s.PackageName = &v
+	return s
+}
+
+func (s *CreateAppRequestCustomAppInfo) SetVersion(v string) *CreateAppRequestCustomAppInfo {
+	s.Version = &v
+	return s
+}
+
+func (s *CreateAppRequestCustomAppInfo) SetVersionCode(v string) *CreateAppRequestCustomAppInfo {
+	s.VersionCode = &v
+	return s
+}
+
+type CreateAppShrinkRequest struct {
+	// The name of the application.
+	//
+	// example:
+	//
+	// Application Name 1
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId         *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	CustomAppInfoShrink *string `json:"CustomAppInfo,omitempty" xml:"CustomAppInfo,omitempty"`
+	// The description of the application.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name used by the application file in OSS. This parameter, combined with `FilePath`, uniquely identifies the OSS path of the application file.
+	//
+	// >
+	//
+	// 	- Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+	//
+	// 	- If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
+	//
+	// example:
+	//
+	// testApp.apk
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The OSS bucket path to the application file. This parameter, combined with `FileName`, uniquely identifies the OSS path of the application file.
+	//
+	// >
+	//
+	// 	- Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+	//
+	// 	- If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The icon URL of the application.
+	//
+	// example:
+	//
+	// https://www.example.com/icon.png
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// The parameters used for installing the application. By default, the `-r` parameter is included when you install an application.
+	//
+	// example:
+	//
+	// -d
+	InstallParam *string `json:"InstallParam,omitempty" xml:"InstallParam,omitempty"`
+	// The endpoint of the OSS bucket to which you want to upload the application file.
+	//
+	// >
+	//
+	// 	- Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+	//
+	// 	- If you do not specify `FileName` or `FilePath`, you must specify this parameter.
+	//
+	// example:
+	//
+	// http://testApp.apk
+	OssAppUrl *string `json:"OssAppUrl,omitempty" xml:"OssAppUrl,omitempty"`
+}
+
+func (s CreateAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppShrinkRequest) SetAppName(v string) *CreateAppShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetBizRegionId(v string) *CreateAppShrinkRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetCustomAppInfoShrink(v string) *CreateAppShrinkRequest {
+	s.CustomAppInfoShrink = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetDescription(v string) *CreateAppShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetFileName(v string) *CreateAppShrinkRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetFilePath(v string) *CreateAppShrinkRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetIconUrl(v string) *CreateAppShrinkRequest {
+	s.IconUrl = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetInstallParam(v string) *CreateAppShrinkRequest {
+	s.InstallParam = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetOssAppUrl(v string) *CreateAppShrinkRequest {
+	s.OssAppUrl = &v
+	return s
+}
+
 type CreateAppResponseBody struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// 1234
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****
@@ -1133,17 +1622,28 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateCustomImageRequest struct {
+	// Idempotent parameter. Default is empty, with a maximum length of 100 characters.
+	//
+	// example:
+	//
+	// 20393E53-8FF1-524C-B494-B478A5369733
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Image description.
+	//
 	// example:
 	//
 	// create for cc5g group auth rules test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Image name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// custom image name
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1181,7 +1681,14 @@ func (s *CreateCustomImageRequest) SetInstanceId(v string) *CreateCustomImageReq
 }
 
 type CreateCustomImageResponseBody struct {
+	// Image ID.
+	//
+	// example:
+	//
+	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 20393E53-8FF1-524C-B494-B478A5369733
@@ -1236,6 +1743,8 @@ func (s *CreateCustomImageResponse) SetBody(v *CreateCustomImageResponseBody) *C
 }
 
 type CreateKeyPairRequest struct {
+	// The name of the key pair. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1258,7 +1767,10 @@ func (s *CreateKeyPairRequest) SetKeyPairName(v string) *CreateKeyPairRequest {
 }
 
 type CreateKeyPairResponseBody struct {
+	// The objects that are returned.
 	Data *CreateKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
@@ -1284,18 +1796,26 @@ func (s *CreateKeyPairResponseBody) SetRequestId(v string) *CreateKeyPairRespons
 }
 
 type CreateKeyPairResponseBodyData struct {
+	// The time when the key pair was created.
+	//
 	// example:
 	//
 	// 2024-06-30 08:45:09.0
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The ID of the key pair.
+	//
 	// example:
 	//
 	// kp-6v2q33ae4tw3*****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The name of the key pair.
+	//
 	// example:
 	//
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The private key of the key pair. The PEM-encoded private key that is in PKCS#8 format and adheres to the ADB connection specification.
+	//
 	// example:
 	//
 	// MIIEpAIBAAKCAQEAtReyMzLIcBH78EV2zj****
@@ -1360,29 +1880,90 @@ func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKey
 }
 
 type CreatePolicyGroupRequest struct {
+	// Specifies whether to enable the webcam redirection feature.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
 	// example:
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// The read/write permissions on the clipboard.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: read and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// The file transfer policy of the Alibaba Cloud Workspace web client.
+	//
+	// Valid values:
+	//
+	// 	- all: File upload and download are supported.
+	//
+	// 	- download: Only file download is supported.
+	//
+	// 	- upload: Only file upload is supported.
+	//
+	// 	- off: File upload or download is forbidden.
+	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// The read/write permissions on the on-premises drive.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: ready and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// off
-	LocalDrive        *string                                    `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	LockResolution    *string                                    `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// Specifies whether to lock the resolution.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The network redirection policy.
 	NetRedirectPolicy *CreatePolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
-	PolicyGroupName   *string                                    `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// defaultPolicy
+	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The height of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The width of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 720
@@ -1443,6 +2024,7 @@ func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGrou
 }
 
 type CreatePolicyGroupRequestNetRedirectPolicy struct {
+<<<<<<< Updated upstream
 	CustomProxy   *string                                           `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
 	HostAddr      *string                                           `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
 	NetRedirect   *string                                           `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
@@ -1451,6 +2033,68 @@ type CreatePolicyGroupRequestNetRedirectPolicy struct {
 	ProxyType     *string                                           `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 	ProxyUserName *string                                           `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	Rules         []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+=======
+	// Specifies whether to manually configure a custom proxy.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	CustomProxy *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	// The IPv4 address of the custom proxy.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
+	HostAddr *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	// Specifies whether to enable the network redirection feature.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	// The port of the custom proxy. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 1145
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	//
+	// example:
+	//
+	// password
+	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	// The type of the proxy protocol.
+	//
+	// Valid values:
+	//
+	// 	- socks5.
+	//
+	// example:
+	//
+	// socks5
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	//
+	// example:
+	//
+	// username
+	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
+	// The proxy rules. You can create up to 100 proxy rules.
+	Rules []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+>>>>>>> Stashed changes
 }
 
 func (s CreatePolicyGroupRequestNetRedirectPolicy) String() string {
@@ -1502,8 +2146,29 @@ func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetRules(v []*CreatePolicyGr
 }
 
 type CreatePolicyGroupRequestNetRedirectPolicyRules struct {
+<<<<<<< Updated upstream
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+=======
+	// The type of the rule.
+	//
+	// Valid values:
+	//
+	// 	- prc: an application package name.
+	//
+	// 	- domain: a domain name.
+	//
+	// example:
+	//
+	// domain
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The name of the application package or domain name.
+	//
+	// example:
+	//
+	// *.example.com
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+>>>>>>> Stashed changes
 }
 
 func (s CreatePolicyGroupRequestNetRedirectPolicyRules) String() string {
@@ -1525,29 +2190,90 @@ func (s *CreatePolicyGroupRequestNetRedirectPolicyRules) SetTarget(v string) *Cr
 }
 
 type CreatePolicyGroupShrinkRequest struct {
+	// Specifies whether to enable the webcam redirection feature.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
 	// example:
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// The read/write permissions on the clipboard.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: read and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// The file transfer policy of the Alibaba Cloud Workspace web client.
+	//
+	// Valid values:
+	//
+	// 	- all: File upload and download are supported.
+	//
+	// 	- download: Only file download is supported.
+	//
+	// 	- upload: Only file upload is supported.
+	//
+	// 	- off: File upload or download is forbidden.
+	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// The read/write permissions on the on-premises drive.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: ready and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// off
-	LocalDrive              *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	LockResolution          *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// Specifies whether to lock the resolution.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The network redirection policy.
 	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
-	PolicyGroupName         *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// defaultPolicy
+	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The height of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The width of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 720
@@ -1608,10 +2334,14 @@ func (s *CreatePolicyGroupShrinkRequest) SetResolutionWidth(v int32) *CreatePoli
 }
 
 type CreatePolicyGroupResponseBody struct {
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-exbuu6yrpvb******
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC******
@@ -1786,6 +2516,7 @@ func (s *CreateScreenshotResponse) SetBody(v *CreateScreenshotResponseBody) *Cre
 }
 
 type DeleteAndroidInstanceGroupRequest struct {
+	// The IDs of the instance groups.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -1803,6 +2534,8 @@ func (s *DeleteAndroidInstanceGroupRequest) SetInstanceGroupIds(v []*string) *De
 }
 
 type DeleteAndroidInstanceGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CB95E410-FD1D-53C5-9F7D-93CC44D7****
@@ -1852,6 +2585,7 @@ func (s *DeleteAndroidInstanceGroupResponse) SetBody(v *DeleteAndroidInstanceGro
 }
 
 type DeleteAppsRequest struct {
+	// The IDs of the applications.
 	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
 }
 
@@ -1869,6 +2603,8 @@ func (s *DeleteAppsRequest) SetAppIdList(v []*string) *DeleteAppsRequest {
 }
 
 type DeleteAppsResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 310A783E-CC46-5452-A8A3-71AE5DB5****
@@ -1918,6 +2654,8 @@ func (s *DeleteAppsResponse) SetBody(v *DeleteAppsResponseBody) *DeleteAppsRespo
 }
 
 type DeleteImagesRequest struct {
+	// The IDs of the images.
+	//
 	// This parameter is required.
 	ImageIds []*string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty" type:"Repeated"`
 }
@@ -1936,6 +2674,8 @@ func (s *DeleteImagesRequest) SetImageIds(v []*string) *DeleteImagesRequest {
 }
 
 type DeleteImagesShrinkRequest struct {
+	// The IDs of the images.
+	//
 	// This parameter is required.
 	ImageIdsShrink *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
 }
@@ -1954,7 +2694,10 @@ func (s *DeleteImagesShrinkRequest) SetImageIdsShrink(v string) *DeleteImagesShr
 }
 
 type DeleteImagesResponseBody struct {
+	// The images.
 	Data *DeleteImagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4610632D-D661-5982-B3D7-5D3FD183F595
@@ -1980,7 +2723,9 @@ func (s *DeleteImagesResponseBody) SetRequestId(v string) *DeleteImagesResponseB
 }
 
 type DeleteImagesResponseBodyData struct {
-	FailDeleteImageIds    []*string `json:"FailDeleteImageIds,omitempty" xml:"FailDeleteImageIds,omitempty" type:"Repeated"`
+	// The IDs of the images that failed to be deleted.
+	FailDeleteImageIds []*string `json:"FailDeleteImageIds,omitempty" xml:"FailDeleteImageIds,omitempty" type:"Repeated"`
+	// The IDs of the images that are successfully deleted.
 	SuccessDeleteImageIds []*string `json:"SuccessDeleteImageIds,omitempty" xml:"SuccessDeleteImageIds,omitempty" type:"Repeated"`
 }
 
@@ -2032,6 +2777,7 @@ func (s *DeleteImagesResponse) SetBody(v *DeleteImagesResponseBody) *DeleteImage
 }
 
 type DeleteKeyPairsRequest struct {
+	// The IDs of the ADB key pairs.
 	KeyPairIds []*string `json:"KeyPairIds,omitempty" xml:"KeyPairIds,omitempty" type:"Repeated"`
 }
 
@@ -2049,6 +2795,8 @@ func (s *DeleteKeyPairsRequest) SetKeyPairIds(v []*string) *DeleteKeyPairsReques
 }
 
 type DeleteKeyPairsResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 5C5CEF0A-D6E1-58D3-8750-67DB4F82****
@@ -2098,6 +2846,8 @@ func (s *DeleteKeyPairsResponse) SetBody(v *DeleteKeyPairsResponseBody) *DeleteK
 }
 
 type DeletePolicyGroupRequest struct {
+	// The IDs of the policies.
+	//
 	// This parameter is required.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
 }
@@ -2116,6 +2866,8 @@ func (s *DeletePolicyGroupRequest) SetPolicyGroupIds(v []*string) *DeletePolicyG
 }
 
 type DeletePolicyGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 17C731AB-AAEE-5844-A352-D8D0352D3F0B
@@ -2165,36 +2917,86 @@ func (s *DeletePolicyGroupResponse) SetBody(v *DeletePolicyGroupResponseBody) *D
 }
 
 type DescribeAndroidInstanceGroupsRequest struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PrePaid: subscription
+	//
+	// 	- PostPaid: pay-as-you-go
+	//
 	// example:
 	//
 	// PostPaid
-	ChargeType        *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceGroupIds  []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	InstanceGroupName *string   `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The IDs of the instance groups.
+	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// The name of the instance group. Instance groups support fuzzy search by name.
+	//
+	// example:
+	//
+	// defaultInstanceGroup
+	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// The ID of the key pair.
+	//
 	// example:
 	//
 	// kp-5htf0ymsrnb7q****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The maximum number of entries per page. Value range: 0 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-1b77w6xrqfubi****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The sales mode.
+	//
+	// Valid values:
+	//
+	// 	- standard
+	//
 	// example:
 	//
 	// standard
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// The status of the instance group.
+	//
+	// Valid values:
+	//
+	// 	- UPDATING_FAILED: The image update for the instance group failed.
+	//
+	// 	- FAILED: The instance group failed to be created.
+	//
+	// 	- RUNNING: The instance group is available.
+	//
+	// 	- EXPIRED: The instance group expired.
+	//
+	// 	- DELETING: The instance group is being deleted.
+	//
+	// 	- DELETED: The instance group is deleted.
+	//
+	// 	- UPDATING: The instance group is undergoing an image update.
+	//
+	// 	- CREATING: The instance group is being created.
+	//
 	// example:
 	//
 	// CREATING
@@ -2260,15 +3062,22 @@ func (s *DescribeAndroidInstanceGroupsRequest) SetStatus(v string) *DescribeAndr
 }
 
 type DescribeAndroidInstanceGroupsResponseBody struct {
+	// The details of the instance group.
 	InstanceGroupModel []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel `json:"InstanceGroupModel,omitempty" xml:"InstanceGroupModel,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F07A1DA1-E1EB-5CCA-8EED-12F85D32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -2304,96 +3113,166 @@ func (s *DescribeAndroidInstanceGroupsResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-48xr63m4dybjk****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The type of the architecture.
+	//
 	// example:
 	//
 	// ARM
-	ArchitectureType        *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AvailableInstanceAmount *int32  `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// Number of instances.
+	//
+	// example:
+	//
+	// 5
+	AvailableInstanceAmount *int32 `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
+	// The billing method.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 8
-	Cpu       *string                                                             `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Disks     []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	ErrorCode *string                                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The disks.
+	Disks []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// The error code.
+	//
+	// example:
+	//
+	// 0
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The time when the instance group was created.
+	//
 	// example:
 	//
 	// 2024-02-01 10:56:36
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the subscription instance group expires.
+	//
 	// example:
 	//
 	// 2027-06-29 07:25:31
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// The time when the instance group was updated.
+	//
 	// example:
 	//
 	// 2024-02-01 10:56:36
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the image.
+	//
 	// example:
 	//
 	// imgc-06zyt9m93zwax****
-	ImageId          *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The list of installed applications.
+	//
+	// example:
+	//
+	// "TikTok","WeChat"
 	InstalledAppList *string `json:"InstalledAppList,omitempty" xml:"InstalledAppList,omitempty"`
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-h67a2cs0zprfdh****
-	InstanceGroupId   *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The name of the instance group.
+	//
+	// example:
+	//
+	// defaultInstanceGroup
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// The specifications of the instance group.
+	//
 	// example:
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
+	// The description of the instance group specifications.
+	//
 	// example:
 	//
 	// ARM-2vCPU4GiB 32GiB
 	InstanceGroupSpecDescribe *string `json:"InstanceGroupSpecDescribe,omitempty" xml:"InstanceGroupSpecDescribe,omitempty"`
+	// The status of the instance group.
+	//
 	// example:
 	//
 	// RUNNING
 	InstanceGroupStatus *string `json:"InstanceGroupStatus,omitempty" xml:"InstanceGroupStatus,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 8
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The number of instances in the instance group.
+	//
 	// example:
 	//
 	// 10
 	NumberOfInstances *string `json:"NumberOfInstances,omitempty" xml:"NumberOfInstances,omitempty"`
+	// The ID of the network.
+	//
 	// example:
 	//
 	// cn-shanghai+dir-030598****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-c6n38xucps8kl****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rendering type.
+	//
+	// example:
+	//
+	// CPU
 	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	// The height of the resolution.
+	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The width of the resolution.
+	//
 	// example:
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// The sales mode.
+	//
 	// example:
 	//
 	// standard
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// The version of the operating system.
+	//
 	// example:
 	//
 	// Android 12
 	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-t4n0yqs009ho024wt****
@@ -2549,10 +3428,14 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetVSwitch
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks struct {
+	// The size of the disk. Unit: GB.
+	//
 	// example:
 	//
 	// 32
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The type of the disk.
+	//
 	// example:
 	//
 	// SYSTEM
@@ -2607,42 +3490,131 @@ func (s *DescribeAndroidInstanceGroupsResponse) SetBody(v *DescribeAndroidInstan
 }
 
 type DescribeAndroidInstancesRequest struct {
+	// The IDs of the instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	BizRegionId         *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeType          *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
+	//
+	// example:
+	//
+	// cn-shanghai
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- PrePaid: subscription.
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-25nt4kk9whjh****
-	InstanceGroupId   *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	InstanceGroupIds  []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	InstanceGroupName *string   `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The IDs of the instance groups.
+	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// The name of the instance group.
+	//
+	// example:
+	//
+	// test
+	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// The ID of the bound key pair.
+	//
 	// example:
 	//
 	// kp-5hh431emkpuoi****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+<<<<<<< Updated upstream
 	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+=======
+	// The ID of the node.
+	//
+>>>>>>> Stashed changes
 	// example:
 	//
-	// standard
+	// node_id
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	//
+	// example:
+	//
+	// node_name
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The sales mode.
+	//
+	// Valid values:
+	//
+	// 	- Instance: the standard mode.
+	//
+	// 	- Node: the node mode.
+	//
+	// example:
+	//
+	// Instance
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// The state of the instance.
+	//
+	// Valid values:
+	//
+	// 	- BACKUPING: The instance is being backed up.
+	//
+	// 	- STARTING: The instance is being started.
+	//
+	// 	- RUNNING: The instance group is available.
+	//
+	// 	- DELETING: The instance is being deleted.
+	//
+	// 	- BACKUP_FAILED: The backup operation failed.
+	//
+	// 	- DELETED: The instance is deleted.
+	//
+	// 	- FAILED: The instance failed to be created.
+	//
+	// 	- STOPPED: The instance is stopped.
+	//
+	// 	- RECOVERING: The instance has an ongoing file recovery task.
+	//
+	// 	- UNAVAILABLE: The instance has an exception.
+	//
+	// 	- REBOOTING: The instance is being restarted.
+	//
+	// 	- RESETTING: The instance is being reset.
+	//
+	// 	- STOPPING: The instance is being stopped.
+	//
+	// 	- RECOVER_FAILED: The file recovery task failed.
+	//
+	// 	- CREATING: The instance is being created.
+	//
 	// example:
 	//
 	// RUNNING
-	Status *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*DescribeAndroidInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the resources.
+	Tag []*DescribeAndroidInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAndroidInstancesRequest) String() string {
@@ -2729,7 +3701,17 @@ func (s *DescribeAndroidInstancesRequest) SetTag(v []*DescribeAndroidInstancesRe
 }
 
 type DescribeAndroidInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2752,15 +3734,22 @@ func (s *DescribeAndroidInstancesRequestTag) SetValue(v string) *DescribeAndroid
 }
 
 type DescribeAndroidInstancesResponseBody struct {
+	// The instances.
 	InstanceModel []*DescribeAndroidInstancesResponseBodyInstanceModel `json:"InstanceModel,omitempty" xml:"InstanceModel,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kmma/xxE9WtwL/ADvZ****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F07A1DA1-E1EB-5CCA-8EED-12F85D32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -2796,84 +3785,191 @@ func (s *DescribeAndroidInstancesResponseBody) SetTotalCount(v int32) *DescribeA
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModel struct {
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-ayyhomlal7po****
-	AndroidInstanceGroupId   *string `json:"AndroidInstanceGroupId,omitempty" xml:"AndroidInstanceGroupId,omitempty"`
+	AndroidInstanceGroupId *string `json:"AndroidInstanceGroupId,omitempty" xml:"AndroidInstanceGroupId,omitempty"`
+	// The name of the instance group.
+	//
+	// example:
+	//
+	// AndroidInstanceGroupName
 	AndroidInstanceGroupName *string `json:"AndroidInstanceGroupName,omitempty" xml:"AndroidInstanceGroupName,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// acp-8at8h6ejkadjh****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
+	// The state of the instance.
+	//
 	// example:
 	//
 	// RUNNING
 	AndroidInstanceStatus *string `json:"AndroidInstanceStatus,omitempty" xml:"AndroidInstanceStatus,omitempty"`
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-i7yv6tkn7kh8dv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the physical instance.
+	//
 	// example:
 	//
 	// ai-9ey6io0q58rcd****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The ID of the user to whom the instance is assigned.
+	//
 	// example:
 	//
 	// test
 	AuthorizedUserId *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// The ID of the bound user.
+	//
 	// example:
 	//
 	// test
-	BindUserId *string                                                   `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
-	ChargeType *string                                                   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Cpu        *string                                                   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Disks      []*DescribeAndroidInstancesResponseBodyInstanceModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	BindUserId *string `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	// The billing method of the instance.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of vCPUs.
+	//
+	// example:
+	//
+	// 4
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The disks.
+	Disks []*DescribeAndroidInstancesResponseBodyInstanceModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// The cause of the instance data backup failure or restoration failure.
+	//
 	// example:
 	//
 	// FilePathNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2023-05-06 10:42:10
-	GmtCreate  *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the subscription instance group expires.
+	//
+	// example:
+	//
+	// 2024-07-15T02:03:33Z
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// The time when the instance was modified.
+	//
 	// example:
 	//
 	// 2023-05-06 10:42:10
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The version of the image.
+	//
+	// example:
+	//
+	// 3.5.3.867
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// The type of the instance.
+	//
+	// example:
+	//
+	// acp.basic.small
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the key pair.
+	//
 	// example:
 	//
 	// kp-5hh431emkpucs****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	Memory    *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The memory size.
+	//
+	// example:
+	//
+	// 1024
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The IP address of the ENI.
+	//
 	// example:
 	//
 	// 192.168.22.48
-	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
-	OfficeSiteId       *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	NetworkInterfaceIp          *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	NetworkInterfaceIpv6Address *string `json:"NetworkInterfaceIpv6Address,omitempty" xml:"NetworkInterfaceIpv6Address,omitempty"`
+	// The ID of the workspace.
+	//
+	// example:
+	//
+	// cn-shenzhen+dir-211620****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The ID of the persistent session.
+	//
 	// example:
 	//
 	// p-0btrd5zj8epo****
 	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
-	PolicyGroupId           *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PublicIpAddress         *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
+	// The ID of the policy.
+	//
+	// example:
+	//
+	// pg-0bszojpu0seql****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The public IP address.
+	//
+	// example:
+	//
+	// 10.32.1.41
+	PublicIpAddress   *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
+	PublicIpv6Address *string `json:"PublicIpv6Address,omitempty" xml:"PublicIpv6Address,omitempty"`
+	// The progress of instance data backup or restoration.
+	//
 	// example:
 	//
 	// 100
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
+<<<<<<< Updated upstream
 	RegionId      *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RenderingType *string                                                  `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
 	SessionStatus *string                                                  `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 	Tags          []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+=======
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rendering type.
+	//
+	// example:
+	//
+	// local
+	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	// The status of the session connection.
+	//
+	// 	- connect
+	//
+	// 	- disConnect
+	//
+	// example:
+	//
+	// connect
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// The tags.
+	Tags []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+>>>>>>> Stashed changes
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModel) String() string {
@@ -2989,6 +4085,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetNetworkInterfaceI
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetNetworkInterfaceIpv6Address(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.NetworkInterfaceIpv6Address = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetOfficeSiteId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.OfficeSiteId = &v
 	return s
@@ -3006,6 +4107,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPolicyGroupId(v s
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPublicIpAddress(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.PublicIpAddress = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPublicIpv6Address(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.PublicIpv6Address = &v
 	return s
 }
 
@@ -3035,7 +4141,17 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetTags(v []*Describ
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelDisks struct {
-	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The size of the disk. Unit: GB.
+	//
+	// example:
+	//
+	// 32
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The type of the disk.
+	//
+	// example:
+	//
+	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 }
 
@@ -3058,7 +4174,17 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisks) SetDiskType(v s
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3110,22 +4236,68 @@ func (s *DescribeAndroidInstancesResponse) SetBody(v *DescribeAndroidInstancesRe
 }
 
 type DescribeAppsRequest struct {
-	AppIdList   []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
-	AppName     *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BizRegionId *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The IDs of the applications.
+	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// defaultAppName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Region id.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The installation/uninstallation status of the application.
+	//
+	// Valid values:
+	//
+	// 	- INSTALLFAILED: The application failed to be installed.
+	//
+	// 	- UNINSTALLING: The application is being uninstalled.
+	//
+	// 	- INSTALLING: The application is being installed.
+	//
+	// 	- UNINSTALLED: The application is uninstalled.
+	//
+	// 	- INSTALLED: The application is installed.
+	//
+	// 	- UNINSTALLFAILED: The application failed to be uninstalled.
+	//
 	// example:
 	//
 	// INSTALLING
 	InstallationStatus *string `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
-	MD5                *string `json:"MD5,omitempty" xml:"MD5,omitempty"`
+	// The value of MD5.
+	//
+	// example:
+	//
+	// THCIEH73KEK3334
+	MD5 *string `json:"MD5,omitempty" xml:"MD5,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The status of the application.
+	//
+	// Valid values:
+	//
+	// 	- FAILED: The application failed to be created.
+	//
+	// 	- NORMAL: The application is available.
+	//
+	// 	- CREATING: The application is being created.
+	//
 	// example:
 	//
 	// NORMAL
@@ -3181,15 +4353,22 @@ func (s *DescribeAppsRequest) SetStatus(v string) *DescribeAppsRequest {
 }
 
 type DescribeAppsResponseBody struct {
+	// The objects that are returned.
 	Data []*DescribeAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CB95E410-FD1D-53C5-9F7D-93CC44D7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -3225,40 +4404,104 @@ func (s *DescribeAppsResponseBody) SetTotalCount(v string) *DescribeAppsResponse
 }
 
 type DescribeAppsResponseBodyData struct {
+	// The version of the application.
+	//
 	// example:
 	//
 	// 1.0.0
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitempty" xml:"AndroidAppVersion,omitempty"`
-	ApkSize           *string `json:"ApkSize,omitempty" xml:"ApkSize,omitempty"`
+	// Apk size.
+	//
+	// example:
+	//
+	// 10244893
+	ApkSize *string `json:"ApkSize,omitempty" xml:"ApkSize,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// 10404
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// testapp
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Region id.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The description of the application.
+	//
+	// example:
+	//
+	// default description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the application was created.
+	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the application was last modified.
+	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The icon URL of the application.
+	//
 	// example:
 	//
 	// https://test.png
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// The installation/uninstallation status of the application.
+	//
+	// Valid values:
+	//
+	// 	- INSTALLFAILED: The application failed to be installed.
+	//
+	// 	- UNINSTALLING: The application is being uninstalled.
+	//
+	// 	- INSTALLING: The application is being installed.
+	//
+	// 	- UNINSTALLED: The application is uninstalled.
+	//
+	// 	- INSTALLED: The application is installed.
+	//
+	// 	- UNINSTALLFAILED: The application failed to be uninstalled.
+	//
 	// example:
 	//
 	// INSTALLING
-	InstallationStatus *string   `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
-	InstanceGroupList  []*string `json:"InstanceGroupList,omitempty" xml:"InstanceGroupList,omitempty" type:"Repeated"`
-	MD5                *string   `json:"MD5,omitempty" xml:"MD5,omitempty"`
-	PackageName        *string   `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	InstallationStatus *string `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
+	// The list of instance groups where the application is installed.
+	InstanceGroupList []*string `json:"InstanceGroupList,omitempty" xml:"InstanceGroupList,omitempty" type:"Repeated"`
+	// The value of MD5.
+	//
+	// example:
+	//
+	// THCIEH73KEK3334
+	MD5 *string `json:"MD5,omitempty" xml:"MD5,omitempty"`
+	// The name of the application package.
+	//
+	// example:
+	//
+	// cn.rdstar.rdstarandroid
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The status of the application.
+	//
+	// Valid values:
+	//
+	// 	- FAILED: The application failed to be created.
+	//
+	// 	- NORMAL: The application is available.
+	//
+	// 	- CREATING: The application is being created.
+	//
 	// example:
 	//
 	// NORMAL
@@ -3373,45 +4616,79 @@ func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeApp
 }
 
 type DescribeBackupFilesRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The name of the instance. Instances support fuzzy search by name.
+	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	BackupAll           *bool   `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
+	// Is all data to be backed up.
+	//
+	// example:
+	//
+	// true
+	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
+	// The ID of the backup file.
+	//
 	// example:
 	//
 	// bf-dxrh5jrv0zpb8****
-	BackupFileId   *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	// The name of the backup file. Backup files support fuzzy search by name.
+	//
+	// example:
+	//
+	// defaulBackupFile
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the backup file. Backup files support fuzzy search by description.
+	//
+	// example:
+	//
+	// default description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The end of the period for querying generated backup files.
+	//
 	// example:
 	//
 	// 2024-05-20 10:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The owner of the backup file.
+	//
 	// example:
 	//
 	// test1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-fxdx91jsfyiy3****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The beginning of the period for querying generated backup files.
+	//
 	// example:
 	//
 	// 2024-05-23 10:00:00
-	StartTime  *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The list of backup file status.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
@@ -3489,19 +4766,28 @@ func (s *DescribeBackupFilesRequest) SetStatusList(v []*string) *DescribeBackupF
 }
 
 type DescribeBackupFilesResponseBody struct {
+	// The backup files that are returned.
 	Data []*DescribeBackupFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request. If the request fails, provide this ID to technical support to assist in diagnosing the issue.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 91
@@ -3542,57 +4828,118 @@ func (s *DescribeBackupFilesResponseBody) SetTotalCount(v int64) *DescribeBackup
 }
 
 type DescribeBackupFilesResponseBodyData struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
-	AndroidInstanceId   *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// defaultInstanceName
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	BackupAll           *bool   `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
+	// Is all data to be backed up.
+	//
+	// example:
+	//
+	// true
+	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
+	// The ID of the backup file.
+	//
 	// example:
 	//
 	// bf-b0qbg3pbpjkn7****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	// The name of the backup file.
+	//
 	// example:
 	//
 	// a-58ftsoo90p0qa****.ab
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
+	// The directory in which the backup file is stored.
+	//
 	// example:
 	//
 	// oss://cloudphone-saved-bucket-cn-shanghai/backup/aic-58ftsoo90p0qa****.ab
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the backup file.
+	//
+	// example:
+	//
+	// This is default description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The owner of the backup file.
+	//
 	// example:
 	//
 	// test
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The total size of the source files.
+	//
 	// example:
 	//
 	// 10227168
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The time when the backup file was created.
+	//
 	// example:
 	//
 	// 2024-05-15 17:33:59
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the backup file was last updated.
+	//
 	// example:
 	//
 	// 2024-05-15 17:33:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-58ftsoo90p0qi****
-	InstanceGroupId    *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceAppInfoList  []*string `json:"SourceAppInfoList,omitempty" xml:"SourceAppInfoList,omitempty" type:"Repeated"`
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of apps to be backed up.
+	SourceAppInfoList []*string `json:"SourceAppInfoList,omitempty" xml:"SourceAppInfoList,omitempty" type:"Repeated"`
+	// The directories of the source files.
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
+	// The status of the backup file.
+	//
+	// Valid values:
+	//
+	// 	- AVAILABLE
+	//
+	// 	- RECOVERING
+	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// t-bp67acfmxazb4p****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The endpoint of the OSS bucket that stores the backup file.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
+	// The type of the backup.
+	//
+	// Valid values:
+	//
+	// 	- OSS: backup files are stored in OSS buckets. .
+	//
 	// example:
 	//
 	// OSS
@@ -3732,18 +5079,46 @@ func (s *DescribeBackupFilesResponse) SetBody(v *DescribeBackupFilesResponseBody
 }
 
 type DescribeImageListRequest struct {
+	// The ID of the image.
+	//
 	// example:
 	//
 	// imgc-075cllfeuazh0****
+<<<<<<< Updated upstream
 	ImageId          *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName        *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImagePackageType *string `json:"ImagePackageType,omitempty" xml:"ImagePackageType,omitempty"`
+=======
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	//
+	// example:
+	//
+	// Android 12 image
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// Image package type.
+	//
+	// example:
+	//
+	// VM
+	ImagePackageType *string `json:"ImagePackageType,omitempty" xml:"ImagePackageType,omitempty"`
+	// The type of the image.
+	//
+	// Valid values:
+	//
+	// 	- User: custom images.
+	//
+	// 	- System: system images.
+	//
+>>>>>>> Stashed changes
 	// This parameter is required.
 	//
 	// example:
 	//
 	// System
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The maximum number of entries per page. Value range: 1 to 100. Default value: 20.
+	//
 	// if can be null:
 	// true
 	//
@@ -3751,10 +5126,26 @@ type DescribeImageListRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The state of the image.
+	//
+	// Valid values:
+	//
+	// 	- AVAILABLE: The image is available.
+	//
+	// 	- DELETE: The image is deleted.
+	//
+	// 	- INIT: The image is being initialized.
+	//
+	// 	- CREATE_FAILED: The image failed to be created.
+	//
+	// 	- CREATING: The image is being created.
+	//
 	// example:
 	//
 	// AVAILABLE
@@ -3805,15 +5196,22 @@ func (s *DescribeImageListRequest) SetStatus(v string) *DescribeImageListRequest
 }
 
 type DescribeImageListResponseBody struct {
+	// The objects that are returned.
 	Data []*DescribeImageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 620740FF-492F-5956-B1BA-361E966C0269
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 30
@@ -3849,46 +5247,104 @@ func (s *DescribeImageListResponseBody) SetTotalCount(v int32) *DescribeImageLis
 }
 
 type DescribeImageListResponseBodyData struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 117819727354****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The description of the image.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the image was created.
+	//
 	// example:
 	//
 	// 2024-02-01 10:56:36
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the image was last modified.
+	//
 	// example:
 	//
 	// 2024-02-01 10:56:36
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the image.
+	//
 	// example:
 	//
 	// imgc-075cllfeuazh****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	//
 	// example:
 	//
 	// IMAGE
-	ImageName                *string                                       `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The region where the image is distributed. The key is the region and the value is the distribution information.
 	ImageRegionDistributeMap map[string]*DataImageRegionDistributeMapValue `json:"ImageRegionDistributeMap,omitempty" xml:"ImageRegionDistributeMap,omitempty"`
-	ImageRegionList          []*string                                     `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`
+	// The list of regions.
+	ImageRegionList []*string `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`
+	// The type of the image.
+	//
+	// Valid values:
+	//
+	// 	- User: custom images.
+	//
+	// 	- System: system images.
+	//
 	// example:
 	//
 	// System
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The language of the image.
+	//
 	// example:
 	//
 	// zh
-	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	ReleaseTime   *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The time when the image was published.
+	//
+	// example:
+	//
+	// 2024-07-25 10:06:45
+	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The rendering type.
+	//
+	// Valid values:
+	//
+	// 	- GPURemote
+	//
+	// 	- CPU
+	//
+	// 	- GPULocal
+	//
+	// example:
+	//
+	// CPU
 	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	// The state of the image.
+	//
+	// Valid values:
+	//
+	// 	- AVAILABLE: The image is available.
+	//
+	// 	- DELETE: The image is deleted.
+	//
+	// 	- INIT: The image is being initialized.
+	//
+	// 	- CREATE_FAILED: The image failed to be created.
+	//
+	// 	- CREATING: The image is being created.
+	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The OS type of the image.
+	//
 	// example:
 	//
 	// Android 12
@@ -4161,15 +5617,22 @@ func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody
 }
 
 type DescribeKeyPairsRequest struct {
+	// The IDs of the ADB key pairs.
 	KeyPairIds []*string `json:"KeyPairIds,omitempty" xml:"KeyPairIds,omitempty" type:"Repeated"`
+	// The name of the ADB key pair.
+	//
 	// example:
 	//
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	//
 	// example:
 	//
 	// AAAAAYRHtOLVQzCYj17y+OP7LZQBUVVbi0GTu8g5****
@@ -4205,15 +5668,22 @@ func (s *DescribeKeyPairsRequest) SetNextToken(v string) *DescribeKeyPairsReques
 }
 
 type DescribeKeyPairsResponseBody struct {
+	// The objects that are returned.
 	Data []*DescribeKeyPairsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// FFbc8N4E1iOlcSxC+8boa0HHH2LKWbggYUinyrZWvtS1oTrMYCg1HuMLGuftj0****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 565FB06A-AE04-5AD0-8A32-5BA92CA5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -4249,14 +5719,20 @@ func (s *DescribeKeyPairsResponseBody) SetTotalCount(v int32) *DescribeKeyPairsR
 }
 
 type DescribeKeyPairsResponseBodyData struct {
+	// The time when the ADB key pair was created.
+	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The ID of the ADB key pair.
+	//
 	// example:
 	//
-	// kp-6v2q33ae4tw3*****
+	// kp-6v2q33ae4tw3a****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The name of the ADB key pair.
+	//
 	// example:
 	//
 	// testKeyPairName
@@ -4339,7 +5815,10 @@ func (s *DescribeRegionsRequest) SetSaleMode(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
+	// Available regions.
 	RegionModels []*DescribeRegionsResponseBodyRegionModels `json:"RegionModels,omitempty" xml:"RegionModels,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A87B3769-0D05-5383-B236-5798B455****
@@ -4365,6 +5844,8 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegionModels struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4422,20 +5903,38 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 type DescribeSpecRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	MatrixSpec  *string `json:"MatrixSpec,omitempty" xml:"MatrixSpec,omitempty"`
+<<<<<<< Updated upstream
+=======
+	// The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
+	//
+>>>>>>> Stashed changes
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Indicates the starting position for reading. If left empty, it starts from the beginning.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
+<<<<<<< Updated upstream
 	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	SaleMode  *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	SpecIds   []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
+=======
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// List of specification IDs.
+	SpecIds []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
+	// Specification status.
+	//
+>>>>>>> Stashed changes
 	// example:
 	//
 	// Available
 	SpecStatus *string `json:"SpecStatus,omitempty" xml:"SpecStatus,omitempty"`
+	// Specification type.
+	//
 	// example:
 	//
 	// ARM
@@ -4491,15 +5990,22 @@ func (s *DescribeSpecRequest) SetSpecType(v string) *DescribeSpecRequest {
 }
 
 type DescribeSpecResponseBody struct {
+	// Indicates the current read position returned by this call. An empty value means that all data has been read.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D9888DAD-331E-5FBC-B5A0-F2445115****
-	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specification information.
 	SpecInfoModel []*DescribeSpecResponseBodySpecInfoModel `json:"SpecInfoModel,omitempty" xml:"SpecInfoModel,omitempty" type:"Repeated"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 4
@@ -4535,28 +6041,43 @@ func (s *DescribeSpecResponseBody) SetTotalCount(v int32) *DescribeSpecResponseB
 }
 
 type DescribeSpecResponseBodySpecInfoModel struct {
+	// Number of CPU cores.
+	//
 	// example:
 	//
 	// 8
 	Core *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
+	// Memory size.
+	//
 	// example:
 	//
 	// 16
 	Memory     *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	PhoneCount *string `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+<<<<<<< Updated upstream
+=======
+	// Specification ID.
+	//
+>>>>>>> Stashed changes
 	// example:
 	//
 	// acp.basic.small
 	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// Specification status.
+	//
 	// example:
 	//
 	// Available
 	SpecStatus *string `json:"SpecStatus,omitempty" xml:"SpecStatus,omitempty"`
+	// Specification type.
+	//
 	// example:
 	//
 	// ARM
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// System disk size, in GB.
+	//
 	// example:
 	//
 	// 32
@@ -5646,16 +7167,26 @@ func (s *InstallAppResponse) SetBody(v *InstallAppResponseBody) *InstallAppRespo
 }
 
 type ListPolicyGroupsRequest struct {
+	// The maximum number of entries per page. Value range: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
-	NextToken       *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PolicyGroupIds  []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
-	PolicyGroupName *string   `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The IDs of the policies.
+	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// defaultPolicyGroup
+	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 }
 
 func (s ListPolicyGroupsRequest) String() string {
@@ -5687,15 +7218,22 @@ func (s *ListPolicyGroupsRequest) SetPolicyGroupName(v string) *ListPolicyGroups
 }
 
 type ListPolicyGroupsResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
-	NextToken        *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The policies.
 	PolicyGroupModel []*ListPolicyGroupsResponseBodyPolicyGroupModel `json:"PolicyGroupModel,omitempty" xml:"PolicyGroupModel,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7B9EFA4F-4305-5968-BAEE-BD8B8DE5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 31
@@ -5731,37 +7269,105 @@ func (s *ListPolicyGroupsResponseBody) SetTotalCount(v int32) *ListPolicyGroupsR
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
+	// Specifies whether to enable the webcam redirection feature.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
 	// example:
 	//
 	// on
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// The read/write permissions on the clipboard.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: read and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// The time when the policy was created.
+	//
 	// example:
 	//
 	// 2024-06-04 10:28:54
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The file transfer policy of the HTML5 client.
+	//
+	// Valid values:
+	//
+	// 	- all: File upload and download are supported.
+	//
+	// 	- download: Only file download is supported.
+	//
+	// 	- upload: Only file upload is supported.
+	//
+	// 	- off: File upload or download is forbidden.
+	//
 	// example:
 	//
 	// download
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// The read/write permissions on the on-premises drive.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: ready and write.
+	//
+	// 	- off: read/write denied.
+	//
 	// example:
 	//
 	// off
-	LocalDrive        *string                                                        `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	LockResolution    *string                                                        `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// Identifies whether the resolution is locked.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The network redirection policy.
 	NetRedirectPolicy *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-9q6o8qpiy8opkj****
-	PolicyGroupId   *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// Default Policy
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The height of the resolution.
+	//
 	// example:
 	//
 	// 1080
 	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+<<<<<<< Updated upstream
+=======
+	// The width of the resolution.
+	//
+>>>>>>> Stashed changes
 	// example:
 	//
 	// 1920
@@ -5832,6 +7438,7 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
+<<<<<<< Updated upstream
 	CustomProxy   *string                                                               `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
 	HostAddr      *string                                                               `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
 	NetRedirect   *string                                                               `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
@@ -5840,6 +7447,68 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	ProxyType     *string                                                               `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 	ProxyUserName *string                                                               `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	Rules         []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+=======
+	// Indicates whether a custom proxy is manually configured.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	CustomProxy *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	// The IPv4 address of the custom proxy.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
+	HostAddr *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	// Indicates whether the network redirection feature is enabled. When this feature is enabled, network traffic is automatically redirected to the on-premises network by default.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	// The port of the custom proxy. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 1145
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	//
+	// example:
+	//
+	// password
+	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	// The type of the proxy protocol.
+	//
+	// Valid values:
+	//
+	// 	- socks5.
+	//
+	// example:
+	//
+	// socks5
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	//
+	// example:
+	//
+	// username
+	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
+	// The proxy rules.
+	Rules []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+>>>>>>> Stashed changes
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) String() string {
@@ -5891,8 +7560,29 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetRules
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
+<<<<<<< Updated upstream
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+=======
+	// The type of the rule.
+	//
+	// Valid values:
+	//
+	// 	- prc: an application package name.
+	//
+	// 	- domain: a domain name.
+	//
+	// example:
+	//
+	// domain
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The name of the application package or domain name.
+	//
+	// example:
+	//
+	// *.example.com
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+>>>>>>> Stashed changes
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) String() string {
@@ -5943,10 +7633,16 @@ func (s *ListPolicyGroupsResponse) SetBody(v *ListPolicyGroupsResponseBody) *Lis
 }
 
 type ModifyAndroidInstanceRequest struct {
+	// The ID of the cloud phone instance.
+	//
 	// example:
 	//
 	// acp-8v5bjld0r7tkl****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The new name of the cloud phone instance.
+	//
+	// >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// new_name
@@ -5972,6 +7668,8 @@ func (s *ModifyAndroidInstanceRequest) SetNewAndroidInstanceName(v string) *Modi
 }
 
 type ModifyAndroidInstanceResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****
@@ -6021,14 +7719,24 @@ func (s *ModifyAndroidInstanceResponse) SetBody(v *ModifyAndroidInstanceResponse
 }
 
 type ModifyAndroidInstanceGroupRequest struct {
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-cuv4scs4obxhs****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The new name of the instance group.
+	//
+	// >
+	//
+	// 	- The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// newName
 	NewInstanceGroupName *string `json:"NewInstanceGroupName,omitempty" xml:"NewInstanceGroupName,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-2w97kp89gnsif****
@@ -6059,6 +7767,8 @@ func (s *ModifyAndroidInstanceGroupRequest) SetPolicyGroupId(v string) *ModifyAn
 }
 
 type ModifyAndroidInstanceGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6C83EBE3-F267-5F11-ABF8-4E7B90B****
@@ -6108,12 +7818,26 @@ func (s *ModifyAndroidInstanceGroupResponse) SetBody(v *ModifyAndroidInstanceGro
 }
 
 type ModifyAppRequest struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// 1234
-	AppId       *int32  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// defaultAppName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The description of the application.
+	//
+	// example:
+	//
+	// default description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the icon.
+	//
 	// example:
 	//
 	// https://defaultIcon.png
@@ -6149,6 +7873,8 @@ func (s *ModifyAppRequest) SetIconUrl(v string) *ModifyAppRequest {
 }
 
 type ModifyAppResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 83418504-5A82-5896-A24C-B2D468F0****
@@ -6198,12 +7924,16 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 }
 
 type ModifyKeyPairNameRequest struct {
+	// The ID of the ADB key pair.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kp-6v2q33ae4tw3a****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The name of the ADB key pair.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6231,6 +7961,8 @@ func (s *ModifyKeyPairNameRequest) SetNewKeyPairName(v string) *ModifyKeyPairNam
 }
 
 type ModifyKeyPairNameResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
@@ -6280,33 +8012,96 @@ func (s *ModifyKeyPairNameResponse) SetBody(v *ModifyKeyPairNameResponseBody) *M
 }
 
 type ModifyPolicyGroupRequest struct {
+	// Specifies whether to enable the webcam redirection feature.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
 	// example:
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// The read/write permissions on the clipboard.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: ready and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// The file transfer policy of the Alibaba Cloud Workspace web client.
+	//
+	// Valid values:
+	//
+	// 	- all: File upload and download are supported.
+	//
+	// 	- download: Only file download is supported.
+	//
+	// 	- upload: Only file upload is supported.
+	//
+	// 	- off: File upload or download is forbidden.
+	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// The read/write permissions on the on-premises drive.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: ready and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// off
-	LocalDrive        *string                                    `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	LockResolution    *string                                    `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// Specifies whether to lock the resolution.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The network redirection policy.
 	NetRedirectPolicy *ModifyPolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-4bi18ebi9tfjh****
-	PolicyGroupId   *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// defaultPolicyGroup
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The height of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The width of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 720
@@ -6372,12 +8167,63 @@ func (s *ModifyPolicyGroupRequest) SetResolutionWidth(v int32) *ModifyPolicyGrou
 }
 
 type ModifyPolicyGroupRequestNetRedirectPolicy struct {
-	CustomProxy   *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	HostAddr      *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
-	NetRedirect   *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Specifies whether to manually configure a custom proxy.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	CustomProxy *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	// The IPv4 address of the custom proxy.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
+	HostAddr *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	// Specifies whether to enable network redirection.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	// The port of the custom proxy. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 1145
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	//
+	// example:
+	//
+	// password
 	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	ProxyType     *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// The type of the proxy protocol.
+	//
+	// Valid values:
+	//
+	// 	- socks5.
+	//
+	// example:
+	//
+	// socks5
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	//
+	// example:
+	//
+	// username
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 }
 
@@ -6425,33 +8271,96 @@ func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetProxyUserName(v string) *
 }
 
 type ModifyPolicyGroupShrinkRequest struct {
+	// Specifies whether to enable the webcam redirection feature.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
 	// example:
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// The read/write permissions on the clipboard.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: ready and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// The file transfer policy of the Alibaba Cloud Workspace web client.
+	//
+	// Valid values:
+	//
+	// 	- all: File upload and download are supported.
+	//
+	// 	- download: Only file download is supported.
+	//
+	// 	- upload: Only file upload is supported.
+	//
+	// 	- off: File upload or download is forbidden.
+	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// The read/write permissions on the on-premises drive.
+	//
+	// Valid values:
+	//
+	// 	- read: read-only.
+	//
+	// 	- readwrite: ready and write.
+	//
+	// 	- off: read/write disabled.
+	//
 	// example:
 	//
 	// off
-	LocalDrive              *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	LockResolution          *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// Specifies whether to lock the resolution.
+	//
+	// Valid values:
+	//
+	// 	- off
+	//
+	// 	- on
+	//
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The network redirection policy.
 	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-4bi18ebi9tfjh****
-	PolicyGroupId   *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// defaultPolicyGroup
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The height of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The width of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 720
@@ -6517,6 +8426,8 @@ func (s *ModifyPolicyGroupShrinkRequest) SetResolutionWidth(v int32) *ModifyPoli
 }
 
 type ModifyPolicyGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 552B7EED-D434-511F-B838-29EA4E906034
@@ -6731,18 +8642,40 @@ func (s *RebootAndroidInstancesInGroupResponse) SetBody(v *RebootAndroidInstance
 }
 
 type RecoveryFileRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
-	BackupAll             *bool     `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
+	// Whether all data is to be backed up.
+	//
+	// example:
+	//
+	// true
+	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
+	// The ID of the backup file.
+	//
 	// example:
 	//
 	// bf-azhps4rdyi2th****
-	BackupFileId   *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	// The OSS path to which the backup file is uploaded.
+	//
+	// >  When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss://${bucketName}/${key}.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	// The endpoint of the OSS bucket that stores the backup file.
+	//
+	// > : When calling the DescribeBuckets operation to query buckets, retrieve the IntranetEndpoint value if the cloud phone and the OSS bucket are in the same region. If they are in different regions, retrieve the ExtranetEndpoint value instead.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
+	// The type of the backup.
+	//
+	// Valid values:
+	//
+	// 	- OSS: backup files are stored in OSS buckets.
+	//
 	// example:
 	//
 	// OSS
@@ -6788,16 +8721,30 @@ func (s *RecoveryFileRequest) SetUploadType(v string) *RecoveryFileRequest {
 }
 
 type RecoveryFileResponseBody struct {
+	// The number of entries.
+	//
+	// example:
+	//
+	// 97
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The backup file that is restored.
+	//
 	// example:
 	//
 	// 6AD56E39-430B-5401-AB4A-7B086454****
 	Data []*RecoveryFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6AD56E39-430B-5401-AB4A-7B086454****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// t-5prhfo7wv1gjx****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RecoveryFileResponseBody) String() string {
@@ -6829,8 +8776,18 @@ func (s *RecoveryFileResponseBody) SetTaskId(v string) *RecoveryFileResponseBody
 }
 
 type RecoveryFileResponseBodyData struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// t-5prhfo7wv1gjx****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RecoveryFileResponseBodyData) String() string {
@@ -7156,8 +9113,6 @@ type SendFileRequest struct {
 	//
 	// /data
 	SourceFilePath *string `json:"SourceFilePath,omitempty" xml:"SourceFilePath,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
@@ -7292,7 +9247,126 @@ func (s *SendFileResponse) SetBody(v *SendFileResponseBody) *SendFileResponse {
 	return s
 }
 
+type SetAdbSecureRequest struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SetAdbSecureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAdbSecureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetAdbSecureRequest) SetInstanceIds(v []*string) *SetAdbSecureRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *SetAdbSecureRequest) SetStatus(v int32) *SetAdbSecureRequest {
+	s.Status = &v
+	return s
+}
+
+type SetAdbSecureResponseBody struct {
+	Data *SetAdbSecureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetAdbSecureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAdbSecureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetAdbSecureResponseBody) SetData(v *SetAdbSecureResponseBodyData) *SetAdbSecureResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SetAdbSecureResponseBody) SetRequestId(v string) *SetAdbSecureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetAdbSecureResponseBodyData struct {
+	// example:
+	//
+	// 0
+	FailCount   *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SetAdbSecureResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAdbSecureResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SetAdbSecureResponseBodyData) SetFailCount(v int32) *SetAdbSecureResponseBodyData {
+	s.FailCount = &v
+	return s
+}
+
+func (s *SetAdbSecureResponseBodyData) SetInstanceIds(v []*string) *SetAdbSecureResponseBodyData {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *SetAdbSecureResponseBodyData) SetTotalCount(v int32) *SetAdbSecureResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type SetAdbSecureResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetAdbSecureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetAdbSecureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAdbSecureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetAdbSecureResponse) SetHeaders(v map[string]*string) *SetAdbSecureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetAdbSecureResponse) SetStatusCode(v int32) *SetAdbSecureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetAdbSecureResponse) SetBody(v *SetAdbSecureResponseBody) *SetAdbSecureResponse {
+	s.Body = v
+	return s
+}
+
 type StartAndroidInstanceRequest struct {
+	// List of instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -7310,6 +9384,8 @@ func (s *StartAndroidInstanceRequest) SetAndroidInstanceIds(v []*string) *StartA
 }
 
 type StartAndroidInstanceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 17C731AB-AAEE-5844-A352-D8D0352D****
@@ -7515,10 +9591,14 @@ func (s *UninstallAppResponse) SetBody(v *UninstallAppResponseBody) *UninstallAp
 }
 
 type UpdateCustomImageNameRequest struct {
+	// The ID of the image.
+	//
 	// example:
 	//
 	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	//
 	// example:
 	//
 	// imagename
@@ -7544,6 +9624,8 @@ func (s *UpdateCustomImageNameRequest) SetImageName(v string) *UpdateCustomImage
 }
 
 type UpdateCustomImageNameResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 552B7EED-D434-511F-B838-29EA4E906034
@@ -7671,14 +9753,26 @@ func (s *UpdateInstanceGroupImageResponse) SetBody(v *UpdateInstanceGroupImageRe
 }
 
 type UpgradeAndroidInstanceGroupRequest struct {
+	// Specifies whether to enable the auto-payment feature.
+	//
+	// Valid values:
+	//
+	// 	- true: enables the auto-payment feature. Make sure that your Alibaba Cloud account has sufficient balance.
+	//
+	// 	- false: disables the auto-payment feature. You need to manually complete the payment process.
+	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The number of instances that you want to increase.
+	//
 	// example:
 	//
 	// 10
 	IncreaseNumberOfInstance *int32 `json:"IncreaseNumberOfInstance,omitempty" xml:"IncreaseNumberOfInstance,omitempty"`
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-asguicdjh****
@@ -7709,11 +9803,20 @@ func (s *UpgradeAndroidInstanceGroupRequest) SetInstanceGroupId(v string) *Upgra
 }
 
 type UpgradeAndroidInstanceGroupResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// [\\"acp-3vzqq4y3f31f3z3df\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 223684716098****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 310A783E-CC46-5452-A8A3-71AE5DB59****
@@ -7897,7 +10000,13 @@ func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *Att
 
 // Summary:
 //
-// 为用户授权/解授权安卓实例
+// Authorize/unauthorize Android instances for users.
+//
+// Description:
+//
+// Instance states that support user assignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed.
+//
+// Instance states that support unassignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed, Expired, Overdue, Deleted.
 //
 // @param request - AuthorizeAndroidInstanceRequest
 //
@@ -7958,7 +10067,13 @@ func (client *Client) AuthorizeAndroidInstanceWithOptions(request *AuthorizeAndr
 
 // Summary:
 //
-// 为用户授权/解授权安卓实例
+// Authorize/unauthorize Android instances for users.
+//
+// Description:
+//
+// Instance states that support user assignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed.
+//
+// Instance states that support unassignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed, Expired, Overdue, Deleted.
 //
 // @param request - AuthorizeAndroidInstanceRequest
 //
@@ -7976,7 +10091,11 @@ func (client *Client) AuthorizeAndroidInstance(request *AuthorizeAndroidInstance
 
 // Summary:
 //
-// 数据备份
+// Generates and uploads backup files.
+//
+// Description:
+//
+// Currently, this operation allows you to upload only backup files generated by cloud phones to Object Storage Service (OSS) buckets.
 //
 // @param request - BackupFileRequest
 //
@@ -8061,7 +10180,11 @@ func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime 
 
 // Summary:
 //
-// 数据备份
+// Generates and uploads backup files.
+//
+// Description:
+//
+// Currently, this operation allows you to upload only backup files generated by cloud phones to Object Storage Service (OSS) buckets.
 //
 // @param request - BackupFileRequest
 //
@@ -8162,7 +10285,7 @@ func (client *Client) BatchGetAcpConnectionTicket(request *BatchGetAcpConnection
 
 // Summary:
 //
-// 检查资源库存
+// Check the resource inventory.
 //
 // @param request - CheckResourceStockRequest
 //
@@ -8231,7 +10354,7 @@ func (client *Client) CheckResourceStockWithOptions(request *CheckResourceStockR
 
 // Summary:
 //
-// 检查资源库存
+// Check the resource inventory.
 //
 // @param request - CheckResourceStockRequest
 //
@@ -8249,7 +10372,15 @@ func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_r
 
 // Summary:
 //
-// 创建安卓实例组
+// Creates pay-as-you-go or subscription instance groups.
+//
+// Description:
+//
+// Before creating an instance group, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/2807121.html) supported by Cloud Phone.
+//
+// 	- If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
+//
+// 	- You can also set AutoPay to true based on your business requirements.
 //
 // @param request - CreateAndroidInstanceGroupRequest
 //
@@ -8286,6 +10417,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableIpv6)) {
+		query["EnableIpv6"] = request.EnableIpv6
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
 		query["GpuAcceleration"] = request.GpuAcceleration
 	}
@@ -8300,6 +10435,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceGroupSpec)) {
 		query["InstanceGroupSpec"] = request.InstanceGroupSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6Bandwidth)) {
+		query["Ipv6Bandwidth"] = request.Ipv6Bandwidth
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairId)) {
@@ -8324,6 +10463,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
 		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
@@ -8366,7 +10509,15 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 
 // Summary:
 //
-// 创建安卓实例组
+// Creates pay-as-you-go or subscription instance groups.
+//
+// Description:
+//
+// Before creating an instance group, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/2807121.html) supported by Cloud Phone.
+//
+// 	- If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
+//
+// 	- You can also set AutoPay to true based on your business requirements.
 //
 // @param request - CreateAndroidInstanceGroupRequest
 //
@@ -8382,16 +10533,32 @@ func (client *Client) CreateAndroidInstanceGroup(request *CreateAndroidInstanceG
 	return _result, _err
 }
 
-// @param request - CreateAppRequest
+// Summary:
+//
+// Creates an Android application.
+//
+// Description:
+//
+// ### [](#)Preparations
+//
+// Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the values of request parameters `FileName`, `FilePath`, and `OssAppUrl`.
+//
+// @param tmpReq - CreateAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppResponse
-func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomAppInfo)) {
+		request.CustomAppInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomAppInfo, tea.String("CustomAppInfo"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
@@ -8399,6 +10566,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
 		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomAppInfoShrink)) {
+		query["CustomAppInfo"] = request.CustomAppInfoShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -8459,6 +10630,16 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 
 }
 
+// Summary:
+//
+// Creates an Android application.
+//
+// Description:
+//
+// ### [](#)Preparations
+//
+// Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the values of request parameters `FileName`, `FilePath`, and `OssAppUrl`.
+//
 // @param request - CreateAppRequest
 //
 // @return CreateAppResponse
@@ -8475,7 +10656,7 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
-// 创建自定义镜像
+// Create Custom Image
 //
 // @param request - CreateCustomImageRequest
 //
@@ -8540,7 +10721,7 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 
 // Summary:
 //
-// 创建自定义镜像
+// Create Custom Image
 //
 // @param request - CreateCustomImageRequest
 //
@@ -8558,7 +10739,13 @@ func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_res
 
 // Summary:
 //
-// 创建密钥对
+// Creates an Android Debug Bridge (ADB) key pair. The system retains the public key and provides a PEM-encoded private key in PKCS#8 format, adhering to the ADB connection specification. You must securely store the private key.
+//
+// Description:
+//
+// In addition to using the CreateKeyPair operation to generate a key pair, you can also create one by using the ADB tool and upload it to the Cloud Phone console. The usage of this key pair is identical to that of a system-generated key pair.
+//
+// Each tenant can create up to 500 key pairs.
 //
 // @param request - CreateKeyPairRequest
 //
@@ -8611,7 +10798,13 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 
 // Summary:
 //
-// 创建密钥对
+// Creates an Android Debug Bridge (ADB) key pair. The system retains the public key and provides a PEM-encoded private key in PKCS#8 format, adhering to the ADB connection specification. You must securely store the private key.
+//
+// Description:
+//
+// In addition to using the CreateKeyPair operation to generate a key pair, you can also create one by using the ADB tool and upload it to the Cloud Phone console. The usage of this key pair is identical to that of a system-generated key pair.
+//
+// Each tenant can create up to 500 key pairs.
 //
 // @param request - CreateKeyPairRequest
 //
@@ -8629,7 +10822,7 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 
 // Summary:
 //
-// 创建策略
+// Creates a policy.
 //
 // @param tmpReq - CreatePolicyGroupRequest
 //
@@ -8720,7 +10913,7 @@ func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequ
 
 // Summary:
 //
-// 创建策略
+// Creates a policy.
 //
 // @param request - CreatePolicyGroupRequest
 //
@@ -8817,7 +11010,17 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 
 // Summary:
 //
+<<<<<<< Updated upstream
 // 删除安卓实例组
+=======
+// Delete an instance group.
+//
+// Description:
+//
+// You can delete only pay-as-you-go instance groups.
+//
+// You can delete subscription instance groups only after they expire.
+>>>>>>> Stashed changes
 //
 // @param request - DeleteAndroidInstanceGroupRequest
 //
@@ -8870,7 +11073,13 @@ func (client *Client) DeleteAndroidInstanceGroupWithOptions(request *DeleteAndro
 
 // Summary:
 //
-// 删除安卓实例组
+// Delete an instance group.
+//
+// Description:
+//
+// You can delete only pay-as-you-go instance groups.
+//
+// You can delete subscription instance groups only after they expire.
 //
 // @param request - DeleteAndroidInstanceGroupRequest
 //
@@ -8888,7 +11097,7 @@ func (client *Client) DeleteAndroidInstanceGroup(request *DeleteAndroidInstanceG
 
 // Summary:
 //
-// 删除app
+// Deletes an application. Before you delete an application, make sure that the application is not installed on any instances.
 //
 // @param request - DeleteAppsRequest
 //
@@ -8941,7 +11150,7 @@ func (client *Client) DeleteAppsWithOptions(request *DeleteAppsRequest, runtime 
 
 // Summary:
 //
-// 删除app
+// Deletes an application. Before you delete an application, make sure that the application is not installed on any instances.
 //
 // @param request - DeleteAppsRequest
 //
@@ -8957,6 +11166,14 @@ func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteApp
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom image.
+//
+// Description:
+//
+// You cannot delete an image that is currently in use by an instance group.
+//
 // @param tmpReq - DeleteImagesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9012,6 +11229,14 @@ func (client *Client) DeleteImagesWithOptions(tmpReq *DeleteImagesRequest, runti
 
 }
 
+// Summary:
+//
+// Deletes a custom image.
+//
+// Description:
+//
+// You cannot delete an image that is currently in use by an instance group.
+//
 // @param request - DeleteImagesRequest
 //
 // @return DeleteImagesResponse
@@ -9028,7 +11253,13 @@ func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *Delet
 
 // Summary:
 //
-// 删除密钥对
+// Deletes Android Debug Bridge (ADB) key pairs.
+//
+// Description:
+//
+//   If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
+//
+// 	- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -9081,7 +11312,13 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 
 // Summary:
 //
-// 删除密钥对
+// Deletes Android Debug Bridge (ADB) key pairs.
+//
+// Description:
+//
+//   If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
+//
+// 	- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -9099,7 +11336,7 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 
 // Summary:
 //
-// 删除策略
+// Deletes a policy.
 //
 // @param request - DeletePolicyGroupRequest
 //
@@ -9152,7 +11389,7 @@ func (client *Client) DeletePolicyGroupWithOptions(request *DeletePolicyGroupReq
 
 // Summary:
 //
-// 删除策略
+// Deletes a policy.
 //
 // @param request - DeletePolicyGroupRequest
 //
@@ -9170,7 +11407,7 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 
 // Summary:
 //
-// 查询实例组
+// Queries the details of an instance group.
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -9259,7 +11496,7 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 
 // Summary:
 //
-// 查询实例组
+// Queries the details of an instance group.
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -9277,7 +11514,11 @@ func (client *Client) DescribeAndroidInstanceGroups(request *DescribeAndroidInst
 
 // Summary:
 //
+<<<<<<< Updated upstream
 // 查询安卓的实例列表
+=======
+// Queries cloud phone instances.
+>>>>>>> Stashed changes
 //
 // @param request - DescribeAndroidInstancesRequest
 //
@@ -9386,7 +11627,11 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 // Summary:
 //
+<<<<<<< Updated upstream
 // 查询安卓的实例列表
+=======
+// Queries cloud phone instances.
+>>>>>>> Stashed changes
 //
 // @param request - DescribeAndroidInstancesRequest
 //
@@ -9404,7 +11649,7 @@ func (client *Client) DescribeAndroidInstances(request *DescribeAndroidInstances
 
 // Summary:
 //
-// 查询app
+// Queries applications.
 //
 // @param request - DescribeAppsRequest
 //
@@ -9485,7 +11730,7 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 
 // Summary:
 //
-// 查询app
+// Queries applications.
 //
 // @param request - DescribeAppsRequest
 //
@@ -9503,7 +11748,11 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 
 // Summary:
 //
-// 查询备份文件列表
+// Queries backup files.
+//
+// Description:
+//
+// Currently, this operation allows you to query only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
 //
 // @param request - DescribeBackupFilesRequest
 //
@@ -9604,7 +11853,11 @@ func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFile
 
 // Summary:
 //
-// 查询备份文件列表
+// Queries backup files.
+//
+// Description:
+//
+// Currently, this operation allows you to query only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
 //
 // @param request - DescribeBackupFilesRequest
 //
@@ -9622,7 +11875,11 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 
 // Summary:
 //
+<<<<<<< Updated upstream
 // 查询镜像列表
+=======
+// Queries images.
+>>>>>>> Stashed changes
 //
 // @param request - DescribeImageListRequest
 //
@@ -9701,7 +11958,11 @@ func (client *Client) DescribeImageListWithOptions(request *DescribeImageListReq
 
 // Summary:
 //
+<<<<<<< Updated upstream
 // 查询镜像列表
+=======
+// Queries images.
+>>>>>>> Stashed changes
 //
 // @param request - DescribeImageListRequest
 //
@@ -9794,7 +12055,7 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 
 // Summary:
 //
-// 查询密钥对
+// Queries one or more key pairs.
 //
 // @param request - DescribeKeyPairsRequest
 //
@@ -9859,7 +12120,7 @@ func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsReque
 
 // Summary:
 //
-// 查询密钥对
+// Queries one or more key pairs.
 //
 // @param request - DescribeKeyPairsRequest
 //
@@ -9877,7 +12138,7 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 
 // Summary:
 //
-// 查询地域
+// Query available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -9934,7 +12195,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 查询地域
+// Query available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -9952,7 +12213,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// 查询规格
+// Query available specifications.
 //
 // @param request - DescribeSpecRequest
 //
@@ -10033,7 +12294,7 @@ func (client *Client) DescribeSpecWithOptions(request *DescribeSpecRequest, runt
 
 // Summary:
 //
-// 查询规格
+// Query available specifications.
 //
 // @param request - DescribeSpecRequest
 //
@@ -10644,7 +12905,7 @@ func (client *Client) InstallApp(request *InstallAppRequest) (_result *InstallAp
 
 // Summary:
 //
-// 查询Policy列表
+// Queries policies.
 //
 // @param request - ListPolicyGroupsRequest
 //
@@ -10709,7 +12970,7 @@ func (client *Client) ListPolicyGroupsWithOptions(request *ListPolicyGroupsReque
 
 // Summary:
 //
-// 查询Policy列表
+// Queries policies.
 //
 // @param request - ListPolicyGroupsRequest
 //
@@ -10727,7 +12988,7 @@ func (client *Client) ListPolicyGroups(request *ListPolicyGroupsRequest) (_resul
 
 // Summary:
 //
-// 修改安卓实例信息
+// Modifies attributes of a cloud phone instance. Currently, this operation allows you to modify only the name of a cloud phone instance.
 //
 // @param request - ModifyAndroidInstanceRequest
 //
@@ -10784,7 +13045,7 @@ func (client *Client) ModifyAndroidInstanceWithOptions(request *ModifyAndroidIns
 
 // Summary:
 //
-// 修改安卓实例信息
+// Modifies attributes of a cloud phone instance. Currently, this operation allows you to modify only the name of a cloud phone instance.
 //
 // @param request - ModifyAndroidInstanceRequest
 //
@@ -10802,7 +13063,7 @@ func (client *Client) ModifyAndroidInstance(request *ModifyAndroidInstanceReques
 
 // Summary:
 //
-// 修改安卓实例组
+// Modifies attributes of an instance group.
 //
 // @param request - ModifyAndroidInstanceGroupRequest
 //
@@ -10863,7 +13124,7 @@ func (client *Client) ModifyAndroidInstanceGroupWithOptions(request *ModifyAndro
 
 // Summary:
 //
-// 修改安卓实例组
+// Modifies attributes of an instance group.
 //
 // @param request - ModifyAndroidInstanceGroupRequest
 //
@@ -10881,7 +13142,7 @@ func (client *Client) ModifyAndroidInstanceGroup(request *ModifyAndroidInstanceG
 
 // Summary:
 //
-// 修改app
+// Modify attributes of an application.
 //
 // @param request - ModifyAppRequest
 //
@@ -10946,7 +13207,7 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 
 // Summary:
 //
-// 修改app
+// Modify attributes of an application.
 //
 // @param request - ModifyAppRequest
 //
@@ -10964,7 +13225,7 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 
 // Summary:
 //
-// 修改密钥对名称
+// Modifies Android Debug Bridge (ADB) key pairs.
 //
 // @param request - ModifyKeyPairNameRequest
 //
@@ -11021,7 +13282,7 @@ func (client *Client) ModifyKeyPairNameWithOptions(request *ModifyKeyPairNameReq
 
 // Summary:
 //
-// 修改密钥对名称
+// Modifies Android Debug Bridge (ADB) key pairs.
 //
 // @param request - ModifyKeyPairNameRequest
 //
@@ -11039,7 +13300,7 @@ func (client *Client) ModifyKeyPairName(request *ModifyKeyPairNameRequest) (_res
 
 // Summary:
 //
-// 修改policy
+// Modifies a policy.
 //
 // @param tmpReq - ModifyPolicyGroupRequest
 //
@@ -11134,7 +13395,7 @@ func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequ
 
 // Summary:
 //
-// 修改policy
+// Modifies a policy.
 //
 // @param request - ModifyPolicyGroupRequest
 //
@@ -11306,7 +13567,11 @@ func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstan
 
 // Summary:
 //
-// 数据恢复
+// Restores backup files.
+//
+// Description:
+//
+// Currently, this operation allows you to restore only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
 //
 // @param request - RecoveryFileRequest
 //
@@ -11379,7 +13644,11 @@ func (client *Client) RecoveryFileWithOptions(request *RecoveryFileRequest, runt
 
 // Summary:
 //
-// 数据恢复
+// Restores backup files.
+//
+// Description:
+//
+// Currently, this operation allows you to restore only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
 //
 // @param request - RecoveryFileRequest
 //
@@ -11719,9 +13988,80 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 	return _result, _err
 }
 
+// @param request - SetAdbSecureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAdbSecureResponse
+func (client *Client) SetAdbSecureWithOptions(request *SetAdbSecureRequest, runtime *util.RuntimeOptions) (_result *SetAdbSecureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetAdbSecure"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetAdbSecureResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetAdbSecureResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - SetAdbSecureRequest
+//
+// @return SetAdbSecureResponse
+func (client *Client) SetAdbSecure(request *SetAdbSecureRequest) (_result *SetAdbSecureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetAdbSecureResponse{}
+	_body, _err := client.SetAdbSecureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
-// 实例开机
+// Start instances.
+//
+// Description:
+//
+// Only supports starting when the instance is in the **Stopped, Backup Failed, or Recovery Failed*	- state.
 //
 // @param request - StartAndroidInstanceRequest
 //
@@ -11774,7 +14114,11 @@ func (client *Client) StartAndroidInstanceWithOptions(request *StartAndroidInsta
 
 // Summary:
 //
-// 实例开机
+// Start instances.
+//
+// Description:
+//
+// Only supports starting when the instance is in the **Stopped, Backup Failed, or Recovery Failed*	- state.
 //
 // @param request - StartAndroidInstanceRequest
 //
@@ -11946,7 +14290,7 @@ func (client *Client) UninstallApp(request *UninstallAppRequest) (_result *Unins
 
 // Summary:
 //
-// 修改自定义镜像名称
+// Updates the name of a custom image.
 //
 // @param request - UpdateCustomImageNameRequest
 //
@@ -12003,7 +14347,7 @@ func (client *Client) UpdateCustomImageNameWithOptions(request *UpdateCustomImag
 
 // Summary:
 //
-// 修改自定义镜像名称
+// Updates the name of a custom image.
 //
 // @param request - UpdateCustomImageNameRequest
 //
@@ -12096,7 +14440,11 @@ func (client *Client) UpdateInstanceGroupImage(request *UpdateInstanceGroupImage
 
 // Summary:
 //
-// 安卓实例组扩容
+// Upgrades an instance group. Currently, this operation allows you to only increase the number of instances in an instance group.
+//
+// Description:
+//
+// Currently, this operation allows you to only increase the size of an instance group.
 //
 // @param request - UpgradeAndroidInstanceGroupRequest
 //
@@ -12157,7 +14505,11 @@ func (client *Client) UpgradeAndroidInstanceGroupWithOptions(request *UpgradeAnd
 
 // Summary:
 //
-// 安卓实例组扩容
+// Upgrades an instance group. Currently, this operation allows you to only increase the number of instances in an instance group.
+//
+// Description:
+//
+// Currently, this operation allows you to only increase the size of an instance group.
 //
 // @param request - UpgradeAndroidInstanceGroupRequest
 //
