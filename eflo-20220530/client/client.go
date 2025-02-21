@@ -80,6 +80,7 @@ func (s *AssignLeniPrivateIpAddressRequest) SetRegionId(v string) *AssignLeniPri
 }
 
 type AssignLeniPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -108,6 +109,11 @@ func (s AssignLeniPrivateIpAddressResponseBody) String() string {
 
 func (s AssignLeniPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AssignLeniPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *AssignLeniPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *AssignLeniPrivateIpAddressResponseBody) SetCode(v int32) *AssignLeniPrivateIpAddressResponseBody {
@@ -300,6 +306,7 @@ func (s *AssignPrivateIpAddressRequest) SetSubnetId(v string) *AssignPrivateIpAd
 }
 
 type AssignPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -328,6 +335,11 @@ func (s AssignPrivateIpAddressResponseBody) String() string {
 
 func (s AssignPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AssignPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *AssignPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *AssignPrivateIpAddressResponseBody) SetCode(v int32) *AssignPrivateIpAddressResponseBody {
@@ -463,6 +475,7 @@ func (s *AssociateVpdCidrBlockRequest) SetVpdId(v string) *AssociateVpdCidrBlock
 }
 
 type AssociateVpdCidrBlockResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -491,6 +504,11 @@ func (s AssociateVpdCidrBlockResponseBody) String() string {
 
 func (s AssociateVpdCidrBlockResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AssociateVpdCidrBlockResponseBody) SetAccessDeniedDetail(v string) *AssociateVpdCidrBlockResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *AssociateVpdCidrBlockResponseBody) SetCode(v int32) *AssociateVpdCidrBlockResponseBody {
@@ -615,6 +633,7 @@ func (s *AttachElasticNetworkInterfaceRequest) SetRegionId(v string) *AttachElas
 }
 
 type AttachElasticNetworkInterfaceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -647,6 +666,11 @@ func (s AttachElasticNetworkInterfaceResponseBody) String() string {
 
 func (s AttachElasticNetworkInterfaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AttachElasticNetworkInterfaceResponseBody) SetAccessDeniedDetail(v string) *AttachElasticNetworkInterfaceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *AttachElasticNetworkInterfaceResponseBody) SetCode(v int32) *AttachElasticNetworkInterfaceResponseBody {
@@ -815,6 +839,7 @@ func (s *CreateElasticNetworkInterfaceRequest) SetZoneId(v string) *CreateElasti
 }
 
 type CreateElasticNetworkInterfaceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -843,6 +868,11 @@ func (s CreateElasticNetworkInterfaceResponseBody) String() string {
 
 func (s CreateElasticNetworkInterfaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateElasticNetworkInterfaceResponseBody) SetAccessDeniedDetail(v string) *CreateElasticNetworkInterfaceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateElasticNetworkInterfaceResponseBody) SetCode(v int32) *CreateElasticNetworkInterfaceResponseBody {
@@ -1000,6 +1030,7 @@ func (s *CreateErRequest) SetResourceGroupId(v string) *CreateErRequest {
 }
 
 type CreateErResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -1028,6 +1059,11 @@ func (s CreateErResponseBody) String() string {
 
 func (s CreateErResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateErResponseBody) SetAccessDeniedDetail(v string) *CreateErResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateErResponseBody) SetCode(v int32) *CreateErResponseBody {
@@ -1214,6 +1250,7 @@ func (s *CreateErAttachmentRequest) SetResourceTenantId(v string) *CreateErAttac
 }
 
 type CreateErAttachmentResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -1242,6 +1279,11 @@ func (s CreateErAttachmentResponseBody) String() string {
 
 func (s CreateErAttachmentResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateErAttachmentResponseBody) SetAccessDeniedDetail(v string) *CreateErAttachmentResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateErAttachmentResponseBody) SetCode(v int32) *CreateErAttachmentResponseBody {
@@ -1491,6 +1533,7 @@ func (s *CreateErRouteMapRequest) SetTransmissionInstanceType(v string) *CreateE
 }
 
 type CreateErRouteMapResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -1519,6 +1562,11 @@ func (s CreateErRouteMapResponseBody) String() string {
 
 func (s CreateErRouteMapResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateErRouteMapResponseBody) SetAccessDeniedDetail(v string) *CreateErRouteMapResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateErRouteMapResponseBody) SetCode(v int32) *CreateErRouteMapResponseBody {
@@ -1740,6 +1788,7 @@ func (s *CreateSubnetRequestTag) SetValue(v string) *CreateSubnetRequestTag {
 }
 
 type CreateSubnetResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -1768,6 +1817,11 @@ func (s CreateSubnetResponseBody) String() string {
 
 func (s CreateSubnetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSubnetResponseBody) SetAccessDeniedDetail(v string) *CreateSubnetResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateSubnetResponseBody) SetCode(v int32) *CreateSubnetResponseBody {
@@ -2095,6 +2149,7 @@ func (s *CreateVccRequestTag) SetValue(v string) *CreateVccRequestTag {
 }
 
 type CreateVccResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -2123,6 +2178,11 @@ func (s CreateVccResponseBody) String() string {
 
 func (s CreateVccResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVccResponseBody) SetAccessDeniedDetail(v string) *CreateVccResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateVccResponseBody) SetCode(v int32) *CreateVccResponseBody {
@@ -2260,6 +2320,7 @@ func (s *CreateVccGrantRuleRequest) SetRegionId(v string) *CreateVccGrantRuleReq
 }
 
 type CreateVccGrantRuleResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -2292,6 +2353,11 @@ func (s CreateVccGrantRuleResponseBody) String() string {
 
 func (s CreateVccGrantRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVccGrantRuleResponseBody) SetAccessDeniedDetail(v string) *CreateVccGrantRuleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateVccGrantRuleResponseBody) SetCode(v int32) *CreateVccGrantRuleResponseBody {
@@ -2410,6 +2476,7 @@ func (s *CreateVccRouteEntryRequest) SetVccId(v string) *CreateVccRouteEntryRequ
 }
 
 type CreateVccRouteEntryResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -2438,6 +2505,11 @@ func (s CreateVccRouteEntryResponseBody) String() string {
 
 func (s CreateVccRouteEntryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVccRouteEntryResponseBody) SetAccessDeniedDetail(v string) *CreateVccRouteEntryResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateVccRouteEntryResponseBody) SetCode(v int32) *CreateVccRouteEntryResponseBody {
@@ -2710,6 +2782,7 @@ func (s *CreateVpdRequestTag) SetValue(v string) *CreateVpdRequestTag {
 }
 
 type CreateVpdResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -2738,6 +2811,11 @@ func (s CreateVpdResponseBody) String() string {
 
 func (s CreateVpdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVpdResponseBody) SetAccessDeniedDetail(v string) *CreateVpdResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateVpdResponseBody) SetCode(v int32) *CreateVpdResponseBody {
@@ -2882,6 +2960,7 @@ func (s *CreateVpdGrantRuleRequest) SetRegionId(v string) *CreateVpdGrantRuleReq
 }
 
 type CreateVpdGrantRuleResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -2914,6 +2993,11 @@ func (s CreateVpdGrantRuleResponseBody) String() string {
 
 func (s CreateVpdGrantRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVpdGrantRuleResponseBody) SetAccessDeniedDetail(v string) *CreateVpdGrantRuleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateVpdGrantRuleResponseBody) SetCode(v int32) *CreateVpdGrantRuleResponseBody {
@@ -3036,6 +3120,7 @@ func (s *DeleteElasticNetworkInterfaceRequest) SetRegionId(v string) *DeleteElas
 }
 
 type DeleteElasticNetworkInterfaceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -3064,6 +3149,11 @@ func (s DeleteElasticNetworkInterfaceResponseBody) String() string {
 
 func (s DeleteElasticNetworkInterfaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteElasticNetworkInterfaceResponseBody) SetAccessDeniedDetail(v string) *DeleteElasticNetworkInterfaceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteElasticNetworkInterfaceResponseBody) SetCode(v int32) *DeleteElasticNetworkInterfaceResponseBody {
@@ -3186,6 +3276,7 @@ func (s *DeleteErRequest) SetRegionId(v string) *DeleteErRequest {
 }
 
 type DeleteErResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -3218,6 +3309,11 @@ func (s DeleteErResponseBody) String() string {
 
 func (s DeleteErResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteErResponseBody) SetAccessDeniedDetail(v string) *DeleteErResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteErResponseBody) SetCode(v int32) *DeleteErResponseBody {
@@ -3320,6 +3416,7 @@ func (s *DeleteErAttachmentRequest) SetRegionId(v string) *DeleteErAttachmentReq
 }
 
 type DeleteErAttachmentResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -3394,6 +3491,11 @@ func (s DeleteErAttachmentResponseBody) String() string {
 
 func (s DeleteErAttachmentResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteErAttachmentResponseBody) SetAccessDeniedDetail(v string) *DeleteErAttachmentResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteErAttachmentResponseBody) SetCode(v int32) *DeleteErAttachmentResponseBody {
@@ -3492,6 +3594,7 @@ func (s *DeleteErRouteMapRequest) SetRegionId(v string) *DeleteErRouteMapRequest
 }
 
 type DeleteErRouteMapResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -3524,6 +3627,11 @@ func (s DeleteErRouteMapResponseBody) String() string {
 
 func (s DeleteErRouteMapResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteErRouteMapResponseBody) SetAccessDeniedDetail(v string) *DeleteErRouteMapResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteErRouteMapResponseBody) SetCode(v int32) *DeleteErRouteMapResponseBody {
@@ -3639,6 +3747,7 @@ func (s *DeleteSubnetRequest) SetZoneId(v string) *DeleteSubnetRequest {
 }
 
 type DeleteSubnetResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -3679,6 +3788,11 @@ func (s DeleteSubnetResponseBody) String() string {
 
 func (s DeleteSubnetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteSubnetResponseBody) SetAccessDeniedDetail(v string) *DeleteSubnetResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteSubnetResponseBody) SetCode(v int32) *DeleteSubnetResponseBody {
@@ -3790,6 +3904,7 @@ func (s *DeleteVccGrantRuleRequest) SetRegionId(v string) *DeleteVccGrantRuleReq
 }
 
 type DeleteVccGrantRuleResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -3822,6 +3937,11 @@ func (s DeleteVccGrantRuleResponseBody) String() string {
 
 func (s DeleteVccGrantRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteVccGrantRuleResponseBody) SetAccessDeniedDetail(v string) *DeleteVccGrantRuleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteVccGrantRuleResponseBody) SetCode(v int32) *DeleteVccGrantRuleResponseBody {
@@ -3929,6 +4049,7 @@ func (s *DeleteVccRouteEntryRequest) SetVccRouteEntryId(v string) *DeleteVccRout
 }
 
 type DeleteVccRouteEntryResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -3961,6 +4082,11 @@ func (s DeleteVccRouteEntryResponseBody) String() string {
 
 func (s DeleteVccRouteEntryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteVccRouteEntryResponseBody) SetAccessDeniedDetail(v string) *DeleteVccRouteEntryResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteVccRouteEntryResponseBody) SetCode(v int32) *DeleteVccRouteEntryResponseBody {
@@ -4050,6 +4176,7 @@ func (s *DeleteVpdRequest) SetVpdId(v string) *DeleteVpdRequest {
 }
 
 type DeleteVpdResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -4110,6 +4237,11 @@ func (s DeleteVpdResponseBody) String() string {
 
 func (s DeleteVpdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteVpdResponseBody) SetAccessDeniedDetail(v string) *DeleteVpdResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteVpdResponseBody) SetCode(v int32) *DeleteVpdResponseBody {
@@ -4232,6 +4364,7 @@ func (s *DeleteVpdGrantRuleRequest) SetRegionId(v string) *DeleteVpdGrantRuleReq
 }
 
 type DeleteVpdGrantRuleResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -4264,6 +4397,11 @@ func (s DeleteVpdGrantRuleResponseBody) String() string {
 
 func (s DeleteVpdGrantRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteVpdGrantRuleResponseBody) SetAccessDeniedDetail(v string) *DeleteVpdGrantRuleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteVpdGrantRuleResponseBody) SetCode(v int32) *DeleteVpdGrantRuleResponseBody {
@@ -4338,6 +4476,7 @@ func (s *DescribeSlrRequest) SetResourceGroupId(v string) *DescribeSlrRequest {
 }
 
 type DescribeSlrResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -4366,6 +4505,11 @@ func (s DescribeSlrResponseBody) String() string {
 
 func (s DescribeSlrResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSlrResponseBody) SetAccessDeniedDetail(v string) *DescribeSlrResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribeSlrResponseBody) SetCode(v int32) *DescribeSlrResponseBody {
@@ -4490,6 +4634,7 @@ func (s *DetachElasticNetworkInterfaceRequest) SetRegionId(v string) *DetachElas
 }
 
 type DetachElasticNetworkInterfaceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -4516,6 +4661,11 @@ func (s DetachElasticNetworkInterfaceResponseBody) String() string {
 
 func (s DetachElasticNetworkInterfaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DetachElasticNetworkInterfaceResponseBody) SetAccessDeniedDetail(v string) *DetachElasticNetworkInterfaceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DetachElasticNetworkInterfaceResponseBody) SetCode(v int32) *DetachElasticNetworkInterfaceResponseBody {
@@ -4600,6 +4750,7 @@ func (s *GetDestinationCidrBlockRequest) SetRegionId(v string) *GetDestinationCi
 }
 
 type GetDestinationCidrBlockResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code
 	//
 	// example:
@@ -4628,6 +4779,11 @@ func (s GetDestinationCidrBlockResponseBody) String() string {
 
 func (s GetDestinationCidrBlockResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetDestinationCidrBlockResponseBody) SetAccessDeniedDetail(v string) *GetDestinationCidrBlockResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetDestinationCidrBlockResponseBody) SetCode(v int32) *GetDestinationCidrBlockResponseBody {
@@ -4735,6 +4891,7 @@ func (s *GetElasticNetworkInterfaceRequest) SetRegionId(v string) *GetElasticNet
 }
 
 type GetElasticNetworkInterfaceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -4763,6 +4920,11 @@ func (s GetElasticNetworkInterfaceResponseBody) String() string {
 
 func (s GetElasticNetworkInterfaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceResponseBody) SetAccessDeniedDetail(v string) *GetElasticNetworkInterfaceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetElasticNetworkInterfaceResponseBody) SetCode(v int32) *GetElasticNetworkInterfaceResponseBody {
@@ -5313,6 +5475,7 @@ func (s *GetErRequest) SetRegionId(v string) *GetErRequest {
 }
 
 type GetErResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -5341,6 +5504,11 @@ func (s GetErResponseBody) String() string {
 
 func (s GetErResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetErResponseBody) SetAccessDeniedDetail(v string) *GetErResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetErResponseBody) SetCode(v int32) *GetErResponseBody {
@@ -6191,6 +6359,7 @@ func (s *GetErAttachmentRequest) SetRegionId(v string) *GetErAttachmentRequest {
 }
 
 type GetErAttachmentResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -6219,6 +6388,11 @@ func (s GetErAttachmentResponseBody) String() string {
 
 func (s GetErAttachmentResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetErAttachmentResponseBody) SetAccessDeniedDetail(v string) *GetErAttachmentResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetErAttachmentResponseBody) SetCode(v int32) *GetErAttachmentResponseBody {
@@ -6532,6 +6706,7 @@ func (s *GetErRouteEntryRequest) SetRegionId(v string) *GetErRouteEntryRequest {
 }
 
 type GetErRouteEntryResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -6560,6 +6735,11 @@ func (s GetErRouteEntryResponseBody) String() string {
 
 func (s GetErRouteEntryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetErRouteEntryResponseBody) SetAccessDeniedDetail(v string) *GetErRouteEntryResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetErRouteEntryResponseBody) SetCode(v int32) *GetErRouteEntryResponseBody {
@@ -6792,6 +6972,7 @@ func (s *GetErRouteMapRequest) SetRegionId(v string) *GetErRouteMapRequest {
 }
 
 type GetErRouteMapResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -6820,6 +7001,11 @@ func (s GetErRouteMapResponseBody) String() string {
 
 func (s GetErRouteMapResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetErRouteMapResponseBody) SetAccessDeniedDetail(v string) *GetErRouteMapResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetErRouteMapResponseBody) SetCode(v int32) *GetErRouteMapResponseBody {
@@ -7220,6 +7406,7 @@ func (s *GetFabricTopologyRequest) SetVpdId(v string) *GetFabricTopologyRequest 
 }
 
 type GetFabricTopologyResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -7248,6 +7435,11 @@ func (s GetFabricTopologyResponseBody) String() string {
 
 func (s GetFabricTopologyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetFabricTopologyResponseBody) SetAccessDeniedDetail(v string) *GetFabricTopologyResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetFabricTopologyResponseBody) SetCode(v int32) *GetFabricTopologyResponseBody {
@@ -7464,6 +7656,7 @@ func (s *GetLeniPrivateIpAddressRequest) SetRegionId(v string) *GetLeniPrivateIp
 }
 
 type GetLeniPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -7492,6 +7685,11 @@ func (s GetLeniPrivateIpAddressResponseBody) String() string {
 
 func (s GetLeniPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetLeniPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *GetLeniPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetLeniPrivateIpAddressResponseBody) SetCode(v int32) *GetLeniPrivateIpAddressResponseBody {
@@ -7704,6 +7902,7 @@ func (s *GetLniPrivateIpAddressRequest) SetRegionId(v string) *GetLniPrivateIpAd
 }
 
 type GetLniPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -7732,6 +7931,11 @@ func (s GetLniPrivateIpAddressResponseBody) String() string {
 
 func (s GetLniPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetLniPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *GetLniPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetLniPrivateIpAddressResponseBody) SetCode(v int32) *GetLniPrivateIpAddressResponseBody {
@@ -7944,6 +8148,7 @@ func (s *GetNetworkInterfaceRequest) SetSubnetId(v string) *GetNetworkInterfaceR
 }
 
 type GetNetworkInterfaceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -7972,6 +8177,11 @@ func (s GetNetworkInterfaceResponseBody) String() string {
 
 func (s GetNetworkInterfaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetNetworkInterfaceResponseBody) SetAccessDeniedDetail(v string) *GetNetworkInterfaceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetNetworkInterfaceResponseBody) SetCode(v int32) *GetNetworkInterfaceResponseBody {
@@ -8452,6 +8662,7 @@ func (s *GetNodeInfoForPodRequest) SetRegionId(v string) *GetNodeInfoForPodReque
 }
 
 type GetNodeInfoForPodResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -8480,6 +8691,11 @@ func (s GetNodeInfoForPodResponseBody) String() string {
 
 func (s GetNodeInfoForPodResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetNodeInfoForPodResponseBody) SetAccessDeniedDetail(v string) *GetNodeInfoForPodResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetNodeInfoForPodResponseBody) SetCode(v int32) *GetNodeInfoForPodResponseBody {
@@ -8695,6 +8911,7 @@ func (s *GetSubnetRequest) SetVpdId(v string) *GetSubnetRequest {
 }
 
 type GetSubnetResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -8723,6 +8940,11 @@ func (s GetSubnetResponseBody) String() string {
 
 func (s GetSubnetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetSubnetResponseBody) SetAccessDeniedDetail(v string) *GetSubnetResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetSubnetResponseBody) SetCode(v int32) *GetSubnetResponseBody {
@@ -9189,6 +9411,7 @@ func (s *GetVccRequest) SetVccId(v string) *GetVccRequest {
 }
 
 type GetVccResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -9217,6 +9440,11 @@ func (s GetVccResponseBody) String() string {
 
 func (s GetVccResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVccResponseBody) SetAccessDeniedDetail(v string) *GetVccResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetVccResponseBody) SetCode(v int32) *GetVccResponseBody {
@@ -10368,6 +10596,7 @@ func (s *GetVccGrantRuleRequest) SetRegionId(v string) *GetVccGrantRuleRequest {
 }
 
 type GetVccGrantRuleResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -10396,6 +10625,11 @@ func (s GetVccGrantRuleResponseBody) String() string {
 
 func (s GetVccGrantRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVccGrantRuleResponseBody) SetAccessDeniedDetail(v string) *GetVccGrantRuleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetVccGrantRuleResponseBody) SetCode(v int32) *GetVccGrantRuleResponseBody {
@@ -10638,6 +10872,7 @@ func (s *GetVccRouteEntryRequest) SetVccRouteEntryId(v string) *GetVccRouteEntry
 }
 
 type GetVccRouteEntryResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -10666,6 +10901,11 @@ func (s GetVccRouteEntryResponseBody) String() string {
 
 func (s GetVccRouteEntryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVccRouteEntryResponseBody) SetAccessDeniedDetail(v string) *GetVccRouteEntryResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetVccRouteEntryResponseBody) SetCode(v int32) *GetVccRouteEntryResponseBody {
@@ -10898,6 +11138,7 @@ func (s *GetVpdRequest) SetVpdId(v string) *GetVpdRequest {
 }
 
 type GetVpdResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -10926,6 +11167,11 @@ func (s GetVpdResponseBody) String() string {
 
 func (s GetVpdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVpdResponseBody) SetAccessDeniedDetail(v string) *GetVpdResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetVpdResponseBody) SetCode(v int32) *GetVpdResponseBody {
@@ -11469,6 +11715,7 @@ func (s *GetVpdGrantRuleRequest) SetRegionId(v string) *GetVpdGrantRuleRequest {
 }
 
 type GetVpdGrantRuleResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -11497,6 +11744,11 @@ func (s GetVpdGrantRuleResponseBody) String() string {
 
 func (s GetVpdGrantRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVpdGrantRuleResponseBody) SetAccessDeniedDetail(v string) *GetVpdGrantRuleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetVpdGrantRuleResponseBody) SetCode(v int32) *GetVpdGrantRuleResponseBody {
@@ -11735,6 +11987,7 @@ func (s *GetVpdRouteEntryRequest) SetVpdRouteEntryId(v string) *GetVpdRouteEntry
 }
 
 type GetVpdRouteEntryResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -11763,6 +12016,11 @@ func (s GetVpdRouteEntryResponseBody) String() string {
 
 func (s GetVpdRouteEntryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVpdRouteEntryResponseBody) SetAccessDeniedDetail(v string) *GetVpdRouteEntryResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetVpdRouteEntryResponseBody) SetCode(v int32) *GetVpdRouteEntryResponseBody {
@@ -11971,6 +12229,7 @@ func (s *InitializeVccRequest) SetResourceGroupId(v string) *InitializeVccReques
 }
 
 type InitializeVccResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -11999,6 +12258,11 @@ func (s InitializeVccResponseBody) String() string {
 
 func (s InitializeVccResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *InitializeVccResponseBody) SetAccessDeniedDetail(v string) *InitializeVccResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *InitializeVccResponseBody) SetCode(v int32) *InitializeVccResponseBody {
@@ -12253,6 +12517,7 @@ func (s *ListElasticNetworkInterfacesRequest) SetZoneId(v string) *ListElasticNe
 }
 
 type ListElasticNetworkInterfacesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -12281,6 +12546,11 @@ func (s ListElasticNetworkInterfacesResponseBody) String() string {
 
 func (s ListElasticNetworkInterfacesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesResponseBody) SetAccessDeniedDetail(v string) *ListElasticNetworkInterfacesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListElasticNetworkInterfacesResponseBody) SetCode(v int32) *ListElasticNetworkInterfacesResponseBody {
@@ -12748,6 +13018,7 @@ func (s *ListErAttachmentsRequest) SetStatus(v string) *ListErAttachmentsRequest
 }
 
 type ListErAttachmentsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -12776,6 +13047,11 @@ func (s ListErAttachmentsResponseBody) String() string {
 
 func (s ListErAttachmentsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListErAttachmentsResponseBody) SetAccessDeniedDetail(v string) *ListErAttachmentsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListErAttachmentsResponseBody) SetCode(v int32) *ListErAttachmentsResponseBody {
@@ -13226,6 +13502,7 @@ func (s *ListErRouteEntriesRequest) SetStatus(v string) *ListErRouteEntriesReque
 }
 
 type ListErRouteEntriesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -13254,6 +13531,11 @@ func (s ListErRouteEntriesResponseBody) String() string {
 
 func (s ListErRouteEntriesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListErRouteEntriesResponseBody) SetAccessDeniedDetail(v string) *ListErRouteEntriesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListErRouteEntriesResponseBody) SetCode(v int32) *ListErRouteEntriesResponseBody {
@@ -13685,6 +13967,7 @@ func (s *ListErRouteMapsRequest) SetTransmissionInstanceType(v string) *ListErRo
 }
 
 type ListErRouteMapsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -13713,6 +13996,11 @@ func (s ListErRouteMapsResponseBody) String() string {
 
 func (s ListErRouteMapsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListErRouteMapsResponseBody) SetAccessDeniedDetail(v string) *ListErRouteMapsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListErRouteMapsResponseBody) SetCode(v int32) *ListErRouteMapsResponseBody {
@@ -14191,6 +14479,7 @@ func (s *ListErsRequest) SetResourceGroupId(v string) *ListErsRequest {
 }
 
 type ListErsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -14219,6 +14508,11 @@ func (s ListErsResponseBody) String() string {
 
 func (s ListErsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListErsResponseBody) SetAccessDeniedDetail(v string) *ListErsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListErsResponseBody) SetCode(v int32) *ListErsResponseBody {
@@ -14523,6 +14817,7 @@ func (s *ListInstancesByNcdRequest) SetRegionId(v string) *ListInstancesByNcdReq
 }
 
 type ListInstancesByNcdResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -14551,6 +14846,11 @@ func (s ListInstancesByNcdResponseBody) String() string {
 
 func (s ListInstancesByNcdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesByNcdResponseBody) SetAccessDeniedDetail(v string) *ListInstancesByNcdResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListInstancesByNcdResponseBody) SetCode(v int32) *ListInstancesByNcdResponseBody {
@@ -14783,6 +15083,7 @@ func (s *ListLeniPrivateIpAddressesRequest) SetStatus(v string) *ListLeniPrivate
 }
 
 type ListLeniPrivateIpAddressesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -14811,6 +15112,11 @@ func (s ListLeniPrivateIpAddressesResponseBody) String() string {
 
 func (s ListLeniPrivateIpAddressesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBody) SetAccessDeniedDetail(v string) *ListLeniPrivateIpAddressesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListLeniPrivateIpAddressesResponseBody) SetCode(v int32) *ListLeniPrivateIpAddressesResponseBody {
@@ -15103,6 +15409,7 @@ func (s *ListLniPrivateIpAddressRequest) SetRegionId(v string) *ListLniPrivateIp
 }
 
 type ListLniPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -15131,6 +15438,11 @@ func (s ListLniPrivateIpAddressResponseBody) String() string {
 
 func (s ListLniPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListLniPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *ListLniPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListLniPrivateIpAddressResponseBody) SetCode(v int32) *ListLniPrivateIpAddressResponseBody {
@@ -15434,6 +15746,7 @@ func (s *ListNetworkInterfacesRequest) SetVpdId(v string) *ListNetworkInterfaces
 }
 
 type ListNetworkInterfacesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -15462,6 +15775,11 @@ func (s ListNetworkInterfacesResponseBody) String() string {
 
 func (s ListNetworkInterfacesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListNetworkInterfacesResponseBody) SetAccessDeniedDetail(v string) *ListNetworkInterfacesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListNetworkInterfacesResponseBody) SetCode(v int32) *ListNetworkInterfacesResponseBody {
@@ -15995,6 +16313,7 @@ func (s *ListNodeInfosForPodRequest) SetZoneId(v string) *ListNodeInfosForPodReq
 }
 
 type ListNodeInfosForPodResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -16023,6 +16342,11 @@ func (s ListNodeInfosForPodResponseBody) String() string {
 
 func (s ListNodeInfosForPodResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListNodeInfosForPodResponseBody) SetAccessDeniedDetail(v string) *ListNodeInfosForPodResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListNodeInfosForPodResponseBody) SetCode(v int32) *ListNodeInfosForPodResponseBody {
@@ -16396,6 +16720,7 @@ func (s *ListSubnetsRequestTag) SetValue(v string) *ListSubnetsRequestTag {
 }
 
 type ListSubnetsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -16424,6 +16749,11 @@ func (s ListSubnetsResponseBody) String() string {
 
 func (s ListSubnetsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListSubnetsResponseBody) SetAccessDeniedDetail(v string) *ListSubnetsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListSubnetsResponseBody) SetCode(v int32) *ListSubnetsResponseBody {
@@ -16914,6 +17244,7 @@ func (s *ListVccFlowInfosRequest) SetVccId(v string) *ListVccFlowInfosRequest {
 }
 
 type ListVccFlowInfosResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -16942,6 +17273,11 @@ func (s ListVccFlowInfosResponseBody) String() string {
 
 func (s ListVccFlowInfosResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListVccFlowInfosResponseBody) SetAccessDeniedDetail(v string) *ListVccFlowInfosResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListVccFlowInfosResponseBody) SetCode(v int32) *ListVccFlowInfosResponseBody {
@@ -17238,6 +17574,7 @@ func (s *ListVccGrantRulesRequest) SetResourceGroupId(v string) *ListVccGrantRul
 }
 
 type ListVccGrantRulesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -17266,6 +17603,11 @@ func (s ListVccGrantRulesResponseBody) String() string {
 
 func (s ListVccGrantRulesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListVccGrantRulesResponseBody) SetAccessDeniedDetail(v string) *ListVccGrantRulesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListVccGrantRulesResponseBody) SetCode(v int32) *ListVccGrantRulesResponseBody {
@@ -17645,6 +17987,7 @@ func (s *ListVccRouteEntriesRequest) SetVpdRouteEntryId(v string) *ListVccRouteE
 }
 
 type ListVccRouteEntriesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -17673,6 +18016,11 @@ func (s ListVccRouteEntriesResponseBody) String() string {
 
 func (s ListVccRouteEntriesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListVccRouteEntriesResponseBody) SetAccessDeniedDetail(v string) *ListVccRouteEntriesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListVccRouteEntriesResponseBody) SetCode(v int32) *ListVccRouteEntriesResponseBody {
@@ -18122,6 +18470,7 @@ func (s *ListVccsRequestTag) SetValue(v string) *ListVccsRequestTag {
 }
 
 type ListVccsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -18150,6 +18499,11 @@ func (s ListVccsResponseBody) String() string {
 
 func (s ListVccsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListVccsResponseBody) SetAccessDeniedDetail(v string) *ListVccsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListVccsResponseBody) SetCode(v int32) *ListVccsResponseBody {
@@ -18957,6 +19311,7 @@ func (s *ListVpdGrantRulesRequest) SetResourceGroupId(v string) *ListVpdGrantRul
 }
 
 type ListVpdGrantRulesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code.
 	//
 	// example:
@@ -18985,6 +19340,11 @@ func (s ListVpdGrantRulesResponseBody) String() string {
 
 func (s ListVpdGrantRulesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpdGrantRulesResponseBody) SetAccessDeniedDetail(v string) *ListVpdGrantRulesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListVpdGrantRulesResponseBody) SetCode(v int32) *ListVpdGrantRulesResponseBody {
@@ -19366,6 +19726,7 @@ func (s *ListVpdRouteEntriesRequest) SetVpdRouteEntryId(v string) *ListVpdRouteE
 }
 
 type ListVpdRouteEntriesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -19394,6 +19755,11 @@ func (s ListVpdRouteEntriesResponseBody) String() string {
 
 func (s ListVpdRouteEntriesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpdRouteEntriesResponseBody) SetAccessDeniedDetail(v string) *ListVpdRouteEntriesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListVpdRouteEntriesResponseBody) SetCode(v int32) *ListVpdRouteEntriesResponseBody {
@@ -19835,6 +20201,7 @@ func (s *ListVpdsRequestTag) SetValue(v string) *ListVpdsRequestTag {
 }
 
 type ListVpdsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -19863,6 +20230,11 @@ func (s ListVpdsResponseBody) String() string {
 
 func (s ListVpdsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpdsResponseBody) SetAccessDeniedDetail(v string) *ListVpdsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListVpdsResponseBody) SetCode(v int32) *ListVpdsResponseBody {
@@ -20398,6 +20770,7 @@ func (s *QueryInstanceNcdRequest) SetRegionId(v string) *QueryInstanceNcdRequest
 }
 
 type QueryInstanceNcdResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -20426,6 +20799,11 @@ func (s QueryInstanceNcdResponseBody) String() string {
 
 func (s QueryInstanceNcdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryInstanceNcdResponseBody) SetAccessDeniedDetail(v string) *QueryInstanceNcdResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *QueryInstanceNcdResponseBody) SetCode(v int32) *QueryInstanceNcdResponseBody {
@@ -20572,6 +20950,7 @@ func (s *RefundVccRequest) SetVccId(v string) *RefundVccRequest {
 }
 
 type RefundVccResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code
 	//
 	// example:
@@ -20604,6 +20983,11 @@ func (s RefundVccResponseBody) String() string {
 
 func (s RefundVccResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RefundVccResponseBody) SetAccessDeniedDetail(v string) *RefundVccResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *RefundVccResponseBody) SetCode(v int32) *RefundVccResponseBody {
@@ -20689,6 +21073,7 @@ func (s *RetryVccRequest) SetVccId(v string) *RetryVccRequest {
 }
 
 type RetryVccResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -20721,6 +21106,11 @@ func (s RetryVccResponseBody) String() string {
 
 func (s RetryVccResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RetryVccResponseBody) SetAccessDeniedDetail(v string) *RetryVccResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *RetryVccResponseBody) SetCode(v int32) *RetryVccResponseBody {
@@ -20858,6 +21248,7 @@ func (s *UnAssignPrivateIpAddressRequest) SetSubnetId(v string) *UnAssignPrivate
 }
 
 type UnAssignPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -20886,6 +21277,11 @@ func (s UnAssignPrivateIpAddressResponseBody) String() string {
 
 func (s UnAssignPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UnAssignPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *UnAssignPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UnAssignPrivateIpAddressResponseBody) SetCode(v int32) *UnAssignPrivateIpAddressResponseBody {
@@ -21021,6 +21417,7 @@ func (s *UnAssociateVpdCidrBlockRequest) SetVpdId(v string) *UnAssociateVpdCidrB
 }
 
 type UnAssociateVpdCidrBlockResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -21049,6 +21446,11 @@ func (s UnAssociateVpdCidrBlockResponseBody) String() string {
 
 func (s UnAssociateVpdCidrBlockResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UnAssociateVpdCidrBlockResponseBody) SetAccessDeniedDetail(v string) *UnAssociateVpdCidrBlockResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UnAssociateVpdCidrBlockResponseBody) SetCode(v int32) *UnAssociateVpdCidrBlockResponseBody {
@@ -21184,6 +21586,7 @@ func (s *UnassignLeniPrivateIpAddressRequest) SetRegionId(v string) *UnassignLen
 }
 
 type UnassignLeniPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -21216,6 +21619,11 @@ func (s UnassignLeniPrivateIpAddressResponseBody) String() string {
 
 func (s UnassignLeniPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UnassignLeniPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *UnassignLeniPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UnassignLeniPrivateIpAddressResponseBody) SetCode(v int32) *UnassignLeniPrivateIpAddressResponseBody {
@@ -21371,6 +21779,7 @@ func (s *UpdateElasticNetworkInterfaceRequest) SetSecurityGroupId(v string) *Upd
 }
 
 type UpdateElasticNetworkInterfaceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -21399,6 +21808,11 @@ func (s UpdateElasticNetworkInterfaceResponseBody) String() string {
 
 func (s UpdateElasticNetworkInterfaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateElasticNetworkInterfaceResponseBody) SetAccessDeniedDetail(v string) *UpdateElasticNetworkInterfaceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateElasticNetworkInterfaceResponseBody) SetCode(v int32) *UpdateElasticNetworkInterfaceResponseBody {
@@ -21543,6 +21957,7 @@ func (s *UpdateErRequest) SetRegionId(v string) *UpdateErRequest {
 }
 
 type UpdateErResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -21575,6 +21990,11 @@ func (s UpdateErResponseBody) String() string {
 
 func (s UpdateErResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateErResponseBody) SetAccessDeniedDetail(v string) *UpdateErResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateErResponseBody) SetCode(v int32) *UpdateErResponseBody {
@@ -21688,6 +22108,7 @@ func (s *UpdateErAttachmentRequest) SetRegionId(v string) *UpdateErAttachmentReq
 }
 
 type UpdateErAttachmentResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -21720,6 +22141,11 @@ func (s UpdateErAttachmentResponseBody) String() string {
 
 func (s UpdateErAttachmentResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateErAttachmentResponseBody) SetAccessDeniedDetail(v string) *UpdateErAttachmentResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateErAttachmentResponseBody) SetCode(v int32) *UpdateErAttachmentResponseBody {
@@ -21833,6 +22259,7 @@ func (s *UpdateErRouteMapRequest) SetRegionId(v string) *UpdateErRouteMapRequest
 }
 
 type UpdateErRouteMapResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -21865,6 +22292,11 @@ func (s UpdateErRouteMapResponseBody) String() string {
 
 func (s UpdateErRouteMapResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateErRouteMapResponseBody) SetAccessDeniedDetail(v string) *UpdateErRouteMapResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateErRouteMapResponseBody) SetCode(v int32) *UpdateErRouteMapResponseBody {
@@ -21980,6 +22412,7 @@ func (s *UpdateLeniPrivateIpAddressRequest) SetRegionId(v string) *UpdateLeniPri
 }
 
 type UpdateLeniPrivateIpAddressResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -22008,6 +22441,11 @@ func (s UpdateLeniPrivateIpAddressResponseBody) String() string {
 
 func (s UpdateLeniPrivateIpAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateLeniPrivateIpAddressResponseBody) SetAccessDeniedDetail(v string) *UpdateLeniPrivateIpAddressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateLeniPrivateIpAddressResponseBody) SetCode(v int32) *UpdateLeniPrivateIpAddressResponseBody {
@@ -22167,6 +22605,7 @@ func (s *UpdateSubnetRequest) SetZoneId(v string) *UpdateSubnetRequest {
 }
 
 type UpdateSubnetResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -22195,6 +22634,11 @@ func (s UpdateSubnetResponseBody) String() string {
 
 func (s UpdateSubnetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSubnetResponseBody) SetAccessDeniedDetail(v string) *UpdateSubnetResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateSubnetResponseBody) SetCode(v int32) *UpdateSubnetResponseBody {
@@ -22337,6 +22781,7 @@ func (s *UpdateVccRequest) SetVccName(v string) *UpdateVccRequest {
 }
 
 type UpdateVccResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -22365,6 +22810,11 @@ func (s UpdateVccResponseBody) String() string {
 
 func (s UpdateVccResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateVccResponseBody) SetAccessDeniedDetail(v string) *UpdateVccResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateVccResponseBody) SetCode(v int32) *UpdateVccResponseBody {
@@ -22487,6 +22937,7 @@ func (s *UpdateVpdRequest) SetVpdName(v string) *UpdateVpdRequest {
 }
 
 type UpdateVpdResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
 	// example:
@@ -22515,6 +22966,11 @@ func (s UpdateVpdResponseBody) String() string {
 
 func (s UpdateVpdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateVpdResponseBody) SetAccessDeniedDetail(v string) *UpdateVpdResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateVpdResponseBody) SetCode(v int32) *UpdateVpdResponseBody {
@@ -22692,13 +23148,24 @@ func (client *Client) AssignLeniPrivateIpAddressWithOptions(request *AssignLeniP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssignLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssignLeniPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssignLeniPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22796,13 +23263,24 @@ func (client *Client) AssignPrivateIpAddressWithOptions(request *AssignPrivateIp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssignPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssignPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssignPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22884,13 +23362,24 @@ func (client *Client) AssociateVpdCidrBlockWithOptions(request *AssociateVpdCidr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssociateVpdCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssociateVpdCidrBlockResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssociateVpdCidrBlockResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22968,13 +23457,24 @@ func (client *Client) AttachElasticNetworkInterfaceWithOptions(request *AttachEl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachElasticNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachElasticNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23064,13 +23564,24 @@ func (client *Client) CreateElasticNetworkInterfaceWithOptions(request *CreateEl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateElasticNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateElasticNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23152,13 +23663,24 @@ func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateErResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateErResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23262,13 +23784,24 @@ func (client *Client) CreateErAttachmentWithOptions(request *CreateErAttachmentR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateErAttachmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateErAttachmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23394,13 +23927,24 @@ func (client *Client) CreateErRouteMapWithOptions(request *CreateErRouteMapReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateErRouteMapResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateErRouteMapResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23510,13 +24054,24 @@ func (client *Client) CreateSubnetWithOptions(request *CreateSubnetRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSubnetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSubnetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23666,13 +24221,24 @@ func (client *Client) CreateVccWithOptions(request *CreateVccRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVccResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVccResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23760,13 +24326,24 @@ func (client *Client) CreateVccGrantRuleWithOptions(request *CreateVccGrantRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVccGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVccGrantRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVccGrantRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23848,13 +24425,24 @@ func (client *Client) CreateVccRouteEntryWithOptions(request *CreateVccRouteEntr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVccRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVccRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVccRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23956,13 +24544,24 @@ func (client *Client) CreateVpdWithOptions(request *CreateVpdRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVpdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVpdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24052,13 +24651,24 @@ func (client *Client) CreateVpdGrantRuleWithOptions(request *CreateVpdGrantRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVpdGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVpdGrantRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVpdGrantRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24128,13 +24738,24 @@ func (client *Client) DeleteElasticNetworkInterfaceWithOptions(request *DeleteEl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteElasticNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteElasticNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24206,13 +24827,24 @@ func (client *Client) DeleteErWithOptions(request *DeleteErRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteErResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteErResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24302,13 +24934,24 @@ func (client *Client) DeleteErAttachmentWithOptions(request *DeleteErAttachmentR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteErAttachmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteErAttachmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24396,13 +25039,24 @@ func (client *Client) DeleteErRouteMapWithOptions(request *DeleteErRouteMapReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteErRouteMapResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteErRouteMapResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24492,13 +25146,24 @@ func (client *Client) DeleteSubnetWithOptions(request *DeleteSubnetRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSubnetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSubnetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24576,13 +25241,24 @@ func (client *Client) DeleteVccGrantRuleWithOptions(request *DeleteVccGrantRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVccGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVccGrantRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVccGrantRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24660,13 +25336,24 @@ func (client *Client) DeleteVccRouteEntryWithOptions(request *DeleteVccRouteEntr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVccRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVccRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVccRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24750,13 +25437,24 @@ func (client *Client) DeleteVpdWithOptions(request *DeleteVpdRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVpdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVpdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24840,13 +25538,24 @@ func (client *Client) DeleteVpdGrantRuleWithOptions(request *DeleteVpdGrantRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVpdGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVpdGrantRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVpdGrantRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24906,13 +25615,24 @@ func (client *Client) DescribeSlrWithOptions(request *DescribeSlrRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlrResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlrResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24984,13 +25704,24 @@ func (client *Client) DetachElasticNetworkInterfaceWithOptions(request *DetachEl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachElasticNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachElasticNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25052,13 +25783,24 @@ func (client *Client) GetDestinationCidrBlockWithOptions(request *GetDestination
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDestinationCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDestinationCidrBlockResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDestinationCidrBlockResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25116,13 +25858,24 @@ func (client *Client) GetElasticNetworkInterfaceWithOptions(request *GetElasticN
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetElasticNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetElasticNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25180,13 +25933,24 @@ func (client *Client) GetErWithOptions(request *GetErRequest, runtime *util.Runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetErResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetErResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25248,13 +26012,24 @@ func (client *Client) GetErAttachmentWithOptions(request *GetErAttachmentRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetErAttachmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetErAttachmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25316,13 +26091,24 @@ func (client *Client) GetErRouteEntryWithOptions(request *GetErRouteEntryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetErRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetErRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetErRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25384,13 +26170,24 @@ func (client *Client) GetErRouteMapWithOptions(request *GetErRouteMapRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetErRouteMapResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetErRouteMapResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25464,13 +26261,24 @@ func (client *Client) GetFabricTopologyWithOptions(request *GetFabricTopologyReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFabricTopologyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFabricTopologyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFabricTopologyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25532,13 +26340,24 @@ func (client *Client) GetLeniPrivateIpAddressWithOptions(request *GetLeniPrivate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLeniPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLeniPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25600,13 +26419,24 @@ func (client *Client) GetLniPrivateIpAddressWithOptions(request *GetLniPrivateIp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLniPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLniPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25668,13 +26498,24 @@ func (client *Client) GetNetworkInterfaceWithOptions(request *GetNetworkInterfac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25732,13 +26573,24 @@ func (client *Client) GetNodeInfoForPodWithOptions(request *GetNodeInfoForPodReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNodeInfoForPodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNodeInfoForPodResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNodeInfoForPodResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25800,13 +26652,24 @@ func (client *Client) GetSubnetWithOptions(request *GetSubnetRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSubnetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSubnetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25880,13 +26743,24 @@ func (client *Client) GetVccWithOptions(request *GetVccRequest, runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVccResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVccResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25956,13 +26830,24 @@ func (client *Client) GetVccGrantRuleWithOptions(request *GetVccGrantRuleRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVccGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVccGrantRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVccGrantRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26024,13 +26909,24 @@ func (client *Client) GetVccRouteEntryWithOptions(request *GetVccRouteEntryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVccRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVccRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVccRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26088,13 +26984,24 @@ func (client *Client) GetVpdWithOptions(request *GetVpdRequest, runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVpdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVpdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26164,13 +27071,24 @@ func (client *Client) GetVpdGrantRuleWithOptions(request *GetVpdGrantRuleRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVpdGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVpdGrantRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVpdGrantRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26232,13 +27150,24 @@ func (client *Client) GetVpdRouteEntryWithOptions(request *GetVpdRouteEntryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVpdRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVpdRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVpdRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26292,13 +27221,24 @@ func (client *Client) InitializeVccWithOptions(request *InitializeVccRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InitializeVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InitializeVccResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InitializeVccResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26396,13 +27336,24 @@ func (client *Client) ListElasticNetworkInterfacesWithOptions(request *ListElast
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListElasticNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListElasticNetworkInterfacesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListElasticNetworkInterfacesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26504,13 +27455,24 @@ func (client *Client) ListErAttachmentsWithOptions(request *ListErAttachmentsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListErAttachmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListErAttachmentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListErAttachmentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26612,13 +27574,24 @@ func (client *Client) ListErRouteEntriesWithOptions(request *ListErRouteEntriesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListErRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListErRouteEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListErRouteEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26732,13 +27705,24 @@ func (client *Client) ListErRouteMapsWithOptions(request *ListErRouteMapsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListErRouteMapsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListErRouteMapsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListErRouteMapsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26828,13 +27812,24 @@ func (client *Client) ListErsWithOptions(request *ListErsRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListErsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListErsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListErsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26900,13 +27895,24 @@ func (client *Client) ListInstancesByNcdWithOptions(request *ListInstancesByNcdR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancesByNcdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesByNcdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesByNcdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26984,13 +27990,24 @@ func (client *Client) ListLeniPrivateIpAddressesWithOptions(request *ListLeniPri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLeniPrivateIpAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLeniPrivateIpAddressesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLeniPrivateIpAddressesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27072,13 +28089,24 @@ func (client *Client) ListLniPrivateIpAddressWithOptions(request *ListLniPrivate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLniPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLniPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27164,13 +28192,24 @@ func (client *Client) ListNetworkInterfacesWithOptions(request *ListNetworkInter
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNetworkInterfacesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNetworkInterfacesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27236,13 +28275,24 @@ func (client *Client) ListNodeInfosForPodWithOptions(request *ListNodeInfosForPo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNodeInfosForPodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNodeInfosForPodResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNodeInfosForPodResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27340,13 +28390,24 @@ func (client *Client) ListSubnetsWithOptions(request *ListSubnetsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSubnetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSubnetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSubnetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27420,13 +28481,24 @@ func (client *Client) ListVccFlowInfosWithOptions(request *ListVccFlowInfosReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVccFlowInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVccFlowInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVccFlowInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27520,13 +28592,24 @@ func (client *Client) ListVccGrantRulesWithOptions(request *ListVccGrantRulesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVccGrantRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVccGrantRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVccGrantRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27628,13 +28711,24 @@ func (client *Client) ListVccRouteEntriesWithOptions(request *ListVccRouteEntrie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVccRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVccRouteEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVccRouteEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27740,13 +28834,24 @@ func (client *Client) ListVccsWithOptions(request *ListVccsRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVccsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVccsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVccsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27840,13 +28945,24 @@ func (client *Client) ListVpdGrantRulesWithOptions(request *ListVpdGrantRulesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVpdGrantRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVpdGrantRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVpdGrantRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27948,13 +29064,24 @@ func (client *Client) ListVpdRouteEntriesWithOptions(request *ListVpdRouteEntrie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVpdRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVpdRouteEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVpdRouteEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28056,13 +29183,24 @@ func (client *Client) ListVpdsWithOptions(request *ListVpdsRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVpdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVpdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVpdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28128,13 +29266,24 @@ func (client *Client) QueryInstanceNcdWithOptions(request *QueryInstanceNcdReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryInstanceNcdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryInstanceNcdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryInstanceNcdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28196,13 +29345,24 @@ func (client *Client) RefundVccWithOptions(request *RefundVccRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefundVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefundVccResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefundVccResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28268,13 +29428,24 @@ func (client *Client) RetryVccWithOptions(request *RetryVccRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RetryVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RetryVccResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RetryVccResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28352,13 +29523,24 @@ func (client *Client) UnAssignPrivateIpAddressWithOptions(request *UnAssignPriva
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnAssignPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnAssignPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnAssignPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28426,13 +29608,24 @@ func (client *Client) UnAssociateVpdCidrBlockWithOptions(request *UnAssociateVpd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnAssociateVpdCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnAssociateVpdCidrBlockResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnAssociateVpdCidrBlockResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28504,13 +29697,24 @@ func (client *Client) UnassignLeniPrivateIpAddressWithOptions(request *UnassignL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnassignLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnassignLeniPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnassignLeniPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28580,13 +29784,24 @@ func (client *Client) UpdateElasticNetworkInterfaceWithOptions(request *UpdateEl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateElasticNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateElasticNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28652,13 +29867,24 @@ func (client *Client) UpdateErWithOptions(request *UpdateErRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateErResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateErResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28724,13 +29950,24 @@ func (client *Client) UpdateErAttachmentWithOptions(request *UpdateErAttachmentR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateErAttachmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateErAttachmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28796,13 +30033,24 @@ func (client *Client) UpdateErRouteMapWithOptions(request *UpdateErRouteMapReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateErRouteMapResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateErRouteMapResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28868,13 +30116,24 @@ func (client *Client) UpdateLeniPrivateIpAddressWithOptions(request *UpdateLeniP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLeniPrivateIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLeniPrivateIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28944,13 +30203,24 @@ func (client *Client) UpdateSubnetWithOptions(request *UpdateSubnetRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSubnetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSubnetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29020,13 +30290,24 @@ func (client *Client) UpdateVccWithOptions(request *UpdateVccRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVccResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVccResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29088,13 +30369,24 @@ func (client *Client) UpdateVpdWithOptions(request *UpdateVpdRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVpdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVpdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
