@@ -18308,6 +18308,8 @@ type DeleteWaitingRoomEventRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The ID of the waiting room event.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 302909890***
@@ -18393,6 +18395,8 @@ type DeleteWaitingRoomRuleRequest struct {
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The ID of the waiting room bypass rule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34435,13 +34439,14 @@ type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
 	// example:
 	//
 	// 512000
-	CacheReserveCapacity *string `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
+	CacheReserveCapacity *int64 `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
 	// The region in which the cache reserve instance resides.
 	//
 	// example:
 	//
 	// HK
 	CacheReserveRegion *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
+	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The time when the cache reserve instance was purchased.
 	//
 	// example:
@@ -34490,13 +34495,18 @@ func (s ListCacheReserveInstancesResponseBodyInstanceInfo) GoString() string {
 	return s.String()
 }
 
-func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetCacheReserveCapacity(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetCacheReserveCapacity(v int64) *ListCacheReserveInstancesResponseBodyInstanceInfo {
 	s.CacheReserveCapacity = &v
 	return s
 }
 
 func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetCacheReserveRegion(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
 	s.CacheReserveRegion = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetChargeType(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.ChargeType = &v
 	return s
 }
 
@@ -51287,36 +51297,75 @@ func (s *PublishRoutineCodeVersionResponse) SetBody(v *PublishRoutineCodeVersion
 }
 
 type PurchaseRatePlanRequest struct {
-	Amount  *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoPay *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Automatic payment.
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Auto-renewal:
+	//
+	// - true: Enable auto-renewal.
+	//
+	// - false: Disable auto-renewal.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Billing type
+	//
+	// - PREPAY: Prepaid.
+	//
+	// - POSTPAY: Postpaid.
+	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// Acceleration area:
+	//
+	// - domestic: Mainland China only.
+	//
+	// - global: Worldwide.
+	//
+	// - overseas: Global (excluding Mainland China).
+	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// Subscription period (in months).
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// Package code.
+	//
 	// example:
 	//
 	// entranceplan
 	PlanCode *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
+	// Package name.
+	//
 	// example:
 	//
 	// basic
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// Site name.
+	//
 	// example:
 	//
 	// test.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// Site access type:
+	//
+	// - NS: NS access.
+	//
+	// - CNAME: CNAME access.
+	//
 	// example:
 	//
 	// CNAME
@@ -51382,15 +51431,19 @@ func (s *PurchaseRatePlanRequest) SetType(v string) *PurchaseRatePlanRequest {
 }
 
 type PurchaseRatePlanResponseBody struct {
+	// Instance ID.
+	//
 	// example:
 	//
-	// xcdn-ads11w
+	// esa-site-ads11w
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Order ID.
+	//
 	// example:
 	//
 	// 123123
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -61559,6 +61612,8 @@ type UpdateWaitingRoomEventRequest struct {
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 89677721098****
@@ -61772,6 +61827,8 @@ type UpdateWaitingRoomRuleRequest struct {
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The ID of the waiting room bypass rule that you want to update. You can call [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) to obtain the ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -79938,7 +79995,13 @@ func (client *Client) PublishRoutineCodeVersion(request *PublishRoutineCodeVersi
 
 // Summary:
 //
-// 新购套餐
+// Purchase New Package
+//
+// Description:
+//
+// 1. The package name and code can be obtained from the DescribeRatePlanPrice interface.
+//
+// 2. If the acceleration area is not overseas, the site must have successfully completed the filing process.
 //
 // @param request - PurchaseRatePlanRequest
 //
@@ -80027,7 +80090,13 @@ func (client *Client) PurchaseRatePlanWithOptions(request *PurchaseRatePlanReque
 
 // Summary:
 //
-// 新购套餐
+// Purchase New Package
+//
+// Description:
+//
+// 1. The package name and code can be obtained from the DescribeRatePlanPrice interface.
+//
+// 2. If the acceleration area is not overseas, the site must have successfully completed the filing process.
 //
 // @param request - PurchaseRatePlanRequest
 //

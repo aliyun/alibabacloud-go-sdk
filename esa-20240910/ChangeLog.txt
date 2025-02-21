@@ -1,4 +1,4 @@
-2025-02-20 Version: v2.20.0
+2025-02-21 Version: v2.21.0
 - Support API ActivateVersionManagement.
 - Support API CheckAssumeSlrRole.
 - Support API CreateCacheRule.
@@ -92,14 +92,20 @@
 - Update API CreateWaitingRoom: update response param.
 - Update API CreateWaitingRoomEvent: update response param.
 - Update API CreateWaitingRoomRule: update response param.
+- Update API DeleteWaitingRoomEvent: update param WaitingRoomEventId.
+- Update API DeleteWaitingRoomRule: update param WaitingRoomRuleId.
 - Update API DescribeCustomScenePolicies: update param PageNumber.
 - Update API DescribePurgeTasks: update param Type.
 - Update API GetPurgeQuota: update param Type.
 - Update API GetSite: update response param.
+- Update API ListCacheReserveInstances: update response param.
 - Update API ListSites: update response param.
 - Update API ListUserRatePlanInstances: add param SubscribeType.
 - Update API ListUserRatePlanInstances: update response param.
 - Update API PurgeCaches: update param Content.
+- Update API UpdateScheduledPreloadExecution: update param EndTime.
+- Update API UpdateWaitingRoomEvent: update param WaitingRoomEventId.
+- Update API UpdateWaitingRoomRule: update param WaitingRoomRuleId.
 
 
 2025-01-10 Version: v2.10.2
