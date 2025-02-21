@@ -2025,6 +2025,7 @@ func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGrou
 
 type CreatePolicyGroupRequestNetRedirectPolicy struct {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	CustomProxy   *string                                           `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
 	HostAddr      *string                                           `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
 	NetRedirect   *string                                           `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
@@ -2034,6 +2035,8 @@ type CreatePolicyGroupRequestNetRedirectPolicy struct {
 	ProxyUserName *string                                           `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	Rules         []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 =======
+=======
+>>>>>>> Stashed changes
 	// Specifies whether to manually configure a custom proxy.
 	//
 	// Valid values:
@@ -2094,6 +2097,9 @@ type CreatePolicyGroupRequestNetRedirectPolicy struct {
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	// The proxy rules. You can create up to 100 proxy rules.
 	Rules []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -2147,9 +2153,12 @@ func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetRules(v []*CreatePolicyGr
 
 type CreatePolicyGroupRequestNetRedirectPolicyRules struct {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
 =======
+=======
+>>>>>>> Stashed changes
 	// The type of the rule.
 	//
 	// Valid values:
@@ -2168,6 +2177,9 @@ type CreatePolicyGroupRequestNetRedirectPolicyRules struct {
 	//
 	// *.example.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -3547,8 +3559,13 @@ type DescribeAndroidInstancesRequest struct {
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+=======
+	// The ID of the node.
+	//
+>>>>>>> Stashed changes
 =======
 	// The ID of the node.
 	//
@@ -3945,11 +3962,14 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// cn-hangzhou
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	RegionId      *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RenderingType *string                                                  `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
 	SessionStatus *string                                                  `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 	Tags          []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 =======
+=======
+>>>>>>> Stashed changes
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The rendering type.
 	//
@@ -3969,6 +3989,9 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 	// The tags.
 	Tags []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5085,10 +5108,13 @@ type DescribeImageListRequest struct {
 	//
 	// imgc-075cllfeuazh0****
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	ImageId          *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName        *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImagePackageType *string `json:"ImagePackageType,omitempty" xml:"ImagePackageType,omitempty"`
 =======
+=======
+>>>>>>> Stashed changes
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The name of the image.
 	//
@@ -5110,6 +5136,9 @@ type DescribeImageListRequest struct {
 	//
 	// 	- System: system images.
 	//
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	// This parameter is required.
 	//
@@ -5904,6 +5933,11 @@ type DescribeSpecRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	MatrixSpec  *string `json:"MatrixSpec,omitempty" xml:"MatrixSpec,omitempty"`
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+	// The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
+	//
+>>>>>>> Stashed changes
 =======
 	// The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
 	//
@@ -5918,16 +5952,22 @@ type DescribeSpecRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	SaleMode  *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	SpecIds   []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
 =======
+=======
+>>>>>>> Stashed changes
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	// List of specification IDs.
 	SpecIds []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
 	// Specification status.
 	//
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	// example:
 	//
@@ -6056,6 +6096,11 @@ type DescribeSpecResponseBodySpecInfoModel struct {
 	PhoneCount *string `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+	// Specification ID.
+	//
+>>>>>>> Stashed changes
 =======
 	// Specification ID.
 	//
@@ -7364,6 +7409,11 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	// 1080
 	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+	// The width of the resolution.
+	//
+>>>>>>> Stashed changes
 =======
 	// The width of the resolution.
 	//
@@ -7439,6 +7489,7 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	CustomProxy   *string                                                               `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
 	HostAddr      *string                                                               `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
 	NetRedirect   *string                                                               `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
@@ -7448,6 +7499,8 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	ProxyUserName *string                                                               `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	Rules         []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 =======
+=======
+>>>>>>> Stashed changes
 	// Indicates whether a custom proxy is manually configured.
 	//
 	// Valid values:
@@ -7508,6 +7561,9 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	// The proxy rules.
 	Rules []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -7561,9 +7617,12 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetRules
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
 =======
+=======
+>>>>>>> Stashed changes
 	// The type of the rule.
 	//
 	// Valid values:
@@ -7582,6 +7641,9 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
 	//
 	// *.example.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -11011,8 +11073,11 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 // Summary:
 //
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // 删除安卓实例组
 =======
+=======
+>>>>>>> Stashed changes
 // Delete an instance group.
 //
 // Description:
@@ -11020,6 +11085,9 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 // You can delete only pay-as-you-go instance groups.
 //
 // You can delete subscription instance groups only after they expire.
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 //
 // @param request - DeleteAndroidInstanceGroupRequest
@@ -11515,7 +11583,11 @@ func (client *Client) DescribeAndroidInstanceGroups(request *DescribeAndroidInst
 // Summary:
 //
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // 查询安卓的实例列表
+=======
+// Queries cloud phone instances.
+>>>>>>> Stashed changes
 =======
 // Queries cloud phone instances.
 >>>>>>> Stashed changes
@@ -11628,7 +11700,11 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 // Summary:
 //
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // 查询安卓的实例列表
+=======
+// Queries cloud phone instances.
+>>>>>>> Stashed changes
 =======
 // Queries cloud phone instances.
 >>>>>>> Stashed changes
@@ -11876,7 +11952,11 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 // Summary:
 //
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // 查询镜像列表
+=======
+// Queries images.
+>>>>>>> Stashed changes
 =======
 // Queries images.
 >>>>>>> Stashed changes
@@ -11959,7 +12039,11 @@ func (client *Client) DescribeImageListWithOptions(request *DescribeImageListReq
 // Summary:
 //
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // 查询镜像列表
+=======
+// Queries images.
+>>>>>>> Stashed changes
 =======
 // Queries images.
 >>>>>>> Stashed changes
