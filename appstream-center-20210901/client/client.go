@@ -1013,6 +1013,7 @@ type CreateAppInstanceGroupRequest struct {
 	// img-8z4nztpaqvay4****
 	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	AppPackageType       *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
 	AppPolicyId          *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	// example:
 	//
@@ -1040,6 +1041,7 @@ type CreateAppInstanceGroupRequest struct {
 	//
 	// PrePaid
 	ChargeType *string                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterId  *string                                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Network    *CreateAppInstanceGroupRequestNetwork  `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	NodePool   *CreateAppInstanceGroupRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -1073,6 +1075,7 @@ type CreateAppInstanceGroupRequest struct {
 	// 15
 	SessionTimeout   *int32                                         `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
 	StoragePolicy    *CreateAppInstanceGroupRequestStoragePolicy    `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
+	SubPayType       *string                                        `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	UserDefinePolicy *CreateAppInstanceGroupRequestUserDefinePolicy `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty" type:"Struct"`
 	UserInfo         *CreateAppInstanceGroupRequestUserInfo         `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 	Users            []*string                                      `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -1094,6 +1097,11 @@ func (s *CreateAppInstanceGroupRequest) SetAppCenterImageId(v string) *CreateApp
 
 func (s *CreateAppInstanceGroupRequest) SetAppInstanceGroupName(v string) *CreateAppInstanceGroupRequest {
 	s.AppInstanceGroupName = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequest) SetAppPackageType(v string) *CreateAppInstanceGroupRequest {
+	s.AppPackageType = &v
 	return s
 }
 
@@ -1124,6 +1132,11 @@ func (s *CreateAppInstanceGroupRequest) SetChargeResourceMode(v string) *CreateA
 
 func (s *CreateAppInstanceGroupRequest) SetChargeType(v string) *CreateAppInstanceGroupRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequest) SetClusterId(v string) *CreateAppInstanceGroupRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -1179,6 +1192,11 @@ func (s *CreateAppInstanceGroupRequest) SetSessionTimeout(v int32) *CreateAppIns
 
 func (s *CreateAppInstanceGroupRequest) SetStoragePolicy(v *CreateAppInstanceGroupRequestStoragePolicy) *CreateAppInstanceGroupRequest {
 	s.StoragePolicy = v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequest) SetSubPayType(v string) *CreateAppInstanceGroupRequest {
+	s.SubPayType = &v
 	return s
 }
 
@@ -1497,13 +1515,16 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods) S
 }
 
 type CreateAppInstanceGroupRequestRuntimePolicy struct {
-	DebugMode *string `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
+	DebugMode        *string `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
+	PerSessionPerApp *bool   `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
+	SessionPreOpen   *string `json:"SessionPreOpen,omitempty" xml:"SessionPreOpen,omitempty"`
 	// 会话类型。
 	//
 	// example:
 	//
 	// NORMAL
-	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	SessionType               *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	SessionUserGenerationMode *string `json:"SessionUserGenerationMode,omitempty" xml:"SessionUserGenerationMode,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestRuntimePolicy) String() string {
@@ -1519,8 +1540,23 @@ func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetDebugMode(v string) *Cre
 	return s
 }
 
+func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetPerSessionPerApp(v bool) *CreateAppInstanceGroupRequestRuntimePolicy {
+	s.PerSessionPerApp = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetSessionPreOpen(v string) *CreateAppInstanceGroupRequestRuntimePolicy {
+	s.SessionPreOpen = &v
+	return s
+}
+
 func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetSessionType(v string) *CreateAppInstanceGroupRequestRuntimePolicy {
 	s.SessionType = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetSessionUserGenerationMode(v string) *CreateAppInstanceGroupRequestRuntimePolicy {
+	s.SessionUserGenerationMode = &v
 	return s
 }
 
@@ -1554,7 +1590,8 @@ func (s *CreateAppInstanceGroupRequestSecurityPolicy) SetSkipUserAuthCheck(v boo
 }
 
 type CreateAppInstanceGroupRequestStoragePolicy struct {
-	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
+	StorageTypeList []*string                                              `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
+	UserProfile     *CreateAppInstanceGroupRequestStoragePolicyUserProfile `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
 }
 
 func (s CreateAppInstanceGroupRequestStoragePolicy) String() string {
@@ -1567,6 +1604,40 @@ func (s CreateAppInstanceGroupRequestStoragePolicy) GoString() string {
 
 func (s *CreateAppInstanceGroupRequestStoragePolicy) SetStorageTypeList(v []*string) *CreateAppInstanceGroupRequestStoragePolicy {
 	s.StorageTypeList = v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestStoragePolicy) SetUserProfile(v *CreateAppInstanceGroupRequestStoragePolicyUserProfile) *CreateAppInstanceGroupRequestStoragePolicy {
+	s.UserProfile = v
+	return s
+}
+
+type CreateAppInstanceGroupRequestStoragePolicyUserProfile struct {
+	RemoteStoragePath *string `json:"RemoteStoragePath,omitempty" xml:"RemoteStoragePath,omitempty"`
+	RemoteStorageType *string `json:"RemoteStorageType,omitempty" xml:"RemoteStorageType,omitempty"`
+	UserProfileSwitch *bool   `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
+}
+
+func (s CreateAppInstanceGroupRequestStoragePolicyUserProfile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppInstanceGroupRequestStoragePolicyUserProfile) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestStoragePolicyUserProfile) SetRemoteStoragePath(v string) *CreateAppInstanceGroupRequestStoragePolicyUserProfile {
+	s.RemoteStoragePath = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestStoragePolicyUserProfile) SetRemoteStorageType(v string) *CreateAppInstanceGroupRequestStoragePolicyUserProfile {
+	s.RemoteStorageType = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestStoragePolicyUserProfile) SetUserProfileSwitch(v bool) *CreateAppInstanceGroupRequestStoragePolicyUserProfile {
+	s.UserProfileSwitch = &v
 	return s
 }
 
@@ -1662,6 +1733,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// img-8z4nztpaqvay4****
 	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	AppPackageType       *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
 	AppPolicyId          *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	// example:
 	//
@@ -1689,6 +1761,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// PrePaid
 	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	NetworkShrink  *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
 	// This parameter is required.
@@ -1722,6 +1795,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// 15
 	SessionTimeout         *int32    `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
 	StoragePolicyShrink    *string   `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
+	SubPayType             *string   `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	UserDefinePolicyShrink *string   `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty"`
 	UserInfoShrink         *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 	Users                  []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -1743,6 +1817,11 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetAppCenterImageId(v string) *Cre
 
 func (s *CreateAppInstanceGroupShrinkRequest) SetAppInstanceGroupName(v string) *CreateAppInstanceGroupShrinkRequest {
 	s.AppInstanceGroupName = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) SetAppPackageType(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.AppPackageType = &v
 	return s
 }
 
@@ -1773,6 +1852,11 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetChargeResourceMode(v string) *C
 
 func (s *CreateAppInstanceGroupShrinkRequest) SetChargeType(v string) *CreateAppInstanceGroupShrinkRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) SetClusterId(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -1828,6 +1912,11 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetSessionTimeout(v int32) *Create
 
 func (s *CreateAppInstanceGroupShrinkRequest) SetStoragePolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest {
 	s.StoragePolicyShrink = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) SetSubPayType(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.SubPayType = &v
 	return s
 }
 
@@ -3282,19 +3371,15 @@ type GetConnectionTicketRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The delivery groups.
 	//
-	// >
+	// > 	- If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups.
 	//
-	// 	- If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups.
-	//
-	// 	- This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
+	// > 	- This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
 	AppInstanceGroupIdList []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
 	// The ID of the application instance.
 	//
-	// >
+	// > 	- If you configure this parameter, the system attempts to assign only the specified application instance.
 	//
-	// 	- If you configure this parameter, the system attempts to assign only the specified application instance.
-	//
-	// 	- If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
+	// > 	- If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
 	//
 	// example:
 	//
@@ -3306,7 +3391,7 @@ type GetConnectionTicketRequest struct {
 	//
 	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	// The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/zh/wuying-appstreaming/user-guide/create-an-application?#how-to-get-installation-and-startup-para).
+	// The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/document_detail/426045.html).
 	//
 	// example:
 	//
@@ -5121,7 +5206,20 @@ type ListAppInstanceGroupRequest struct {
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	BizRegionId          *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	//
+	// Valid values:
+	//
+	// 	- cn-shanghai: China (Shanghai)
+	//
+	// 	- cn-hangzhou: China (Hangzhou)
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The ID of the resource specification that you purchase. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain the ID.
+	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
@@ -5142,6 +5240,8 @@ type ListAppInstanceGroupRequest struct {
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// Deprecated
+	//
+	// The region ID.
 	//
 	// example:
 	//
@@ -5214,6 +5314,7 @@ func (s *ListAppInstanceGroupRequest) SetStatus(v []*string) *ListAppInstanceGro
 }
 
 type ListAppInstanceGroupResponseBody struct {
+	// The delivery groups.
 	AppInstanceGroupModels []*ListAppInstanceGroupResponseBodyAppInstanceGroupModels `json:"AppInstanceGroupModels,omitempty" xml:"AppInstanceGroupModels,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -5284,8 +5385,6 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// __dynamic__
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	// 策略ID。
-	//
 	// example:
 	//
 	// pg-g3k5wa2ms2****
@@ -5293,8 +5392,6 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	AppPolicyImageCheck *bool                                                         `json:"AppPolicyImageCheck,omitempty" xml:"AppPolicyImageCheck,omitempty"`
 	AppPolicyVersion    *string                                                       `json:"AppPolicyVersion,omitempty" xml:"AppPolicyVersion,omitempty"`
 	Apps                []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// 售卖模式。
-	//
 	// example:
 	//
 	// Node
@@ -5318,7 +5415,8 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// 1
-	MinAmount    *int32                                                            `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	MinAmount *int32 `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	// The resource groups.
 	NodePool     []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
 	OfficeSiteId *string                                                           `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// example:
@@ -5549,8 +5647,6 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v str
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
-	// 应用图标。
-	//
 	// example:
 	//
 	// https://app-center-icon-****.png
@@ -5560,17 +5656,10 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
 	// ca-i87mycyn419nu****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本。
-	//
 	// example:
 	//
 	// 1.0.0
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 应用版本名称。
-	//
-	// example:
-	//
-	// 初始版本
+	AppVersion     *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -5611,7 +5700,12 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	// example:
 	//
 	// 2
-	Amount                   *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The maximum number of idle sessions. After you specify a value for this parameter, auto scaling is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that the idle sessions in the delivery group are sufficient and does not perform auto scaling.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
+	//
+	// example:
+	//
+	// 3
 	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
 	// example:
 	//
@@ -5965,7 +6059,8 @@ type ListAppInstancesRequest struct {
 	//
 	// if can be null:
 	// false
-	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	Status     []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 
 func (s ListAppInstancesRequest) String() string {
@@ -6008,6 +6103,11 @@ func (s *ListAppInstancesRequest) SetPageSize(v int32) *ListAppInstancesRequest 
 
 func (s *ListAppInstancesRequest) SetStatus(v []*string) *ListAppInstancesRequest {
 	s.Status = v
+	return s
+}
+
+func (s *ListAppInstancesRequest) SetUserIdList(v []*string) *ListAppInstancesRequest {
+	s.UserIdList = v
 	return s
 }
 
@@ -7073,7 +7173,16 @@ func (s *ListOtaTaskResponse) SetBody(v *ListOtaTaskResponseBody) *ListOtaTaskRe
 }
 
 type ListRegionsRequest struct {
-	BizSource   *string `json:"BizSource,omitempty" xml:"BizSource,omitempty"`
+	BizSource *string `json:"BizSource,omitempty" xml:"BizSource,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
+	// example:
+	//
+	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -7096,8 +7205,14 @@ func (s *ListRegionsRequest) SetProductType(v string) *ListRegionsRequest {
 }
 
 type ListRegionsResponseBody struct {
+	// The region IDs.
 	RegionModels []*ListRegionsResponseBodyRegionModels `json:"RegionModels,omitempty" xml:"RegionModels,omitempty" type:"Repeated"`
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRegionsResponseBody) String() string {
@@ -7119,6 +7234,11 @@ func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBod
 }
 
 type ListRegionsResponseBodyRegionModels struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
@@ -9277,7 +9397,7 @@ func (s *RenewAppInstanceGroupResponse) SetBody(v *RenewAppInstanceGroupResponse
 }
 
 type UnbindRequest struct {
-	// The ID of the delivery group. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+	// The ID of the delivery group. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -9285,13 +9405,13 @@ type UnbindRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+	// The session ID. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
 	//
 	// example:
 	//
 	// ai-d297eyf83g5ni****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The ID of the persistent session. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+	// The ID of the persistent session. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
 	//
 	// example:
 	//
@@ -10230,6 +10350,10 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		body["AppInstanceGroupName"] = request.AppInstanceGroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppPackageType)) {
+		body["AppPackageType"] = request.AppPackageType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppPolicyId)) {
 		body["AppPolicyId"] = request.AppPolicyId
 	}
@@ -10252,6 +10376,10 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		body["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkShrink)) {
@@ -10296,6 +10424,10 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 
 	if !tea.BoolValue(util.IsUnset(request.StoragePolicyShrink)) {
 		body["StoragePolicy"] = request.StoragePolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubPayType)) {
+		body["SubPayType"] = request.SubPayType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
@@ -11381,7 +11513,7 @@ func (client *Client) ListAccessPages(request *ListAccessPagesRequest) (_result 
 
 // Summary:
 //
-// 列表展示云应用交付组
+// Queries the details of multiple delivery groups that meet the query conditions.
 //
 // @param request - ListAppInstanceGroupRequest
 //
@@ -11476,7 +11608,7 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 
 // Summary:
 //
-// 列表展示云应用交付组
+// Queries the details of multiple delivery groups that meet the query conditions.
 //
 // @param request - ListAppInstanceGroupRequest
 //
@@ -11525,6 +11657,10 @@ func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdList)) {
+		query["UserIdList"] = request.UserIdList
 	}
 
 	body := map[string]interface{}{}
@@ -11892,7 +12028,11 @@ func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOta
 
 // Summary:
 //
-// 云应用支持的地域列表
+// Queries the regions that are supported by App Streaming.
+//
+// Description:
+//
+// >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
 //
 // @param request - ListRegionsRequest
 //
@@ -11949,7 +12089,11 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 
 // Summary:
 //
-// 云应用支持的地域列表
+// Queries the regions that are supported by App Streaming.
+//
+// Description:
+//
+// >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
 //
 // @param request - ListRegionsRequest
 //
