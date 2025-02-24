@@ -1,4 +1,4 @@
-2025-02-21 Version: v2.0.2
+2025-02-24 Version: v2.0.3
 - Update API AssignLeniPrivateIpAddress: update response param.
 - Update API AssignPrivateIpAddress: update response param.
 - Update API AssociateVpdCidrBlock: update response param.
@@ -76,9 +76,6 @@
 - Update API UpdateVcc: update response param.
 - Update API UpdateVpd: update response param.
 
-
-2025-01-16 Version: v2.0.1
-- Generated golang 2022-05-30 for eflo.
 
 2025-01-10 Version: v2.0.0
 - Support API AssignLeniPrivateIpAddress.

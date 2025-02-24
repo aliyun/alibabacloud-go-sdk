@@ -80,6 +80,13 @@ func (s *AssignLeniPrivateIpAddressRequest) SetRegionId(v string) *AssignLeniPri
 }
 
 type AssignLeniPrivateIpAddressResponseBody struct {
+	// The details about the access denial.
+	//
+	// >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -306,6 +313,11 @@ func (s *AssignPrivateIpAddressRequest) SetSubnetId(v string) *AssignPrivateIpAd
 }
 
 type AssignPrivateIpAddressResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -475,6 +487,11 @@ func (s *AssociateVpdCidrBlockRequest) SetVpdId(v string) *AssociateVpdCidrBlock
 }
 
 type AssociateVpdCidrBlockResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -633,6 +650,11 @@ func (s *AttachElasticNetworkInterfaceRequest) SetRegionId(v string) *AttachElas
 }
 
 type AttachElasticNetworkInterfaceResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -839,6 +861,11 @@ func (s *CreateElasticNetworkInterfaceRequest) SetZoneId(v string) *CreateElasti
 }
 
 type CreateElasticNetworkInterfaceResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -1030,6 +1057,11 @@ func (s *CreateErRequest) SetResourceGroupId(v string) *CreateErRequest {
 }
 
 type CreateErResponseBody struct {
+	// The detailed information about the failed permission verification.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -1250,6 +1282,11 @@ func (s *CreateErAttachmentRequest) SetResourceTenantId(v string) *CreateErAttac
 }
 
 type CreateErAttachmentResponseBody struct {
+	// The detailed information about the failed permission verification.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -1533,6 +1570,11 @@ func (s *CreateErRouteMapRequest) SetTransmissionInstanceType(v string) *CreateE
 }
 
 type CreateErRouteMapResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) authentication failed.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -1788,6 +1830,11 @@ func (s *CreateSubnetRequestTag) SetValue(v string) *CreateSubnetRequestTag {
 }
 
 type CreateSubnetResponseBody struct {
+	// The detailed information about the failed permission verification.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -2149,6 +2196,11 @@ func (s *CreateVccRequestTag) SetValue(v string) *CreateVccRequestTag {
 }
 
 type CreateVccResponseBody struct {
+	// The detailed information about the failed permission verification.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -2476,6 +2528,11 @@ func (s *CreateVccRouteEntryRequest) SetVccId(v string) *CreateVccRouteEntryRequ
 }
 
 type CreateVccRouteEntryResponseBody struct {
+	// The detailed information about the failed permission verification.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -2960,6 +3017,11 @@ func (s *CreateVpdGrantRuleRequest) SetRegionId(v string) *CreateVpdGrantRuleReq
 }
 
 type CreateVpdGrantRuleResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -3120,6 +3182,11 @@ func (s *DeleteElasticNetworkInterfaceRequest) SetRegionId(v string) *DeleteElas
 }
 
 type DeleteElasticNetworkInterfaceResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -4049,6 +4116,11 @@ func (s *DeleteVccRouteEntryRequest) SetVccRouteEntryId(v string) *DeleteVccRout
 }
 
 type DeleteVccRouteEntryResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -4176,6 +4248,11 @@ func (s *DeleteVpdRequest) SetVpdId(v string) *DeleteVpdRequest {
 }
 
 type DeleteVpdResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -4364,6 +4441,11 @@ func (s *DeleteVpdGrantRuleRequest) SetRegionId(v string) *DeleteVpdGrantRuleReq
 }
 
 type DeleteVpdGrantRuleResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -4891,6 +4973,11 @@ func (s *GetElasticNetworkInterfaceRequest) SetRegionId(v string) *GetElasticNet
 }
 
 type GetElasticNetworkInterfaceResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -6972,6 +7059,11 @@ func (s *GetErRouteMapRequest) SetRegionId(v string) *GetErRouteMapRequest {
 }
 
 type GetErRouteMapResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -7406,6 +7498,11 @@ func (s *GetFabricTopologyRequest) SetVpdId(v string) *GetFabricTopologyRequest 
 }
 
 type GetFabricTopologyResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -7656,6 +7753,11 @@ func (s *GetLeniPrivateIpAddressRequest) SetRegionId(v string) *GetLeniPrivateIp
 }
 
 type GetLeniPrivateIpAddressResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -7902,6 +8004,11 @@ func (s *GetLniPrivateIpAddressRequest) SetRegionId(v string) *GetLniPrivateIpAd
 }
 
 type GetLniPrivateIpAddressResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -8012,7 +8119,8 @@ type GetLniPrivateIpAddressResponseBodyContent struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 }
 
 func (s GetLniPrivateIpAddressResponseBodyContent) String() string {
@@ -8065,6 +8173,11 @@ func (s *GetLniPrivateIpAddressResponseBodyContent) SetRegionId(v string) *GetLn
 
 func (s *GetLniPrivateIpAddressResponseBodyContent) SetStatus(v string) *GetLniPrivateIpAddressResponseBodyContent {
 	s.Status = &v
+	return s
+}
+
+func (s *GetLniPrivateIpAddressResponseBodyContent) SetSubnetId(v string) *GetLniPrivateIpAddressResponseBodyContent {
+	s.SubnetId = &v
 	return s
 }
 
@@ -8148,6 +8261,11 @@ func (s *GetNetworkInterfaceRequest) SetSubnetId(v string) *GetNetworkInterfaceR
 }
 
 type GetNetworkInterfaceResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -8662,6 +8780,11 @@ func (s *GetNodeInfoForPodRequest) SetRegionId(v string) *GetNodeInfoForPodReque
 }
 
 type GetNodeInfoForPodResponseBody struct {
+	// The details about the failed permission verification.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -8911,6 +9034,11 @@ func (s *GetSubnetRequest) SetVpdId(v string) *GetSubnetRequest {
 }
 
 type GetSubnetResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -9411,6 +9539,11 @@ func (s *GetVccRequest) SetVccId(v string) *GetVccRequest {
 }
 
 type GetVccResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -9489,7 +9622,8 @@ type GetVccResponseBodyContent struct {
 	// example:
 	//
 	// true
-	AttachErStatus *bool `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
+	AttachErStatus *bool  `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
+	Bandwidth      *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The bandwidth of the port.
 	//
 	// example:
@@ -9736,6 +9870,11 @@ func (s *GetVccResponseBodyContent) SetAliyunRouterInfo(v []*GetVccResponseBodyC
 
 func (s *GetVccResponseBodyContent) SetAttachErStatus(v bool) *GetVccResponseBodyContent {
 	s.AttachErStatus = &v
+	return s
+}
+
+func (s *GetVccResponseBodyContent) SetBandwidth(v int32) *GetVccResponseBodyContent {
+	s.Bandwidth = &v
 	return s
 }
 
@@ -10872,6 +11011,11 @@ func (s *GetVccRouteEntryRequest) SetVccRouteEntryId(v string) *GetVccRouteEntry
 }
 
 type GetVccRouteEntryResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -11715,6 +11859,11 @@ func (s *GetVpdGrantRuleRequest) SetRegionId(v string) *GetVpdGrantRuleRequest {
 }
 
 type GetVpdGrantRuleResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -11987,6 +12136,11 @@ func (s *GetVpdRouteEntryRequest) SetVpdRouteEntryId(v string) *GetVpdRouteEntry
 }
 
 type GetVpdRouteEntryResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -12517,6 +12671,11 @@ func (s *ListElasticNetworkInterfacesRequest) SetZoneId(v string) *ListElasticNe
 }
 
 type ListElasticNetworkInterfacesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -19726,6 +19885,11 @@ func (s *ListVpdRouteEntriesRequest) SetVpdRouteEntryId(v string) *ListVpdRouteE
 }
 
 type ListVpdRouteEntriesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -21073,6 +21237,11 @@ func (s *RetryVccRequest) SetVccId(v string) *RetryVccRequest {
 }
 
 type RetryVccResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -21248,6 +21417,11 @@ func (s *UnAssignPrivateIpAddressRequest) SetSubnetId(v string) *UnAssignPrivate
 }
 
 type UnAssignPrivateIpAddressResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -21586,6 +21760,11 @@ func (s *UnassignLeniPrivateIpAddressRequest) SetRegionId(v string) *UnassignLen
 }
 
 type UnassignLeniPrivateIpAddressResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -21779,6 +21958,11 @@ func (s *UpdateElasticNetworkInterfaceRequest) SetSecurityGroupId(v string) *Upd
 }
 
 type UpdateElasticNetworkInterfaceResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -21957,6 +22141,11 @@ func (s *UpdateErRequest) SetRegionId(v string) *UpdateErRequest {
 }
 
 type UpdateErResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -22108,6 +22297,11 @@ func (s *UpdateErAttachmentRequest) SetRegionId(v string) *UpdateErAttachmentReq
 }
 
 type UpdateErAttachmentResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -22259,6 +22453,11 @@ func (s *UpdateErRouteMapRequest) SetRegionId(v string) *UpdateErRouteMapRequest
 }
 
 type UpdateErRouteMapResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -22412,6 +22611,11 @@ func (s *UpdateLeniPrivateIpAddressRequest) SetRegionId(v string) *UpdateLeniPri
 }
 
 type UpdateLeniPrivateIpAddressResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -22605,6 +22809,11 @@ func (s *UpdateSubnetRequest) SetZoneId(v string) *UpdateSubnetRequest {
 }
 
 type UpdateSubnetResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -22781,6 +22990,11 @@ func (s *UpdateVccRequest) SetVccName(v string) *UpdateVccRequest {
 }
 
 type UpdateVccResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -22937,6 +23151,11 @@ func (s *UpdateVpdRequest) SetVpdName(v string) *UpdateVpdRequest {
 }
 
 type UpdateVpdResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
