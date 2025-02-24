@@ -1765,11 +1765,12 @@ func (s *CreateIdpDepartmentResponse) SetBody(v *CreateIdpDepartmentResponseBody
 
 type CreatePrivateAccessApplicationRequest struct {
 	// This parameter is required.
-	Addresses                    []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	BrowserAccessStatus          *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
-	Description                  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7ProxyDomainAutomaticPrefix *string   `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	L7ProxyDomainCustom          *string   `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	Addresses                    []*string   `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	BrowserAccessStatus          *string     `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	Description                  *string     `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7Config                     *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	L7ProxyDomainAutomaticPrefix *string     `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	L7ProxyDomainCustom          *string     `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1813,6 +1814,11 @@ func (s *CreatePrivateAccessApplicationRequest) SetBrowserAccessStatus(v string)
 
 func (s *CreatePrivateAccessApplicationRequest) SetDescription(v string) *CreatePrivateAccessApplicationRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationRequest) SetL7Config(v *PAL7Config) *CreatePrivateAccessApplicationRequest {
+	s.L7Config = v
 	return s
 }
 
@@ -1880,6 +1886,133 @@ func (s *CreatePrivateAccessApplicationRequestPortRanges) SetBegin(v int32) *Cre
 }
 
 func (s *CreatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *CreatePrivateAccessApplicationRequestPortRanges {
+	s.End = &v
+	return s
+}
+
+type CreatePrivateAccessApplicationShrinkRequest struct {
+	// This parameter is required.
+	Addresses                    []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	BrowserAccessStatus          *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	Description                  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7ConfigShrink               *string   `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	L7ProxyDomainAutomaticPrefix *string   `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	L7ProxyDomainCustom          *string   `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// private_access_application_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	PortRanges []*CreatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+}
+
+func (s CreatePrivateAccessApplicationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrivateAccessApplicationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetAddresses(v []*string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.Addresses = v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetBrowserAccessStatus(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.BrowserAccessStatus = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetDescription(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetL7ConfigShrink(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.L7ConfigShrink = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetL7ProxyDomainAutomaticPrefix(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.L7ProxyDomainAutomaticPrefix = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetL7ProxyDomainCustom(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.L7ProxyDomainCustom = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetName(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetPortRanges(v []*CreatePrivateAccessApplicationShrinkRequestPortRanges) *CreatePrivateAccessApplicationShrinkRequest {
+	s.PortRanges = v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetProtocol(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetStatus(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.TagIds = v
+	return s
+}
+
+type CreatePrivateAccessApplicationShrinkRequestPortRanges struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
+	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+}
+
+func (s CreatePrivateAccessApplicationShrinkRequestPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrivateAccessApplicationShrinkRequestPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequestPortRanges) SetBegin(v int32) *CreatePrivateAccessApplicationShrinkRequestPortRanges {
+	s.Begin = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequestPortRanges) SetEnd(v int32) *CreatePrivateAccessApplicationShrinkRequestPortRanges {
 	s.End = &v
 	return s
 }
@@ -22256,16 +22389,22 @@ func (client *Client) CreateIdpDepartment(request *CreateIdpDepartmentRequest) (
 //
 // 创建内网访问应用
 //
-// @param request - CreatePrivateAccessApplicationRequest
+// @param tmpReq - CreatePrivateAccessApplicationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePrivateAccessApplicationResponse
-func (client *Client) CreatePrivateAccessApplicationWithOptions(request *CreatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessApplicationResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessApplicationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreatePrivateAccessApplicationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.L7Config)) {
+		request.L7ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.L7Config, tea.String("L7Config"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Addresses)) {
@@ -22278,6 +22417,10 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(request *CreateP
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L7ConfigShrink)) {
+		body["L7Config"] = request.L7ConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.L7ProxyDomainAutomaticPrefix)) {

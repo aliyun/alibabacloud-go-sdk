@@ -1,4 +1,5 @@
-2025-02-21 Version: v1.11.4
+2025-02-24 Version: v1.11.5
+- Update API CreatePrivateAccessApplication: add param L7Config.
 - Update API GetPrivateAccessApplication: update response param.
 - Update API UpdatePrivateAccessApplication: add param L7Config.
 
