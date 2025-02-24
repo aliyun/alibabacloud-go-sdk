@@ -2059,7 +2059,8 @@ type CreateAICoachTaskSessionResponseBody struct {
 	// example:
 	//
 	// 111
-	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	SessionId     *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	SessionStatus *int64  `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
 	// Token
 	//
 	// example:
@@ -2100,6 +2101,11 @@ func (s *CreateAICoachTaskSessionResponseBody) SetSessionId(v string) *CreateAIC
 	return s
 }
 
+func (s *CreateAICoachTaskSessionResponseBody) SetSessionStatus(v int64) *CreateAICoachTaskSessionResponseBody {
+	s.SessionStatus = &v
+	return s
+}
+
 func (s *CreateAICoachTaskSessionResponseBody) SetToken(v string) *CreateAICoachTaskSessionResponseBody {
 	s.Token = &v
 	return s
@@ -2111,7 +2117,12 @@ func (s *CreateAICoachTaskSessionResponseBody) SetWebSocketUrl(v string) *Create
 }
 
 type CreateAICoachTaskSessionResponseBodyScriptInfo struct {
-	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	AgentIconUrl     *string   `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
+	CharacterName    *string   `json:"characterName,omitempty" xml:"characterName,omitempty"`
+	DialogueTextFlag *bool     `json:"dialogueTextFlag,omitempty" xml:"dialogueTextFlag,omitempty"`
+	DialogueTipFlag  *bool     `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
+	Initiator        *string   `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	InputTypeList    []*string `json:"inputTypeList,omitempty" xml:"inputTypeList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 11
@@ -2119,8 +2130,14 @@ type CreateAICoachTaskSessionResponseBodyScriptInfo struct {
 	// example:
 	//
 	// test
-	ScriptDesc *string `json:"scriptDesc,omitempty" xml:"scriptDesc,omitempty"`
-	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	ScriptDesc            *string `json:"scriptDesc,omitempty" xml:"scriptDesc,omitempty"`
+	ScriptName            *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	ScriptRecordId        *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	ScriptType            *int64  `json:"scriptType,omitempty" xml:"scriptType,omitempty"`
+	SparringTipContent    *string `json:"sparringTipContent,omitempty" xml:"sparringTipContent,omitempty"`
+	SparringTipTitle      *string `json:"sparringTipTitle,omitempty" xml:"sparringTipTitle,omitempty"`
+	StudentThinkTimeFlag  *bool   `json:"studentThinkTimeFlag,omitempty" xml:"studentThinkTimeFlag,omitempty"`
+	StudentThinkTimeLimit *int64  `json:"studentThinkTimeLimit,omitempty" xml:"studentThinkTimeLimit,omitempty"`
 }
 
 func (s CreateAICoachTaskSessionResponseBodyScriptInfo) String() string {
@@ -2131,8 +2148,33 @@ func (s CreateAICoachTaskSessionResponseBodyScriptInfo) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetAgentIconUrl(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.AgentIconUrl = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetCharacterName(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.CharacterName = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetDialogueTextFlag(v bool) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.DialogueTextFlag = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetDialogueTipFlag(v bool) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.DialogueTipFlag = &v
+	return s
+}
+
 func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetInitiator(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
 	s.Initiator = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetInputTypeList(v []*string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.InputTypeList = v
 	return s
 }
 
@@ -2148,6 +2190,36 @@ func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetScriptDesc(v string)
 
 func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetScriptName(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
 	s.ScriptName = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetScriptRecordId(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.ScriptRecordId = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetScriptType(v int64) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.ScriptType = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetSparringTipContent(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.SparringTipContent = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetSparringTipTitle(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.SparringTipTitle = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetStudentThinkTimeFlag(v bool) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.StudentThinkTimeFlag = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetStudentThinkTimeLimit(v int64) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.StudentThinkTimeLimit = &v
 	return s
 }
 
@@ -3039,6 +3111,653 @@ func (s *FinishAICoachTaskSessionResponse) SetBody(v *FinishAICoachTaskSessionRe
 	return s
 }
 
+type GetAICoachScriptRequest struct {
+	// example:
+	//
+	// 1
+	ScriptRecordId *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+}
+
+func (s GetAICoachScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptRequest) SetScriptRecordId(v string) *GetAICoachScriptRequest {
+	s.ScriptRecordId = &v
+	return s
+}
+
+type GetAICoachScriptResponseBody struct {
+	// example:
+	//
+	// point
+	AssessmentScope  *string                                       `json:"assessmentScope,omitempty" xml:"assessmentScope,omitempty"`
+	CompleteStrategy *GetAICoachScriptResponseBodyCompleteStrategy `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
+	// example:
+	//
+	// https://demo.com
+	CoverUrl *string `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
+	// example:
+	//
+	// 500
+	DialogueInputTextLimit *int32 `json:"dialogueInputTextLimit,omitempty" xml:"dialogueInputTextLimit,omitempty"`
+	// example:
+	//
+	// true
+	DialogueTextFlag *bool `json:"dialogueTextFlag,omitempty" xml:"dialogueTextFlag,omitempty"`
+	// example:
+	//
+	// true
+	DialogueTipFlag *bool `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
+	// example:
+	//
+	// 30
+	DialogueVoiceLimit *int32 `json:"dialogueVoiceLimit,omitempty" xml:"dialogueVoiceLimit,omitempty"`
+	// example:
+	//
+	// true
+	EvaluateReportFlag *bool             `json:"evaluateReportFlag,omitempty" xml:"evaluateReportFlag,omitempty"`
+	Expressiveness     map[string]*int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	// example:
+	//
+	// 2025-02-24 12:00:00
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-02-24 12:00:00
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// coach
+	Initiator             *string   `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	InteractionInputTypes []*string `json:"interactionInputTypes,omitempty" xml:"interactionInputTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	InteractionType *int32 `json:"interactionType,omitempty" xml:"interactionType,omitempty"`
+	// example:
+	//
+	// demo
+	Introduce *string `json:"introduce,omitempty" xml:"introduce,omitempty"`
+	// example:
+	//
+	// demo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// true
+	OrderAckFlag           *bool                                                 `json:"orderAckFlag,omitempty" xml:"orderAckFlag,omitempty"`
+	PointDeductionRuleList []*GetAICoachScriptResponseBodyPointDeductionRuleList `json:"pointDeductionRuleList,omitempty" xml:"pointDeductionRuleList,omitempty" type:"Repeated"`
+	Points                 []*GetAICoachScriptResponseBodyPoints                 `json:"points,omitempty" xml:"points,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	RequestId          *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SampleDialogueList []*GetAICoachScriptResponseBodySampleDialogueList `json:"sampleDialogueList,omitempty" xml:"sampleDialogueList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	ScriptRecordId     *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	SparringTipContent *string `json:"sparringTipContent,omitempty" xml:"sparringTipContent,omitempty"`
+	SparringTipTitle   *string `json:"sparringTipTitle,omitempty" xml:"sparringTipTitle,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// true
+	StudentThinkTimeFlag *bool `json:"studentThinkTimeFlag,omitempty" xml:"studentThinkTimeFlag,omitempty"`
+	// example:
+	//
+	// 100
+	StudentThinkTimeLimit *int32 `json:"studentThinkTimeLimit,omitempty" xml:"studentThinkTimeLimit,omitempty"`
+	// example:
+	//
+	// 1
+	Type    *int32                               `json:"type,omitempty" xml:"type,omitempty"`
+	Weights *GetAICoachScriptResponseBodyWeights `json:"weights,omitempty" xml:"weights,omitempty" type:"Struct"`
+}
+
+func (s GetAICoachScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBody) SetAssessmentScope(v string) *GetAICoachScriptResponseBody {
+	s.AssessmentScope = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetCompleteStrategy(v *GetAICoachScriptResponseBodyCompleteStrategy) *GetAICoachScriptResponseBody {
+	s.CompleteStrategy = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetCoverUrl(v string) *GetAICoachScriptResponseBody {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetDialogueInputTextLimit(v int32) *GetAICoachScriptResponseBody {
+	s.DialogueInputTextLimit = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetDialogueTextFlag(v bool) *GetAICoachScriptResponseBody {
+	s.DialogueTextFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetDialogueTipFlag(v bool) *GetAICoachScriptResponseBody {
+	s.DialogueTipFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetDialogueVoiceLimit(v int32) *GetAICoachScriptResponseBody {
+	s.DialogueVoiceLimit = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetEvaluateReportFlag(v bool) *GetAICoachScriptResponseBody {
+	s.EvaluateReportFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetExpressiveness(v map[string]*int32) *GetAICoachScriptResponseBody {
+	s.Expressiveness = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetGmtCreate(v string) *GetAICoachScriptResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetGmtModified(v string) *GetAICoachScriptResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetInitiator(v string) *GetAICoachScriptResponseBody {
+	s.Initiator = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetInteractionInputTypes(v []*string) *GetAICoachScriptResponseBody {
+	s.InteractionInputTypes = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetInteractionType(v int32) *GetAICoachScriptResponseBody {
+	s.InteractionType = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetIntroduce(v string) *GetAICoachScriptResponseBody {
+	s.Introduce = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetName(v string) *GetAICoachScriptResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetOrderAckFlag(v bool) *GetAICoachScriptResponseBody {
+	s.OrderAckFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetPointDeductionRuleList(v []*GetAICoachScriptResponseBodyPointDeductionRuleList) *GetAICoachScriptResponseBody {
+	s.PointDeductionRuleList = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetPoints(v []*GetAICoachScriptResponseBodyPoints) *GetAICoachScriptResponseBody {
+	s.Points = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetRequestId(v string) *GetAICoachScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetSampleDialogueList(v []*GetAICoachScriptResponseBodySampleDialogueList) *GetAICoachScriptResponseBody {
+	s.SampleDialogueList = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetScriptRecordId(v string) *GetAICoachScriptResponseBody {
+	s.ScriptRecordId = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetSparringTipContent(v string) *GetAICoachScriptResponseBody {
+	s.SparringTipContent = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetSparringTipTitle(v string) *GetAICoachScriptResponseBody {
+	s.SparringTipTitle = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetStatus(v int32) *GetAICoachScriptResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetStudentThinkTimeFlag(v bool) *GetAICoachScriptResponseBody {
+	s.StudentThinkTimeFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetStudentThinkTimeLimit(v int32) *GetAICoachScriptResponseBody {
+	s.StudentThinkTimeLimit = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetType(v int32) *GetAICoachScriptResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetWeights(v *GetAICoachScriptResponseBodyWeights) *GetAICoachScriptResponseBody {
+	s.Weights = v
+	return s
+}
+
+type GetAICoachScriptResponseBodyCompleteStrategy struct {
+	// example:
+	//
+	// 5
+	AbnormalQuitSessionExpired *int32 `json:"abnormalQuitSessionExpired,omitempty" xml:"abnormalQuitSessionExpired,omitempty"`
+	// example:
+	//
+	// true
+	AbnormalQuitSessionExpiredFlag *bool `json:"abnormalQuitSessionExpiredFlag,omitempty" xml:"abnormalQuitSessionExpiredFlag,omitempty"`
+	// example:
+	//
+	// true
+	ClickCompleteAutoEnd *bool `json:"clickCompleteAutoEnd,omitempty" xml:"clickCompleteAutoEnd,omitempty"`
+	// example:
+	//
+	// 15
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// true
+	DurationFlag *bool `json:"durationFlag,omitempty" xml:"durationFlag,omitempty"`
+	// example:
+	//
+	// true
+	FullCoverageAutoEnd *bool `json:"fullCoverageAutoEnd,omitempty" xml:"fullCoverageAutoEnd,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyCompleteStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyCompleteStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetAbnormalQuitSessionExpired(v int32) *GetAICoachScriptResponseBodyCompleteStrategy {
+	s.AbnormalQuitSessionExpired = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetAbnormalQuitSessionExpiredFlag(v bool) *GetAICoachScriptResponseBodyCompleteStrategy {
+	s.AbnormalQuitSessionExpiredFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetClickCompleteAutoEnd(v bool) *GetAICoachScriptResponseBodyCompleteStrategy {
+	s.ClickCompleteAutoEnd = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetDuration(v int32) *GetAICoachScriptResponseBodyCompleteStrategy {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetDurationFlag(v bool) *GetAICoachScriptResponseBodyCompleteStrategy {
+	s.DurationFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetFullCoverageAutoEnd(v bool) *GetAICoachScriptResponseBodyCompleteStrategy {
+	s.FullCoverageAutoEnd = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyPointDeductionRuleList struct {
+	// example:
+	//
+	// demo
+	Description     *string   `json:"description,omitempty" xml:"description,omitempty"`
+	PunishmentTypes []*string `json:"punishmentTypes,omitempty" xml:"punishmentTypes,omitempty" type:"Repeated"`
+	RuleValue       *string   `json:"ruleValue,omitempty" xml:"ruleValue,omitempty"`
+	// example:
+	//
+	// 90
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyPointDeductionRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyPointDeductionRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPointDeductionRuleList) SetDescription(v string) *GetAICoachScriptResponseBodyPointDeductionRuleList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointDeductionRuleList) SetPunishmentTypes(v []*string) *GetAICoachScriptResponseBodyPointDeductionRuleList {
+	s.PunishmentTypes = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointDeductionRuleList) SetRuleValue(v string) *GetAICoachScriptResponseBodyPointDeductionRuleList {
+	s.RuleValue = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointDeductionRuleList) SetWeight(v int32) *GetAICoachScriptResponseBodyPointDeductionRuleList {
+	s.Weight = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyPoints struct {
+	AnswerList    []*GetAICoachScriptResponseBodyPointsAnswerList `json:"answerList,omitempty" xml:"answerList,omitempty" type:"Repeated"`
+	KnowledgeList []*string                                       `json:"knowledgeList,omitempty" xml:"knowledgeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// demo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// test
+	QuestionDescription *string `json:"questionDescription,omitempty" xml:"questionDescription,omitempty"`
+	// example:
+	//
+	// 1
+	SortNo *int32 `json:"sortNo,omitempty" xml:"sortNo,omitempty"`
+	// example:
+	//
+	// 50
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetAnswerList(v []*GetAICoachScriptResponseBodyPointsAnswerList) *GetAICoachScriptResponseBodyPoints {
+	s.AnswerList = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetKnowledgeList(v []*string) *GetAICoachScriptResponseBodyPoints {
+	s.KnowledgeList = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetName(v string) *GetAICoachScriptResponseBodyPoints {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetQuestionDescription(v string) *GetAICoachScriptResponseBodyPoints {
+	s.QuestionDescription = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetSortNo(v int32) *GetAICoachScriptResponseBodyPoints {
+	s.SortNo = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetWeight(v int32) *GetAICoachScriptResponseBodyPoints {
+	s.Weight = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyPointsAnswerList struct {
+	Name       *string                                                   `json:"name,omitempty" xml:"name,omitempty"`
+	Parameters []*GetAICoachScriptResponseBodyPointsAnswerListParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// normalKnowledge
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetName(v string) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetParameters(v []*GetAICoachScriptResponseBodyPointsAnswerListParameters) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetType(v string) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetWeight(v int32) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.Weight = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyPointsAnswerListParameters struct {
+	// example:
+	//
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListParameters) SetName(v string) *GetAICoachScriptResponseBodyPointsAnswerListParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListParameters) SetValue(v string) *GetAICoachScriptResponseBodyPointsAnswerListParameters {
+	s.Value = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodySampleDialogueList struct {
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// coach
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodySampleDialogueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodySampleDialogueList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodySampleDialogueList) SetMessage(v string) *GetAICoachScriptResponseBodySampleDialogueList {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodySampleDialogueList) SetRole(v string) *GetAICoachScriptResponseBodySampleDialogueList {
+	s.Role = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyWeights struct {
+	// example:
+	//
+	// 10
+	AbilityEvaluation *int32 `json:"abilityEvaluation,omitempty" xml:"abilityEvaluation,omitempty"`
+	// example:
+	//
+	// false
+	AbilityEvaluationEnabled *bool `json:"abilityEvaluationEnabled,omitempty" xml:"abilityEvaluationEnabled,omitempty"`
+	// example:
+	//
+	// 10
+	AssessmentPoint *int32 `json:"assessmentPoint,omitempty" xml:"assessmentPoint,omitempty"`
+	// example:
+	//
+	// 10
+	Expressiveness *int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	// example:
+	//
+	// true
+	ExpressivenessEnabled *bool `json:"expressivenessEnabled,omitempty" xml:"expressivenessEnabled,omitempty"`
+	// example:
+	//
+	// 10
+	PointDeductionRule *int32 `json:"pointDeductionRule,omitempty" xml:"pointDeductionRule,omitempty"`
+	// example:
+	//
+	// true
+	PointDeductionRuleEnabled *bool `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
+	// example:
+	//
+	// 10
+	Standard *int32 `json:"standard,omitempty" xml:"standard,omitempty"`
+	// example:
+	//
+	// true
+	StandardEnabled *bool `json:"standardEnabled,omitempty" xml:"standardEnabled,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyWeights) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetAbilityEvaluation(v int32) *GetAICoachScriptResponseBodyWeights {
+	s.AbilityEvaluation = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetAbilityEvaluationEnabled(v bool) *GetAICoachScriptResponseBodyWeights {
+	s.AbilityEvaluationEnabled = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetAssessmentPoint(v int32) *GetAICoachScriptResponseBodyWeights {
+	s.AssessmentPoint = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetExpressiveness(v int32) *GetAICoachScriptResponseBodyWeights {
+	s.Expressiveness = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetExpressivenessEnabled(v bool) *GetAICoachScriptResponseBodyWeights {
+	s.ExpressivenessEnabled = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetPointDeductionRule(v int32) *GetAICoachScriptResponseBodyWeights {
+	s.PointDeductionRule = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetPointDeductionRuleEnabled(v bool) *GetAICoachScriptResponseBodyWeights {
+	s.PointDeductionRuleEnabled = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetStandard(v int32) *GetAICoachScriptResponseBodyWeights {
+	s.Standard = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetStandardEnabled(v bool) *GetAICoachScriptResponseBodyWeights {
+	s.StandardEnabled = &v
+	return s
+}
+
+type GetAICoachScriptResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAICoachScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAICoachScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponse) SetHeaders(v map[string]*string) *GetAICoachScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAICoachScriptResponse) SetStatusCode(v int32) *GetAICoachScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponse) SetBody(v *GetAICoachScriptResponseBody) *GetAICoachScriptResponse {
+	s.Body = v
+	return s
+}
+
 type GetAICoachTaskSessionHistoryRequest struct {
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
@@ -3089,7 +3808,8 @@ type GetAICoachTaskSessionHistoryResponseBody struct {
 	// example:
 	//
 	// 2024-11-08 09:33:21
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndTime       *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	PauseDuration *int64  `json:"pauseDuration,omitempty" xml:"pauseDuration,omitempty"`
 	// example:
 	//
 	// D5798660-1531-5D12-9C20-16FEE9D22351
@@ -3127,6 +3847,11 @@ func (s *GetAICoachTaskSessionHistoryResponseBody) SetDuration(v int64) *GetAICo
 
 func (s *GetAICoachTaskSessionHistoryResponseBody) SetEndTime(v string) *GetAICoachTaskSessionHistoryResponseBody {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetPauseDuration(v int64) *GetAICoachTaskSessionHistoryResponseBody {
+	s.PauseDuration = &v
 	return s
 }
 
@@ -6781,7 +7506,8 @@ type SendSdkMessageRequest struct {
 	// example:
 	//
 	// {}
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	Data   *string `json:"data,omitempty" xml:"data,omitempty"`
+	Header *string `json:"header,omitempty" xml:"header,omitempty"`
 	// example:
 	//
 	// avatar
@@ -6806,6 +7532,11 @@ func (s SendSdkMessageRequest) GoString() string {
 
 func (s *SendSdkMessageRequest) SetData(v string) *SendSdkMessageRequest {
 	s.Data = &v
+	return s
+}
+
+func (s *SendSdkMessageRequest) SetHeader(v string) *SendSdkMessageRequest {
+	s.Header = &v
 	return s
 }
 
@@ -9412,6 +10143,81 @@ func (client *Client) FinishAICoachTaskSession(request *FinishAICoachTaskSession
 
 // Summary:
 //
+// 查询剧本详情
+//
+// @param request - GetAICoachScriptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICoachScriptResponse
+func (client *Client) GetAICoachScriptWithOptions(request *GetAICoachScriptRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAICoachScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ScriptRecordId)) {
+		query["scriptRecordId"] = request.ScriptRecordId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAICoachScript"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/getScript"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAICoachScriptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAICoachScriptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询剧本详情
+//
+// @param request - GetAICoachScriptRequest
+//
+// @return GetAICoachScriptResponse
+func (client *Client) GetAICoachScript(request *GetAICoachScriptRequest) (_result *GetAICoachScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAICoachScriptResponse{}
+	_body, _err := client.GetAICoachScriptWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 学员查询会话历史
 //
 // @param request - GetAICoachTaskSessionHistoryRequest
@@ -11495,6 +12301,10 @@ func (client *Client) SendSdkMessageWithOptions(request *SendSdkMessageRequest, 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Data)) {
 		body["data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Header)) {
+		body["header"] = request.Header
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
