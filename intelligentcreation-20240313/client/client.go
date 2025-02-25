@@ -3488,7 +3488,8 @@ type GetAICoachScriptResponseBodyPoints struct {
 	// example:
 	//
 	// demo
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	PointId *string `json:"pointId,omitempty" xml:"pointId,omitempty"`
 	// example:
 	//
 	// test
@@ -3523,6 +3524,11 @@ func (s *GetAICoachScriptResponseBodyPoints) SetKnowledgeList(v []*string) *GetA
 
 func (s *GetAICoachScriptResponseBodyPoints) SetName(v string) *GetAICoachScriptResponseBodyPoints {
 	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetPointId(v string) *GetAICoachScriptResponseBodyPoints {
+	s.PointId = &v
 	return s
 }
 
