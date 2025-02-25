@@ -8051,7 +8051,8 @@ type RealTimeDialogRequest struct {
 	// example:
 	//
 	// false
-	Recommend *bool `json:"recommend,omitempty" xml:"recommend,omitempty"`
+	Recommend           *bool   `json:"recommend,omitempty" xml:"recommend,omitempty"`
+	ScriptContentPlayed *string `json:"scriptContentPlayed,omitempty" xml:"scriptContentPlayed,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -8061,7 +8062,8 @@ type RealTimeDialogRequest struct {
 	// example:
 	//
 	// false
-	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	Stream  *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	UserVad *bool `json:"userVad,omitempty" xml:"userVad,omitempty"`
 }
 
 func (s RealTimeDialogRequest) String() string {
@@ -8102,6 +8104,11 @@ func (s *RealTimeDialogRequest) SetRecommend(v bool) *RealTimeDialogRequest {
 	return s
 }
 
+func (s *RealTimeDialogRequest) SetScriptContentPlayed(v string) *RealTimeDialogRequest {
+	s.ScriptContentPlayed = &v
+	return s
+}
+
 func (s *RealTimeDialogRequest) SetSessionId(v string) *RealTimeDialogRequest {
 	s.SessionId = &v
 	return s
@@ -8109,6 +8116,11 @@ func (s *RealTimeDialogRequest) SetSessionId(v string) *RealTimeDialogRequest {
 
 func (s *RealTimeDialogRequest) SetStream(v bool) *RealTimeDialogRequest {
 	s.Stream = &v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetUserVad(v bool) *RealTimeDialogRequest {
+	s.UserVad = &v
 	return s
 }
 
@@ -8321,6 +8333,7 @@ type RealTimeDialogResponseBodyChoicesDelta struct {
 	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
 	IntentionName   *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
 	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
+	Interrupt       *bool   `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
 	// example:
 	//
 	// null
@@ -8371,6 +8384,11 @@ func (s *RealTimeDialogResponseBodyChoicesDelta) SetIntentionScript(v string) *R
 	return s
 }
 
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetInterrupt(v bool) *RealTimeDialogResponseBodyChoicesDelta {
+	s.Interrupt = &v
+	return s
+}
+
 func (s *RealTimeDialogResponseBodyChoicesDelta) SetRecommendIntention(v string) *RealTimeDialogResponseBodyChoicesDelta {
 	s.RecommendIntention = &v
 	return s
@@ -8412,6 +8430,7 @@ type RealTimeDialogResponseBodyChoicesMessage struct {
 	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
 	IntentionName   *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
 	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
+	Interrupt       *bool   `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
 	// example:
 	//
 	// null
@@ -8462,6 +8481,11 @@ func (s *RealTimeDialogResponseBodyChoicesMessage) SetIntentionName(v string) *R
 
 func (s *RealTimeDialogResponseBodyChoicesMessage) SetIntentionScript(v string) *RealTimeDialogResponseBodyChoicesMessage {
 	s.IntentionScript = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetInterrupt(v bool) *RealTimeDialogResponseBodyChoicesMessage {
+	s.Interrupt = &v
 	return s
 }
 
@@ -15357,12 +15381,20 @@ func (client *Client) RealTimeDialogWithOptions(workspaceId *string, request *Re
 		body["recommend"] = request.Recommend
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScriptContentPlayed)) {
+		body["scriptContentPlayed"] = request.ScriptContentPlayed
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		body["sessionId"] = request.SessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Stream)) {
 		body["stream"] = request.Stream
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserVad)) {
+		body["userVad"] = request.UserVad
 	}
 
 	req := &openapi.OpenApiRequest{
