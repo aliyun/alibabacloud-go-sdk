@@ -1,3 +1,6 @@
+2025-02-25 Version: v2.3.1
+- Generated golang 2022-12-15 for eflo-controller.
+
 2025-01-15 Version: v2.3.0
 - Support API StopNodes.
 
