@@ -10,12 +10,18 @@ import (
 )
 
 type ActiveCaCertificateRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance to which the CA certificate is bound.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// The serial number of the CA certificate that you want to reactivate. The serial number is the unique identifier of a CA certificate.
+	//
+	// The serial number of a CA certificate cannot exceed 128 bytes in size.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1893,6 +1899,246 @@ func (s *DeleteGroupIdResponse) SetStatusCode(v int32) *DeleteGroupIdResponse {
 }
 
 func (s *DeleteGroupIdResponse) SetBody(v *DeleteGroupIdResponseBody) *DeleteGroupIdResponse {
+	s.Body = v
+	return s
+}
+
+type DisasterDowngradeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mqtt-cn-xxxx
+	DowngradeInstanceId *string `json:"DowngradeInstanceId,omitempty" xml:"DowngradeInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mqtt-cn-xxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisasterDowngradeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisasterDowngradeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisasterDowngradeRequest) SetDowngradeInstanceId(v string) *DisasterDowngradeRequest {
+	s.DowngradeInstanceId = &v
+	return s
+}
+
+func (s *DisasterDowngradeRequest) SetInstanceId(v string) *DisasterDowngradeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DisasterDowngradeResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 82B9E503-F4A1-4F30-976F-C6999FF9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisasterDowngradeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisasterDowngradeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisasterDowngradeResponseBody) SetAccessDeniedDetail(v string) *DisasterDowngradeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DisasterDowngradeResponseBody) SetCode(v int32) *DisasterDowngradeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisasterDowngradeResponseBody) SetMessage(v string) *DisasterDowngradeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisasterDowngradeResponseBody) SetRequestId(v string) *DisasterDowngradeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisasterDowngradeResponseBody) SetSuccess(v bool) *DisasterDowngradeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisasterDowngradeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisasterDowngradeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisasterDowngradeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisasterDowngradeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisasterDowngradeResponse) SetHeaders(v map[string]*string) *DisasterDowngradeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisasterDowngradeResponse) SetStatusCode(v int32) *DisasterDowngradeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisasterDowngradeResponse) SetBody(v *DisasterDowngradeResponseBody) *DisasterDowngradeResponse {
+	s.Body = v
+	return s
+}
+
+type DisasterRecoveryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mqtt-cn-xxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mqtt-cn-xxx
+	RecoveryInstanceId *string `json:"RecoveryInstanceId,omitempty" xml:"RecoveryInstanceId,omitempty"`
+}
+
+func (s DisasterRecoveryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisasterRecoveryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisasterRecoveryRequest) SetInstanceId(v string) *DisasterRecoveryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DisasterRecoveryRequest) SetRecoveryInstanceId(v string) *DisasterRecoveryRequest {
+	s.RecoveryInstanceId = &v
+	return s
+}
+
+type DisasterRecoveryResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 135F8639-F262-4417-98D1-4DE4595C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisasterRecoveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisasterRecoveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisasterRecoveryResponseBody) SetAccessDeniedDetail(v string) *DisasterRecoveryResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DisasterRecoveryResponseBody) SetCode(v int32) *DisasterRecoveryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisasterRecoveryResponseBody) SetMessage(v string) *DisasterRecoveryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisasterRecoveryResponseBody) SetRequestId(v string) *DisasterRecoveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisasterRecoveryResponseBody) SetSuccess(v bool) *DisasterRecoveryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisasterRecoveryResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisasterRecoveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisasterRecoveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisasterRecoveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisasterRecoveryResponse) SetHeaders(v map[string]*string) *DisasterRecoveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisasterRecoveryResponse) SetStatusCode(v int32) *DisasterRecoveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisasterRecoveryResponse) SetBody(v *DisasterRecoveryResponseBody) *DisasterRecoveryResponse {
 	s.Body = v
 	return s
 }
@@ -6411,13 +6657,18 @@ func (s *RefreshDeviceCredentialResponse) SetBody(v *RefreshDeviceCredentialResp
 }
 
 type RegisterCaCertificateRequest struct {
+	// The content of the CA certificate that you want to register with an ApsaraMQ for MQTT broker.
+	//
+	//
+	// > In the example, \\n indicates a line feed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END CERTIFICATE-----
 	CaContent *string `json:"CaContent,omitempty" xml:"CaContent,omitempty"`
-	// - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+	// The name of the CA certificate that you want to register with an ApsaraMQ for MQTT broker.
 	//
 	// This parameter is required.
 	//
@@ -6425,7 +6676,7 @@ type RegisterCaCertificateRequest struct {
 	//
 	// mqtt_ca
 	CaName *string `json:"CaName,omitempty" xml:"CaName,omitempty"`
-	// RegisterCaCertificate
+	// The ID of the ApsaraMQ for MQTT instance to which you want to bind the CA certificate.
 	//
 	// This parameter is required.
 	//
@@ -6433,6 +6684,10 @@ type RegisterCaCertificateRequest struct {
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// The content of the validation certificate issued by the CA certificate that you want to register with an ApsaraMQ for MQTT broker. The validation certificate must be used together with the registration code of the CA certificate to verify the private key of the CA certificate.
+	//
+	// > In the example, \\n indicates a line feed.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6470,10 +6725,14 @@ func (s *RegisterCaCertificateRequest) SetVerificationContent(v string) *Registe
 }
 
 type RegisterCaCertificateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the registered CA certificate. The serial number is the unique identifier of a CA certificate.
+	//
 	// example:
 	//
 	// 007269004887******
@@ -7843,6 +8102,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Activate CA Certificate
 //
+// Description:
+//
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//
+// 	- You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//
 // @param request - ActiveCaCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7876,18 +8143,37 @@ func (client *Client) ActiveCaCertificateWithOptions(request *ActiveCaCertificat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ActiveCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActiveCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActiveCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
 // Activate CA Certificate
+//
+// Description:
+//
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//
+// 	- You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - ActiveCaCertificateRequest
 //
@@ -7909,9 +8195,9 @@ func (client *Client) ActiveCaCertificate(request *ActiveCaCertificateRequest) (
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ActiveDeviceCertificateRequest
 //
@@ -7950,13 +8236,24 @@ func (client *Client) ActiveDeviceCertificateWithOptions(request *ActiveDeviceCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ActiveDeviceCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActiveDeviceCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActiveDeviceCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7965,9 +8262,9 @@ func (client *Client) ActiveDeviceCertificateWithOptions(request *ActiveDeviceCe
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ActiveDeviceCertificateRequest
 //
@@ -8020,13 +8317,24 @@ func (client *Client) AddCustomAuthConnectBlackWithOptions(request *AddCustomAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddCustomAuthConnectBlackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCustomAuthConnectBlackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCustomAuthConnectBlackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8100,13 +8408,24 @@ func (client *Client) AddCustomAuthIdentityWithOptions(request *AddCustomAuthIde
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddCustomAuthIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCustomAuthIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCustomAuthIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8180,13 +8499,24 @@ func (client *Client) AddCustomAuthPermissionWithOptions(request *AddCustomAuthP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddCustomAuthPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCustomAuthPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCustomAuthPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8258,13 +8588,24 @@ func (client *Client) ApplyTokenWithOptions(request *ApplyTokenRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8336,13 +8677,24 @@ func (client *Client) BatchQuerySessionByClientIdsWithOptions(request *BatchQuer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchQuerySessionByClientIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchQuerySessionByClientIdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchQuerySessionByClientIdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8412,13 +8764,24 @@ func (client *Client) CloseConnectionWithOptions(request *CloseConnectionRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloseConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloseConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloseConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8484,13 +8847,24 @@ func (client *Client) CreateGroupIdWithOptions(request *CreateGroupIdRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateGroupIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateGroupIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateGroupIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8521,11 +8895,11 @@ func (client *Client) CreateGroupId(request *CreateGroupIdRequest) (_result *Cre
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // 	- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
 //
@@ -8562,13 +8936,24 @@ func (client *Client) DeleteCaCertificateWithOptions(request *DeleteCaCertificat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8577,11 +8962,11 @@ func (client *Client) DeleteCaCertificateWithOptions(request *DeleteCaCertificat
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // 	- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
 //
@@ -8636,13 +9021,24 @@ func (client *Client) DeleteCustomAuthConnectBlackWithOptions(request *DeleteCus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomAuthConnectBlackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomAuthConnectBlackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomAuthConnectBlackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8708,13 +9104,24 @@ func (client *Client) DeleteCustomAuthIdentityWithOptions(request *DeleteCustomA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomAuthIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomAuthIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomAuthIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8780,13 +9187,24 @@ func (client *Client) DeleteCustomAuthPermissionWithOptions(request *DeleteCusto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomAuthPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomAuthPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomAuthPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8813,9 +9231,9 @@ func (client *Client) DeleteCustomAuthPermission(request *DeleteCustomAuthPermis
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - DeleteDeviceCertificateRequest
 //
@@ -8854,13 +9272,24 @@ func (client *Client) DeleteDeviceCertificateWithOptions(request *DeleteDeviceCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDeviceCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDeviceCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDeviceCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8869,9 +9298,9 @@ func (client *Client) DeleteDeviceCertificateWithOptions(request *DeleteDeviceCe
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - DeleteDeviceCertificateRequest
 //
@@ -8928,13 +9357,24 @@ func (client *Client) DeleteGroupIdWithOptions(request *DeleteGroupIdRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteGroupIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGroupIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGroupIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8961,7 +9401,163 @@ func (client *Client) DeleteGroupId(request *DeleteGroupIdRequest) (_result *Del
 
 // Summary:
 //
+// DisasterDowngrade
+//
+// @param request - DisasterDowngradeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisasterDowngradeResponse
+func (client *Client) DisasterDowngradeWithOptions(request *DisasterDowngradeRequest, runtime *util.RuntimeOptions) (_result *DisasterDowngradeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DowngradeInstanceId)) {
+		body["DowngradeInstanceId"] = request.DowngradeInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisasterDowngrade"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisasterDowngradeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisasterDowngradeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// DisasterDowngrade
+//
+// @param request - DisasterDowngradeRequest
+//
+// @return DisasterDowngradeResponse
+func (client *Client) DisasterDowngrade(request *DisasterDowngradeRequest) (_result *DisasterDowngradeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisasterDowngradeResponse{}
+	_body, _err := client.DisasterDowngradeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// DisasterRecovery
+//
+// @param request - DisasterRecoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisasterRecoveryResponse
+func (client *Client) DisasterRecoveryWithOptions(request *DisasterRecoveryRequest, runtime *util.RuntimeOptions) (_result *DisasterRecoveryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryInstanceId)) {
+		body["RecoveryInstanceId"] = request.RecoveryInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisasterRecovery"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisasterRecoveryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisasterRecoveryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// DisasterRecovery
+//
+// @param request - DisasterRecoveryRequest
+//
+// @return DisasterRecoveryResponse
+func (client *Client) DisasterRecovery(request *DisasterRecoveryRequest) (_result *DisasterRecoveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisasterRecoveryResponse{}
+	_body, _err := client.DisasterRecoveryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+//
+// Description:
+//
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetCaCertificateRequest
 //
@@ -8988,18 +9584,35 @@ func (client *Client) GetCaCertificateWithOptions(request *GetCaCertificateReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
 // Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+//
+// Description:
+//
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetCaCertificateRequest
 //
@@ -9021,7 +9634,9 @@ func (client *Client) GetCaCertificate(request *GetCaCertificateRequest) (_resul
 //
 // Description:
 //
-// - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetDeviceCertificateRequest
 //
@@ -9048,13 +9663,24 @@ func (client *Client) GetDeviceCertificateWithOptions(request *GetDeviceCertific
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeviceCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeviceCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeviceCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9063,7 +9689,9 @@ func (client *Client) GetDeviceCertificateWithOptions(request *GetDeviceCertific
 //
 // Description:
 //
-// - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetDeviceCertificateRequest
 //
@@ -9122,13 +9750,24 @@ func (client *Client) GetDeviceCredentialWithOptions(request *GetDeviceCredentia
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeviceCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeviceCredentialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeviceCredentialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9161,9 +9800,9 @@ func (client *Client) GetDeviceCredential(request *GetDeviceCredentialRequest) (
 //
 // Description:
 //
-//   This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetRegisterCodeRequest
 //
@@ -9190,13 +9829,24 @@ func (client *Client) GetRegisterCodeWithOptions(request *GetRegisterCodeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRegisterCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRegisterCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRegisterCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9205,9 +9855,9 @@ func (client *Client) GetRegisterCodeWithOptions(request *GetRegisterCodeRequest
 //
 // Description:
 //
-//   This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetRegisterCodeRequest
 //
@@ -9229,11 +9879,11 @@ func (client *Client) GetRegisterCode(request *GetRegisterCodeRequest) (_result 
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - InactivateCaCertificateRequest
 //
@@ -9268,13 +9918,24 @@ func (client *Client) InactivateCaCertificateWithOptions(request *InactivateCaCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InactivateCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InactivateCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InactivateCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9283,11 +9944,11 @@ func (client *Client) InactivateCaCertificateWithOptions(request *InactivateCaCe
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - InactivateCaCertificateRequest
 //
@@ -9309,9 +9970,9 @@ func (client *Client) InactivateCaCertificate(request *InactivateCaCertificateRe
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - InactivateDeviceCertificateRequest
 //
@@ -9350,13 +10011,24 @@ func (client *Client) InactivateDeviceCertificateWithOptions(request *Inactivate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InactivateDeviceCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InactivateDeviceCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InactivateDeviceCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9365,9 +10037,9 @@ func (client *Client) InactivateDeviceCertificateWithOptions(request *Inactivate
 //
 // Description:
 //
-//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - InactivateDeviceCertificateRequest
 //
@@ -9389,7 +10061,9 @@ func (client *Client) InactivateDeviceCertificate(request *InactivateDeviceCerti
 //
 // Description:
 //
-// - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListCaCertificateRequest
 //
@@ -9416,13 +10090,24 @@ func (client *Client) ListCaCertificateWithOptions(request *ListCaCertificateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9431,7 +10116,9 @@ func (client *Client) ListCaCertificateWithOptions(request *ListCaCertificateReq
 //
 // Description:
 //
-// - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListCaCertificateRequest
 //
@@ -9453,7 +10140,9 @@ func (client *Client) ListCaCertificate(request *ListCaCertificateRequest) (_res
 //
 // Description:
 //
-// - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateRequest
 //
@@ -9480,13 +10169,24 @@ func (client *Client) ListDeviceCertificateWithOptions(request *ListDeviceCertif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDeviceCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDeviceCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDeviceCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9495,7 +10195,9 @@ func (client *Client) ListDeviceCertificateWithOptions(request *ListDeviceCertif
 //
 // Description:
 //
-// - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateRequest
 //
@@ -9517,7 +10219,9 @@ func (client *Client) ListDeviceCertificate(request *ListDeviceCertificateReques
 //
 // Description:
 //
-// - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateByCaSnRequest
 //
@@ -9544,13 +10248,24 @@ func (client *Client) ListDeviceCertificateByCaSnWithOptions(request *ListDevice
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDeviceCertificateByCaSnResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDeviceCertificateByCaSnResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDeviceCertificateByCaSnResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9559,7 +10274,9 @@ func (client *Client) ListDeviceCertificateByCaSnWithOptions(request *ListDevice
 //
 // Description:
 //
-// - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateByCaSnRequest
 //
@@ -9624,13 +10341,24 @@ func (client *Client) ListDeviceCredentialClientIdWithOptions(request *ListDevic
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDeviceCredentialClientIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDeviceCredentialClientIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDeviceCredentialClientIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9688,13 +10416,24 @@ func (client *Client) ListGroupIdWithOptions(request *ListGroupIdRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListGroupIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListGroupIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListGroupIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9764,13 +10503,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9820,13 +10570,24 @@ func (client *Client) QueryCustomAuthConnectBlackWithOptions(request *QueryCusto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryCustomAuthConnectBlackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryCustomAuthConnectBlackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryCustomAuthConnectBlackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9876,13 +10637,24 @@ func (client *Client) QueryCustomAuthIdentityWithOptions(request *QueryCustomAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryCustomAuthIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryCustomAuthIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryCustomAuthIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9932,13 +10704,24 @@ func (client *Client) QueryCustomAuthPermissionWithOptions(request *QueryCustomA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryCustomAuthPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryCustomAuthPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryCustomAuthPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10026,13 +10809,24 @@ func (client *Client) QueryMqttTraceDeviceWithOptions(request *QueryMqttTraceDev
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryMqttTraceDeviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryMqttTraceDeviceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryMqttTraceDeviceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10126,13 +10920,24 @@ func (client *Client) QueryMqttTraceMessageOfClientWithOptions(request *QueryMqt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryMqttTraceMessageOfClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryMqttTraceMessageOfClientResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryMqttTraceMessageOfClientResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10214,13 +11019,24 @@ func (client *Client) QueryMqttTraceMessagePublishWithOptions(request *QueryMqtt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryMqttTraceMessagePublishResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryMqttTraceMessagePublishResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryMqttTraceMessagePublishResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10318,13 +11134,24 @@ func (client *Client) QueryMqttTraceMessageSubscribeWithOptions(request *QueryMq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryMqttTraceMessageSubscribeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryMqttTraceMessageSubscribeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryMqttTraceMessageSubscribeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10394,13 +11221,24 @@ func (client *Client) QuerySessionByClientIdWithOptions(request *QuerySessionByC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QuerySessionByClientIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QuerySessionByClientIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QuerySessionByClientIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10470,13 +11308,24 @@ func (client *Client) QueryTokenWithOptions(request *QueryTokenRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10548,13 +11397,24 @@ func (client *Client) RefreshDeviceCredentialWithOptions(request *RefreshDeviceC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefreshDeviceCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefreshDeviceCredentialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefreshDeviceCredentialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10589,7 +11449,9 @@ func (client *Client) RefreshDeviceCredential(request *RefreshDeviceCredentialRe
 //
 // Description:
 //
-// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -10632,13 +11494,24 @@ func (client *Client) RegisterCaCertificateWithOptions(request *RegisterCaCertif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RegisterCaCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RegisterCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RegisterCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10647,7 +11520,9 @@ func (client *Client) RegisterCaCertificateWithOptions(request *RegisterCaCertif
 //
 // Description:
 //
-// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -10706,13 +11581,24 @@ func (client *Client) RegisterDeviceCredentialWithOptions(request *RegisterDevic
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RegisterDeviceCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RegisterDeviceCredentialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RegisterDeviceCredentialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10782,13 +11668,24 @@ func (client *Client) RevokeTokenWithOptions(request *RevokeTokenRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10864,13 +11761,24 @@ func (client *Client) SendMessageWithOptions(request *SendMessageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SendMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SendMessageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SendMessageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10940,13 +11848,24 @@ func (client *Client) SetSniConfigWithOptions(request *SetSniConfigRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetSniConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetSniConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetSniConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11008,13 +11927,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11078,13 +12008,24 @@ func (client *Client) UnRegisterDeviceCredentialWithOptions(request *UnRegisterD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnRegisterDeviceCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnRegisterDeviceCredentialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnRegisterDeviceCredentialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11156,13 +12097,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11236,13 +12188,24 @@ func (client *Client) UpdateCustomAuthIdentityWithOptions(request *UpdateCustomA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCustomAuthIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCustomAuthIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCustomAuthIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11316,13 +12279,24 @@ func (client *Client) UpdateCustomAuthPermissionWithOptions(request *UpdateCusto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCustomAuthPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCustomAuthPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCustomAuthPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
