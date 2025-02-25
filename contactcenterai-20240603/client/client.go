@@ -628,9 +628,10 @@ func (s *AnalyzeImageResponse) SetBody(v *AnalyzeImageResponseBody) *AnalyzeImag
 }
 
 type CreateTaskRequest struct {
-	Dialogue *CreateTaskRequestDialogue `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
-	Examples *CreateTaskRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Struct"`
-	Fields   []*CreateTaskRequestFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	CustomPrompt *string                    `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
+	Dialogue     *CreateTaskRequestDialogue `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
+	Examples     *CreateTaskRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Struct"`
+	Fields       []*CreateTaskRequestFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -655,6 +656,11 @@ func (s CreateTaskRequest) String() string {
 
 func (s CreateTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequest) SetCustomPrompt(v string) *CreateTaskRequest {
+	s.CustomPrompt = &v
+	return s
 }
 
 func (s *CreateTaskRequest) SetDialogue(v *CreateTaskRequestDialogue) *CreateTaskRequest {
@@ -817,8 +823,7 @@ type CreateTaskRequestFields struct {
 	// phoneNumber
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// This parameter is required.
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// This parameter is required.
+	Desc       *string                              `json:"desc,omitempty" xml:"desc,omitempty"`
 	EnumValues []*CreateTaskRequestFieldsEnumValues `json:"enumValues,omitempty" xml:"enumValues,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -2784,6 +2789,10 @@ func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomPrompt)) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Dialogue)) {
 		body["dialogue"] = request.Dialogue
 	}
