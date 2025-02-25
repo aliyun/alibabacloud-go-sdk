@@ -2481,8 +2481,9 @@ type CreateResourceRequest struct {
 	// example:
 	//
 	// ecs.c6.8xlarge
-	EcsInstanceType *string            `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	Labels          map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	// The custom tag.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The type of the resource group. Valid values:
 	//
 	// 	- Dedicated: the dedicated resource group.
@@ -2571,11 +2572,11 @@ type CreateResourceRequestSelfManagedResourceOptions struct {
 	//
 	// cf0386f250f2545689ca7fdd1cd******
 	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	// The tag key-value pairs for nodes.
+	// The tag key-value pairs of the node.
 	NodeMatchLabels map[string]*string `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	// Tolerations for nodes.
+	// The tolerations for the node taint.
 	NodeTolerations []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
-	// The name of the RAM user to which the permissions on Elastic Algorithm Service of Platform for AI (PAI-EAS) are granted.
+	// The name of the RAM user to which the permissions on Elastic Algorithm Service (EAS) of Platform for AI (PAI) are granted.
 	//
 	// example:
 	//
@@ -2820,8 +2821,9 @@ type CreateResourceInstancesRequest struct {
 	// example:
 	//
 	// ecs.s6-c1m2.xlarge
-	EcsInstanceType *string            `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	Labels          map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	// The custom service tag.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
 	//
 	// example:
@@ -3782,7 +3784,7 @@ type CreateServiceAutoScalerRequestScaleStrategies struct {
 	//
 	// 	- If you set metricName to cpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
 	//
-	// 	- If you set metricName to gpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+	// 	- If you set metricName to gpu, scale-out is triggered when the average gpu utilization for a single instance is greater than this threshold.
 	//
 	// This parameter is required.
 	//
@@ -4106,8 +4108,13 @@ func (s *CreateServiceMirrorResponse) SetBody(v *CreateServiceMirrorResponseBody
 }
 
 type CreateVirtualResourceRequest struct {
+	// Specifies whether to disable the retention period of preemptible instances.
+	//
+	// example:
+	//
+	// true
 	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
-	// The list of resources in the virtual resource group.
+	// The resources in the virtual resource group.
 	Resources []*CreateVirtualResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The name of the virtual resource group. Default value: the ID of the virtual resource group.
 	//
@@ -4149,13 +4156,13 @@ type CreateVirtualResourceRequestResources struct {
 	//
 	// ecs.s6-c1m2.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The priority of resource scheduling. A greater number specifies a higher priority.
+	// The priority of resource scheduling. A greater number indicates a higher priority.
 	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Lingjun Resource Quota ID.
+	// The ID of the Lingjun resource quota.
 	//
 	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
 	//
@@ -4163,13 +4170,13 @@ type CreateVirtualResourceRequestResources struct {
 	//
 	// quota185lqxxxxxx
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The region where the resource resides.
+	// The region in which the resource resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+	// The ID of the dedicated resource group. For information about how to obtain the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
 	//
 	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
 	//
@@ -4179,7 +4186,7 @@ type CreateVirtualResourceRequestResources struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The maximum price of preemptible instances in a public resource group.
 	//
-	// >  If you do not set this value, preemptible instances are not used.
+	// >  If you leave this parameter empty, preemptible instances are not used.
 	//
 	// example:
 	//
@@ -4992,9 +4999,12 @@ func (s *DeleteResourceDLinkResponse) SetBody(v *DeleteResourceDLinkResponseBody
 }
 
 type DeleteResourceInstanceLabelRequest struct {
-	AllInstances *bool     `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
-	InstanceIds  []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	Keys         []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	// The instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The keys of the tags that you want to delete.
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
 func (s DeleteResourceInstanceLabelRequest) String() string {
@@ -5021,9 +5031,12 @@ func (s *DeleteResourceInstanceLabelRequest) SetKeys(v []*string) *DeleteResourc
 }
 
 type DeleteResourceInstanceLabelShrinkRequest struct {
-	AllInstances      *bool   `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	// Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	// The instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	KeysShrink        *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The keys of the tags that you want to delete.
+	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
 }
 
 func (s DeleteResourceInstanceLabelShrinkRequest) String() string {
@@ -5050,10 +5063,14 @@ func (s *DeleteResourceInstanceLabelShrinkRequest) SetKeysShrink(v string) *Dele
 }
 
 type DeleteResourceInstanceLabelResponseBody struct {
+	// The message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82********
@@ -6324,8 +6341,13 @@ type DescribeGatewayResponseBody struct {
 	// example:
 	//
 	// 40325405-579C-4D82****
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SSLRedirectionEnabled *bool   `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the HTTP to HTTPS redirection is enabled.
+	//
+	// example:
+	//
+	// true
+	SSLRedirectionEnabled *bool `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
 	// The status of the private gateway.
 	//
 	// Valid values:
@@ -6507,6 +6529,10 @@ type DescribeGroupEndpointsResponseBody struct {
 	// The endpoints of service groups.
 	Endpoints *DescribeGroupEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	// The response message.
+	//
+	// example:
+	//
+	// Execution successful.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -6662,6 +6688,239 @@ func (s *DescribeGroupEndpointsResponse) SetBody(v *DescribeGroupEndpointsRespon
 	return s
 }
 
+type DescribeMachineSpecRequest struct {
+	// Deprecated
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMachineSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMachineSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMachineSpecRequest) SetInstanceTypes(v []*string) *DescribeMachineSpecRequest {
+	s.InstanceTypes = v
+	return s
+}
+
+type DescribeMachineSpecShrinkRequest struct {
+	// Deprecated
+	InstanceTypesShrink *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
+}
+
+func (s DescribeMachineSpecShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMachineSpecShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMachineSpecShrinkRequest) SetInstanceTypesShrink(v string) *DescribeMachineSpecShrinkRequest {
+	s.InstanceTypesShrink = &v
+	return s
+}
+
+type DescribeMachineSpecResponseBody struct {
+	InstanceMetas []*DescribeMachineSpecResponseBodyInstanceMetas `json:"InstanceMetas,omitempty" xml:"InstanceMetas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 40325405-579C-4D82***
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Types     []*DescribeMachineSpecResponseBodyTypes `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMachineSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMachineSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMachineSpecResponseBody) SetInstanceMetas(v []*DescribeMachineSpecResponseBodyInstanceMetas) *DescribeMachineSpecResponseBody {
+	s.InstanceMetas = v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBody) SetRequestId(v string) *DescribeMachineSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBody) SetTypes(v []*DescribeMachineSpecResponseBodyTypes) *DescribeMachineSpecResponseBody {
+	s.Types = v
+	return s
+}
+
+type DescribeMachineSpecResponseBodyInstanceMetas struct {
+	// example:
+	//
+	// 32
+	CPU *int32 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// GU30
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// 1
+	GPUAmount *int32 `json:"GPUAmount,omitempty" xml:"GPUAmount,omitempty"`
+	// example:
+	//
+	// 24
+	GPUMemory *float32 `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
+	// example:
+	//
+	// ml.gu7i.c32m188.1-gu30
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// true
+	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// example:
+	//
+	// 188
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 0.1
+	NonProtectSpotDiscount *float32 `json:"NonProtectSpotDiscount,omitempty" xml:"NonProtectSpotDiscount,omitempty"`
+	// example:
+	//
+	// 0.12
+	SpotDiscount *float32 `json:"SpotDiscount,omitempty" xml:"SpotDiscount,omitempty"`
+	// example:
+	//
+	// WithStock
+	StockStatus *string `json:"StockStatus,omitempty" xml:"StockStatus,omitempty"`
+	// example:
+	//
+	// ECS
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s DescribeMachineSpecResponseBodyInstanceMetas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMachineSpecResponseBodyInstanceMetas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetCPU(v int32) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.CPU = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetGPU(v string) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.GPU = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetGPUAmount(v int32) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.GPUAmount = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetGPUMemory(v float32) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.GPUMemory = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetInstanceType(v string) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetIsAvailable(v bool) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.IsAvailable = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetMemory(v float32) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetNonProtectSpotDiscount(v float32) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.NonProtectSpotDiscount = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetSpotDiscount(v float32) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.SpotDiscount = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetStockStatus(v string) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.StockStatus = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetVendor(v string) *DescribeMachineSpecResponseBodyInstanceMetas {
+	s.Vendor = &v
+	return s
+}
+
+type DescribeMachineSpecResponseBodyTypes struct {
+	// example:
+	//
+	// 1
+	CPU    *int32   `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	Memory []*int32 `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMachineSpecResponseBodyTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMachineSpecResponseBodyTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMachineSpecResponseBodyTypes) SetCPU(v int32) *DescribeMachineSpecResponseBodyTypes {
+	s.CPU = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponseBodyTypes) SetMemory(v []*int32) *DescribeMachineSpecResponseBodyTypes {
+	s.Memory = v
+	return s
+}
+
+type DescribeMachineSpecResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMachineSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeMachineSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMachineSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMachineSpecResponse) SetHeaders(v map[string]*string) *DescribeMachineSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMachineSpecResponse) SetStatusCode(v int32) *DescribeMachineSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMachineSpecResponse) SetBody(v *DescribeMachineSpecResponseBody) *DescribeMachineSpecResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeResourceResponseBody struct {
 	// The ID of the cluster to which the resource group belongs.
 	//
@@ -6675,7 +6934,12 @@ type DescribeResourceResponseBody struct {
 	//
 	// 16
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	CpuUsed  *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	// The number of vCPUs that is used.
+	//
+	// example:
+	//
+	// 8
+	CpuUsed *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
 	// The time when the resource group was created.
 	//
 	// example:
@@ -6693,16 +6957,31 @@ type DescribeResourceResponseBody struct {
 	// example:
 	//
 	// 1
-	GpuCount *int32   `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	GpuUsed  *float32 `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
+	GpuCount *int32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	// The number of GPUs that is used.
+	//
+	// example:
+	//
+	// 2
+	GpuUsed *float32 `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
 	// The total number of instances in the resource group.
 	//
 	// example:
 	//
 	// 4
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Memory        *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MemoryUsed    *int32 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
+	// The total memory size. Unit: MB.
+	//
+	// example:
+	//
+	// 8192
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The size of memory that is used. Unit: MB.
+	//
+	// example:
+	//
+	// 2048
+	MemoryUsed *int32 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
 	// The returned message.
 	//
 	// example:
@@ -7621,6 +7900,10 @@ type DescribeServiceEndpointsResponseBody struct {
 	// The service endpoints.
 	Endpoints *DescribeServiceEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Execution successful.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -8670,8 +8953,13 @@ type DescribeVirtualResourceResponseBody struct {
 	// example:
 	//
 	// 2024-10-16T17:52:49Z
-	CreateTime                  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DisableSpotProtectionPeriod *bool   `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the retention period of preemptible instances was disabled.
+	//
+	// example:
+	//
+	// true
+	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -8679,8 +8967,13 @@ type DescribeVirtualResourceResponseBody struct {
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of resources in the virtual resource group.
-	Resources    []*DescribeVirtualResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	ServiceCount *int32                                          `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
+	Resources []*DescribeVirtualResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The number of deployed services.
+	//
+	// example:
+	//
+	// 1
+	ServiceCount *int32 `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
 	// The time when the virtual resource group was last updated.
 	//
 	// example:
@@ -10624,7 +10917,12 @@ type ListResourceInstanceWorkerRequest struct {
 	// example:
 	//
 	// 20
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The worker name.
+	//
+	// example:
+	//
+	// test-fd95xxxxx-xxxxxx
 	WorkerName *string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
 }
 
@@ -10878,8 +11176,9 @@ type ListResourceInstancesRequest struct {
 	// example:
 	//
 	// Ready
-	InstanceStatus *string            `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	Label          map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The tag.
+	Label map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sorting order.
 	//
 	// Valid values:
@@ -11184,7 +11483,8 @@ type ListResourceInstancesShrinkRequest struct {
 	//
 	// Ready
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	LabelShrink    *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The tag.
+	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sorting order.
 	//
 	// Valid values:
@@ -11568,6 +11868,15 @@ func (s *ListResourceServicesResponse) SetBody(v *ListResourceServicesResponseBo
 }
 
 type ListResourcesRequest struct {
+	// The sorting order. Valid values:
+	//
+	// 	- Desc
+	//
+	// 	- Asc
+	//
+	// example:
+	//
+	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
@@ -11592,7 +11901,12 @@ type ListResourcesRequest struct {
 	// example:
 	//
 	// MyResource
-	ResourceName   *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource group status.
+	//
+	// example:
+	//
+	// ResourceReady
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	// The type of the resource group. Valid values:
 	//
@@ -11604,7 +11918,34 @@ type ListResourcesRequest struct {
 	//
 	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The condition by which the results are sorted. By default, the query results are sorted by the timestamp type in descending order.
+	//
+	// Valid values:
+	//
+	// 	- PrePaidInstanceCount
+	//
+	// 	- CpuCount
+	//
+	// 	- Memory
+	//
+	// 	- CreateTime
+	//
+	// 	- PostPaidInstanceCount
+	//
+	// 	- MemoryUsed
+	//
+	// 	- GpuCount
+	//
+	// 	- GpuUsed
+	//
+	// 	- CpuUsed
+	//
+	// 	- ServiceCount
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -13471,7 +13812,7 @@ type ListVirtualResourceResponseBody struct {
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of virtual resource groups.
+	// The virtual resource groups.
 	VirtualResources []*ListVirtualResourceResponseBodyVirtualResources `json:"VirtualResources,omitempty" xml:"VirtualResources,omitempty" type:"Repeated"`
 }
 
@@ -13514,8 +13855,13 @@ type ListVirtualResourceResponseBodyVirtualResources struct {
 	// example:
 	//
 	// 2024-10-16T17:52:49Z
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ServiceCount *int32  `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of deployed services.
+	//
+	// example:
+	//
+	// 1
+	ServiceCount *int32 `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
 	// The time when the virtual resource group was last updated.
 	//
 	// example:
@@ -14344,44 +14690,51 @@ type UpdateGatewayRequest struct {
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
 	// false
 	EnableInternet *bool `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
-	// Specifies whether to enable internal network access. Default value: true.
+	// Specifies whether to enable private access. Default value: true.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// true
-	EnableIntranet       *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	// Specifies whether to enable HTTP to HTTPS redirection. Default value: false.
+	//
+	// example:
+	//
+	// false
 	EnableSSLRedirection *bool `json:"EnableSSLRedirection,omitempty" xml:"EnableSSLRedirection,omitempty"`
-	// The instance type used for the private gateway.
+	// The instance type used by the private gateway. Valid values:
+	//
+	// 	- 2c4g
+	//
+	// 	- 4c8g
+	//
+	// 	- 8c16g
+	//
+	// 	- 16c32g
 	//
 	// example:
 	//
 	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Indicates whether it is the default private gateway.
+	// Specifies whether it is the default private gateway.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The private gateway alias.
+	// The alias of the private gateway.
 	//
 	// example:
 	//
@@ -14928,12 +15281,16 @@ func (s *UpdateResourceInstanceResponse) SetBody(v *UpdateResourceInstanceRespon
 }
 
 type UpdateResourceInstanceLabelRequest struct {
+	// Specifies whether the modification takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+	//
 	// example:
 	//
 	// false
-	AllInstances *bool              `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
-	InstanceIds  []*string          `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	// The instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The custom tag.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 }
 
 func (s UpdateResourceInstanceLabelRequest) String() string {
@@ -14960,12 +15317,16 @@ func (s *UpdateResourceInstanceLabelRequest) SetLabels(v map[string]*string) *Up
 }
 
 type UpdateResourceInstanceLabelShrinkRequest struct {
+	// Specifies whether the modification takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+	//
 	// example:
 	//
 	// false
-	AllInstances      *bool              `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
-	InstanceIdsShrink *string            `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	Labels            map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
+	// The instance IDs.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The custom tag.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 }
 
 func (s UpdateResourceInstanceLabelShrinkRequest) String() string {
@@ -14992,11 +15353,13 @@ func (s *UpdateResourceInstanceLabelShrinkRequest) SetLabels(v map[string]*strin
 }
 
 type UpdateResourceInstanceLabelResponseBody struct {
+	// The message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -16007,12 +16370,17 @@ func (s *UpdateServiceVersionResponse) SetBody(v *UpdateServiceVersionResponseBo
 }
 
 type UpdateVirtualResourceRequest struct {
-	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
-	// The list of resources in the virtual resource group.
+	// Specifies whether to disable the retention period of preemptible instances.
 	//
-	// >  If you specify this parameter, previous data are overwritten.
+	// example:
+	//
+	// true
+	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
+	// The resources in the virtual resource group.
+	//
+	// >  If you specify this parameter, previous data is overwritten.
 	Resources []*UpdateVirtualResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The new name for the virtual resource group.
+	// The new name of the virtual resource group.
 	//
 	// example:
 	//
@@ -16052,13 +16420,13 @@ type UpdateVirtualResourceRequestResources struct {
 	//
 	// ecs.s6-c1m2.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The priority of resource scheduling. A greater number specifies a higher priority.
+	// The priority of resource scheduling. A greater number indicates a higher priority.
 	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The Lingjun resource quota ID.
+	// The ID of the Lingjun resource quota.
 	//
 	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
 	//
@@ -16066,13 +16434,13 @@ type UpdateVirtualResourceRequestResources struct {
 	//
 	// quota185lqf994k6
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The region where the resource resides.
+	// The region in which the resource resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+	// The ID of the dedicated resource group. For information about how to obtain the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
 	//
 	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
 	//
@@ -16082,7 +16450,7 @@ type UpdateVirtualResourceRequestResources struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The maximum price of preemptible instances in a public resource group.
 	//
-	// >  If you do not specify this parameter, preemptible instances are not used.
+	// >  If you leave this parameter empty, preemptible instances are not used.
 	//
 	// example:
 	//
@@ -18225,7 +18593,7 @@ func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string)
 
 // Summary:
 //
-// 删除资源组实例标签
+// Deletes the tags of an instance in a resource group.
 //
 // @param tmpReq - DeleteResourceInstanceLabelRequest
 //
@@ -18299,7 +18667,7 @@ func (client *Client) DeleteResourceInstanceLabelWithOptions(ClusterId *string, 
 
 // Summary:
 //
-// 删除资源组实例标签
+// Deletes the tags of an instance in a resource group.
 //
 // @param request - DeleteResourceInstanceLabelRequest
 //
@@ -19237,6 +19605,87 @@ func (client *Client) DescribeGroupEndpoints(ClusterId *string, GroupName *strin
 	headers := make(map[string]*string)
 	_result = &DescribeGroupEndpointsResponse{}
 	_body, _err := client.DescribeGroupEndpointsWithOptions(ClusterId, GroupName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询可用机器规格
+//
+// @param tmpReq - DescribeMachineSpecRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMachineSpecResponse
+func (client *Client) DescribeMachineSpecWithOptions(tmpReq *DescribeMachineSpecRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeMachineSpecResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeMachineSpecShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceTypes)) {
+		request.InstanceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceTypes, tea.String("InstanceTypes"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceTypesShrink)) {
+		query["InstanceTypes"] = request.InstanceTypesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMachineSpec"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/public/instance_types"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMachineSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMachineSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询可用机器规格
+//
+// @param request - DescribeMachineSpecRequest
+//
+// @return DescribeMachineSpecResponse
+func (client *Client) DescribeMachineSpec(request *DescribeMachineSpecRequest) (_result *DescribeMachineSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeMachineSpecResponse{}
+	_body, _err := client.DescribeMachineSpecWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22939,7 +23388,7 @@ func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *stri
 
 // Summary:
 //
-// 更新资源组实例标签
+// Updates the tag of an instance in a resource group.
 //
 // @param tmpReq - UpdateResourceInstanceLabelRequest
 //
@@ -23011,7 +23460,7 @@ func (client *Client) UpdateResourceInstanceLabelWithOptions(ClusterId *string, 
 
 // Summary:
 //
-// 更新资源组实例标签
+// Updates the tag of an instance in a resource group.
 //
 // @param request - UpdateResourceInstanceLabelRequest
 //
