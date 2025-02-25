@@ -1424,9 +1424,9 @@ func (s *FieldContentValueFieldList) SetIsDefault(v bool) *FieldContentValueFiel
 }
 
 type QuotaListItemsValue struct {
-	// Indicates whether the item type is configured in the custom list.
+	// The switch for the type of item in the custom list.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The format restrictions for the item type in the custom list.
+	// Format restrictions for the type of item in the custom list.
 	Value *WafQuotaString `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1449,9 +1449,9 @@ func (s *QuotaListItemsValue) SetValue(v *WafQuotaString) *QuotaListItemsValue {
 }
 
 type QuotaPageContentTypesValue struct {
-	// Indicates whether the custom error pages of the Content-Type are configured.
+	// The switch for the Content-Type type in custom response pages.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The maximum length of the custom error pages of the Content-Type.
+	// The content length quota for the Content-Type in custom response pages.
 	ContentLength *WafQuotaInteger `json:"ContentLength,omitempty" xml:"ContentLength,omitempty"`
 }
 
@@ -7373,60 +7373,130 @@ func (s *CreateHttpsApplicationConfigurationResponse) SetBody(v *CreateHttpsAppl
 }
 
 type CreateHttpsBasicConfigurationRequest struct {
+	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	//
 	// example:
 	//
 	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// Cipher suite group. Default is all cipher suites. Possible values:
+	//
+	// - all: All cipher suites.
+	//
+	// - strict: Strong cipher suites.
+	//
+	// - custom: Custom cipher suites.
+	//
 	// example:
 	//
 	// all
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	// Whether to enable HTTP2. Default is enabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// Whether to enable HTTP3. Default is enabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// Whether to enable HTTPS. Default is enabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// Whether to enable OCSP. Default is disabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Whether to enable TLS1.0. Default is disabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// Whether to enable TLS1.1. Default is enabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// Whether to enable TLS1.2. Default is enabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
 	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// Whether to enable TLS1.3. Default is enabled. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// example:
 	//
 	// on
@@ -7512,10 +7582,14 @@ func (s *CreateHttpsBasicConfigurationRequest) SetTls13(v string) *CreateHttpsBa
 }
 
 type CreateHttpsBasicConfigurationResponseBody struct {
+	// Configuration ID.
+	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -8033,41 +8107,68 @@ func (s *CreateListResponse) SetBody(v *CreateListResponseBody) *CreateListRespo
 }
 
 type CreateLoadBalancerRequest struct {
+	// Configuration for failover across pools.
+	//
 	// example:
 	//
 	// true
 	AdaptiveRouting *CreateLoadBalancerRequestAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
+	// List of default pools.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	// 123
 	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
-	Description  *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled      *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Detailed description of the load balancer, for easier management and identification.
+	//
+	// example:
+	//
+	// 测试负载均衡器描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the load balancer is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// Monitor configuration for health checks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// order
 	Monitor *CreateLoadBalancerRequestMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	// The name of the load balancer, which must meet domain name format validation and be a subdomain under the site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
+	//
 	// example:
 	//
 	// 123
 	RandomSteering *CreateLoadBalancerRequestRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
-	RegionPools    interface{}                              `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// Address pools corresponding to primary regions.
+	//
 	// example:
 	//
 	// {
@@ -8087,18 +8188,75 @@ type CreateLoadBalancerRequest struct {
 	//   ]
 	//
 	// }
-	Rules           []*CreateLoadBalancerRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SessionAffinity *string                           `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	// This parameter is required.
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// This parameter is required.
+	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// Rule information.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	Rules []*CreateLoadBalancerRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Session persistence, with values:
+	//
+	// - off: Not enabled.
+	//
+	// - ip: Session persistence by IP.
+	//
+	// - cookie: Not enabled for session persistence.
 	//
 	// example:
 	//
 	// ip
-	SteeringPolicy *string     `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Load balancing strategy.
+	//
+	// - geo: Geographical strategy.
+	//
+	// - random: Weighted round-robin.
+	//
+	// - order: Primary and backup method.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// order
+	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+	//
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
-	Ttl            *int32      `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
+	//
+	// example:
+	//
+	// 300
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s CreateLoadBalancerRequest) String() string {
@@ -8185,6 +8343,15 @@ func (s *CreateLoadBalancerRequest) SetTtl(v int32) *CreateLoadBalancerRequest {
 }
 
 type CreateLoadBalancerRequestAdaptiveRouting struct {
+	// Whether to failover across pools.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
+	// example:
+	//
+	// true
 	FailoverAcrossPools *bool `json:"FailoverAcrossPools,omitempty" xml:"FailoverAcrossPools,omitempty"`
 }
 
@@ -8202,17 +8369,100 @@ func (s *CreateLoadBalancerRequestAdaptiveRouting) SetFailoverAcrossPools(v bool
 }
 
 type CreateLoadBalancerRequestMonitor struct {
-	ConsecutiveDown *int32      `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
-	ConsecutiveUp   *int32      `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
-	ExpectedCodes   *string     `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
-	FollowRedirects *bool       `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
-	Header          interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	Interval        *int32      `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Method          *string     `json:"Method,omitempty" xml:"Method,omitempty"`
-	Path            *string     `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port            *int32      `json:"Port,omitempty" xml:"Port,omitempty"`
-	Timeout         *int32      `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type            *string     `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Number of consecutive failed probes required to consider the target as down, such as `5`.
+	//
+	// example:
+	//
+	// 5
+	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	// Number of consecutive successful probes required to consider the target as up, such as `3`.
+	//
+	// example:
+	//
+	// 3
+	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	// Expected status codes, such as `200,202`, indicating successful HTTP responses.
+	//
+	// example:
+	//
+	// 200
+	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	// Whether to follow redirects.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
+	// example:
+	//
+	// true
+	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	// Header information included during the probe, which is an HTTP header.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "host": [
+	//
+	//             "example1.com",
+	//
+	//             "example2.com"
+	//
+	//         ]
+	//
+	//     }
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// Monitoring interval, such as `60` seconds, indicating the frequency of checks.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// Monitor request method, such as `GET`, which is a method in the HTTP protocol.
+	//
+	// example:
+	//
+	// GET
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// Monitor check path, such as `/healthcheck`, which is an HTTP request path.
+	//
+	// example:
+	//
+	// /health
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Origin server port.
+	//
+	// example:
+	//
+	// 1921
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Application health check timeout, in seconds, with a value range of 1-10.
+	//
+	// example:
+	//
+	// 5
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Monitor protocol type, such as HTTP, used for health checks. When the value is `off`, it indicates that no check will be performed.
+	//
+	// - TCP
+	//
+	// - UDP
+	//
+	// - SMTP
+	//
+	// - HTTPS
+	//
+	// - HTTP
+	//
+	// - ICMP Ping
+	//
+	// - off
+	//
+	// example:
+	//
+	// HTTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateLoadBalancerRequestMonitor) String() string {
@@ -8279,8 +8529,14 @@ func (s *CreateLoadBalancerRequestMonitor) SetType(v string) *CreateLoadBalancer
 }
 
 type CreateLoadBalancerRequestRandomSteering struct {
-	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
-	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+	// Default weight for all pools that do not have individual weights specified. The value range is an integer between 0 and 100.
+	//
+	// example:
+	//
+	// 50
+	DefaultWeight *int32 `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	// Weight configuration for each backend server pool, with the key being the pool ID and the value being the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+	PoolWeights map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
 }
 
 func (s CreateLoadBalancerRequestRandomSteering) String() string {
@@ -8302,13 +8558,138 @@ func (s *CreateLoadBalancerRequestRandomSteering) SetPoolWeights(v map[string]*i
 }
 
 type CreateLoadBalancerRequestRules struct {
+	// Execute a specified response after matching the rule.
+	//
+	// example:
+	//
+	// {"content_type": "application/json", "location": "www.example.com", "message_body": "Testing Hello", "status_code": 0}
 	FixedResponse *CreateLoadBalancerRequestRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
-	Overrides     interface{}                                  `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
-	Rule          *string                                      `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable    *string                                      `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName      *string                                      `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence      *int32                                       `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	Terminates    *bool                                        `json:"Terminates,omitempty" xml:"Terminates,omitempty"`
+	// Modify the corresponding load balancing configuration after matching the rule. The configured fields will override the corresponding fields in the load balancer configuration.
+	//
+	// example:
+	//
+	// {
+	//
+	//             "adaptive_routing": {
+	//
+	//                 "failover_across_pools": true
+	//
+	//             },
+	//
+	//             "sub_region_pools": {
+	//
+	//                 "AL,AT": [
+	//
+	//                     92298024898****,
+	//
+	//                     92304347804****
+	//
+	//                 ],
+	//
+	//                 "BG,BY": [
+	//
+	//                     92298024898****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "default_pools": [
+	//
+	//                 92298024898****,
+	//
+	//                 92304347804****
+	//
+	//             ],
+	//
+	//             "fallback_pool": 92298024898****,
+	//
+	//             "location_strategy": {
+	//
+	//                 "mode": "resolver_ip",
+	//
+	//                 "prefer_ecs": "always"
+	//
+	//             },
+	//
+	//             "random_steering": {
+	//
+	//                 "default_weight": 0.3,
+	//
+	//                 "pool_weights": {
+	//
+	//                     "92298024898****": 0.7,
+	//
+	//                     "92304347804****": 0.8
+	//
+	//                 }
+	//
+	//             },
+	//
+	//             "region_pools": {
+	//
+	//                 "CN,SEAS": [
+	//
+	//                     92298024898****,
+	//
+	//                     92304347804****
+	//
+	//                 ],
+	//
+	//                 "SAF,SAS": [
+	//
+	//                     92304347804****
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "session_affinity": "ip",
+	//
+	//             "steering_policy": "geo",
+	//
+	//             "ttl": 30
+	//
+	//         }
+	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	// Matching rule information.
+	//
+	// example:
+	//
+	// (http.request.method eq "GET" and http.request.version eq "HTTP/1.0") or (ip.geoip.country eq "CN") or (http.host eq "www.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch.
+	//
+	// - on: Enable the rule.
+	//
+	// - off: Disable the rule.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
+	// example:
+	//
+	// rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution order. It can be left blank, in which case the rules will be executed in the list order. If filled, it should be a positive integer greater than 0.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Whether to terminate the execution of subsequent rules.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
+	// example:
+	//
+	// true
+	Terminates *bool `json:"Terminates,omitempty" xml:"Terminates,omitempty"`
 }
 
 func (s CreateLoadBalancerRequestRules) String() string {
@@ -8355,10 +8736,30 @@ func (s *CreateLoadBalancerRequestRules) SetTerminates(v bool) *CreateLoadBalanc
 }
 
 type CreateLoadBalancerRequestRulesFixedResponse struct {
+	// Content-Type field in the HTTP Header.
+	//
+	// example:
+	//
+	// application/octet-stream
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Location field in the HTTP response.
+	//
+	// example:
+	//
+	// http://www.example.com/index.html
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Response body value.
+	//
+	// example:
+	//
+	// Hello World!
 	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
-	StatusCode  *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Response status code.
+	//
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s CreateLoadBalancerRequestRulesFixedResponse) String() string {
@@ -8390,41 +8791,68 @@ func (s *CreateLoadBalancerRequestRulesFixedResponse) SetStatusCode(v int32) *Cr
 }
 
 type CreateLoadBalancerShrinkRequest struct {
+	// Configuration for failover across pools.
+	//
 	// example:
 	//
 	// true
 	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
+	// List of default pools.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
+	// 123
 	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled            *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Detailed description of the load balancer, for easier management and identification.
+	//
+	// example:
+	//
+	// 测试负载均衡器描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the load balancer is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// Monitor configuration for health checks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// order
 	MonitorShrink *string `json:"Monitor,omitempty" xml:"Monitor,omitempty"`
+	// The name of the load balancer, which must meet domain name format validation and be a subdomain under the site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
+	//
 	// example:
 	//
 	// 123
-	RandomSteeringShrink *string     `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
-	RegionPools          interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	RandomSteeringShrink *string `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
+	// Address pools corresponding to primary regions.
+	//
 	// example:
 	//
 	// {
@@ -8444,18 +8872,75 @@ type CreateLoadBalancerShrinkRequest struct {
 	//   ]
 	//
 	// }
-	RulesShrink     *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	// This parameter is required.
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// This parameter is required.
+	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// Rule information.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// Session persistence, with values:
+	//
+	// - off: Not enabled.
+	//
+	// - ip: Session persistence by IP.
+	//
+	// - cookie: Not enabled for session persistence.
 	//
 	// example:
 	//
 	// ip
-	SteeringPolicy *string     `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Load balancing strategy.
+	//
+	// - geo: Geographical strategy.
+	//
+	// - random: Weighted round-robin.
+	//
+	// - order: Primary and backup method.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// order
+	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+	//
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
-	Ttl            *int32      `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
+	//
+	// example:
+	//
+	// 300
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s CreateLoadBalancerShrinkRequest) String() string {
@@ -8542,11 +9027,13 @@ func (s *CreateLoadBalancerShrinkRequest) SetTtl(v int32) *CreateLoadBalancerShr
 }
 
 type CreateLoadBalancerResponseBody struct {
+	// Load Balancer ID.
+	//
 	// example:
 	//
 	// 99867648760****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -16621,13 +17108,21 @@ func (s *DeleteListResponse) SetBody(v *DeleteListResponseBody) *DeleteListRespo
 }
 
 type DeleteLoadBalancerRequest struct {
+	// The ID of the load balancer, used to uniquely identify the load balancer to be queried. This ID is returned directly upon creation of the load balancer and can also be obtained through the [ListLoadBalancers](~~ListLoadBalancers~~) interface for querying all load balancers under a site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// DeleteLoadBalancer
+	// 99867648760****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the site, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1159101787****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -16650,7 +17145,11 @@ func (s *DeleteLoadBalancerRequest) SetSiteId(v int64) *DeleteLoadBalancerReques
 }
 
 type DeleteLoadBalancerResponseBody struct {
-	// Id of the request
+	// Request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19060,17 +19559,36 @@ func (s *DescribeDDoSAllEventListResponse) SetBody(v *DescribeDDoSAllEventListRe
 }
 
 type DescribeDDoSBpsListRequest struct {
+	// Protection area, defaulting to global if not filled. When specified, the values are as follows:
+	//
+	// - domestic: Mainland China.
+	//
+	// - overseas: Global (excluding Mainland China).
+	//
+	// - global: Global.
+	//
+	// example:
+	//
+	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The end time for fetching data. In ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// The end time must be later than the start time, and the span between start and end times should not exceed 31 days.
+	//
 	// example:
 	//
 	// 2023-05-18T06:19:42Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 70966210986912
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time for fetching data, in ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19108,21 +19626,32 @@ func (s *DescribeDDoSBpsListRequest) SetStartTime(v string) *DescribeDDoSBpsList
 }
 
 type DescribeDDoSBpsListResponseBody struct {
+	// The interval between each piece of data, in seconds.
+	//
+	// Generated based on the interval between StartTime and EndTime: less than 1 hour, 60s; 1 hour or more but less than 1 day, 300s; 1 day or more but less than a week, 1800s; 1 week or more, 3600s.
+	//
 	// example:
 	//
 	// 300
-	DataInterval *int32                                       `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DataModule   []*DescribeDDoSBpsListResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+	DataInterval *int32 `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// A list of network bandwidth data for each time interval.
+	DataModule []*DescribeDDoSBpsListResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+	// The end time for fetching data. In ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// The end time must be later than the start time, and the span between start and end times should not exceed 31 days.
+	//
 	// example:
 	//
 	// 2023-05-18T06:19:42Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time for fetching data. In ISO8601 format, using UTC, formatted as: YYYY-MM-DDThh:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-05-14T17:00:00Z
@@ -19163,30 +19692,44 @@ func (s *DescribeDDoSBpsListResponseBody) SetStartTime(v string) *DescribeDDoSBp
 }
 
 type DescribeDDoSBpsListResponseBodyDataModule struct {
+	// Attack bandwidth, in bps.
+	//
 	// example:
 	//
 	// 9000000000
 	AttackBps *int64 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
+	// Attack PPS.
+	//
 	// example:
 	//
 	// 9000000
 	AttackPps *int64 `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
+	// Normal business bandwidth, in bps.
+	//
 	// example:
 	//
 	// 1000000000
 	NormalBps *int64 `json:"NormalBps,omitempty" xml:"NormalBps,omitempty"`
+	// Normal business PPS.
+	//
 	// example:
 	//
 	// 1000000
 	NormalPps *int64 `json:"NormalPps,omitempty" xml:"NormalPps,omitempty"`
+	// The timestamp of this data, in ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-05-14T17:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// Total bandwidth, in bps.
+	//
 	// example:
 	//
 	// 10000000000
 	TotalBps *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
+	// Total PPS.
+	//
 	// example:
 	//
 	// 100000000
@@ -19266,27 +19809,43 @@ func (s *DescribeDDoSBpsListResponse) SetBody(v *DescribeDDoSBpsListResponseBody
 }
 
 type DescribeDDoSL7QpsListRequest struct {
+	// The end time of the query.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ. The maximum span between the start and end times is 31 days.
+	//
+	// If this parameter is not set, the current time will be used as the end time of the query.
+	//
 	// example:
 	//
 	// 2023-04-19T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time granularity of the queried data, in seconds.
+	//
+	// Depending on the maximum time span of a single query, this parameter supports values of 60 (1 minute), 300 (5 minutes), 1800 (half an hour), and 3600 (1 hour).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 300
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// Record ID, which can be obtained by calling the [ListRecords](~~ListRecords~~) interface.
+	//
 	// example:
 	//
 	// 86510927836942****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// A short description of struct
+	// The start time of the query.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// This parameter is required.
 	//
@@ -19330,29 +19889,44 @@ func (s *DescribeDDoSL7QpsListRequest) SetStartTime(v string) *DescribeDDoSL7Qps
 }
 
 type DescribeDDoSL7QpsListResponseBody struct {
+	// The time granularity of the queried data, in seconds.
+	//
 	// example:
 	//
 	// 300
-	DataInterval *int32                                         `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DataModule   []*DescribeDDoSL7QpsListResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+	DataInterval *int32 `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// Application layer time trend data list.
+	DataModule []*DescribeDDoSL7QpsListResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+	// The end time of the query.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-04-19T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Record ID.
+	//
 	// example:
 	//
 	// 86510927836942****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Site ID.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time of the query.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-04-19T16:00:00Z
@@ -19403,18 +19977,26 @@ func (s *DescribeDDoSL7QpsListResponseBody) SetStartTime(v string) *DescribeDDoS
 }
 
 type DescribeDDoSL7QpsListResponseBodyDataModule struct {
+	// Attack QPS.
+	//
 	// example:
 	//
 	// 5
 	Attack *int64 `json:"Attack,omitempty" xml:"Attack,omitempty"`
+	// Normal QPS.
+	//
 	// example:
 	//
 	// 4
 	Normal *int64 `json:"Normal,omitempty" xml:"Normal,omitempty"`
+	// Data time, following ISO8601 notation and using UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-04-19T16:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// Total QPS.
+	//
 	// example:
 	//
 	// 9
@@ -21098,11 +21680,11 @@ func (s *ExportRecordsResponse) SetBody(v *ExportRecordsResponseBody) *ExportRec
 }
 
 type GetCacheReserveSpecificationResponseBody struct {
-	// The capacities of cache reserve instances that can be created.
+	// List of cache retention capacity specifications.
 	CacheReserveCapacity []*string `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty" type:"Repeated"`
-	// The regions in which cache reserve instances can be created.
+	// List of cache retention region specifications.
 	CacheReserveRegion []*string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -21610,7 +22192,7 @@ func (s *GetCacheRuleResponse) SetBody(v *GetCacheRuleResponseBody) *GetCacheRul
 }
 
 type GetCacheTagRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -21618,7 +22200,7 @@ type GetCacheTagRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the website.
+	// Version number of the site.
 	//
 	// example:
 	//
@@ -21645,29 +22227,29 @@ func (s *GetCacheTagRequest) SetSiteVersion(v int32) *GetCacheTagRequest {
 }
 
 type GetCacheTagResponseBody struct {
-	// Indicates whether the matching is not case-sensitive. Valid values:
+	// Whether to ignore case. Possible values:
 	//
-	// 	- on: The matching is not case-sensitive.
+	// - on: Enabled, ignores case.
 	//
-	// 	- off: The matching is case-sensitive.
+	// - off: Disabled, does not ignore case.
 	//
 	// example:
 	//
 	// on
 	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version number of the website.
+	// Version number of the site.
 	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The name of the custom cache tag.
+	// Custom CacheTag name.
 	//
 	// example:
 	//
@@ -23390,7 +23972,7 @@ func (s *GetCompressionRuleResponse) SetBody(v *GetCompressionRuleResponseBody) 
 }
 
 type GetDevelopmentModeRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -23414,17 +23996,17 @@ func (s *GetDevelopmentModeRequest) SetSiteId(v int64) *GetDevelopmentModeReques
 }
 
 type GetDevelopmentModeResponseBody struct {
-	// Indicates whether the development mode is enabled. Valid values:
+	// Switch. Values:
 	//
-	// 	- **on**
+	// - **on**: Enabled.
 	//
-	// 	- **off**
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -26478,9 +27060,9 @@ func (s *GetIPv6Request) SetSiteId(v int64) *GetIPv6Request {
 type GetIPv6ResponseBody struct {
 	// IPv6 switch. Values:
 	//
-	// - **on**: Enabled.
+	// - **on**: Enable.
 	//
-	// - **off**: Disabled.
+	// - **off**: Disable.
 	//
 	// example:
 	//
@@ -27394,12 +27976,16 @@ func (s *GetListResponse) SetBody(v *GetListResponseBody) *GetListResponse {
 }
 
 type GetLoadBalancerRequest struct {
+	// The ID of the load balancer, used to uniquely identify the load balancer to be queried. This ID is returned directly when the load balancer is created, or it can be obtained through the [ListLoadBalancers](~~ListLoadBalancers~~) interface for querying all load balancers under a site.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// GetLoadBalancer
+	// 99867648760****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27427,30 +28013,50 @@ func (s *GetLoadBalancerRequest) SetSiteId(v int64) *GetLoadBalancerRequest {
 }
 
 type GetLoadBalancerResponseBody struct {
+	// Cross-pool origin configuration.
 	AdaptiveRouting *GetLoadBalancerResponseBodyAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
-	DefaultPools    []*int64                                    `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	// List of default pool IDs.
+	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	// Description of the load balancer.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the load balancer is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
+	//
 	// example:
 	//
 	// 96228666776****
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// The unique identifier ID of the load balancer.
+	//
 	// example:
 	//
 	// 99867648760****
-	Id      *int64                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Monitor configuration.
 	Monitor *GetLoadBalancerResponseBodyMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	// The name of the load balancer.
+	//
 	// example:
 	//
 	// lb.example.com
-	Name           *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
 	RandomSteering *GetLoadBalancerResponseBodyRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
+	// Address pools corresponding to primary regions.
+	//
 	// example:
 	//
 	// {
@@ -27471,41 +28077,52 @@ type GetLoadBalancerResponseBody struct {
 	//
 	// }
 	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*GetLoadBalancerResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Session persistence. Valid values:
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule configuration list, used to define behavior under specific conditions.
+	Rules []*GetLoadBalancerResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Session persistence, with values:
 	//
-	// 	- off: disables session persistence.
+	// - off: Not enabled.
 	//
-	// 	- ip: enables session persistence by IP address.
+	// - ip: Session persistence by IP.
 	//
-	// 	- cookie: disables session persistence.
+	// - cookie: Not enabled for session persistence.
 	//
 	// example:
 	//
 	// ip
 	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// The site ID to which the load balancer belongs.
+	//
 	// example:
 	//
 	// 11591017874****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The status of the load balancer.
+	//
 	// example:
 	//
 	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Load balancing policy.
+	//
 	// example:
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
+	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// TTL value, the time-to-live for DNS records, with a default of 30 seconds.
+	//
 	// example:
 	//
 	// 60
@@ -27611,6 +28228,12 @@ func (s *GetLoadBalancerResponseBody) SetTtl(v int32) *GetLoadBalancerResponseBo
 }
 
 type GetLoadBalancerResponseBodyAdaptiveRouting struct {
+	// Whether to fail over across pools.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
@@ -27631,22 +28254,36 @@ func (s *GetLoadBalancerResponseBodyAdaptiveRouting) SetFailoverAcrossPools(v bo
 }
 
 type GetLoadBalancerResponseBodyMonitor struct {
+	// The number of consecutive failed health checks before the backend is considered down, for example, `5`.
+	//
 	// example:
 	//
 	// 5
 	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	// The number of consecutive successful probes required to consider the target as up, e.g., `3`.
+	//
 	// example:
 	//
 	// 3
 	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	// Expected status codes, such as 200, 202, indicating successful HTTP responses.
+	//
 	// example:
 	//
 	// 200,202
 	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	// Whether to follow redirects.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
 	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	// The HTTP headers to be included in the health check request.
+	//
 	// example:
 	//
 	// {
@@ -27661,26 +28298,38 @@ type GetLoadBalancerResponseBodyMonitor struct {
 	//
 	//     }
 	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// The interval for health checks, in seconds.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The method for the health check.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The path.
+	//
 	// example:
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The target port.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The timeout for the health check, in seconds.
+	//
 	// example:
 	//
 	// 5
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The type of monitor protocol, such as HTTP, used for health checks. When the value is `off`, it indicates that no check is performed.
+	//
 	// example:
 	//
 	// HTTP
@@ -27751,11 +28400,14 @@ func (s *GetLoadBalancerResponseBodyMonitor) SetType(v string) *GetLoadBalancerR
 }
 
 type GetLoadBalancerResponseBodyRandomSteering struct {
+	// The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+	//
 	// example:
 	//
 	// 50
-	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
-	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+	DefaultWeight *int32 `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+	PoolWeights map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
 }
 
 func (s GetLoadBalancerResponseBodyRandomSteering) String() string {
@@ -27777,7 +28429,10 @@ func (s *GetLoadBalancerResponseBodyRandomSteering) SetPoolWeights(v map[string]
 }
 
 type GetLoadBalancerResponseBodyRules struct {
+	// Executes a specified response after matching the rule.
 	FixedResponse *GetLoadBalancerResponseBodyRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
+	// Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+	//
 	// example:
 	//
 	// {
@@ -27880,22 +28535,40 @@ type GetLoadBalancerResponseBodyRules struct {
 	//
 	//         }
 	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	// Information about the matching rule.
+	//
 	// example:
 	//
 	// http.request.uri.path contains "/testing"
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch.
+	//
+	// - on: Enable the rule.
+	//
+	// - off: Disable the rule.
+	//
 	// example:
 	//
 	// off
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// r2
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The execution order of the rule.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Whether to terminate the execution of subsequent rules.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
@@ -27946,18 +28619,26 @@ func (s *GetLoadBalancerResponseBodyRules) SetTerminates(v bool) *GetLoadBalance
 }
 
 type GetLoadBalancerResponseBodyRulesFixedResponse struct {
+	// The Content-Type field in the HTTP Header.
+	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The location field in the HTTP response.
+	//
 	// example:
 	//
 	// http://www.example.com/index.html
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The body value of the response.
+	//
 	// example:
 	//
 	// Hello World.
 	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// Status code.
+	//
 	// example:
 	//
 	// 200
@@ -32807,9 +33488,9 @@ func (s *GetSitePauseRequest) SetSiteId(v int64) *GetSitePauseRequest {
 }
 
 type GetSitePauseResponseBody struct {
-	// Whether the acceleration has been paused. Value range:
+	// Indicates whether acceleration has been paused. Possible values:
 	//
-	// - true: The site acceleration has been paused.
+	// - true: The site\\"s acceleration is paused.
 	//
 	// - false: The site is accelerating normally.
 	//
@@ -32970,7 +33651,7 @@ func (s *GetSiteWafSettingsResponse) SetBody(v *GetSiteWafSettingsResponseBody) 
 }
 
 type GetTieredCacheRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
 	//
@@ -32994,21 +33675,21 @@ func (s *GetTieredCacheRequest) SetSiteId(v int64) *GetTieredCacheRequest {
 }
 
 type GetTieredCacheResponseBody struct {
-	// The tiered cache architecture mode. Valid values:
+	// Multi-level cache architecture mode. Possible values:
 	//
-	// 	- edge: edge tiered cache.
+	// - edge: Edge cache layer.
 	//
-	// 	- edge_smart: edge tiered cache + smart tiered cache.
+	// - edge_smart: Edge cache layer + intelligent cache layer.
 	//
-	// 	- edge_regional: edge tiered cache + regional tiered cache.
+	// - edge_regional: Edge cache layer + regional cache layer.
 	//
-	// 	- edge_regional_smart: edge tiered cache + regional tiered cache + smart tiered cache.
+	// - edge_regional_smart: Edge cache layer + regional cache layer + intelligent cache layer.
 	//
 	// example:
 	//
 	// edge
 	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -33499,13 +34180,13 @@ func (s *GetUserLogDeliveryQuotaResponse) SetBody(v *GetUserLogDeliveryQuotaResp
 }
 
 type GetWafBotAppKeyResponseBody struct {
-	// The application key.
+	// Application key.
 	//
 	// example:
 	//
 	// example_appkey
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -34010,15 +34691,15 @@ func (s *GetWafFilterResponse) SetBody(v *GetWafFilterResponseBody) *GetWafFilte
 }
 
 type GetWafQuotaRequest struct {
-	// The type of WAF resources. Valid values:
+	// The path of the WAF quota, for example:
 	//
-	// 	- managed_rules_group: the managed rule group.
+	// 	- managed_rules_group: represents the quota for the WAF managed rules group
 	//
-	// 	- list: the custom list.
+	// 	- list: represents the quota for custom lists
 	//
-	// 	- page: the custom error page.
+	// 	- page: represents the quota for custom response pages
 	//
-	// 	- scene_policy: the scenario-specific policy.
+	// 	- scene_policy: represents the quota for scenario protection
 	//
 	// example:
 	//
@@ -34040,9 +34721,9 @@ func (s *GetWafQuotaRequest) SetPaths(v string) *GetWafQuotaRequest {
 }
 
 type GetWafQuotaResponseBody struct {
-	// The quota information returned.
+	// Returned quota information.
 	Quota *GetWafQuotaResponseBodyQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -34069,13 +34750,13 @@ func (s *GetWafQuotaResponseBody) SetRequestId(v string) *GetWafQuotaResponseBod
 }
 
 type GetWafQuotaResponseBodyQuota struct {
-	// The quota information about custom lists.
+	// Quota information related to custom lists.
 	List *GetWafQuotaResponseBodyQuotaList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
-	// The quota information about WAF managed rule groups.
+	// Quota information related to the WAF managed rules group.
 	ManagedRulesGroup *GetWafQuotaResponseBodyQuotaManagedRulesGroup `json:"ManagedRulesGroup,omitempty" xml:"ManagedRulesGroup,omitempty" type:"Struct"`
-	// The quota information about custom error pages.
+	// Quota information related to custom response pages.
 	Page *GetWafQuotaResponseBodyQuotaPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	// The quota information about scenario-specific policies.
+	// Quota information related to scene protection.
 	ScenePolicy *GetWafQuotaResponseBodyQuotaScenePolicy `json:"ScenePolicy,omitempty" xml:"ScenePolicy,omitempty" type:"Struct"`
 }
 
@@ -34108,15 +34789,15 @@ func (s *GetWafQuotaResponseBodyQuota) SetScenePolicy(v *GetWafQuotaResponseBody
 }
 
 type GetWafQuotaResponseBodyQuotaList struct {
-	// Indicates whether custom lists are enabled.
+	// Indicates whether the custom list is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The quota information about all item types in the custom lists.
+	// An object containing quota information for each type of item in the custom list.
 	Items map[string]*QuotaListItemsValue `json:"Items,omitempty" xml:"Items,omitempty"`
-	// The maximum number of items in each custom list.
+	// The number quota allowed per custom list.
 	NumberItemsPerList *WafQuotaInteger `json:"NumberItemsPerList,omitempty" xml:"NumberItemsPerList,omitempty"`
-	// The maximum number of items in all custom lists.
+	// The total number quota allowed for items in all custom lists.
 	NumberItemsTotal *WafQuotaInteger `json:"NumberItemsTotal,omitempty" xml:"NumberItemsTotal,omitempty"`
-	// The maximum number of custom lists.
+	// The total number quota allowed for custom lists.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -34154,9 +34835,9 @@ func (s *GetWafQuotaResponseBodyQuotaList) SetNumberTotal(v *WafQuotaInteger) *G
 }
 
 type GetWafQuotaResponseBodyQuotaManagedRulesGroup struct {
-	// Indicates whether the WAF managed rule group is enabled.
+	// Indicates whether the WAF managed rules group is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The maximum number of WAF managed rule groups.
+	// The total number quota allowed for the WAF managed rules group.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -34179,11 +34860,11 @@ func (s *GetWafQuotaResponseBodyQuotaManagedRulesGroup) SetNumberTotal(v *WafQuo
 }
 
 type GetWafQuotaResponseBodyQuotaPage struct {
-	// The quota information about custom error pages of all Content-Types.
+	// An object containing quota information for each Content-Type in custom response pages.
 	ContentTypes map[string]*QuotaPageContentTypesValue `json:"ContentTypes,omitempty" xml:"ContentTypes,omitempty"`
-	// Indicates whether custom error pages are enabled.
+	// Indicates whether the custom response page is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The maximum number of custom error pages.
+	// The total number quota allowed for custom response pages.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -34211,9 +34892,9 @@ func (s *GetWafQuotaResponseBodyQuotaPage) SetNumberTotal(v *WafQuotaInteger) *G
 }
 
 type GetWafQuotaResponseBodyQuotaScenePolicy struct {
-	// Indicates whether scenario-specific policies are enabled.
+	// Indicates whether the scene protection feature is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The maximum number of scenario-specific policies.
+	// The total number quota for scene protection rules.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -34265,60 +34946,60 @@ func (s *GetWafQuotaResponse) SetBody(v *GetWafQuotaResponseBody) *GetWafQuotaRe
 }
 
 type ListCacheReserveInstancesRequest struct {
-	// The ID of the cache reserve instance.
+	// Instance ID.
 	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
+	// Page size. Range: **1~500**, default is **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The criterion by which you want to sort the queried instances. Valid values:
+	// Sorting method. Values:
 	//
-	// 	- ExpireTime: sorts the instances by the time when the instances expire.
+	// - **ExpireTime**: Expiration time.
 	//
-	// 	- CreateTime: sorts the instances by the time when the instances were purchased.
+	// - **CreateTime**: Purchase time.
 	//
 	// example:
 	//
 	// ExpireTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The order by which you want to sort the queried instances. Valid values:
+	// Sorting order. Supported values:
 	//
-	// 	- asc: in ascending order.
+	// - **asc**: Ascending.
 	//
-	// 	- desc: in descending order.
+	// - **desc**: Descending.
 	//
 	// example:
 	//
 	// desc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The status of the cache reserve instance. Valid values:
+	// Cache reserve instance status. Supported values:
 	//
-	// 	- online: The instance is in service.
+	// - **online**: Normal service status.
 	//
-	// 	- offline: The instance has expired within an allowable period. In this state, the plan is unavailable.
+	// - **offline**: Expired but not overdue, in an unavailable state.
 	//
-	// 	- disable: The instance is released.
+	// - **disable**: Released status.
 	//
-	// 	- overdue: The instance is stopped due to overdue payments.
+	// - **overdue**: Overdue and suspended status.
 	//
 	// if can be null:
 	// false
 	//
 	// example:
 	//
-	// ListCacheReserveInstances
+	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -34361,33 +35042,33 @@ func (s *ListCacheReserveInstancesRequest) SetStatus(v string) *ListCacheReserve
 }
 
 type ListCacheReserveInstancesResponseBody struct {
-	// The cache reserve instances.
+	// List of cache reserve instances.
 	InstanceInfo []*ListCacheReserveInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	// The page number. Default value: **1**.
+	// Page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
+	// Page size, default **500**, range: **1~500**.
 	//
 	// example:
 	//
 	// 500
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 65C66B7B-671A-8297-9187-2R5477247B76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// Total count.
 	//
 	// example:
 	//
 	// 16
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// Total pages.
 	//
 	// example:
 	//
@@ -34434,52 +35115,52 @@ func (s *ListCacheReserveInstancesResponseBody) SetTotalPage(v int32) *ListCache
 }
 
 type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
-	// The capacity of the cache reserve instance. Unit: GB.
+	// Cache reserve capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 512000
 	CacheReserveCapacity *int64 `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
-	// The region in which the cache reserve instance resides.
+	// Cache reserve usage region.
 	//
 	// example:
 	//
 	// HK
 	CacheReserveRegion *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
 	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the cache reserve instance was purchased.
+	// Instance purchase time.
 	//
 	// example:
 	//
 	// 2024-04-12T05:41:51Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The subscription period of the cache reserve instance. Unit: months.
+	// Duration of the instance purchase, unit: months.
 	//
 	// example:
 	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the cache reserve instance expires.
+	// Instance expiration time.
 	//
 	// example:
 	//
 	// 2024-10-05T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the cache reserve instance.
+	// Instance ID.
 	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the cache reserve instance. Valid values:
+	// Instance status. Values:
 	//
-	// 	- online: The instance is in service.
+	// - **online**: Normal service status.
 	//
-	// 	- offline: The instance has expired within an allowable period. In this state, the plan is unavailable.
+	// - **offline**: Expired but not overdue, in an unavailable state.
 	//
-	// 	- disable: The instance is released.
+	// - **disable**: Released status.
 	//
-	// 	- overdue: The service was stopped due to overdue payments.
+	// - **overdue**: Overdue and suspended status.
 	//
 	// example:
 	//
@@ -41730,14 +42411,27 @@ func (s *ListListsResponse) SetBody(v *ListListsResponseBody) *ListListsResponse
 }
 
 type ListLoadBalancerOriginStatusRequest struct {
-	// This parameter is required.
-	LoadBalancerIds *string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty"`
-	PoolType        *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
+	// Load balancer ID. When querying multiple load balancers, separate the IDs with commas. A maximum of 100 load balancer IDs can be passed at once. Load balancer IDs can be obtained by calling the [ListLoadBalancers](~~ListLoadBalancers~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ListLoadBalancerOriginStatus
+	// 99874066052****,100892832360****
+	LoadBalancerIds *string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty"`
+	// Source address pool type. Various source address pools are configured under the load balancer, including default pools, fallback pools, and primary region pools. Only the status of origins in the default pool affects the status of the load balancer itself. Passing `default_pool` means only querying the status of origins in the default source address pool under the load balancer.
+	//
+	// example:
+	//
+	// default_pool
+	PoolType *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
+	// Site ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1159101787****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -41765,8 +42459,13 @@ func (s *ListLoadBalancerOriginStatusRequest) SetSiteId(v int64) *ListLoadBalanc
 }
 
 type ListLoadBalancerOriginStatusResponseBody struct {
+	// List of origin statuses under the load balancer.
 	OriginStatus []*ListLoadBalancerOriginStatusResponseBodyOriginStatus `json:"OriginStatus,omitempty" xml:"OriginStatus,omitempty" type:"Repeated"`
-	// Id of the request
+	// Request ID, used for tracking the request.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -41789,12 +42488,50 @@ func (s *ListLoadBalancerOriginStatusResponseBody) SetRequestId(v string) *ListL
 }
 
 type ListLoadBalancerOriginStatusResponseBodyOriginStatus struct {
-	LoadBalancerId *int64  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OriginId       *int64  `json:"OriginId,omitempty" xml:"OriginId,omitempty"`
-	PoolId         *int64  `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
-	PoolType       *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// ID of the load balancer.
+	//
+	// example:
+	//
+	// 99874066052****
+	LoadBalancerId *int64 `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// ID of the origin.
+	//
+	// example:
+	//
+	// 99750209487****
+	OriginId *int64 `json:"OriginId,omitempty" xml:"OriginId,omitempty"`
+	// ID of the source address pool.
+	//
+	// example:
+	//
+	// 99750209487****
+	PoolId *int64 `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
+	// The origin pool to which the source belongs, under this load balancer. Only \\"default_pool\\" (default address pool) will be displayed; other types will return an empty string.
+	//
+	// example:
+	//
+	// default_pool
+	PoolType *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
+	// Reason for the probe failure.
+	//
+	// example:
+	//
+	// TCP connection error
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Status of the origin:
+	//
+	// - Healthy(healthy): The probe result is available.
+	//
+	// - Unhealthy(unhealthy): The probe result is unavailable.
+	//
+	// - Unknown(unknown): Unknown, the monitor has not yet probed.
+	//
+	// - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
+	//
+	// example:
+	//
+	// healthy
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLoadBalancerOriginStatusResponseBodyOriginStatus) String() string {
@@ -41865,13 +42602,13 @@ func (s *ListLoadBalancerOriginStatusResponse) SetBody(v *ListLoadBalancerOrigin
 }
 
 type ListLoadBalancerRegionsRequest struct {
-	// The page number.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size.
 	//
 	// example:
 	//
@@ -41898,33 +42635,33 @@ func (s *ListLoadBalancerRegionsRequest) SetPageSize(v int32) *ListLoadBalancerR
 }
 
 type ListLoadBalancerRegionsResponseBody struct {
-	// The page number.
+	// Page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Number of records per page
 	//
 	// example:
 	//
 	// 1024
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The regions.
+	// List of region information
 	Regions []*ListLoadBalancerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 81A5E222-24BF-17EF-9E80-A68D9B8F363D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// Total number of records
 	//
 	// example:
 	//
 	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// Total number of pages
 	//
 	// example:
 	//
@@ -41971,21 +42708,25 @@ func (s *ListLoadBalancerRegionsResponseBody) SetTotalPage(v int32) *ListLoadBal
 }
 
 type ListLoadBalancerRegionsResponseBodyRegions struct {
-	// The Chinese name of the region.
+	// Primary region Chinese full name
+	//
+	// example:
+	//
+	// 东南亚
 	RegionCnName *string `json:"RegionCnName,omitempty" xml:"RegionCnName,omitempty"`
-	// The code of the region.
+	// Primary region code
 	//
 	// example:
 	//
 	// SEAS
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The English name of the region.
+	// Primary region English full name
 	//
 	// example:
 	//
 	// South East Asia
 	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
-	// The subregions of the region.
+	// List of secondary region information
 	SubRegions []*ListLoadBalancerRegionsResponseBodyRegionsSubRegions `json:"SubRegions,omitempty" xml:"SubRegions,omitempty" type:"Repeated"`
 }
 
@@ -42018,15 +42759,19 @@ func (s *ListLoadBalancerRegionsResponseBodyRegions) SetSubRegions(v []*ListLoad
 }
 
 type ListLoadBalancerRegionsResponseBodyRegionsSubRegions struct {
-	// The Chinese name of the region.
+	// Secondary region Chinese full name
+	//
+	// example:
+	//
+	// 印度尼西亚
 	SubRegionCnName *string `json:"SubRegionCnName,omitempty" xml:"SubRegionCnName,omitempty"`
-	// The code of the subregion.
+	// Secondary region code
 	//
 	// example:
 	//
 	// ID
 	SubRegionCode *string `json:"SubRegionCode,omitempty" xml:"SubRegionCode,omitempty"`
-	// The English name of the subregion.
+	// Secondary region English full name
 	//
 	// example:
 	//
@@ -42087,26 +42832,42 @@ func (s *ListLoadBalancerRegionsResponse) SetBody(v *ListLoadBalancerRegionsResp
 }
 
 type ListLoadBalancersRequest struct {
+	// Name matching strategy when querying by name:
+	//
+	// - fuzzy: Fuzzy match;
+	//
+	// - exact: Exact match, equivalent to an equality query.
+	//
 	// example:
 	//
 	// fuzzy
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// Name of the load balancer, which can be used for querying by name.
+	//
 	// example:
 	//
 	// lb.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Sorting field, currently only supports sorting by id. \\"id\\" indicates ascending order by id, \\"-id\\" indicates descending order by id. The id is positively correlated with the creation time. If not provided, it defaults to descending order by id.
+	//
 	// example:
 	//
 	// id
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// Page number for paginated queries.
+	//
 	// example:
 	//
-	// ListLoadBalancers
+	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size for paginated queries, with a value range of 1-500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42154,24 +42915,34 @@ func (s *ListLoadBalancersRequest) SetSiteId(v int64) *ListLoadBalancersRequest 
 }
 
 type ListLoadBalancersResponseBody struct {
-	// The load balancers returned.
+	// Array format, returns a list of load balancers.
 	LoadBalancers []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+	// Page number, same as the PageNumber in the request parameters.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The size of each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 10
@@ -42217,30 +42988,50 @@ func (s *ListLoadBalancersResponseBody) SetTotalPage(v int32) *ListLoadBalancers
 }
 
 type ListLoadBalancersResponseBodyLoadBalancers struct {
+	// Cross-pool fallback configuration.
 	AdaptiveRouting *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
-	DefaultPools    []*int64                                                   `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	// List of default pool IDs.
+	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	// Description of the load balancer.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the load balancer is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
+	//
 	// example:
 	//
 	// 96228666776****
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// Unique identifier ID of the load balancer.
+	//
 	// example:
 	//
 	// 998676487607104
-	Id      *int64                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Monitor configuration.
 	Monitor *ListLoadBalancersResponseBodyLoadBalancersMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	// Name of the load balancer.
+	//
 	// example:
 	//
 	// lb.example.com
-	Name           *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Weighted round-robin configuration, used to control the traffic distribution weights among different address pools.
 	RandomSteering *ListLoadBalancersResponseBodyLoadBalancersRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
+	// Address pool corresponding to the primary region.
+	//
 	// example:
 	//
 	// {
@@ -42260,36 +43051,47 @@ type ListLoadBalancersResponseBodyLoadBalancers struct {
 	//   ]
 	//
 	// }
-	RegionPools interface{}                                        `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
-	Rules       []*ListLoadBalancersResponseBodyLoadBalancersRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The session persistence mode. Valid values:
+	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// List of rule configurations, used to define behaviors under specific conditions.
+	Rules []*ListLoadBalancersResponseBodyLoadBalancersRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Session persistence, with values:
 	//
-	// 	- off: disables session persistence.
+	// - off: Not enabled.
 	//
-	// 	- ip: enables session persistence by IP address.
+	// - ip: Session persistence by IP.
 	//
-	// 	- cookie: enables session persistence by cookie.
+	// - cookie: Not enabled for session persistence.
 	//
 	// example:
 	//
 	// ip
 	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// Site ID to which the load balancer belongs.
+	//
 	// example:
 	//
 	// 1159101787****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The status of the load balancer.
+	//
 	// example:
 	//
 	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Load balancing policy.
+	//
 	// example:
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// The address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
+	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// TTL value, the time-to-live for DNS records, default is 30.
+	//
 	// example:
 	//
 	// 30
@@ -42390,6 +43192,12 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetTtl(v int32) *ListLoadBa
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting struct {
+	// Whether to fail over across pools.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
@@ -42410,22 +43218,36 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) SetFailoverA
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersMonitor struct {
+	// The number of consecutive failed probes required to consider the target as unhealthy, e.g., 5.
+	//
 	// example:
 	//
 	// 5
 	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	// The number of consecutive successful probes required to consider the target as healthy, e.g., 3.
+	//
 	// example:
 	//
 	// 3
 	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	// The expected status codes, such as 200, 202, indicating a successful HTTP response.
+	//
 	// example:
 	//
 	// 200,202
 	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	// Whether to follow redirects.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
 	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	// The header information included during the probe, i.e., HTTP headers.
+	//
 	// example:
 	//
 	// {
@@ -42440,26 +43262,38 @@ type ListLoadBalancersResponseBodyLoadBalancersMonitor struct {
 	//
 	//     }
 	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// The interval time for the health check, in seconds.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The method used for the health check.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The path.
+	//
 	// example:
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The target port.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The timeout for the health check, in seconds.
+	//
 	// example:
 	//
 	// 5
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The type of monitor protocol, such as HTTP, used for health checks. When the value is `off`, it indicates that no check will be performed.
+	//
 	// example:
 	//
 	// HTTP
@@ -42530,11 +43364,14 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetType(v string) *L
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersRandomSteering struct {
+	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+	//
 	// example:
 	//
 	// 50
-	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
-	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+	DefaultWeight *int32 `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient.
+	PoolWeights map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancersRandomSteering) String() string {
@@ -42556,7 +43393,10 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersRandomSteering) SetPoolWeight
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersRules struct {
+	// Executes a specified response after matching the rule.
 	FixedResponse *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
+	// Modifies the corresponding load balancer configuration after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+	//
 	// example:
 	//
 	// {
@@ -42659,22 +43499,40 @@ type ListLoadBalancersResponseBodyLoadBalancersRules struct {
 	//
 	//         }
 	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	// Matching rule information.
+	//
 	// example:
 	//
 	// http.request.uri.path contains "/testing"
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch.
+	//
+	// - on: Enable the rule.
+	//
+	// - off: Disable the rule.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// r2
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The execution order of the rule.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Whether to terminate the execution of subsequent rules.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
@@ -42725,18 +43583,26 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersRules) SetTerminates(v bool) 
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse struct {
+	// The Content-Type field in the HTTP Header.
+	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The location field in the HTTP response.
+	//
 	// example:
 	//
 	// http://www.example.com/index.html
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The response body value.
+	//
 	// example:
 	//
 	// Hello World.
 	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// Status code.
+	//
 	// example:
 	//
 	// 200
@@ -46899,103 +47765,103 @@ func (s *ListSiteDeliveryTasksResponse) SetBody(v *ListSiteDeliveryTasksResponse
 }
 
 type ListSitesRequest struct {
-	// The DNS setup. Valid values:
+	// Access type. Values:
 	//
-	// 	- **NS**
+	// - **NS**: Access through NS hosting.
 	//
-	// 	- **CNAME**
+	// - **CNAME**: Access through CNAME.
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The service location. Valid values:
+	// Acceleration region. Values:
 	//
-	// 	- **domestic**: the Chinese Mainland
+	// - **domestic**: China mainland only.
 	//
-	// 	- **global**: global (including the Chinese Mainland)
+	// - **global**: Global.
 	//
-	// 	- **overseas**: outside the Chinese Mainland
+	// - **overseas**: Global (excluding China mainland).
 	//
 	// example:
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+	// Enterprise edition only. When set to **true**, it indicates that only enterprise edition sites are queried.
 	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	// null
+	// Sorting field, default sorted by creation time, supports:
 	//
-	// 	- null
+	// - gmtCreate: Site creation time
 	//
-	// 	- null
+	// - visitTime: Site access time
 	//
 	// example:
 	//
 	// visitTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Default value: **1**.
+	// Page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 500.
+	// Page size. Default value: **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plan type. Valid values:
+	// Plan subscription type. Values:
 	//
-	// 	- **basicplan**: Entrance
+	// - **basicplan**: Basic plan.
 	//
-	// 	- **standardplan**: Pro
+	// - **standardplan**: Standard plan.
 	//
-	// 	- **advancedplan**: Premium
+	// - **advancedplan**: Advanced plan.
 	//
-	// 	- **enterpriseplan**: Enterprise
+	// - **enterpriseplan**: Enterprise plan.
 	//
 	// example:
 	//
 	// basicplan
 	PlanSubscribeType *string `json:"PlanSubscribeType,omitempty" xml:"PlanSubscribeType,omitempty"`
-	// The ID of the resource group. This parameter specifies a filter condition for the query.
+	// Resource group ID. Used as a filter condition for the query.
 	//
 	// example:
 	//
 	// rg-aekzd3styujvyei
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The website name. This parameter specifies a filter condition for the query.
+	// Site name. Used as a filter condition for the query.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The match mode to search for the website name. Default value: exact. Valid values:
+	// Search match pattern for the site name. The default is exact match, with values:
 	//
-	// 	- **prefix**: match by prefix.
+	// - **prefix**: Prefix match.
 	//
-	// 	- **suffix**: match by suffix.
+	// - **suffix**: Suffix match.
 	//
-	// 	- **null**
+	// - **exact**: Exact match.
 	//
-	// 	- **fuzzy**: fuzzy match.
+	// - **fuzzy**: Fuzzy match.
 	//
 	// example:
 	//
 	// fuzzy
 	SiteSearchType *string `json:"SiteSearchType,omitempty" xml:"SiteSearchType,omitempty"`
-	// The website status. This parameter specifies a filter condition for the query.
+	// Site status. Used as a filter condition for the query.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag filtering rule.
+	// Tag filtering rules.
 	TagFilter []*ListSitesRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
 }
 
@@ -47068,13 +47934,13 @@ func (s *ListSitesRequest) SetTagFilter(v []*ListSitesRequestTagFilter) *ListSit
 }
 
 type ListSitesRequestTagFilter struct {
-	// The tag key. This parameter specifies a filter condition for the query.
+	// Tag key, used as a filter condition for the query.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. This parameter specifies a filter condition for the query.
+	// Tag value, used as a filter condition for the query.
 	//
 	// example:
 	//
@@ -47101,103 +47967,103 @@ func (s *ListSitesRequestTagFilter) SetValue(v string) *ListSitesRequestTagFilte
 }
 
 type ListSitesShrinkRequest struct {
-	// The DNS setup. Valid values:
+	// Access type. Values:
 	//
-	// 	- **NS**
+	// - **NS**: Access through NS hosting.
 	//
-	// 	- **CNAME**
+	// - **CNAME**: Access through CNAME.
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The service location. Valid values:
+	// Acceleration region. Values:
 	//
-	// 	- **domestic**: the Chinese Mainland
+	// - **domestic**: China mainland only.
 	//
-	// 	- **global**: global (including the Chinese Mainland)
+	// - **global**: Global.
 	//
-	// 	- **overseas**: outside the Chinese Mainland
+	// - **overseas**: Global (excluding China mainland).
 	//
 	// example:
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+	// Enterprise edition only. When set to **true**, it indicates that only enterprise edition sites are queried.
 	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	// null
+	// Sorting field, default sorted by creation time, supports:
 	//
-	// 	- null
+	// - gmtCreate: Site creation time
 	//
-	// 	- null
+	// - visitTime: Site access time
 	//
 	// example:
 	//
 	// visitTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Default value: **1**.
+	// Page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 500.
+	// Page size. Default value: **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plan type. Valid values:
+	// Plan subscription type. Values:
 	//
-	// 	- **basicplan**: Entrance
+	// - **basicplan**: Basic plan.
 	//
-	// 	- **standardplan**: Pro
+	// - **standardplan**: Standard plan.
 	//
-	// 	- **advancedplan**: Premium
+	// - **advancedplan**: Advanced plan.
 	//
-	// 	- **enterpriseplan**: Enterprise
+	// - **enterpriseplan**: Enterprise plan.
 	//
 	// example:
 	//
 	// basicplan
 	PlanSubscribeType *string `json:"PlanSubscribeType,omitempty" xml:"PlanSubscribeType,omitempty"`
-	// The ID of the resource group. This parameter specifies a filter condition for the query.
+	// Resource group ID. Used as a filter condition for the query.
 	//
 	// example:
 	//
 	// rg-aekzd3styujvyei
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The website name. This parameter specifies a filter condition for the query.
+	// Site name. Used as a filter condition for the query.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The match mode to search for the website name. Default value: exact. Valid values:
+	// Search match pattern for the site name. The default is exact match, with values:
 	//
-	// 	- **prefix**: match by prefix.
+	// - **prefix**: Prefix match.
 	//
-	// 	- **suffix**: match by suffix.
+	// - **suffix**: Suffix match.
 	//
-	// 	- **null**
+	// - **exact**: Exact match.
 	//
-	// 	- **fuzzy**: fuzzy match.
+	// - **fuzzy**: Fuzzy match.
 	//
 	// example:
 	//
 	// fuzzy
 	SiteSearchType *string `json:"SiteSearchType,omitempty" xml:"SiteSearchType,omitempty"`
-	// The website status. This parameter specifies a filter condition for the query.
+	// Site status. Used as a filter condition for the query.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag filtering rule.
+	// Tag filtering rules.
 	TagFilterShrink *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
 }
 
@@ -47270,27 +48136,27 @@ func (s *ListSitesShrinkRequest) SetTagFilterShrink(v string) *ListSitesShrinkRe
 }
 
 type ListSitesResponseBody struct {
-	// The page number.
+	// Page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of websites per page.
+	// Number of sites per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried websites.
+	// List of queried site information.
 	Sites []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	// The total number of websites.
+	// Total number of sites.
 	//
 	// example:
 	//
@@ -47332,116 +48198,116 @@ func (s *ListSitesResponseBody) SetTotalCount(v int32) *ListSitesResponseBody {
 }
 
 type ListSitesResponseBodySites struct {
-	// The DNS setup for the website. Valid values:
+	// Site access type. Values:
 	//
-	// 	- **NS**
+	// - **NS**: Access through NS.
 	//
-	// 	- **CNAME**
+	// - **CNAME**: Access through CNAME.
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+	// CNAME suffix of the site. For sites accessed via CNAME, this is the CNAME suffix that needs to be configured.
 	//
 	// example:
 	//
 	// example.cname.com
 	CnameZone *string `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
-	// The service location for the website. Valid values:
+	// Site acceleration region. Values:
 	//
-	// 	- **domestic**: the Chinese mainland
+	// - **domestic**: China mainland only.
 	//
-	// 	- **global**: global
+	// - **global**: Global.
 	//
-	// 	- **overseas**: outside the Chinese mainland
+	// - **overseas**: Global (excluding China mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Site creation time, in ISO8601 format and using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the plan associated with the website.
+	// The ID of the plan instance bound to the site.
 	//
 	// example:
 	//
 	// onBvtlmIyeXLbiDw81F9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The nameservers assigned to the website domain, which are separated by commas (,).
+	// The list of NS (Name Servers) assigned to the site. Separated by commas (,).
 	//
 	// example:
 	//
 	// male1-1.ialicdn.com,female1-1.ialicdn.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
 	OfflineReason  *string `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
-	// The plan name.
+	// The name of the plan.
 	//
 	// example:
 	//
 	// plan-168656498****
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The plan associated with the website.
+	// The specification name of the site\\"s plan.
 	//
 	// example:
 	//
 	// normal
 	PlanSpecName *string `json:"PlanSpecName,omitempty" xml:"PlanSpecName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek26g6i6se6pna
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The name of the site.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The website status. Valid values:
+	// The status of the site. Possible values:
 	//
-	// 	- **pending**: The website is to be configured.
+	// - **pending**: The site is pending configuration.
 	//
-	// 	- **active**: The website is active.
+	// - **active**: The site is active.
 	//
-	// 	- **offline**: The website is suspended.
+	// - **offline**: The site is offline.
 	//
-	// 	- **moved**: The website has been added and verified by another Alibaba Cloud account.
+	// - **moved**: The site has been replaced.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the website.
+	// The tags of the site.
 	//
 	// example:
 	//
 	// {"tag1":"value1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The update time of the site, represented in ISO8601 format and using UTC, formatted as yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
+	// The verification code for site ownership. When the site is accessed via CNAME, this TXT verification code needs to be configured.
 	//
 	// example:
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	// null
+	// The visit time of the site, formatted according to ISO8601 and using UTC, in the format yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -51504,27 +52370,29 @@ func (s *PurchaseRatePlanResponse) SetBody(v *PurchaseRatePlanResponseBody) *Pur
 }
 
 type PurgeCachesRequest struct {
-	// The content to purge.
+	// Content to be refreshed.
 	Content *PurgeCachesRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Specifies whether to purge cached resources for edge computing. For example, purge the resources cached by the CacheAPI operation of Edge Routine.
+	// Used for refreshing cached resources in edge computing, such as allowing the refresh of content cached using the CacheAPI interface of an edge function.
 	//
 	// example:
 	//
 	// true
 	EdgeComputePurge *bool `json:"EdgeComputePurge,omitempty" xml:"EdgeComputePurge,omitempty"`
-	// Specifies whether to purge resources in a directory if the resources requested are different from the resources on the origin server. Default value: false.
+	// Indicates whether to refresh all resources under the directory when the content from the origin and the source resource are inconsistent. The default is false.
 	//
-	// 	- **true**: purges all resources in the directory.
+	// - **true**: Refreshes all resources under the specified directory.
 	//
-	// 	- **false**: purges only changed resources in the directory.
+	// - **false**: Refreshes only the changed resources under the specified directory.
 	//
-	// >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
+	// >
+	//
+	// >  Applies to: Directory refresh, cachetag refresh, ignoreParams refresh, hostname refresh, and purge all cache of the site.
 	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -51532,19 +52400,21 @@ type PurgeCachesRequest struct {
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The type of the purge task. Valid values:
+	// The type of refresh task. Possible values:
 	//
-	// 	- **file*	- (default): purges the cache by file.
+	// - **file*	- (default): File refresh.
 	//
-	// 	- **cachetag**: purges the cache by cache tag.
+	// - **cachekey**: Cachekey refresh.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **cachetag**: Cachetag refresh.
 	//
-	// 	- **ignoreParams**: purges the cache by URL with specific parameters ignored. This option ignores the question mark (?) and parameters after the question mark (?) in a request URL and purges the cache. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specified parameters. If the URLs match, the POPs purge the cached resources.
+	// - **directory**: Directory refresh.
 	//
-	// 	- **hostname**: purges the cache by hostname.
+	// - **ignoreParams**: Ignore parameters refresh. Ignoring parameters means removing the ? and everything after it in the request URL. When performing an ignore parameters refresh, the user first submits the URL without parameters through the interface. The submitted URLs to be refreshed will then be matched against the cached resource URLs with the parameters removed. If the cached resource URL, after removing the parameters, matches the URL to be refreshed, the CDN node will refresh the cached resources.
 	//
-	// 	- **purgeall**: purges all cache.
+	// - **hostname**: Hostname refresh.
+	//
+	// - **purgeall**: Purge all cache under the site.
 	//
 	// This parameter is required.
 	//
@@ -51588,18 +52458,19 @@ func (s *PurgeCachesRequest) SetType(v string) *PurgeCachesRequest {
 }
 
 type PurgeCachesRequestContent struct {
+	// List of cachekeys to be refreshed, required when the type is cachekey.
 	CacheKeys []*PurgeCachesRequestContentCacheKeys `json:"CacheKeys,omitempty" xml:"CacheKeys,omitempty" type:"Repeated"`
-	// The cache tags that are used to purge the cache. This parameter is required if Type is set to cachetag.
+	// List of cachetags to be refreshed, required when the type is cachetag.
 	CacheTags []*string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
-	// The directories that are used to purge the cache. This parameter is required if Type is set to directory.
+	// List of directories to be refreshed, required when the type is directory.
 	Directories []*string `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	// The files to purge. This parameter is required if Type is set to file.
+	// List of files to be refreshed, required when the type is file.
 	Files []interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// The hostnames that are used to purge the cache. This parameter is required if Type is set to hostname.
+	// List of hostnames to be refreshed, required when the type is hostname.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The file URLs with parameters ignored that are used to purge the cache. This parameter is required if Type is set to ignoreParams.
+	// List of files with ignored parameters, required when the type is ignoreParams.
 	IgnoreParams []*string `json:"IgnoreParams,omitempty" xml:"IgnoreParams,omitempty" type:"Repeated"`
-	// Specifies whether to purge all cache of the website. Default value: false. The value is true when Type is set to purgeall.
+	// Flag for purging all content. Default is false, set to true when the type is purgeall.
 	//
 	// example:
 	//
@@ -51651,8 +52522,30 @@ func (s *PurgeCachesRequestContent) SetPurgeAll(v bool) *PurgeCachesRequestConte
 }
 
 type PurgeCachesRequestContentCacheKeys struct {
+	// When refreshing, specify the header information corresponding to the cache key. When the custom cache key feature switch is enabled, the cache key will be generated based on the specified header for refreshing.
+	//
+	// **UserGeo: Country/Region**
+	//
+	// - Country/region codes follow the ISO 3166-2 standard.
+	//
+	// **UserDeviceType: Device Type, currently there are three enum values**
+	//
+	// - desktop
+	//
+	//  - tablet
+	//
+	//  - mobile
+	//
+	// **UserLanguage: Language**
+	//
+	// - Language codes follow the ISO 639-1 or BCP47 standards. For example, input \\"zh\\" to refresh content in Chinese.
 	Headers map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	Url     *string            `json:"Url,omitempty" xml:"Url,omitempty"`
+	// URL address to be refreshed.
+	//
+	// example:
+	//
+	// http://a.com/1.jpg?b=1
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s PurgeCachesRequestContentCacheKeys) String() string {
@@ -51674,27 +52567,29 @@ func (s *PurgeCachesRequestContentCacheKeys) SetUrl(v string) *PurgeCachesReques
 }
 
 type PurgeCachesShrinkRequest struct {
-	// The content to purge.
+	// Content to be refreshed.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Specifies whether to purge cached resources for edge computing. For example, purge the resources cached by the CacheAPI operation of Edge Routine.
+	// Used for refreshing cached resources in edge computing, such as allowing the refresh of content cached using the CacheAPI interface of an edge function.
 	//
 	// example:
 	//
 	// true
 	EdgeComputePurge *bool `json:"EdgeComputePurge,omitempty" xml:"EdgeComputePurge,omitempty"`
-	// Specifies whether to purge resources in a directory if the resources requested are different from the resources on the origin server. Default value: false.
+	// Indicates whether to refresh all resources under the directory when the content from the origin and the source resource are inconsistent. The default is false.
 	//
-	// 	- **true**: purges all resources in the directory.
+	// - **true**: Refreshes all resources under the specified directory.
 	//
-	// 	- **false**: purges only changed resources in the directory.
+	// - **false**: Refreshes only the changed resources under the specified directory.
 	//
-	// >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
+	// >
+	//
+	// >  Applies to: Directory refresh, cachetag refresh, ignoreParams refresh, hostname refresh, and purge all cache of the site.
 	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -51702,19 +52597,21 @@ type PurgeCachesShrinkRequest struct {
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The type of the purge task. Valid values:
+	// The type of refresh task. Possible values:
 	//
-	// 	- **file*	- (default): purges the cache by file.
+	// - **file*	- (default): File refresh.
 	//
-	// 	- **cachetag**: purges the cache by cache tag.
+	// - **cachekey**: Cachekey refresh.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **cachetag**: Cachetag refresh.
 	//
-	// 	- **ignoreParams**: purges the cache by URL with specific parameters ignored. This option ignores the question mark (?) and parameters after the question mark (?) in a request URL and purges the cache. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specified parameters. If the URLs match, the POPs purge the cached resources.
+	// - **directory**: Directory refresh.
 	//
-	// 	- **hostname**: purges the cache by hostname.
+	// - **ignoreParams**: Ignore parameters refresh. Ignoring parameters means removing the ? and everything after it in the request URL. When performing an ignore parameters refresh, the user first submits the URL without parameters through the interface. The submitted URLs to be refreshed will then be matched against the cached resource URLs with the parameters removed. If the cached resource URL, after removing the parameters, matches the URL to be refreshed, the CDN node will refresh the cached resources.
 	//
-	// 	- **purgeall**: purges all cache.
+	// - **hostname**: Hostname refresh.
+	//
+	// - **purgeall**: Purge all cache under the site.
 	//
 	// This parameter is required.
 	//
@@ -51758,13 +52655,13 @@ func (s *PurgeCachesShrinkRequest) SetType(v string) *PurgeCachesShrinkRequest {
 }
 
 type PurgeCachesResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID, which is generated after you create a task.
+	// Task ID, which is returned when you create a refresh or preheat task.
 	//
 	// example:
 	//
@@ -54189,13 +55086,13 @@ type UpdateCacheTagRequest struct {
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site configuration, defaulting to version 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
 	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Custom Cache Tag name.
+	// Custom CacheTag name.
 	//
 	// example:
 	//
@@ -54748,12 +55645,20 @@ func (s *UpdateCustomScenePolicyResponse) SetBody(v *UpdateCustomScenePolicyResp
 }
 
 type UpdateDevelopmentModeRequest struct {
+	// Feature switch. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54781,6 +55686,8 @@ func (s *UpdateDevelopmentModeRequest) SetSiteId(v int64) *UpdateDevelopmentMode
 }
 
 type UpdateDevelopmentModeResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 65C66B7B-671A-8297-9187-2R5477247B76
@@ -56422,22 +57329,46 @@ func (s *UpdateListResponse) SetBody(v *UpdateListResponseBody) *UpdateListRespo
 }
 
 type UpdateLoadBalancerRequest struct {
+	// Configuration for cross-pool origin fallback.
 	AdaptiveRouting *UpdateLoadBalancerRequestAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
-	DefaultPools    []*int64                                  `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
-	Description     *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled         *bool                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// List of default pool IDs.
+	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
+	// Detailed description of the load balancer, which is useful for management and identification.
+	//
+	// example:
+	//
+	// 负载均衡器描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the load balancer is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+	//
 	// example:
 	//
 	// 96228666776****
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// Load balancer ID, which can be obtained by calling the [ListLoadBalancers](~~ListLoadBalancers~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 95913670174****
-	Id             *int64                                   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Monitor        *UpdateLoadBalancerRequestMonitor        `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Monitor configuration for health checks.
+	Monitor *UpdateLoadBalancerRequestMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
+	// Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
 	RandomSteering *UpdateLoadBalancerRequestRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
+	// Address pools corresponding to the primary region.
+	//
 	// example:
 	//
 	// {
@@ -56458,35 +57389,45 @@ type UpdateLoadBalancerRequest struct {
 	//
 	// }
 	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// Rule configuration list, used to define behavior overrides under specific conditions.
+	//
 	// if can be null:
 	// false
 	Rules []*UpdateLoadBalancerRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Session persistence. Valid values:
+	// Session persistence, with values:
 	//
-	// 	- off:disables session persistence.
+	// - off: Not enabled.
 	//
-	// 	- ip: enables session persistence by IP address.
+	// - ip: Session persistence by IP.
 	//
-	// 	- cookie: disables session persistence.
+	// - cookie: Not enabled for session persistence.
 	//
 	// example:
 	//
 	// ip
 	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// UpdateLoadBalancer
+	// 1159101787****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Load balancing policy.
+	//
 	// example:
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// Address pools corresponding to the secondary region. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// TTL value, the time-to-live for DNS records. The default is 30, and the range is 10-600.
+	//
 	// example:
 	//
 	// 300
@@ -56577,6 +57518,12 @@ func (s *UpdateLoadBalancerRequest) SetTtl(v int32) *UpdateLoadBalancerRequest {
 }
 
 type UpdateLoadBalancerRequestAdaptiveRouting struct {
+	// Whether to perform cross-pool origin fallback.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// false
@@ -56597,22 +57544,36 @@ func (s *UpdateLoadBalancerRequestAdaptiveRouting) SetFailoverAcrossPools(v bool
 }
 
 type UpdateLoadBalancerRequestMonitor struct {
+	// Number of consecutive failed probes required to consider the target unhealthy, such as 5.
+	//
 	// example:
 	//
 	// 5
 	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
+	// Number of consecutive successful probes required to consider the target healthy, such as 3.
+	//
 	// example:
 	//
 	// 3
 	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
+	// Expected status codes, such as 200,202, which are successful HTTP responses.
+	//
 	// example:
 	//
 	// 200,202
 	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
+	// Whether to follow redirects.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
 	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
+	// Monitor request header configuration.
+	//
 	// example:
 	//
 	// {
@@ -56627,26 +57588,38 @@ type UpdateLoadBalancerRequestMonitor struct {
 	//
 	//     }
 	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// Monitor interval, such as 60 seconds, which is the check frequency.
+	//
 	// example:
 	//
 	// 100
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// Monitor request method, such as GET, which is a method in the HTTP protocol.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// Monitor check path, such as /healthcheck, which is the HTTP request path.
+	//
 	// example:
 	//
 	// /health
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Origin server port.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Application health check timeout, in seconds. The range is 1-10.
+	//
 	// example:
 	//
 	// 5
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Monitor protocol type, such as HTTP, used for health checks. When the value is \\"off\\", it indicates that no check will be performed.
+	//
 	// example:
 	//
 	// HTTP
@@ -56717,11 +57690,14 @@ func (s *UpdateLoadBalancerRequestMonitor) SetType(v string) *UpdateLoadBalancer
 }
 
 type UpdateLoadBalancerRequestRandomSteering struct {
+	// The default round-robin weight, used for all pools that do not have a specific weight set. The value range is an integer between 0 and 100.
+	//
 	// example:
 	//
 	// 50
-	DefaultWeight *int32            `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
-	PoolWeights   map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
+	DefaultWeight *int32 `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
+	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+	PoolWeights map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
 }
 
 func (s UpdateLoadBalancerRequestRandomSteering) String() string {
@@ -56743,7 +57719,10 @@ func (s *UpdateLoadBalancerRequestRandomSteering) SetPoolWeights(v map[string]*i
 }
 
 type UpdateLoadBalancerRequestRules struct {
+	// Execute a specified response after matching the rule.
 	FixedResponse *UpdateLoadBalancerRequestRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
+	// Modify the corresponding load balancing configuration after matching the rule. The fields in the configuration will override the corresponding fields in the load balancer configuration.
+	//
 	// example:
 	//
 	// {
@@ -56830,22 +57809,40 @@ type UpdateLoadBalancerRequestRules struct {
 	//
 	//         }
 	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	// Matching condition, such as a rule based on the request URI.
+	//
 	// example:
 	//
 	// http.request.method eq "GET"
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch.
+	//
+	// - on: Enable the rule.
+	//
+	// - off: Disable the rule.
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The execution order of the rule. It can be left blank, in which case the rules will be executed in the list order. If specified, it must be a positive integer.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Whether to terminate the execution of subsequent rules.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
@@ -56896,18 +57893,26 @@ func (s *UpdateLoadBalancerRequestRules) SetTerminates(v bool) *UpdateLoadBalanc
 }
 
 type UpdateLoadBalancerRequestRulesFixedResponse struct {
+	// Content-Type field in the HTTP Header.
+	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Location field in the HTTP response.
+	//
 	// example:
 	//
 	// http://www.example.com/index.html
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Response body value.
+	//
 	// example:
 	//
 	// Hello World!
 	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// Response status code.
+	//
 	// example:
 	//
 	// 200
@@ -56943,22 +57948,46 @@ func (s *UpdateLoadBalancerRequestRulesFixedResponse) SetStatusCode(v int32) *Up
 }
 
 type UpdateLoadBalancerShrinkRequest struct {
+	// Configuration for cross-pool origin fallback.
 	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
-	DefaultPoolsShrink    *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// List of default pool IDs.
+	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
+	// Detailed description of the load balancer, which is useful for management and identification.
+	//
+	// example:
+	//
+	// 负载均衡器描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the load balancer is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+	//
 	// example:
 	//
 	// 96228666776****
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// Load balancer ID, which can be obtained by calling the [ListLoadBalancers](~~ListLoadBalancers~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 95913670174****
-	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MonitorShrink        *string `json:"Monitor,omitempty" xml:"Monitor,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Monitor configuration for health checks.
+	MonitorShrink *string `json:"Monitor,omitempty" xml:"Monitor,omitempty"`
+	// Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
 	RandomSteeringShrink *string `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
+	// Address pools corresponding to the primary region.
+	//
 	// example:
 	//
 	// {
@@ -56979,35 +58008,45 @@ type UpdateLoadBalancerShrinkRequest struct {
 	//
 	// }
 	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// Rule configuration list, used to define behavior overrides under specific conditions.
+	//
 	// if can be null:
 	// false
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// Session persistence. Valid values:
+	// Session persistence, with values:
 	//
-	// 	- off:disables session persistence.
+	// - off: Not enabled.
 	//
-	// 	- ip: enables session persistence by IP address.
+	// - ip: Session persistence by IP.
 	//
-	// 	- cookie: disables session persistence.
+	// - cookie: Not enabled for session persistence.
 	//
 	// example:
 	//
 	// ip
 	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// UpdateLoadBalancer
+	// 1159101787****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Load balancing policy.
+	//
 	// example:
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// Address pools corresponding to the secondary region. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
+	// TTL value, the time-to-live for DNS records. The default is 30, and the range is 10-600.
+	//
 	// example:
 	//
 	// 300
@@ -57098,7 +58137,7 @@ func (s *UpdateLoadBalancerShrinkRequest) SetTtl(v int32) *UpdateLoadBalancerShr
 }
 
 type UpdateLoadBalancerResponseBody struct {
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -57177,7 +58216,7 @@ type UpdateManagedTransformRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default is version 0.
+	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	//
 	// example:
 	//
@@ -60287,7 +61326,7 @@ func (s *UpdateSiteDeliveryTaskStatusResponse) SetBody(v *UpdateSiteDeliveryTask
 }
 
 type UpdateSiteNameExclusiveRequest struct {
-	// Function switch. Possible values:
+	// Feature switch. Possible values:
 	//
 	// - on: Enable.
 	//
@@ -60391,7 +61430,7 @@ type UpdateSitePauseRequest struct {
 	//
 	// true
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -65196,7 +66235,7 @@ func (client *Client) CreateHttpsApplicationConfiguration(request *CreateHttpsAp
 
 // Summary:
 //
-// 新增站点HTTPS基础配置
+// Create a new site HTTPS basic configuration
 //
 // @param request - CreateHttpsBasicConfigurationRequest
 //
@@ -65301,7 +66340,7 @@ func (client *Client) CreateHttpsBasicConfigurationWithOptions(request *CreateHt
 
 // Summary:
 //
-// 新增站点HTTPS基础配置
+// Create a new site HTTPS basic configuration
 //
 // @param request - CreateHttpsBasicConfigurationRequest
 //
@@ -65574,7 +66613,11 @@ func (client *Client) CreateList(request *CreateListRequest) (_result *CreateLis
 
 // Summary:
 //
-// 新增负载均衡器
+// Add a new load balancer
+//
+// Description:
+//
+// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
 //
 // @param tmpReq - CreateLoadBalancerRequest
 //
@@ -65705,7 +66748,11 @@ func (client *Client) CreateLoadBalancerWithOptions(tmpReq *CreateLoadBalancerRe
 
 // Summary:
 //
-// 新增负载均衡器
+// Add a new load balancer
+//
+// Description:
+//
+// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -69203,7 +70250,11 @@ func (client *Client) DeleteList(request *DeleteListRequest) (_result *DeleteLis
 
 // Summary:
 //
-// 删除负载均衡器
+// Delete Load Balancer
+//
+// Description:
+//
+// Delete a load balancer by its ID, only one can be deleted at a time.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -69260,7 +70311,11 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 
 // Summary:
 //
-// 删除负载均衡器
+// Delete Load Balancer
+//
+// Description:
+//
+// Delete a load balancer by its ID, only one can be deleted at a time.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -70962,7 +72017,7 @@ func (client *Client) DescribeDDoSAllEventList(request *DescribeDDoSAllEventList
 
 // Summary:
 //
-// 查询DCDN DDoS用户bps、pps数据
+// Query DCDN DDoS user bps and pps data
 //
 // @param request - DescribeDDoSBpsListRequest
 //
@@ -71011,7 +72066,7 @@ func (client *Client) DescribeDDoSBpsListWithOptions(request *DescribeDDoSBpsLis
 
 // Summary:
 //
-// 查询DCDN DDoS用户bps、pps数据
+// Query DCDN DDoS user bps and pps data
 //
 // @param request - DescribeDDoSBpsListRequest
 //
@@ -71029,7 +72084,7 @@ func (client *Client) DescribeDDoSBpsList(request *DescribeDDoSBpsListRequest) (
 
 // Summary:
 //
-// ddos分析七层qps走势图接口
+// DDoS Analysis Layer 7 QPS Trend Chart API
 //
 // @param request - DescribeDDoSL7QpsListRequest
 //
@@ -71098,7 +72153,7 @@ func (client *Client) DescribeDDoSL7QpsListWithOptions(request *DescribeDDoSL7Qp
 
 // Summary:
 //
-// ddos分析七层qps走势图接口
+// DDoS Analysis Layer 7 QPS Trend Chart API
 //
 // @param request - DescribeDDoSL7QpsListRequest
 //
@@ -71884,7 +72939,7 @@ func (client *Client) ExportRecords(request *ExportRecordsRequest) (_result *Exp
 
 // Summary:
 //
-// Queries the available specifications of cache reserve instances.
+// Query Cache Retention Instance Specifications
 //
 // @param request - GetCacheReserveSpecificationRequest
 //
@@ -71926,7 +72981,7 @@ func (client *Client) GetCacheReserveSpecificationWithOptions(runtime *util.Runt
 
 // Summary:
 //
-// Queries the available specifications of cache reserve instances.
+// Query Cache Retention Instance Specifications
 //
 // @return GetCacheReserveSpecificationResponse
 func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSpecificationResponse, _err error) {
@@ -72009,7 +73064,7 @@ func (client *Client) GetCacheRule(request *GetCacheRuleRequest) (_result *GetCa
 
 // Summary:
 //
-// Queries the cache tag configuration of your website. You can call this operation when you need to specify tags in the Cache-Tag response header to use the purge by cache tag feature.
+// Query Site Cache Tag Configuration
 //
 // @param request - GetCacheTagRequest
 //
@@ -72058,7 +73113,7 @@ func (client *Client) GetCacheTagWithOptions(request *GetCacheTagRequest, runtim
 
 // Summary:
 //
-// Queries the cache tag configuration of your website. You can call this operation when you need to specify tags in the Cache-Tag response header to use the purge by cache tag feature.
+// Query Site Cache Tag Configuration
 //
 // @param request - GetCacheTagRequest
 //
@@ -72545,7 +73600,7 @@ func (client *Client) GetCompressionRule(request *GetCompressionRuleRequest) (_r
 
 // Summary:
 //
-// Queries the development mode configuration of your website.
+// Query Site Developer Mode Configuration
 //
 // @param request - GetDevelopmentModeRequest
 //
@@ -72594,7 +73649,7 @@ func (client *Client) GetDevelopmentModeWithOptions(request *GetDevelopmentModeR
 
 // Summary:
 //
-// Queries the development mode configuration of your website.
+// Query Site Developer Mode Configuration
 //
 // @param request - GetDevelopmentModeRequest
 //
@@ -73829,7 +74884,11 @@ func (client *Client) GetList(request *GetListRequest) (_result *GetListResponse
 
 // Summary:
 //
-// 查询特定负载均衡器
+// Query a Specific Load Balancer
+//
+// Description:
+//
+// This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence policy, routing policy, etc.
 //
 // @param request - GetLoadBalancerRequest
 //
@@ -73878,7 +74937,11 @@ func (client *Client) GetLoadBalancerWithOptions(request *GetLoadBalancerRequest
 
 // Summary:
 //
-// 查询特定负载均衡器
+// Query a Specific Load Balancer
+//
+// Description:
+//
+// This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence policy, routing policy, etc.
 //
 // @param request - GetLoadBalancerRequest
 //
@@ -75641,7 +76704,7 @@ func (client *Client) GetSiteWafSettings(request *GetSiteWafSettingsRequest) (_r
 
 // Summary:
 //
-// Queries the tiered cache configuration of your website.
+// Query Multi-level Cache Configuration for Site
 //
 // @param request - GetTieredCacheRequest
 //
@@ -75690,7 +76753,7 @@ func (client *Client) GetTieredCacheWithOptions(request *GetTieredCacheRequest, 
 
 // Summary:
 //
-// Queries the tiered cache configuration of your website.
+// Query Multi-level Cache Configuration for Site
 //
 // @param request - GetTieredCacheRequest
 //
@@ -75933,7 +76996,7 @@ func (client *Client) GetUserLogDeliveryQuota(request *GetUserLogDeliveryQuotaRe
 
 // Summary:
 //
-// Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+// This interface is used to obtain the application key (AppKey) for the BOT behavior detection feature in the site\\"s Web Application Firewall (WAF). The key is typically used for authentication and data exchange with the WAF service.
 //
 // @param request - GetWafBotAppKeyRequest
 //
@@ -75975,7 +77038,7 @@ func (client *Client) GetWafBotAppKeyWithOptions(runtime *util.RuntimeOptions) (
 
 // Summary:
 //
-// Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+// This interface is used to obtain the application key (AppKey) for the BOT behavior detection feature in the site\\"s Web Application Firewall (WAF). The key is typically used for authentication and data exchange with the WAF service.
 //
 // @return GetWafBotAppKeyResponse
 func (client *Client) GetWafBotAppKey() (_result *GetWafBotAppKeyResponse, _err error) {
@@ -76074,7 +77137,7 @@ func (client *Client) GetWafFilter(request *GetWafFilterRequest) (_result *GetWa
 
 // Summary:
 //
-// Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
+// Get WAF Quota Details
 //
 // @param request - GetWafQuotaRequest
 //
@@ -76127,7 +77190,7 @@ func (client *Client) GetWafQuotaWithOptions(request *GetWafQuotaRequest, runtim
 
 // Summary:
 //
-// Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
+// Get WAF Quota Details
 //
 // @param request - GetWafQuotaRequest
 //
@@ -76145,7 +77208,7 @@ func (client *Client) GetWafQuota(request *GetWafQuotaRequest) (_result *GetWafQ
 
 // Summary:
 //
-// Queries the cache reserve instances in your Alibaba Cloud account.
+// Query Cache Reserve Instance List
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -76194,7 +77257,7 @@ func (client *Client) ListCacheReserveInstancesWithOptions(request *ListCacheRes
 
 // Summary:
 //
-// Queries the cache reserve instances in your Alibaba Cloud account.
+// Query Cache Reserve Instance List
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -77660,7 +78723,19 @@ func (client *Client) ListLists(request *ListListsRequest) (_result *ListListsRe
 
 // Summary:
 //
-// 查询负载均衡器里各源站状态
+// Query the status of origins in load balancers
+//
+// Description:
+//
+// Query the status of origins under load balancers. You can pass multiple load balancer IDs at once, separated by commas. This is for load balancers that have monitors configured. It will probe the origins in the source address pools used by the load balancers and record the current status of each origin.
+//
+// - Healthy(healthy): The probe result is available.
+//
+// - Unhealthy(unhealthy): The probe result is unavailable.
+//
+// - Unknown(unknown): Unknown, the monitor has not yet probed.
+//
+// - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
 //
 // @param request - ListLoadBalancerOriginStatusRequest
 //
@@ -77709,7 +78784,19 @@ func (client *Client) ListLoadBalancerOriginStatusWithOptions(request *ListLoadB
 
 // Summary:
 //
-// 查询负载均衡器里各源站状态
+// Query the status of origins in load balancers
+//
+// Description:
+//
+// Query the status of origins under load balancers. You can pass multiple load balancer IDs at once, separated by commas. This is for load balancers that have monitors configured. It will probe the origins in the source address pools used by the load balancers and record the current status of each origin.
+//
+// - Healthy(healthy): The probe result is available.
+//
+// - Unhealthy(unhealthy): The probe result is unavailable.
+//
+// - Unknown(unknown): Unknown, the monitor has not yet probed.
+//
+// - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
 //
 // @param request - ListLoadBalancerOriginStatusRequest
 //
@@ -77727,11 +78814,11 @@ func (client *Client) ListLoadBalancerOriginStatus(request *ListLoadBalancerOrig
 
 // Summary:
 //
-// Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+// Query Load Balancer Region List
 //
 // Description:
 //
-// When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
+// When creating a load balancer \\"based on country/region scheduling\\" strategy through OpenAPI, use the code of primary or secondary regions to represent traffic from this geographical area.
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -77780,11 +78867,11 @@ func (client *Client) ListLoadBalancerRegionsWithOptions(request *ListLoadBalanc
 
 // Summary:
 //
-// Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+// Query Load Balancer Region List
 //
 // Description:
 //
-// When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
+// When creating a load balancer \\"based on country/region scheduling\\" strategy through OpenAPI, use the code of primary or secondary regions to represent traffic from this geographical area.
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -77802,7 +78889,7 @@ func (client *Client) ListLoadBalancerRegions(request *ListLoadBalancerRegionsRe
 
 // Summary:
 //
-// 查询负载均衡器列表
+// List of Load Balancers
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -77851,7 +78938,7 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 
 // Summary:
 //
-// 查询负载均衡器列表
+// List of Load Balancers
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -78764,7 +79851,7 @@ func (client *Client) ListSiteDeliveryTasks(request *ListSiteDeliveryTasksReques
 
 // Summary:
 //
-// Queries the information about websites in your account, such as the name, status, and configuration of each website.
+// Query Site List
 //
 // @param tmpReq - ListSitesRequest
 //
@@ -78819,7 +79906,7 @@ func (client *Client) ListSitesWithOptions(tmpReq *ListSitesRequest, runtime *ut
 
 // Summary:
 //
-// Queries the information about websites in your account, such as the name, status, and configuration of each website.
+// Query Site List
 //
 // @param request - ListSitesRequest
 //
@@ -80114,7 +81201,7 @@ func (client *Client) PurchaseRatePlan(request *PurchaseRatePlanRequest) (_resul
 
 // Summary:
 //
-// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
+// Cache Refresh
 //
 // @param tmpReq - PurgeCachesRequest
 //
@@ -80189,7 +81276,7 @@ func (client *Client) PurgeCachesWithOptions(tmpReq *PurgeCachesRequest, runtime
 
 // Summary:
 //
-// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
+// Cache Refresh
 //
 // @param request - PurgeCachesRequest
 //
@@ -82030,7 +83117,7 @@ func (client *Client) UpdateCustomScenePolicy(request *UpdateCustomScenePolicyRe
 
 // Summary:
 //
-// 修改站点开发者模式配置
+// Modify Site Developer Mode Configuration
 //
 // @param request - UpdateDevelopmentModeRequest
 //
@@ -82087,7 +83174,7 @@ func (client *Client) UpdateDevelopmentModeWithOptions(request *UpdateDevelopmen
 
 // Summary:
 //
-// 修改站点开发者模式配置
+// Modify Site Developer Mode Configuration
 //
 // @param request - UpdateDevelopmentModeRequest
 //
@@ -82887,7 +83974,11 @@ func (client *Client) UpdateList(request *UpdateListRequest) (_result *UpdateLis
 
 // Summary:
 //
-// 修改负载均衡器
+// Modify Load Balancer
+//
+// Description:
+//
+// Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence policies, and various advanced settings related to traffic routing. 	Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
 //
 // @param tmpReq - UpdateLoadBalancerRequest
 //
@@ -83018,7 +84109,11 @@ func (client *Client) UpdateLoadBalancerWithOptions(tmpReq *UpdateLoadBalancerRe
 
 // Summary:
 //
-// 修改负载均衡器
+// Modify Load Balancer
+//
+// Description:
+//
+// Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence policies, and various advanced settings related to traffic routing. 	Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
 //
 // @param request - UpdateLoadBalancerRequest
 //
