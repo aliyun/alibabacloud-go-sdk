@@ -2562,6 +2562,7 @@ type DescribeUserResourcesResponseBodyResources struct {
 	//
 	// true
 	GlobalStatus *bool `json:"GlobalStatus,omitempty" xml:"GlobalStatus,omitempty"`
+	HasUpgrade   *bool `json:"HasUpgrade,omitempty" xml:"HasUpgrade,omitempty"`
 	// example:
 	//
 	// false
@@ -2592,7 +2593,8 @@ type DescribeUserResourcesResponseBodyResources struct {
 	// example:
 	//
 	// Windows
-	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsType   *string                                             `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsUpdate *DescribeUserResourcesResponseBodyResourcesOsUpdate `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty" type:"Struct"`
 	// example:
 	//
 	// AndroidCloud
@@ -2766,6 +2768,11 @@ func (s *DescribeUserResourcesResponseBodyResources) SetGlobalStatus(v bool) *De
 	return s
 }
 
+func (s *DescribeUserResourcesResponseBodyResources) SetHasUpgrade(v bool) *DescribeUserResourcesResponseBodyResources {
+	s.HasUpgrade = &v
+	return s
+}
+
 func (s *DescribeUserResourcesResponseBodyResources) SetHibernationBeta(v bool) *DescribeUserResourcesResponseBodyResources {
 	s.HibernationBeta = &v
 	return s
@@ -2813,6 +2820,11 @@ func (s *DescribeUserResourcesResponseBodyResources) SetOsDescription(v string) 
 
 func (s *DescribeUserResourcesResponseBodyResources) SetOsType(v string) *DescribeUserResourcesResponseBodyResources {
 	s.OsType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetOsUpdate(v *DescribeUserResourcesResponseBodyResourcesOsUpdate) *DescribeUserResourcesResponseBodyResources {
+	s.OsUpdate = v
 	return s
 }
 
@@ -3245,6 +3257,76 @@ func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetReleaseNoteJp(
 
 func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) SetSize(v string) *DescribeUserResourcesResponseBodyResourcesFotaUpdate {
 	s.Size = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResourcesOsUpdate struct {
+	CheckId          *string                                                       `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	KbListString     *string                                                       `json:"KbListString,omitempty" xml:"KbListString,omitempty"`
+	PackageCount     *int32                                                        `json:"PackageCount,omitempty" xml:"PackageCount,omitempty"`
+	Packages         []*DescribeUserResourcesResponseBodyResourcesOsUpdatePackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
+	UpdateCatalogUrl *string                                                       `json:"UpdateCatalogUrl,omitempty" xml:"UpdateCatalogUrl,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesOsUpdate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesOsUpdate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) SetCheckId(v string) *DescribeUserResourcesResponseBodyResourcesOsUpdate {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) SetKbListString(v string) *DescribeUserResourcesResponseBodyResourcesOsUpdate {
+	s.KbListString = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) SetPackageCount(v int32) *DescribeUserResourcesResponseBodyResourcesOsUpdate {
+	s.PackageCount = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) SetPackages(v []*DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) *DescribeUserResourcesResponseBodyResourcesOsUpdate {
+	s.Packages = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) SetUpdateCatalogUrl(v string) *DescribeUserResourcesResponseBodyResourcesOsUpdate {
+	s.UpdateCatalogUrl = &v
+	return s
+}
+
+type DescribeUserResourcesResponseBodyResourcesOsUpdatePackages struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Kb          *string `json:"Kb,omitempty" xml:"Kb,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) SetDescription(v string) *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) SetKb(v string) *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages {
+	s.Kb = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) SetTitle(v string) *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages {
+	s.Title = &v
 	return s
 }
 
