@@ -14,8 +14,9 @@ type CreateMultiOrderRequest struct {
 	// example:
 	//
 	// create
-	OrderType  *string            `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Properties map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	OrderType        *string            `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Properties       map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	ResellerOwnerUid *int64             `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s CreateMultiOrderRequest) String() string {
@@ -38,6 +39,11 @@ func (s *CreateMultiOrderRequest) SetOrderType(v string) *CreateMultiOrderReques
 
 func (s *CreateMultiOrderRequest) SetProperties(v map[string]*string) *CreateMultiOrderRequest {
 	s.Properties = v
+	return s
+}
+
+func (s *CreateMultiOrderRequest) SetResellerOwnerUid(v int64) *CreateMultiOrderRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -165,6 +171,7 @@ type CreateMultiOrderShrinkRequest struct {
 	// create
 	OrderType        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s CreateMultiOrderShrinkRequest) String() string {
@@ -187,6 +194,11 @@ func (s *CreateMultiOrderShrinkRequest) SetOrderType(v string) *CreateMultiOrder
 
 func (s *CreateMultiOrderShrinkRequest) SetPropertiesShrink(v string) *CreateMultiOrderShrinkRequest {
 	s.PropertiesShrink = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequest) SetResellerOwnerUid(v int64) *CreateMultiOrderShrinkRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -1068,6 +1080,10 @@ func (client *Client) CreateMultiOrderWithOptions(tmpReq *CreateMultiOrderReques
 
 	if !tea.BoolValue(util.IsUnset(request.PropertiesShrink)) {
 		query["Properties"] = request.PropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	req := &openapi.OpenApiRequest{
