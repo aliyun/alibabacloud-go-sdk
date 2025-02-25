@@ -1699,6 +1699,1771 @@ func (s *GetErrorResponse) SetBody(v *GetErrorResponseBody) *GetErrorResponse {
 	return s
 }
 
+type GetErrorsRequest struct {
+	// appKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24780725
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crash
+	BizModule *string `json:"BizModule,omitempty" xml:"BizModule,omitempty"`
+	// example:
+	//
+	// -3481243636390427020
+	DigestHash *string                 `json:"DigestHash,omitempty" xml:"DigestHash,omitempty"`
+	Filter     *GetErrorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// android
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	TimeRange *GetErrorsRequestTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
+	// utdid
+	//
+	// example:
+	//
+	// Z70g6V/MXJ8DABtD53eHzn4X
+	Utdid *string `json:"Utdid,omitempty" xml:"Utdid,omitempty"`
+}
+
+func (s GetErrorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsRequest) SetAppKey(v int64) *GetErrorsRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetErrorsRequest) SetBizModule(v string) *GetErrorsRequest {
+	s.BizModule = &v
+	return s
+}
+
+func (s *GetErrorsRequest) SetDigestHash(v string) *GetErrorsRequest {
+	s.DigestHash = &v
+	return s
+}
+
+func (s *GetErrorsRequest) SetFilter(v *GetErrorsRequestFilter) *GetErrorsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *GetErrorsRequest) SetOs(v string) *GetErrorsRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *GetErrorsRequest) SetPageIndex(v int32) *GetErrorsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetErrorsRequest) SetPageSize(v int32) *GetErrorsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetErrorsRequest) SetTimeRange(v *GetErrorsRequestTimeRange) *GetErrorsRequest {
+	s.TimeRange = v
+	return s
+}
+
+func (s *GetErrorsRequest) SetUtdid(v string) *GetErrorsRequest {
+	s.Utdid = &v
+	return s
+}
+
+type GetErrorsRequestFilter struct {
+	// example:
+	//
+	// osVersion
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// and
+	Operator   *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SubFilters []*string     `json:"SubFilters,omitempty" xml:"SubFilters,omitempty" type:"Repeated"`
+	Values     []interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s GetErrorsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsRequestFilter) SetKey(v string) *GetErrorsRequestFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *GetErrorsRequestFilter) SetOperator(v string) *GetErrorsRequestFilter {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetErrorsRequestFilter) SetSubFilters(v []*string) *GetErrorsRequestFilter {
+	s.SubFilters = v
+	return s
+}
+
+func (s *GetErrorsRequestFilter) SetValues(v []interface{}) *GetErrorsRequestFilter {
+	s.Values = v
+	return s
+}
+
+type GetErrorsRequestTimeRange struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1740499200000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1739894400000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetErrorsRequestTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsRequestTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsRequestTimeRange) SetEndTime(v int64) *GetErrorsRequestTimeRange {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetErrorsRequestTimeRange) SetStartTime(v int64) *GetErrorsRequestTimeRange {
+	s.StartTime = &v
+	return s
+}
+
+type GetErrorsShrinkRequest struct {
+	// appKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24780725
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crash
+	BizModule *string `json:"BizModule,omitempty" xml:"BizModule,omitempty"`
+	// example:
+	//
+	// -3481243636390427020
+	DigestHash   *string `json:"DigestHash,omitempty" xml:"DigestHash,omitempty"`
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// android
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	TimeRange *GetErrorsShrinkRequestTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
+	// utdid
+	//
+	// example:
+	//
+	// Z70g6V/MXJ8DABtD53eHzn4X
+	Utdid *string `json:"Utdid,omitempty" xml:"Utdid,omitempty"`
+}
+
+func (s GetErrorsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsShrinkRequest) SetAppKey(v int64) *GetErrorsShrinkRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetBizModule(v string) *GetErrorsShrinkRequest {
+	s.BizModule = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetDigestHash(v string) *GetErrorsShrinkRequest {
+	s.DigestHash = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetFilterShrink(v string) *GetErrorsShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetOs(v string) *GetErrorsShrinkRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetPageIndex(v int32) *GetErrorsShrinkRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetPageSize(v int32) *GetErrorsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetTimeRange(v *GetErrorsShrinkRequestTimeRange) *GetErrorsShrinkRequest {
+	s.TimeRange = v
+	return s
+}
+
+func (s *GetErrorsShrinkRequest) SetUtdid(v string) *GetErrorsShrinkRequest {
+	s.Utdid = &v
+	return s
+}
+
+type GetErrorsShrinkRequestTimeRange struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1740499200000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1739894400000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetErrorsShrinkRequestTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsShrinkRequestTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsShrinkRequestTimeRange) SetEndTime(v int64) *GetErrorsShrinkRequestTimeRange {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetErrorsShrinkRequestTimeRange) SetStartTime(v int64) *GetErrorsShrinkRequestTimeRange {
+	s.StartTime = &v
+	return s
+}
+
+type GetErrorsResponseBody struct {
+	// Args
+	Args map[string]interface{} `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// 500
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// internal error
+	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *GetErrorsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// RequestId
+	//
+	// example:
+	//
+	// B3AD0FE4-36EF-1641-90B1-77618166F2ff
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetErrorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsResponseBody) SetArgs(v map[string]interface{}) *GetErrorsResponseBody {
+	s.Args = v
+	return s
+}
+
+func (s *GetErrorsResponseBody) SetErrorCode(v int32) *GetErrorsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetErrorsResponseBody) SetMessage(v string) *GetErrorsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetErrorsResponseBody) SetModel(v *GetErrorsResponseBodyModel) *GetErrorsResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *GetErrorsResponseBody) SetRequestId(v string) *GetErrorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetErrorsResponseBody) SetSuccess(v bool) *GetErrorsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetErrorsResponseBodyModel struct {
+	Items []*GetErrorsResponseBodyModelItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	Pages *int32 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetErrorsResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsResponseBodyModel) SetItems(v []*GetErrorsResponseBodyModelItems) *GetErrorsResponseBodyModel {
+	s.Items = v
+	return s
+}
+
+func (s *GetErrorsResponseBodyModel) SetPageNum(v int32) *GetErrorsResponseBodyModel {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetErrorsResponseBodyModel) SetPageSize(v int32) *GetErrorsResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetErrorsResponseBodyModel) SetPages(v int32) *GetErrorsResponseBodyModel {
+	s.Pages = &v
+	return s
+}
+
+func (s *GetErrorsResponseBodyModel) SetTotal(v int64) *GetErrorsResponseBodyModel {
+	s.Total = &v
+	return s
+}
+
+type GetErrorsResponseBodyModelItems struct {
+	// example:
+	//
+	// 1740488561065
+	ClientTime *int64 `json:"ClientTime,omitempty" xml:"ClientTime,omitempty"`
+	// example:
+	//
+	// RANDOM-1729634758587856312DEVICE
+	Did *string `json:"Did,omitempty" xml:"Did,omitempty"`
+	// Utdid
+	//
+	// example:
+	//
+	// RANDOM-1729634758587856312DEVICE
+	Utdid *string `json:"Utdid,omitempty" xml:"Utdid,omitempty"`
+	// example:
+	//
+	// 9634758587856312DEV
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetErrorsResponseBodyModelItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsResponseBodyModelItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsResponseBodyModelItems) SetClientTime(v int64) *GetErrorsResponseBodyModelItems {
+	s.ClientTime = &v
+	return s
+}
+
+func (s *GetErrorsResponseBodyModelItems) SetDid(v string) *GetErrorsResponseBodyModelItems {
+	s.Did = &v
+	return s
+}
+
+func (s *GetErrorsResponseBodyModelItems) SetUtdid(v string) *GetErrorsResponseBodyModelItems {
+	s.Utdid = &v
+	return s
+}
+
+func (s *GetErrorsResponseBodyModelItems) SetUuid(v string) *GetErrorsResponseBodyModelItems {
+	s.Uuid = &v
+	return s
+}
+
+type GetErrorsResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErrorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetErrorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorsResponse) SetHeaders(v map[string]*string) *GetErrorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetErrorsResponse) SetStatusCode(v int32) *GetErrorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetErrorsResponse) SetBody(v *GetErrorsResponseBody) *GetErrorsResponse {
+	s.Body = v
+	return s
+}
+
+type GetIssueRequest struct {
+	// AppKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233588686
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// h5Resource
+	BizModule *string `json:"BizModule,omitempty" xml:"BizModule,omitempty"`
+	// example:
+	//
+	// 2963475858785631
+	DigestHash *string                `json:"DigestHash,omitempty" xml:"DigestHash,omitempty"`
+	Filter     *GetIssueRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// h5
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// This parameter is required.
+	TimeRange *GetIssueRequestTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
+}
+
+func (s GetIssueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueRequest) SetAppKey(v int64) *GetIssueRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetIssueRequest) SetBizModule(v string) *GetIssueRequest {
+	s.BizModule = &v
+	return s
+}
+
+func (s *GetIssueRequest) SetDigestHash(v string) *GetIssueRequest {
+	s.DigestHash = &v
+	return s
+}
+
+func (s *GetIssueRequest) SetFilter(v *GetIssueRequestFilter) *GetIssueRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *GetIssueRequest) SetOs(v string) *GetIssueRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *GetIssueRequest) SetTimeRange(v *GetIssueRequestTimeRange) *GetIssueRequest {
+	s.TimeRange = v
+	return s
+}
+
+type GetIssueRequestFilter struct {
+	// example:
+	//
+	// MySQL_IOPS
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// Equal
+	Operator   *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SubFilters []*string     `json:"SubFilters,omitempty" xml:"SubFilters,omitempty" type:"Repeated"`
+	Values     []interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s GetIssueRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueRequestFilter) SetKey(v string) *GetIssueRequestFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *GetIssueRequestFilter) SetOperator(v string) *GetIssueRequestFilter {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetIssueRequestFilter) SetSubFilters(v []*string) *GetIssueRequestFilter {
+	s.SubFilters = v
+	return s
+}
+
+func (s *GetIssueRequestFilter) SetValues(v []interface{}) *GetIssueRequestFilter {
+	s.Values = v
+	return s
+}
+
+type GetIssueRequestTimeRange struct {
+	// example:
+	//
+	// 2024-08-23T02:12:00Z
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Host
+	Granularity *int32 `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// minute
+	GranularityUnit *string `json:"GranularityUnit,omitempty" xml:"GranularityUnit,omitempty"`
+	// example:
+	//
+	// 2024-12-18 00:00:00
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetIssueRequestTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueRequestTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueRequestTimeRange) SetEndTime(v int64) *GetIssueRequestTimeRange {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetIssueRequestTimeRange) SetGranularity(v int32) *GetIssueRequestTimeRange {
+	s.Granularity = &v
+	return s
+}
+
+func (s *GetIssueRequestTimeRange) SetGranularityUnit(v string) *GetIssueRequestTimeRange {
+	s.GranularityUnit = &v
+	return s
+}
+
+func (s *GetIssueRequestTimeRange) SetStartTime(v int64) *GetIssueRequestTimeRange {
+	s.StartTime = &v
+	return s
+}
+
+type GetIssueShrinkRequest struct {
+	// AppKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233588686
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// h5Resource
+	BizModule *string `json:"BizModule,omitempty" xml:"BizModule,omitempty"`
+	// example:
+	//
+	// 2963475858785631
+	DigestHash   *string `json:"DigestHash,omitempty" xml:"DigestHash,omitempty"`
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// h5
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// This parameter is required.
+	TimeRange *GetIssueShrinkRequestTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
+}
+
+func (s GetIssueShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueShrinkRequest) SetAppKey(v int64) *GetIssueShrinkRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequest) SetBizModule(v string) *GetIssueShrinkRequest {
+	s.BizModule = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequest) SetDigestHash(v string) *GetIssueShrinkRequest {
+	s.DigestHash = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequest) SetFilterShrink(v string) *GetIssueShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequest) SetOs(v string) *GetIssueShrinkRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequest) SetTimeRange(v *GetIssueShrinkRequestTimeRange) *GetIssueShrinkRequest {
+	s.TimeRange = v
+	return s
+}
+
+type GetIssueShrinkRequestTimeRange struct {
+	// example:
+	//
+	// 2024-08-23T02:12:00Z
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Host
+	Granularity *int32 `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// minute
+	GranularityUnit *string `json:"GranularityUnit,omitempty" xml:"GranularityUnit,omitempty"`
+	// example:
+	//
+	// 2024-12-18 00:00:00
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetIssueShrinkRequestTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueShrinkRequestTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueShrinkRequestTimeRange) SetEndTime(v int64) *GetIssueShrinkRequestTimeRange {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequestTimeRange) SetGranularity(v int32) *GetIssueShrinkRequestTimeRange {
+	s.Granularity = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequestTimeRange) SetGranularityUnit(v string) *GetIssueShrinkRequestTimeRange {
+	s.GranularityUnit = &v
+	return s
+}
+
+func (s *GetIssueShrinkRequestTimeRange) SetStartTime(v int64) *GetIssueShrinkRequestTimeRange {
+	s.StartTime = &v
+	return s
+}
+
+type GetIssueResponseBody struct {
+	// Args
+	Args map[string]interface{} `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *GetIssueResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// A8313212-EB4E-4E15-A7F9-D9C8F3FE8E94
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetIssueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueResponseBody) SetArgs(v map[string]interface{}) *GetIssueResponseBody {
+	s.Args = v
+	return s
+}
+
+func (s *GetIssueResponseBody) SetErrorCode(v int32) *GetIssueResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetIssueResponseBody) SetMessage(v string) *GetIssueResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetIssueResponseBody) SetModel(v *GetIssueResponseBodyModel) *GetIssueResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *GetIssueResponseBody) SetRequestId(v string) *GetIssueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetIssueResponseBody) SetSuccess(v bool) *GetIssueResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetIssueResponseBodyModel struct {
+	AffectedVersions []*string `json:"AffectedVersions,omitempty" xml:"AffectedVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// java.lang.NullPointerException: Attempt to invoke virtual method \\"java.lang.Object java.lang.ref.WeakReference.get()\\" on a null object reference
+	//
+	// 	at e.l.a.a.d.h(BasePresenter.java:1)
+	//
+	// 	at e.l.a.g.c.e.g.s1(GoodsPigLoadPresenter.java:1)
+	//
+	// 	at e.l.a.h.d.a$a.a(AliOssManager.java:2)
+	CruxStack *string `json:"CruxStack,omitempty" xml:"CruxStack,omitempty"`
+	// example:
+	//
+	// -6428474329608402395
+	DigestHash *string `json:"DigestHash,omitempty" xml:"DigestHash,omitempty"`
+	// example:
+	//
+	// 2
+	ErrorColumn *int32 `json:"ErrorColumn,omitempty" xml:"ErrorColumn,omitempty"`
+	// example:
+	//
+	// 2
+	ErrorCount *int32 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	// example:
+	//
+	// 0.2
+	ErrorCountGrowthRate *float64 `json:"ErrorCountGrowthRate,omitempty" xml:"ErrorCountGrowthRate,omitempty"`
+	// example:
+	//
+	// 4
+	ErrorDeviceCount *int32 `json:"ErrorDeviceCount,omitempty" xml:"ErrorDeviceCount,omitempty"`
+	// example:
+	//
+	// 0.2
+	ErrorDeviceCountGrowthRate *float64 `json:"ErrorDeviceCountGrowthRate,omitempty" xml:"ErrorDeviceCountGrowthRate,omitempty"`
+	// example:
+	//
+	// 0.2
+	ErrorDeviceRate *float64 `json:"ErrorDeviceRate,omitempty" xml:"ErrorDeviceRate,omitempty"`
+	// example:
+	//
+	// 0.2
+	ErrorDeviceRateGrowthRate *float64 `json:"ErrorDeviceRateGrowthRate,omitempty" xml:"ErrorDeviceRateGrowthRate,omitempty"`
+	// example:
+	//
+	// test.js
+	ErrorFileName *string `json:"ErrorFileName,omitempty" xml:"ErrorFileName,omitempty"`
+	// example:
+	//
+	// 1
+	ErrorLine *string `json:"ErrorLine,omitempty" xml:"ErrorLine,omitempty"`
+	// example:
+	//
+	// Error
+	ErrorName *string `json:"ErrorName,omitempty" xml:"ErrorName,omitempty"`
+	// example:
+	//
+	// 0
+	ErrorRate *float64 `json:"ErrorRate,omitempty" xml:"ErrorRate,omitempty"`
+	// example:
+	//
+	// 0.2
+	ErrorRateGrowthRate *float64 `json:"ErrorRateGrowthRate,omitempty" xml:"ErrorRateGrowthRate,omitempty"`
+	// example:
+	//
+	// ErrorType
+	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	FirstVersion *string `json:"FirstVersion,omitempty" xml:"FirstVersion,omitempty"`
+	// example:
+	//
+	// 1673423227000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1740489688615
+	GmtLatest *int64 `json:"GmtLatest,omitempty" xml:"GmtLatest,omitempty"`
+	// example:
+	//
+	// 1
+	KeyLine *int32  `json:"KeyLine,omitempty" xml:"KeyLine,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// java.lang.NullPointerException
+	Stack *string `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// trustee instance
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// true
+	SymbolicStatus *bool     `json:"SymbolicStatus,omitempty" xml:"SymbolicStatus,omitempty"`
+	Tags           []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s GetIssueResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueResponseBodyModel) SetAffectedVersions(v []*string) *GetIssueResponseBodyModel {
+	s.AffectedVersions = v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetCruxStack(v string) *GetIssueResponseBodyModel {
+	s.CruxStack = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetDigestHash(v string) *GetIssueResponseBodyModel {
+	s.DigestHash = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorColumn(v int32) *GetIssueResponseBodyModel {
+	s.ErrorColumn = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorCount(v int32) *GetIssueResponseBodyModel {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorCountGrowthRate(v float64) *GetIssueResponseBodyModel {
+	s.ErrorCountGrowthRate = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorDeviceCount(v int32) *GetIssueResponseBodyModel {
+	s.ErrorDeviceCount = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorDeviceCountGrowthRate(v float64) *GetIssueResponseBodyModel {
+	s.ErrorDeviceCountGrowthRate = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorDeviceRate(v float64) *GetIssueResponseBodyModel {
+	s.ErrorDeviceRate = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorDeviceRateGrowthRate(v float64) *GetIssueResponseBodyModel {
+	s.ErrorDeviceRateGrowthRate = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorFileName(v string) *GetIssueResponseBodyModel {
+	s.ErrorFileName = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorLine(v string) *GetIssueResponseBodyModel {
+	s.ErrorLine = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorName(v string) *GetIssueResponseBodyModel {
+	s.ErrorName = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorRate(v float64) *GetIssueResponseBodyModel {
+	s.ErrorRate = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorRateGrowthRate(v float64) *GetIssueResponseBodyModel {
+	s.ErrorRateGrowthRate = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetErrorType(v string) *GetIssueResponseBodyModel {
+	s.ErrorType = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetFirstVersion(v string) *GetIssueResponseBodyModel {
+	s.FirstVersion = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetGmtCreate(v int64) *GetIssueResponseBodyModel {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetGmtLatest(v int64) *GetIssueResponseBodyModel {
+	s.GmtLatest = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetKeyLine(v int32) *GetIssueResponseBodyModel {
+	s.KeyLine = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetName(v string) *GetIssueResponseBodyModel {
+	s.Name = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetStack(v string) *GetIssueResponseBodyModel {
+	s.Stack = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetStatus(v int32) *GetIssueResponseBodyModel {
+	s.Status = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetSummary(v string) *GetIssueResponseBodyModel {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetSymbolicStatus(v bool) *GetIssueResponseBodyModel {
+	s.SymbolicStatus = &v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetTags(v []*string) *GetIssueResponseBodyModel {
+	s.Tags = v
+	return s
+}
+
+type GetIssueResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIssueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIssueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssueResponse) SetHeaders(v map[string]*string) *GetIssueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIssueResponse) SetStatusCode(v int32) *GetIssueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIssueResponse) SetBody(v *GetIssueResponseBody) *GetIssueResponse {
+	s.Body = v
+	return s
+}
+
+type GetIssuesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233588686
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// h5Resource
+	BizModule *string                 `json:"BizModule,omitempty" xml:"BizModule,omitempty"`
+	Filter    *GetIssuesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// GUI-TEST1711072832000
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// instances
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// 1
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// h5
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	TimeRange *GetIssuesRequestTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
+}
+
+func (s GetIssuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesRequest) SetAppKey(v int64) *GetIssuesRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetBizModule(v string) *GetIssuesRequest {
+	s.BizModule = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetFilter(v *GetIssuesRequestFilter) *GetIssuesRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *GetIssuesRequest) SetName(v string) *GetIssuesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetOrderBy(v string) *GetIssuesRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetOrderType(v string) *GetIssuesRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetOs(v string) *GetIssuesRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetPageIndex(v int32) *GetIssuesRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetPageSize(v int32) *GetIssuesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetStatus(v int32) *GetIssuesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *GetIssuesRequest) SetTimeRange(v *GetIssuesRequestTimeRange) *GetIssuesRequest {
+	s.TimeRange = v
+	return s
+}
+
+type GetIssuesRequestFilter struct {
+	// example:
+	//
+	// erConfig
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// BeginWith
+	Operator   *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SubFilters []*string     `json:"SubFilters,omitempty" xml:"SubFilters,omitempty" type:"Repeated"`
+	Values     []interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s GetIssuesRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesRequestFilter) SetKey(v string) *GetIssuesRequestFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *GetIssuesRequestFilter) SetOperator(v string) *GetIssuesRequestFilter {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetIssuesRequestFilter) SetSubFilters(v []*string) *GetIssuesRequestFilter {
+	s.SubFilters = v
+	return s
+}
+
+func (s *GetIssuesRequestFilter) SetValues(v []interface{}) *GetIssuesRequestFilter {
+	s.Values = v
+	return s
+}
+
+type GetIssuesRequestTimeRange struct {
+	// example:
+	//
+	// 2024-09-04T02:15:00Z
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Host
+	Granularity *int32 `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// day
+	GranularityUnit *string `json:"GranularityUnit,omitempty" xml:"GranularityUnit,omitempty"`
+	// example:
+	//
+	// 2024-11-05T16:00:00Z
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetIssuesRequestTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesRequestTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesRequestTimeRange) SetEndTime(v int64) *GetIssuesRequestTimeRange {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetIssuesRequestTimeRange) SetGranularity(v int32) *GetIssuesRequestTimeRange {
+	s.Granularity = &v
+	return s
+}
+
+func (s *GetIssuesRequestTimeRange) SetGranularityUnit(v string) *GetIssuesRequestTimeRange {
+	s.GranularityUnit = &v
+	return s
+}
+
+func (s *GetIssuesRequestTimeRange) SetStartTime(v int64) *GetIssuesRequestTimeRange {
+	s.StartTime = &v
+	return s
+}
+
+type GetIssuesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233588686
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// h5Resource
+	BizModule    *string `json:"BizModule,omitempty" xml:"BizModule,omitempty"`
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// GUI-TEST1711072832000
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// instances
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// 1
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// h5
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	TimeRange *GetIssuesShrinkRequestTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
+}
+
+func (s GetIssuesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesShrinkRequest) SetAppKey(v int64) *GetIssuesShrinkRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetBizModule(v string) *GetIssuesShrinkRequest {
+	s.BizModule = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetFilterShrink(v string) *GetIssuesShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetName(v string) *GetIssuesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetOrderBy(v string) *GetIssuesShrinkRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetOrderType(v string) *GetIssuesShrinkRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetOs(v string) *GetIssuesShrinkRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetPageIndex(v int32) *GetIssuesShrinkRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetPageSize(v int32) *GetIssuesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetStatus(v int32) *GetIssuesShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequest) SetTimeRange(v *GetIssuesShrinkRequestTimeRange) *GetIssuesShrinkRequest {
+	s.TimeRange = v
+	return s
+}
+
+type GetIssuesShrinkRequestTimeRange struct {
+	// example:
+	//
+	// 2024-09-04T02:15:00Z
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Host
+	Granularity *int32 `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// day
+	GranularityUnit *string `json:"GranularityUnit,omitempty" xml:"GranularityUnit,omitempty"`
+	// example:
+	//
+	// 2024-11-05T16:00:00Z
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetIssuesShrinkRequestTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesShrinkRequestTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesShrinkRequestTimeRange) SetEndTime(v int64) *GetIssuesShrinkRequestTimeRange {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequestTimeRange) SetGranularity(v int32) *GetIssuesShrinkRequestTimeRange {
+	s.Granularity = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequestTimeRange) SetGranularityUnit(v string) *GetIssuesShrinkRequestTimeRange {
+	s.GranularityUnit = &v
+	return s
+}
+
+func (s *GetIssuesShrinkRequestTimeRange) SetStartTime(v int64) *GetIssuesShrinkRequestTimeRange {
+	s.StartTime = &v
+	return s
+}
+
+type GetIssuesResponseBody struct {
+	// Args
+	Args map[string]interface{} `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *GetIssuesResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22111548-55D2-4258-9B18-273E4C134444
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetIssuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesResponseBody) SetArgs(v map[string]interface{}) *GetIssuesResponseBody {
+	s.Args = v
+	return s
+}
+
+func (s *GetIssuesResponseBody) SetErrorCode(v int32) *GetIssuesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetIssuesResponseBody) SetMessage(v string) *GetIssuesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetIssuesResponseBody) SetModel(v *GetIssuesResponseBodyModel) *GetIssuesResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *GetIssuesResponseBody) SetRequestId(v string) *GetIssuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetIssuesResponseBody) SetSuccess(v bool) *GetIssuesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetIssuesResponseBodyModel struct {
+	Items []*GetIssuesResponseBodyModelItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	Pages *int32 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetIssuesResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesResponseBodyModel) SetItems(v []*GetIssuesResponseBodyModelItems) *GetIssuesResponseBodyModel {
+	s.Items = v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModel) SetPageNum(v int32) *GetIssuesResponseBodyModel {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModel) SetPageSize(v int32) *GetIssuesResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModel) SetPages(v int32) *GetIssuesResponseBodyModel {
+	s.Pages = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModel) SetTotal(v int64) *GetIssuesResponseBodyModel {
+	s.Total = &v
+	return s
+}
+
+type GetIssuesResponseBodyModelItems struct {
+	// example:
+	//
+	// 1
+	AffectedUserCount *int32 `json:"AffectedUserCount,omitempty" xml:"AffectedUserCount,omitempty"`
+	// example:
+	//
+	// -3481243636390427020
+	DigestHash *string `json:"DigestHash,omitempty" xml:"DigestHash,omitempty"`
+	// example:
+	//
+	// 1
+	DomScore *string `json:"DomScore,omitempty" xml:"DomScore,omitempty"`
+	// example:
+	//
+	// 1
+	ErrorColumn *int32 `json:"ErrorColumn,omitempty" xml:"ErrorColumn,omitempty"`
+	// example:
+	//
+	// 2
+	ErrorCount *int32 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	// example:
+	//
+	// 1
+	ErrorDeviceCount *int32 `json:"ErrorDeviceCount,omitempty" xml:"ErrorDeviceCount,omitempty"`
+	// example:
+	//
+	// 1.0
+	ErrorDeviceRate *float64 `json:"ErrorDeviceRate,omitempty" xml:"ErrorDeviceRate,omitempty"`
+	// example:
+	//
+	// test.js
+	ErrorFileName *string `json:"ErrorFileName,omitempty" xml:"ErrorFileName,omitempty"`
+	// example:
+	//
+	// 1
+	ErrorLine *int32 `json:"ErrorLine,omitempty" xml:"ErrorLine,omitempty"`
+	// example:
+	//
+	// ErrorName
+	ErrorName *string `json:"ErrorName,omitempty" xml:"ErrorName,omitempty"`
+	// example:
+	//
+	// 0
+	ErrorRate *float64 `json:"ErrorRate,omitempty" xml:"ErrorRate,omitempty"`
+	// example:
+	//
+	// Error
+	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	// example:
+	//
+	// 1691745496851
+	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	FirstVersion *string `json:"FirstVersion,omitempty" xml:"FirstVersion,omitempty"`
+	// example:
+	//
+	// ServiceType
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// java.lang.NullPointerException: Attempt to invoke virtual method \\"java.lang.Object java.lang.ref.WeakReference.get()\\" on a null object reference
+	//
+	// 	at e.l.a.a.d.h(BasePresenter.java:1)
+	//
+	// 	at e.l.a.g.c.e.g.s1(GoodsPigLoadPresenter.java:1)
+	//
+	// 	at e.l.a.h.d.a$a.a(AliOssManager.java:2)
+	Stack *string `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	// example:
+	//
+	// CREATE_COMPLETE
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetIssuesResponseBodyModelItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesResponseBodyModelItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetAffectedUserCount(v int32) *GetIssuesResponseBodyModelItems {
+	s.AffectedUserCount = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetDigestHash(v string) *GetIssuesResponseBodyModelItems {
+	s.DigestHash = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetDomScore(v string) *GetIssuesResponseBodyModelItems {
+	s.DomScore = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorColumn(v int32) *GetIssuesResponseBodyModelItems {
+	s.ErrorColumn = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorCount(v int32) *GetIssuesResponseBodyModelItems {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorDeviceCount(v int32) *GetIssuesResponseBodyModelItems {
+	s.ErrorDeviceCount = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorDeviceRate(v float64) *GetIssuesResponseBodyModelItems {
+	s.ErrorDeviceRate = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorFileName(v string) *GetIssuesResponseBodyModelItems {
+	s.ErrorFileName = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorLine(v int32) *GetIssuesResponseBodyModelItems {
+	s.ErrorLine = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorName(v string) *GetIssuesResponseBodyModelItems {
+	s.ErrorName = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorRate(v float64) *GetIssuesResponseBodyModelItems {
+	s.ErrorRate = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetErrorType(v string) *GetIssuesResponseBodyModelItems {
+	s.ErrorType = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetEventTime(v string) *GetIssuesResponseBodyModelItems {
+	s.EventTime = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetFirstVersion(v string) *GetIssuesResponseBodyModelItems {
+	s.FirstVersion = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetName(v string) *GetIssuesResponseBodyModelItems {
+	s.Name = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetStack(v string) *GetIssuesResponseBodyModelItems {
+	s.Stack = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetStatus(v int32) *GetIssuesResponseBodyModelItems {
+	s.Status = &v
+	return s
+}
+
+type GetIssuesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIssuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIssuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIssuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIssuesResponse) SetHeaders(v map[string]*string) *GetIssuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIssuesResponse) SetStatusCode(v int32) *GetIssuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIssuesResponse) SetBody(v *GetIssuesResponseBody) *GetIssuesResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1834,6 +3599,338 @@ func (client *Client) GetError(request *GetErrorRequest) (_result *GetErrorRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetErrorResponse{}
 	_body, _err := client.GetErrorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取某一聚合错误下所有的错误事件列表
+//
+// @param tmpReq - GetErrorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErrorsResponse
+func (client *Client) GetErrorsWithOptions(tmpReq *GetErrorsRequest, runtime *util.RuntimeOptions) (_result *GetErrorsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetErrorsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizModule)) {
+		body["BizModule"] = request.BizModule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DigestHash)) {
+		body["DigestHash"] = request.DigestHash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		body["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		body["Os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		bodyFlat["TimeRange"] = request.TimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Utdid)) {
+		body["Utdid"] = request.Utdid
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetErrors"),
+		Version:     tea.String("2019-06-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetErrorsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetErrorsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取某一聚合错误下所有的错误事件列表
+//
+// @param request - GetErrorsRequest
+//
+// @return GetErrorsResponse
+func (client *Client) GetErrors(request *GetErrorsRequest) (_result *GetErrorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetErrorsResponse{}
+	_body, _err := client.GetErrorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取聚合错误详情
+//
+// @param tmpReq - GetIssueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIssueResponse
+func (client *Client) GetIssueWithOptions(tmpReq *GetIssueRequest, runtime *util.RuntimeOptions) (_result *GetIssueResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetIssueShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizModule)) {
+		body["BizModule"] = request.BizModule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DigestHash)) {
+		body["DigestHash"] = request.DigestHash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		body["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		body["Os"] = request.Os
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		bodyFlat["TimeRange"] = request.TimeRange
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIssue"),
+		Version:     tea.String("2019-06-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetIssueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetIssueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取聚合错误详情
+//
+// @param request - GetIssueRequest
+//
+// @return GetIssueResponse
+func (client *Client) GetIssue(request *GetIssueRequest) (_result *GetIssueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIssueResponse{}
+	_body, _err := client.GetIssueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取聚合错误列表
+//
+// @param tmpReq - GetIssuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIssuesResponse
+func (client *Client) GetIssuesWithOptions(tmpReq *GetIssuesRequest, runtime *util.RuntimeOptions) (_result *GetIssuesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetIssuesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizModule)) {
+		body["BizModule"] = request.BizModule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		body["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		body["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		body["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		body["Os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		bodyFlat["TimeRange"] = request.TimeRange
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIssues"),
+		Version:     tea.String("2019-06-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetIssuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetIssuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取聚合错误列表
+//
+// @param request - GetIssuesRequest
+//
+// @return GetIssuesResponse
+func (client *Client) GetIssues(request *GetIssuesRequest) (_result *GetIssuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIssuesResponse{}
+	_body, _err := client.GetIssuesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
