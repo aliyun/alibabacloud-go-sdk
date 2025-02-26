@@ -1,3 +1,10 @@
+2025-02-26 Version: v4.4.1
+- Update API DescribeCloudCenterInstances: update response param.
+- Update API DescribeVersionConfig: update response param.
+- Update API GetAuthSummary: update response param.
+- Update API ListCheckResult: update response param.
+
+
 2025-02-21 Version: v4.4.0
 - Support API AddCloudVendorTrialConfig.
 - Support API AddProtectVpcList.
