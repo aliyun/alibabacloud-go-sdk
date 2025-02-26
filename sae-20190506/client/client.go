@@ -18409,13 +18409,15 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// true
-	AssociateEip *bool `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	AssociateEip *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	BaseAppId    *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
 	// The interval between batches in a phased release. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
-	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	BatchWaitTime *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
 	//
 	// ```
@@ -18648,8 +18650,9 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration       *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistration        *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Valid values:
 	//
 	// 	- **-1**: the default value. This value indicates that the minimum number of available instances is not measured by percentage. If you do not configure this parameter, the default value **-1*	- is used.
@@ -18707,8 +18710,9 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// AKSN89**
-	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
+	NasId         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
+	OidcRoleName  *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
 	//
 	// example:
@@ -19017,8 +19021,18 @@ func (s *DescribeApplicationConfigResponseBodyData) SetAssociateEip(v bool) *Des
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetBaseAppId(v string) *DescribeApplicationConfigResponseBodyData {
+	s.BaseAppId = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetBatchWaitTime(v int32) *DescribeApplicationConfigResponseBodyData {
 	s.BatchWaitTime = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetClusterId(v string) *DescribeApplicationConfigResponseBodyData {
+	s.ClusterId = &v
 	return s
 }
 
@@ -19142,6 +19156,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetMicroRegistrationConfig(v
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetMicroserviceEngineConfig(v string) *DescribeApplicationConfigResponseBodyData {
+	s.MicroserviceEngineConfig = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetMinReadyInstanceRatio(v int32) *DescribeApplicationConfigResponseBodyData {
 	s.MinReadyInstanceRatio = &v
 	return s
@@ -19184,6 +19203,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetNasConfigs(v string) *Des
 
 func (s *DescribeApplicationConfigResponseBodyData) SetNasId(v string) *DescribeApplicationConfigResponseBodyData {
 	s.NasId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetNewSaeVersion(v string) *DescribeApplicationConfigResponseBodyData {
+	s.NewSaeVersion = &v
 	return s
 }
 
@@ -22727,6 +22751,7 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetSlbId(v string) *De
 type DescribeApplicationSlbsResponseBodyDataInternet struct {
 	Cookie        *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	CookieTimeout *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
@@ -22774,6 +22799,11 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetCookieTimeout(v int
 	return s
 }
 
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetCreateTime(v int64) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetHttpsCaCertId(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
 	s.HttpsCaCertId = &v
 	return s
@@ -22812,6 +22842,7 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetTargetPort(v int32)
 type DescribeApplicationSlbsResponseBodyDataIntranet struct {
 	Cookie        *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	CookieTimeout *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
@@ -22856,6 +22887,11 @@ func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCookie(v string) *D
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCookieTimeout(v int32) *DescribeApplicationSlbsResponseBodyDataIntranet {
 	s.CookieTimeout = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCreateTime(v int64) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.CreateTime = &v
 	return s
 }
 
@@ -36953,7 +36989,9 @@ type ListIngressesResponseBodyDataIngressList struct {
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
-	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CertIds     *string                                              `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CreateTime  *int64                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRule *ListIngressesResponseBodyDataIngressListDefaultRule `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty" type:"Struct"`
 	// The ID of the routing rule.
 	//
 	// example:
@@ -36969,7 +37007,8 @@ type ListIngressesResponseBodyDataIngressList struct {
 	// example:
 	//
 	// 18
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdleTimeout *int64 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The type of the SLB instance based on the processing capabilities. Valid values:
 	//
 	// 	- **clb**: the Classic Load Balancer (CLB) instance.
@@ -37010,7 +37049,9 @@ type ListIngressesResponseBodyDataIngressList struct {
 	// example:
 	//
 	// cn-shanghai
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceId    *string                                          `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RequestTimeout *int64                                           `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Rules          []*ListIngressesResponseBodyDataIngressListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The ID of the certificate.
 	//
 	// example:
@@ -37047,6 +37088,16 @@ func (s *ListIngressesResponseBodyDataIngressList) SetCertIds(v string) *ListIng
 	return s
 }
 
+func (s *ListIngressesResponseBodyDataIngressList) SetCreateTime(v int64) *ListIngressesResponseBodyDataIngressList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetDefaultRule(v *ListIngressesResponseBodyDataIngressListDefaultRule) *ListIngressesResponseBodyDataIngressList {
+	s.DefaultRule = v
+	return s
+}
+
 func (s *ListIngressesResponseBodyDataIngressList) SetDescription(v string) *ListIngressesResponseBodyDataIngressList {
 	s.Description = &v
 	return s
@@ -37054,6 +37105,11 @@ func (s *ListIngressesResponseBodyDataIngressList) SetDescription(v string) *Lis
 
 func (s *ListIngressesResponseBodyDataIngressList) SetId(v int64) *ListIngressesResponseBodyDataIngressList {
 	s.Id = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetIdleTimeout(v int64) *ListIngressesResponseBodyDataIngressList {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -37097,6 +37153,16 @@ func (s *ListIngressesResponseBodyDataIngressList) SetNamespaceId(v string) *Lis
 	return s
 }
 
+func (s *ListIngressesResponseBodyDataIngressList) SetRequestTimeout(v int64) *ListIngressesResponseBodyDataIngressList {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetRules(v []*ListIngressesResponseBodyDataIngressListRules) *ListIngressesResponseBodyDataIngressList {
+	s.Rules = v
+	return s
+}
+
 func (s *ListIngressesResponseBodyDataIngressList) SetSlbId(v string) *ListIngressesResponseBodyDataIngressList {
 	s.SlbId = &v
 	return s
@@ -37104,6 +37170,123 @@ func (s *ListIngressesResponseBodyDataIngressList) SetSlbId(v string) *ListIngre
 
 func (s *ListIngressesResponseBodyDataIngressList) SetSlbType(v string) *ListIngressesResponseBodyDataIngressList {
 	s.SlbType = &v
+	return s
+}
+
+type ListIngressesResponseBodyDataIngressListDefaultRule struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
+	ContainerPort   *int32  `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
+}
+
+func (s ListIngressesResponseBodyDataIngressListDefaultRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIngressesResponseBodyDataIngressListDefaultRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListIngressesResponseBodyDataIngressListDefaultRule) SetAppId(v string) *ListIngressesResponseBodyDataIngressListDefaultRule {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListDefaultRule) SetAppName(v string) *ListIngressesResponseBodyDataIngressListDefaultRule {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListDefaultRule) SetBackendProtocol(v string) *ListIngressesResponseBodyDataIngressListDefaultRule {
+	s.BackendProtocol = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListDefaultRule) SetContainerPort(v int32) *ListIngressesResponseBodyDataIngressListDefaultRule {
+	s.ContainerPort = &v
+	return s
+}
+
+type ListIngressesResponseBodyDataIngressListRules struct {
+	AppId           *string                                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string                                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BackendProtocol *string                                                     `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
+	ContainerPort   *int32                                                      `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
+	Domain          *string                                                     `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Path            *string                                                     `json:"Path,omitempty" xml:"Path,omitempty"`
+	RewritePath     *string                                                     `json:"RewritePath,omitempty" xml:"RewritePath,omitempty"`
+	RuleActions     []*ListIngressesResponseBodyDataIngressListRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+}
+
+func (s ListIngressesResponseBodyDataIngressListRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIngressesResponseBodyDataIngressListRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetAppId(v string) *ListIngressesResponseBodyDataIngressListRules {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetAppName(v string) *ListIngressesResponseBodyDataIngressListRules {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetBackendProtocol(v string) *ListIngressesResponseBodyDataIngressListRules {
+	s.BackendProtocol = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetContainerPort(v int32) *ListIngressesResponseBodyDataIngressListRules {
+	s.ContainerPort = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetDomain(v string) *ListIngressesResponseBodyDataIngressListRules {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetPath(v string) *ListIngressesResponseBodyDataIngressListRules {
+	s.Path = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetRewritePath(v string) *ListIngressesResponseBodyDataIngressListRules {
+	s.RewritePath = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRules) SetRuleActions(v []*ListIngressesResponseBodyDataIngressListRulesRuleActions) *ListIngressesResponseBodyDataIngressListRules {
+	s.RuleActions = v
+	return s
+}
+
+type ListIngressesResponseBodyDataIngressListRulesRuleActions struct {
+	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
+	ActionType   *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+}
+
+func (s ListIngressesResponseBodyDataIngressListRulesRuleActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIngressesResponseBodyDataIngressListRulesRuleActions) GoString() string {
+	return s.String()
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRulesRuleActions) SetActionConfig(v string) *ListIngressesResponseBodyDataIngressListRulesRuleActions {
+	s.ActionConfig = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListRulesRuleActions) SetActionType(v string) *ListIngressesResponseBodyDataIngressListRulesRuleActions {
+	s.ActionType = &v
 	return s
 }
 
