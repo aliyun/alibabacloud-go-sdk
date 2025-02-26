@@ -6821,6 +6821,1003 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
+type ListInstancesEcsInfoListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ip
+	InfoType *string `json:"info_type,omitempty" xml:"info_type,omitempty"`
+	// example:
+	//
+	// i-bp118piqcio9tiwgh84b
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// example:
+	//
+	// managed
+	ManagedType *string `json:"managed_type,omitempty" xml:"managed_type,omitempty"`
+	// example:
+	//
+	// 74a86327-3170-412c-8e67-da3389ec56a9
+	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+}
+
+func (s ListInstancesEcsInfoListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesEcsInfoListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesEcsInfoListRequest) SetInfoType(v string) *ListInstancesEcsInfoListRequest {
+	s.InfoType = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListRequest) SetInstanceId(v string) *ListInstancesEcsInfoListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListRequest) SetManagedType(v string) *ListInstancesEcsInfoListRequest {
+	s.ManagedType = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListRequest) SetPluginId(v string) *ListInstancesEcsInfoListRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListRequest) SetRegion(v string) *ListInstancesEcsInfoListRequest {
+	s.Region = &v
+	return s
+}
+
+type ListInstancesEcsInfoListResponseBody struct {
+	// example:
+	//
+	// SysomOpenAPI.InvalidParameter
+	Code *string                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*ListInstancesEcsInfoListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s ListInstancesEcsInfoListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesEcsInfoListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesEcsInfoListResponseBody) SetCode(v string) *ListInstancesEcsInfoListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListResponseBody) SetData(v []*ListInstancesEcsInfoListResponseBodyData) *ListInstancesEcsInfoListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListResponseBody) SetMessage(v string) *ListInstancesEcsInfoListResponseBody {
+	s.Message = &v
+	return s
+}
+
+type ListInstancesEcsInfoListResponseBodyData struct {
+	// example:
+	//
+	// 11.193.52.91
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// example:
+	//
+	// sysom
+	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
+	// example:
+	//
+	// diagnosis
+	TagValue *string `json:"tag_value,omitempty" xml:"tag_value,omitempty"`
+	// example:
+	//
+	// public
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListInstancesEcsInfoListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesEcsInfoListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesEcsInfoListResponseBodyData) SetIp(v string) *ListInstancesEcsInfoListResponseBodyData {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListResponseBodyData) SetTagKey(v string) *ListInstancesEcsInfoListResponseBodyData {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListResponseBodyData) SetTagValue(v string) *ListInstancesEcsInfoListResponseBodyData {
+	s.TagValue = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListResponseBodyData) SetType(v string) *ListInstancesEcsInfoListResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type ListInstancesEcsInfoListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesEcsInfoListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstancesEcsInfoListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesEcsInfoListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesEcsInfoListResponse) SetHeaders(v map[string]*string) *ListInstancesEcsInfoListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListResponse) SetStatusCode(v int32) *ListInstancesEcsInfoListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListResponse) SetBody(v *ListInstancesEcsInfoListResponseBody) *ListInstancesEcsInfoListResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstancesWithEcsInfoRequest struct {
+	// example:
+	//
+	// 1
+	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
+	// example:
+	//
+	// healthy
+	HealthStatus *string `json:"health_status,omitempty" xml:"health_status,omitempty"`
+	// example:
+	//
+	// i-bp118piqcio9tiwgh84b
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// example:
+	//
+	// 84b
+	InstanceIdName *string `json:"instance_id_name,omitempty" xml:"instance_id_name,omitempty"`
+	// example:
+	//
+	// block-load-balancer-hjdm9
+	InstanceName *string                                     `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	InstanceTag  *ListInstancesWithEcsInfoRequestInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	IsManaged *int32 `json:"is_managed,omitempty" xml:"is_managed,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud Linux  3.2104 LTS 64bit
+	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// rg-xxxxxxx
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// example:
+	//
+	// default
+	ResourceGroupIdName *string `json:"resource_group_id_name,omitempty" xml:"resource_group_id_name,omitempty"`
+	// example:
+	//
+	// default resource group
+	ResourceGroupName *string `json:"resource_group_name,omitempty" xml:"resource_group_name,omitempty"`
+}
+
+func (s ListInstancesWithEcsInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesWithEcsInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetCurrent(v int32) *ListInstancesWithEcsInfoRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetHealthStatus(v string) *ListInstancesWithEcsInfoRequest {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetInstanceId(v string) *ListInstancesWithEcsInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetInstanceIdName(v string) *ListInstancesWithEcsInfoRequest {
+	s.InstanceIdName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetInstanceName(v string) *ListInstancesWithEcsInfoRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetInstanceTag(v *ListInstancesWithEcsInfoRequestInstanceTag) *ListInstancesWithEcsInfoRequest {
+	s.InstanceTag = v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetIsManaged(v int32) *ListInstancesWithEcsInfoRequest {
+	s.IsManaged = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetOsName(v string) *ListInstancesWithEcsInfoRequest {
+	s.OsName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetPageSize(v int32) *ListInstancesWithEcsInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetPrivateIp(v string) *ListInstancesWithEcsInfoRequest {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetPublicIp(v string) *ListInstancesWithEcsInfoRequest {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetRegion(v string) *ListInstancesWithEcsInfoRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetResourceGroupId(v string) *ListInstancesWithEcsInfoRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetResourceGroupIdName(v string) *ListInstancesWithEcsInfoRequest {
+	s.ResourceGroupIdName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetResourceGroupName(v string) *ListInstancesWithEcsInfoRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type ListInstancesWithEcsInfoRequestInstanceTag struct {
+	// example:
+	//
+	// feature_dim_radar_chart
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListInstancesWithEcsInfoRequestInstanceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesWithEcsInfoRequestInstanceTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoRequestInstanceTag) SetKey(v string) *ListInstancesWithEcsInfoRequestInstanceTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequestInstanceTag) SetValue(v string) *ListInstancesWithEcsInfoRequestInstanceTag {
+	s.Value = &v
+	return s
+}
+
+type ListInstancesWithEcsInfoShrinkRequest struct {
+	// example:
+	//
+	// 1
+	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
+	// example:
+	//
+	// healthy
+	HealthStatus *string `json:"health_status,omitempty" xml:"health_status,omitempty"`
+	// example:
+	//
+	// i-bp118piqcio9tiwgh84b
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// example:
+	//
+	// 84b
+	InstanceIdName *string `json:"instance_id_name,omitempty" xml:"instance_id_name,omitempty"`
+	// example:
+	//
+	// block-load-balancer-hjdm9
+	InstanceName      *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	InstanceTagShrink *string `json:"instance_tag,omitempty" xml:"instance_tag,omitempty"`
+	// example:
+	//
+	// 1
+	IsManaged *int32 `json:"is_managed,omitempty" xml:"is_managed,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud Linux  3.2104 LTS 64bit
+	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// rg-xxxxxxx
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// example:
+	//
+	// default
+	ResourceGroupIdName *string `json:"resource_group_id_name,omitempty" xml:"resource_group_id_name,omitempty"`
+	// example:
+	//
+	// default resource group
+	ResourceGroupName *string `json:"resource_group_name,omitempty" xml:"resource_group_name,omitempty"`
+}
+
+func (s ListInstancesWithEcsInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesWithEcsInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetCurrent(v int32) *ListInstancesWithEcsInfoShrinkRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetHealthStatus(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetInstanceId(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetInstanceIdName(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.InstanceIdName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetInstanceName(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetInstanceTagShrink(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.InstanceTagShrink = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetIsManaged(v int32) *ListInstancesWithEcsInfoShrinkRequest {
+	s.IsManaged = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetOsName(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.OsName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetPageSize(v int32) *ListInstancesWithEcsInfoShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetPrivateIp(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetPublicIp(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetRegion(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetResourceGroupId(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetResourceGroupIdName(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.ResourceGroupIdName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoShrinkRequest) SetResourceGroupName(v string) *ListInstancesWithEcsInfoShrinkRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type ListInstancesWithEcsInfoResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*ListInstancesWithEcsInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// result: code=1 msg=(Request failed, status_code != 200)
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// example:
+	//
+	// 319
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListInstancesWithEcsInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesWithEcsInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoResponseBody) SetCode(v string) *ListInstancesWithEcsInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBody) SetData(v []*ListInstancesWithEcsInfoResponseBodyData) *ListInstancesWithEcsInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBody) SetMessage(v string) *ListInstancesWithEcsInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBody) SetRequestId(v string) *ListInstancesWithEcsInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBody) SetTotal(v int64) *ListInstancesWithEcsInfoResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListInstancesWithEcsInfoResponseBodyData struct {
+	// example:
+	//
+	// cbf7a37bc905d4682a3338b3744810269
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// i-bp118piqcio9tiwgh84b
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// example:
+	//
+	// allowed-repos-r2tzl
+	InstanceName *string                                                `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	InstanceTag  []*ListInstancesWithEcsInfoResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// x86
+	OsArch *string `json:"os_arch,omitempty" xml:"os_arch,omitempty"`
+	// example:
+	//
+	// 100
+	OsHealthScore *string `json:"os_health_score,omitempty" xml:"os_health_score,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud Linux  3.2104 LTS 64bit
+	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
+	// example:
+	//
+	// rg-xxxxxx
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// example:
+	//
+	// default resource group
+	ResourceGroupName *string `json:"resource_group_name,omitempty" xml:"resource_group_name,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListInstancesWithEcsInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesWithEcsInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetClusterId(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetInstanceId(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetInstanceName(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetInstanceTag(v []*ListInstancesWithEcsInfoResponseBodyDataInstanceTag) *ListInstancesWithEcsInfoResponseBodyData {
+	s.InstanceTag = v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetOsArch(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.OsArch = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetOsHealthScore(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.OsHealthScore = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetOsName(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.OsName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetPrivateIp(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetPublicIp(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetResourceGroupId(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetResourceGroupName(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyData) SetStatus(v string) *ListInstancesWithEcsInfoResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListInstancesWithEcsInfoResponseBodyDataInstanceTag struct {
+	// example:
+	//
+	// test_tag_key
+	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
+	// example:
+	//
+	// test_tag_value
+	TagValue *string `json:"tag_value,omitempty" xml:"tag_value,omitempty"`
+}
+
+func (s ListInstancesWithEcsInfoResponseBodyDataInstanceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesWithEcsInfoResponseBodyDataInstanceTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyDataInstanceTag) SetTagKey(v string) *ListInstancesWithEcsInfoResponseBodyDataInstanceTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponseBodyDataInstanceTag) SetTagValue(v string) *ListInstancesWithEcsInfoResponseBodyDataInstanceTag {
+	s.TagValue = &v
+	return s
+}
+
+type ListInstancesWithEcsInfoResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesWithEcsInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstancesWithEcsInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesWithEcsInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoResponse) SetHeaders(v map[string]*string) *ListInstancesWithEcsInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponse) SetStatusCode(v int32) *ListInstancesWithEcsInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoResponse) SetBody(v *ListInstancesWithEcsInfoResponseBody) *ListInstancesWithEcsInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ListPluginsInstancesRequest struct {
+	// example:
+	//
+	// 5
+	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// example:
+	//
+	// i-bpxx
+	InstanceIdName *string `json:"instance_id_name,omitempty" xml:"instance_id_name,omitempty"`
+	// example:
+	//
+	// {"key":"app","value":"sysom-aliyun-com"}
+	InstanceTag *string `json:"instance_tag,omitempty" xml:"instance_tag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// install
+	OperationType *string `json:"operation_type,omitempty" xml:"operation_type,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 74a86327-3170-412c-8e67-da3389ec56a9
+	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+}
+
+func (s ListPluginsInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsInstancesRequest) SetCurrent(v int64) *ListPluginsInstancesRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *ListPluginsInstancesRequest) SetInstanceIdName(v string) *ListPluginsInstancesRequest {
+	s.InstanceIdName = &v
+	return s
+}
+
+func (s *ListPluginsInstancesRequest) SetInstanceTag(v string) *ListPluginsInstancesRequest {
+	s.InstanceTag = &v
+	return s
+}
+
+func (s *ListPluginsInstancesRequest) SetOperationType(v string) *ListPluginsInstancesRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ListPluginsInstancesRequest) SetPageSize(v int64) *ListPluginsInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPluginsInstancesRequest) SetPluginId(v string) *ListPluginsInstancesRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *ListPluginsInstancesRequest) SetRegion(v string) *ListPluginsInstancesRequest {
+	s.Region = &v
+	return s
+}
+
+type ListPluginsInstancesResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*ListPluginsInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// example:
+	//
+	// 42
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListPluginsInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsInstancesResponseBody) SetCode(v string) *ListPluginsInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBody) SetData(v []*ListPluginsInstancesResponseBodyData) *ListPluginsInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBody) SetMessage(v string) *ListPluginsInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBody) SetRequestId(v string) *ListPluginsInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBody) SetTotal(v int64) *ListPluginsInstancesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListPluginsInstancesResponseBodyData struct {
+	// example:
+	//
+	// i-bp118piqcio9tiwgh84b
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// example:
+	//
+	// allowed-repos-qmf8w
+	InstanceName *string                                            `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	InstanceTag  []*ListPluginsInstancesResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Alibaba Cloud Linux  3.2104 LTS 64 bit
+	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// example:
+	//
+	// default resource group
+	ResourceGroupName *string `json:"resource_group_name,omitempty" xml:"resource_group_name,omitempty"`
+}
+
+func (s ListPluginsInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetInstanceId(v string) *ListPluginsInstancesResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetInstanceName(v string) *ListPluginsInstancesResponseBodyData {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetInstanceTag(v []*ListPluginsInstancesResponseBodyDataInstanceTag) *ListPluginsInstancesResponseBodyData {
+	s.InstanceTag = v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetOsName(v string) *ListPluginsInstancesResponseBodyData {
+	s.OsName = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetPrivateIp(v string) *ListPluginsInstancesResponseBodyData {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetPublicIp(v string) *ListPluginsInstancesResponseBodyData {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetRegion(v string) *ListPluginsInstancesResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetResourceGroupId(v string) *ListPluginsInstancesResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyData) SetResourceGroupName(v string) *ListPluginsInstancesResponseBodyData {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type ListPluginsInstancesResponseBodyDataInstanceTag struct {
+	// example:
+	//
+	// test_tag_key
+	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
+	// example:
+	//
+	// test_tag_value
+	TagValue *string `json:"tag_value,omitempty" xml:"tag_value,omitempty"`
+}
+
+func (s ListPluginsInstancesResponseBodyDataInstanceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsInstancesResponseBodyDataInstanceTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsInstancesResponseBodyDataInstanceTag) SetTagKey(v string) *ListPluginsInstancesResponseBodyDataInstanceTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponseBodyDataInstanceTag) SetTagValue(v string) *ListPluginsInstancesResponseBodyDataInstanceTag {
+	s.TagValue = &v
+	return s
+}
+
+type ListPluginsInstancesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPluginsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPluginsInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsInstancesResponse) SetHeaders(v map[string]*string) *ListPluginsInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPluginsInstancesResponse) SetStatusCode(v int32) *ListPluginsInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPluginsInstancesResponse) SetBody(v *ListPluginsInstancesResponseBody) *ListPluginsInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListPodsOfInstanceRequest struct {
 	// example:
 	//
@@ -7057,6 +8054,7 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type StartAIAnalysisRequest struct {
+	AnalysisTool *string `json:"analysisTool,omitempty" xml:"analysisTool,omitempty"`
 	// example:
 	//
 	// ecs_sysom
@@ -7089,6 +8087,11 @@ func (s StartAIAnalysisRequest) String() string {
 
 func (s StartAIAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartAIAnalysisRequest) SetAnalysisTool(v string) *StartAIAnalysisRequest {
+	s.AnalysisTool = &v
+	return s
 }
 
 func (s *StartAIAnalysisRequest) SetChannel(v string) *StartAIAnalysisRequest {
@@ -11515,6 +12518,333 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
+// 获取ecs信息的列表，如标签列表，公网ip列表等
+//
+// @param request - ListInstancesEcsInfoListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesEcsInfoListResponse
+func (client *Client) ListInstancesEcsInfoListWithOptions(request *ListInstancesEcsInfoListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesEcsInfoListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InfoType)) {
+		query["info_type"] = request.InfoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instance_id"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagedType)) {
+		query["managed_type"] = request.ManagedType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["plugin_id"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstancesEcsInfoList"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/am/instance/listInstancesEcsInfoList"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesEcsInfoListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesEcsInfoListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取ecs信息的列表，如标签列表，公网ip列表等
+//
+// @param request - ListInstancesEcsInfoListRequest
+//
+// @return ListInstancesEcsInfoListResponse
+func (client *Client) ListInstancesEcsInfoList(request *ListInstancesEcsInfoListRequest) (_result *ListInstancesEcsInfoListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstancesEcsInfoListResponse{}
+	_body, _err := client.ListInstancesEcsInfoListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取已纳管/未纳管实例信息，信息中包含ECS信息
+//
+// @param tmpReq - ListInstancesWithEcsInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesWithEcsInfoResponse
+func (client *Client) ListInstancesWithEcsInfoWithOptions(tmpReq *ListInstancesWithEcsInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesWithEcsInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListInstancesWithEcsInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceTag)) {
+		request.InstanceTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceTag, tea.String("instance_tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Current)) {
+		query["current"] = request.Current
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthStatus)) {
+		query["health_status"] = request.HealthStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instance_id"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdName)) {
+		query["instance_id_name"] = request.InstanceIdName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["instance_name"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceTagShrink)) {
+		query["instance_tag"] = request.InstanceTagShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsManaged)) {
+		query["is_managed"] = request.IsManaged
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OsName)) {
+		query["os_name"] = request.OsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIp)) {
+		query["private_ip"] = request.PrivateIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIp)) {
+		query["public_ip"] = request.PublicIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resource_group_id"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdName)) {
+		query["resource_group_id_name"] = request.ResourceGroupIdName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["resource_group_name"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstancesWithEcsInfo"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/am/instance/listInstancesWithEcsInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesWithEcsInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesWithEcsInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取已纳管/未纳管实例信息，信息中包含ECS信息
+//
+// @param request - ListInstancesWithEcsInfoRequest
+//
+// @return ListInstancesWithEcsInfoResponse
+func (client *Client) ListInstancesWithEcsInfo(request *ListInstancesWithEcsInfoRequest) (_result *ListInstancesWithEcsInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstancesWithEcsInfoResponse{}
+	_body, _err := client.ListInstancesWithEcsInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取插件的安装/更新/卸载实例列表
+//
+// @param request - ListPluginsInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPluginsInstancesResponse
+func (client *Client) ListPluginsInstancesWithOptions(request *ListPluginsInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPluginsInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Current)) {
+		query["current"] = request.Current
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdName)) {
+		query["instance_id_name"] = request.InstanceIdName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceTag)) {
+		query["instance_tag"] = request.InstanceTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["operation_type"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["plugin_id"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPluginsInstances"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/am/agent/listPluginsInstances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPluginsInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPluginsInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取插件的安装/更新/卸载实例列表
+//
+// @param request - ListPluginsInstancesRequest
+//
+// @return ListPluginsInstancesResponse
+func (client *Client) ListPluginsInstances(request *ListPluginsInstancesRequest) (_result *ListPluginsInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPluginsInstancesResponse{}
+	_body, _err := client.ListPluginsInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取实例中的pod列表
 //
 // @param request - ListPodsOfInstanceRequest
@@ -11678,6 +13008,10 @@ func (client *Client) StartAIAnalysisWithOptions(request *StartAIAnalysisRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnalysisTool)) {
+		body["analysisTool"] = request.AnalysisTool
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Channel)) {
 		body["channel"] = request.Channel
 	}
