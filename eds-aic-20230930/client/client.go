@@ -55,7 +55,10 @@ func (s *DataImageRegionDistributeMapValue) SetProgress(v string) *DataImageRegi
 }
 
 type AttachKeyPairRequest struct {
+	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the ADB key pair.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -83,7 +86,10 @@ func (s *AttachKeyPairRequest) SetKeyPairId(v string) *AttachKeyPairRequest {
 }
 
 type AttachKeyPairResponseBody struct {
+	// The object that is returned.
 	Data *AttachKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
@@ -109,15 +115,22 @@ func (s *AttachKeyPairResponseBody) SetRequestId(v string) *AttachKeyPairRespons
 }
 
 type AttachKeyPairResponseBodyData struct {
+	// The IDs of the cloud phone instances to which the ADB key pair is successfully attached.
 	AttachedInstanceIds []*string `json:"AttachedInstanceIds,omitempty" xml:"AttachedInstanceIds,omitempty" type:"Repeated"`
+	// The number of the cloud phone instances to which the ADB key pair failed to be attached.
+	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// The ID of the ADB key pair.
+	//
 	// example:
 	//
 	// kp-6v2q33ae4tw3a****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The total number of the cloud phone instances.
+	//
 	// example:
 	//
 	// 100
@@ -518,16 +531,22 @@ func (s *BackupFileResponse) SetBody(v *BackupFileResponseBody) *BackupFileRespo
 }
 
 type BatchGetAcpConnectionTicketRequest struct {
+	// The ID of the user to whom the cloud phone instance is assigned.
+	//
 	// example:
 	//
 	// user
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The ID of the instance group.
+	//
 	// example:
 	//
 	// ag-25nt4kk9whjh****
-	InstanceGroupId *string                                            `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	InstanceIds     []*string                                          `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	InstanceTasks   []*BatchGetAcpConnectionTicketRequestInstanceTasks `json:"InstanceTasks,omitempty" xml:"InstanceTasks,omitempty" type:"Repeated"`
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// The IDs of the cloud phone instances. You can specify 1 to 100 IDs of cloud phone instances.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The instance connection tasks.
+	InstanceTasks []*BatchGetAcpConnectionTicketRequestInstanceTasks `json:"InstanceTasks,omitempty" xml:"InstanceTasks,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetAcpConnectionTicketRequest) String() string {
@@ -559,10 +578,14 @@ func (s *BatchGetAcpConnectionTicketRequest) SetInstanceTasks(v []*BatchGetAcpCo
 }
 
 type BatchGetAcpConnectionTicketRequestInstanceTasks struct {
+	// The ID of the cloud phone instance.
+	//
 	// example:
 	//
 	// acp-fkuit0cmyfvzz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// cn-hangzhou@c9f5c2e8-f5c4-4b01-8602-000cae94****
@@ -588,8 +611,9 @@ func (s *BatchGetAcpConnectionTicketRequestInstanceTasks) SetTaskId(v string) *B
 }
 
 type BatchGetAcpConnectionTicketResponseBody struct {
+	// The results of the instance connection tasks.
 	InstanceConnectionModels []*BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels `json:"InstanceConnectionModels,omitempty" xml:"InstanceConnectionModels,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -616,22 +640,32 @@ func (s *BatchGetAcpConnectionTicketResponseBody) SetRequestId(v string) *BatchG
 }
 
 type BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels struct {
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-1uzb6heg797z3****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the cloud phone instance.
+	//
 	// example:
 	//
 	// acp-ajxvwo1u0hqvd****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// cn-hangzhou@c9f5c2e8-f5c4-4b01-8602-000cae94****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The state of the task.
+	//
 	// example:
 	//
 	// FINISHED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The ticket used to connect to the cloud phone instance.
+	//
 	// example:
 	//
 	// piVE58_AdmVSVW7SEW3*AE5*p8mmO5gvItsNOmv4S_f_cNpoU_BOTwChTBoNM1ZJeedfK9zxYnbN5hossqIZCr6t7SGxRigm2Cb4fGaCdBZWIzmgdHq6sXXZQg4KFWufyvpeV*0*Cm58slMT1tJw3****
@@ -2024,19 +2058,6 @@ func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGrou
 }
 
 type CreatePolicyGroupRequestNetRedirectPolicy struct {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	CustomProxy   *string                                           `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	HostAddr      *string                                           `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
-	NetRedirect   *string                                           `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	Port          *string                                           `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProxyPassword *string                                           `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	ProxyType     *string                                           `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	ProxyUserName *string                                           `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
-	Rules         []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-=======
-=======
->>>>>>> Stashed changes
 	// Specifies whether to manually configure a custom proxy.
 	//
 	// Valid values:
@@ -2097,10 +2118,6 @@ type CreatePolicyGroupRequestNetRedirectPolicy struct {
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	// The proxy rules. You can create up to 100 proxy rules.
 	Rules []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 func (s CreatePolicyGroupRequestNetRedirectPolicy) String() string {
@@ -2152,13 +2169,6 @@ func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetRules(v []*CreatePolicyGr
 }
 
 type CreatePolicyGroupRequestNetRedirectPolicyRules struct {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-=======
-=======
->>>>>>> Stashed changes
 	// The type of the rule.
 	//
 	// Valid values:
@@ -2177,10 +2187,6 @@ type CreatePolicyGroupRequestNetRedirectPolicyRules struct {
 	//
 	// *.example.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 func (s CreatePolicyGroupRequestNetRedirectPolicyRules) String() string {
@@ -2408,12 +2414,18 @@ func (s *CreatePolicyGroupResponse) SetBody(v *CreatePolicyGroupResponseBody) *C
 }
 
 type CreateScreenshotRequest struct {
+	// The IDs of the cloud phone instances. You can create multiple snapshots simultaneously.
+	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	// The name of the OSS bucket. The name must start with "cloudphone-saved-bucket-". The OSS bucket and the cloud phone instance must be in the same region. If you leave this parameter empty, the system will create a default OSS bucket named “cloudphone-saved-bucket-{Region of the cloud phone instance}-{AliUid}.”
+	//
 	// example:
 	//
 	// cloudphone-saved-bucket-cn-shanghai-default
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// Specifies whether to bypass the snapshot policy control. Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -2444,11 +2456,14 @@ func (s *CreateScreenshotRequest) SetSkipCheckPolicyConfig(v string) *CreateScre
 }
 
 type CreateScreenshotResponseBody struct {
+	// The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
+	//
 	// example:
 	//
 	// 3AF82CE1-2801-52CE-BF64-B491DD7C****
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*CreateScreenshotResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks []*CreateScreenshotResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s CreateScreenshotResponseBody) String() string {
@@ -2470,10 +2485,14 @@ func (s *CreateScreenshotResponseBody) SetTasks(v []*CreateScreenshotResponseBod
 }
 
 type CreateScreenshotResponseBodyTasks struct {
+	// The ID of the cloud phone instance.
+	//
 	// example:
 	//
 	// acp-bwhtebzah2fse****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The ID of the task. You can use the task ID with the DescribeTasks operation to get the download link for the screenshot.
+	//
 	// example:
 	//
 	// t-imr0fufqd7cle****
@@ -3558,18 +3577,8 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-=======
 	// The ID of the node.
 	//
->>>>>>> Stashed changes
-=======
-	// The ID of the node.
-	//
->>>>>>> Stashed changes
 	// example:
 	//
 	// node_id
@@ -3961,15 +3970,6 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// cn-hangzhou
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	RegionId      *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RenderingType *string                                                  `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
-	SessionStatus *string                                                  `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	Tags          []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-=======
-=======
->>>>>>> Stashed changes
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The rendering type.
 	//
@@ -3989,10 +3989,6 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 	// The tags.
 	Tags []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModel) String() string {
@@ -5107,14 +5103,6 @@ type DescribeImageListRequest struct {
 	// example:
 	//
 	// imgc-075cllfeuazh0****
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	ImageId          *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName        *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImagePackageType *string `json:"ImagePackageType,omitempty" xml:"ImagePackageType,omitempty"`
-=======
-=======
->>>>>>> Stashed changes
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The name of the image.
 	//
@@ -5136,10 +5124,6 @@ type DescribeImageListRequest struct {
 	//
 	// 	- System: system images.
 	//
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	// This parameter is required.
 	//
 	// example:
@@ -5488,8 +5472,12 @@ func (s *DescribeImageListResponse) SetBody(v *DescribeImageListResponseBody) *D
 }
 
 type DescribeInvocationsRequest struct {
+	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the execution. You can retrieve the output of a command once by using either the execution ID or the cloud phone instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5517,11 +5505,16 @@ func (s *DescribeInvocationsRequest) SetInvocationId(v string) *DescribeInvocati
 }
 
 type DescribeInvocationsResponseBody struct {
+	// The objects that are returned.
 	Data []*DescribeInvocationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 440D7342-5E7C-B2DB-D0B4EAC2BDF1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -5552,26 +5545,50 @@ func (s *DescribeInvocationsResponseBody) SetTotalCount(v string) *DescribeInvoc
 }
 
 type DescribeInvocationsResponseBodyData struct {
+	// The end time of the command execution.
+	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the cloud phone instance on which the command is executed.
+	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the execution.
+	//
 	// example:
 	//
 	// t-15775dc8****
 	InvocationId *string `json:"InvocationId,omitempty" xml:"InvocationId,omitempty"`
+	// The execution state of the command.
+	//
+	// Valid values:
+	//
+	// 	- SUCCESS: The command is successfully executed.
+	//
+	// 	- FAILED: The command failed to be executed.
+	//
+	// 	- RUNNING: The command is being executed.
+	//
+	// 	- PENDING: The command is pending execution.
+	//
+	// 	- TIMEOUT: The command execution timed out.
+	//
 	// example:
 	//
 	// RUNNING
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// The output of the command execution.
+	//
 	// example:
 	//
 	// success
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The start time of the command execution.
+	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
@@ -5932,16 +5949,8 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 type DescribeSpecRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	MatrixSpec  *string `json:"MatrixSpec,omitempty" xml:"MatrixSpec,omitempty"`
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 	// The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
 	//
->>>>>>> Stashed changes
-=======
-	// The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
-	//
->>>>>>> Stashed changes
 	// example:
 	//
 	// 20
@@ -5951,24 +5960,12 @@ type DescribeSpecRequest struct {
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	SaleMode  *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	SpecIds   []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
-=======
-=======
->>>>>>> Stashed changes
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	// List of specification IDs.
 	SpecIds []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
 	// Specification status.
 	//
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	// example:
 	//
 	// Available
@@ -6095,16 +6092,8 @@ type DescribeSpecResponseBodySpecInfoModel struct {
 	Memory     *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	PhoneCount *string `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 	// Specification ID.
 	//
->>>>>>> Stashed changes
-=======
-	// Specification ID.
-	//
->>>>>>> Stashed changes
 	// example:
 	//
 	// acp.basic.small
@@ -6207,34 +6196,121 @@ func (s *DescribeSpecResponse) SetBody(v *DescribeSpecResponseBody) *DescribeSpe
 }
 
 type DescribeTasksRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the cloud phone instance.
+	//
+	// example:
+	//
+	// acp-2zecay9ponatdc4m****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the cloud phone instance.
+	//
+	// example:
+	//
+	// defaultInstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the command execution. You can set the value to the last returned request ID.
+	//
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	Level    *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The level of the task. A value of 1 specifies a batch task. A value of 2 specifies an instance-level task.
+	//
+	// example:
+	//
+	// 1
+	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	//
 	// example:
 	//
 	// FFbc8N4E1iOlcSxC+8boa0HHH2LKWbggYUinyrZWvtS1oTrMYCg1HuMLGuftj0****
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Param        *string   `json:"Param,omitempty" xml:"Param,omitempty"`
-	ParentTaskId *string   `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	TaskIds      []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The extension field.
+	//
+	// example:
+	//
+	// param
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The ID of the parent task.
+	//
+	// example:
+	//
+	// t-iaej5dkbnmivx****
+	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	// The IDs of the resources.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The IDs of the tasks.
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The state of the task.
+	//
+	// Valid values:
+	//
+	// 	- PartFinished: The task is partially successful.
+	//
+	// 	- Finished: The task is completed.
+	//
+	// 	- Failed: The task failed.
+	//
+	// 	- Skipped: The task is skipped.
+	//
+	// 	- Processing: The task is running.
+	//
+	// 	- Waiting: The task is in queue.
+	//
 	// example:
 	//
 	// Processing
-	TaskStatus   *string   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The status of the tasks.
 	TaskStatuses []*string `json:"TaskStatuses,omitempty" xml:"TaskStatuses,omitempty" type:"Repeated"`
+	// The type of the task.
+	//
+	// Valid values:
+	//
+	// 	- BackupFile: backs up files.
+	//
+	// 	- StopInstance: stops cloud phone instances.
+	//
+	// 	- RebootInstance: restarts cloud phone instances.
+	//
+	// 	- StartApp: starts apps.
+	//
+	// 	- SendFile: uploads files.
+	//
+	// 	- RunCommand: sends remote command.
+	//
+	// 	- RestartApp: restarts apps.
+	//
+	// 	- ResetInstance: resets cloud phone instances.
+	//
+	// 	- RecoverFile: recovers files.
+	//
+	// 	- UninstallApp: uninstalls apps.
+	//
+	// 	- StopApp: stops apps.
+	//
+	// 	- Screenshot: takes screenshots.
+	//
+	// 	- InstallApp: installs apps.
+	//
+	// 	- FetchFile: downloads files.
+	//
+	// 	- UpdateGroupImage: replaces images.
+	//
+	// 	- StartInstance: starts instances.
+	//
 	// example:
 	//
 	// StartInstance
-	TaskType  *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The types of the tasks.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
@@ -6317,15 +6393,22 @@ func (s *DescribeTasksRequest) SetTaskTypes(v []*string) *DescribeTasksRequest {
 }
 
 type DescribeTasksResponseBody struct {
+	// The objects that are returned.
 	Data []*DescribeTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -6361,52 +6444,138 @@ func (s *DescribeTasksResponseBody) SetTotalCount(v int32) *DescribeTasksRespons
 }
 
 type DescribeTasksResponseBodyData struct {
-	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg         *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	FailedChildCount *int32  `json:"FailedChildCount,omitempty" xml:"FailedChildCount,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// SendFileFailed
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// connect error.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The total number of failed subtasks.
+	//
+	// example:
+	//
+	// 2
+	FailedChildCount *int32 `json:"FailedChildCount,omitempty" xml:"FailedChildCount,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
-	FinishTime     *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the cloud phone instance.
+	//
+	// example:
+	//
+	// acp-uto81vfd8t8z****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the cloud phone instance.
+	//
+	// example:
+	//
+	// defaultInstanceName
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The state of the cloud phone instance.
+	//
+	// example:
+	//
+	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The ID of the command execution.
+	//
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
-	InvokeId     *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	Level        *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
-	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Param        *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The level of the task.
+	//
+	// example:
+	//
+	// 1
+	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The operator.
+	//
+	// example:
+	//
+	// test
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The parameters of the task.
+	//
+	// example:
+	//
+	// param
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The ID of the parent task.
+	//
+	// example:
+	//
+	// t-41oan3tza16vs****
 	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	//
 	// example:
 	//
 	// acp-25nt4kk9whhok****
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Result            *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	RunningChildCount *int32  `json:"RunningChildCount,omitempty" xml:"RunningChildCount,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The execution result of the task.
+	//
+	// example:
+	//
+	// {\\"Success\\": True}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The total number of the subtasks that are running.
+	//
+	// example:
+	//
+	// 0
+	RunningChildCount *int32 `json:"RunningChildCount,omitempty" xml:"RunningChildCount,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
-	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SuccessChildCount *int32  `json:"SuccessChildCount,omitempty" xml:"SuccessChildCount,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total number of successfully executed subtasks.
+	//
+	// example:
+	//
+	// 98
+	SuccessChildCount *int32 `json:"SuccessChildCount,omitempty" xml:"SuccessChildCount,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// t-bp67acfmxazb4p****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The state of the task.
+	//
 	// example:
 	//
 	// Processing
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// StartInstance
-	TaskType        *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TotalChildCount *int32  `json:"TotalChildCount,omitempty" xml:"TotalChildCount,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of subtasks of the current batch task.
+	//
+	// example:
+	//
+	// 100
+	TotalChildCount *int32 `json:"TotalChildCount,omitempty" xml:"TotalChildCount,omitempty"`
 }
 
 func (s DescribeTasksResponseBodyData) String() string {
@@ -6557,7 +6726,10 @@ func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeT
 }
 
 type DetachKeyPairRequest struct {
+	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the ADB key pair.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6585,7 +6757,10 @@ func (s *DetachKeyPairRequest) SetKeyPairId(v string) *DetachKeyPairRequest {
 }
 
 type DetachKeyPairResponseBody struct {
+	// The object that is returned.
 	Data *DetachKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
@@ -6611,15 +6786,22 @@ func (s *DetachKeyPairResponseBody) SetRequestId(v string) *DetachKeyPairRespons
 }
 
 type DetachKeyPairResponseBodyData struct {
+	// The IDs of the cloud phone instances from which the ADB key pair is successfully detached.
 	DetachedInstanceIds []*string `json:"DetachedInstanceIds,omitempty" xml:"DetachedInstanceIds,omitempty" type:"Repeated"`
+	// The number of the cloud phone instances from which the ADB key pair failed to be detached.
+	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// The ID of the ADB key pair.
+	//
 	// example:
 	//
 	// kp-6v2q33ae4tw3a****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The total number of the cloud phone instances.
+	//
 	// example:
 	//
 	// 10
@@ -6683,9 +6865,80 @@ func (s *DetachKeyPairResponse) SetBody(v *DetachKeyPairResponseBody) *DetachKey
 	return s
 }
 
+type DisconnectAndroidInstanceRequest struct {
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s DisconnectAndroidInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisconnectAndroidInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisconnectAndroidInstanceRequest) SetInstanceIds(v []*string) *DisconnectAndroidInstanceRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type DisconnectAndroidInstanceResponseBody struct {
+	// example:
+	//
+	// E5138F7E-46B5-526A-8C99-82DEAE6B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisconnectAndroidInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisconnectAndroidInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisconnectAndroidInstanceResponseBody) SetRequestId(v string) *DisconnectAndroidInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisconnectAndroidInstanceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisconnectAndroidInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisconnectAndroidInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisconnectAndroidInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisconnectAndroidInstanceResponse) SetHeaders(v map[string]*string) *DisconnectAndroidInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisconnectAndroidInstanceResponse) SetStatusCode(v int32) *DisconnectAndroidInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisconnectAndroidInstanceResponse) SetBody(v *DisconnectAndroidInstanceResponseBody) *DisconnectAndroidInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DistributeImageRequest struct {
+	// The regions to which you want to distribute an image.
+	//
 	// This parameter is required.
 	DistributeRegionList []*string `json:"DistributeRegionList,omitempty" xml:"DistributeRegionList,omitempty" type:"Repeated"`
+	// The ID of the image that you want to distribute.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6713,6 +6966,8 @@ func (s *DistributeImageRequest) SetImageId(v string) *DistributeImageRequest {
 }
 
 type DistributeImageResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 440D7342-5FC2-5E7C-B2DB-D0B4EAC2BDF1
@@ -6762,11 +7017,22 @@ func (s *DistributeImageResponse) SetBody(v *DistributeImageResponseBody) *Distr
 }
 
 type DowngradeAndroidInstanceGroupRequest struct {
+	// The IDs of the cloud phone instances that you want to delete.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// Specifies whether to enable the auto-payment feature. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- true: enables the auto-payment feature. Ensure your account has sufficient balance to use this feature.
+	//
+	// 	- false: disables the auto-payment feature. This requires manual payment each time you place an order.
+	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The ID of the instance group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6799,10 +7065,14 @@ func (s *DowngradeAndroidInstanceGroupRequest) SetInstanceGroupId(v string) *Dow
 }
 
 type DowngradeAndroidInstanceGroupResponseBody struct {
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 22326560487****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 3AF82CE1-2801-52CE-BF64-B491DD7C****
@@ -6856,27 +7126,130 @@ func (s *DowngradeAndroidInstanceGroupResponse) SetBody(v *DowngradeAndroidInsta
 	return s
 }
 
+type EndCoordinationRequest struct {
+	// example:
+	//
+	// lina
+	CoordinatorUserId *string `json:"CoordinatorUserId,omitempty" xml:"CoordinatorUserId,omitempty"`
+	// example:
+	//
+	// acp-2zecay9ponatdc4m****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// xiaoming
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+}
+
+func (s EndCoordinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EndCoordinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EndCoordinationRequest) SetCoordinatorUserId(v string) *EndCoordinationRequest {
+	s.CoordinatorUserId = &v
+	return s
+}
+
+func (s *EndCoordinationRequest) SetInstanceId(v string) *EndCoordinationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EndCoordinationRequest) SetOwnerUserId(v string) *EndCoordinationRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+type EndCoordinationResponseBody struct {
+	// example:
+	//
+	// 5C5CEF0A-D6E1-58D3-8750-67DB4F82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EndCoordinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EndCoordinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EndCoordinationResponseBody) SetRequestId(v string) *EndCoordinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EndCoordinationResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EndCoordinationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EndCoordinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EndCoordinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EndCoordinationResponse) SetHeaders(v map[string]*string) *EndCoordinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EndCoordinationResponse) SetStatusCode(v int32) *EndCoordinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EndCoordinationResponse) SetBody(v *EndCoordinationResponseBody) *EndCoordinationResponse {
+	s.Body = v
+	return s
+}
+
 type FetchFileRequest struct {
+	// The IDs of the cloud phone instances.
+	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	// The path to the file that you want to pull from the cloud phone instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /data/a.txt
 	SourceFilePath *string `json:"SourceFilePath,omitempty" xml:"SourceFilePath,omitempty"`
+	// The endpoint of the OSS bucket in which you want to store the pulled file.
+	//
+	// >  Set the value to an internal endpoint when the cloud phone instance and the OSS bucket are in the same region to improve upload speed without incurring public traffic fees. Sample endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
+	// The type of the storage service.
+	//
+	// >  Currently, only OSS is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OSS
 	UploadType *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
+	// The OSS URL of the pulled file.
+	//
+	// >  The OSS bucket name must start with "cloudphone-saved-bucket-", for example, "cloudphone-saved-bucket-example". You must also create an OSS directory to store the backup data. Set the value for UploadUrl in this format: oss://\\<BucketName>/\\<OSSDirectoryName>.
+	//
 	// This parameter is required.
 	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
 }
@@ -6915,15 +7288,24 @@ func (s *FetchFileRequest) SetUploadUrl(v string) *FetchFileRequest {
 }
 
 type FetchFileResponseBody struct {
+	// The objects that are returned.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	Data []*FetchFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the batch task.
+	//
+	// example:
+	//
+	// t-ehs0yoedj0xe9****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s FetchFileResponseBody) String() string {
@@ -7001,13 +7383,104 @@ func (s *FetchFileResponse) SetBody(v *FetchFileResponseBody) *FetchFileResponse
 	return s
 }
 
+type GenerateCoordinationCodeRequest struct {
+	// example:
+	//
+	// acp-2zecay9ponatdc4m****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// xiaoming
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+}
+
+func (s GenerateCoordinationCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCoordinationCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCoordinationCodeRequest) SetInstanceId(v string) *GenerateCoordinationCodeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GenerateCoordinationCodeRequest) SetOwnerUserId(v string) *GenerateCoordinationCodeRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+type GenerateCoordinationCodeResponseBody struct {
+	// example:
+	//
+	// CSHGDK
+	CoordinatorCode *string `json:"CoordinatorCode,omitempty" xml:"CoordinatorCode,omitempty"`
+	// example:
+	//
+	// 1A923337-44D9-5CAD-9A53-95084BD4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateCoordinationCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCoordinationCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCoordinationCodeResponseBody) SetCoordinatorCode(v string) *GenerateCoordinationCodeResponseBody {
+	s.CoordinatorCode = &v
+	return s
+}
+
+func (s *GenerateCoordinationCodeResponseBody) SetRequestId(v string) *GenerateCoordinationCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateCoordinationCodeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateCoordinationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateCoordinationCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCoordinationCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCoordinationCodeResponse) SetHeaders(v map[string]*string) *GenerateCoordinationCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateCoordinationCodeResponse) SetStatusCode(v int32) *GenerateCoordinationCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateCoordinationCodeResponse) SetBody(v *GenerateCoordinationCodeResponseBody) *GenerateCoordinationCodeResponse {
+	s.Body = v
+	return s
+}
+
 type ImportKeyPairRequest struct {
+	// The name of the ADB key pair.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TestKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The public key of the ADB key pair.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7035,7 +7508,10 @@ func (s *ImportKeyPairRequest) SetPublicKeyBody(v string) *ImportKeyPairRequest 
 }
 
 type ImportKeyPairResponseBody struct {
+	// The object that is returned.
 	Data *ImportKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
@@ -7061,14 +7537,20 @@ func (s *ImportKeyPairResponseBody) SetRequestId(v string) *ImportKeyPairRespons
 }
 
 type ImportKeyPairResponseBodyData struct {
+	// The time when the ADB key pair was created.
+	//
 	// example:
 	//
 	// 2023-03-05T10:29:22Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The ID of the ADB key pair.
+	//
 	// example:
 	//
 	// kp-6v2q33ae4tw3*****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The name of the ADB key pair.
+	//
 	// example:
 	//
 	// TestKeyPairName
@@ -7128,9 +7610,12 @@ func (s *ImportKeyPairResponse) SetBody(v *ImportKeyPairResponseBody) *ImportKey
 }
 
 type InstallAppRequest struct {
-	AppIdList           []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	// The IDs of the apps that you want to install.
+	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	// The IDs of the instance groups.
 	InstanceGroupIdList []*string `json:"InstanceGroupIdList,omitempty" xml:"InstanceGroupIdList,omitempty" type:"Repeated"`
-	InstanceIdList      []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// The IDs of the cloud phone instances.
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 }
 
 func (s InstallAppRequest) String() string {
@@ -7157,11 +7642,18 @@ func (s *InstallAppRequest) SetInstanceIdList(v []*string) *InstallAppRequest {
 }
 
 type InstallAppResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// t-14xwibw7yp73q****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s InstallAppResponseBody) String() string {
@@ -7408,16 +7900,8 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// 1080
 	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 	// The width of the resolution.
 	//
->>>>>>> Stashed changes
-=======
-	// The width of the resolution.
-	//
->>>>>>> Stashed changes
 	// example:
 	//
 	// 1920
@@ -7488,19 +7972,6 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	CustomProxy   *string                                                               `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	HostAddr      *string                                                               `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
-	NetRedirect   *string                                                               `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	Port          *string                                                               `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProxyPassword *string                                                               `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	ProxyType     *string                                                               `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	ProxyUserName *string                                                               `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
-	Rules         []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-=======
-=======
->>>>>>> Stashed changes
 	// Indicates whether a custom proxy is manually configured.
 	//
 	// Valid values:
@@ -7561,10 +8032,6 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 	// The proxy rules.
 	Rules []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) String() string {
@@ -7616,13 +8083,6 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetRules
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-=======
-=======
->>>>>>> Stashed changes
 	// The type of the rule.
 	//
 	// Valid values:
@@ -7641,10 +8101,6 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
 	//
 	// *.example.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) String() string {
@@ -8539,11 +8995,24 @@ func (s *ModifyPolicyGroupResponse) SetBody(v *ModifyPolicyGroupResponseBody) *M
 }
 
 type OperateAppRequest struct {
+	// The ID of the app.
+	//
 	// example:
 	//
 	// 1234
-	AppId          *int32    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The IDs of the cloud phone instances.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// The type of the operation.
+	//
+	// Valid values:
+	//
+	// 	- stop: closes the app.
+	//
+	// 	- restart: reopens the app.
+	//
+	// 	- start: open the app.
+	//
 	// example:
 	//
 	// start
@@ -8574,10 +9043,14 @@ func (s *OperateAppRequest) SetOperateType(v string) *OperateAppRequest {
 }
 
 type OperateAppResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// t-imr0fufqgac2z****
@@ -8632,8 +9105,20 @@ func (s *OperateAppResponse) SetBody(v *OperateAppResponseBody) *OperateAppRespo
 }
 
 type RebootAndroidInstancesInGroupRequest struct {
+	// The IDs of the cloud phone instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	ForceStop          *bool     `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// Specifies whether to enforce a restart operation. If a cloud phone instance fails to stop due to system or network issues, a forced restart can be triggered, though it may result in data loss.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 }
 
 func (s RebootAndroidInstancesInGroupRequest) String() string {
@@ -8655,6 +9140,8 @@ func (s *RebootAndroidInstancesInGroupRequest) SetForceStop(v bool) *RebootAndro
 }
 
 type RebootAndroidInstancesInGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 227CBB4C-F5DC-589D-A667-C5CA3D52****
@@ -8900,15 +9387,34 @@ func (s *RecoveryFileResponse) SetBody(v *RecoveryFileResponseBody) *RecoveryFil
 }
 
 type RenewAndroidInstanceGroupsRequest struct {
+	// Specifies whether to enable the auto-payment feature.
+	//
+	// Valid values:
+	//
+	// 	- true: enables the auto-payment feature. Ensure your account has sufficient balance to use this feature.
+	//
+	// 	- false: disables the auto-payment feature. You need to manually complete the payment process.
+	//
 	// example:
 	//
 	// true
-	AutoPay          *bool     `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The IDs of the instance groups.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// The duration of the renewal, measured in units defined by PeriodUnit.
+	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the renewal duration. Default value: Month.
+	//
+	// Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
 	// example:
 	//
 	// Month
@@ -8944,10 +9450,14 @@ func (s *RenewAndroidInstanceGroupsRequest) SetPeriodUnit(v string) *RenewAndroi
 }
 
 type RenewAndroidInstanceGroupsResponseBody struct {
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 22326560487****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4B886792-2051-5DB4-8AE6-C8E45D3B4****
@@ -9002,6 +9512,7 @@ func (s *RenewAndroidInstanceGroupsResponse) SetBody(v *RenewAndroidInstanceGrou
 }
 
 type ResetAndroidInstancesInGroupRequest struct {
+	// The IDs of the cloud phone instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -9019,6 +9530,8 @@ func (s *ResetAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string)
 }
 
 type ResetAndroidInstancesInGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
@@ -9068,12 +9581,30 @@ func (s *ResetAndroidInstancesInGroupResponse) SetBody(v *ResetAndroidInstancesI
 }
 
 type RunCommandRequest struct {
+	// The content of the command.
+	//
 	// example:
 	//
 	// ls
-	CommandContent  *string   `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	ContentEncoding *string   `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// The encoding method of the command content (`CommandContent`). The value is not case-sensitive.
+	//
+	// >  If you set the value to an invalid encoding method, the system will process the command content as `PlainText`.
+	//
+	// Valid values:
+	//
+	// 	- Base64: encodes the command content in Base64.
+	//
+	// 	- PlainText (default): does not encode the command content. The command content is input as plain text.
+	//
+	// example:
+	//
+	// PlainText
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The timeout period of the command execution. If the command execution exceeds the timeout period, it will be considered timed out. If you leave this parameter empty, it defaults to 60.
+	//
 	// example:
 	//
 	// 60
@@ -9109,10 +9640,14 @@ func (s *RunCommandRequest) SetTimeout(v int64) *RunCommandRequest {
 }
 
 type RunCommandResponseBody struct {
+	// The ID of the command execution. You can use the command execution ID to query the output of a command.
+	//
 	// example:
 	//
 	// t-gov2ujrk32v4****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 440D7342-5E7C-B2DB-D0B4EAC2BDF1****
@@ -9167,24 +9702,40 @@ func (s *RunCommandResponse) SetBody(v *RunCommandResponseBody) *RunCommandRespo
 }
 
 type SendFileRequest struct {
+	// The IDs of the cloud phone instances.
+	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	// The path to which you want to upload the pushed file in the cloud phone instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /data
 	SourceFilePath *string `json:"SourceFilePath,omitempty" xml:"SourceFilePath,omitempty"`
+	// The endpoint of the OSS bucket in which the file is stored.
+	//
+	// >  Set the value to an internal endpoint when the cloud phone instance and the OSS bucket are in the same region to improve transfer speed without incurring public traffic fees. Sample endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
+	// The storage type of the file that you want to upload.
+	//
+	// 	- Set the value to OSS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OSS
 	UploadType *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
+	// The OSS URL of the file.
+	//
+	// >  The OSS bucket name must start with "cloudphone-saved-bucket-", for example, "cloudphone-saved-bucket-example". You must also create an OSS directory to store the backup data. Set the value for UploadUrl in this format: oss://\\<BucketName>/\\<OSSDirectoryName>\\<FileName>.
+	//
 	// This parameter is required.
 	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
 }
@@ -9223,15 +9774,24 @@ func (s *SendFileRequest) SetUploadUrl(v string) *SendFileRequest {
 }
 
 type SendFileResponseBody struct {
+	// The objects that are returned.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	Data []*SendFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the batch task.
+	//
+	// example:
+	//
+	// t-ehs0yoedj0xe9****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SendFileResponseBody) String() string {
@@ -9310,7 +9870,16 @@ func (s *SendFileResponse) SetBody(v *SendFileResponseBody) *SendFileResponse {
 }
 
 type SetAdbSecureRequest struct {
+	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The status of the ADB authentication feature.
+	//
+	// Valid values:
+	//
+	// 	- 0: The ADB authentication feature is disabled.
+	//
+	// 	- 1: The ADB authentication feature is enabled.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9338,7 +9907,10 @@ func (s *SetAdbSecureRequest) SetStatus(v int32) *SetAdbSecureRequest {
 }
 
 type SetAdbSecureResponseBody struct {
+	// The returned object.
 	Data *SetAdbSecureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
@@ -9364,11 +9936,16 @@ func (s *SetAdbSecureResponseBody) SetRequestId(v string) *SetAdbSecureResponseB
 }
 
 type SetAdbSecureResponseBodyData struct {
+	// The number of the cloud phone instances for which the ADB authentication feature failed to be enabled.
+	//
 	// example:
 	//
 	// 0
-	FailCount   *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// The IDs of the cloud phone instances for which the ADB authentication feature is enabled.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The total number of the cloud phone instances.
+	//
 	// example:
 	//
 	// 100
@@ -9497,8 +10074,14 @@ func (s *StartAndroidInstanceResponse) SetBody(v *StartAndroidInstanceResponseBo
 }
 
 type StopAndroidInstanceRequest struct {
+	// The IDs of the cloud phone instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	ForceStop          *bool     `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// Specifies whether to enforce a stop operation. If a cloud phone instance fails to stop due to system or network issues, a forced stop can be triggered, though it may result in data loss.
+	//
+	// example:
+	//
+	// false
+	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 }
 
 func (s StopAndroidInstanceRequest) String() string {
@@ -9520,6 +10103,8 @@ func (s *StopAndroidInstanceRequest) SetForceStop(v bool) *StopAndroidInstanceRe
 }
 
 type StopAndroidInstanceResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E38B41A8-8E00-5AE4-A957-6636ACB8****
@@ -9569,9 +10154,12 @@ func (s *StopAndroidInstanceResponse) SetBody(v *StopAndroidInstanceResponseBody
 }
 
 type UninstallAppRequest struct {
-	AppIdList           []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	// The IDs of the apps.
+	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	// The ID of the instance groups. If you specify this parameter, you cannot specify InstanceIdList.
 	InstanceGroupIdList []*string `json:"InstanceGroupIdList,omitempty" xml:"InstanceGroupIdList,omitempty" type:"Repeated"`
-	InstanceIdList      []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// The IDs of the cloud phone instances. If you specify this parameter, you cannot specify InstanceGroupIdList.
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 }
 
 func (s UninstallAppRequest) String() string {
@@ -9598,11 +10186,18 @@ func (s *UninstallAppRequest) SetInstanceIdList(v []*string) *UninstallAppReques
 }
 
 type UninstallAppResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// t-1ljew7on6ay0j****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UninstallAppResponseBody) String() string {
@@ -9737,12 +10332,16 @@ func (s *UpdateCustomImageNameResponse) SetBody(v *UpdateCustomImageNameResponse
 }
 
 type UpdateInstanceGroupImageRequest struct {
+	// The ID of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// imgc-075cllfeuazh****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The IDs of the instance groups.
+	//
 	// This parameter is required.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
 }
@@ -9766,6 +10365,8 @@ func (s *UpdateInstanceGroupImageRequest) SetInstanceGroupIds(v []*string) *Upda
 }
 
 type UpdateInstanceGroupImageResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 55726272-E40B-530D-914F-5126B19C79B3
@@ -9987,7 +10588,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 绑定密钥对
+// Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
+//
+// Description:
+//
+//   You can attach to an ADB key pair only to cloud phone instances in the Running state.
+//
+// 	- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -10044,7 +10651,13 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 
 // Summary:
 //
-// 绑定密钥对
+// Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
+//
+// Description:
+//
+//   You can attach to an ADB key pair only to cloud phone instances in the Running state.
+//
+// 	- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -10264,7 +10877,7 @@ func (client *Client) BackupFile(request *BackupFileRequest) (_result *BackupFil
 
 // Summary:
 //
-// 批量获取ticket
+// Retrieves connection tickets in bulk.
 //
 // @param request - BatchGetAcpConnectionTicketRequest
 //
@@ -10329,7 +10942,7 @@ func (client *Client) BatchGetAcpConnectionTicketWithOptions(request *BatchGetAc
 
 // Summary:
 //
-// 批量获取ticket
+// Retrieves connection tickets in bulk.
 //
 // @param request - BatchGetAcpConnectionTicketRequest
 //
@@ -10993,7 +11606,11 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 
 // Summary:
 //
-// 创建云手机截图接口
+// Creates a screenshot of a cloud phone instance.
+//
+// Description:
+//
+// You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
 //
 // @param request - CreateScreenshotRequest
 //
@@ -11054,7 +11671,11 @@ func (client *Client) CreateScreenshotWithOptions(request *CreateScreenshotReque
 
 // Summary:
 //
-// 创建云手机截图接口
+// Creates a screenshot of a cloud phone instance.
+//
+// Description:
+//
+// You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
 //
 // @param request - CreateScreenshotRequest
 //
@@ -11072,12 +11693,6 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 
 // Summary:
 //
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// 删除安卓实例组
-=======
-=======
->>>>>>> Stashed changes
 // Delete an instance group.
 //
 // Description:
@@ -11085,10 +11700,6 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 // You can delete only pay-as-you-go instance groups.
 //
 // You can delete subscription instance groups only after they expire.
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 //
 // @param request - DeleteAndroidInstanceGroupRequest
 //
@@ -11582,15 +12193,7 @@ func (client *Client) DescribeAndroidInstanceGroups(request *DescribeAndroidInst
 
 // Summary:
 //
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// 查询安卓的实例列表
-=======
 // Queries cloud phone instances.
->>>>>>> Stashed changes
-=======
-// Queries cloud phone instances.
->>>>>>> Stashed changes
 //
 // @param request - DescribeAndroidInstancesRequest
 //
@@ -11699,15 +12302,7 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 // Summary:
 //
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// 查询安卓的实例列表
-=======
 // Queries cloud phone instances.
->>>>>>> Stashed changes
-=======
-// Queries cloud phone instances.
->>>>>>> Stashed changes
 //
 // @param request - DescribeAndroidInstancesRequest
 //
@@ -11951,15 +12546,7 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 
 // Summary:
 //
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// 查询镜像列表
-=======
 // Queries images.
->>>>>>> Stashed changes
-=======
-// Queries images.
->>>>>>> Stashed changes
 //
 // @param request - DescribeImageListRequest
 //
@@ -12038,15 +12625,7 @@ func (client *Client) DescribeImageListWithOptions(request *DescribeImageListReq
 
 // Summary:
 //
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// 查询镜像列表
-=======
 // Queries images.
->>>>>>> Stashed changes
-=======
-// Queries images.
->>>>>>> Stashed changes
 //
 // @param request - DescribeImageListRequest
 //
@@ -12064,7 +12643,7 @@ func (client *Client) DescribeImageList(request *DescribeImageListRequest) (_res
 
 // Summary:
 //
-// 查询命令结果
+// Queries the execution results of commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -12121,7 +12700,7 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Summary:
 //
-// 查询命令结果
+// Queries the execution results of commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -12396,7 +12975,19 @@ func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *Descr
 
 // Summary:
 //
-// 查询异步任务
+// Queries tasks created for a cloud phone instance.
+//
+// Description:
+//
+//   You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+//
+// 	- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+//
+// 	- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+//
+// **Example**
+//
+// Assume you restart two cloud phone instances with the instance IDs acp-25nt4kk9whhok\\*\\*\\*\\	- and acp-j2taq887orj8l\\*\\*\\*\\*, and the returned request ID is B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you want to check the operation outcomes of the two cloud phone instances, you can call the DescribeTasks operation. You need to set the InvokeId request parameter to B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you only want to check the cloud phone instance with the ID acp-25nt4kk9whhok\\*\\*\\*\\*, you must set the ParentTaskId request parameter to the ID of the batch task and the AndroidInstanceId request parameter to acp-25nt4kk9whhok\\*\\*\\*\\	- when calling the DescribeTasks operation.
 //
 // @param request - DescribeTasksRequest
 //
@@ -12501,7 +13092,19 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 
 // Summary:
 //
-// 查询异步任务
+// Queries tasks created for a cloud phone instance.
+//
+// Description:
+//
+//   You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+//
+// 	- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+//
+// 	- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+//
+// **Example**
+//
+// Assume you restart two cloud phone instances with the instance IDs acp-25nt4kk9whhok\\*\\*\\*\\	- and acp-j2taq887orj8l\\*\\*\\*\\*, and the returned request ID is B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you want to check the operation outcomes of the two cloud phone instances, you can call the DescribeTasks operation. You need to set the InvokeId request parameter to B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you only want to check the cloud phone instance with the ID acp-25nt4kk9whhok\\*\\*\\*\\*, you must set the ParentTaskId request parameter to the ID of the batch task and the AndroidInstanceId request parameter to acp-25nt4kk9whhok\\*\\*\\*\\	- when calling the DescribeTasks operation.
 //
 // @param request - DescribeTasksRequest
 //
@@ -12519,7 +13122,11 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 
 // Summary:
 //
-// 解绑密钥对
+// Detaches an Android Debug Bridge (ADB) key pair from one or more cloud phone instances.
+//
+// Description:
+//
+//   After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -12576,7 +13183,11 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 
 // Summary:
 //
-// 解绑密钥对
+// Detaches an Android Debug Bridge (ADB) key pair from one or more cloud phone instances.
+//
+// Description:
+//
+//   After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -12594,7 +13205,82 @@ func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *Det
 
 // Summary:
 //
-// 自定义镜像分发
+// 实例断开连接
+//
+// @param request - DisconnectAndroidInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisconnectAndroidInstanceResponse
+func (client *Client) DisconnectAndroidInstanceWithOptions(request *DisconnectAndroidInstanceRequest, runtime *util.RuntimeOptions) (_result *DisconnectAndroidInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisconnectAndroidInstance"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisconnectAndroidInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisconnectAndroidInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 实例断开连接
+//
+// @param request - DisconnectAndroidInstanceRequest
+//
+// @return DisconnectAndroidInstanceResponse
+func (client *Client) DisconnectAndroidInstance(request *DisconnectAndroidInstanceRequest) (_result *DisconnectAndroidInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisconnectAndroidInstanceResponse{}
+	_body, _err := client.DisconnectAndroidInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Distributes an image.
+//
+// Description:
+//
+// After you distribute an image in supported regions, the distribution cannot be canceled.
 //
 // @param request - DistributeImageRequest
 //
@@ -12651,7 +13337,11 @@ func (client *Client) DistributeImageWithOptions(request *DistributeImageRequest
 
 // Summary:
 //
-// 自定义镜像分发
+// Distributes an image.
+//
+// Description:
+//
+// After you distribute an image in supported regions, the distribution cannot be canceled.
 //
 // @param request - DistributeImageRequest
 //
@@ -12669,7 +13359,11 @@ func (client *Client) DistributeImage(request *DistributeImageRequest) (_result 
 
 // Summary:
 //
-// 实例组缩容
+// Downgrades an instance group. Currently, this operation allows you to only delete specific cloud phone instances from an instance group.
+//
+// Description:
+//
+// This operation only allows you to scale down an instance group.
 //
 // @param request - DowngradeAndroidInstanceGroupRequest
 //
@@ -12730,7 +13424,11 @@ func (client *Client) DowngradeAndroidInstanceGroupWithOptions(request *Downgrad
 
 // Summary:
 //
-// 实例组缩容
+// Downgrades an instance group. Currently, this operation allows you to only delete specific cloud phone instances from an instance group.
+//
+// Description:
+//
+// This operation only allows you to scale down an instance group.
 //
 // @param request - DowngradeAndroidInstanceGroupRequest
 //
@@ -12748,7 +13446,90 @@ func (client *Client) DowngradeAndroidInstanceGroup(request *DowngradeAndroidIns
 
 // Summary:
 //
-// 云手机拉取文件到OSS
+// 结束协同
+//
+// @param request - EndCoordinationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EndCoordinationResponse
+func (client *Client) EndCoordinationWithOptions(request *EndCoordinationRequest, runtime *util.RuntimeOptions) (_result *EndCoordinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoordinatorUserId)) {
+		query["CoordinatorUserId"] = request.CoordinatorUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EndCoordination"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EndCoordinationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EndCoordinationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 结束协同
+//
+// @param request - EndCoordinationRequest
+//
+// @return EndCoordinationResponse
+func (client *Client) EndCoordination(request *EndCoordinationRequest) (_result *EndCoordinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EndCoordinationResponse{}
+	_body, _err := client.EndCoordinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+//
+// Description:
+//
+// Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
 //
 // @param request - FetchFileRequest
 //
@@ -12817,7 +13598,11 @@ func (client *Client) FetchFileWithOptions(request *FetchFileRequest, runtime *u
 
 // Summary:
 //
-// 云手机拉取文件到OSS
+// Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+//
+// Description:
+//
+// Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
 //
 // @param request - FetchFileRequest
 //
@@ -12835,7 +13620,86 @@ func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileRe
 
 // Summary:
 //
-// 导入秘钥
+// 获取协同码
+//
+// @param request - GenerateCoordinationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateCoordinationCodeResponse
+func (client *Client) GenerateCoordinationCodeWithOptions(request *GenerateCoordinationCodeRequest, runtime *util.RuntimeOptions) (_result *GenerateCoordinationCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateCoordinationCode"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateCoordinationCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateCoordinationCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取协同码
+//
+// @param request - GenerateCoordinationCodeRequest
+//
+// @return GenerateCoordinationCodeResponse
+func (client *Client) GenerateCoordinationCode(request *GenerateCoordinationCodeRequest) (_result *GenerateCoordinationCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateCoordinationCodeResponse{}
+	_body, _err := client.GenerateCoordinationCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Imports the public key of an Android Debug Bridge (ADB) key pair.
+//
+// Description:
+//
+// To avoid authorization errors that could cause ADB connection failures, you must import the public key of an ADB key pair.
 //
 // @param request - ImportKeyPairRequest
 //
@@ -12892,7 +13756,11 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 
 // Summary:
 //
-// 导入秘钥
+// Imports the public key of an Android Debug Bridge (ADB) key pair.
+//
+// Description:
+//
+// To avoid authorization errors that could cause ADB connection failures, you must import the public key of an ADB key pair.
 //
 // @param request - ImportKeyPairRequest
 //
@@ -12910,7 +13778,11 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 
 // Summary:
 //
-// 安装app到实例组
+// Installs an app on multiple cloud phone instances at the same time.
+//
+// Description:
+//
+// This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
 //
 // @param request - InstallAppRequest
 //
@@ -12971,7 +13843,11 @@ func (client *Client) InstallAppWithOptions(request *InstallAppRequest, runtime 
 
 // Summary:
 //
-// 安装app到实例组
+// Installs an app on multiple cloud phone instances at the same time.
+//
+// Description:
+//
+// This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
 //
 // @param request - InstallAppRequest
 //
@@ -13497,7 +14373,7 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 
 // Summary:
 //
-// 操作App
+// Operates apps in a cloud phone, such as opening, closing, and reopening apps.
 //
 // @param request - OperateAppRequest
 //
@@ -13558,7 +14434,7 @@ func (client *Client) OperateAppWithOptions(request *OperateAppRequest, runtime 
 
 // Summary:
 //
-// 操作App
+// Operates apps in a cloud phone, such as opening, closing, and reopening apps.
 //
 // @param request - OperateAppRequest
 //
@@ -13576,7 +14452,11 @@ func (client *Client) OperateApp(request *OperateAppRequest) (_result *OperateAp
 
 // Summary:
 //
-// 重启安卓实例
+// Restarts one or more cloud phone instances.
+//
+// Description:
+//
+// Before you restart a cloud phone instance, make sure it is in one of the following states: **Available, Abnormal, Backup failure, and Restoration failure**.
 //
 // @param request - RebootAndroidInstancesInGroupRequest
 //
@@ -13633,7 +14513,11 @@ func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAn
 
 // Summary:
 //
-// 重启安卓实例
+// Restarts one or more cloud phone instances.
+//
+// Description:
+//
+// Before you restart a cloud phone instance, make sure it is in one of the following states: **Available, Abnormal, Backup failure, and Restoration failure**.
 //
 // @param request - RebootAndroidInstancesInGroupRequest
 //
@@ -13750,7 +14634,7 @@ func (client *Client) RecoveryFile(request *RecoveryFileRequest) (_result *Recov
 
 // Summary:
 //
-// 续费安卓实例组
+// Renews instance groups.
 //
 // @param request - RenewAndroidInstanceGroupsRequest
 //
@@ -13815,7 +14699,7 @@ func (client *Client) RenewAndroidInstanceGroupsWithOptions(request *RenewAndroi
 
 // Summary:
 //
-// 续费安卓实例组
+// Renews instance groups.
 //
 // @param request - RenewAndroidInstanceGroupsRequest
 //
@@ -13833,7 +14717,11 @@ func (client *Client) RenewAndroidInstanceGroups(request *RenewAndroidInstanceGr
 
 // Summary:
 //
-// 重置安卓实例
+// Resets one or more cloud phone instances.
+//
+// Description:
+//
+// Before you reset a cloud phone instance, make sure it is in one of the following states: **Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
 //
 // @param request - ResetAndroidInstancesInGroupRequest
 //
@@ -13886,7 +14774,11 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 
 // Summary:
 //
-// 重置安卓实例
+// Resets one or more cloud phone instances.
+//
+// Description:
+//
+// Before you reset a cloud phone instance, make sure it is in one of the following states: **Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
 //
 // @param request - ResetAndroidInstancesInGroupRequest
 //
@@ -13904,7 +14796,7 @@ func (client *Client) ResetAndroidInstancesInGroup(request *ResetAndroidInstance
 
 // Summary:
 //
-// 通过eds agent通道下发命令
+// Executes a command on a cloud phone instance.
 //
 // @param request - RunCommandRequest
 //
@@ -13969,7 +14861,7 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 
 // Summary:
 //
-// 通过eds agent通道下发命令
+// Executes a command on a cloud phone instance.
 //
 // @param request - RunCommandRequest
 //
@@ -13987,7 +14879,11 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 
 // Summary:
 //
-// 推送文件到云手机
+// Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+//
+// Description:
+//
+// Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
 //
 // @param request - SendFileRequest
 //
@@ -14056,7 +14952,11 @@ func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *uti
 
 // Summary:
 //
-// 推送文件到云手机
+// Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+//
+// Description:
+//
+// Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
 //
 // @param request - SendFileRequest
 //
@@ -14072,6 +14972,14 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
+//
+// Description:
+//
+// Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
+//
 // @param request - SetAdbSecureRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14125,6 +15033,14 @@ func (client *Client) SetAdbSecureWithOptions(request *SetAdbSecureRequest, runt
 
 }
 
+// Summary:
+//
+// Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
+//
+// Description:
+//
+// Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
+//
 // @param request - SetAdbSecureRequest
 //
 // @return SetAdbSecureResponse
@@ -14220,7 +15136,11 @@ func (client *Client) StartAndroidInstance(request *StartAndroidInstanceRequest)
 
 // Summary:
 //
-// 实例关机
+// Stops a cloud phone instance.
+//
+// Description:
+//
+// Before you stop a cloud phone instance, make sure it is in one of the following states: **Available, Backup failure, and Restoration failure**.
 //
 // @param request - StopAndroidInstanceRequest
 //
@@ -14277,7 +15197,11 @@ func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanc
 
 // Summary:
 //
-// 实例关机
+// Stops a cloud phone instance.
+//
+// Description:
+//
+// Before you stop a cloud phone instance, make sure it is in one of the following states: **Available, Backup failure, and Restoration failure**.
 //
 // @param request - StopAndroidInstanceRequest
 //
@@ -14295,7 +15219,7 @@ func (client *Client) StopAndroidInstance(request *StopAndroidInstanceRequest) (
 
 // Summary:
 //
-// 卸载app
+// Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
 //
 // @param request - UninstallAppRequest
 //
@@ -14356,7 +15280,7 @@ func (client *Client) UninstallAppWithOptions(request *UninstallAppRequest, runt
 
 // Summary:
 //
-// 卸载app
+// Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
 //
 // @param request - UninstallAppRequest
 //
@@ -14449,7 +15373,11 @@ func (client *Client) UpdateCustomImageName(request *UpdateCustomImageNameReques
 
 // Summary:
 //
-// 实例组变更镜像
+// Changes the image of an instance group.
+//
+// Description:
+//
+// Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
 //
 // @param request - UpdateInstanceGroupImageRequest
 //
@@ -14506,7 +15434,11 @@ func (client *Client) UpdateInstanceGroupImageWithOptions(request *UpdateInstanc
 
 // Summary:
 //
-// 实例组变更镜像
+// Changes the image of an instance group.
+//
+// Description:
+//
+// Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
 //
 // @param request - UpdateInstanceGroupImageRequest
 //
