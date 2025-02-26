@@ -9781,6 +9781,7 @@ type CreateDifyInstanceRequest struct {
 	DbStorageSize        *string `json:"DbStorageSize,omitempty" xml:"DbStorageSize,omitempty"`
 	DbStorageType        *string `json:"DbStorageType,omitempty" xml:"DbStorageType,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GpuNodeSpec          *string `json:"GpuNodeSpec,omitempty" xml:"GpuNodeSpec,omitempty"`
 	KvStoreAccount       *string `json:"KvStoreAccount,omitempty" xml:"KvStoreAccount,omitempty"`
 	KvStoreEngineVersion *string `json:"KvStoreEngineVersion,omitempty" xml:"KvStoreEngineVersion,omitempty"`
 	KvStoreInstanceClass *string `json:"KvStoreInstanceClass,omitempty" xml:"KvStoreInstanceClass,omitempty"`
@@ -9789,12 +9790,17 @@ type CreateDifyInstanceRequest struct {
 	KvStorePassword      *string `json:"KvStorePassword,omitempty" xml:"KvStorePassword,omitempty"`
 	KvStoreResourceId    *int32  `json:"KvStoreResourceId,omitempty" xml:"KvStoreResourceId,omitempty"`
 	KvStoreType          *string `json:"KvStoreType,omitempty" xml:"KvStoreType,omitempty"`
-	OssPath              *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	OssResourceId        *int32  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	PayPeriod            *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
-	PayPeriodType        *string `json:"PayPeriodType,omitempty" xml:"PayPeriodType,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Replicas             *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ModelId              *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// Disable
+	ModelOption   *string `json:"ModelOption,omitempty" xml:"ModelOption,omitempty"`
+	OssPath       *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	OssResourceId *int32  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	PayPeriod     *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
+	PayPeriodType *string `json:"PayPeriodType,omitempty" xml:"PayPeriodType,omitempty"`
+	PayType       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Replicas      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// This parameter is required.
 	ResourceQuota *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
 	// This parameter is required.
@@ -9902,6 +9908,11 @@ func (s *CreateDifyInstanceRequest) SetDryRun(v bool) *CreateDifyInstanceRequest
 	return s
 }
 
+func (s *CreateDifyInstanceRequest) SetGpuNodeSpec(v string) *CreateDifyInstanceRequest {
+	s.GpuNodeSpec = &v
+	return s
+}
+
 func (s *CreateDifyInstanceRequest) SetKvStoreAccount(v string) *CreateDifyInstanceRequest {
 	s.KvStoreAccount = &v
 	return s
@@ -9939,6 +9950,16 @@ func (s *CreateDifyInstanceRequest) SetKvStoreResourceId(v int32) *CreateDifyIns
 
 func (s *CreateDifyInstanceRequest) SetKvStoreType(v string) *CreateDifyInstanceRequest {
 	s.KvStoreType = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetModelId(v string) *CreateDifyInstanceRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetModelOption(v string) *CreateDifyInstanceRequest {
+	s.ModelOption = &v
 	return s
 }
 
@@ -68496,6 +68517,115 @@ func (s *UpdateTaskContentResponse) SetBody(v *UpdateTaskContentResponseBody) *U
 	return s
 }
 
+type UpdateTaskContentV2Request struct {
+	// example:
+	//
+	// { "dbId":12****, "sql":"select 	- from test_table",   "dbType":"lindorm_sql"  }
+	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 449***
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s UpdateTaskContentV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskContentV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskContentV2Request) SetNodeContent(v string) *UpdateTaskContentV2Request {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *UpdateTaskContentV2Request) SetNodeId(v string) *UpdateTaskContentV2Request {
+	s.NodeId = &v
+	return s
+}
+
+type UpdateTaskContentV2ResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// B5FD0BC8-2D90-4478-B8EC-A0E92E0B1773
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskContentV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskContentV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskContentV2ResponseBody) SetErrorCode(v string) *UpdateTaskContentV2ResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskContentV2ResponseBody) SetErrorMessage(v string) *UpdateTaskContentV2ResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskContentV2ResponseBody) SetRequestId(v string) *UpdateTaskContentV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskContentV2ResponseBody) SetSuccess(v string) *UpdateTaskContentV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskContentV2Response struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTaskContentV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTaskContentV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskContentV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskContentV2Response) SetHeaders(v map[string]*string) *UpdateTaskContentV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskContentV2Response) SetStatusCode(v int32) *UpdateTaskContentV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskContentV2Response) SetBody(v *UpdateTaskContentV2ResponseBody) *UpdateTaskContentV2Response {
+	s.Body = v
+	return s
+}
+
 type UpdateTaskFlowConstantsRequest struct {
 	// The constants for the task flow.
 	DagConstants []*UpdateTaskFlowConstantsRequestDagConstants `json:"DagConstants,omitempty" xml:"DagConstants,omitempty" type:"Repeated"`
@@ -74021,6 +74151,10 @@ func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceR
 		query["DryRun"] = request.DryRun
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GpuNodeSpec)) {
+		query["GpuNodeSpec"] = request.GpuNodeSpec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KvStoreAccount)) {
 		query["KvStoreAccount"] = request.KvStoreAccount
 	}
@@ -74051,6 +74185,14 @@ func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceR
 
 	if !tea.BoolValue(util.IsUnset(request.KvStoreType)) {
 		query["KvStoreType"] = request.KvStoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelOption)) {
+		query["ModelOption"] = request.ModelOption
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OssPath)) {
@@ -94198,6 +94340,83 @@ func (client *Client) UpdateTaskContent(request *UpdateTaskContentRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTaskContentResponse{}
 	_body, _err := client.UpdateTaskContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 接受大容量sql文件的更新节点内容API
+//
+// @param request - UpdateTaskContentV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTaskContentV2Response
+func (client *Client) UpdateTaskContentV2WithOptions(request *UpdateTaskContentV2Request, runtime *util.RuntimeOptions) (_result *UpdateTaskContentV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeContent)) {
+		body["NodeContent"] = request.NodeContent
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskContentV2"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTaskContentV2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTaskContentV2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 接受大容量sql文件的更新节点内容API
+//
+// @param request - UpdateTaskContentV2Request
+//
+// @return UpdateTaskContentV2Response
+func (client *Client) UpdateTaskContentV2(request *UpdateTaskContentV2Request) (_result *UpdateTaskContentV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskContentV2Response{}
+	_body, _err := client.UpdateTaskContentV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
