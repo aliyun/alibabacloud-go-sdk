@@ -88,8 +88,9 @@ type ApproveFotaUpdateRequest struct {
 	// example:
 	//
 	// 4771b873-c757-4893-973c-7f5beejh****
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	TargetStatus *string `json:"TargetStatus,omitempty" xml:"TargetStatus,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ApproveFotaUpdateRequest) String() string {
@@ -127,6 +128,11 @@ func (s *ApproveFotaUpdateRequest) SetRegionId(v string) *ApproveFotaUpdateReque
 
 func (s *ApproveFotaUpdateRequest) SetSessionId(v string) *ApproveFotaUpdateRequest {
 	s.SessionId = &v
+	return s
+}
+
+func (s *ApproveFotaUpdateRequest) SetTargetStatus(v string) *ApproveFotaUpdateRequest {
+	s.TargetStatus = &v
 	return s
 }
 
@@ -6881,6 +6887,10 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetStatus)) {
+		query["TargetStatus"] = request.TargetStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
