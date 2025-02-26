@@ -4157,6 +4157,246 @@ func (s *ListGroupIdResponse) SetBody(v *ListGroupIdResponseBody) *ListGroupIdRe
 	return s
 }
 
+type ListInstancesRequest struct {
+	// example:
+	//
+	// [{"key":"test","value":"test"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesRequest) SetTags(v string) *ListInstancesRequest {
+	s.Tags = &v
+	return s
+}
+
+type ListInstancesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 294F5B26-FADF-41D0-BE68-14ABE4EB****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBody) SetCode(v string) *ListInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyInstances) *ListInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetMessage(v string) *ListInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetSuccess(v string) *ListInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstances struct {
+	// example:
+	//
+	// 1739345768000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1741795200000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// mqtt-cn-xxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// mqtt-cn-xxxxxxx
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 5
+	InstanceStatus *int32 `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// 4
+	InstanceType *int32 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// V3.3.0
+	KernelVersion *string                                       `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
+	MqttTags      []*ListInstancesResponseBodyInstancesMqttTags `json:"MqttTags,omitempty" xml:"MqttTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 245949616640095
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// mqtt.p2.1xlarge
+	Specific *string `json:"Specific,omitempty" xml:"Specific,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstances) SetCreateTime(v int64) *ListInstancesResponseBodyInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetExpireTime(v int64) *ListInstancesResponseBodyInstances {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceName(v string) *ListInstancesResponseBodyInstances {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceStatus(v int32) *ListInstancesResponseBodyInstances {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceType(v int32) *ListInstancesResponseBodyInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetKernelVersion(v string) *ListInstancesResponseBodyInstances {
+	s.KernelVersion = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetMqttTags(v []*ListInstancesResponseBodyInstancesMqttTags) *ListInstancesResponseBodyInstances {
+	s.MqttTags = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetOrderId(v string) *ListInstancesResponseBodyInstances {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetRegionId(v string) *ListInstancesResponseBodyInstances {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetSpecific(v string) *ListInstancesResponseBodyInstances {
+	s.Specific = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesMqttTags struct {
+	// example:
+	//
+	// test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// test
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesMqttTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesMqttTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesMqttTags) SetTagKey(v string) *ListInstancesResponseBodyInstancesMqttTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesMqttTags) SetTagValue(v string) *ListInstancesResponseBodyInstancesMqttTags {
+	s.TagValue = &v
+	return s
+}
+
+type ListInstancesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// example:
 	//
@@ -10451,6 +10691,77 @@ func (client *Client) ListGroupId(request *ListGroupIdRequest) (_result *ListGro
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupIdResponse{}
 	_body, _err := client.ListGroupIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例列表
+//
+// @param request - ListInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询实例列表
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
