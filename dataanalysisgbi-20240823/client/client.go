@@ -2273,7 +2273,8 @@ func (s *ResyncTableResponse) SetBody(v *ResyncTableResponseBody) *ResyncTableRe
 }
 
 type RunDataAnalysisRequest struct {
-	DataRole []*string `json:"dataRole,omitempty" xml:"dataRole,omitempty" type:"Repeated"`
+	AgentCtrlParams interface{} `json:"agentCtrlParams,omitempty" xml:"agentCtrlParams,omitempty"`
+	DataRole        []*string   `json:"dataRole,omitempty" xml:"dataRole,omitempty" type:"Repeated"`
 	// example:
 	//
 	// true
@@ -2297,6 +2298,11 @@ func (s RunDataAnalysisRequest) String() string {
 
 func (s RunDataAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunDataAnalysisRequest) SetAgentCtrlParams(v interface{}) *RunDataAnalysisRequest {
+	s.AgentCtrlParams = v
+	return s
 }
 
 func (s *RunDataAnalysisRequest) SetDataRole(v []*string) *RunDataAnalysisRequest {
@@ -5691,6 +5697,10 @@ func (client *Client) RunDataAnalysisWithOptions(workspaceId *string, request *R
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentCtrlParams)) {
+		body["agentCtrlParams"] = request.AgentCtrlParams
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DataRole)) {
 		body["dataRole"] = request.DataRole
 	}
