@@ -785,6 +785,7 @@ func (s *AiSearchResponse) SetBody(v *AiSearchResponseBody) *AiSearchResponse {
 }
 
 type GenericAdvancedSearchRequest struct {
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
 	// This parameter is required.
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// example:
@@ -803,6 +804,11 @@ func (s GenericAdvancedSearchRequest) String() string {
 
 func (s GenericAdvancedSearchRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenericAdvancedSearchRequest) SetIndustry(v string) *GenericAdvancedSearchRequest {
+	s.Industry = &v
+	return s
 }
 
 func (s *GenericAdvancedSearchRequest) SetQuery(v string) *GenericAdvancedSearchRequest {
@@ -1081,6 +1087,10 @@ func (client *Client) GenericAdvancedSearchWithOptions(request *GenericAdvancedS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["industry"] = request.Industry
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["query"] = request.Query
 	}
