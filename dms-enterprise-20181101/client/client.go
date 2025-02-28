@@ -6372,8 +6372,13 @@ type CreateDataCorrectOrderRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	Param            *CreateDataCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RealLoginUserUid *string                             `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
+	Param *CreateDataCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -6423,9 +6428,9 @@ func (s *CreateDataCorrectOrderRequest) SetTid(v int64) *CreateDataCorrectOrderR
 }
 
 type CreateDataCorrectOrderRequestParam struct {
-	// The key of the attachment that contains the SQL statements used to change data. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+	// The key of the attachment that contains the SQL statements used to change data. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of AttachmentKey.
 	//
-	// >  This parameter is required if you set the **SqlType*	- parameter to **ATTACHMENT**.
+	// >  This parameter is required if you set **SqlType*	- to **ATTACHMENT**.
 	//
 	// example:
 	//
@@ -6437,11 +6442,11 @@ type CreateDataCorrectOrderRequestParam struct {
 	//
 	// test
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	// The databases in which you want to change data.
+	// The databases whose data you want to change.
 	//
 	// This parameter is required.
 	DbItemList []*CreateDataCorrectOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
-	// The estimated number of data rows to be affected by the data change.
+	// The estimated number of data rows that may be affected by the data change.
 	//
 	// This parameter is required.
 	//
@@ -6449,37 +6454,41 @@ type CreateDataCorrectOrderRequestParam struct {
 	//
 	// 1
 	EstimateAffectRows *int64 `json:"EstimateAffectRows,omitempty" xml:"EstimateAffectRows,omitempty"`
-	// The execution mode of the ticket after the ticket is approved. Valid values:
+	// The mode in which the data change ticket is executed after the ticket is approved. Valid values:
 	//
-	// 	- **COMMITOR**: The data change is performed by the user who submits the ticket.
+	// 	- **COMMITOR**: The ticket is executed by the user who submits the ticket.
 	//
-	// 	- **AUTO**: The data change is automatically performed after the ticket is approved.
+	// 	- **AUTO**: The ticket is automatically executed after the ticket is approved.
 	//
-	// 	- **LAST_AUDITOR**: The data change is performed by the last approver of the ticket.
+	// 	- **LAST_AUDITOR**: The ticket is executed by the last approver of the ticket.
 	//
 	// example:
 	//
 	// COMMITOR
 	ExecMode *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
-	// The SQL statements that you want to execute to change data.
+	// The SQL statements for data change.
 	//
-	// >  This parameter is required if you set the **SqlType*	- parameter to **TEXT**.
+	// >
+	//
+	// 	- This parameter is required if you set **SqlType*	- to **TEXT**.
+	//
+	// 	- The size of the SQL statement cannot exceed 15 MB.
 	//
 	// example:
 	//
 	// update base_user set id = 1 where id  = 1;
 	ExecSQL *string `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
-	// The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to the attachment key from the value of the AttachmentKey parameter.
+	// The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of AttachmentKey.
 	//
-	// >  This parameter is required if you set the **RollbackSqlType*	- parameter to **ATTACHMENT**.
+	// >  This parameter is required if you set **RollbackSqlType*	- to **ATTACHMENT**.
 	//
 	// example:
 	//
 	// test_rollback.sql
 	RollbackAttachmentName *string `json:"RollbackAttachmentName,omitempty" xml:"RollbackAttachmentName,omitempty"`
-	// The SQL statements used to roll back the data change.
+	// The SQL statements for rolling back the data change.
 	//
-	// > This parameter is required if you set the **RollbackSqlType*	- parameter to **TEXT**.
+	// >  This parameter is required if you set **RollbackSqlType*	- to **TEXT**.
 	//
 	// example:
 	//
@@ -6487,9 +6496,9 @@ type CreateDataCorrectOrderRequestParam struct {
 	RollbackSQL *string `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
 	// The format of the SQL statements used to roll back the data change. Valid values:
 	//
-	// 	- **TEXT**: text
+	// 	- **TEXT**
 	//
-	// 	- **ATTACHMENT**: attachment
+	// 	- **ATTACHMENT**
 	//
 	// example:
 	//
@@ -6497,9 +6506,9 @@ type CreateDataCorrectOrderRequestParam struct {
 	RollbackSqlType *string `json:"RollbackSqlType,omitempty" xml:"RollbackSqlType,omitempty"`
 	// The format of the SQL statements used to change data. Valid values:
 	//
-	// 	- **TEXT**: text
+	// 	- **TEXT**
 	//
-	// 	- **ATTACHMENT**: attachment
+	// 	- **ATTACHMENT**
 	//
 	// This parameter is required.
 	//
@@ -6568,16 +6577,33 @@ func (s *CreateDataCorrectOrderRequestParam) SetSqlType(v string) *CreateDataCor
 }
 
 type CreateDataCorrectOrderRequestParamDbItemList struct {
-	// The ID of the database. The database can be a physical database or a logical database.
+	// The database ID. The database can be a physical database or a logical database.
 	//
-	// 	- To obtain the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+	// 	- To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
 	//
+<<<<<<< Updated upstream
 	// 	- To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+=======
+	// 	- To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+>>>>>>> Stashed changes
 	//
 	// example:
 	//
 	// 1860****
+<<<<<<< Updated upstream
 	DbId       *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+=======
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The instance ID. You can call the ListInstances or GetInstance operation to query the instance ID.
+	//
+	// >
+	//
+	// > The instance change feature is supported only by ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and AnalyticDB for MySQL clusters.
+	//
+	// example:
+	//
+	// 1860****
+>>>>>>> Stashed changes
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether the database is a logical database. Valid values:
 	//
@@ -6632,7 +6658,12 @@ type CreateDataCorrectOrderShrinkRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	ParamShrink      *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
@@ -17814,7 +17845,12 @@ type ExecuteDataCorrectRequest struct {
 	// example:
 	//
 	// 406****
-	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
@@ -17884,7 +17920,12 @@ type ExecuteDataCorrectShrinkRequest struct {
 	// example:
 	//
 	// 406****
-	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
@@ -18011,19 +18052,23 @@ func (s *ExecuteDataCorrectResponse) SetBody(v *ExecuteDataCorrectResponseBody) 
 }
 
 type ExecuteDataExportRequest struct {
-	// The parameters that are required to perform the operation:
+	// The parameters that are required to perform the operation. Sample code:
 	//
 	// ```json
 	//
 	// {
 	//
-	//    "fileType": "CSV", // The format of the exported file.
-	//
-	//    "encoding": "" // The encoding format.
-	//
-	//  }
+	//   "mode" : "FAST",   // The mode in which data is exported. Default value: FAST. A value of NORMAL specifies that the export task can be terminated during the export.  "encoding" : "UTF8",  // The encoding format.  "startTime" : "2022-12-22 00:00:00",  // The point in time at which data export starts.  "transaction" : false,    // Specifies whether to enable transactions.  "fileType" : "SQL"    // The format of the exported file.}
 	//
 	// ```
+	//
+	// >  You can also set mode, encoding, and fileType to the following values:
+	//
+	// 	- mode: NORMAL
+	//
+	// 	- encoding: UTF8MB4, GB2312, ISO_8859_1, GBK, LATAIN1, or CP1252
+	//
+	// 	- fileType: XLSX, CSV, JSON, or TXT
 	//
 	// example:
 	//
@@ -18036,7 +18081,12 @@ type ExecuteDataExportRequest struct {
 	// example:
 	//
 	// 1234
-	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant.
 	//
@@ -18077,19 +18127,23 @@ func (s *ExecuteDataExportRequest) SetTid(v int64) *ExecuteDataExportRequest {
 }
 
 type ExecuteDataExportShrinkRequest struct {
-	// The parameters that are required to perform the operation:
+	// The parameters that are required to perform the operation. Sample code:
 	//
 	// ```json
 	//
 	// {
 	//
-	//    "fileType": "CSV", // The format of the exported file.
-	//
-	//    "encoding": "" // The encoding format.
-	//
-	//  }
+	//   "mode" : "FAST",   // The mode in which data is exported. Default value: FAST. A value of NORMAL specifies that the export task can be terminated during the export.  "encoding" : "UTF8",  // The encoding format.  "startTime" : "2022-12-22 00:00:00",  // The point in time at which data export starts.  "transaction" : false,    // Specifies whether to enable transactions.  "fileType" : "SQL"    // The format of the exported file.}
 	//
 	// ```
+	//
+	// >  You can also set mode, encoding, and fileType to the following values:
+	//
+	// 	- mode: NORMAL
+	//
+	// 	- encoding: UTF8MB4, GB2312, ISO_8859_1, GBK, LATAIN1, or CP1252
+	//
+	// 	- fileType: XLSX, CSV, JSON, or TXT
 	//
 	// example:
 	//
@@ -18102,7 +18156,12 @@ type ExecuteDataExportShrinkRequest struct {
 	// example:
 	//
 	// 1234
-	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant.
 	//
@@ -24223,16 +24282,21 @@ func (s *GetDataCronClearTaskDetailListResponse) SetBody(v *GetDataCronClearTask
 }
 
 type GetDataExportDownloadURLRequest struct {
-	// The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+	// The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 546****
-	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+	// The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
 	//
 	// example:
 	//
@@ -24264,21 +24328,21 @@ func (s *GetDataExportDownloadURLRequest) SetTid(v int64) *GetDataExportDownload
 }
 
 type GetDataExportDownloadURLResponseBody struct {
-	// The details about the download URL of the file that records the export results for the ticket.
+	// The details of the download URL of the file that records the export results for the ticket.
 	DownloadURLResult *GetDataExportDownloadURLResponseBodyDownloadURLResult `json:"DownloadURLResult,omitempty" xml:"DownloadURLResult,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -24286,9 +24350,9 @@ type GetDataExportDownloadURLResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// 	- **true**
 	//
-	// 	- **false**: The request failed.
+	// 	- **false**
 	//
 	// example:
 	//
@@ -24332,9 +24396,9 @@ func (s *GetDataExportDownloadURLResponseBody) SetSuccess(v bool) *GetDataExport
 type GetDataExportDownloadURLResponseBodyDownloadURLResult struct {
 	// Indicates whether export results are available for download. Valid values:
 	//
-	// 	- **true**: Export results are available for download.
+	// 	- **true**
 	//
-	// 	- **false**: No export results are available for download.
+	// 	- **false**
 	//
 	// example:
 	//
@@ -24510,7 +24574,7 @@ func (s *GetDataExportOrderDetailResponseBody) SetSuccess(v bool) *GetDataExport
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetail struct {
-	// The information about the ticket.
+	// The status information.
 	KeyInfo *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
 	// The details of the ticket.
 	OrderDetail *GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail `json:"OrderDetail,omitempty" xml:"OrderDetail,omitempty" type:"Struct"`
@@ -24535,6 +24599,11 @@ func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetail) SetOrderDeta
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo struct {
+	// Export task ID.
+	//
+	// example:
+	//
+	// 1385****
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The state of the data export ticket. Valid values:
 	//
@@ -65060,7 +65129,12 @@ type SubmitOrderApprovalRequest struct {
 	// example:
 	//
 	// 12345
-	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant.
 	//
@@ -68522,8 +68596,11 @@ type UpdateTaskContentV2Request struct {
 	//
 	// { "dbId":12****, "sql":"select 	- from test_table",   "dbType":"lindorm_sql"  }
 	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+<<<<<<< Updated upstream
 	// This parameter is required.
 	//
+=======
+>>>>>>> Stashed changes
 	// example:
 	//
 	// 449***
@@ -70735,7 +70812,16 @@ type UpdateUserRequest struct {
 	// example:
 	//
 	// 123456789
+<<<<<<< Updated upstream
 	Uid       *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+=======
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The UID of the String type. If you specify this parameter, the UID of the Long type is replaced.
+	//
+	// example:
+	//
+	// 322824****:dmstest.wu@A201***
+>>>>>>> Stashed changes
 	UidString *string `json:"UidString,omitempty" xml:"UidString,omitempty"`
 	// The nickname of the user.
 	//
@@ -79684,7 +79770,7 @@ func (client *Client) GetDataCronClearTaskDetailList(request *GetDataCronClearTa
 
 // Summary:
 //
-// Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+// Queries the download URL of export results for a data export ticket.
 //
 // @param request - GetDataExportDownloadURLRequest
 //
@@ -79745,7 +79831,7 @@ func (client *Client) GetDataExportDownloadURLWithOptions(request *GetDataExport
 
 // Summary:
 //
-// Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+// Queries the download URL of export results for a data export ticket.
 //
 // @param request - GetDataExportDownloadURLRequest
 //
@@ -94349,7 +94435,11 @@ func (client *Client) UpdateTaskContent(request *UpdateTaskContentRequest) (_res
 
 // Summary:
 //
+<<<<<<< Updated upstream
 // 接受大容量sql文件的更新节点内容API
+=======
+// 大sql更新节点专用
+>>>>>>> Stashed changes
 //
 // @param request - UpdateTaskContentV2Request
 //
@@ -94408,7 +94498,11 @@ func (client *Client) UpdateTaskContentV2WithOptions(request *UpdateTaskContentV
 
 // Summary:
 //
+<<<<<<< Updated upstream
 // 接受大容量sql文件的更新节点内容API
+=======
+// 大sql更新节点专用
+>>>>>>> Stashed changes
 //
 // @param request - UpdateTaskContentV2Request
 //
