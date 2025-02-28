@@ -3388,6 +3388,280 @@ func (s *CreateServiceInstanceResponse) SetBody(v *CreateServiceInstanceResponse
 	return s
 }
 
+type CreateServiceTestCaseRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a544xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// draft
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The template name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Custom_Image_Ecs
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Service Test case name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// case1
+	TestCaseName *string `json:"TestCaseName,omitempty" xml:"TestCaseName,omitempty"`
+	// The service test config
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ---
+	//
+	// parameters:
+	//
+	//   PayType: "PostPaid"
+	//
+	//   EcsInstanceType: "$[iact3-auto]"
+	//
+	//   InstancePassword: "$[iact3-auto]"
+	TestConfig *string `json:"TestConfig,omitempty" xml:"TestConfig,omitempty"`
+}
+
+func (s CreateServiceTestCaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceTestCaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceTestCaseRequest) SetRegionId(v string) *CreateServiceTestCaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceTestCaseRequest) SetServiceId(v string) *CreateServiceTestCaseRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceTestCaseRequest) SetServiceVersion(v string) *CreateServiceTestCaseRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CreateServiceTestCaseRequest) SetTemplateName(v string) *CreateServiceTestCaseRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateServiceTestCaseRequest) SetTestCaseName(v string) *CreateServiceTestCaseRequest {
+	s.TestCaseName = &v
+	return s
+}
+
+func (s *CreateServiceTestCaseRequest) SetTestConfig(v string) *CreateServiceTestCaseRequest {
+	s.TestConfig = &v
+	return s
+}
+
+type CreateServiceTestCaseResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// E50287CB-AABF-4877-92C0-289B339A1546
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The test case Id
+	//
+	// example:
+	//
+	// stc-5ba03a6a9a2746be8739
+	TestCaseId *string `json:"TestCaseId,omitempty" xml:"TestCaseId,omitempty"`
+}
+
+func (s CreateServiceTestCaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceTestCaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceTestCaseResponseBody) SetRequestId(v string) *CreateServiceTestCaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceTestCaseResponseBody) SetTestCaseId(v string) *CreateServiceTestCaseResponseBody {
+	s.TestCaseId = &v
+	return s
+}
+
+type CreateServiceTestCaseResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceTestCaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateServiceTestCaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceTestCaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceTestCaseResponse) SetHeaders(v map[string]*string) *CreateServiceTestCaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceTestCaseResponse) SetStatusCode(v int32) *CreateServiceTestCaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceTestCaseResponse) SetBody(v *CreateServiceTestCaseResponseBody) *CreateServiceTestCaseResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceTestTaskRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nametest
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The Task Execution Region
+	//
+	// example:
+	//
+	// cn-beijing
+	TaskRegionId *string `json:"TaskRegionId,omitempty" xml:"TaskRegionId,omitempty"`
+	// The service test case ids.
+	//
+	// This parameter is required.
+	TestCaseIds []*string `json:"TestCaseIds,omitempty" xml:"TestCaseIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateServiceTestTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceTestTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceTestTaskRequest) SetRegionId(v string) *CreateServiceTestTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceTestTaskRequest) SetTaskName(v string) *CreateServiceTestTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *CreateServiceTestTaskRequest) SetTaskRegionId(v string) *CreateServiceTestTaskRequest {
+	s.TaskRegionId = &v
+	return s
+}
+
+func (s *CreateServiceTestTaskRequest) SetTestCaseIds(v []*string) *CreateServiceTestTaskRequest {
+	s.TestCaseIds = v
+	return s
+}
+
+type CreateServiceTestTaskResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// DF0F666F-FBBC-55C3-A368-C955DE7B4839
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// stt-568c2c5a687a409b977e
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateServiceTestTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceTestTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceTestTaskResponseBody) SetRequestId(v string) *CreateServiceTestTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceTestTaskResponseBody) SetTaskId(v string) *CreateServiceTestTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateServiceTestTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceTestTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateServiceTestTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceTestTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceTestTaskResponse) SetHeaders(v map[string]*string) *CreateServiceTestTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceTestTaskResponse) SetStatusCode(v int32) *CreateServiceTestTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceTestTaskResponse) SetBody(v *CreateServiceTestTaskResponseBody) *CreateServiceTestTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateServiceUsageRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -3481,6 +3755,280 @@ func (s *CreateServiceUsageResponse) SetStatusCode(v int32) *CreateServiceUsageR
 }
 
 func (s *CreateServiceUsageResponse) SetBody(v *CreateServiceUsageResponseBody) *CreateServiceUsageResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSupplierRegistrationRequest struct {
+	// Contact email
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx@xxx.com
+	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// Contact number
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 186xxxxxxxxx
+	ContactNumber *string `json:"ContactNumber,omitempty" xml:"ContactNumber,omitempty"`
+	// Contact person
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Mike
+	ContactPerson *string `json:"ContactPerson,omitempty" xml:"ContactPerson,omitempty"`
+	// Contact person tiltle
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CTO
+	ContactPersonTitle *string `json:"ContactPersonTitle,omitempty" xml:"ContactPersonTitle,omitempty"`
+	// Whether to enable the resell mode
+	//
+	// example:
+	//
+	// true
+	EnableResellerMode *bool `json:"EnableResellerMode,omitempty" xml:"EnableResellerMode,omitempty"`
+	// Annual product revenue
+	//
+	// example:
+	//
+	// 1000
+	ProductAnnualRevenue *string `json:"ProductAnnualRevenue,omitempty" xml:"ProductAnnualRevenue,omitempty"`
+	// The business of product
+	//
+	// example:
+	//
+	// AI
+	ProductBusiness *string `json:"ProductBusiness,omitempty" xml:"ProductBusiness,omitempty"`
+	// Product delivery type
+	//
+	// This parameter is required.
+	ProductDeliveryTypes []*string `json:"ProductDeliveryTypes,omitempty" xml:"ProductDeliveryTypes,omitempty" type:"Repeated"`
+	// The publish time of product
+	//
+	// example:
+	//
+	// 2020.10.10
+	ProductPublishTime *string `json:"ProductPublishTime,omitempty" xml:"ProductPublishTime,omitempty"`
+	// Product sell type
+	//
+	// This parameter is required.
+	ProductSellTypes []*string `json:"ProductSellTypes,omitempty" xml:"ProductSellTypes,omitempty" type:"Repeated"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The description of resell business.
+	//
+	// example:
+	//
+	// empty
+	ResellBusinessDesc *string `json:"ResellBusinessDesc,omitempty" xml:"ResellBusinessDesc,omitempty"`
+	// The demands of service providers.
+	//
+	// example:
+	//
+	// empty
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The description of service provider.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test supplier
+	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	// The Logo of service provider.
+	//
+	// example:
+	//
+	// http://example.aliyundoc.com/cover/34DB-4F4C-9373-003AA060****.png
+	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
+	// The name of the service provider.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Alibaba Cloud
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The english name of the service provider.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Alibaba Cloud
+	SupplierNameEn *string `json:"SupplierNameEn,omitempty" xml:"SupplierNameEn,omitempty"`
+	// The URL of the service provider.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://www.xxx.xxx.cn
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+}
+
+func (s CreateSupplierRegistrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSupplierRegistrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSupplierRegistrationRequest) SetContactEmail(v string) *CreateSupplierRegistrationRequest {
+	s.ContactEmail = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetContactNumber(v string) *CreateSupplierRegistrationRequest {
+	s.ContactNumber = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetContactPerson(v string) *CreateSupplierRegistrationRequest {
+	s.ContactPerson = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetContactPersonTitle(v string) *CreateSupplierRegistrationRequest {
+	s.ContactPersonTitle = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetEnableResellerMode(v bool) *CreateSupplierRegistrationRequest {
+	s.EnableResellerMode = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetProductAnnualRevenue(v string) *CreateSupplierRegistrationRequest {
+	s.ProductAnnualRevenue = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetProductBusiness(v string) *CreateSupplierRegistrationRequest {
+	s.ProductBusiness = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetProductDeliveryTypes(v []*string) *CreateSupplierRegistrationRequest {
+	s.ProductDeliveryTypes = v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetProductPublishTime(v string) *CreateSupplierRegistrationRequest {
+	s.ProductPublishTime = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetProductSellTypes(v []*string) *CreateSupplierRegistrationRequest {
+	s.ProductSellTypes = v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetRegionId(v string) *CreateSupplierRegistrationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetResellBusinessDesc(v string) *CreateSupplierRegistrationRequest {
+	s.ResellBusinessDesc = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetSuggestion(v string) *CreateSupplierRegistrationRequest {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetSupplierDesc(v string) *CreateSupplierRegistrationRequest {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetSupplierLogo(v string) *CreateSupplierRegistrationRequest {
+	s.SupplierLogo = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetSupplierName(v string) *CreateSupplierRegistrationRequest {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetSupplierNameEn(v string) *CreateSupplierRegistrationRequest {
+	s.SupplierNameEn = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationRequest) SetSupplierUrl(v string) *CreateSupplierRegistrationRequest {
+	s.SupplierUrl = &v
+	return s
+}
+
+type CreateSupplierRegistrationResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// C4A145D8-xxxx-xxxx-xxxx-9730CDA27578
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSupplierRegistrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSupplierRegistrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSupplierRegistrationResponseBody) SetRequestId(v string) *CreateSupplierRegistrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSupplierRegistrationResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSupplierRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSupplierRegistrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSupplierRegistrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSupplierRegistrationResponse) SetHeaders(v map[string]*string) *CreateSupplierRegistrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSupplierRegistrationResponse) SetStatusCode(v int32) *CreateSupplierRegistrationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSupplierRegistrationResponse) SetBody(v *CreateSupplierRegistrationResponseBody) *CreateSupplierRegistrationResponse {
 	s.Body = v
 	return s
 }
@@ -3791,6 +4339,92 @@ func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesRespon
 	return s
 }
 
+type DeleteServiceTestCaseRequest struct {
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service test case id.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// stc-0b2a3ad7e1de4c299eec
+	TestCaseId *string `json:"TestCaseId,omitempty" xml:"TestCaseId,omitempty"`
+}
+
+func (s DeleteServiceTestCaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceTestCaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceTestCaseRequest) SetRegionId(v string) *DeleteServiceTestCaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteServiceTestCaseRequest) SetTestCaseId(v string) *DeleteServiceTestCaseRequest {
+	s.TestCaseId = &v
+	return s
+}
+
+type DeleteServiceTestCaseResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteServiceTestCaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceTestCaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceTestCaseResponseBody) SetRequestId(v string) *DeleteServiceTestCaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceTestCaseResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceTestCaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteServiceTestCaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceTestCaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceTestCaseResponse) SetHeaders(v map[string]*string) *DeleteServiceTestCaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceTestCaseResponse) SetStatusCode(v int32) *DeleteServiceTestCaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceTestCaseResponse) SetBody(v *DeleteServiceTestCaseResponseBody) *DeleteServiceTestCaseResponse {
+	s.Body = v
+	return s
+}
+
 type DeployServiceInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -3886,6 +4520,124 @@ func (s *DeployServiceInstanceResponse) SetStatusCode(v int32) *DeployServiceIns
 }
 
 func (s *DeployServiceInstanceResponse) SetBody(v *DeployServiceInstanceResponseBody) *DeployServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateDefaultServiceTestConfigRequest struct {
+	// The service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-41ad58439b4b4bf8ae73
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// draft
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// test-1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GenerateDefaultServiceTestConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDefaultServiceTestConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDefaultServiceTestConfigRequest) SetServiceId(v string) *GenerateDefaultServiceTestConfigRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GenerateDefaultServiceTestConfigRequest) SetServiceVersion(v string) *GenerateDefaultServiceTestConfigRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *GenerateDefaultServiceTestConfigRequest) SetTemplateName(v string) *GenerateDefaultServiceTestConfigRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type GenerateDefaultServiceTestConfigResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service test config
+	//
+	// example:
+	//
+	// ---
+	//
+	// parameters:
+	//
+	//   PayType: "PostPaid"
+	//
+	//   EcsInstanceType: "$[iact3-auto]"
+	//
+	//   InstancePassword: "$[iact3-auto]"
+	TestConfig *string `json:"TestConfig,omitempty" xml:"TestConfig,omitempty"`
+}
+
+func (s GenerateDefaultServiceTestConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDefaultServiceTestConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDefaultServiceTestConfigResponseBody) SetRequestId(v string) *GenerateDefaultServiceTestConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateDefaultServiceTestConfigResponseBody) SetTestConfig(v string) *GenerateDefaultServiceTestConfigResponseBody {
+	s.TestConfig = &v
+	return s
+}
+
+type GenerateDefaultServiceTestConfigResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateDefaultServiceTestConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateDefaultServiceTestConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDefaultServiceTestConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDefaultServiceTestConfigResponse) SetHeaders(v map[string]*string) *GenerateDefaultServiceTestConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateDefaultServiceTestConfigResponse) SetStatusCode(v int32) *GenerateDefaultServiceTestConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateDefaultServiceTestConfigResponse) SetBody(v *GenerateDefaultServiceTestConfigResponseBody) *GenerateDefaultServiceTestConfigResponse {
 	s.Body = v
 	return s
 }
@@ -8247,6 +8999,302 @@ func (s *GetServiceProvisionsResponse) SetBody(v *GetServiceProvisionsResponseBo
 	return s
 }
 
+type GetServiceRegistrationRequest struct {
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service registration ID.
+	//
+	// example:
+	//
+	// sr-1b4aabc1c9eb4109****
+	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+}
+
+func (s GetServiceRegistrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrationRequest) SetRegionId(v string) *GetServiceRegistrationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetServiceRegistrationRequest) SetRegistrationId(v string) *GetServiceRegistrationRequest {
+	s.RegistrationId = &v
+	return s
+}
+
+type GetServiceRegistrationResponseBody struct {
+	// Comment from reviewer.
+	//
+	// example:
+	//
+	// comment message
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The details of service audit.
+	Detail *GetServiceRegistrationResponseBodyDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	// Finish time.
+	//
+	// example:
+	//
+	// 2024-12-07T11:05:50Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Service registration ID.
+	//
+	// example:
+	//
+	// sr-1b4aabc1c9eb4109****
+	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-c2d118c9193e49xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service details.
+	ServiceInfo *GetServiceRegistrationResponseBodyServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Struct"`
+	// The service version.
+	//
+	// example:
+	//
+	// beta
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The status of service registration. Valid values:
+	//
+	// 	- Submitted
+	//
+	// 	- Approved
+	//
+	// 	- Rejected
+	//
+	// 	- Canceled
+	//
+	// 	- Executed
+	//
+	// example:
+	//
+	// Submitted
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Submit time.
+	//
+	// example:
+	//
+	// 2024-12-07T11:05:50Z
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+}
+
+func (s GetServiceRegistrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrationResponseBody) SetComment(v string) *GetServiceRegistrationResponseBody {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetDetail(v *GetServiceRegistrationResponseBodyDetail) *GetServiceRegistrationResponseBody {
+	s.Detail = v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetFinishTime(v string) *GetServiceRegistrationResponseBody {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetRegistrationId(v string) *GetServiceRegistrationResponseBody {
+	s.RegistrationId = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetRequestId(v string) *GetServiceRegistrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetServiceId(v string) *GetServiceRegistrationResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetServiceInfo(v *GetServiceRegistrationResponseBodyServiceInfo) *GetServiceRegistrationResponseBody {
+	s.ServiceInfo = v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetServiceVersion(v string) *GetServiceRegistrationResponseBody {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetStatus(v string) *GetServiceRegistrationResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBody) SetSubmitTime(v string) *GetServiceRegistrationResponseBody {
+	s.SubmitTime = &v
+	return s
+}
+
+type GetServiceRegistrationResponseBodyDetail struct {
+	// Whether risk exists.
+	//
+	// example:
+	//
+	// true
+	AtRisk *bool `json:"AtRisk,omitempty" xml:"AtRisk,omitempty"`
+	// Whether service is associated with artifact.
+	//
+	// example:
+	//
+	// true
+	HasRelatedArtifact *bool `json:"HasRelatedArtifact,omitempty" xml:"HasRelatedArtifact,omitempty"`
+	// The reports.
+	//
+	// example:
+	//
+	// { "template1":"https://compute-nest-security-audit-bucket.oss-cn-hangzhou.aliyuncs.com/report" }
+	Reports *string `json:"Reports,omitempty" xml:"Reports,omitempty"`
+	// The url of template diff file.
+	//
+	// example:
+	//
+	// https://compute-nest-template-diff-bucket.oss-cn-hangzhou.aliyuncs.com/service-abc/diff
+	TemplateDiffUrl *string `json:"TemplateDiffUrl,omitempty" xml:"TemplateDiffUrl,omitempty"`
+}
+
+func (s GetServiceRegistrationResponseBodyDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrationResponseBodyDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrationResponseBodyDetail) SetAtRisk(v bool) *GetServiceRegistrationResponseBodyDetail {
+	s.AtRisk = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBodyDetail) SetHasRelatedArtifact(v bool) *GetServiceRegistrationResponseBodyDetail {
+	s.HasRelatedArtifact = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBodyDetail) SetReports(v string) *GetServiceRegistrationResponseBodyDetail {
+	s.Reports = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBodyDetail) SetTemplateDiffUrl(v string) *GetServiceRegistrationResponseBodyDetail {
+	s.TemplateDiffUrl = &v
+	return s
+}
+
+type GetServiceRegistrationResponseBodyServiceInfo struct {
+	// The type of the service. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// example:
+	//
+	// private
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The trial policy. Valid values:
+	//
+	// 	- Trial: Trials are supported.
+	//
+	// 	- NotTrial: Trials are not supported.
+	//
+	// example:
+	//
+	// Trial
+	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	// The version name.
+	//
+	// example:
+	//
+	// v1.0
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s GetServiceRegistrationResponseBodyServiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrationResponseBodyServiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrationResponseBodyServiceInfo) SetServiceType(v string) *GetServiceRegistrationResponseBodyServiceInfo {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBodyServiceInfo) SetTrialType(v string) *GetServiceRegistrationResponseBodyServiceInfo {
+	s.TrialType = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponseBodyServiceInfo) SetVersionName(v string) *GetServiceRegistrationResponseBodyServiceInfo {
+	s.VersionName = &v
+	return s
+}
+
+type GetServiceRegistrationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetServiceRegistrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrationResponse) SetHeaders(v map[string]*string) *GetServiceRegistrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceRegistrationResponse) SetStatusCode(v int32) *GetServiceRegistrationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceRegistrationResponse) SetBody(v *GetServiceRegistrationResponseBody) *GetServiceRegistrationResponse {
+	s.Body = v
+	return s
+}
+
 type GetServiceTemplateParameterConstraintsRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
@@ -8598,6 +9646,417 @@ func (s *GetServiceTemplateParameterConstraintsResponse) SetBody(v *GetServiceTe
 	return s
 }
 
+type GetServiceTestTaskRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// stt-xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetServiceTestTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceTestTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceTestTaskRequest) SetRegionId(v string) *GetServiceTestTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetServiceTestTaskRequest) SetTaskId(v string) *GetServiceTestTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetServiceTestTaskResponseBody struct {
+	// The execution details.
+	ExecutionDetails []*GetServiceTestTaskResponseBodyExecutionDetails `json:"ExecutionDetails,omitempty" xml:"ExecutionDetails,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the service test task. Valid values:
+	//
+	// 	- Running
+	//
+	// 	- Success
+	//
+	// 	- Failure
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// nametest
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task execution region.
+	//
+	// example:
+	//
+	// cn-beijing
+	TaskRegionId *string `json:"TaskRegionId,omitempty" xml:"TaskRegionId,omitempty"`
+}
+
+func (s GetServiceTestTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceTestTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceTestTaskResponseBody) SetExecutionDetails(v []*GetServiceTestTaskResponseBodyExecutionDetails) *GetServiceTestTaskResponseBody {
+	s.ExecutionDetails = v
+	return s
+}
+
+func (s *GetServiceTestTaskResponseBody) SetRequestId(v string) *GetServiceTestTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceTestTaskResponseBody) SetStatus(v string) *GetServiceTestTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceTestTaskResponseBody) SetTaskName(v string) *GetServiceTestTaskResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+func (s *GetServiceTestTaskResponseBody) SetTaskRegionId(v string) *GetServiceTestTaskResponseBody {
+	s.TaskRegionId = &v
+	return s
+}
+
+type GetServiceTestTaskResponseBodyExecutionDetails struct {
+	// The service test case name.
+	//
+	// example:
+	//
+	// case1
+	CaseName *string `json:"CaseName,omitempty" xml:"CaseName,omitempty"`
+	// The execution report
+	//
+	// example:
+	//
+	// -----------------------------------------------------------------------------
+	//
+	// Region: cn-qingdao
+	//
+	// StackName: iact3-default-cn-qingd
+	//
+	// StackId: 009d2991-f494-d
+	//
+	// *****************************************************************************
+	ExecutionReport *string `json:"ExecutionReport,omitempty" xml:"ExecutionReport,omitempty"`
+	// The sub task status.
+	//
+	// example:
+	//
+	// Runing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub task id.
+	//
+	// example:
+	//
+	// stt-xxxx
+	SubTaskId *string `json:"SubTaskId,omitempty" xml:"SubTaskId,omitempty"`
+}
+
+func (s GetServiceTestTaskResponseBodyExecutionDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceTestTaskResponseBodyExecutionDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceTestTaskResponseBodyExecutionDetails) SetCaseName(v string) *GetServiceTestTaskResponseBodyExecutionDetails {
+	s.CaseName = &v
+	return s
+}
+
+func (s *GetServiceTestTaskResponseBodyExecutionDetails) SetExecutionReport(v string) *GetServiceTestTaskResponseBodyExecutionDetails {
+	s.ExecutionReport = &v
+	return s
+}
+
+func (s *GetServiceTestTaskResponseBodyExecutionDetails) SetStatus(v string) *GetServiceTestTaskResponseBodyExecutionDetails {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceTestTaskResponseBodyExecutionDetails) SetSubTaskId(v string) *GetServiceTestTaskResponseBodyExecutionDetails {
+	s.SubTaskId = &v
+	return s
+}
+
+type GetServiceTestTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceTestTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetServiceTestTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceTestTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceTestTaskResponse) SetHeaders(v map[string]*string) *GetServiceTestTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceTestTaskResponse) SetStatusCode(v int32) *GetServiceTestTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceTestTaskResponse) SetBody(v *GetServiceTestTaskResponseBody) *GetServiceTestTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetSupplierInformationRequest struct {
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSupplierInformationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupplierInformationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupplierInformationRequest) SetRegionId(v string) *GetSupplierInformationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSupplierInformationResponseBody struct {
+	// The delivery settings.
+	DeliverySettings *GetSupplierInformationResponseBodyDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
+	// Whether to enable reseller
+	//
+	// example:
+	//
+	// true
+	EnableReseller *bool `json:"EnableReseller,omitempty" xml:"EnableReseller,omitempty"`
+	// The Ip of the operation.
+	//
+	// example:
+	//
+	// 10.xxx.xxx.xxx/101
+	OperationIp *string `json:"OperationIp,omitempty" xml:"OperationIp,omitempty"`
+	// The MFA of the operation.
+	//
+	// example:
+	//
+	// true
+	OperationMfaPresent *bool `json:"OperationMfaPresent,omitempty" xml:"OperationMfaPresent,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The description of service provider.
+	//
+	// example:
+	//
+	// Test supplier
+	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	// The Logo of service provider.
+	//
+	// example:
+	//
+	// http://example.aliyundoc.com/cover/34DB-4F4C-9373-003AA060****.png
+	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The URL of the service provider.
+	//
+	// example:
+	//
+	// http://www.xxx.xxx.cn
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+}
+
+func (s GetSupplierInformationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupplierInformationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupplierInformationResponseBody) SetDeliverySettings(v *GetSupplierInformationResponseBodyDeliverySettings) *GetSupplierInformationResponseBody {
+	s.DeliverySettings = v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetEnableReseller(v bool) *GetSupplierInformationResponseBody {
+	s.EnableReseller = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetOperationIp(v string) *GetSupplierInformationResponseBody {
+	s.OperationIp = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetOperationMfaPresent(v bool) *GetSupplierInformationResponseBody {
+	s.OperationMfaPresent = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetRequestId(v string) *GetSupplierInformationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetSupplierDesc(v string) *GetSupplierInformationResponseBody {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetSupplierLogo(v string) *GetSupplierInformationResponseBody {
+	s.SupplierLogo = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetSupplierName(v string) *GetSupplierInformationResponseBody {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBody) SetSupplierUrl(v string) *GetSupplierInformationResponseBody {
+	s.SupplierUrl = &v
+	return s
+}
+
+type GetSupplierInformationResponseBodyDeliverySettings struct {
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// mybucket
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// Indicates whether screencast delivery to Object Storage Service (OSS) is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
+	// The number of days for which the screencasts are saved.
+	//
+	// example:
+	//
+	// 7
+	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
+	// The OSS path.
+	//
+	// example:
+	//
+	// path1/path2/
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+}
+
+func (s GetSupplierInformationResponseBodyDeliverySettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupplierInformationResponseBodyDeliverySettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupplierInformationResponseBodyDeliverySettings) SetOssBucketName(v string) *GetSupplierInformationResponseBodyDeliverySettings {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBodyDeliverySettings) SetOssEnabled(v bool) *GetSupplierInformationResponseBodyDeliverySettings {
+	s.OssEnabled = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBodyDeliverySettings) SetOssExpirationDays(v int64) *GetSupplierInformationResponseBodyDeliverySettings {
+	s.OssExpirationDays = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponseBodyDeliverySettings) SetOssPath(v string) *GetSupplierInformationResponseBodyDeliverySettings {
+	s.OssPath = &v
+	return s
+}
+
+type GetSupplierInformationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSupplierInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSupplierInformationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupplierInformationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupplierInformationResponse) SetHeaders(v map[string]*string) *GetSupplierInformationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSupplierInformationResponse) SetStatusCode(v int32) *GetSupplierInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSupplierInformationResponse) SetBody(v *GetSupplierInformationResponseBody) *GetSupplierInformationResponse {
+	s.Body = v
+	return s
+}
+
 type GetUploadCredentialsRequest struct {
 	// The file name to upload.
 	//
@@ -8833,6 +10292,10 @@ type LaunchServiceRequest struct {
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Whether to set the recommended service publishing to the service directory.
+	//
+	// example:
+	//
+	// false
 	Recommend *bool `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
 	// The region ID.
 	//
@@ -9398,6 +10861,205 @@ func (s *ListAcrImageTagsResponse) SetStatusCode(v int32) *ListAcrImageTagsRespo
 }
 
 func (s *ListAcrImageTagsResponse) SetBody(v *ListAcrImageTagsResponseBody) *ListAcrImageTagsResponse {
+	s.Body = v
+	return s
+}
+
+type ListArtifactRisksRequest struct {
+	// Artifact ID.
+	//
+	// example:
+	//
+	// artifact-3fd95cdfdf0d4b1fa00c
+	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// Artifact version.
+	//
+	// example:
+	//
+	// 1
+	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
+}
+
+func (s ListArtifactRisksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactRisksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactRisksRequest) SetArtifactId(v string) *ListArtifactRisksRequest {
+	s.ArtifactId = &v
+	return s
+}
+
+func (s *ListArtifactRisksRequest) SetArtifactVersion(v string) *ListArtifactRisksRequest {
+	s.ArtifactVersion = &v
+	return s
+}
+
+type ListArtifactRisksResponseBody struct {
+	// List of artifact risks
+	ArtifactRiskList []*ListArtifactRisksResponseBodyArtifactRiskList `json:"ArtifactRiskList,omitempty" xml:"ArtifactRiskList,omitempty" type:"Repeated"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 52919DB1-03A0-55F5-BDD4-DB6DEBB8267A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListArtifactRisksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactRisksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactRisksResponseBody) SetArtifactRiskList(v []*ListArtifactRisksResponseBodyArtifactRiskList) *ListArtifactRisksResponseBody {
+	s.ArtifactRiskList = v
+	return s
+}
+
+func (s *ListArtifactRisksResponseBody) SetRequestId(v string) *ListArtifactRisksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListArtifactRisksResponseBodyArtifactRiskList struct {
+	// CVE numbers
+	//
+	// example:
+	//
+	// CVE-2023-4911
+	CveNos *string `json:"CveNos,omitempty" xml:"CveNos,omitempty"`
+	// Extended information, in JSON format, to be parsed according to the risk category
+	//
+	// example:
+	//
+	// {
+	//
+	//   "feature": "ntpdate",
+	//
+	//   "version": "4.2.6",
+	//
+	//   "cveLocation": "/usr/lib"
+	//
+	// }
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Risk level:
+	//
+	// - high represents high
+	//
+	// example:
+	//
+	// high
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Risk name.
+	//
+	// example:
+	//
+	// USN-3686-1: file vulnerabilities
+	RiskName *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	// Risk type. Values:
+	//
+	// - AcrCve  Container image system vulnerability
+	//
+	// - AcrSca  Container image application vulnerability
+	//
+	// - EcsVulnerability  ECS image vulnerability information
+	//
+	// - EcsAlarm  ECS image security alarm
+	//
+	// - EcsBaseline  ECS image baseline check
+	//
+	// example:
+	//
+	// AcrCve
+	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
+	// Risk Type name
+	//
+	// example:
+	//
+	// Container System Vulner
+	RiskTypeName *string `json:"RiskTypeName,omitempty" xml:"RiskTypeName,omitempty"`
+	// Solution for the risk item.
+	//
+	// example:
+	//
+	// apt-get update && apt-get install ntpdate --only-upgrade
+	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+}
+
+func (s ListArtifactRisksResponseBodyArtifactRiskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactRisksResponseBodyArtifactRiskList) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactRisksResponseBodyArtifactRiskList) SetCveNos(v string) *ListArtifactRisksResponseBodyArtifactRiskList {
+	s.CveNos = &v
+	return s
+}
+
+func (s *ListArtifactRisksResponseBodyArtifactRiskList) SetExtendInfo(v string) *ListArtifactRisksResponseBodyArtifactRiskList {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *ListArtifactRisksResponseBodyArtifactRiskList) SetLevel(v string) *ListArtifactRisksResponseBodyArtifactRiskList {
+	s.Level = &v
+	return s
+}
+
+func (s *ListArtifactRisksResponseBodyArtifactRiskList) SetRiskName(v string) *ListArtifactRisksResponseBodyArtifactRiskList {
+	s.RiskName = &v
+	return s
+}
+
+func (s *ListArtifactRisksResponseBodyArtifactRiskList) SetRiskType(v string) *ListArtifactRisksResponseBodyArtifactRiskList {
+	s.RiskType = &v
+	return s
+}
+
+func (s *ListArtifactRisksResponseBodyArtifactRiskList) SetRiskTypeName(v string) *ListArtifactRisksResponseBodyArtifactRiskList {
+	s.RiskTypeName = &v
+	return s
+}
+
+func (s *ListArtifactRisksResponseBodyArtifactRiskList) SetSolution(v string) *ListArtifactRisksResponseBodyArtifactRiskList {
+	s.Solution = &v
+	return s
+}
+
+type ListArtifactRisksResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListArtifactRisksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListArtifactRisksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactRisksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactRisksResponse) SetHeaders(v map[string]*string) *ListArtifactRisksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListArtifactRisksResponse) SetStatusCode(v int32) *ListArtifactRisksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListArtifactRisksResponse) SetBody(v *ListArtifactRisksResponseBody) *ListArtifactRisksResponse {
 	s.Body = v
 	return s
 }
@@ -10668,6 +12330,1045 @@ func (s *ListServiceInstanceDeployDetailsResponse) SetStatusCode(v int32) *ListS
 }
 
 func (s *ListServiceInstanceDeployDetailsResponse) SetBody(v *ListServiceInstanceDeployDetailsResponseBody) *ListServiceInstanceDeployDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceInstanceLogsRequest struct {
+	// The filters.
+	Filter []*ListServiceInstanceLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The log source. When this field is empty, query logs with the source set to computeNest and ros.
+	//
+	// Valid values:
+	//
+	// 	- computeNest : logs of the deployment and upgrade of the service instance.
+	//
+	// 	- application: logs generated by the application.
+	//
+	// 	- actionTrail: logs generated by ActionTrail.
+	//
+	// 	- compliancePack:  Logs originating from the compliance package.
+	//
+	// 	- ros: Logs originating from ROS.
+	//
+	// 	- meteringData：Logs originating from the pay-as-you-go model.
+	//
+	// example:
+	//
+	// computeNest
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The name of the Logstore to which log entries are delivered.
+	//
+	// It needs to be provided only when LogSource is set to Application.
+	//
+	// example:
+	//
+	// livelog
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
+	// example:
+	//
+	// BBBAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-70a3b15bb626435b****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// Sort Order. Possible values:
+	//
+	// + Ascending: Ascending order
+	//
+	// + Descending (default value): Descending order
+	//
+	// example:
+	//
+	// Ascending
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+}
+
+func (s ListServiceInstanceLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceLogsRequest) SetFilter(v []*ListServiceInstanceLogsRequestFilter) *ListServiceInstanceLogsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetLogSource(v string) *ListServiceInstanceLogsRequest {
+	s.LogSource = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetLogstore(v string) *ListServiceInstanceLogsRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetMaxResults(v int32) *ListServiceInstanceLogsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetNextToken(v string) *ListServiceInstanceLogsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetRegionId(v string) *ListServiceInstanceLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetServiceInstanceId(v string) *ListServiceInstanceLogsRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequest) SetSortOrder(v string) *ListServiceInstanceLogsRequest {
+	s.SortOrder = &v
+	return s
+}
+
+type ListServiceInstanceLogsRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// 	- StartTime: the start time of the log event.
+	//
+	// 	- EndTime: the end time of the ActionTrail event.
+	//
+	// 	- EventName: the name of the ActionTrail event.
+	//
+	// 	- ResourceName: the name of the ActionTrail resource.
+	//
+	// 	- ApplicationGroupName: the name of the application group.
+	//
+	// example:
+	//
+	// StartTime
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A value of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceLogsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceLogsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceLogsRequestFilter) SetName(v string) *ListServiceInstanceLogsRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequestFilter) SetValue(v []*string) *ListServiceInstanceLogsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListServiceInstanceLogsResponseBody struct {
+	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The logs of the service instance.
+	ServiceInstancesLogs []*ListServiceInstanceLogsResponseBodyServiceInstancesLogs `json:"ServiceInstancesLogs,omitempty" xml:"ServiceInstancesLogs,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceLogsResponseBody) SetMaxResults(v int32) *ListServiceInstanceLogsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBody) SetNextToken(v string) *ListServiceInstanceLogsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBody) SetRequestId(v string) *ListServiceInstanceLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBody) SetServiceInstancesLogs(v []*ListServiceInstanceLogsResponseBodyServiceInstancesLogs) *ListServiceInstanceLogsResponseBody {
+	s.ServiceInstancesLogs = v
+	return s
+}
+
+type ListServiceInstanceLogsResponseBodyServiceInstancesLogs struct {
+	// Compliance package risk types. This only applies when the source is CompliancePack. . For example, data security checks within a VPC, such as VpcDataRisk
+	//
+	// example:
+	//
+	// VpcDataRisk
+	CompliancePackType *string `json:"CompliancePackType,omitempty" xml:"CompliancePackType,omitempty"`
+	// Specific risk rule names for the compliance package. This only applies when the source is CompliancePack. . For example, ECS instance migration out of VPC - ecs-move-out-vpc.
+	//
+	// example:
+	//
+	// vpc-ecs-move-out-vpc
+	ComplianceRuleName *string `json:"ComplianceRuleName,omitempty" xml:"ComplianceRuleName,omitempty"`
+	// The log content.
+	//
+	// example:
+	//
+	// Start creating service instance
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The log type. Valid values:
+	//
+	// 	- serviceInstance: log generated by the service instance.
+	//
+	// 	- resource: log generated by ROS resources.
+	//
+	// example:
+	//
+	// serviceInstance
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The resource ID.
+	//
+	// example:
+	//
+	// si-5c6525c0589545c3****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The Resouce Type.
+	//
+	// example:
+	//
+	// ROS.Stack
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The log source.
+	//
+	// Valid values:
+	//
+	// 	- computeNest : logs of the deployment and upgrade of the service instance.
+	//
+	// 	- application: logs generated by the application.
+	//
+	// 	- actionTrail: logs generated by ActionTrail.
+	//
+	// 	- compliancePack:  Logs originating from the compliance package.
+	//
+	// 	- ros: Logs originating from ROS.
+	//
+	// 	- meteringData：Logs originating from the pay-as-you-go model.
+	//
+	// example:
+	//
+	// computeNest
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The deployment state of the service instance. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Deploying
+	//
+	// 	- DeployedFailed
+	//
+	// 	- Deployed
+	//
+	// 	- Upgrading
+	//
+	// 	- Deleting
+	//
+	// 	- Deleted
+	//
+	// 	- DeletedFailed
+	//
+	// example:
+	//
+	// Deployed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp of the service instance log.
+	//
+	// example:
+	//
+	// 2022-05-21T00:00:00Z
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s ListServiceInstanceLogsResponseBodyServiceInstancesLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceLogsResponseBodyServiceInstancesLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetCompliancePackType(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.CompliancePackType = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetComplianceRuleName(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.ComplianceRuleName = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetContent(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.Content = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetLogType(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.LogType = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetResourceId(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetResourceType(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetSource(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.Source = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetStatus(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetTimestamp(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.Timestamp = &v
+	return s
+}
+
+type ListServiceInstanceLogsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceInstanceLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceLogsResponse) SetHeaders(v map[string]*string) *ListServiceInstanceLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponse) SetStatusCode(v int32) *ListServiceInstanceLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponse) SetBody(v *ListServiceInstanceLogsResponseBody) *ListServiceInstanceLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceInstanceResourcesRequest struct {
+	// The filter.
+	Filters []*ListServiceInstanceResourcesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
+	// example:
+	//
+	// AAAAAc3HCuYhJi/wvpk4xOr0VLbAx7BkQzyYC+ONO+WudHGKEdB0uWSY7AGnM3qCgm/Ynge7zU6NWdbj0Tegyajyqyc=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID where the service instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of a resource.
+	ResourceARN []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
+	// The ID of the service instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-d8a0cc2a1ee04dce****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// Service Instance resource type，include AliyunResource and ContainerResource.
+	//
+	// example:
+	//
+	// AliyunResource
+	ServiceInstanceResourceType *string `json:"ServiceInstanceResourceType,omitempty" xml:"ServiceInstanceResourceType,omitempty"`
+	// The tags.
+	Tag []*ListServiceInstanceResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetFilters(v []*ListServiceInstanceResourcesRequestFilters) *ListServiceInstanceResourcesRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetMaxResults(v int32) *ListServiceInstanceResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetNextToken(v string) *ListServiceInstanceResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetRegionId(v string) *ListServiceInstanceResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetResourceARN(v []*string) *ListServiceInstanceResourcesRequest {
+	s.ResourceARN = v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetServiceInstanceId(v string) *ListServiceInstanceResourcesRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetServiceInstanceResourceType(v string) *ListServiceInstanceResourcesRequest {
+	s.ServiceInstanceResourceType = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetTag(v []*ListServiceInstanceResourcesRequestTag) *ListServiceInstanceResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListServiceInstanceResourcesRequestFilters struct {
+	// Vaild values:
+	//
+	// - ExpireTimeStart
+	//
+	// - ExpireTimeEnd
+	//
+	// - PayType
+	//
+	// - ResourceARN
+	//
+	// example:
+	//
+	// ResourceARN
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A value of the filter condition.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceResourcesRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesRequestFilters) SetName(v string) *ListServiceInstanceResourcesRequestFilters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequestFilters) SetValues(v []*string) *ListServiceInstanceResourcesRequestFilters {
+	s.Values = v
+	return s
+}
+
+type ListServiceInstanceResourcesRequestTag struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServiceInstanceResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesRequestTag) SetKey(v string) *ListServiceInstanceResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequestTag) SetValue(v string) *ListServiceInstanceResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListServiceInstanceResourcesResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
+	// example:
+	//
+	// AAAAAc3HCuYhJi/wvpk4xOr0VLbAx7BkQzyYC+ONO+WudHGKEdB0uWSY7AGnM3qCgm/Ynge7zU6NWdbj0Tegyajyqyc=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// B288A0BE-D927-4888-B0F7-B35EF84B6E6F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
+	Resources []*ListServiceInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesResponseBody) SetMaxResults(v int32) *ListServiceInstanceResourcesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBody) SetNextToken(v string) *ListServiceInstanceResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBody) SetRequestId(v string) *ListServiceInstanceResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBody) SetResources(v []*ListServiceInstanceResourcesResponseBodyResources) *ListServiceInstanceResourcesResponseBody {
+	s.Resources = v
+	return s
+}
+
+type ListServiceInstanceResourcesResponseBodyResources struct {
+	// The time when the service instance was created.
+	//
+	// example:
+	//
+	// 2022-01-01T12:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the resource expires.
+	//
+	// example:
+	//
+	// 2022-03-01T12:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- Subscription
+	//
+	// 	- PayAsYouGo
+	//
+	// example:
+	//
+	// Subscription
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The code of the cloud service.
+	//
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The type of the cloud service.
+	//
+	// example:
+	//
+	// RDS
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The renewal state. Valid values:
+	//
+	// 	- AutoRenewal
+	//
+	// 	- ManualRenewal
+	//
+	// 	- NotRenewal
+	//
+	// example:
+	//
+	// AutoRenewal
+	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
+	// The renewal period.
+	//
+	// example:
+	//
+	// 1
+	RenewalPeriod *int32 `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
+	// The unit of the renewal period. Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// example:
+	//
+	// Month
+	RenewalPeriodUnit *string `json:"RenewalPeriodUnit,omitempty" xml:"RenewalPeriodUnit,omitempty"`
+	// The ARN of the resource.
+	//
+	// example:
+	//
+	// arn:acs:sag:cn-hangzhou:130920852836****:ccn/ccn-b3qf0q439sq2de****
+	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
+	// The status of the service instance. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Deploying
+	//
+	// 	- DeployedFailed
+	//
+	// 	- Deployed
+	//
+	// 	- Upgrading
+	//
+	// 	- Deleting
+	//
+	// 	- Deleted
+	//
+	// 	- DeletedFailed
+	//
+	// example:
+	//
+	// CREATE_COMPLETE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListServiceInstanceResourcesResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetCreateTime(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetExpireTime(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetPayType(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.PayType = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetProductCode(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetProductType(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.ProductType = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetRenewStatus(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.RenewStatus = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetRenewalPeriod(v int32) *ListServiceInstanceResourcesResponseBodyResources {
+	s.RenewalPeriod = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetRenewalPeriodUnit(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.RenewalPeriodUnit = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetResourceARN(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.ResourceARN = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetStatus(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.Status = &v
+	return s
+}
+
+type ListServiceInstanceResourcesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceInstanceResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesResponse) SetHeaders(v map[string]*string) *ListServiceInstanceResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponse) SetStatusCode(v int32) *ListServiceInstanceResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponse) SetBody(v *ListServiceInstanceResourcesResponseBody) *ListServiceInstanceResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceInstanceUpgradeHistoryRequest struct {
+	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query, which should be the value of the NextToken parameter from the previous API call.
+	//
+	// example:
+	//
+	// AAAAAc3HCuYhJi/wvpk4xOr0VLbAx7BkQzyYC+ONO+WudHGKEdB0uWSY7AGnM3qCgm/Ynge7zU6NWdbj0Tegyajyqyc=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-0e6fca6a51a54420****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetMaxResults(v int32) *ListServiceInstanceUpgradeHistoryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetNextToken(v string) *ListServiceInstanceUpgradeHistoryRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetRegionId(v string) *ListServiceInstanceUpgradeHistoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetServiceInstanceId(v string) *ListServiceInstanceUpgradeHistoryRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type ListServiceInstanceUpgradeHistoryResponseBody struct {
+	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to use for the next query.
+	//
+	// example:
+	//
+	// AAAAAc3HCuYhJi/wvpk4xOr0VLbAx7BkQzyYC+ONO+WudHGKEdB0uWSY7AGnM3qCgm/Ynge7zU6NWdbj0Tegyajyqyc=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 86CAC31E-3527-562C-869F-347E931C9B25
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of upgrade history
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// List of upgrade histories.
+	UpgradeHistory []*ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory `json:"UpgradeHistory,omitempty" xml:"UpgradeHistory,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetMaxResults(v int32) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetNextToken(v string) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetRequestId(v string) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetTotalCount(v int64) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetUpgradeHistory(v []*ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.UpgradeHistory = v
+	return s
+}
+
+type ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory struct {
+	// End time of the upgrade.
+	//
+	// example:
+	//
+	// 2022-04-26T09:09:51Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Version before the upgrade.
+	//
+	// example:
+	//
+	// 1
+	FromVersion *string `json:"FromVersion,omitempty" xml:"FromVersion,omitempty"`
+	// Upgrade result.
+	//
+	// example:
+	//
+	// {\\"PreUpgradeExecutionId\\":\\"exec-123\\"}
+	Results *string `json:"Results,omitempty" xml:"Results,omitempty"`
+	// Start time of the upgrade.
+	//
+	// example:
+	//
+	// 2022-04-26T08:09:51Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Upgrade status. Possible values:
+	//
+	// - upgrading: In progress.
+	//
+	// - UpgradeSuccessful: Upgrade successful.
+	//
+	// - UpgradeFailed: Upgrade failed.
+	//
+	// example:
+	//
+	// UpgradeFailed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Version after the upgrade.
+	//
+	// example:
+	//
+	// 3
+	ToVersion *string `json:"ToVersion,omitempty" xml:"ToVersion,omitempty"`
+	// Upgrade type.
+	//
+	// - Upgrade
+	//
+	// - Rollback
+	//
+	// example:
+	//
+	// Upgrade
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Upgrade history ID.
+	//
+	// example:
+	//
+	// uh-1b21d65f75e94fa09745
+	UpgradeHistoryId *string `json:"UpgradeHistoryId,omitempty" xml:"UpgradeHistoryId,omitempty"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetEndTime(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetFromVersion(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.FromVersion = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetResults(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.Results = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetStartTime(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetStatus(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.Status = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetToVersion(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.ToVersion = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetType(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.Type = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetUpgradeHistoryId(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.UpgradeHistoryId = &v
+	return s
+}
+
+type ListServiceInstanceUpgradeHistoryResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceUpgradeHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponse) SetHeaders(v map[string]*string) *ListServiceInstanceUpgradeHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponse) SetStatusCode(v int32) *ListServiceInstanceUpgradeHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponse) SetBody(v *ListServiceInstanceUpgradeHistoryResponseBody) *ListServiceInstanceUpgradeHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -12062,6 +14763,703 @@ func (s *ListServiceSharedAccountsResponse) SetBody(v *ListServiceSharedAccounts
 	return s
 }
 
+type ListServiceTestCasesRequest struct {
+	// The filters.
+	Filters []*ListServiceTestCasesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAWns8w4MmhzeptXVRG0PUEU=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a54420****
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
+	// example:
+	//
+	// draft
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s ListServiceTestCasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestCasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestCasesRequest) SetFilters(v []*ListServiceTestCasesRequestFilters) *ListServiceTestCasesRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *ListServiceTestCasesRequest) SetMaxResults(v int32) *ListServiceTestCasesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceTestCasesRequest) SetNextToken(v string) *ListServiceTestCasesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceTestCasesRequest) SetRegionId(v string) *ListServiceTestCasesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceTestCasesRequest) SetServiceId(v string) *ListServiceTestCasesRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceTestCasesRequest) SetServiceVersion(v string) *ListServiceTestCasesRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type ListServiceTestCasesRequestFilters struct {
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// **Status**
+	//
+	// **TaskId**
+	//
+	// example:
+	//
+	// Status
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceTestCasesRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestCasesRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestCasesRequestFilters) SetName(v string) *ListServiceTestCasesRequestFilters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceTestCasesRequestFilters) SetValue(v []*string) *ListServiceTestCasesRequestFilters {
+	s.Value = v
+	return s
+}
+
+type ListServiceTestCasesResponseBody struct {
+	// The data returned.
+	Data []*ListServiceTestCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAWns8w4MmhzeptXVRG0PUEU=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// CA3AE512-6D30-549A-B52D-B9042CA8D515
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 18
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListServiceTestCasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestCasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestCasesResponseBody) SetData(v []*ListServiceTestCasesResponseBodyData) *ListServiceTestCasesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListServiceTestCasesResponseBody) SetMaxResults(v int32) *ListServiceTestCasesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceTestCasesResponseBody) SetNextToken(v string) *ListServiceTestCasesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceTestCasesResponseBody) SetRequestId(v string) *ListServiceTestCasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceTestCasesResponseBody) SetTotalCount(v int32) *ListServiceTestCasesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServiceTestCasesResponseBodyData struct {
+	// The template name.
+	//
+	// example:
+	//
+	// test-1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The service test case id.
+	//
+	// example:
+	//
+	// stc-83fcee1383354e35b151
+	TestCaseId *string `json:"TestCaseId,omitempty" xml:"TestCaseId,omitempty"`
+	// The service test case name.
+	//
+	// example:
+	//
+	// case1
+	TestCaseName *string `json:"TestCaseName,omitempty" xml:"TestCaseName,omitempty"`
+	// The service test config.
+	//
+	// example:
+	//
+	// ---
+	//
+	// parameters:
+	//
+	//   PayType: "PostPaid"
+	//
+	//   EcsInstanceType: "$[iact3-auto]"
+	//
+	//   InstancePassword: "$[iact3-auto]"
+	TestConfig *string `json:"TestConfig,omitempty" xml:"TestConfig,omitempty"`
+}
+
+func (s ListServiceTestCasesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestCasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestCasesResponseBodyData) SetTemplateName(v string) *ListServiceTestCasesResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListServiceTestCasesResponseBodyData) SetTestCaseId(v string) *ListServiceTestCasesResponseBodyData {
+	s.TestCaseId = &v
+	return s
+}
+
+func (s *ListServiceTestCasesResponseBodyData) SetTestCaseName(v string) *ListServiceTestCasesResponseBodyData {
+	s.TestCaseName = &v
+	return s
+}
+
+func (s *ListServiceTestCasesResponseBodyData) SetTestConfig(v string) *ListServiceTestCasesResponseBodyData {
+	s.TestConfig = &v
+	return s
+}
+
+type ListServiceTestCasesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceTestCasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceTestCasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestCasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestCasesResponse) SetHeaders(v map[string]*string) *ListServiceTestCasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceTestCasesResponse) SetStatusCode(v int32) *ListServiceTestCasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceTestCasesResponse) SetBody(v *ListServiceTestCasesResponseBody) *ListServiceTestCasesResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceTestTaskLogsRequest struct {
+	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
+	// example:
+	//
+	// AAAAAWns8w4MmhzeptXVRG0PUEU=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Sort Order. Possible values:
+	//
+	// + Ascending: Ascending order
+	//
+	// + Descending (default value): Descending order
+	//
+	// example:
+	//
+	// Ascending
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// stt-568c2c5a687a409b977e
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListServiceTestTaskLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTaskLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTaskLogsRequest) SetMaxResults(v int32) *ListServiceTestTaskLogsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsRequest) SetNextToken(v string) *ListServiceTestTaskLogsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsRequest) SetSortOrder(v string) *ListServiceTestTaskLogsRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsRequest) SetTaskId(v string) *ListServiceTestTaskLogsRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ListServiceTestTaskLogsResponseBody struct {
+	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAW8kZY+u1sYOaYf5JmgmDQQ=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDEE055B-D5F4-5B92-8F21-999D408F1214
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service test task logs.
+	TaskLogs []*ListServiceTestTaskLogsResponseBodyTaskLogs `json:"TaskLogs,omitempty" xml:"TaskLogs,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceTestTaskLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTaskLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTaskLogsResponseBody) SetMaxResults(v int32) *ListServiceTestTaskLogsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsResponseBody) SetNextToken(v string) *ListServiceTestTaskLogsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsResponseBody) SetRequestId(v string) *ListServiceTestTaskLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsResponseBody) SetTaskLogs(v []*ListServiceTestTaskLogsResponseBodyTaskLogs) *ListServiceTestTaskLogsResponseBody {
+	s.TaskLogs = v
+	return s
+}
+
+type ListServiceTestTaskLogsResponseBodyTaskLogs struct {
+	// The log content.
+	//
+	// example:
+	//
+	// log content
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The UTC timestamp when the response is returned.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2022-12-12T20:00:09Z
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s ListServiceTestTaskLogsResponseBodyTaskLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTaskLogsResponseBodyTaskLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTaskLogsResponseBodyTaskLogs) SetContent(v string) *ListServiceTestTaskLogsResponseBodyTaskLogs {
+	s.Content = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsResponseBodyTaskLogs) SetTimestamp(v string) *ListServiceTestTaskLogsResponseBodyTaskLogs {
+	s.Timestamp = &v
+	return s
+}
+
+type ListServiceTestTaskLogsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceTestTaskLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceTestTaskLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTaskLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTaskLogsResponse) SetHeaders(v map[string]*string) *ListServiceTestTaskLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsResponse) SetStatusCode(v int32) *ListServiceTestTaskLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceTestTaskLogsResponse) SetBody(v *ListServiceTestTaskLogsResponseBody) *ListServiceTestTaskLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceTestTasksRequest struct {
+	// The filters.
+	Filter []*ListServiceTestTasksRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-062ae8e13b394dd5b63c
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
+	// example:
+	//
+	// draft
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s ListServiceTestTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTasksRequest) SetFilter(v []*ListServiceTestTasksRequestFilter) *ListServiceTestTasksRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListServiceTestTasksRequest) SetMaxResults(v int32) *ListServiceTestTasksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceTestTasksRequest) SetNextToken(v string) *ListServiceTestTasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceTestTasksRequest) SetRegionId(v string) *ListServiceTestTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceTestTasksRequest) SetServiceId(v string) *ListServiceTestTasksRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceTestTasksRequest) SetServiceVersion(v string) *ListServiceTestTasksRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type ListServiceTestTasksRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	//
+	// 	- Status: the status of the task.
+	//
+	// 	- TaskId: the task id.
+	//
+	// example:
+	//
+	// Status
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value N of the filter. Valid values of N: 1 to 10.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceTestTasksRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTasksRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTasksRequestFilter) SetName(v string) *ListServiceTestTasksRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceTestTasksRequestFilter) SetValue(v []*string) *ListServiceTestTasksRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListServiceTestTasksResponseBody struct {
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 9
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 1
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service test tasks.
+	ServiceTestTasks []*ListServiceTestTasksResponseBodyServiceTestTasks `json:"ServiceTestTasks,omitempty" xml:"ServiceTestTasks,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceTestTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTasksResponseBody) SetCount(v int32) *ListServiceTestTasksResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBody) SetMaxResults(v int32) *ListServiceTestTasksResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBody) SetNextToken(v string) *ListServiceTestTasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBody) SetRequestId(v string) *ListServiceTestTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBody) SetServiceTestTasks(v []*ListServiceTestTasksResponseBodyServiceTestTasks) *ListServiceTestTasksResponseBody {
+	s.ServiceTestTasks = v
+	return s
+}
+
+type ListServiceTestTasksResponseBodyServiceTestTasks struct {
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2024-02-26T02:16:35Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// the status of service task.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// sttt-000h5nd4yrg59ucurzy1
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
+	// example:
+	//
+	// dadadad
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task region id.
+	//
+	// example:
+	//
+	// cn-beijing
+	TaskRegionId *string `json:"TaskRegionId,omitempty" xml:"TaskRegionId,omitempty"`
+}
+
+func (s ListServiceTestTasksResponseBodyServiceTestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTasksResponseBodyServiceTestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTasksResponseBodyServiceTestTasks) SetCreateTime(v string) *ListServiceTestTasksResponseBodyServiceTestTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBodyServiceTestTasks) SetStatus(v string) *ListServiceTestTasksResponseBodyServiceTestTasks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBodyServiceTestTasks) SetTaskId(v string) *ListServiceTestTasksResponseBodyServiceTestTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBodyServiceTestTasks) SetTaskName(v string) *ListServiceTestTasksResponseBodyServiceTestTasks {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponseBodyServiceTestTasks) SetTaskRegionId(v string) *ListServiceTestTasksResponseBodyServiceTestTasks {
+	s.TaskRegionId = &v
+	return s
+}
+
+type ListServiceTestTasksResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceTestTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceTestTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTestTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTestTasksResponse) SetHeaders(v map[string]*string) *ListServiceTestTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceTestTasksResponse) SetStatusCode(v int32) *ListServiceTestTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceTestTasksResponse) SetBody(v *ListServiceTestTasksResponseBody) *ListServiceTestTasksResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceUsagesRequest struct {
 	// The filter.
 	Filter []*ListServiceUsagesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -13228,6 +16626,449 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 	return s
 }
 
+type ListSupplierRegistrationsRequest struct {
+	// The filter.
+	Filter []*ListSupplierRegistrationsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAYChudnQUoBH+mGWFpb6oP0=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListSupplierRegistrationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupplierRegistrationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupplierRegistrationsRequest) SetFilter(v []*ListSupplierRegistrationsRequestFilter) *ListSupplierRegistrationsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListSupplierRegistrationsRequest) SetMaxResults(v int32) *ListSupplierRegistrationsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsRequest) SetNextToken(v string) *ListSupplierRegistrationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsRequest) SetRegionId(v string) *ListSupplierRegistrationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListSupplierRegistrationsRequestFilter struct {
+	// Name of the filter field. Allowed values:
+	//
+	// - SupplierUid: The aliUid of supplier.
+	//
+	// - SupplierName: The name of supplier.
+	//
+	// - RegistrationId: Registration ID.
+	//
+	// - Status: Registration status. Allowed values: Submitted, Approved, Rejected.
+	//
+	// example:
+	//
+	// SupplierUid
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Filter value.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListSupplierRegistrationsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupplierRegistrationsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupplierRegistrationsRequestFilter) SetName(v string) *ListSupplierRegistrationsRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsRequestFilter) SetValue(v []*string) *ListSupplierRegistrationsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListSupplierRegistrationsResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAdx9kBO7qKpr9My/+XQo0oY=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C6CC568D-xxxx-xxxx-xxxx-08EB8E9F9F20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The supplier registrations
+	SupplierRegistrations []*ListSupplierRegistrationsResponseBodySupplierRegistrations `json:"SupplierRegistrations,omitempty" xml:"SupplierRegistrations,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSupplierRegistrationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupplierRegistrationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupplierRegistrationsResponseBody) SetMaxResults(v int32) *ListSupplierRegistrationsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBody) SetNextToken(v string) *ListSupplierRegistrationsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBody) SetRequestId(v string) *ListSupplierRegistrationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBody) SetSupplierRegistrations(v []*ListSupplierRegistrationsResponseBodySupplierRegistrations) *ListSupplierRegistrationsResponseBody {
+	s.SupplierRegistrations = v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBody) SetTotalCount(v int32) *ListSupplierRegistrationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSupplierRegistrationsResponseBodySupplierRegistrations struct {
+	// The comment of this registration.
+	//
+	// example:
+	//
+	// empty
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Contact email
+	//
+	// example:
+	//
+	// test@163.com
+	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// Contact number
+	//
+	// example:
+	//
+	// 135xxxxxxxx
+	ContactNumber *string `json:"ContactNumber,omitempty" xml:"ContactNumber,omitempty"`
+	// Contact person
+	//
+	// example:
+	//
+	// Mike
+	ContactPerson *string `json:"ContactPerson,omitempty" xml:"ContactPerson,omitempty"`
+	// Contact person tiltle.
+	//
+	// example:
+	//
+	// CTO
+	ContactPersonTitle *string `json:"ContactPersonTitle,omitempty" xml:"ContactPersonTitle,omitempty"`
+	// Whether to enable the resell mode.
+	//
+	// example:
+	//
+	// false
+	EnableResellerMode *bool `json:"EnableResellerMode,omitempty" xml:"EnableResellerMode,omitempty"`
+	// Annual product revenue
+	//
+	// example:
+	//
+	// empty
+	ProductAnnualRevenue *string `json:"ProductAnnualRevenue,omitempty" xml:"ProductAnnualRevenue,omitempty"`
+	// The business of product.
+	//
+	// example:
+	//
+	// AI
+	ProductBusiness *string `json:"ProductBusiness,omitempty" xml:"ProductBusiness,omitempty"`
+	// Product delivery type，Valid values:
+	//
+	// SaaS
+	//
+	// License
+	//
+	// API
+	//
+	// DesktopSoftware
+	//
+	// Others
+	//
+	// example:
+	//
+	// SaaS
+	ProductDeliveryTypes *string `json:"ProductDeliveryTypes,omitempty" xml:"ProductDeliveryTypes,omitempty"`
+	// The publish time of product.
+	//
+	// example:
+	//
+	// 2024.10.24
+	ProductPublishTime *string `json:"ProductPublishTime,omitempty" xml:"ProductPublishTime,omitempty"`
+	// Product sell type, Valid values:
+	//
+	// - Direct
+	//
+	// - Channel
+	//
+	// example:
+	//
+	// Direct
+	ProductSellTypes *string `json:"ProductSellTypes,omitempty" xml:"ProductSellTypes,omitempty"`
+	// The registration ID.
+	//
+	// example:
+	//
+	// sr-xxx
+	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	// The description of resell business.
+	//
+	// example:
+	//
+	// empty
+	ResellBusinessDesc *string `json:"ResellBusinessDesc,omitempty" xml:"ResellBusinessDesc,omitempty"`
+	// The deployment state of the registration. Valid values:
+	//
+	// - Submitted
+	//
+	// - Approved
+	//
+	// - Rejected
+	//
+	// example:
+	//
+	// Submitted
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The submit time of this registration.
+	//
+	// example:
+	//
+	// 2025-01-22 09:47:58
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The description of service provider.
+	//
+	// example:
+	//
+	// Test supplier
+	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	// The Logo of service provider.
+	//
+	// example:
+	//
+	// https://service-info-public.oss-cn-hangzhou.aliyuncs.com/xxx/service-xxx/xxx.png
+	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Aliibaba Cloud
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The english name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud ComputeNest
+	SupplierNameEn *string `json:"SupplierNameEn,omitempty" xml:"SupplierNameEn,omitempty"`
+	// The Alibaba Cloud account ID of the service provider.
+	//
+	// example:
+	//
+	// 1256xxx23434
+	SupplierUid *string `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	// The URL of the service provider.
+	//
+	// example:
+	//
+	// https://www.guangbao-uni.com
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+}
+
+func (s ListSupplierRegistrationsResponseBodySupplierRegistrations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupplierRegistrationsResponseBodySupplierRegistrations) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetComment(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetContactEmail(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ContactEmail = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetContactNumber(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ContactNumber = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetContactPerson(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ContactPerson = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetContactPersonTitle(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ContactPersonTitle = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetEnableResellerMode(v bool) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.EnableResellerMode = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetProductAnnualRevenue(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ProductAnnualRevenue = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetProductBusiness(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ProductBusiness = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetProductDeliveryTypes(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ProductDeliveryTypes = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetProductPublishTime(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ProductPublishTime = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetProductSellTypes(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ProductSellTypes = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetRegistrationId(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.RegistrationId = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetResellBusinessDesc(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.ResellBusinessDesc = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetStatus(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetSubmitTime(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.SubmitTime = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetSupplierDesc(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetSupplierLogo(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.SupplierLogo = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetSupplierName(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetSupplierNameEn(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.SupplierNameEn = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetSupplierUid(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.SupplierUid = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponseBodySupplierRegistrations) SetSupplierUrl(v string) *ListSupplierRegistrationsResponseBodySupplierRegistrations {
+	s.SupplierUrl = &v
+	return s
+}
+
+type ListSupplierRegistrationsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSupplierRegistrationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSupplierRegistrationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupplierRegistrationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupplierRegistrationsResponse) SetHeaders(v map[string]*string) *ListSupplierRegistrationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponse) SetStatusCode(v int32) *ListSupplierRegistrationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSupplierRegistrationsResponse) SetBody(v *ListSupplierRegistrationsResponseBody) *ListSupplierRegistrationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagKeysRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	//
@@ -13347,6 +17188,237 @@ func (s *ListTagKeysResponse) SetStatusCode(v int32) *ListTagKeysResponse {
 }
 
 func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify at most 50 resource IDs in each call.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Valid value:
+	//
+	// - service
+	//
+	// - serviceinstance
+	//
+	// - artifact
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// Usage
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resources and their tags.
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// Resource ID
+	//
+	// example:
+	//
+	// service-xxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid value:
+	//
+	// - service
+	//
+	// - serviceinstance
+	//
+	// - artifact
+	//
+	// example:
+	//
+	// service
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// usage
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -17691,6 +21763,126 @@ func (s *UpdateServiceInstanceSpecResponse) SetBody(v *UpdateServiceInstanceSpec
 	return s
 }
 
+type UpdateServiceTestCaseRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service test case id.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// stc-2deec15c20b24aaf9f16
+	TestCaseId *string `json:"TestCaseId,omitempty" xml:"TestCaseId,omitempty"`
+	// The service test case name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// case1
+	TestCaseName *string `json:"TestCaseName,omitempty" xml:"TestCaseName,omitempty"`
+	// The service test config.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ---
+	//
+	// parameters:
+	//
+	//   PayType: "PostPaid"
+	//
+	//   EcsInstanceType: "$[iact3-auto]"
+	//
+	//   InstancePassword: "$[iact3-auto]"
+	TestConfig *string `json:"TestConfig,omitempty" xml:"TestConfig,omitempty"`
+}
+
+func (s UpdateServiceTestCaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceTestCaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceTestCaseRequest) SetRegionId(v string) *UpdateServiceTestCaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateServiceTestCaseRequest) SetTestCaseId(v string) *UpdateServiceTestCaseRequest {
+	s.TestCaseId = &v
+	return s
+}
+
+func (s *UpdateServiceTestCaseRequest) SetTestCaseName(v string) *UpdateServiceTestCaseRequest {
+	s.TestCaseName = &v
+	return s
+}
+
+func (s *UpdateServiceTestCaseRequest) SetTestConfig(v string) *UpdateServiceTestCaseRequest {
+	s.TestConfig = &v
+	return s
+}
+
+type UpdateServiceTestCaseResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// DB1FA13E-1087-5654-84D5-58A0ACAD1B18
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceTestCaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceTestCaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceTestCaseResponseBody) SetRequestId(v string) *UpdateServiceTestCaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceTestCaseResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceTestCaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateServiceTestCaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceTestCaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceTestCaseResponse) SetHeaders(v map[string]*string) *UpdateServiceTestCaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceTestCaseResponse) SetStatusCode(v int32) *UpdateServiceTestCaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceTestCaseResponse) SetBody(v *UpdateServiceTestCaseResponseBody) *UpdateServiceTestCaseResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSharedAccountPermissionRequest struct {
 	// Client token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
 	//
@@ -17839,6 +22031,235 @@ func (s *UpdateSharedAccountPermissionResponse) SetStatusCode(v int32) *UpdateSh
 }
 
 func (s *UpdateSharedAccountPermissionResponse) SetBody(v *UpdateSharedAccountPermissionResponseBody) *UpdateSharedAccountPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSupplierInformationRequest struct {
+	// The delivery settings.
+	DeliverySettings *UpdateSupplierInformationRequestDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
+	// The Ip of operation.
+	//
+	// example:
+	//
+	// 192.xxx.xxx.xxx/16,192.xxx.xxx.xxx
+	OperationIp *string `json:"OperationIp,omitempty" xml:"OperationIp,omitempty"`
+	// The MFA of operation.
+	//
+	// example:
+	//
+	// true
+	OperationMfaPresent *bool `json:"OperationMfaPresent,omitempty" xml:"OperationMfaPresent,omitempty"`
+	// Region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The description of service provider.
+	//
+	// example:
+	//
+	// Test supplier
+	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	// The Logo of service provider.
+	//
+	// example:
+	//
+	// http://example.aliyundoc.com/cover/34DB-4F4C-9373-003AA060****.png
+	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
+	// The URL of the service provider.
+	//
+	// example:
+	//
+	// http://www.xxx.xxx.cn
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+}
+
+func (s UpdateSupplierInformationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSupplierInformationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSupplierInformationRequest) SetDeliverySettings(v *UpdateSupplierInformationRequestDeliverySettings) *UpdateSupplierInformationRequest {
+	s.DeliverySettings = v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequest) SetOperationIp(v string) *UpdateSupplierInformationRequest {
+	s.OperationIp = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequest) SetOperationMfaPresent(v bool) *UpdateSupplierInformationRequest {
+	s.OperationMfaPresent = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequest) SetRegionId(v string) *UpdateSupplierInformationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequest) SetSupplierDesc(v string) *UpdateSupplierInformationRequest {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequest) SetSupplierLogo(v string) *UpdateSupplierInformationRequest {
+	s.SupplierLogo = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequest) SetSupplierUrl(v string) *UpdateSupplierInformationRequest {
+	s.SupplierUrl = &v
+	return s
+}
+
+type UpdateSupplierInformationRequestDeliverySettings struct {
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// mybucket
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// Specifies whether to enable screencast delivery to Object Storage Service (OSS). Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
+	// The number of days for which the screencasts are saved.
+	//
+	// example:
+	//
+	// 7
+	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
+	// The OSS path.
+	//
+	// example:
+	//
+	// path1/path2/
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+}
+
+func (s UpdateSupplierInformationRequestDeliverySettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSupplierInformationRequestDeliverySettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSupplierInformationRequestDeliverySettings) SetOssBucketName(v string) *UpdateSupplierInformationRequestDeliverySettings {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequestDeliverySettings) SetOssEnabled(v bool) *UpdateSupplierInformationRequestDeliverySettings {
+	s.OssEnabled = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequestDeliverySettings) SetOssExpirationDays(v int64) *UpdateSupplierInformationRequestDeliverySettings {
+	s.OssExpirationDays = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationRequestDeliverySettings) SetOssPath(v string) *UpdateSupplierInformationRequestDeliverySettings {
+	s.OssPath = &v
+	return s
+}
+
+type UpdateSupplierInformationResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The description of service provider.
+	//
+	// example:
+	//
+	// Test supplier
+	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The URL of the service provider.
+	//
+	// example:
+	//
+	// http://www.xxx.xxx.cn
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+}
+
+func (s UpdateSupplierInformationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSupplierInformationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSupplierInformationResponseBody) SetRequestId(v string) *UpdateSupplierInformationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationResponseBody) SetSupplierDesc(v string) *UpdateSupplierInformationResponseBody {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationResponseBody) SetSupplierName(v string) *UpdateSupplierInformationResponseBody {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationResponseBody) SetSupplierUrl(v string) *UpdateSupplierInformationResponseBody {
+	s.SupplierUrl = &v
+	return s
+}
+
+type UpdateSupplierInformationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSupplierInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSupplierInformationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSupplierInformationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSupplierInformationResponse) SetHeaders(v map[string]*string) *UpdateSupplierInformationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSupplierInformationResponse) SetStatusCode(v int32) *UpdateSupplierInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSupplierInformationResponse) SetBody(v *UpdateSupplierInformationResponseBody) *UpdateSupplierInformationResponse {
 	s.Body = v
 	return s
 }
@@ -19057,6 +23478,180 @@ func (client *Client) CreateServiceInstance(request *CreateServiceInstanceReques
 
 // Summary:
 //
+// Create service test case.
+//
+// @param request - CreateServiceTestCaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceTestCaseResponse
+func (client *Client) CreateServiceTestCaseWithOptions(request *CreateServiceTestCaseRequest, runtime *util.RuntimeOptions) (_result *CreateServiceTestCaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestCaseName)) {
+		query["TestCaseName"] = request.TestCaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestConfig)) {
+		query["TestConfig"] = request.TestConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceTestCase"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceTestCaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceTestCaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Create service test case.
+//
+// @param request - CreateServiceTestCaseRequest
+//
+// @return CreateServiceTestCaseResponse
+func (client *Client) CreateServiceTestCase(request *CreateServiceTestCaseRequest) (_result *CreateServiceTestCaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceTestCaseResponse{}
+	_body, _err := client.CreateServiceTestCaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建服务测试任务
+//
+// @param request - CreateServiceTestTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceTestTaskResponse
+func (client *Client) CreateServiceTestTaskWithOptions(request *CreateServiceTestTaskRequest, runtime *util.RuntimeOptions) (_result *CreateServiceTestTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskRegionId)) {
+		query["TaskRegionId"] = request.TaskRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestCaseIds)) {
+		query["TestCaseIds"] = request.TestCaseIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceTestTask"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceTestTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceTestTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建服务测试任务
+//
+// @param request - CreateServiceTestTaskRequest
+//
+// @return CreateServiceTestTaskResponse
+func (client *Client) CreateServiceTestTask(request *CreateServiceTestTaskRequest) (_result *CreateServiceTestTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceTestTaskResponse{}
+	_body, _err := client.CreateServiceTestTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Create  Service resell application.
 //
 // @param request - CreateServiceUsageRequest
@@ -19127,6 +23722,145 @@ func (client *Client) CreateServiceUsage(request *CreateServiceUsageRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceUsageResponse{}
 	_body, _err := client.CreateServiceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册成为服务商
+//
+// @param request - CreateSupplierRegistrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSupplierRegistrationResponse
+func (client *Client) CreateSupplierRegistrationWithOptions(request *CreateSupplierRegistrationRequest, runtime *util.RuntimeOptions) (_result *CreateSupplierRegistrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactEmail)) {
+		query["ContactEmail"] = request.ContactEmail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactNumber)) {
+		query["ContactNumber"] = request.ContactNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactPerson)) {
+		query["ContactPerson"] = request.ContactPerson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactPersonTitle)) {
+		query["ContactPersonTitle"] = request.ContactPersonTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableResellerMode)) {
+		query["EnableResellerMode"] = request.EnableResellerMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductAnnualRevenue)) {
+		query["ProductAnnualRevenue"] = request.ProductAnnualRevenue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductBusiness)) {
+		query["ProductBusiness"] = request.ProductBusiness
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductDeliveryTypes)) {
+		query["ProductDeliveryTypes"] = request.ProductDeliveryTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductPublishTime)) {
+		query["ProductPublishTime"] = request.ProductPublishTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductSellTypes)) {
+		query["ProductSellTypes"] = request.ProductSellTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellBusinessDesc)) {
+		query["ResellBusinessDesc"] = request.ResellBusinessDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Suggestion)) {
+		query["Suggestion"] = request.Suggestion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierDesc)) {
+		query["SupplierDesc"] = request.SupplierDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierLogo)) {
+		query["SupplierLogo"] = request.SupplierLogo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierName)) {
+		query["SupplierName"] = request.SupplierName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierNameEn)) {
+		query["SupplierNameEn"] = request.SupplierNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierUrl)) {
+		query["SupplierUrl"] = request.SupplierUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSupplierRegistration"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSupplierRegistrationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSupplierRegistrationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 注册成为服务商
+//
+// @param request - CreateSupplierRegistrationRequest
+//
+// @return CreateSupplierRegistrationResponse
+func (client *Client) CreateSupplierRegistration(request *CreateSupplierRegistrationRequest) (_result *CreateSupplierRegistrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSupplierRegistrationResponse{}
+	_body, _err := client.CreateSupplierRegistrationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19377,6 +24111,81 @@ func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequ
 
 // Summary:
 //
+// 删除服务测试配置
+//
+// @param request - DeleteServiceTestCaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceTestCaseResponse
+func (client *Client) DeleteServiceTestCaseWithOptions(request *DeleteServiceTestCaseRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceTestCaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestCaseId)) {
+		query["TestCaseId"] = request.TestCaseId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceTestCase"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteServiceTestCaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteServiceTestCaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除服务测试配置
+//
+// @param request - DeleteServiceTestCaseRequest
+//
+// @return DeleteServiceTestCaseResponse
+func (client *Client) DeleteServiceTestCase(request *DeleteServiceTestCaseRequest) (_result *DeleteServiceTestCaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteServiceTestCaseResponse{}
+	_body, _err := client.DeleteServiceTestCaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deploys a service instance.
 //
 // @param request - DeployServiceInstanceRequest
@@ -19447,6 +24256,85 @@ func (client *Client) DeployServiceInstance(request *DeployServiceInstanceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeployServiceInstanceResponse{}
 	_body, _err := client.DeployServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成默认服务测试配置
+//
+// @param request - GenerateDefaultServiceTestConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateDefaultServiceTestConfigResponse
+func (client *Client) GenerateDefaultServiceTestConfigWithOptions(request *GenerateDefaultServiceTestConfigRequest, runtime *util.RuntimeOptions) (_result *GenerateDefaultServiceTestConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateDefaultServiceTestConfig"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateDefaultServiceTestConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateDefaultServiceTestConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 生成默认服务测试配置
+//
+// @param request - GenerateDefaultServiceTestConfigRequest
+//
+// @return GenerateDefaultServiceTestConfigResponse
+func (client *Client) GenerateDefaultServiceTestConfig(request *GenerateDefaultServiceTestConfigRequest) (_result *GenerateDefaultServiceTestConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateDefaultServiceTestConfigResponse{}
+	_body, _err := client.GenerateDefaultServiceTestConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20081,6 +24969,81 @@ func (client *Client) GetServiceProvisions(request *GetServiceProvisionsRequest)
 
 // Summary:
 //
+// Get service registration detail.
+//
+// @param request - GetServiceRegistrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceRegistrationResponse
+func (client *Client) GetServiceRegistrationWithOptions(request *GetServiceRegistrationRequest, runtime *util.RuntimeOptions) (_result *GetServiceRegistrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistrationId)) {
+		query["RegistrationId"] = request.RegistrationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceRegistration"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceRegistrationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceRegistrationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Get service registration detail.
+//
+// @param request - GetServiceRegistrationRequest
+//
+// @return GetServiceRegistrationResponse
+func (client *Client) GetServiceRegistration(request *GetServiceRegistrationRequest) (_result *GetServiceRegistrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceRegistrationResponse{}
+	_body, _err := client.GetServiceRegistrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the valid values of parameters in a Resource Orchestration Service (ROS) template.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
@@ -20175,6 +25138,152 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceTemplateParameterConstraintsResponse{}
 	_body, _err := client.GetServiceTemplateParameterConstraintsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务测试任务中Cases执行情况
+//
+// @param request - GetServiceTestTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceTestTaskResponse
+func (client *Client) GetServiceTestTaskWithOptions(request *GetServiceTestTaskRequest, runtime *util.RuntimeOptions) (_result *GetServiceTestTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceTestTask"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceTestTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceTestTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取服务测试任务中Cases执行情况
+//
+// @param request - GetServiceTestTaskRequest
+//
+// @return GetServiceTestTaskResponse
+func (client *Client) GetServiceTestTask(request *GetServiceTestTaskRequest) (_result *GetServiceTestTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceTestTaskResponse{}
+	_body, _err := client.GetServiceTestTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+//
+//
+//  	- @param request GetSupplierInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSupplierInformationResponse
+func (client *Client) GetSupplierInformationWithOptions(request *GetSupplierInformationRequest, runtime *util.RuntimeOptions) (_result *GetSupplierInformationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSupplierInformation"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSupplierInformationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSupplierInformationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+//
+//
+//  	- @param request GetSupplierInformationRequest
+//
+// @return GetSupplierInformationResponse
+func (client *Client) GetSupplierInformation(request *GetSupplierInformationRequest) (_result *GetSupplierInformationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSupplierInformationResponse{}
+	_body, _err := client.GetSupplierInformationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20516,6 +25625,81 @@ func (client *Client) ListAcrImageTags(request *ListAcrImageTagsRequest) (_resul
 
 // Summary:
 //
+// Get the list of artifact security risks
+//
+// @param request - ListArtifactRisksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListArtifactRisksResponse
+func (client *Client) ListArtifactRisksWithOptions(request *ListArtifactRisksRequest, runtime *util.RuntimeOptions) (_result *ListArtifactRisksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArtifactId)) {
+		query["ArtifactId"] = request.ArtifactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArtifactVersion)) {
+		query["ArtifactVersion"] = request.ArtifactVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListArtifactRisks"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactRisksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactRisksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Get the list of artifact security risks
+//
+// @param request - ListArtifactRisksRequest
+//
+// @return ListArtifactRisksResponse
+func (client *Client) ListArtifactRisks(request *ListArtifactRisksRequest) (_result *ListArtifactRisksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListArtifactRisksResponse{}
+	_body, _err := client.ListArtifactRisksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the version information about a deployment package.
 //
 // @param tmpReq - ListArtifactVersionsRequest
@@ -20795,6 +25979,287 @@ func (client *Client) ListServiceInstanceDeployDetails(request *ListServiceInsta
 
 // Summary:
 //
+// “Query logs at various levels, including service instance application, instance, and resource.”
+//
+// @param request - ListServiceInstanceLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceLogsResponse
+func (client *Client) ListServiceInstanceLogsWithOptions(request *ListServiceInstanceLogsRequest, runtime *util.RuntimeOptions) (_result *ListServiceInstanceLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSource)) {
+		query["LogSource"] = request.LogSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["Logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceLogs"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstanceLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstanceLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// “Query logs at various levels, including service instance application, instance, and resource.”
+//
+// @param request - ListServiceInstanceLogsRequest
+//
+// @return ListServiceInstanceLogsResponse
+func (client *Client) ListServiceInstanceLogs(request *ListServiceInstanceLogsRequest) (_result *ListServiceInstanceLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceInstanceLogsResponse{}
+	_body, _err := client.ListServiceInstanceLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务实例资源
+//
+// @param request - ListServiceInstanceResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceResourcesResponse
+func (client *Client) ListServiceInstanceResourcesWithOptions(request *ListServiceInstanceResourcesRequest, runtime *util.RuntimeOptions) (_result *ListServiceInstanceResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceARN)) {
+		query["ResourceARN"] = request.ResourceARN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceResourceType)) {
+		query["ServiceInstanceResourceType"] = request.ServiceInstanceResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceResources"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstanceResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstanceResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询服务实例资源
+//
+// @param request - ListServiceInstanceResourcesRequest
+//
+// @return ListServiceInstanceResourcesResponse
+func (client *Client) ListServiceInstanceResources(request *ListServiceInstanceResourcesRequest) (_result *ListServiceInstanceResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceInstanceResourcesResponse{}
+	_body, _err := client.ListServiceInstanceResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// View the upgrade history of a service instance
+//
+// @param request - ListServiceInstanceUpgradeHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceUpgradeHistoryResponse
+func (client *Client) ListServiceInstanceUpgradeHistoryWithOptions(request *ListServiceInstanceUpgradeHistoryRequest, runtime *util.RuntimeOptions) (_result *ListServiceInstanceUpgradeHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceUpgradeHistory"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstanceUpgradeHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstanceUpgradeHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// View the upgrade history of a service instance
+//
+// @param request - ListServiceInstanceUpgradeHistoryRequest
+//
+// @return ListServiceInstanceUpgradeHistoryResponse
+func (client *Client) ListServiceInstanceUpgradeHistory(request *ListServiceInstanceUpgradeHistoryRequest) (_result *ListServiceInstanceUpgradeHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceInstanceUpgradeHistoryResponse{}
+	_body, _err := client.ListServiceInstanceUpgradeHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of service instances.
 //
 // @param request - ListServiceInstancesRequest
@@ -21064,6 +26529,271 @@ func (client *Client) ListServiceSharedAccounts(request *ListServiceSharedAccoun
 
 // Summary:
 //
+// 服务测试用例列表
+//
+// @param request - ListServiceTestCasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceTestCasesResponse
+func (client *Client) ListServiceTestCasesWithOptions(request *ListServiceTestCasesRequest, runtime *util.RuntimeOptions) (_result *ListServiceTestCasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceTestCases"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceTestCasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceTestCasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 服务测试用例列表
+//
+// @param request - ListServiceTestCasesRequest
+//
+// @return ListServiceTestCasesResponse
+func (client *Client) ListServiceTestCases(request *ListServiceTestCasesRequest) (_result *ListServiceTestCasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceTestCasesResponse{}
+	_body, _err := client.ListServiceTestCasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务测试实时日志
+//
+// @param request - ListServiceTestTaskLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceTestTaskLogsResponse
+func (client *Client) ListServiceTestTaskLogsWithOptions(request *ListServiceTestTaskLogsRequest, runtime *util.RuntimeOptions) (_result *ListServiceTestTaskLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceTestTaskLogs"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceTestTaskLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceTestTaskLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取服务测试实时日志
+//
+// @param request - ListServiceTestTaskLogsRequest
+//
+// @return ListServiceTestTaskLogsResponse
+func (client *Client) ListServiceTestTaskLogs(request *ListServiceTestTaskLogsRequest) (_result *ListServiceTestTaskLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceTestTaskLogsResponse{}
+	_body, _err := client.ListServiceTestTaskLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务执行列表
+//
+// @param request - ListServiceTestTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceTestTasksResponse
+func (client *Client) ListServiceTestTasksWithOptions(request *ListServiceTestTasksRequest, runtime *util.RuntimeOptions) (_result *ListServiceTestTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceTestTasks"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceTestTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceTestTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取任务执行列表
+//
+// @param request - ListServiceTestTasksRequest
+//
+// @return ListServiceTestTasksResponse
+func (client *Client) ListServiceTestTasks(request *ListServiceTestTasksRequest) (_result *ListServiceTestTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceTestTasksResponse{}
+	_body, _err := client.ListServiceTestTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the applications for using a service.
 //
 // @param request - ListServiceUsagesRequest
@@ -21242,6 +26972,89 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
+// 查询服务商入职审核列表
+//
+// @param request - ListSupplierRegistrationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupplierRegistrationsResponse
+func (client *Client) ListSupplierRegistrationsWithOptions(request *ListSupplierRegistrationsRequest, runtime *util.RuntimeOptions) (_result *ListSupplierRegistrationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSupplierRegistrations"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSupplierRegistrationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSupplierRegistrationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询服务商入职审核列表
+//
+// @param request - ListSupplierRegistrationsRequest
+//
+// @return ListSupplierRegistrationsResponse
+func (client *Client) ListSupplierRegistrations(request *ListSupplierRegistrationsRequest) (_result *ListSupplierRegistrationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSupplierRegistrationsResponse{}
+	_body, _err := client.ListSupplierRegistrationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询标签键列表
 //
 // @param request - ListTagKeysRequest
@@ -21312,6 +27125,93 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
 	_body, _err := client.ListTagKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22935,6 +28835,89 @@ func (client *Client) UpdateServiceInstanceSpec(request *UpdateServiceInstanceSp
 
 // Summary:
 //
+// 修改服务测试用例
+//
+// @param request - UpdateServiceTestCaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceTestCaseResponse
+func (client *Client) UpdateServiceTestCaseWithOptions(request *UpdateServiceTestCaseRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceTestCaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestCaseId)) {
+		query["TestCaseId"] = request.TestCaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestCaseName)) {
+		query["TestCaseName"] = request.TestCaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestConfig)) {
+		query["TestConfig"] = request.TestConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceTestCase"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceTestCaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceTestCaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改服务测试用例
+//
+// @param request - UpdateServiceTestCaseRequest
+//
+// @return UpdateServiceTestCaseResponse
+func (client *Client) UpdateServiceTestCase(request *UpdateServiceTestCaseRequest) (_result *UpdateServiceTestCaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceTestCaseResponse{}
+	_body, _err := client.UpdateServiceTestCaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Update Service Sharing Permissions
 //
 // @param request - UpdateSharedAccountPermissionRequest
@@ -23017,6 +29000,101 @@ func (client *Client) UpdateSharedAccountPermission(request *UpdateSharedAccount
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSharedAccountPermissionResponse{}
 	_body, _err := client.UpdateSharedAccountPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新供应商全局信息
+//
+// @param request - UpdateSupplierInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSupplierInformationResponse
+func (client *Client) UpdateSupplierInformationWithOptions(request *UpdateSupplierInformationRequest, runtime *util.RuntimeOptions) (_result *UpdateSupplierInformationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliverySettings)) {
+		query["DeliverySettings"] = request.DeliverySettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationIp)) {
+		query["OperationIp"] = request.OperationIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationMfaPresent)) {
+		query["OperationMfaPresent"] = request.OperationMfaPresent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierDesc)) {
+		query["SupplierDesc"] = request.SupplierDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierLogo)) {
+		query["SupplierLogo"] = request.SupplierLogo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierUrl)) {
+		query["SupplierUrl"] = request.SupplierUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSupplierInformation"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSupplierInformationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSupplierInformationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新供应商全局信息
+//
+// @param request - UpdateSupplierInformationRequest
+//
+// @return UpdateSupplierInformationResponse
+func (client *Client) UpdateSupplierInformation(request *UpdateSupplierInformationRequest) (_result *UpdateSupplierInformationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSupplierInformationResponse{}
+	_body, _err := client.UpdateSupplierInformationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

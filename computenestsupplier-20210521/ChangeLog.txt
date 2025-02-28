@@ -1,3 +1,25 @@
+2025-02-28 Version: v6.4.0
+- Support API CreateServiceTestCase.
+- Support API CreateServiceTestTask.
+- Support API CreateSupplierRegistration.
+- Support API DeleteServiceTestCase.
+- Support API GenerateDefaultServiceTestConfig.
+- Support API GetServiceRegistration.
+- Support API GetServiceTestTask.
+- Support API GetSupplierInformation.
+- Support API ListArtifactRisks.
+- Support API ListServiceInstanceLogs.
+- Support API ListServiceInstanceResources.
+- Support API ListServiceInstanceUpgradeHistory.
+- Support API ListServiceTestCases.
+- Support API ListServiceTestTaskLogs.
+- Support API ListServiceTestTasks.
+- Support API ListSupplierRegistrations.
+- Support API ListTagResources.
+- Support API UpdateServiceTestCase.
+- Support API UpdateSupplierInformation.
+
+
 2025-01-24 Version: v6.3.0
 - Support API CancelServiceRegistration.
 - Support API ListServiceRegistrations.
